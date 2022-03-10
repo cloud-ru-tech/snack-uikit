@@ -1,0 +1,25 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "command": {
+    "publish": {
+      "ignoreChanges": ["ignored-file", "*.md"],
+      "message": "[ci skip] Version bump",
+      "registry": "https://pkg.sbercloud.tech/artifactory/api/npm/sc-uikit-npm"
+    },
+    "version": {
+      "changelogPreset": "@sbercloud/ft-conventional-changelog",
+      "ignoreChanges": [
+        "**/*.md",
+        "**/*.MD",
+        "**/*.mdx",
+        "**/*.MDX",
+        "./scripts/**/*",
+        "packages/*/stories/**/*.*",
+        "packages/*/__tests__/**/*.*"
+      ]
+    }
+  }
+}

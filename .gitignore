@@ -1,0 +1,32 @@
+# General
+node_modules
+dist
+build.bat
+package-lock.json
+.linaria-cache
+storybook-static
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional npm cache directory
+.npm
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.DS_Store
+
+/cypress/screenshots
+/cypress/videos
+/cypress/reports

@@ -1,0 +1,27 @@
+{
+  "extends": "ts-config-single-spa",
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "compilerOptions": {
+    "baseUrl": "packages",
+    "paths": {
+      "@sbercloud/uikit-template-*": [
+        "./*/src"
+      ]
+    },
+    "target": "es6",
+    "lib": ["es2017", "dom", "dom.iterable", "esnext"],
+    "types": ["cypress", "node"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "include": ["packages", "types", "cypress/support"],
+  "exclude": ["node_modules", "scripts"]
+}
