@@ -6,6 +6,7 @@ export function sortFolders(folders: string[]) {
   const foldersByPackageName = {};
 
   folders.forEach(folder => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const packageConfig = require(`${folder}/package.json`);
 
     const packageName = packageConfig.name;
@@ -18,7 +19,7 @@ export function sortFolders(folders: string[]) {
 
     if (packageConfig.dependencies) {
       Object.keys(packageConfig.dependencies).forEach(dependency => {
-        if (/@sbercloud\/uikit-.*/.test(dependency)) {
+        if (/@sbercloud\/(uikit-).*/.test(dependency)) {
           if (!graph.hasNode(dependency)) {
             graph.addNode(dependency);
           }

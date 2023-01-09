@@ -1,9 +1,0 @@
-{
-  "integrationFolder": "./",
-  "testFiles": "packages/*/__tests__/**/*.*",
-  "reporter": "junit",
-  "reporterOptions": {
-    "mochaFile": "cypress/reports/report-[hash].xml",
-    "toConsole": false
-  }
-}

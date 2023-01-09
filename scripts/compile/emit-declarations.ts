@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-import { JsxEmit, createCompilerHost, createProgram } from 'typescript';
+import { createCompilerHost, createProgram, JsxEmit } from 'typescript';
 
-import config from '../../package.json';
+import { name } from '../../package.json';
 import { ensureDirectory } from '../utils/ensureDirectory';
 
 const createdFiles = {};
@@ -15,7 +15,7 @@ export function createTSProgram({ fileNames }: { fileNames: string[] }) {
     esModuleInterop: true,
     jsx: JsxEmit.ReactJSX,
     paths: {
-      [`@sbercloud/${config.name}-*`]: ['packages/*/src'],
+      [`@sbercloud/${name}-*`]: ['packages/*/src'],
     },
   };
 

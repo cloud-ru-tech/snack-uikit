@@ -4,8 +4,7 @@ import { BabelFileResult, Node, transformFileSync, transformFromAstSync } from '
 
 export function transformJs(version: string) {
   return (file: string) => {
-    console.log(`BABEL transforming: ${file}...`);
-
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const esmConfig = require(path.resolve(process.cwd(), 'esm.babel.config.js'))(version);
 
     const { code: esm, ast } = transformFileSync(file, {
@@ -14,6 +13,7 @@ export function transformJs(version: string) {
       ...esmConfig,
     }) as BabelFileResult;
 
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const cjsConfig = require(path.resolve(process.cwd(), 'cjs.babel.config.js'))(version);
 
     const { code: cjs } = transformFromAstSync(ast as Node, esm as string, {

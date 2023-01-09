@@ -19,5 +19,5 @@ inquirer
     },
   ])
   .then(({ packagesToRun }: { packagesToRun: string }) =>
-    shell.exec(`STORYBOOK_PACKAGE_NAME="?(${packagesToRun.trim().split(/\s+/).join('|')})" npm run storybook`),
+    shell.exec(`STORYBOOK_PACKAGE_NAME="?(${packagesToRun.trim().split(/\s+/).join('|')})" npm run storybook:all`),
   );

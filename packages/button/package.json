@@ -1,0 +1,33 @@
+{
+  "name": "@sbercloud/uikit-product-button",
+  "title": "Button",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/-/tree/master/packages/button",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo.git",
+    "directory": "packages/button"
+  },
+  "author": "Anna Kozlova <apkozlova@sbercloud.ru>",
+  "contributors": [
+    "Anna Kozlova <apkozlova@sbercloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {},
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}

@@ -1,9 +1,4 @@
----
-variables:
-  SKIP_CYPRESS: 'true'
-  SKIP_DEPLOY: 'true'
-
 include:
   - project: sbercloud-ui/cicd
     ref: master
-    file: /gitlab-ci-uikit.yml
+    file: /gitlab-ci-uikit-product.yml

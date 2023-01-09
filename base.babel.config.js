@@ -1,4 +1,5 @@
-const config = require('./package.json');
+const name = require('./package.json').name;
+
 module.exports = (buildType, version) => ({
   sourceType: 'unambiguous',
   presets: [
@@ -14,7 +15,7 @@ module.exports = (buildType, version) => ({
     [
       '@linaria',
       version && {
-        classNameSlug: (hash, title) => `${config.name}-${title}-${version}-${hash}`,
+        classNameSlug: (hash, title) => `${name}-${title}-${version}-${hash}`,
       },
     ],
   ].filter(Boolean),
@@ -22,5 +23,11 @@ module.exports = (buildType, version) => ({
     '@babel/plugin-proposal-export-namespace-from',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-nullish-coalescing-operator',
+    [
+      '@babel/plugin-transform-runtime',
+      {
+        regenerator: true,
+      },
+    ],
   ].filter(Boolean),
 });

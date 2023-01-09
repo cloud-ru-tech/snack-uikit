@@ -1,0 +1,34 @@
+{
+  "name": "@sbercloud/uikit-product-utils",
+  "title": "Utils",
+  "version": "3.1.1",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/uikit-product/-/tree/master/packages/utils",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/uikit-product.git",
+    "directory": "packages/utils"
+  },
+  "author": "Трифонов Михаил Сергеевич <mstrifonov@sbercloud.ru>",
+  "contributors": [
+    "Трифонов Михаил Сергеевич <mstrifonov@sbercloud.ru>",
+    "Akhremenko Grigorii <gaahremenko@sbercloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {},
+  "dependencies": {
+    "@sbercloud/ft-debug-mode": "1.1.0",
+    "@sbercloud/uikit-product-theme": "0.35.1"
+  }
+}
