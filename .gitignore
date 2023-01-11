@@ -31,3 +31,5 @@ yarn-error.log*
 /testcafe/reports
 /testcafe/coverage
 .nyc_output
+
+tokens/build
