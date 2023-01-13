@@ -1,28 +1,16 @@
-import { styled } from '@linaria/react';
-
-import { TEXT_2_STYLES } from '@sbercloud/uikit-product-typography';
-import { DEFAULT_STYLES } from '@sbercloud/uikit-product-utils';
-
-import {
-  THEME_BASE,
-  THEME_GREEN,
-  THEME_GREENDARK,
-  THEME_PURPLE,
-  THEME_PURPLEDARK,
-  TOKENS_COMPONENTS_BUTTON_BUTTON_FILLED,
-} from '../../../../../tokens';
 import { Variant } from './constants';
 
-THEME_BASE;
-THEME_GREEN;
-THEME_GREENDARK;
-THEME_PURPLE;
-THEME_PURPLEDARK;
-TOKENS_COMPONENTS_BUTTON_BUTTON_FILLED;
+export const StyledButtonPrivate = `
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
 
-export const StyledButtonPrivate = styled.button`
-  ${DEFAULT_STYLES.COMMON};
-  ${DEFAULT_STYLES.BORDERLESS};
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+
+  border: none;
 
   cursor: pointer;
   text-transform: none;
@@ -34,13 +22,15 @@ export const StyledButtonPrivate = styled.button`
   width: max-content;
   min-width: max-content;
   text-decoration: none;
-  font-weight: normal;
 
   height: 44px;
   padding: 12px 16px;
   border-radius: 4px;
 
-  ${TEXT_2_STYLES};
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
 
   &[data-variant='${Variant.Filled}'] {
     fill: var(--button-filled-primary-size-s-label-icon-enabled-fill);
@@ -68,55 +58,6 @@ export const StyledButtonPrivate = styled.button`
   }
 `;
 
-/*
-export const StyledButtonPrivate = styled.button`
-  ${DEFAULT_STYLES.COMMON};
-  ${DEFAULT_STYLES.BORDERLESS};
-
-  cursor: pointer;
-  text-transform: none;
-  color: inherit;
-  background-color: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: max-content;
-  min-width: max-content;
-  text-decoration: none;
-  font-weight: normal;
-
-  height: 44px;
-  padding: 12px 16px;
-  border-radius: 4px;
-
-  ${TEXT_2_STYLES};
-
-  &[data-variant='${Variant.Filled}'] {
-    fill: var(${COLORS.ButtonFilledPrimarySizeSLabelIconEnabledFill});
-    background-color: var(${COLORS.ButtonFilledPrimarySizeSLabelIconEnabledFill});
-    color: var(${COLORS.ButtonFilledPrimarySizeSLabelIconEnabledFill});
-
-    :hover {
-      fill: var(${COLORS.ButtonFilledPrimarySizeSLabelIconHoveredFill});
-      background-color: var(${COLORS.ButtonFilledPrimarySizeSLabelIconHoveredFill});
-      color: var(${COLORS.ButtonFilledPrimarySizeSLabelIconHoveredFill});
-    }
-
-    :active {
-      fill: var(${COLORS.ButtonFilledPrimarySizeSLabelIconPressedFill});
-      background-color: var(${COLORS.ButtonFilledPrimarySizeSLabelIconPressedFill});
-      color: var(${COLORS.ButtonFilledPrimarySizeSLabelIconPressedFill});
-    }
-
-    :disabled,
-    &[disabled] {
-      fill: var(${COLORS.ButtonFilledPrimarySizeSLabelIconDisabledFill});
-      background-color: var(${COLORS.ButtonFilledPrimarySizeSLabelIconDisabledFill});
-      color: var(${COLORS.ButtonFilledPrimarySizeSLabelIconDisabledFill});
-    }
-  }
-`;*/
-
-export const IconWrapper = styled.div`
+export const IconWrapper = `
   margin-left: 8px;
 `;

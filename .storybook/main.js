@@ -15,6 +15,14 @@ const isTestServer = Boolean(process.env.TEST_SERVER);
 module.exports = {
   stories: [WELCOME, STATISTICS, ...STORIES],
   addons: [
+    {
+      name: '@storybook/preset-scss',
+      options: {
+        cssLoaderOptions: {
+          modules: true,
+        },
+      },
+    },
     '@sbercloud/ft-storybook-readme-addon',
     'storybook-addon-designs',
     {

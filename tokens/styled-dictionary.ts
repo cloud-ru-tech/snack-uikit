@@ -1,92 +1,58 @@
 import { promises as fs } from 'fs';
 
-import StyleDictionaryPackage from 'style-dictionary';
+import StyleDictionaryPackage, { Dictionary, File, Options } from 'style-dictionary';
 
-type Token = Record<string, any>;
+StyleDictionaryPackage.registerTransform({
+  type: 'value',
+  transitive: true,
+  name: 'figma/web/flatten-properties',
+  matcher: ({ type }) => ['typography', 'composition'].includes(type),
+  transformer: ({ value, name, type }) => {
+    if (!value) return;
+
+    const entries = Object.entries(value);
+
+    const flattendedValue = entries.reduce(
+      (acc, [key, v], index) =>
+        `${acc ? `${acc}\n  ` : ''}--${name}-${StyleDictionaryPackage.transform['name/cti/kebab'].transformer(
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          { path: [key] },
+          { prefix: '' },
+        )}: ${v}${index + 1 === entries.length ? '' : ';'}`,
+      `${name.includes(type) ? '' : `${type}-`}${name}-group;`,
+    );
+
+    return flattendedValue;
+  },
+});
+
+StyleDictionaryPackage.registerTransformGroup({
+  name: 'scss-custom',
+  transforms: [
+    'attribute/cti',
+    'name/cti/kebab',
+    'time/seconds',
+    'content/icon',
+    'size/rem',
+    'color/css',
+    // 'figma/web/flatten-properties',
+  ],
+});
 
 type FormatterProps = {
-  dictionary: {
-    allTokens: Token[];
-    usesReference(value: any): boolean;
-    getReferences(value: any): { name: string; value: any }[];
-  };
+  dictionary: Dictionary;
+  options: Options;
+  file: File;
 };
 
 const PLATFORM = 'web';
 const BASE = 'base';
-
-//
-// function getStyleDictionaryConfig(theme: string) {
-//   return {
-//     source: [`tokens/build/tokens-${theme}.json`],
-//     format: {
-//       linaria: ({ dictionary }: { dictionary: { allTokens: Record<string, any>[] } }) => {
-//         // const getTokenName = (name: string) =>
-//         //   name
-//         //     .split('-')
-//         //     .map(part => part[0].toUpperCase() + part.substring(1))
-//         //     .join('');
-//         //
-//         // const colors = dictionary.allTokens
-//         //   .map(token => `${getTokenName(token.name)}: '--${token.name}',`)
-//         //   .join('\n  ');
-//         //
-//         // const tokens = dictionary.allTokens
-//         //   .map(token => `\${COLORS.${getTokenName(token.name)}}: ${String(token.value).toLowerCase()};`)
-//         //   .join('\n      ');
-//
-//         const tokens = dictionary.allTokens
-//           .map(token => `--${token.name}: ${String(token.value).toLowerCase()};`)
-//           .join('\n      ');
-//
-//         return `import { css } from '@linaria/core';
-//
-// export const TOKENS_${theme.toUpperCase()} = css\`
-//   :global() {
-//     body[data-theme="${theme}"] {
-//       ${tokens}
-//     }
-//   }
-// \`;
-// `;
-//       },
-//     },
-//     platforms: {
-//       [PLATFORM]: {
-//         transformGroup: 'css',
-//         buildPath: 'tokens/build/',
-//         files: [
-//           {
-//             destination: `styled-${theme}.ts`,
-//             format: 'linaria',
-//             options: {
-//               outputReferences: true,
-//             },
-//           },
-//         ],
-//       },
-//     },
-//   };
-// }
-// console.log('Build started...');
-//
-// ['green', 'greenDark', 'purple', 'purpleDark'].map(theme => {
-//   console.log('\n==============================================');
-//   console.log(`\nProcessing: [${theme}]`);
-//
-//   const StyleDictionary = StyleDictionaryPackage.extend(getStyleDictionaryConfig(theme));
-//
-//   StyleDictionary.buildPlatform(PLATFORM);
-//
-//   console.log('\nEnd processing');
-// });
-//
-// console.log('\n==============================================');
-// console.log('\nBuild completed!');
+const VARIABLES = 'variables';
 
 function getThemeStylesConfig(theme: string, shouldAddAttribute = true) {
   return {
-    source: [`tokens/build/themes/tokens-${theme}.json`],
+    source: [`tokens/build/themes/tokens-${theme === VARIABLES ? 'green' : theme}.json`],
     format: {
       linaria: ({ dictionary }: FormatterProps) => {
         const tokens = dictionary.allTokens.map(token => `--${token.name}: ${token.value};`).join('\n      ');
@@ -102,12 +68,78 @@ export const THEME_${theme.toUpperCase()} = css\`
 \`;
 `;
       },
+      'scss/variables-custom': function ({ dictionary, options }: FormatterProps) {
+        const { outputReferences } = options;
+        const tokens = dictionary.allTokens.map(token => `--${token.name}: $${token.name};`).join('\n  ');
+
+        return (
+          StyleDictionaryPackage.formatHelpers.formattedVariables({
+            format: 'sass',
+            dictionary,
+            outputReferences,
+          }) +
+          `
+
+body${shouldAddAttribute ? `[data-theme='${theme}']` : ''} {
+  ${tokens}
+}
+`
+        );
+      },
+      'scss/variables-custom2': function ({ dictionary }: FormatterProps) {
+        return dictionary.allTokens.map(token => `$${token.name}: --${token.name};`).join('\n');
+      },
+      'scss/base': function ({ dictionary }: FormatterProps) {
+        const tokenVars = dictionary.allTokens.map(token => `$${token.name}: --${token.name};`).join('\n');
+        const tokenValues = dictionary.allTokens.map(token => `$${token.name}: ${token.value},`).join('\n  ');
+
+        return `${tokenVars}
+
+@mixin spread-map($map: ()) {
+  @each $key, $value in $map {
+    #{$key}: $value;
+  }
+}
+
+$theme-map-${theme}: (
+  ${tokenValues}
+);
+
+body {
+  @include spread-map($theme-map-${theme});
+}
+`;
+      },
+      'scss/theme': function ({ dictionary }: FormatterProps) {
+        const tokenValues = dictionary.allTokens.map(token => `$${token.name}: ${token.value},`).join('\n  ');
+
+        return `@import './styles-base';
+@import './styles-variables';
+
+$theme-map-${theme}: (
+  ${tokenValues}
+);
+
+body[data-theme='${theme}'] {
+  @include spread-map($theme-map-${theme});
+}
+`;
+      },
     },
     platforms: {
       [PLATFORM]: {
-        transformGroup: 'css',
+        transformGroup: 'scss-custom',
         buildPath: `tokens/build/themes/`,
-        files: [{ destination: `styled-${theme}.ts`, format: 'linaria' }],
+        files: [
+          {
+            destination: `styles-${theme}.scss`,
+            format:
+              {
+                [VARIABLES]: 'scss/variables-custom2',
+                [BASE]: 'scss/base',
+              }[theme] ?? 'scss/theme',
+          },
+        ],
       },
     },
   };
@@ -150,15 +182,50 @@ export const ${componentName.replaceAll('-', '_').toUpperCase()} = css\`
 \`;
 `;
       },
+      'scss/variables-custom': function ({ dictionary, options }: FormatterProps) {
+        const { outputReferences } = options;
+        const filteredTokens = dictionary.allTokens.filter(token => token.filePath === componentPath);
+        const tokens = filteredTokens.map(token => `--${token.name}: $${token.name};`).join('\n  ');
+
+        return (
+          StyleDictionaryPackage.formatHelpers.formattedVariables({
+            format: 'sass',
+            dictionary: { ...dictionary, allTokens: filteredTokens },
+            outputReferences,
+          }) +
+          `
+
+body {
+  ${tokens}
+}
+`
+        );
+      },
+      'scss/variables-custom2': function ({ dictionary, options }: FormatterProps) {
+        const { outputReferences } = options;
+        const filteredTokens = dictionary.allTokens.filter(token => token.filePath === componentPath);
+
+        return (
+          `@import '../themes/styles-base';
+@import '../themes/styles-variables';
+
+` +
+          StyleDictionaryPackage.formatHelpers.formattedVariables({
+            format: 'sass',
+            dictionary: { ...dictionary, allTokens: filteredTokens },
+            outputReferences,
+          })
+        );
+      },
     },
     platforms: {
       [PLATFORM]: {
-        transformGroup: 'css',
+        transformGroup: 'scss-custom',
         buildPath: `tokens/build/components/`,
         files: [
           {
-            destination: `styled-${componentName}.ts`,
-            format: 'linaria',
+            destination: `styles-${componentName}.scss`,
+            format: 'scss/variables-custom2',
             options: {
               outputReferences: true,
             },
@@ -169,8 +236,8 @@ export const ${componentName.replaceAll('-', '_').toUpperCase()} = css\`
   };
 }
 
-[BASE, 'purple', 'green', 'greenDark', 'purpleDark'].map(theme => {
-  const StyleDictionary = StyleDictionaryPackage.extend(getThemeStylesConfig(theme, theme !== BASE));
+[BASE, VARIABLES, 'purple', 'green', 'greenDark', 'purpleDark'].map(theme => {
+  const StyleDictionary = StyleDictionaryPackage.extend(getThemeStylesConfig(theme));
   StyleDictionary.buildPlatform(PLATFORM);
 });
 

@@ -1,7 +1,9 @@
 import { ReactElement, ReactText } from 'react';
 
 import { Variant } from './constants';
-import * as S from './styled';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import classNames from './styles.scss';
 
 export type ButtonProps = {
   text: ReactText;
@@ -12,11 +14,11 @@ export type ButtonProps = {
   disabled?: boolean;
 };
 
-export const Button = ({ text, variant = Variant.Filled, icon, className, onClick, disabled }: ButtonProps) => (
-  <S.StyledButtonPrivate className={className} data-variant={variant} onClick={onClick} disabled={disabled}>
+export const Button = ({ text, variant = Variant.Filled, icon, onClick, disabled }: ButtonProps) => (
+  <button className={classNames.styledButtonPrivate} data-variant={variant} onClick={onClick} disabled={disabled}>
     {text}
-    {icon && <S.IconWrapper>{icon}</S.IconWrapper>}
-  </S.StyledButtonPrivate>
+    {icon && <div className={classNames.iconWrapper}>{icon}</div>}
+  </button>
 );
 
 Button.variants = Variant;

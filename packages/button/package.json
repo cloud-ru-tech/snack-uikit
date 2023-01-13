@@ -27,8 +27,6 @@
   "license": "UNLICENSED",
   "scripts": {},
   "dependencies": {
-    "@sbercloud/uikit-product-typography": "1.2.0",
-    "@sbercloud/uikit-product-utils": "3.1.1"
   },
   "devDependencies": {},
   "peerDependencies": {}
