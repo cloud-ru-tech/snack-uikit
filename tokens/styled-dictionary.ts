@@ -1,99 +1,117 @@
 import { promises as fs } from 'fs';
 
-import StyleDictionaryPackage, { Dictionary, File, Options } from 'style-dictionary';
-
-StyleDictionaryPackage.registerTransform({
-  type: 'value',
-  transitive: true,
-  name: 'figma/web/flatten-properties',
-  matcher: ({ type }) => ['typography', 'composition'].includes(type),
-  transformer: ({ value, name, type }) => {
-    if (!value) return;
-
-    const entries = Object.entries(value);
-
-    const flattendedValue = entries.reduce(
-      (acc, [key, v], index) =>
-        `${acc ? `${acc}\n  ` : ''}--${name}-${StyleDictionaryPackage.transform['name/cti/kebab'].transformer(
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          { path: [key] },
-          { prefix: '' },
-        )}: ${v}${index + 1 === entries.length ? '' : ';'}`,
-      `${name.includes(type) ? '' : `${type}-`}${name}-group;`,
-    );
-
-    return flattendedValue;
-  },
-});
-
-StyleDictionaryPackage.registerTransformGroup({
-  name: 'scss-custom',
-  transforms: [
-    'attribute/cti',
-    'name/cti/kebab',
-    'time/seconds',
-    'content/icon',
-    'size/rem',
-    'color/css',
-    // 'figma/web/flatten-properties',
-  ],
-});
-
-type FormatterProps = {
-  dictionary: Dictionary;
-  options: Options;
-  file: File;
-};
+import StyleDictionaryPackage, { TransformedToken } from 'style-dictionary';
 
 const PLATFORM = 'web';
 const BASE = 'base';
 const VARIABLES = 'variables';
+const TYPOGRAPHY = 'typography';
 
-function getThemeStylesConfig(theme: string, shouldAddAttribute = true) {
-  return {
-    source: [`tokens/build/themes/tokens-${theme === VARIABLES ? 'green' : theme}.json`],
-    format: {
-      linaria: ({ dictionary }: FormatterProps) => {
-        const tokens = dictionary.allTokens.map(token => `--${token.name}: ${token.value};`).join('\n      ');
+// transforms
 
-        return `import { css } from '@linaria/core';
+StyleDictionaryPackage.registerTransform({
+  type: 'value',
+  transitive: true,
+  name: `${TYPOGRAPHY}/theme`,
+  matcher: ({ type }) => [TYPOGRAPHY].includes(type),
+  transformer: ({ value, name }) => {
+    if (!value) return;
 
-export const THEME_${theme.toUpperCase()} = css\`
-  :global() {
-    body${shouldAddAttribute ? `[data-theme='${theme}']` : ''} {
-      ${tokens}
+    const entries = Object.entries(value);
+
+    const flattendedValue = entries.map(function ([key, v]) {
+      return `$${name}-${StyleDictionaryPackage.transform['name/cti/kebab'].transformer(
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        { path: [key] },
+        { prefix: '' },
+      )}: ${v},`;
+    }, '\n');
+
+    return `// ${name}
+  ${flattendedValue.join('\n  ')}`;
+  },
+});
+
+StyleDictionaryPackage.registerTransform({
+  type: 'value',
+  transitive: true,
+  name: `${TYPOGRAPHY}/variables-custom`,
+  matcher: ({ type }) => [TYPOGRAPHY].includes(type),
+  transformer: ({ value, name }) => {
+    if (!value) return;
+
+    const entries = Object.entries(value);
+
+    const flattendedValue = entries.map(function ([key]) {
+      const varName = `${name}-${StyleDictionaryPackage.transform['name/cti/kebab'].transformer(
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        { path: [key] },
+        { prefix: '' },
+      )}`;
+
+      return `$${varName}: --${varName};`;
+    }, '\n');
+
+    return `// ${name}
+${flattendedValue.join('\n')}`;
+  },
+});
+
+StyleDictionaryPackage.registerTransform({
+  type: 'value',
+  transitive: true,
+  name: `${TYPOGRAPHY}/components`,
+  matcher: ({ type }) => [TYPOGRAPHY].includes(type),
+  transformer: ({ value, name, isSource }) => {
+    if (!value) return;
+
+    if (isSource) {
+      return value;
     }
-  }
-\`;
-`;
-      },
-      'scss/variables-custom': function ({ dictionary, options }: FormatterProps) {
-        const { outputReferences } = options;
-        const tokens = dictionary.allTokens.map(token => `--${token.name}: $${token.name};`).join('\n  ');
 
-        return (
-          StyleDictionaryPackage.formatHelpers.formattedVariables({
-            format: 'sass',
-            dictionary,
-            outputReferences,
-          }) +
-          `
+    const entries = Object.entries(value);
+    const newEntries = entries.map(([key]) => [
+      key,
+      `$${name}-${StyleDictionaryPackage.transform['name/cti/kebab'].transformer(
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        { path: [key] },
+        { prefix: '' },
+      )}`,
+    ]);
 
-body${shouldAddAttribute ? `[data-theme='${theme}']` : ''} {
-  ${tokens}
-}
-`
-        );
-      },
-      'scss/variables-custom2': function ({ dictionary }: FormatterProps) {
-        return dictionary.allTokens.map(token => `$${token.name}: --${token.name};`).join('\n');
-      },
-      'scss/base': function ({ dictionary }: FormatterProps) {
-        const tokenVars = dictionary.allTokens.map(token => `$${token.name}: --${token.name};`).join('\n');
-        const tokenValues = dictionary.allTokens.map(token => `$${token.name}: ${token.value},`).join('\n  ');
+    return Object.fromEntries(newEntries);
+  },
+});
 
-        return `${tokenVars}
+const defaultSCSSTransforms = [
+  'attribute/cti',
+  'name/cti/kebab',
+  'time/seconds',
+  'content/icon',
+  'size/rem',
+  'color/css',
+];
+
+// formats
+
+StyleDictionaryPackage.registerFormat({
+  name: 'scss/variables-custom',
+  formatter: ({ dictionary }) =>
+    dictionary.allTokens
+      .map(token => (token.type === TYPOGRAPHY ? token.value : `$${token.name}: --${token.name};`))
+      .join('\n'),
+});
+
+StyleDictionaryPackage.registerFormat({
+  name: 'scss/base',
+  formatter: ({ dictionary }) => {
+    const tokenVars = dictionary.allTokens.map(token => `$${token.name}: --${token.name};`).join('\n');
+    const tokenValues = dictionary.allTokens.map(token => `$${token.name}: ${token.value},`).join('\n  ');
+
+    return `${tokenVars}
 
 @mixin spread-map($map: ()) {
   @each $key, $value in $map {
@@ -101,19 +119,26 @@ body${shouldAddAttribute ? `[data-theme='${theme}']` : ''} {
   }
 }
 
-$theme-map-${theme}: (
+$tokens-base: (
   ${tokenValues}
 );
 
 body {
-  @include spread-map($theme-map-${theme});
+  @include spread-map($tokens-base);
 }
 `;
-      },
-      'scss/theme': function ({ dictionary }: FormatterProps) {
-        const tokenValues = dictionary.allTokens.map(token => `$${token.name}: ${token.value},`).join('\n  ');
+  },
+});
 
-        return `@import './styles-base';
+StyleDictionaryPackage.registerFormat({
+  name: 'scss/theme',
+  formatter: ({ dictionary, options }) => {
+    const { theme } = options;
+    const tokenValues = dictionary.allTokens
+      .map(token => (token.type === TYPOGRAPHY ? token.value : `$${token.name}: ${token.value},`))
+      .join('\n  ');
+
+    return `@import './styles-base';
 @import './styles-variables';
 
 $theme-map-${theme}: (
@@ -124,20 +149,76 @@ body[data-theme='${theme}'] {
   @include spread-map($theme-map-${theme});
 }
 `;
-      },
-    },
+  },
+});
+
+StyleDictionaryPackage.registerFormat({
+  name: 'scss/component',
+  formatter: function ({ dictionary, options }) {
+    const { outputReferences } = options;
+    const filteredTokens = dictionary.allTokens.filter(token => token.isSource);
+    const typographyTokens: TransformedToken[] = [];
+    const otherTokens: TransformedToken[] = [];
+
+    filteredTokens.forEach(token => (token.type === TYPOGRAPHY ? typographyTokens : otherTokens).push(token));
+
+    return `@import '../themes/styles-base';
+@import '../themes/styles-variables';
+${typographyTokens
+  .map(token => {
+    const formatKey = (key: string) =>
+      StyleDictionaryPackage.transform['name/cti/kebab'].transformer(
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        { path: [key] },
+        { prefix: '' },
+      );
+
+    return `
+${Object.entries(token.value)
+  .map(([key, value]) => `$${token.name}-${formatKey(key)}: ${value};`)
+  .join('\n')}
+
+@mixin ${token.name} {
+  ${Object.entries(token.value)
+    .map(([key]) => `${formatKey(key)}: var($${token.name}-${formatKey(key)});`)
+    .join('\n  ')}
+}`;
+  })
+  .join('\n')}
+
+${StyleDictionaryPackage.formatHelpers.formattedVariables({
+  format: 'sass',
+  dictionary: { ...dictionary, allTokens: otherTokens },
+  outputReferences,
+})}`;
+  },
+});
+
+function getThemeStylesConfig(theme: string) {
+  return {
+    source: [`tokens/build/themes/tokens-${theme === VARIABLES ? 'green' : theme}.json`],
     platforms: {
       [PLATFORM]: {
-        transformGroup: 'scss-custom',
+        transforms: [
+          ...defaultSCSSTransforms,
+          {
+            [VARIABLES]: `${TYPOGRAPHY}/variables-custom`,
+            [BASE]: '',
+          }[theme] ?? `${TYPOGRAPHY}/theme`,
+        ].filter(item => item),
         buildPath: `tokens/build/themes/`,
         files: [
           {
             destination: `styles-${theme}.scss`,
             format:
               {
-                [VARIABLES]: 'scss/variables-custom2',
+                [VARIABLES]: 'scss/variables-custom',
                 [BASE]: 'scss/base',
               }[theme] ?? 'scss/theme',
+            options: {
+              theme,
+            },
           },
         ],
       },
@@ -152,80 +233,14 @@ function getComponentStylesConfig(componentFile: string) {
   return {
     source: [componentPath],
     include: ['tokens/build/themes/tokens-base.json', 'tokens/build/themes/tokens-green.json'],
-    format: {
-      linaria: ({ dictionary }: FormatterProps) => {
-        const tokens = dictionary.allTokens
-          .filter(token => token.filePath === componentPath)
-          .map(token => {
-            let value = String(token.value);
-
-            if (dictionary.usesReference(token.original.value)) {
-              const refs = dictionary.getReferences(token.original.value);
-              refs.forEach(ref => {
-                value = value.replace(ref.value, function () {
-                  return `var(--${ref.name})`;
-                });
-              });
-            }
-            return `--${token.name}: ${value};`;
-          })
-          .join('\n      ');
-
-        return `import { css } from '@linaria/core';
-
-export const ${componentName.replaceAll('-', '_').toUpperCase()} = css\`
-  :global() {
-    body {
-      ${tokens}
-    }
-  }
-\`;
-`;
-      },
-      'scss/variables-custom': function ({ dictionary, options }: FormatterProps) {
-        const { outputReferences } = options;
-        const filteredTokens = dictionary.allTokens.filter(token => token.filePath === componentPath);
-        const tokens = filteredTokens.map(token => `--${token.name}: $${token.name};`).join('\n  ');
-
-        return (
-          StyleDictionaryPackage.formatHelpers.formattedVariables({
-            format: 'sass',
-            dictionary: { ...dictionary, allTokens: filteredTokens },
-            outputReferences,
-          }) +
-          `
-
-body {
-  ${tokens}
-}
-`
-        );
-      },
-      'scss/variables-custom2': function ({ dictionary, options }: FormatterProps) {
-        const { outputReferences } = options;
-        const filteredTokens = dictionary.allTokens.filter(token => token.filePath === componentPath);
-
-        return (
-          `@import '../themes/styles-base';
-@import '../themes/styles-variables';
-
-` +
-          StyleDictionaryPackage.formatHelpers.formattedVariables({
-            format: 'sass',
-            dictionary: { ...dictionary, allTokens: filteredTokens },
-            outputReferences,
-          })
-        );
-      },
-    },
     platforms: {
       [PLATFORM]: {
-        transformGroup: 'scss-custom',
+        transforms: [...defaultSCSSTransforms, `${TYPOGRAPHY}/components`],
         buildPath: `tokens/build/components/`,
         files: [
           {
             destination: `styles-${componentName}.scss`,
-            format: 'scss/variables-custom2',
+            format: 'scss/component',
             options: {
               outputReferences: true,
             },

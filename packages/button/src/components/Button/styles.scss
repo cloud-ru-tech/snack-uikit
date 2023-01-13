@@ -37,17 +37,23 @@
   line-height: 20px;
 
   &[data-variant='filled'] {
+    @include button-filled-primary-size-s-text-enabled-typography;
+
     fill: var($button-filled-primary-size-s-label-icon-enabled-fill);
     background-color: var($button-filled-primary-size-s-label-icon-enabled-fill);
     color: var($button-filled-primary-size-s-text-enabled-fill);
 
     &:hover {
+      @include button-filled-primary-size-s-text-hovered-typography;
+
       fill: var($button-filled-primary-size-s-label-icon-hovered-fill);
       background-color: var($button-filled-primary-size-s-label-icon-hovered-fill);
       color: var($button-filled-primary-size-s-text-hovered-fill);
     }
 
     &:active {
+      @include button-filled-primary-size-s-text-pressed-typography;
+
       fill: var($button-filled-primary-size-s-label-icon-pressed-fill);
       background-color: var($button-filled-primary-size-s-label-icon-pressed-fill);
       color: var($button-filled-primary-size-s-text-pressed-fill);
@@ -55,6 +61,8 @@
 
     &:disabled,
     &[disabled] {
+      @include button-filled-primary-size-s-text-disabled-typography;
+
       fill: var($button-filled-primary-size-s-label-icon-disabled-fill);
       background-color: var($button-filled-primary-size-s-label-icon-disabled-fill);
       color: var($button-filled-primary-size-s-text-disabled-fill);

@@ -5,7 +5,7 @@ import { TransformerOptions, transformTokens } from 'token-transformer';
 import * as themeConfig from '../../figma-tokens/New_Tokens/$themes.json';
 
 const transformerOptions: TransformerOptions = {
-  expandTypography: true,
+  // expandTypography: true,
   expandComposition: true,
   expandShadow: true,
   throwErrorWhenNotResolved: true,
