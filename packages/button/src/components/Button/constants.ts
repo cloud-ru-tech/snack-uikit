@@ -1,8 +1,7 @@
 export enum Variant {
   Filled = 'filled',
+  Tonal = 'tonal',
   Outline = 'outline',
-  Transparent = 'transparent',
-  OnAccent = 'onAccent',
-  Extra = 'extra',
-  Alarm = 'alarm',
+  Support = 'support',
+  Light = 'light',
 }

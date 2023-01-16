@@ -6,7 +6,7 @@ import * as themeConfig from '../../figma-tokens/New_Tokens/$themes.json';
 
 const transformerOptions: TransformerOptions = {
   // expandTypography: true,
-  expandComposition: true,
+  // expandComposition: true,
   expandShadow: true,
   throwErrorWhenNotResolved: true,
   resolveReferences: true,

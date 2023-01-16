@@ -16,7 +16,7 @@ export type ButtonProps = {
 
 export const Button = ({ text, variant = Variant.Filled, icon, onClick, disabled }: ButtonProps) => (
   <button className={classNames.styledButtonPrivate} data-variant={variant} onClick={onClick} disabled={disabled}>
-    {text}
+    <label>{text}</label>
     {icon && <div className={classNames.iconWrapper}>{icon}</div>}
   </button>
 );
