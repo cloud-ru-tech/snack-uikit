@@ -15,10 +15,10 @@ const TRANSFORMER_OPTIONS: TransformerOptions = {
 };
 
 const THEME_MAP = {
-  Cloud_Light_Mode: Themes.Green,
-  Cloud_Dark_Mode: Themes.GreenDark,
-  Ml_Space_Light_Mode: Themes.Purple,
-  Ml_Space_Dark_Mode: Themes.PurpleDark,
+  CloudLightMode: Themes.Green,
+  CloudDarkMode: Themes.GreenDark,
+  MlSpaceLightMode: Themes.Purple,
+  MlSpaceDarkMode: Themes.PurpleDark,
 };
 
 const BUILD_DIRECTORY = 'tokens/build';
@@ -91,9 +91,16 @@ const BUILD_DIRECTORY = 'tokens/build';
       });
 
       for (const componentPath of componentsPaths) {
+        const setName = componentPath
+          .split('/')
+          .slice(1)
+          .filter((item, index, arr) => arr.indexOf(item) === index)
+          .map(item => `${item[0].toLowerCase()}${item.substring(1)}`)
+          .join('-');
+
         await generateTokens({
           subDir: 'components',
-          setName: componentPath.toLowerCase().replaceAll('/', '-'),
+          setName,
           setsToInclude: [componentPath],
           options: { resolveReferences: false },
         });

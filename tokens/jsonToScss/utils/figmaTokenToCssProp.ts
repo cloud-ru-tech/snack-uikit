@@ -5,7 +5,7 @@ const TEXT_VARIANT_TYPES = ['main', 'support', 'light'];
 
 export function figmaTokenToCssProp({ token, key }: { token: TransformedToken; key: string }) {
   const possibleNames = ['', ...TEXT_VARIANT_TYPES].flatMap(variant =>
-    TEXT_ELEMENT_TYPES.map(element => (variant ? element + '_' + variant : element)),
+    TEXT_ELEMENT_TYPES.map(element => (variant ? element + variant : element)),
   );
   const fillProperty = possibleNames.includes(token.path[3]?.toLowerCase()) ? 'color' : 'background-color';
 

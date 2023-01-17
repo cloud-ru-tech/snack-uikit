@@ -2,11 +2,11 @@
 @import '../../../../../tokens/build/themes/styles-purple';
 @import '../../../../../tokens/build/themes/styles-greenDark';
 @import '../../../../../tokens/build/themes/styles-purpleDark';
-@import '../../../../../tokens/build/components/styles-tokens-components-button-button_filled';
-@import '../../../../../tokens/build/components/styles-tokens-components-button-button_outline';
-@import '../../../../../tokens/build/components/styles-tokens-components-button-button_light';
-@import '../../../../../tokens/build/components/styles-tokens-components-button-button_support';
-@import '../../../../../tokens/build/components/styles-tokens-components-button-button_tonal';
+@import '../../../../../tokens/build/components/styles-tokens-button-buttonFilled';
+@import '../../../../../tokens/build/components/styles-tokens-button-buttonOutline';
+@import '../../../../../tokens/build/components/styles-tokens-button-buttonLight';
+@import '../../../../../tokens/build/components/styles-tokens-button-buttonSupport';
+@import '../../../../../tokens/build/components/styles-tokens-button-buttonTonal';
 
 .styledButtonPrivate {
   box-sizing: border-box;
