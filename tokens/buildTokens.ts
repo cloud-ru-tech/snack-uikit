@@ -2,9 +2,10 @@ import { promises as fs } from 'fs';
 
 import { TransformerOptions, transformTokens } from 'token-transformer';
 
-import * as themeConfig from '../../figma-tokens/New_Tokens/$themes.json';
+import themeConfig from '../../figma-tokens/New_Tokens/$themes.json';
+import { Themes } from '../packages/theme/src/types/theme';
 
-const transformerOptions: TransformerOptions = {
+const TRANSFORMER_OPTIONS: TransformerOptions = {
   // expandTypography: true,
   // expandComposition: true,
   expandShadow: true,
@@ -13,22 +14,20 @@ const transformerOptions: TransformerOptions = {
   // preserveRawValue: true,
 };
 
-const themeMap = {
-  Cloud_Light_Mode: 'green',
-  Cloud_Dark_Mode: 'greenDark',
-  Ml_Space_Light_Mode: 'purple',
-  Ml_Space_Dark_Mode: 'purpleDark',
+const THEME_MAP = {
+  Cloud_Light_Mode: Themes.Green,
+  Cloud_Dark_Mode: Themes.GreenDark,
+  Ml_Space_Light_Mode: Themes.Purple,
+  Ml_Space_Dark_Mode: Themes.PurpleDark,
 };
 
+const BUILD_DIRECTORY = 'tokens/build';
+
 (async () => {
-  const dirName = `tokens/build`;
+  await fs.mkdir(BUILD_DIRECTORY, { recursive: true });
 
-  await fs.mkdir(dirName, { recursive: true });
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  for (const { name, selectedTokenSets } of themeConfig.default) {
-    const theme = themeMap[name];
+  for (const { name, selectedTokenSets } of themeConfig) {
+    const theme = THEME_MAP[name];
     const paths = Object.keys(selectedTokenSets);
     const basePaths = paths.filter(tokens => tokens.startsWith('Base'));
     const themePaths = paths.filter(tokens => tokens.startsWith('Themes'));
@@ -52,24 +51,24 @@ const themeMap = {
     }: {
       setName: string;
       setsToInclude: string[];
-      subDir?: string;
+      subDir: string;
       options?: TransformerOptions;
     }) => {
-      const setDir = `${dirName}${subDir ? '/' + subDir : ''}`;
+      const tokenSetDirectory = `${BUILD_DIRECTORY}/${subDir}`;
 
-      await fs.mkdir(setDir, { recursive: true });
+      await fs.mkdir(tokenSetDirectory, { recursive: true });
 
       const resolvedTokens = transformTokens(
         rawTokens,
         paths,
         paths.filter(item => !setsToInclude.includes(item)),
         {
-          ...transformerOptions,
+          ...TRANSFORMER_OPTIONS,
           ...options,
         },
       );
 
-      const fileName = `${setDir}/tokens-${setName}.json`;
+      const fileName = `${tokenSetDirectory}/tokens-${setName}.json`;
 
       await fs.writeFile(fileName, JSON.stringify(resolvedTokens), 'utf8');
 
@@ -84,7 +83,7 @@ const themeMap = {
     });
 
     // TODO: make correct condition for generation
-    if (theme === themeMap['Cloud_Light_Mode']) {
+    if (theme === Themes.Green) {
       await generateTokens({
         subDir: 'themes',
         setName: `base`,
