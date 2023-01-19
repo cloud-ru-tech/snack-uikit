@@ -3,6 +3,7 @@ export const BASE = 'base';
 export const VARIABLES = 'variables';
 export const TYPOGRAPHY = 'typography';
 export const COMPOSITION = 'composition';
+export const BASE_INDENT = '  ';
 
 export enum FormatName {
   SCSSBase = 'scss/base',
@@ -15,4 +16,8 @@ export enum TransformName {
   TypographyTheme = 'typography/theme',
   TypographyThemeVariables = 'typography/theme-variables',
   TypographyComponents = 'typography/components',
+}
+
+export enum FilterName {
+  SourceTokens = 'source-tokens',
 }

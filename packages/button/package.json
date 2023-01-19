@@ -28,6 +28,8 @@
   "scripts": {},
   "dependencies": {
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sass": "1.57.1"
+  },
   "peerDependencies": {}
 }

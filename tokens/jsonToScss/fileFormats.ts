@@ -1,9 +1,7 @@
-import StyleDictionaryPackage, { Format, Named, TransformedToken } from 'style-dictionary';
+import { Format, Named, TransformedToken, TransformedTokens } from 'style-dictionary';
 
-import { COMPOSITION, FormatName, TYPOGRAPHY } from './constants';
+import { BASE_INDENT, COMPOSITION, FormatName, TYPOGRAPHY } from './constants';
 import { figmaTokenToCssProp, toKebabCase } from './utils';
-
-const IMPOSSIBLE_PROPS = ['paragraphSpacing'];
 
 export const SCSSBaseFormat: Named<Format> = {
   name: FormatName.SCSSBase,
@@ -63,19 +61,14 @@ export const SCSSThemeVariablesFormat: Named<Format> = {
 export const SCSSComponentFormat: Named<Format> = {
   name: FormatName.SCSSComponent,
   formatter: function ({ dictionary }) {
-    const filteredTokens = dictionary.allTokens.filter(token => token.isSource);
     const compositeTokens: TransformedToken[] = [];
     const otherTokens: TransformedToken[] = [];
 
-    filteredTokens.forEach(token =>
+    dictionary.allTokens.forEach(token =>
       ([TYPOGRAPHY, COMPOSITION].includes(token.type) ? compositeTokens : otherTokens).push(token),
     );
 
-    return `@import '../themes/styles-base';
-@import '../themes/styles-variables';
-${compositeTokens
-  .map(token => {
-    const replaceRefs = (value: unknown, valueWithRefs: unknown) => {
+    const replaceRefs = ({ value, valueWithRefs }: { value: unknown; valueWithRefs: unknown }) => {
       let replacedValue = String(value);
 
       if (dictionary.usesReference(valueWithRefs)) {
@@ -89,45 +82,68 @@ ${compositeTokens
       return replacedValue;
     };
 
-    const printMixin = (name: string, value: Record<string, any>) => `@mixin ${name} {
-  ${Object.entries(value)
-    .filter(([key]) => !IMPOSSIBLE_PROPS.includes(key))
-    .map(([key, value]) =>
-      value && typeof value === 'object'
-        ? `@include ${token.name}-${toKebabCase(key)};\n`
-        : `${figmaTokenToCssProp({ token, key: toKebabCase(key) })}: var($${name}-${toKebabCase(key)});`,
-    )
-    .join('\n  ')}
-}`;
+    const isToken = (token: TransformedTokens): token is TransformedToken => Boolean(token.name);
 
-    const printMixinWithVars = (name: string, value: Record<string, any>) => `
-${Object.entries(value)
-  .map(([key, value]) => `$${name}-${toKebabCase(key)}: ${value};`)
-  .join('\n')}
-${printMixin(name, value)}`;
+    const buildTokenMapValue = (token: TransformedTokens, depth = 0): string => {
+      const indent = new Array(depth).fill(BASE_INDENT).join('');
+      const indentPlus1 = indent + BASE_INDENT;
 
-    if (token.type === TYPOGRAPHY) {
-      return printMixinWithVars(token.name, token.value);
-    }
+      const tokenToString = (token: Record<string, any>, formatter: (key: string, value: any) => string) =>
+        Object.entries(token)
+          .map(([key, value]) => formatter(key, value))
+          .join(`,\n${indentPlus1}`);
 
-    const vars = Object.entries(token.value).map(([key, value]) =>
-      value && typeof value === 'object'
-        ? printMixinWithVars(`${token.name}-${toKebabCase(key)}`, value)
-        : `$${token.name}-${toKebabCase(key)}: ${replaceRefs(value, token.original.value[key])};`,
-    );
+      const wrapInBrackets = (str: string) => `(
+${indentPlus1}${str}
+${indent})`;
 
-    return `
-${vars.join('\n')}
+      const tokenDictionaryTemplate = (token: TransformedTokens) =>
+        wrapInBrackets(
+          tokenToString(
+            token,
+            (key, tokenInner) => `${toKebabCase(key)}: ${buildTokenMapValue(tokenInner, depth + 1)}`,
+          ),
+        );
 
-${printMixin(token.name, token.value)}
+      const simpleTokenTemplate = (token: TransformedToken) =>
+        `${replaceRefs({ value: token.value, valueWithRefs: token.original.value })}`;
+
+      const compositeTokenTemplate = (token: TransformedToken) => {
+        const cssEntryToString = (key: string, value: string) =>
+          `"${figmaTokenToCssProp({ token, key: toKebabCase(key) })}": ${value}`;
+
+        return wrapInBrackets(
+          tokenToString(token.value, (key, value) =>
+            value && typeof value === 'object'
+              ? `${tokenToString(value, cssEntryToString)}`
+              : cssEntryToString(key, replaceRefs({ value, valueWithRefs: token.original.value[key] })),
+          ),
+        );
+      };
+
+      if (!isToken(token)) {
+        return tokenDictionaryTemplate(token);
+      }
+
+      if (![TYPOGRAPHY, COMPOSITION].includes(token.type)) {
+        return simpleTokenTemplate(token);
+      }
+
+      return compositeTokenTemplate(token);
+    };
+
+    return `@import '../themes/styles-base';
+@import '../themes/styles-variables';
+
+@mixin spread-var-map($map: ()) {
+  @each $key, $value in $map {
+    #{$key}: var($value);
+  }
+}
+
+${Object.entries(dictionary.tokens)
+  .map(([key, value]) => `$${toKebabCase(key)}: ${buildTokenMapValue(value)}`)
+  .join(';\n\n')}    
 `;
-  })
-  .join('')}
-
-${StyleDictionaryPackage.formatHelpers.formattedVariables({
-  format: 'sass',
-  dictionary: { ...dictionary, allTokens: otherTokens },
-  outputReferences: true,
-})}`;
   },
 };

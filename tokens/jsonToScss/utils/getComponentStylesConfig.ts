@@ -1,6 +1,6 @@
 import StyleDictionaryPackage from 'style-dictionary';
 
-import { FormatName, PLATFORM, TransformName } from '../constants';
+import { FilterName, FormatName, PLATFORM, TransformName } from '../constants';
 
 export function getComponentStylesConfig(componentFile: string) {
   const componentName = componentFile.split('.')[0];
@@ -17,6 +17,7 @@ export function getComponentStylesConfig(componentFile: string) {
           {
             destination: `styles-${componentName}.scss`,
             format: FormatName.SCSSComponent,
+            filter: FilterName.SourceTokens,
           },
         ],
       },

@@ -5,6 +5,7 @@ import StyleDictionaryPackage from 'style-dictionary';
 import { Themes } from '../../packages/theme/src/types/theme';
 import { BASE, PLATFORM, VARIABLES } from './constants';
 import { SCSSBaseFormat, SCSSComponentFormat, SCSSThemeFormat, SCSSThemeVariablesFormat } from './fileFormats';
+import { SourceTokensFilter } from './tokenFilters';
 import {
   TypographyComponentsTransform,
   TypographyThemeTransform,
@@ -20,6 +21,8 @@ StyleDictionaryPackage.registerFormat(SCSSBaseFormat);
 StyleDictionaryPackage.registerFormat(SCSSThemeFormat);
 StyleDictionaryPackage.registerFormat(SCSSThemeVariablesFormat);
 StyleDictionaryPackage.registerFormat(SCSSComponentFormat);
+
+StyleDictionaryPackage.registerFilter(SourceTokensFilter);
 
 [BASE, VARIABLES, ...Object.values(Themes)].map(theme => {
   const StyleDictionary = StyleDictionaryPackage.extend(getThemeStylesConfig(theme));

@@ -1,0 +1,107 @@
+@use 'sass:map';
+
+@import '../../../../../tokens/build/themes/styles-green';
+@import '../../../../../tokens/build/themes/styles-purple';
+@import '../../../../../tokens/build/themes/styles-greenDark';
+@import '../../../../../tokens/build/themes/styles-purpleDark';
+@import '../../../../../tokens/build/components/styles-tokens-button-buttonFilled';
+
+$types: primary, neutral, critical;
+$sizes: size-s, size-m, size-l;
+$variants: label-only, icon-only, label-icon;
+
+@function get-label-state($variant, $state) {
+  @if $variant == 'label-only' {
+    @if $state == 'load' {
+      @return 'load-label-only';
+    }
+  }
+  @return $state;
+}
+
+@mixin children-styles($type, $size, $variant, $state) {
+  @include spread-var-map(map-get($button-filled, $type, $size, $variant, $state));
+
+  [data-label] {
+    @include spread-var-map(map-get($button-filled, $type, $size, 'label', get-label-state($variant, $state)));
+  }
+
+  [data-icon] {
+    @if $variant == 'label-only' {
+      @if $state == 'load' {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    & svg {
+      @include spread-var-map(map-get($button-filled, $type, $size, 'icon', $state));
+    }
+  }
+}
+
+@mixin button-styles {
+  @each $type in $types {
+    &[data-type='#{$type}'] {
+      @each $size in $sizes {
+        &[data-size='#{$size}'] {
+          @each $variant in $variants {
+            &[data-variant='#{$variant}'] {
+              @include children-styles($type, $size, $variant, "enabled");
+
+              &:hover {
+                @include children-styles($type, $size, $variant, "hovered");
+              }
+
+              &:focus {
+                @include children-styles($type, $size, $variant, "focused");
+              }
+
+              &:active {
+                @include children-styles($type, $size, $variant, "pressed");
+              }
+
+              &:disabled,
+              &[data-disabled] {
+                @include children-styles($type, $size, $variant, "disabled");
+              }
+
+              &[data-loading] {
+                @include children-styles($type, $size, $variant, "load");
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.button {
+  box-sizing: border-box;
+  border: 0 solid transparent;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  text-transform: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-width: max-content;
+  position: relative;
+
+  @include button-styles;
+}
+
+.loadingWheel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

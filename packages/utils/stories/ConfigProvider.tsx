@@ -2,7 +2,7 @@ import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Button } from '@sbercloud/uikit-product-button';
+import { ButtonFilled } from '@sbercloud/uikit-product-button';
 import { EXPORT_VARS } from '@sbercloud/uikit-product-theme';
 import { H1_STYLES, H3_STYLES, TEXT_2_STYLES } from '@sbercloud/uikit-product-typography';
 
@@ -101,10 +101,10 @@ const Template: Story<ConfigProviderProps> = ({ ...args }) => {
           <Caption>(нажми на кнопку)</Caption>
         </TitleWrapper>
         <ConfigBody>
-          <Button onClick={() => changeTheme(Themes.Purple)} text='Purple Theme' />
-          <Button onClick={() => changeTheme(Themes.PurpleDark)} text='Purple Dark Theme' />
-          <Button onClick={() => changeTheme(Themes.Green)} text='Green Theme' />
-          <Button onClick={() => changeTheme(Themes.GreenDark)} text='Green Dark Theme' />
+          <ButtonFilled onClick={() => changeTheme(Themes.Purple)} label='Purple Theme' />
+          <ButtonFilled onClick={() => changeTheme(Themes.PurpleDark)} label='Purple Dark Theme' />
+          <ButtonFilled onClick={() => changeTheme(Themes.Green)} label='Green Theme' />
+          <ButtonFilled onClick={() => changeTheme(Themes.GreenDark)} label='Green Dark Theme' />
         </ConfigBody>
       </Wrapper>
       <Wrapper>
@@ -119,8 +119,8 @@ const Template: Story<ConfigProviderProps> = ({ ...args }) => {
           <Caption>(нажми на кнопку)</Caption>
         </TitleWrapper>
         <ConfigBody>
-          <Button onClick={() => changeLanguage(LanguageCodeType.ruRU)} text='ruRU' />
-          <Button onClick={() => changeLanguage(LanguageCodeType.enUS)} text='enUS' />
+          <ButtonFilled onClick={() => changeLanguage(LanguageCodeType.ruRU)} label='ruRU' />
+          <ButtonFilled onClick={() => changeLanguage(LanguageCodeType.enUS)} label='enUS' />
         </ConfigBody>
       </Wrapper>
     </ConfigProvider>
