@@ -12,7 +12,7 @@ const getColorProperty = (token: TransformedToken) => {
     SVG_ELEMENT_TYPES.map(element => (variant ? element + variant : element)),
   );
 
-  const element = token.path[3]?.toLowerCase();
+  const element = token.path[2]?.toLowerCase();
 
   if (possibleTextNames.includes(element)) {
     return 'color';

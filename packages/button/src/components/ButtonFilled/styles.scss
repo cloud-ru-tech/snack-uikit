@@ -1,5 +1,3 @@
-@use 'sass:map';
-
 @import '../../../../../tokens/build/themes/styles-green';
 @import '../../../../../tokens/build/themes/styles-purple';
 @import '../../../../../tokens/build/themes/styles-greenDark';
@@ -19,60 +17,68 @@ $variants: label-only, icon-only, label-icon;
   @return $state;
 }
 
-@mixin children-styles($type, $size, $variant, $state) {
-  @include spread-var-map(map-get($button-filled, $type, $size, $variant, $state));
+@mixin button-size-styles {
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @each $variant in $variants {
+        &[data-variant='#{$variant}'] {
+          @include theme-map($button-filled, $size, 'container', $variant);
 
-  [data-label] {
-    @include spread-var-map(map-get($button-filled, $type, $size, 'label', get-label-state($variant, $state)));
-  }
-
-  [data-icon] {
-    @if $variant == 'label-only' {
-      @if $state == 'load' {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+          [data-label] {
+            @include theme-map($button-filled, $size, 'text', 'label');
+          }
+        }
       }
-    }
-
-    & svg {
-      @include spread-var-map(map-get($button-filled, $type, $size, 'icon', $state));
     }
   }
 }
 
-@mixin button-styles {
+@mixin type-styles($type, $state, $variant: "") {
+  @include theme-map($button-filled, $type, "container", $state);
+
+  [data-label] {
+    @include theme-map($button-filled, $type, "label", get-label-state($variant, $state));
+  }
+
+  [data-icon] svg {
+    @include theme-map($button-filled, $type, 'icon', $state);
+  }
+}
+
+@mixin button-type-styles {
   @each $type in $types {
     &[data-type='#{$type}'] {
-      @each $size in $sizes {
-        &[data-size='#{$size}'] {
-          @each $variant in $variants {
-            &[data-variant='#{$variant}'] {
-              @include children-styles($type, $size, $variant, "enabled");
+      @include type-styles($type, "enabled");
 
-              &:hover {
-                @include children-styles($type, $size, $variant, "hovered");
-              }
+      &:hover {
+        @include type-styles($type, "hovered");
+      }
 
-              &:focus {
-                @include children-styles($type, $size, $variant, "focused");
-              }
+      &:focus {
+        @include type-styles($type, "focused");
+      }
 
-              &:active {
-                @include children-styles($type, $size, $variant, "pressed");
-              }
+      &:active {
+        @include type-styles($type, "pressed");
+      }
 
-              &:disabled,
-              &[data-disabled] {
-                @include children-styles($type, $size, $variant, "disabled");
-              }
+      &:disabled,
+      &[data-disabled] {
+        @include type-styles($type, "disabled");
+      }
 
-              &[data-loading] {
-                @include children-styles($type, $size, $variant, "load");
-              }
+      @each $variant in $variants {
+        &[data-variant='#{$variant}'][data-loading] {
+          @if $variant == 'label-only' {
+            [data-icon] {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
             }
           }
+
+          @include type-styles($type, "load", $variant);
         }
       }
     }
@@ -96,7 +102,8 @@ $variants: label-only, icon-only, label-icon;
   min-width: max-content;
   position: relative;
 
-  @include button-styles;
+  @include button-size-styles;
+  @include button-type-styles;
 }
 
 .loadingWheel {

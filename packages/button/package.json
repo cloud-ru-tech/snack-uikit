@@ -26,10 +26,7 @@
   ],
   "license": "UNLICENSED",
   "scripts": {},
-  "dependencies": {
-  },
-  "devDependencies": {
-    "sass": "1.57.1"
-  },
+  "dependencies": {},
+  "devDependencies": {},
   "peerDependencies": {}
 }

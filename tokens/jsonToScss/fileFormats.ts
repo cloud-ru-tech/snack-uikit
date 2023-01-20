@@ -132,11 +132,13 @@ ${indent})`;
       return compositeTokenTemplate(token);
     };
 
-    return `@import '../themes/styles-base';
+    return `@use 'sass:map';
+
+@import '../themes/styles-base';
 @import '../themes/styles-variables';
 
-@mixin spread-var-map($map: ()) {
-  @each $key, $value in $map {
+@mixin theme-map($map: (), $keys...) {
+  @each $key, $value in map-get($map, $keys...) {
     #{$key}: var($value);
   }
 }
