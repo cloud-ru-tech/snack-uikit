@@ -1,3 +1,8 @@
+import '../../../../../tokens/build/themes/styles-green.scss';
+import '../../../../../tokens/build/themes/styles-greenDark.scss';
+import '../../../../../tokens/build/themes/styles-purple.scss';
+import '../../../../../tokens/build/themes/styles-purpleDark.scss';
+
 import { FC, useEffect, useLayoutEffect, useState } from 'react';
 
 import { color, globals } from '@sbercloud/uikit-product-theme';
