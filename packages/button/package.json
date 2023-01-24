@@ -1,7 +1,7 @@
 {
   "name": "@sbercloud/uikit-tokens-demo-button",
   "title": "Button",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -22,12 +22,13 @@
   ],
   "files": [
     "dist",
+    "dist/**/*.css",
     "src"
   ],
   "license": "UNLICENSED",
   "scripts": {},
   "dependencies": {
-    "figma-tokens": "file:../../figma-tokens-0.0.1.tgz"
+    "figma-tokens": "file:figma-tokens-0.0.1.tgz"
   },
   "devDependencies": {},
   "peerDependencies": {}

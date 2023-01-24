@@ -2,7 +2,7 @@ import { cloneElement, ReactElement } from 'react';
 
 import { Size, Type, Variant } from '../../constants';
 import { LoadingIcon } from '../LoadingIcon';
-import classNames from './styles.scss';
+import classNames from './styles.module.css';
 
 type LabelIconProps = {
   label?: string;

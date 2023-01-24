@@ -30,6 +30,6 @@
   "dependencies": {
     "@sbercloud/ft-debug-mode": "1.1.0",
     "@sbercloud/uikit-tokens-demo-theme": "0.35.1",
-    "figma-tokens": "file:../../figma-tokens-0.0.1.tgz"
+    "figma-tokens": "file:figma-tokens-0.0.1.tgz"
   }
 }

@@ -1,8 +1,8 @@
 import { styled } from '@linaria/react';
 import { PieChart, pieChartDefaultProps } from 'react-minimal-pie-chart';
 
-import { H3_STYLES } from '@sbercloud/uikit-product-typography';
-import { Themes, useTheme } from '@sbercloud/uikit-product-utils';
+import { H3_STYLES } from '@sbercloud/uikit-tokens-demo-typography';
+import { Themes, useTheme } from '@sbercloud/uikit-tokens-demo-utils';
 
 import * as S from '../styles';
 import { DefaultChartProps } from '../types';

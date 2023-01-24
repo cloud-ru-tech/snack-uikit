@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "es2017",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "esnext",
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "types": ["@types/node"],
+    "baseUrl": "./"
+  },
+  "references": [
+    {"path": "./packages/button/tsconfig-build-cjs.json"},
+    {"path": "./packages/button/tsconfig-build-esm.json"},
+    {"path": "./packages/theme/tsconfig-build-cjs.json"},
+    {"path": "./packages/theme/tsconfig-build-esm.json"},
+    {"path": "./packages/typography/tsconfig-build-cjs.json"},
+    {"path": "./packages/typography/tsconfig-build-esm.json"},
+    {"path": "./packages/utils/tsconfig-build-cjs.json"},
+    {"path": "./packages/utils/tsconfig-build-esm.json"}
+  ],
+  "files": [],
+  "exclude": ["node_modules"],
+}

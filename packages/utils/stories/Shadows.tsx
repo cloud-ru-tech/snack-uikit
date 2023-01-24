@@ -45,11 +45,15 @@ const Template: Story = () => {
 
   return (
     <ThemeWrapper>
-      {Object.keys(SHADOW).map(shadowKey => (
+      {Object.keys(SHADOW).map((shadowKey: string) => (
         <ShadowItem key={shadowKey}>
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-ignore */}
           <ShadowPreview shadow={SHADOW[shadowKey]} theme={theme}>
             {shadowKey}
 
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             <Text>{SHADOW[shadowKey]}</Text>
           </ShadowPreview>
         </ShadowItem>

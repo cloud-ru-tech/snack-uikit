@@ -1,0 +1,18 @@
+{
+  "extends": "../../npm-package.tsconfig.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "rootDir": "../../",
+    "outDir": "./dist",
+    "paths": {
+      "#storybookConstants": ["../../.storybook/constants"]
+    }
+  },
+  "include": [
+    "./src",
+    "./stories",
+    "./*.json",
+    "../../types",
+    "../../.storybook/constants.ts"
+  ]
+}

@@ -1,8 +1,8 @@
 import { styled } from '@linaria/react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { H2_STYLES } from '@sbercloud/uikit-product-typography';
-import { EXPORT_VARS } from '@sbercloud/uikit-product-theme';
+import { H2_STYLES } from '@sbercloud/uikit-tokens-demo-typography';
+import { EXPORT_VARS } from '@sbercloud/uikit-tokens-demo-theme';
 
 const { BERRY_RED, EMERALD_GREEN, PURPLE } = EXPORT_VARS;
 

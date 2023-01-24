@@ -1,0 +1,13 @@
+{
+  "extends": "../../npm-package.tsconfig.json",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "rootDir": "./src",
+    "outDir": "./dist/cjs",
+    "paths": {"@sbercloud/uikit-tokens-demo-*": ["../*/src"]}
+  },
+  "include": ["./src", "../../types"],
+  "references": [{"path": "../theme"}]
+}

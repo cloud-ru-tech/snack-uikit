@@ -4,7 +4,7 @@ import { CSSProperties } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-import { Themes, useTheme } from '@sbercloud/uikit-product-utils';
+import { Themes, useTheme } from '@sbercloud/uikit-tokens-demo-utils';
 
 import { dark } from './theme/code/dark';
 import { light } from './theme/code/light';

@@ -5,6 +5,7 @@ build.bat
 .linaria-cache
 storybook-static
 *.css
+*.tsbuildinfo
 
 # Logs
 logs

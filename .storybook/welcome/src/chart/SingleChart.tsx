@@ -1,9 +1,9 @@
 import { styled } from '@linaria/react';
 import { PieChart } from 'react-minimal-pie-chart';
 
-import { H3_STYLES } from '@sbercloud/uikit-product-typography';
+import { H3_STYLES } from '@sbercloud/uikit-tokens-demo-typography';
 
-import { EXPORT_VARS } from '@sbercloud/uikit-product-theme';
+import { EXPORT_VARS } from '@sbercloud/uikit-tokens-demo-theme';
 
 const { PURPLE } = EXPORT_VARS;
 
