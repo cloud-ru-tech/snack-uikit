@@ -1,11 +1,12 @@
-import '../../../../../tokens/build/themes/styles-green.scss';
-import '../../../../../tokens/build/themes/styles-greenDark.scss';
-import '../../../../../tokens/build/themes/styles-purple.scss';
-import '../../../../../tokens/build/themes/styles-purpleDark.scss';
+import 'figma-tokens/build/themes/styles-base.scss';
+import 'figma-tokens/build/themes/styles-green.scss';
+import 'figma-tokens/build/themes/styles-greenDark.scss';
+import 'figma-tokens/build/themes/styles-purple.scss';
+import 'figma-tokens/build/themes/styles-purpleDark.scss';
 
 import { FC, useEffect, useLayoutEffect, useState } from 'react';
 
-import { color, globals } from '@sbercloud/uikit-product-theme';
+import { color, globals } from '@sbercloud/uikit-tokens-demo-theme';
 
 import { DEFAULT, DEPRECATED_COLOR, POST_MESSAGE_KEY } from '../../constants';
 import { tryParseJson } from '../../helpers/tryParseJson';

@@ -2,9 +2,9 @@ import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { ButtonFilled } from '@sbercloud/uikit-product-button';
-import { EXPORT_VARS } from '@sbercloud/uikit-product-theme';
-import { H1_STYLES, H3_STYLES, TEXT_2_STYLES } from '@sbercloud/uikit-product-typography';
+import { ButtonFilled } from '@sbercloud/uikit-tokens-demo-button';
+import { EXPORT_VARS } from '@sbercloud/uikit-tokens-demo-theme';
+import { H1_STYLES, H3_STYLES, TEXT_2_STYLES } from '@sbercloud/uikit-tokens-demo-typography';
 
 import { BADGE } from '#storybookConstants';
 

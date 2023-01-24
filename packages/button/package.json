@@ -1,5 +1,5 @@
 {
-  "name": "@sbercloud/uikit-product-button",
+  "name": "@sbercloud/uikit-tokens-demo-button",
   "title": "Button",
   "version": "0.0.0",
   "sideEffects": [
@@ -26,7 +26,9 @@
   ],
   "license": "UNLICENSED",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "figma-tokens": "file:../../figma-tokens-0.0.1.tgz"
+  },
   "devDependencies": {},
   "peerDependencies": {}
 }

@@ -1,4 +1,4 @@
-import { green, greenDark, purple, purpleDark } from '@sbercloud/uikit-product-theme';
+import { green, greenDark, purple, purpleDark } from '@sbercloud/uikit-tokens-demo-theme';
 
 import { LanguageCodeType, Themes } from './types';
 

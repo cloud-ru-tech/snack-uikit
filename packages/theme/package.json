@@ -1,5 +1,5 @@
 {
-  "name": "@sbercloud/uikit-product-theme",
+  "name": "@sbercloud/uikit-tokens-demo-theme",
   "title": "Theme",
   "version": "0.35.1",
   "sideEffects": [

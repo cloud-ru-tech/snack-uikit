@@ -6,16 +6,9 @@ import { figmaTokenToCssProp, toKebabCase } from './utils';
 export const SCSSBaseFormat: Named<Format> = {
   name: FormatName.SCSSBase,
   formatter: ({ dictionary }) => {
-    const tokenVars = dictionary.allTokens.map(token => `$${token.name}: --${token.name};`).join('\n');
     const tokenValues = dictionary.allTokens.map(token => `$${token.name}: ${token.value},`).join('\n  ');
 
-    return `${tokenVars}
-
-@mixin spread-map($map: ()) {
-  @each $key, $value in $map {
-    #{$key}: $value;
-  }
-}
+    return `@import './styles-base-variables';
 
 $tokens-base: (
   ${tokenValues}
@@ -23,6 +16,22 @@ $tokens-base: (
 
 body {
   @include spread-map($tokens-base);
+}
+`;
+  },
+};
+
+export const SCSSBaseVariablesFormat: Named<Format> = {
+  name: FormatName.SCSSBaseVariables,
+  formatter: ({ dictionary }) => {
+    const tokenVars = dictionary.allTokens.map(token => `$${token.name}: --${token.name};`).join('\n');
+
+    return `${tokenVars}
+
+@mixin spread-map($map: ()) {
+  @each $key, $value in $map {
+    #{$key}: $value;
+  }
 }
 `;
   },
@@ -36,8 +45,8 @@ export const SCSSThemeFormat: Named<Format> = {
       .map(token => (token.type === TYPOGRAPHY ? token.value : `$${token.name}: ${token.value},`))
       .join('\n  ');
 
-    return `@import './styles-base';
-@import './styles-variables';
+    return `@import './styles-base-variables';
+@import './styles-theme-variables';
 
 $theme-map-${theme}: (
   ${tokenValues}
@@ -134,8 +143,8 @@ ${indent})`;
 
     return `@use 'sass:map';
 
-@import '../themes/styles-base';
-@import '../themes/styles-variables';
+@import '../themes/styles-base-variables';
+@import '../themes/styles-theme-variables';
 
 @mixin theme-map($map: (), $keys...) {
   @each $key, $value in map-get($map, $keys...) {

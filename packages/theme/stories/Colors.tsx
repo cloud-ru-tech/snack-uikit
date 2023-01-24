@@ -1,7 +1,7 @@
 import { styled } from '@linaria/react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { H2_STYLES, TEXT_3_STYLES } from '@sbercloud/uikit-product-typography';
+import { H2_STYLES, TEXT_3_STYLES } from '@sbercloud/uikit-tokens-demo-typography';
 
 import { BADGE } from '#storybookConstants';
 

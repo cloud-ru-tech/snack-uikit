@@ -2,8 +2,6 @@ import { cloneElement, ReactElement } from 'react';
 
 import { Size, Type, Variant } from '../../constants';
 import { LoadingIcon } from '../LoadingIcon';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import classNames from './styles.scss';
 
 type LabelIconProps = {

@@ -4,6 +4,7 @@ dist
 build.bat
 .linaria-cache
 storybook-static
+*.css
 
 # Logs
 logs
