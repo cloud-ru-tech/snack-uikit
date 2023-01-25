@@ -20,7 +20,7 @@ $variants: label-only, icon-only, label-icon;
         &[data-variant='#{$variant}'] {
           @include theme-map($button-filled, $size, 'container', $variant);
 
-          [data-label] {
+          .buttonLabel {
             @include theme-map($button-filled, $size, 'text', 'label');
           }
         }
@@ -32,11 +32,11 @@ $variants: label-only, icon-only, label-icon;
 @mixin type-styles($type, $state, $variant: "") {
   @include theme-map($button-filled, $type, "container", $state);
 
-  [data-label] {
+  .buttonLabel {
     @include theme-map($button-filled, $type, "label", get-label-state($variant, $state));
   }
 
-  [data-icon] svg {
+  .buttonIcon {
     @include theme-map($button-filled, $type, 'icon', $state);
   }
 }
@@ -66,7 +66,7 @@ $variants: label-only, icon-only, label-icon;
       @each $variant in $variants {
         &[data-variant='#{$variant}'][data-loading] {
           @if $variant == 'label-only' {
-            [data-icon] {
+            .buttonIcon {
               position: absolute;
               top: 50%;
               left: 50%;

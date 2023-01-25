@@ -21,8 +21,8 @@ export type ButtonFilledProps = LabelIconProps & {
 
 const getVariant = ({ label, icon }: LabelIconProps): Variant => {
   if (label && icon) return Variant.LabelIcon;
-  if (icon) return Variant.IconOnly;
-  return Variant.LabelOnly;
+  if (label) return Variant.LabelOnly;
+  return Variant.IconOnly;
 };
 
 export const ButtonFilled = ({
@@ -47,8 +47,12 @@ export const ButtonFilled = ({
       onClick={onClick}
       disabled={disabled}
     >
-      <label data-label>{label}</label>
-      {loading ? <LoadingIcon data-icon /> : icon && cloneElement(icon, { 'data-icon': true })}
+      <label className={classNames.buttonLabel}>{label}</label>
+      {loading ? (
+        <LoadingIcon className={classNames.buttonIcon} />
+      ) : (
+        icon && cloneElement(icon, { className: classNames.buttonIcon })
+      )}
     </button>
   );
 };
