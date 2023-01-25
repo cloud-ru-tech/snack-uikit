@@ -5,6 +5,23 @@ import { TransformerOptions, transformTokens } from 'token-transformer';
 import themeConfig from '../../figma-tokens/New_Tokens/$themes.json';
 import { Themes } from '../packages/theme/src/types/theme';
 
+type TokenValue = { value: string };
+type TokenMap = Record<string, TokenValue>;
+
+const TOKENS_PATH_TO_ADD_PIXELS = [
+  ['Base/Anatomy', 'ModuleScale'],
+  ['Base/Fonts', 'FontSize'],
+];
+
+const addPixels = (rawTokens: Record<string, any>) => {
+  TOKENS_PATH_TO_ADD_PIXELS.forEach(pathParts => {
+    const token: TokenMap | TokenValue = pathParts.reduce((res, cur) => res[cur], rawTokens);
+    (token.value ? [token] : Object.values(token)).forEach(entry => (entry.value += 'px'));
+  });
+
+  return rawTokens;
+};
+
 const TRANSFORMER_OPTIONS: TransformerOptions = {
   // expandTypography: true,
   // expandComposition: true,
@@ -37,11 +54,13 @@ const BUILD_DIRECTORY = 'tokens/build';
       paths.map(currentPath => fs.readFile(`../figma-tokens/New_Tokens/${currentPath}.json`, { encoding: 'utf8' })),
     );
 
-    const rawTokens = result.reduce((result, currentFile, index) => {
-      result[paths[index]] = JSON.parse(currentFile);
+    const rawTokens = addPixels(
+      result.reduce((result, currentFile, index) => {
+        result[paths[index]] = JSON.parse(currentFile);
 
-      return result;
-    }, {});
+        return result;
+      }, {}),
+    );
 
     const generateTokens = async ({
       subDir,
