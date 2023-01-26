@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 
 import { TransformerOptions, transformTokens } from 'token-transformer';
 
-import themeConfig from '../../figma-tokens/New_Tokens/$themes.json';
+import themeConfig from '../../figma-tokens/tokens/$themes.json';
 import { Themes } from '../packages/theme/src/types/theme';
 
 type TokenValue = { value: string };
@@ -51,7 +51,7 @@ const BUILD_DIRECTORY = 'tokens/build';
     const componentsPaths = paths.filter(tokens => tokens.startsWith('Components'));
 
     const result = await Promise.all(
-      paths.map(currentPath => fs.readFile(`../figma-tokens/New_Tokens/${currentPath}.json`, { encoding: 'utf8' })),
+      paths.map(currentPath => fs.readFile(`../figma-tokens/tokens/${currentPath}.json`, { encoding: 'utf8' })),
     );
 
     const rawTokens = addPixels(

@@ -1,7 +1,7 @@
 import { Format, Named, TransformedToken, TransformedTokens } from 'style-dictionary';
 
 import { BASE_INDENT, COMPOSITION, FormatName, TYPOGRAPHY } from './constants';
-import { figmaTokenToCssProp, toKebabCase } from './utils';
+import { figmaTokenToCssProps, toKebabCase } from './utils';
 
 export const SCSSBaseFormat: Named<Format> = {
   name: FormatName.SCSSBase,
@@ -119,7 +119,9 @@ ${indent})`;
 
       const compositeTokenTemplate = (token: TransformedToken) => {
         const cssEntryToString = (key: string, value: string) =>
-          `"${figmaTokenToCssProp({ token, key: toKebabCase(key) })}": ${value}`;
+          figmaTokenToCssProps({ token, key: toKebabCase(key) })
+            .map(prop => `"${prop}": ${value}`)
+            .join(`,\n${indentPlus1}`);
 
         return wrapInBrackets(
           tokenToString(token.value, (key, value) =>

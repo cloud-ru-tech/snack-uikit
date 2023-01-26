@@ -1,5 +1,7 @@
 import { TransformedToken } from 'style-dictionary';
 
+import { ensureArray } from './ensureArray';
+
 const TEXT_ELEMENT_TYPES = ['display', 'body', 'label', 'headline', 'title', 'text'];
 const SVG_ELEMENT_TYPES = ['icon'];
 const VARIANT_TYPES = ['', 'main', 'support', 'light'];
@@ -25,14 +27,14 @@ const getColorProperty = (token: TransformedToken) => {
   return 'background-color';
 };
 
-export function figmaTokenToCssProp({ token, key }: { token: TransformedToken; key: string }) {
-  return (
+export function figmaTokenToCssProps({ token, key }: { token: TransformedToken; key: string }): string[] {
+  return ensureArray(
     {
       border: 'border-color',
-      sizing: 'width',
+      sizing: ['width', 'height'],
       'item-spacing': 'gap',
       'text-case': 'text-transform',
       fill: getColorProperty(token),
-    }[key] ?? key
+    }[key] ?? key,
   );
 }
