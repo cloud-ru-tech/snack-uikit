@@ -1,8 +1,8 @@
-import 'figma-tokens/build/themes/styles-base.scss';
-import 'figma-tokens/build/themes/styles-green.scss';
-import 'figma-tokens/build/themes/styles-greenDark.scss';
-import 'figma-tokens/build/themes/styles-purple.scss';
-import 'figma-tokens/build/themes/styles-purpleDark.scss';
+import '@sbercloud/figma-tokens/build/scss/themes/styles-base.scss';
+import '@sbercloud/figma-tokens/build/scss/themes/styles-green.scss';
+import '@sbercloud/figma-tokens/build/scss/themes/styles-greenDark.scss';
+import '@sbercloud/figma-tokens/build/scss/themes/styles-purple.scss';
+import '@sbercloud/figma-tokens/build/scss/themes/styles-purpleDark.scss';
 
 import { FC, useEffect, useLayoutEffect, useState } from 'react';
 

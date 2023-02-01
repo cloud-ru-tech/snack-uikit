@@ -20,6 +20,10 @@ module.exports = {
       options: {
         cssLoaderOptions: {
           modules: true,
+          // modules: {
+          //   auto: true,
+          //   localIdentName: '[local]--[hash:base64:5]',
+          // }
         },
       },
     },
@@ -87,6 +91,11 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.json', '.svg', '.png'],
       }),
     );
+
+    // config.module.rules[9].use[1].options.modules = {
+    //   auto: true,
+    //   localIdentName: '[local]--[hash:base64:5]',
+    // }
 
     return config;
   },

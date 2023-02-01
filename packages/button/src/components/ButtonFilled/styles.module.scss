@@ -1,81 +1,77 @@
-@import 'figma-tokens/build/components/styles-tokens-button-buttonFilled';
+@import '@sbercloud/figma-tokens/build/scss/themes/styles-theme-variables';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-button-buttonFilled';
 
 $types: primary, neutral, critical;
 $sizes: size-s, size-m, size-l;
 $variants: label-only, icon-only, label-icon;
 
-@function get-label-state($variant, $state) {
-  @if $variant == 'label-only' {
-    @if $state == 'load' {
-      @return 'load-label-only';
-    }
-  }
-  @return $state;
-}
-
-@mixin button-size-styles {
+@mixin button-anatomy-styles {
   @each $size in $sizes {
-    &[data-size='#{$size}'] {
-      @each $variant in $variants {
-        &[data-variant='#{$variant}'] {
-          @include theme-map($button-filled, $size, 'container', $variant);
+    &[data-size="#{$size}"] {
 
-          .buttonLabel {
-            @include theme-map($button-filled, $size, 'text', 'label');
-          }
+      .buttonLabel {
+        $label-size: if($size == size-s, 'm', 'l');
+
+        @include composite-var($theme-variables, 'sans', 'label', $label-size);
+      }
+
+      @each $variant in $variants {
+        &[data-variant="#{$variant}"] {
+          @include composite-var($button-filled, 'container', $size, $variant);
         }
       }
     }
   }
 }
 
-@mixin type-styles($type, $state, $variant: "") {
-  @include theme-map($button-filled, $type, "container", $state);
+@mixin base-state($type, $state) {
+  background-color: simple-var($theme-variables, "sys", $type, "accent-" + $state);
 
   .buttonLabel {
-    @include theme-map($button-filled, $type, "label", get-label-state($variant, $state));
+    color: simple-var($theme-variables, "sys", $type, "on-accent");
   }
 
   .buttonIcon {
-    @include theme-map($button-filled, $type, 'icon', $state);
+    fill: simple-var($theme-variables, "sys", $type, "on-accent");
   }
 }
 
-@mixin button-type-styles {
+@mixin activated-state($type, $icon-style) {
+  background-color: simple-var($theme-variables, "sys", $type, "accent-activated");
+
+  .buttonLabel {
+    color: simple-var($theme-variables, "sys", $type, "text-light-enabled");
+  }
+
+  .buttonIcon {
+    fill: simple-var($theme-variables, "sys", $type, $icon-style);
+  }
+}
+
+@mixin button-color-styles {
   @each $type in $types {
-    &[data-type='#{$type}'] {
-      @include type-styles($type, "enabled");
+    &[data-type="#{$type}"] {
+      @include base-state($type, "enabled");
 
       &:hover {
-        @include type-styles($type, "hovered");
+        @include base-state($type, "hovered");
       }
 
       &:focus {
-        @include type-styles($type, "focused");
+        @include base-state($type, "hovered");
       }
 
       &:active {
-        @include type-styles($type, "pressed");
+        @include activated-state($type, "text-light-enabled");
       }
 
       &:disabled,
       &[data-disabled] {
-        @include type-styles($type, "disabled");
+        @include base-state($type, "disabled");
       }
 
-      @each $variant in $variants {
-        &[data-variant='#{$variant}'][data-loading] {
-          @if $variant == 'label-only' {
-            .buttonIcon {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-            }
-          }
-
-          @include type-styles($type, "load", $variant);
-        }
+      &[data-loading] {
+        @include activated-state($type, "on-accent");
       }
     }
   }
@@ -98,13 +94,19 @@ $variants: label-only, icon-only, label-icon;
   min-width: max-content;
   position: relative;
 
-  @include button-size-styles;
-  @include button-type-styles;
-}
+  @include button-anatomy-styles;
+  @include button-color-styles;
 
-.loadingWheel {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  &[data-loading][data-variant="label-only"] {
+    .buttonIcon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .buttonLabel {
+      opacity: simple-var($button-filled, 'label', 'load-label-only');
+    }
+  }
 }

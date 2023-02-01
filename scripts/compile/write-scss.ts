@@ -13,7 +13,7 @@ export function writeScss({ src, distCJS, distESM }: { src: string; distCJS: str
     console.log(`SCSS transforming: ${file}...`);
 
     const { css } = await sass.compileAsync(file, {
-      loadPaths: [path.resolve(__dirname, '../../node_modules'), path.resolve(__dirname, '../../tokens')],
+      loadPaths: [path.resolve(__dirname, '../../node_modules')],
     });
 
     const relativePathToSrcFile = path.relative(src, file);

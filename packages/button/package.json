@@ -27,9 +27,9 @@
   ],
   "license": "UNLICENSED",
   "scripts": {},
-  "dependencies": {
-    "figma-tokens": "file:figma-tokens-0.0.1.tgz"
+  "dependencies": {},
+  "devDependencies": {
+    "@sbercloud/figma-tokens": "0.0.2-dac0cd54.0"
   },
-  "devDependencies": {},
   "peerDependencies": {}
 }
