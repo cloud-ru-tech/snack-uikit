@@ -23,14 +23,13 @@ const pkg = argv.pkg || '*';
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const src = `${folder}/${srcPart}`;
     const dist = `${folder}/${distPart}`;
-    const distESM = `${dist}/esm`;
-    const distCJS = `${dist}/cjs`;
+    const distESM = `${dist}`;
 
     const filesToCopy = glob.sync(`${src}/**/*.{woff,woff2,png}`);
-    filesToCopy.forEach(simpleCopy({ src, distCJS, distESM }));
+    filesToCopy.forEach(simpleCopy({ src, distESM }));
 
     const scssFiles = glob.sync(`${src}/**/!(_)*.scss`);
-    const scssPipe = writeScss({ src, distCJS, distESM });
+    const scssPipe = writeScss({ src, distESM });
     for (const file of scssFiles) {
       await scssPipe(file);
     }

@@ -10,9 +10,9 @@
   "scripts": {
     "add-package": "ts-node scripts/npm-init",
     "build:storybook": "build-storybook",
-    "build:packages": "npm run clean:all && npm run deps:packages && lerna run compile && npm run build:ts && npm run build:css && npm run deps:global",
+    "build:packages": "npm run clean:all && npm run deps:packages && npm run build:ts && npm run build:css",
     "build:css": "ts-node scripts/compileCSS",
-    "build:ts": "tsc -b tsconfig-build.json",
+    "build:ts": "tsc -b",
     "changelog": "ts-node scripts/changelog",
     "clean:all": "npm run clean:dist && npm run clean:modules && npm run clean:buildinfo && npm run clean:css",
     "clean:buildinfo": "rimraf \"./packages/*/*.tsbuildinfo\"",

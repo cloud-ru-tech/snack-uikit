@@ -1,22 +1,9 @@
 {
   "extends": "../../npm-package.tsconfig.json",
   "compilerOptions": {
-    "resolveJsonModule": true,
-    "rootDir": "../../",
-    "outDir": "./dist",
-    "paths": {
-      "@sbercloud/uikit-tokens-demo-*": ["../*/src"],
-      "#storybookConstants": ["../../.storybook/constants"]
-    }
+    "rootDir": "./src",
+    "outDir": "./dist"
   },
-  "include": [
-    "./src",
-    "./stories",
-    "./*.json",
-    "../../types",
-    "../../.storybook/constants.ts"
-  ],
-  "references": [
-    {"path": "../typography"}
-  ]
+  "include": ["./src", "../../types"],
+  "exclude": ["./dist"]
 }
