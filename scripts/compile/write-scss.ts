@@ -28,6 +28,5 @@ export function writeScss({ src, distESM }: { src: string; distESM: string }) {
     const { css: processedCss } = await postProcessCss({ from: srcOutFile, css });
 
     fs.writeFileSync(esmOutFile, processedCss);
-    fs.writeFileSync(srcOutFile, processedCss);
   };
 }

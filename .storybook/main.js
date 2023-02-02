@@ -12,6 +12,7 @@ const STORIES = glob
 const WELCOME = path.resolve(__dirname, './welcome/stories/Welcome.tsx');
 const STATISTICS = path.resolve(__dirname, './welcome/stories/Statistics.tsx');
 const isTestServer = Boolean(process.env.TEST_SERVER);
+
 module.exports = {
   stories: [WELCOME, STATISTICS, ...STORIES],
   addons: [
@@ -19,11 +20,10 @@ module.exports = {
       name: '@storybook/preset-scss',
       options: {
         cssLoaderOptions: {
-          modules: true,
-          // modules: {
-          //   auto: true,
-          //   localIdentName: '[local]--[hash:base64:5]',
-          // }
+          modules: {
+            auto: true,
+            localIdentName: '[local]--[hash:base64:5]',
+          },
         },
       },
     },
@@ -91,11 +91,6 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.json', '.svg', '.png'],
       }),
     );
-
-    // config.module.rules[9].use[1].options.modules = {
-    //   auto: true,
-    //   localIdentName: '[local]--[hash:base64:5]',
-    // }
 
     return config;
   },

@@ -1,3 +1,9 @@
+import '@sbercloud/figma-tokens/build/scss/themes/styles-base.scss';
+import '@sbercloud/figma-tokens/build/scss/themes/styles-green.scss';
+import '@sbercloud/figma-tokens/build/scss/themes/styles-greenDark.scss';
+import '@sbercloud/figma-tokens/build/scss/themes/styles-purple.scss';
+import '@sbercloud/figma-tokens/build/scss/themes/styles-purpleDark.scss';
+
 import { addDecorator, addParameters } from '@storybook/react';
 import { useEffect, useLayoutEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';

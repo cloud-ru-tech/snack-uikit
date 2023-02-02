@@ -1,9 +1,3 @@
-import '@sbercloud/figma-tokens/build/scss/themes/styles-base.scss';
-import '@sbercloud/figma-tokens/build/scss/themes/styles-green.scss';
-import '@sbercloud/figma-tokens/build/scss/themes/styles-greenDark.scss';
-import '@sbercloud/figma-tokens/build/scss/themes/styles-purple.scss';
-import '@sbercloud/figma-tokens/build/scss/themes/styles-purpleDark.scss';
-
 import { FC, useEffect, useLayoutEffect, useState } from 'react';
 
 import { color, globals } from '@sbercloud/uikit-tokens-demo-theme';

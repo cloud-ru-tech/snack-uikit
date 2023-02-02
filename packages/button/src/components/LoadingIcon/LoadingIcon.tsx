@@ -1,6 +1,6 @@
 import { AriaAttributes } from 'react';
 
-import classNames from './styles.module.css';
+import classNames from './styles.module.scss';
 
 export function LoadingIcon({ className }: AriaAttributes & { className?: string }) {
   return (
