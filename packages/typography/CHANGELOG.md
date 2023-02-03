@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.3.0 (2023-02-03)
+
+
+### Bug Fixes
+
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** simplify ts-configs ([3aada76](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/3aada76e6220fa35d4866f830cb934c95d9bc91e))
+
+
+### Features
+
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** build with ts-node (only scss, without linaria) ([298d5d0](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/298d5d0b42788747e9aa34ffef254411a79ed25f))
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** initial version of tokens ([f579590](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/f579590f94fadb67be0e71e47638af11e11b144d))
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** try to build packages with scss ([fae6769](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/fae67699b3a153d09c7e3b7b34580d96a3cfe14b))
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** use preview package of figma tokens ([c43bbc6](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/c43bbc65d7de9c686bc83950f7a2c74c780bee69))
+
+
+
+
+
 # [1.2.0](https://git.sbercloud.tech/sbercloud-ui/uikit-product/compare/@sbercloud/uikit-product-typography@1.1.1...@sbercloud/uikit-product-typography@1.2.0) (2022-08-01)
 
 

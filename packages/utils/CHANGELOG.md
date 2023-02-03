@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.2.0 (2023-02-03)
+
+
+### Bug Fixes
+
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** import theme styles in config provider ([ad73d14](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/ad73d149dbbdaec1c360a4765e9c4e9bb91cbed3))
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** simplify ts-configs ([3aada76](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/3aada76e6220fa35d4866f830cb934c95d9bc91e))
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** use real versions ([252b349](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/252b3494f9a4302d8fb5b54ac879ed1ef3e6f68c))
+
+
+### Features
+
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** add token map ([a14a1e1](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/a14a1e1f1ad95e80a4fb664a2a9c5324a33dad48))
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** build with ts-node (only scss, without linaria) ([298d5d0](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/298d5d0b42788747e9aa34ffef254411a79ed25f))
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** initial version of tokens ([f579590](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/f579590f94fadb67be0e71e47638af11e11b144d))
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** try to build packages with scss ([fae6769](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/fae67699b3a153d09c7e3b7b34580d96a3cfe14b))
+* **[FF-1486](https://jira.sbercloud.tech/browse/FF-1486):** use preview package of figma tokens ([c43bbc6](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/c43bbc65d7de9c686bc83950f7a2c74c780bee69))
+* **[FF-1650](https://jira.sbercloud.tech/browse/FF-1650):** hot reload in storybook ([935d398](https://git.sbercloud.tech/sbercloud-ui/uikit-product/commits/935d398c256c96fa2a37bcc68991701edef16b58))
+
+
+
+
+
 ## [3.1.1](https://git.sbercloud.tech/sbercloud-ui/uikit-product/compare/@sbercloud/uikit-product-utils@3.1.0...@sbercloud/uikit-product-utils@3.1.1) (2022-11-28)
 
 ### Bug Fixes

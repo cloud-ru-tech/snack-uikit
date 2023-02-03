@@ -1,7 +1,7 @@
 {
   "name": "@sbercloud/uikit-tokens-demo-utils",
   "title": "Utils",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,6 +29,6 @@
   "scripts": {},
   "dependencies": {
     "@sbercloud/ft-debug-mode": "1.1.0",
-    "@sbercloud/uikit-tokens-demo-theme": "0.35.1"
+    "@sbercloud/uikit-tokens-demo-theme": "0.36.0"
   }
 }
