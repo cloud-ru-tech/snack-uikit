@@ -2,7 +2,7 @@ import inquirer from 'inquirer';
 import shell from 'shelljs';
 
 import { logDebug, logError, logHelp, logInfo, logSilly } from './utils/console';
-import { ExistingPackageNames, bootstrapFiles } from './utils/files';
+import { bootstrapFiles, ExistingPackageNames } from './utils/files';
 import * as gitUtils from './utils/git';
 
 const user = gitUtils.getGitUserName();
@@ -31,7 +31,7 @@ const printInfoMessages = () => {
 
   logInfo(`The package title will be used for:
   1. Package Title in package.json (obviously :)) (Example package name: "My New Package")
-  2. Folder- and filenames - will be converted to lowercase and hyphen-separated (for example react-my-new-package)
+  2. Folder- and filenames - will be converted to lowercase and hyphen-separated (for example my-new-package)
   3. Componentname - will remove React prefix and any spaces, and get PascalCased (for example MyNewPackage)`);
 
   logHelp('Answer the following questions to get started, or press CTRL+C (or Control+C) to abort...');
@@ -98,12 +98,10 @@ inquirer
       packageDescription: answers.packageDescription,
     });
 
-    //fileUtils.updateGlobalReadme({ packageRootFolderName, packageTitle });
-
     logDebug('Finished generating files!');
     logInfo('Bootstrapping new package...This will take a few moments...');
 
-    const bootstrapResult = shell.exec('npm run build', { silent: true });
+    const bootstrapResult = shell.exec('npm run deps:all && npm run build:packages', { silent: true });
     if (bootstrapResult.code !== 0) {
       logError(bootstrapResult.stdout);
       logError(bootstrapResult.stderr);

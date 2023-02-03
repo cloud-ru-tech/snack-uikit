@@ -1,27 +1,37 @@
 {
-  "extends": "ts-config-single-spa",
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
-    }
+      "module": "CommonJS",
+    },
+    "files": true
   },
   "compilerOptions": {
-    "baseUrl": "packages",
+    "baseUrl": "./",
     "paths": {
-      "@sbercloud/uikit-template-*": [
-        "./*/src"
-      ]
+      "#storybookConstants": ["./.storybook/constants"]
     },
     "target": "es6",
     "lib": ["es2017", "dom", "dom.iterable", "esnext"],
-    "types": ["cypress", "node"],
+    "types": ["node"],
     "jsx": "react-jsx",
     "strict": true,
     "isolatedModules": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true
   },
-  "include": ["packages", "types", "cypress/support"],
-  "exclude": ["node_modules", "scripts"]
+  "references": [
+    {"path": "./packages/button"},
+    {"path": "./packages/theme"},
+    {"path": "./packages/typography"},
+    {"path": "./packages/utils"},
+  ],
+  "files": [],
+  "exclude": ["node_modules"]
 }

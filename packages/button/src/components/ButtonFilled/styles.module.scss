@@ -1,0 +1,112 @@
+@import '@sbercloud/figma-tokens/build/scss/themes/styles-theme-variables';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-button-buttonFilled';
+
+$types: primary, neutral, critical;
+$sizes: size-s, size-m, size-l;
+$variants: label-only, icon-only, label-icon;
+
+@mixin button-anatomy-styles {
+  @each $size in $sizes {
+    &[data-size="#{$size}"] {
+
+      .buttonLabel {
+        $label-size: if($size == size-s, 'm', 'l');
+
+        @include composite-var($theme-variables, 'sans', 'label', $label-size);
+      }
+
+      @each $variant in $variants {
+        &[data-variant="#{$variant}"] {
+          @include composite-var($button-filled, 'container', $size, $variant);
+        }
+      }
+    }
+  }
+}
+
+@mixin base-state($type, $state) {
+  background-color: simple-var($theme-variables, "sys", $type, "accent-" + $state);
+
+  .buttonLabel {
+    color: simple-var($theme-variables, "sys", $type, "on-accent");
+  }
+
+  .buttonIcon {
+    fill: simple-var($theme-variables, "sys", $type, "on-accent");
+  }
+}
+
+@mixin activated-state($type, $icon-style) {
+  background-color: simple-var($theme-variables, "sys", $type, "accent-activated");
+
+  .buttonLabel {
+    color: simple-var($theme-variables, "sys", $type, "text-light-enabled");
+  }
+
+  .buttonIcon {
+    fill: simple-var($theme-variables, "sys", $type, $icon-style);
+  }
+}
+
+@mixin button-color-styles {
+  @each $type in $types {
+    &[data-type="#{$type}"] {
+      @include base-state($type, "enabled");
+
+      &:hover {
+        @include base-state($type, "hovered");
+      }
+
+      &:focus {
+        @include base-state($type, "hovered");
+      }
+
+      &:active {
+        @include activated-state($type, "text-light-enabled");
+      }
+
+      &:disabled,
+      &[data-disabled] {
+        @include base-state($type, "disabled");
+      }
+
+      &[data-loading] {
+        @include activated-state($type, "on-accent");
+      }
+    }
+  }
+}
+
+.button {
+  box-sizing: border-box;
+  border: 0 solid transparent;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  text-transform: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-width: max-content;
+  position: relative;
+
+  @include button-anatomy-styles;
+  @include button-color-styles;
+
+  &[data-loading][data-variant="label-only"] {
+    .buttonIcon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .buttonLabel {
+      opacity: simple-var($button-filled, 'label', 'load-label-only');
+    }
+  }
+}

@@ -9,6 +9,7 @@ const options = {
   ignoreBinPackage: false,
   skipMissing: false,
   ignorePatterns: ['stories', 'dist', '__tests__'],
+  ignoreMatches: ['react', 'react-dom', '@linaria/react', '@linaria/core'],
 };
 
 const packages = `../packages/*`;
@@ -17,6 +18,7 @@ const InternalPackages = {};
 const folders = glob.sync(`${path.resolve(__dirname, packages)}`);
 
 for (const folder of folders) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const pkg = require(path.resolve(folder, 'package.json'));
   InternalPackages[pkg.name] = pkg.version;
 }
@@ -27,6 +29,7 @@ const UnusedDeps: string[] = [];
 const Missing: Record<string, string[]>[] = [];
 
 for (const folder of folders) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const pkg = require(path.resolve(folder, 'package.json'));
   const usedInternal = Object.keys(pkg.dependencies || {}).filter(x => /@sbercloud\/uikit/.test(x));
   usedInternal.forEach(dep => {

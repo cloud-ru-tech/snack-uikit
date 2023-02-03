@@ -1,6 +1,6 @@
-const baseConfig = require('@sbercloud/ft-all-linters-pack').defaultEslintConfig;
-
 module.exports = {
-  ...baseConfig,
-  extends: [...baseConfig.extends, 'plugin:cypress/recommended'],
+  extends: ['@sbercloud/eslint-config/monorepo', 'plugin:testcafe-community/recommended'],
+  plugins: ['testcafe-community'],
+  rules: { '@typescript-eslint/no-namespace': 'off' },
+  ignorePatterns: 'packages/icons/src',
 };

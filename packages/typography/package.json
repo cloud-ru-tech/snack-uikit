@@ -1,0 +1,29 @@
+{
+  "name": "@sbercloud/uikit-tokens-demo-typography",
+  "title": "Typography",
+  "version": "1.2.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "Typography styles",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/uikit-product/-/tree/master/packages/typography",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/uikit-product.git",
+    "directory": "packages/typography"
+  },
+  "author": "Akhremenko Grigorii <gaahremenko@sbercloud.ru>",
+  "contributors": [
+    "Akhremenko Grigorii <gaahremenko@sbercloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {}
+}

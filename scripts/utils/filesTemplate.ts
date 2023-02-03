@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import globConfig from '../../package.json';
+import { version as themeVersion } from '../../packages/theme/package.json';
 
 const PackagesRootFolder = 'packages';
 
@@ -52,14 +53,11 @@ export const packageJson = ({
     files: ['dist', 'src'],
     license: 'UNLICENSED',
     scripts: {},
-    dependencies: {},
-    devDependencies: {},
-    peerDependencies: {
-      '@linaria/core': '^3.0.0-beta.13',
-      '@linaria/react': '^3.0.0-beta.13',
-      react: '^17.0.0',
-      'react-dom': '^17.0.0',
+    dependencies: {
+      '@sbercloud/uikit-product-theme': themeVersion,
     },
+    devDependencies: {},
+    peerDependencies: {},
   };
 
   const packageJsonFile = path.join(`./${PackagesRootFolder}/${packageRootFolderName}/package.json`);
