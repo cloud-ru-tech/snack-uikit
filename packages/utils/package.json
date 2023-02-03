@@ -30,8 +30,5 @@
   "dependencies": {
     "@sbercloud/ft-debug-mode": "1.1.0",
     "@sbercloud/uikit-tokens-demo-theme": "0.35.1"
-  },
-  "devDependencies": {
-    "@sbercloud/figma-tokens": "0.0.2-dac0cd54.0"
   }
 }
