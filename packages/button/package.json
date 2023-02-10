@@ -1,5 +1,5 @@
 {
-  "name": "@sbercloud/uikit-tokens-demo-button",
+  "name": "@snack-ui/button",
   "title": "Button",
   "version": "0.1.0",
   "sideEffects": [
@@ -22,12 +22,8 @@
   ],
   "files": [
     "dist",
-    "dist/**/*.css",
     "src"
   ],
   "license": "UNLICENSED",
-  "scripts": {},
-  "devDependencies": {
-    "@sbercloud/figma-tokens": "0.2.0"
-  }
+  "scripts": {}
 }

@@ -1,20 +1,15 @@
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const glob = require('glob');
 const path = require('path');
-const { getPackagesStatistics } = require('./utils/getPackagesStatistics');
-
-const PACKAGES_STATISTICS = getPackagesStatistics();
 
 const STORIES = glob
   .sync(`packages/${process.env.STORYBOOK_PACKAGE_NAME || '*'}/stories/**/*.{ts,tsx}`)
   .map(x => path.resolve(__dirname, `../${x}`));
 
-const WELCOME = path.resolve(__dirname, './welcome/stories/Welcome.tsx');
-const STATISTICS = path.resolve(__dirname, './welcome/stories/Statistics.tsx');
 const isTestServer = Boolean(process.env.TEST_SERVER);
 
 module.exports = {
-  stories: [WELCOME, STATISTICS, ...STORIES],
+  stories: [...STORIES],
   addons: [
     {
       name: '@storybook/preset-scss',
@@ -59,7 +54,6 @@ module.exports = {
   },
   env: config => ({
     ...config,
-    PACKAGES_STATISTICS,
   }),
   webpackFinal: async config => {
     isTestServer && (config.watch = false);
@@ -73,12 +67,6 @@ module.exports = {
       ...config.resolve.fallback,
       stream: require.resolve('stream-browserify'),
     };
-    config.module.rules[0].use.push({
-      loader: '@linaria/webpack-loader',
-      options: {
-        sourceMap: config.mode !== 'production',
-      },
-    });
 
     if (!config.resolve.plugins) {
       config.resolve.plugins = [];

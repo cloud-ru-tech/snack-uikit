@@ -9,7 +9,7 @@ const options = {
   ignoreBinPackage: false,
   skipMissing: false,
   ignorePatterns: ['stories', 'dist', '__tests__'],
-  ignoreMatches: ['react', 'react-dom', '@linaria/react', '@linaria/core'],
+  ignoreMatches: ['react', 'react-dom', '@sbercloud/figma-tokens'],
 };
 
 const packages = `../packages/*`;

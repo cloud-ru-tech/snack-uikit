@@ -1,9 +1,0 @@
-{
-  "extends": "../../npm-package.tsconfig.json",
-  "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist"
-  },
-  "include": ["./src", "../../types"],
-  "exclude": ["./dist"]
-}
