@@ -25,12 +25,12 @@
     "storybook:all": "start-storybook -p 6006",
     "storybook:ci": "cross-env TEST_SERVER=true start-storybook -p 6006 --ci --quiet --loglevel warn",
     "storybook:partial": "ts-node scripts/start-storybook-partially",
-    "test:coverage-all": "exit 0",
+    "test:coverage-all": "ts-node scripts/test-coverage-packages",
     "test:coverage-unstable": "exit 0",
     "test:coverage-stable": "exit 0",
-    "test:testcafe": "exit 0",
-    "test:testcafe:local": "exit 0",
-    "test:ci": "exit 0"
+    "test:testcafe": "ts-node scripts/run-tests && ts-node scripts/normalize-testcafe-xml-report",
+    "test:testcafe:local": "testcafe chrome --config-file testcafe.config.js --live --debug-on-fail --concurrency 1",
+    "test:ci": "start-server-and-test storybook:ci http://localhost:6006 test:testcafe"
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",

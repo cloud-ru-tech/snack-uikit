@@ -31,7 +31,10 @@ export const ButtonFilled = ({
   onClick,
   disabled,
   loading,
-}: ButtonFilledProps) => {
+  dataTestId,
+}: ButtonFilledProps & {
+  dataTestId?: string;
+}) => {
   const variant = getVariant({ label, icon });
 
   return (
@@ -42,6 +45,7 @@ export const ButtonFilled = ({
       data-disabled={disabled || undefined}
       data-loading={loading || undefined}
       data-variant={variant}
+      data-test-id={dataTestId}
       onClick={onClick}
       disabled={disabled}
     >

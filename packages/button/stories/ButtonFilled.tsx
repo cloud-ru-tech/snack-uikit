@@ -3,7 +3,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { ButtonFilled, ButtonFilledProps, DemoIcon } from '../src';
+import { ButtonFilled, ButtonFilledProps } from '../src';
+import { DemoIcon } from './helperComponents';
 
 export default {
   title: 'Not stable/Button/ButtonFilled',
