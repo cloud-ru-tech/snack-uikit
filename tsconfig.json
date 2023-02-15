@@ -23,7 +23,6 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true
   },
-  "references": [{ "path": "./packages/button" }],
-  "files": [],
+  "include": ["./", "./.storybook/*"],
   "exclude": ["node_modules"]
 }

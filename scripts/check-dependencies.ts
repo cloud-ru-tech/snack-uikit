@@ -15,7 +15,9 @@ const options = {
 const packages = `../packages/*`;
 
 const InternalPackages = {};
-const folders = glob.sync(`${path.resolve(__dirname, packages)}`);
+const folders = glob.sync(`${path.resolve(__dirname, packages)}`, {
+  ignore: path.resolve(__dirname, '../packages/tsconfig.json'),
+});
 
 for (const folder of folders) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires

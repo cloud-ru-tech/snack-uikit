@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 
 import globConfig from '../../package.json';
-import { version as themeVersion } from '../../packages/theme/package.json';
 
 const PackagesRootFolder = 'packages';
 
@@ -53,9 +52,7 @@ export const packageJson = ({
     files: ['dist', 'src'],
     license: 'UNLICENSED',
     scripts: {},
-    dependencies: {
-      '@sbercloud/uikit-product-theme': themeVersion,
-    },
+    dependencies: {},
     devDependencies: {},
     peerDependencies: {},
   };
