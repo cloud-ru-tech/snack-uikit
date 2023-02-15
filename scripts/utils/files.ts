@@ -36,8 +36,8 @@ export const bootstrapFiles = ({
   });
   logInfo('Created readme');
 
-  fileTemplates.npmrc({ packageRootFolderName });
-  logInfo('Created .npmrc');
+  fileTemplates.tsConfig({ packageRootFolderName });
+  logInfo('Created tsconfig.json');
 
   fileTemplates.packageJson({
     packageRootFolderName,
@@ -65,4 +65,7 @@ export const bootstrapFiles = ({
     packageRootFolderName,
   });
   logInfo('Created story entry');
+
+  fileTemplates.globalTsConfig({ packageRootFolderName });
+  logInfo('Update global tsconfig.json');
 };

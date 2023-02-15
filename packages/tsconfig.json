@@ -1,9 +1,18 @@
 {
   "files": [],
-  "references": [{ "path": "./button" }],
+  "references": [
+    {
+      "path": "./button"
+    }
+  ],
   "compilerOptions": {
     "target": "es6",
-    "lib": ["es2017", "dom", "dom.iterable", "esnext"],
+    "lib": [
+      "es2017",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "ES2015",
     "strict": true,
     "jsx": "react-jsx",
@@ -16,7 +25,9 @@
     "declaration": true,
     "composite": true,
     "plugins": [
-      { "transform": "../../scripts/scss-extension-transformer.ts" },
+      {
+        "transform": "../../scripts/scss-extension-transformer.ts"
+      },
       {
         "name": "typescript-plugin-css-modules",
         "options": {
