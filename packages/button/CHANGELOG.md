@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2023-02-15)
+
+
+### Bug Fixes
+
+* webstorm typescript issues ([b1052c7](https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/commits/b1052c772f99eca1dc41d0bf4b95a63ae0018550))
+
+
+
+
+
 # 0.2.0 (2023-02-15)
 
 
