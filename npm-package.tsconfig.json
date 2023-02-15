@@ -12,7 +12,18 @@
     "forceConsistentCasingInFileNames": true,
     "composite": true,
     "plugins": [
-      {"transform": "../../scripts/scss-extension-transformer.ts"}
+      { "transform": "../../scripts/scss-extension-transformer.ts" },
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "customRenderer": "../../scripts/compile/sass-custom-renderer.js",
+          "rendererOptions": {
+            "sass": {
+              "loadPaths": ["./node_modules"]
+            }
+          }
+        }
+      }
     ]
   }
 }

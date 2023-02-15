@@ -1,15 +1,12 @@
 {
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS",
+      "module": "CommonJS"
     },
     "files": true
   },
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
-      "#storybookConstants": ["./.storybook/constants"]
-    },
     "target": "es6",
     "lib": ["es2017", "dom", "dom.iterable", "esnext"],
     "types": ["node"],
@@ -26,12 +23,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true
   },
-  "references": [
-    {"path": "./packages/button"},
-    {"path": "./packages/theme"},
-    {"path": "./packages/typography"},
-    {"path": "./packages/utils"},
-  ],
+  "references": [{ "path": "./packages/button" }],
   "files": [],
   "exclude": ["node_modules"]
 }

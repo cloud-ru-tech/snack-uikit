@@ -1,1 +1,6 @@
-module.exports = require('@sbercloud/ft-all-linters-pack').defaultLintStagedConfig;
+const { defaultLintStagedConfig } = require('@sbercloud/ft-all-linters-pack');
+
+module.exports = {
+  ...defaultLintStagedConfig,
+  '*.scss': ['stylelint --fix'],
+};

@@ -78,21 +78,21 @@ $variants: label-only, icon-only, label-icon;
 }
 
 .button {
+  position: relative;
   box-sizing: border-box;
-  border: 0 solid transparent;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  cursor: pointer;
-  text-transform: none;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: max-content;
   min-width: max-content;
-  position: relative;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  text-transform: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0 solid transparent;
+  outline: 0;
 
   @include button-anatomy-styles;
   @include button-color-styles;
@@ -106,7 +106,7 @@ $variants: label-only, icon-only, label-icon;
     }
 
     .buttonLabel {
-      opacity: simple-var($button-filled, 'label', 'load-label-only');
+      @include composite-var($button-filled, 'label', 'load-label-only');
     }
   }
 }

@@ -1,6 +1,4 @@
-const name = require('./package.json').name;
-
-module.exports = (buildType, version) => ({
+module.exports = buildType => ({
   sourceType: 'unambiguous',
   presets: [
     ['@babel/preset-env', { loose: false, modules: buildType === 'cjs' ? 'cjs' : false }],
@@ -12,12 +10,6 @@ module.exports = (buildType, version) => ({
       },
     ],
     ['@babel/preset-typescript', { loose: false }],
-    [
-      '@linaria',
-      version && {
-        classNameSlug: (hash, title) => `${name}-${title}-${version}-${hash}`,
-      },
-    ],
   ].filter(Boolean),
   plugins: [
     '@babel/plugin-proposal-export-namespace-from',
