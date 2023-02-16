@@ -1,5 +1,4 @@
-import LightThemeMlSpace from '@sbercloud/figma-tokens/build/scss/themes/styles-brand.module.scss';
-import DarkThemeMlSpace from '@sbercloud/figma-tokens/build/scss/themes/styles-brandDark.module.scss';
+import BrandThemes from '@sbercloud/figma-tokens/build/css/brand.module.css';
 
 import { addDecorator, addParameters } from '@storybook/react';
 import { useEffect, useLayoutEffect, useState } from 'react';
@@ -7,7 +6,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { BADGE } from './constants';
 
-const Themes = [LightThemeMlSpace, DarkThemeMlSpace];
+const Themes = [BrandThemes.light, BrandThemes.dark];
 
 addDecorator(withDesign);
 addDecorator(Story => {
@@ -33,7 +32,7 @@ addDecorator(Story => {
 
   return (
     // Add global styles and theme variables
-    <div id='story-root' className={Themes[theme].theme}>
+    <div id='story-root' className={Themes[theme]}>
       <button
         onClick={() => {
           setTheme(x => (x + 1) % Themes.length);

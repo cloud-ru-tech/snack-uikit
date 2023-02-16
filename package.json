@@ -44,7 +44,7 @@
     "@babel/preset-react": "7.18.6",
     "@babel/preset-typescript": "7.18.6",
     "@geometricpanda/storybook-addon-badges": "0.2.2",
-    "@sbercloud/figma-tokens": "0.4.1",
+    "@sbercloud/figma-tokens": "0.6.0",
     "@sbercloud/ft-all-linters-pack": "2.1.4",
     "@sbercloud/ft-conventional-changelog": "1.2.3",
     "@sbercloud/ft-storybook-readme-addon": "2.0.0",
