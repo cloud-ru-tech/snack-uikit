@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-02-16)
+
+
+### Features
+
+* **[FF-1687](https://jira.sbercloud.tech/browse/FF-1687):** scss imports refactored ([4c43b3d](https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/commits/4c43b3dfac6699447118b20e7a81722ebf7eb35f))
+
+
+
+
+
 ## 0.2.1 (2023-02-15)
 
 
