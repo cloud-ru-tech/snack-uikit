@@ -104,10 +104,10 @@
     "./packages/*"
   ],
   "dependencies": {
-    "stylelint": "14.16.1",
-    "stylelint-config-recess-order": "3.1.0",
-    "stylelint-config-recommended-scss": "8.0.0",
-    "stylelint-scss": "4.3.0",
+    "stylelint": "15.1.0",
+    "stylelint-config-recess-order": "4.0.0",
+    "stylelint-config-recommended-scss": "9.0.1",
+    "stylelint-scss": "4.4.0",
     "typescript-plugin-css-modules": "4.1.1"
   }
 }
