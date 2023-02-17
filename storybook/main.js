@@ -1,3 +1,4 @@
+// TODO: проверить нужно ли
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const glob = require('glob');
 const path = require('path');
