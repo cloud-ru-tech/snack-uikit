@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-02-17)
+
+
+### Features
+
+* **[FF-1683](https://jira.sbercloud.tech/browse/FF-1683):** added test runner ([2b7a79e](https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/commits/2b7a79eb3d41dc45b6dfe52adda287ad54a55707))
+
+
+
+
+
 # 0.3.0 (2023-02-16)
 
 
