@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-02-17)
+
+
+### Features
+
+* **[FF-1684](https://jira.sbercloud.tech/browse/FF-1684):** utils package has been introduced ([e3bc345](https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/commits/e3bc345c0b32cfc518a17416a00ad880e351f03b))
+
+
+
+
+
 # 0.4.0 (2023-02-17)
 
 

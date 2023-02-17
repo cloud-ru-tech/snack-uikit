@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/utils",
   "title": "Utils",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -17,14 +17,13 @@
     "directory": "packages/utils"
   },
   "author": "Anna Kozlova <apkozlova@sbercloud.ru>",
-  "contributors": ["Anna Kozlova <apkozlova@sbercloud.ru>"],
+  "contributors": [
+    "Anna Kozlova <apkozlova@sbercloud.ru>"
+  ],
   "files": [
     "dist",
     "src"
   ],
   "license": "UNLICENSED",
-  "scripts": {},
-  "dependencies": {},
-  "devDependencies": {},
-  "peerDependencies": {}
+  "scripts": {}
 }
