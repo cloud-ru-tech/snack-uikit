@@ -9,7 +9,7 @@ const STORIES = glob
 const isTestServer = Boolean(process.env.TEST_SERVER);
 
 module.exports = {
-  stories: [...STORIES],
+  stories: STORIES,
   addons: [
     {
       name: '@storybook/preset-scss',
@@ -49,9 +49,7 @@ module.exports = {
     reactDocgen: 'react-docgen-typescript',
     checkOptions: {},
   },
-  babel: base => {
-    return { ...base, plugins: [...(base.plugins || []), ...(isTestServer ? ['istanbul'] : [])] };
-  },
+  babel: base => ({ ...base, plugins: [...(base.plugins || []), ...(isTestServer ? ['istanbul'] : [])] }),
   env: config => ({
     ...config,
   }),

@@ -1,6 +1,6 @@
 {
-  "name": "snack-ui",
-  "description": "Sbercloud Product Uikit",
+  "name": "@snack-ui",
+  "description": "Cloud Product Uikit",
   "homepage": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/-/tree/master/",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "add-package": "ts-node scripts/npm-init",
-    "build:storybook": "build-storybook",
+    "build:storybook": "build-storybook -c storybook",
     "build:packages": "npm run clean:all && npm run deps:packages && npm run build:ts && npm run build:css",
     "build:css": "ts-node scripts/compileCSS",
     "build:ts": "ttsc -b ./packages/tsconfig.json",
@@ -22,8 +22,8 @@
     "deps:global": "npm i",
     "deps:packages": "npm i --workspaces",
     "deps:reinstall": "npm run clean:all && rm -rf node_modules package-lock.json && npm cache clean -f && npm run deps:all",
-    "storybook:all": "start-storybook -p 6006",
-    "storybook:ci": "cross-env TEST_SERVER=true start-storybook -p 6006 --ci --quiet --loglevel warn",
+    "storybook:all": "start-storybook -c storybook -p 6006",
+    "storybook:ci": "cross-env TEST_SERVER=true start-storybook -c storybook -p 6006 --ci --quiet --loglevel warn",
     "storybook:partial": "ts-node scripts/start-storybook-partially",
     "test:coverage": "ts-node scripts/testcafe-coverage-packages",
     "test:testcafe": "ts-node scripts/run-tests && ts-node scripts/normalize-testcafe-xml-report",

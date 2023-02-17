@@ -1,8 +1,8 @@
-import BrandThemes from '@sbercloud/figma-tokens/build/css/brand.module.css';
-
 import { addDecorator, addParameters } from '@storybook/react';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { withDesign } from 'storybook-addon-designs';
+
+import BrandThemes from '@sbercloud/figma-tokens/build/css/brand.module.css';
 
 import { BADGE } from './constants';
 
@@ -42,7 +42,6 @@ addDecorator(Story => {
         SWITCH
       </button>
 
-      {/* @ts-ignore */}
       <Story />
     </div>
   );

@@ -23,6 +23,6 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true
   },
-  "include": ["./", "./.storybook/*"],
+  "include": ["./"],
   "exclude": ["node_modules"]
 }

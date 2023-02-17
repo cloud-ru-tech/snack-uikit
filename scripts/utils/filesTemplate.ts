@@ -35,7 +35,7 @@ export const packageJson = ({
   packageRootFolderName: string;
 }) => {
   const config = {
-    name: `@${globConfig.name}/${packageName}`,
+    name: `${globConfig.name}/${packageName}`,
     title: `${packageTitle}`,
     version: '0.0.0',
     sideEffects: ['*.css', '*.woff', '*.woff2'],
@@ -92,7 +92,7 @@ export const readme = ({
   const readmeContent = `# ${packageTitle}
 
 ## Installation
-\`npm i @${globConfig.name}/${packageName}\`
+\`npm i ${globConfig.name}/${packageName}\`
 
 [Changelog](./CHANGELOG.md)
 
