@@ -1,4 +1,4 @@
-# Sbercloud uikit [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![coverage](https://git.sbercloud.tech/sbercloud-ui/uikit-product/badges/master/coverage.svg?job=test-coverage-stable&key_text=stable-coverage&&key_width=100/coverage.svg)](https://git.sbercloud.tech/sbercloud-ui/uikit-product/badges/master/coverage.svg?job=test-coverage-stable&key_text=stable-coverage&&key_width=100)
+# Sbercloud uikit [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![coverage](https://git.sbercloud.tech/sbercloud-ui/uikit-product/badges/master/coverage.svg?job=test-coverage&key_text=coverage&&key_width=100/coverage.svg)](https://git.sbercloud.tech/sbercloud-ui/uikit-product/badges/master/coverage.svg?job=test-coverage&key_text=coverage&&key_width=100)
 
 Sbercloud uikit - библиотека компонентов, в которой каждый компонент это отдельный npm-пакет, со своей версионностью и зависимостями.
 

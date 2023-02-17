@@ -1,4 +1,4 @@
 include:
   - project: sbercloud-ui/cicd
     ref: master
-    file: /gitlab-ci-uikit-product.yml
+    file: /gitlab-ci-uikit-tokens.yml
