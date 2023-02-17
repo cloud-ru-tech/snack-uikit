@@ -1,0 +1,30 @@
+{
+  "name": "@snack-ui/utils",
+  "title": "Utils",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/-/tree/master/packages/utils",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo.git",
+    "directory": "packages/utils"
+  },
+  "author": "Anna Kozlova <apkozlova@sbercloud.ru>",
+  "contributors": ["Anna Kozlova <apkozlova@sbercloud.ru>"],
+  "files": [
+    "dist",
+    "src"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {}
+}

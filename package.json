@@ -52,6 +52,7 @@
     "@types/react-dom": "18.0.11",
     "@types/shelljs": "0.8.11",
     "babel-plugin-istanbul": "6.1.1",
+    "classnames": "2.3.2",
     "colors": "1.4.0",
     "cross-env": "7.0.3",
     "depcheck": "1.4.3",

@@ -40,8 +40,8 @@ export const packageJson = ({
     version: '0.0.0',
     sideEffects: ['*.css', '*.woff', '*.woff2'],
     description: `${packageDescription}`,
-    main: './dist/esm/index.js',
-    module: './dist/esm/index.js',
+    main: './dist/index.js',
+    module: './dist/index.js',
     homepage: `${globConfig.homepage}packages/${packageRootFolderName}`,
     repository: {
       type: 'git',

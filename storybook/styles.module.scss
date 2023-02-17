@@ -1,0 +1,12 @@
+@import "@sbercloud/figma-tokens/build/scss/styles-theme-variables";
+
+body {
+  /* stylelint-disable */
+  padding: 0 !important;
+}
+
+.wrapper {
+  height: 100vh;
+  padding: 1em;
+  background-color: var($sys-neutral-background);
+}

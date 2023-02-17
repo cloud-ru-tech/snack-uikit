@@ -7,6 +7,9 @@
   },
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@snack-ui/*": ["./packages/*/src"]
+    },
     "target": "es6",
     "lib": ["es2017", "dom", "dom.iterable", "esnext"],
     "types": ["node"],

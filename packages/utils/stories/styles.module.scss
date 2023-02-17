@@ -1,0 +1,13 @@
+@import "@sbercloud/figma-tokens/build/scss/styles-theme-variables";
+
+.themeWrapper {
+  padding: 16px;
+  background-color: var($sys-neutral-background);
+  border: var($border-width-018m) solid var($sys-primary-line-activated);
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}

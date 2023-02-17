@@ -3,6 +3,7 @@ import path from 'path';
 import depCheck from 'depcheck';
 import glob from 'glob';
 
+import globConfig from '../package.json';
 import { logDebug, logError, logInfo } from './utils/console';
 
 const options = {
@@ -13,6 +14,8 @@ const options = {
 };
 
 const packages = `../packages/*`;
+
+const uikitPackageRegexp = new RegExp(`${globConfig.name}\\/`);
 
 const InternalPackages = {};
 const folders = glob.sync(`${path.resolve(__dirname, packages)}`, {
@@ -33,7 +36,7 @@ const Missing: Record<string, string[]>[] = [];
 for (const folder of folders) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const pkg = require(path.resolve(folder, 'package.json'));
-  const usedInternal = Object.keys(pkg.dependencies || {}).filter(x => /@sbercloud\/uikit/.test(x));
+  const usedInternal = Object.keys(pkg.dependencies || {}).filter(x => uikitPackageRegexp.test(x));
   usedInternal.forEach(dep => {
     if (pkg.dependencies[dep] !== InternalPackages[dep]) {
       WrongVersions.push(
@@ -42,7 +45,7 @@ for (const folder of folders) {
     }
   });
 
-  const usedInternalDev = Object.keys(pkg.devDependencies || {}).filter(x => /@sbercloud\/uikit/.test(x));
+  const usedInternalDev = Object.keys(pkg.devDependencies || {}).filter(x => uikitPackageRegexp.test(x));
   usedInternalDev.forEach(dep => InternalAsDev.push(`Error in ${pkg.name}: ${dep}`));
 }
 
