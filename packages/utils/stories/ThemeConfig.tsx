@@ -1,5 +1,6 @@
 import { ButtonFilled } from '@snack-ui/button';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { useDarkMode } from 'storybook-dark-mode';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -27,8 +28,10 @@ const themeMap = {
 };
 
 const Template: Story = () => {
-  const theme1 = useThemeConfig({ themeMap });
-  const theme2 = useThemeConfig({ themeMap });
+  const isDark = useDarkMode();
+
+  const theme1 = useThemeConfig({ themeMap, defaultTheme: isDark ? Theme.Dark : Theme.Light });
+  const theme2 = useThemeConfig({ themeMap, defaultTheme: isDark ? Theme.Dark : Theme.Light });
 
   return (
     <div className={cn(theme1.themeClassName, classNames.themeWrapper)}>

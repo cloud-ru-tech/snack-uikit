@@ -73,6 +73,8 @@
     "start-server-and-test": "1.15.4",
     "storybook": "6.5.16",
     "storybook-addon-designs": "6.3.1",
+    "storybook-addon-turbo-build": "1.1.0",
+    "storybook-dark-mode": "2.0.6",
     "stream-browserify": "3.0.0",
     "stylelint": "15.1.0",
     "stylelint-config-recess-order": "4.0.0",

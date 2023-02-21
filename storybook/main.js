@@ -1,4 +1,3 @@
-// TODO: проверить нужно ли
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const glob = require('glob');
 const path = require('path');
@@ -41,6 +40,16 @@ module.exports = {
       },
     },
     '@geometricpanda/storybook-addon-badges',
+    {
+      name: 'storybook-addon-turbo-build',
+      options: {
+        // Please refer below tables for available options
+        optimizationLevel: 3,
+        removeProgressPlugin: isTestServer,
+        disableSourceMap: isTestServer,
+      },
+    },
+    'storybook-dark-mode',
   ],
   core: {
     builder: 'webpack5',
