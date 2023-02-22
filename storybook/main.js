@@ -1,10 +1,10 @@
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
-const glob = require('glob');
+const { globSync } = require('glob');
 const path = require('path');
 
-const STORIES = glob
-  .sync(`packages/${process.env.STORYBOOK_PACKAGE_NAME || '*'}/stories/**/*.{ts,tsx}`)
-  .map(x => path.resolve(__dirname, `../${x}`));
+const STORIES = globSync(`packages/${process.env.STORYBOOK_PACKAGE_NAME || '*'}/stories/**/*.{ts,tsx}`).map(x =>
+  path.resolve(__dirname, `../${x}`),
+);
 
 const isTestServer = Boolean(process.env.TEST_SERVER);
 
@@ -49,6 +49,7 @@ module.exports = {
         disableSourceMap: isTestServer,
       },
     },
+    './brandAddon/preset.js',
     'storybook-dark-mode',
   ],
   core: {

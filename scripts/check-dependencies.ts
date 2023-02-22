@@ -1,7 +1,7 @@
 import path from 'path';
 
 import depCheck from 'depcheck';
-import glob from 'glob';
+import { globSync } from 'glob';
 
 import globConfig from '../package.json';
 import { logDebug, logError, logInfo } from './utils/console';
@@ -18,7 +18,7 @@ const packages = `../packages/*`;
 const uikitPackageRegexp = new RegExp(`${globConfig.name}\\/`);
 
 const InternalPackages = {};
-const folders = glob.sync(`${path.resolve(__dirname, packages)}`, {
+const folders = globSync(`${path.resolve(__dirname, packages)}`, {
   ignore: path.resolve(__dirname, '../packages/tsconfig.json'),
 });
 

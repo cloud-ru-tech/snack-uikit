@@ -6,7 +6,8 @@ body {
 }
 
 .wrapper {
-  height: 100vh;
+  height: calc(100vh - 32px);
   padding: 1em;
   background-color: var($sys-neutral-background);
+  color: var($sys-neutral-text-main-enabled)
 }

@@ -1,6 +1,6 @@
 import path from 'path';
 
-import glob from 'glob';
+import { globSync } from 'glob';
 import minimist from 'minimist';
 
 import { simpleCopy } from './compile/simple-copy';
@@ -15,7 +15,7 @@ const pkg = argv.pkg || '*';
   logDebug(`Compiling...`);
 
   const packages = `../packages/${pkg}`;
-  const folders = glob.sync(`${path.resolve(__dirname, packages)}`);
+  const folders = globSync(`${path.resolve(__dirname, packages)}`);
   const distPart = 'dist';
   const srcPart = 'src';
 
@@ -25,10 +25,10 @@ const pkg = argv.pkg || '*';
     const dist = `${folder}/${distPart}`;
     const distESM = `${dist}`;
 
-    const filesToCopy = glob.sync(`${src}/**/*.{woff,woff2,png}`);
+    const filesToCopy = globSync(`${src}/**/*.{woff,woff2,png}`);
     filesToCopy.forEach(simpleCopy({ src, distESM }));
 
-    const scssFiles = glob.sync(`${src}/**/!(_)*.scss`);
+    const scssFiles = globSync(`${src}/**/!(_)*.scss`);
     const scssPipe = writeScss({ src, distESM });
     for (const file of scssFiles) {
       await scssPipe(file);
