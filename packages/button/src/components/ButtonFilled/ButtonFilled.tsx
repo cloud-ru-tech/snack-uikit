@@ -39,6 +39,7 @@ export const ButtonFilled = ({
 
   return (
     <button
+      type='button'
       className={classNames.button}
       data-type={type}
       data-size={size}
