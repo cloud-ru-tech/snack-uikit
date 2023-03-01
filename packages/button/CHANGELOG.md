@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.1 (2023-03-01)
+
+
+### Bug Fixes
+
+* **[FF-1799](https://jira.sbercloud.tech/browse/FF-1799):** add fixed type to button ([c83aa99](https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/commits/c83aa990dd386757423510d2a3a0bec94a649423))
+
+
+
+
+
 # 0.5.0 (2023-02-17)
 
 
