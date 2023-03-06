@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-03-06)
+
+
+### Features
+
+* **[FF-1800](https://jira.sbercloud.tech/browse/FF-1800):** esbuild & light/dark theme selector ([bf5d288](https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/commits/bf5d288c17452a481820e7430db0806658f56e0c))
+* **[FF-1870](https://jira.sbercloud.tech/browse/FF-1870):** component props processors has been added ([05fe56d](https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/commits/05fe56d43ba10713e3af24c4d6b51c38846625a9))
+
+
+
+
+
 # 0.1.0 (2023-02-17)
 
 
