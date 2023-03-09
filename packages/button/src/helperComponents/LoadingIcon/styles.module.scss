@@ -1,5 +1,6 @@
 .loadingWheel {
   pointer-events: none;
+  fill: currentColor;
 
   & > path {
     animation-name: loading-wheel;

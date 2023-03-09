@@ -4,11 +4,12 @@ import { useState } from 'react';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { ButtonFilled, ButtonFilledProps } from '../src';
+import { ButtonTonal, ButtonTonalProps } from '../src';
 import { DemoIcon, StarIcon, TableCell, TableColumn, TableWrapper } from './helperComponents';
+
 export default {
-  title: 'Components/Button/ButtonFilled',
-  component: ButtonFilled,
+  title: 'Components/Button/ButtonTonal',
+  component: ButtonTonal,
 } as Meta;
 
 const ICONS = {
@@ -17,7 +18,7 @@ const ICONS = {
   none: undefined,
 };
 
-const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, ...args }) => {
+const Template: Story<ButtonTonalProps & { testMode: boolean }> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -25,7 +26,6 @@ const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, 
     args.onClick && args.onClick(e);
     setCount(v => v + 1);
   };
-
   const opacity = testMode ? 1 : 0;
 
   return (
@@ -34,28 +34,28 @@ const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, 
         <TableColumn>
           <TableCell>Controlled</TableCell>
           <TableCell>
-            <ButtonFilled {...args} onClick={inc} />
+            <ButtonTonal {...args} onClick={inc} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={<DemoIcon />} label={undefined} />
+            <ButtonTonal {...args} icon={<DemoIcon />} label={undefined} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label Only</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={undefined} label='Label Only' />
+            <ButtonTonal {...args} icon={undefined} label='Label Only' />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Icon After</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={<DemoIcon />} label='IconAfter' />
+            <ButtonTonal {...args} icon={<DemoIcon />} label='IconAfter' />
           </TableCell>
         </TableColumn>
       </TableWrapper>
@@ -68,19 +68,19 @@ const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, 
   );
 };
 
-export const buttonFilled = Template.bind({});
+export const buttonTonal = Template.bind({});
 
-buttonFilled.args = {
+buttonTonal.args = {
   label: 'Button',
   disabled: false,
   loading: false,
   icon: ICONS.demo,
-  type: ButtonFilled.types.Primary,
-  size: ButtonFilled.sizes.SizeS,
+  type: ButtonTonal.types.Primary,
+  size: ButtonTonal.sizes.SizeS,
   testMode: false,
 };
 
-buttonFilled.argTypes = {
+buttonTonal.argTypes = {
   testMode: {
     name: '[Stories]: Show onClick counter',
     control: {
@@ -101,8 +101,7 @@ buttonFilled.argTypes = {
     },
   },
 };
-
-buttonFilled.parameters = {
+buttonTonal.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
   },

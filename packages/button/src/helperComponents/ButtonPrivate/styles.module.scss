@@ -1,0 +1,32 @@
+.button {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-width: max-content;
+  padding: 0;
+  margin: 0;
+  color: transparent;
+  text-decoration: none;
+  text-transform: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0 solid transparent;
+  outline: 0;
+  outline-offset: 0;
+
+  > * {
+    cursor: pointer;
+  }
+
+  &:disabled,
+  &[data-disabled],
+  &[data-loading] {
+    cursor: not-allowed;
+    > * {
+      cursor: not-allowed;
+    }
+  }
+}

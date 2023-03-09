@@ -1,0 +1,62 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-button-buttonOutline';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../../styles.module';
+
+$types: primary, neutral, critical;
+$sizes: s, m, l;
+$variants: label-only, icon-only, icon-after;
+$icon-size: simple-var($icon, 'size-s');
+
+@mixin button-colors-styles {
+  @each $type in $types {
+    &[data-type='#{$type}'] {
+      @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-enabled'));
+      @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-enabled'));
+      border-color: simple-var($theme-variables, 'sys', $type, 'accent-enabled');
+
+      &:hover {
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+        border-color: simple-var($theme-variables, 'sys', $type, 'accent-hovered');
+      }
+
+      &:focus-visible {
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+        border-color: simple-var($theme-variables, 'sys', $type, 'accent-hovered');
+      }
+
+      &:active {
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
+        border-color: simple-var($theme-variables, 'sys', $type, 'line-activated');
+      }
+
+      &:disabled,
+      &[data-disabled] {
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-disabled'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-disabled'));
+        border-color: simple-var($theme-variables, 'sys', $type, 'accent-disabled');
+      }
+
+      &[data-loading] {
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-enabled'));
+        border-color: simple-var($theme-variables, 'sys', $type, 'line-activated');
+      }
+    }
+  }
+}
+
+@mixin button-common-state {
+  &:focus-visible {
+    @include outline-var($container-focused, 'available', 'size-s');
+  }
+}
+
+.button {
+  @include button-anatomy-styles($button-outline, $sizes, $variants, $icon-size);
+  @include loading-label-only($button-outline);
+  @include button-colors-styles;
+  @include button-common-state;
+}

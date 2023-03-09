@@ -1,0 +1,56 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-button-buttonLight';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../../styles.module';
+
+$types: primary, neutral, critical;
+$sizes: s, m, l;
+$variants: label-only, icon-only, icon-after, icon-before;
+$icon-size: simple-var($icon, 'size-s');
+
+@mixin button-colors-styles {
+  @each $type in $types {
+    &[data-type='#{$type}'] {
+      @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-light-enabled'));
+      @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-light-enabled'));
+
+      &:hover {
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+      }
+
+      &:focus-visible {
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+      }
+
+      &:active {
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
+      }
+
+      &:disabled,
+      &[data-disabled] {
+        @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-light-disabled'));
+        @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-light-disabled'));
+      }
+
+      &[data-loading] {
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-enabled'));
+      }
+    }
+  }
+}
+
+@mixin button-common-state {
+  &:focus-visible {
+    @include outline-var($container-focused, 'primary', 'size-s');
+  }
+}
+
+.button {
+  @include button-anatomy-styles($button-light, $sizes, $variants, $icon-size);
+  @include loading-label-only($button-light);
+  @include button-colors-styles;
+  @include button-common-state;
+}

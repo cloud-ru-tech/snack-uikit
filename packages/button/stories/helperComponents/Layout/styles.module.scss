@@ -1,0 +1,32 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.tableCell {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  font-family: var($sans-display-m-font-family);
+  color: var($sys-neutral-text-main-enabled);
+  border: 1px solid var($sys-neutral-line-enabled);
+}
+
+.tableWrapper {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  overflow: auto;
+  background-color: var($sys-neutral-container-enabled);
+  border: 1px solid var($sys-neutral-line-enabled);
+}
+
+.tableColumn {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}

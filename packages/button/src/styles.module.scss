@@ -1,0 +1,53 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+@mixin label-color($color) {
+  .label {
+    color: $color;
+  }
+}
+
+@mixin icon-fill($color) {
+  .icon {
+    color: $color;
+  }
+}
+
+@mixin icon-size($icon-size) {
+  .icon {
+    width: $icon-size;
+    height: $icon-size;
+  }
+}
+
+@mixin button-anatomy-styles($button-theme, $sizes, $variants, $icon-size) {
+  @each $size in $sizes {
+    &[data-size='#{"size-" + $size}'] {
+      .label {
+        @include composite-var($theme-variables, 'sans', 'label', $size);
+      }
+
+      @each $variant in $variants {
+        &[data-variant='#{$variant}'] {
+          @include composite-var($button-theme, 'container', 'size-' + $size, $variant);
+        }
+      }
+
+      @include icon-size($icon-size);
+    }
+  }
+}
+
+@mixin loading-label-only($button-theme) {
+  &[data-loading][data-variant='label-only'] {
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .label {
+      @include composite-var($button-theme, 'label', 'load-label-only');
+    }
+  }
+}

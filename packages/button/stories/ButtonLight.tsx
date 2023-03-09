@@ -4,11 +4,12 @@ import { useState } from 'react';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { ButtonFilled, ButtonFilledProps } from '../src';
+import { ButtonLight, ButtonLightProps } from '../src';
 import { DemoIcon, StarIcon, TableCell, TableColumn, TableWrapper } from './helperComponents';
+
 export default {
-  title: 'Components/Button/ButtonFilled',
-  component: ButtonFilled,
+  title: 'Components/Button/ButtonLight',
+  component: ButtonLight,
 } as Meta;
 
 const ICONS = {
@@ -17,7 +18,7 @@ const ICONS = {
   none: undefined,
 };
 
-const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, ...args }) => {
+const Template: Story<ButtonLightProps & { testMode: boolean }> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -34,28 +35,45 @@ const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, 
         <TableColumn>
           <TableCell>Controlled</TableCell>
           <TableCell>
-            <ButtonFilled {...args} onClick={inc} />
+            <ButtonLight {...args} onClick={inc} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={<DemoIcon />} label={undefined} />
+            <ButtonLight {...args} icon={<DemoIcon />} label={undefined} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label Only</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={undefined} label='Label Only' />
+            <ButtonLight {...args} icon={undefined} label='Label Only' />
+          </TableCell>
+        </TableColumn>
+
+        <TableColumn>
+          <TableCell>Icon Before</TableCell>
+          <TableCell>
+            <ButtonLight
+              {...args}
+              icon={<DemoIcon />}
+              iconPosition={ButtonLight.iconPositions.Before}
+              label='IconBefore'
+            />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Icon After</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={<DemoIcon />} label='IconAfter' />
+            <ButtonLight
+              {...args}
+              icon={<DemoIcon />}
+              iconPosition={ButtonLight.iconPositions.After}
+              label='IconAfter'
+            />
           </TableCell>
         </TableColumn>
       </TableWrapper>
@@ -68,19 +86,20 @@ const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, 
   );
 };
 
-export const buttonFilled = Template.bind({});
+export const buttonLight = Template.bind({});
 
-buttonFilled.args = {
+buttonLight.args = {
   label: 'Button',
   disabled: false,
   loading: false,
   icon: ICONS.demo,
-  type: ButtonFilled.types.Primary,
-  size: ButtonFilled.sizes.SizeS,
+  iconPosition: ButtonLight.iconPositions.After,
+  type: ButtonLight.types.Neutral,
+  size: ButtonLight.sizes.SizeS,
   testMode: false,
 };
 
-buttonFilled.argTypes = {
+buttonLight.argTypes = {
   testMode: {
     name: '[Stories]: Show onClick counter',
     control: {
@@ -102,7 +121,7 @@ buttonFilled.argTypes = {
   },
 };
 
-buttonFilled.parameters = {
+buttonLight.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
   },

@@ -44,6 +44,7 @@ module.exports = {
     {
       name: 'storybook-addon-turbo-build',
       options: {
+        // Please refer below tables for available options
         optimizationLevel,
         removeProgressPlugin: isTestServer,
         disableSourceMap: isTestServer,

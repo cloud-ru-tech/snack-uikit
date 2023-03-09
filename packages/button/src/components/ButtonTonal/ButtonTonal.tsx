@@ -7,16 +7,16 @@ import { CommonButtonProps } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
 import styles from './styles.module.scss';
 
-export type ButtonFilledProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition'>>;
+export type ButtonTonalProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition'>>;
 
-export function ButtonFilled({
+export function ButtonTonal({
   className,
   size = Size.SizeS,
   target = Target.Blank,
   type = Type.Primary,
   htmlType = HtmlType.Button,
   ...rest
-}: ButtonFilledProps) {
+}: ButtonTonalProps) {
   return (
     <ButtonPrivate
       {...extractSupportProps(rest)}
@@ -32,5 +32,5 @@ export function ButtonFilled({
   );
 }
 
-ButtonFilled.sizes = Size;
-ButtonFilled.types = Type;
+ButtonTonal.sizes = Size;
+ButtonTonal.types = Type;

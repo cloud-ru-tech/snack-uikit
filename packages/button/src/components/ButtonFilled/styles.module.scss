@@ -1,111 +1,62 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-button-buttonFilled';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../../styles.module';
 
 $types: primary, neutral, critical;
-$sizes: size-s, size-m, size-l;
-$variants: label-only, icon-only, label-icon;
+$sizes: s, m, l;
+$variants: label-only, icon-only, icon-after;
+$icon-size: simple-var($icon, 'size-s');
 
-@mixin button-anatomy-styles {
-  @each $size in $sizes {
-    &[data-size="#{$size}"] {
-
-      .buttonLabel {
-        $label-size: if($size == size-s, 'm', 'l');
-
-        @include composite-var($theme-variables, 'sans', 'label', $label-size);
-      }
-
-      @each $variant in $variants {
-        &[data-variant="#{$variant}"] {
-          @include composite-var($button-filled, 'container', $size, $variant);
-        }
-      }
-    }
-  }
-}
-
-@mixin base-state($type, $state) {
-  background-color: simple-var($theme-variables, "sys", $type, "accent-" + $state);
-
-  .buttonLabel {
-    color: simple-var($theme-variables, "sys", $type, "on-accent");
-  }
-
-  .buttonIcon {
-    fill: simple-var($theme-variables, "sys", $type, "on-accent");
-  }
-}
-
-@mixin activated-state($type, $icon-style) {
-  background-color: simple-var($theme-variables, "sys", $type, "accent-activated");
-
-  .buttonLabel {
-    color: simple-var($theme-variables, "sys", $type, "text-light-enabled");
-  }
-
-  .buttonIcon {
-    fill: simple-var($theme-variables, "sys", $type, $icon-style);
-  }
-}
-
-@mixin button-color-styles {
+@mixin button-colors-styles {
   @each $type in $types {
-    &[data-type="#{$type}"] {
-      @include base-state($type, "enabled");
+    &[data-type='#{$type}'] {
+      @include label-color(simple-var($theme-variables, 'sys', $type, 'on-accent'));
+      @include icon-fill(simple-var($theme-variables, 'sys', $type, 'on-accent'));
+      background-color: simple-var($theme-variables, 'sys', $type, 'accent-enabled');
 
       &:hover {
-        @include base-state($type, "hovered");
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'on-accent'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'on-accent'));
+        background-color: simple-var($theme-variables, 'sys', $type, 'accent-hovered');
       }
 
       &:focus-visible {
-        @include base-state($type, "hovered");
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'on-accent'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'on-accent'));
+        background-color: simple-var($theme-variables, 'sys', $type, 'accent-hovered');
       }
 
       &:active {
-        @include activated-state($type, "text-light-enabled");
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
+        background-color: simple-var($theme-variables, 'sys', $type, 'accent-activated');
       }
 
       &:disabled,
       &[data-disabled] {
-        @include base-state($type, "disabled");
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'on-accent'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'on-accent'));
+        background-color: simple-var($theme-variables, 'sys', $type, 'accent-disabled');
       }
 
       &[data-loading] {
-        @include activated-state($type, "on-accent");
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'on-accent'));
+        background-color: simple-var($theme-variables, 'sys', $type, 'accent-activated');
       }
     }
   }
 }
 
-.button {
-  position: relative;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: max-content;
-  min-width: max-content;
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  text-transform: none;
-  cursor: pointer;
-  background-color: transparent;
-  border: 0 solid transparent;
-  outline: 0;
-
-  @include button-anatomy-styles;
-  @include button-color-styles;
-
-  &[data-loading][data-variant="label-only"] {
-    .buttonIcon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .buttonLabel {
-      @include composite-var($button-filled, 'label', 'load-label-only');
-    }
+@mixin button-common-state {
+  &:focus-visible {
+    @include outline-var($container-focused, 'available', 'size-s');
   }
+}
+
+.button {
+  @include button-anatomy-styles($button-filled, $sizes, $variants, $icon-size);
+  @include loading-label-only($button-filled);
+  @include button-colors-styles;
+  @include button-common-state;
 }

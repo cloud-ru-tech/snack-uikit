@@ -10,7 +10,6 @@ export function LoadingIcon({ className }: AriaAttributes & { className?: string
       xmlns='http://www.w3.org/2000/svg'
       data-test-id='icon-loading-wheel-interface'
       id='LoadingWheelInterfaceSVG'
-      style={{ width: 20, height: 20 }}
     >
       <path
         opacity='0.875'
