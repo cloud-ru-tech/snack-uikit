@@ -4,11 +4,14 @@ import { hooks } from './hooks';
 
 export const Config: Partial<TestCafeConfigurationOptions> & { hooks: any } = {
   src: ['packages/*/__tests__/*.ts'],
-  concurrency: 3,
-  quarantineMode: {
-    successThreshold: 3,
-    attemptLimit: 5,
-  },
+  concurrency: process.env.TEST_LOCAL ? 1 : 3,
+  quarantineMode: process.env.TEST_LOCAL
+    ? undefined
+    : {
+        successThreshold: 3,
+        attemptLimit: 5,
+      },
+  debugOnFail: process.env.TEST_LOCAL ? true : undefined,
   reporter: [
     {
       name: 'xunit',

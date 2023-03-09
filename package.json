@@ -27,7 +27,7 @@
     "storybook:partial": "ts-node scripts/start-storybook-partially",
     "test:coverage": "ts-node scripts/testcafe-coverage-packages",
     "test:testcafe": "ts-node scripts/run-tests && ts-node scripts/normalize-testcafe-xml-report",
-    "test:testcafe:local": "testcafe chrome --config-file testcafe.config.js --live --debug-on-fail --concurrency 1",
+    "test:testcafe:local": "cross-env TEST_LOCAL=true testcafe chrome --config-file testcafe.config.js --live",
     "test:ci": "start-server-and-test storybook:ci http://localhost:6006 test:testcafe"
   },
   "devDependencies": {
@@ -61,7 +61,7 @@
     "cross-env": "7.0.3",
     "depcheck": "1.4.3",
     "eslint-plugin-testcafe-community": "2.0.0",
-    "glob": "9.0.2",
+    "glob": "9.1.0",
     "inquirer": "8.2.5",
     "lerna": "5.6.2",
     "minimist": "1.2.8",

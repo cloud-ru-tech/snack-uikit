@@ -1,0 +1,37 @@
+{
+  "name": "@snack-ui/drop-zone",
+  "title": "Drop Zone",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/-/tree/master/packages/drop-zone",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo.git",
+    "directory": "packages/drop-zone"
+  },
+  "author": "Akhremenko Grigorii <gaahremenko@sbercloud.ru>",
+  "contributors": [
+    "Akhremenko Grigorii <gaahremenko@sbercloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {},
+  "dependencies": {
+    "classnames": "2.3.2"
+  },
+  "devDependencies": {},
+  "peerDependencies": {
+    "@snack-ui/utils": "^0.2.0"
+  }
+}

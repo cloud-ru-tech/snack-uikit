@@ -1,0 +1,71 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-dropZone';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 174px;
+  min-height: 80px;
+  cursor: pointer;
+
+  background-color: var($sys-neutral-container-opacity-enabled);
+  border-color: var($sys-neutral-line-enabled);
+
+  @include composite-var($drop-zone, 'container', 'single');
+  @include composite-var($drop-zone, 'lauout-content', 'single');
+
+  .title {
+    margin: 0;
+
+    @include composite-var($theme-variables, 'sans', 'title', 's');
+    color: var($sys-neutral-text-main-enabled);
+  }
+
+  .description {
+    @include composite-var($theme-variables, 'sans', 'body', 's');
+    color: var($sys-neutral-text-light-enabled);
+  }
+
+  &:hover {
+    border-color: var($sys-primary-accent-hovered);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused, 'primary', 'size-s');
+  }
+
+  &[data-over] {
+    background-color: var($sys-primary-container-opacity-hovered);
+    border-color: var($sys-primary-accent-hovered);
+
+    .title {
+      color: var($sys-primary-text-main-hovered);
+    }
+
+    .description {
+      color: var($sys-primary-text-light-hovered);
+    }
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    background-color: var($sys-neutral-container-opacity-disabled);
+    border-color: var($sys-neutral-line-enabled);
+
+    .title {
+      color: var($sys-neutral-text-main-disabled);
+    }
+
+    .description {
+      color: var($sys-neutral-text-main-disabled);
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

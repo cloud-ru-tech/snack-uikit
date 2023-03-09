@@ -7,6 +7,7 @@ const STORIES = globSync(`packages/${process.env.STORYBOOK_PACKAGE_NAME || '*'}/
 );
 
 const isTestServer = Boolean(process.env.TEST_SERVER);
+const optimizationLevel = isTestServer ? 1 : 3;
 
 module.exports = {
   stories: STORIES,
@@ -43,8 +44,7 @@ module.exports = {
     {
       name: 'storybook-addon-turbo-build',
       options: {
-        // Please refer below tables for available options
-        optimizationLevel: 3,
+        optimizationLevel,
         removeProgressPlugin: isTestServer,
         disableSourceMap: isTestServer,
       },

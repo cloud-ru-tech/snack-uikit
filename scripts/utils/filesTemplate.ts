@@ -50,7 +50,7 @@ export const packageJson = ({
     },
     author: `${user} <${email}>`,
     contributors: [`${user} <${email}>`],
-    files: ['dist', 'src'],
+    files: ['dist', 'src', './CHANGELOG.md'],
     license: 'UNLICENSED',
     scripts: {},
     dependencies: {},
