@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-03-09)
+
+
+### Features
+
+* **[FF-1819](https://jira.sbercloud.tech/browse/FF-1819):** refactoring button ([8fc796a](https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/commits/8fc796a3869a20992fd7db8ff54e4bb07071cb62))
+
+
+
+
+
 ## 0.5.1 (2023-03-01)
 
 
