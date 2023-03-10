@@ -1,5 +1,6 @@
+import { Sun } from '@snack-ui/loaders';
+
 import { IconPosition } from '../../constants';
-import { LoadingIcon } from '../LoadingIcon';
 import { ButtonPrivateProps } from './ButtonPrivate';
 import { Variant } from './constants';
 
@@ -27,7 +28,7 @@ export function getWrappedIcon({ icon, iconClassName, loading }: GetWrappedIconP
   if (loading) {
     return (
       <span data-test-id={'loading-icon'} className={iconClassName}>
-        <LoadingIcon />
+        <Sun size={Sun.sizes.SizeS} />
       </span>
     );
   }
