@@ -9,24 +9,35 @@
 + Composite var as single variable
 
 ## Props
+
+### ProgressBar
+
 ```typescript jsx
 enum Size {
   SizeS = 'size-s',
   SizeXS = 'size-xs',
 }
 
+type ProgressBarProps = WithSupportProps<{
+  progress: number;
+  size: Size;
+}>
+```
+
+### ProgressBarPage
+
+```typescript jsx
 type ProgressBarPageProps = WithSupportProps<{
   inProgress: boolean;
   animationDuration?: number; // Default 200
   incrementDuration?: number; // Default 800
   minimum?: number;
 }>;
+```
 
-type ProgressBarProps = WithSupportProps<{
-  progress: number;
-  size: Size;
-}>
+### Spinner & Sun
 
+```typescript jsx
 enum LoaderSize {
   SizeXS = 'size-xs',
   SizeS = 'size-s',
@@ -38,5 +49,7 @@ type SpinnerProps = WithSupportProps<{
   size?: LoaderSize;
 }>;
 
+type SunProps = WithSupportProps<{
+  size?: LoaderSize;
+}>;
 ```
-
