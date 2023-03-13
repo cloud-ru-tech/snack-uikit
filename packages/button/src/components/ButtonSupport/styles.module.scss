@@ -5,7 +5,7 @@
 $types: primary, neutral, critical;
 $sizes: s, m, l;
 $variants: label-only, icon-only, icon-after, icon-before;
-$icon-size: simple-var($icon, 'size-s');
+$icon-size: var($icon-size-s);
 
 @mixin button-colors-styles {
   @each $type in $types {
@@ -44,7 +44,7 @@ $icon-size: simple-var($icon, 'size-s');
 
 @mixin button-common-state {
   &:focus-visible {
-    @include outline-var($container-focused, 'primary', 'size-s');
+    @include outline-var($container-focused-primary-size-s);
   }
 }
 
