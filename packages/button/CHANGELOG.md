@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.1 (2023-03-13)
+
+
+### Bug Fixes
+
+* **[FF-1901](https://jira.sbercloud.tech/browse/FF-1901):** use sun loader instead of custom icon ([5cc776a](https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/commits/5cc776a1eff13c8010c7845d003423e14f4c36b0))
+
+
+
+
+
 # 0.6.0 (2023-03-09)
 
 

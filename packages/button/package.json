@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/button",
   "title": "Button",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -27,8 +27,8 @@
   "license": "UNLICENSED",
   "scripts": {},
   "dependencies": {
-    "classnames": "2.3.2",
-    "@snack-ui/loaders": "0.0.0"
+    "@snack-ui/loaders": "0.1.0",
+    "classnames": "2.3.2"
   },
   "peerDependencies": {
     "@snack-ui/utils": "^0.2.0"
