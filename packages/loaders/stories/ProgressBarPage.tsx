@@ -40,9 +40,9 @@ const Template: Story<ProgressBarPageProps> = ({ ...args }) => {
 export const progressBarPage = Template.bind({});
 
 progressBarPage.args = {
-  inProgress: true,
-  animationDuration: 100,
-  incrementDuration: 1,
+  inProgress: false,
+  animationDuration: 200,
+  incrementDuration: 800,
   minimum: 0.08,
 };
 

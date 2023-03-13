@@ -5,9 +5,6 @@
 
 [Changelog](./CHANGELOG.md)
 
-## TODO
-+ Composite var as single variable
-
 ## Props
 
 ### ProgressBar
