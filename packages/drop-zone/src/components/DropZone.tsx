@@ -79,9 +79,16 @@ export function DropZone({
       tabIndex={0}
       {...extractSupportProps(rest)}
     >
-      <h4 className={classNames.title}>{title}</h4>
-      {description && <div className={classNames.description}>{description}</div>}
+      <h4 data-test-id='title' className={classNames.title}>
+        {title}
+      </h4>
+      {description && (
+        <div data-test-id='description' className={classNames.description}>
+          {description}
+        </div>
+      )}
       <input
+        data-test-id='file-input'
         className={classNames.hidden}
         onChange={handleFileSelect}
         multiple={mode === UploadMode.Multiple}

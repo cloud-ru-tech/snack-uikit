@@ -15,18 +15,18 @@
   background-color: var($sys-neutral-container-opacity-enabled);
   border-color: var($sys-neutral-line-enabled);
 
-  @include composite-var($drop-zone, 'container', 'single');
-  @include composite-var($drop-zone, 'lauout-content', 'single');
+  @include composite-var($drop-zone-container-single);
+  @include composite-var($drop-zone-lauout-content-single);
 
   .title {
     margin: 0;
 
-    @include composite-var($theme-variables, 'sans', 'title', 's');
+    @include composite-var($sans-title-s);
     color: var($sys-neutral-text-main-enabled);
   }
 
   .description {
-    @include composite-var($theme-variables, 'sans', 'body', 's');
+    @include composite-var($sans-body-s);
     color: var($sys-neutral-text-light-enabled);
   }
 
@@ -35,7 +35,7 @@
   }
 
   &:focus-visible {
-    @include outline-var($container-focused, 'primary', 'size-s');
+    @include outline-var($container-focused-primary-size-s);
   }
 
   &[data-over] {
