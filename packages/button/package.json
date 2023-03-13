@@ -10,10 +10,10 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/-/tree/master/packages/button",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/button",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo.git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
     "directory": "packages/button"
   },
   "author": "Anna Kozlova <apkozlova@sbercloud.ru>",

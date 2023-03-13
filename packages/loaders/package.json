@@ -1,19 +1,19 @@
 {
   "name": "@snack-ui/loaders",
-  "title": "loaders",
+  "title": "Loaders",
   "version": "0.1.0",
   "sideEffects": [
     "*.css",
     "*.woff",
     "*.woff2"
   ],
-  "description": "loaders components",
+  "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/-/tree/master/packages/loaders",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/loaders",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo.git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
     "directory": "packages/loaders"
   },
   "author": "Dmitry Kruglov <dvkruglov@sbercloud.ru>",

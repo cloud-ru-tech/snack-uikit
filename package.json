@@ -1,10 +1,10 @@
 {
   "name": "snack-ui",
   "description": "Cloud Product Uikit",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo/-/tree/master/",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/uikit-tokens-demo.git"
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git"
   },
   "license": "UNLICENSED",
   "scripts": {
