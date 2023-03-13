@@ -1,0 +1,30 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-loader';
+
+$sizes: size-xs, size-s, size-m, size-l;
+
+.spinner {
+  pointer-events: none;
+  stroke: currentColor;
+
+  @each $size in $sizes {
+    &[data-size="#{$size}"] {
+      @include composite-var($loader, 'spiner', $size);
+    }
+  }
+
+  & > mask {
+    mask-type: alpha;
+  }
+
+  & > g > path {
+    fill: currentColor;
+  }
+
+  animation: spin 1s ease-in-out infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

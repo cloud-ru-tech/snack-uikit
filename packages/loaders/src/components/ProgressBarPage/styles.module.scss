@@ -1,0 +1,19 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-loader';
+
+.progressBarPageContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+
+  @include composite-var($progress-bar-page-container-single);
+}
+
+.progressBarPageFiller {
+  width: calc(var(--progress) * 100%);
+  height: 100%;
+  background-color: var($sys-primary-accent-enabled);
+  border-radius: inherit;
+  transition: width var(--animation-duration);
+}

@@ -5,6 +5,9 @@
       "path": "./utils"
     },
     {
+      "path": "./loaders"
+    },
+    {
       "path": "./button"
     },
     {
