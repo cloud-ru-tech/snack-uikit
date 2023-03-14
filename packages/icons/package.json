@@ -1,0 +1,41 @@
+{
+  "name": "@snack-ui/icons",
+  "title": "Icons",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/icons",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/icons"
+  },
+  "author": "Anna Kozlova <apkozlova@sbercloud.ru>",
+  "contributors": [
+    "Anna Kozlova <apkozlova@sbercloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {
+    "fix:icons": "rimraf svgs-fixed/$npm_config_directory && oslllo-svg-fixer -s svgs/$npm_config_directory -d svgs-fixed/$npm_config_directory --sd false",
+    "build:icons": "rimraf src/components/$npm_config_directory && svgr -d src/components/$npm_config_directory svgs-fixed/$npm_config_directory --config-file templates/.svgrrc.js",
+    "build:interface-icons": "npm run fix:icons --directory=interface-icons && npm run build:icons --directory=interface-icons",
+    "compile": "npm run build:interface-icons"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@svgr/cli": "6.5.1",
+    "oslllo-svg-fixer": "2.2.0"
+  },
+  "peerDependencies": {}
+}

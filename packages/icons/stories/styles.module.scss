@@ -1,0 +1,15 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,250px);
+}
+
+.iconCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  color: var($sys-primary-text-main-enabled);
+}

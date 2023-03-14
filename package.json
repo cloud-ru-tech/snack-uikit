@@ -10,7 +10,7 @@
   "scripts": {
     "add-package": "ts-node scripts/npm-init",
     "build:storybook": "build-storybook -c storybook",
-    "build:packages": "npm run clean:all && npm run deps:packages && npm run build:ts && npm run build:css",
+    "build:packages": "npm run clean:all && npm run deps:packages && lerna run compile && npm run build:ts && npm run build:css",
     "build:css": "ts-node scripts/compileCSS",
     "build:ts": "ttsc -b ./packages/tsconfig.json",
     "changelog": "ts-node scripts/changelog",
