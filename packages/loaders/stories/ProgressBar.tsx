@@ -33,6 +33,6 @@ progressBar.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/FtPyS58ZZtQorzjQcFRr7o/Loader?node-id=23%3A337&t=b7YkUOHV9ZAUPze6-0',
+    url: 'https://www.figma.com/file/FtPyS58ZZtQorzjQcFRr7o/Loader?node-id=23%3A337&t=svmSDrEJNhN7ANYz-0',
   },
 };

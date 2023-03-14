@@ -56,6 +56,6 @@ dropZone.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/sicp79dpRqQwB5ypRQKknB/branch/iD4zXVif1c1vDRJ4T3YEiM/DropZone?node-id=0%3A1&t=13akSgQHJuJg0gMe-0',
+    url: 'https://www.figma.com/file/sicp79dpRqQwB5ypRQKknB/DropZone?node-id=0%3A1&t=Aka15kVBSuY1vUk1-0',
   },
 };

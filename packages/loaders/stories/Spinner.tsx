@@ -27,6 +27,6 @@ spinner.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/FtPyS58ZZtQorzjQcFRr7o/branch/Ui1tIvdA9vSChtczKpQTaz/Loader?node-id=0%3A1&t=6h2YxcLJxo0zFFjt-0',
+    url: 'https://www.figma.com/file/FtPyS58ZZtQorzjQcFRr7o/Loader?node-id=0%3A1&t=svmSDrEJNhN7ANYz-0',
   },
 };
