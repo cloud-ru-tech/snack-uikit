@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.2 (2023-03-14)
+
+
+### Bug Fixes
+
+* **[FF-1901](https://jira.sbercloud.tech/browse/FF-1901):** use separate variables instead of common map for non-dynamic tokens ([d221cc1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/d221cc181f0647820895f9369fe42e312d979df9))
+
+
+
+
+
 ## 0.6.1 (2023-03-13)
 
 
