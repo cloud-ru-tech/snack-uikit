@@ -1,3 +1,4 @@
+import { PlaceholderSVG } from '@snack-ui/icons';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { useState } from 'react';
 
@@ -5,18 +6,13 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonLight, ButtonLightProps } from '../src';
-import { DemoIcon, StarIcon, TableCell, TableColumn, TableWrapper } from './helperComponents';
+import { ICONS } from './constants';
+import { TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 export default {
   title: 'Components/Button/ButtonLight',
   component: ButtonLight,
 } as Meta;
-
-const ICONS = {
-  demo: <DemoIcon />,
-  star: <StarIcon />,
-  none: undefined,
-};
 
 const Template: Story<ButtonLightProps & { testMode: boolean }> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
@@ -42,7 +38,7 @@ const Template: Story<ButtonLightProps & { testMode: boolean }> = ({ testMode, .
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonLight {...args} icon={<DemoIcon />} label={undefined} />
+            <ButtonLight {...args} icon={args.icon ?? <PlaceholderSVG />} label={undefined} />
           </TableCell>
         </TableColumn>
 
@@ -58,7 +54,7 @@ const Template: Story<ButtonLightProps & { testMode: boolean }> = ({ testMode, .
           <TableCell>
             <ButtonLight
               {...args}
-              icon={<DemoIcon />}
+              icon={args.icon ?? <PlaceholderSVG />}
               iconPosition={ButtonLight.iconPositions.Before}
               label='IconBefore'
             />
@@ -70,7 +66,7 @@ const Template: Story<ButtonLightProps & { testMode: boolean }> = ({ testMode, .
           <TableCell>
             <ButtonLight
               {...args}
-              icon={<DemoIcon />}
+              icon={args.icon ?? <PlaceholderSVG />}
               iconPosition={ButtonLight.iconPositions.After}
               label='IconAfter'
             />
@@ -92,7 +88,9 @@ buttonLight.args = {
   label: 'Button',
   disabled: false,
   loading: false,
-  icon: ICONS.demo,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  icon: 'none',
   iconPosition: ButtonLight.iconPositions.After,
   type: ButtonLight.types.Neutral,
   size: ButtonLight.sizes.SizeS,
@@ -116,7 +114,7 @@ buttonLight.argTypes = {
     options: Object.keys(ICONS),
     mapping: ICONS,
     control: {
-      type: 'radio',
+      type: 'select',
     },
   },
 };

@@ -14,8 +14,13 @@
 
 @mixin icon-size($icon-size) {
   .icon {
-    width: $icon-size;
-    height: $icon-size;
+    display: inline-flex;
+
+    /* stylelint-disable declaration-no-important */
+    svg {
+      width: $icon-size !important;
+      height: $icon-size !important;
+    }
   }
 }
 
@@ -31,10 +36,10 @@
           @include composite-var($button-theme, 'container', 'size-' + $size, $variant);
         }
       }
-
-      @include icon-size($icon-size);
     }
   }
+
+  @include icon-size($icon-size);
 }
 
 @mixin loading-label-only($button-theme) {

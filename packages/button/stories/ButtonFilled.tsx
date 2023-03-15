@@ -1,3 +1,4 @@
+import { PlaceholderSVG } from '@snack-ui/icons';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { useState } from 'react';
 
@@ -5,17 +6,12 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonFilled, ButtonFilledProps } from '../src';
-import { DemoIcon, StarIcon, TableCell, TableColumn, TableWrapper } from './helperComponents';
+import { ICONS } from './constants';
+import { TableCell, TableColumn, TableWrapper } from './helperComponents';
 export default {
   title: 'Components/Button/ButtonFilled',
   component: ButtonFilled,
 } as Meta;
-
-const ICONS = {
-  demo: <DemoIcon />,
-  star: <StarIcon />,
-  none: undefined,
-};
 
 const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
@@ -41,7 +37,7 @@ const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, 
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={<DemoIcon />} label={undefined} />
+            <ButtonFilled {...args} icon={args.icon ?? <PlaceholderSVG />} label={undefined} />
           </TableCell>
         </TableColumn>
 
@@ -55,7 +51,7 @@ const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, 
         <TableColumn>
           <TableCell>Icon After</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={<DemoIcon />} label='IconAfter' />
+            <ButtonFilled {...args} icon={args.icon ?? <PlaceholderSVG />} label='IconAfter' />
           </TableCell>
         </TableColumn>
       </TableWrapper>
@@ -74,7 +70,9 @@ buttonFilled.args = {
   label: 'Button',
   disabled: false,
   loading: false,
-  icon: ICONS.demo,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  icon: 'none',
   type: ButtonFilled.types.Primary,
   size: ButtonFilled.sizes.SizeS,
   testMode: false,
@@ -97,7 +95,7 @@ buttonFilled.argTypes = {
     options: Object.keys(ICONS),
     mapping: ICONS,
     control: {
-      type: 'radio',
+      type: 'select',
     },
   },
 };

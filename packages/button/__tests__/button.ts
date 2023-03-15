@@ -58,7 +58,7 @@ buttons.forEach(({ name, story, testId, iconBefore }) => {
 
   fixture(story);
 
-  test.page(getPage({ label: testId, icon: 'demo' }))('Should render', async t => {
+  test.page(getPage({ label: testId, icon: 'PlaceholderSVG' }))('Should render', async t => {
     const button = Selector(dataTestIdSelector(testId));
     await t.expect(button.exists).ok();
     const label = button.find(dataTestIdSelector('label'));
@@ -87,13 +87,13 @@ buttons.forEach(({ name, story, testId, iconBefore }) => {
     await t.expect(button.getAttribute('data-variant')).eql('icon-only');
   });
 
-  test.page(getPage({ label: 'label', icon: 'demo' }))('should have data-variant = "icon-after"', async t => {
+  test.page(getPage({ label: 'label', icon: 'PlaceholderSVG' }))('should have data-variant = "icon-after"', async t => {
     const button = Selector(dataTestIdSelector(testId));
     await t.expect(button.getAttribute('data-variant')).eql('icon-after');
   });
 
   if (iconBefore) {
-    test.page(getPage({ label: 'label', icon: 'demo', iconPosition: IconPosition.Before }))(
+    test.page(getPage({ label: 'label', icon: 'PlaceholderSVG', iconPosition: IconPosition.Before }))(
       'should have data-variant = "icon-before"',
       async t => {
         const button = Selector(dataTestIdSelector(testId));
@@ -111,7 +111,7 @@ buttons.forEach(({ name, story, testId, iconBefore }) => {
     },
   );
 
-  test.page(getPage({ loading: true, label: 'label', icon: 'demo' }))(
+  test.page(getPage({ loading: true, label: 'label', icon: 'PlaceholderSVG' }))(
     'Should render loading-icon with loading & icon props ',
     async t => {
       const button = Selector(dataTestIdSelector(testId));
@@ -133,7 +133,7 @@ buttons.forEach(({ name, story, testId, iconBefore }) => {
     await t.expect(Selector(`a[data-test-id="${testId}"]`).exists).ok();
   });
 
-  test.page(getPage({ disabled: false, loading: false, label: 'label', icon: 'demo' }))(
+  test.page(getPage({ disabled: false, loading: false, label: 'label', icon: 'PlaceholderSVG' }))(
     'Should be clickable',
     async t => {
       const button = Selector(dataTestIdSelector(testId));
@@ -145,7 +145,7 @@ buttons.forEach(({ name, story, testId, iconBefore }) => {
     },
   );
 
-  test.page(getPage({ disabled: true, label: 'label', icon: 'demo' }))(
+  test.page(getPage({ disabled: true, label: 'label', icon: 'PlaceholderSVG' }))(
     'Should be disabled with disabled prop',
     async t => {
       const button = Selector(dataTestIdSelector(testId));
@@ -157,7 +157,7 @@ buttons.forEach(({ name, story, testId, iconBefore }) => {
     },
   );
 
-  test.page(getPage({ loading: true, label: 'label', icon: 'demo' }))(
+  test.page(getPage({ loading: true, label: 'label', icon: 'PlaceholderSVG' }))(
     'Should be disabled with loading prop',
     async t => {
       const button = Selector(dataTestIdSelector(testId));
