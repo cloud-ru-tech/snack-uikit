@@ -27,10 +27,11 @@
   ],
   "license": "UNLICENSED",
   "scripts": {
+    "validate:icons": "ts-node ../../scripts/validateIcons.ts",
     "fix:icons": "rimraf svgs-fixed/$npm_config_directory && oslllo-svg-fixer -s svgs/$npm_config_directory -d svgs-fixed/$npm_config_directory --sd false",
     "build:icons": "rimraf src/components/$npm_config_directory && svgr -d src/components/$npm_config_directory svgs-fixed/$npm_config_directory --config-file templates/.svgrrc.js",
     "build:interface-icons": "npm run fix:icons --directory=interface-icons && npm run build:icons --directory=interface-icons",
-    "compile": "npm run build:interface-icons"
+    "compile": "npm run validate:icons && npm run build:interface-icons"
   },
   "dependencies": {},
   "devDependencies": {
