@@ -32,7 +32,8 @@ addParameters({
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
-      order: ['Welcome', 'Theme', 'Typography', 'Utils', 'Components', 'Not stable'],
+      method: 'alphabetical',
+      order: ['Theme Config', 'Components'],
     },
   },
 });
