@@ -67,7 +67,7 @@ const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, 
 export const buttonFilled = Template.bind({});
 
 buttonFilled.args = {
-  label: 'Button',
+  label: 'Label text',
   disabled: false,
   loading: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

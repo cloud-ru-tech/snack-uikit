@@ -85,7 +85,7 @@ const Template: Story<ButtonLightProps & { testMode: boolean }> = ({ testMode, .
 export const buttonLight = Template.bind({});
 
 buttonLight.args = {
-  label: 'Button',
+  label: 'Label text',
   disabled: false,
   loading: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

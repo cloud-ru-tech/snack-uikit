@@ -16,10 +16,9 @@
   .icon {
     display: inline-flex;
 
-    /* stylelint-disable declaration-no-important */
     svg {
-      width: $icon-size !important;
-      height: $icon-size !important;
+      width: $icon-size !important; /* stylelint-disable-line declaration-no-important */
+      height: $icon-size !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 }

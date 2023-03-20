@@ -67,7 +67,7 @@ const Template: Story<ButtonTonalProps & { testMode: boolean }> = ({ testMode, .
 export const buttonTonal = Template.bind({});
 
 buttonTonal.args = {
-  label: 'Button',
+  label: 'Label text',
   disabled: false,
   loading: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
