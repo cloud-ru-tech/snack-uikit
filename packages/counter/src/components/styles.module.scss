@@ -1,0 +1,56 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-counter';
+
+$appearances: primary, neutral, critical;
+$sizes: s, m;
+$variants: count, count-plus, count-k;
+$value-typography: (
+  s: $sans-label-s,
+  m: $sans-label-l
+);
+$plus-typography: (
+  s: $sans-label-l,
+  m: $sans-label-l
+);
+$key-typography: (
+  s: $sans-label-s,
+  m: $sans-label-l
+);
+
+.counter {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  border: 0 solid transparent;
+
+  @each $appearance in $appearances {
+    &[data-appearance='#{$appearance}'] {
+      color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
+      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-enabled');
+      border-color: var($sys-neutral-on-accent);
+    }
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      min-width: simple-var($theme-variables, 'size', 'counter', $size, 'minimal-width');
+
+      @include composite-var($value-typography, $size);
+
+      .plus {
+        @include composite-var($plus-typography, $size);
+      }
+
+      .key {
+        @include composite-var($key-typography, $size);
+      }
+
+      @each $variant in $variants {
+        &[data-variant='#{$variant}'] {
+          @include composite-var($counter, 'container', $size, $variant);
+        }
+      }
+    }
+  }
+}

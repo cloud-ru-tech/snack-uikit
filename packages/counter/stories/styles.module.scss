@@ -1,0 +1,47 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: 64px;
+  padding: 0 24px;
+  margin-bottom: 16px;
+  background-color: var($sys-neutral-container-enabled);
+  border: 1px solid var($sys-neutral-line-enabled);
+  border-radius: var($dimension-050m);
+}
+
+
+$cell-width: 110px;
+$border-width: 0.5px;
+
+.table {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  background-color: var($sys-neutral-container-enabled);
+  border: $border-width solid var($sys-neutral-line-enabled);
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $cell-width;
+  height: 50px;
+  border: $border-width solid var($sys-neutral-line-enabled);
+}
+
+.headerCell {
+  --width: 1;
+  width: calc(var(--width) * $cell-width + (var(--width) - 1) * 2 * $border-width);
+
+  text-transform: uppercase;
+}
