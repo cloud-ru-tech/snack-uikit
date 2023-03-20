@@ -135,12 +135,12 @@ export const componentEntry = ({
   const componentFilePath = path.join(
     `./${PackagesRootFolder}/${packageRootFolderName}/${Folders.srcComponents}/${componentName}.tsx`,
   );
-  const componentFileContent = `import classNames from './styles.module.scss';
+  const componentFileContent = `import styles from './styles.module.scss';
 
 export type ${componentName}Props = any;
 
 export function ${componentName}(props: ${componentName}Props) {
-  return <div className={classNames.${className}} />;
+  return <div className={styles.${className}} />;
 }
 `;
 
@@ -189,7 +189,7 @@ import componentPackage from '../package.json';
 import { ${componentName}, ${componentName}Props } from '../src';
 
 export default {
-  title: 'Not stable/${componentStoryTitle}',
+  title: 'Components/${componentStoryTitle}',
   component: ${componentName},
 } as Meta;
 

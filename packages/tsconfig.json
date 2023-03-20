@@ -8,6 +8,9 @@
       "path": "./icons"
     },
     {
+      "path": "./status"
+    },
+    {
       "path": "./loaders"
     },
     {

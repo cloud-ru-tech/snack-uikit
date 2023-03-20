@@ -1,0 +1,39 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-status';
+
+$appearances-system: primary, neutral;
+$appearances-index: red, orange, yellow, green, blue, violet, pink; /* stylelint-disable-line color-named */
+$sizes: xxs, xs, s, m, l;
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($status-indicator, 'container', $size);
+
+      .indicator {
+        @include composite-var($status-indicator, 'indicator', $size);
+      }
+    }
+  }
+}
+
+.indicator {
+  box-sizing: border-box;
+  border: 0 solid var($sys-neutral-on-accent);
+
+  @each $appearance in $appearances-system {
+    &[data-appearance='#{"" + $appearance}'] {
+      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-enabled');
+    }
+  }
+
+  @each $appearance in $appearances-index {
+    &[data-appearance='#{"" + $appearance}'] {
+      background-color: simple-var($theme-variables, 'index', $appearance, 'accent-enabled');
+    }
+  }
+}
+
