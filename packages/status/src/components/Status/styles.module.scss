@@ -1,0 +1,30 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-status';
+
+$sizes: xs, s;
+$label-typography: (
+  xs: $sans-label-s,
+  s: $sans-label-m
+);
+
+.container {
+  display: inline-flex;
+  align-items: center;
+
+  &[data-has-background] {
+    background-color: var($sys-neutral-background);
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($status, 'container', $size);
+
+      .label {
+        @include composite-var($label-typography, $size);
+      }
+    }
+  }
+}
+
+.label {
+  color: var($sys-neutral-text-support-enabled);
+}

@@ -41,3 +41,7 @@ $border-width: 0.5px;
 .statusHeaderCell {
   text-transform: uppercase;
 }
+
+.statusDoubleHeaderCell {
+  width: 2 * $cell-width + 2 * $border-width;
+}

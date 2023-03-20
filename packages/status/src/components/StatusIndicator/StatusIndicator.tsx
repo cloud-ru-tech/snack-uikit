@@ -1,18 +1,7 @@
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
+import { Appearance } from '../../constants';
 import styles from './styles.module.scss';
-
-enum Appearance {
-  Primary = 'primary',
-  Neutral = 'neutral',
-  Red = 'red',
-  Orange = 'orange',
-  Yellow = 'yellow',
-  Green = 'green',
-  Blue = 'blue',
-  Violet = 'violet',
-  Pink = 'pink',
-}
 
 enum Size {
   Xxs = 'xxs',
