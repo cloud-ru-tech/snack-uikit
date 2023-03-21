@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.3 (2023-03-21)
+
+
+### Bug Fixes
+
+* **[FF-1952](https://jira.sbercloud.tech/browse/FF-1952):** use icons package ([3db1a4b](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3db1a4b692fc9d84eb38cf57a53003efbf1a881a))
+
+
+
+
+
 ## 0.6.2 (2023-03-14)
 
 
