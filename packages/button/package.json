@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/button",
   "title": "Button",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "sideEffects": [
     "*.css",
     "*.woff",
