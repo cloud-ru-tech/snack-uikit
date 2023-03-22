@@ -1,5 +1,53 @@
 @import "@sbercloud/figma-tokens/build/scss/styles-theme-variables";
 
+@font-face {
+  font-family: 'SB Sans Interface';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./fonts/SBSansUI-Light.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SB Sans Interface';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/SBSansUI-Regular.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SB Sans Interface';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./fonts/SBSansUI-Semibold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SB Sans Interface';
+  font-style: normal;
+  font-weight: bold;
+  src: url('./fonts/SBSansUI-Bold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Mono';
+  font-style: normal;
+  font-weight: bold;
+  src: url('./fonts/SBSansTextMono-Bold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SB Sans Text Mono';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/SBSansTextMono-Regular.otf') format('opentype');
+  font-display: swap;
+}
+
 body {
   /* stylelint-disable */
   padding: 0 !important;
