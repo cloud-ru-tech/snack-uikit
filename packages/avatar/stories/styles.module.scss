@@ -1,0 +1,56 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: 160px;
+  padding: 0 24px;
+  background-color: var($sys-neutral-container-enabled);
+  border: 1px solid var($sys-neutral-line-enabled);
+  border-radius: var($dimension-050m);
+}
+
+$border-width: 0.5px;
+
+.tableHorizontalGroup {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.tableVerticalGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: max-content;
+  background-color: var($sys-neutral-container-enabled);
+  border: $border-width solid var($sys-neutral-line-enabled);
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: $border-width solid var($sys-neutral-line-enabled);
+}
+
+.headerCell {
+  min-width: 60px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,55 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-avatar';
+
+$appearances: red, orange, yellow, green, blue, violet, pink, gray; /* stylelint-disable-line color-named */
+$shapes: round, square;
+$sizes: xxs, xs, s, m, l, xl, xxl;
+$typography: (
+  xxs: $sans-label-s,
+  xs: $sans-label-s,
+  s: $sans-label-l,
+  m: $sans-title-l,
+  l: $sans-headline-m,
+  xl: $sans-display-s,
+  xxl: $sans-display-m
+);
+
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @each $appearance in $appearances {
+    &[data-appearance='#{"" + $appearance}'] {
+      color: simple-var($theme-variables, 'index', $appearance, 'text-main-enabled');
+      background-color: simple-var($theme-variables, 'index', $appearance, 'container-enabled');
+    }
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($typography, $size);
+
+      @each $shape in $shapes {
+        &[data-shape='#{$shape}'] {
+          @include composite-var($avatar, $shape, $size)
+        }
+      }
+    }
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+.indicatorWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: inline-flex;
+}
