@@ -1,0 +1,61 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-pagination';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.pageButton {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var($size-pagination-page-button-mininal-width);
+  padding: 0;
+  margin: 0;
+  color: var($sys-neutral-accent-enabled);
+  text-decoration: none;
+  text-transform: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0 solid transparent;
+  outline: 0;
+  outline-offset: 0;
+
+  @include composite-var($pagination-page-button-container);
+  @include composite-var($sans-label-l);
+
+  &:hover {
+    color: var($sys-neutral-accent-hovered);
+    background-color: var($sys-neutral-container-hovered);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-available-size-s);
+
+    color: var($sys-neutral-accent-hovered);
+    background-color: var($sys-neutral-container-hovered);
+    outline-offset: var($spacing-state-focus-offset);
+  }
+
+  &:active {
+    color: var($sys-neutral-text-light-enabled);
+    background-color: var($sys-neutral-container-hovered);
+  }
+
+  &[data-activated] {
+    color: var($sys-primary-on-accent);
+    background-color: var($sys-primary-accent-activated);
+
+    &:hover {
+      color: var($sys-primary-on-accent);
+      background-color: var($sys-primary-accent-hovered);
+    }
+
+    &:focus-visible {
+      color: var($sys-primary-on-accent);
+      background-color: var($sys-primary-accent-hovered);
+    }
+
+    &:active {
+      color: var($sys-primary-text-light-enabled);
+      background-color: var($sys-primary-accent-activated);
+    }
+  }
+}
