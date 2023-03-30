@@ -1,6 +1,7 @@
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 import cn from 'classnames';
 import { MouseEvent } from 'react';
+
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { HtmlType, IconPosition, Size, Target, Type } from '../../constants';
 import { CommonButtonProps } from '../../types';
@@ -49,6 +50,7 @@ export function ButtonPrivate({
     ...extractSupportProps(rest),
     className: cn(styles.button, className),
     'data-disabled': disabled || undefined,
+    'aria-disabled': disabled || undefined,
     'data-loading': loading || undefined,
     'data-size': size,
     'data-type': type,
@@ -59,7 +61,7 @@ export function ButtonPrivate({
 
   if (href) {
     return (
-      <a href={href} target={target} {...buttonProps}>
+      <a role='button' href={href} target={target} {...buttonProps}>
         {children}
       </a>
     );

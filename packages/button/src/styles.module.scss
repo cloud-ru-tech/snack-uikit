@@ -23,11 +23,11 @@
   }
 }
 
-@mixin button-anatomy-styles($button-theme, $sizes, $variants, $icon-size) {
+@mixin button-anatomy-styles($button-theme, $sizes, $variants, $typography, $icon-size) {
   @each $size in $sizes {
     &[data-size='#{"size-" + $size}'] {
       .label {
-        @include composite-var($theme-variables, 'sans', 'label', $size);
+        @include composite-var($typography, $size);
       }
 
       @each $variant in $variants {
