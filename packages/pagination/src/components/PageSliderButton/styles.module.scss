@@ -1,0 +1,87 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-pagination';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.pageButtonSlider {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0 solid transparent;
+  outline: 0;
+  outline-offset: 0;
+
+  @include composite-var($pagination-page-button-slider-container);
+
+  .pageButtonSliderDot {
+    background-color: var($sys-neutral-text-light-enabled);
+
+    @include composite-var($pagination-page-button-slider-dot-page-default);
+  }
+
+  &:hover {
+    .pageButtonSliderDot {
+      background-color: var($sys-neutral-text-light-hovered);
+
+      @include composite-var($pagination-page-button-slider-dot-page-interactions);
+    }
+  }
+
+  &:focus-visible {
+    .pageButtonSliderDot {
+      @include outline-var($container-focused-available-size-s);
+
+      background-color: var($sys-neutral-text-light-hovered);
+      outline-offset: var($spacing-state-focus-offset);
+
+      @include composite-var($pagination-page-button-slider-dot-page-default);
+    }
+  }
+
+  &:active {
+    .pageButtonSliderDot {
+      background-color: var($sys-neutral-text-light-activated);
+
+      @include composite-var($pagination-page-button-slider-dot-page-interactions);
+    }
+  }
+
+
+  &[data-activated] {
+    .pageButtonSliderDot {
+      background-color: var($sys-primary-accent-activated);
+
+      @include composite-var($pagination-page-button-slider-dot-page-interactions);
+    }
+
+    &:hover {
+      .pageButtonSliderDot {
+        background-color: var($sys-primary-accent-hovered);
+
+        @include composite-var($pagination-page-button-slider-dot-page-interactions);
+      }
+    }
+
+    &:focus-visible {
+      .pageButtonSliderDot {
+        background-color: var($sys-primary-accent-hovered);
+
+        @include composite-var($pagination-page-button-slider-dot-page-interactions);
+      }
+    }
+
+    &:active {
+      .pageButtonSliderDot {
+        background-color: var($sys-primary-accent-enabled);
+
+        @include composite-var($pagination-page-button-slider-dot-page-default);
+      }
+    }
+  }
+}
+
+
