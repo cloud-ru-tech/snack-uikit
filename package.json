@@ -58,6 +58,7 @@
     "babel-plugin-istanbul": "6.1.1",
     "colors": "1.4.0",
     "cross-env": "7.0.3",
+    "cross-var": "1.1.0",
     "depcheck": "1.4.3",
     "eslint-plugin-testcafe-community": "2.0.0",
     "fast-xml-parser": "4.1.3",
