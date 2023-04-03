@@ -55,8 +55,11 @@ body {
 
 .wrapper {
   @include composite-var($sans-body-s);
-  min-height: calc(100vh - 32px);
+  box-sizing: border-box;
+  width: max-content;
+  min-height: 100vh;
+  min-width: 100%;
   padding: 16px;
   background-color: var($sys-neutral-background);
-  color: var($sys-neutral-text-main-enabled)
+  color: var($sys-neutral-text-main-enabled);
 }
