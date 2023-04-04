@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import cn from 'classnames';
+import { Fragment } from 'react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -27,29 +28,28 @@ const Template: Story<CounterProps> = ({ ...args }) => {
       </div>
 
       <div className={styles.table}>
-        <div className={styles.row}>
-          <div className={headerCellClassnames} />
-          {sizes.map(size => (
-            <div key={size} className={headerCellClassnames} style={{ '--width': 3 }}>
-              {size}
-            </div>
-          ))}
-        </div>
-        <div className={styles.row}>
-          <div className={headerCellClassnames} />
-          {variants.map(variant => (
-            <div key={variant} className={headerCellClassnames}>
-              {variant}
-            </div>
-          ))}
-          {variants.map(variant => (
-            <div key={variant} className={headerCellClassnames}>
-              {variant}
-            </div>
-          ))}
-        </div>
+        <div className={headerCellClassnames} style={{ gridRow: '1 / 3' }} />
+        {sizes.map((size, index) => (
+          <div
+            key={size}
+            className={headerCellClassnames}
+            style={{ gridColumnStart: index * 3 + 2, gridColumnEnd: index * 3 + 5 }}
+          >
+            {size}
+          </div>
+        ))}
+        {variants.map(variant => (
+          <div key={variant} className={headerCellClassnames}>
+            {variant}
+          </div>
+        ))}
+        {variants.map(variant => (
+          <div key={variant} className={headerCellClassnames}>
+            {variant}
+          </div>
+        ))}
         {appearances.map(appearance => (
-          <div key={appearance} className={styles.row}>
+          <Fragment key={appearance}>
             <div className={headerCellClassnames}>{appearance}</div>
             {variants.map(variant => (
               <div key={variant} className={styles.cell}>
@@ -71,7 +71,7 @@ const Template: Story<CounterProps> = ({ ...args }) => {
                 />
               </div>
             ))}
-          </div>
+          </Fragment>
         ))}
       </div>
     </>

@@ -14,34 +14,23 @@
   border-radius: var($dimension-050m);
 }
 
-$cell-width: 110px;
 $border-width: 0.5px;
 
-.statusTable {
-  display: flex;
-  flex-direction: column;
-  width: max-content;
+.table {
+  display: inline-grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
   background-color: var($sys-neutral-container-enabled);
   border: $border-width solid var($sys-neutral-line-enabled);
 }
 
-.statusRow {
-  display: flex;
-}
-
-.statusCell {
+.cell {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $cell-width;
-  height: 50px;
+  padding: 8px;
   border: $border-width solid var($sys-neutral-line-enabled);
 }
 
-.statusHeaderCell {
+.headerCell {
   text-transform: uppercase;
-}
-
-.statusDoubleHeaderCell {
-  width: 2 * $cell-width + 2 * $border-width;
 }

@@ -35,9 +35,8 @@ $border-width: 0.5px;
 }
 
 .table {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: max-content;
+  display: inline-grid;
+  grid-template-columns: repeat(2, max-content);
   background-color: var($sys-neutral-container-enabled);
   border: $border-width solid var($sys-neutral-line-enabled);
 }

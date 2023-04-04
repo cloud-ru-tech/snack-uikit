@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import cn from 'classnames';
+import { Fragment } from 'react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -15,7 +16,7 @@ export default {
 const Template: Story<StatusIndicatorProps> = ({ ...args }) => {
   const sizes = Object.values(StatusIndicator.sizes);
   const appearances = Object.values(StatusIndicator.appearances);
-  const headerCellClassnames = cn(styles.statusCell, styles.statusHeaderCell);
+  const headerCellClassnames = cn(styles.cell, styles.headerCell);
 
   return (
     <>
@@ -24,24 +25,22 @@ const Template: Story<StatusIndicatorProps> = ({ ...args }) => {
         <StatusIndicator {...args} />
       </div>
 
-      <div className={styles.statusTable}>
-        <div className={styles.statusRow}>
-          <div className={headerCellClassnames} />
-          {sizes.map(size => (
-            <div key={size} className={headerCellClassnames}>
-              {size}
-            </div>
-          ))}
-        </div>
+      <div className={styles.table} style={{ '--columns': 6 }}>
+        <div className={headerCellClassnames} />
+        {sizes.map(size => (
+          <div key={size} className={headerCellClassnames}>
+            {size}
+          </div>
+        ))}
         {appearances.map(appearance => (
-          <div key={appearance} className={styles.statusRow}>
+          <Fragment key={appearance}>
             <div className={headerCellClassnames}>{appearance}</div>
             {sizes.map(size => (
-              <div key={size} className={styles.statusCell}>
+              <div key={size} className={styles.cell}>
                 <StatusIndicator size={size} appearance={appearance} />
               </div>
             ))}
-          </div>
+          </Fragment>
         ))}
       </div>
     </>

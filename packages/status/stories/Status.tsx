@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import cn from 'classnames';
+import { Fragment } from 'react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -15,8 +16,7 @@ export default {
 const Template: Story<StatusProps> = ({ ...args }) => {
   const sizes = Object.values(Status.sizes);
   const appearances = Object.values(Status.appearances);
-  const headerCellClassnames = cn(styles.statusCell, styles.statusHeaderCell);
-  const doubleHeaderCellClassnames = cn(styles.statusCell, styles.statusHeaderCell, styles.statusDoubleHeaderCell);
+  const headerCellClassnames = cn(styles.cell, styles.headerCell);
 
   return (
     <>
@@ -25,39 +25,38 @@ const Template: Story<StatusProps> = ({ ...args }) => {
         <Status {...args} />
       </div>
 
-      <div className={styles.statusTable}>
-        <div className={styles.statusRow}>
-          <div className={headerCellClassnames} />
-          <div className={doubleHeaderCellClassnames}>No background</div>
-          <div className={doubleHeaderCellClassnames}>Background</div>
+      <div className={styles.table} style={{ '--columns': 5 }}>
+        <div className={headerCellClassnames} style={{ gridRow: '1 / 3' }} />
+        <div className={headerCellClassnames} style={{ gridColumn: '2 / 4' }}>
+          No background
         </div>
-        <div className={styles.statusRow}>
-          <div className={headerCellClassnames} />
-          {sizes.map(size => (
-            <div key={size} className={headerCellClassnames}>
-              {size}
-            </div>
-          ))}
-          {sizes.map(size => (
-            <div key={size} className={headerCellClassnames}>
-              {size}
-            </div>
-          ))}
+        <div className={headerCellClassnames} style={{ gridColumn: '4 / 6' }}>
+          Background
         </div>
+        {sizes.map(size => (
+          <div key={size} className={headerCellClassnames}>
+            {size}
+          </div>
+        ))}
+        {sizes.map(size => (
+          <div key={size} className={headerCellClassnames}>
+            {size}
+          </div>
+        ))}
         {appearances.map(appearance => (
-          <div key={appearance} className={styles.statusRow}>
+          <Fragment key={appearance}>
             <div className={headerCellClassnames}>{appearance}</div>
             {sizes.map(size => (
-              <div key={size} className={styles.statusCell}>
+              <div key={size} className={styles.cell}>
                 <Status size={size} appearance={appearance} hasBackground={false} label='Label text' />
               </div>
             ))}
             {sizes.map(size => (
-              <div key={size} className={styles.statusCell}>
+              <div key={size} className={styles.cell}>
                 <Status size={size} appearance={appearance} hasBackground={true} label='Label text' />
               </div>
             ))}
-          </div>
+          </Fragment>
         ))}
       </div>
     </>
