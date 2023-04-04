@@ -11,6 +11,9 @@
       "path": "./icons"
     },
     {
+      "path": "./link"
+    },
+    {
       "path": "./counter"
     },
     {

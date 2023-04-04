@@ -1,0 +1,35 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-link';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: s, m, l;
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  color: var($sys-primary-accent-enabled);
+  text-decoration: none;
+  cursor: pointer;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($link, 'container', $size);
+      @include composite-var($theme-variables, 'sans', 'body', $size);
+    }
+  }
+
+  &:hover {
+    color: var($sys-primary-accent-hovered);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-primary-size-s);
+
+    color: var($sys-primary-accent-hovered);
+  }
+
+  &[data-disabled] {
+    color: var($sys-neutral-accent-disabled);
+    cursor: not-allowed;
+  }
+}
+
