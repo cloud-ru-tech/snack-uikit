@@ -7,7 +7,7 @@
     "*.woff",
     "*.woff2"
   ],
-  "description": "",
+  "description": "Компонент для отображения количесвта уведомлений (доступен в 3 вариантах: 9, 9+, 9K)",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/counter",

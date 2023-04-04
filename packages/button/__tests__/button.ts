@@ -1,5 +1,6 @@
-import { WithSupportProps } from '@snack-ui/utils';
 import { fixture, Selector, test } from 'testcafe';
+
+import { WithSupportProps } from '@snack-ui/utils';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { IconPosition } from '../src/constants';
@@ -14,29 +15,29 @@ type ButtonTestSpec = {
 
 const buttons: ButtonTestSpec[] = [
   {
-    name: 'buttonfilled',
+    name: 'button-filled',
     story: 'button-filled',
     testId: 'button-filled',
   },
   {
-    name: 'buttonoutline',
+    name: 'button-outline',
     story: 'button-outline',
     testId: 'button-outline',
   },
 
   {
-    name: 'buttontonal',
+    name: 'button-tonal',
     story: 'button-tonal',
     testId: 'button-tonal',
   },
   {
-    name: 'buttonsupport',
+    name: 'button-support',
     story: 'button-support',
     testId: 'button-support',
     iconBefore: true,
   },
   {
-    name: 'buttonlight',
+    name: 'button-light',
     story: 'button-light',
     testId: 'button-light',
     iconBefore: true,

@@ -1,4 +1,5 @@
 import { addDecorator, addParameters } from '@storybook/react';
+import { themes } from '@storybook/theming';
 import cn from 'classnames';
 import { withDesign } from 'storybook-addon-designs';
 
@@ -32,8 +33,7 @@ addParameters({
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
-      method: 'alphabetical',
-      order: ['Theme Config', 'Components'],
+      order: ['Welcome', 'Documentation', 'Components'],
     },
   },
 });
@@ -48,6 +48,22 @@ addParameters({
       },
       title: BADGE.PRIVATE,
     },
+  },
+});
+
+const brandInfo = {
+  brandTitle: 'Snack UI',
+  brandUrl: 'https://sbercloud.ru',
+  brandImage: './storybook/assets/CloudFullLogo.svg',
+  brandTarget: '_blank',
+};
+
+addParameters({
+  darkMode: {
+    // Override the default dark theme
+    dark: { ...themes.dark, ...brandInfo },
+    // Override the default light theme
+    light: { ...themes.normal, ...brandInfo },
   },
 });
 

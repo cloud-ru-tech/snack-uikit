@@ -1,6 +1,6 @@
 import { useGlobals } from '@storybook/api';
 import { IconButton, Icons } from '@storybook/components';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Brand } from '../../../constants';
 import { useCustomBrandContext } from '../../contexts';
@@ -41,6 +41,14 @@ export function BrandSelector({ defaultOpen = false }: ToolbarItemProps) {
   const handleAddBrand = () => setAddPanelOpen(false);
 
   useCustomStyles(brand);
+
+  useEffect(() => {
+    const element = document.getElementById('storybook-preview-wrapper');
+
+    if (element) {
+      element.style.background = 'var(--sys-neutral-background)';
+    }
+  }, []);
 
   return (
     <Tooltip

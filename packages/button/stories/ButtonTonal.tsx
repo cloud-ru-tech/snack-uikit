@@ -1,6 +1,7 @@
-import { PlaceholderSVG } from '@snack-ui/icons';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { useState } from 'react';
+
+import { PlaceholderSVG } from '@snack-ui/icons';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -10,7 +11,7 @@ import { ICONS } from './constants';
 import { TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 export default {
-  title: 'Components/Button/ButtonTonal',
+  title: 'Components/Button/Button Tonal',
   component: ButtonTonal,
 } as Meta;
 

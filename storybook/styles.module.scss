@@ -48,18 +48,8 @@
   font-display: swap;
 }
 
-body {
-  /* stylelint-disable */
-  padding: 0 !important;
-}
-
 .wrapper {
   @include composite-var($sans-body-s);
   box-sizing: border-box;
-  width: max-content;
-  min-height: 100vh;
-  min-width: 100%;
-  padding: 16px;
-  background-color: var($sys-neutral-background);
   color: var($sys-neutral-text-main-enabled);
 }

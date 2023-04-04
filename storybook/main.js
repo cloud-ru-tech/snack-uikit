@@ -2,15 +2,20 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const { globSync } = require('glob');
 const path = require('path');
 
-const STORIES = globSync(`packages/${process.env.STORYBOOK_PACKAGE_NAME || '*'}/stories/**/*.{ts,tsx}`).map(x =>
-  path.resolve(__dirname, `../${x}`),
-);
+const STORIES = globSync(`packages/${process.env.STORYBOOK_PACKAGE_NAME || '*'}/stories/**/*.{ts,tsx}`)
+  .map(x => path.resolve(__dirname, `../${x}`))
+  .sort((a, b) => a.localeCompare(b));
 
+const WELCOME = path.resolve(__dirname, './stories/Welcome.tsx');
+const GETTING_STARTED = path.resolve(__dirname, './stories/GettingStarted.tsx');
+const CONTRIBUTION_GUIDE = path.resolve(__dirname, './stories/ContributionGuide.tsx');
+const TOKENS = path.resolve(__dirname, './stories/Tokens.tsx');
+const ICONS = path.resolve(__dirname, './stories/Icons.tsx');
 const isTestServer = Boolean(process.env.TEST_SERVER);
 const optimizationLevel = isTestServer ? 1 : 3;
 
 module.exports = {
-  stories: STORIES,
+  stories: [WELCOME, GETTING_STARTED, CONTRIBUTION_GUIDE, ICONS, TOKENS, ...STORIES],
   addons: [
     {
       name: '@storybook/preset-scss',
@@ -52,7 +57,9 @@ module.exports = {
     },
     './brandAddon/preset.js',
     'storybook-dark-mode',
+    '@storybook/addon-links',
   ],
+  staticDirs: [{ from: '../storybook/assets', to: '/storybook/assets' }],
   core: {
     builder: 'webpack5',
   },

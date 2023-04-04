@@ -1,0 +1,31 @@
+.codeWrapper {
+  position: relative;
+  cursor: pointer;
+
+  .copyButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    gap: 8px;
+    padding: 4px 8px;
+    background: var(--sys-neutral-container-enabled);
+
+    svg {
+      /* stylelint-disable-next-line declaration-no-important */
+      width: 16px !important;
+    }
+  }
+
+  &:hover {
+    opacity: 0.8;
+
+    .copyButton {
+      display: inline-flex;
+    }
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}

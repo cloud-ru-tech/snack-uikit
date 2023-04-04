@@ -1,13 +1,14 @@
-import { ButtonFilled } from '@snack-ui/button';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { useDarkMode } from 'storybook-dark-mode';
+
+import { ButtonFilled } from '@snack-ui/button';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 
 export default {
-  title: 'Theme Config',
+  title: 'Components/Theme Config',
 } as Meta;
 
 import cn from 'classnames';

@@ -7,7 +7,7 @@
     "*.woff",
     "*.woff2"
   ],
-  "description": "",
+  "description": "Индикация загрузки: полоса загрузки, спиннер и загрузчик- \"солнышко\"",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/loaders",

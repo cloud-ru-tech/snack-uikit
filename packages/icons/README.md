@@ -10,11 +10,11 @@
     * создайте папку **new-collection** внутри svgs
     * добавьте скрипт в package.json:
    ```json
-   scripts: {
-     ...
-     "build:new-collection": "npm run fix:icons --directory=new-collection && npm run build:icons --directory=new-collection",
-     "compile": "... && npm run build:new-collection"
-   }
+   "build:new-collection": "npm run fix:icons --directory=new-collection && npm run build:icons --directory=new-collection",
+   ```
+   * обновите скрипт **compile** в package.json:   
+   ```json
+   "compile": "... && npm run build:new-collection"
    ```
 3. Чтобы новая иконка появилась локально, запустите скрипт `build:packages` в корневом `package.json`
 

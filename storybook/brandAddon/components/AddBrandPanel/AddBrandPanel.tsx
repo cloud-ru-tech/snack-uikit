@@ -1,5 +1,5 @@
-import { ButtonFilled } from '@snack-ui/button';
-import React, { useState } from 'react';
+import { Button } from '@storybook/components';
+import React, { MouseEventHandler, useState } from 'react';
 
 import { useCustomBrandContext } from '../../contexts';
 import classNames from './styles.module.css';
@@ -15,7 +15,9 @@ export function AddBrandPanel({ onAdd }: AddPanelProps) {
   const [brandColor, setBrandColor] = useState<string>();
   const { addBrand } = useCustomBrandContext();
 
-  const handleAddBrand = () => {
+  const handleAddBrand: MouseEventHandler<HTMLButtonElement> = e => {
+    e.preventDefault();
+
     if (brandKey && file && brandName && brandColor) {
       const reader = new FileReader();
       reader.addEventListener('load', event => {
@@ -45,11 +47,9 @@ export function AddBrandPanel({ onAdd }: AddPanelProps) {
         <div>
           <input type='file' accept='.css' onChange={e => setFile(e.target.files?.[0])} />
         </div>
-        <ButtonFilled
-          onClick={handleAddBrand}
-          label='Добавить бренд'
-          disabled={!brandColor || !brandName || !brandKey || !file}
-        />
+        <Button primary small onClick={handleAddBrand} disabled={!brandColor || !brandName || !brandKey || !file}>
+          Добавить бренд
+        </Button>
       </form>
     </div>
   );

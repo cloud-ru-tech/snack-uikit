@@ -1,5 +1,5 @@
-import { ButtonFilled } from '@snack-ui/button';
-import { useState } from 'react';
+import { Button } from '@storybook/components';
+import { MouseEventHandler, useState } from 'react';
 
 import { CustomBrandConfig } from '../../../customBrands';
 import { useCustomBrandContext } from '../../contexts';
@@ -28,7 +28,9 @@ export function EditBrandPanel({ brand, onUpdate }: EditBrandPanelProps) {
     onUpdate?.();
   };
 
-  const handleUpdateBrand = () => {
+  const handleUpdateBrand: MouseEventHandler<HTMLButtonElement> = e => {
+    e.preventDefault();
+
     if (!brand?.key) return;
 
     if (!file) {
@@ -57,7 +59,9 @@ export function EditBrandPanel({ brand, onUpdate }: EditBrandPanelProps) {
           <input id='file' type='file' accept='.css' onChange={e => setFile(e.target.files?.[0])} />
         </div>
         <div className={classNames.buttonWrapper}>
-          <ButtonFilled onClick={handleUpdateBrand} label={'Сохранить'} />
+          <Button primary small onClick={handleUpdateBrand}>
+            Сохранить
+          </Button>
         </div>
       </form>
     </div>

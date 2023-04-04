@@ -1,0 +1,18 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.imagesWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  img {
+    height: var(--image-height);
+  }
+}
