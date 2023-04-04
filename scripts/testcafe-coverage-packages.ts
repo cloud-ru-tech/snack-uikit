@@ -1,10 +1,9 @@
 import { getPatterns } from './test-coverage/packages';
 import { report } from './test-coverage/report';
-
-const { RUN_ALL_TESTS } = process.env;
+import { shouldRunAllTests } from './utils/shouldRunAllTests';
 
 report({
   name: 'packages',
-  include: getPatterns(RUN_ALL_TESTS === 'true'),
+  include: getPatterns(shouldRunAllTests()),
   reporter: ['lcov', 'text-summary', 'cobertura'],
 });

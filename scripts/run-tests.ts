@@ -1,14 +1,22 @@
+import path from 'path';
+
 import { exec, exit } from 'shelljs';
 
 import { getChangedPackages } from './utils/getChangedPackages';
+import { shouldRunAllTests } from './utils/shouldRunAllTests';
 
-const { BROWSER, RUN_ALL_TESTS } = process.env;
+const { BROWSER } = process.env;
 
-const changedPaths =
-  RUN_ALL_TESTS === 'true'
-    ? ''
-    : getChangedPackages()
-        .map(item => `${item}/__tests__/*.ts`)
-        .join(' ');
+let changedPaths = '';
+
+if (!shouldRunAllTests()) {
+  const paths = getChangedPackages();
+
+  if (paths.length > 0) {
+    paths.push(path.join(__dirname, '../testcafe'));
+  }
+
+  changedPaths = paths.map(item => `${item}/__tests__/*.ts`).join(' ');
+}
 
 exec(`testcafe ${BROWSER ? `${BROWSER}:headless` : 'chrome'} --config-file testcafe.config.js ${changedPaths}`, exit);
