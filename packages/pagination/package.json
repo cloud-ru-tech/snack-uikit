@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/pagination",
   "title": "Pagination",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -28,11 +28,9 @@
   "license": "UNLICENSED",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/button": "0.6.4",
-    "@snack-ui/icons": "0.1.0"
-
+    "@snack-ui/button": "0.6.5",
+    "@snack-ui/icons": "0.2.0"
   },
-  "devDependencies": {},
   "peerDependencies": {
     "@snack-ui/utils": "^0.2.0"
   }

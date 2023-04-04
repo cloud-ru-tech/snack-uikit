@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.2 (2023-04-04)
+
+
+### Bug Fixes
+
+* **[FF-2080](https://jira.sbercloud.tech/browse/FF-2080):** handle unexpected progress values (< 0% and > 100%) ([2abf53a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/2abf53a9929de5c122de51020ec9968f1c07695f))
+
+
+
+
+
 ## 0.1.1 (2023-03-14)
 
 **Note:** Version bump only for package @snack-ui/loaders

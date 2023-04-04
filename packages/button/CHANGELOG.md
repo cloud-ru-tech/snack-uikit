@@ -3,9 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.5 (2023-04-04)
+
+
+### Bug Fixes
+
+* **[FF-2080](https://jira.sbercloud.tech/browse/FF-2080):** update typography and focused state, set up some support props ([8d6c915](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/8d6c915a26b7761babe4f04c9dfa3bcdb5fea23b))
+
+
+
+
+
 ## 0.6.4 (2023-03-22)
 
-**Note:** Version bump only for package @snack-ui/button
+### Only dependencies have been changed
+* [@snack-ui/loaders@0.1.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
 
 
 

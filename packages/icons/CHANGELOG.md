@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-04-04)
+
+
+### Features
+
+* **[FF-2080](https://jira.sbercloud.tech/browse/FF-2080):** add chevron icons ([2b0e8b3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/2b0e8b3ad2e41ac7137a390fe469eb1d1274ad63))
+
+
+
+
+
 # 0.1.0 (2023-03-21)
 
 
