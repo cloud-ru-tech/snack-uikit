@@ -1,5 +1,6 @@
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 import cn from 'classnames';
+
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { HtmlType, Size, Target, Type } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
@@ -34,3 +35,5 @@ export function ButtonFilled({
 
 ButtonFilled.sizes = Size;
 ButtonFilled.types = Type;
+ButtonFilled.htmlTypes = HtmlType;
+ButtonFilled.targets = Target;

@@ -1,6 +1,6 @@
-import { MouseEventHandler, ReactElement } from 'react';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEventHandler, ReactElement } from 'react';
 
-import { HtmlType, IconPosition, Size, Target, Type } from './constants';
+import { IconPosition, Size, Type } from './constants';
 
 export type BaseButtonProps = {
   className?: string;
@@ -12,12 +12,12 @@ export type BaseButtonProps = {
   onClick?: MouseEventHandler<HTMLElement>;
   size?: Size;
   type?: Type;
-  htmlType?: HtmlType;
+  htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
 };
 
 export type AnchorButtonProps = {
   href?: string;
-  target?: Target;
+  target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
 };
 
 export type CommonButtonProps = AnchorButtonProps & BaseButtonProps;

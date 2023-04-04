@@ -14,6 +14,31 @@
 - R&D rename Size (SizeS -> Small, ...)
 - R&D type prop
 
+## Example
+
+```typescript jsx
+import {ButtonFilled, ButtonSupport} from "@snack-ui/button";
+import {DaySVG} from "@snack-ui/icons";
+
+<ButtonFilled
+  label='Navigate'
+  onClick={() => navigate()}
+  icon={<DaySVG />}
+  size={ButtonFilled.sizes.SizeM}
+  type={ButtonFilled.types.Critical}
+  href='https://sbercloud.ru/'
+  target='_blank'
+  disabled={true}
+  loading={true}
+/>
+
+<ButtonSupport
+  label='Submit'
+  onClick={() => sendForm()}
+  iconPosition={ButtonSupport.iconPositions.Before}
+/>
+```
+
 ## Props
 
 ```typescript jsx
@@ -49,7 +74,7 @@ type BaseButtonProps = {
 
 type AnchorButtonProps = {
   href?: string;
-  target?: '_self' | '_target' | '_parent' | '_top';
+  target?: '_self' | '_blank' | '_parent' | '_top';
 };
 
 type CommonButtonProps = AnchorButtonProps & BaseButtonProps;

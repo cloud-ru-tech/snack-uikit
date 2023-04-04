@@ -1,10 +1,12 @@
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 import cn from 'classnames';
+
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { HtmlType, Size, Target, Type } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
 import { CommonButtonProps } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
+import { ButtonFilled } from '../ButtonFilled';
 import styles from './styles.module.scss';
 
 export type ButtonOutlineProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition'>>;
@@ -34,3 +36,5 @@ export function ButtonOutline({
 
 ButtonOutline.sizes = Size;
 ButtonOutline.types = Type;
+ButtonFilled.htmlTypes = HtmlType;
+ButtonFilled.targets = Target;

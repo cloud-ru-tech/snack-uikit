@@ -38,6 +38,7 @@ export function ButtonPrivate({
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     if (disabled || loading) {
+      event.preventDefault();
       return;
     }
 

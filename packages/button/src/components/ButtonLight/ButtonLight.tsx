@@ -1,10 +1,12 @@
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 import cn from 'classnames';
+
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { HtmlType, IconPosition, Size, Target, Type } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
 import { CommonButtonProps } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
+import { ButtonFilled } from '../ButtonFilled';
 import styles from './styles.module.scss';
 
 export type ButtonLightProps = WithSupportProps<CommonButtonProps>;
@@ -37,3 +39,5 @@ export function ButtonLight({
 ButtonLight.iconPositions = IconPosition;
 ButtonLight.sizes = Size;
 ButtonLight.types = Type;
+ButtonFilled.htmlTypes = HtmlType;
+ButtonFilled.targets = Target;
