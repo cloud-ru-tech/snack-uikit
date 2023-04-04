@@ -13,9 +13,15 @@ export type ProgressBarProps = WithSupportProps<{
 }>;
 
 export function ProgressBar({ progress, size, ...rest }: ProgressBarProps) {
+  const roundedProgress = Math.max(Math.min(progress, 100), 0);
+
   return (
     <div className={classNames.progressBarContainer} {...extractSupportProps(rest)} data-size={size}>
-      <div className={classNames.progressBarFiller} style={{ '--progress': `${progress}%` }} />
+      <div
+        className={classNames.progressBarFiller}
+        data-test-id='progress-bar-filler'
+        style={{ '--progress': `${roundedProgress}%` }}
+      />
     </div>
   );
 }

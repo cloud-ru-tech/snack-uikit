@@ -1,4 +1,5 @@
 import { IStringifyOptions, stringify } from 'qs';
+import { Selector } from 'testcafe';
 
 const HEX_REGEXP = /^#([a-f0-9]{3,4}|[a-f0-9]{6}|[a-f0-9]{8})$/i;
 const COLOR_REGEXP = /^(rgba?|hsla?)\(([0-9]{1,3}),\s?([0-9]{1,3})%?,\s?([0-9]{1,3})%?,?\s?([0-9](\.[0-9]{1,2})?)?\)$/i;
@@ -30,14 +31,22 @@ const QS_OPTIONS: IStringifyOptions = {
   serializeDate: (date: Date) => `!date(${date.toISOString()})`,
 };
 
-const buildArgsParam = (args: Record<string, any>): string =>
+const buildArgsParam = (args: Record<string, unknown>): string =>
   stringify(encodeSpecialValues(args), QS_OPTIONS)
     .replace(/ /g, '+')
     .split(';')
     .map((part: string) => part.replace('=', ':'))
     .join(';');
 
-export function getTestcafeUrl({ name, group, props, story = name, category = 'components' }: any) {
+type GetTestcafeUrlProps = {
+  name: string;
+  props: Record<string, unknown>;
+  group?: string;
+  story?: string;
+  category?: string;
+};
+
+export function getTestcafeUrl({ name, group, props, story = name, category = 'components' }: GetTestcafeUrlProps) {
   let propsString = '';
 
   if (props) {
@@ -51,4 +60,15 @@ export function getTestcafeUrl({ name, group, props, story = name, category = 'c
 
 export function dataTestIdSelector(value: string) {
   return `*[data-test-id="${value}"]`;
+}
+
+export async function getStyleProperty(selector: Selector): Promise<Record<string, string>> {
+  const style = await selector.getAttribute('style');
+
+  if (!style) {
+    return {};
+  }
+  const entries = style.split(/\s*;\s*/).map(item => item.split(/\s*:\s*/));
+
+  return Object.fromEntries(entries);
 }
