@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-04-05)
+
+
+### Features
+
+* **[FF-2031](https://jira.sbercloud.tech/browse/FF-2031):** add arrow links icons ([f4e0dcb](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f4e0dcb5e296a579442c6c2c50f048bfcc2ac8e0))
+
+
+
+
+
 # 0.2.0 (2023-04-04)
 
 

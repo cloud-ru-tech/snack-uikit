@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.6 (2023-04-05)
+
+
+### Bug Fixes
+
+* **[FF-2031](https://jira.sbercloud.tech/browse/FF-2031):** stop navigation for disabled buttons with link, extend htmlType and target prop types ([9e5c4c7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9e5c4c75edd82e9473514450c7dccc9e1df15c24))
+
+
+
+
+
 ## 0.6.5 (2023-04-04)
 
 
