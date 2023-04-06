@@ -5,18 +5,30 @@ import { BADGE } from '../../../storybook/constants';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { DropZone, DropZoneProps } from '../src';
+import { DropZone, HiddenDropZone, HiddenDropZoneProps } from '../src';
+import classNames from './styles.module.scss';
 
 export default {
-  title: 'Components/Drop Zone/Drop Zone',
-  component: DropZone,
+  title: 'Components/Drop Zone/Hidden Drop Zone',
+  component: HiddenDropZone,
 } as Meta;
 
-const Template: Story<DropZoneProps> = ({ ...args }) => {
+const Template: Story<HiddenDropZoneProps> = ({ ...args }) => {
   const [files, setFiles] = useState<File[]>([]);
+
   return (
-    <>
-      <DropZone {...args} onFilesUpload={setFiles} />
+    <div>
+      <HiddenDropZone {...args} onFilesUpload={setFiles}>
+        <div id='form' className={classNames.card}>
+          <form className={classNames.form}>
+            <label htmlFor='firstName'>Имя</label>
+            <input id='firstName' />
+            <label htmlFor='lastName'>Фамилия</label>
+            <input id='lastName' />
+          </form>
+        </div>
+      </HiddenDropZone>
+
       {files.map(file => (
         <div key={file.name}>
           <p>
@@ -31,24 +43,23 @@ const Template: Story<DropZoneProps> = ({ ...args }) => {
           <br />
         </div>
       ))}
-    </>
+    </div>
   );
 };
+export const hiddenDropZone = Template.bind({});
 
-export const dropZone = Template.bind({});
-
-dropZone.args = {
+hiddenDropZone.args = {
   title: 'Title',
   description: 'Description',
   disabled: false,
   mode: DropZone.uploadModes.Multiple,
 };
 
-dropZone.argTypes = {
+hiddenDropZone.argTypes = {
   description: { type: 'string' },
 };
 
-dropZone.parameters = {
+hiddenDropZone.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
   },

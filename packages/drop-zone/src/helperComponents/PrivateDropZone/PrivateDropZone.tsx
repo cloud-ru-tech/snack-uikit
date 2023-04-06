@@ -1,64 +1,31 @@
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 import cn from 'classnames';
-import { ChangeEvent, DragEvent, ReactNode, useRef, useState } from 'react';
+import { ChangeEvent, DragEvent, useRef } from 'react';
+
+import { extractSupportProps } from '@snack-ui/utils';
 
 import classNames from './styles.module.scss';
+import { PrivateDropZoneProps, UploadMode } from './types';
 
-enum UploadMode {
-  Single = 'Single',
-  Multiple = 'Multiple',
-}
-
-export type DropZoneProps = WithSupportProps<{
-  className?: string;
-  onFilesUpload(files: File[]): void;
-  title?: string;
-  description?: ReactNode;
-  disabled?: boolean;
-  mode?: UploadMode;
-  accept?: string;
-}>;
-
-export function DropZone({
-  className,
-  onFilesUpload,
-  title,
-  description,
+export function PrivateDropZone({
   disabled = false,
+  className,
+  isOver,
+  onDragLeave,
+  onDragOver,
+  onDrop,
   mode = UploadMode.Multiple,
+  description,
+  title,
+  onFilesUpload,
   accept,
   ...rest
-}: DropZoneProps): JSX.Element {
-  const [isOver, setIsOver] = useState(false);
-
+}: PrivateDropZoneProps) {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const handleAttachFile = () => {
     if (disabled) return;
     hiddenFileInput.current?.click();
   };
-
-  const handleDragLeave = () => {
-    if (disabled) return;
-    setIsOver(false);
-  };
-
-  const handleDrop = (e: DragEvent<HTMLButtonElement>) => {
-    if (disabled) return;
-    e.preventDefault();
-
-    const filesArray = Array.from(e.dataTransfer.files);
-    onFilesUpload(mode === UploadMode.Single ? [filesArray[0]] : filesArray);
-    handleDragLeave();
-  };
-
-  const handleDragOver = (e: DragEvent<HTMLButtonElement>) => {
-    if (disabled) return;
-    e.preventDefault();
-
-    setIsOver(true);
-  };
-
   const handleFileSelect = ({ target: { files } }: ChangeEvent<HTMLInputElement>) => {
     if (!files) return;
 
@@ -66,17 +33,26 @@ export function DropZone({
     onFilesUpload(filesArray);
   };
 
+  const handleDrop = (e: DragEvent<HTMLButtonElement>) => {
+    if (disabled) return;
+    e.preventDefault();
+
+    const filesArray = Array.from(e.dataTransfer.files);
+    onDrop?.(e);
+    onFilesUpload(mode === UploadMode.Single ? [filesArray[0]] : filesArray);
+  };
+
   return (
     <button
       className={cn(className, classNames.container)}
       type={'button'}
-      onDragLeave={handleDragLeave}
-      onDragOver={handleDragOver}
-      onDrop={handleDrop}
       data-over={isOver || undefined}
       data-disabled={disabled || undefined}
       onClick={handleAttachFile}
       tabIndex={0}
+      onDrop={handleDrop}
+      onDragLeave={onDragLeave}
+      onDragOver={onDragOver}
       {...extractSupportProps(rest)}
     >
       <h4 data-test-id='title' className={classNames.title}>
@@ -103,5 +79,3 @@ export function DropZone({
     </button>
   );
 }
-
-DropZone.uploadModes = UploadMode;

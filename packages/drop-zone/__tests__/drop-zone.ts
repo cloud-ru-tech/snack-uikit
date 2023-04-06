@@ -1,5 +1,6 @@
-import { DropZoneProps } from '@snack-ui/drop-zone';
 import { fixture, Selector, test } from 'testcafe';
+
+import { DropZoneProps } from '@snack-ui/drop-zone';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
@@ -8,6 +9,8 @@ const TEST_ID = 'drop-zone';
 const getPage = (props: Partial<DropZoneProps> = {}) =>
   getTestcafeUrl({
     name: 'drop-zone',
+    group: 'drop-zone',
+    story: 'drop-zone',
     props: {
       'data-test-id': TEST_ID,
       ...props,

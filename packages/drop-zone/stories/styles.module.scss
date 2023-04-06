@@ -1,0 +1,18 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.card {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 220px;
+  background-color: var($sys-neutral-container-enabled);
+  border: 1px solid var($sys-neutral-line-enabled);
+  border-radius: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

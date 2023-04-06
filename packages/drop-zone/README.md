@@ -8,7 +8,6 @@
 
 - `accept` правильно работает после клика, но не работает для drop
 - drop в `disabled` режиме приводит к открытию файла в отдельной вкладке (дефолтное поведение браузера)
-- Hidden drop zone
 - Increase coverage
 - Reconsider markup (button should contain no elements inside)
 
@@ -29,4 +28,6 @@ type DropZoneProps = WithSupportProps<{
   mode?: UploadMode; // Default Multiple
   accept?: string;
 }>;
+
+type HiddenDropZoneProps = DropZoneProps & { children: ReactNode; };
 ```
