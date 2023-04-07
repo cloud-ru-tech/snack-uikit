@@ -12,7 +12,7 @@
     },
     "target": "es6",
     "lib": ["es2017", "dom", "dom.iterable", "esnext"],
-    "types": ["node"],
+    "types": ["node", "jest"],
     "jsx": "react-jsx",
     "strict": true,
     "isolatedModules": true,
