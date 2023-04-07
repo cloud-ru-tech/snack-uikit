@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/avatar",
   "title": "Avatar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -28,7 +28,7 @@
   "license": "UNLICENSED",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/status": "0.1.0"
+    "@snack-ui/status": "0.1.1"
   },
   "peerDependencies": {
     "@snack-ui/utils": "^0.2.0"
