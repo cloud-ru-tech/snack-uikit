@@ -13,7 +13,7 @@ export type ButtonOutlineProps = WithSupportProps<Omit<CommonButtonProps, 'iconP
 
 export function ButtonOutline({
   className,
-  size = Size.SizeS,
+  size = Size.S,
   target = Target.Blank,
   type = Type.Primary,
   htmlType = HtmlType.Button,

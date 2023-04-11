@@ -55,7 +55,7 @@ $typography: (
 
 @mixin button-common-state {
   &:focus-visible {
-    @include outline-var($container-focused-available-size-s);
+    @include outline-var($container-focused-primary-size-s);
     outline-offset: var($spacing-state-focus-offset);
   }
 }

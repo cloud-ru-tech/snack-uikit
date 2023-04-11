@@ -7,8 +7,8 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonFilled, ButtonFilledProps } from '../src';
-import { ICONS } from './constants';
-import { TableCell, TableColumn, TableWrapper } from './helperComponents';
+import { BUTTON_ARGS, ICONS } from './constants';
+import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 export default {
   title: 'Components/Button/Button Filled',
@@ -28,32 +28,29 @@ const Template: Story<ButtonFilledProps & { testMode: boolean }> = ({ testMode, 
 
   return (
     <>
-      <TableWrapper>
-        <TableColumn>
-          <TableCell>Controlled</TableCell>
-          <TableCell>
-            <ButtonFilled {...args} onClick={inc} />
-          </TableCell>
-        </TableColumn>
+      <ControlledWrapper>
+        <ButtonFilled {...args} onClick={inc} />
+      </ControlledWrapper>
 
+      <TableWrapper>
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={args.icon ?? <PlaceholderSVG />} label={undefined} />
+            <ButtonFilled {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label Only</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={undefined} label='Label Only' />
+            <ButtonFilled {...BUTTON_ARGS} icon={undefined} label='Label Only' />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Icon After</TableCell>
           <TableCell>
-            <ButtonFilled {...args} icon={args.icon ?? <PlaceholderSVG />} label='IconAfter' />
+            <ButtonFilled {...BUTTON_ARGS} icon={<PlaceholderSVG />} label='IconAfter' />
           </TableCell>
         </TableColumn>
       </TableWrapper>
@@ -76,7 +73,7 @@ buttonFilled.args = {
   // @ts-ignore
   icon: 'none',
   type: ButtonFilled.types.Primary,
-  size: ButtonFilled.sizes.SizeS,
+  size: ButtonFilled.sizes.S,
   testMode: false,
 };
 

@@ -1,16 +1,23 @@
 import { fixture, Selector, test } from 'testcafe';
 
+import { CounterProps } from '@snack-ui/counter';
 import { WithSupportProps } from '@snack-ui/utils';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { IconPosition } from '../src/constants';
-import { CommonButtonProps } from '../src/types';
+import { CommonButtonProps, CounterButtonProps } from '../src/types';
 
 type ButtonTestSpec = {
   name: string;
   story: string;
   testId: string;
   iconBefore?: boolean;
+};
+type StoryCounterProps = {
+  counterValue: CounterProps['value'];
+  counterAppearance?: CounterProps['appearance'];
+  counterVariant?: CounterProps['variant'];
+  counterPlusLimit?: CounterProps['plusLimit'];
 };
 
 const buttons: ButtonTestSpec[] = [
@@ -24,7 +31,6 @@ const buttons: ButtonTestSpec[] = [
     story: 'button-outline',
     testId: 'button-outline',
   },
-
   {
     name: 'button-tonal',
     story: 'button-tonal',
@@ -43,9 +49,13 @@ const buttons: ButtonTestSpec[] = [
     iconBefore: true,
   },
 ];
+const buttonsWithCounter: ButtonTestSpec['name'][] = ['button-support', 'button-light'];
+const counterTestStoryProps: StoryCounterProps = { counterValue: 7 };
 
 buttons.forEach(({ name, story, testId, iconBefore }) => {
-  const getPage = (props?: Partial<WithSupportProps<Omit<CommonButtonProps, 'icon'>> & { icon?: string }>) =>
+  const getPage = (
+    props?: Partial<WithSupportProps<Omit<CommonButtonProps, 'icon'>> & CounterButtonProps & { icon?: string }>,
+  ) =>
     getTestcafeUrl({
       name,
       story,
@@ -59,13 +69,20 @@ buttons.forEach(({ name, story, testId, iconBefore }) => {
 
   fixture(story);
 
-  test.page(getPage({ label: testId, icon: 'PlaceholderSVG' }))('Should render', async t => {
+  test.page(getPage({ label: testId, icon: 'PlaceholderSVG', ...counterTestStoryProps }))('Should render', async t => {
     const button = Selector(dataTestIdSelector(testId));
     await t.expect(button.exists).ok();
     const label = button.find(dataTestIdSelector('label'));
     await t.expect(label.exists).ok();
     const icon = button.find(dataTestIdSelector('icon'));
     await t.expect(icon.exists).ok();
+    const counter = button.find(dataTestIdSelector('counter'));
+
+    if (buttonsWithCounter.includes(name)) {
+      await t.expect(counter.exists).ok();
+    } else {
+      await t.expect(counter.exists).notOk();
+    }
   });
 
   test.page(getPage({ disabled: true }))('Should have data-disabled attribute', async t => {

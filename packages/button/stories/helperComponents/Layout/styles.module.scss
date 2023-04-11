@@ -30,3 +30,17 @@
   justify-content: center;
   justify-items: center;
 }
+
+.controlledWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: 64px;
+  padding: 0 24px;
+  margin-bottom: 16px;
+  background-color: var($sys-neutral-container-enabled);
+  border: 1px solid var($sys-neutral-line-enabled);
+  border-radius: var($dimension-050m);
+}

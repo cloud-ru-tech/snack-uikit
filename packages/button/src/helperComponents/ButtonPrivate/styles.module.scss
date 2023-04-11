@@ -1,3 +1,5 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
 .button {
   position: relative;
   box-sizing: border-box;
@@ -29,4 +31,18 @@
       cursor: not-allowed;
     }
   }
+}
+
+.iconWithCounter {
+  position: relative;
+}
+
+.counterForLabel {
+  margin-left: var($label-badge);
+}
+
+.counterForIcon {
+  position: absolute;
+  top: -8px;
+  left: calc(100% - 8px);
 }

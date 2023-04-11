@@ -7,8 +7,8 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonTonal, ButtonTonalProps } from '../src';
-import { ICONS } from './constants';
-import { TableCell, TableColumn, TableWrapper } from './helperComponents';
+import { BUTTON_ARGS, ICONS } from './constants';
+import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 export default {
   title: 'Components/Button/Button Tonal',
@@ -27,32 +27,29 @@ const Template: Story<ButtonTonalProps & { testMode: boolean }> = ({ testMode, .
 
   return (
     <>
-      <TableWrapper>
-        <TableColumn>
-          <TableCell>Controlled</TableCell>
-          <TableCell>
-            <ButtonTonal {...args} onClick={inc} />
-          </TableCell>
-        </TableColumn>
+      <ControlledWrapper>
+        <ButtonTonal {...args} onClick={inc} />
+      </ControlledWrapper>
 
+      <TableWrapper>
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonTonal {...args} icon={args.icon ?? <PlaceholderSVG />} label={undefined} />
+            <ButtonTonal {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label Only</TableCell>
           <TableCell>
-            <ButtonTonal {...args} icon={undefined} label='Label Only' />
+            <ButtonTonal {...BUTTON_ARGS} icon={undefined} label='Label Only' />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Icon After</TableCell>
           <TableCell>
-            <ButtonTonal {...args} icon={args.icon ?? <PlaceholderSVG />} label='IconAfter' />
+            <ButtonTonal {...BUTTON_ARGS} icon={<PlaceholderSVG />} label='IconAfter' />
           </TableCell>
         </TableColumn>
       </TableWrapper>
@@ -75,7 +72,7 @@ buttonTonal.args = {
   // @ts-ignore
   icon: 'none',
   type: ButtonTonal.types.Primary,
-  size: ButtonTonal.sizes.SizeS,
+  size: ButtonTonal.sizes.S,
   testMode: false,
 };
 

@@ -12,7 +12,7 @@ export type ButtonFilledProps = WithSupportProps<Omit<CommonButtonProps, 'iconPo
 
 export function ButtonFilled({
   className,
-  size = Size.SizeS,
+  size = Size.S,
   target = Target.Blank,
   type = Type.Primary,
   htmlType = HtmlType.Button,

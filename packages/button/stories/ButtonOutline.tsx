@@ -7,8 +7,8 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonOutline, ButtonOutlineProps } from '../src';
-import { ICONS } from './constants';
-import { TableCell, TableColumn, TableWrapper } from './helperComponents';
+import { BUTTON_ARGS, ICONS } from './constants';
+import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 export default {
   title: 'Components/Button/Button Outline',
@@ -28,32 +28,29 @@ const Template: Story<ButtonOutlineProps & { testMode: boolean }> = ({ testMode,
 
   return (
     <>
-      <TableWrapper>
-        <TableColumn>
-          <TableCell>Controlled</TableCell>
-          <TableCell>
-            <ButtonOutline {...args} onClick={inc} />
-          </TableCell>
-        </TableColumn>
+      <ControlledWrapper>
+        <ButtonOutline {...args} onClick={inc} />
+      </ControlledWrapper>
 
+      <TableWrapper>
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonOutline {...args} icon={args.icon ?? <PlaceholderSVG />} label={undefined} />
+            <ButtonOutline {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label Only</TableCell>
           <TableCell>
-            <ButtonOutline {...args} icon={undefined} label='Label Only' />
+            <ButtonOutline {...BUTTON_ARGS} icon={undefined} label='Label Only' />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Icon After</TableCell>
           <TableCell>
-            <ButtonOutline {...args} icon={args.icon ?? <PlaceholderSVG />} label='IconAfter' />
+            <ButtonOutline {...BUTTON_ARGS} icon={<PlaceholderSVG />} label='IconAfter' />
           </TableCell>
         </TableColumn>
       </TableWrapper>
@@ -76,7 +73,7 @@ buttonOutline.args = {
   // @ts-ignore
   icon: 'none',
   type: ButtonOutline.types.Primary,
-  size: ButtonOutline.sizes.SizeS,
+  size: ButtonOutline.sizes.S,
   testMode: false,
 };
 

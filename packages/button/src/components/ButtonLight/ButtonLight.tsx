@@ -4,17 +4,17 @@ import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { HtmlType, IconPosition, Size, Target, Type } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
-import { CommonButtonProps } from '../../types';
-import { extractCommonButtonProps } from '../../utils';
+import { CommonButtonProps, CounterButtonProps } from '../../types';
+import { extractCommonButtonProps, extractCounterButtonProps } from '../../utils';
 import { ButtonFilled } from '../ButtonFilled';
 import styles from './styles.module.scss';
 
-export type ButtonLightProps = WithSupportProps<CommonButtonProps>;
+export type ButtonLightProps = WithSupportProps<CommonButtonProps> & CounterButtonProps;
 
 export function ButtonLight({
   className,
   iconPosition = IconPosition.After,
-  size = Size.SizeS,
+  size = Size.S,
   target = Target.Blank,
   type = Type.Neutral,
   htmlType = HtmlType.Button,
@@ -23,6 +23,7 @@ export function ButtonLight({
   return (
     <ButtonPrivate
       {...extractSupportProps(rest)}
+      {...extractCounterButtonProps(rest)}
       {...extractCommonButtonProps(rest)}
       className={cn(styles.button, className)}
       iconClassName={styles.icon}

@@ -18,9 +18,9 @@ export enum Target {
 }
 
 export enum Size {
-  SizeS = 'size-s',
-  SizeM = 'size-m',
-  SizeL = 'size-l',
+  S = 's',
+  M = 'm',
+  L = 'l',
 }
 
 export enum IconPosition {

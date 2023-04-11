@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { PlaceholderSVG } from '@snack-ui/icons';
 
@@ -7,16 +7,18 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonSupport, ButtonSupportProps } from '../src';
-import { ICONS } from './constants';
-import { TableCell, TableColumn, TableWrapper } from './helperComponents';
+import { CounterInButtonProps } from '../src/types';
+import { BUTTON_ARGS, COUNTER_ARGS, ICONS, STORY_WITH_COUNTER_ARG_TYPES, StoryCounterProps } from './constants';
+import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 export default {
   title: 'Components/Button/Button Support',
   component: ButtonSupport,
 } as Meta;
 
-const Template: Story<ButtonSupportProps & { testMode: boolean }> = ({ testMode, ...args }) => {
+const Template: Story<ButtonSupportProps & StoryCounterProps & { testMode: boolean }> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
+  const [counterProps, setCounterProps] = useState<CounterInButtonProps | undefined>(undefined);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const inc = (e: any) => {
@@ -24,29 +26,45 @@ const Template: Story<ButtonSupportProps & { testMode: boolean }> = ({ testMode,
     setCount(v => v + 1);
   };
 
+  useEffect(() => {
+    setCounterProps(
+      args.counter
+        ? {
+            value: args.counterValue,
+            appearance: args.counterAppearance,
+            variant: args.counterVariant,
+            plusLimit: args.counterPlusLimit,
+          }
+        : undefined,
+    );
+  }, [args.counter, args.counterAppearance, args.counterPlusLimit, args.counterValue, args.counterVariant]);
+
   const opacity = testMode ? 1 : 0;
 
   return (
     <>
-      <TableWrapper>
-        <TableColumn>
-          <TableCell>Controlled</TableCell>
-          <TableCell>
-            <ButtonSupport {...args} onClick={inc} />
-          </TableCell>
-        </TableColumn>
+      <ControlledWrapper>
+        <ButtonSupport {...args} counter={counterProps} onClick={inc} />
+      </ControlledWrapper>
 
+      <TableWrapper>
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonSupport {...args} icon={args.icon ?? <PlaceholderSVG />} label={undefined} />
+            <ButtonSupport {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
+          </TableCell>
+          <TableCell>
+            <ButtonSupport {...BUTTON_ARGS} icon={<PlaceholderSVG />} counter={COUNTER_ARGS} label={undefined} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label Only</TableCell>
           <TableCell>
-            <ButtonSupport {...args} icon={undefined} label='Label Only' />
+            <ButtonSupport {...BUTTON_ARGS} icon={undefined} label='Label Text' />
+          </TableCell>
+          <TableCell>
+            <ButtonSupport {...BUTTON_ARGS} icon={undefined} counter={COUNTER_ARGS} label='Label Text' />
           </TableCell>
         </TableColumn>
 
@@ -54,10 +72,19 @@ const Template: Story<ButtonSupportProps & { testMode: boolean }> = ({ testMode,
           <TableCell>Icon Before</TableCell>
           <TableCell>
             <ButtonSupport
-              {...args}
-              icon={args.icon ?? <PlaceholderSVG />}
+              {...BUTTON_ARGS}
+              icon={<PlaceholderSVG />}
               iconPosition={ButtonSupport.iconPositions.Before}
-              label='IconBefore'
+              label='Label Text'
+            />
+          </TableCell>
+          <TableCell>
+            <ButtonSupport
+              {...BUTTON_ARGS}
+              icon={<PlaceholderSVG />}
+              iconPosition={ButtonSupport.iconPositions.Before}
+              counter={COUNTER_ARGS}
+              label='Label Text'
             />
           </TableCell>
         </TableColumn>
@@ -66,10 +93,19 @@ const Template: Story<ButtonSupportProps & { testMode: boolean }> = ({ testMode,
           <TableCell>Icon After</TableCell>
           <TableCell>
             <ButtonSupport
-              {...args}
-              icon={args.icon ?? <PlaceholderSVG />}
+              {...BUTTON_ARGS}
+              icon={<PlaceholderSVG />}
               iconPosition={ButtonSupport.iconPositions.After}
-              label='IconAfter'
+              label='Label Text'
+            />
+          </TableCell>
+          <TableCell>
+            <ButtonSupport
+              {...BUTTON_ARGS}
+              icon={<PlaceholderSVG />}
+              iconPosition={ButtonSupport.iconPositions.After}
+              counter={COUNTER_ARGS}
+              label='Label Text'
             />
           </TableCell>
         </TableColumn>
@@ -94,7 +130,7 @@ buttonSupport.args = {
   icon: 'none',
   iconPosition: ButtonSupport.iconPositions.After,
   type: ButtonSupport.types.Neutral,
-  size: ButtonSupport.sizes.SizeS,
+  size: ButtonSupport.sizes.S,
   testMode: false,
 };
 
@@ -118,6 +154,13 @@ buttonSupport.argTypes = {
       type: 'select',
     },
   },
+  type: {
+    control: {
+      type: 'radio',
+      options: ['neutral', 'primary', 'critical'],
+    },
+  },
+  ...STORY_WITH_COUNTER_ARG_TYPES,
 };
 buttonSupport.parameters = {
   readme: {

@@ -13,7 +13,7 @@ export type ButtonTonalProps = WithSupportProps<Omit<CommonButtonProps, 'iconPos
 
 export function ButtonTonal({
   className,
-  size = Size.SizeS,
+  size = Size.S,
   target = Target.Blank,
   type = Type.Primary,
   htmlType = HtmlType.Button,
