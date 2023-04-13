@@ -1,0 +1,42 @@
+{
+  "name": "@snack-ui/popover-private",
+  "title": "Popover Private",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/popover-private",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/popover-private"
+  },
+  "author": "Сергей Хлупин <svhlupin@sbercloud.ru>",
+  "contributors": [
+    "Сергей Хлупин <svhlupin@sbercloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {},
+  "dependencies": {
+    "@floating-ui/react": "0.23.0",
+    "classnames": "2.3.2",
+    "react-is": "18.2.0",
+    "uncontrollable": "8.0.0"
+  },
+  "peerDependencies": {
+    "@snack-ui/utils": "0.2.2"
+  },
+  "devDependencies": {
+    "@types/react-is": "17.0.3"
+  }
+}

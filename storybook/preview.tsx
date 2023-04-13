@@ -22,7 +22,7 @@ addDecorator((Story, { globals }) => {
       {getCustomBrands().map(config => (
         <style key={config.key}>{config.content}</style>
       ))}
-      <div className={cn(brandClassName, classNames.wrapper)}>
+      <div id='app' className={cn(brandClassName, classNames.wrapper)}>
         <Story />
       </div>
     </>

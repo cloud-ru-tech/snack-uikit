@@ -245,7 +245,7 @@ export type ButtonFilledProps = {
 export const ButtonFilled = ({ label, size, variant, disabled, loading }: ButtonFilledProps) => {
   return (
     <button
-      className={classNames.button}
+      className={styles.button}
       data-size={size}
       data-variant={variant}
       data-disabled={disabled || undefined}

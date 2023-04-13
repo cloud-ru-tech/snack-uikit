@@ -1,0 +1,25 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-popoverPrivate';
+
+$sizes: s, m, l;
+
+@mixin popover-arrow-sizes {
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      padding-top: simple-var($theme-variables, 'radius', 'popover-private', $size);
+      padding-bottom: simple-var($theme-variables, 'radius', 'popover-private', $size);
+    }
+  }
+}
+
+.arrowContainer {
+  position: absolute;
+  padding-left: simple-var($theme-variables, 'space', 'popover-pointer', 'offset');
+
+  @include popover-arrow-sizes;
+}
+
+.arrowElement {
+  fill: currentColor;
+
+  @include composite-var($popover-pointer-arrow);
+}
