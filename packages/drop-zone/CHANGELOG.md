@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-04-13)
+
+
+### Features
+
+* **[LK-1657](https://jira.sbercloud.tech/browse/LK-1657):** add hidden drop zone ([99a7750](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/99a7750bafcc7a2b47bd31ae6f33a80f5a49e21e))
+
+
+
+
+
 ## 0.1.2 (2023-04-07)
 
 **Note:** Version bump only for package @snack-ui/drop-zone
