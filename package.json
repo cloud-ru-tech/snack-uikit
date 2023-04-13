@@ -35,9 +35,9 @@
   "devDependencies": {
     "@floating-ui/react-dom-interactions": "0.13.3",
     "@geometricpanda/storybook-addon-badges": "1.1.1",
-    "@sbercloud/figma-tokens": "0.10.2",
-    "@sbercloud/figma-tokens-cloud-platform": "0.10.2",
-    "@sbercloud/figma-tokens-mlspace": "0.10.2",
+    "@sbercloud/figma-tokens": "0.10.3",
+    "@sbercloud/figma-tokens-cloud-platform": "0.10.3",
+    "@sbercloud/figma-tokens-mlspace": "0.10.3",
     "@sbercloud/ft-all-linters-pack": "2.2.5",
     "@sbercloud/ft-config-jest": "1.2.0",
     "@sbercloud/ft-conventional-changelog": "1.2.3",
