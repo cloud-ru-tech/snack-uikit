@@ -5,6 +5,25 @@
 
 [Changelog](./CHANGELOG.md)
 
+## Example
+
+```typescript jsx
+import {Avatar} from "@snack-ui/avatar";
+
+<Avatar 
+  name="Name Surname"
+  src="path-to-avatar/image.jpg"
+  size={Avatar.sizes.Xl}
+/>
+
+<Avatar 
+  name="Name Surname"
+  appearance={Avatar.appearances.Pink}
+  indicator={Avatar.indicators.Violet}
+  shape={Avatar.shapes.Square}
+  showTwoSymbols={true}
+/>
+```
 
 ## Props
 

@@ -5,6 +5,24 @@
 
 [Changelog](./CHANGELOG.md)
 
+## Example
+
+```typescript jsx
+import {Status, StatusIndicator} from "@snack-ui/status";
+
+<Status 
+  label="Text after status"
+  appearance={Status.appearances.Pink}
+  size={Status.sizes.Xs}
+  hasBackground={true}
+/>
+
+<StatusIndicator
+  appearance={Status.appearances.Violet}
+  size={Status.sizes.L}
+/>
+```
+
 ## Props
 
 ### Status

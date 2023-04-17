@@ -5,6 +5,32 @@
 
 [Changelog](./CHANGELOG.md)
 
+## Example
+
+```typescript jsx
+import {ProgressBar, ProgressBarPage, Spinner, Sun} from "@snack-ui/loaders";
+
+<ProgressBar
+  progress={20}
+  size={ProgressBar.sizes.SizeXS}
+/>
+
+<ProgressBarPage
+  inProgress={true}
+  animationDuration={100}
+  incrementDuration={500}
+  minimum={0.2}
+/>
+
+<Spinner
+  size={Spinner.sizes.SizeXS}
+/>
+
+<Sun
+  size={Sun.sizes.SizeL}
+/>
+```
+
 ## Props
 
 ### ProgressBar
