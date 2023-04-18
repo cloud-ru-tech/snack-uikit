@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2023-04-18)
+
+
+### Features
+
+* **[FF-2050](https://jira.sbercloud.tech/browse/FF-2050):** added counter to Button component, Button.sizes renamed, fixed color on focus ([0fe3987](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0fe39873da4b560eb0767ceda2e7dc64037f962e))
+
+
+
+
+
 ## 0.6.7 (2023-04-07)
 
 ### Only dependencies have been changed
