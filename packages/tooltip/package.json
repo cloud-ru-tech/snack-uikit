@@ -1,0 +1,36 @@
+{
+  "name": "@snack-ui/tooltip",
+  "title": "Tooltip",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/tooltip",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/tooltip"
+  },
+  "author": "Сергей Хлупин <svhlupin@sbercloud.ru>",
+  "contributors": [
+    "Сергей Хлупин <svhlupin@sbercloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {},
+  "dependencies": {
+    "@snack-ui/popover-private": "0.1.0"
+  },
+  "peerDependencies": {
+    "@snack-ui/utils": "0.2.2"
+  }
+}

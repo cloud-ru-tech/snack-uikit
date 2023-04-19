@@ -1,6 +1,6 @@
 import { addDecorator, addParameters } from '@storybook/react';
 import { themes } from '@storybook/theming';
-import cn from 'classnames';
+import { useLayoutEffect } from 'react';
 import { withDesign } from 'storybook-addon-designs';
 
 import { BADGE, Brand } from './constants';
@@ -17,14 +17,17 @@ addDecorator((Story, { globals }) => {
 
   const brandClassName = useStorybookBrand({ brand });
 
+  useLayoutEffect(() => {
+    document.body.classList.add(brandClassName, classNames.wrapper);
+    return () => document.body.classList.remove(brandClassName);
+  }, [brandClassName]);
+
   return (
     <>
       {getCustomBrands().map(config => (
         <style key={config.key}>{config.content}</style>
       ))}
-      <div id='app' className={cn(brandClassName, classNames.wrapper)}>
-        <Story />
-      </div>
+      <Story />
     </>
   );
 });
