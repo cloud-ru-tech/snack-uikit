@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -13,7 +13,7 @@ export default {
   component: Typography,
 } as Meta;
 
-const Template: Story<TypographyProps> = ({ ...args }) => {
+const Template: StoryFn<TypographyProps> = ({ ...args }) => {
   const families = Object.values(Typography.families);
   const sizes = Object.values(Typography.sizes);
   const roles = Object.values(Typography.roles);

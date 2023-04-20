@@ -1,5 +1,5 @@
-import { useGlobals } from '@storybook/api';
-import { createContext, ReactNode, useCallback, useContext, useState } from 'react';
+import { useGlobals } from '@storybook/manager-api';
+import React, { createContext, ReactNode, useCallback, useContext, useState } from 'react';
 
 import { Brand } from '../../constants';
 import { addBrand, BrandInfo, CustomBrandConfig, deleteBrand, getCustomBrands, updateBrand } from '../../customBrands';

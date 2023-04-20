@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { ButtonFilled } from '@snack-ui/button';
 import { Link } from '@snack-ui/link';
@@ -15,7 +15,7 @@ export default {
   component: Tooltip,
 } as Meta;
 
-const Template: Story<TooltipProps> = ({ ...args }) => (
+const Template: StoryFn<TooltipProps> = ({ ...args }) => (
   <>
     <div className={styles.story}>
       <Tooltip

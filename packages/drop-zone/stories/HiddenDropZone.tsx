@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { BADGE } from '../../../storybook/constants';
@@ -13,7 +13,7 @@ export default {
   component: HiddenDropZone,
 } as Meta;
 
-const Template: Story<HiddenDropZoneProps> = ({ ...args }) => {
+const Template: StoryFn<HiddenDropZoneProps> = ({ ...args }) => {
   const [files, setFiles] = useState<File[]>([]);
 
   return (

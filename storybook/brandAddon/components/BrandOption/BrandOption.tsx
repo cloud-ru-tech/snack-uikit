@@ -5,7 +5,6 @@ import React, { MouseEvent, MouseEventHandler, useState } from 'react';
 import { useCustomBrandContext } from '../../contexts';
 import { EditBrandPanel } from '../EditBrandPanel';
 import { Tooltip } from '../Tooltip';
-import classNames from './styles.module.css';
 
 export type BrandOptionProps = {
   value: string;
@@ -35,16 +34,22 @@ export function BrandOption({ value, title, color, selected, onSelect }: BrandOp
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
-      className={cn(classNames.option, customBrand ? classNames.optionSmall : '')}
+      className={cn('brand-select-option', customBrand ? 'brand-select-optionSmall' : '')}
       onClick={handleSelectOption}
       data-selected={selected || undefined}
     >
       {title}
       {customBrand ? (
-        <div className={classNames.iconWrapper}>
-          {renderCircle(classNames.circleCustomBrand)}
+        <div className={'brand-select-iconWrapper'}>
+          {renderCircle('brand-select-circleCustomBrand')}
 
-          <IconButton onClick={handleDeleteBrand}>
+          <IconButton
+            onClick={handleDeleteBrand}
+            content={undefined}
+            autoFocus={undefined}
+            rel={undefined}
+            rev={undefined}
+          >
             <Icons icon='trash' />
           </IconButton>
 
@@ -56,13 +61,19 @@ export function BrandOption({ value, title, color, selected, onSelect }: BrandOp
             onReferenceClick={stopPropagation}
             onFloatingClick={stopPropagation}
           >
-            <IconButton active={editPanelOpen}>
+            <IconButton
+              active={editPanelOpen}
+              content={undefined}
+              autoFocus={undefined}
+              rel={undefined}
+              rev={undefined}
+            >
               <Icons icon='edit' />
             </IconButton>
           </Tooltip>
         </div>
       ) : (
-        renderCircle(classNames.circleDefaultBrand)
+        renderCircle('brand-select-circleDefaultBrand')
       )}
     </div>
   );

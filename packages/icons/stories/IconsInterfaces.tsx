@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -14,7 +14,7 @@ export default {
   title: 'Components/Icons/Interfaces',
 } as Meta;
 
-const Template: Story<StoryProps> = ({ size }) => (
+const Template: StoryFn<StoryProps> = ({ size }) => (
   <div className={classnames.wrapper}>
     {Object.keys(Icons).map(name => {
       const Icon = Icons[name];

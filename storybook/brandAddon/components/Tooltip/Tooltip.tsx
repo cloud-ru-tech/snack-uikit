@@ -7,9 +7,7 @@ import {
   useFloating,
   useInteractions,
 } from '@floating-ui/react-dom-interactions';
-import { MouseEvent, ReactNode } from 'react';
-
-import classNames from './styles.module.css';
+import React, { MouseEvent, ReactNode } from 'react';
 
 type TooltipProps = {
   open: boolean;
@@ -47,7 +45,7 @@ export function Tooltip({
       {open && (
         <FloatingPortal root={document.body}>
           <div
-            className={classNames.panel}
+            className={'addon-tooltip'}
             {...getFloatingProps({ onClick: onFloatingClick })}
             ref={floating}
             style={{ position: strategy, left: x ?? 0, top: y ?? 0 }}

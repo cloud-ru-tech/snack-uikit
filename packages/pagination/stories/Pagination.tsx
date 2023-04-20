@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
 import componentChangelog from '../CHANGELOG.md';
@@ -12,7 +12,7 @@ export default {
   component: Pagination,
 } as Meta;
 
-const Template: Story<PaginationProps> = ({ ...args }) => {
+const Template: StoryFn<PaginationProps> = ({ ...args }) => {
   const [page, setPage] = useState(args.page);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -14,7 +14,7 @@ export default {
   component: Counter,
 } as Meta;
 
-const Template: Story<CounterProps> = ({ ...args }) => {
+const Template: StoryFn<CounterProps> = ({ ...args }) => {
   const sizes = Object.values(Counter.sizes);
   const appearances = Object.values(Counter.appearances);
   const variants = Object.values(Counter.variants);

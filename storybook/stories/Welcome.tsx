@@ -1,5 +1,5 @@
-import { navigate } from '@storybook/addon-links';
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { linkTo } from '@storybook/addon-links';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Link } from '@snack-ui/link';
 
@@ -11,9 +11,9 @@ export default {
   title: 'Welcome',
 } as Meta;
 
-const Template: Story = () => (
+const Template: StoryFn = () => (
   <div className={styles.page}>
-    <Card header='Snack Uikit' onClick={() => navigate({ kind: 'Documentation', story: 'Getting Started' })}>
+    <Card header='Snack Uikit' onClick={linkTo('Documentation/Getting Started')}>
       <span>
         Библиотека компонентов
         <br />
@@ -50,14 +50,11 @@ const Template: Story = () => (
       </div>
     </Card>
 
-    <Card
-      header='Contribution Guide'
-      onClick={() => navigate({ kind: 'Documentation', story: 'Contribution Guide' })}
-    />
+    <Card header='Contribution Guide' onClick={linkTo('Documentation/Contribution Guide')} />
 
-    <Card header='Работа с иконками' onClick={() => navigate({ kind: 'Documentation', story: 'Working With Icons' })} />
+    <Card header='Работа с иконками' onClick={linkTo('Documentation/Working With Icons')} />
 
-    <Card header='Компоненты' onClick={() => navigate({ kind: 'Components', story: 'Avatar' })} />
+    <Card header='Компоненты' onClick={linkTo('Components/Avatar')} />
 
     <Card
       header='Figma'

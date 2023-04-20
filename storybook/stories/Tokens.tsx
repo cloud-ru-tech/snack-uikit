@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 
 import TokensChangelog from '@sbercloud/figma-tokens/CHANGELOG.md';
 import TokensReadme from '@sbercloud/figma-tokens/README.md';
@@ -10,7 +10,7 @@ export default {
   title: 'Documentation/Tokens',
 } as Meta;
 
-const Template: Story = ({ md }) => <Markdown md={md} />;
+const Template: StoryFn = ({ md }) => <Markdown md={md} />;
 
 export const howToUse = Template.bind({});
 howToUse.args = {

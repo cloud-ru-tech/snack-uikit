@@ -1,6 +1,0 @@
-.panel {
-  background: var(--sys-neutral-container-enabled);
-  box-shadow: var(--box-shadow-elevation-level2);
-  font-family: var(--font-family-sb-sans-interface);
-  font-size: 12px
-}

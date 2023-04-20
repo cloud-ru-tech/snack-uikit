@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -10,7 +10,7 @@ export default {
   component: ProgressBar,
 } as Meta;
 
-const Template: Story<ProgressBarProps> = ({ ...args }) => <ProgressBar {...args} />;
+const Template: StoryFn<ProgressBarProps> = ({ ...args }) => <ProgressBar {...args} />;
 
 export const progressBar = Template.bind({});
 

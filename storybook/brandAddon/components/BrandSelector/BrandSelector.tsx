@@ -1,6 +1,8 @@
-import { useGlobals } from '@storybook/api';
+import '../../styles.module.css';
+
 import { IconButton, Icons } from '@storybook/components';
-import React, { useEffect, useState } from 'react';
+import { useGlobals } from '@storybook/manager-api';
+import React, { useState } from 'react';
 
 import { Brand } from '../../../constants';
 import { useCustomBrandContext } from '../../contexts';
@@ -8,7 +10,6 @@ import { useCustomStyles } from '../../hooks';
 import { AddBrandPanel } from '../AddBrandPanel';
 import { BrandOption, BrandOptionProps } from '../BrandOption';
 import { Tooltip } from '../Tooltip';
-import classNames from './styles.module.css';
 
 type ToolbarItemProps = {
   defaultOpen?: boolean;
@@ -42,21 +43,13 @@ export function BrandSelector({ defaultOpen = false }: ToolbarItemProps) {
 
   useCustomStyles(brand);
 
-  useEffect(() => {
-    const element = document.getElementById('storybook-preview-wrapper');
-
-    if (element) {
-      element.style.background = 'var(--sys-neutral-background)';
-    }
-  }, []);
-
   return (
     <Tooltip
       open={open}
       setOpen={setOpen}
       placement='bottom'
       tooltip={
-        <div className={classNames.panel}>
+        <div className={'brand-select-panel'}>
           {brandOptions.map(item => (
             <BrandOption key={item.value} {...item} selected={brand === item.value} onSelect={handleSelectOption} />
           ))}
@@ -67,7 +60,7 @@ export function BrandSelector({ defaultOpen = false }: ToolbarItemProps) {
             placement='right'
             tooltip={<AddBrandPanel onAdd={handleAddBrand} />}
           >
-            <div className={classNames.option}>
+            <div className={'brand-select-option'}>
               Добавить бренд
               <Icons icon='add' width={16} />
             </div>
@@ -75,7 +68,14 @@ export function BrandSelector({ defaultOpen = false }: ToolbarItemProps) {
         </div>
       }
     >
-      <IconButton active={open} title='Добавить бренд'>
+      <IconButton
+        active={open}
+        title='Добавить бренд'
+        content={undefined}
+        autoFocus={undefined}
+        rel={undefined}
+        rev={undefined}
+      >
         <Icons icon='circle' color={brandOptions.find(op => op.value === brand)?.color} />
       </IconButton>
     </Tooltip>

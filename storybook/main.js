@@ -12,9 +12,8 @@ const CONTRIBUTION_GUIDE = path.resolve(__dirname, './stories/ContributionGuide.
 const TOKENS = path.resolve(__dirname, './stories/Tokens.tsx');
 const ICONS = path.resolve(__dirname, './stories/Icons.tsx');
 const isTestServer = Boolean(process.env.TEST_SERVER);
-const optimizationLevel = isTestServer ? 1 : 3;
 
-module.exports = {
+const mainConfig = {
   stories: [WELCOME, GETTING_STARTED, CONTRIBUTION_GUIDE, ICONS, TOKENS, ...STORIES],
   addons: [
     {
@@ -46,27 +45,22 @@ module.exports = {
       },
     },
     '@geometricpanda/storybook-addon-badges',
-    {
-      name: 'storybook-addon-turbo-build',
-      options: {
-        // Please refer below tables for available options
-        optimizationLevel,
-        removeProgressPlugin: isTestServer,
-        disableSourceMap: isTestServer,
-      },
-    },
     './brandAddon/preset.js',
     'storybook-dark-mode',
     '@storybook/addon-links',
   ],
   staticDirs: [{ from: '../storybook/assets', to: '/storybook/assets' }],
-  core: {
-    builder: 'webpack5',
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
   },
   typescript: {
     check: true,
     reactDocgen: 'react-docgen-typescript',
     checkOptions: {},
+  },
+  features: {
+    storyStoreV7: false,
   },
   babel: base => ({ ...base, plugins: [...(base.plugins || []), ...(isTestServer ? ['istanbul'] : [])] }),
   env: config => ({
@@ -99,4 +93,10 @@ module.exports = {
 
     return config;
   },
+  docs: {
+    autodocs: false,
+  },
 };
+
+// eslint-disable-next-line import/no-default-export
+export default mainConfig;

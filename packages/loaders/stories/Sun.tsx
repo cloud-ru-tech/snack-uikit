@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -10,7 +10,7 @@ export default {
   component: Sun,
 } as Meta;
 
-const Template: Story<SunProps> = ({ ...args }) => <Sun {...args} />;
+const Template: StoryFn<SunProps> = ({ ...args }) => <Sun {...args} />;
 
 export const sun = Template.bind({});
 

@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 
 import IconsReadme from '../../packages/icons/README.md';
 import { Markdown } from './components';
@@ -8,7 +8,7 @@ export default {
   title: 'Documentation/Working With Icons',
 } as Meta;
 
-const Template: Story = () => <Markdown md={IconsReadme} />;
+const Template: StoryFn = () => <Markdown md={IconsReadme} />;
 
 export const workingWithIcons = Template.bind({});
 workingWithIcons.args = {};

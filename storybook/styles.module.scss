@@ -48,6 +48,10 @@
   font-display: swap;
 }
 
+body {
+  background-color: var($sys-neutral-background);
+}
+
 .wrapper {
   @include composite-var($sans-body-s);
   box-sizing: border-box;

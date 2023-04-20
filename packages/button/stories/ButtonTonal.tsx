@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { PlaceholderSVG } from '@snack-ui/icons';
@@ -15,7 +15,7 @@ export default {
   component: ButtonTonal,
 } as Meta;
 
-const Template: Story<ButtonTonalProps & { testMode: boolean }> = ({ testMode, ...args }) => {
+const Template: StoryFn<ButtonTonalProps & { testMode: boolean }> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

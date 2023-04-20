@@ -2,7 +2,6 @@ import { Button } from '@storybook/components';
 import React, { MouseEventHandler, useState } from 'react';
 
 import { useCustomBrandContext } from '../../contexts';
-import classNames from './styles.module.css';
 
 type AddPanelProps = {
   onAdd?(): void;
@@ -34,9 +33,9 @@ export function AddBrandPanel({ onAdd }: AddPanelProps) {
   };
 
   return (
-    <div className={classNames.panel}>
-      <form className={classNames.form}>
-        <div className={classNames.brandSettings}>
+    <div className={'addon-panel'}>
+      <form className={'addon-form'}>
+        <div className={'addon-brandSettings'}>
           <label htmlFor='key'>Ключ бренда</label>
           <input id='key' type='text' value={brandKey} onChange={e => setBrandKey(e.target.value)} />
           <label htmlFor='name'>Имя бренда</label>

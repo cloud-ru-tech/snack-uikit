@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { BADGE } from '../../../storybook/constants';
@@ -12,7 +12,7 @@ export default {
   component: DropZone,
 } as Meta;
 
-const Template: Story<DropZoneProps> = ({ ...args }) => {
+const Template: StoryFn<DropZoneProps> = ({ ...args }) => {
   const [files, setFiles] = useState<File[]>([]);
   return (
     <>

@@ -1,7 +1,8 @@
-import { ButtonFilled } from '@snack-ui/button';
 import { useArgs } from '@storybook/client-api';
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
+
+import { ButtonFilled } from '@snack-ui/button';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -13,7 +14,7 @@ export default {
   component: ProgressBarPage,
 } as Meta;
 
-const Template: Story<ProgressBarPageProps> = ({ ...args }) => {
+const Template: StoryFn<ProgressBarPageProps> = ({ ...args }) => {
   const [{ inProgress }, updateArgs] = useArgs();
 
   return (

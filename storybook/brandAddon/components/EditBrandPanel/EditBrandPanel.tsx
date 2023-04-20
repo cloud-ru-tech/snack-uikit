@@ -1,9 +1,8 @@
 import { Button } from '@storybook/components';
-import { MouseEventHandler, useState } from 'react';
+import React, { MouseEventHandler, useState } from 'react';
 
 import { CustomBrandConfig } from '../../../customBrands';
 import { useCustomBrandContext } from '../../contexts';
-import classNames from './styles.module.css';
 
 type EditBrandPanelProps = {
   brand: CustomBrandConfig;
@@ -46,9 +45,9 @@ export function EditBrandPanel({ brand, onUpdate }: EditBrandPanelProps) {
   };
 
   return (
-    <div className={classNames.panel}>
-      <form className={classNames.form}>
-        <div className={classNames.brandSettings}>
+    <div className={'addon-panel'}>
+      <form className={'addon-form'}>
+        <div className={'addon-brandSettings'}>
           <label htmlFor='name'>Имя бренда</label>
           <input id='name' type='text' value={brandName} onChange={e => setBrandName(e.target.value)} />
           <label htmlFor='color'>Превью цвет</label>
@@ -58,7 +57,7 @@ export function EditBrandPanel({ brand, onUpdate }: EditBrandPanelProps) {
         <div>
           <input id='file' type='file' accept='.css' onChange={e => setFile(e.target.files?.[0])} />
         </div>
-        <div className={classNames.buttonWrapper}>
+        <div className={'addon-buttonWrapper'}>
           <Button primary small onClick={handleUpdateBrand}>
             Сохранить
           </Button>

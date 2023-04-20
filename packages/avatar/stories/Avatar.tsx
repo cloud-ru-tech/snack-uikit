@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -48,7 +48,7 @@ function Table({ header, options }: TableProps) {
   );
 }
 
-const Template: Story<AvatarProps & { showImage: boolean; customSrc?: string }> = ({
+const Template: StoryFn<AvatarProps & { showImage: boolean; customSrc?: string }> = ({
   showImage,
   customSrc,
   shape = DEFAULT_SHAPE,

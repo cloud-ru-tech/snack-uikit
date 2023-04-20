@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import { useDarkMode } from 'storybook-dark-mode';
 
 import { ButtonFilled } from '@snack-ui/button';
@@ -28,7 +28,7 @@ const themeMap = {
   [Theme.Dark]: BrandThemes.dark,
 };
 
-const Template: Story = () => {
+const Template: StoryFn = () => {
   const isDark = useDarkMode();
 
   const theme1 = useThemeConfig({ themeMap, defaultTheme: isDark ? Theme.Dark : Theme.Light });

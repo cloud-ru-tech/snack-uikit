@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 
 import Contribution from '../../CONTRIBUTING.md';
 import { Markdown } from './components';
@@ -8,7 +8,7 @@ export default {
   title: 'Documentation/Contribution Guide',
 } as Meta;
 
-const Template: Story = () => <Markdown md={Contribution} />;
+const Template: StoryFn = () => <Markdown md={Contribution} />;
 
 export const contributionGuide = Template.bind({});
 contributionGuide.args = {};

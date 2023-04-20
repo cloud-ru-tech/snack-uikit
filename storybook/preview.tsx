@@ -1,5 +1,6 @@
-import { addDecorator, addParameters } from '@storybook/react';
-import { themes } from '@storybook/theming';
+import { StoryFn } from '@storybook/react';
+import { themes, ThemeVars } from '@storybook/theming';
+import { DecoratorFunction, GlobalTypes, Parameters } from '@storybook/types';
 import { useLayoutEffect } from 'react';
 import { withDesign } from 'storybook-addon-designs';
 
@@ -8,40 +9,47 @@ import { getCustomBrandList, getCustomBrands } from './customBrands';
 import classNames from './styles.module.scss';
 import { useStorybookBrand } from './useStorybookBrand';
 
-addDecorator(withDesign);
-addDecorator((Story, { globals }) => {
-  const brand =
-    getCustomBrandList().includes(globals.brand) || Object.values(Brand).includes(globals.brand)
-      ? globals.brand
-      : Brand.Default;
+const decorators: DecoratorFunction[] = [
+  withDesign,
+  (Story: StoryFn, { globals }: Parameters) => {
+    const brand =
+      getCustomBrandList().includes(globals.brand) || Object.values(Brand).includes(globals.brand)
+        ? globals.brand
+        : Brand.Default;
 
-  const brandClassName = useStorybookBrand({ brand });
+    const brandClassName = useStorybookBrand({ brand });
 
-  useLayoutEffect(() => {
-    document.body.classList.add(brandClassName, classNames.wrapper);
-    return () => document.body.classList.remove(brandClassName);
-  }, [brandClassName]);
+    useLayoutEffect(() => {
+      document.body.classList.add(brandClassName, classNames.wrapper);
+      return () => document.body.classList.remove(brandClassName);
+    }, [brandClassName]);
 
-  return (
-    <>
-      {getCustomBrands().map(config => (
-        <style key={config.key}>{config.content}</style>
-      ))}
-      <Story />
-    </>
-  );
-});
+    return (
+      <>
+        {getCustomBrands().map(config => (
+          <style key={config.key}>{config.content}</style>
+        ))}
+        <Story />
+      </>
+    );
+  },
+];
 
-addParameters({
+const brandInfo: ThemeVars = {
+  base: 'light',
+  brandTitle: 'Snack UI',
+  brandUrl: 'https://sbercloud.ru',
+  brandImage: './storybook/assets/CloudFullLogo.svg',
+  brandTarget: '_blank',
+};
+
+const parameters: Parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
       order: ['Welcome', 'Documentation', 'Components'],
     },
   },
-});
-
-addParameters({
   badgesConfig: {
     [BADGE.PRIVATE]: {
       styles: {
@@ -52,28 +60,28 @@ addParameters({
       title: BADGE.PRIVATE,
     },
   },
-});
 
-const brandInfo = {
-  brandTitle: 'Snack UI',
-  brandUrl: 'https://sbercloud.ru',
-  brandImage: './storybook/assets/CloudFullLogo.svg',
-  brandTarget: '_blank',
-};
-
-addParameters({
   darkMode: {
     // Override the default dark theme
     dark: { ...themes.dark, ...brandInfo },
     // Override the default light theme
     light: { ...themes.normal, ...brandInfo },
   },
-});
+};
 
-export const globalTypes = {
+const globalTypes: GlobalTypes = {
   brand: {
     name: 'Brand',
     description: 'Changing brands',
     defaultValue: Brand.Default,
   },
 };
+
+const preview = {
+  decorators,
+  parameters,
+  globalTypes,
+};
+
+// eslint-disable-next-line import/no-default-export
+export default preview;

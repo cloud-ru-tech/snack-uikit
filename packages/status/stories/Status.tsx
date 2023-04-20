@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -13,7 +13,7 @@ export default {
   component: Status,
 } as Meta;
 
-const Template: Story<StatusProps> = ({ ...args }) => {
+const Template: StoryFn<StatusProps> = ({ ...args }) => {
   const sizes = Object.values(Status.sizes);
   const appearances = Object.values(Status.appearances);
   const headerCellClassnames = cn(styles.cell, styles.headerCell);

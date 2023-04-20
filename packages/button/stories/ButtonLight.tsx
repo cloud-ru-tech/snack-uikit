@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
 import { PlaceholderSVG } from '@snack-ui/icons';
@@ -16,7 +16,7 @@ export default {
   component: ButtonLight,
 } as Meta;
 
-const Template: Story<ButtonLightProps & StoryCounterProps & { testMode: boolean }> = ({ testMode, ...args }) => {
+const Template: StoryFn<ButtonLightProps & StoryCounterProps & { testMode: boolean }> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
   const [counterProps, setCounterProps] = useState<CounterInButtonProps | undefined>(undefined);
 
@@ -132,6 +132,10 @@ buttonLight.args = {
   type: ButtonLight.types.Neutral,
   size: ButtonLight.sizes.S,
   testMode: false,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  counter: true,
+  counterValue: 1,
 };
 
 buttonLight.argTypes = {

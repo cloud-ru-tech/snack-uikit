@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -15,7 +15,7 @@ export default {
 
 const DEFAULT_TEXT = 'Link text';
 
-const Template: Story<LinkProps> = ({ ...args }) => {
+const Template: StoryFn<LinkProps> = ({ ...args }) => {
   const sizes = Object.values(Link.sizes);
   const headerCellClassName = cn(styles.cell, styles.headerCell);
 

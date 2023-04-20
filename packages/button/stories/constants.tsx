@@ -37,7 +37,6 @@ export type StoryCounterProps = {
 export const STORY_WITH_COUNTER_ARG_TYPES = {
   counter: {
     name: '[Stories]: Show counter examples',
-    defaultValue: true,
     control: {
       type: 'boolean',
     },
@@ -46,7 +45,6 @@ export const STORY_WITH_COUNTER_ARG_TYPES = {
   // @ts-ignore
   counterValue: {
     name: 'counter.value',
-    defaultValue: 1,
     if: { arg: 'counter' },
     control: {
       type: 'number',
@@ -55,7 +53,6 @@ export const STORY_WITH_COUNTER_ARG_TYPES = {
   counterAppearance: {
     name: 'counter.appearance',
     options: Object.values(Counter.appearances),
-    defaultValue: Counter.appearances.Primary,
     if: { arg: 'counter' },
     control: {
       type: 'select',
@@ -64,7 +61,6 @@ export const STORY_WITH_COUNTER_ARG_TYPES = {
   counterVariant: {
     name: 'counter.variant',
     options: Object.values(Counter.variants),
-    defaultValue: Counter.variants.Count,
     if: { arg: 'counter' },
     control: {
       type: 'select',
@@ -72,7 +68,6 @@ export const STORY_WITH_COUNTER_ARG_TYPES = {
   },
   counterPlusLimit: {
     name: 'counter.plusLimit',
-    defaultValue: 10,
     if: { arg: 'counter' },
     control: {
       type: 'number',
