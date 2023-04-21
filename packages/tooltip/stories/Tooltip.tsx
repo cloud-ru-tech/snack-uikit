@@ -16,21 +16,24 @@ export default {
 } as Meta;
 
 const Template: Story<TooltipProps> = ({ ...args }) => (
-  <div className={styles.story}>
-    <Tooltip
-      {...args}
-      tip={
-        args.tip || (
-          <div>
-            do not press this button, please
-            <br /> <Link href='#' text='read why' />
-          </div>
-        )
-      }
-    >
-      <ButtonFilled label='Reference button' />
-    </Tooltip>
-  </div>
+  <>
+    <div className={styles.story}>
+      <Tooltip
+        {...args}
+        tip={
+          args.tip || (
+            <div>
+              do not press this button, please
+              <br /> <Link href='#' text='read why' />
+            </div>
+          )
+        }
+      >
+        <ButtonFilled label='Reference button' data-test-id='button-with-tooltip' />
+      </Tooltip>
+    </div>
+    <div data-test-id='activity-removal' role='button' tabIndex={0} className={styles.item} />
+  </>
 );
 
 export const tooltip = Template.bind({});
