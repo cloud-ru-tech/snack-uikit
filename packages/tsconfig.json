@@ -8,6 +8,9 @@
       "path": "./popover-private"
     },
     {
+      "path": "./popover"
+    },
+    {
       "path": "./tooltip"
     },
     {

@@ -1,0 +1,13 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-popover';
+
+.popoverContainer {
+  overflow: hidden;
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'container-activated');
+  box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level5');
+
+  @include composite-var($popover-container);
+}
+
+.popoverArrow {
+  color: simple-var($theme-variables, 'sys', 'neutral', 'container-activated');
+}
