@@ -151,7 +151,7 @@ export function ${componentName}(props: ${componentName}Props) {
 // @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-${className}';
 
 .${className} {
-  position: relative;
+  box-sizing: border-box;
 }
 `;
 
