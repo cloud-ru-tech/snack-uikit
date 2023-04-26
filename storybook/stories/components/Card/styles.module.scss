@@ -1,4 +1,3 @@
-@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
 $cell-width: 360px;
@@ -14,11 +13,11 @@ $cell-height: 280px;
   width: $cell-width;
   height: $cell-height;
   padding: 8px;
-  color: var($sys-primary-text-main-enabled);
+  color: var($sys-primary-text-main);
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  background-color: var($sys-neutral-container-enabled);
+  background-color: var($sys-neutral-background1-level);
   border: 0;
   border-radius: 16px;
   transition: background-color 100ms;
@@ -35,17 +34,17 @@ $cell-height: 280px;
 
 
   &:hover {
-    background-color: var($sys-primary-container-activated);
+    background-color: var($sys-primary-decor-hovered);
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-primary-size-s);
-    background-color: var($sys-primary-container-activated);
+    @include outline-var($container-focused-s);
+    background-color: var($sys-primary-decor-hovered);
     outline-offset: var($spacing-state-focus-offset);
   }
 
   &:active {
-    background-color: var($sys-primary-container-disabled);
+    background-color: var($sys-primary-decor-hovered);
   }
 }
 

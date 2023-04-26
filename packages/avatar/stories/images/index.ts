@@ -25,7 +25,7 @@ export const imagesConfig = {
     [Avatar.appearances.Blue]: ImageUser05,
     [Avatar.appearances.Violet]: ImageUser06,
     [Avatar.appearances.Pink]: ImageUser07,
-    [Avatar.appearances.Gray]: ImageUser08,
+    [Avatar.appearances.Neutral]: ImageUser08,
   },
   [Avatar.shapes.Square]: {
     [Avatar.appearances.Red]: ImageCorp01,
@@ -35,6 +35,6 @@ export const imagesConfig = {
     [Avatar.appearances.Blue]: ImageCorp05,
     [Avatar.appearances.Violet]: ImageCorp06,
     [Avatar.appearances.Pink]: ImageCorp07,
-    [Avatar.appearances.Gray]: ImageCorp08,
+    [Avatar.appearances.Neutral]: ImageCorp08,
   },
 };

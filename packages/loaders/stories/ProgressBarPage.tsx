@@ -1,5 +1,5 @@
 import { useArgs } from '@storybook/client-api';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { ButtonFilled } from '@snack-ui/button';
@@ -9,12 +9,14 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ProgressBarPage, ProgressBarPageProps } from '../src';
 
-export default {
+const meta: Meta = {
   title: 'Components/Loaders/Progress Bar Page',
   component: ProgressBarPage,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<ProgressBarPageProps> = ({ ...args }) => {
+type StoryProps = ProgressBarPageProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const [{ inProgress }, updateArgs] = useArgs();
 
   return (
@@ -38,7 +40,7 @@ const Template: StoryFn<ProgressBarPageProps> = ({ ...args }) => {
   );
 };
 
-export const progressBarPage = Template.bind({});
+export const progressBarPage: StoryObj<StoryProps> = Template.bind({});
 
 progressBarPage.args = {
   inProgress: false,

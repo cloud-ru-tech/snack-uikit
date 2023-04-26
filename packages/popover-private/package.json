@@ -28,7 +28,7 @@
   "license": "UNLICENSED",
   "scripts": {},
   "dependencies": {
-    "@floating-ui/react": "0.23.0",
+    "@floating-ui/react": "0.23.1",
     "classnames": "2.3.2",
     "react-is": "18.2.0",
     "uncontrollable": "8.0.0"
@@ -37,6 +37,6 @@
     "@snack-ui/utils": "0.2.2"
   },
   "devDependencies": {
-    "@types/react-is": "17.0.3"
+    "@types/react-is": "18.2.0"
   }
 }

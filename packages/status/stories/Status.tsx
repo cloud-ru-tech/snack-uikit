@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -8,12 +8,14 @@ import componentReadme from '../README.md';
 import { Status, StatusProps } from '../src';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Status/Status',
   component: Status,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<StatusProps> = ({ ...args }) => {
+type StoryProps = StatusProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const sizes = Object.values(Status.sizes);
   const appearances = Object.values(Status.appearances);
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
@@ -63,7 +65,7 @@ const Template: StoryFn<StatusProps> = ({ ...args }) => {
   );
 };
 
-export const status = Template.bind({});
+export const status: StoryObj<StoryProps> = Template.bind({});
 
 status.args = {
   size: Status.sizes.S,

@@ -22,17 +22,17 @@ $sizes: xxs, xs, s, m, l;
 
 .indicator {
   box-sizing: border-box;
-  border: 0 solid var($sys-neutral-on-accent);
+  border: 0 solid var($sys-neutral-background1-level);
 
   @each $appearance in $appearances-system {
     &[data-appearance='#{"" + $appearance}'] {
-      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-enabled');
+      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
     }
   }
 
   @each $appearance in $appearances-index {
     &[data-appearance='#{"" + $appearance}'] {
-      background-color: simple-var($theme-variables, 'index', $appearance, 'accent-enabled');
+      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
     }
   }
 }

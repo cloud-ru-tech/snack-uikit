@@ -1,8 +1,10 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-counter';
 
-$appearances: primary, neutral, critical;
+/* stylelint-disable */
+$appearances: primary, neutral, red;
 $sizes: s, m;
 $variants: count, count-plus, count-k;
+
 $value-typography: (
   s: $sans-label-s,
   m: $sans-label-l
@@ -27,8 +29,8 @@ $key-typography: (
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
       color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
-      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-enabled');
-      border-color: var($sys-neutral-on-accent);
+      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+      border-color: var($sys-neutral-background1-level);
     }
   }
 

@@ -2,12 +2,12 @@
 
 .tooltipContainer {
   overflow: hidden;
-  color: simple-var($theme-variables, 'sys', 'invert-neutral', 'text-main-enabled');
-  background-color: simple-var($theme-variables, 'sys', 'invert-neutral', 'container-enabled');
+  color: simple-var($theme-variables, 'sys', 'invert-neutral', 'text-main');
+  background-color: simple-var($theme-variables, 'sys', 'invert-neutral', 'background');
 
   @include composite-var($tooltip-container);
 }
 
 .tooltipArrow {
-  color: simple-var($theme-variables, 'sys', 'invert-neutral', 'container-enabled');
+  color: simple-var($theme-variables, 'sys', 'invert-neutral', 'background');
 }

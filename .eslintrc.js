@@ -16,5 +16,17 @@ module.exports = {
         'vitest/consistent-test-it': ['error', { fn: 'it' }],
       },
     },
+    {
+      files: ['packages/*/stories/**/*', 'storybook/stories/**/*'],
+      rules: {
+        'react/function-component-definition': 'off',
+      },
+    },
+    {
+      files: ['storybook/stories/**/*'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
+    },
   ],
 };

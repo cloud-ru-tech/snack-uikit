@@ -1,4 +1,4 @@
-@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
 @mixin label-color($color) {
   .label {
@@ -53,5 +53,13 @@
     .label {
       @include composite-var($button-theme, 'label', 'load-label-only');
     }
+  }
+}
+
+@mixin button-common-state {
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    outline-offset: var($spacing-state-focus-offset);
   }
 }

@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -9,10 +9,11 @@ import { Avatar, AvatarProps } from '../src';
 import { imagesConfig } from './images';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Avatar',
   component: Avatar,
-} as Meta;
+};
+export default meta;
 
 const DEFAULT_NAME = 'Will Willow';
 const DEFAULT_SIZE = Avatar.sizes.S;
@@ -48,7 +49,9 @@ function Table({ header, options }: TableProps) {
   );
 }
 
-const Template: StoryFn<AvatarProps & { showImage: boolean; customSrc?: string }> = ({
+type StoryProps = AvatarProps & { showImage: boolean; customSrc?: string };
+
+const Template: StoryFn<StoryProps> = ({
   showImage,
   customSrc,
   shape = DEFAULT_SHAPE,
@@ -109,7 +112,7 @@ const Template: StoryFn<AvatarProps & { showImage: boolean; customSrc?: string }
   );
 };
 
-export const avatar = Template.bind({});
+export const avatar: StoryObj<StoryProps> = Template.bind({});
 
 avatar.args = {
   showImage: false,

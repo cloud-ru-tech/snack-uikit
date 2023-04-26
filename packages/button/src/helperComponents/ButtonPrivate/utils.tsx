@@ -47,7 +47,7 @@ export function getWrappedIcon({ icon, iconClassName, loading, wrappedCounter }:
   if (loading) {
     return (
       <span data-test-id={'loading-icon'} className={iconClassName}>
-        <Sun size={Sun.sizes.SizeS} />
+        <Sun size={Sun.sizes.S} />
       </span>
     );
   }

@@ -7,7 +7,7 @@ export type SpinnerProps = WithSupportProps<{
   size?: LoaderSize;
 }>;
 
-export function Spinner({ size = LoaderSize.SizeS, ...rest }: SpinnerProps) {
+export function Spinner({ size = LoaderSize.S, ...rest }: SpinnerProps) {
   return (
     <svg
       viewBox='0 0 24 24'

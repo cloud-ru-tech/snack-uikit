@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { BADGE } from '../../../storybook/constants';
@@ -7,12 +7,14 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { DropZone, DropZoneProps } from '../src';
 
-export default {
+const meta: Meta = {
   title: 'Components/Drop Zone/Drop Zone',
   component: DropZone,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<DropZoneProps> = ({ ...args }) => {
+type StoryProps = DropZoneProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const [files, setFiles] = useState<File[]>([]);
   return (
     <>
@@ -35,7 +37,7 @@ const Template: StoryFn<DropZoneProps> = ({ ...args }) => {
   );
 };
 
-export const dropZone = Template.bind({});
+export const dropZone: StoryObj<StoryProps> = Template.bind({});
 
 dropZone.args = {
   title: 'Title',

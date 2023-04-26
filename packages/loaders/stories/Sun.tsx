@@ -1,21 +1,23 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Sun, SunProps } from '../src';
 
-export default {
+const meta: Meta = {
   title: 'Components/Loaders/Sun',
   component: Sun,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<SunProps> = ({ ...args }) => <Sun {...args} />;
+type StoryProps = SunProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => <Sun {...args} />;
 
-export const sun = Template.bind({});
+export const sun: StoryObj<StoryProps> = Template.bind({});
 
 sun.args = {
-  size: Sun.sizes.SizeS,
+  size: Sun.sizes.S,
 };
 
 sun.argTypes = {};

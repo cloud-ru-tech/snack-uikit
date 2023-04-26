@@ -5,9 +5,8 @@
   width: max-content;
   padding: 24px;
   margin-bottom: 16px;
-  color: var($sys-neutral-text-main-enabled);
-  background-color: var($sys-neutral-container-enabled);
-  border: 1px solid var($sys-neutral-line-enabled);
+  background-color: var($sys-neutral-background1-level);
+  border: 1px solid var($sys-neutral-decor-default);
   border-radius: var($dimension-050m);
 }
 
@@ -18,7 +17,8 @@ $border-width: 1px;
   flex-direction: column;
   grid-template-columns: repeat(7, max-content);
   width: max-content;
-  background-color: var($sys-neutral-container-enabled);
+  background-color: var($sys-neutral-background1-level);
+  border: $border-width solid var($sys-neutral-decor-default);
 }
 
 .cell {
@@ -27,7 +27,7 @@ $border-width: 1px;
   justify-content: flex-start;
   padding: 4px 8px;
   text-transform: capitalize;
-  border-bottom: $border-width solid var($sys-neutral-line-enabled);
+  border-bottom: $border-width solid var($sys-neutral-decor-default);
 }
 
 .headerCell {

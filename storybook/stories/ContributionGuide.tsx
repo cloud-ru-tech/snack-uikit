@@ -1,15 +1,15 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import Contribution from '../../CONTRIBUTING.md';
 import { Markdown } from './components';
 
-// eslint-disable-next-line import/no-default-export
-export default {
+const meta: Meta = {
   title: 'Documentation/Contribution Guide',
-} as Meta;
+};
+export default meta;
 
 const Template: StoryFn = () => <Markdown md={Contribution} />;
 
-export const contributionGuide = Template.bind({});
+export const contributionGuide: StoryObj = Template.bind({});
 contributionGuide.args = {};
 contributionGuide.argTypes = {};

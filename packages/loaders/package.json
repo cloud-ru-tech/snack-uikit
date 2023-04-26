@@ -27,7 +27,7 @@
   "license": "UNLICENSED",
   "scripts": {},
   "dependencies": {
-    "@tanem/react-nprogress": "5.0.31"
+    "@tanem/react-nprogress": "5.0.35"
   },
   "peerDependencies": {
     "@snack-ui/utils": "^0.2.0"

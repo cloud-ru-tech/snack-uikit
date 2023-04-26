@@ -9,7 +9,7 @@
   min-width: var($size-pagination-page-button-mininal-width);
   padding: 0;
   margin: 0;
-  color: var($sys-neutral-accent-enabled);
+  color: var($sys-neutral-accent-default);
   text-decoration: none;
   text-transform: none;
   cursor: pointer;
@@ -22,26 +22,27 @@
   @include composite-var($sans-label-l);
 
   &:hover {
-    color: var($sys-neutral-accent-hovered);
-    background-color: var($sys-neutral-container-hovered);
+    color: var($sys-neutral-text-main);
+    background-color: var($sys-primary-decor-hovered);
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-available-size-s);
+    @include outline-var($container-focused-s);
 
-    color: var($sys-neutral-accent-hovered);
-    background-color: var($sys-neutral-container-hovered);
+    color: var($sys-neutral-text-main);
+    background-color: var($sys-primary-decor-hovered);
+    outline-color: var($sys-primary-accent-default);
     outline-offset: var($spacing-state-focus-offset);
   }
 
   &:active {
-    color: var($sys-neutral-text-light-enabled);
-    background-color: var($sys-neutral-container-hovered);
+    color: var($sys-primary-on-accent);
+    background-color: var($sys-primary-accent-pressed);
   }
 
   &[data-activated] {
     color: var($sys-primary-on-accent);
-    background-color: var($sys-primary-accent-activated);
+    background-color: var($sys-primary-accent-default);
 
     &:hover {
       color: var($sys-primary-on-accent);
@@ -54,8 +55,8 @@
     }
 
     &:active {
-      color: var($sys-primary-text-light-enabled);
-      background-color: var($sys-primary-accent-activated);
+      color: var($sys-primary-on-accent);
+      background-color: var($sys-primary-accent-pressed);
     }
   }
 }

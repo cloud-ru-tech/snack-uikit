@@ -3,7 +3,7 @@ import { fixture, Selector, test } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
 const TEST_ID = 'spinner-test';
-const SIZE = 'size-l';
+const SIZE = 'l';
 
 fixture('Spinner').page(
   getTestcafeUrl({

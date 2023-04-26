@@ -18,14 +18,14 @@
   @include composite-var($pagination-page-button-slider-container);
 
   .pageButtonSliderDot {
-    background-color: var($sys-neutral-text-light-enabled);
+    background-color: var($sys-neutral-decor-default);
 
     @include composite-var($pagination-page-button-slider-dot-page-default);
   }
 
   &:hover {
     .pageButtonSliderDot {
-      background-color: var($sys-neutral-text-light-hovered);
+      background-color: var($sys-neutral-accent-hovered);
 
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
     }
@@ -33,9 +33,10 @@
 
   &:focus-visible {
     .pageButtonSliderDot {
-      @include outline-var($container-focused-available-size-s);
+      @include outline-var($container-focused-s);
 
-      background-color: var($sys-neutral-text-light-hovered);
+      background-color: var($sys-neutral-accent-hovered);
+      outline-color: var($sys-primary-accent-default);
       outline-offset: var($spacing-state-focus-offset);
 
       @include composite-var($pagination-page-button-slider-dot-page-default);
@@ -44,7 +45,7 @@
 
   &:active {
     .pageButtonSliderDot {
-      background-color: var($sys-neutral-text-light-activated);
+      background-color: var($sys-primary-accent-pressed);
 
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
     }
@@ -53,7 +54,7 @@
 
   &[data-activated] {
     .pageButtonSliderDot {
-      background-color: var($sys-primary-accent-activated);
+      background-color: var($sys-primary-accent-default);
 
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
     }
@@ -76,7 +77,7 @@
 
     &:active {
       .pageButtonSliderDot {
-        background-color: var($sys-primary-accent-enabled);
+        background-color: var($sys-neutral-accent-default);
 
         @include composite-var($pagination-page-button-slider-dot-page-default);
       }

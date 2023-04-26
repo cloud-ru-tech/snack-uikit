@@ -1,39 +1,12 @@
-import { StoryFn } from '@storybook/react';
+import './styles.module.scss';
+
 import { themes, ThemeVars } from '@storybook/theming';
 import { DecoratorFunction, GlobalTypes, Parameters } from '@storybook/types';
-import { useLayoutEffect } from 'react';
 import { withDesign } from 'storybook-addon-designs';
 
-import { BADGE, Brand } from './constants';
-import { getCustomBrandList, getCustomBrands } from './customBrands';
-import classNames from './styles.module.scss';
-import { useStorybookBrand } from './useStorybookBrand';
+import { PARAM_COLOR_MAP_KEY, PARAM_KEY } from '@sbercloud/ft-storybook-brand-addon';
 
-const decorators: DecoratorFunction[] = [
-  withDesign,
-  (Story: StoryFn, { globals }: Parameters) => {
-    const brand =
-      getCustomBrandList().includes(globals.brand) || Object.values(Brand).includes(globals.brand)
-        ? globals.brand
-        : Brand.Default;
-
-    const brandClassName = useStorybookBrand({ brand });
-
-    useLayoutEffect(() => {
-      document.body.classList.add(brandClassName, classNames.wrapper);
-      return () => document.body.classList.remove(brandClassName);
-    }, [brandClassName]);
-
-    return (
-      <>
-        {getCustomBrands().map(config => (
-          <style key={config.key}>{config.content}</style>
-        ))}
-        <Story />
-      </>
-    );
-  },
-];
+import { BADGE, Brand, DEFAULT_BRAND_COLORS_MAP, DEFAULT_BRAND_MAP } from './constants';
 
 const brandInfo: ThemeVars = {
   base: 'light',
@@ -60,7 +33,6 @@ const parameters: Parameters = {
       title: BADGE.PRIVATE,
     },
   },
-
   darkMode: {
     // Override the default dark theme
     dark: { ...themes.dark, ...brandInfo },
@@ -70,12 +42,34 @@ const parameters: Parameters = {
 };
 
 const globalTypes: GlobalTypes = {
-  brand: {
+  [PARAM_KEY]: {
     name: 'Brand',
     description: 'Changing brands',
     defaultValue: Brand.Default,
   },
+  [PARAM_COLOR_MAP_KEY]: {
+    name: 'Brand Map with Colors',
+    description: 'Map of color for brands list',
+    defaultValue: DEFAULT_BRAND_COLORS_MAP,
+  },
+  [Brand.Default]: {
+    name: 'Brand Default',
+    description: '',
+    defaultValue: DEFAULT_BRAND_MAP[Brand.Default],
+  },
+  [Brand.Cloud]: {
+    name: 'Brand Cloud',
+    description: '',
+    defaultValue: DEFAULT_BRAND_MAP[Brand.Cloud],
+  },
+  [Brand.MLSpace]: {
+    name: 'Brand MLSpace',
+    description: '',
+    defaultValue: DEFAULT_BRAND_MAP[Brand.MLSpace],
+  },
 };
+
+const decorators: DecoratorFunction[] = [withDesign];
 
 const preview = {
   decorators,

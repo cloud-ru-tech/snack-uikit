@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { ButtonFilled } from '@snack-ui/button';
 import { Link } from '@snack-ui/link';
@@ -10,12 +10,14 @@ import componentReadme from '../README.md';
 import { Popover, PopoverProps } from '../src';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Popover',
   component: Popover,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<PopoverProps> = ({ ...args }) => (
+type StoryProps = PopoverProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => (
   <>
     <div className={styles.story}>
       <Popover
@@ -36,7 +38,7 @@ const Template: StoryFn<PopoverProps> = ({ ...args }) => (
   </>
 );
 
-export const popover = Template.bind({});
+export const popover: StoryObj<StoryProps> = Template.bind({});
 popover.args = {
   trigger: Popover.triggers.Click,
   placement: Popover.placements.Top,

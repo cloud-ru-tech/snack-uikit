@@ -1,6 +1,6 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-avatar';
 
-$appearances: red, orange, yellow, green, blue, violet, pink, gray; /* stylelint-disable-line color-named */
+$appearances: red, orange, yellow, green, blue, violet, pink, neutral; /* stylelint-disable-line color-named */
 $shapes: round, square;
 $sizes: xxs, xs, s, m, l, xl, xxl;
 $typography: (
@@ -21,8 +21,8 @@ $typography: (
 
   @each $appearance in $appearances {
     &[data-appearance='#{"" + $appearance}'] {
-      color: simple-var($theme-variables, 'index', $appearance, 'text-main-enabled');
-      background-color: simple-var($theme-variables, 'index', $appearance, 'container-enabled');
+      color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+      background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
     }
   }
 

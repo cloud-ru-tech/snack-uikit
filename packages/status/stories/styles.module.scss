@@ -9,8 +9,8 @@
   height: 64px;
   padding: 0 24px;
   margin-bottom: 16px;
-  background-color: var($sys-neutral-container-enabled);
-  border: 1px solid var($sys-neutral-line-enabled);
+  background-color: var($sys-neutral-background1-level);
+  border: 1px solid var($sys-neutral-decor-default);
   border-radius: var($dimension-050m);
 }
 
@@ -19,8 +19,8 @@ $border-width: 0.5px;
 .table {
   display: inline-grid;
   grid-template-columns: repeat(var(--columns), 1fr);
-  background-color: var($sys-neutral-container-enabled);
-  border: $border-width solid var($sys-neutral-line-enabled);
+  background-color: var($sys-neutral-background1-level);
+  border: $border-width solid var($sys-neutral-decor-default);
 }
 
 .cell {
@@ -28,7 +28,7 @@ $border-width: 0.5px;
   align-items: center;
   justify-content: center;
   padding: 8px;
-  border: $border-width solid var($sys-neutral-line-enabled);
+  border: $border-width solid var($sys-neutral-decor-disabled);
 }
 
 .headerCell {

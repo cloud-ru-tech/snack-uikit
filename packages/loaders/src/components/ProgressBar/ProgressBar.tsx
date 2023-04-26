@@ -3,8 +3,8 @@ import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 import classNames from './styles.module.scss';
 
 enum Size {
-  SizeS = 'size-s',
-  SizeXS = 'size-xs',
+  S = 's',
+  XS = 'xs',
 }
 
 export type ProgressBarProps = WithSupportProps<{

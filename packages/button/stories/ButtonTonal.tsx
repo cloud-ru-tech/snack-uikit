@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { PlaceholderSVG } from '@snack-ui/icons';
@@ -10,12 +10,14 @@ import { ButtonTonal, ButtonTonalProps } from '../src';
 import { BUTTON_ARGS, ICONS } from './constants';
 import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
-export default {
+const meta: Meta = {
   title: 'Components/Button/Button Tonal',
   component: ButtonTonal,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<ButtonTonalProps & { testMode: boolean }> = ({ testMode, ...args }) => {
+type StoryProps = ButtonTonalProps & { testMode: boolean };
+const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -62,7 +64,7 @@ const Template: StoryFn<ButtonTonalProps & { testMode: boolean }> = ({ testMode,
   );
 };
 
-export const buttonTonal = Template.bind({});
+export const buttonTonal: StoryObj<StoryProps> = Template.bind({});
 
 buttonTonal.args = {
   label: 'Label text',

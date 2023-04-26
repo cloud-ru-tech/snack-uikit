@@ -1,21 +1,23 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Spinner, SpinnerProps } from '../src';
 
-export default {
+const meta: Meta = {
   title: 'Components/Loaders/Spinner',
   component: Spinner,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<SpinnerProps> = ({ ...args }) => <Spinner {...args} />;
+type StoryProps = SpinnerProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => <Spinner {...args} />;
 
-export const spinner = Template.bind({});
+export const spinner: StoryObj<StoryProps> = Template.bind({});
 
 spinner.args = {
-  size: Spinner.sizes.SizeS,
+  size: Spinner.sizes.S,
 };
 
 spinner.argTypes = {};

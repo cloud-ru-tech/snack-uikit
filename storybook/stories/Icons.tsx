@@ -1,15 +1,15 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import IconsReadme from '../../packages/icons/README.md';
 import { Markdown } from './components';
 
-// eslint-disable-next-line import/no-default-export
-export default {
+const meta: Meta = {
   title: 'Documentation/Working With Icons',
-} as Meta;
+};
+export default meta;
 
 const Template: StoryFn = () => <Markdown md={IconsReadme} />;
 
-export const workingWithIcons = Template.bind({});
+export const workingWithIcons: StoryObj = Template.bind({});
 workingWithIcons.args = {};
 workingWithIcons.argTypes = {};

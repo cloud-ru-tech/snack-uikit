@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
 import { PlaceholderSVG } from '@snack-ui/icons';
@@ -11,12 +11,14 @@ import { CounterInButtonProps } from '../src/types';
 import { BUTTON_ARGS, COUNTER_ARGS, ICONS, STORY_WITH_COUNTER_ARG_TYPES, StoryCounterProps } from './constants';
 import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
-export default {
+const meta: Meta = {
   title: 'Components/Button/Button Support',
   component: ButtonSupport,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<ButtonSupportProps & StoryCounterProps & { testMode: boolean }> = ({ testMode, ...args }) => {
+type StoryProps = ButtonSupportProps & StoryCounterProps & { testMode: boolean };
+const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
   const [counterProps, setCounterProps] = useState<CounterInButtonProps | undefined>(undefined);
 
@@ -119,7 +121,7 @@ const Template: StoryFn<ButtonSupportProps & StoryCounterProps & { testMode: boo
   );
 };
 
-export const buttonSupport = Template.bind({});
+export const buttonSupport: StoryObj<StoryProps> = Template.bind({});
 
 buttonSupport.args = {
   label: 'Label text',

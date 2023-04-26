@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { PlaceholderSVG } from '@snack-ui/icons';
@@ -10,12 +10,14 @@ import { ButtonOutline, ButtonOutlineProps } from '../src';
 import { BUTTON_ARGS, ICONS } from './constants';
 import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
-export default {
+const meta: Meta = {
   title: 'Components/Button/Button Outline',
   component: ButtonOutline,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<ButtonOutlineProps & { testMode: boolean }> = ({ testMode, ...args }) => {
+type StoryProps = ButtonOutlineProps & { testMode: boolean };
+const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -63,7 +65,7 @@ const Template: StoryFn<ButtonOutlineProps & { testMode: boolean }> = ({ testMod
   );
 };
 
-export const buttonOutline = Template.bind({});
+export const buttonOutline: StoryObj<StoryProps> = Template.bind({});
 
 buttonOutline.args = {
   label: 'Label text',

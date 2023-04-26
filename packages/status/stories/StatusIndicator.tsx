@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -8,12 +8,14 @@ import componentReadme from '../README.md';
 import { StatusIndicator, StatusIndicatorProps } from '../src';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Status/Status Indicator',
   component: StatusIndicator,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<StatusIndicatorProps> = ({ ...args }) => {
+type StoryProps = StatusIndicatorProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const sizes = Object.values(StatusIndicator.sizes);
   const appearances = Object.values(StatusIndicator.appearances);
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
@@ -47,7 +49,7 @@ const Template: StoryFn<StatusIndicatorProps> = ({ ...args }) => {
   );
 };
 
-export const statusIndicator = Template.bind({});
+export const statusIndicator: StoryObj<StoryProps> = Template.bind({});
 
 statusIndicator.args = {
   size: StatusIndicator.sizes.S,

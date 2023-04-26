@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -8,12 +8,14 @@ import componentReadme from '../README.md';
 import { Typography, TypographyProps } from '../src';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Typography',
   component: Typography,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<TypographyProps> = ({ ...args }) => {
+type StoryProps = TypographyProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const families = Object.values(Typography.families);
   const sizes = Object.values(Typography.sizes);
   const roles = Object.values(Typography.roles);
@@ -59,7 +61,7 @@ const Template: StoryFn<TypographyProps> = ({ ...args }) => {
   );
 };
 
-export const typography = Template.bind({});
+export const typography: StoryObj<StoryProps> = Template.bind({});
 
 typography.args = {
   children: 'Some text',

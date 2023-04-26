@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -8,14 +8,16 @@ import componentReadme from '../README.md';
 import { Link, LinkProps } from '../src';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Link',
   component: Link,
-} as Meta;
+};
+export default meta;
 
 const DEFAULT_TEXT = 'Link text';
 
-const Template: StoryFn<LinkProps> = ({ ...args }) => {
+type StoryProps = LinkProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const sizes = Object.values(Link.sizes);
   const headerCellClassName = cn(styles.cell, styles.headerCell);
 
@@ -58,7 +60,7 @@ const Template: StoryFn<LinkProps> = ({ ...args }) => {
   );
 };
 
-export const link = Template.bind({});
+export const link: StoryObj<StoryProps> = Template.bind({});
 
 link.args = {
   href: '#',

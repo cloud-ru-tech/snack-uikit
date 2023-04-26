@@ -7,7 +7,7 @@ export type SunProps = WithSupportProps<{
   size?: LoaderSize;
 }>;
 
-export function Sun({ size = LoaderSize.SizeS, ...rest }: SunProps) {
+export function Sun({ size = LoaderSize.S, ...rest }: SunProps) {
   return (
     <svg
       viewBox='0 0 24 24'

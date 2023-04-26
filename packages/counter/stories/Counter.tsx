@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
@@ -9,12 +9,14 @@ import { Counter, CounterProps } from '../src';
 import { DEFAULT_PLUS_LIMIT } from '../src/components/constants';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Counter',
   component: Counter,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<CounterProps> = ({ ...args }) => {
+type StoryProps = CounterProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const sizes = Object.values(Counter.sizes);
   const appearances = Object.values(Counter.appearances);
   const variants = Object.values(Counter.variants);
@@ -78,7 +80,7 @@ const Template: StoryFn<CounterProps> = ({ ...args }) => {
   );
 };
 
-export const counter = Template.bind({});
+export const counter: StoryObj<StoryProps> = Template.bind({});
 
 counter.args = {
   value: 9,

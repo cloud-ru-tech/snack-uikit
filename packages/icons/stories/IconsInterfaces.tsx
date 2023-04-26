@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -10,9 +10,10 @@ type StoryProps = {
   size?: number | string;
 };
 
-export default {
+const meta: Meta = {
   title: 'Components/Icons/Interfaces',
-} as Meta;
+};
+export default meta;
 
 const Template: StoryFn<StoryProps> = ({ size }) => (
   <div className={classnames.wrapper}>
@@ -28,7 +29,7 @@ const Template: StoryFn<StoryProps> = ({ size }) => (
   </div>
 );
 
-export const interfaces = Template.bind({});
+export const interfaces: StoryObj<StoryProps> = Template.bind({});
 
 interfaces.args = {
   size: 24,

@@ -12,8 +12,8 @@
   min-height: 80px;
   cursor: pointer;
 
-  background-color: var($sys-neutral-container-opacity-enabled);
-  border-color: var($sys-neutral-line-enabled);
+  background-color: var($sys-neutral-background2-level);
+  border-color: var($sys-neutral-decor-default);
 
   @include composite-var($drop-zone-container-single);
   @include composite-var($drop-zone-lauout-content-single);
@@ -22,46 +22,57 @@
     margin: 0;
 
     @include composite-var($sans-title-s);
-    color: var($sys-neutral-text-main-enabled);
+    color: var($sys-neutral-text-main);
   }
 
   .description {
     @include composite-var($sans-body-s);
-    color: var($sys-neutral-text-light-enabled);
+    color: var($sys-neutral-text-light);
   }
 
   &:hover {
     border-color: var($sys-primary-accent-hovered);
+
+    .description {
+      color: var($sys-neutral-text-support);
+    }
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-primary-size-s);
+    @include outline-var($container-focused-s);
+
+    outline-color: var($sys-primary-accent-default);
+    outline-offset: var($spacing-state-focus-offset);
+
+    .description {
+      color: var($sys-neutral-text-support);
+    }
   }
 
   &[data-over] {
-    background-color: var($sys-primary-container-opacity-hovered);
+    background-color: var($sys-primary-background);
     border-color: var($sys-primary-accent-hovered);
 
     .title {
-      color: var($sys-primary-text-main-hovered);
+      color: var($sys-primary-text-main);
     }
 
     .description {
-      color: var($sys-primary-text-light-hovered);
+      color: var($sys-primary-text-support);
     }
   }
 
   &[data-disabled] {
     cursor: not-allowed;
-    background-color: var($sys-neutral-container-opacity-disabled);
-    border-color: var($sys-neutral-line-enabled);
+    background-color: var($sys-neutral-background);
+    border-color: var($sys-neutral-decor-disabled);
 
     .title {
-      color: var($sys-neutral-text-main-disabled);
+      color: var($sys-neutral-text-light);
     }
 
     .description {
-      color: var($sys-neutral-text-main-disabled);
+      color: var($sys-neutral-text-disabled);
     }
   }
 }

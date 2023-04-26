@@ -1,15 +1,15 @@
 import { linkTo } from '@storybook/addon-links';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Link } from '@snack-ui/link';
 
 import { Card } from './components';
 import styles from './styles.module.scss';
 
-// eslint-disable-next-line import/no-default-export
-export default {
+const meta: Meta = {
   title: 'Welcome',
-} as Meta;
+};
+export default meta;
 
 const Template: StoryFn = () => (
   <div className={styles.page}>
@@ -76,6 +76,6 @@ const Template: StoryFn = () => (
   </div>
 );
 
-export const welcome = Template.bind({});
+export const welcome: StoryObj = Template.bind({});
 welcome.args = {};
 welcome.argTypes = {};

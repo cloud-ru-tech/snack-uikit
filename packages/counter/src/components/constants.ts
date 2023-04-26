@@ -1,7 +1,7 @@
 export enum Appearance {
   Primary = 'primary',
   Neutral = 'neutral',
-  Critical = 'critical',
+  Red = 'red',
 }
 
 export enum Variant {

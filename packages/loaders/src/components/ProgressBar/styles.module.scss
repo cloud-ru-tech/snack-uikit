@@ -1,6 +1,6 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-loader';
 
-$sizes: size-s, size-xs;
+$sizes: s, xs;
 
 @mixin progress-anatomy-styles {
   @each $size in $sizes {
@@ -11,7 +11,7 @@ $sizes: size-s, size-xs;
 }
 
 .progressBarContainer {
-  background-color: var($sys-neutral-container-opacity-enabled);
+  background-color: var($sys-neutral-decor-default);
 
   @include progress-anatomy-styles
 }
@@ -19,6 +19,6 @@ $sizes: size-s, size-xs;
 .progressBarFiller {
   width: var(--progress);
   height: 100%;
-  background-color: var($sys-primary-accent-enabled);
+  background-color: var($sys-primary-accent-default);
   border-radius: inherit;
 }

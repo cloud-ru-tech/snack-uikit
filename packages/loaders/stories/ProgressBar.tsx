@@ -1,22 +1,24 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ProgressBar, ProgressBarProps } from '../src';
 
-export default {
+const meta: Meta = {
   title: 'Components/Loaders/Progress Bar',
   component: ProgressBar,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<ProgressBarProps> = ({ ...args }) => <ProgressBar {...args} />;
+type StoryProps = ProgressBarProps;
+const Template: StoryFn<StoryProps> = ({ ...args }: ProgressBarProps) => <ProgressBar {...args} />;
 
-export const progressBar = Template.bind({});
+export const progressBar: StoryObj<StoryProps> = Template.bind({});
 
 progressBar.args = {
   progress: 30,
-  size: ProgressBar.sizes.SizeS,
+  size: ProgressBar.sizes.S,
 };
 
 progressBar.argTypes = {

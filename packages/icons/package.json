@@ -7,7 +7,7 @@
     "*.woff",
     "*.woff2"
   ],
-  "description": "Пакет с икноками",
+  "description": "Пакет с иконками",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/icons",
@@ -34,7 +34,7 @@
     "compile": "npm run validate:icons && npm run build:interface-icons"
   },
   "devDependencies": {
-    "@svgr/cli": "6.5.1",
+    "@svgr/cli": "7.0.0",
     "oslllo-svg-fixer": "2.2.0"
   }
 }

@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { PlaceholderSVG } from '@snack-ui/icons';
@@ -10,12 +10,14 @@ import { ButtonFilled, ButtonFilledProps } from '../src';
 import { BUTTON_ARGS, ICONS } from './constants';
 import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
-export default {
+const meta: Meta = {
   title: 'Components/Button/Button Filled',
   component: ButtonFilled,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<ButtonFilledProps & { testMode: boolean }> = ({ testMode, ...args }) => {
+type StoryProps = ButtonFilledProps & { testMode: boolean };
+const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -63,7 +65,7 @@ const Template: StoryFn<ButtonFilledProps & { testMode: boolean }> = ({ testMode
   );
 };
 
-export const buttonFilled = Template.bind({});
+export const buttonFilled: StoryObj<StoryProps> = Template.bind({});
 
 buttonFilled.args = {
   label: 'Label text',

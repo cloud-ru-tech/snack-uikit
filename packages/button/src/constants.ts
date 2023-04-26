@@ -1,7 +1,7 @@
 export enum Type {
   Primary = 'primary',
   Neutral = 'neutral',
-  Critical = 'critical',
+  Red = 'red',
 }
 
 export enum HtmlType {

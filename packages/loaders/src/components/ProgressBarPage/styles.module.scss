@@ -13,7 +13,7 @@
 .progressBarPageFiller {
   width: calc(var(--progress) * 100%);
   height: 100%;
-  background-color: var($sys-primary-accent-enabled);
+  background-color: var($sys-primary-accent-default);
   border-radius: inherit;
   transition: width var(--animation-duration);
 }

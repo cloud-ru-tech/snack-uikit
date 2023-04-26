@@ -49,11 +49,8 @@
 }
 
 body {
-  background-color: var($sys-neutral-background);
-}
-
-.wrapper {
   @include composite-var($sans-body-s);
   box-sizing: border-box;
-  color: var($sys-neutral-text-main-enabled);
+  color: var($sys-neutral-text-main);
+  background-color: var($sys-neutral-background);
 }

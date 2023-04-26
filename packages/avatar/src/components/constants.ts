@@ -6,7 +6,7 @@ export enum Appearance {
   Blue = 'blue',
   Violet = 'violet',
   Pink = 'pink',
-  Gray = 'gray',
+  Neutral = 'neutral',
 }
 
 export enum Size {

@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { ButtonFilled } from '@snack-ui/button';
 import { Link } from '@snack-ui/link';
@@ -10,12 +10,14 @@ import componentReadme from '../README.md';
 import { Tooltip, TooltipProps } from '../src';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Tooltip',
   component: Tooltip,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<TooltipProps> = ({ ...args }) => (
+type StoryProps = TooltipProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => (
   <>
     <div className={styles.story}>
       <Tooltip
@@ -36,7 +38,7 @@ const Template: StoryFn<TooltipProps> = ({ ...args }) => (
   </>
 );
 
-export const tooltip = Template.bind({});
+export const tooltip: StoryObj<StoryProps> = Template.bind({});
 tooltip.args = {
   trigger: Tooltip.triggers.Hover,
   placement: Tooltip.placements.Top,

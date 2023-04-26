@@ -6,7 +6,7 @@ $sizes: s, m, l;
 .link {
   display: inline-flex;
   align-items: center;
-  color: var($sys-primary-accent-enabled);
+  color: var($sys-blue-accent-default);
   text-decoration: none;
   cursor: pointer;
 
@@ -18,17 +18,18 @@ $sizes: s, m, l;
   }
 
   &:hover {
-    color: var($sys-primary-accent-hovered);
+    color: var($sys-blue-accent-hovered);
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-primary-size-s);
+    @include outline-var($container-focused-s);
 
-    color: var($sys-primary-accent-hovered);
+    color: var($sys-blue-accent-hovered);
+    outline-color: var($sys-available-complementary);
   }
 
   &[data-disabled] {
-    color: var($sys-neutral-accent-disabled);
+    color: var($sys-neutral-text-disabled);
     cursor: not-allowed;
   }
 }

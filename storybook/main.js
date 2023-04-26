@@ -45,7 +45,7 @@ const mainConfig = {
       },
     },
     '@geometricpanda/storybook-addon-badges',
-    './brandAddon/preset.js',
+    '@sbercloud/ft-storybook-brand-addon',
     'storybook-dark-mode',
     '@storybook/addon-links',
   ],

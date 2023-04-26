@@ -2,10 +2,10 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 @import '../../styles.module';
 
-$types: primary, neutral, critical;
+$types: primary, neutral, red; /* stylelint-disable-line color-named */
 $sizes: s, m, l;
 $variants: label-only, icon-only, icon-after;
-$icon-size: var($icon-size-s);
+$icon-size: var($icon-s);
 $typography: (
   s: $sans-label-m,
   m: $sans-label-l,
@@ -15,9 +15,9 @@ $typography: (
 @mixin button-colors-styles {
   @each $type in $types {
     &[data-type='#{$type}'] {
-      @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-enabled'));
-      @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-enabled'));
-      border-color: simple-var($theme-variables, 'sys', $type, 'accent-enabled');
+      @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-default'));
+      @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-default'));
+      border-color: simple-var($theme-variables, 'sys', $type, 'accent-default');
 
       &:hover {
         @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
@@ -32,31 +32,40 @@ $typography: (
       }
 
       &:active {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
-        border-color: simple-var($theme-variables, 'sys', $type, 'line-activated');
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
+        border-color: simple-var($theme-variables, 'sys', $type, 'accent-pressed');
       }
 
       &:disabled,
       &[data-disabled] {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-disabled'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-disabled'));
-        border-color: simple-var($theme-variables, 'sys', $type, 'accent-disabled');
+        @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
+        @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
+        border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
       }
 
       &[data-loading] {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-light-enabled'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-enabled'));
-        border-color: simple-var($theme-variables, 'sys', $type, 'line-activated');
+        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
+        border-color: simple-var($theme-variables, 'sys', $type, 'accent-pressed');
       }
     }
   }
 }
 
-@mixin button-common-state {
-  &:focus-visible {
-    @include outline-var($container-focused-available-size-s);
-    outline-offset: var($spacing-state-focus-offset);
+@mixin button-outline-colors-styles {
+  @each $type in $types {
+    &[data-type='#{$type}'] {
+      &:focus-visible {
+        @if $type == 'neutral' {
+          outline-color: var($sys-available-complementary);
+        }
+
+ @else {
+          outline-color: simple-var($theme-variables, 'sys', $type, 'accent-default');
+        }
+      }
+    }
   }
 }
 
@@ -64,5 +73,6 @@ $typography: (
   @include button-anatomy-styles($button-outline, $sizes, $variants, $typography, $icon-size);
   @include loading-label-only($button-outline);
   @include button-colors-styles;
+  @include button-outline-colors-styles;
   @include button-common-state;
 }

@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { BADGE } from '../../../storybook/constants';
@@ -8,12 +8,14 @@ import componentReadme from '../README.md';
 import { DropZone, HiddenDropZone, HiddenDropZoneProps } from '../src';
 import classNames from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Drop Zone/Hidden Drop Zone',
   component: HiddenDropZone,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<HiddenDropZoneProps> = ({ ...args }) => {
+type StoryProps = HiddenDropZoneProps;
+const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const [files, setFiles] = useState<File[]>([]);
 
   return (
@@ -46,7 +48,7 @@ const Template: StoryFn<HiddenDropZoneProps> = ({ ...args }) => {
     </div>
   );
 };
-export const hiddenDropZone = Template.bind({});
+export const hiddenDropZone: StoryObj<StoryProps> = Template.bind({});
 
 hiddenDropZone.args = {
   title: 'Title',
