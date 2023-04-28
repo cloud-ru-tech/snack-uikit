@@ -3,5 +3,5 @@
 .vscode
 storybook-static
 /node_modules
-.gitignore
 Dockerfile
+.gitignore
