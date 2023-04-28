@@ -1,7 +1,6 @@
 .git
 .idea
 .vscode
-storybook-static
 /node_modules
 Dockerfile
 .gitignore
