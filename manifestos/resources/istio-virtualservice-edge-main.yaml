@@ -16,6 +16,8 @@ spec:
       headers:
         test:
           exact: "true"
+    rewrite:
+      uri: "/"
     route:
     - destination:
         host: uikit-snack
@@ -27,6 +29,8 @@ spec:
         prefix: "/snack/"
       withoutHeaders:
         ui-uikit-snack: {}
+    rewrite:
+      uri: "/"
     route:
     - destination:
         host: uikit-snack

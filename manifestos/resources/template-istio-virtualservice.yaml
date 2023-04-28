@@ -21,6 +21,8 @@ spec:
       headers:
         ui-uikit-snack:
           regex: "^.*(?i)$CI_COMMIT_BRANCH_CUT.*$"
+    rewrite:
+      uri: "/"
     route:
     - destination:
         host: uikit-snack
