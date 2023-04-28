@@ -2,3 +2,6 @@
 .idea
 .vscode
 storybook-static
+/node_modules
+.gitignore
+Dockerfile
