@@ -1,0 +1,20 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: uikit-snack-$CI_COMMIT_BRANCH_CUT
+  namespace: ui-uikit-snack
+  labels:
+    app: uikit-snack
+    todo: delete
+  annotations:
+    janitor/ttl: 7d
+spec:
+  host: uikit-snack
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+  subsets:
+  - name: $CI_COMMIT_BRANCH_CUT
+    labels:
+      version: $CI_COMMIT_BRANCH_CUT

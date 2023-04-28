@@ -1,0 +1,35 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: uikit-snack
+  namespace: ui-uikit-snack
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - cloud-ui/ui-gateway
+  http:
+  - match:
+    - uri:
+        prefix: "/snack/"
+      headers:
+        test:
+          exact: "true"
+    route:
+    - destination:
+        host: uikit-snack
+        subset: new
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: "/snack/"
+      withoutHeaders:
+        ui-uikit-snack: {}
+    route:
+    - destination:
+        host: uikit-snack
+        subset: old
+        port:
+          number: 8080

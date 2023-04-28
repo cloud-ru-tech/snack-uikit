@@ -1,0 +1,18 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: uikit-snack
+  namespace: ui-uikit-snack
+spec:
+  host: uikit-snack
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+  subsets:
+  - name: new
+    labels:
+      version: new
+  - name: old
+    labels:
+      version: old

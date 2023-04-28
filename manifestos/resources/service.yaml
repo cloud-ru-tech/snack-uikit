@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uikit-snack
+  namespace: ui-uikit-snack
+  labels:
+    app: uikit-snack
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: uikit-snack
