@@ -1,5 +1,6 @@
 ## build sources
-FROM node:16.13.1-alpine AS builder
+ARG NODE_BASE_IMAGE
+FROM $NODE_BASE_IMAGE AS builder
 COPY . .
 
 RUN npm ci
