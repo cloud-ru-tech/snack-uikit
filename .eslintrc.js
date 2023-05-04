@@ -5,10 +5,15 @@ module.exports = {
   ignorePatterns: 'packages/icons/src',
   overrides: [
     {
-      files: ['packages/**/__unit-tests__/**/*.ts'],
+      files: ['packages/**/__e2e__/**/*.ts'],
       rules: {
         'testcafe-community/missing-expect': 'off',
-        'jest/consistent-test-it': ['error', { fn: 'it' }],
+      },
+    },
+    {
+      files: ['packages/**/__tests__/**/*.ts'],
+      rules: {
+        'vitest/consistent-test-it': ['error', { fn: 'it' }],
       },
     },
   ],

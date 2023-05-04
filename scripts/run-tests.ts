@@ -16,7 +16,7 @@ if (!shouldRunAllTests()) {
     paths.push(path.join(__dirname, '../testcafe'));
   }
 
-  changedPaths = paths.map(item => `${item}/__tests__/*.ts`).join(' ');
+  changedPaths = paths.map(item => `${item}/__e2e__/*.ts`).join(' ');
 }
 
 exec(`testcafe ${BROWSER ? `${BROWSER}:headless` : 'chrome'} --config-file testcafe.config.js ${changedPaths}`, exit);

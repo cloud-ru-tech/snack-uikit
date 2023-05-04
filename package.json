@@ -29,8 +29,8 @@
     "test:testcafe": "ts-node scripts/run-tests && ts-node scripts/normalize-testcafe-xml-report",
     "test:testcafe:local": "cross-env TEST_LOCAL=true testcafe chrome --config-file testcafe.config.js --live",
     "test:ci": "start-server-and-test storybook:ci http://localhost:6006 test:testcafe",
-    "test:jest": "jest",
-    "test:jest:local": "jest --watchAll"
+    "test:unit": "vitest run",
+    "test:unit:local": "vitest"
   },
   "devDependencies": {
     "@floating-ui/react-dom-interactions": "0.13.3",
@@ -38,9 +38,9 @@
     "@sbercloud/figma-tokens": "0.11.0",
     "@sbercloud/figma-tokens-cloud-platform": "0.11.0",
     "@sbercloud/figma-tokens-mlspace": "0.11.0",
-    "@sbercloud/ft-all-linters-pack": "2.2.5",
+    "@sbercloud/ft-config-vitest": "1.1.1",
+    "@sbercloud/ft-all-linters-pack": "2.2.8",
     "@sbercloud/ft-config-babel": "2.1.1",
-    "@sbercloud/ft-config-jest": "1.2.0",
     "@sbercloud/ft-conventional-changelog": "1.2.3",
     "@sbercloud/ft-copy-to-clipboard": "2.1.0",
     "@sbercloud/ft-storybook-readme-addon": "3.0.0",
@@ -97,7 +97,6 @@
     "stylelint-config-recommended-scss": "9.0.1",
     "stylelint-scss": "4.6.0",
     "testcafe": "2.4.0",
-    "ts-jest": "29.1.0",
     "ts-node": "10.9.1",
     "tsconfig-paths-webpack-plugin": "4.0.1",
     "ttypescript": "1.5.15",

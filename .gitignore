@@ -15,6 +15,7 @@ yarn-error.log*
 
 # Optional npm cache directory
 .npm
+reports
 
 # Editor directories and files
 .idea

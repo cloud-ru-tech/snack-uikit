@@ -9,7 +9,7 @@ import { logDebug, logError, logInfo } from './utils/console';
 const options = {
   ignoreBinPackage: false,
   skipMissing: false,
-  ignorePatterns: ['stories', 'dist', '__tests__'],
+  ignorePatterns: ['stories', 'dist', '__tests__', '__e2e__'],
   ignoreMatches: ['react', 'react-dom', '@sbercloud/figma-tokens'],
 };
 

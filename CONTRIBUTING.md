@@ -35,8 +35,8 @@
 - `test:testcafe` - запускает testcafe и прогоняет тесты
 - `test:testcafe:local` - запускает testcafe в watch режиме, перезапускает при изменении исходного кода теста
 - `test:ci` - запуск сервера сторибук и тестов на нем для *CI/CD*
-- `test:jest` - запускает jest и прогоняет тесты
-- `test:jest:local` - запускает jest в watch режиме, перезапускает при изменении исходного кода теста
+- `test:unit` - запускает vitest и прогоняет тесты
+- `test:unit:local` - запускает vitest в watch режиме, перезапускает при изменении исходного кода теста
 
 ## Conventional Commits
 
@@ -85,8 +85,11 @@ packages
     stories
     |__ Some.tsx
     
-    __tests__
+    __e2e__ (testcafe)
     |__some.ts
+
+    __test__ (vitest) (опицонально)
+    |__ some.spec.ts (.spec -  обязательная часть)
     
     package.json
     tsconfig.json
