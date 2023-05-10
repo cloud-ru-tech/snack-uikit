@@ -1,0 +1,15 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.skeleton {
+  box-sizing: border-box;
+  width: 100%;
+  height: 1em;
+  background: simple-var($theme-variables, 'gradient', 'skeleton') 0 0 / 200% 100% repeat fixed;
+  animation: loading 2s infinite linear;
+
+  @keyframes loading {
+    to {
+      background-position: -200% 0;
+    }
+  }
+}

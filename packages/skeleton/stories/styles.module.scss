@@ -1,0 +1,49 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.textContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: start;
+  max-width: 800px;
+
+  > div {
+    width: 50%;
+  }
+}
+
+
+.storyCard {
+  max-width: 600px;
+  margin: 10px auto;
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
+  border-radius: 10px;
+  box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
+
+  &_header {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  &_avatar {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    background: linear-gradient(30deg, simple-var($theme-variables, 'sys', 'primary', 'accent-default') 37%, simple-var($theme-variables, 'sys', 'red', 'accent-default') 64%);
+    border-radius: 50%;
+  }
+
+  &_title {
+    flex-grow: 1;
+    flex-shrink: 1;
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+}

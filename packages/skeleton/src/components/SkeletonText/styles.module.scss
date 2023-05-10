@@ -1,0 +1,21 @@
+.skeletonText {
+  position: relative;
+}
+
+.skeletonTextRow {
+  display: inline;
+}
+
+.skeletonTextLine {
+  display: inline-block;
+  height: 0.8em;
+  margin-top: 0;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.skeletonTextRow + .skeletonTextRow:last-child {
+  .skeletonTextLine {
+    width: 65%;
+  }
+}
