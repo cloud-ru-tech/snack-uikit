@@ -1,5 +1,6 @@
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 import { useNProgress } from '@tanem/react-nprogress';
+
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import classNames from './styles.module.scss';
 
