@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/popover",
   "title": "Popover",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -28,7 +28,7 @@
   "license": "UNLICENSED",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/popover-private": "0.1.0"
+    "@snack-ui/popover-private": "0.1.1"
   },
   "peerDependencies": {
     "@snack-ui/utils": "0.2.2"
