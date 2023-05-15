@@ -1,10 +1,10 @@
 import path from 'path';
 
 import depCheck from 'depcheck';
-import { globSync } from 'glob';
 
 import globConfig from '../package.json';
 import { logDebug, logError, logInfo } from './utils/console';
+import { getAllPackageFolders } from './utils/getAllPackageFolders';
 
 const options = {
   ignoreBinPackage: false,
@@ -13,14 +13,10 @@ const options = {
   ignoreMatches: ['react', 'react-dom', '@sbercloud/figma-tokens'],
 };
 
-const packages = `../packages/*`;
-
 const uikitPackageRegexp = new RegExp(`${globConfig.name}\\/`);
 
 const InternalPackages = {};
-const folders = globSync(`${path.resolve(__dirname, packages)}`, {
-  ignore: path.resolve(__dirname, '../packages/tsconfig.json'),
-});
+const folders = getAllPackageFolders();
 
 for (const folder of folders) {
   const pkg = require(path.resolve(folder, 'package.json'));

@@ -1,19 +1,14 @@
 import path from 'path';
 
-import { globSync } from 'glob';
-
+import { getAllPackageFolders } from '../utils/getAllPackageFolders';
 import { getChangedPackages } from '../utils/getChangedPackages';
-
-const packagesDir = path.join(__dirname, '../../packages');
 
 function toPattern(basename: string) {
   return `packages/${basename}/src/**/*`;
 }
 
 function getPackageEntries(runAllTests: boolean) {
-  const allPackages = globSync(path.join(packagesDir, '*'), {
-    ignore: path.resolve(__dirname, '../../packages/tsconfig.json'),
-  });
+  const allPackages = getAllPackageFolders();
 
   const paths = runAllTests ? allPackages : getChangedPackages();
 
