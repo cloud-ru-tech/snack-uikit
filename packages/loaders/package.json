@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/loaders",
   "title": "Loaders",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "sideEffects": [
     "*.css",
     "*.woff",
