@@ -1,6 +1,6 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-popoverPrivate';
 
-$sizes: s, m, l;
+$sizes: 's', 'm', 'l';
 
 @mixin popover-arrow-sizes {
   @each $size in $sizes {

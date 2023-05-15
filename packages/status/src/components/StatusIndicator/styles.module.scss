@@ -1,8 +1,8 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-status';
 
-$appearances-system: primary, neutral;
-$appearances-index: red, orange, yellow, green, blue, violet, pink; /* stylelint-disable-line color-named */
-$sizes: xxs, xs, s, m, l;
+$appearances-system: 'primary', 'neutral';
+$appearances-index: 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
+$sizes: 'xxs', 'xs', 's', 'm', 'l';
 
 .container {
   display: inline-flex;
@@ -25,13 +25,13 @@ $sizes: xxs, xs, s, m, l;
   border: 0 solid var($sys-neutral-background1-level);
 
   @each $appearance in $appearances-system {
-    &[data-appearance='#{"" + $appearance}'] {
+    &[data-appearance='#{$appearance}'] {
       background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
     }
   }
 
   @each $appearance in $appearances-index {
-    &[data-appearance='#{"" + $appearance}'] {
+    &[data-appearance='#{$appearance}'] {
       background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
     }
   }

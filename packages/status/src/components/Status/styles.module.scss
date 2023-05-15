@@ -1,9 +1,9 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-status';
 
-$sizes: xs, s;
+$sizes: 'xs', 's';
 $label-typography: (
-  xs: $sans-label-s,
-  s: $sans-label-m
+  'xs': $sans-label-s,
+  's': $sans-label-m
 );
 
 .container {

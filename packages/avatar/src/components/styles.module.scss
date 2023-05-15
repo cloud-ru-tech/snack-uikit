@@ -1,16 +1,16 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-avatar';
 
-$appearances: red, orange, yellow, green, blue, violet, pink, neutral; /* stylelint-disable-line color-named */
-$shapes: round, square;
-$sizes: xxs, xs, s, m, l, xl, xxl;
+$appearances: 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink', 'neutral';
+$shapes: 'round', 'square';
+$sizes: 'xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl';
 $typography: (
-  xxs: $sans-label-s,
-  xs: $sans-label-s,
-  s: $sans-label-l,
-  m: $sans-title-l,
-  l: $sans-headline-m,
-  xl: $sans-display-s,
-  xxl: $sans-display-m
+  'xxs': $sans-label-s,
+  'xs': $sans-label-s,
+  's': $sans-label-l,
+  'm': $sans-title-l,
+  'l': $sans-headline-m,
+  'xl': $sans-display-s,
+  'xxl': $sans-display-m
 );
 
 .avatar {
@@ -20,7 +20,7 @@ $typography: (
   justify-content: center;
 
   @each $appearance in $appearances {
-    &[data-appearance='#{"" + $appearance}'] {
+    &[data-appearance='#{$appearance}'] {
       color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
       background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
     }

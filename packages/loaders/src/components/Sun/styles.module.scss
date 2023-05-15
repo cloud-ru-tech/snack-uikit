@@ -1,6 +1,6 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-loader';
 
-$sizes: xs, s, m, l;
+$sizes: 'xs', 's', 'm', 'l';
 
 .sun {
   pointer-events: none;

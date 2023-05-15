@@ -1,9 +1,8 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-counter';
 
-/* stylelint-disable */
-$appearances: primary, neutral, red;
-$sizes: s, m;
-$variants: count, count-plus, count-k;
+$appearances: 'primary', 'neutral', 'red';
+$sizes: 's', 'm';
+$variants: 'count', 'count-plus', 'count-k';
 
 $value-typography: (
   s: $sans-label-s,
