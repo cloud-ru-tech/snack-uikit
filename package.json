@@ -30,7 +30,8 @@
     "test:testcafe:local": "cross-env TEST_LOCAL=true testcafe chrome --config-file testcafe.config.js --live",
     "test:ci": "start-server-and-test storybook:ci http://localhost:6006 test:testcafe",
     "test:unit": "vitest run",
-    "test:unit:local": "vitest"
+    "test:unit:local": "vitest",
+    "validate:licenses": "license_finder"
   },
   "devDependencies": {
     "@geometricpanda/storybook-addon-badges": "2.0.0",

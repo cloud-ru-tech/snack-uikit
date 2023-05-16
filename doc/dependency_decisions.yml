@@ -1,0 +1,16 @@
+---
+- - :permit
+  - MIT
+  - :when: 2023-05-16 16:00:35.982795000 Z
+- - :permit
+  - Apache 2.0
+  - :when: 2023-05-16 16:01:06.870936000 Z
+- - :permit
+  - ISC
+  - :when: 2023-05-16 16:01:20.413568000 Z
+- - :permit
+  - New BSD
+  - :when: 2023-05-16 16:04:28.145380000 Z
+- - :ignore_group
+  - devDependencies
+  - :when: 2023-05-19 14:25:51.687915000 Z
