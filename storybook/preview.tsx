@@ -35,9 +35,9 @@ const parameters: Parameters = {
   },
   darkMode: {
     // Override the default dark theme
-    dark: { ...themes.dark, ...brandInfo },
+    dark: { ...themes.dark, ...brandInfo, base: 'dark' },
     // Override the default light theme
-    light: { ...themes.normal, ...brandInfo },
+    light: { ...themes.normal, ...brandInfo, base: 'light' },
   },
 };
 
@@ -77,5 +77,4 @@ const preview = {
   globalTypes,
 };
 
-// eslint-disable-next-line import/no-default-export
 export default preview;

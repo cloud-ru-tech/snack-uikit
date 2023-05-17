@@ -19,7 +19,6 @@ function getPackageEntries(runAllTests: boolean) {
 
   return paths.map(dirname => ({
     pattern: toPattern(path.basename(dirname)),
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     version: require(path.join(dirname, 'package.json')).version,
   }));
 }

@@ -23,9 +23,20 @@ module.exports = {
       },
     },
     {
-      files: ['storybook/stories/**/*'],
+      files: [
+        'storybook/stories/**/*',
+        'storybook/preview.tsx',
+        'scripts/scss-extension-transformer.ts',
+        'storybook/main.js',
+      ],
       rules: {
         'import/no-default-export': 'off',
+      },
+    },
+    {
+      files: ['scripts/check-dependencies.ts', 'scripts/test-coverage/packages.ts'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
       },
     },
   ],

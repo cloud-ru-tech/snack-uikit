@@ -20,7 +20,6 @@ const pkg = argv.pkg || '*';
   const srcPart = 'src';
 
   for (const folder of folders) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const src = `${folder}/${srcPart}`;
     const dist = `${folder}/${distPart}`;
     const distESM = `${dist}`;

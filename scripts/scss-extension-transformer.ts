@@ -17,7 +17,6 @@ function scssImportVisitor(ctx: ts.TransformationContext, node: ImportDeclaratio
   );
 }
 
-// eslint-disable-next-line import/no-default-export
 export default function () {
   return (ctx: ts.TransformationContext) => (sourceFile: ts.SourceFile) => {
     function visitor(node: ts.Node): ts.Node {

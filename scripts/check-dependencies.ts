@@ -23,7 +23,6 @@ const folders = globSync(`${path.resolve(__dirname, packages)}`, {
 });
 
 for (const folder of folders) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const pkg = require(path.resolve(folder, 'package.json'));
   InternalPackages[pkg.name] = pkg.version;
 }
@@ -34,7 +33,6 @@ const UnusedDeps: string[] = [];
 const Missing: Record<string, string[]>[] = [];
 
 for (const folder of folders) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const pkg = require(path.resolve(folder, 'package.json'));
   const usedInternal = Object.keys(pkg.dependencies || {}).filter(x => uikitPackageRegexp.test(x));
   usedInternal.forEach(dep => {
