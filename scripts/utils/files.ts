@@ -36,6 +36,9 @@ export const bootstrapFiles = ({
   });
   logInfo('Created readme');
 
+  fileTemplates.license({ packageRootFolderName });
+  logInfo('Created license');
+
   fileTemplates.tsConfig({ packageRootFolderName });
   logInfo('Created tsconfig.json');
 

@@ -50,8 +50,8 @@ export const packageJson = ({
     },
     author: `${user} <${email}>`,
     contributors: [`${user} <${email}>`],
-    files: ['dist', 'src', './CHANGELOG.md'],
-    license: 'UNLICENSED',
+    files: ['dist', 'src', './CHANGELOG.md', './LICENSE'],
+    license: 'Apache-2.0',
     scripts: {},
     dependencies: {},
     devDependencies: {},
@@ -102,6 +102,13 @@ ${packageDescription}
   const readmeFile = path.join(`./${PackagesRootFolder}/${packageRootFolderName}/README.md`);
 
   fs.writeFileSync(readmeFile, readmeContent);
+};
+
+export const license = ({ packageRootFolderName }: { packageRootFolderName: string }) => {
+  const src = path.join('./LICENSE');
+  const dist = path.join(`./${PackagesRootFolder}/${packageRootFolderName}/LICENSE`);
+
+  fs.copyFileSync(src, dist);
 };
 
 export const tsConfig = ({ packageRootFolderName }: { packageRootFolderName: string }) => {

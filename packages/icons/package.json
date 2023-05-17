@@ -23,9 +23,10 @@
   "files": [
     "dist",
     "src",
-    "./CHANGELOG.md"
+    "./CHANGELOG.md",
+    "./LICENSE"
   ],
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "scripts": {
     "validate:icons": "ts-node ../../scripts/validateIcons.ts",
     "fix:icons": "cross-var rimraf svgs-fixed/$npm_config_directory && cross-var oslllo-svg-fixer -s svgs/$npm_config_directory -d svgs-fixed/$npm_config_directory --sd false",

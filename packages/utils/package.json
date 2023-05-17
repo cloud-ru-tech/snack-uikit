@@ -22,8 +22,10 @@
   ],
   "files": [
     "dist",
-    "src"
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
   ],
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "scripts": {}
 }

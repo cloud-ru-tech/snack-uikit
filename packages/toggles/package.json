@@ -23,7 +23,8 @@
   "files": [
     "dist",
     "src",
-    "./CHANGELOG.md"
+    "./CHANGELOG.md",
+    "./LICENSE"
   ],
   "license": "Apache-2.0",
   "scripts": {}

@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git"
   },
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "scripts": {
     "add-package": "ts-node scripts/npm-init",
     "build:storybook": "storybook build -c storybook",
