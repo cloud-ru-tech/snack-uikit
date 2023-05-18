@@ -49,7 +49,10 @@ const mainConfig = {
     'storybook-dark-mode',
     '@storybook/addon-links',
   ],
-  staticDirs: [{ from: '../storybook/assets', to: '/storybook/assets' }],
+  staticDirs: [
+    { from: '../storybook/assets', to: '/storybook/assets' },
+    { from: '../storybook/assets', to: '/assets' },
+  ],
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
@@ -61,6 +64,9 @@ const mainConfig = {
   },
   features: {
     storyStoreV7: false,
+  },
+  docs: {
+    autodocs: false,
   },
   babel: base => ({ ...base, plugins: [...(base.plugins || []), ...(isTestServer ? ['istanbul'] : [])] }),
   env: config => ({
@@ -92,9 +98,6 @@ const mainConfig = {
     );
 
     return config;
-  },
-  docs: {
-    autodocs: false,
   },
 };
 

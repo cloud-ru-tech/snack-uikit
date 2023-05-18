@@ -11,9 +11,9 @@ import { BADGE, Brand, DEFAULT_BRAND_COLORS_MAP, DEFAULT_BRAND_MAP } from './con
 const brandInfo: ThemeVars = {
   base: 'light',
   brandTitle: 'Snack UI',
-  brandUrl: 'https://sbercloud.ru',
+  brandUrl: '/',
   brandImage: './storybook/assets/CloudFullLogo.svg',
-  brandTarget: '_blank',
+  brandTarget: '_self',
 };
 
 const parameters: Parameters = {

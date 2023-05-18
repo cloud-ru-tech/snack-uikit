@@ -43,7 +43,7 @@
     "@sbercloud/ft-conventional-changelog": "1.2.3",
     "@sbercloud/ft-copy-to-clipboard": "2.1.0",
     "@sbercloud/ft-storybook-brand-addon": "1.2.0",
-    "@sbercloud/ft-storybook-readme-addon": "3.0.0",
+    "@sbercloud/ft-storybook-readme-addon": "3.0.1",
     "@storybook/addon-actions": "7.0.7",
     "@storybook/addon-essentials": "7.0.7",
     "@storybook/addon-links": "7.0.7",

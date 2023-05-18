@@ -1,12 +1,14 @@
 import { Icons } from '@storybook/components';
 import React, { useRef, useState } from 'react';
-import { Components } from 'react-markdown';
+import { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { useDarkMode } from 'storybook-dark-mode';
 
 import { copyToClipboard } from '@sbercloud/ft-copy-to-clipboard';
 
+import { dark } from './dark';
+import { light } from './light';
 import styles from './styles.module.scss';
-import { codeTheme } from './utils';
 
 const TEXTS = {
   Copy: 'Копировать',
@@ -14,12 +16,17 @@ const TEXTS = {
 };
 
 const TIMEOUT = 1000;
-
-export const Code: Components['code'] = ({ inline, className, children, ...rest }) => {
+const CODE_THEME = {
+  light: light,
+  dark: dark,
+};
+export function Code({ inline, className, children, ...rest }: CodeProps) {
+  const isDark = useDarkMode();
+  const theme = isDark ? 'dark' : 'light';
   const [copyText, setCopyText] = useState(TEXTS.Copy);
   const timer = useRef<ReturnType<typeof setTimeout>>();
   const match = /language-(\w+)/.exec(className || '');
-
+  const codeTheme = CODE_THEME[theme];
   return !inline && match ? (
     <div
       role='button'
@@ -45,4 +52,4 @@ export const Code: Components['code'] = ({ inline, className, children, ...rest 
   ) : (
     <code className={className}>{children}</code>
   );
-};
+}

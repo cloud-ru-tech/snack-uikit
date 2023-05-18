@@ -1,9 +1,7 @@
-import { CSSProperties } from 'react';
-
-export const codeTheme: { [key: string]: CSSProperties } = {
+export const light = {
   'code[class*="language-"]': {
-    background: 'var(--index-gray-on-accent)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 98%)',
+    color: 'hsl(230, 8%, 24%)',
     fontFamily: '"Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace',
     direction: 'ltr',
     textAlign: 'left',
@@ -20,8 +18,8 @@ export const codeTheme: { [key: string]: CSSProperties } = {
     hyphens: 'none',
   },
   'pre[class*="language-"]': {
-    background: 'var(--index-gray-on-accent)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 98%)',
+    color: 'hsl(230, 8%, 24%)',
     fontFamily: '"Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace',
     direction: 'ltr',
     textAlign: 'left',
@@ -37,32 +35,31 @@ export const codeTheme: { [key: string]: CSSProperties } = {
     msHyphens: 'none',
     hyphens: 'none',
     padding: '1em',
-    margin: '0.5em 0',
     overflow: 'auto',
     borderRadius: '0.3em',
   },
   'code[class*="language-"]::-moz-selection': {
-    background: 'var(--index-gray-container-enabled)',
+    background: 'hsl(230, 1%, 90%)',
     color: 'inherit',
   },
   'code[class*="language-"] *::-moz-selection': {
-    background: 'var(--index-gray-container-enabled)',
+    background: 'hsl(230, 1%, 90%)',
     color: 'inherit',
   },
   'pre[class*="language-"] *::-moz-selection': {
-    background: 'var(--index-gray-container-enabled)',
+    background: 'hsl(230, 1%, 90%)',
     color: 'inherit',
   },
   'code[class*="language-"]::selection': {
-    background: 'var(--index-gray-container-enabled)',
+    background: 'hsl(230, 1%, 90%)',
     color: 'inherit',
   },
   'code[class*="language-"] *::selection': {
-    background: 'var(--index-gray-container-enabled)',
+    background: 'hsl(230, 1%, 90%)',
     color: 'inherit',
   },
   'pre[class*="language-"] *::selection': {
-    background: 'var(--index-gray-container-enabled)',
+    background: 'hsl(230, 1%, 90%)',
     color: 'inherit',
   },
   ':not(pre) > code[class*="language-"]': {
@@ -71,182 +68,182 @@ export const codeTheme: { [key: string]: CSSProperties } = {
     whiteSpace: 'normal',
   },
   comment: {
-    color: 'var(--index-gray-line-enabled)',
+    color: 'hsl(230, 4%, 64%)',
     fontStyle: 'italic',
   },
   prolog: {
-    color: 'var(--index-gray-line-enabled)',
+    color: 'hsl(230, 4%, 64%)',
   },
   cdata: {
-    color: 'var(--index-gray-line-enabled)',
+    color: 'hsl(230, 4%, 64%)',
   },
   doctype: {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
   },
   punctuation: {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
   },
   entity: {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
     cursor: 'help',
   },
   'attr-name': {
-    color: 'var(--index-orange-accent-activated)',
+    color: 'hsl(35, 99%, 36%)',
   },
   'class-name': {
-    color: 'var(--index-orange-accent-activated)',
+    color: 'hsl(35, 99%, 36%)',
   },
   boolean: {
-    color: 'var(--index-orange-accent-activated)',
+    color: 'hsl(35, 99%, 36%)',
   },
   constant: {
-    color: 'var(--index-orange-accent-activated)',
+    color: 'hsl(35, 99%, 36%)',
   },
   number: {
-    color: 'var(--index-orange-accent-activated)',
+    color: 'hsl(35, 99%, 36%)',
   },
   atrule: {
-    color: 'var(--index-orange-accent-activated)',
+    color: 'hsl(35, 99%, 36%)',
   },
   keyword: {
-    color: 'var(--index-pink-accent-enabled)',
+    color: 'hsl(301, 63%, 40%)',
   },
   property: {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   tag: {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   symbol: {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   deleted: {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   important: {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   selector: {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   string: {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   char: {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   builtin: {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   inserted: {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   regex: {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   'attr-value': {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   'attr-value > .token.punctuation': {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   variable: {
-    color: 'var(--index-blue-accent-enabled)',
+    color: 'hsl(221, 87%, 60%)',
   },
   operator: {
-    color: 'var(--index-blue-accent-enabled)',
+    color: 'hsl(221, 87%, 60%)',
   },
   function: {
-    color: 'var(--index-blue-accent-enabled)',
+    color: 'hsl(221, 87%, 60%)',
   },
   url: {
-    color: 'var(--index-blue-line-hovered)',
+    color: 'hsl(198, 99%, 37%)',
   },
   'attr-value > .token.punctuation.attr-equals': {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
   },
   'special-attr > .token.attr-value > .token.value.css': {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
   },
   '.language-css .token.selector': {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   '.language-css .token.property': {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
   },
   '.language-css .token.function': {
-    color: 'var(--index-blue-line-hovered)',
+    color: 'hsl(198, 99%, 37%)',
   },
   '.language-css .token.url > .token.function': {
-    color: 'var(--index-blue-line-hovered)',
+    color: 'hsl(198, 99%, 37%)',
   },
   '.language-css .token.url > .token.string.url': {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   '.language-css .token.important': {
-    color: 'var(--index-pink-accent-enabled)',
+    color: 'hsl(301, 63%, 40%)',
   },
   '.language-css .token.atrule .token.rule': {
-    color: 'var(--index-pink-accent-enabled)',
+    color: 'hsl(301, 63%, 40%)',
   },
   '.language-javascript .token.operator': {
-    color: 'var(--index-pink-accent-enabled)',
+    color: 'hsl(301, 63%, 40%)',
   },
   '.language-javascript .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation': {
-    color: 'var(--index-red-text-main-hovered)',
+    color: 'hsl(344, 84%, 43%)',
   },
   '.language-json .token.operator': {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
   },
   '.language-json .token.null.keyword': {
-    color: 'var(--index-orange-accent-activated)',
+    color: 'hsl(35, 99%, 36%)',
   },
   '.language-markdown .token.url': {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
   },
   '.language-markdown .token.url > .token.operator': {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
   },
   '.language-markdown .token.url-reference.url > .token.string': {
-    color: 'var(--sys-neutral-text-main-enabled)',
+    color: 'hsl(230, 8%, 24%)',
   },
   '.language-markdown .token.url > .token.content': {
-    color: 'var(--index-blue-accent-enabled)',
+    color: 'hsl(221, 87%, 60%)',
   },
   '.language-markdown .token.url > .token.url': {
-    color: 'var(--index-blue-line-hovered)',
+    color: 'hsl(198, 99%, 37%)',
   },
   '.language-markdown .token.url-reference.url': {
-    color: 'var(--index-blue-line-hovered)',
+    color: 'hsl(198, 99%, 37%)',
   },
   '.language-markdown .token.blockquote.punctuation': {
-    color: 'var(--index-gray-line-enabled)',
+    color: 'hsl(230, 4%, 64%)',
     fontStyle: 'italic',
   },
   '.language-markdown .token.hr.punctuation': {
-    color: 'var(--index-gray-line-enabled)',
+    color: 'hsl(230, 4%, 64%)',
     fontStyle: 'italic',
   },
   '.language-markdown .token.code-snippet': {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   '.language-markdown .token.bold .token.content': {
-    color: 'var(--index-orange-accent-activated)',
+    color: 'hsl(35, 99%, 36%)',
   },
   '.language-markdown .token.italic .token.content': {
-    color: 'var(--index-pink-accent-enabled)',
+    color: 'hsl(301, 63%, 40%)',
   },
   '.language-markdown .token.strike .token.content': {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   '.language-markdown .token.strike .token.punctuation': {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   '.language-markdown .token.list.punctuation': {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   '.language-markdown .token.title.important > .token.punctuation': {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   bold: {
     fontWeight: 'bold',
@@ -255,192 +252,192 @@ export const codeTheme: { [key: string]: CSSProperties } = {
     fontStyle: 'italic',
   },
   namespace: {
-    opacity: '0.8',
+    Opacity: '0.8',
   },
   'token.tab:not(:empty):before': {
-    color: 'var(--index-gray-container-opacity-activated)',
+    color: 'hsla(230, 8%, 24%, 0.2)',
   },
   'token.cr:before': {
-    color: 'var(--index-gray-container-opacity-activated)',
+    color: 'hsla(230, 8%, 24%, 0.2)',
   },
   'token.lf:before': {
-    color: 'var(--index-gray-container-opacity-activated)',
+    color: 'hsla(230, 8%, 24%, 0.2)',
   },
   'token.space:before': {
-    color: 'var(--index-gray-container-opacity-activated)',
+    color: 'hsla(230, 8%, 24%, 0.2)',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item': {
     marginRight: '0.4em',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item > button': {
-    background: 'var(--index-gray-container-enabled)',
-    color: 'var(--index-gray-text-main-hovered)',
+    background: 'hsl(230, 1%, 90%)',
+    color: 'hsl(230, 6%, 44%)',
     padding: '0.1em 0.4em',
     borderRadius: '0.3em',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item > a': {
-    background: 'var(--index-gray-container-enabled)',
-    color: 'var(--index-gray-text-main-hovered)',
+    background: 'hsl(230, 1%, 90%)',
+    color: 'hsl(230, 6%, 44%)',
     padding: '0.1em 0.4em',
     borderRadius: '0.3em',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item > span': {
-    background: 'var(--index-gray-container-enabled)',
-    color: 'var(--index-gray-text-main-hovered)',
+    background: 'hsl(230, 1%, 90%)',
+    color: 'hsl(230, 6%, 44%)',
     padding: '0.1em 0.4em',
     borderRadius: '0.3em',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover': {
-    background: 'var(--index-gray-container-hovered)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 78%)',
+    color: 'hsl(230, 8%, 24%)',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:focus': {
-    background: 'var(--index-gray-container-hovered)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 78%)',
+    color: 'hsl(230, 8%, 24%)',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover': {
-    background: 'var(--index-gray-container-hovered)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 78%)',
+    color: 'hsl(230, 8%, 24%)',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus': {
-    background: 'var(--index-gray-container-hovered)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 78%)',
+    color: 'hsl(230, 8%, 24%)',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover': {
-    background: 'var(--index-gray-container-hovered)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 78%)',
+    color: 'hsl(230, 8%, 24%)',
   },
   'div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus': {
-    background: 'var(--index-gray-container-hovered)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 78%)',
+    color: 'hsl(230, 8%, 24%)',
   },
   '.line-highlight.line-highlight': {
-    background: 'var(--index-gray-container-opacity-enabled)',
+    background: 'hsla(230, 8%, 24%, 0.05)',
   },
   '.line-highlight.line-highlight:before': {
-    background: 'var(--index-gray-container-enabled)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 90%)',
+    color: 'hsl(230, 8%, 24%)',
     padding: '0.1em 0.6em',
     borderRadius: '0.3em',
     boxShadow: '0 2px 0 0 rgba(0, 0, 0, 0.2)',
   },
   '.line-highlight.line-highlight[data-end]:after': {
-    background: 'var(--index-gray-container-enabled)',
-    color: 'var(--sys-neutral-text-main-enabled)',
+    background: 'hsl(230, 1%, 90%)',
+    color: 'hsl(230, 8%, 24%)',
     padding: '0.1em 0.6em',
     borderRadius: '0.3em',
     boxShadow: '0 2px 0 0 rgba(0, 0, 0, 0.2)',
   },
   'pre[id].linkable-line-numbers.linkable-line-numbers span.line-numbers-rows > span:hover:before': {
-    backgroundColor: 'var(--index-gray-container-opacity-enabled)',
+    backgroundColor: 'hsla(230, 8%, 24%, 0.05)',
   },
   '.line-numbers.line-numbers .line-numbers-rows': {
-    borderRightColor: 'var(--index-gray-container-opacity-activated)',
+    borderRightColor: 'hsla(230, 8%, 24%, 0.2)',
   },
   '.command-line .command-line-prompt': {
-    borderRightColor: 'var(--index-gray-container-opacity-activated)',
+    borderRightColor: 'hsla(230, 8%, 24%, 0.2)',
   },
   '.line-numbers .line-numbers-rows > span:before': {
-    color: 'var(--index-gray-line-hovered)',
+    color: 'hsl(230, 1%, 62%)',
   },
   '.command-line .command-line-prompt > span:before': {
-    color: 'var(--index-gray-line-hovered)',
+    color: 'hsl(230, 1%, 62%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-1': {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-5': {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-9': {
-    color: 'var(--index-red-accent-enabled)',
+    color: 'hsl(5, 74%, 59%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-2': {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-6': {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-10': {
-    color: 'var(--index-green-accent-enabled)',
+    color: 'hsl(119, 34%, 47%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-3': {
-    color: 'var(--index-blue-accent-enabled)',
+    color: 'hsl(221, 87%, 60%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-7': {
-    color: 'var(--index-blue-accent-enabled)',
+    color: 'hsl(221, 87%, 60%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-11': {
-    color: 'var(--index-blue-accent-enabled)',
+    color: 'hsl(221, 87%, 60%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-4': {
-    color: 'var(--index-pink-accent-enabled)',
+    color: 'hsl(301, 63%, 40%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-8': {
-    color: 'var(--index-pink-accent-enabled)',
+    color: 'hsl(301, 63%, 40%)',
   },
   '.rainbow-braces .token.token.punctuation.brace-level-12': {
-    color: 'var(--index-pink-accent-enabled)',
+    color: 'hsl(301, 63%, 40%)',
   },
   'pre.diff-highlight > code .token.token.deleted:not(.prefix)': {
-    backgroundColor: 'var(--index-pink-container-opacity-hovered)',
+    backgroundColor: 'hsla(353, 100%, 66%, 0.15)',
   },
   'pre > code.diff-highlight .token.token.deleted:not(.prefix)': {
-    backgroundColor: 'var(--index-pink-container-opacity-hovered)',
+    backgroundColor: 'hsla(353, 100%, 66%, 0.15)',
   },
   'pre.diff-highlight > code .token.token.deleted:not(.prefix)::-moz-selection': {
-    backgroundColor: 'var(--index-pink-container-opacity-activated)',
+    backgroundColor: 'hsla(353, 95%, 66%, 0.25)',
   },
   'pre.diff-highlight > code .token.token.deleted:not(.prefix) *::-moz-selection': {
-    backgroundColor: 'var(--index-pink-container-opacity-activated)',
+    backgroundColor: 'hsla(353, 95%, 66%, 0.25)',
   },
   'pre > code.diff-highlight .token.token.deleted:not(.prefix)::-moz-selection': {
-    backgroundColor: 'var(--index-pink-container-opacity-activated)',
+    backgroundColor: 'hsla(353, 95%, 66%, 0.25)',
   },
   'pre > code.diff-highlight .token.token.deleted:not(.prefix) *::-moz-selection': {
-    backgroundColor: 'var(--index-pink-container-opacity-activated)',
+    backgroundColor: 'hsla(353, 95%, 66%, 0.25)',
   },
   'pre.diff-highlight > code .token.token.deleted:not(.prefix)::selection': {
-    backgroundColor: 'var(--index-pink-container-opacity-activated)',
+    backgroundColor: 'hsla(353, 95%, 66%, 0.25)',
   },
   'pre.diff-highlight > code .token.token.deleted:not(.prefix) *::selection': {
-    backgroundColor: 'var(--index-pink-container-opacity-activated)',
+    backgroundColor: 'hsla(353, 95%, 66%, 0.25)',
   },
   'pre > code.diff-highlight .token.token.deleted:not(.prefix)::selection': {
-    backgroundColor: 'var(--index-pink-container-opacity-activated)',
+    backgroundColor: 'hsla(353, 95%, 66%, 0.25)',
   },
   'pre > code.diff-highlight .token.token.deleted:not(.prefix) *::selection': {
-    backgroundColor: 'var(--index-pink-container-opacity-activated)',
+    backgroundColor: 'hsla(353, 95%, 66%, 0.25)',
   },
   'pre.diff-highlight > code .token.token.inserted:not(.prefix)': {
-    backgroundColor: 'var(--index-green-container-opacity-hovered)',
+    backgroundColor: 'hsla(137, 100%, 55%, 0.15)',
   },
   'pre > code.diff-highlight .token.token.inserted:not(.prefix)': {
-    backgroundColor: 'var(--index-green-container-opacity-hovered)',
+    backgroundColor: 'hsla(137, 100%, 55%, 0.15)',
   },
   'pre.diff-highlight > code .token.token.inserted:not(.prefix)::-moz-selection': {
-    backgroundColor: 'var(--index-green-container-opacity-activated)',
+    backgroundColor: 'hsla(135, 73%, 55%, 0.25)',
   },
   'pre.diff-highlight > code .token.token.inserted:not(.prefix) *::-moz-selection': {
-    backgroundColor: 'var(--index-green-container-opacity-activated)',
+    backgroundColor: 'hsla(135, 73%, 55%, 0.25)',
   },
   'pre > code.diff-highlight .token.token.inserted:not(.prefix)::-moz-selection': {
-    backgroundColor: 'var(--index-green-container-opacity-activated)',
+    backgroundColor: 'hsla(135, 73%, 55%, 0.25)',
   },
   'pre > code.diff-highlight .token.token.inserted:not(.prefix) *::-moz-selection': {
-    backgroundColor: 'var(--index-green-container-opacity-activated)',
+    backgroundColor: 'hsla(135, 73%, 55%, 0.25)',
   },
   'pre.diff-highlight > code .token.token.inserted:not(.prefix)::selection': {
-    backgroundColor: 'var(--index-green-container-opacity-activated)',
+    backgroundColor: 'hsla(135, 73%, 55%, 0.25)',
   },
   'pre.diff-highlight > code .token.token.inserted:not(.prefix) *::selection': {
-    backgroundColor: 'var(--index-green-container-opacity-activated)',
+    backgroundColor: 'hsla(135, 73%, 55%, 0.25)',
   },
   'pre > code.diff-highlight .token.token.inserted:not(.prefix)::selection': {
-    backgroundColor: 'var(--index-green-container-opacity-activated)',
+    backgroundColor: 'hsla(135, 73%, 55%, 0.25)',
   },
   'pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection': {
-    backgroundColor: 'var(--index-green-container-opacity-activated)',
+    backgroundColor: 'hsla(135, 73%, 55%, 0.25)',
   },
   '.prism-previewer.prism-previewer:before': {
     borderColor: 'hsl(0, 0, 95%)',
@@ -471,21 +468,21 @@ export const codeTheme: { [key: string]: CSSProperties } = {
     background: 'hsl(0, 0%, 100%)',
   },
   '.prism-previewer-angle.prism-previewer-angle circle': {
-    stroke: 'var(--sys-neutral-text-main-enabled)',
+    stroke: 'hsl(230, 8%, 24%)',
     strokeOpacity: '1',
   },
   '.prism-previewer-time.prism-previewer-time circle': {
-    stroke: 'var(--sys-neutral-text-main-enabled)',
+    stroke: 'hsl(230, 8%, 24%)',
     strokeOpacity: '1',
   },
   '.prism-previewer-easing.prism-previewer-easing circle': {
-    stroke: 'var(--sys-neutral-text-main-enabled)',
+    stroke: 'hsl(230, 8%, 24%)',
     fill: 'transparent',
   },
   '.prism-previewer-easing.prism-previewer-easing path': {
-    stroke: 'var(--sys-neutral-text-main-enabled)',
+    stroke: 'hsl(230, 8%, 24%)',
   },
   '.prism-previewer-easing.prism-previewer-easing line': {
-    stroke: 'var(--sys-neutral-text-main-enabled)',
+    stroke: 'hsl(230, 8%, 24%)',
   },
 };
