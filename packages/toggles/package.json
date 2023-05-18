@@ -1,0 +1,33 @@
+{
+  "name": "@snack-ui/toggles",
+  "title": "Toggles",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/toggles",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/toggles"
+  },
+  "author": "Сергей Хлупин <svhlupin@sbercloud.ru>",
+  "contributors": [
+    "Сергей Хлупин <svhlupin@sbercloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {}
+}

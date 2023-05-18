@@ -45,6 +45,9 @@
     },
     {
       "path": "./skeleton"
+    },
+    {
+      "path": "./toggles"
     }
   ],
   "compilerOptions": {
