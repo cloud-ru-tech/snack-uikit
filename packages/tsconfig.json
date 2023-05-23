@@ -51,6 +51,9 @@
     },
     {
       "path": "./droplist"
+    },
+    {
+      "path": "./divider"
     }
   ],
   "compilerOptions": {

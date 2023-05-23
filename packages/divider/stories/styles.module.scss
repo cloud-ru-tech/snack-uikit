@@ -1,0 +1,12 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.container {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10%;
+  background-color: var($sys-neutral-background2-level);
+  border: 1px solid var($sys-neutral-decor-default);
+}
