@@ -31,3 +31,9 @@ export enum Trigger {
   HoverAndFocus = 'hoverAndFocus',
   ClickAndFocusVisible = 'clickAndFocusVisible',
 }
+
+export enum PopoverWidthStrategy {
+  Auto = 'auto',
+  Gte = 'GreatThanOrEqual',
+  Eq = 'Equal',
+}

@@ -6,6 +6,7 @@ import {
   offset as offsetMiddleware,
   ReferenceType,
   safePolygon,
+  size,
   useClick,
   useDismiss,
   useFloating,
@@ -18,7 +19,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ArrowSize, Placement, Trigger } from '../../constants';
+import { ArrowSize, Placement, PopoverWidthStrategy, Trigger } from '../../constants';
 import { getArrowOffset, getPopoverContent, getPopoverRootElement, getTriggerProps } from '../../utils';
 import { Arrow } from '../Arrow';
 import styles from './styles.module.scss';
@@ -48,6 +49,7 @@ export type PopoverPrivateProps = WithSupportProps<{
   hoverDelayOpen?: number;
   hoverDelayClose?: number;
   triggerRef?: ForwardedRef<ReferenceType | null>;
+  widthStrategy?: PopoverWidthStrategy;
 }>;
 
 export function PopoverPrivate({
@@ -66,8 +68,11 @@ export function PopoverPrivate({
   hoverDelayOpen,
   hoverDelayClose,
   triggerRef,
+  widthStrategy = PopoverWidthStrategy.Auto,
   ...rest
 }: PopoverPrivateProps) {
+  const widthStrategyRef = useRef<PopoverWidthStrategy>(widthStrategy);
+  widthStrategyRef.current = widthStrategy;
   const arrowRef = useRef<HTMLDivElement | null>(null);
 
   const [isOpen, setIsOpen] = useUncontrolledProp(openProp, false, onOpenChange);
@@ -78,7 +83,31 @@ export function PopoverPrivate({
     open: isOpen,
     onOpenChange: setIsOpen,
     whileElementsMounted: autoUpdate,
-    middleware: [offsetMiddleware(offsetProp + arrowOffset), hasArrow && arrow({ element: arrowRef }), flip()],
+    middleware: [
+      offsetMiddleware(offsetProp + arrowOffset),
+      hasArrow && arrow({ element: arrowRef }),
+      flip(),
+      size({
+        apply({ rects }) {
+          const floating = refs.floating.current;
+          if (!floating) return;
+          switch (widthStrategyRef.current) {
+            case PopoverWidthStrategy.Eq:
+              floating.style.width = `${rects.reference.width}px`;
+              floating.style.minWidth = '0px';
+              break;
+            case PopoverWidthStrategy.Gte:
+              floating.style.width = `auto`;
+              floating.style.minWidth = `${rects.reference.width}px`;
+              break;
+            case PopoverWidthStrategy.Auto:
+            default:
+              floating.style.width = `auto`;
+              floating.style.minWidth = 'auto';
+          }
+        },
+      }),
+    ],
   });
 
   const setReference: typeof refs.setReference = useCallback(
@@ -146,3 +175,4 @@ export function PopoverPrivate({
 PopoverPrivate.placements = Placement;
 PopoverPrivate.arrowSizes = ArrowSize;
 PopoverPrivate.triggers = Trigger;
+PopoverPrivate.widthStrategies = PopoverWidthStrategy;
