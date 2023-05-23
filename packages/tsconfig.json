@@ -48,6 +48,9 @@
     },
     {
       "path": "./toggles"
+    },
+    {
+      "path": "./droplist"
     }
   ],
   "compilerOptions": {

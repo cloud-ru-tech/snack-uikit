@@ -1,0 +1,17 @@
+.story {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+}
+
+.button {
+  width: 300px;
+  max-width: 100%;
+}
+
+.skeleton {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0 1em;
+}
