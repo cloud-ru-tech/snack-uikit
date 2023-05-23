@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-05-23)
+
+
+### Features
+
+* **[FF-2263](https://jira.sbercloud.tech/browse/FF-2263):** add widthStrategy property ([8a1efab](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/8a1efabebc8e8b21c2cd2c9786de5477ae4ca256))
+
+
+
+
+
 ## 0.1.2 (2023-05-15)
 
 **Note:** Version bump only for package @snack-ui/popover-private
