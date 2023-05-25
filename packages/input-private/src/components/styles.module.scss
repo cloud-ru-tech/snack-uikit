@@ -1,0 +1,26 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.inputPrivate {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: 100%;
+  max-width: 100%;
+  color: simple-var($sys-neutral-text-main);
+
+  &:read-only {
+    color: simple-var($sys-neutral-text-support);
+  }
+
+  &::placeholder {
+    color: simple-var($sys-neutral-text-disabled);
+  }
+
+  &[disabled] {
+    color: simple-var($sys-neutral-text-disabled);
+  }
+}
