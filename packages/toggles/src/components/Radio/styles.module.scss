@@ -1,0 +1,71 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toggles';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../styles.module';
+
+$sizes: 's', 'm';
+
+.container {
+  @include container('radio');
+}
+
+.box {
+  position: relative;
+  box-sizing: border-box;
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
+  border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
+  border-style: solid; // это наверное должно быть в композитном токене box
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($toggles, $size, 'radio', 'box');
+    }
+  }
+
+  &[data-focusvisible=true],
+  &[data-hover=true] {
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
+    border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-hovered');
+  }
+  
+  &[data-disabled=true] {
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
+    border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+  }
+
+  &[data-checked=true] {
+    border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    &[data-focusvisible=true],
+    &[data-hover=true] {
+      border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+    }
+    &[data-disabled=true] {
+      border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+    }
+  }
+}
+
+.flag {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+  transform: translate(-50%, -50%);
+
+  &[data-hover=true] {
+    background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+  }
+
+  &[data-disabled=true] {
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+  }
+
+  &[data-checked=false] {
+    display: none;
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($toggles, $size, 'radio', 'flag');
+    }
+  }
+}

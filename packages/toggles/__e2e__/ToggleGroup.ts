@@ -1,8 +1,7 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import type { Mode } from '../src/constants';
-import { useToggleGroup } from '../src/hooks/toggleGroup';
+import { Mode } from '../src/constants';
 
 fixture('ToggleGroup');
 
@@ -20,11 +19,12 @@ type Props = {
 
 const getPage = (props: Partial<Props> = {}) =>
   getTestcafeUrl({
-    name: 'toggle-group',
+    name: 'toggles-toggle-group',
+    story: 'toggle-group',
     props,
   });
 
-test.page(getPage({ mode: useToggleGroup.modes.Radio }))('Radio mode - can select the only one item', async t => {
+test.page(getPage({ mode: Mode.Radio }))('Radio mode - can select the only one item', async t => {
   await validateState(t)([false, false, false, false], 'Initial state');
   await t.click(selectItem(3));
   await validateState(t)([false, false, true, false], 'After click to 3');
@@ -34,7 +34,7 @@ test.page(getPage({ mode: useToggleGroup.modes.Radio }))('Radio mode - can selec
   await validateState(t)([false, false, false, false], 'After second click to 2');
 });
 
-test.page(getPage({ mode: useToggleGroup.modes.Checkbox }))('Checkbox mode - can select several items', async t => {
+test.page(getPage({ mode: Mode.Checkbox }))('Checkbox mode - can select several items', async t => {
   await validateState(t)([false, false, false, false], 'Initial state');
   await t.click(selectItem(3));
   await validateState(t)([false, false, true, false], 'After click to 3');

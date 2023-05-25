@@ -10,7 +10,7 @@ import { ToggleItemState } from '../src/types';
 import styles from './styles.module.scss';
 
 export default {
-  title: 'Components/Toggle Group',
+  title: 'Components/Toggles/Toggle Group',
 } as Meta;
 
 type Data = {

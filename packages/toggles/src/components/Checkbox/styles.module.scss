@@ -1,0 +1,59 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toggles';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../styles.module';
+
+$sizes: 's', 'm';
+
+.container {
+  @include container('checkbox');
+}
+
+.box {
+  box-sizing: border-box;
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
+  border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
+  border-style: solid; // это наверное должно быть в композитном токене box
+
+  &[data-checked=false] {
+    &[data-focusvisible=true],
+    &[data-hover=true] {
+      background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
+      border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-hovered');
+    }
+    &[data-disabled=true] {
+      background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
+      border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+    }
+  }
+
+  &[data-checked=true] {
+    background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    &[data-focusvisible=true],
+    &[data-hover=true] {
+      background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+      border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+    }
+    &[data-disabled=true] {
+      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+      border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+    }
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($toggles, $size, 'checkbox', 'box');
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
+
+  &[data-checked=false] {
+    display: none;
+  }
+}

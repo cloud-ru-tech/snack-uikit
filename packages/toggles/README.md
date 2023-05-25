@@ -1,9 +1,78 @@
-# Toggles
+# Checkbox, Radio, Switch и Favorite
+Компоненты, реализующие переключатели.
 
 ## Installation
 `npm i @snack-ui/toggles`
 
-[Changelog](./CHANGELOG.md)
+[Changelog](../../../CHANGELOG.md)
+
+## Общие пропсы:
+
+#### **`checked?: boolean`**
+  отмечен ли чекбокс
+
+#### **`disabled?: boolean`**
+  деактивирован ли чекбокс
+
+#### **`label?: string`**
+  Лейбл чекбокса
+
+#### **`labelPosition?: LabelPositions`** - *`[right]`*
+  Позиция лейбла относительно чекбокса:
+    `right` - справа
+    `left` - слева
+
+#### **`width?: Width`** - *`[auto]`*
+  поведение ширины компонента:
+    `auto` - автоматическое
+    `full` - все доступное место по ширине (игнорируется когда не передан проп `label`)
+
+#### **`size?: Size`** - *`[m]`*
+  размер компонента: `s` или `m`
+
+
+#### **`className?: string`**
+  CSS-класс контейнера
+#### **`inputRef?: RefObject<HTMLInputElement>`**
+  ссылка на оригинальный HTML элемент чекбокса
+
+#### **`id?: string`**
+  id аттрибут чекбокса
+#### **`name?: string`**
+  name аттрибут чекбокса
+
+#### **`tabIndex?: number`**
+  tabIndex аттрибут чекбокса
+
+#### **`autofocus?: boolean`**
+  autofocus аттрибут чекбокса
+
+#### **`defaultChecked?: boolean`**
+  дефолтное состояние выбранности чекбокса
+
+#### **`onChange?: (checked: boolean) => void`**
+  колбэк смены значения чекбокса
+
+#### **`onClick?: MouseEventHandler<HTMLInputElement>`**
+  колбэк клика в чекбокс
+
+#### **`onBlur?: FocusEventHandler<HTMLInputElement>`**
+  колбэк потери фокуса
+
+#### **`onFocus?: FocusEventHandler<HTMLInputElement>`**
+  колбэк получения фокуса
+
+## Switch
+
+#### **`showIcon?: boolean`** - *`[false]`*
+  Отображать ли дополнительную иконку отражающую состояние компонента.
+
+## Favorite
+
+#### **`icon?: Icon`** - *`[heart]`*
+  Возможные варианты: `star`, `heart`.
+
+#### **`disabled: отсутствует в компоненте Favorite`**
 
 ## хук useToggleGroup
 Хук управления группой переключателей.

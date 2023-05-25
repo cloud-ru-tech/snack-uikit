@@ -1,0 +1,120 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toggles';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../styles.module';
+
+$sizes: 's', 'm';
+$switchAnimationDuration: .1s;
+
+.container {
+  @include container('switch');
+}
+
+.box {
+  position: relative;
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'accent-default');
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($toggles, $size, 'switch', 'box');
+    }
+  }
+
+  &[data-hover=true] {
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
+  }
+
+  &[data-disabled=true] {
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+  }
+
+  &[data-checked=true] {
+    background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    &[data-hover=true] {
+      background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+    }
+    &[data-disabled=true] {
+      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+    }
+  }
+}
+
+.containerFlag {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-timing-function: linear;
+  transition-duration: $switchAnimationDuration;
+  transition-property: left;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($toggles, $size, 'switch', 'container-flag');
+      &[data-checked=true] {
+        left: calc(100% - #{simple-var($toggles, $size, 'switch', 'container-flag', 'width')});
+      }
+    }
+  }
+}
+
+.flag {
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($toggles, $size, 'switch', 'flag');
+    }
+  }
+
+  &[data-checked=true] {
+    background-color: simple-var($theme-variables, 'sys', 'primary', 'on-accent');
+  }
+
+  &[data-disabled=true] {
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+  }
+}
+
+@mixin flagIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  color: simple-var($theme-variables, 'sys', 'neutral', 'accent-default');
+  fill: transparent;
+  transition: opacity $switchAnimationDuration linear;
+  transform: translate(-50%, -50%);
+  
+  &[data-hover=true] {
+    color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
+  }
+
+  &[data-checked=true] {
+    color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    &[data-hover=true] {
+      color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+    }
+  }
+
+  &[data-disabled=true] {
+    color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+  }
+
+}
+
+.flag_icon_off {
+  @include flagIcon();
+  opacity: 1;
+  &[data-checked=true] {
+    opacity: 0;
+  }
+}
+
+.flag_icon_on {
+  @include flagIcon();
+  opacity: 0;
+  &[data-checked=true] {
+    opacity: 1;
+  }
+}

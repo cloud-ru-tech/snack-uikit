@@ -1,0 +1,33 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toggles';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../styles.module';
+
+$sizes: 's', 'm';
+$icons: ('star': 'yellow', 'heart': 'red');
+
+.container {
+  @include container('favourite');
+  outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
+  &[data-checked=true] {
+    outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
+  }
+}
+
+.icon {
+  color: simple-var($theme-variables, 'sys', 'neutral', 'text-light');
+  &[data-hover=true] {
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+  }
+
+  @each $icon, $color in $icons {
+    &[data-icon='#{$icon}'] {
+      &[data-checked=true] {
+        color: simple-var($theme-variables, 'sys', $color, 'accent-default');
+        &[data-focusvisible=true],
+        &[data-hover=true] {
+          color: simple-var($theme-variables, 'sys', $color, 'accent-hovered');
+        }
+      }
+    }
+  }
+}

@@ -39,9 +39,9 @@
   },
   "devDependencies": {
     "@geometricpanda/storybook-addon-badges": "2.0.0",
-    "@sbercloud/figma-tokens": "1.2.2",
-    "@sbercloud/figma-tokens-cloud-platform": "1.2.2",
-    "@sbercloud/figma-tokens-mlspace": "1.2.2",
+    "@sbercloud/figma-tokens": "1.3.0",
+    "@sbercloud/figma-tokens-cloud-platform": "1.3.0",
+    "@sbercloud/figma-tokens-mlspace": "1.3.0",
     "@sbercloud/ft-all-linters-pack": "2.2.8",
     "@sbercloud/ft-config-babel": "2.1.1",
     "@sbercloud/ft-config-vitest": "1.1.1",

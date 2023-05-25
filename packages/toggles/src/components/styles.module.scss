@@ -1,0 +1,25 @@
+$sizes: 's', 'm';
+
+@mixin container($component) {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($toggles, $size, $component, 'container');
+    }
+  }
+
+  &[data-focusvisible=true] {
+    @include outline-var($container-focused-s);
+    &[data-size='s'] {
+      outline-offset: simple-var($theme-variables, 'border-width', 'state-focus', 's');
+    }
+  }
+
+  &[data-checked=true] {
+    outline-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+  }
+}
