@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/icons",
   "title": "Icons",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "sideEffects": [
     "*.css",
     "*.woff",
