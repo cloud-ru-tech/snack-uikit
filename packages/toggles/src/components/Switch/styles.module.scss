@@ -67,10 +67,6 @@ $switchAnimationDuration: .1s;
     }
   }
 
-  &[data-checked=true] {
-    background-color: simple-var($theme-variables, 'sys', 'primary', 'on-accent');
-  }
-
   &[data-disabled=true] {
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
   }
