@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2023-05-26)
+
+
+### Bug Fixes
+
+* **[FF-2257](https://jira.sbercloud.tech/browse/FF-2257):** switch flag color ([604c756](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/604c75627a8774549c8ee819e7d3799ccc136511))
+
+
+
+
+
 # 0.2.0 (2023-05-26)
 
 
