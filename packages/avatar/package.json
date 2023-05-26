@@ -32,6 +32,6 @@
     "@snack-ui/status": "0.2.2"
   },
   "peerDependencies": {
-    "@snack-ui/utils": "^0.2.0"
+    "@snack-ui/utils": "^1.0.0"
   }
 }

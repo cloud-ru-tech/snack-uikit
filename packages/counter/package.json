@@ -29,6 +29,6 @@
   "license": "Apache-2.0",
   "scripts": {},
   "peerDependencies": {
-    "@snack-ui/utils": "^0.2.0"
+    "@snack-ui/utils": "^1.0.0"
   }
 }

@@ -35,6 +35,6 @@
     "uncontrollable": "8.0.0"
   },
   "peerDependencies": {
-    "@snack-ui/utils": "0.2.2"
+    "@snack-ui/utils": "^1.0.0"
   }
 }

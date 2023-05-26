@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/utils",
   "title": "Utils",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "sideEffects": [
     "*.css",
     "*.woff",

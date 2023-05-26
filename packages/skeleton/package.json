@@ -32,6 +32,6 @@
     "classnames": "2.3.2"
   },
   "peerDependencies": {
-    "@snack-ui/utils": "0.2.2"
+    "@snack-ui/utils": "^1.0.0"
   }
 }
