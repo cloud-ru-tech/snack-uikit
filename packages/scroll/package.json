@@ -1,0 +1,42 @@
+{
+  "name": "@snack-ui/scroll",
+  "title": "Scroll",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/scroll",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/scroll"
+  },
+  "author": "Сергей Хлупин <svhlupin@sbercloud.ru>",
+  "contributors": [
+    "Сергей Хлупин <svhlupin@sbercloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "classnames": "2.3.2",
+    "overlayscrollbars": "1.13.3",
+    "overlayscrollbars-react": "0.3.0"
+  },
+  "devDependencies": {
+    "@types/overlayscrollbars": "1.12.1"
+  },
+  "peerDependencies": {
+    "@snack-ui/utils": "1.1.0"
+  }
+}

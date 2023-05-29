@@ -1,0 +1,11 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.box {
+  width: 600px;
+  height: 400px;
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
+}
+
+.line {
+  white-space: nowrap;
+}

@@ -34,11 +34,11 @@
     "validate:licenses": "ts-node scripts/checkLicenses"
   },
   "dependencies": {
+    "@sbercloud/figma-tokens": "1.4.0",
+    "@sbercloud/figma-tokens-cloud-platform": "1.4.0",
+    "@sbercloud/figma-tokens-mlspace": "1.4.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@sbercloud/figma-tokens": "1.3.1",
-    "@sbercloud/figma-tokens-cloud-platform": "1.3.1",
-    "@sbercloud/figma-tokens-mlspace": "1.3.1"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@geometricpanda/storybook-addon-badges": "2.0.0",

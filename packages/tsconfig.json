@@ -57,6 +57,9 @@
     },
     {
       "path": "./input-private"
+    },
+    {
+      "path": "./scroll"
     }
   ],
   "compilerOptions": {
