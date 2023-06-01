@@ -27,5 +27,11 @@
     "./LICENSE"
   ],
   "license": "Apache-2.0",
-  "scripts": {}
+  "scripts": {},
+  "dependencies": {
+    "classnames": "2.3.2"
+  },
+  "peerDependencies": {
+    "@snack-ui/utils": "^1.1.0"
+  }
 }
