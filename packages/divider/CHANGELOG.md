@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.1 (2023-06-07)
+
+
+### Bug Fixes
+
+* **[FF-2458](https://jira.sbercloud.tech/browse/FF-2458):** changing props to optional ([c174179](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c174179d63eed481682ae2363714bc6dbb7f22cb))
+
+
+
+
+
 # 1.1.0 (2023-05-26)
 
 
