@@ -23,8 +23,8 @@
       {
         "rule": "shell",
         "command": "git config user.email",
-        "match": ".+@sbercloud.ru",
-        "error": "You have an incorrect email set in git. Execute `git config user.email {your-name}@sbercloud.ru`"
+        "match": ".+@cloud\\.ru",
+        "error": "You have an incorrect email set in git. Execute `git config --global user.email {your-name}@cloud.ru`"
       }
     ]
   }
