@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.2 (2023-06-07)
+
+
+### Bug Fixes
+
+* **[FF-2458](https://jira.sbercloud.tech/browse/FF-2458):** content centering ([0a9db7c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0a9db7caed8b17bd89ed9ae55dbc9ad7935511ba))
+
+
+
+
+
 ## 0.2.1 (2023-05-26)
 
 

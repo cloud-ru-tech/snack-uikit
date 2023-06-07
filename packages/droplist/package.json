@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/droplist",
   "title": "droplist",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,7 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/popover-private": "0.2.1"
+    "@snack-ui/popover-private": "0.2.2"
   },
   "peerDependencies": {
     "@snack-ui/utils": "^1.0.0"
