@@ -6,8 +6,8 @@ import { Orientation, Weight } from './constants';
 import styles from './styles.module.scss';
 
 export type DividerProps = WithSupportProps<{
-  weight: Weight;
-  orientation: Orientation;
+  weight?: Weight;
+  orientation?: Orientation;
   className?: string;
 }>;
 
