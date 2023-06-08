@@ -23,11 +23,11 @@ import {ProgressBar, ProgressBarPage, Spinner, Sun} from "@snack-ui/loaders";
 />
 
 <Spinner
-  size={Spinner.sizes.SizeXS}
+  size={Spinner.sizes.XS}
 />
 
 <Sun
-  size={Sun.sizes.SizeL}
+  size={Sun.sizes.L}
 />
 ```
 
@@ -37,8 +37,8 @@ import {ProgressBar, ProgressBarPage, Spinner, Sun} from "@snack-ui/loaders";
 
 ```typescript jsx
 enum Size {
-  SizeS = 'size-s',
-  SizeXS = 'size-xs',
+  S = 's',
+  XS = 'xs',
 }
 
 type ProgressBarProps = WithSupportProps<{
@@ -62,10 +62,10 @@ type ProgressBarPageProps = WithSupportProps<{
 
 ```typescript jsx
 enum LoaderSize {
-  SizeXS = 'size-xs',
-  SizeS = 'size-s',
-  SizeM = 'size-m',
-  SizeL = 'size-l',
+  XS = 'xs',
+  S = 's',
+  M = 'm',
+  L = 'l',
 }
 
 type SpinnerProps = WithSupportProps<{
