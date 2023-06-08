@@ -1,0 +1,41 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tabs';
+
+$types: 'primary', 'secondary';
+
+.tabBar {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.scrollContainer {
+  max-width: 100%;
+  overflow-x: scroll;
+  overflow-y: visible;
+}
+
+.tabsRow {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  white-space: nowrap;
+  &[data-type=primary] {
+    @include composite-var($tabs-primary);
+  }
+  &[data-type=secondary] {
+    @include composite-var($tabs-secondary);
+  }
+}
+
+.marker {
+  position: absolute;
+  bottom: 0;
+  background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+  transition: left 0.1s ease, width 0.1s ease;
+
+  @each $type in $types {
+    &[data-type='#{$type}'] {
+      @include composite-var($tabs, 'tab-button-#{$type}', 'marker');
+    }
+  }
+}

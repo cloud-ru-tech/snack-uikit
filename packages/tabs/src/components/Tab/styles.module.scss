@@ -1,0 +1,53 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tabs';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$types: 'primary', 'secondary';
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+  cursor: pointer;
+  background-color: transparent;
+  border-width: 0;
+  outline: none;
+
+  @each $type in $types {
+    &[data-type=#{$type}] {
+      @include composite-var($tabs, 'tab-button-#{$type}', 'height');
+      & .container {
+        @include composite-var($tabs, 'tab-button-#{$type}', 'container');
+      }
+    }
+  }
+
+  &[data-selected=true],
+  &:focus-visible,
+  &:hover {
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-main');
+  }
+
+  &:disabled {
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+    cursor: not-allowed;
+  }
+
+  & .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:focus-visible {
+    & .container {
+      @include outline-var($container-focused-s);
+      outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
+    }
+    &[data-selected=true] .container {
+      outline-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    }
+  }
+}

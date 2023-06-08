@@ -60,6 +60,9 @@
     },
     {
       "path": "./scroll"
+    },
+    {
+      "path": "./tabs"
     }
   ],
   "compilerOptions": {
