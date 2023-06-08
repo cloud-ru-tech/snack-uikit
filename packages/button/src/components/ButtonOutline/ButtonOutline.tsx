@@ -17,6 +17,7 @@ export function ButtonOutline({
   target = Target.Blank,
   type = Type.Primary,
   htmlType = HtmlType.Button,
+  tabIndex,
   ...rest
 }: ButtonOutlineProps) {
   return (
@@ -30,6 +31,7 @@ export function ButtonOutline({
       target={target}
       type={type}
       htmlType={htmlType}
+      tabIndex={tabIndex}
     />
   );
 }

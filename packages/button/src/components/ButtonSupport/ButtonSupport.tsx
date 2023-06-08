@@ -18,6 +18,7 @@ export function ButtonSupport({
   target = Target.Blank,
   type = Type.Neutral,
   htmlType = HtmlType.Button,
+  tabIndex,
   ...rest
 }: ButtonSupportProps) {
   return (
@@ -33,6 +34,7 @@ export function ButtonSupport({
       target={target}
       type={type}
       htmlType={htmlType}
+      tabIndex={tabIndex}
     />
   );
 }

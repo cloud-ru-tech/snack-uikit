@@ -18,6 +18,7 @@ export function ButtonLight({
   target = Target.Blank,
   type = Type.Neutral,
   htmlType = HtmlType.Button,
+  tabIndex,
   ...rest
 }: ButtonLightProps) {
   return (
@@ -33,6 +34,7 @@ export function ButtonLight({
       target={target}
       type={type}
       htmlType={htmlType}
+      tabIndex={tabIndex}
     />
   );
 }

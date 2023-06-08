@@ -15,6 +15,7 @@ export type BaseButtonProps = {
   size?: Size;
   type?: Type;
   htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+  tabIndex?: number;
 };
 
 export type AnchorButtonProps = {

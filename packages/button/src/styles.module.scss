@@ -12,20 +12,22 @@
   }
 }
 
-@mixin icon-size($icon-size) {
+@mixin icon-size($icon-sizes, $size) {
   .icon {
     display: inline-flex;
 
     svg {
-      width: $icon-size !important; /* stylelint-disable-line declaration-no-important */
-      height: $icon-size !important; /* stylelint-disable-line declaration-no-important */
+      width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 }
 
-@mixin button-anatomy-styles($button-theme, $sizes, $variants, $typography, $icon-size) {
+@mixin button-anatomy-styles($button-theme, $sizes, $variants, $typography, $icon-sizes) {
   @each $size in $sizes {
     &[data-size='#{$size}'] {
+      @include icon-size($icon-sizes, $size);
+
       .label {
         @include composite-var($typography, $size);
       }
@@ -37,8 +39,6 @@
       }
     }
   }
-
-  @include icon-size($icon-size);
 }
 
 @mixin loading-label-only($button-theme) {

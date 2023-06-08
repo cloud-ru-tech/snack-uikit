@@ -17,6 +17,7 @@ export function ButtonTonal({
   target = Target.Blank,
   type = Type.Primary,
   htmlType = HtmlType.Button,
+  tabIndex,
   ...rest
 }: ButtonTonalProps) {
   return (
@@ -30,6 +31,7 @@ export function ButtonTonal({
       target={target}
       type={type}
       htmlType={htmlType}
+      tabIndex={tabIndex}
     />
   );
 }

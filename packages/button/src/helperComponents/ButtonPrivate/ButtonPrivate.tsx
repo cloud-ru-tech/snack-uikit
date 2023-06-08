@@ -3,16 +3,17 @@ import { MouseEvent } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { HtmlType, IconPosition, Size, Target, Type } from '../../constants';
+import { HtmlType, IconPosition, Target, Type } from '../../constants';
 import { CommonButtonProps, CounterButtonProps } from '../../types';
 import styles from './styles.module.scss';
 import { getChildren, getVariant } from './utils';
 
 export type ButtonPrivateProps = WithSupportProps<
-  CommonButtonProps &
+  Omit<CommonButtonProps, 'size'> &
     CounterButtonProps & {
       iconClassName: string;
       labelClassName: string;
+      size?: string;
     }
 >;
 
@@ -28,10 +29,11 @@ export function ButtonPrivate({
   loading,
   onClick,
   counter,
-  size = Size.S,
+  size,
   target = Target.Blank,
   type = Type.Primary,
   htmlType = HtmlType.Button,
+  tabIndex: tabIndexProp = 0,
   ...rest
 }: ButtonPrivateProps) {
   const variant = getVariant({ label, iconPosition, icon });
@@ -45,7 +47,7 @@ export function ButtonPrivate({
     disabled,
     counter,
   });
-  const tabIndex = loading || disabled ? -1 : 0;
+  const tabIndex = loading || disabled ? -1 : tabIndexProp;
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     if (disabled || loading) {

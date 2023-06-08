@@ -5,7 +5,11 @@
 $types: 'primary', 'neutral', 'red';
 $sizes: 's', 'm', 'l';
 $variants: 'label-only', 'icon-only', 'icon-after';
-$icon-size: var($icon-s);
+$icon-sizes: (
+  's': $icon-s,
+  'm': $icon-s,
+  'l': $icon-s,
+);
 $typography: (
   's': $sans-label-m,
   'm': $sans-label-l,
@@ -70,7 +74,7 @@ $typography: (
 }
 
 .button {
-  @include button-anatomy-styles($button-outline, $sizes, $variants, $typography, $icon-size);
+  @include button-anatomy-styles($button-outline, $sizes, $variants, $typography, $icon-sizes);
   @include loading-label-only($button-outline);
   @include button-colors-styles;
   @include button-outline-colors-styles;
