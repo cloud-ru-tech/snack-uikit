@@ -195,14 +195,15 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ${componentName}, ${componentName}Props } from '../src';
 
-export default {
+const meta: Meta = {
   title: 'Components/${componentStoryTitle}',
   component: ${componentName},
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<${componentName}Props> = ({ ...args }) => <${componentName} {...args} />;
+const Template = ({ ...args }: ${componentName}Props) => <${componentName} {...args} />;
 
-export const ${componentStoryName} = Template.bind({});
+export const ${componentStoryName}: StoryFn<${componentName}Props>  = Template.bind({});
 
 ${componentStoryName}.args = {};
 

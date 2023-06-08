@@ -14,10 +14,11 @@ import {
 } from '../src';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Skeleton',
   component: Skeleton,
-} as Meta;
+};
+export default meta;
 
 const readmeAndDesign = {
   readme: {

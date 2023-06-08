@@ -6,18 +6,19 @@ import componentReadme from '../README.md';
 import { Divider, DividerProps } from '../src';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Divider',
   component: Divider,
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<DividerProps> = ({ ...args }) => (
+const Template = ({ ...args }: DividerProps) => (
   <div className={styles.container}>
     <Divider {...args} />
   </div>
 );
 
-export const divider = Template.bind({});
+export const divider: StoryFn<DividerProps> = Template.bind({});
 
 divider.args = {};
 
