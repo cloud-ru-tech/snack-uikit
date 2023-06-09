@@ -75,6 +75,9 @@
     },
     {
       "path": "./tag"
+    },
+    {
+      "path": "./icon-predefined"
     }
   ],
   "compilerOptions": {

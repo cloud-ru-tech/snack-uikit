@@ -1,0 +1,7 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.wrapper {
+  display: block;
+  padding: 2rem;
+  background-color: simple-var($sys-neutral-background1-level);
+}

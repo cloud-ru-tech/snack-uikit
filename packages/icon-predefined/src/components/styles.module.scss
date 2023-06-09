@@ -1,0 +1,51 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-iconPredefined';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
+$sizes: (
+  's': simple-var($icon-s),
+  'm': simple-var($icon-s),
+  'l': simple-var($icon-scale-x2),
+);
+
+.decor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &[data-decor] {
+    @each $appearance in $appearances {
+      &[data-appearance='#{$appearance}'] {
+        color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
+      }
+    }
+  }
+
+  @each $size, $sideLength in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($icon-predefined, 'decor', $size);
+    }
+  }
+}
+
+.icon {
+  @each $appearance in $appearances {
+    &[data-appearance='#{$appearance}'] {
+      color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+    }
+
+    @each $size, $sideLength in $sizes {
+      &[data-size='#{$size}'] {
+        width: $sideLength;
+        height: $sideLength;
+      }
+    }
+  }
+
+  // для желтого исключение
+  &[data-appearance='yellow'] {
+    color: simple-var($sys-yellow-text-light);
+  }
+}

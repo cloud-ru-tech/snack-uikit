@@ -7,7 +7,9 @@ const InterfaceIcons = getIconsDataTestIds('svgs/interface-icons');
 
 const size = 30;
 
-fixture('Icons: Interfaces').page(getTestcafeUrl({ name: 'interfaces', group: 'icons', props: { size } }));
+fixture('Icons: Interfaces').page(
+  getTestcafeUrl({ category: 'documentation', name: 'interfaces', group: 'icons', props: { size } }),
+);
 
 test('Rendered', async t => {
   for (const icon of InterfaceIcons) {

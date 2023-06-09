@@ -1,6 +1,6 @@
 # Snack Uikit [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![coverage](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/badges/master/coverage.svg?job=testcafe-coverage&key_text=coverage&&key_width=100/coverage.svg)](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/badges/master/coverage.svg?job=testcafe-coverage&key_text=coverage&&key_width=100)
 
-Snack Uikit - [библиотека компонентов](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit) компании [Cloud](https://sbercloud.ru/) и сообщетсва [TeamSnack](https://t.me/+tN0DDzHaDVc3M2Iy), в которой каждый компонент это отдельный npm-пакет, со своей версионностью и зависимостями.
+Snack Uikit - [библиотека компонентов](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit) компании [Cloud.ru](https://cloud.ru/) и сообщества [TeamSnack](https://t.me/+tN0DDzHaDVc3M2Iy), в которой каждый компонент это отдельный npm-пакет, со своей версионностью и зависимостями.
 
 ![Cloud](storybook/assets/CloudRuFullLogo.svg)   
 
