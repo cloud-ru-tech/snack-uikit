@@ -6,14 +6,19 @@ import { Tab } from '../Tab';
 import { TabBar } from '../TabBar';
 import { TabContent } from '../TabContent';
 
-export type TabsProps = PropsWithChildren<{
-  selectedTab?: string;
-  defaultSelectedTab?: string;
-  onChange?: (id: string) => void;
+export type TabsProps<T extends string = string> = PropsWithChildren<{
+  selectedTab?: T;
+  defaultSelectedTab?: T;
+  onChange?: (id: T) => void;
 }>;
 
-export function Tabs({ children, onChange, selectedTab: selectedTabProp, defaultSelectedTab }: TabsProps) {
-  const [selectedTab, setSelectedTab] = useUncontrolledProp<string | undefined>(
+export function Tabs<T extends string = string>({
+  children,
+  onChange,
+  selectedTab: selectedTabProp,
+  defaultSelectedTab,
+}: TabsProps<T>) {
+  const [selectedTab, setSelectedTab] = useUncontrolledProp<T | undefined>(
     selectedTabProp,
     defaultSelectedTab,
     onChange,
