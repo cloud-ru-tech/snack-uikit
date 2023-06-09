@@ -2,7 +2,7 @@
 
 Snack Uikit - [библиотека компонентов](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit) компании [Cloud](https://sbercloud.ru/) и сообщетсва [TeamSnack](https://t.me/+tN0DDzHaDVc3M2Iy), в которой каждый компонент это отдельный npm-пакет, со своей версионностью и зависимостями.
 
-![Cloud](storybook/assets/CloudFullLogo.svg)   
+![Cloud](storybook/assets/CloudRuFullLogo.svg)   
 
 ![TeamSnack](storybook/assets/TeamSnack.jpg)
 

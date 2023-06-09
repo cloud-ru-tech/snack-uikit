@@ -44,7 +44,7 @@ const Template: StoryFn = () => (
       </div>
 
       <div className={styles.imagesWrapper} style={{ '--image-height': '24px' }}>
-        <img alt='cloud' src='storybook/assets/CloudFullLogo.svg' />
+        <img alt='Cloud.ru' src='storybook/assets/CloudRuFullLogo.svg' />
         &
         <img alt='teamsnack' src='storybook/assets/TeamSnack.jpg' />
       </div>

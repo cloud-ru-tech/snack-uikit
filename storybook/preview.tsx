@@ -12,7 +12,7 @@ const brandInfo: ThemeVars = {
   base: 'light',
   brandTitle: 'Snack UI',
   brandUrl: '/',
-  brandImage: './storybook/assets/CloudFullLogo.svg',
+  brandImage: './storybook/assets/CloudRuFullLogo.svg',
   brandTarget: '_self',
 };
 
