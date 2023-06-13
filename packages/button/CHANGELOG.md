@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.1 (2023-06-13)
+
+
+### Bug Fixes
+
+* **[FF-2550](https://jira.sbercloud.tech/browse/FF-2550):** button elevated styles ([f4a1c84](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f4a1c84bd47b6cf47116cf735cfb22c761bc3994))
+
+
+
+
+
 # 0.9.0 (2023-06-08)
 
 
