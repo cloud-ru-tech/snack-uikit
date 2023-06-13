@@ -1,16 +1,36 @@
 import { useState } from 'react';
 
-type UseThemeProps<T extends string> = {
-  themeMap: Record<T, string>;
-  defaultTheme?: T;
+type UseThemePropsWithDefaultTheme<T extends string> = { themeMap: Record<T, string>; defaultTheme: T };
+type UseThemeProps<T extends string> = { themeMap: Record<T, string> };
+
+function hasDefaultTheme<T extends string>(
+  props: UseThemePropsWithDefaultTheme<T> | UseThemeProps<T>,
+): props is UseThemePropsWithDefaultTheme<T> {
+  return Boolean((props as UseThemePropsWithDefaultTheme<T>).defaultTheme);
+}
+
+export function useThemeConfig<T extends string>(
+  props: UseThemeProps<T>,
+): {
+  theme: T | undefined;
+  themeClassName: string | undefined;
+  changeTheme(theme: T): void;
 };
 
-export function useThemeConfig<T extends string>({ themeMap, defaultTheme }: UseThemeProps<T>) {
-  const [theme, setTheme] = useState(defaultTheme);
+export function useThemeConfig<T extends string>(
+  props: UseThemePropsWithDefaultTheme<T>,
+): {
+  theme: T;
+  themeClassName: string;
+  changeTheme(theme: T): void;
+};
+
+export function useThemeConfig<T extends string>(props: UseThemePropsWithDefaultTheme<T> | UseThemeProps<T>) {
+  const [theme, setTheme] = useState(hasDefaultTheme(props) ? props.defaultTheme : undefined);
 
   return {
     theme,
-    themeClassName: theme ? themeMap[theme] : undefined,
+    themeClassName: theme ? props.themeMap[theme] : undefined,
     changeTheme: setTheme,
   };
 }

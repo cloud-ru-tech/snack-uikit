@@ -70,7 +70,7 @@ const ThemeContext = createContext<ThemeContextProps>({
 });
 
 function App() {
-  const { theme, themeClassName, changeTheme } = useThemeConfig({themeMap, defaultTheme: Theme.Light});
+  const { theme, themeClassName, changeTheme } = useThemeConfig<Theme>({themeMap, defaultTheme: Theme.Light});
   
   // также можно повесить класс на body
   // useEffect(() => {
