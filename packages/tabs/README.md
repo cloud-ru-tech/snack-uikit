@@ -8,13 +8,13 @@
 ## Example
 
 ```typescript jsx
-const [selectedTab, setSelectedTab] = useState('tab1');
+const [value, setValue] = useState('tab1');
 
-<Tabs selectedTab={selectedTab} onChange={setSelectedTab}>
+<Tabs value={value} onChange={setValue}>
   <Tabs.TabBar>
-    <Tabs.Tab label='Tab 1' id='tab1' counter={12} />
-    <Tabs.Tab label='Tab 2' id='tab2' />
-    <Tabs.Tab label='Tab Disabled' id='tab3' disabled />
+    <Tabs.Tab label='Tab 1' value='tab1' counter={12} />
+    <Tabs.Tab label='Tab 2' value='tab2' />
+    <Tabs.Tab label='Tab Disabled' value='tab3' disabled />
   </Tabs.TabBar>
   <Tabs.TabContent className={styles.tab} value='tab1'>
     Content of tab1
@@ -35,13 +35,13 @@ const [selectedTab, setSelectedTab] = useState('tab1');
 
 ### Props
 
-#### **`selectedTab?: string`**
-Управляет состоянием выбранной вкладки, сюда нужно передать её id.
+#### **`value?: string`**
+Управляет состоянием выбранной вкладки, сюда нужно передать её value.
 
-#### **`defaultSelectedTab?: string`**
+#### **`defaultValue?: string`**
 Вкладка, выбранная по умолчанию.
 
-#### **`onChange?: (id: string) => void`**
+#### **`onChange?: (value: string) => void`**
 Колбек, который срабатывает на изменение выбранной вкладки.
 
 #### **`children?: ReactNode`**
@@ -70,8 +70,8 @@ CSS-класс на контейнере.
 
 ### Props
 
-#### **`id: string`**
-id вкладки.
+#### **`value: string`**
+value вкладки.
 
 #### **`label: string`**
 Заголовок вкладки.
@@ -96,7 +96,7 @@ CSS-класс на контейнере.
 ### Props
 
 #### **`value: string`**
-id вкладки.
+value вкладки.
 
 #### **`className?: string`**
 CSS-класс на контейнере.

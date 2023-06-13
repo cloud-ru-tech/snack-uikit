@@ -11,7 +11,7 @@ import { getTabContentId } from '../../utils';
 import styles from './styles.module.scss';
 
 export type TabProps = WithSupportProps<{
-  id: string;
+  value: string;
   label: string;
   disabled?: boolean;
   className?: string;
@@ -40,11 +40,11 @@ const MAP_TYPE_TO_PROPS = {
   },
 };
 
-export function Tab({ label, id, disabled = false, className, onClick, counter, ...otherProps }: TabProps) {
+export function Tab({ label, value, disabled = false, className, onClick, counter, ...otherProps }: TabProps) {
   const ref = useRef<HTMLButtonElement>(null);
   const { onSelect, type, focusedTab, onFocus } = useContext(TabBarContext);
   const { selectedTab, setSelectedTab } = useContext(TabsContext);
-  const selected = selectedTab === id;
+  const selected = value === selectedTab;
 
   useEffect(() => {
     const { current } = ref;
@@ -56,17 +56,17 @@ export function Tab({ label, id, disabled = false, className, onClick, counter, 
 
   useEffect(() => {
     const { current } = ref;
-    if (focusedTab === id && current) {
+    if (focusedTab === value && current) {
       current.focus();
     }
-  }, [focusedTab, ref, id]);
+  }, [value, ref, focusedTab]);
 
   const handleClick = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
-      setSelectedTab(id);
+      setSelectedTab(value);
       onClick?.(e);
     },
-    [id, onClick, setSelectedTab],
+    [value, onClick, setSelectedTab],
   );
 
   const clickByEnterOrSpaceKey = useCallback(
@@ -80,9 +80,9 @@ export function Tab({ label, id, disabled = false, className, onClick, counter, 
 
   const onFocusHandler = useCallback(
     (e: FocusEvent<HTMLButtonElement>) => {
-      onFocus?.(e.target, id);
+      onFocus?.(e.target, value);
     },
-    [onFocus, id],
+    [onFocus, value],
   );
 
   if (!type) {
@@ -94,14 +94,14 @@ export function Tab({ label, id, disabled = false, className, onClick, counter, 
   return (
     <button
       role='tab'
-      data-test-id={`tabs__tab-${id}`}
+      data-test-id={`tabs__tab-${value}`}
       {...otherProps}
-      id={id}
+      id={value}
       ref={ref}
       disabled={disabled}
       data-disabled={disabled}
       className={cn(styles.tab, className)}
-      aria-controls={getTabContentId(id)}
+      aria-controls={getTabContentId(value)}
       aria-selected={selected}
       data-selected={selected}
       data-type={type}
@@ -116,7 +116,7 @@ export function Tab({ label, id, disabled = false, className, onClick, counter, 
         {...typographyProps}
       >
         {label}
-        {counter && <Counter value={counter} data-test-id={`tabs__tab-counter-${id}`} {...counterProps} />}
+        {counter && <Counter value={counter} data-test-id={`tabs__tab-counter-${value}`} {...counterProps} />}
       </Typography>
     </button>
   );

@@ -79,9 +79,9 @@ export function useScrollContainer(container: RefObject<HTMLElement>): ScrollCon
   return { hasOverflow, scrollLeft, scrollRight };
 }
 
-export function useFocusControl(children: ReactElement<{ id: string; disabled?: boolean }>[]) {
+export function useFocusControl(children: ReactElement<{ value: string; disabled?: boolean }>[]) {
   return useMemo(() => {
-    const arrayOfIds = Children.map(children, ({ props: { id, disabled } }) => !disabled && id).filter(Boolean);
+    const arrayOfIds = Children.map(children, ({ props: { value, disabled } }) => !disabled && value).filter(Boolean);
 
     const getterElementWithShift = (shift: number) => (id?: string) => {
       if (id) {

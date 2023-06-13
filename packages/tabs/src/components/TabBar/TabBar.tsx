@@ -34,7 +34,7 @@ export function TabBar({ children, className, type = Type.Primary, ...otherProps
     /** Если "сверху" нет указания какой таб выбран, триггерим выбор первого доступного */
     if (!selectedTab) {
       const firsEnabled = Children.map(children, ({ props }) => props).find(({ disabled }) => !disabled);
-      firsEnabled && setSelectedTab(firsEnabled.id);
+      firsEnabled && setSelectedTab(firsEnabled.value);
     }
   }, [children, selectedTab, setSelectedTab]);
 
@@ -85,8 +85,8 @@ export function TabBar({ children, className, type = Type.Primary, ...otherProps
   );
 
   const onFocusHandler = useCallback(
-    (element: HTMLButtonElement, id: string) => {
-      setFocusedTab(id);
+    (element: HTMLButtonElement, value: string) => {
+      setFocusedTab(value);
       scrollContainerToElement(element);
     },
     [scrollContainerToElement],
