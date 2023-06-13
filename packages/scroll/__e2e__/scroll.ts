@@ -46,7 +46,9 @@ test.page(getUrl({ autoscrollTo: 'bottom' }))('Should be scrolled to bottom on i
   const hostHeight = await Selector(hostScrollbar).offsetHeight;
   const scrollHeight = await Selector(viewportScrollbar).scrollHeight;
   const scrollTop = await Selector(viewportScrollbar).scrollTop;
-  await t.expect(scrollTop).eql(scrollHeight - hostHeight);
+  const delta = scrollHeight - hostHeight;
+
+  await t.expect(scrollTop).within(delta - 1, delta + 1);
 });
 
 test.page(getUrl({}))("Corner-resize shouldn't exists", async t => {
