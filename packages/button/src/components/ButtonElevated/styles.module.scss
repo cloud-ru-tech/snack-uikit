@@ -58,7 +58,7 @@ $icon-sizes: (
 }
 
 .button {
-  @include button-anatomy-styles($button-elevated, $sizes, $variants, $typography, $icon-sizes);
+  @include button-anatomy-styles($button-elevated, $sizes, $variants, $typography, $icon-sizes, false);
   @include loading-label-only($button-elevated);
   @include button-colors-styles;
   @include button-outline-colors-styles;
