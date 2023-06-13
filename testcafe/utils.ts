@@ -1,6 +1,8 @@
 import { IStringifyOptions, stringify } from 'qs';
 import { Selector } from 'testcafe';
 
+import { UIKIT_URL } from './constants';
+
 const HEX_REGEXP = /^#([a-f0-9]{3,4}|[a-f0-9]{6}|[a-f0-9]{8})$/i;
 const COLOR_REGEXP = /^(rgba?|hsla?)\(([0-9]{1,3}),\s?([0-9]{1,3})%?,\s?([0-9]{1,3})%?,?\s?([0-9](\.[0-9]{1,2})?)?\)$/i;
 
@@ -53,7 +55,7 @@ export function getTestcafeUrl({ name, group, props, story = name, category = 'c
     propsString = buildArgsParam(props);
   }
 
-  return `http://localhost:6006/iframe.html?id=${category}${group ? `-${group}` : ''}-${name}--${story}&viewMode=story${
+  return `${UIKIT_URL}iframe.html?id=${category}${group ? `-${group}` : ''}-${name}--${story}&viewMode=story${
     propsString ? `&args=${propsString}` : ''
   }`;
 }

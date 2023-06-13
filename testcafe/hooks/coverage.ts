@@ -5,6 +5,7 @@ import { join } from 'path';
 import express from 'express';
 import { CoverageMap, createCoverageMap } from 'istanbul-lib-coverage';
 import { ClientFunction } from 'testcafe';
+
 const tempDir = join(process.cwd(), '.nyc_output');
 const nycFilename = join(tempDir, 'out.json');
 
@@ -18,7 +19,9 @@ function saveCoverage(coverage: CoverageMap) {
   writeFileSync(nycFilename, JSON.stringify(coverage));
 }
 
+// eslint-disable-next-line
 function fixSourcePaths(coverage: any) {
+  // eslint-disable-next-line
   Object.values(coverage).forEach((file: any) => {
     const { path: absolutePath, inputSourceMap } = file;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -45,8 +48,10 @@ const getCoverageObject = ClientFunction(() =>
     body: JSON.stringify(window.__coverage__),
   }),
 );
+
 let server: Server;
-export const hooks = {
+
+export const coverage = {
   testRun: {
     before: () => {
       const app = express();
@@ -79,6 +84,6 @@ export const hooks = {
     },
   },
   test: {
-    after: async () => getCoverageObject(),
+    after: () => getCoverageObject(),
   },
 };
