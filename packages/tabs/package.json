@@ -33,11 +33,9 @@
     "@snack-ui/counter": "0.2.3",
     "@snack-ui/icons": "0.5.0",
     "@snack-ui/typography": "0.2.1",
+    "@snack-ui/utils": "1.1.0",
     "classnames": "2.3.2",
     "react-indiana-drag-scroll": "2.2.0",
     "uncontrollable": "8.0.2"
-  },
-  "peerDependencies": {
-    "@snack-ui/utils": "^1.1.0"
   }
 }

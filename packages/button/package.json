@@ -31,9 +31,7 @@
   "dependencies": {
     "@snack-ui/counter": "0.2.3",
     "@snack-ui/loaders": "0.2.4",
+    "@snack-ui/utils": "1.1.0",
     "classnames": "2.3.2"
-  },
-  "peerDependencies": {
-    "@snack-ui/utils": "^1.0.0"
   }
 }
