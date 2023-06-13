@@ -21,4 +21,13 @@ export const hooks = {
       await coverage.test.after();
     },
   },
+  reporter: {
+    onBeforeWrite: {
+      xunit: (writeInfo: { initiator: string; formattedText: string }) => {
+        if (writeInfo.initiator !== 'reportTaskDone') return;
+
+        writeInfo.formattedText = writeInfo.formattedText.replaceAll(process.cwd(), '');
+      },
+    },
+  },
 };

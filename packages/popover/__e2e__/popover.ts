@@ -3,7 +3,7 @@ import { fixture, Selector, test } from 'testcafe';
 import { PopoverProps } from '@snack-ui/popover';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { Trigger } from '../../popover-private/dist/constants';
+import { Trigger } from '../../popover-private/src/constants';
 import {
   ACTIVITY_REMOVAL_ITEM,
   scrollWindow,
@@ -38,7 +38,7 @@ const getPage = (props: Partial<PopoverProps> = {}) =>
     },
   });
 
-fixture('Popover').skipJsErrors(args => Boolean(args?.message.includes('ResizeObserver loop')));
+fixture('Popover').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
 
 test.page(getPage({ outsideClick: true }))('Should close by outside click when outsideClick = true', async t => {
   const button = Selector(dataTestIdSelector(BUTTON_TEST_ID));

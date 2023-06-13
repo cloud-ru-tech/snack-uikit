@@ -37,7 +37,7 @@ const getPage = (props: Partial<TooltipProps> = {}) =>
     },
   });
 
-fixture('Tooltip').skipJsErrors(args => Boolean(args?.message.includes('ResizeObserver loop')));
+fixture('Tooltip').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
 
 test.page(getPage({ open: true }))('Should be open when controlled "open" flag is set', async t => {
   const tooltip = Selector(dataTestIdSelector(TOOLTIP_TEST_ID));

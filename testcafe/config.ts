@@ -2,7 +2,7 @@ import { resolve } from 'path';
 
 import { hooks } from './hooks';
 
-export const Config: Partial<TestCafeConfigurationOptions> & { hooks: any } = {
+export const Config: Partial<TestCafeConfigurationOptions> & { hooks: unknown } = {
   src: ['packages/*/__e2e__/*.ts'],
   concurrency: process.env.TEST_LOCAL ? 1 : 3,
   quarantineMode: process.env.TEST_LOCAL
@@ -15,7 +15,7 @@ export const Config: Partial<TestCafeConfigurationOptions> & { hooks: any } = {
   reporter: [
     {
       name: 'xunit',
-      output: resolve(__dirname, 'reports/e2e/report.xml'),
+      output: resolve(__dirname, 'reports/report.xml'),
     },
     {
       name: 'spec',
