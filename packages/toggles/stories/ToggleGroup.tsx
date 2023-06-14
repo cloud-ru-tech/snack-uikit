@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { useToggleGroup } from '@snack-ui/toggles';
 
@@ -9,9 +9,11 @@ import { Mode } from '../src/constants';
 import { ToggleItemState } from '../src/types';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Toggles/Toggle Group',
-} as Meta;
+};
+
+export default meta;
 
 type Data = {
   id: string;
@@ -43,7 +45,7 @@ const Template: StoryFn<ToggleGroupStoryProps> = ({ ...args }) => {
   );
 };
 
-export const toggleGroup = Template.bind({});
+export const toggleGroup: StoryObj<ToggleGroupStoryProps> = Template.bind({});
 
 toggleGroup.args = {
   mode: useToggleGroup.modes.Radio,

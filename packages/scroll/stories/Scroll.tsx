@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -7,10 +7,12 @@ import { Scroll, ScrollProps } from '../src';
 import { BarHideStrategy, Resize, Size } from '../src/constants';
 import styles from './styles.module.scss';
 
-export default {
+const meta: Meta = {
   title: 'Components/Scroll',
   component: Scroll,
-} as Meta;
+};
+
+export default meta;
 
 type StoryProps = ScrollProps & {
   contentLines: number;
@@ -30,7 +32,7 @@ const Template: StoryFn<StoryProps> = ({ contentLines, ...args }) => (
   </Scroll>
 );
 
-export const scroll = Template.bind({});
+export const scroll: StoryObj<StoryProps> = Template.bind({});
 
 scroll.args = {
   contentLines: 15,
