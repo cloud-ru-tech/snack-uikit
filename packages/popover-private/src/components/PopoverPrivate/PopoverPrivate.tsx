@@ -6,6 +6,7 @@ import {
   offset as offsetMiddleware,
   ReferenceType,
   safePolygon,
+  shift,
   size,
   useClick,
   useDismiss,
@@ -84,6 +85,7 @@ export function PopoverPrivate({
     onOpenChange: setIsOpen,
     whileElementsMounted: autoUpdate,
     middleware: [
+      shift(),
       offsetMiddleware(offsetProp + arrowOffset),
       hasArrow && arrow({ element: arrowRef }),
       flip(),
