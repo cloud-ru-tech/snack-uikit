@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-06-14)
+
+
+### Features
+
+* **[FF-2258](https://jira.sbercloud.tech/browse/FF-2258):** add shift to fit the viewport ([8b6a0f5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/8b6a0f58383f353b92a19b1e1dc9f6044f2d0320))
+
+
+
+
+
 ## 0.2.3 (2023-06-14)
 
 
