@@ -104,5 +104,8 @@ function App() {
 #### **`className?: string`**
   CSS-класс на контейнере поповера.
 
+#### **`triggerClassName?: string`**
+  CSS-класс на обёртке триггера поповера.
+
 #### **`offset?: number`**
   Отступ поповера от его target-элемента (в пикселях).

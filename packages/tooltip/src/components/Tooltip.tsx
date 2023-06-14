@@ -8,7 +8,10 @@ import styles from './styles.module.scss';
 export type TooltipProps = WithSupportProps<
   {
     tip: ReactNode;
-  } & Pick<PopoverPrivateProps, 'className' | 'open' | 'onOpenChange' | 'hoverDelayOpen' | 'hoverDelayClose'> &
+  } & Pick<
+    PopoverPrivateProps,
+    'className' | 'triggerClassName' | 'open' | 'onOpenChange' | 'hoverDelayOpen' | 'hoverDelayClose'
+  > &
     Partial<Pick<PopoverPrivateProps, 'trigger' | 'placement' | 'children'>>
 >;
 

@@ -15,6 +15,7 @@ import {
   useHover,
   useInteractions,
 } from '@floating-ui/react';
+import cn from 'classnames';
 import { ForwardedRef, ReactNode, useCallback, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
@@ -40,6 +41,7 @@ export type PopoverPrivateProps = WithSupportProps<{
   outsideClick?: boolean | OutsideClickHandler;
   placement: Placement;
   className?: string;
+  triggerClassName?: string;
   hasArrow?: boolean;
   arrowSize?: ArrowSize;
   arrowClassName?: string;
@@ -55,6 +57,7 @@ export type PopoverPrivateProps = WithSupportProps<{
 
 export function PopoverPrivate({
   className,
+  triggerClassName,
   children,
   open: openProp,
   onOpenChange,
@@ -138,7 +141,7 @@ export function PopoverPrivate({
   return (
     <>
       {getPopoverContent({
-        validElementWrapperClassName: styles.ref,
+        validElementWrapperClassName: cn(styles.ref, triggerClassName),
         getReferenceProps,
         children,
         setReference,
