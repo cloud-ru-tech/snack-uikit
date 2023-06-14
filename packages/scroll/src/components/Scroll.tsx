@@ -76,8 +76,10 @@ const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
         const { viewport } = instance.getElements();
         const gapToBottom = viewport.scrollHeight - (viewport.offsetHeight + viewport.scrollTop);
         const gapToRight = viewport.scrollWidth - (viewport.offsetWidth + viewport.scrollLeft);
-        lastPositionsRef.current.scrolledToBottom = gapToBottom < AUTOSCROLL_ENABLE_LIMIT;
-        lastPositionsRef.current.scrolledToRight = gapToRight < AUTOSCROLL_ENABLE_LIMIT;
+        const hasYScroll = viewport.scrollHeight > viewport.offsetHeight;
+        const hasXScroll = viewport.scrollWidth > viewport.offsetWidth;
+        lastPositionsRef.current.scrolledToBottom = gapToBottom < AUTOSCROLL_ENABLE_LIMIT || !hasYScroll;
+        lastPositionsRef.current.scrolledToRight = gapToRight < AUTOSCROLL_ENABLE_LIMIT || !hasXScroll;
       }
     },
     [getOSInstance],
@@ -86,13 +88,14 @@ const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
   useLayoutEffect(() => {
     const instance = getOSInstance();
     if (instance && isOverlayScrollbarInited) {
+      syncPositions();
       autoscrollTo === AutoscrollTo.Bottom && instance.scroll({ y: '100%' }, 0);
       autoscrollTo === AutoscrollTo.Right && instance.scroll({ x: '100%' }, 0);
     }
     /* здесь умышленно autoscrollTo не входит в депсы хука, потому что его значение интересно только на момент маунта,
     но в дальнейшем не должно триггерить эту функцию */
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getOSInstance, isOverlayScrollbarInited]);
+  }, [getOSInstance, isOverlayScrollbarInited, syncPositions]);
 
   const onInitialized = useCallback(() => setOverlayScrollbarInited(true), []);
 
