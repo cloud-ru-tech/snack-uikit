@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-06-14)
+
+
+### BREAKING CHANGES
+
+
+* **[FF-2559](https://jira.sbercloud.tech/browse/FF-2559):** props id and selectedTab renamed to value ([4a5ba09](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/4a5ba09ca63192f63e5d3779c029b5e75b3a8b96))
+
+
+
+
 ## 0.1.3 (2023-06-14)
 
 
