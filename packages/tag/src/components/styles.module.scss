@@ -1,0 +1,172 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tag';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 'xs', 's';
+
+$label-typography: (
+  'xs': $sans-label-s,
+  's': $sans-label-m
+);
+
+$appearances: (
+  'neutral': (
+    'container': $sys-neutral-decor-default,
+    'container-disabled': $sys-neutral-decor-disabled,
+    'label': $sys-neutral-text-support,
+    'icon': $sys-neutral-text-light,
+    'icon-active': $sys-neutral-text-main,
+    'button-hovered': $sys-neutral-decor-hovered,
+    'button-active': $sys-neutral-decor-activated,
+  ),
+  'primary': (
+    'container': $sys-primary-decor-default,
+    'container-disabled': $sys-primary-decor-disabled,
+    'label': $sys-primary-text-support,
+    'icon': $sys-primary-text-light,
+    'icon-active': $sys-primary-text-main,
+    'button-hovered': $sys-primary-decor-hovered,
+    'button-active': $sys-primary-decor-activated,
+  ),
+  'red': (
+    'container': $sys-red-decor-default,
+    'container-disabled': $sys-red-decor-disabled,
+    'label': $sys-red-text-support,
+    'icon': $sys-red-text-light,
+    'icon-active': $sys-red-text-main,
+    'button-hovered': $sys-red-decor-hovered,
+    'button-active': $sys-red-decor-activated,
+  ),
+  'orange': (
+    'container': $sys-orange-decor-default,
+    'container-disabled': $sys-orange-decor-disabled,
+    'label': $sys-orange-text-support,
+    'icon': $sys-orange-text-light,
+    'icon-active': $sys-orange-text-main,
+    'button-hovered': $sys-orange-decor-hovered,
+    'button-active': $sys-orange-decor-activated,
+  ),
+  'yellow': (
+    'container': $sys-yellow-decor-default,
+    'container-disabled': $sys-yellow-decor-disabled,
+    'label': $sys-yellow-text-support,
+    'icon': $sys-yellow-text-light,
+    'icon-active': $sys-yellow-text-main,
+    'button-hovered': $sys-yellow-decor-hovered,
+    'button-active': $sys-yellow-decor-activated,
+  ),
+  'green': (
+    'container': $sys-green-decor-default,
+    'container-disabled': $sys-green-decor-disabled,
+    'label': $sys-green-text-support,
+    'icon': $sys-green-text-light,
+    'icon-active': $sys-green-text-main,
+    'button-hovered': $sys-green-decor-hovered,
+    'button-active': $sys-green-decor-activated,
+  ),
+  'blue': (
+    'container': $sys-blue-decor-default,
+    'container-disabled': $sys-blue-decor-disabled,
+    'label': $sys-blue-text-support,
+    'icon': $sys-blue-text-light,
+    'icon-active': $sys-blue-text-main,
+    'button-hovered': $sys-blue-decor-hovered,
+    'button-active': $sys-blue-decor-activated,
+  ),
+  'violet': (
+    'container': $sys-violet-decor-default,
+    'container-disabled': $sys-violet-decor-disabled,
+    'label': $sys-violet-text-support,
+    'icon': $sys-violet-text-light,
+    'icon-active': $sys-violet-text-main,
+    'button-hovered': $sys-violet-decor-hovered,
+    'button-active': $sys-violet-decor-activated,
+  ),
+  'pink': (
+    'container': $sys-pink-decor-default,
+    'container-disabled': $sys-pink-decor-disabled,
+    'label': $sys-pink-text-support,
+    'icon': $sys-pink-text-light,
+    'icon-active': $sys-pink-text-main,
+    'button-hovered': $sys-pink-decor-hovered,
+    'button-active': $sys-pink-decor-activated,
+  ),
+);
+
+.tag {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+
+  .tagButton {
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    &:focus {
+      @include outline-inside-var($container-focused-s);
+    }
+
+    &:active {
+      outline: none;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @each $size in $sizes {
+    &[data-size=#{$size}] {
+      @include composite-var($tag, 'container', $size, 'label-only');
+
+      &[data-removable="true"] {
+        @include composite-var($tag, 'container', $size, 'button-after');
+      }
+
+      .label {
+        @include composite-var($label-typography, $size);
+      }
+
+      .tagButton {
+        @include composite-var($tag-button, 'container', $size, 'icon-only');
+      }
+    }
+  }
+
+  @each $appearanceKey, $appearance in $appearances {
+    &[data-appearance=#{$appearanceKey}] {
+      background-color: simple-var($appearance, 'container');
+
+      &[data-removable="false"] {
+        background-color: simple-var($appearance, 'container-disabled');
+      }
+
+      .label {
+        color: simple-var($appearance, 'label');
+      }
+
+      .tagButton {
+        color: simple-var($appearance, 'icon');
+
+        &:focus, &:hover, &:active {
+          color: simple-var($appearance, 'icon-active');
+        }
+
+        &:focus, &:hover {
+          background-color: simple-var($appearance, 'button-hovered');
+        }
+
+        &:active {
+          background-color: simple-var($appearance, 'button-active');
+        }
+      }
+    }
+  }
+}

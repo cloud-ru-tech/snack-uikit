@@ -188,7 +188,7 @@ export const storyEntry = ({
   );
   const componentStoryName = componentName.replace(/[A-Z]/, x => x.toLowerCase());
   const componentStoryTitle = componentName.split(/(?=[A-Z])/).join(' ');
-  const fileContent = `import { Meta, StoryFn } from '@storybook/react';
+  const fileContent = `import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -201,9 +201,9 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template = ({ ...args }: ${componentName}Props) => <${componentName} {...args} />;
+const Template: StoryFn<${componentName}Props> = ({ ...args }: ${componentName}Props) => <${componentName} {...args} />;
 
-export const ${componentStoryName}: StoryFn<${componentName}Props> = Template.bind({});
+export const ${componentStoryName}: StoryObj<${componentName}Props> = Template.bind({});
 
 ${componentStoryName}.args = {};
 

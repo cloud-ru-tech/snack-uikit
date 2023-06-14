@@ -72,6 +72,9 @@
     },
     {
       "path": "./chips"
+    },
+    {
+      "path": "./tag"
     }
   ],
   "compilerOptions": {
