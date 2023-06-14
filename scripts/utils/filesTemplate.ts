@@ -203,7 +203,7 @@ export default meta;
 
 const Template = ({ ...args }: ${componentName}Props) => <${componentName} {...args} />;
 
-export const ${componentStoryName}: StoryFn<${componentName}Props>  = Template.bind({});
+export const ${componentStoryName}: StoryFn<${componentName}Props> = Template.bind({});
 
 ${componentStoryName}.args = {};
 

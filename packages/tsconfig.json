@@ -66,6 +66,9 @@
     },
     {
       "path": "./breadcrumbs"
+    },
+    {
+      "path": "./truncate-string"
     }
   ],
   "compilerOptions": {

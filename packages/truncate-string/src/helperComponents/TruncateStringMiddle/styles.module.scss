@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.truncatedText {
+  position: absolute;
+  left: 0;
+  display: -webkit-box;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  -webkit-box-orient: vertical;
+}
+
+.fullText {
+  display: -webkit-box;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  opacity: 0;
+  -webkit-box-orient: vertical;
+}

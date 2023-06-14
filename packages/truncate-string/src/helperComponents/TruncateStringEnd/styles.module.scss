@@ -1,0 +1,23 @@
+.text1Line {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.text2AndMoreLines {
+  display: -webkit-box;
+
+  margin: 0;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  word-break: initial;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
+}
+
+.tooltipTrigger {
+  display: grid;
+}
