@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.2 (2023-06-14)
+
+
+### Bug Fixes
+
+* **[FF-2266](https://jira.sbercloud.tech/browse/FF-2266):** autoscroll behavior ([af08feb](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/af08feb14adc2d70f54893e49cc3903e57485c6a))
+
+
+
+
+
 ## 0.1.1 (2023-06-14)
 
 

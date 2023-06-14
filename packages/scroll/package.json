@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/scroll",
   "title": "Scroll",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "sideEffects": [
     "*.css",
     "*.woff",
