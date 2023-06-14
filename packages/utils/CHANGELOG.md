@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.1 (2023-06-14)
+
+
+### Bug Fixes
+
+* **FF-0:** enhance typings for useThemeConfig ([949fefc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/949fefc19066087769ebd64b03ab41ad0246d0b2))
+
+
+
+
+
 # 1.1.0 (2023-05-26)
 
 
