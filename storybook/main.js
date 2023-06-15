@@ -57,6 +57,9 @@ const mainConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
+  core: {
+    disableTelemetry: true,
+  },
   typescript: {
     check: true,
     reactDocgen: 'react-docgen-typescript',
