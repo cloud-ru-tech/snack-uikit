@@ -1,0 +1,5 @@
+@import "../../styles.module";
+
+.buttonCopyValue {
+  @include button-styles();
+}

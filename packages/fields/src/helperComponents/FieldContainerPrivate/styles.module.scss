@@ -1,0 +1,147 @@
+@import '../../../../../node_modules/@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
+@import '../../../../../node_modules/@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm', 'l';
+$variants: 'single-line-container', 'multi-line-container';
+
+.container {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-style: solid;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($fields, 'container', $size);
+
+      &, input, select, textarea {
+        cursor: text;
+
+        @include composite-var($theme-variables, 'sans', 'body', $size);
+      }
+
+      @each $variant in $variants {
+        &[data-variant='#{$variant}'] {
+          @include composite-var($fields, $variant, $size);
+        }
+      }
+    }
+  }
+
+  &[data-validation="default"] {
+    background-color: simple-var($sys-neutral-background1-level);
+    border-color: simple-var($sys-neutral-decor-default);
+
+    &:hover {
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-primary-decor-hovered);
+    }
+
+    &:focus-within {
+      @include outline-var($container-focused-m);
+
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-primary-accent-default);
+      outline-color: simple-var($sys-primary-decor-activated);
+    }
+  }
+
+  &[data-validation="error"] {
+    background-color: simple-var($sys-red-background1-level);
+    border-color: simple-var($sys-red-decor-default);
+
+    &:hover {
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-red-decor-hovered);
+    }
+
+    &:focus-within {
+      @include outline-var($container-focused-m);
+
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-red-accent-default);
+      outline-color: simple-var($sys-red-decor-activated);
+    }
+  }
+
+  &[data-validation="warning"] {
+    background-color: simple-var($sys-yellow-background1-level);
+    border-color: simple-var($sys-yellow-decor-default);
+
+    &:hover {
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-yellow-decor-hovered);
+    }
+
+    &:focus-within {
+      @include outline-var($container-focused-m);
+
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-yellow-accent-default);
+      outline-color: simple-var($sys-yellow-decor-activated);
+    }
+  }
+
+  &[data-validation="success"] {
+    background-color: simple-var($sys-green-background1-level);
+    border-color: simple-var($sys-green-decor-default);
+
+    &:hover {
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-green-decor-hovered);
+    }
+
+    &:focus-within {
+      @include outline-var($container-focused-m);
+
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-green-accent-default);
+      outline-color: simple-var($sys-green-decor-activated);
+    }
+  }
+
+  &[data-readonly] {
+    &, input, select, textarea {
+      cursor: default;
+    }
+
+    &, &:hover {
+      background-color: simple-var($sys-neutral-decor-disabled);
+      border-color: simple-var($sys-neutral-decor-disabled);
+    }
+
+    &:focus-within {
+      @include outline-var($container-focused-m);
+
+      background-color: simple-var($sys-neutral-decor-disabled);
+      border-color: simple-var($sys-neutral-decor-disabled);
+      outline-color: simple-var($sys-primary-decor-activated);
+    }
+  }
+
+  &[data-disabled] {
+    &, input, select, textarea {
+      cursor: not-allowed;
+    }
+
+    &, &:focus-within, &:hover {
+      background-color: simple-var($sys-neutral-background);
+      border-color: simple-var($sys-neutral-decor-disabled);
+      outline: none;
+    }
+  }
+}
+
+.prefix {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var($sys-neutral-text-disabled);
+}
+
+.postfix {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: var($space-fields-postfix-gap)
+}

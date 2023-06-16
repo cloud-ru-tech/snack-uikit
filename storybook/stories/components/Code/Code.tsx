@@ -1,10 +1,9 @@
 import { Icons } from '@storybook/components';
+import copyToClipboard from 'copy-to-clipboard';
 import React, { useRef, useState } from 'react';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { useDarkMode } from 'storybook-dark-mode';
-
-import { copyToClipboard } from '@sbercloud/ft-copy-to-clipboard';
 
 import { dark } from './dark';
 import { light } from './light';
@@ -34,7 +33,7 @@ export function Code({ inline, className, children, ...rest }: CodeProps) {
       className={styles.codeWrapper}
       onClick={() => {
         timer.current && clearTimeout(timer.current);
-        copyToClipboard(String(children));
+        copyToClipboard(String(children), { format: 'text/plain' });
         setCopyText(TEXTS.Copied);
         timer.current = setTimeout(() => setCopyText(TEXTS.Copy), TIMEOUT);
       }}

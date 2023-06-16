@@ -1,0 +1,158 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm', 'l';
+$header-typography: (
+  's': $sans-label-m,
+  'm': $sans-label-m,
+  'l': $sans-label-l
+);
+$footer-typography: (
+  's': $sans-body-s,
+  'm': $sans-body-s,
+  'l': $sans-body-m
+);
+
+.decorator {
+  display: flex;
+  flex-direction: column;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($fields, 'decorator', $size);
+    }
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  color: simple-var($sys-neutral-text-support);
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($fields, 'label', $size);
+      @include composite-var($header-typography, $size);
+    }
+  }
+}
+
+.labelLayout {
+  display: inline-flex;
+  align-items: center;
+
+  @include composite-var($fields-label-label-layout);
+}
+
+.label {
+  display: grid;
+}
+
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($fields, 'hint', $size);
+      @include composite-var($footer-typography, $size);
+    }
+  }
+
+  &[data-reverse] {
+    justify-content: flex-end;
+  }
+}
+
+.hintLayout {
+  display: inline-flex;
+
+  @include composite-var($fields-hint-hint-layout);
+}
+
+.hint {
+  display: grid;
+  flex-grow: 1;
+
+  &[data-validation="default"] {
+    color: simple-var($sys-neutral-text-light);
+  }
+
+  &[data-validation="error"] {
+    color: simple-var($sys-red-text-main);
+  }
+
+  &[data-validation="warning"] {
+    color: simple-var($sys-yellow-text-main);
+  }
+
+  &[data-validation="success"] {
+    color: simple-var($sys-green-text-main);
+  }
+}
+
+.icon {
+  box-sizing: content-box;
+  flex-shrink: 0;
+  color: simple-var($sys-neutral-text-light);
+}
+
+.hintIcon {
+  box-sizing: content-box;
+  flex-shrink: 0;
+
+  &[data-validation="default"] {
+    color: simple-var($sys-neutral-text-light);
+  }
+
+  &[data-validation="error"] {
+    color: simple-var($sys-red-accent-default);
+  }
+
+  &[data-validation="warning"] {
+    color: simple-var($sys-yellow-accent-default);
+  }
+
+  &[data-validation="success"] {
+    color: simple-var($sys-green-accent-default);
+  }
+}
+
+.counterCurrentValue {
+  &[data-validation="default"] {
+    color: simple-var($sys-neutral-text-light);
+  }
+
+  &[data-limit-exceeded],
+  &[data-validation="error"] {
+    color: simple-var($sys-red-text-main);
+  }
+
+  &[data-validation="warning"] {
+    color: simple-var($sys-yellow-text-main);
+  }
+
+  &[data-validation="success"] {
+    color: simple-var($sys-green-text-light);
+  }
+}
+
+.counterLimitValue {
+  &[data-validation="default"] {
+    color: simple-var($sys-neutral-text-light);
+  }
+
+  &[data-limit-exceeded],
+  &[data-validation="error"] {
+    color: simple-var($sys-red-text-light);
+  }
+
+  &[data-validation="warning"] {
+    color: simple-var($sys-yellow-text-light);
+  }
+
+  &[data-validation="success"] {
+    color: simple-var($sys-green-text-light);
+  }
+}

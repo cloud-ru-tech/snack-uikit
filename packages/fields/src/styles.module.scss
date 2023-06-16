@@ -1,0 +1,52 @@
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-element";
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields";
+
+$sizes: 's', 'm';
+$icon-sizes: (
+  's': $icon-xs,
+  'm': $icon-s
+);
+
+@mixin button-styles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  color: var($sys-neutral-text-light);
+  background-color: transparent;
+  border: none;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($fields, 'buttons', $size);
+
+      svg {
+        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      }
+    }
+  }
+
+  &:hover {
+    color: var($sys-neutral-text-support);
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    color: var($sys-neutral-text-support);
+    outline-color: var($sys-available-complementary);
+    outline-offset: var($spacing-state-focus-offset);
+  }
+
+  &:active {
+    color: var($sys-neutral-text-main);
+  }
+
+  &[data-disabled] {
+    color: var($sys-neutral-text-disabled);
+    cursor: not-allowed;
+  }
+}

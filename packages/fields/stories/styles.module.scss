@@ -1,0 +1,19 @@
+@import "@sbercloud/figma-tokens/build/scss/styles-theme-variables";
+
+.wrapper {
+  padding: 16px;
+  background: var($sys-neutral-background1-level);
+  border: 1px solid var($sys-neutral-decor-default);
+
+  &[data-size='s'] {
+    width: 256px;
+  }
+
+  &[data-size='m'] {
+    width: 280px;
+  }
+
+  &[data-size='l'] {
+    width: 304px;
+  }
+}
