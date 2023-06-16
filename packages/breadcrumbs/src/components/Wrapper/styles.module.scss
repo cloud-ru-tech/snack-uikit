@@ -1,0 +1,27 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
+
+$sizes: 'xs', 's';
+
+.wrapper[data-hidden='true'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.row {
+  display: flex;
+  padding: 0;
+  margin: 0;
+
+  &[data-hidden='true'] {
+    display: inline-flex;
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($breadcrumbs, $size);
+    }
+  }
+}

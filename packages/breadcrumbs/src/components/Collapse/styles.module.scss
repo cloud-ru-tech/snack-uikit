@@ -1,0 +1,21 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.collapse {
+  color: simple-var($theme-variables, 'sys', 'neutral', 'text-light');
+  background: none;
+  border: none;
+
+  &:focus-visible,
+  &:hover {
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+    outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
+  }
+}
+
+.collapsedRow {
+  display: flex;
+}

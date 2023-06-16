@@ -1,0 +1,64 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 'xs', 's';
+
+.wrapper {
+  flex-shrink: 0;
+  list-style: none;
+
+  &[data-render-mode=ellipsis] {
+    flex-shrink: 1;
+  }
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: simple-var($theme-variables, 'sys', 'neutral', 'text-light');
+  text-decoration: none;
+  background: none;
+  border: none;
+
+  &[data-clickable] {
+    cursor: pointer;
+
+    &:focus-visible,
+    &:hover {
+      color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+    }
+  }
+
+
+  &[data-current='true'] {
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+    outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($breadcrumbs, 'crumb', $size);
+    }
+  }
+
+  .icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    width: fit-content;
+  }
+
+  .label {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
