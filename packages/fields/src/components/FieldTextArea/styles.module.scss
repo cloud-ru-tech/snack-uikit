@@ -1,0 +1,41 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
+
+$sizes: 's', 'm', 'l';
+$padding-right: (
+  's': $fields-buttons-s,
+  'm': $fields-buttons-m,
+  'l': $fields-buttons-m,
+);
+
+.container {
+  --max-rows: 1000;
+  --min-rows: 3;
+  --horizontal-scroll-bar-height: 4px;
+
+  .scrollContainer {
+    min-height: calc(var(--min-rows) * var(--row-height) + var(--horizontal-scroll-bar-height));
+    max-height: calc(var(--max-rows) * var(--row-height) + var(--horizontal-scroll-bar-height));
+  }
+
+  &[data-resizable] .scrollContainer {
+    height: calc(var(--min-rows) * var(--row-height) + var(--horizontal-scroll-bar-height));
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      --row-height: #{simple-var($theme-variables, 'sans', 'body', $size, 'line-height')};
+
+      .textarea {
+        padding-right: calc(simple-var($padding-right, $size, 'width') + simple-var($fields-scroll-bar-width, 'width'));
+        overflow: hidden;
+      }
+
+      .postfix {
+        position: absolute;
+        top: simple-var($fields, 'multi-line-container', $size, 'padding-top');
+        right: calc(simple-var($fields, 'multi-line-container', $size, 'padding-right') + simple-var($fields-scroll-bar-width, 'width'));
+      }
+    }
+  }
+}
+

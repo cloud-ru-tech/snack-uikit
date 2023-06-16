@@ -1,0 +1,32 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  color: simple-var($sys-neutral-text-main);
+  resize: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  outline: 0;
+
+  &:read-only {
+    color: simple-var($sys-neutral-text-support);
+  }
+
+  &::placeholder {
+    color: simple-var($sys-neutral-text-disabled);
+  }
+
+  &[disabled] {
+    color: simple-var($sys-neutral-text-disabled);
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+    max-width: 0;
+  }
+}
