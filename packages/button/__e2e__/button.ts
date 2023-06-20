@@ -1,11 +1,7 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { CounterProps } from '@snack-ui/counter';
-import { WithSupportProps } from '@snack-ui/utils';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { IconPosition } from '../src/constants';
-import { CommonButtonProps, CounterButtonProps } from '../src/types';
 
 type ButtonTestSpec = {
   name: string;
@@ -14,10 +10,10 @@ type ButtonTestSpec = {
   iconBefore?: boolean;
 };
 type StoryCounterProps = {
-  counterValue: CounterProps['value'];
-  counterAppearance?: CounterProps['appearance'];
-  counterVariant?: CounterProps['variant'];
-  counterPlusLimit?: CounterProps['plusLimit'];
+  counterValue: number;
+  counterAppearance?: string;
+  counterVariant?: string;
+  counterPlusLimit?: string;
 };
 
 const buttons: ButtonTestSpec[] = [
@@ -53,9 +49,7 @@ const buttonsWithCounter: ButtonTestSpec['name'][] = ['button-support', 'button-
 const counterTestStoryProps: StoryCounterProps = { counterValue: 7 };
 
 buttons.forEach(({ name, story, testId, iconBefore }) => {
-  const getPage = (
-    props?: Partial<WithSupportProps<Omit<CommonButtonProps, 'icon'>> & CounterButtonProps & { icon?: string }>,
-  ) =>
+  const getPage = (props?: Record<string, unknown> & { icon?: string }) =>
     getTestcafeUrl({
       name,
       story,

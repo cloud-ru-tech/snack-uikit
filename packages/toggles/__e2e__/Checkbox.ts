@@ -1,7 +1,6 @@
 import { ClientFunction, fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { ToggleProps } from '../src/types';
 
 fixture('Checkbox');
 
@@ -15,7 +14,7 @@ const TEST_ID_NATIVE = `${TEST_ID}-native-input`;
 const CHECKBOX = dataTestIdSelector(TEST_ID);
 const NATIVE_CHECKBOX = dataTestIdSelector(TEST_ID_NATIVE);
 
-const getPage = (props: Partial<ToggleProps> = {}) =>
+const getPage = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
     name: 'toggles-checkbox',
     story: 'checkbox',

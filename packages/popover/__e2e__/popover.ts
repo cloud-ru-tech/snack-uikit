@@ -1,7 +1,5 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { PopoverProps } from '@snack-ui/popover';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { Trigger } from '../../popover-private/src/constants';
 import {
@@ -29,7 +27,7 @@ const verifyPopoverBehavior = async (
   }
 };
 
-const getPage = (props: Partial<PopoverProps> = {}) =>
+const getPage = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
     name: 'popover',
     props: {

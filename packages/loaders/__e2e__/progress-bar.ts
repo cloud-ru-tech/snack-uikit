@@ -1,13 +1,11 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { ProgressBarProps } from '@snack-ui/loaders';
-
 import { dataTestIdSelector, getStyleProperty, getTestcafeUrl } from '../../../testcafe/utils';
 
 const TEST_ID = 'progress-bar-test';
 const FILLER_TEST_ID = 'progress-bar-filler';
 
-const getPageUrl = (props: Partial<ProgressBarProps> = {}) =>
+const getPageUrl = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
     name: 'progress-bar',
     props: {

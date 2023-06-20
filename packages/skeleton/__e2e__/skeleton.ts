@@ -1,7 +1,5 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { SkeletonProps } from '@snack-ui/skeleton';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
 fixture('Skeleton');
@@ -9,7 +7,7 @@ fixture('Skeleton');
 const SKELETON_TEST_ID = 'skeleton';
 const CHILDREN_TEST_ID = 'children';
 
-const getPage = (props: Partial<SkeletonProps> = {}) =>
+const getPage = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
     name: 'skeleton',
     props: {

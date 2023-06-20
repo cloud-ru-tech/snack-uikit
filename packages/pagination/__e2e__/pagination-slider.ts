@@ -1,7 +1,5 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { PaginationProps } from '@snack-ui/pagination';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
 const TEST_ID = 'pagination-slider';
@@ -10,7 +8,7 @@ const PAGE = 3;
 
 const getPageButtonId = (index: number) => dataTestIdSelector(`page-button-slider-${index}`);
 
-const getPage = (props?: Partial<PaginationProps>) =>
+const getPage = (props?: Record<string, unknown>) =>
   getTestcafeUrl({
     name: 'pagination-slider',
     group: 'pagination',

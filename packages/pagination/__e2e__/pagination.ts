@@ -1,18 +1,17 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { PaginationProps } from '@snack-ui/pagination';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
 const TEST_ID = 'pagination';
 
-function getPage(props: Partial<PaginationProps>) {
+function getPage(props: Record<string, unknown>) {
   return getTestcafeUrl({ group: 'pagination', name: 'pagination', props: { 'data-test-id': TEST_ID, ...props } });
 }
 
 fixture('Pagination');
 
-const tests: Array<[Partial<PaginationProps>, Array<number | [number, number]>]> = [
+// eslint-disable-next-line
+const tests: Array<[any, Array<number | [number, number]>]> = [
   [{ total: 7, page: 1 }, [1, 2, 3, 4, 5, 6, 7]],
   [{ total: 7, page: 7 }, [1, 2, 3, 4, 5, 6, 7]],
   [{ total: 8, page: 1 }, [1, 2, 3, 4, 5, [6, 7], 8]],

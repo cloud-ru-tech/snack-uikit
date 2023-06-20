@@ -1,7 +1,5 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { AvatarProps } from '@snack-ui/avatar';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { Size } from '../src/components/constants';
 
@@ -15,7 +13,7 @@ const nameAndSurnameAbbr = 'JS';
 const nameOnly = 'John';
 const nameOnlyAbbr = 'JO';
 
-const getPage = (props: Partial<AvatarProps> & { showImage?: boolean; customSrc?: string } = {}) =>
+const getPage = (props: Record<string, unknown> & { showImage?: boolean; customSrc?: string } = {}) =>
   getTestcafeUrl({
     name: 'avatar',
     props: {
@@ -35,7 +33,7 @@ test.page(getPage())('should render', async t => {
   await t.expect(avatar.find(dataTestIdSelector(INDICATOR_TEST_ID)).exists).notOk();
 });
 
-test.page(getPage({ indicator: 'red' as AvatarProps['indicator'] }))('should render with indicator', async t => {
+test.page(getPage({ indicator: 'red' }))('should render with indicator', async t => {
   const avatar = Selector(dataTestIdSelector(TEST_ID));
   const indicator = avatar.find(dataTestIdSelector(INDICATOR_TEST_ID));
 

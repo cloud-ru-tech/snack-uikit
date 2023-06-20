@@ -1,13 +1,11 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { LinkProps } from '@snack-ui/link';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
 const TEST_ID = 'link-test';
 const EXTERNAL_ICON_TEST_ID = 'external-icon';
 
-const getPageUrl = (props: Partial<LinkProps> = {}) =>
+const getPageUrl = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
     name: 'link',
     props: {

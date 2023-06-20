@@ -1,13 +1,11 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { CounterProps } from '@snack-ui/counter';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { Variant } from '../src/components/constants';
 
 const TEST_ID = 'progress-bar-test';
 
-const getPage = (props: Partial<CounterProps> = {}) =>
+const getPage = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
     name: 'counter',
     props: {

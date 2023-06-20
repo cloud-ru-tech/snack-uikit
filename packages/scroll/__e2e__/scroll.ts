@@ -2,7 +2,7 @@ import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
-function getUrl(props: object = {}) {
+function getUrl(props: Record<string, unknown> = {}) {
   return getTestcafeUrl({
     name: 'scroll',
     props: {

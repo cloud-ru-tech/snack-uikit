@@ -1,12 +1,10 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { HiddenDropZoneProps } from '@snack-ui/drop-zone';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
 const TEST_ID = 'hidden-drop-zone';
 
-const getPage = (props: Partial<HiddenDropZoneProps> = {}) =>
+const getPage = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
     name: 'hidden-drop-zone',
     group: 'drop-zone',

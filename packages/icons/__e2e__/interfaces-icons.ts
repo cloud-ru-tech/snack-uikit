@@ -1,17 +1,16 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import * as InterfaceIcons from '../src/components/interface-icons';
-import { generateDataTestId } from './utils';
+import { getIconsDataTestIds } from './utils';
+
+const InterfaceIcons = getIconsDataTestIds('svgs/interface-icons');
 
 const size = 30;
 
 fixture('Icons: Interfaces').page(getTestcafeUrl({ name: 'interfaces', group: 'icons', props: { size } }));
 
 test('Rendered', async t => {
-  const iconsArray = Object.keys(InterfaceIcons).map(generateDataTestId);
-
-  for (const icon of iconsArray) {
+  for (const icon of InterfaceIcons) {
     const iconElement = Selector(dataTestIdSelector(icon));
     await t.expect(iconElement.exists).ok();
     await t.expect(iconElement.getStyleProperty('width')).eql(`${size}px`);

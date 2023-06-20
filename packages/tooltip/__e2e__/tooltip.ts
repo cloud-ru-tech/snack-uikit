@@ -1,7 +1,5 @@
 import { fixture, Selector, test } from 'testcafe';
 
-import { TooltipProps } from '@snack-ui/tooltip';
-
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { Trigger } from '../../popover-private/src/constants';
 import {
@@ -28,7 +26,7 @@ const verifyTooltipBehavior = async (
   }
 };
 
-const getPage = (props: Partial<TooltipProps> = {}) =>
+const getPage = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
     name: 'tooltip',
     props: {
