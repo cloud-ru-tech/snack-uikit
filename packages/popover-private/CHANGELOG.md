@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-06-20)
+
+
+### Features
+
+* **[FF-2485](https://jira.sbercloud.tech/browse/FF-2485):** add triggerClassName prop ([29ebbf5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/29ebbf5c646b57ec1bbf474d7cca82e4cc21d5ac))
+
+
+
+
+
 # 0.3.0 (2023-06-14)
 
 

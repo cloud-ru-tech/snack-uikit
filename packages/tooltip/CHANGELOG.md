@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-06-20)
+
+
+### Features
+
+* **[FF-2485](https://jira.sbercloud.tech/browse/FF-2485):** add triggerClassName prop ([29ebbf5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/29ebbf5c646b57ec1bbf474d7cca82e4cc21d5ac))
+
+
+
+
+
 ## 0.2.8 (2023-06-14)
 
 ### Only dependencies have been changed
@@ -14,7 +25,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.2.7 (2023-06-14)
 
-**Note:** Version bump only for package @snack-ui/tooltip
+### Only dependencies have been changed
+* [@snack-ui/popover-private@0.4.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/popover-private/CHANGELOG.md)
+* [@snack-ui/utils@1.2.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

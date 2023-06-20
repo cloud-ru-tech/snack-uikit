@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.2.0 (2023-06-20)
+
+
+### Features
+
+* **[FF-2485](https://jira.sbercloud.tech/browse/FF-2485):** add useEvent and useDebounce hooks ([978484a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/978484a5a7a28391d69875df6ecd03570a29a406))
+
+
+
+
+
 ## 1.1.1 (2023-06-14)
 
 

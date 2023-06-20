@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/toggles",
   "title": "Toggles",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -30,8 +30,8 @@
   "scripts": {},
   "dependencies": {
     "@snack-ui/icons": "0.5.0",
-    "@snack-ui/typography": "0.2.2",
-    "@snack-ui/utils": "1.1.1",
+    "@snack-ui/typography": "0.2.3",
+    "@snack-ui/utils": "1.2.0",
     "classnames": "2.3.2",
     "uncontrollable": "8.0.0"
   }
