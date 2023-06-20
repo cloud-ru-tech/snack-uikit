@@ -18,10 +18,4 @@ $sizes: 'xs', 's';
   &[data-hidden='true'] {
     display: inline-flex;
   }
-
-  @each $size in $sizes {
-    &[data-size='#{$size}'] {
-      @include composite-var($breadcrumbs, $size);
-    }
-  }
 }
