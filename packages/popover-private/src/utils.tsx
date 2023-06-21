@@ -85,7 +85,7 @@ export const getPopoverContent = ({
   }
 
   return (
-    <span ref={setReference} {...getReferenceProps()}>
+    <span className={validElementWrapperClassName} ref={setReference} {...getReferenceProps()}>
       {children}
     </span>
   );
