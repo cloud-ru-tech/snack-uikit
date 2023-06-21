@@ -11,6 +11,7 @@ export type DroplistProps = WithSupportProps<
   } & Pick<
     PopoverPrivateProps,
     | 'className'
+    | 'triggerClassName'
     | 'open'
     | 'onOpenChange'
     | 'hoverDelayOpen'
