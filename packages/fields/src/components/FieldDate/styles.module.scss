@@ -1,0 +1,47 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
+
+$sizes: 's', 'm', 'l';
+$icons-sizes: (
+  's': $icon-xs,
+  'm': $icon-s,
+  'l': $icon-s
+);
+
+.trigger {
+  display: block;
+  width: 100%;
+}
+
+.itemList {
+  margin-top: var($space-fields-drop-offset);
+}
+
+.container {
+  .calendarIcon {
+    color: var($sys-neutral-text-light);
+
+    @each $size in $sizes {
+      &[data-size='#{$size}'] {
+        width: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      }
+    }
+  }
+
+  &:hover, &:focus-within, &[data-focused] {
+    .calendarIcon {
+      color: var($sys-neutral-text-support);
+    }
+  }
+
+  &[data-disabled], &[data-readonly] {
+    .calendarIcon {
+      color: var($sys-neutral-text-disabled);
+    }
+  }
+}
+
+.calendar {
+  padding: 16px;
+}

@@ -39,7 +39,8 @@ $variants: 'single-line-container', 'multi-line-container';
       border-color: simple-var($sys-primary-decor-hovered);
     }
 
-    &:focus-within {
+    &:focus-within,
+    &[data-focused] {
       @include outline-var($container-focused-m);
 
       background-color: simple-var($sys-neutral-background2-level);
@@ -57,7 +58,8 @@ $variants: 'single-line-container', 'multi-line-container';
       border-color: simple-var($sys-red-decor-hovered);
     }
 
-    &:focus-within {
+    &:focus-within,
+    &[data-focused] {
       @include outline-var($container-focused-m);
 
       background-color: simple-var($sys-neutral-background2-level);
@@ -75,7 +77,8 @@ $variants: 'single-line-container', 'multi-line-container';
       border-color: simple-var($sys-yellow-decor-hovered);
     }
 
-    &:focus-within {
+    &:focus-within,
+    &[data-focused] {
       @include outline-var($container-focused-m);
 
       background-color: simple-var($sys-neutral-background2-level);
@@ -93,7 +96,8 @@ $variants: 'single-line-container', 'multi-line-container';
       border-color: simple-var($sys-green-decor-hovered);
     }
 
-    &:focus-within {
+    &:focus-within,
+    &[data-focused] {
       @include outline-var($container-focused-m);
 
       background-color: simple-var($sys-neutral-background2-level);
@@ -112,7 +116,7 @@ $variants: 'single-line-container', 'multi-line-container';
       border-color: simple-var($sys-neutral-decor-disabled);
     }
 
-    &:focus-within {
+    &:focus-within, &[data-focused] {
       @include outline-var($container-focused-m);
 
       background-color: simple-var($sys-neutral-decor-disabled);
@@ -126,7 +130,7 @@ $variants: 'single-line-container', 'multi-line-container';
       cursor: not-allowed;
     }
 
-    &, &:focus-within, &:hover {
+    &, &:focus-within, &[data-focused], &:hover {
       background-color: simple-var($sys-neutral-background);
       border-color: simple-var($sys-neutral-decor-disabled);
       outline: none;
