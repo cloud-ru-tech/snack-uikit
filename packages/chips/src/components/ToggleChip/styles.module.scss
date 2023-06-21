@@ -1,0 +1,125 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-chips-toggleChip';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../../styles.module';
+
+$sizes: 'xs', 's', 'm', 'l';
+
+$typography: (
+  'xs': $sans-label-s,
+  's': $sans-label-m,
+  'm': $sans-label-m,
+  'l': $sans-label-l,
+);
+
+.toggleChipContent {
+  @include chip-defaults;
+
+  color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
+  border-color: transparent;
+}
+
+.toggleChipInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+
+  &:focus-visible + .toggleChipContent {
+    @include chip-outline;
+
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-main');
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-hovered');
+    outline-color: var($sys-available-complementary);
+  }
+
+  &:active + .toggleChipContent {
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-main');
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-activated');
+  }
+}
+
+.toggleChip {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: 0;
+  outline-offset: 0;
+
+  @include chip-anatomy-styles($toggle-chip, $sizes, $typography, toggleChipContent);
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @each $variant in $variants {
+        &[data-variant='#{$variant}'] {
+          border-radius: simple-var($toggle-chip, 'container', $size, $variant, 'border-radius');
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .toggleChipContent {
+      color: simple-var($theme-variables, 'sys', 'neutral', 'text-main');
+      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-hovered');
+    }
+  }
+
+  &[data-loading] {
+    @include chip-loading-state($toggle-chip, '&[data-variant="label-only"]', label, toggleChipContent);
+
+    .toggleChipContent {
+      color: simple-var($theme-variables, 'sys', 'neutral', 'text-main');
+      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-activated');
+    }
+  }
+
+  &[data-disabled] {
+    .toggleChipContent {
+      @include chip-disabled(simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled'), true);
+    }
+  }
+
+  &[data-checked] {
+    .toggleChipContent {
+      color: simple-var($theme-variables, 'sys', 'primary', 'on-accent');
+      background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    }
+
+    &:hover {
+      .toggleChipContent {
+        background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+      }
+    }
+
+    .toggleChipInput {
+      &:focus-visible + .toggleChipContent {
+        color: simple-var($theme-variables, 'sys', 'primary', 'on-accent');
+        background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+        outline-color: var($sys-primary-accent-default);
+      }
+
+      &:active + .toggleChipContent {
+        color: simple-var($theme-variables, 'sys', 'primary', 'on-accent');
+        background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-pressed');
+      }
+    }
+
+    &[data-loading] {
+      .toggleChipInput + .toggleChipContent {
+        background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-pressed');
+      }
+    }
+
+    &[data-disabled] {
+      .toggleChipInput + .toggleChipContent {
+        color: simple-var($theme-variables, 'sys', 'primary', 'text-light');
+        background-color: simple-var($theme-variables, 'sys', 'primary', 'decor-disabled');
+      }
+    }
+  }
+}
