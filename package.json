@@ -9,7 +9,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "add-package": "ts-node scripts/npm-init",
-    "build:storybook": "storybook build -c storybook",
+    "build:storybook": "cross-env TEST_SERVER=true storybook build -c storybook",
     "build:packages": "npm run clean:all && npm run deps:packages && lerna run compile && npm run build:ts && npm run build:css",
     "build:css": "ts-node scripts/compileCSS",
     "build:ts": "ttsc -b ./packages/tsconfig.json",

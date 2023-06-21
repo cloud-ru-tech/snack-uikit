@@ -24,9 +24,9 @@ export const hooks = {
   reporter: {
     onBeforeWrite: {
       xunit: (writeInfo: { initiator: string; formattedText: string }) => {
-        if (writeInfo.initiator !== 'reportTaskDone') return;
-
-        writeInfo.formattedText = writeInfo.formattedText.replaceAll(process.cwd(), '');
+        if (writeInfo.initiator === 'reportTaskDone') {
+          writeInfo.formattedText = writeInfo.formattedText.replaceAll(process.cwd(), '');
+        }
       },
     },
   },
