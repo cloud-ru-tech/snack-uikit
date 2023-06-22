@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ChangeEventHandler, forwardRef, MouseEventHandler } from 'react';
+import { ChangeEventHandler, forwardRef } from 'react';
 
 import { excludeSupportProps, extractDataProps, extractSupportProps } from '@snack-ui/utils';
 
@@ -18,16 +18,19 @@ const ForwardedPrivateInput = forwardRef<HTMLInputElement, InputPrivateProps>(
       className,
       type = Type.Text,
       disabled = false,
+      readonly = false,
       autoComplete = false,
       maxLength,
       onFocus,
       onBlur,
+      onKeyDown,
       ...rest
     },
     ref,
   ) => {
-    const onChangeHandler: ChangeEventHandler<HTMLInputElement> = e => onChange?.(e.target.value, e);
-    const stopPropagation: MouseEventHandler<HTMLInputElement> = e => e.stopPropagation();
+    const onChangeHandler: ChangeEventHandler<HTMLInputElement> = e => {
+      onChange?.(e.target.value, e);
+    };
 
     return (
       <input
@@ -39,12 +42,13 @@ const ForwardedPrivateInput = forwardRef<HTMLInputElement, InputPrivateProps>(
         ref={ref}
         value={value}
         onChange={onChangeHandler}
-        onClick={stopPropagation}
         placeholder={placeholder}
         type={type}
         disabled={disabled}
+        readOnly={readonly}
         onFocus={onFocus}
         onBlur={onBlur}
+        onKeyDown={onKeyDown}
         {...extractDataProps(excludeSupportProps(rest))}
         {...extractSupportProps(rest)}
       />

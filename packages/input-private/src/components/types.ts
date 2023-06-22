@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEventHandler, RefAttributes } from 'react';
+import { ChangeEvent, FocusEventHandler, KeyboardEventHandler, RefAttributes } from 'react';
 
 import { WithSupportProps } from '@snack-ui/utils';
 
@@ -12,10 +12,12 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
     id?: string;
     className?: string;
     placeholder?: string;
+    readonly?: boolean;
     type?: Type;
     disabled?: boolean;
     autoComplete?: boolean;
     maxLength?: number;
     onFocus?: FocusEventHandler<HTMLInputElement>;
     onBlur?: FocusEventHandler<HTMLInputElement>;
+    onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
   }>;
