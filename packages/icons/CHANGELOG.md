@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-06-22)
+
+
+### Features
+
+* **[FF-2543](https://jira.sbercloud.tech/browse/FF-2543):** add cross xs icon ([5fd93d9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5fd93d93e2ca0eb71825d68184efd7ddfcbdd94a))
+
+
+
+
+
 # 0.5.0 (2023-05-26)
 
 
