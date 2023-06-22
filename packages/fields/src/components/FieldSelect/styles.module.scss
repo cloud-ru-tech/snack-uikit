@@ -1,0 +1,69 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
+
+$sizes: 's', 'm', 'l';
+$icons-sizes: (
+  's': $icon-xs,
+  'm': $icon-s,
+  'l': $icon-s
+);
+
+.trigger {
+  display: block;
+  width: 100%;
+}
+
+.itemList {
+  margin-top: var($space-fields-drop-offset);
+}
+
+.container {
+  .arrowIcon {
+    color: var($sys-neutral-text-light);
+
+    @each $size in $sizes {
+      &[data-size='#{$size}'] {
+        width: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      }
+    }
+  }
+
+  &:hover, &:focus-within, &[data-focused] {
+    .arrowIcon {
+      color: var($sys-neutral-text-support);
+    }
+  }
+
+  &[data-disabled], &[data-readonly] {
+    .arrowIcon {
+      color: var($sys-neutral-text-disabled);
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    padding: 16px;
+    border-bottom: 1px solid var($sys-neutral-decor-default);
+
+    @each $size in $sizes {
+      &[data-size='#{$size}'] {
+        @include composite-var($theme-variables, 'sans', 'body', $size);
+      }
+    }
+
+    &[data-selected] {
+      background-color: var($sys-neutral-background);
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var($sys-neutral-background1-level);
+    }
+
+  }
+}

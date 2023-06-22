@@ -106,6 +106,12 @@ $variants: 'single-line-container', 'multi-line-container';
     }
   }
 
+  &[data-selectable] {
+    &, input, select, textarea {
+      cursor: pointer;
+    }
+  }
+
   &[data-readonly] {
     &, input, select, textarea {
       cursor: default;

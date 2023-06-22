@@ -15,6 +15,7 @@ export type FieldContainerPrivateProps = WithSupportProps<{
   disabled: boolean;
   readonly: boolean;
   focused?: boolean;
+  selectable?: boolean;
   style?: CSSProperties;
   prefix?: ReactElement;
   postfix?: ReactElement;
@@ -30,6 +31,7 @@ export function FieldContainerPrivate({
   disabled,
   readonly,
   focused,
+  selectable,
   style,
   prefix,
   postfix,
@@ -46,6 +48,7 @@ export function FieldContainerPrivate({
       data-disabled={disabled || undefined}
       data-readonly={readonly || undefined}
       data-focused={focused || undefined}
+      data-selectable={selectable || undefined}
       data-test-id='field-container-private'
       onClick={disabled ? undefined : () => inputRef.current?.focus()}
       role='textbox'
