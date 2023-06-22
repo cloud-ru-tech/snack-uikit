@@ -1,0 +1,211 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-dropList';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm', 'l';
+
+$typography: (
+  's': (
+    'label': $sans-body-s,
+    'caption': $sans-body-s,
+    'description': $sans-body-s,
+  ),
+  'm': (
+    'label': $sans-body-m,
+    'caption': $sans-body-s,
+    'description': $sans-body-s,
+  ),
+  'l': (
+    'label': $sans-body-l,
+    'caption': $sans-body-m,
+    'description': $sans-body-m,
+  ),
+);
+
+.droplistItem {
+  position: relative;
+}
+
+.headline {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+}
+
+.label {
+  color: simple-var($sys-neutral-text-main);
+}
+
+.caption {
+  color: simple-var($sys-neutral-text-light);
+}
+
+.description {
+  color: simple-var($sys-neutral-text-support);
+}
+
+.beforeContent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: simple-var($icon-s);
+  height: simple-var($icon-s);
+
+  svg {
+    width: 100% !important; /* stylelint-disable-line declaration-no-important */
+    height: 100% !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.expandableIcon {
+  display: flex;
+  align-items: center;
+  fill: currentColor;
+}
+
+.markerContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  height: 100%;
+  pointer-events: none;
+
+  @include composite-var($drop-list, 'item', 'marker-container');
+
+  &:before {
+    display: block;
+    height: 100%;
+    content: '';
+
+    @include composite-var($drop-list, 'item', 'marker');
+  }
+}
+
+.content {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: simple-var($sys-neutral-background2-level);
+
+  @each $size in $sizes {
+    &[data-size=#{$size}] {
+      @include composite-var($drop-list, 'item', $size, 'container');
+
+      .headline {
+        @include composite-var($drop-list, 'item', $size, 'headline');
+      }
+
+      .label {
+        @include composite-var($typography, $size, 'label');
+      }
+
+      .caption {
+        @include composite-var($typography, $size, 'caption');
+      }
+
+      .description {
+        @include composite-var($typography, $size, 'description');
+      }
+    }
+  }
+
+  &:hover {
+    background-color: simple-var($sys-primary-background);
+  }
+
+  &:focus-visible {
+    @include outline-inside-var($container-focused-s);
+    background-color: simple-var($sys-primary-background);
+  }
+
+  &[data-before-content], &[data-variant='multiple'] {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  &[data-variant='expandable'] {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  &[data-before-content] {
+    &[data-variant='expandable'] {
+      grid-template-columns: auto 1fr auto;
+    }
+
+    &[data-variant='multiple'] {
+      grid-template-columns: auto auto 1fr;
+    }
+  }
+}
+
+.input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+
+  &:focus-visible {
+    + .container {
+      @include outline-inside-var($container-focused-s);
+      background-color: simple-var($sys-primary-background);
+    }
+  }
+
+  &:disabled {
+    + .container {
+      cursor: not-allowed;
+      background-color: simple-var($sys-neutral-background1-level);
+      outline: none;
+
+      .label, .description, .caption, .expandableIcon {
+        color: simple-var($sys-neutral-text-disabled);
+      }
+    }
+  }
+
+  &:checked {
+    + .container {
+      &[data-variant='single'] {
+        background-color: simple-var($sys-primary-decor-default);
+
+        &:hover {
+          background-color: simple-var($sys-primary-background);
+        }
+      }
+
+      .markerContainer:before {
+        background-color: simple-var($sys-primary-accent-default);
+      }
+    }
+
+    &:focus-visible {
+      + .container {
+        &[data-variant='single'] {
+          background-color: simple-var($sys-primary-background);
+          outline-color: simple-var($sys-primary-accent-default);
+        }
+      }
+    }
+
+    &:disabled {
+      + .container {
+        &[data-variant='single'] {
+          background-color: simple-var($sys-primary-background1-level);
+        }
+
+        .markerContainer:before {
+          background-color: simple-var($sys-primary-text-disabled);
+        }
+      }
+    }
+  }
+}

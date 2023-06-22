@@ -7,34 +7,36 @@ import popoverPrivateReadme from '../../popover-private/README.md';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { Droplist, DroplistProps } from '../src';
+import { Droplist } from '../src';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
   title: 'Components/Droplist',
-  component: Droplist,
+  component: Droplist.Container,
 };
 export default meta;
 
-type StoryProps = DroplistProps & { storySkeletonWidth: number };
+type StoryProps = Droplist.ContainerProps & { storySkeletonWidth: number };
+
 const Template: StoryFn<StoryProps> = ({ ...args }) => (
   <div className={styles.story}>
-    <Droplist
+    <Droplist.Container
       {...args}
       content={<SkeletonText width={args.storySkeletonWidth} className={styles.skeleton} loading lines={7} />}
     >
       <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-droplist' />
-    </Droplist>
+    </Droplist.Container>
   </div>
 );
 
-export const droplist: StoryObj<StoryProps> = Template.bind({});
-droplist.args = {
+export const container: StoryObj<StoryProps> = Template.bind({});
+
+container.args = {
   storySkeletonWidth: 330,
   placement: Droplist.placements.BottomStart,
   widthStrategy: Droplist.widthStrategies.Gte,
 };
-droplist.argTypes = {
+container.argTypes = {
   storySkeletonWidth: {
     name: '[Stories]: Skeleton width',
     control: {
@@ -43,7 +45,7 @@ droplist.argTypes = {
   },
 };
 
-droplist.parameters = {
+container.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, popoverPrivateReadme, componentChangelog],
   },

@@ -50,9 +50,6 @@
       "path": "./toggles"
     },
     {
-      "path": "./droplist"
-    },
-    {
       "path": "./divider"
     },
     {
@@ -75,6 +72,9 @@
     },
     {
       "path": "./tag"
+    },
+    {
+      "path": "./droplist"
     },
     {
       "path": "./icon-predefined"

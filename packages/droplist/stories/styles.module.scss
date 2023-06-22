@@ -1,3 +1,5 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
 .story {
   display: flex;
   align-items: center;
@@ -14,4 +16,60 @@
   box-sizing: border-box;
   max-width: 100%;
   padding: 0 1em;
+}
+
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+.wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: 160px;
+  padding: 0 24px;
+  background-color: var($sys-neutral-background1-level);
+  border: 1px solid var($sys-neutral-decor-default);
+  border-radius: var($dimension-050m);
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+$border-width: 0.5px;
+
+.table {
+  display: inline-grid;
+  grid-template-columns: 60px repeat(var(--columns), 1fr);
+  background-color: var($sys-neutral-background1-level);
+  border: $border-width solid var($sys-neutral-decor-default);
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: $border-width solid var($sys-neutral-decor-disabled);
+}
+
+.headerCell {
+  text-transform: uppercase;
+}
+
+.dropListMenu {
+  width: 300px;
+}
+
+.dropListItem {
+  width: 100%;
+  min-width: 253px;
 }
