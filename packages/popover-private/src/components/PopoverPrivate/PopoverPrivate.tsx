@@ -53,6 +53,7 @@ export type PopoverPrivateProps = WithSupportProps<{
   hoverDelayClose?: number;
   triggerRef?: ForwardedRef<ReferenceType | null>;
   widthStrategy?: PopoverWidthStrategy;
+  closeOnEscapeKey?: boolean;
 }>;
 
 export function PopoverPrivate({
@@ -73,6 +74,7 @@ export function PopoverPrivate({
   hoverDelayClose,
   triggerRef,
   widthStrategy = PopoverWidthStrategy.Auto,
+  closeOnEscapeKey = true,
   ...rest
 }: PopoverPrivateProps) {
   const widthStrategyRef = useRef<PopoverWidthStrategy>(widthStrategy);
@@ -127,7 +129,11 @@ export function PopoverPrivate({
 
   const { useHoverTrigger, useFocusTrigger, useClickTrigger, keyboardOnly } = getTriggerProps(trigger);
 
-  const dismiss = useDismiss(context, { outsidePress: outsideClick, ancestorScroll: true });
+  const dismiss = useDismiss(context, {
+    outsidePress: outsideClick,
+    ancestorScroll: true,
+    escapeKey: closeOnEscapeKey,
+  });
   const hover = useHover(context, {
     enabled: useHoverTrigger,
     handleClose: safePolygon(),

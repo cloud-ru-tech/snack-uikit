@@ -109,3 +109,6 @@ function App() {
 
 #### **`offset?: number`**
   Отступ поповера от его target-элемента (в пикселях).
+
+#### **`closeOnEscapeKey?: boolean`** - *`[true]`*
+  Закрывается ли поповер по нажатию клавиши Escape

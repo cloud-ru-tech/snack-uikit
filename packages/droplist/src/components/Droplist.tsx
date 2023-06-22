@@ -19,6 +19,7 @@ export type DroplistProps = WithSupportProps<
     | 'widthStrategy'
     | 'offset'
     | 'children'
+    | 'closeOnEscapeKey'
   > &
     Partial<Pick<PopoverPrivateProps, 'trigger' | 'placement'>>
 >;
