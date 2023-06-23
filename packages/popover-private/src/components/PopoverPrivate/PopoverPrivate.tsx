@@ -54,6 +54,7 @@ export type PopoverPrivateProps = WithSupportProps<{
   triggerRef?: ForwardedRef<ReferenceType | null>;
   widthStrategy?: PopoverWidthStrategy;
   closeOnEscapeKey?: boolean;
+  triggerClickByKeys?: boolean;
 }>;
 
 export function PopoverPrivate({
@@ -75,6 +76,7 @@ export function PopoverPrivate({
   triggerRef,
   widthStrategy = PopoverWidthStrategy.Auto,
   closeOnEscapeKey = true,
+  triggerClickByKeys = true,
   ...rest
 }: PopoverPrivateProps) {
   const widthStrategyRef = useRef<PopoverWidthStrategy>(widthStrategy);
@@ -140,7 +142,7 @@ export function PopoverPrivate({
     delay: { open: hoverDelayOpen, close: hoverDelayClose },
   });
   const focus = useFocus(context, { enabled: useFocusTrigger, keyboardOnly });
-  const click = useClick(context, { enabled: useClickTrigger });
+  const click = useClick(context, { enabled: useClickTrigger, keyboardHandlers: triggerClickByKeys });
 
   const { getFloatingProps, getReferenceProps } = useInteractions([dismiss, hover, focus, click]);
 

@@ -55,7 +55,7 @@ function App() {
         useHoverTrigger
         triggerRef={(button) => { /* button HTMLElement из children */ }}
       >
-        <button>some button<button>
+        <button>some button</button>
       </PopoverPrivate>
     ```
 
@@ -112,3 +112,6 @@ function App() {
 
 #### **`closeOnEscapeKey?: boolean`** - *`[true]`*
   Закрывается ли поповер по нажатию клавиши Escape
+
+#### **`triggerClickByKeys?: boolean`** - *`[true]`*
+  Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `Click`)

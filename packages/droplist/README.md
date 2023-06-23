@@ -55,3 +55,6 @@ CSS-класс на обёртке триггера поповера.
 
 #### **`closeOnEscapeKey?: boolean`** - *`[true]`*
 Закрывается ли поповер по нажатию клавиши Escape
+
+#### **`triggerClickByKeys?: boolean`** - *`[true]`*
+Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `Click`)
