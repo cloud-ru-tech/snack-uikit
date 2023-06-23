@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.10 (2023-06-23)
+
+**Note:** Version bump only for package @snack-ui/popover
+
+
+
+
+
 ## 0.2.9 (2023-06-20)
 
 ### Only dependencies have been changed

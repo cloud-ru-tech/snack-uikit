@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/counter",
   "title": "Counter",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "sideEffects": [
     "*.css",
     "*.woff",
