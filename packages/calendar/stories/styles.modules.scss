@@ -1,0 +1,21 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.story {
+  padding: 2rem;
+  background-color: simple-var($sys-neutral-background1-level);
+}
+
+.scroll_s {
+  width: 240px;
+  height: 256px;
+}
+
+.scroll_m {
+  width: 296px;
+  height: 320px;
+}
+
+.valueHolder {
+  height: 1px;
+  opacity: 0;
+}

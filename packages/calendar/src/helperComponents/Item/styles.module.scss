@@ -1,0 +1,146 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-calendar';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm';
+$typography: (
+  's': $sans-body-s,
+  'm': $sans-body-m,
+);
+
+.item {
+  display: flex;
+}
+
+.range,
+.box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($calendar, 'item', 'box', $size);
+    }
+  }
+}
+
+.range {
+  &:not([data-in-range-position='out']) {
+    background-color: simple-var($sys-primary-decor-default);
+  }
+
+  &[data-in-range-position='in'] {
+    border-radius: 0;
+  }
+
+  &[data-in-range-position='start'] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &[data-in-range-position='end'] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+  color: simple-var($sys-neutral-text-light);
+  appearance: none;
+  cursor: pointer;
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+
+  &:focus-visible {
+    .box {
+      @include outline-inside-var($container-focused-s);
+      outline-color: simple-var($sys-available-complementary);
+    }
+  }
+
+  &[data-is-in-current-level-period] {
+    color: simple-var($sys-neutral-text-main);
+  }
+
+  &[data-is-selected] {
+    color: simple-var($sys-primary-on-accent);
+
+    .box {
+      background-color: simple-var($sys-primary-accent-default);
+    }
+
+    &:hover,
+    &:focus-visible {
+      .box {
+        background-color: simple-var($sys-primary-accent-hovered);
+      }
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    &:not([data-is-selected]) {
+      .box {
+        background-color: simple-var($sys-primary-background);
+      }
+    }
+  }
+
+  &[disabled] {
+    color: simple-var($sys-neutral-text-disabled);
+    &[data-is-selected] {
+      .box {
+        background-color: simple-var($sys-primary-decor-activated);
+      }
+    }
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($typography, $size);
+    }
+  }
+}
+
+.content {
+  position: relative;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($calendar, 'item', 'box', 'content', $size);
+    }
+  }
+}
+
+.marker {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+
+  &[data-is-current] {
+    background-color: simple-var($sys-primary-accent-default);
+
+    &[data-is-selected] {
+      background-color: simple-var($sys-primary-on-accent);
+    }
+
+    @each $size in $sizes {
+      &[data-size='#{$size}'] {
+        @include composite-var($calendar, 'item', 'box', 'content', 'marker', $size);
+      }
+    }
+  }
+}

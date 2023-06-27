@@ -81,6 +81,9 @@
     },
     {
       "path": "./fields"
+    },
+    {
+      "path": "./calendar"
     }
   ],
   "compilerOptions": {

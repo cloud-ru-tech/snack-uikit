@@ -1,0 +1,15 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-calendar';
+
+$sizes: 's', 'm';
+
+.row {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($calendar, 'container', 'header', 'weeks', $size)
+    }
+  }
+}

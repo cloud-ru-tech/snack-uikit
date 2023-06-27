@@ -1,0 +1,44 @@
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-calendar";
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-element";
+
+$sizes: 's', 'm';
+$typography: (
+  's': $sans-title-s,
+  'm': $sans-title-m,
+);
+
+.button {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: simple-var($sys-neutral-text-main);
+  background: none;
+  border: none;
+
+  &:not(:disabled) {
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      background-color: simple-var($sys-primary-background);
+    }
+
+    &:focus-visible {
+      @include outline-inside-var($container-focused-s);
+      outline-color: simple-var($sys-available-complementary);
+    }
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($calendar, 'button', $size);
+      @include composite-var($typography, $size);
+    }
+  }
+}
+
+.icon {
+  display: inline-flex;
+  color: simple-var($sys-neutral-text-light);
+}

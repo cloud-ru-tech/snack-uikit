@@ -1,0 +1,71 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-calendar';
+
+$sizes: 's', 'm';
+
+.calendar {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  max-width: 100%;
+  max-height: 100%;
+  --min-width-s: 240px;
+  --min-height-s: 256px;
+  --min-width-m: 280px;
+  --min-height-m: 308px;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      min-width: var(--min-width-#{$size});
+      min-height: var(--min-height-#{$size});
+    }
+  }
+
+  &[data-fit-to-container] {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/**
+  Сделано через отдельные классы вместо селектора &[data-size='s'] для того, чтоб иметь минимальную специфичность,
+  чтоб было легко задать размер "снаружи".
+*/
+.calendarSizeS {
+  width: var(--min-width-s);
+  height: var(--min-height-s);
+}
+
+.calendarSizeM {
+  width: var(--min-width-m);
+  height: var(--min-height-m);
+}
+
+.header {
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($calendar, 'container', 'header', $size);
+    }
+  }
+}
+
+.body {
+  position: relative;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.rows {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($calendar, 'container', 'rows', $size);
+    }
+  }
+}
