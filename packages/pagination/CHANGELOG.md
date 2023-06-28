@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.11 (2023-06-28)
+
+
+### Bug Fixes
+
+* **[FF-2267](https://jira.sbercloud.tech/browse/FF-2267):** update chevron icon ([98fee9e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/98fee9e64101d0cf655ab055373b347b2ca7d9f1))
+
+
+
+
+
 ## 0.2.10 (2023-06-23)
 
 ### Only dependencies have been changed
