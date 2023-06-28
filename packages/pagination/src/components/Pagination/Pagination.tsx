@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { ButtonLight } from '@snack-ui/button';
-import { ChevronLeftSVG, ChevronRightSVG } from '@snack-ui/icons';
+import { ChevronLeftSSVG, ChevronRightSSVG } from '@snack-ui/icons';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { getPaginationEntries, PaginationEntry, PaginationEntryKind } from '../../utils';
@@ -88,7 +88,7 @@ export function Pagination({ total, page, onChange, ...rest }: PaginationProps) 
       <ul className={styles.pagination}>
         <li>
           <ButtonLight
-            icon={<ChevronLeftSVG />}
+            icon={<ChevronLeftSSVG />}
             onClick={handlePreviousPageButtonClick}
             disabled={page === FIRST_PAGE}
             data-test-id='page-prev-button'
@@ -97,7 +97,7 @@ export function Pagination({ total, page, onChange, ...rest }: PaginationProps) 
         {entries.map(renderEntry)}
         <li>
           <ButtonLight
-            icon={<ChevronRightSVG />}
+            icon={<ChevronRightSSVG />}
             onClick={handleNextPageButtonClick}
             disabled={page === total}
             data-test-id='page-next-button'
