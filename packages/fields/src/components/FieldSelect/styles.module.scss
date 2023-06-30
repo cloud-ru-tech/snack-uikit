@@ -41,29 +41,3 @@ $icons-sizes: (
     }
   }
 }
-
-.list {
-  display: flex;
-  flex-direction: column;
-
-  span {
-    padding: 16px;
-    border-bottom: 1px solid var($sys-neutral-decor-default);
-
-    @each $size in $sizes {
-      &[data-size='#{$size}'] {
-        @include composite-var($theme-variables, 'sans', 'body', $size);
-      }
-    }
-
-    &[data-selected] {
-      background-color: var($sys-neutral-background);
-    }
-
-    &:hover {
-      cursor: pointer;
-      background-color: var($sys-neutral-background1-level);
-    }
-
-  }
-}

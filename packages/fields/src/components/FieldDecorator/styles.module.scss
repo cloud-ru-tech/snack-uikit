@@ -67,6 +67,7 @@ $footer-typography: (
 
 .hintLayout {
   display: inline-flex;
+  align-items: center;
 
   @include composite-var($fields-hint-hint-layout);
 }

@@ -14,7 +14,7 @@
 
 ```tsx
 import { useState } from 'react';
-import { FieldDate, FieldSecure } from '@snack-ui/fields';
+import { FieldDate, FieldSecure, FieldSelect, FieldText, FieldTextArea } from '@snack-ui/fields';
 import { PlaceholderSVG } from '@snack-ui/icons';
 
 const [value, setValue] = useState('11.11.1111');
@@ -60,13 +60,97 @@ const [isHidden, setIsHidden] = useState(false);
   showCopyButton={true}
   onFocus={() => {}}
   onBlur={() => {}}
-  label='Select date'
-  labelTooltip='You can choose any date'
+  label='Enter password'
+  labelTooltip='You can enter password here'
   required={true}
-  hint='You have entered wrong date'
+  hint='You have entered wrong password'
   size={FieldSecure.sizes.S}
-  validationState={FieldSecure.validationStates.Default}
-  prefixIcon={<PlaceholderSVG />}
+  validationState={FieldSecure.validationStates.Error}
+  prefixIcon={<PlaceholderSVG/>}
+/>
+
+...
+
+const [value, setValue] = useState('abc');
+
+<FieldText
+  value={value}
+  onChange={setValue}
+  id='field-1'
+  name='field-1'
+  placeholder='Enter text'
+  maxLength={20}
+  allowMoreThanMaxLength={false}
+  disabled={false}
+  readonly={false}
+  showCopyButton={true}
+  onFocus={() => {}}
+  onBlur={() => {}}
+  label='Enter text'
+  labelTooltip='You can input any text'
+  required={true}
+  hint='You have entered wrong answer'
+  size={FieldText.sizes.S}
+  validationState={FieldText.validationStates.Error}
+  prefixIcon={<PlaceholderSVG/>}
+/>
+
+...
+
+const [value, setValue] = useState('abc');
+
+<FieldTextArea
+  value={value}
+  onChange={setValue}
+  id='field-1'
+  name='field-1'
+  placeholder='Enter text'
+  maxLength={20}
+  maxRows={8}
+  resizable={true}
+  allowMoreThanMaxLength={true}
+  disabled={false}
+  readonly={false}
+  showCopyButton={true}
+  onFocus={() => {}}
+  onBlur={() => {}}
+  label='Enter text'
+  labelTooltip='You can input any text'
+  required={true}
+  hint='You have entered wrong answer'
+  size={FieldTextArea.sizes.S}
+  validationState={FieldTextArea.validationStates.Error}
+/>
+
+...
+
+const [value, setValue] = useState('1234');
+const [isOpen, setIsOpen] = useState(false);
+
+<FieldSelect
+  mode={FieldSelect.selectionModes.Single}
+  value={value}
+  onChange={setValue}
+  options={[{value: 'op1', label: 'Option 1'}, {value: 'op2', label: 'Option 2'}]}
+  open={isHidden}
+  onOpenChange={setIsOpen}
+  id='field-1'
+  name='field-1'
+  placeholder='Select an item'
+  noDataText={'No data'}
+  searchable={true}
+  disabled={false}
+  readonly={false}
+  showCopyButton={true}
+  onFocus={() => {}}
+  onBlur={() => {}}
+  label='Select an item'
+  labelTooltip='You can choose any option'
+  required={true}
+  hint='You have chosen wrong item'
+  size={FieldSelect.sizes.S}
+  validationState={FieldSelect.validationStates.Error}
+  prefixIcon={<PlaceholderSVG/>}
 />
 ```
 
@@ -160,7 +244,7 @@ css-класс контейнера.
 ####  **`maxLength?: number`**
 Максимальное кол-во введённых символов
 
-####  **`allowMoreThanMaxLength?: number`** - *`[false]`*
+####  **`allowMoreThanMaxLength?: boolean`** - *`[false]`*
 Можно ли вводить больше разрешённого кол-ва символов
 
 ####  **`prefixIcon?: ReactElement`**
@@ -180,7 +264,7 @@ css-класс контейнера.
 ####  **`maxLength?: number`**
 Максимальное кол-во введённых символов
 
-####  **`allowMoreThanMaxLength?: number`** - *`[false]`*
+####  **`allowMoreThanMaxLength?: boolean`** - *`[false]`*
 Можно ли вводить больше разрешённого кол-ва символов
 
 ####  **`prefixIcon?: ReactElement`**
@@ -200,12 +284,60 @@ css-класс контейнера.
 ####  **`maxLength?: number`**
 Максимальное кол-во введённых символов
 
-####  **`allowMoreThanMaxLength?: number`** - *`[true]`*
+####  **`allowMoreThanMaxLength?: boolean`** - *`[true]`*
 Можно ли вводить больше разрешённого кол-ва символов
 
 ####  **`resizable?: boolean`**- *`[false]`*
-Может ли ли пользователь изменять размеры поля 
+Может ли ли пользователь изменять размеры поля
 (если св-во не включено, поле автоматически меняет свой размер)
 
 ####  **`maxRows?: number`**
 Максимальное кол-во строк, до которого размер поля может быть увеличен
+
+### FieldSelect
+
+#### **`selectionMode?: SelectionMode`** - *`[SelectionMode.Single]`*
+Режим выбора элементов
+- `FieldSelect.selectionModes.Single`
+- `FieldSelect.selectionModes.Multi`
+
+####  **`options: Option[]`**
+Список опций для селекта
+
+####  **`open?: boolean`**
+Открыт ли список опций
+
+####  **`onOpenChange?: (value: boolean) => void`**
+Колбэк, вызывающийся на изменение состояния открытия списка опций
+
+####  **`searchable?: boolean`** - *`[true]`*
+Можно ли искать опции внутри списка
+
+####  **`placeholder?: string`**
+Плейсхолдер для поля.
+
+####  **`prefixIcon?: ReactElement`**
+Иконка-префикс для поля
+
+####  **`noDataText?: string`**
+Текст для сообщения об отсутсвии опций при поиске
+
+### FieldSelect в режиме Single
+
+####  **`value?: Option['value']`**
+Значение поля.
+
+####  **`onChange?: (value: Option['value']) => void`**
+Колбэк смены значения поля
+
+### FieldSelect в режиме Multi
+
+####  **`value?: Option['value'][]`**
+Значение поля.
+
+####  **`onChange?: (value: Option['value'][]) => void`**
+Колбэк смены значения поля
+
+####  **`getSelectedItemsText?: (amount: number) => string`**
+Колбэк смены значения поля
+

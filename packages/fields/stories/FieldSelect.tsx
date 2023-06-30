@@ -1,5 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+
+import { DaySVG } from '@snack-ui/icons';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -14,39 +16,90 @@ const meta: Meta = {
 };
 export default meta;
 
-const DEFAULT_OPTIONS = [
+const DEFAULT_OPTIONS: FieldSelectProps['options'] = [
   { value: 'op1', label: 'Option 1' },
-  { value: 'op2', label: 'Option 2' },
-  { value: 'op3', label: 'Option 3' },
+  { value: 'op2', label: 'Option 2', description: 'Description' },
+  { value: 'op3', label: 'Option 3', caption: 'Caption' },
+  { value: 'op4', label: 'Option 4', tagLabel: 'Tag Label' },
+  { value: 'op5', label: 'Option 5', disabled: true },
+  { value: 'op11', label: 'Option 11', icon: <DaySVG /> },
+  { value: 'op12', label: 'Option 12', avatar: { name: 'Will Wheaton' } },
 ];
 
-const getValue = (value: string | undefined) => DEFAULT_OPTIONS.find(op => op.label === value)?.value;
+const getValue = ({
+  value,
+  selectionMode,
+}: {
+  value?: string;
+  selectionMode: FieldSelectProps['selectionMode'];
+}): string | string[] => {
+  const x = DEFAULT_OPTIONS.find(op => op.label === value)?.value;
 
-const Template = ({ size, ...args }: FieldSelectProps) => {
-  const [value, setValue] = useState(getValue(args.value));
+  if (selectionMode === FieldSelect.selectionModes.Single) {
+    return x ?? '';
+  }
+
+  return x ? [x] : [];
+};
+
+type StoryProps = FieldSelectProps & { value?: string; localeName: string };
+
+const Template = ({ size, value: valueProp, selectionMode, localeName, ...args }: StoryProps) => {
+  const locale = new Intl.Locale(localeName);
+
+  const [value, setValue] = useState<string | string[]>(getValue({ value: valueProp, selectionMode }));
+  const firstRender = useRef(true);
 
   useEffect(() => {
-    setValue(getValue(args.value));
-  }, [args.value]);
+    setValue(getValue({ value: valueProp, selectionMode }));
+  }, [selectionMode, valueProp]);
+
+  useLayoutEffect(() => {
+    if (firstRender.current) {
+      return;
+    }
+
+    if (selectionMode === FieldSelect.selectionModes.Single) {
+      setValue('');
+    } else {
+      setValue([]);
+    }
+  }, [selectionMode]);
+
+  useEffect(() => {
+    firstRender.current = false;
+  }, []);
 
   return (
     <div className={styles.wrapper} data-size={size}>
-      <FieldSelect {...args} size={size} value={value} onChange={setValue} />
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
+      <FieldSelect
+        {...args}
+        selectionMode={selectionMode}
+        size={size}
+        value={value}
+        onChange={setValue}
+        locale={locale}
+      />
     </div>
   );
 };
 
-export const fieldSelect: StoryFn<FieldSelectProps> = Template.bind({});
+export const fieldSelect: StoryFn<StoryProps> = Template.bind({});
 
 fieldSelect.args = {
   id: 'select',
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  selectionMode: FieldSelect.selectionModes.Single,
   value: undefined,
   placeholder: 'Placeholder',
   readonly: false,
   disabled: false,
   searchable: true,
   label: 'Label text',
-  labelTooltip: 'Hint',
+  labelTooltip: 'Tooltip description',
   required: false,
   hint: 'Hint text',
   size: FieldSelect.sizes.S,
@@ -56,11 +109,14 @@ fieldSelect.args = {
   // @ts-ignore
   prefixIcon: 'none',
   showCopyButton: true,
+  localeName: 'en-US',
 };
 
 fieldSelect.argTypes = {
   value: {
     name: 'value',
+    defaultValue: '',
+    type: 'string',
     options: DEFAULT_OPTIONS.map(option => option.label),
     control: {
       type: 'select',
@@ -73,6 +129,10 @@ fieldSelect.argTypes = {
     control: {
       type: 'select',
     },
+  },
+  localeName: {
+    options: ['ru-RU', 'en-US'],
+    control: { type: 'radio' },
   },
 };
 

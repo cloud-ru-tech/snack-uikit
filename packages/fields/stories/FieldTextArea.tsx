@@ -50,7 +50,7 @@ fieldTextArea.args = {
   disabled: false,
   resizable: false,
   label: 'Label text',
-  labelTooltip: 'Hint',
+  labelTooltip: 'Tooltip description',
   required: false,
   hint: 'Hint text',
   size: FieldTextArea.sizes.S,

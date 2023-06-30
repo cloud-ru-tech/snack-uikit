@@ -96,12 +96,9 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       setIsOpen(false);
     };
 
-    const handleCalendarFocusLeave: CalendarProps['onFocusLeave'] = direction => {
-      if (direction === 'prev') {
-        localRef.current?.focus();
-      } else {
-        setIsOpen(false);
-      }
+    const handleCalendarFocusLeave: CalendarProps['onFocusLeave'] = () => {
+      setIsOpen(false);
+      localRef.current?.focus();
     };
 
     const handleInputKeyDown: KeyboardEventHandler<HTMLInputElement> = event => {

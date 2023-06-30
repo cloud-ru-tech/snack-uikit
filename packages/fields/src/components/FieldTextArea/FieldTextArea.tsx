@@ -5,10 +5,15 @@ import { useUncontrolledProp } from 'uncontrollable';
 import { Scroll } from '@snack-ui/scroll';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ButtonClearValue, ButtonCopyValue, FieldContainerPrivate } from '../../helperComponents';
+import {
+  ButtonClearValue,
+  ButtonCopyValue,
+  FieldContainerPrivate,
+  TextArea,
+  TextAreaProps,
+} from '../../helperComponents';
 import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../constants';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
-import { TextArea, TextAreaProps } from '../TextArea';
 import styles from './styles.module.scss';
 
 type InputProps = Pick<Partial<TextAreaProps>, 'value'> &

@@ -41,7 +41,7 @@ fieldDate.args = {
   readonly: false,
   disabled: false,
   label: 'Label text',
-  labelTooltip: 'Hint',
+  labelTooltip: 'Tooltip description',
   required: false,
   hint: 'Hint text',
   size: FieldDate.sizes.S,
