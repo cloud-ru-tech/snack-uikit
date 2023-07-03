@@ -3,7 +3,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import TokensChangelog from '@sbercloud/figma-tokens/CHANGELOG.md';
 import TokensReadme from '@sbercloud/figma-tokens/README.md';
 
-import { Markdown } from './components';
+import { BasePalette, Markdown, SystemPaletteStory } from './components';
 
 const meta: Meta = {
   title: 'Documentation/Tokens',
@@ -22,3 +22,13 @@ changelog.args = {
   md: TokensChangelog,
 };
 changelog.argTypes = {};
+
+const BasePaletteTemplate: StoryFn = () => <BasePalette />;
+export const basePalette: StoryObj = BasePaletteTemplate.bind({});
+basePalette.args = {};
+basePalette.argTypes = {};
+
+const SystemPaletteTemplate: StoryFn = () => <SystemPaletteStory />;
+export const systemPalette: StoryObj = SystemPaletteTemplate.bind({});
+systemPalette.args = {};
+systemPalette.argTypes = {};
