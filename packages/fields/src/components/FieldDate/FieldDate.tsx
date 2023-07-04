@@ -1,8 +1,9 @@
 import mergeRefs from 'merge-refs';
-import { FocusEventHandler, forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, KeyboardEventHandler, MutableRefObject, useEffect, useRef } from 'react';
 import { useIMask } from 'react-imask';
 import { useUncontrolledProp } from 'uncontrollable';
 
+import { Calendar, CalendarProps } from '@snack-ui/calendar';
 import { Droplist } from '@snack-ui/droplist';
 import { CalendarSSVG, CalendarXsSVG } from '@snack-ui/icons';
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
@@ -26,9 +27,16 @@ type FieldDateOwnProps = {
   onOpenChange?(value: boolean): void;
   onChange?(value: string): void;
   showCopyButton?: boolean;
+  locale?: Intl.Locale;
 };
 
 export type FieldDateProps = WithSupportProps<FieldDateOwnProps & InputProps & WrapperProps>;
+
+const CALENDAR_SIZE_MAP = {
+  [Size.S]: Calendar.sizes.S,
+  [Size.M]: Calendar.sizes.M,
+  [Size.L]: Calendar.sizes.M,
+};
 
 const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
   (
@@ -47,20 +55,23 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       className,
       label,
       labelTooltip,
-      required,
+      required = false,
       hint,
       showHintIcon,
       size = Size.S,
       validationState = ValidationState.Default,
+      locale,
       ...rest
     },
     ref,
   ) => {
     const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
     const localRef = useRef<HTMLInputElement>(null);
+    const calendarNavigateStartRef: MutableRefObject<HTMLButtonElement | null> = useRef(null);
 
     const {
       value,
+      typedValue,
       setValue,
       ref: inputRef,
       maskRef,
@@ -70,15 +81,37 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const showDropList = isOpen && !readonly && !disabled;
     const showAdditionalButton = Boolean(value && !disabled);
 
-    const handleBlur: FocusEventHandler<HTMLInputElement> = event => {
-      setIsOpen(false);
-      onBlur?.(event);
-    };
-
     const handleClear = () => {
       setValue('');
       localRef.current?.focus();
-      setIsOpen(true);
+
+      if (required) {
+        setIsOpen(true);
+      }
+    };
+
+    // TODO: do not hardcode locale here
+    const handleSelectDate = (date: Date) => {
+      setValue(date.toLocaleDateString(new Intl.Locale('ru-RU')));
+      setIsOpen(false);
+    };
+
+    const handleCalendarFocusLeave: CalendarProps['onFocusLeave'] = direction => {
+      if (direction === 'prev') {
+        localRef.current?.focus();
+      } else {
+        setIsOpen(false);
+      }
+    };
+
+    const handleInputKeyDown: KeyboardEventHandler<HTMLInputElement> = event => {
+      if (event.key === 'ArrowDown') {
+        setIsOpen(true);
+        calendarNavigateStartRef.current?.focus();
+      }
+      if (event.shiftKey && event.key === 'Tab') {
+        setIsOpen(false);
+      }
     };
 
     useEffect(() => {
@@ -110,7 +143,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
           trigger={Droplist.triggers.Click}
           className={styles.itemList}
           triggerClassName={styles.trigger}
-          widthStrategy={Droplist.widthStrategies.Auto}
+          widthStrategy={Droplist.widthStrategies.Gte}
           {...(readonly || disabled
             ? { open: false }
             : {
@@ -118,8 +151,17 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
                 onOpenChange: setIsOpen,
               })}
           content={
-            <div className={styles.calendar} data-test-id='field-date__calendar'>
-              Здесь будет календарь
+            <div className={styles.calendarWrapper} data-size={size}>
+              <Calendar
+                mode={Calendar.modes.Date}
+                size={CALENDAR_SIZE_MAP[size]}
+                value={typedValue || undefined}
+                onChangeValue={handleSelectDate}
+                navigationStartRef={el => (calendarNavigateStartRef.current = el)}
+                onFocusLeave={handleCalendarFocusLeave}
+                locale={locale}
+                data-test-id='field-date__calendar'
+              />
             </div>
           }
         >
@@ -148,10 +190,11 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
               ref={mergeRefs(ref, inputRef, localRef)}
               data-size={size}
               value={value}
-              placeholder={PLACEHOLDER}
+              placeholder={PLACEHOLDER[locale?.language ?? 'ru']}
               onChange={setValue}
               onFocus={onFocus}
-              onBlur={handleBlur}
+              onBlur={onBlur}
+              onKeyDown={handleInputKeyDown}
               disabled={disabled}
               readonly={readonly}
               type={InputPrivate.types.Text}

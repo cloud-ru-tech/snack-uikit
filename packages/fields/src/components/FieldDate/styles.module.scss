@@ -17,6 +17,23 @@ $icons-sizes: (
   margin-top: var($space-fields-drop-offset);
 }
 
+.calendarWrapper {
+  width: 100%;
+  height: 100%;
+  &[data-size='s'] {
+    min-width: 240px;
+    min-height: 256px;
+  }
+  &[data-size='m'] {
+    min-width: 280px;
+    min-height: 308px;
+  }
+  &[data-size='l'] {
+    min-width: 304px;
+    min-height: 328px;
+  }
+}
+
 .container {
   .calendarIcon {
     color: var($sys-neutral-text-light);
@@ -40,8 +57,4 @@ $icons-sizes: (
       color: var($sys-neutral-text-disabled);
     }
   }
-}
-
-.calendar {
-  padding: 16px;
 }

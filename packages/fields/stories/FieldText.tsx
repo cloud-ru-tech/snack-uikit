@@ -39,7 +39,7 @@ fieldText.args = {
   disabled: false,
   label: 'Label text',
   labelTooltip: 'Hint',
-  required: true,
+  required: false,
   hint: 'Hint text',
   size: FieldText.sizes.S,
   validationState: FieldText.validationStates.Default,

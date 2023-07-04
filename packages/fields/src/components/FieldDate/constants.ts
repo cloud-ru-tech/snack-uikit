@@ -7,4 +7,7 @@ export const DATE_MASK_CONFIG = {
   lazy: true,
 };
 
-export const PLACEHOLDER = 'ДД.ММ.ГГГГ';
+export const PLACEHOLDER: Record<Intl.Locale['language'], string> = {
+  ru: 'ДД.ММ.ГГГГ',
+  en: 'DD.MM.YYYY',
+};

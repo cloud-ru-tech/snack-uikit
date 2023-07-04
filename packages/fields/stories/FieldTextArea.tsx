@@ -51,7 +51,7 @@ fieldTextArea.args = {
   resizable: false,
   label: 'Label text',
   labelTooltip: 'Hint',
-  required: true,
+  required: false,
   hint: 'Hint text',
   size: FieldTextArea.sizes.S,
   validationState: FieldTextArea.validationStates.Default,

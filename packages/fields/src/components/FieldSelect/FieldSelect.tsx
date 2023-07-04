@@ -77,7 +77,7 @@ const ForwardedFieldSelect = forwardRef<HTMLInputElement, FieldSelectProps>(
       className,
       label,
       labelTooltip,
-      required,
+      required = false,
       hint,
       showHintIcon,
       size = Size.S,

@@ -39,7 +39,7 @@ fieldSecure.args = {
   disabled: false,
   label: 'Label text',
   labelTooltip: 'Hint',
-  required: true,
+  required: false,
   hint: 'Hint text',
   size: FieldSecure.sizes.S,
   validationState: FieldSecure.validationStates.Default,

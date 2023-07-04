@@ -6,8 +6,13 @@ import { getInput, runCommonTests, runTestsForOpenableFields } from './utils';
 fixture('Field Date').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
 
 const TEST_ID = 'field-date-test';
+const CALENDAR_TEST_ID = 'field-date__calendar';
 const COMPONENT_PREFIX = 'field-date';
+
 const getInputInner = (wrapper: Selector) => getInput(wrapper, COMPONENT_PREFIX);
+const getDay = () => Selector(dataTestIdSelector('item-' + CALENDAR_TEST_ID));
+const getSelectedDay = () => Selector(`${dataTestIdSelector('item-' + CALENDAR_TEST_ID)}[data-is-selected]`);
+const getMonthAndYear = () => Selector(dataTestIdSelector('period-level-' + CALENDAR_TEST_ID));
 
 const visit = (props?: Record<string, unknown>): string =>
   getTestcafeUrl({
@@ -25,13 +30,13 @@ runCommonTests(props => visit(props), TEST_ID, {
   hasPlaceholder: false,
   hasPrefixIcon: false,
   hasClearButton: true,
-  defaultValue: '10102010',
+  defaultValue: '10-10-2010',
   expectedValue: '10.10.2010',
 });
 
 runTestsForOpenableFields(props => visit(props), TEST_ID, {
   iconTestId: 'icon-calendar-xs',
-  dropListTestId: 'field-date__calendar',
+  dropListTestId: CALENDAR_TEST_ID,
 });
 
 // format data
@@ -39,7 +44,54 @@ test.page(visit({ value: '' }))('Should format value correctly', async t => {
   const wrapper = Selector(dataTestIdSelector(TEST_ID));
   const input = getInputInner(wrapper);
 
-  await t.typeText(input, '11111111').expect(input.value).eql('11.11.1111');
+  await t.typeText(input, '11-11-1111').expect(input.value).eql('11.11.1111');
 });
 
-// TODO: access calendar from keyboard
+// select data
+test.page(visit({ value: '10-06-2023' }))('Should select value from calendar with mouse', async t => {
+  const wrapper = Selector(dataTestIdSelector(TEST_ID));
+  const input = getInputInner(wrapper);
+  const calendar = Selector(dataTestIdSelector(CALENDAR_TEST_ID));
+
+  await t.expect(input.value).eql('10.06.2023');
+
+  await t.click(input);
+
+  await t.expect(getSelectedDay().textContent).eql('10');
+  await t.expect(getMonthAndYear().textContent).eql('June 2023');
+
+  await t.click(getMonthAndYear()).click(getDay().nth(7)).click(getDay().nth(24));
+
+  await t.expect(calendar.exists).notOk('calendar is still present after selection');
+  await t.expect(input.value).eql('23.08.2023');
+});
+
+test.page(visit({ value: '10-06-2023' }))('Should select value from calendar with keyboard', async t => {
+  const wrapper = Selector(dataTestIdSelector(TEST_ID));
+  const input = getInputInner(wrapper);
+  const calendar = Selector(dataTestIdSelector(CALENDAR_TEST_ID));
+
+  await t.expect(input.value).eql('10.06.2023');
+
+  await t.pressKey('tab').pressKey('space');
+
+  await t.expect(getSelectedDay().textContent).eql('10');
+  await t.expect(getMonthAndYear().textContent).eql('June 2023');
+
+  // open month menu
+  await t.pressKey('down').pressKey('enter');
+  // select month
+  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('right').pressKey('enter');
+  //select day
+  await t
+    .pressKey('down')
+    .pressKey('down')
+    .pressKey('down')
+    .pressKey('right')
+    .pressKey('right')
+    .pressKey('right')
+    .pressKey('enter');
+
+  await t.expect(calendar.exists).notOk('calendar is still present after selection');
+  await t.expect(input.value).eql('23.08.2023');
+});

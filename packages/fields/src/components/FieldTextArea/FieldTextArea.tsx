@@ -24,7 +24,7 @@ type FieldTextAreaOwnProps = {
   resizable?: boolean;
   onChange?(value: string, e?: ChangeEvent<HTMLTextAreaElement>): void;
   showCopyButton?: boolean;
-  allowMoreThanMaxLength: boolean;
+  allowMoreThanMaxLength?: boolean;
 };
 
 export type FieldTextAreaProps = WithSupportProps<FieldTextAreaOwnProps & InputProps & WrapperProps>;
@@ -50,7 +50,7 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
       className,
       label,
       labelTooltip,
-      required,
+      required = false,
       hint,
       size = Size.S,
       validationState = ValidationState.Default,

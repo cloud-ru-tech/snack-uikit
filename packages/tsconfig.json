@@ -80,10 +80,10 @@
       "path": "./icon-predefined"
     },
     {
-      "path": "./fields"
+      "path": "./calendar"
     },
     {
-      "path": "./calendar"
+      "path": "./fields"
     }
   ],
   "compilerOptions": {

@@ -47,7 +47,7 @@ fieldSelect.args = {
   searchable: true,
   label: 'Label text',
   labelTooltip: 'Hint',
-  required: true,
+  required: false,
   hint: 'Hint text',
   size: FieldSelect.sizes.S,
   validationState: FieldSelect.validationStates.Default,

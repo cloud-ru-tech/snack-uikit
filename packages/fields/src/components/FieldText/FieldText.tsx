@@ -19,7 +19,7 @@ type WrapperProps = Pick<
 
 type FieldTextOwnProps = {
   showCopyButton?: boolean;
-  allowMoreThanMaxLength: boolean;
+  allowMoreThanMaxLength?: boolean;
   prefixIcon?: ReactElement;
 };
 
@@ -43,7 +43,7 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       className,
       label,
       labelTooltip,
-      required,
+      required = false,
       hint,
       showHintIcon,
       size = Size.S,

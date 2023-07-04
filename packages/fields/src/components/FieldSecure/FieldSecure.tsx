@@ -21,7 +21,7 @@ type FieldSecureOwnProps = {
   hidden?: boolean;
   onHiddenChange?(value: boolean): void;
   showCopyButton?: boolean;
-  allowMoreThanMaxLength: boolean;
+  allowMoreThanMaxLength?: boolean;
   prefixIcon?: ReactElement;
 };
 
@@ -48,7 +48,7 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       className,
       label,
       labelTooltip,
-      required,
+      required = false,
       hint,
       size = Size.S,
       validationState = ValidationState.Default,

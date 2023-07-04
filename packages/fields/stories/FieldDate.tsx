@@ -13,7 +13,13 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template = ({ size, ...args }: FieldDateProps) => {
+type StoryProps = Omit<FieldDateProps, 'locale'> & {
+  localeName: 'ru-RU' | 'en-US';
+};
+
+const Template = ({ size, localeName, ...args }: StoryProps) => {
+  const locale = new Intl.Locale(localeName);
+
   const [value, setValue] = useState(args.value);
 
   useEffect(() => {
@@ -22,12 +28,12 @@ const Template = ({ size, ...args }: FieldDateProps) => {
 
   return (
     <div className={styles.wrapper} data-size={size}>
-      <FieldDate {...args} size={size} value={value} onChange={setValue} />
+      <FieldDate {...args} size={size} value={value} onChange={setValue} locale={locale} />
     </div>
   );
 };
 
-export const fieldDate: StoryFn<FieldDateProps> = Template.bind({});
+export const fieldDate: StoryFn<StoryProps> = Template.bind({});
 
 fieldDate.args = {
   id: 'date',
@@ -36,14 +42,20 @@ fieldDate.args = {
   disabled: false,
   label: 'Label text',
   labelTooltip: 'Hint',
-  required: true,
+  required: false,
   hint: 'Hint text',
   size: FieldDate.sizes.S,
   validationState: FieldDate.validationStates.Default,
   showCopyButton: true,
+  localeName: 'en-US',
 };
 
-fieldDate.argTypes = {};
+fieldDate.argTypes = {
+  localeName: {
+    options: ['ru-RU', 'en-US'],
+    control: { type: 'radio' },
+  },
+};
 
 fieldDate.parameters = {
   readme: {
