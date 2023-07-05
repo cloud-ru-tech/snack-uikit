@@ -153,7 +153,7 @@ const ForwardedFieldSelect = forwardRef<HTMLInputElement, FieldSelectProps>(
         validationState={validationState}
         {...extractSupportProps(rest)}
       >
-        <Droplist
+        <Droplist.Container
           trigger={Droplist.triggers.Click}
           className={styles.itemList}
           triggerClassName={styles.trigger}
@@ -228,7 +228,7 @@ const ForwardedFieldSelect = forwardRef<HTMLInputElement, FieldSelectProps>(
                 : { value: selectedOption.label })}
             />
           </FieldContainerPrivate>
-        </Droplist>
+        </Droplist.Container>
       </FieldDecorator>
     );
   },
