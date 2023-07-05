@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-07-05)
+
+
+### Bug Fixes
+
+* **[FF-2264](https://jira.sbercloud.tech/browse/FF-2264):** always pass classname to trigger wrapper ([a9d0f5c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/a9d0f5c4d1dc92f66757d509499a0a566d605110))
+
+
+### Features
+
+* **[FF-2264](https://jira.sbercloud.tech/browse/FF-2264):** add closeOnEscapeKey property ([3a722e7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3a722e702bb36d2c977cfcdb9aa3217bce7240ab))
+* **[FF-2264](https://jira.sbercloud.tech/browse/FF-2264):** add triggerClickByKeys property ([9350a92](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9350a927d6450f8365b79be85d0ca4d079142b6f))
+
+
+
+
+
 # 0.4.0 (2023-06-20)
 
 
