@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-07-06)
+
+
+### Features
+
+* **[FF-2532](https://jira.sbercloud.tech/browse/FF-2532):** add droplist items ([8196951](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/8196951edcf2b302918f4e754c889ac7d879d21b))
+
+
+
+
+
 # 0.2.0 (2023-07-05)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-07-06)
+
+
+### Bug Fixes
+
+* **[FF-2532](https://jira.sbercloud.tech/browse/FF-2532):** update droplist usage ([d4d0271](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/d4d0271546af407ce584df6d0b213eef46554962))
+
+
+### Features
+
+* **[FF-2264](https://jira.sbercloud.tech/browse/FF-2264):** field-select with items ([65c6690](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/65c66903364d8982dd2353d9befdf792225c8b2d))
+
+
+
+
+
 ## 0.1.1 (2023-07-06)
 
 
