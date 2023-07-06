@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.1 (2023-07-06)
+
+
+### Bug Fixes
+
+* **[FF-2264](https://jira.sbercloud.tech/browse/FF-2264):** add calendar to field date ([52e0d68](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/52e0d6814df6f4c349ee63eb2d2cddf821908500))
+* **[FF-2613](https://jira.sbercloud.tech/browse/FF-2613):** rename static prop - validationState -> validationStates ([fe3d1f5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/fe3d1f5b1d9ad237bdc3d86905d3f32c95c58812))
+
+
+
+
+
 # 0.1.0 (2023-07-05)
 
 
