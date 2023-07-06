@@ -50,7 +50,7 @@ fieldSelect.args = {
   required: true,
   hint: 'Hint text',
   size: FieldSelect.sizes.S,
-  validationState: FieldSelect.validationState.Default,
+  validationState: FieldSelect.validationStates.Default,
   options: DEFAULT_OPTIONS,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

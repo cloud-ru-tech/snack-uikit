@@ -39,7 +39,7 @@ fieldDate.args = {
   required: true,
   hint: 'Hint text',
   size: FieldDate.sizes.S,
-  validationState: FieldDate.validationState.Default,
+  validationState: FieldDate.validationStates.Default,
   showCopyButton: true,
 };
 

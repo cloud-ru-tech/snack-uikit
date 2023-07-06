@@ -134,8 +134,8 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
 
 export const FieldTextArea = ForwardedFieldTextArea as typeof ForwardedFieldTextArea & {
   sizes: typeof Size;
-  validationState: typeof ValidationState;
+  validationStates: typeof ValidationState;
 };
 
 FieldTextArea.sizes = Size;
-FieldTextArea.validationState = ValidationState;
+FieldTextArea.validationStates = ValidationState;

@@ -145,8 +145,8 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
 
 export const FieldSecure = ForwardedFieldSecure as typeof ForwardedFieldSecure & {
   sizes: typeof Size;
-  validationState: typeof ValidationState;
+  validationStates: typeof ValidationState;
 };
 
 FieldSecure.sizes = Size;
-FieldSecure.validationState = ValidationState;
+FieldSecure.validationStates = ValidationState;

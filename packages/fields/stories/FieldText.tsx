@@ -42,7 +42,7 @@ fieldText.args = {
   required: true,
   hint: 'Hint text',
   size: FieldText.sizes.S,
-  validationState: FieldText.validationState.Default,
+  validationState: FieldText.validationStates.Default,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   prefixIcon: 'none',

@@ -42,7 +42,7 @@ fieldSecure.args = {
   required: true,
   hint: 'Hint text',
   size: FieldSecure.sizes.S,
-  validationState: FieldSecure.validationState.Default,
+  validationState: FieldSecure.validationStates.Default,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   prefixIcon: 'none',

@@ -236,8 +236,8 @@ const ForwardedFieldSelect = forwardRef<HTMLInputElement, FieldSelectProps>(
 
 export const FieldSelect = ForwardedFieldSelect as typeof ForwardedFieldSelect & {
   sizes: typeof Size;
-  validationState: typeof ValidationState;
+  validationStates: typeof ValidationState;
 };
 
 FieldSelect.sizes = Size;
-FieldSelect.validationState = ValidationState;
+FieldSelect.validationStates = ValidationState;

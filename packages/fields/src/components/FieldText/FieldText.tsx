@@ -121,8 +121,8 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
 
 export const FieldText = ForwardedFieldText as typeof ForwardedFieldText & {
   sizes: typeof Size;
-  validationState: typeof ValidationState;
+  validationStates: typeof ValidationState;
 };
 
 FieldText.sizes = Size;
-FieldText.validationState = ValidationState;
+FieldText.validationStates = ValidationState;

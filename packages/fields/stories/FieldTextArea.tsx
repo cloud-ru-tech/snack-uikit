@@ -54,7 +54,7 @@ fieldTextArea.args = {
   required: true,
   hint: 'Hint text',
   size: FieldTextArea.sizes.S,
-  validationState: FieldTextArea.validationState.Default,
+  validationState: FieldTextArea.validationStates.Default,
   showCopyButton: true,
   allowMoreThanMaxLength: true,
 };

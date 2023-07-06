@@ -168,8 +168,8 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
 
 export const FieldDate = ForwardedFieldDate as typeof ForwardedFieldDate & {
   sizes: typeof Size;
-  validationState: typeof ValidationState;
+  validationStates: typeof ValidationState;
 };
 
 FieldDate.sizes = Size;
-FieldDate.validationState = ValidationState;
+FieldDate.validationStates = ValidationState;
