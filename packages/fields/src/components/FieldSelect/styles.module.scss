@@ -2,6 +2,7 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
 
 $sizes: 's', 'm', 'l';
+$variants: 'single-line-container', 'multi-line-container';
 $icons-sizes: (
   's': $icon-xs,
   'm': $icon-s,
@@ -17,14 +18,56 @@ $icons-sizes: (
   margin-top: var($space-fields-drop-offset);
 }
 
-.container {
-  .arrowIcon {
-    color: var($sys-neutral-text-light);
+.scrollContainerS {
+  max-height: 256px;
+}
 
-    @each $size in $sizes {
-      &[data-size='#{$size}'] {
+.scrollContainerM {
+  max-height: 320px;
+}
+
+.scrollContainerL {
+  max-height: 384px;
+}
+
+.displayValue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  border: none;
+  outline: none;
+}
+
+.container {
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      .arrowIcon {
         width: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
         height: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        color: var($sys-neutral-text-light);
+      }
+
+      @each $variant in $variants {
+        &[data-variant='#{$variant}'] {
+          @include composite-var($fields, $variant, $size);
+
+          .displayValue {
+            --button-width: #{simple-var($icons-sizes, $size)};
+            --postfix-width: calc(var(#{$space-fields-postfix-gap}) + var(--button-width) * 2);
+            --margin-right: calc(#{simple-var($fields, $variant, $size, 'padding-right')} + #{simple-var($fields, $variant, $size, 'gap')} + var(--postfix-width));
+
+            width: calc(100% - var(--margin-right));
+            padding-left: simple-var($fields, $variant, $size, 'padding-left');
+            margin-right: var(--margin-right);
+            border-radius: simple-var($fields, $variant, $size, 'border-radius');
+          }
+        }
       }
     }
   }

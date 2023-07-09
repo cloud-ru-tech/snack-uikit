@@ -5,8 +5,9 @@ import { useUncontrolledProp } from 'uncontrollable';
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
+import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../../constants';
 import { ButtonCopyValue, ButtonHideValue, FieldContainerPrivate } from '../../helperComponents';
-import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../constants';
+import { moveCursorToEnd } from '../../helpers';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
@@ -60,7 +61,6 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
     const localRef = useRef<HTMLInputElement>(null);
     const [value, onChange] = useUncontrolledProp(valueProp, '', onChangeProp);
     const clickedByHiddenButton = useRef(false);
-    const valueRef = useRef(value);
     const [hidden, setHidden] = useUncontrolledProp(hiddenProp, false, onHiddenChange);
     const toggleHidden = () => {
       setHidden(!hidden);
@@ -68,14 +68,8 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
     };
 
     useEffect(() => {
-      valueRef.current = value;
-    }, [value]);
-
-    useEffect(() => {
       if (clickedByHiddenButton.current) {
-        const end = valueRef.current.length;
-        localRef.current?.setSelectionRange(end, end);
-        localRef.current?.focus();
+        moveCursorToEnd(localRef.current);
       }
 
       clickedByHiddenButton.current = false;

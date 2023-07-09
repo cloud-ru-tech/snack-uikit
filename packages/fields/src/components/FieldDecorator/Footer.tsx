@@ -1,7 +1,7 @@
 import { AlarmFilledXsSVG, CheckFilledXsSVG, CrossFilledXsSVG, InfoFilledXsSVG } from '@snack-ui/icons';
 import { TruncateString } from '@snack-ui/truncate-string';
 
-import { Size, ValidationState } from '../constants';
+import { Size, ValidationState } from '../../constants';
 import styles from './styles.module.scss';
 
 export type FooterProps = {

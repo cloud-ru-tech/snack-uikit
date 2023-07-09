@@ -1,6 +1,7 @@
 import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
+import { selectAll } from '../../helpers';
 import { DEFAULT_LOCALE, EMPTY_OPTION } from './constants';
 import { FieldSelectBase } from './FieldSelectBase';
 import { getDisplayedValue } from './helpers';
@@ -20,6 +21,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       locale = DEFAULT_LOCALE,
       open,
       onOpenChange,
+      showCopyButton: showCopyButtonProp = true,
       ...rest
     },
     ref,
@@ -32,27 +34,51 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     const showAdditionalButton = Boolean(value && !disabled);
     const isChecked = useCallback((option: Option) => selected.value === option.value, [selected.value]);
 
-    const { isOpen, setIsOpen, localRef, extendedOptions, onInputKeyDown, onInputValueChange } = useList({
+    const {
+      isOpen,
+      setIsOpen,
+      localRef,
+      extendedOptions,
+      onInputKeyDown,
+      onInputValueChange,
+      clearButtonRef,
+      showClearButton,
+      showCopyButton,
+      scrollVisible,
+    } = useList({
       open,
       onOpenChange,
-      selectionMode,
       disabled,
       readonly,
       inputValue,
       setInputValue,
-      displayedValue,
       searchable,
       options,
       isChecked,
+      showCopyButton: showCopyButtonProp,
+      showAdditionalButton,
     });
+
+    const handleOpenChange = (isOpen: boolean) => {
+      if (isOpen) {
+        searchable && selectAll(localRef.current);
+      } else {
+        setInputValue(displayedValue);
+      }
+
+      setIsOpen(isOpen);
+    };
 
     const handleClear = () => {
       setValue('');
       setInputValue('');
-      localRef.current?.focus();
 
       if (required) {
+        localRef.current?.focus();
         setIsOpen(true);
+      } else {
+        localRef.current?.blur();
+        setIsOpen(false);
       }
     };
 
@@ -69,6 +95,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
     return (
       <FieldSelectBase
+        {...rest}
         ref={ref}
         localRef={localRef}
         selectionMode={selectionMode}
@@ -78,18 +105,19 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
         readonly={readonly}
         required={required}
         searchable={searchable}
-        showAdditionalButton={showAdditionalButton}
         onChange={handleChange}
         onClear={handleClear}
-        displayedValue={displayedValue}
         valueToCopy={displayedValue}
-        inputValue={inputValue}
+        inputValue={searchable ? inputValue : displayedValue}
         onInputValueChange={onInputValueChange}
         onInputKeyDown={onInputKeyDown}
         open={isOpen}
-        onOpenChange={setIsOpen}
+        onOpenChange={handleOpenChange}
         locale={locale}
-        {...rest}
+        showCopyButton={showCopyButton}
+        showClearButton={showClearButton}
+        clearButtonRef={clearButtonRef}
+        scrollVisible={scrollVisible}
       />
     );
   },

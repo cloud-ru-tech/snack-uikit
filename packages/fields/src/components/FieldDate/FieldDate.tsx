@@ -9,8 +9,8 @@ import { CalendarSSVG, CalendarXsSVG } from '@snack-ui/icons';
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
+import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../../constants';
 import { ButtonClearValue, ButtonCopyValue, FieldContainerPrivate } from '../../helperComponents';
-import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../constants';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import { DATE_MASK_CONFIG, PLACEHOLDER } from './constants';
 import styles from './styles.module.scss';
@@ -46,7 +46,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       value: valueProp,
       disabled = false,
       readonly = false,
-      showCopyButton = true,
+      showCopyButton: showCopyButtonProp = true,
       open,
       onOpenChange,
       onChange,
@@ -67,6 +67,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
   ) => {
     const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
     const localRef = useRef<HTMLInputElement>(null);
+    const clearButtonRef = useRef<HTMLButtonElement>(null);
     const calendarNavigateStartRef: MutableRefObject<HTMLButtonElement | null> = useRef(null);
 
     const {
@@ -80,12 +81,14 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const CalendarIcon = size === Size.S ? CalendarXsSVG : CalendarSSVG;
     const showDropList = isOpen && !readonly && !disabled;
     const showAdditionalButton = Boolean(value && !disabled);
+    const showClearButton = showAdditionalButton && !readonly;
+    const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
 
     const handleClear = () => {
       setValue('');
-      localRef.current?.focus();
 
       if (required) {
+        localRef.current?.focus();
         setIsOpen(true);
       }
     };
@@ -98,7 +101,13 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
 
     const handleCalendarFocusLeave: CalendarProps['onFocusLeave'] = () => {
       setIsOpen(false);
-      localRef.current?.focus();
+      // TODO: find out why it works not as expected (focus is moved to the next element instead of the focused one)
+      // maybe floating-ui causes the problem
+      if (showClearButton) {
+        clearButtonRef.current?.focus();
+      } else {
+        localRef.current?.focus();
+      }
     };
 
     const handleInputKeyDown: KeyboardEventHandler<HTMLInputElement> = event => {
@@ -173,12 +182,10 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
             inputRef={localRef}
             postfix={
               <>
-                {showAdditionalButton && !readonly && (
-                  <ButtonClearValue size={ButtonSizeMap[size]} onClick={handleClear} />
+                {showClearButton && (
+                  <ButtonClearValue size={ButtonSizeMap[size]} onClick={handleClear} ref={clearButtonRef} />
                 )}
-                {showCopyButton && showAdditionalButton && readonly && (
-                  <ButtonCopyValue size={ButtonSizeMap[size]} valueToCopy={value} />
-                )}
+                {showCopyButton && <ButtonCopyValue size={ButtonSizeMap[size]} valueToCopy={value} />}
                 <CalendarIcon className={styles.calendarIcon} data-size={size} />
               </>
             }

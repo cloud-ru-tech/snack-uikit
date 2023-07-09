@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import { CSSProperties, ReactElement, ReactNode, RefObject } from 'react';
+import { CSSProperties, MouseEventHandler, ReactElement, ReactNode, RefObject } from 'react';
 
 import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ContainerVariant, Size, ValidationState } from '../../components/constants';
+import { ContainerVariant, Size, ValidationState } from '../../constants';
 import styles from './styles.module.scss';
 
 export type FieldContainerPrivateProps = WithSupportProps<{
@@ -20,6 +20,7 @@ export type FieldContainerPrivateProps = WithSupportProps<{
   prefix?: ReactElement;
   postfix?: ReactElement;
   inputRef: RefObject<HTMLElement>;
+  onMouseDown?: MouseEventHandler<HTMLElement>;
 }>;
 
 export function FieldContainerPrivate({
@@ -36,8 +37,16 @@ export function FieldContainerPrivate({
   prefix,
   postfix,
   inputRef,
+  onMouseDown,
   ...rest
 }: FieldContainerPrivateProps) {
+  const handleContainerClick: MouseEventHandler<HTMLDivElement> = () => {
+    if (disabled) {
+      return;
+    }
+    inputRef.current?.focus();
+  };
+
   return (
     <div
       className={cn(className, styles.container)}
@@ -50,7 +59,8 @@ export function FieldContainerPrivate({
       data-focused={focused || undefined}
       data-selectable={selectable || undefined}
       data-test-id='field-container-private'
-      onClick={disabled ? undefined : () => inputRef.current?.focus()}
+      onClick={handleContainerClick}
+      onMouseDown={onMouseDown}
       role='textbox'
       tabIndex={-1}
       {...extractDataProps(rest)}

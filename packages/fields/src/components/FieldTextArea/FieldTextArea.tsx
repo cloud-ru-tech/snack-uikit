@@ -5,6 +5,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 import { Scroll } from '@snack-ui/scroll';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
+import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../../constants';
 import {
   ButtonClearValue,
   ButtonCopyValue,
@@ -12,7 +13,6 @@ import {
   TextArea,
   TextAreaProps,
 } from '../../helperComponents';
-import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../constants';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
 
@@ -69,7 +69,10 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
 
     const handleClear = () => {
       onChange('');
-      localRef.current?.focus();
+
+      if (required) {
+        localRef.current?.focus();
+      }
     };
 
     return (

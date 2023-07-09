@@ -1,12 +1,14 @@
+import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { FocusEventHandler, forwardRef, KeyboardEventHandler, RefObject, useState } from 'react';
+import { forwardRef, KeyboardEventHandler, MouseEventHandler, RefObject } from 'react';
 
 import { Droplist } from '@snack-ui/droplist';
 import { InputPrivate } from '@snack-ui/input-private';
+import { Scroll } from '@snack-ui/scroll';
 import { extractSupportProps } from '@snack-ui/utils';
 
+import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../../constants';
 import { ButtonClearValue, ButtonCopyValue, FieldContainerPrivate } from '../../helperComponents';
-import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../constants';
 import { FieldDecorator } from '../FieldDecorator';
 import { getArrowIcon } from './helpers';
 import styles from './styles.module.scss';
@@ -16,14 +18,18 @@ type BaseProps = Omit<FieldSelectBaseProps, 'open' | 'onOpenChange' | 'options'>
   Required<Pick<FieldSelectBaseProps, 'open' | 'onOpenChange'>> & {
     localRef: RefObject<HTMLInputElement>;
     options: ExtendedOption[];
-    showAdditionalButton: boolean;
     onClear(): void;
     onChange(option: Option): () => void;
     inputValue: string;
     onInputValueChange(value: string): void;
-    displayedValue: string;
+    displayedValue?: string;
     valueToCopy: string;
     onInputKeyDown: KeyboardEventHandler<HTMLInputElement>;
+    showClearButton: boolean;
+    scrollVisible: boolean;
+    clearButtonRef: RefObject<HTMLButtonElement>;
+    onClick?: MouseEventHandler<HTMLElement>;
+    onContainerPrivateMouseDown?: MouseEventHandler<HTMLElement>;
   };
 
 type Props =
@@ -40,8 +46,9 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
   (
     {
       selectionMode,
-      showAdditionalButton,
       onClear,
+      showClearButton,
+      clearButtonRef,
       onChange,
       inputValue,
       onInputValueChange,
@@ -61,6 +68,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       onOpenChange,
       onFocus,
       onBlur,
+      onContainerPrivateMouseDown,
       className,
       label,
       labelTooltip,
@@ -72,39 +80,13 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       prefixIcon,
       locale,
       noDataText = locale?.language === 'ru' ? 'Нет данных' : 'No data',
+      scrollVisible,
       ...rest
     },
     ref,
   ) => {
     const ArrowIcon = getArrowIcon({ size, open });
     const Item = selectionMode === SelectionMode.Single ? Droplist.ItemSingle : Droplist.ItemMultiple;
-
-    const [isFocused, setIsFocused] = useState(true);
-
-    const handleFocus: FocusEventHandler<HTMLInputElement> = event => {
-      setIsFocused(true);
-      onFocus?.(event);
-    };
-
-    const handleBlur: FocusEventHandler<HTMLInputElement> = event => {
-      setIsFocused(false);
-      onBlur?.(event);
-    };
-
-    const commonInputProps = {
-      id,
-      name,
-      type: InputPrivate.types.Text,
-      placeholder,
-      ref: mergeRefs(ref, localRef),
-      onFocus: handleFocus,
-      onBlur: handleBlur,
-      disabled,
-      'data-size': size,
-      'data-test-id': 'field-select__input',
-      onKeyDown: onInputKeyDown,
-      onChange: searchable ? onInputValueChange : undefined,
-    };
 
     return (
       <FieldDecorator
@@ -126,13 +108,22 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
           className={styles.itemList}
           triggerClassName={styles.trigger}
           triggerClickByKeys={!searchable}
+          data-test-id={'field-select__list'}
           {...(readonly || disabled ? { open: false } : { open, onOpenChange })}
           content={
-            <div data-test-id='field-select__list'>
-              {options.length === 0 ? (
-                <Droplist.NoData size={size} label={noDataText} data-test-id='field-select__no-data' />
-              ) : (
-                options.map(option => (
+            options.length === 0 ? (
+              <Droplist.NoData size={size} label={noDataText} data-test-id='field-select__no-data' />
+            ) : (
+              <Scroll
+                className={cn({
+                  [styles.scrollContainerS]: scrollVisible && size === Size.S,
+                  [styles.scrollContainerM]: scrollVisible && size === Size.M,
+                  [styles.scrollContainerL]: scrollVisible && size === Size.L,
+                })}
+                barHideStrategy={Scroll.barHideStrategies.Never}
+                size={Scroll.sizes.S}
+              >
+                {options.map(option => (
                   <Item
                     onChange={onChange(option)}
                     key={option.value}
@@ -141,9 +132,9 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
                     {...option}
                     option={option.label}
                   />
-                ))
-              )}
-            </div>
+                ))}
+              </Scroll>
+            )
           }
         >
           <FieldContainerPrivate
@@ -157,26 +148,41 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
             selectable={!searchable}
             inputRef={localRef}
             prefix={prefixIcon}
+            onMouseDown={onContainerPrivateMouseDown}
             postfix={
               <>
-                {showAdditionalButton && !readonly && <ButtonClearValue size={ButtonSizeMap[size]} onClick={onClear} />}
-                {showCopyButton && showAdditionalButton && readonly && (
-                  <ButtonCopyValue size={ButtonSizeMap[size]} valueToCopy={valueToCopy} />
+                {showClearButton && (
+                  <ButtonClearValue size={ButtonSizeMap[size]} onClick={onClear} ref={clearButtonRef} />
                 )}
-                <ArrowIcon className={styles.arrowIcon} data-size={size} />
+                {showCopyButton && <ButtonCopyValue size={ButtonSizeMap[size]} valueToCopy={valueToCopy} />}
+                <ArrowIcon className={styles.arrowIcon} />
               </>
             }
           >
-            {/* TODO: find better solution */}
-            {/* need to render separate inputs so that to escape change event conflict */}
-            {isFocused ? (
-              <InputPrivate
-                {...commonInputProps}
-                readonly={!searchable || readonly}
-                value={searchable ? inputValue : displayedValue}
-              />
-            ) : (
-              <InputPrivate {...commonInputProps} readonly={true} value={displayedValue} />
+            <InputPrivate
+              id={id}
+              name={name}
+              type={InputPrivate.types.Text}
+              placeholder={placeholder}
+              ref={mergeRefs(ref, localRef)}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              disabled={disabled}
+              data-size={size}
+              data-test-id={'field-select__input'}
+              onKeyDown={onInputKeyDown}
+              onChange={searchable ? onInputValueChange : undefined}
+              readonly={!searchable || readonly}
+              value={inputValue}
+            />
+            {displayedValue && (
+              <span
+                className={styles.displayValue}
+                data-test-id='field-select__displayed-value'
+                data-displayed-value={true}
+              >
+                {displayedValue}
+              </span>
             )}
           </FieldContainerPrivate>
         </Droplist>

@@ -12,6 +12,7 @@ const LIST_TEST_ID = 'field-select__list';
 const getOptions = () => Selector(`*[data-test-id^="field-select__list-option-"]`);
 const getOption = (id: string) => Selector(dataTestIdSelector(`field-select__list-option-${id}`));
 const getNoData = () => Selector(dataTestIdSelector('field-select__no-data'));
+const getDisplayedValue = (wrapper: Selector) => wrapper.find(dataTestIdSelector('field-select__displayed-value'));
 
 const expectOptionChecked = async (t: TestController, optionIds: string[]) => {
   for (const id of optionIds) {
@@ -83,6 +84,29 @@ test.page(visit({ value: 'Option 1', searchable: true }))(
     await t.expect(input.value).eql('Option 1');
   },
 );
+
+// open/close & required = false
+test.page(visit({ value: 'Option 1', required: false }))(
+  "Shouldn't open list on clearing value if not required",
+  async t => {
+    const wrapper = Selector(dataTestIdSelector(TEST_ID));
+    const list = Selector(dataTestIdSelector(LIST_TEST_ID));
+
+    await t.click(getButtonClearValue(wrapper));
+
+    await t.expect(list.exists).notOk("list is present although shouldn't");
+  },
+);
+
+// open/close & required = true
+test.page(visit({ value: 'Option 1', required: true }))('Should open list on clearing value if required', async t => {
+  const wrapper = Selector(dataTestIdSelector(TEST_ID));
+  const list = Selector(dataTestIdSelector(LIST_TEST_ID));
+
+  await t.click(getButtonClearValue(wrapper));
+
+  await t.expect(list.exists).ok('list is not present after clearing value');
+});
 
 // FieldSelect.mode = Single
 
@@ -237,7 +261,7 @@ test.page(visit({ value: 'Option 3', searchable: true }))('Should search & selec
 // FieldSelect.mode = Multi
 
 // select item by mouse
-test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false }))(
+test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false, required: true }))(
   'Should select multiple items with mouse',
   async t => {
     const wrapper = Selector(dataTestIdSelector(TEST_ID));
@@ -245,34 +269,48 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false }
     const list = Selector(dataTestIdSelector(LIST_TEST_ID));
 
     await t.click(input);
-    await t.expect(input.value).eql('Option 1', 'Option 1 is not selected at the beginning');
+    await t.expect(getDisplayedValue(wrapper).textContent).eql('Option 1', 'Option 1 is not selected at the beginning');
     await expectOptionChecked(t, ['op1']);
 
     // selecting items
     await t.click(getOption('op2'));
     await t.expect(list.exists).ok('list is not present after selecting item');
-    await t.expect(input.value).eql('Selected: 2', 'should select 2 items');
+    await t.expect(getDisplayedValue(wrapper).textContent).eql('Selected: 2', 'should select 2 items');
     await expectOptionChecked(t, ['op1', 'op2']);
 
     // selecting disabled item
     await t.click(getOption('op5'));
-    await t.expect(input.value).eql('Selected: 2', "shouldn't select disabled item");
+    await t.expect(getDisplayedValue(wrapper).textContent).eql('Selected: 2', "shouldn't select disabled item");
     await expectOptionChecked(t, ['op1', 'op2']);
     await expectOptionNotChecked(t, ['op5']);
 
     // unselecting items
     await t.click(getOption('op1'));
-    await t.expect(input.value).eql('Option 2', 'should leave only 2nd item');
+    await t.expect(getDisplayedValue(wrapper).textContent).eql('Option 2', 'should leave only 2nd item');
     await expectOptionNotChecked(t, ['op1']);
     await expectOptionChecked(t, ['op2']);
 
     await t.click(getButtonClearValue(wrapper));
-    await t.expect(input.value).eql('', 'should clear all items');
+    await t.expect(getDisplayedValue(wrapper).exists).notOk('should clear all items');
     await expectOptionNotChecked(t, ['op2']);
+  },
+);
 
-    // close list
-    await t.pressKey('esc');
-    await t.expect(list.exists).notOk('list is not present after selecting item');
+// close after selection
+test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false, required: true }))(
+  'Open/close list after selection multiple items',
+  async t => {
+    const wrapper = Selector(dataTestIdSelector(TEST_ID));
+    const input = getInputInner(wrapper);
+    const list = Selector(dataTestIdSelector(LIST_TEST_ID));
+
+    // selecting items
+    await t.click(input).click(getOption('op2'));
+    await t.expect(list.exists).ok('list is not present after selecting item');
+
+    // should close list on click
+    await t.click(input).expect(list.exists).notOk('list is still present after input click');
+    await t.click(input).expect(list.exists).ok('list is not present after second input click');
   },
 );
 
@@ -284,8 +322,9 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: true })
     const input = getInputInner(wrapper);
     const options = getOptions();
 
-    await t.expect(input.value).eql('Option 1');
+    await t.expect(getDisplayedValue(wrapper).textContent).eql('Option 1');
 
+    // should search and select
     await t.click(input);
     await t.expect(options.count).eql(7);
     await t.expect(input.value).eql('');
@@ -300,12 +339,33 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: true })
 
     await t.click(options.nth(1));
 
-    await t.expect(input.value).eql('Selected: 2');
+    await t.expect(getDisplayedValue(wrapper).textContent).eql('Selected: 2');
     await t.expect(options.count).eql(3);
     await expectOptionChecked(t, ['op1', 'op11']);
+  },
+);
 
-    await t.pressKey('esc');
-    await t.expect(input.value).eql('Selected: 2');
+// close after search & selection
+test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: true }))(
+  'Open/close list after search & selection multiple items',
+  async t => {
+    const wrapper = Selector(dataTestIdSelector(TEST_ID));
+    const input = getInputInner(wrapper);
+    const options = getOptions();
+    const list = Selector(dataTestIdSelector(LIST_TEST_ID));
+
+    // should search and select
+    await t.click(input).typeText(input, '1');
+    await t.click(options.nth(1));
+
+    // should keep list open after focus in input, but then it should close
+    await t.click(input);
+    await t.expect(list.exists).ok('list is not present after input focus');
+    await t.expect(getDisplayedValue(wrapper).exists).notOk('display value is still present after input focus');
+    await t.expect(input.value).eql('1', 'input value was lost');
+
+    await t.click(input).expect(list.exists).notOk('list is still present after second input click');
+    await t.click(input).expect(list.exists).ok('list is not present after third input click');
   },
 );
 
@@ -314,24 +374,29 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false }
   'Should select multiple items with keyboard',
   async t => {
     const wrapper = Selector(dataTestIdSelector(TEST_ID));
-    const input = getInputInner(wrapper);
 
     // open list
     await t.pressKey('tab').pressKey('space');
 
     // select 2nd option
     await t.pressKey('down').pressKey('down').pressKey('space');
-    await t.expect(input.value).eql('Selected: 2', 'should go down & select item with space');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 2', 'should go down & select item with space');
     await expectOptionChecked(t, ['op1', 'op2']);
 
     // skip disabled item
     await t.pressKey('down').pressKey('down').pressKey('down').pressKey('space');
-    await t.expect(input.value).eql('Selected: 3', 'should go down, skip disabled item & select active item');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 3', 'should go down, skip disabled item & select active item');
     await expectOptionChecked(t, ['op1', 'op2', 'op11']);
 
     // go through list in a loop
     await t.pressKey('down').pressKey('down').pressKey('down').pressKey('space');
-    await t.expect(input.value).eql('Selected: 2', 'should go down through list in a loop & unselect item');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 2', 'should go down through list in a loop & unselect item');
     await expectOptionChecked(t, ['op1', 'op11']);
     await expectOptionNotChecked(t, ['op2']);
 
@@ -339,18 +404,22 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false }
     // select 11th option
     await t.pressKey('esc').pressKey('tab').pressKey('space');
     await t.pressKey('up').pressKey('up').pressKey('space');
-    await t.expect(input.value).eql('Option 1', 'should go up & deselect item with space');
+    await t.expect(getDisplayedValue(wrapper).textContent).eql('Option 1', 'should go up & deselect item with space');
     await expectOptionChecked(t, ['op1']);
     await expectOptionNotChecked(t, ['op11']);
 
     // skip disabled item
     await t.pressKey('up').pressKey('space');
-    await t.expect(input.value).eql('Selected: 2', 'should go up, skip disabled item & select active item');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 2', 'should go up, skip disabled item & select active item');
     await expectOptionChecked(t, ['op1', 'op4']);
 
     // go through list in a loop
     await t.pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('space');
-    await t.expect(input.value).eql('Selected: 3', 'should go up through list in a loop & select item');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 3', 'should go up through list in a loop & select item');
     await expectOptionChecked(t, ['op1', 'op4', 'op11']);
   },
 );
@@ -370,7 +439,9 @@ test.page(visit({ value: 'Option 3', selectionMode: 'multi', searchable: true })
 
     // select 2nd option
     await t.pressKey('down').pressKey('down').pressKey('space');
-    await t.expect(input.value).eql('Selected: 2', 'input should return to display value after selection');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 2', 'input should return to display value after selection');
     await t.expect(options.count).eql(3);
     await t.pressKey('up').pressKey('up');
     await clearInput(t);
@@ -379,6 +450,9 @@ test.page(visit({ value: 'Option 3', selectionMode: 'multi', searchable: true })
     // go through list in a loop
     await t.typeText(input, '1');
     await t.pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('space');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 3', 'should go up through list in a loop & select item');
     await t.pressKey('up');
     await clearInput(t);
     await expectOptionChecked(t, ['op1', 'op3', 'op11']);
@@ -387,6 +461,9 @@ test.page(visit({ value: 'Option 3', selectionMode: 'multi', searchable: true })
     // select 11th option
     await t.typeText(input, '1');
     await t.pressKey('up').pressKey('up').pressKey('space');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 2', 'should go up & deselect item with space');
     await t.pressKey('down').pressKey('down');
     await clearInput(t);
     await expectOptionChecked(t, ['op1', 'op3']);
@@ -395,6 +472,9 @@ test.page(visit({ value: 'Option 3', selectionMode: 'multi', searchable: true })
     // go through list in a loop
     await t.typeText(input, '1');
     await t.pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('space');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 3', 'should go up through list in a loop & select item');
     await t.pressKey('down');
     await clearInput(t);
     await expectOptionChecked(t, ['op1', 'op3', 'op12']);

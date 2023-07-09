@@ -271,25 +271,29 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     });
 
     // keyboard = space
-    // not working in FF
-    test.skip.page(visit({ value }))('Should clear value with space', async t => {
-      const wrapper = Selector(dataTestIdSelector(testId));
-      const input = getInputInner(wrapper);
+    test.page(visit({ value }))('Should clear value with space', async t => {
+      // not working in FF
+      if (t.browser.name === 'Chrome') {
+        const wrapper = Selector(dataTestIdSelector(testId));
+        const input = getInputInner(wrapper);
 
-      await t.expect(input.value).eql(expectedValue);
-      await t.pressKey('tab').pressKey('tab').pressKey('space');
-      await t.expect(input.value).eql('');
+        await t.expect(input.value).eql(expectedValue);
+        await t.pressKey('tab').pressKey('tab').pressKey('space');
+        await t.expect(input.value).eql('');
+      }
     });
 
     // keyboard = enter
-    // not working in FF for textarea
-    test.skip.page(visit({ value }))('Should clear value with enter', async t => {
-      const wrapper = Selector(dataTestIdSelector(testId));
-      const input = getInputInner(wrapper);
+    test.page(visit({ value }))('Should clear value with enter', async t => {
+      // not working in FF for textarea
+      if (t.browser.name === 'Chrome') {
+        const wrapper = Selector(dataTestIdSelector(testId));
+        const input = getInputInner(wrapper);
 
-      await t.expect(input.value).eql(expectedValue);
-      await t.pressKey('tab').pressKey('tab').pressKey('enter');
-      await t.expect(input.value).eql('');
+        await t.expect(input.value).eql(expectedValue);
+        await t.pressKey('tab').pressKey('tab').pressKey('enter');
+        await t.expect(input.value).eql('');
+      }
     });
   } else {
     // no clear button

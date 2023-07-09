@@ -1,6 +1,6 @@
 import { ChevronDownSSVG, ChevronDownXsSVG, ChevronUpSSVG, ChevronUpXsSVG } from '@snack-ui/icons';
 
-import { Size } from '../../constants';
+import { Size } from '../../../constants';
 
 export function getArrowIcon({ size, open }: { size: Size; open: boolean }) {
   const iconMap = {

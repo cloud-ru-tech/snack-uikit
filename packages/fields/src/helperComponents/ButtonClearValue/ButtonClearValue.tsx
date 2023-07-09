@@ -1,8 +1,8 @@
-import { MouseEventHandler } from 'react';
+import { forwardRef, MouseEventHandler } from 'react';
 
 import { CrossSSVG, CrossXsSVG } from '@snack-ui/icons';
 
-import { ButtonSize } from '../../components/constants';
+import { ButtonSize } from '../../constants';
 import styles from './styles.module.scss';
 
 type ButtonCopyValueProps = {
@@ -10,7 +10,7 @@ type ButtonCopyValueProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-export function ButtonClearValue({ size, onClick }: ButtonCopyValueProps) {
+export const ButtonClearValue = forwardRef<HTMLButtonElement, ButtonCopyValueProps>(({ size, onClick }, ref) => {
   const handleClick: MouseEventHandler<HTMLButtonElement> = event => {
     event.stopPropagation();
     onClick(event);
@@ -21,10 +21,11 @@ export function ButtonClearValue({ size, onClick }: ButtonCopyValueProps) {
       className={styles.buttonClearValue}
       data-size={size}
       onClick={handleClick}
+      ref={ref}
       data-test-id='button-clear-value'
     >
       {size === ButtonSize.S && <CrossXsSVG />}
       {size === ButtonSize.M && <CrossSSVG />}
     </button>
   );
-}
+});

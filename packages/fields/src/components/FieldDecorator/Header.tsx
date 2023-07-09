@@ -2,7 +2,7 @@ import { QuestionXsSVG } from '@snack-ui/icons';
 import { Tooltip } from '@snack-ui/tooltip';
 import { TruncateString } from '@snack-ui/truncate-string';
 
-import { Size } from '../constants';
+import { Size } from '../../constants';
 import styles from './styles.module.scss';
 
 export type HeaderProps = {

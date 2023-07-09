@@ -1,5 +1,7 @@
-@import '../../../../../node_modules/@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
-@import '../../../../../node_modules/@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+/* stylelint-disable no-descending-specificity */
 
 $sizes: 's', 'm', 'l';
 $variants: 'single-line-container', 'multi-line-container';
@@ -16,7 +18,7 @@ $variants: 'single-line-container', 'multi-line-container';
     &[data-size='#{$size}'] {
       @include composite-var($fields, 'container', $size);
 
-      &, input, select, textarea {
+      &, input, select, textarea, span {
         cursor: text;
 
         @include composite-var($theme-variables, 'sans', 'body', $size);
@@ -31,119 +33,148 @@ $variants: 'single-line-container', 'multi-line-container';
   }
 
   &[data-validation="default"] {
-    background-color: simple-var($sys-neutral-background1-level);
-    border-color: simple-var($sys-neutral-decor-default);
+    &, & [data-displayed-value] {
+      background-color: simple-var($sys-neutral-background1-level);
+      border-color: simple-var($sys-neutral-decor-default);
+    }
 
     &:hover {
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-primary-decor-hovered);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($sys-primary-decor-hovered);
+      }
     }
 
     &:focus-within,
     &[data-focused] {
       @include outline-var($container-focused-m);
 
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-primary-accent-default);
-      outline-color: simple-var($sys-primary-decor-activated);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($sys-primary-accent-default);
+        outline-color: simple-var($sys-primary-decor-activated);
+      }
     }
   }
 
   &[data-validation="error"] {
-    background-color: simple-var($sys-red-background1-level);
-    border-color: simple-var($sys-red-decor-default);
+    &, & [data-displayed-value] {
+      background-color: simple-var($sys-red-background1-level);
+      border-color: simple-var($sys-red-decor-default);
+    }
 
     &:hover {
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-red-decor-hovered);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($sys-red-decor-hovered);
+      }
     }
 
     &:focus-within,
     &[data-focused] {
       @include outline-var($container-focused-m);
 
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-red-accent-default);
-      outline-color: simple-var($sys-red-decor-activated);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($sys-red-accent-default);
+        outline-color: simple-var($sys-red-decor-activated);
+      }
     }
   }
 
   &[data-validation="warning"] {
-    background-color: simple-var($sys-yellow-background1-level);
-    border-color: simple-var($sys-yellow-decor-default);
+    &, & [data-displayed-value] {
+      background-color: simple-var($sys-yellow-background1-level);
+      border-color: simple-var($sys-yellow-decor-default);
+    }
 
     &:hover {
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-yellow-decor-hovered);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($sys-yellow-decor-hovered);
+      }
     }
 
     &:focus-within,
     &[data-focused] {
       @include outline-var($container-focused-m);
 
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-yellow-accent-default);
-      outline-color: simple-var($sys-yellow-decor-activated);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($sys-yellow-accent-default);
+        outline-color: simple-var($sys-yellow-decor-activated);
+      }
     }
   }
 
   &[data-validation="success"] {
-    background-color: simple-var($sys-green-background1-level);
-    border-color: simple-var($sys-green-decor-default);
+    &, & [data-displayed-value] {
+      background-color: simple-var($sys-green-background1-level);
+      border-color: simple-var($sys-green-decor-default);
+    }
 
     &:hover {
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-green-decor-hovered);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($sys-green-decor-hovered);
+      }
     }
 
     &:focus-within,
     &[data-focused] {
       @include outline-var($container-focused-m);
 
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-green-accent-default);
-      outline-color: simple-var($sys-green-decor-activated);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($sys-green-accent-default);
+        outline-color: simple-var($sys-green-decor-activated);
+      }
     }
   }
 
   &[data-selectable] {
-    &, input, select, textarea {
+    &, input, select, textarea, span {
       cursor: pointer;
     }
   }
 
   &[data-readonly] {
-    &, input, select, textarea {
+    &, input, select, textarea, span {
       cursor: default;
     }
 
     &, &:hover {
-      background-color: simple-var($sys-neutral-decor-disabled);
-      border-color: simple-var($sys-neutral-decor-disabled);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-decor-disabled);
+        border-color: simple-var($sys-neutral-decor-disabled);
+      }
     }
 
     &:focus-within, &[data-focused] {
       @include outline-var($container-focused-m);
 
-      background-color: simple-var($sys-neutral-decor-disabled);
-      border-color: simple-var($sys-neutral-decor-disabled);
-      outline-color: simple-var($sys-primary-decor-activated);
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-decor-disabled);
+        border-color: simple-var($sys-neutral-decor-disabled);
+        outline-color: simple-var($sys-primary-decor-activated);
+      }
     }
   }
 
   &[data-disabled] {
-    &, input, select, textarea {
+    &, input, select, textarea, span {
       cursor: not-allowed;
     }
 
     &, &:focus-within, &[data-focused], &:hover {
-      background-color: simple-var($sys-neutral-background);
-      border-color: simple-var($sys-neutral-decor-disabled);
-      outline: none;
+      &, & [data-displayed-value] {
+        background-color: simple-var($sys-neutral-background);
+        border-color: simple-var($sys-neutral-decor-disabled);
+        outline: none;
+      }
     }
   }
 }
-
 .prefix {
   display: inline-flex;
   flex-shrink: 0;

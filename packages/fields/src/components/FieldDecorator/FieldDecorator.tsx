@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { Size, ValidationState } from '../constants';
+import { Size, ValidationState } from '../../constants';
 import { Footer, FooterProps } from './Footer';
 import { Header, HeaderProps } from './Header';
 import styles from './styles.module.scss';

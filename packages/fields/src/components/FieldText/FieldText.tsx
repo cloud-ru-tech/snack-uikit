@@ -5,8 +5,8 @@ import { useUncontrolledProp } from 'uncontrollable';
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
+import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../../constants';
 import { ButtonClearValue, ButtonCopyValue, FieldContainerPrivate } from '../../helperComponents';
-import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../constants';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
@@ -59,7 +59,10 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
 
     const handleClear = () => {
       onChange('');
-      localRef.current?.focus();
+
+      if (required) {
+        localRef.current?.focus();
+      }
     };
 
     return (

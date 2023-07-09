@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useLayoutEffect, useMemo, useState } from 'react';
+import { FocusEventHandler, forwardRef, MouseEventHandler, useCallback, useMemo, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { DEFAULT_LOCALE } from './constants';
@@ -21,6 +21,9 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
       onOpenChange,
       locale = DEFAULT_LOCALE,
       getSelectedItemsText = number => (locale?.language === 'ru' ? `Выбрано: ${number}` : `Selected: ${number}`),
+      showCopyButton: showCopyButtonProp = true,
+      onFocus,
+      onBlur,
       ...rest
     },
     ref,
@@ -36,28 +39,65 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
       (option: Option) => Boolean(selected.find(op => op.value === option.value)),
       [selected],
     );
+    const [isFocused, setIsFocused] = useState(false);
+    const stayOpen = useRef(false);
+    const waitingForSearchStart = searchable && !isFocused;
+    const showDisplayValue = displayedValue && (!searchable || waitingForSearchStart);
 
-    const { isOpen, setIsOpen, localRef, extendedOptions, onInputKeyDown, onInputValueChange } = useList({
+    const {
+      isOpen,
+      setIsOpen,
+      localRef,
+      extendedOptions,
+      onInputKeyDown,
+      onInputValueChange,
+      clearButtonRef,
+      showClearButton,
+      showCopyButton,
+      scrollVisible,
+    } = useList({
       open,
       onOpenChange,
-      selectionMode,
       disabled,
       readonly,
       inputValue,
       setInputValue,
-      displayedValue,
       searchable,
       options,
       isChecked,
+      showAdditionalButton,
+      showCopyButton: showCopyButtonProp,
     });
+
+    const handleOpenChange = (isOpen: boolean) => {
+      if (stayOpen.current) {
+        stayOpen.current = false;
+        return;
+      }
+
+      setInputValue('');
+      setIsOpen(isOpen);
+    };
+
+    const handlePreventListClose: MouseEventHandler<HTMLElement> = event => {
+      event.preventDefault();
+
+      if (isOpen && waitingForSearchStart) {
+        stayOpen.current = true;
+      }
+    };
 
     const handleClear = () => {
       setValue([]);
       setInputValue('');
-      localRef.current?.focus();
+      stayOpen.current = false;
 
       if (required) {
+        localRef.current?.focus();
         setIsOpen(true);
+      } else {
+        localRef.current?.blur();
+        setIsOpen(false);
       }
     };
 
@@ -70,14 +110,19 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
       );
     };
 
-    useLayoutEffect(() => {
-      if (!isOpen) {
-        setInputValue(displayedValue);
-      }
-    }, [displayedValue, isOpen, selected]);
+    const handleFocus: FocusEventHandler<HTMLInputElement> = event => {
+      setIsFocused(true);
+      onFocus?.(event);
+    };
+
+    const handleBlur: FocusEventHandler<HTMLInputElement> = event => {
+      setIsFocused(false);
+      onBlur?.(event);
+    };
 
     return (
       <FieldSelectBase
+        {...rest}
         ref={ref}
         localRef={localRef}
         selectionMode={selectionMode}
@@ -87,18 +132,23 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
         readonly={readonly}
         required={required}
         searchable={searchable}
-        showAdditionalButton={showAdditionalButton}
         onChange={handleChange}
         onClear={handleClear}
-        displayedValue={displayedValue}
+        displayedValue={showDisplayValue ? displayedValue : ''}
         valueToCopy={valueToCopy}
         inputValue={inputValue}
         onInputValueChange={onInputValueChange}
         onInputKeyDown={onInputKeyDown}
         open={isOpen}
-        onOpenChange={setIsOpen}
+        onOpenChange={handleOpenChange}
         locale={locale}
-        {...rest}
+        showCopyButton={showCopyButton}
+        showClearButton={showClearButton}
+        clearButtonRef={clearButtonRef}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onContainerPrivateMouseDown={handlePreventListClose}
+        scrollVisible={scrollVisible}
       />
     );
   },

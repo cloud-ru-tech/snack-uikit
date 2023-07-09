@@ -4,7 +4,7 @@ import { MouseEventHandler, useEffect, useRef, useState } from 'react';
 import { CopySSVG, CopyXsSVG } from '@snack-ui/icons';
 import { Tooltip } from '@snack-ui/tooltip';
 
-import { ButtonSize } from '../../components/constants';
+import { ButtonSize } from '../../constants';
 import styles from './styles.module.scss';
 
 type ButtonCopyValueProps = {

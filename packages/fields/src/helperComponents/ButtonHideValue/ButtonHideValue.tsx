@@ -2,7 +2,7 @@ import { MouseEventHandler } from 'react';
 
 import { EyeClosedSSVG, EyeClosedXsSVG, EyeSSVG, EyeXsSVG } from '@snack-ui/icons';
 
-import { ButtonSize } from '../../components/constants';
+import { ButtonSize } from '../../constants';
 import styles from './styles.module.scss';
 
 type ButtonCopyValueProps = {

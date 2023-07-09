@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { Size, ValidationState } from '../constants';
+import { Size, ValidationState } from '../../constants';
 import { FieldSelectMulti } from './FieldSelectMulti';
 import { FieldSelectSingle } from './FieldSelectSingle';
 import { FieldSelectMultiProps, FieldSelectSingleProps, SelectionMode } from './types';

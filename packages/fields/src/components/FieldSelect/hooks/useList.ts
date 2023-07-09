@@ -2,29 +2,29 @@ import { useEffect, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { FieldSelectProps } from '../FieldSelect';
-import { Option, SelectionMode } from '../types';
+import { Option } from '../types';
 import { useFilteredOptions } from './useFilteredOptions';
 import { useListNavigation } from './useListNavigation';
 
 type UseListProps = Pick<
   FieldSelectProps,
-  'readonly' | 'disabled' | 'open' | 'onOpenChange' | 'selectionMode' | 'options'
+  'readonly' | 'disabled' | 'open' | 'onOpenChange' | 'options' | 'showCopyButton'
 > & {
   searchable: NonNullable<FieldSelectProps['searchable']>;
-  displayedValue: string;
+  showAdditionalButton: boolean;
   inputValue: string;
   setInputValue(value: string): void;
   isChecked(option: Option): boolean;
 };
 
 export function useList({
-  selectionMode,
   open,
   onOpenChange,
   readonly,
   disabled,
   searchable,
-  displayedValue,
+  showAdditionalButton,
+  showCopyButton: showCopyButtonProp,
   inputValue,
   setInputValue,
   options,
@@ -32,25 +32,26 @@ export function useList({
 }: UseListProps) {
   const touched = useRef(false);
   const localRef = useRef<HTMLInputElement>(null);
+  const clearButtonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
   const showDropList = isOpen && !readonly && !disabled;
+  const showClearButton = !readonly && (showAdditionalButton || inputValue.length > 0);
+  const showCopyButton = showAdditionalButton && showCopyButtonProp && readonly;
+  const scrollVisible = options.length > 7;
 
   const { extendedOptions, onInputKeyDown } = useListNavigation({
     inputRef: localRef,
+    clearButtonRef,
+    showClearButton,
     options: useFilteredOptions({ searchable, options, touched: touched.current, inputValue }),
     toggleListOpen: setIsOpen,
     searchable,
     isChecked,
+    scrollVisible,
   });
 
   const handleOpenChange = (value: boolean) => {
-    if (value) {
-      if (selectionMode === SelectionMode.Multi) {
-        setInputValue('');
-      }
-      localRef.current?.setSelectionRange(0, localRef.current?.value.length);
-    } else {
-      setInputValue(displayedValue);
+    if (!value) {
       touched.current = false;
     }
 
@@ -72,10 +73,13 @@ export function useList({
   return {
     isOpen: showDropList,
     setIsOpen: handleOpenChange,
-    touched,
     localRef,
+    clearButtonRef,
+    showClearButton,
+    showCopyButton,
     extendedOptions,
     onInputKeyDown,
+    scrollVisible,
     onInputValueChange: handleInputValueChange,
   };
 }

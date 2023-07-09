@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import { DaySVG } from '@snack-ui/icons';
 
@@ -26,6 +26,27 @@ const DEFAULT_OPTIONS: FieldSelectProps['options'] = [
   { value: 'op12', label: 'Option 12', avatar: { name: 'Will Wheaton' } },
 ];
 
+const MORE_OPTIONS: FieldSelectProps['options'] = [
+  { value: 'op13', label: 'Option 13' },
+  { value: 'op14', label: 'Option 14' },
+  { value: 'op15', label: 'Option 15' },
+  { value: 'op16', label: 'Option 16' },
+  { value: 'op17', label: 'Option 17' },
+  { value: 'op18', label: 'Option 18' },
+  { value: 'op19', label: 'Option 19' },
+  { value: 'op20', label: 'Option 20' },
+  { value: 'op21', label: 'Option 21' },
+  { value: 'op22', label: 'Option 22' },
+  { value: 'op23', label: 'Option 23' },
+  { value: 'op24', label: 'Option 24' },
+  { value: 'op25', label: 'Option 25' },
+  { value: 'op26', label: 'Option 26' },
+  { value: 'op27', label: 'Option 27' },
+  { value: 'op28', label: 'Option 28' },
+  { value: 'op29', label: 'Option 29' },
+  { value: 'op30', label: 'Option 30' },
+];
+
 const getValue = ({
   value,
   selectionMode,
@@ -42,9 +63,13 @@ const getValue = ({
   return x ? [x] : [];
 };
 
-type StoryProps = FieldSelectProps & { value?: string; localeName: string };
+type StoryProps = FieldSelectProps & {
+  value?: string;
+  localeName: string;
+  showMoreOptions: boolean;
+};
 
-const Template = ({ size, value: valueProp, selectionMode, localeName, ...args }: StoryProps) => {
+const Template = ({ size, value: valueProp, selectionMode, localeName, showMoreOptions, ...args }: StoryProps) => {
   const locale = new Intl.Locale(localeName);
 
   const [value, setValue] = useState<string | string[]>(getValue({ value: valueProp, selectionMode }));
@@ -70,6 +95,11 @@ const Template = ({ size, value: valueProp, selectionMode, localeName, ...args }
     firstRender.current = false;
   }, []);
 
+  const options = useMemo(
+    () => (showMoreOptions ? [...args.options, ...MORE_OPTIONS] : args.options),
+    [args.options, showMoreOptions],
+  );
+
   return (
     <div className={styles.wrapper} data-size={size}>
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
@@ -81,6 +111,7 @@ const Template = ({ size, value: valueProp, selectionMode, localeName, ...args }
         value={value}
         onChange={setValue}
         locale={locale}
+        options={options}
       />
     </div>
   );
@@ -109,6 +140,7 @@ fieldSelect.args = {
   // @ts-ignore
   prefixIcon: 'none',
   showCopyButton: true,
+  showMoreOptions: false,
   localeName: 'en-US',
 };
 
@@ -133,6 +165,10 @@ fieldSelect.argTypes = {
   localeName: {
     options: ['ru-RU', 'en-US'],
     control: { type: 'radio' },
+  },
+  showMoreOptions: {
+    name: '[Stories] add more options to see scroll',
+    type: 'boolean',
   },
 };
 

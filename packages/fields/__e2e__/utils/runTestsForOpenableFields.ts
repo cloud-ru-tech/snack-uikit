@@ -34,6 +34,9 @@ export const runTestsForOpenableFields = (visit: VisitCallback, testId: string, 
 
     await t.pressKey('enter');
     await t.expect(dropList.exists).ok('drop list is not present after enter');
+
+    await t.pressKey('esc');
+    await t.expect(dropList.exists).notOk('drop list is still present after esc');
   });
 
   // open/close & readonly
