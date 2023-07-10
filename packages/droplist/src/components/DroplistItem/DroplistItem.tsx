@@ -1,6 +1,6 @@
 import { useFloatingTree } from '@floating-ui/react';
 import cn from 'classnames';
-import { forwardRef, MouseEvent, RefObject } from 'react';
+import { forwardRef, MouseEvent, RefObject, useCallback } from 'react';
 
 import { Avatar } from '@snack-ui/avatar';
 import { ChevronRightSSVG } from '@snack-ui/icons';
@@ -12,6 +12,7 @@ import { extractSupportProps } from '@snack-ui/utils';
 import { Size, Variant } from './constants';
 import styles from './styles.module.scss';
 import { DroplistItemProps } from './types';
+import { getDataTestId } from './utils';
 
 const ForwardedDroplistItem = forwardRef<HTMLInputElement | HTMLLabelElement, DroplistItemProps>(
   (
@@ -46,6 +47,10 @@ const ForwardedDroplistItem = forwardRef<HTMLInputElement | HTMLLabelElement, Dr
 
       onChange?.(!checked);
     };
+
+    const dataTestId = rest['data-test-id'];
+
+    const getTestId = useCallback((prefix: string) => getDataTestId(prefix, dataTestId), [dataTestId]);
 
     const clickableProps =
       variant === Variant.Expandable
@@ -110,13 +115,17 @@ const ForwardedDroplistItem = forwardRef<HTMLInputElement | HTMLLabelElement, Dr
                 <TruncateString text={option} maxLines={1} />
               </span>
 
-              {caption && <span className={styles.caption}>{caption}</span>}
+              {caption && (
+                <span data-test-id={getTestId('caption')} className={styles.caption}>
+                  {caption}
+                </span>
+              )}
 
-              {tagLabel && <Tag label={tagLabel} />}
+              {tagLabel && <Tag data-test-id={getTestId('tag')} label={tagLabel} />}
             </div>
 
             {description && (
-              <div className={styles.description}>
+              <div data-test-id={getTestId('description')} className={styles.description}>
                 <TruncateString text={description} maxLines={2} />
               </div>
             )}

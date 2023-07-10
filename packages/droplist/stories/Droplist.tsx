@@ -29,14 +29,14 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
   </div>
 );
 
-export const container: StoryObj<StoryProps> = Template.bind({});
+export const droplist: StoryObj<StoryProps> = Template.bind({});
 
-container.args = {
+droplist.args = {
   storySkeletonWidth: 330,
   placement: Droplist.placements.BottomStart,
   widthStrategy: Droplist.widthStrategies.Gte,
 };
-container.argTypes = {
+droplist.argTypes = {
   storySkeletonWidth: {
     name: '[Stories]: Skeleton width',
     control: {
@@ -45,7 +45,7 @@ container.argTypes = {
   },
 };
 
-container.parameters = {
+droplist.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, popoverPrivateReadme, componentChangelog],
   },

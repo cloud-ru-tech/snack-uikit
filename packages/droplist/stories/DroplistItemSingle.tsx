@@ -78,6 +78,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
             <div className={styles.cell}>
               <Droplist.ItemSingle
                 {...args}
+                data-test-id={undefined}
                 size={size}
                 className={styles.dropListItem}
                 checked={false}
@@ -87,6 +88,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
             <div className={styles.cell}>
               <Droplist.ItemSingle
                 {...args}
+                data-test-id={undefined}
                 icon={<PlaceholderSVG />}
                 size={size}
                 className={styles.dropListItem}
@@ -97,6 +99,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
             <div className={styles.cell}>
               <Droplist.ItemSingle
                 {...args}
+                data-test-id={undefined}
                 avatar={{
                   name: 'Test Name',
                 }}
@@ -107,13 +110,34 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
               />
             </div>
             <div className={styles.cell}>
-              <Droplist.ItemSingle {...args} size={size} className={styles.dropListItem} checked={false} disabled />
+              <Droplist.ItemSingle
+                {...args}
+                data-test-id={undefined}
+                size={size}
+                className={styles.dropListItem}
+                checked={false}
+                disabled
+              />
             </div>
             <div className={styles.cell}>
-              <Droplist.ItemSingle {...args} size={size} className={styles.dropListItem} checked disabled={false} />
+              <Droplist.ItemSingle
+                {...args}
+                data-test-id={undefined}
+                size={size}
+                className={styles.dropListItem}
+                checked
+                disabled={false}
+              />
             </div>
             <div className={styles.cell}>
-              <Droplist.ItemSingle {...args} size={size} className={styles.dropListItem} checked disabled />
+              <Droplist.ItemSingle
+                {...args}
+                data-test-id={undefined}
+                size={size}
+                className={styles.dropListItem}
+                checked
+                disabled
+              />
             </div>
           </Fragment>
         ))}

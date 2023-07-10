@@ -84,6 +84,7 @@ const Template: StoryFn<StoryProps> = ({ showNoData, ...args }) => {
             <div className={styles.cell}>
               <Droplist.ItemMultiple
                 {...args}
+                data-test-id={undefined}
                 size={size}
                 className={styles.dropListItem}
                 checked={false}
@@ -93,6 +94,7 @@ const Template: StoryFn<StoryProps> = ({ showNoData, ...args }) => {
             <div className={styles.cell}>
               <Droplist.ItemMultiple
                 {...args}
+                data-test-id={undefined}
                 icon={<PlaceholderSVG />}
                 size={size}
                 className={styles.dropListItem}
@@ -103,6 +105,7 @@ const Template: StoryFn<StoryProps> = ({ showNoData, ...args }) => {
             <div className={styles.cell}>
               <Droplist.ItemMultiple
                 {...args}
+                data-test-id={undefined}
                 avatar={{
                   name: 'Test Name',
                 }}
@@ -113,13 +116,34 @@ const Template: StoryFn<StoryProps> = ({ showNoData, ...args }) => {
               />
             </div>
             <div className={styles.cell}>
-              <Droplist.ItemMultiple {...args} size={size} className={styles.dropListItem} checked={false} disabled />
+              <Droplist.ItemMultiple
+                {...args}
+                data-test-id={undefined}
+                size={size}
+                className={styles.dropListItem}
+                checked={false}
+                disabled
+              />
             </div>
             <div className={styles.cell}>
-              <Droplist.ItemMultiple {...args} size={size} className={styles.dropListItem} checked disabled={false} />
+              <Droplist.ItemMultiple
+                {...args}
+                data-test-id={undefined}
+                size={size}
+                className={styles.dropListItem}
+                checked
+                disabled={false}
+              />
             </div>
             <div className={styles.cell}>
-              <Droplist.ItemMultiple {...args} size={size} className={styles.dropListItem} checked disabled />
+              <Droplist.ItemMultiple
+                {...args}
+                data-test-id={undefined}
+                size={size}
+                className={styles.dropListItem}
+                checked
+                disabled
+              />
             </div>
           </Fragment>
         ))}
