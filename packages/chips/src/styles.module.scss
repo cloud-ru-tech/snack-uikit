@@ -45,14 +45,16 @@ $variants: 'label-only', 'icon-before';
 
       @each $variant in $variants {
         &[data-variant='#{$variant}'] {
-          @if ($contentClassName) {
-            .#{$contentClassName} {
+          @if($size != 'xs' or $variant != 'icon-before') {
+            @if ($contentClassName) {
+              .#{$contentClassName} {
+                @include composite-var($chip-theme, 'container', $size, $variant);
+              }
+            }
+
+            @else {
               @include composite-var($chip-theme, 'container', $size, $variant);
             }
-          }
-
-          @else {
-            @include composite-var($chip-theme, 'container', $size, $variant);
           }
         }
       }

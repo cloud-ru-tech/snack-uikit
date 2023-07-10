@@ -52,16 +52,6 @@ $typography: (
 
   @include chip-anatomy-styles($toggle-chip, $sizes, $typography, toggleChipContent);
 
-  @each $size in $sizes {
-    &[data-size='#{$size}'] {
-      @each $variant in $variants {
-        &[data-variant='#{$variant}'] {
-          border-radius: simple-var($toggle-chip, 'container', $size, $variant, 'border-radius');
-        }
-      }
-    }
-  }
-
   &:hover {
     .toggleChipContent {
       color: simple-var($theme-variables, 'sys', 'neutral', 'text-main');
