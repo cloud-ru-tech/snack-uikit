@@ -12,7 +12,7 @@
 
 ### Общие пропсы для `ItemSingle` и `ItemMultiple`
 
-#### **`label: string`**
+#### **`option: string`**
 Заголовок айтема
 
 #### **`caption?: string`**

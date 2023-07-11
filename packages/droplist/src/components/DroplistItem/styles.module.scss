@@ -31,12 +31,16 @@ $typography: (
   align-items: center;
 }
 
-.label {
+.option {
+  overflow: hidden;
   color: simple-var($sys-neutral-text-main);
 }
 
 .caption {
+  overflow: hidden;
   color: simple-var($sys-neutral-text-light);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .description {

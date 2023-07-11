@@ -7,25 +7,25 @@ import popoverPrivateReadme from '../../popover-private/README.md';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { Droplist } from '../src';
+import { Droplist, DroplistProps } from '../src';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
   title: 'Components/Droplist',
-  component: Droplist.Container,
+  component: Droplist,
 };
 export default meta;
 
-type StoryProps = Droplist.ContainerProps & { storySkeletonWidth: number };
+type StoryProps = DroplistProps & { storySkeletonWidth: number };
 
 const Template: StoryFn<StoryProps> = ({ ...args }) => (
   <div className={styles.story}>
-    <Droplist.Container
+    <Droplist
       {...args}
       content={<SkeletonText width={args.storySkeletonWidth} className={styles.skeleton} loading lines={7} />}
     >
       <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-droplist' />
-    </Droplist.Container>
+    </Droplist>
   </div>
 );
 

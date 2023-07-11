@@ -6,7 +6,7 @@ import { WithSupportProps } from '@snack-ui/utils';
 import { Size, Variant } from './constants';
 
 export type BaseDroplistItemProps = WithSupportProps<{
-  label: string;
+  option: string;
   caption?: string;
   description?: string;
   tagLabel?: string;

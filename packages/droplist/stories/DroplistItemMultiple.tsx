@@ -9,7 +9,7 @@ import popoverPrivateReadme from '../../popover-private/README.md';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { Droplist } from '../src';
+import { Droplist, ItemMultipleProps } from '../src';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -20,19 +20,19 @@ export default meta;
 
 const STATE_TABLE_HEADERS = ['Default', 'Icon', 'Avatar', 'Disabled', 'Checked', 'Disabled + Checked'];
 
-const ITEMS_MOCK: Omit<Droplist.ItemMultipleProps, 'onChange' | 'checked'>[] = [
+const ITEMS_MOCK: Omit<ItemMultipleProps, 'onChange' | 'checked'>[] = [
   {
-    label: 'First',
+    option: 'First',
   },
   {
-    label: 'Second',
+    option: 'Second',
   },
   {
-    label: 'Third',
+    option: 'Third',
   },
 ];
 
-type StoryProps = Droplist.ItemMultipleProps & { showNoData?: boolean };
+type StoryProps = ItemMultipleProps & { showNoData?: boolean };
 
 const Template: StoryFn<StoryProps> = ({ showNoData, ...args }) => {
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
@@ -44,7 +44,7 @@ const Template: StoryFn<StoryProps> = ({ showNoData, ...args }) => {
     <div className={styles.pageWrapper}>
       <div className={styles.wrapper}>
         Controlled:
-        <Droplist.Container
+        <Droplist
           content={
             <div className={styles.dropListMenu} data-size={args.size}>
               {showNoData ? (
@@ -53,8 +53,8 @@ const Template: StoryFn<StoryProps> = ({ showNoData, ...args }) => {
                 ITEMS_MOCK.map((item, index) => (
                   <Droplist.ItemMultiple
                     {...args}
-                    key={item.label}
-                    label={item.label}
+                    key={item.option}
+                    option={args.option || item.option}
                     checked={args.checked ?? checked.includes(index)}
                     onChange={() => {
                       setChecked(prev => (prev.includes(index) ? prev.filter(val => val !== index) : [...prev, index]));
@@ -66,7 +66,7 @@ const Template: StoryFn<StoryProps> = ({ showNoData, ...args }) => {
           }
         >
           <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-droplist' />
-        </Droplist.Container>
+        </Droplist>
       </div>
 
       <div className={styles.table} style={{ '--columns': STATE_TABLE_HEADERS.length }}>
@@ -131,7 +131,7 @@ const Template: StoryFn<StoryProps> = ({ showNoData, ...args }) => {
 export const itemMultiple: StoryObj<StoryProps> = Template.bind({});
 
 itemMultiple.args = {
-  label: 'Option',
+  option: 'Option',
   caption: 'Caption',
   description: 'Description',
   tagLabel: 'Tag',

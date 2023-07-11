@@ -16,7 +16,7 @@ import { DroplistItemProps } from './types';
 const ForwardedDroplistItem = forwardRef<HTMLInputElement | HTMLLabelElement, DroplistItemProps>(
   (
     {
-      label,
+      option,
       size = Size.S,
       variant,
       caption,
@@ -106,8 +106,8 @@ const ForwardedDroplistItem = forwardRef<HTMLInputElement | HTMLLabelElement, Dr
 
           <div className={styles.content}>
             <div className={styles.headline}>
-              <span className={styles.label}>
-                <TruncateString text={label} maxLines={1} />
+              <span className={styles.option}>
+                <TruncateString text={option} maxLines={1} />
               </span>
 
               {caption && <span className={styles.caption}>{caption}</span>}

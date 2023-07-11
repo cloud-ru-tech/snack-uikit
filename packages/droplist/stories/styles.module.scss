@@ -49,6 +49,7 @@ $border-width: 0.5px;
 .table {
   display: inline-grid;
   grid-template-columns: 60px repeat(var(--columns), 1fr);
+  width: fit-content;
   background-color: var($sys-neutral-background1-level);
   border: $border-width solid var($sys-neutral-decor-default);
 }

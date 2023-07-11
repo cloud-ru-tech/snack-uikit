@@ -1,6 +1,6 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import { ButtonFilled } from '@snack-ui/button';
 import { PlaceholderSVG } from '@snack-ui/icons';
@@ -9,7 +9,7 @@ import popoverPrivateReadme from '../../popover-private/README.md';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { Droplist } from '../src';
+import { Droplist, ItemSingleProps } from '../src';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -18,33 +18,49 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = Droplist.ItemSingleProps;
+type StoryProps = ItemSingleProps;
 
 const STATE_TABLE_HEADERS = ['Default', 'Icon', 'Avatar', 'Disabled', 'Checked', 'Disabled + Checked'];
+
+const ITEMS_MOCK: Omit<ItemSingleProps, 'onChange' | 'checked'>[] = [
+  {
+    option: 'First',
+  },
+  {
+    option: 'Second',
+  },
+  {
+    option: 'Third',
+  },
+];
 
 const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
   const sizes = Object.values(Droplist.sizes);
 
-  const [checked, setChecked] = useState(args.checked || false);
-
-  useEffect(() => {
-    setChecked(args.checked);
-  }, [args.checked]);
+  const [checked, setChecked] = useState(0);
 
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.wrapper}>
         Controlled:
-        <Droplist.Container
+        <Droplist
           content={
             <div className={styles.dropListMenu} data-size={args.size}>
-              <Droplist.ItemSingle {...args} checked={checked} onChange={setChecked} />
+              {ITEMS_MOCK.map(({ option }, index) => (
+                <Droplist.ItemSingle
+                  {...args}
+                  key={option}
+                  option={args.option || option}
+                  checked={checked === index}
+                  onChange={() => setChecked(index)}
+                />
+              ))}
             </div>
           }
         >
           <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-droplist' />
-        </Droplist.Container>
+        </Droplist>
       </div>
 
       <div className={styles.table} style={{ '--columns': STATE_TABLE_HEADERS.length }}>
@@ -109,7 +125,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
 export const itemSingle: StoryObj<StoryProps> = Template.bind({});
 
 itemSingle.args = {
-  label: 'Option',
+  option: 'Option',
   caption: 'Caption',
   description: 'Description',
   tagLabel: 'Tag',

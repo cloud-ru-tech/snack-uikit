@@ -9,7 +9,7 @@ import popoverPrivateReadme from '../../popover-private/README.md';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { Droplist } from '../src';
+import { Droplist, ItemExpandableProps } from '../src';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -18,7 +18,7 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = Droplist.ItemExpandableProps;
+type StoryProps = ItemExpandableProps;
 
 const STATE_TABLE_HEADERS = ['Default', 'Icon', 'Avatar', 'Disabled'];
 
@@ -31,11 +31,11 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
       <div className={styles.wrapper}>
         Controlled:
         <ul className={styles.list}>
-          <Droplist.Container
-            content={<Droplist.ItemExpandable {...args} nested={[{ label: 'test', checked: false, onChange() {} }]} />}
+          <Droplist
+            content={<Droplist.ItemExpandable {...args} nested={[{ option: 'test', checked: false, onChange() {} }]} />}
           >
             <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-droplist' />
-          </Droplist.Container>
+          </Droplist>
         </ul>
       </div>
 
@@ -85,7 +85,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
 export const itemExpandable: StoryObj<StoryProps> = Template.bind({});
 
 itemExpandable.args = {
-  label: 'Option',
+  option: 'Option',
   caption: 'Caption',
   description: 'Description',
   tagLabel: 'Tag',
