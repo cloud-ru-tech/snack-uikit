@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2023-07-11)
+
+
+### Bug Fixes
+
+* **[FF-2625](https://jira.sbercloud.tech/browse/FF-2625):** droplist dep update ([ab6481e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/ab6481e5ac1dd23dd19f7bcdf26e7e4b9dda4267))
+
+
+
+
+
 # 0.2.0 (2023-07-06)
 
 
