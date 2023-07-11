@@ -136,7 +136,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
         validationState={validationState}
         {...extractSupportProps(rest)}
       >
-        <Droplist.Container
+        <Droplist
           trigger={Droplist.triggers.Click}
           className={styles.itemList}
           triggerClassName={styles.trigger}
@@ -200,7 +200,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
               data-test-id='field-date__input'
             />
           </FieldContainerPrivate>
-        </Droplist.Container>
+        </Droplist>
       </FieldDecorator>
     );
   },

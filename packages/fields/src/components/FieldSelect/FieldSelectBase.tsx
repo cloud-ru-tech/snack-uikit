@@ -121,7 +121,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
         validationState={validationState}
         {...extractSupportProps(rest)}
       >
-        <Droplist.Container
+        <Droplist
           trigger={Droplist.triggers.Click}
           className={styles.itemList}
           triggerClassName={styles.trigger}
@@ -139,6 +139,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
                     size={size}
                     data-test-id={'field-select__list-option-' + option.value}
                     {...option}
+                    option={option.label}
                   />
                 ))
               )}
@@ -178,7 +179,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
               <InputPrivate {...commonInputProps} readonly={true} value={displayedValue} />
             )}
           </FieldContainerPrivate>
-        </Droplist.Container>
+        </Droplist>
       </FieldDecorator>
     );
   },

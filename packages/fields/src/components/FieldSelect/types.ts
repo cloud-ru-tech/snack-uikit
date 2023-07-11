@@ -1,6 +1,6 @@
 import { KeyboardEventHandler, ReactElement, RefCallback } from 'react';
 
-import { Droplist } from '@snack-ui/droplist';
+import { ItemSingleProps } from '@snack-ui/droplist';
 import { InputPrivateProps } from '@snack-ui/input-private';
 import { WithSupportProps } from '@snack-ui/utils';
 
@@ -11,11 +11,9 @@ export enum SelectionMode {
   Multi = 'multi',
 }
 
-export type Option = Pick<
-  Droplist.ItemSingleProps,
-  'label' | 'caption' | 'description' | 'tagLabel' | 'icon' | 'avatar' | 'disabled'
-> & {
+export type Option = Pick<ItemSingleProps, 'caption' | 'description' | 'tagLabel' | 'icon' | 'avatar' | 'disabled'> & {
   value: string;
+  label: string;
 };
 
 export type ExtendedOption = Option & {
