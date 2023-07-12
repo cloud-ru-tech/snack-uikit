@@ -69,3 +69,8 @@ $valueTypography: (
     border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
   }
 }
+
+.droplist {
+  padding-top: simple-var($space-drop-list-drop-offset);
+  padding-bottom: simple-var($space-drop-list-drop-offset);
+}

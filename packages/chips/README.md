@@ -103,3 +103,64 @@ type FilterChipProps = WithSupportProps<
 >;
 ```
 
+### FilterChip
+
+#### **`selectionMode?: SelectionMode`** - *`FilterChip.selectionModes.Single`*
+Режим выбора значенией:
+  - `FilterChip.selectionModes.Single` - Режим выбора одного значения. В этом режиме компонент не может находиться без значения. Если значение не передано посредством пропсов `value` или `defaultValue` то компонент выберет первое из списка `options`. Если переданное `value` или `defaultValue` не содержится в `options`, то так же выберется первое в списке. 
+  - `FilterChip.selectionModes.Multi` - Режим множественного выбора значений.
+
+#### **`value?: string|string[]`**
+Значение компонента. `string` в режиме `single` и `string[]` в режиме `multi`.
+
+#### **`defaultValue?: string|string[]`**
+Значение компонента по-умолчанию. `string` в режиме `single` и `string[]` в режиме `multi`.
+
+#### **`onChangeValue?: (value: string|string[]) => void`**
+Колбэк изменения значения. Принимает value: `string` в режиме `single` и `string[]` в режиме `multi`.
+
+#### **`size?: Size`** - *`FilterChip.sizes.S`*
+Размер:
+- `FilterChip.sizes.Xs`,
+- `FilterChip.sizes.S`.
+
+#### **`disabled?: boolean`**
+Деактивирован ли компонент.
+
+#### **`loading?: boolean`**
+Включает состояние загрузки.
+
+#### **`icon?: JSX`**
+Иконка. Отображается только в размере `S`.
+
+#### **`label: string`**
+Лейбл компонента. Обязателен в режиме `Multi`.
+
+#### **`onClick?: (e: MouseEventHandler<HTMLButtonElement>) => void;`**
+Колбэк клика в FilterChip.
+
+#### **`className?: string`**
+CSS-класс.
+
+#### **`tabIndex?: number`**
+Tab-index.
+
+#### **`options?: FilterOption[]`**
+Массив доступных к выбору опций. Опция `FilterOption` имеет тип:
+```typescript
+import { AvatarProps } from '@snack-ui/avatar';
+
+type FilterOption = {
+  label: string; // Лейбл опции
+  value: string; // Значение опции
+  caption?: string; // Подзаголовок
+  description?: string; // Описание
+  tagLabel?: string; // Лейбл тэга
+  icon?: JSX; // Иконка
+  avatar?: AvatarProps; // Пропсы аватара
+};
+```
+
+#### **`labelFormatter?: (selectedOption: FilterOption|FilterOption[]) => string;`**
+Функция формирушая строковое представление выбранного значения. Принимает выбранное значение, или массив выбранных значений в режиме `Multi`.
+По умолчанию в `Single` для отображения используется `FilterOption.label` а в `Multi` кол-во выбранных значений.

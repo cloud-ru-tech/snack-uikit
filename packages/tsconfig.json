@@ -68,13 +68,13 @@
       "path": "./truncate-string"
     },
     {
-      "path": "./chips"
-    },
-    {
       "path": "./tag"
     },
     {
       "path": "./droplist"
+    },
+    {
+      "path": "./chips"
     },
     {
       "path": "./icon-predefined"
