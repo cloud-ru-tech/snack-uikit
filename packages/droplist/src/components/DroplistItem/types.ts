@@ -16,6 +16,7 @@ export type BaseDroplistItemProps = WithSupportProps<{
   avatar?: Omit<AvatarProps, 'size'>;
   className?: string;
   tabIndex?: number;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 }>;
 
 export type DroplistItemProps = BaseDroplistItemProps & {
@@ -23,5 +24,4 @@ export type DroplistItemProps = BaseDroplistItemProps & {
   checked?: boolean;
   onClick?(e: MouseEvent<HTMLLabelElement>): void;
   onChange?(checked: boolean): void;
-  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 };
