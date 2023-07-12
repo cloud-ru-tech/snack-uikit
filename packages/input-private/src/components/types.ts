@@ -17,6 +17,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
     disabled?: boolean;
     autoComplete?: boolean;
     maxLength?: number;
+    tabIndex?: number;
     onFocus?: FocusEventHandler<HTMLInputElement>;
     onBlur?: FocusEventHandler<HTMLInputElement>;
     onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
