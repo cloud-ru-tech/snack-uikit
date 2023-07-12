@@ -1,13 +1,14 @@
 import mergeRefs from 'merge-refs';
-import { forwardRef, ReactElement, useEffect, useRef } from 'react';
+import { forwardRef, ReactElement, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../../constants';
-import { ButtonCopyValue, ButtonHideValue, FieldContainerPrivate } from '../../helperComponents';
-import { moveCursorToEnd } from '../../helpers';
+import { ContainerVariant, Size, ValidationState } from '../../constants';
+import { FieldContainerPrivate } from '../../helperComponents';
+import { moveCursorToEnd, runAfterRerender } from '../../helpers';
+import { useButtonNavigation, useCopyButton, useHideButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
@@ -38,7 +39,7 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       maxLength,
       disabled = false,
       readonly = false,
-      showCopyButton = true,
+      showCopyButton: showCopyButtonProp = true,
       allowMoreThanMaxLength = false,
       hidden: hiddenProp,
       onHiddenChange,
@@ -59,21 +60,31 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
     ref,
   ) => {
     const localRef = useRef<HTMLInputElement>(null);
+    const copyButtonRef = useRef<HTMLButtonElement>(null);
+    const hideButtonRef = useRef<HTMLButtonElement>(null);
     const [value, onChange] = useUncontrolledProp(valueProp, '', onChangeProp);
-    const clickedByHiddenButton = useRef(false);
     const [hidden, setHidden] = useUncontrolledProp(hiddenProp, false, onHiddenChange);
+    const showCopyButton = showCopyButtonProp && Boolean(value) && readonly && !disabled;
+    const showHideButton = !(readonly && !value);
+
     const toggleHidden = () => {
       setHidden(!hidden);
-      clickedByHiddenButton.current = true;
+
+      if (!readonly) {
+        runAfterRerender(() => {
+          localRef.current?.focus();
+          moveCursorToEnd(localRef.current);
+        });
+      }
     };
 
-    useEffect(() => {
-      if (clickedByHiddenButton.current) {
-        moveCursorToEnd(localRef.current);
-      }
-
-      clickedByHiddenButton.current = false;
-    }, [hidden]);
+    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: value });
+    const hideButtonSettings = useHideButton({ hideButtonRef, showHideButton, size, toggleHidden, hidden, disabled });
+    const { buttons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
+      inputRef: localRef,
+      buttons: useMemo(() => [copyButtonSettings, hideButtonSettings], [copyButtonSettings, hideButtonSettings]),
+      readonly,
+    });
 
     return (
       <FieldDecorator
@@ -99,21 +110,7 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
           variant={ContainerVariant.SingleLine}
           inputRef={localRef}
           prefix={prefixIcon}
-          postfix={
-            <>
-              {showCopyButton && value && readonly && !disabled && (
-                <ButtonCopyValue size={ButtonSizeMap[size]} valueToCopy={value} />
-              )}
-              {!(readonly && !value) && (
-                <ButtonHideValue
-                  size={ButtonSizeMap[size]}
-                  disabled={disabled}
-                  hidden={hidden}
-                  onClick={toggleHidden}
-                />
-              )}
-            </>
-          }
+          postfix={buttons}
         >
           <InputPrivate
             ref={mergeRefs(ref, localRef)}
@@ -122,6 +119,8 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
+            onKeyDown={onInputKeyDown}
+            tabIndex={inputTabIndex}
             placeholder={placeholder}
             disabled={disabled}
             readonly={readonly}

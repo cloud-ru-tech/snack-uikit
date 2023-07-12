@@ -41,7 +41,9 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       extendedOptions,
       onInputKeyDown,
       onInputValueChange,
+      onButtonKeyDown,
       clearButtonRef,
+      copyButtonRef,
       showClearButton,
       showCopyButton,
       scrollVisible,
@@ -111,12 +113,14 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
         inputValue={searchable ? inputValue : displayedValue}
         onInputValueChange={onInputValueChange}
         onInputKeyDown={onInputKeyDown}
+        clearButtonRef={clearButtonRef}
+        copyButtonRef={copyButtonRef}
+        onButtonKeyDown={onButtonKeyDown}
         open={isOpen}
         onOpenChange={handleOpenChange}
         locale={locale}
         showCopyButton={showCopyButton}
         showClearButton={showClearButton}
-        clearButtonRef={clearButtonRef}
         scrollVisible={scrollVisible}
       />
     );

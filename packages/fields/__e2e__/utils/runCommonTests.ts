@@ -246,13 +246,15 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     await t.setNativeDialogHandler(() => true);
 
     await t.expect(tooltip.exists).notOk("tooltip is present although shouldn't before enter");
-    await t.pressKey('tab').pressKey('tab').pressKey('enter');
+    await t.pressKey('tab').pressKey('right').pressKey('enter');
     await t.expect(tooltip.exists).ok('tooltip is not present after enter');
 
     // not working in FF
-    // await t.wait(2000).expect(tooltip.exists).notOk("tooltip is present although shouldn't before space");
-    // await t.pressKey('space');
-    // await t.expect(tooltip.exists).ok('tooltip is not present after space');
+    if (t.browser.name === 'Chrome') {
+      await t.wait(2000).expect(tooltip.exists).notOk("tooltip is present although shouldn't before space");
+      await t.pressKey('space');
+      await t.expect(tooltip.exists).ok('tooltip is not present after space');
+    }
   });
 
   // clear button
@@ -278,7 +280,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
         const input = getInputInner(wrapper);
 
         await t.expect(input.value).eql(expectedValue);
-        await t.pressKey('tab').pressKey('tab').pressKey('space');
+        await t.pressKey('tab').pressKey('ctrl+a').pressKey('right').pressKey('right').pressKey('space');
         await t.expect(input.value).eql('');
       }
     });
@@ -291,7 +293,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
         const input = getInputInner(wrapper);
 
         await t.expect(input.value).eql(expectedValue);
-        await t.pressKey('tab').pressKey('tab').pressKey('enter');
+        await t.pressKey('tab').pressKey('ctrl+a').pressKey('right').pressKey('right').pressKey('enter');
         await t.expect(input.value).eql('');
       }
     });

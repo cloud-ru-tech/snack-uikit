@@ -1,12 +1,13 @@
 import mergeRefs from 'merge-refs';
-import { forwardRef, ReactElement, useRef } from 'react';
+import { forwardRef, ReactElement, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../../constants';
-import { ButtonClearValue, ButtonCopyValue, FieldContainerPrivate } from '../../helperComponents';
+import { ContainerVariant, Size, ValidationState } from '../../constants';
+import { FieldContainerPrivate } from '../../helperComponents';
+import { useButtonNavigation, useClearButton, useCopyButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
@@ -35,7 +36,7 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       maxLength,
       disabled = false,
       readonly = false,
-      showCopyButton = true,
+      showCopyButton: showCopyButtonProp = true,
       allowMoreThanMaxLength = false,
       onChange: onChangeProp,
       onFocus,
@@ -55,15 +56,27 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
   ) => {
     const [value, onChange] = useUncontrolledProp(valueProp, '', onChangeProp);
     const localRef = useRef<HTMLInputElement>(null);
+    const clearButtonRef = useRef<HTMLButtonElement>(null);
+    const copyButtonRef = useRef<HTMLButtonElement>(null);
     const showAdditionalButton = Boolean(value && !disabled);
+    const showClearButton = showAdditionalButton && !readonly;
+    const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
 
-    const handleClear = () => {
+    const onClear = () => {
       onChange('');
 
       if (required) {
         localRef.current?.focus();
       }
     };
+
+    const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
+    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: value });
+    const { buttons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
+      inputRef: localRef,
+      buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
+      readonly,
+    });
 
     return (
       <FieldDecorator
@@ -89,16 +102,7 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
           variant={ContainerVariant.SingleLine}
           inputRef={localRef}
           prefix={prefixIcon}
-          postfix={
-            <>
-              {showAdditionalButton && !readonly && (
-                <ButtonClearValue size={ButtonSizeMap[size]} onClick={handleClear} />
-              )}
-              {showCopyButton && showAdditionalButton && readonly && (
-                <ButtonCopyValue size={ButtonSizeMap[size]} valueToCopy={value} />
-              )}
-            </>
-          }
+          postfix={buttons}
         >
           <InputPrivate
             ref={mergeRefs(ref, localRef)}
@@ -107,6 +111,8 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
+            tabIndex={inputTabIndex}
+            onKeyDown={onInputKeyDown}
             placeholder={placeholder}
             disabled={disabled}
             readonly={readonly}

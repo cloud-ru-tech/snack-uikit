@@ -26,10 +26,6 @@ const expectOptionNotChecked = async (t: TestController, optionIds: string[]) =>
   }
 };
 
-const clearInput = async (t: TestController) => {
-  await t.pressKey('ctrl+a').pressKey('delete');
-};
-
 const getInputInner = (wrapper: Selector) => getInput(wrapper, COMPONENT_PREFIX);
 
 const visit = (props?: Record<string, unknown>): string =>
@@ -168,48 +164,25 @@ test.page(visit({ value: 'Option 1', searchable: false }))('Should select items 
   await t.expect(input.value).eql('Option 2', 'should go down & select item with space');
 
   // skip disabled item
-  await t.pressKey('space');
+  await t.pressKey('right'); // navigate to button first & then open
   await t.pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('space');
   await t.expect(input.value).eql('Option 11', 'should go down, skip disabled item & select active item');
 
-  // go through list in a loop
-  await t.pressKey('space');
-  await t
-    .pressKey('down')
-    .pressKey('down')
-    .pressKey('down')
-    .pressKey('down')
-    .pressKey('down')
-    .pressKey('down')
-    .pressKey('down')
-    .pressKey('down')
-    .pressKey('space');
-  await t.expect(input.value).eql('Option 2', 'should go down through list in a loop & select item');
-
   // do the same in the other direction
   // select 11th option
-  await t.pressKey('space');
-  await t.pressKey('up').pressKey('up').pressKey('space');
-  await t.expect(input.value).eql('Option 11', 'should go up & select item with space');
+  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('up').pressKey('space');
+  await t.expect(input.value).eql('Option 2', 'should go up & select item with space');
 
   // skip disabled item
-  await t.pressKey('space');
-  await t.pressKey('up').pressKey('up').pressKey('up').pressKey('space');
-  await t.expect(input.value).eql('Option 4', 'should go up, skip disabled item & select active item');
-
-  // go through list in a loop
-  await t.pressKey('space');
   await t
-    .pressKey('up')
-    .pressKey('up')
-    .pressKey('up')
-    .pressKey('up')
-    .pressKey('up')
-    .pressKey('up')
-    .pressKey('up')
+    .pressKey('down')
+    .pressKey('down')
+    .pressKey('down')
+    .pressKey('down')
+    .pressKey('down')
     .pressKey('up')
     .pressKey('space');
-  await t.expect(input.value).eql('Option 11', 'should go up through list in a loop & select item');
+  await t.expect(input.value).eql('Option 4', 'should go up, skip disabled item & select active item');
 });
 
 // search & select item by keyboard
@@ -226,35 +199,21 @@ test.page(visit({ value: 'Option 3', searchable: true }))('Should search & selec
   await t.pressKey('down').pressKey('down').pressKey('space');
   await t.expect(input.value).eql('Option 11', 'should go down & select item with space');
 
-  // go through list in a loop
-  await clearInput(t);
-
-  await t.expect(options.count).eql(7);
-
-  await t.typeText(input, '1');
-  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('space');
-  await t.expect(input.value).eql('Option 1', 'should go down through list in a loop & select item');
-
   // do the same in the other direction
   // select 11th option
-  await clearInput(t);
+  await t.pressKey('ctrl+a').pressKey('delete');
+  await t.expect(options.count).eql(7);
   await t.typeText(input, '1');
-  await t.pressKey('up').pressKey('up').pressKey('space');
+  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('up').pressKey('space');
   await t.expect(input.value).eql('Option 11', 'should go up & select item with space');
 
-  // go through list in a loop
-  await clearInput(t);
-  await t.typeText(input, '1');
-  await t.pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('space');
-  await t.expect(input.value).eql('Option 12', 'should go up through list in a loop & select item');
-
   // get back into input & search until nothing is found
-  await clearInput(t);
-  await t.pressKey('1');
-  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('1');
+  await t.pressKey('ctrl+a').pressKey('1');
+  await t.expect(options.count).eql(3);
+  await t.pressKey('down').pressKey('up').pressKey('1');
   await t.expect(options.count).eql(1);
   await t.expect(options.nth(0).textContent).eql('Option 11');
-  await t.pressKey('up').pressKey('up').pressKey('1');
+  await t.pressKey('down').pressKey('up').pressKey('1');
   await t.expect(getNoData().exists).ok('no data is not present');
 });
 
@@ -392,35 +351,31 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false }
       .eql('Selected: 3', 'should go down, skip disabled item & select active item');
     await expectOptionChecked(t, ['op1', 'op2', 'op11']);
 
-    // go through list in a loop
-    await t.pressKey('down').pressKey('down').pressKey('down').pressKey('space');
-    await t
-      .expect(getDisplayedValue(wrapper).textContent)
-      .eql('Selected: 2', 'should go down through list in a loop & unselect item');
-    await expectOptionChecked(t, ['op1', 'op11']);
-    await expectOptionNotChecked(t, ['op2']);
-
     // do the same in the other direction
     // select 11th option
-    await t.pressKey('esc').pressKey('tab').pressKey('space');
-    await t.pressKey('up').pressKey('up').pressKey('space');
-    await t.expect(getDisplayedValue(wrapper).textContent).eql('Option 1', 'should go up & deselect item with space');
-    await expectOptionChecked(t, ['op1']);
+    await t
+      .pressKey('esc')
+      .pressKey('tab')
+      .pressKey('down')
+      .pressKey('down')
+      .pressKey('down')
+      .pressKey('down')
+      .pressKey('down')
+      .pressKey('down')
+      .pressKey('up')
+      .pressKey('space');
+    await t
+      .expect(getDisplayedValue(wrapper).textContent)
+      .eql('Selected: 2', 'should go up & deselect item with space');
+    await expectOptionChecked(t, ['op1', 'op2']);
     await expectOptionNotChecked(t, ['op11']);
 
     // skip disabled item
     await t.pressKey('up').pressKey('space');
     await t
       .expect(getDisplayedValue(wrapper).textContent)
-      .eql('Selected: 2', 'should go up, skip disabled item & select active item');
-    await expectOptionChecked(t, ['op1', 'op4']);
-
-    // go through list in a loop
-    await t.pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('space');
-    await t
-      .expect(getDisplayedValue(wrapper).textContent)
-      .eql('Selected: 3', 'should go up through list in a loop & select item');
-    await expectOptionChecked(t, ['op1', 'op4', 'op11']);
+      .eql('Selected: 3', 'should go up, skip disabled item & select active item');
+    await expectOptionChecked(t, ['op1', 'op2', 'op4']);
   },
 );
 
@@ -443,48 +398,25 @@ test.page(visit({ value: 'Option 3', selectionMode: 'multi', searchable: true })
       .expect(getDisplayedValue(wrapper).textContent)
       .eql('Selected: 2', 'input should return to display value after selection');
     await t.expect(options.count).eql(3);
-    await t.pressKey('up').pressKey('up');
-    await clearInput(t);
+    await t.pressKey('up').pressKey('up').pressKey('ctrl+a').pressKey('delete');
     await expectOptionChecked(t, ['op3', 'op11']);
-
-    // go through list in a loop
-    await t.typeText(input, '1');
-    await t.pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('space');
-    await t
-      .expect(getDisplayedValue(wrapper).textContent)
-      .eql('Selected: 3', 'should go up through list in a loop & select item');
-    await t.pressKey('up');
-    await clearInput(t);
-    await expectOptionChecked(t, ['op1', 'op3', 'op11']);
 
     // do the same in the other direction
     // select 11th option
     await t.typeText(input, '1');
-    await t.pressKey('up').pressKey('up').pressKey('space');
-    await t
-      .expect(getDisplayedValue(wrapper).textContent)
-      .eql('Selected: 2', 'should go up & deselect item with space');
-    await t.pressKey('down').pressKey('down');
-    await clearInput(t);
-    await expectOptionChecked(t, ['op1', 'op3']);
+    await t.pressKey('down').pressKey('down').pressKey('down').pressKey('up').pressKey('space');
+    await t.expect(getDisplayedValue(wrapper).textContent).eql('Option 3', 'should go up & deselect item with space');
+    await t.pressKey('up').pressKey('up').pressKey('ctrl+a').pressKey('delete');
+    await expectOptionChecked(t, ['op3']);
     await expectOptionNotChecked(t, ['op11']);
-
-    // go through list in a loop
-    await t.typeText(input, '1');
-    await t.pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('up').pressKey('space');
-    await t
-      .expect(getDisplayedValue(wrapper).textContent)
-      .eql('Selected: 3', 'should go up through list in a loop & select item');
-    await t.pressKey('down');
-    await clearInput(t);
-    await expectOptionChecked(t, ['op1', 'op3', 'op12']);
 
     // get back into input & search until nothing is found
     await t.pressKey('1');
-    await t.pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('1');
+    await t.expect(options.count).eql(3);
+    await t.pressKey('down').pressKey('up').pressKey('1');
     await t.expect(options.count).eql(1);
     await t.expect(options.nth(0).textContent).eql('Option 11');
-    await t.pressKey('up').pressKey('up').pressKey('1');
+    await t.pressKey('down').pressKey('up').pressKey('1');
     await t.expect(getNoData().exists).ok('no data is not present');
   },
 );

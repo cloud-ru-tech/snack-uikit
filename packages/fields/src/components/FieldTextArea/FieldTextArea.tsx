@@ -1,18 +1,13 @@
 import mergeRefs from 'merge-refs';
-import { ChangeEvent, forwardRef, useRef } from 'react';
+import { ChangeEvent, forwardRef, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Scroll } from '@snack-ui/scroll';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../../constants';
-import {
-  ButtonClearValue,
-  ButtonCopyValue,
-  FieldContainerPrivate,
-  TextArea,
-  TextAreaProps,
-} from '../../helperComponents';
+import { ContainerVariant, Size, ValidationState } from '../../constants';
+import { FieldContainerPrivate, TextArea, TextAreaProps } from '../../helperComponents';
+import { useButtonNavigation, useClearButton, useCopyButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
 
@@ -46,7 +41,7 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
       disabled = false,
       resizable = false,
       readonly = false,
-      showCopyButton = true,
+      showCopyButton: showCopyButtonProp = true,
       allowMoreThanMaxLength = true,
       showHintIcon,
       onChange: onChangeProp,
@@ -64,16 +59,28 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
     ref,
   ) => {
     const localRef = useRef<HTMLTextAreaElement>(null);
+    const clearButtonRef = useRef<HTMLButtonElement>(null);
+    const copyButtonRef = useRef<HTMLButtonElement>(null);
     const isResizable = !readonly && !disabled && resizable;
     const [value, onChange] = useUncontrolledProp(valueProp, '', onChangeProp);
+    const showCopyButton = showCopyButtonProp && Boolean(value) && !disabled && readonly;
+    const showClearButton = Boolean(value) && !disabled && !readonly;
 
-    const handleClear = () => {
+    const onClear = () => {
       onChange('');
 
       if (required) {
         localRef.current?.focus();
       }
     };
+
+    const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
+    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: value });
+    const { buttons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
+      inputRef: localRef,
+      buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
+      readonly,
+    });
 
     return (
       <FieldDecorator
@@ -101,14 +108,7 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
           variant={ContainerVariant.MultiLine}
           style={{ '--max-rows': maxRows }}
           inputRef={localRef}
-          postfix={
-            <span className={styles.postfix}>
-              {value && !disabled && !readonly && <ButtonClearValue size={ButtonSizeMap[size]} onClick={handleClear} />}
-              {showCopyButton && value && !disabled && readonly && (
-                <ButtonCopyValue size={ButtonSizeMap[size]} valueToCopy={value} />
-              )}
-            </span>
-          }
+          postfix={<span className={styles.postfix}>{buttons}</span>}
         >
           <Scroll
             className={styles.scrollContainer}
@@ -130,6 +130,8 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
               ref={mergeRefs(ref, localRef)}
               onFocus={onFocus}
               onBlur={onBlur}
+              onKeyDown={onInputKeyDown}
+              tabIndex={inputTabIndex}
               maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
               data-test-id='field-textarea__input'
             />

@@ -33,16 +33,15 @@ export function useList({
   const touched = useRef(false);
   const localRef = useRef<HTMLInputElement>(null);
   const clearButtonRef = useRef<HTMLButtonElement>(null);
+  const copyButtonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
   const showDropList = isOpen && !readonly && !disabled;
   const showClearButton = !readonly && (showAdditionalButton || inputValue.length > 0);
-  const showCopyButton = showAdditionalButton && showCopyButtonProp && readonly;
+  const showCopyButton = Boolean(showAdditionalButton && showCopyButtonProp && readonly);
   const scrollVisible = options.length > 7;
 
-  const { extendedOptions, onInputKeyDown } = useListNavigation({
+  const { extendedOptions, onInputKeyDown, onButtonKeyDown } = useListNavigation({
     inputRef: localRef,
-    clearButtonRef,
-    showClearButton,
     options: useFilteredOptions({ searchable, options, touched: touched.current, inputValue }),
     toggleListOpen: setIsOpen,
     searchable,
@@ -76,9 +75,11 @@ export function useList({
     localRef,
     clearButtonRef,
     showClearButton,
+    copyButtonRef,
     showCopyButton,
     extendedOptions,
     onInputKeyDown,
+    onButtonKeyDown,
     scrollVisible,
     onInputValueChange: handleInputValueChange,
   };

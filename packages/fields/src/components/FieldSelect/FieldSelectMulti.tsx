@@ -51,7 +51,9 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
       extendedOptions,
       onInputKeyDown,
       onInputValueChange,
+      onButtonKeyDown,
       clearButtonRef,
+      copyButtonRef,
       showClearButton,
       showCopyButton,
       scrollVisible,
@@ -139,12 +141,14 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
         inputValue={inputValue}
         onInputValueChange={onInputValueChange}
         onInputKeyDown={onInputKeyDown}
+        clearButtonRef={clearButtonRef}
+        copyButtonRef={copyButtonRef}
+        onButtonKeyDown={onButtonKeyDown}
         open={isOpen}
         onOpenChange={handleOpenChange}
         locale={locale}
         showCopyButton={showCopyButton}
         showClearButton={showClearButton}
-        clearButtonRef={clearButtonRef}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onContainerPrivateMouseDown={handlePreventListClose}

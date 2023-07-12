@@ -51,14 +51,16 @@ test.page(visit({ value: 'Test value' }))('Should toggle value visibility with k
 
   await t.expect(input.getAttribute('type')).eql('text');
 
-  await t.pressKey('tab').pressKey('tab').pressKey('enter');
+  await t.pressKey('tab').pressKey('right').pressKey('right').pressKey('enter');
   await t.expect(input.getAttribute('type')).eql('password');
-  await t.pressKey('tab').pressKey('enter');
+  await t.pressKey('right').pressKey('enter');
   await t.expect(input.getAttribute('type')).eql('text');
 
   // not working in FF
-  // await t.pressKey('tab').pressKey('space');
-  // await t.expect(input.getAttribute('type')).eql('password');
-  // await t.pressKey('tab').pressKey('space');
-  // await t.expect(input.getAttribute('type')).eql('text');
+  if (t.browser.name === 'Chrome') {
+    await t.pressKey('right').pressKey('space');
+    await t.expect(input.getAttribute('type')).eql('password');
+    await t.pressKey('right').pressKey('space');
+    await t.expect(input.getAttribute('type')).eql('text');
+  }
 });

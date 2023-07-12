@@ -4,6 +4,7 @@ import {
   ChangeEventHandler,
   FocusEventHandler,
   forwardRef,
+  KeyboardEventHandler,
   MouseEventHandler,
   RefAttributes,
   useLayoutEffect,
@@ -29,6 +30,8 @@ export type TextAreaProps = RefAttributes<HTMLTextAreaElement> &
     maxLength?: number;
     onFocus?: FocusEventHandler<HTMLTextAreaElement>;
     onBlur?: FocusEventHandler<HTMLTextAreaElement>;
+    onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>;
+    tabIndex?: number;
   }>;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -46,6 +49,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       maxLength,
       onFocus,
       onBlur,
+      onKeyDown,
+      tabIndex,
       ...rest
     },
     ref,
@@ -74,6 +79,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         onClick={stopPropagation}
         onFocus={onFocus}
         onBlur={onBlur}
+        onKeyDown={onKeyDown}
+        tabIndex={tabIndex}
         minRows={3}
         {...extractDataProps(excludeSupportProps(rest))}
         {...extractSupportProps(rest)}

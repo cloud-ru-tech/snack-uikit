@@ -15,7 +15,8 @@ $icons-sizes: (
 }
 
 .itemList {
-  margin-top: var($space-fields-drop-offset);
+  padding-top: var($space-fields-drop-offset);
+  padding-bottom: var($space-fields-drop-offset);
 }
 
 .scrollContainerS {

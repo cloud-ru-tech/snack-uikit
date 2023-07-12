@@ -1,14 +1,15 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { forwardRef, KeyboardEventHandler, MouseEventHandler, RefObject } from 'react';
+import { forwardRef, KeyboardEventHandler, MouseEventHandler, RefObject, useMemo } from 'react';
 
 import { Droplist } from '@snack-ui/droplist';
 import { InputPrivate } from '@snack-ui/input-private';
 import { Scroll } from '@snack-ui/scroll';
 import { extractSupportProps } from '@snack-ui/utils';
 
-import { ButtonSizeMap, ContainerVariant, Size, ValidationState } from '../../constants';
-import { ButtonClearValue, ButtonCopyValue, FieldContainerPrivate } from '../../helperComponents';
+import { ContainerVariant, Size, ValidationState } from '../../constants';
+import { FieldContainerPrivate } from '../../helperComponents';
+import { useButtonNavigation, useClearButton, useCopyButton } from '../../hooks';
 import { FieldDecorator } from '../FieldDecorator';
 import { getArrowIcon } from './helpers';
 import styles from './styles.module.scss';
@@ -18,16 +19,18 @@ type BaseProps = Omit<FieldSelectBaseProps, 'open' | 'onOpenChange' | 'options'>
   Required<Pick<FieldSelectBaseProps, 'open' | 'onOpenChange'>> & {
     localRef: RefObject<HTMLInputElement>;
     options: ExtendedOption[];
-    onClear(): void;
+    onClear: MouseEventHandler<HTMLButtonElement>;
     onChange(option: Option): () => void;
     inputValue: string;
     onInputValueChange(value: string): void;
     displayedValue?: string;
     valueToCopy: string;
     onInputKeyDown: KeyboardEventHandler<HTMLInputElement>;
+    onButtonKeyDown: KeyboardEventHandler<HTMLButtonElement>;
     showClearButton: boolean;
     scrollVisible: boolean;
     clearButtonRef: RefObject<HTMLButtonElement>;
+    copyButtonRef: RefObject<HTMLButtonElement>;
     onClick?: MouseEventHandler<HTMLElement>;
     onContainerPrivateMouseDown?: MouseEventHandler<HTMLElement>;
   };
@@ -49,13 +52,15 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       onClear,
       showClearButton,
       clearButtonRef,
+      copyButtonRef,
       onChange,
       inputValue,
       onInputValueChange,
       displayedValue,
       valueToCopy,
       localRef,
-      onInputKeyDown,
+      onInputKeyDown: onInputKeyDownProp,
+      onButtonKeyDown: onButtonKeyDownProp,
       id,
       name,
       placeholder,
@@ -88,6 +93,25 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
     const ArrowIcon = getArrowIcon({ size, open });
     const Item = selectionMode === SelectionMode.Single ? Droplist.ItemSingle : Droplist.ItemMultiple;
 
+    const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
+    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy });
+    const { onInputKeyDown, inputTabIndex, setInitialTabIndices, buttons } = useButtonNavigation({
+      inputRef: localRef,
+      buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
+      onButtonKeyDown: onButtonKeyDownProp,
+      onInputKeyDown: onInputKeyDownProp,
+      readonly,
+    });
+
+    const handleOptionKeyDown =
+      (handler: KeyboardEventHandler<HTMLElement>): KeyboardEventHandler<HTMLElement> =>
+      event => {
+        if (event.key === 'Tab') {
+          setInitialTabIndices();
+        }
+        handler(event);
+      };
+
     return (
       <FieldDecorator
         className={className}
@@ -108,7 +132,8 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
           className={styles.itemList}
           triggerClassName={styles.trigger}
           triggerClickByKeys={!searchable}
-          data-test-id={'field-select__list'}
+          placement={Droplist.placements.Top}
+          data-test-id='field-select__list'
           {...(readonly || disabled ? { open: false } : { open, onOpenChange })}
           content={
             options.length === 0 ? (
@@ -130,6 +155,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
                     size={size}
                     data-test-id={'field-select__list-option-' + option.value}
                     {...option}
+                    onKeyDown={handleOptionKeyDown(option.onKeyDown)}
                     option={option.label}
                   />
                 ))}
@@ -151,10 +177,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
             onMouseDown={onContainerPrivateMouseDown}
             postfix={
               <>
-                {showClearButton && (
-                  <ButtonClearValue size={ButtonSizeMap[size]} onClick={onClear} ref={clearButtonRef} />
-                )}
-                {showCopyButton && <ButtonCopyValue size={ButtonSizeMap[size]} valueToCopy={valueToCopy} />}
+                {buttons}
                 <ArrowIcon className={styles.arrowIcon} />
               </>
             }
@@ -169,11 +192,12 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
               onBlur={onBlur}
               disabled={disabled}
               data-size={size}
-              data-test-id={'field-select__input'}
+              data-test-id='field-select__input'
               onKeyDown={onInputKeyDown}
               onChange={searchable ? onInputValueChange : undefined}
               readonly={!searchable || readonly}
               value={inputValue}
+              tabIndex={inputTabIndex}
             />
             {displayedValue && (
               <span
