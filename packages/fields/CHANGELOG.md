@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.3 (2023-07-14)
+
+
+### Bug Fixes
+
+* **[FF-2628](https://jira.sbercloud.tech/browse/FF-2628):** adjust work with keyboard for buttons ([0aff1c3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0aff1c3f657d4b90a416c43642c6bb73945a34a8))
+* **[FF-2628](https://jira.sbercloud.tech/browse/FF-2628):** when clearing not required field, do not focus it; add scroll to field-select; enhance interaction with field-select ([5148f62](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5148f623c7f91f2ae6714288e8cc3ddd1ba958f8))
+
+
+
+
+
 ## 0.2.2 (2023-07-11)
 
 ### Only dependencies have been changed

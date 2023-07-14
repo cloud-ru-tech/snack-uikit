@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.3.0 (2023-07-14)
+
+
+### Features
+
+* **[FF-2628](https://jira.sbercloud.tech/browse/FF-2628):** add tabIndex ([fb30540](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/fb305401d6b91fc54ae8742f10f57560f55db28e))
+
+
+
+
+
 # 1.2.0 (2023-07-05)
 
 

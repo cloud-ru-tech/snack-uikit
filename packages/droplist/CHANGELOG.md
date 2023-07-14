@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-07-14)
+
+
+### Features
+
+* **[FF-2628](https://jira.sbercloud.tech/browse/FF-2628):** add onKeyDown property ([9474ee6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9474ee6b3daa8a03b1bcb9f090db0d34a11da930))
+
+
+
+
+
 ## 0.4.1 (2023-07-11)
 
 **Note:** Version bump only for package @snack-ui/droplist
