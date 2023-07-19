@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-07-19)
+
+
+### Features
+
+* **[FF-2640](https://jira.sbercloud.tech/browse/FF-2640):** add droplist to filter chip ([60d9608](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/60d96087161a40d496089248398ef13cadd511b9))
+
+
+
+
+
 ## 0.1.2 (2023-07-12)
 
 
