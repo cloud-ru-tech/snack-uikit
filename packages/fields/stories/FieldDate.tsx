@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
@@ -20,15 +21,26 @@ type StoryProps = Omit<FieldDateProps, 'locale'> & {
 const Template = ({ size, localeName, ...args }: StoryProps) => {
   const locale = new Intl.Locale(localeName);
 
-  const [value, setValue] = useState(args.value);
+  const argsNormalizedValue = args.value?.replaceAll('-', '.');
+
+  const [value, setValue] = useState(argsNormalizedValue);
 
   useEffect(() => {
-    setValue(args.value);
-  }, [args.value]);
+    setValue(argsNormalizedValue);
+  }, [argsNormalizedValue]);
 
   return (
     <div className={styles.wrapper} data-size={size}>
-      <FieldDate {...args} size={size} value={value} onChange={setValue} locale={locale} />
+      <FieldDate
+        {...args}
+        size={size}
+        value={value}
+        onChange={value => {
+          action('onChange')(value);
+          setValue(value);
+        }}
+        locale={locale}
+      />
     </div>
   );
 };

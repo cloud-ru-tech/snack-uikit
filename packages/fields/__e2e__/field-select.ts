@@ -420,3 +420,23 @@ test.page(visit({ value: 'Option 3', selectionMode: 'multi', searchable: true })
     await t.expect(getNoData().exists).ok('no data is not present');
   },
 );
+
+test.page(visit())('should toggle droplist by clicks', async t => {
+  const wrapper = Selector(dataTestIdSelector(TEST_ID));
+  const icon = wrapper.find(dataTestIdSelector('icon-chevron-down-xs'));
+  const getDropList = () => Selector(dataTestIdSelector(LIST_TEST_ID));
+
+  await t.expect(getDropList().exists).notOk("drop list is present although shouldn't");
+  await t.click(wrapper);
+  await t.expect(getDropList().exists).ok('drop list is not present after click');
+  await t.click(wrapper);
+  await t.expect(getDropList().exists).notOk("drop list still present after click although shouldn't");
+
+  await t.click(icon);
+  await t.expect(getDropList().exists).ok('drop list is not present after clicking on icon');
+
+  await t.click(wrapper);
+  await t.expect(getDropList().exists).notOk("drop list still present after click although shouldn't");
+  await t.pressKey('enter');
+  await t.expect(getDropList().exists).ok('drop list is not present after enter');
+});

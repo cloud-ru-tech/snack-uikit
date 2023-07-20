@@ -5,26 +5,25 @@ import { useEventHandler } from '@snack-ui/utils';
 import { isCursorInTheEnd, runAfterRerender, selectAll } from '../helpers';
 import { ButtonProps } from './types';
 
-type UseButtonNavigationProps<T> = {
+type UseButtonNavigationProps<T extends HTMLInputElement | HTMLTextAreaElement> = {
+  setInputFocus?(): void;
   inputRef: RefObject<T>;
   buttons: ButtonProps[];
   onButtonKeyDown?: KeyboardEventHandler<HTMLButtonElement>;
-  onInputKeyDown?: KeyboardEventHandler<T>;
   readonly: boolean;
 };
 
 export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaElement>({
   inputRef,
+  setInputFocus = () => inputRef.current?.focus(),
   buttons,
   onButtonKeyDown = () => {},
-  onInputKeyDown = () => {},
   readonly,
 }: UseButtonNavigationProps<T>) {
   const getInitialButtonTabIndices = useCallback(() => buttons.map(() => -1), [buttons]);
   const [inputTabIndex, setInputTabIndex] = useState(0);
   const [buttonTabIndices, setButtonTabIndices] = useState(getInitialButtonTabIndices);
   const buttonKeyDownEventHandler = useEventHandler(onButtonKeyDown);
-  const inputKeyDownEventHandler = useEventHandler(onInputKeyDown);
 
   const findVisibleButton = useCallback(
     (index: number, direction: 'ArrowRight' | 'ArrowLeft') => {
@@ -49,8 +48,8 @@ export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaEle
 
   const focusInput = useCallback(() => {
     setInitialTabIndices();
-    inputRef.current?.focus();
-  }, [inputRef, setInitialTabIndices]);
+    setInputFocus();
+  }, [setInitialTabIndices, setInputFocus]);
 
   const focusButton = useCallback(
     (index: number) => {
@@ -71,10 +70,8 @@ export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaEle
           focusButton(index);
         }
       }
-
-      inputKeyDownEventHandler?.(event);
     },
-    [findVisibleButton, focusButton, inputKeyDownEventHandler, inputRef, readonly, setInitialTabIndices],
+    [findVisibleButton, focusButton, inputRef, readonly, setInitialTabIndices],
   );
 
   const handleButtonKeyDown = useCallback(

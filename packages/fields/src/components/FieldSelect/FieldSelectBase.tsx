@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { forwardRef, KeyboardEventHandler, MouseEventHandler, RefObject, useMemo } from 'react';
+import { forwardRef, KeyboardEvent, KeyboardEventHandler, MouseEventHandler, RefObject, useMemo } from 'react';
 
 import { Droplist } from '@snack-ui/droplist';
 import { InputPrivate } from '@snack-ui/input-private';
@@ -10,6 +10,7 @@ import { extractSupportProps } from '@snack-ui/utils';
 import { ContainerVariant, Size, ValidationState } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useButtonNavigation, useClearButton, useCopyButton } from '../../hooks';
+import { useHandlers } from '../FieldDate/hooks/useHandlers';
 import { FieldDecorator } from '../FieldDecorator';
 import { getArrowIcon } from './helpers';
 import styles from './styles.module.scss';
@@ -95,13 +96,22 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
 
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
     const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy });
-    const { onInputKeyDown, inputTabIndex, setInitialTabIndices, buttons } = useButtonNavigation({
+    const {
+      onInputKeyDown: inputKeyDownNavigationHandler,
+      inputTabIndex,
+      setInitialTabIndices,
+      buttons,
+    } = useButtonNavigation({
       inputRef: localRef,
       buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
       onButtonKeyDown: onButtonKeyDownProp,
-      onInputKeyDown: onInputKeyDownProp,
       readonly,
     });
+
+    const onInputKeyDownHandler = useHandlers<KeyboardEvent<HTMLInputElement>>([
+      inputKeyDownNavigationHandler,
+      onInputKeyDownProp,
+    ]);
 
     const handleOptionKeyDown =
       (handler: KeyboardEventHandler<HTMLElement>): KeyboardEventHandler<HTMLElement> =>
@@ -193,7 +203,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
               disabled={disabled}
               data-size={size}
               data-test-id='field-select__input'
-              onKeyDown={onInputKeyDown}
+              onKeyDown={onInputKeyDownHandler}
               onChange={searchable ? onInputValueChange : undefined}
               readonly={!searchable || readonly}
               value={inputValue}

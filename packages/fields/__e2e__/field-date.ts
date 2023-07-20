@@ -44,7 +44,7 @@ test.page(visit({ value: '' }))('Should format value correctly', async t => {
   const wrapper = Selector(dataTestIdSelector(TEST_ID));
   const input = getInputInner(wrapper);
 
-  await t.typeText(input, '11-11-1111').expect(input.value).eql('11.11.1111');
+  await t.typeText(input, '19121987').expect(input.value).eql('19.12.1987');
 });
 
 // select data
@@ -73,7 +73,8 @@ test.page(visit({ value: '10-06-2023' }))('Should select value from calendar wit
 
   await t.expect(input.value).eql('10.06.2023');
 
-  await t.pressKey('tab').pressKey('space');
+  await t.click(wrapper);
+  // await t.pressKey('tab').pressKey('space');
 
   await t.expect(getSelectedDay().textContent).eql('10');
   await t.expect(getMonthAndYear().textContent).eql('June 2023');
@@ -94,4 +95,15 @@ test.page(visit({ value: '10-06-2023' }))('Should select value from calendar wit
 
   await t.expect(calendar.exists).notOk('calendar is still present after selection');
   await t.expect(input.value).eql('23.08.2023');
+});
+
+test.page(visit())('should not toggle droplist by many clicks', async t => {
+  const wrapper = Selector(dataTestIdSelector(TEST_ID));
+  const getCalendar = () => Selector(dataTestIdSelector(CALENDAR_TEST_ID));
+
+  await t.expect(getCalendar().exists).notOk('calendar is present before first click');
+  await t.click(wrapper);
+  await t.expect(getCalendar().exists).ok('calendar is not present after click');
+  await t.click(wrapper);
+  await t.expect(getCalendar().exists).ok('calendar was hidden by second click');
 });

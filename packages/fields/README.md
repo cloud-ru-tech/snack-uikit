@@ -2,6 +2,8 @@
 
 ## Todo
 - сделать режим выбора периода в FieldDate.
+- сделать маску ввода серого цвета в FieldDate
+- сбрасывать состояние tabIndex-ов при потере фокуса c кнопок
 
 ## Installation
 `npm i @snack-ui/fields`
@@ -212,7 +214,7 @@ css-класс контейнера.
 
 ### FieldDate
 
-####  **`value?: string`**
+####  **`value: string`**
 Значение поля.
 
 ####  **`onChange?: (value: string) => void`**
