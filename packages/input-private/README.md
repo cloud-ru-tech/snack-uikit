@@ -45,6 +45,8 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
     onBlur?: FocusEventHandler<HTMLInputElement>;
     prefix?: ReactNode;
     postfix?: ReactNode;
+    onClick?: MouseEventHandler<HTMLInputElement>;
+    onMouseDown?: MouseEventHandler<HTMLInputElement>;
   }>;
 ```
 

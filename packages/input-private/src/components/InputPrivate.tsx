@@ -25,6 +25,8 @@ const ForwardedPrivateInput = forwardRef<HTMLInputElement, InputPrivateProps>(
       onBlur,
       onKeyDown,
       tabIndex = 0,
+      onClick,
+      onMouseDown,
       ...rest
     },
     ref,
@@ -51,6 +53,8 @@ const ForwardedPrivateInput = forwardRef<HTMLInputElement, InputPrivateProps>(
         onBlur={onBlur}
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
+        onClick={onClick}
+        onMouseDown={onMouseDown}
         {...extractDataProps(excludeSupportProps(rest))}
         {...extractSupportProps(rest)}
       />
