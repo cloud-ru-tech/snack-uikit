@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-07-20)
+
+
+### Features
+
+* **[FF-2622](https://jira.sbercloud.tech/browse/FF-2622):** FieldDate UX improves ([f32c817](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f32c8171b26468f6d019cd5c214a82a44a83f314))
+
+
+
+
+
 ## 0.2.3 (2023-07-14)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.4.0 (2023-07-20)
+
+
+### Features
+
+* **[FF-2622](https://jira.sbercloud.tech/browse/FF-2622):** add onClick and onMouseDown props ([acd5ab3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/acd5ab37de5890914bc80e51cb9fe7adc5ae8554))
+
+
+
+
+
 # 1.3.0 (2023-07-14)
 
 
