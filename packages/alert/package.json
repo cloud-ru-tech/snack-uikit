@@ -1,0 +1,39 @@
+{
+  "name": "@snack-ui/alert",
+  "title": "Alert",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/alert",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/alert"
+  },
+  "author": "Alexander Starodubtsev <avstarodubtsev@cloud.ru>",
+  "contributors": [
+    "Alexander Starodubtsev <avstarodubtsev@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {    
+      "@snack-ui/icons": "0.8.0",
+      "@snack-ui/linkonsurface-private": "0.0.0",
+      "@snack-ui/truncate-string": "0.1.2",
+      "@snack-ui/utils": "1.2.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}

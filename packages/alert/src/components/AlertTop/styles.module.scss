@@ -1,0 +1,146 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-alert-alertTop';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
+
+.alertTop {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+
+    @include composite-var($alert-top-container-container);
+
+    @each $color in $colors {
+        &[data-color='#{$color}'] {
+            @if $color == 'invert-neutral'{
+                background-color: var($sys-invert-neutral-background);
+            }
+      
+            @else {
+                background-color: simple-var($theme-variables, 'sys', $color, 'accent-default');
+            }
+        }
+       }
+}
+
+.icon {
+    @each $color in $colors {
+        &[data-color='#{$color}'] {
+            @if $color == 'invert-neutral'{
+                color: var($sys-invert-neutral-text-main);
+            }
+
+            @else {
+                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+            }
+        }
+    }
+}
+
+.title {
+    @include composite-var($sans-title-s);
+
+    @each $color in $colors {
+        &[data-color='#{$color}'] {
+            @if $color == 'invert-neutral'{
+                color: var($sys-invert-neutral-text-main);
+            }
+
+            @else {
+                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+            }
+        }
+    }
+}
+
+.description {
+    word-wrap: break-word;
+
+    @include composite-var($sans-body-m);
+
+    @each $color in $colors {
+        &[data-color='#{$color}'] {
+            @if $color == 'invert-neutral'{
+                color: var($sys-invert-neutral-text-main);
+            }
+
+            @else {
+                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+            }
+        }
+    }
+}
+
+.contentWrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    min-width: 0;
+}   
+
+
+.contentLayout {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+
+    @include composite-var($alert-top-container-content-layout);
+    
+}
+
+.textLayout {
+    overflow: hidden;
+
+}
+
+.closeButton {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    @include composite-var($alert-top-button-button-close);
+
+    @each $color in $colors {
+        &[data-color='#{$color}'] {
+            @if $color == 'invert-neutral'{
+                color: var($sys-invert-neutral-text-main);
+            }
+
+            @else {
+                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+            }
+            
+            opacity: var($opacity-a080);
+
+            &:hover {
+                background-color: var($sys-opacity-hovered);
+                opacity: unset;
+            }
+
+            &:focus-visible {
+                @include outline-var($container-focused-s);
+                background-color: var($sys-opacity-hovered);
+                outline-color: var($sys-available-on-complementary);
+                opacity: unset;
+            }
+
+            &:active {
+                background-color: var($sys-opacity-activated);
+                opacity: var($opacity-a080);
+            }
+
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}

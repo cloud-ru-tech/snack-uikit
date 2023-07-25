@@ -1,0 +1,96 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-alert';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$colors: 'neutral', 'primary', 'red', 'yellow', 'green';
+
+
+.alert {
+  box-sizing: border-box;
+  display: flex;
+  min-width: 256px;
+  border: 2px solid;
+
+  @include composite-var($alert-container-container);
+
+  @each $color in $colors {
+    &[data-color='#{$color}'] {
+      background-color: simple-var($theme-variables, 'sys', $color, 'background');
+      border-color: simple-var($theme-variables, 'sys', $color, 'decor-default');
+    }
+   }
+}
+
+.title {
+  color: var($sys-neutral-text-main);
+
+  @include composite-var($sans-title-s);
+}
+
+.textlayout {
+  @include composite-var($alert-container-text-layout);
+  overflow: hidden;
+}
+
+.description {
+  color: var($sys-neutral-text-support);
+  word-wrap: break-word;
+
+  @include composite-var($sans-body-m);
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+
+  @include composite-var($alert-container-content-layout);
+}
+
+.icon {
+  @each $color in $colors { 
+    &[data-color='#{$color}'] {
+      color: simple-var($theme-variables, 'sys', $color, 'accent-default');
+    }
+  }  
+}
+
+.closeButton {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  @include composite-var($alert-button-button-close);
+
+  @each $color in $colors { 
+    &[data-color='#{$color}'] {
+      color: simple-var($theme-variables, 'sys', $color, 'text-light');
+      
+      &:hover {
+        color: simple-var($theme-variables, 'sys', $color, 'text-support');
+      }
+    
+      &:focus-visible {
+        color: simple-var($theme-variables, 'sys', $color, 'text-support');
+
+        @include outline-var($container-focused-s);
+        
+        @if $color == 'neutral'{
+          outline-color: var($sys-available-complementary);
+        }
+
+        @else {
+          outline-color: simple-var($theme-variables, 'sys', $color, 'accent-default');
+        }
+      }
+      
+      &:active {
+        color: simple-var($theme-variables, 'sys', $color, 'text-main');
+      }
+    }
+  } 
+}

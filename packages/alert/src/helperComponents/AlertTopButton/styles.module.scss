@@ -1,0 +1,49 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-alert-alertTop';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
+
+.alertTopButton {
+    
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    opacity: var($opacity-a080);
+    
+    &:hover {
+        background-color: var($sys-opacity-hovered);
+        opacity: unset;
+    }
+    &:focus-visible {
+        @include outline-var($container-focused-s);
+        background-color: var($sys-opacity-hovered);
+        outline-color: var($sys-available-on-complementary);
+        opacity: unset;
+    }
+    &:active {
+        background-color: var($sys-opacity-activated);
+        opacity: var($opacity-a080);
+    }
+
+    @include composite-var($alert-top-button-button-action);
+    @include composite-var($sans-label-l);
+
+    @each $color in $colors {
+        &[data-color='#{$color}'] {
+            @if $color == 'invert-neutral'{
+                color: simple-var($theme-variables, 'sys', $color, 'text-main');
+            }
+
+            @else {
+                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+                
+            }
+        }
+    }
+}

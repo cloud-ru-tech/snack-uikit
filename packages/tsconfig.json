@@ -84,7 +84,13 @@
     },
     {
       "path": "./fields"
-    }
+    },
+    {
+      "path": "./linkonsurface-private"
+    },
+    {
+      "path": "./alert"
+    },
   ],
   "compilerOptions": {
     "target": "es6",
