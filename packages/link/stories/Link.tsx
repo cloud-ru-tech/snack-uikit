@@ -29,10 +29,10 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
       <div className={styles.table}>
         <div className={headerCellClassName} style={{ gridRow: '1 / 3' }}></div>
         <div className={headerCellClassName} style={{ gridColumn: '2 / 4' }}>
-          Enabled
+          Neutral
         </div>
         <div className={headerCellClassName} style={{ gridColumn: '4 / 6' }}>
-          Disabled
+          Primary
         </div>
         <div className={headerCellClassName}>External</div>
         <div className={headerCellClassName}>Internal</div>
@@ -48,10 +48,10 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
               <Link text={DEFAULT_TEXT} size={size} />
             </div>
             <div className={styles.cell}>
-              <Link text={DEFAULT_TEXT} size={size} external={true} disabled={true} />
+              <Link text={DEFAULT_TEXT} size={size} external={true} appearance={Link.appearances.Primary} />
             </div>
             <div className={styles.cell}>
-              <Link text={DEFAULT_TEXT} size={size} disabled={true} />
+              <Link text={DEFAULT_TEXT} size={size} appearance={Link.appearances.Primary} />
             </div>
           </Fragment>
         ))}
@@ -67,7 +67,6 @@ link.args = {
   text: DEFAULT_TEXT,
   size: Link.sizes.S,
   target: Link.targets.Blank,
-  disabled: false,
   external: false,
 };
 

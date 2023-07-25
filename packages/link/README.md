@@ -1,6 +1,7 @@
 # Link
 
 ## Installation
+
 `npm i @snack-ui/link`
 
 [Changelog](./CHANGELOG.md)
@@ -11,13 +12,13 @@
 import { Link } from '@snack-ui/link';
 
 <Link
-  text='Link text' 
-  href='https://sbercloud.ru/'
+  text='Link text'
+  href='https://cloud.ru/'
   target={Link.targets.Blank}
   size={Link.sizes.S}
-  disabled={true}
   external={true}
-/>
+  appearance={Link.appearances.Primary}
+/>;
 ```
 
 ## Props
@@ -36,16 +37,19 @@ enum Target {
   Top = '_top',
 }
 
+enum Appearance {
+  Neutral = 'neutral',
+  Primary = 'primary',
+}
+
 type LinkProps = WithSupportProps<{
   text?: string;
   href?: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   target?: '_self' | '_blank' | '_parent' | '_top'; // Default _blank
   size?: Size; // Default Size.S
-  disabled?: boolean;
   external?: boolean;
   className?: string;
+  appearance?: Appearance; //Default Appearance.Neutral
 }>;
 ```
-
-

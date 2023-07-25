@@ -1,0 +1,64 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-link';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm', 'l';
+$colors: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
+$on-surfaces: 'background', 'decor', 'accent';
+
+.linkOnSurface {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  @each $on-surface in $on-surfaces {
+    &[data-on-surface='#{$on-surface}'] {
+      @each $color in $colors {
+        &[data-color='#{$color}'] {
+          @if $on-surface == 'accent' {
+            color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+
+            &:hover {
+              color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+              opacity: var($opacity-a080);
+            }
+            &:focus-visible {
+              @include outline-var($container-focused-s);
+              outline-color: var($sys-available-on-complementary);
+              opacity: var($opacity-a080);
+            }
+          }
+
+          @else {
+            color: simple-var($theme-variables, 'sys', $color, 'text-support');
+            
+            &:hover {
+              color: simple-var($theme-variables, 'sys', $color, 'text-main');
+            }
+            &:focus-visible {
+              @include outline-var($container-focused-s);
+              color: simple-var($theme-variables, 'sys', $color, 'text-main');
+              outline-color: var($sys-available-complementary);
+            }
+          }
+
+          @each $size in $sizes {
+            &[data-size='#{$size}'] {
+              @if $on-surface == 'accent' {
+                @include composite-var($theme-variables, 'link', 'body', $size);
+              }
+
+              @else {
+                @include composite-var($theme-variables, 'sans', 'body', $size);
+              }
+
+              @include composite-var($link, 'container', $size);
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+

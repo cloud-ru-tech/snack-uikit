@@ -2,13 +2,28 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
+$appearances: 'neutral', 'primary';
 
 .link {
   display: inline-flex;
   align-items: center;
-  color: var($sys-blue-accent-default);
   text-decoration: none;
   cursor: pointer;
+
+  @each $appearance in $appearances {
+    &[data-appearance='#{$appearance}'] {
+      color: simple-var($theme-variables, 'sys', $appearance, 'text-support');
+      &:hover {
+        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+      }
+      &:focus-visible {
+        @include outline-var($container-focused-s);
+    
+        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+        outline-color: var($sys-available-complementary);
+      }
+    }
+  }
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
@@ -17,20 +32,6 @@ $sizes: 's', 'm', 'l';
     }
   }
 
-  &:hover {
-    color: var($sys-blue-accent-hovered);
-  }
 
-  &:focus-visible {
-    @include outline-var($container-focused-s);
-
-    color: var($sys-blue-accent-hovered);
-    outline-color: var($sys-available-complementary);
-  }
-
-  &[data-disabled] {
-    color: var($sys-neutral-text-disabled);
-    cursor: not-allowed;
-  }
 }
 

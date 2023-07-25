@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { AnchorHTMLAttributes, MouseEvent, MouseEventHandler } from 'react';
+import { AnchorHTMLAttributes, MouseEventHandler } from 'react';
 
 import { ArrowLinksSSVG, ArrowLinksXsSVG } from '@snack-ui/icons';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
@@ -19,6 +19,11 @@ enum Target {
   Top = '_top',
 }
 
+enum Appearance {
+  Primary = 'primary',
+  Neutral = 'neutral',
+}
+
 export type LinkProps = WithSupportProps<{
   text?: string;
   className?: string;
@@ -26,8 +31,8 @@ export type LinkProps = WithSupportProps<{
   target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   size?: Size;
-  disabled?: boolean;
   external?: boolean;
+  appearance?: Appearance;
 }>;
 
 export function Link({
@@ -37,7 +42,7 @@ export function Link({
   target = Target.Blank,
   onClick,
   size = Size.S,
-  disabled,
+  appearance = Appearance.Neutral,
   external,
   ...rest
 }: LinkProps) {
@@ -51,24 +56,14 @@ export function Link({
     return <ArrowLinksSSVG size={24} data-test-id={dataTestId} />;
   };
 
-  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (disabled) {
-      event.preventDefault();
-      return;
-    }
-
-    onClick?.(event);
-  };
-
   return (
     <a
       className={cn(styles.link, className)}
       href={href}
       target={target}
-      onClick={handleClick}
+      onClick={onClick}
       data-size={size}
-      data-disabled={disabled || undefined}
-      aria-disabled={disabled || undefined}
+      data-appearance={appearance}
       rel={target === Target.Blank ? 'noopener noreferrer' : undefined}
       {...extractSupportProps(rest)}
     >
@@ -79,4 +74,5 @@ export function Link({
 }
 
 Link.sizes = Size;
+Link.appearances = Appearance;
 Link.targets = Target;
