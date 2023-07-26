@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/alert",
   "title": "Alert",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -28,12 +28,10 @@
   ],
   "license": "Apache-2.0",
   "scripts": {},
-  "dependencies": {    
-      "@snack-ui/icons": "0.8.0",
-      "@snack-ui/linkonsurface-private": "0.0.0",
-      "@snack-ui/truncate-string": "0.1.2",
-      "@snack-ui/utils": "1.2.0"
-  },
-  "devDependencies": {},
-  "peerDependencies": {}
+  "dependencies": {
+    "@snack-ui/icons": "0.9.0",
+    "@snack-ui/linkonsurface-private": "0.1.0",
+    "@snack-ui/truncate-string": "0.1.2",
+    "@snack-ui/utils": "1.2.0"
+  }
 }

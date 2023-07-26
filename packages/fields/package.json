@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/fields",
   "title": "Fields",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,9 +29,9 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/calendar": "0.1.0",
-    "@snack-ui/droplist": "0.5.0",
-    "@snack-ui/icons": "0.8.0",
+    "@snack-ui/calendar": "0.1.1",
+    "@snack-ui/droplist": "0.5.1",
+    "@snack-ui/icons": "0.9.0",
     "@snack-ui/input-private": "1.4.0",
     "@snack-ui/scroll": "0.1.4",
     "@snack-ui/tooltip": "0.3.2",
