@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
 
 import { CrossSSVG } from '@snack-ui/icons';
-import { LinkOnSurfacePrivate } from '@snack-ui/linkonsurface-private';
+import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
 
 import { Appearance, APPEARANCE_TO_COLOR_MAP } from '../../constants';
-import { AlertTopButton } from '../../helperComponents/AlertTopButton';
+import { AlertTopButton } from '../../helperComponents';
 import { getIcon } from '../../utils';
 import { APPEARANCE_TO_COLOR_MAP_INVERT } from './constants';
 import styles from './styles.module.scss';
@@ -70,13 +70,13 @@ export function AlertTop({
           </div>
           {link && (
             <span>
-              <LinkOnSurfacePrivate
-                onSurface={LinkOnSurfacePrivate.onSurfaces.Accent}
+              <Link
+                onSurface={Link.onSurfaces.Accent}
                 href={href}
                 text={link}
                 external
                 onColor={APPEARANCE_TO_COLOR_MAP[appearance]}
-                size={LinkOnSurfacePrivate.sizes.M}
+                size={Link.sizes.M}
                 data-test-id='alert-top__link'
               />
             </span>

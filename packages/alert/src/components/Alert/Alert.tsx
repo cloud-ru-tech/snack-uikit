@@ -1,5 +1,5 @@
 import { CrossSSVG } from '@snack-ui/icons';
-import { LinkOnSurfacePrivate } from '@snack-ui/linkonsurface-private';
+import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
 import { extractSupportProps } from '@snack-ui/utils';
 
@@ -49,13 +49,13 @@ export function Alert({
 
         {link && (
           <span>
-            <LinkOnSurfacePrivate
+            <Link
               href={href}
               text={link}
-              onSurface={LinkOnSurfacePrivate.onSurfaces.Decor}
+              onSurface={Link.onSurfaces.Decor}
               external
               onColor={APPEARANCE_TO_COLOR_MAP[appearance]}
-              size={LinkOnSurfacePrivate.sizes.M}
+              size={Link.sizes.M}
               data-test-id='alert__link'
             />
           </span>

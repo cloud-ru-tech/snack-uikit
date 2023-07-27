@@ -2,7 +2,8 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
-$appearances: 'neutral', 'primary';
+$colors: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
+$on-surfaces: 'background', 'decor', 'accent';
 
 .link {
   display: inline-flex;
@@ -10,28 +11,53 @@ $appearances: 'neutral', 'primary';
   text-decoration: none;
   cursor: pointer;
 
-  @each $appearance in $appearances {
-    &[data-appearance='#{$appearance}'] {
-      color: simple-var($theme-variables, 'sys', $appearance, 'text-support');
-      &:hover {
-        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
-      }
-      &:focus-visible {
-        @include outline-var($container-focused-s);
-    
-        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
-        outline-color: var($sys-available-complementary);
+  @each $on-surface in $on-surfaces {
+    &[data-on-surface='#{$on-surface}'] {
+      @each $color in $colors {
+        &[data-color='#{$color}'] {
+          @if $on-surface == 'accent' {
+            color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+
+            &:hover {
+              color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+              opacity: var($opacity-a080);
+            }
+            &:focus-visible {
+              @include outline-var($container-focused-s);
+              outline-color: var($sys-available-on-complementary);
+              opacity: var($opacity-a080);
+            }
+          }
+
+          @else {
+            color: simple-var($theme-variables, 'sys', $color, 'accent-default');
+            
+            &:hover {
+              color: simple-var($theme-variables, 'sys', $color, 'text-main');
+            }
+            &:focus-visible {
+              @include outline-var($container-focused-s);
+              color: simple-var($theme-variables, 'sys', $color, 'text-main');
+              outline-color: var($sys-available-complementary);
+            }
+          }
+
+          @each $size in $sizes {
+            &[data-size='#{$size}'] {
+              @if $on-surface == 'decor' {
+                @include composite-var($theme-variables, 'sans', 'body', $size);
+              }
+
+              @else {
+                @include composite-var($theme-variables, 'link', 'body', $size);
+              }
+
+              @include composite-var($link, 'container', $size);
+            }
+          }
+        }
       }
     }
   }
-
-  @each $size in $sizes {
-    &[data-size='#{$size}'] {
-      @include composite-var($link, 'container', $size);
-      @include composite-var($theme-variables, 'sans', 'body', $size);
-    }
-  }
-
-
 }
 

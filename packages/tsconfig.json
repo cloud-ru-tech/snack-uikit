@@ -86,9 +86,6 @@
       "path": "./fields"
     },
     {
-      "path": "./linkonsurface-private"
-    },
-    {
       "path": "./alert"
     },
   ],

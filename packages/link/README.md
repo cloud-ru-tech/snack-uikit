@@ -8,22 +8,36 @@
 
 ## Example
 
-```typescript jsx
+## Example
+
+```tsx
 import { Link } from '@snack-ui/link';
 
 <Link
-  text='Link text'
+  onSurface={Link.onSurfaces.Accent}
   href='https://cloud.ru/'
-  target={Link.targets.Blank}
-  size={Link.sizes.S}
+  text='Link text'
   external={true}
-  appearance={Link.appearances.Primary}
+  onColor={Link.onSurfaces.Primary}
 />;
 ```
 
 ## Props
 
-```typescript jsx
+```ts
+enum OnColor {
+  InvertNeutral = 'invert-neutral',
+  Neutral = 'neutral',
+  Primary = 'primary',
+  Red = 'red',
+  Orange = 'orange',
+  Yellow = 'yellow',
+  Green = 'green',
+  Blue = 'blue',
+  Violet = 'violet',
+  Pink = 'pink',
+}
+
 enum Size {
   S = 's',
   M = 'm',
@@ -37,19 +51,21 @@ enum Target {
   Top = '_top',
 }
 
-enum Appearance {
-  Neutral = 'neutral',
-  Primary = 'primary',
+enum OnSurface {
+  Background = 'background',
+  Decor = 'decor',
+  Accent = 'accent',
 }
 
 type LinkProps = WithSupportProps<{
   text?: string;
-  href?: string;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
-  target?: '_self' | '_blank' | '_parent' | '_top'; // Default _blank
-  size?: Size; // Default Size.S
-  external?: boolean;
   className?: string;
-  appearance?: Appearance; //Default Appearance.Neutral
+  href?: string;
+  target?: AnchorHTMLAttributes<HTMLAnchorElement>['target']; //Default Target.Blank
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  size?: Size; //Default Size.S
+  external?: boolean;
+  onColor?: OnColor; //Default OnColor.Primary
+  onSurface?: OnSurface; //Default OnSurface.Background
 }>;
 ```

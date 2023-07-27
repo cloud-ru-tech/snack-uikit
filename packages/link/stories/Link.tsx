@@ -15,50 +15,78 @@ const meta: Meta = {
 export default meta;
 
 const DEFAULT_TEXT = 'Link text';
+const DEFAULT_SIZE = Link.sizes.S;
+const DEFAULT_SURFACE = Link.onSurfaces.Background;
+const DEFAULT_COLOR = Link.onColors.Primary;
 
 type StoryProps = LinkProps;
-const Template: StoryFn<StoryProps> = ({ ...args }) => {
-  const sizes = Object.values(Link.sizes);
-  const headerCellClassName = cn(styles.cell, styles.headerCell);
+
+type Option = {
+  header: string;
+  props?: Partial<LinkProps>;
+};
+
+type TableProps = {
+  header: string;
+  options: Option[];
+};
+
+const colors = Object.values(Link.onColors);
+const sizes = Object.values(Link.sizes);
+const surfaces = Object.values(Link.onSurfaces);
+
+function Table({ header, options }: TableProps) {
+  const headerCellClassnames = cn(styles.cell, styles.headerCell);
 
   return (
-    <>
-      <div className={styles.wrapper}>
-        <Link {...args} />
-      </div>
-      <div className={styles.table}>
-        <div className={headerCellClassName} style={{ gridRow: '1 / 3' }}></div>
-        <div className={headerCellClassName} style={{ gridColumn: '2 / 4' }}>
-          Neutral
-        </div>
-        <div className={headerCellClassName} style={{ gridColumn: '4 / 6' }}>
-          Primary
-        </div>
-        <div className={headerCellClassName}>External</div>
-        <div className={headerCellClassName}>Internal</div>
-        <div className={headerCellClassName}>External</div>
-        <div className={headerCellClassName}>Internal</div>
-        {sizes.map(size => (
-          <Fragment key={size}>
-            <div className={headerCellClassName}>{size}</div>
-            <div className={styles.cell}>
-              <Link text={DEFAULT_TEXT} size={size} external={true} />
-            </div>
-            <div className={styles.cell}>
-              <Link text={DEFAULT_TEXT} size={size} />
-            </div>
-            <div className={styles.cell}>
-              <Link text={DEFAULT_TEXT} size={size} external={true} appearance={Link.appearances.Primary} />
-            </div>
-            <div className={styles.cell}>
-              <Link text={DEFAULT_TEXT} size={size} appearance={Link.appearances.Primary} />
-            </div>
-          </Fragment>
-        ))}
-      </div>
-    </>
+    <div className={styles.table}>
+      <div className={headerCellClassnames} />
+      <div className={headerCellClassnames}>{header}</div>
+
+      {options.map(option => (
+        <Fragment key={option.header}>
+          <div className={headerCellClassnames}>{option.header}</div>
+          <div
+            className={styles.cell}
+            data-appearance={option.props?.onColor}
+            data-on-surface={option.props?.onSurface}
+          >
+            <Link {...option.props} />
+          </div>
+        </Fragment>
+      ))}
+    </div>
   );
-};
+}
+
+const Template: StoryFn<StoryProps> = ({ ...args }) => (
+  <>
+    <div className={styles.wrapper} data-appearance={args.onColor} data-on-surface={args.onSurface}>
+      <Link {...args} />
+    </div>
+    <Table
+      header='onColor'
+      options={colors.map(color => ({
+        header: color,
+        props: { onColor: color, text: DEFAULT_TEXT, onSurface: DEFAULT_SURFACE, size: DEFAULT_SIZE },
+      }))}
+    />
+    <Table
+      header='onSurface'
+      options={surfaces.map(surface => ({
+        header: surface,
+        props: { onColor: DEFAULT_COLOR, text: DEFAULT_TEXT, onSurface: surface },
+      }))}
+    />
+    <Table
+      header='size'
+      options={sizes.map(size => ({
+        header: size,
+        props: { onColor: DEFAULT_COLOR, text: DEFAULT_TEXT, size: size, onSurface: DEFAULT_SURFACE },
+      }))}
+    />
+  </>
+);
 
 export const link: StoryObj<StoryProps> = Template.bind({});
 
@@ -68,6 +96,8 @@ link.args = {
   size: Link.sizes.S,
   target: Link.targets.Blank,
   external: false,
+  onColor: Link.onColors.Primary,
+  onSurface: Link.onSurfaces.Background,
 };
 
 link.argTypes = {

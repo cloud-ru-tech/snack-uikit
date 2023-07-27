@@ -1,4 +1,4 @@
-import { OnColor } from '@snack-ui/linkonsurface-private';
+import { OnColor } from '@snack-ui/link';
 
 export enum Appearance {
   Neutral = 'neutral',
