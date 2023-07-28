@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.6 (2023-07-28)
+
+### Only dependencies have been changed
+* [@snack-ui/popover@0.2.12](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-ui/typography@0.2.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+
+
+
+
+
 ## 0.1.5 (2023-07-05)
 
 ### Only dependencies have been changed

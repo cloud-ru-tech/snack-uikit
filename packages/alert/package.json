@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/alert",
   "title": "Alert",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -30,8 +30,8 @@
   "scripts": {},
   "dependencies": {
     "@snack-ui/icons": "0.9.0",
-    "@snack-ui/link": "0.4.0",
-    "@snack-ui/truncate-string": "0.1.2",
+    "@snack-ui/link": "0.4.1",
+    "@snack-ui/truncate-string": "0.1.3",
     "@snack-ui/utils": "1.2.0"
   }
 }

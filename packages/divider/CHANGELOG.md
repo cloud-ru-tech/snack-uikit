@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.4 (2023-07-28)
+
+**Note:** Version bump only for package @snack-ui/divider
+
+
+
+
+
 ## 1.1.3 (2023-06-20)
 
 ### Only dependencies have been changed

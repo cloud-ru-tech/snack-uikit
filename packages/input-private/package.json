@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/input-private",
   "title": "Input Private",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "sideEffects": [
     "*.css",
     "*.woff",

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.9 (2023-07-28)
+
+### Only dependencies have been changed
+* [@snack-ui/typography@0.2.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+
+
+
+
+
 ## 0.2.8 (2023-07-26)
 
 ### Only dependencies have been changed
