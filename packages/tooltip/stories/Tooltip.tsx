@@ -54,4 +54,7 @@ tooltip.parameters = {
     type: 'figma',
     url: 'https://www.figma.com/file/PsHlbVIIO6j4VTPvr1uPJH/Tooltip',
   },
+  a11y: {
+    element: `.${styles.story}`,
+  },
 };

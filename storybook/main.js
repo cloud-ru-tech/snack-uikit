@@ -48,6 +48,7 @@ const mainConfig = {
     '@sbercloud/ft-storybook-brand-addon',
     'storybook-dark-mode',
     '@storybook/addon-links',
+    '@storybook/addon-a11y',
   ],
   staticDirs: [
     { from: '../storybook/assets', to: '/storybook/assets' },

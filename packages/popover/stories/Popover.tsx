@@ -54,4 +54,7 @@ popover.parameters = {
     type: 'figma',
     url: 'https://www.figma.com/file/hu0fp2FpkK1tVf8YSwCqmT/Popover',
   },
+  a11y: {
+    element: `.${styles.story}`,
+  },
 };
