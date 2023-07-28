@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2023-07-28)
+
+
+### Bug Fixes
+
+* **FF-0000:** closeButton storybook, width alertTopButton ([f9d47b6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f9d47b6cc277f3d1fbad639c93e2d12fb3bf8fb0))
+
+
+
+
+
 # 0.2.0 (2023-07-28)
 
 
