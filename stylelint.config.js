@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['stylelint-config-recommended-scss', 'stylelint-config-recess-order'],
+  extends: ['stylelint-config-recommended-scss', 'stylelint-config-clean-order'],
   plugins: ['stylelint-scss'],
   rules: {
     'color-no-hex': [
