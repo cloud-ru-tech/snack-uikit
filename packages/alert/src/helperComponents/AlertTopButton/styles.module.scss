@@ -4,13 +4,13 @@
 $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
 .alertTopButton {
-    
     box-sizing: border-box;
     display: flex;
     align-items: center;
     padding: 0;
     margin: 0;
     margin-left: auto;
+    white-space: nowrap;
     cursor: pointer;
     background: none;
     border: 0;

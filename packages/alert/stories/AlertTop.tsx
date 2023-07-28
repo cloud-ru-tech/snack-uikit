@@ -32,7 +32,7 @@ type StoryProps = AlertTopProps & { showCloseButton?: boolean };
 
 const Template: StoryFn<StoryProps> = ({ ...args }: StoryProps) => (
   <div className={styles.wrapper}>
-    <AlertTop {...args} />
+    <AlertTop {...args} onClose={args.showCloseButton ? args.onClose : undefined} />
   </div>
 );
 
