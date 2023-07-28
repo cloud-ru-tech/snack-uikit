@@ -1,11 +1,11 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tooltip';
 
 .tooltipContainer {
+  @include composite-var($tooltip-container);
+
   overflow: hidden;
   color: simple-var($theme-variables, 'sys', 'invert-neutral', 'text-main');
   background-color: simple-var($theme-variables, 'sys', 'invert-neutral', 'background');
-
-  @include composite-var($tooltip-container);
 }
 
 .tooltipArrow {

@@ -2,54 +2,55 @@
 
 @font-face {
   font-family: 'SB Sans Interface';
-  font-style: normal;
   font-weight: 300;
+  font-style: normal;
+  font-display: swap;
   src: url('./fonts/SBSansUI-Light.otf') format('opentype');
-  font-display: swap;
 }
 
 @font-face {
   font-family: 'SB Sans Interface';
-  font-style: normal;
   font-weight: normal;
+  font-style: normal;
+  font-display: swap;
   src: url('./fonts/SBSansUI-Regular.otf') format('opentype');
-  font-display: swap;
 }
 
 @font-face {
   font-family: 'SB Sans Interface';
-  font-style: normal;
   font-weight: 600;
-  src: url('./fonts/SBSansUI-Semibold.otf') format('opentype');
+  font-style: normal;
   font-display: swap;
+  src: url('./fonts/SBSansUI-Semibold.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'SB Sans Interface';
-  font-style: normal;
   font-weight: bold;
+  font-style: normal;
+  font-display: swap;
   src: url('./fonts/SBSansUI-Bold.otf') format('opentype');
-  font-display: swap;
 }
 
 @font-face {
   font-family: 'SB Sans Text Mono';
-  font-style: normal;
   font-weight: bold;
-  src: url('./fonts/SBSansTextMono-Bold.otf') format('opentype');
+  font-style: normal;
   font-display: swap;
+  src: url('./fonts/SBSansTextMono-Bold.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'SB Sans Text Mono';
-  font-style: normal;
   font-weight: normal;
-  src: url('./fonts/SBSansTextMono-Regular.otf') format('opentype');
+  font-style: normal;
   font-display: swap;
+  src: url('./fonts/SBSansTextMono-Regular.otf') format('opentype');
 }
 
 body {
   @include composite-var($sans-body-s);
+
   box-sizing: border-box;
   color: var($sys-neutral-text-main);
   background-color: var($sys-neutral-background);

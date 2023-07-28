@@ -6,10 +6,10 @@ $colors: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet
 $on-surfaces: 'background', 'decor', 'accent';
 
 .link {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  cursor: pointer;
 
   @each $on-surface in $on-surfaces {
     &[data-on-surface='#{$on-surface}'] {
@@ -24,8 +24,9 @@ $on-surfaces: 'background', 'decor', 'accent';
             }
             &:focus-visible {
               @include outline-var($container-focused-s);
-              outline-color: var($sys-available-on-complementary);
+
               opacity: var($opacity-a080);
+              outline-color: var($sys-available-on-complementary);
             }
           }
 
@@ -37,6 +38,7 @@ $on-surfaces: 'background', 'decor', 'accent';
             }
             &:focus-visible {
               @include outline-var($container-focused-s);
+
               color: simple-var($theme-variables, 'sys', $color, 'text-main');
               outline-color: var($sys-available-complementary);
             }

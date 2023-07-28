@@ -20,12 +20,15 @@ $typography: (
 }
 
 .toggleChipInput {
+  pointer-events: none;
+
   position: absolute;
   top: 0;
   left: 0;
+
   width: 0;
   height: 0;
-  pointer-events: none;
+
   opacity: 0;
 
   &:focus-visible + .toggleChipContent {
@@ -43,14 +46,16 @@ $typography: (
 }
 
 .toggleChip {
+  @include chip-anatomy-styles($toggle-chip, $sizes, $typography, toggleChipContent);
+
   position: relative;
-  padding: 0;
+
   margin: 0;
+  padding: 0;
+
   border: none;
   outline: 0;
   outline-offset: 0;
-
-  @include chip-anatomy-styles($toggle-chip, $sizes, $typography, toggleChipContent);
 
   &:hover {
     .toggleChipContent {

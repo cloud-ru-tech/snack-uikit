@@ -12,14 +12,14 @@ $sizes: 's', 'm', 'l';
 }
 
 .arrowContainer {
+  @include popover-arrow-sizes;
+
   position: absolute;
   padding-left: simple-var($theme-variables, 'space', 'popover-pointer', 'offset');
-
-  @include popover-arrow-sizes;
 }
 
 .arrowElement {
-  fill: currentColor;
-
   @include composite-var($popover-pointer-arrow);
+
+  fill: currentColor;
 }

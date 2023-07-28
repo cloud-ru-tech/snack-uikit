@@ -21,23 +21,27 @@ $typography: (
     &[data-type='#{$type}'] {
       @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-default'));
       @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-default'));
+
       border-color: simple-var($theme-variables, 'sys', $type, 'accent-default');
 
       &:hover {
         @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
         @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+
         border-color: simple-var($theme-variables, 'sys', $type, 'accent-hovered');
       }
 
       &:focus-visible {
         @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
         @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+
         border-color: simple-var($theme-variables, 'sys', $type, 'accent-hovered');
       }
 
       &:active {
         @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
         @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
+
         border-color: simple-var($theme-variables, 'sys', $type, 'accent-pressed');
       }
 
@@ -45,12 +49,14 @@ $typography: (
       &[data-disabled] {
         @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
         @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
+
         border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
       }
 
       &[data-loading] {
         @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
         @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
+
         border-color: simple-var($theme-variables, 'sys', $type, 'accent-pressed');
       }
     }

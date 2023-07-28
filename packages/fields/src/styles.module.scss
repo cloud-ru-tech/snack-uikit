@@ -11,9 +11,12 @@ $icon-sizes: (
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+
   margin: 0;
+  padding: 0;
+
   color: var($sys-neutral-text-light);
+
   background-color: transparent;
   border: none;
 
@@ -29,8 +32,8 @@ $icon-sizes: (
   }
 
   &:hover {
-    color: var($sys-neutral-text-support);
     cursor: pointer;
+    color: var($sys-neutral-text-support);
   }
 
   &:focus-visible {
@@ -46,7 +49,7 @@ $icon-sizes: (
   }
 
   &[data-disabled] {
-    color: var($sys-neutral-text-disabled);
     cursor: not-allowed;
+    color: var($sys-neutral-text-disabled);
   }
 }

@@ -5,8 +5,8 @@ $roles: 'display', 'headline', 'title', 'label', 'body';
 $sizes: 's', 'm', 'l';
 
 .typography {
-  padding: 0;
   margin: 0;
+  padding: 0;
 
   @each $family in $families {
     &[data-family='#{$family}'] {

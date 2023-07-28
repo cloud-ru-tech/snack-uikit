@@ -8,16 +8,19 @@ $types: 'primary', 'secondary';
 }
 
 .scrollContainer {
-  max-width: 100%;
   overflow-x: scroll;
   overflow-y: visible;
+  max-width: 100%;
 }
 
 .tabsRow {
   position: relative;
+
   display: flex;
   flex-direction: row;
+
   width: fit-content;
+
   white-space: nowrap;
   &[data-type=primary] {
     @include composite-var($tabs-primary);

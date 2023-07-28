@@ -21,23 +21,27 @@ $typography: (
     &[data-type='#{$type}'] {
       @include label-color(simple-var($theme-variables, 'sys', $type, 'text-support'));
       @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-support'));
+
       background-color: simple-var($theme-variables, 'sys', $type, 'decor-default');
 
       &:hover {
         @include label-color(simple-var($theme-variables, 'sys', $type, 'text-main'));
         @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-main'));
+
         background-color: simple-var($theme-variables, 'sys', $type, 'decor-hovered');
       }
 
       &:focus-visible {
         @include label-color(simple-var($theme-variables, 'sys', $type, 'text-main'));
         @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-main'));
+
         background-color: simple-var($theme-variables, 'sys', $type, 'decor-hovered');
       }
 
       &:active {
         @include label-color(simple-var($theme-variables, 'sys', $type, 'text-main'));
         @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-main'));
+
         background-color: simple-var($theme-variables, 'sys', $type, 'decor-activated');
       }
 
@@ -45,12 +49,14 @@ $typography: (
       &[data-disabled] {
         @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
         @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
+
         background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
       }
 
       &[data-loading] {
         @include label-color(simple-var($theme-variables, 'sys', $type, 'text-main'));
         @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-main'));
+
         background-color: simple-var($theme-variables, 'sys', $type, 'decor-activated');
       }
     }

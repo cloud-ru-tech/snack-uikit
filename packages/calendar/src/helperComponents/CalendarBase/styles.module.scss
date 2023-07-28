@@ -3,26 +3,28 @@
 $sizes: 's', 'm';
 
 .calendar {
-  box-sizing: border-box;
-  display: inline-flex;
-  flex-direction: column;
-  max-width: 100%;
-  max-height: 100%;
   --min-width-s: 240px;
   --min-height-s: 256px;
   --min-width-m: 280px;
   --min-height-m: 308px;
+
+  display: inline-flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+
+  &[data-fit-to-container] {
+    width: 100%;
+    height: 100%;
+  }
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       min-width: var(--min-width-#{$size});
       min-height: var(--min-height-#{$size});
     }
-  }
-
-  &[data-fit-to-container] {
-    width: 100%;
-    height: 100%;
   }
 }
 

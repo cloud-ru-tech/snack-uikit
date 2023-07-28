@@ -6,7 +6,6 @@ $sizes: 'xs', 's';
 .separator {
   display: flex;
   align-items: center;
-
   color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
 
   @each $size in $sizes {

@@ -18,11 +18,13 @@ $key-typography: (
 );
 
 .counter {
-  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
   width: max-content;
+
   border: 0 solid transparent;
 
   @each $appearance in $appearances {
@@ -35,9 +37,9 @@ $key-typography: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      min-width: simple-var($theme-variables, 'size', 'counter', $size, 'minimal-width');
-
       @include composite-var($value-typography, $size);
+
+      min-width: simple-var($theme-variables, 'size', 'counter', $size, 'minimal-width');
 
       .plus {
         @include composite-var($plus-typography, $size);

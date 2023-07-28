@@ -1,9 +1,9 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-dropList';
 
 .droplistContainer {
+  @include composite-var($drop-list-container);
+
   overflow: hidden;
   background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
   box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level4');
-
-  @include composite-var($drop-list-container);
 }

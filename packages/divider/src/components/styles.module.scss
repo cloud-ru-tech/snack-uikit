@@ -7,16 +7,17 @@ $weights: (
 
 .root {
   flex-shrink: 0;
-  margin: 0;
   box-sizing: border-box;
+  margin: 0;
 
   .divider {
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
-    border: none;
     margin: 0;
-    box-sizing: border-box;
+
     background-color: var($sys-neutral-decor-default);
+    border: none;
   }
 
   @each $weightAlias, $size in $weights {

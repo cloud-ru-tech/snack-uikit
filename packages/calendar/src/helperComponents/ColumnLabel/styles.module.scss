@@ -7,11 +7,13 @@ $typography: (
 );
 
 .wrapper {
+  cursor: default;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   color: simple-var($sys-neutral-text-disabled);
-  cursor: default;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {

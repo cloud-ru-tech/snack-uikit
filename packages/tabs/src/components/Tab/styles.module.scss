@@ -5,23 +5,29 @@ $types: 'primary', 'secondary';
 
 @mixin increasedClickArea($gap) {
   &::after {
+    content: ' ';
+
     position: absolute;
     top: 0;
     right: calc(#{$gap} / -2);
     bottom: 0;
     left: calc(#{$gap} / -2);
-    content: ' ';
   }
 }
 
 .tab {
+  cursor: pointer;
+
   position: relative;
+
   display: inline-flex;
   flex-direction: row;
   align-items: center;
+
   padding: 0;
+
   color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
-  cursor: pointer;
+
   background-color: transparent;
   border-width: 0;
   outline: none;
@@ -43,8 +49,8 @@ $types: 'primary', 'secondary';
   }
 
   &:disabled {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
     cursor: not-allowed;
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
   }
 
   & .container {
@@ -56,6 +62,7 @@ $types: 'primary', 'secondary';
   &:focus-visible {
     & .container {
       @include outline-var($container-focused-s);
+
       outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
     }
     &[data-selected=true] .container {

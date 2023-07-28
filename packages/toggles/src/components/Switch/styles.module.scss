@@ -41,9 +41,11 @@ $switchAnimationDuration: .1s;
 .containerFlag {
   position: absolute;
   left: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   transition-timing-function: linear;
   transition-duration: $switchAnimationDuration;
   transition-property: left;
@@ -76,11 +78,15 @@ $switchAnimationDuration: .1s;
   position: absolute;
   top: 50%;
   left: 50%;
-  display: flex;
-  color: simple-var($theme-variables, 'sys', 'neutral', 'accent-default');
-  fill: transparent;
-  transition: opacity $switchAnimationDuration linear;
   transform: translate(-50%, -50%);
+
+  display: flex;
+
+  color: simple-var($theme-variables, 'sys', 'neutral', 'accent-default');
+
+  fill: transparent;
+
+  transition: opacity $switchAnimationDuration linear;
   
   &[data-hover=true] {
     color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
@@ -101,6 +107,7 @@ $switchAnimationDuration: .1s;
 
 .flag_icon_off {
   @include flagIcon();
+
   opacity: 1;
   &[data-checked=true] {
     opacity: 0;
@@ -109,6 +116,7 @@ $switchAnimationDuration: .1s;
 
 .flag_icon_on {
   @include flagIcon();
+
   opacity: 0;
   &[data-checked=true] {
     opacity: 1;

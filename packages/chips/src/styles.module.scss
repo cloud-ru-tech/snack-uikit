@@ -3,17 +3,22 @@
 $variants: 'label-only', 'icon-before';
 
 @mixin chip-defaults {
+  cursor: pointer;
+
   position: relative;
-  box-sizing: border-box;
+
   display: inline-flex;
   align-items: center;
+
+  box-sizing: border-box;
   width: max-content;
   min-width: max-content;
-  padding: 0;
   margin: 0;
+  padding: 0;
+
   text-decoration: none;
   text-transform: none;
-  cursor: pointer;
+
   border-style: solid;
   outline: 0;
   outline-offset: 0;
@@ -84,9 +89,11 @@ $variants: 'label-only', 'icon-before';
       position: absolute;
       top: 0;
       left: 0;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       width: 100%;
       height: 100%;
     }
@@ -101,8 +108,8 @@ $variants: 'label-only', 'icon-before';
 }
 
 @mixin chip-disabled($bgColor: null, $excludeBorder: null) {
-  color: simple-var($theme-variables, 'sys', 'neutral', 'text-light');
   cursor: not-allowed;
+  color: simple-var($theme-variables, 'sys', 'neutral', 'text-light');
   background-color: if($bgColor, $bgColor, simple-var($theme-variables, 'sys', 'neutral', 'background'));
 
   @if not $excludeBorder {

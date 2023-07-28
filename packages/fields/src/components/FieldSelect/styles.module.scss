@@ -32,15 +32,19 @@ $icons-sizes: (
 }
 
 .displayValue {
+  pointer-events: none;
+
   position: absolute;
   top: 0;
   left: 0;
-  box-sizing: border-box;
+
+  overflow: hidden;
   display: flex;
   align-items: center;
+
+  box-sizing: border-box;
   height: 100%;
-  overflow: hidden;
-  pointer-events: none;
+
   border: none;
   outline: none;
 }
@@ -64,8 +68,8 @@ $icons-sizes: (
             --margin-right: calc(#{simple-var($fields, $variant, $size, 'padding-right')} + #{simple-var($fields, $variant, $size, 'gap')} + var(--postfix-width));
 
             width: calc(100% - var(--margin-right));
-            padding-left: simple-var($fields, $variant, $size, 'padding-left');
             margin-right: var(--margin-right);
+            padding-left: simple-var($fields, $variant, $size, 'padding-left');
             border-radius: simple-var($fields, $variant, $size, 'border-radius');
           }
         }

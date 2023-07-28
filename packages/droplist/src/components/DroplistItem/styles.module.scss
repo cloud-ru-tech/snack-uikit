@@ -51,6 +51,7 @@ $typography: (
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   width: simple-var($icon-s);
   height: simple-var($icon-s);
 
@@ -67,21 +68,23 @@ $typography: (
 }
 
 .markerContainer {
+  @include composite-var($drop-list, 'item', 'marker-container');
+
+  pointer-events: none;
+
   position: absolute;
   top: 0;
   left: 0;
+
   box-sizing: border-box;
   height: 100%;
-  pointer-events: none;
-
-  @include composite-var($drop-list, 'item', 'marker-container');
 
   &:before {
+    @include composite-var($drop-list, 'item', 'marker');
+
+    content: '';
     display: block;
     height: 100%;
-    content: '';
-
-    @include composite-var($drop-list, 'item', 'marker');
   }
 }
 
@@ -91,9 +94,9 @@ $typography: (
 }
 
 .container {
+  cursor: pointer;
   position: relative;
   box-sizing: border-box;
-  cursor: pointer;
   background-color: simple-var($sys-neutral-background2-level);
 
   @each $size in $sizes {
@@ -124,6 +127,7 @@ $typography: (
 
   &:focus-visible {
     @include outline-inside-var($container-focused-s);
+
     background-color: simple-var($sys-primary-background);
   }
 
@@ -149,17 +153,21 @@ $typography: (
 }
 
 .input {
+  pointer-events: none;
+
   position: absolute;
   top: 0;
   left: 0;
+
   width: 0;
   height: 0;
-  pointer-events: none;
+
   opacity: 0;
 
   &:focus-visible {
     + .container {
       @include outline-inside-var($container-focused-s);
+
       background-color: simple-var($sys-primary-background);
     }
   }

@@ -12,7 +12,9 @@ $typography: (
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   color: simple-var($sys-neutral-text-main);
+
   background: none;
   border: none;
 
@@ -26,6 +28,7 @@ $typography: (
 
     &:focus-visible {
       @include outline-inside-var($container-focused-s);
+
       outline-color: simple-var($sys-available-complementary);
     }
   }

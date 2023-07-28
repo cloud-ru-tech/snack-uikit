@@ -1,10 +1,10 @@
 $sizes: 's', 'm';
 
 @mixin container($component) {
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {

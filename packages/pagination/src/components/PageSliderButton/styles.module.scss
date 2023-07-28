@@ -2,84 +2,86 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
 .pageButtonSlider {
-  box-sizing: border-box;
+  @include composite-var($pagination-page-button-slider-container);
+
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
   width: max-content;
-  padding: 0;
   margin: 0;
-  cursor: pointer;
+  padding: 0;
+
   background-color: transparent;
   border: 0 solid transparent;
   outline: 0;
   outline-offset: 0;
 
-  @include composite-var($pagination-page-button-slider-container);
-
   .pageButtonSliderDot {
-    background-color: var($sys-neutral-decor-default);
-
     @include composite-var($pagination-page-button-slider-dot-page-default);
+
+    background-color: var($sys-neutral-decor-default);
   }
 
   &:hover {
     .pageButtonSliderDot {
-      background-color: var($sys-neutral-accent-hovered);
-
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
+
+      background-color: var($sys-neutral-accent-hovered);
     }
   }
 
   &:focus-visible {
     .pageButtonSliderDot {
       @include outline-var($container-focused-s);
+      @include composite-var($pagination-page-button-slider-dot-page-default);
 
       background-color: var($sys-neutral-accent-hovered);
       outline-color: var($sys-primary-accent-default);
       outline-offset: var($spacing-state-focus-offset);
-
-      @include composite-var($pagination-page-button-slider-dot-page-default);
     }
   }
 
   &:active {
     .pageButtonSliderDot {
-      background-color: var($sys-primary-accent-pressed);
-
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
+
+      background-color: var($sys-primary-accent-pressed);
     }
   }
 
 
   &[data-activated] {
     .pageButtonSliderDot {
-      background-color: var($sys-primary-accent-default);
-
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
+
+      background-color: var($sys-primary-accent-default);
     }
 
     &:hover {
       .pageButtonSliderDot {
-        background-color: var($sys-primary-accent-hovered);
-
         @include composite-var($pagination-page-button-slider-dot-page-interactions);
+
+        background-color: var($sys-primary-accent-hovered);
       }
     }
 
     &:focus-visible {
       .pageButtonSliderDot {
-        background-color: var($sys-primary-accent-hovered);
-
         @include composite-var($pagination-page-button-slider-dot-page-interactions);
+
+        background-color: var($sys-primary-accent-hovered);
       }
     }
 
     &:active {
       .pageButtonSliderDot {
-        background-color: var($sys-neutral-accent-default);
-
         @include composite-var($pagination-page-button-slider-dot-page-default);
+
+        background-color: var($sys-neutral-accent-default);
       }
     }
   }

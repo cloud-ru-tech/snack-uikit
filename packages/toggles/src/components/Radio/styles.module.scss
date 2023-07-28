@@ -10,7 +10,9 @@ $sizes: 's', 'm';
 
 .box {
   position: relative;
+
   box-sizing: border-box;
+
   background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
   border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
   border-style: solid; // это наверное должно быть в композитном токене box
@@ -48,8 +50,9 @@ $sizes: 's', 'm';
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
   transform: translate(-50%, -50%);
+
+  background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
 
   &[data-hover=true] {
     background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');

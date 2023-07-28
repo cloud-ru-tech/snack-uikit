@@ -3,11 +3,13 @@
 $sizes: 's', 'm';
 
 .toggleLayout {
+  cursor: pointer;
+
   display: inline-flex;
   flex-direction: row;
   align-items: center;
+
   max-width: 100%;
-  cursor: pointer;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
@@ -31,15 +33,16 @@ $sizes: 's', 'm';
   }
 
   &__label {
+    overflow: hidden;
     flex-grow: 0;
     flex-shrink: 1;
-    overflow: hidden;
+
     text-overflow: ellipsis;
     white-space: nowrap;
 
   }
   &[data-disabled=true] {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
     cursor: not-allowed;
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
   }
 }

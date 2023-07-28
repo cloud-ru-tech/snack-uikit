@@ -93,16 +93,19 @@ $appearances: (
 );
 
 .tag {
-  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
+  box-sizing: border-box;
 
   .tagButton {
-    position: relative;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
     cursor: pointer;
+
+    position: relative;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
     background: none;
     border: none;
 

@@ -26,8 +26,8 @@ $padding-right: (
       --row-height: #{simple-var($theme-variables, 'sans', 'body', $size, 'line-height')};
 
       .textarea {
-        padding-right: calc(simple-var($padding-right, $size, 'width') + simple-var($fields-scroll-bar-width, 'width'));
         overflow: hidden;
+        padding-right: calc(simple-var($padding-right, $size, 'width') + simple-var($fields-scroll-bar-width, 'width'));
       }
 
       .postfix {

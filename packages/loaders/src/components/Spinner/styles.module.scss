@@ -5,12 +5,7 @@ $sizes: 'xs', 's', 'm', 'l';
 .spinner {
   pointer-events: none;
   stroke: currentColor;
-
-  @each $size in $sizes {
-    &[data-size="#{$size}"] {
-      @include composite-var($loader, 'spiner', $size);
-    }
-  }
+  animation: spin 1s ease-in-out infinite;
 
   & > mask {
     mask-type: alpha;
@@ -20,7 +15,11 @@ $sizes: 'xs', 's', 'm', 'l';
     fill: currentColor;
   }
 
-  animation: spin 1s ease-in-out infinite;
+  @each $size in $sizes {
+    &[data-size="#{$size}"] {
+      @include composite-var($loader, 'spiner', $size);
+    }
+  }
 
   @keyframes spin {
     to {

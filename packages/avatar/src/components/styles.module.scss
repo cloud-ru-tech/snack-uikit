@@ -11,6 +11,8 @@ $typography: (
   'l': $sans-headline-m,
   'xl': $sans-display-s,
   'xxl': $sans-display-m
+
+  
 );
 
 .avatar {
@@ -42,9 +44,10 @@ $typography: (
 .image {
   width: 100%;
   height: 100%;
-  border-radius: inherit;
+
   object-fit: cover;
   object-position: center;
+  border-radius: inherit;
 }
 
 .indicatorWrapper {

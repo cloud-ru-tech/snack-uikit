@@ -9,10 +9,10 @@ $sizes: (
 );
 
 .decor {
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 
   &[data-decor] {
     @each $appearance in $appearances {

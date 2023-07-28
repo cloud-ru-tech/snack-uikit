@@ -1,15 +1,15 @@
 .text1Line {
-  display: block;
   overflow: hidden;
+  display: block;
   text-overflow: ellipsis;
   white-space: nowrap
 }
 
 .text2AndMoreLines {
+  overflow: hidden;
   display: -webkit-box;
 
   margin: 0;
-  overflow: hidden;
 
   text-overflow: ellipsis;
   word-break: initial;

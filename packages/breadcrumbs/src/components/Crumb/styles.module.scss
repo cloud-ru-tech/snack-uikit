@@ -15,11 +15,14 @@ $sizes: 'xs', 's';
 .crumb {
   display: flex;
   align-items: center;
+
   width: 100%;
-  padding: 0;
   margin: 0;
+  padding: 0;
+
   color: simple-var($theme-variables, 'sys', 'neutral', 'text-light');
   text-decoration: none;
+
   background: none;
   border: none;
 
@@ -39,6 +42,7 @@ $sizes: 'xs', 's';
 
   &:focus-visible {
     @include outline-var($container-focused-s);
+
     outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
   }
 
@@ -56,8 +60,8 @@ $sizes: 'xs', 's';
   }
 
   .label {
-    width: 100%;
     overflow: hidden;
+    width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
   }

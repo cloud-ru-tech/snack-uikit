@@ -7,6 +7,7 @@ $icons: ('star': 'yellow', 'heart': 'red');
 
 .container {
   @include container('favourite');
+
   outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
   &[data-checked=true] {
     outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');

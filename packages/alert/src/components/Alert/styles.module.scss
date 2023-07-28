@@ -5,12 +5,12 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
 
 
 .alert {
-  box-sizing: border-box;
+  @include composite-var($alert-container-container);
+
   display: flex;
+  box-sizing: border-box;
   min-width: 256px;
   border: 2px solid;
-
-  @include composite-var($alert-container-container);
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
@@ -21,30 +21,31 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
 }
 
 .title {
-  color: var($sys-neutral-text-main);
-
   @include composite-var($sans-title-s);
+
+  color: var($sys-neutral-text-main);
 }
 
 .textlayout {
   @include composite-var($alert-container-text-layout);
+
   overflow: hidden;
 }
 
 .description {
+  @include composite-var($sans-body-m);
+
   color: var($sys-neutral-text-support);
   word-wrap: break-word;
-
-  @include composite-var($sans-body-m);
 }
 
 .content {
+  @include composite-var($alert-container-content-layout);
+
   display: flex;
   flex: 1;
   flex-direction: column;
   min-width: 0;
-
-  @include composite-var($alert-container-content-layout);
 }
 
 .icon {
@@ -56,15 +57,17 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
 }
 
 .closeButton {
+  @include composite-var($alert-button-button-close);
+
+  cursor: pointer;
+
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
   margin-left: auto;
-  cursor: pointer;
+  padding: 0;
+
   background: none;
   border: none;
-
-  @include composite-var($alert-button-button-close);
 
   @each $color in $colors { 
     &[data-color='#{$color}'] {
@@ -75,9 +78,9 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
       }
     
       &:focus-visible {
-        color: simple-var($theme-variables, 'sys', $color, 'text-support');
-
         @include outline-var($container-focused-s);
+
+        color: simple-var($theme-variables, 'sys', $color, 'text-support');
         
         @if $color == 'neutral'{
           outline-color: var($sys-available-complementary);

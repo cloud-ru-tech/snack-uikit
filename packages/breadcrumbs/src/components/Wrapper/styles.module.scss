@@ -4,16 +4,19 @@ $sizes: 'xs', 's';
 
 .wrapper[data-hidden='true'] {
   position: absolute;
+
+  overflow: hidden;
+
   width: 1px;
   height: 1px;
-  overflow: hidden;
+
   opacity: 0;
 }
 
 .row {
   display: flex;
-  padding: 0;
   margin: 0;
+  padding: 0;
 
   &[data-hidden='true'] {
     display: inline-flex;

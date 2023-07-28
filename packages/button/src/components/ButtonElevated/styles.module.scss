@@ -15,23 +15,27 @@ $icon-sizes: (
 
 @mixin button-colors-styles {
   @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-support'));
+
   background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
   box-shadow: simple-var($theme-variables, 'box-shadow','elevation', 'level2');
 
   &:hover {
     @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-main'));
+
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
     box-shadow: simple-var($theme-variables, 'box-shadow','elevation', 'level3');
   }
 
   &:focus-visible {
     @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-main'));
+
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
     box-shadow: simple-var($theme-variables, 'box-shadow','elevation', 'level3');
   }
 
   &:active {
     @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-support'));
+
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'background');
     box-shadow: none;
   }
@@ -39,12 +43,14 @@ $icon-sizes: (
   &:disabled,
   &[data-disabled] {
     @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
+
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
     box-shadow: none;
   }
 
   &[data-loading] {
     @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-main'));
+
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'background');
     box-shadow: none;
   }
@@ -53,6 +59,7 @@ $icon-sizes: (
 @mixin button-outline-colors-styles {
   &:focus-visible {
     @include outline-var($container-focused-s);
+
     outline-color: var($sys-available-complementary);
   }
 }

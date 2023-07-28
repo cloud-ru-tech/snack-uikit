@@ -11,10 +11,10 @@ $sizes: 's', 'xs';
 }
 
 .progressBarContainer {
-  background-color: var($sys-neutral-decor-default);
-
   @include progress-anatomy-styles
-}
+;
+
+  background-color: var($sys-neutral-decor-default);}
 
 .progressBarFiller {
   width: var(--progress);

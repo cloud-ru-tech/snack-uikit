@@ -1,19 +1,24 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
 .button {
+  cursor: pointer;
+
   position: relative;
-  box-sizing: border-box;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
   width: max-content;
   min-width: max-content;
-  padding: 0;
   margin: 0;
+  padding: 0;
+
   color: transparent;
   text-decoration: none;
   text-transform: none;
-  cursor: pointer;
+
   background-color: transparent;
   border: 0 solid transparent;
   outline: 0;

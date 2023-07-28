@@ -1,10 +1,10 @@
 @import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
 
 .pageWrapper {
+  overflow-x: auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow-x: auto;
 }
 
 .wrapper {
@@ -12,9 +12,11 @@
   gap: 8px;
   align-items: center;
   justify-content: center;
+
   width: max-content;
   height: 160px;
   padding: 0 24px;
+
   background-color: var($sys-neutral-background1-level);
   border: 1px solid var($sys-neutral-decor-default);
   border-radius: var($dimension-050m);
@@ -31,7 +33,9 @@ $border-width: 0.5px;
 .table {
   display: inline-grid;
   grid-template-columns: repeat(2, max-content);
+
   width: max-content;
+
   background-color: var($sys-neutral-background1-level);
   border: $border-width solid var($sys-neutral-decor-default);
 }
@@ -40,7 +44,9 @@ $border-width: 0.5px;
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 8px;
+
   border: $border-width solid var($sys-neutral-decor-disabled);
 }
 

@@ -25,8 +25,8 @@ $footer-typography: (
 }
 
 .header {
-  box-sizing: border-box;
   display: flex;
+  box-sizing: border-box;
   color: simple-var($sys-neutral-text-support);
 
   @each $size in $sizes {
@@ -38,10 +38,10 @@ $footer-typography: (
 }
 
 .labelLayout {
+  @include composite-var($fields-label-label-layout);
+
   display: inline-flex;
   align-items: center;
-
-  @include composite-var($fields-label-label-layout);
 }
 
 .label {
@@ -49,9 +49,9 @@ $footer-typography: (
 }
 
 .footer {
-  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
@@ -66,10 +66,10 @@ $footer-typography: (
 }
 
 .hintLayout {
+  @include composite-var($fields-hint-hint-layout);
+
   display: inline-flex;
   align-items: center;
-
-  @include composite-var($fields-hint-hint-layout);
 }
 
 .hint {
@@ -94,14 +94,14 @@ $footer-typography: (
 }
 
 .icon {
-  box-sizing: content-box;
   flex-shrink: 0;
+  box-sizing: content-box;
   color: simple-var($sys-neutral-text-light);
 }
 
 .hintIcon {
-  box-sizing: content-box;
   flex-shrink: 0;
+  box-sizing: content-box;
 
   &[data-validation="default"] {
     color: simple-var($sys-neutral-text-light);

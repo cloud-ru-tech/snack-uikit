@@ -2,24 +2,28 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
 .pageButton {
-  box-sizing: border-box;
+  @include composite-var($pagination-page-button-container);
+  @include composite-var($sans-label-l);
+
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
   min-width: var($size-pagination-page-button-mininal-width);
-  padding: 0;
   margin: 0;
+  padding: 0;
+
   color: var($sys-neutral-accent-default);
   text-decoration: none;
   text-transform: none;
-  cursor: pointer;
+
   background-color: transparent;
   border: 0 solid transparent;
   outline: 0;
   outline-offset: 0;
-
-  @include composite-var($pagination-page-button-container);
-  @include composite-var($sans-label-l);
 
   &:hover {
     color: var($sys-neutral-text-main);
