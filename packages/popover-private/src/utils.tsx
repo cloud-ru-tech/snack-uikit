@@ -59,7 +59,7 @@ type GetPopoverContentProps = {
   setReference: (node: ReferenceType | null) => void;
 };
 
-export const getPopoverContent = ({
+export const getPopoverTriggerJSX = ({
   children,
   getReferenceProps,
   setReference,

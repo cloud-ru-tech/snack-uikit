@@ -2,8 +2,10 @@ import {
   arrow,
   autoUpdate,
   flip,
+  FloatingNode,
   FloatingPortal,
-  offset as offsetMiddleware,
+  FloatingTree,
+  offset,
   ReferenceType,
   safePolygon,
   shift,
@@ -11,6 +13,8 @@ import {
   useClick,
   useDismiss,
   useFloating,
+  useFloatingNodeId,
+  useFloatingParentNodeId,
   useFocus,
   useHover,
   useInteractions,
@@ -22,7 +26,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { ArrowSize, Placement, PopoverWidthStrategy, Trigger } from '../../constants';
-import { getArrowOffset, getPopoverContent, getPopoverRootElement, getTriggerProps } from '../../utils';
+import { getArrowOffset, getPopoverRootElement, getPopoverTriggerJSX, getTriggerProps } from '../../utils';
 import { Arrow } from '../Arrow';
 import styles from './styles.module.scss';
 
@@ -51,13 +55,13 @@ export type PopoverPrivateProps = WithSupportProps<{
   trigger: Trigger;
   hoverDelayOpen?: number;
   hoverDelayClose?: number;
-  triggerRef?: ForwardedRef<ReferenceType | null>;
+  triggerRef?: ForwardedRef<ReferenceType | HTMLElement | null>;
   widthStrategy?: PopoverWidthStrategy;
   closeOnEscapeKey?: boolean;
   triggerClickByKeys?: boolean;
 }>;
 
-export function PopoverPrivate({
+function PopoverPrivateComponent({
   className,
   triggerClassName,
   children,
@@ -85,15 +89,18 @@ export function PopoverPrivate({
 
   const [isOpen, setIsOpen] = useUncontrolledProp(openProp, false, onOpenChange);
 
+  const nodeId = useFloatingNodeId();
+
   const arrowOffset = getArrowOffset(arrowRef.current);
-  const { x, y, strategy, refs, context, middlewareData, placement } = useFloating({
+  const { floatingStyles, refs, context, middlewareData, placement } = useFloating({
+    nodeId,
     placement: placementProp,
     open: isOpen,
     onOpenChange: setIsOpen,
     whileElementsMounted: autoUpdate,
     middleware: [
       shift(),
-      offsetMiddleware(offsetProp + arrowOffset),
+      offset(offsetProp + arrowOffset),
       hasArrow && arrow({ element: arrowRef }),
       flip(),
       size({
@@ -146,43 +153,56 @@ export function PopoverPrivate({
 
   const { getFloatingProps, getReferenceProps } = useInteractions([dismiss, hover, focus, click]);
 
+  const portal = isOpen && (
+    <FloatingPortal root={getPopoverRootElement()}>
+      <div
+        {...extractSupportProps(rest)}
+        className={className}
+        ref={refs.setFloating}
+        style={floatingStyles}
+        {...getFloatingProps()}
+      >
+        {popoverContent}
+        {middlewareData.arrow && (
+          <Arrow
+            size={arrowSize}
+            placement={placement}
+            x={middlewareData.arrow.x}
+            y={middlewareData.arrow.y}
+            className={arrowClassName}
+            arrowRef={arrowRef}
+          />
+        )}
+      </div>
+    </FloatingPortal>
+  );
+
   return (
-    <>
-      {getPopoverContent({
+    <FloatingNode id={nodeId}>
+      {getPopoverTriggerJSX({
         validElementWrapperClassName: cn(styles.ref, triggerClassName),
         getReferenceProps,
         children,
         setReference,
       })}
-      {isOpen && (
-        <FloatingPortal root={getPopoverRootElement()}>
-          <div
-            {...extractSupportProps(rest)}
-            {...getFloatingProps()}
-            className={className}
-            ref={refs.setFloating}
-            style={{
-              position: strategy,
-              top: y ?? 0,
-              left: x ?? 0,
-            }}
-          >
-            {popoverContent}
-            {middlewareData.arrow && (
-              <Arrow
-                size={arrowSize}
-                placement={placement}
-                x={middlewareData.arrow.x}
-                y={middlewareData.arrow.y}
-                className={arrowClassName}
-                arrowRef={arrowRef}
-              />
-            )}
-          </div>
-        </FloatingPortal>
-      )}
-    </>
+      {portal}
+    </FloatingNode>
   );
+}
+
+export function PopoverPrivate({ children, ...props }: PopoverPrivateProps) {
+  const parentNodeId = useFloatingParentNodeId();
+  const isTreeRoot = parentNodeId === null;
+
+  if (isTreeRoot) {
+    return (
+      <FloatingTree>
+        <PopoverPrivateComponent {...props}>{children}</PopoverPrivateComponent>
+      </FloatingTree>
+    );
+  }
+
+  return <PopoverPrivateComponent {...props}>{children}</PopoverPrivateComponent>;
 }
 
 PopoverPrivate.placements = Placement;
