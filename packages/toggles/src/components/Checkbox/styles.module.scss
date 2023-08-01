@@ -26,6 +26,7 @@ $sizes: 's', 'm';
     }
   }
 
+  &[data-indeterminate=true],
   &[data-checked=true] {
     background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
     border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
@@ -51,9 +52,13 @@ $sizes: 's', 'm';
   position: absolute;
   top: 0;
   left: 0;
+
+  display: none;
+
   color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
 
-  &[data-checked=false] {
-    display: none;
+  &[data-indeterminate=true],
+  &[data-checked=true] {
+    display: block;
   }
 }
