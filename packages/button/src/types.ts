@@ -1,4 +1,10 @@
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEventHandler, ReactElement } from 'react';
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  ReactElement,
+} from 'react';
 
 import { CounterProps } from '@snack-ui/counter';
 
@@ -12,6 +18,7 @@ export type BaseButtonProps = {
   label?: string;
   loading?: boolean;
   onClick?: MouseEventHandler<HTMLElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLElement>;
   size?: Size;
   type?: Type;
   htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type'];

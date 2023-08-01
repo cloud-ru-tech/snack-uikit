@@ -28,6 +28,7 @@ export function ButtonPrivate({
   labelClassName,
   loading,
   onClick,
+  onKeyDown,
   counter,
   size,
   target = Target.Blank,
@@ -70,6 +71,7 @@ export function ButtonPrivate({
     'data-type': type,
     'data-variant': variant,
     onClick: handleClick,
+    onKeyDown,
     tabIndex,
   };
 
