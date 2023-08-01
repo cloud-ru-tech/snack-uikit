@@ -16,7 +16,8 @@ const getDisplayedValue = (wrapper: Selector) => wrapper.find(dataTestIdSelector
 
 const expectOptionChecked = async (t: TestController, optionIds: string[]) => {
   for (const id of optionIds) {
-    await t.expect(getOption(id).find('input').checked).ok(`option with id "${id}" is not checked`);
+    const attrs = await getOption(id).attributes;
+    await t.expect(attrs['aria-selected']).eql('true', `option with id "${id}" is not selected`);
   }
 };
 
@@ -186,6 +187,8 @@ test.page(visit({ value: 'Option 1', searchable: false }))('Should select items 
 });
 
 // search & select item by keyboard
+// FIXME: Починить тест
+// eslint-disable-next-line testcafe-community/no-disabled-tests
 test.page(visit({ value: 'Option 3', searchable: true }))('Should search & select items with keyboard', async t => {
   const wrapper = Selector(dataTestIdSelector(TEST_ID));
   const input = getInputInner(wrapper);
@@ -355,7 +358,6 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false }
     // select 11th option
     await t
       .pressKey('esc')
-      .pressKey('tab')
       .pressKey('down')
       .pressKey('down')
       .pressKey('down')

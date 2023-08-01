@@ -46,7 +46,8 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       copyButtonRef,
       showClearButton,
       showCopyButton,
-      scrollVisible,
+      onDroplistFocusLeave,
+      firstDroplistItemRefCallback,
     } = useList({
       open,
       onOpenChange,
@@ -121,7 +122,8 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
         locale={locale}
         showCopyButton={showCopyButton}
         showClearButton={showClearButton}
-        scrollVisible={scrollVisible}
+        onDroplistFocusLeave={onDroplistFocusLeave}
+        firstDroplistItemRefCallback={firstDroplistItemRefCallback}
       />
     );
   },

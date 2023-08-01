@@ -1,10 +1,16 @@
-import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { forwardRef, KeyboardEvent, KeyboardEventHandler, MouseEventHandler, RefObject, useMemo } from 'react';
+import {
+  forwardRef,
+  KeyboardEvent,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  RefCallback,
+  RefObject,
+  useMemo,
+} from 'react';
 
 import { Droplist } from '@snack-ui/droplist';
 import { InputPrivate } from '@snack-ui/input-private';
-import { Scroll } from '@snack-ui/scroll';
 import { extractSupportProps } from '@snack-ui/utils';
 
 import { ContainerVariant, Size, ValidationState } from '../../constants';
@@ -29,11 +35,12 @@ type BaseProps = Omit<FieldSelectBaseProps, 'open' | 'onOpenChange' | 'options'>
     onInputKeyDown: KeyboardEventHandler<HTMLInputElement>;
     onButtonKeyDown: KeyboardEventHandler<HTMLButtonElement>;
     showClearButton: boolean;
-    scrollVisible: boolean;
     clearButtonRef: RefObject<HTMLButtonElement>;
     copyButtonRef: RefObject<HTMLButtonElement>;
     onClick?: MouseEventHandler<HTMLElement>;
     onContainerPrivateMouseDown?: MouseEventHandler<HTMLElement>;
+    onDroplistFocusLeave: (direction: string) => void;
+    firstDroplistItemRefCallback: RefCallback<HTMLButtonElement>;
   };
 
 type Props =
@@ -86,7 +93,8 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       prefixIcon,
       locale,
       noDataText = locale?.language === 'ru' ? 'Нет данных' : 'No data',
-      scrollVisible,
+      firstDroplistItemRefCallback,
+      onDroplistFocusLeave,
       ...rest
     },
     ref,
@@ -113,14 +121,12 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       onInputKeyDownProp,
     ]);
 
-    const handleOptionKeyDown =
-      (handler: KeyboardEventHandler<HTMLElement>): KeyboardEventHandler<HTMLElement> =>
-      event => {
-        if (event.key === 'Tab') {
-          setInitialTabIndices();
-        }
-        handler(event);
-      };
+    const onFocusLeavHandler = useHandlers([
+      (direction: string) => {
+        if (direction === 'common') setInitialTabIndices();
+      },
+      onDroplistFocusLeave,
+    ]);
 
     return (
       <FieldDecorator
@@ -143,82 +149,72 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
           triggerClassName={styles.trigger}
           triggerClickByKeys={!searchable}
           placement={Droplist.placements.Top}
+          onFocusLeave={onFocusLeavHandler}
+          firstElementRefCallback={firstDroplistItemRefCallback}
           data-test-id='field-select__list'
           {...(readonly || disabled ? { open: false } : { open, onOpenChange })}
-          content={
-            options.length === 0 ? (
-              <Droplist.NoData size={size} label={noDataText} data-test-id='field-select__no-data' />
-            ) : (
-              <Scroll
-                className={cn({
-                  [styles.scrollContainerS]: scrollVisible && size === Size.S,
-                  [styles.scrollContainerM]: scrollVisible && size === Size.M,
-                  [styles.scrollContainerL]: scrollVisible && size === Size.L,
-                })}
-                barHideStrategy={Scroll.barHideStrategies.Never}
-                size={Scroll.sizes.S}
-              >
-                {options.map(option => (
-                  <Item
-                    onChange={onChange(option)}
-                    key={option.value}
-                    size={size}
-                    data-test-id={'field-select__list-option-' + option.value}
-                    {...option}
-                    onKeyDown={handleOptionKeyDown(option.onKeyDown)}
-                    option={option.label}
-                  />
-                ))}
-              </Scroll>
-            )
+          triggerElement={
+            <FieldContainerPrivate
+              className={styles.container}
+              size={size}
+              validationState={validationState}
+              disabled={disabled}
+              readonly={readonly}
+              variant={ContainerVariant.SingleLine}
+              focused={open}
+              selectable={!searchable}
+              inputRef={localRef}
+              prefix={prefixIcon}
+              onMouseDown={onContainerPrivateMouseDown}
+              postfix={
+                <>
+                  {buttons}
+                  <ArrowIcon className={styles.arrowIcon} />
+                </>
+              }
+            >
+              <InputPrivate
+                id={id}
+                name={name}
+                type={InputPrivate.types.Text}
+                placeholder={placeholder}
+                ref={mergeRefs(ref, localRef)}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                disabled={disabled}
+                data-size={size}
+                data-test-id='field-select__input'
+                onKeyDown={onInputKeyDownHandler}
+                onChange={searchable ? onInputValueChange : undefined}
+                readonly={!searchable || readonly}
+                value={inputValue}
+                tabIndex={inputTabIndex}
+              />
+              {displayedValue && (
+                <span
+                  className={styles.displayValue}
+                  data-test-id='field-select__displayed-value'
+                  data-displayed-value={true}
+                >
+                  {displayedValue}
+                </span>
+              )}
+            </FieldContainerPrivate>
           }
         >
-          <FieldContainerPrivate
-            className={styles.container}
-            size={size}
-            validationState={validationState}
-            disabled={disabled}
-            readonly={readonly}
-            variant={ContainerVariant.SingleLine}
-            focused={open}
-            selectable={!searchable}
-            inputRef={localRef}
-            prefix={prefixIcon}
-            onMouseDown={onContainerPrivateMouseDown}
-            postfix={
-              <>
-                {buttons}
-                <ArrowIcon className={styles.arrowIcon} />
-              </>
-            }
-          >
-            <InputPrivate
-              id={id}
-              name={name}
-              type={InputPrivate.types.Text}
-              placeholder={placeholder}
-              ref={mergeRefs(ref, localRef)}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              disabled={disabled}
-              data-size={size}
-              data-test-id='field-select__input'
-              onKeyDown={onInputKeyDownHandler}
-              onChange={searchable ? onInputValueChange : undefined}
-              readonly={!searchable || readonly}
-              value={inputValue}
-              tabIndex={inputTabIndex}
-            />
-            {displayedValue && (
-              <span
-                className={styles.displayValue}
-                data-test-id='field-select__displayed-value'
-                data-displayed-value={true}
-              >
-                {displayedValue}
-              </span>
-            )}
-          </FieldContainerPrivate>
+          {options.length === 0 ? (
+            <Droplist.NoData size={size} label={noDataText} data-test-id='field-select__no-data' />
+          ) : (
+            options.map(option => (
+              <Item
+                onChange={onChange(option)}
+                key={option.value}
+                data-test-id={'field-select__list-option-' + option.value}
+                {...option}
+                option={option.label}
+              />
+            ))
+          )}
         </Droplist>
       </FieldDecorator>
     );

@@ -38,16 +38,14 @@ export function useList({
   const showDropList = isOpen && !readonly && !disabled;
   const showClearButton = !readonly && (showAdditionalButton || inputValue.length > 0);
   const showCopyButton = Boolean(showAdditionalButton && showCopyButtonProp && readonly);
-  const scrollVisible = options.length > 7;
 
-  const { extendedOptions, onInputKeyDown, onButtonKeyDown } = useListNavigation({
-    inputRef: localRef,
-    options: useFilteredOptions({ searchable, options, touched: touched.current, inputValue }),
-    toggleListOpen: setIsOpen,
-    searchable,
-    isChecked,
-    scrollVisible,
-  });
+  const { extendedOptions, onInputKeyDown, onButtonKeyDown, onDroplistFocusLeave, firstDroplistItemRefCallback } =
+    useListNavigation({
+      inputRef: localRef,
+      options: useFilteredOptions({ searchable, options, touched: touched.current, inputValue }),
+      toggleListOpen: setIsOpen,
+      isChecked,
+    });
 
   const handleOpenChange = (value: boolean) => {
     if (!value) {
@@ -80,7 +78,8 @@ export function useList({
     extendedOptions,
     onInputKeyDown,
     onButtonKeyDown,
-    scrollVisible,
     onInputValueChange: handleInputValueChange,
+    firstDroplistItemRefCallback,
+    onDroplistFocusLeave,
   };
 }

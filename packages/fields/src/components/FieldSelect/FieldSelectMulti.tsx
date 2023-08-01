@@ -56,7 +56,8 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
       copyButtonRef,
       showClearButton,
       showCopyButton,
-      scrollVisible,
+      onDroplistFocusLeave,
+      firstDroplistItemRefCallback,
     } = useList({
       open,
       onOpenChange,
@@ -152,7 +153,8 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
         onFocus={handleFocus}
         onBlur={handleBlur}
         onContainerPrivateMouseDown={handlePreventListClose}
-        scrollVisible={scrollVisible}
+        onDroplistFocusLeave={onDroplistFocusLeave}
+        firstDroplistItemRefCallback={firstDroplistItemRefCallback}
       />
     );
   },

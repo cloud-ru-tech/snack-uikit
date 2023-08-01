@@ -1,4 +1,4 @@
-import { KeyboardEventHandler, ReactElement, RefCallback } from 'react';
+import { ReactElement } from 'react';
 
 import { ItemSingleProps } from '@snack-ui/droplist';
 import { InputPrivateProps } from '@snack-ui/input-private';
@@ -17,10 +17,7 @@ export type Option = Pick<ItemSingleProps, 'caption' | 'description' | 'tagLabel
 };
 
 export type ExtendedOption = Option & {
-  ref: RefCallback<HTMLInputElement>;
-  tabIndex: number;
   checked: boolean;
-  onKeyDown: KeyboardEventHandler<HTMLElement>;
 };
 
 type InputProps = Pick<

@@ -13,7 +13,7 @@ import {
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar, CalendarProps } from '@snack-ui/calendar';
-import { Droplist } from '@snack-ui/droplist';
+import { Dropdown } from '@snack-ui/droplist';
 import { CalendarSSVG, CalendarXsSVG } from '@snack-ui/icons';
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
@@ -232,11 +232,11 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
         validationState={validationState}
         {...extractSupportProps(rest)}
       >
-        <Droplist
-          trigger={Droplist.triggers.Click}
+        <Dropdown
+          trigger={Dropdown.triggers.Click}
           className={styles.itemList}
           triggerClassName={styles.trigger}
-          widthStrategy={Droplist.widthStrategies.Gte}
+          widthStrategy={Dropdown.widthStrategies.Gte}
           {...(readonly || disabled
             ? { open: false }
             : {
@@ -299,7 +299,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
               data-test-id='field-date__input'
             />
           </FieldContainerPrivate>
-        </Droplist>
+        </Dropdown>
       </FieldDecorator>
     );
   },
