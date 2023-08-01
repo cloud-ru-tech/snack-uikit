@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { MouseEventHandler, useCallback, useMemo, useState } from 'react';
+import { KeyboardEvent, MouseEventHandler, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Droplist } from '@snack-ui/droplist';
@@ -35,6 +35,7 @@ export function FilterChip({
   const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
   const spinnerSize = size === Size.Xs ? Spinner.sizes.XS : Spinner.sizes.S;
   const isLabelExist = selectionMode === SelectionMode.Multi;
+  const ref = useRef<HTMLButtonElement>(null);
   const [isDroplistOpened, setIsDroplistOpened] = useState(false);
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = e => {
@@ -69,7 +70,7 @@ export function FilterChip({
 
   const Item = selectionMode === SelectionMode.Single ? Droplist.ItemSingle : Droplist.ItemMultiple;
 
-  const items = useMemo(
+  const items: ReactNode = useMemo(
     () =>
       options.map(({ label, value, ...rest }) => {
         const checked = selectedValue.includes(value) || false;
@@ -77,6 +78,7 @@ export function FilterChip({
           if (selectionMode === SelectionMode.Single) {
             setSelectedValue([value]);
             setIsDroplistOpened(false);
+            ref.current?.focus();
           } else {
             if (checked) {
               setSelectedValue(selectedValue.filter(selected => selected !== value));
@@ -99,67 +101,99 @@ export function FilterChip({
     [Item, options, selectedValue, selectionMode, setSelectedValue, testId],
   );
 
+  const [autofocus, setAutofocus] = useState(false);
+
+  const setFirstListElementFocus = (element: HTMLButtonElement | null) => {
+    if (autofocus && element) {
+      element.focus();
+      setAutofocus(false);
+    }
+  };
+
+  const onOpenChangeHandler = (opened: boolean) => !opened && setIsDroplistOpened(false);
+
+  const onKeyDownHandler = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'ArrowDown' || e.key === 'Space') {
+      e.preventDefault();
+      setAutofocus(true);
+      setIsDroplistOpened(true);
+    }
+  };
+
+  const onFocusLeaveHandler = (direction: string) => {
+    if (['common', 'top'].includes(direction)) {
+      ref.current?.focus();
+      setIsDroplistOpened(false);
+    }
+  };
+
   const [singleSelectedOption] = selectedOptions;
 
   return (
     <Droplist
       trigger={Droplist.triggers.Click}
-      content={items}
       open={isDroplistOpened}
-      onOpenChange={opened => !opened && setIsDroplistOpened(false)}
+      firstElementRefCallback={setFirstListElementFocus}
+      onOpenChange={onOpenChangeHandler}
+      onFocusLeave={onFocusLeaveHandler}
       className={styles.droplist}
       widthStrategy={Droplist.widthStrategies.Auto}
-    >
-      <button
-        {...extractSupportProps(rest)}
-        type='button'
-        className={cn(styles.filterChip, className)}
-        data-size={size}
-        data-variant={variant}
-        data-loading={loading || undefined}
-        data-label={isLabelExist || undefined}
-        data-test-id={testId || undefined}
-        disabled={!loading && disabled}
-        onClick={handleClick}
-        tabIndex={tabIndex}
-      >
-        {loading && !isLabelExist && (
-          <span className={styles.spinner} data-test-id='filter-chip__spinner'>
-            <Spinner size={spinnerSize} data-test-id='filter-chip__spinner' />
-          </span>
-        )}
-
-        {variant === Variant.IconBefore && (
-          <span className={styles.icon} data-test-id='filter-chip__icon'>
-            {icon}
-          </span>
-        )}
-
-        {selectionMode === SelectionMode.Single && (
-          <span className={styles.value} data-test-id='filter-chip__value'>
-            {(singleSelectedOption && labelFormatter?.(singleSelectedOption)) || singleSelectedOption?.label}
-          </span>
-        )}
-
-        {selectionMode === SelectionMode.Multi && (
-          <>
-            <span className={styles.label}>
-              <span data-test-id='filter-chip__label'>{label}</span>
-              {': '}
+      triggerElement={
+        <button
+          {...extractSupportProps(rest)}
+          type='button'
+          ref={ref}
+          className={cn(styles.filterChip, className)}
+          data-size={size}
+          data-variant={variant}
+          data-loading={loading || undefined}
+          data-label={isLabelExist || undefined}
+          data-test-id={testId || undefined}
+          disabled={!loading && disabled}
+          onClick={handleClick}
+          onKeyDown={onKeyDownHandler}
+          tabIndex={tabIndex}
+        >
+          {loading && !isLabelExist && (
+            <span className={styles.spinner} data-test-id='filter-chip__spinner'>
+              <Spinner size={spinnerSize} data-test-id='filter-chip__spinner' />
             </span>
+          )}
 
-            {loading ? (
-              <span className={styles.spinner} data-test-id='filter-chip__spinner'>
-                <Spinner size={spinnerSize} />
+          {variant === Variant.IconBefore && (
+            <span className={styles.icon} data-test-id='filter-chip__icon'>
+              {icon}
+            </span>
+          )}
+
+          {selectionMode === SelectionMode.Single && (
+            <span className={styles.value} data-test-id='filter-chip__value'>
+              {(singleSelectedOption && labelFormatter?.(singleSelectedOption)) || singleSelectedOption?.label}
+            </span>
+          )}
+
+          {selectionMode === SelectionMode.Multi && (
+            <>
+              <span className={styles.label}>
+                <span data-test-id='filter-chip__label'>{label}</span>
+                {': '}
               </span>
-            ) : (
-              <span className={styles.value} data-test-id='filter-chip__value'>
-                {labelFormatter?.(selectedOptions) || defaultMultiValueLabelFormatter(selectedOptions)}
-              </span>
-            )}
-          </>
-        )}
-      </button>
+
+              {loading ? (
+                <span className={styles.spinner} data-test-id='filter-chip__spinner'>
+                  <Spinner size={spinnerSize} />
+                </span>
+              ) : (
+                <span className={styles.value} data-test-id='filter-chip__value'>
+                  {labelFormatter?.(selectedOptions) || defaultMultiValueLabelFormatter(selectedOptions)}
+                </span>
+              )}
+            </>
+          )}
+        </button>
+      }
+    >
+      {items}
     </Droplist>
   );
 }

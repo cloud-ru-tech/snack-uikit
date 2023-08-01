@@ -71,6 +71,5 @@ $valueTypography: (
 }
 
 .droplist {
-  padding-top: simple-var($space-drop-list-drop-offset);
-  padding-bottom: simple-var($space-drop-list-drop-offset);
+  margin: calc(var($border-state-focus-s-border-width) + var($space-drop-list-drop-offset)) 0;
 }
