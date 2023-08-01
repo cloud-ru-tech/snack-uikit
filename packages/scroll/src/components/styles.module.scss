@@ -21,11 +21,24 @@ $scrollbar-slider-active-zone: 12px;
     padding: 0;
   }
 
+  @each $orientation in $orientations {
+    .#{$theme-name}[data-untouchable-scrollbars] > .os-scrollbar-#{$orientation} {
+      pointer-events: none;
+      > .os-scrollbar-track {
+        pointer-events: none;
+        > .os-scrollbar-handle {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
   @each $size in $sizes {
     @each $orientation in $orientations {
       .#{$theme-name}[data-size=#{$size}] > .os-scrollbar-#{$orientation} {
         @include composite-var($scroll, 'container', $orientation, $size);
         overflow: hidden;
+        pointer-events: none;
       }
       .#{$theme-name}[data-size=#{$size}] > .os-scrollbar-#{$orientation} > .os-scrollbar-track > .os-scrollbar-handle {
         @include composite-var($scroll, 'slider', $orientation, $size);

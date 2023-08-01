@@ -39,6 +39,7 @@ scroll.args = {
   size: Size.M,
   barHideStrategy: BarHideStrategy.Leave,
   resize: Resize.None,
+  untouchableScrollbars: false,
 };
 
 scroll.argTypes = {

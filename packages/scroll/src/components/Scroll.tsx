@@ -33,6 +33,7 @@ export type ScrollProps = WithSupportProps<
     barHideStrategy?: BarHideStrategy;
     onScroll?: (event?: Event) => void;
     resize?: Resize;
+    untouchableScrollbars?: boolean;
   }>
 >;
 
@@ -51,6 +52,7 @@ const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
     clickScrolling = true,
     barHideStrategy = BarHideStrategy.Leave,
     autoscrollTo,
+    untouchableScrollbars = false,
     ...rest
   },
   ref,
@@ -124,6 +126,7 @@ const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
       {...rest}
       ref={overlayScrollbarsRef}
       data-size={size}
+      data-untouchable-scrollbars={untouchableScrollbars || undefined}
       className={cn(className, styles.scroll, 'osThemeSnack')}
       options={{
         resize,
