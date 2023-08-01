@@ -82,7 +82,7 @@ test.page(visit({ value: '10-06-2023' }))('Should select value from calendar wit
   // open month menu
   await t.pressKey('down').pressKey('enter');
   // select month
-  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('right').pressKey('enter');
+  await t.pressKey('down').pressKey('down').pressKey('right').pressKey('enter');
   //select day
   await t
     .pressKey('down')
@@ -94,7 +94,7 @@ test.page(visit({ value: '10-06-2023' }))('Should select value from calendar wit
     .pressKey('enter');
 
   await t.expect(calendar.exists).notOk('calendar is still present after selection');
-  await t.expect(input.value).eql('23.08.2023');
+  await t.expect(input.value).eql('24.05.2023');
 });
 
 test.page(visit())('should not toggle droplist by many clicks', async t => {
