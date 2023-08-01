@@ -21,10 +21,6 @@ $typography: (
   ),
 );
 
-.droplistItem {
-  position: relative;
-}
-
 .headline {
   display: grid;
   grid-template-columns: 1fr auto auto;
@@ -49,6 +45,8 @@ $typography: (
 
 .beforeContent {
   display: inline-flex;
+  flex-grow: 0;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
 
@@ -90,14 +88,30 @@ $typography: (
 
 .content {
   position: relative;
+  flex-grow: 1;
+  flex-shrink: 1;
   box-sizing: border-box;
 }
 
-.container {
+.droplistItem {
   cursor: pointer;
+
   position: relative;
+
+  display: flex;
+  flex-direction: row;
+
   box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  text-align: start;
+
+  appearance: unset;
   background-color: simple-var($sys-neutral-background2-level);
+  border: none;
+  outline: none;
 
   @each $size in $sizes {
     &[data-size=#{$size}] {
@@ -107,7 +121,7 @@ $typography: (
         @include composite-var($drop-list, 'item', $size, 'headline');
       }
 
-      .label {
+      .option {
         @include composite-var($typography, $size, 'label');
       }
 
@@ -121,6 +135,7 @@ $typography: (
     }
   }
 
+  &[data-open],
   &:hover {
     background-color: simple-var($sys-primary-background);
   }
@@ -131,92 +146,44 @@ $typography: (
     background-color: simple-var($sys-primary-background);
   }
 
-  &[data-before-content], &[data-variant='multiple'] {
-    display: grid;
-    grid-template-columns: auto 1fr;
-  }
-
-  &[data-variant='expandable'] {
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
-
-  &[data-before-content] {
-    &[data-variant='expandable'] {
-      grid-template-columns: auto 1fr auto;
-    }
-
-    &[data-variant='multiple'] {
-      grid-template-columns: auto auto 1fr;
-    }
-  }
-}
-
-.input {
-  pointer-events: none;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 0;
-  height: 0;
-
-  opacity: 0;
-
-  &:focus-visible {
-    + .container {
-      @include outline-inside-var($container-focused-s);
-
-      background-color: simple-var($sys-primary-background);
-    }
-  }
-
   &:disabled {
-    + .container {
-      cursor: not-allowed;
-      background-color: simple-var($sys-neutral-background1-level);
-      outline: none;
+    cursor: not-allowed;
+    background-color: simple-var($sys-neutral-background1-level);
+    outline: none;
 
-      .label, .description, .caption, .expandableIcon {
-        color: simple-var($sys-neutral-text-disabled);
-      }
+    .option, .description, .caption, .expandableIcon {
+      color: simple-var($sys-neutral-text-disabled);
     }
   }
 
-  &:checked {
-    + .container {
-      &[data-variant='single'] {
-        background-color: simple-var($sys-primary-decor-default);
+  &[data-has-checked],
+  &[data-checked] {
+    &[data-variant='single'] {
+      background-color: simple-var($sys-primary-decor-default);
 
-        &:hover {
-          background-color: simple-var($sys-primary-background);
-        }
+      &:hover {
+        background-color: simple-var($sys-primary-background);
       }
+    }
 
-      .markerContainer:before {
-        background-color: simple-var($sys-primary-accent-default);
-      }
+    .markerContainer:before {
+      background-color: simple-var($sys-primary-accent-default);
     }
 
     &:focus-visible {
-      + .container {
-        &[data-variant='single'] {
-          background-color: simple-var($sys-primary-background);
-          outline-color: simple-var($sys-primary-accent-default);
-        }
+      &[data-variant='single'] {
+        background-color: simple-var($sys-primary-background);
+        outline-color: simple-var($sys-primary-accent-default);
       }
     }
 
     &:disabled {
-      + .container {
-        &[data-variant='single'] {
-          background-color: simple-var($sys-primary-background1-level);
-        }
+      &[data-variant='single'] {
+        background-color: simple-var($sys-primary-background1-level);
+      }
 
-        .markerContainer:before {
-          background-color: simple-var($sys-primary-text-disabled);
-        }
+      .markerContainer:before {
+        background-color: simple-var($sys-primary-text-disabled);
       }
     }
   }

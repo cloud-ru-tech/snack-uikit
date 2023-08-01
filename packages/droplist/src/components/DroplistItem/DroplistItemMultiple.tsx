@@ -1,13 +1,11 @@
 import { forwardRef } from 'react';
 
-import { DroplistItem } from './DroplistItem';
-import { BaseDroplistItemProps } from './types';
+import { DroplistItem, DroplistItemProps } from '../../helperCompoonents';
 
-export type DroplistItemMultipleProps = BaseDroplistItemProps & {
-  checked: boolean;
-  onChange(checked: boolean): void;
-};
+export type DroplistItemMultipleProps = Omit<DroplistItemProps, 'variant'>;
 
-export const DroplistItemMultiple = forwardRef<HTMLInputElement, DroplistItemMultipleProps>((props, ref) => (
-  <DroplistItem variant={DroplistItem.variants.Multiple} ref={ref} {...props} />
-));
+export const DroplistItemMultiple = forwardRef<HTMLButtonElement, DroplistItemMultipleProps>(
+  function DroplistItemMultiple(props, ref) {
+    return <DroplistItem variant={DroplistItem.variants.Multiple} ref={ref} {...props} />;
+  },
+);

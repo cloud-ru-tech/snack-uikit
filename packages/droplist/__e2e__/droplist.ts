@@ -8,8 +8,9 @@ const BUTTON_SELECTOR = dataTestIdSelector('button-with-droplist');
 
 const getPage = (props: object = {}) =>
   getTestcafeUrl({
-    name: 'droplist',
-    story: 'droplist',
+    name: 'dropdown',
+    story: 'dropdown',
+    group: 'droplist',
     props: {
       'data-test-id': TEST_ID,
       ...props,

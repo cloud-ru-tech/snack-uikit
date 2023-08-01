@@ -1,0 +1,17 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-dropList';
+
+.droplist {
+  margin-top: calc(-1 * var($radius-popover-private-drop-list));
+}
+
+.scrollContainerS {
+  max-height: 256px;
+}
+
+.scrollContainerM {
+  max-height: 320px;
+}
+
+.scrollContainerL {
+  max-height: 384px;
+}

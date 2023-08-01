@@ -1,6 +1,6 @@
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { Size } from '../DroplistItem/constants';
+import { Size } from '../../constants';
 import styles from './styles.module.scss';
 
 export type DroplistNoDataProps = WithSupportProps<{

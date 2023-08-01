@@ -7,5 +7,6 @@ export enum Size {
 export enum Variant {
   Single = 'single',
   Multiple = 'multiple',
-  Expandable = 'expandable',
 }
+
+export const SCROLL_APPLYING_ITEMS_COUNT = 8;

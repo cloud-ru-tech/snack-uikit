@@ -7,36 +7,38 @@ import popoverPrivateReadme from '../../popover-private/README.md';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { Droplist, DroplistProps } from '../src';
+import { Dropdown, DropdownProps } from '../src';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
-  title: 'Components/Droplist',
-  component: Droplist,
+  title: 'Components/Droplist/Dropdown',
+  component: Dropdown,
 };
 export default meta;
 
-type StoryProps = DroplistProps & { storySkeletonWidth: number };
+type StoryProps = DropdownProps & { storySkeletonWidth: number };
 
 const Template: StoryFn<StoryProps> = ({ ...args }) => (
-  <div className={styles.story}>
-    <Droplist
-      {...args}
-      content={<SkeletonText width={args.storySkeletonWidth} className={styles.skeleton} loading lines={7} />}
-    >
-      <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-droplist' />
-    </Droplist>
+  <div className={styles.pageWrapper}>
+    <div className={styles.wrapper}>
+      <Dropdown
+        {...args}
+        content={<SkeletonText width={args.storySkeletonWidth} className={styles.skeleton} loading lines={7} />}
+      >
+        <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-droplist' />
+      </Dropdown>
+    </div>
   </div>
 );
 
-export const droplist: StoryObj<StoryProps> = Template.bind({});
+export const dropdown: StoryObj<StoryProps> = Template.bind({});
 
-droplist.args = {
+dropdown.args = {
   storySkeletonWidth: 330,
-  placement: Droplist.placements.BottomStart,
-  widthStrategy: Droplist.widthStrategies.Gte,
+  placement: Dropdown.placements.BottomStart,
+  widthStrategy: Dropdown.widthStrategies.Gte,
 };
-droplist.argTypes = {
+dropdown.argTypes = {
   storySkeletonWidth: {
     name: '[Stories]: Skeleton width',
     control: {
@@ -45,7 +47,7 @@ droplist.argTypes = {
   },
 };
 
-droplist.parameters = {
+dropdown.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, popoverPrivateReadme, componentChangelog],
   },

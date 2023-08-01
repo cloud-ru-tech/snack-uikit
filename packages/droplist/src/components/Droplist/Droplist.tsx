@@ -1,56 +1,175 @@
-import { ReactNode } from 'react';
+import cn from 'classnames';
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  KeyboardEvent,
+  ReactNode,
+  RefCallback,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
-import { PopoverPrivate, PopoverPrivateProps } from '@snack-ui/popover-private';
-import { WithSupportProps } from '@snack-ui/utils';
+import { Scroll } from '@snack-ui/scroll';
 
-import styles from './styles.module.scss';
+import { SCROLL_APPLYING_ITEMS_COUNT, Size } from '../../constants';
+import { Dropdown, DropdownProps } from '../Dropdown';
+import { DroplistContext } from './DroplistContext';
+import styles from './styles.modules.scss';
 
-export type DroplistProps = WithSupportProps<
-  {
-    content: ReactNode;
-  } & Pick<
-    PopoverPrivateProps,
-    | 'className'
-    | 'triggerClassName'
-    | 'open'
-    | 'onOpenChange'
-    | 'hoverDelayOpen'
-    | 'hoverDelayClose'
-    | 'widthStrategy'
-    | 'offset'
-    | 'children'
-    | 'closeOnEscapeKey'
-    | 'triggerClickByKeys'
-  > &
-    Partial<Pick<PopoverPrivateProps, 'trigger' | 'placement'>>
->;
+export type DroplistProps = Omit<DropdownProps, 'content' | 'children' | 'isTreeRoot'> & {
+  firstElementRefCallback?: RefCallback<HTMLButtonElement>;
+  triggerElement: DropdownProps['children'];
+  children: ReactNode;
+  onFocusLeave?: (direction: 'common' | 'top' | 'bottom' | 'left') => void;
+  size?: Size;
+  useScroll?: boolean;
+};
 
 export function Droplist({
-  content,
-  trigger = PopoverPrivate.triggers.Click,
-  placement = PopoverPrivate.placements.BottomStart,
+  triggerElement,
   children,
-  widthStrategy = PopoverPrivate.widthStrategies.Gte,
-  ...otherProps
+  firstElementRefCallback,
+  onFocusLeave,
+  className,
+  size = Size.S,
+  useScroll = true,
+  open,
+  closeOnEscapeKey,
+  ...rest
 }: DroplistProps) {
-  if (!children) {
-    return null;
-  }
+  const [focusIndex, setFocusIndex] = useState<number | undefined>();
+
+  const { items, enabledPositions, count } = useMemo(() => {
+    const enabledPositions: number[] = [];
+
+    const items = Children.map(children, (item, position) => {
+      if (isValidElement(item)) {
+        const props = typeof item.props === 'object' ? item.props : {};
+
+        if (!props.disabled) {
+          enabledPositions.push(position);
+        }
+
+        return cloneElement(item, {
+          ...props,
+          position,
+        });
+      }
+      return item;
+    });
+
+    return { items, enabledPositions, count: enabledPositions.length };
+  }, [children]);
+
+  const focusPosition = focusIndex !== undefined ? enabledPositions[focusIndex] : undefined;
+
+  const setFocusPosition = useCallback(
+    (position: number) => {
+      const newFocusIndex = enabledPositions.indexOf(position);
+      setFocusIndex(newFocusIndex >= 0 ? newFocusIndex : undefined);
+    },
+    [enabledPositions],
+  );
+
+  const resetFocusPosition = useCallback(() => setFocusIndex(undefined), []);
+
+  const itemKeyDownHandler = useCallback(
+    (e: KeyboardEvent) => {
+      if (focusIndex === undefined) {
+        return;
+      }
+
+      switch (e.key) {
+        case 'ArrowDown':
+          setFocusIndex((prev = 0) => {
+            if (prev >= count - 1) {
+              onFocusLeave?.('bottom');
+              return count - 1;
+            }
+            return prev + 1;
+          });
+          return;
+        case 'ArrowUp':
+          setFocusIndex((prev = 0) => {
+            if (!prev) {
+              onFocusLeave?.('top');
+              return 0;
+            }
+            return prev - 1;
+          });
+          return;
+        case 'Escape':
+          if (!closeOnEscapeKey) {
+            onFocusLeave?.('common');
+          }
+          return;
+        case 'ArrowLeft':
+          onFocusLeave?.('left');
+          return;
+        case 'Tab':
+          onFocusLeave?.('common');
+          e.preventDefault();
+          return;
+        default:
+          break;
+      }
+    },
+    [focusIndex, closeOnEscapeKey, onFocusLeave, count],
+  );
+
+  useEffect(() => {
+    if (!open) {
+      setFocusIndex(undefined);
+    }
+  }, [open]);
+
+  const { isNested } = useContext(DroplistContext);
+
+  const scroll = useScroll && count >= SCROLL_APPLYING_ITEMS_COUNT;
+
+  const itemsJSX = (
+    <DroplistContext.Provider
+      value={{
+        size,
+        isNested: true,
+        focusPosition,
+        setFocusPosition,
+        resetFocusPosition,
+        itemKeyDownHandler,
+        firstElementRefCallback,
+      }}
+    >
+      <Scroll
+        untouchableScrollbars={true}
+        className={cn({
+          [styles.scrollContainerS]: scroll && size === Size.S,
+          [styles.scrollContainerM]: scroll && size === Size.M,
+          [styles.scrollContainerL]: scroll && size === Size.L,
+        })}
+        barHideStrategy={Scroll.barHideStrategies.Never}
+        size={Scroll.sizes.S}
+      >
+        {items}
+      </Scroll>
+    </DroplistContext.Provider>
+  );
 
   return (
-    <PopoverPrivate
-      placement={placement}
-      popoverContent={<div className={styles.droplistContainer}>{content}</div>}
-      trigger={trigger}
-      hasArrow={false}
-      widthStrategy={widthStrategy}
-      {...otherProps}
+    <Dropdown
+      {...rest}
+      open={open}
+      content={itemsJSX}
+      closeOnEscapeKey={!isNested}
+      className={cn(className, { [styles.droplist]: isNested })}
     >
-      {children}
-    </PopoverPrivate>
+      {triggerElement}
+    </Dropdown>
   );
 }
 
-Droplist.placements = PopoverPrivate.placements;
-Droplist.triggers = PopoverPrivate.triggers;
-Droplist.widthStrategies = PopoverPrivate.widthStrategies;
+Droplist.placements = Dropdown.placements;
+Droplist.triggers = Dropdown.triggers;

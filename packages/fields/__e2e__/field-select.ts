@@ -160,18 +160,18 @@ test.page(visit({ value: 'Option 1', searchable: false }))('Should select items 
   await t.pressKey('tab').pressKey('space');
 
   // select 2nd option
-  await t.pressKey('down').pressKey('down').pressKey('space');
+  await t.pressKey('down').pressKey('down').pressKey('enter');
   await t.expect(list.exists).notOk('list is still present after selecting item');
   await t.expect(input.value).eql('Option 2', 'should go down & select item with space');
 
   // skip disabled item
   await t.pressKey('right'); // navigate to button first & then open
-  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('space');
+  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('down').pressKey('enter');
   await t.expect(input.value).eql('Option 11', 'should go down, skip disabled item & select active item');
 
   // do the same in the other direction
   // select 11th option
-  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('up').pressKey('space');
+  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('up').pressKey('enter');
   await t.expect(input.value).eql('Option 2', 'should go up & select item with space');
 
   // skip disabled item
@@ -182,13 +182,11 @@ test.page(visit({ value: 'Option 1', searchable: false }))('Should select items 
     .pressKey('down')
     .pressKey('down')
     .pressKey('up')
-    .pressKey('space');
+    .pressKey('enter');
   await t.expect(input.value).eql('Option 4', 'should go up, skip disabled item & select active item');
 });
 
 // search & select item by keyboard
-// FIXME: Починить тест
-// eslint-disable-next-line testcafe-community/no-disabled-tests
 test.page(visit({ value: 'Option 3', searchable: true }))('Should search & select items with keyboard', async t => {
   const wrapper = Selector(dataTestIdSelector(TEST_ID));
   const input = getInputInner(wrapper);
@@ -199,7 +197,7 @@ test.page(visit({ value: 'Option 3', searchable: true }))('Should search & selec
   await t.expect(options.count).eql(3);
 
   // select 2nd option
-  await t.pressKey('down').pressKey('down').pressKey('space');
+  await t.pressKey('down').pressKey('down').pressKey('enter');
   await t.expect(input.value).eql('Option 11', 'should go down & select item with space');
 
   // do the same in the other direction
@@ -207,7 +205,7 @@ test.page(visit({ value: 'Option 3', searchable: true }))('Should search & selec
   await t.pressKey('ctrl+a').pressKey('delete');
   await t.expect(options.count).eql(7);
   await t.typeText(input, '1');
-  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('up').pressKey('space');
+  await t.pressKey('down').pressKey('down').pressKey('down').pressKey('up').pressKey('enter');
   await t.expect(input.value).eql('Option 11', 'should go up & select item with space');
 
   // get back into input & search until nothing is found
@@ -341,14 +339,14 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false }
     await t.pressKey('tab').pressKey('space');
 
     // select 2nd option
-    await t.pressKey('down').pressKey('down').pressKey('space');
+    await t.pressKey('down').pressKey('down').pressKey('enter');
     await t
       .expect(getDisplayedValue(wrapper).textContent)
       .eql('Selected: 2', 'should go down & select item with space');
     await expectOptionChecked(t, ['op1', 'op2']);
 
     // skip disabled item
-    await t.pressKey('down').pressKey('down').pressKey('down').pressKey('space');
+    await t.pressKey('down').pressKey('down').pressKey('down').pressKey('enter');
     await t
       .expect(getDisplayedValue(wrapper).textContent)
       .eql('Selected: 3', 'should go down, skip disabled item & select active item');
@@ -365,7 +363,7 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false }
       .pressKey('down')
       .pressKey('down')
       .pressKey('up')
-      .pressKey('space');
+      .pressKey('enter');
     await t
       .expect(getDisplayedValue(wrapper).textContent)
       .eql('Selected: 2', 'should go up & deselect item with space');
@@ -373,7 +371,7 @@ test.page(visit({ value: 'Option 1', selectionMode: 'multi', searchable: false }
     await expectOptionNotChecked(t, ['op11']);
 
     // skip disabled item
-    await t.pressKey('up').pressKey('space');
+    await t.pressKey('up').pressKey('enter');
     await t
       .expect(getDisplayedValue(wrapper).textContent)
       .eql('Selected: 3', 'should go up, skip disabled item & select active item');
@@ -395,7 +393,7 @@ test.page(visit({ value: 'Option 3', selectionMode: 'multi', searchable: true })
     await t.expect(options.count).eql(3);
 
     // select 2nd option
-    await t.pressKey('down').pressKey('down').pressKey('space');
+    await t.pressKey('down').pressKey('down').pressKey('enter');
     await t
       .expect(getDisplayedValue(wrapper).textContent)
       .eql('Selected: 2', 'input should return to display value after selection');
@@ -406,7 +404,7 @@ test.page(visit({ value: 'Option 3', selectionMode: 'multi', searchable: true })
     // do the same in the other direction
     // select 11th option
     await t.typeText(input, '1');
-    await t.pressKey('down').pressKey('down').pressKey('down').pressKey('up').pressKey('space');
+    await t.pressKey('down').pressKey('down').pressKey('down').pressKey('up').pressKey('enter');
     await t.expect(getDisplayedValue(wrapper).textContent).eql('Option 3', 'should go up & deselect item with space');
     await t.pressKey('up').pressKey('up').pressKey('ctrl+a').pressKey('delete');
     await expectOptionChecked(t, ['op3']);

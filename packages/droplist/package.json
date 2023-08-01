@@ -33,6 +33,7 @@
     "@snack-ui/avatar": "0.2.7",
     "@snack-ui/icons": "0.9.0",
     "@snack-ui/popover-private": "0.5.1",
+    "@snack-ui/scroll": "0.1.4",
     "@snack-ui/tag": "0.1.5",
     "@snack-ui/toggles": "0.2.9",
     "@snack-ui/truncate-string": "0.1.3",

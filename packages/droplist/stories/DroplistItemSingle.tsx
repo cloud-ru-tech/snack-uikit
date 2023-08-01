@@ -1,8 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 
-import { ButtonFilled } from '@snack-ui/button';
 import { PlaceholderSVG } from '@snack-ui/icons';
 
 import popoverPrivateReadme from '../../popover-private/README.md';
@@ -10,6 +9,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Droplist, ItemSingleProps } from '../src';
+import { Size } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -22,45 +22,15 @@ type StoryProps = ItemSingleProps;
 
 const STATE_TABLE_HEADERS = ['Default', 'Icon', 'Avatar', 'Disabled', 'Checked', 'Disabled + Checked'];
 
-const ITEMS_MOCK: Omit<ItemSingleProps, 'onChange' | 'checked'>[] = [
-  {
-    option: 'First',
-  },
-  {
-    option: 'Second',
-  },
-  {
-    option: 'Third',
-  },
-];
-
-const Template: StoryFn<StoryProps> = ({ ...args }) => {
+const Template: StoryFn<StoryProps> = args => {
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
   const sizes = Object.values(Droplist.sizes);
-
-  const [checked, setChecked] = useState(0);
 
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.wrapper}>
         Controlled:
-        <Droplist
-          content={
-            <div className={styles.dropListMenu} data-size={args.size}>
-              {ITEMS_MOCK.map(({ option }, index) => (
-                <Droplist.ItemSingle
-                  {...args}
-                  key={option}
-                  option={args.option || option}
-                  checked={checked === index}
-                  onChange={() => setChecked(index)}
-                />
-              ))}
-            </div>
-          }
-        >
-          <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-droplist' />
-        </Droplist>
+        <Droplist.ItemSingle {...args} className={styles.dropListItem} />
       </div>
 
       <div className={styles.table} style={{ '--columns': STATE_TABLE_HEADERS.length }}>
@@ -153,8 +123,8 @@ itemSingle.args = {
   caption: 'Caption',
   description: 'Description',
   tagLabel: 'Tag',
-  checked: false,
-  size: Droplist.sizes.S,
+  checked: undefined,
+  size: Size.S,
 };
 
 itemSingle.argTypes = {};
