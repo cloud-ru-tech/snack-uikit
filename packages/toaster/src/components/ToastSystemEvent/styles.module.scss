@@ -1,0 +1,194 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+@mixin colorMap($background-color, $icon-color, $title-color, $description-color, $progress-color) {
+  background-color: var($background-color);
+
+  .icon {
+    color: var($icon-color);
+  }
+
+  .title {
+    color: var($title-color);
+  }
+
+  .description {
+    color: var($description-color);
+  }
+
+  .progress {
+    background-color: var($progress-color);
+  }
+}
+
+.icon {
+  svg {
+    width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+    height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.buttonClose {
+  @include composite-var($toaster-system-event-toast-button-close);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  color: var($sys-invert-neutral-text-light);
+
+  background-color: transparent;
+  border: none;
+
+  svg {
+    width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+    height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  &:hover {
+    color: var($sys-invert-neutral-text-main);
+  }
+
+  &:focus,
+  &:active {
+    color: var($sys-invert-neutral-accent-pressed);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    color: var($sys-invert-neutral-text-main);
+    outline-color: var($sys-available-on-complementary);
+    outline-offset: var($spacing-state-focus-offset);
+  }
+}
+
+.content {
+  @include composite-var($toaster-system-event-toast-content);
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  word-break: break-word;
+}
+
+.title {
+  @include composite-var($sans-title-s);
+
+  display: grid;
+}
+
+.description {
+  @include composite-var($sans-body-m);
+}
+
+@keyframes progressBarAnimation {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+.progress {
+  @include composite-var($toaster-system-event-toast-progress-bar);
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 0;
+
+  animation: progressBarAnimation linear 1 forwards;
+  animation-play-state: active;
+}
+
+.container {
+  @include composite-var($toaster-system-event-toast-container);
+
+  cursor: default;
+
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+
+  box-sizing: border-box;
+
+  &:hover .progress {
+    animation-play-state: paused;
+  }
+
+
+  &[data-appearance='neutral'] {
+    @include colorMap(
+      $sys-invert-neutral-background, 
+      $sys-invert-neutral-accent-default, 
+      $sys-invert-neutral-text-main, 
+      $sys-invert-neutral-text-support, 
+      $sys-neutral-accent-default
+    );
+  }
+
+  &[data-appearance='error'] {
+    @include colorMap(
+      $sys-invert-neutral-background, 
+      $sys-red-accent-default, 
+      $sys-invert-neutral-text-main, 
+      $sys-invert-neutral-text-support,
+      $sys-red-accent-default
+    );
+  }
+
+  &[data-appearance='error-critical'] {
+    @include colorMap(
+      $sys-red-accent-default, 
+      $sys-red-on-accent, 
+      $sys-red-on-accent, 
+      $sys-red-on-accent,
+      $sys-red-decor-activated
+    );
+    
+    .buttonClose {
+      color: var($sys-red-on-accent);
+      opacity: var($opacity-a064);
+
+      &:hover,
+      &:focus-visible {
+        opacity: 1;
+      }
+
+      &:active {
+        opacity: var($opacity-a048);
+      }
+    }
+  }
+
+  &[data-appearance='warning'] {
+    @include colorMap(
+      $sys-invert-neutral-background, 
+      $sys-yellow-accent-default, 
+      $sys-invert-neutral-text-main, 
+      $sys-invert-neutral-text-support,
+      $sys-yellow-accent-default
+    );
+  }
+
+  &[data-appearance='success'] {
+    @include colorMap(
+      $sys-invert-neutral-background, 
+      $sys-green-accent-default, 
+      $sys-invert-neutral-text-main, 
+      $sys-invert-neutral-text-support,
+      $sys-green-accent-default
+    );
+  }
+}

@@ -88,6 +88,9 @@
     {
       "path": "./alert"
     },
+    {
+      "path": "./toaster"
+    },
   ],
   "compilerOptions": {
     "target": "es6",

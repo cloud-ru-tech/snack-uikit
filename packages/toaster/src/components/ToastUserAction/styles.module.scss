@@ -1,0 +1,66 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUserAction';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+    height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.label {
+  @include composite-var($sans-label-l);
+
+  color: var($sys-invert-neutral-text-main);
+}
+
+.content {
+  @include composite-var($toaster-user-action-toast-content);
+
+  display: flex;
+  align-items: center
+}
+
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  background-color: var($sys-invert-neutral-background);
+
+  &[data-variant='label-only'] {
+    @include composite-var($toaster-user-action-toast-container-label-only);
+  }
+
+  &[data-variant='with-icon'] {
+    @include composite-var($toaster-user-action-toast-container-with-icon);
+  }
+
+  &[data-appearance='error'] {
+    .icon {
+      color: var($sys-red-accent-default);
+    }
+  }
+
+  &[data-appearance='warning'] {
+    .icon {
+      color: var($sys-yellow-accent-default);
+    }
+  }
+
+  &[data-appearance='success'] {
+    .icon {
+      color: var($sys-green-accent-default);
+    }
+  }
+}
+

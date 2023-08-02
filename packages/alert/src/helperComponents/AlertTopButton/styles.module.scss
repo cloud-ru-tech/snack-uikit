@@ -4,35 +4,40 @@
 $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
 .alertTopButton {
-    box-sizing: border-box;
+    @include composite-var($alert-top-button-button-action);
+    @include composite-var($sans-label-l);
+
+    cursor: pointer;
+
     display: flex;
     align-items: center;
-    padding: 0;
+
+    box-sizing: border-box;
     margin: 0;
     margin-left: auto;
+    padding: 0;
+
     white-space: nowrap;
-    cursor: pointer;
+
+    opacity: var($opacity-a080);
     background: none;
     border: 0;
-    opacity: var($opacity-a080);
     
     &:hover {
-        background-color: var($sys-opacity-hovered);
         opacity: unset;
+        background-color: var($sys-opacity-hovered);
     }
     &:focus-visible {
         @include outline-var($container-focused-s);
+
+        opacity: unset;
         background-color: var($sys-opacity-hovered);
         outline-color: var($sys-available-on-complementary);
-        opacity: unset;
     }
     &:active {
-        background-color: var($sys-opacity-activated);
         opacity: var($opacity-a080);
+        background-color: var($sys-opacity-activated);
     }
-
-    @include composite-var($alert-top-button-button-action);
-    @include composite-var($sans-label-l);
 
     @each $color in $colors {
         &[data-color='#{$color}'] {

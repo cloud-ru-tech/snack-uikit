@@ -1,0 +1,77 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUserAction';
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.buttonCloseColumnWrapper {
+  @include composite-var($toaster-system-event-toaster-container);
+
+  position: fixed;
+  box-sizing: border-box;
+}
+
+.buttonCloseColumn {
+  @include composite-var($toaster-system-event-toaster-button-close-column);
+  @include composite-var($sans-body-m);
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  color: var($sys-invert-neutral-text-main);
+
+  background-color: var($sys-invert-neutral-background);
+  border: none;
+  outline: none;
+
+  &:hover {
+    background-color: var($sys-invert-neutral-decor-hovered);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    background-color: var($sys-invert-neutral-decor-hovered);
+    outline-color: var($sys-available-complementary);
+    outline-offset: var($spacing-state-focus-offset);
+  }
+
+  &:active {
+    color: var($sys-invert-neutral-text-light);
+  }
+}
+
+.container-system-event {
+  @include composite-var($toaster-system-event-toaster-container);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.container-user-action {
+  @include composite-var($toaster-user-action-toaster-container);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+
+.bottom-right {
+  right: 0;
+  bottom: 0;
+}
+
+.bottom-center {
+  bottom: 0
+}
+
+.toaster {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+
+  background-color: transparent;
+  box-shadow: none;
+}
