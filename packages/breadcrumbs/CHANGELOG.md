@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.7 (2023-08-02)
+
+
+### Bug Fixes
+
+* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** breadcrumbs S typography ([4f60ddc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/4f60ddc87510bf335a74ffa8c5bf569298bebd0c))
+
+
+
+
+
 ## 0.1.6 (2023-07-28)
 
 ### Only dependencies have been changed
@@ -33,7 +44,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.1.3 (2023-06-22)
 
-**Note:** Version bump only for package @snack-ui/breadcrumbs
+### Only dependencies have been changed
+* [@snack-ui/popover@0.2.13](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/popover/CHANGELOG.md)
 
 
 

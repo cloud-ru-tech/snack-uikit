@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.3 (2023-08-02)
+
+
+### Bug Fixes
+
+* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** move chips to the new droplist ([5b54f02](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5b54f02c177ce85bfc0f6785419320f1b13a5650))
+
+
+
+
+
 ## 0.2.2 (2023-07-28)
 
 ### Only dependencies have been changed

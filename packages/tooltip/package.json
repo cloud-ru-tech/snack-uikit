@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/tooltip",
   "title": "Tooltip",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,7 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/popover-private": "0.5.1",
+    "@snack-ui/popover-private": "0.6.0",
     "@snack-ui/utils": "1.2.0"
   }
 }

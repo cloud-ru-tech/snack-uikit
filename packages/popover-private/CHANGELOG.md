@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-08-02)
+
+
+### Features
+
+* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** add nesting behavior ([16b6bb0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/16b6bb065d544444ddf07f2d6790026ea7c59203))
+
+
+
+
+
 ## 0.5.1 (2023-07-28)
 
 **Note:** Version bump only for package @snack-ui/popover-private

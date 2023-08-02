@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/tabs",
   "title": "Tabs",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,7 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/button": "0.9.5",
+    "@snack-ui/button": "0.10.0",
     "@snack-ui/counter": "0.2.7",
     "@snack-ui/icons": "0.9.0",
     "@snack-ui/typography": "0.2.4",

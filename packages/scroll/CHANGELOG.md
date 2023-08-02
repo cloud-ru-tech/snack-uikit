@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-08-02)
+
+
+### Features
+
+* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** add untouchableScrollbars prop ([eb221fd](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/eb221fdfc16625fa0293c4e11e2c4229102ca354))
+
+
+
+
+
 ## 0.1.4 (2023-06-23)
 
 **Note:** Version bump only for package @snack-ui/scroll

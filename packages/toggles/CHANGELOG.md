@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-08-02)
+
+
+### Features
+
+* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** add checkbox indeterminate property ([35fcabe](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/35fcabec3c120416509cb33e67c891c511e393cb))
+
+
+
+
+
 ## 0.2.9 (2023-07-28)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.8 (2023-08-02)
+
+
+### Bug Fixes
+
+* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** KeyDown handling ([b569117](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b569117c7a96312c2b26b8b8e206c44211795a66))
+
+
+
+
+
 ## 0.2.7 (2023-07-28)
 
 ### Only dependencies have been changed

@@ -3,9 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-08-02)
+
+
+### Features
+
+* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** move fields to the new droplist ([62582f4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/62582f4f441e7d5128d0294085958ec3b51987c6))
+
+
+### BREAKING CHANGES
+
+
+* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** add droplist focus control ([b53b9a8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b53b9a8dbc9b8039287a67386f5986df5c5514e7))
+
+
+
+
 ## 0.3.3 (2023-08-01)
 
-**Note:** Version bump only for package @snack-ui/fields
+### Only dependencies have been changed
+* [@snack-ui/droplist@0.6.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/scroll@0.2.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/scroll/CHANGELOG.md)
+* [@snack-ui/tooltip@0.3.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-ui/truncate-string@0.1.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/truncate-string/CHANGELOG.md)
 
 
 

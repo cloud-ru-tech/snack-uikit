@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2023-08-02)
+
+
+### Features
+
+* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** add onKeyDown handler property ([e5b6a8b](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/e5b6a8b937a563a2c05fb663fd1502ec00b2be1d))
+
+
+
+
+
 ## 0.9.5 (2023-07-28)
 
 ### Only dependencies have been changed
