@@ -7,8 +7,12 @@ $on-surfaces: 'background', 'decor', 'accent';
 
 .link {
   cursor: pointer;
+
   display: inline-flex;
   align-items: center;
+
+  width: fit-content;
+
   text-decoration: none;
 
   @each $on-surface in $on-surfaces {
@@ -40,7 +44,14 @@ $on-surfaces: 'background', 'decor', 'accent';
               @include outline-var($container-focused-s);
 
               color: simple-var($theme-variables, 'sys', $color, 'text-main');
-              outline-color: var($sys-available-complementary);
+
+              @if $color == 'invert-neutral' {
+                outline-color: var($sys-available-on-complementary);
+              }
+
+              @else {
+                outline-color: var($sys-available-complementary);
+              }
             }
           }
 
