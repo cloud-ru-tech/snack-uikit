@@ -59,7 +59,7 @@ const Template = ({
   delete items.at(-1)?.href;
 
   return (
-    <div className={styles.story}>
+    <div>
       <style>{`.${styles.scroll} { width: ${storyContainerWidth}; }`}</style>
       <Scroll className={styles.scroll} resize={Scroll.resizes.Horizontal}>
         <div className={styles.container}>

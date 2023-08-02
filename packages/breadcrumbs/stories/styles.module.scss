@@ -1,12 +1,5 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
-.story {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - 2rem);
-}
-
 .scroll {
   width: calc(100% - 20px);
   height: 80px;

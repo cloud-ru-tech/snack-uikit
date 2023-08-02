@@ -13,10 +13,10 @@ export function CrumbsTypography({ size, children, className }: CrumbsTypography
   return (
     <Typography
       className={className}
-      size={Typography.sizes.M}
+      size={size === Size.S ? Typography.sizes.L : Typography.sizes.M}
       tag={Typography.tags.div}
       family={Typography.families.Sans}
-      role={size === Size.S ? Typography.roles.Title : Typography.roles.Body}
+      role={Typography.roles.Body}
     >
       {children}
     </Typography>
