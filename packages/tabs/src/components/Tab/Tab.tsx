@@ -71,7 +71,7 @@ export function Tab({ label, value, disabled = false, className, onClick, counte
 
   const clickByEnterOrSpaceKey = useCallback(
     (e: KeyboardEvent) => {
-      if (e.code === 'Enter' || e.code === 'Space') {
+      if (e.key === 'Enter' || e.key === 'Space') {
         ref.current?.click();
       }
     },

@@ -97,8 +97,8 @@ export function TabBar({ children, className, type = Type.Primary, ...otherProps
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       let newFocusTab: string | undefined;
-      if (e.code === 'ArrowRight') newFocusTab = getNext(focusedTab || selectedTab);
-      if (e.code === 'ArrowLeft') newFocusTab = getPrev(focusedTab || selectedTab);
+      if (e.key === 'ArrowRight') newFocusTab = getNext(focusedTab || selectedTab);
+      if (e.key === 'ArrowLeft') newFocusTab = getPrev(focusedTab || selectedTab);
       if (newFocusTab) {
         e.preventDefault();
         setFocusedTab(newFocusTab);

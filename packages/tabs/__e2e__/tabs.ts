@@ -126,7 +126,7 @@ for (const key of ['Enter', 'Space']) {
       .notOk()
       .pressKey('tab')
       .pressKey('tab')
-      .dispatchEvent(getActive(), 'keydown', { code: key, bubbles: true })
+      .dispatchEvent(getActive(), 'keydown', { key, bubbles: true })
       .expect(isSelected(tabButton1))
       .notOk()
       .expect(content1.exists)
