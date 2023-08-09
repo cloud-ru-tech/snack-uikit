@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.3 (2023-08-09)
+
+
+### Bug Fixes
+
+* **FF-0000:** width, focus invert-neutral ([883c753](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/883c7534ddac0d371425f1d95914431c1f1fbf41))
+
+
+
+
+
 ## 0.4.2 (2023-08-08)
 
 
