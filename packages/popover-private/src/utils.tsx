@@ -18,32 +18,31 @@ export function getArrowPositionStyles({ placement, x, y, ref }: Params): CSSPro
   }
 
   const width = ref.current.offsetWidth;
-  const height = ref.current.offsetHeight;
 
   switch (true) {
     case placement.startsWith('top'):
       return {
         left: x,
-        bottom: -(height / 2 + width / 2),
+        bottom: -width,
         transform: 'rotate(-90deg)',
       };
     case placement.startsWith('bottom'):
       return {
         left: x,
-        top: -(height / 2 + width / 2),
+        top: -width,
         transform: 'rotate(90deg)',
       };
     case placement.startsWith('left'):
       return {
         top: y,
-        right: -width,
+        right: -(width - 1),
         transform: 'rotate(180deg)',
       };
     case placement.startsWith('right'):
     default:
       return {
         top: y,
-        left: -width,
+        left: -(width - 1),
       };
   }
 }

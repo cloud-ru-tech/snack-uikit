@@ -16,12 +16,6 @@ export enum Placement {
   BottomEnd = 'bottom-end',
 }
 
-export enum ArrowSize {
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
-
 export enum Trigger {
   Click = 'click',
   Hover = 'hover',

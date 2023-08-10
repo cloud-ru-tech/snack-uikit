@@ -32,7 +32,6 @@ export function Tooltip({
       popoverContent={<div className={styles.tooltipContainer}>{tip}</div>}
       arrowClassName={styles.tooltipArrow}
       trigger={trigger}
-      arrowSize={PopoverPrivate.arrowSizes.M}
       hasArrow
       {...otherProps}
     >

@@ -25,7 +25,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ArrowSize, Placement, PopoverWidthStrategy, Trigger } from '../../constants';
+import { Placement, PopoverWidthStrategy, Trigger } from '../../constants';
 import { getArrowOffset, getPopoverRootElement, getPopoverTriggerJSX, getTriggerProps } from '../../utils';
 import { Arrow } from '../Arrow';
 import styles from './styles.module.scss';
@@ -47,7 +47,6 @@ export type PopoverPrivateProps = WithSupportProps<{
   className?: string;
   triggerClassName?: string;
   hasArrow?: boolean;
-  arrowSize?: ArrowSize;
   arrowClassName?: string;
   offset?: number;
   children: ReactNode | ChildrenFunction;
@@ -69,7 +68,6 @@ function PopoverPrivateComponent({
   onOpenChange,
   placement: placementProp = Placement.Top,
   hasArrow,
-  arrowSize,
   arrowClassName,
   offset: offsetProp = 0,
   popoverContent,
@@ -101,7 +99,7 @@ function PopoverPrivateComponent({
     middleware: [
       shift(),
       offset(offsetProp + arrowOffset),
-      hasArrow && arrow({ element: arrowRef }),
+      hasArrow && arrow({ element: arrowRef, padding: (offsetProp + arrowOffset) * 2 }),
       flip(),
       size({
         apply({ rects }) {
@@ -165,7 +163,6 @@ function PopoverPrivateComponent({
         {popoverContent}
         {middlewareData.arrow && (
           <Arrow
-            size={arrowSize}
             placement={placement}
             x={middlewareData.arrow.x}
             y={middlewareData.arrow.y}
@@ -206,6 +203,5 @@ export function PopoverPrivate({ children, ...props }: PopoverPrivateProps) {
 }
 
 PopoverPrivate.placements = Placement;
-PopoverPrivate.arrowSizes = ArrowSize;
 PopoverPrivate.triggers = Trigger;
 PopoverPrivate.widthStrategies = PopoverWidthStrategy;

@@ -39,7 +39,6 @@ export function Popover({
       popoverContent={<div className={styles.popoverContainer}>{tip}</div>}
       arrowClassName={styles.popoverArrow}
       trigger={trigger}
-      arrowSize={PopoverPrivate.arrowSizes.L}
       hasArrow
       {...otherProps}
     >
