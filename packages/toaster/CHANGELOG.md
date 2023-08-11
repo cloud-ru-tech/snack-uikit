@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.2 (2023-08-11)
+
+
+### Bug Fixes
+
+* **FF-0000:** fix value ErrorCritical appearance ([50b6ae4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/50b6ae4fa6eac3d182aa6e046adf43e90d736916))
+
+
+
+
+
 ## 0.2.1 (2023-08-11)
 
 ### Only dependencies have been changed
