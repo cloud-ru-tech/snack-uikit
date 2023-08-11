@@ -148,7 +148,7 @@
     );
   }
 
-  &[data-appearance='error-critical'] {
+  &[data-appearance='errorCritical'] {
     @include colorMap(
       $sys-red-accent-default, 
       $sys-red-on-accent, 

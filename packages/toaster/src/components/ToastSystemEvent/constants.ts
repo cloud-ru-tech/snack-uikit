@@ -3,7 +3,7 @@ import { OnColor } from '@snack-ui/link';
 export enum ToastSystemEventAppearance {
   Neutral = 'neutral',
   Error = 'error',
-  ErrorCritical = 'error-critical',
+  ErrorCritical = 'errorCritical',
   Warning = 'warning',
   Success = 'success',
 }
