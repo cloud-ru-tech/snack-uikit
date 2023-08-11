@@ -1,0 +1,44 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-modal';
+
+.footerActions {
+  @include composite-var($modal, 'action-row');
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footerDisclaimer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: simple-var($sys-neutral-text-disabled);
+}
+
+.footer {
+  @include composite-var($modal, 'footer');
+
+  display: flex;
+  flex-direction: column;
+
+  &[data-align='center'] {
+    align-items: center;
+
+    .footerDisclaimer {
+      align-items: center;
+    }
+  }
+
+  &[data-align='vertical'] {
+    align-items: center;
+
+    .footerActions {
+      flex-direction: column-reverse;
+      width: 100%;
+    }
+
+    .footerDisclaimer {
+      align-items: center;
+    }
+  }
+}

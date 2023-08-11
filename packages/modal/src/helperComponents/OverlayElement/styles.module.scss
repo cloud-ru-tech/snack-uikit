@@ -1,0 +1,17 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-modal';
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  background: simple-var($sys-blackout);
+
+  &[data-appearance="aggressive"], &[data-appearance="forced"] {
+    backdrop-filter: blur(simple-var($background-blur-background-blur));
+  }
+}

@@ -1,0 +1,55 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-modal';
+
+$aligns: 'default', 'center';
+
+.header {
+  /* stub for proper typings */
+}
+
+.image {
+  @include composite-var($modal, 'image');
+
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.icon {
+  @include composite-var($modal, 'icon-decor');
+
+  display: flex;
+  justify-content: center;
+}
+
+.headline {
+  @each $align in $aligns {
+    &[data-align="#{$align}"] {
+      @include composite-var($modal, 'headline', $align);
+
+      display: flex;
+      flex-direction: column;
+
+      @if ($align == 'center') {
+        align-items: center;
+      }
+    }
+  }
+}
+
+.titleWrap {
+  display: flex;
+  gap: var($dimension-050m);
+  align-items: center;
+}
+
+.title {
+  display: grid;
+}
+
+.tooltipTrigger {
+  color: var($sys-neutral-text-light);
+}
+
+.subtitle {
+  color: var($sys-neutral-text-support);
+}

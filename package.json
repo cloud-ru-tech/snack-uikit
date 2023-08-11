@@ -33,9 +33,9 @@
     "test:unit:local": "vitest"
   },
   "dependencies": {
-    "@sbercloud/figma-tokens": "1.14.0",
-    "@sbercloud/figma-tokens-cloud-platform": "1.14.0",
-    "@sbercloud/figma-tokens-mlspace": "1.14.0",
+    "@sbercloud/figma-tokens": "1.15.0",
+    "@sbercloud/figma-tokens-cloud-platform": "1.15.0",
+    "@sbercloud/figma-tokens-mlspace": "1.15.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

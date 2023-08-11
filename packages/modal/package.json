@@ -1,0 +1,47 @@
+{
+  "name": "@snack-ui/modal",
+  "title": "Modal",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/modal",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/modal"
+  },
+  "author": "Белов Алексей <anbelov@cloud.ru>",
+  "contributors": [
+    "Белов Алексей <anbelov@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-ui/button": "0.10.0",
+    "@snack-ui/icon-predefined": "0.1.1",
+    "@snack-ui/icons": "0.9.0",
+    "@snack-ui/link": "0.4.3",
+    "@snack-ui/scroll": "0.2.0",
+    "@snack-ui/tooltip": "0.3.4",
+    "@snack-ui/truncate-string": "0.1.4",
+    "@snack-ui/typography": "0.2.4",
+    "@snack-ui/utils": "1.2.0",
+    "classnames": "2.3.2",
+    "react-modal": "3.16.1"
+  },
+  "devDependencies": {
+    "@types/react-modal": "3.16.0"
+  }
+}

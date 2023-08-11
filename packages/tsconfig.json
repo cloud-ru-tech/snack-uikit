@@ -91,6 +91,9 @@
     {
       "path": "./toaster"
     },
+    {
+      "path": "./modal"
+    }
   ],
   "compilerOptions": {
     "target": "es6",
