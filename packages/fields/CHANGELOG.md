@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.1 (2023-08-11)
+
+### Only dependencies have been changed
+* [@snack-ui/calendar@0.1.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/icons@0.10.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/tooltip@0.3.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-ui/truncate-string@0.1.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 # 0.4.0 (2023-08-02)
 
 

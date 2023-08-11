@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/breadcrumbs",
   "title": "Breadcrumbs",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,7 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/popover": "0.2.13",
+    "@snack-ui/popover": "0.2.14",
     "@snack-ui/typography": "0.2.4",
     "@snack-ui/utils": "1.2.0",
     "classnames": "2.3.2",

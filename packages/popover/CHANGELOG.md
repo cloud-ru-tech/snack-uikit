@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.14 (2023-08-11)
+
+
+### Bug Fixes
+
+* **[FF-2651](https://jira.sbercloud.tech/browse/FF-2651):** remove useless arrowSize, fixed arrow position ([4988063](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/49880631a19489f6a5881f771c1b7a7dba8d685a))
+
+
+
+
+
 ## 0.2.13 (2023-08-02)
 
 ### Only dependencies have been changed
@@ -32,7 +43,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.2.10 (2023-06-23)
 
-**Note:** Version bump only for package @snack-ui/popover
+### Only dependencies have been changed
+* [@snack-ui/popover-private@0.6.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/popover-private/CHANGELOG.md)
 
 
 

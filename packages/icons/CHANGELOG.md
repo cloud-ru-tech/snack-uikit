@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2023-08-11)
+
+
+### Features
+
+* **[FF-2651](https://jira.sbercloud.tech/browse/FF-2651):** add QuestionS icon ([c9115c8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c9115c8bd0d9e3bf39e277d9cfd8506c49761a24))
+
+
+
+
+
 # 0.9.0 (2023-07-26)
 
 
