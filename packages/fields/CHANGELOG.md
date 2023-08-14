@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.4 (2023-08-14)
+
+
+### Bug Fixes
+
+* **[FF-2574](https://jira.sbercloud.tech/browse/FF-2574):** removed (useless scss loop, style duplication), ease up style calc ([629d16f](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/629d16f171a227375f80ae3bbbe1a55229cb153a))
+
+
+
+
+
 ## 0.4.3 (2023-08-14)
 
 ### Only dependencies have been changed
