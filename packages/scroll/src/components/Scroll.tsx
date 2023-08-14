@@ -88,6 +88,8 @@ const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
   );
 
   useLayoutEffect(() => {
+    if (!autoscrollTo) return;
+
     const instance = getOSInstance();
     if (instance && isOverlayScrollbarInited) {
       syncPositions();
@@ -104,12 +106,19 @@ const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
   const onScroll = useCallback(
     (event?: UIEvent) => {
       onScrollProp?.(event);
-      syncPositions();
+
+      if (autoscrollTo) {
+        syncPositions();
+      }
     },
+    /* autoscrollTo не аффектит на расчеты в syncPositions */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onScrollProp, syncPositions],
   );
 
   const onContentSizeChanged = useCallback(() => {
+    if (!autoscrollTo) return;
+
     const instance = getOSInstance();
     if (instance) {
       if (lastPositionsRef.current.scrolledToBottom && autoscrollTo === AutoscrollTo.Bottom) {
