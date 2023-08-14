@@ -5,6 +5,7 @@
 
   box-sizing: border-box;
   width: calc(100% - var($dimension-1m));
+  min-height: var($dimension-2m);
   padding-right: calc(var($space-modal-body-side) - var($dimension-1m));
   padding-left: var($space-modal-body-side);
 
