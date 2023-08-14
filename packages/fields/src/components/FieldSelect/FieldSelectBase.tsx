@@ -190,12 +190,9 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
                 value={inputValue}
                 tabIndex={inputTabIndex}
               />
+
               {displayedValue && (
-                <span
-                  className={styles.displayValue}
-                  data-test-id='field-select__displayed-value'
-                  data-displayed-value={true}
-                >
+                <span className={styles.displayValue} data-test-id='field-select__displayed-value'>
                   {displayedValue}
                 </span>
               )}

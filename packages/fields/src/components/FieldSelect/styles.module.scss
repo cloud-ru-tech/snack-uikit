@@ -2,7 +2,7 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
 
 $sizes: 's', 'm', 'l';
-$variants: 'single-line-container', 'multi-line-container';
+$containerVariant: 'single-line-container';
 $icons-sizes: (
   's': $icon-xs,
   'm': $icon-s,
@@ -45,6 +45,7 @@ $icons-sizes: (
   box-sizing: border-box;
   height: 100%;
 
+  background-color: inherit;
   border: none;
   outline: none;
 }
@@ -58,20 +59,16 @@ $icons-sizes: (
         color: var($sys-neutral-text-light);
       }
 
-      @each $variant in $variants {
-        &[data-variant='#{$variant}'] {
-          @include composite-var($fields, $variant, $size);
+      &[data-variant='#{$containerVariant}'] {
+        .displayValue {
+          $button-width: simple-var($icons-sizes, $size);
+          $postfix-width: calc(var(#{$space-fields-postfix-gap}) + $button-width * 2);
+          $margin-right: calc(#{simple-var($fields, $containerVariant, $size, 'padding-right')} + #{simple-var($fields, $containerVariant, $size, 'gap')} + #{$postfix-width});
 
-          .displayValue {
-            --button-width: #{simple-var($icons-sizes, $size)};
-            --postfix-width: calc(var(#{$space-fields-postfix-gap}) + var(--button-width) * 2);
-            --margin-right: calc(#{simple-var($fields, $variant, $size, 'padding-right')} + #{simple-var($fields, $variant, $size, 'gap')} + var(--postfix-width));
-
-            width: calc(100% - var(--margin-right));
-            margin-right: var(--margin-right);
-            padding-left: simple-var($fields, $variant, $size, 'padding-left');
-            border-radius: simple-var($fields, $variant, $size, 'border-radius');
-          }
+          width: calc(100% - $margin-right);
+          margin-right: $margin-right;
+          padding-left: simple-var($fields, $containerVariant, $size, 'padding-left');
+          border-radius: simple-var($fields, $containerVariant, $size, 'border-radius');
         }
       }
     }

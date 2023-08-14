@@ -36,102 +36,78 @@ $variants: 'single-line-container', 'multi-line-container';
   }
 
   &[data-validation="default"] {
-    &, & [data-displayed-value] {
-      background-color: simple-var($sys-neutral-background1-level);
-      border-color: simple-var($sys-neutral-decor-default);
-    }
+    background-color: simple-var($sys-neutral-background1-level);
+    border-color: simple-var($sys-neutral-decor-default);
 
     &:hover {
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($sys-primary-decor-hovered);
-      }
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-primary-decor-hovered);
     }
 
     &:focus-within,
     &[data-focused] {
       @include outline-var($container-focused-m);
 
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($sys-primary-accent-default);
-        outline-color: simple-var($sys-primary-decor-activated);
-      }
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-primary-accent-default);
+      outline-color: simple-var($sys-primary-decor-activated);
     }
   }
 
   &[data-validation="error"] {
-    &, & [data-displayed-value] {
-      background-color: simple-var($sys-red-background1-level);
-      border-color: simple-var($sys-red-decor-default);
-    }
+    background-color: simple-var($sys-red-background1-level);
+    border-color: simple-var($sys-red-decor-default);
 
     &:hover {
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($sys-red-decor-hovered);
-      }
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-red-decor-hovered);
     }
 
     &:focus-within,
     &[data-focused] {
       @include outline-var($container-focused-m);
 
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($sys-red-accent-default);
-        outline-color: simple-var($sys-red-decor-activated);
-      }
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-red-accent-default);
+      outline-color: simple-var($sys-red-decor-activated);
     }
   }
 
   &[data-validation="warning"] {
-    &, & [data-displayed-value] {
-      background-color: simple-var($sys-yellow-background1-level);
-      border-color: simple-var($sys-yellow-decor-default);
-    }
+    background-color: simple-var($sys-yellow-background1-level);
+    border-color: simple-var($sys-yellow-decor-default);
 
     &:hover {
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($sys-yellow-decor-hovered);
-      }
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-yellow-decor-hovered);
     }
 
     &:focus-within,
     &[data-focused] {
       @include outline-var($container-focused-m);
 
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($sys-yellow-accent-default);
-        outline-color: simple-var($sys-yellow-decor-activated);
-      }
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-yellow-accent-default);
+      outline-color: simple-var($sys-yellow-decor-activated);
     }
   }
 
   &[data-validation="success"] {
-    &, & [data-displayed-value] {
-      background-color: simple-var($sys-green-background1-level);
-      border-color: simple-var($sys-green-decor-default);
-    }
+    background-color: simple-var($sys-green-background1-level);
+    border-color: simple-var($sys-green-decor-default);
 
     &:hover {
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($sys-green-decor-hovered);
-      }
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-green-decor-hovered);
     }
 
     &:focus-within,
     &[data-focused] {
       @include outline-var($container-focused-m);
 
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($sys-green-accent-default);
-        outline-color: simple-var($sys-green-decor-activated);
-      }
+      background-color: simple-var($sys-neutral-background2-level);
+      border-color: simple-var($sys-green-accent-default);
+      outline-color: simple-var($sys-green-decor-activated);
     }
   }
 
@@ -147,20 +123,16 @@ $variants: 'single-line-container', 'multi-line-container';
     }
 
     &, &:hover {
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-decor-disabled);
-        border-color: simple-var($sys-neutral-decor-disabled);
-      }
+      background-color: simple-var($sys-neutral-decor-disabled);
+      border-color: simple-var($sys-neutral-decor-disabled);
     }
 
     &:focus-within, &[data-focused] {
       @include outline-var($container-focused-m);
 
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-decor-disabled);
-        border-color: simple-var($sys-neutral-decor-disabled);
-        outline-color: simple-var($sys-primary-decor-activated);
-      }
+      background-color: simple-var($sys-neutral-decor-disabled);
+      border-color: simple-var($sys-neutral-decor-disabled);
+      outline-color: simple-var($sys-primary-decor-activated);
     }
   }
 
@@ -170,14 +142,13 @@ $variants: 'single-line-container', 'multi-line-container';
     }
 
     &, &:focus-within, &[data-focused], &:hover {
-      &, & [data-displayed-value] {
-        background-color: simple-var($sys-neutral-background);
-        border-color: simple-var($sys-neutral-decor-disabled);
-        outline: none;
-      }
+      background-color: simple-var($sys-neutral-background);
+      border-color: simple-var($sys-neutral-decor-disabled);
+      outline: none;
     }
   }
 }
+
 .prefix {
   display: inline-flex;
   flex-shrink: 0;
