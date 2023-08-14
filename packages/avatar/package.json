@@ -27,7 +27,6 @@
     "./LICENSE"
   ],
   "license": "Apache-2.0",
-  "scripts": {},
   "dependencies": {
     "@snack-ui/status": "0.2.5",
     "@snack-ui/utils": "1.2.0"

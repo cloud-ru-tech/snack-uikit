@@ -3,6 +3,7 @@ import path from 'path';
 
 import globConfig from '../../package.json';
 import globTSConfig from '../../packages/tsconfig.json';
+import { DOCGEN_SECTION_PLACEHOLDER_END, DOCGEN_SECTION_PLACEHOLDER_START } from '../docgen/constants';
 
 const PackagesRootFolder = 'packages';
 
@@ -97,6 +98,9 @@ export const readme = ({
 [Changelog](./CHANGELOG.md)
 
 ${packageDescription}
+
+${DOCGEN_SECTION_PLACEHOLDER_START}
+${DOCGEN_SECTION_PLACEHOLDER_END}
 `;
 
   const readmeFile = path.join(`./${PackagesRootFolder}/${packageRootFolderName}/README.md`);

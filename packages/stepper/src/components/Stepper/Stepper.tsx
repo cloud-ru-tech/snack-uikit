@@ -20,7 +20,11 @@ export type StepperProps = WithSupportProps<{
   defaultCurrentStepIndex: number;
   /** CSS-класс */
   className?: string;
-  /** Render function */
+  /**
+   * Render function. Принимает аргументы: `stepper` - JSX-элемент степпера,
+   * `goNext` - перейти на след. шаг, `goPrev` - перейти на пред. шаг, `resetValidation` - сбросить состояние валидации для текущего шага, `isCompleted` - окончен ли процесс, `currentStepIndex` - индекс текущего шага, `stepCount` - кол-во шагов.
+   * @type ({stepper, ...api}) => ReactElement
+   */
   children: (params: StepperState) => ReactElement;
   /** Колбек смены текущего степа */
   onChangeCurrentStep: (newValue: number, prevValue: number) => void;

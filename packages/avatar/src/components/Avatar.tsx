@@ -8,12 +8,19 @@ import styles from './styles.module.scss';
 import { getAbbreviation } from './utils';
 
 export type AvatarProps = WithSupportProps<{
+  /** Имя */
   name: string;
+  /** src аттрибут изображеня */
   src?: string;
+  /** Внешний вид */
   appearance?: Appearance;
+  /** Размер */
   size?: Size;
+  /** Форма: круглая или квадратная */
   shape?: Shape;
+  /** Индикатор */
   indicator?: StatusIndicatorProps['appearance'];
+  /** Отображение двух заглавных символов имени */
   showTwoSymbols?: boolean;
 }>;
 
@@ -27,11 +34,15 @@ const statusIndicatorSizeMap = {
   [Size.Xxl]: StatusIndicator.sizes.L,
 };
 
+/**
+ * Компонент отображения аватара пользователя.
+ * @constructor
+ */
 export function Avatar({
   name,
-  appearance = Appearance.Red,
-  size = Size.S,
-  shape = Shape.Round,
+  appearance = Avatar.appearances.Red,
+  size = Avatar.sizes.S,
+  shape = Avatar.shapes.Round,
   indicator,
   showTwoSymbols,
   src,

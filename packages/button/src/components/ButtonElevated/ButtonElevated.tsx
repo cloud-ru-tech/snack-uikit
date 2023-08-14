@@ -12,15 +12,16 @@ import styles from './styles.module.scss';
 export type ButtonElevatedProps = WithSupportProps<
   Omit<CommonButtonProps, 'iconPosition' | 'label' | 'type' | 'labelClassName' | 'size'> &
     Required<Pick<CommonButtonProps, 'icon'>> & {
+      /** Размер */
       size?: Size;
     }
 >;
 
 export function ButtonElevated({
   className,
-  size = Size.S,
-  target = Target.Blank,
-  htmlType = HtmlType.Button,
+  size = ButtonElevated.sizes.S,
+  target = ButtonElevated.targets.Blank,
+  htmlType = ButtonElevated.htmlTypes.Button,
   tabIndex,
   ...rest
 }: ButtonElevatedProps) {
