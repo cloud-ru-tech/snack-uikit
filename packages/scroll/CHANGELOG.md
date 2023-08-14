@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2023-08-14)
+
+
+### Bug Fixes
+
+* **[FF-2937](https://jira.sbercloud.tech/browse/FF-2937):** no syncPositions if autoscrollTo is not enabled ([ec9441f](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/ec9441fabf0b9ed72b3cafd89bff27f9e3613272))
+
+
+
+
+
 # 0.2.0 (2023-08-02)
 
 

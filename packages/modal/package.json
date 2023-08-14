@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/modal",
   "title": "Modal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,7 +33,7 @@
     "@snack-ui/icon-predefined": "0.1.1",
     "@snack-ui/icons": "0.10.0",
     "@snack-ui/link": "0.4.4",
-    "@snack-ui/scroll": "0.2.0",
+    "@snack-ui/scroll": "0.2.1",
     "@snack-ui/tooltip": "0.3.5",
     "@snack-ui/truncate-string": "0.1.5",
     "@snack-ui/typography": "0.2.4",

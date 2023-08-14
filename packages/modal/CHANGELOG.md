@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.1 (2023-08-14)
+
+
+### Bug Fixes
+
+* **[FF-2937](https://jira.sbercloud.tech/browse/FF-2937):** bug when scroll is not initializing properly ([14adaa9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/14adaa9a77cdc13a713580633148511f3660723f))
+
+
+
+
+
 # 0.1.0 (2023-08-11)
 
 

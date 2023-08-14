@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/droplist",
   "title": "droplist",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,7 +33,7 @@
     "@snack-ui/avatar": "0.2.8",
     "@snack-ui/icons": "0.10.0",
     "@snack-ui/popover-private": "0.6.1",
-    "@snack-ui/scroll": "0.2.0",
+    "@snack-ui/scroll": "0.2.1",
     "@snack-ui/tag": "0.1.6",
     "@snack-ui/toggles": "0.3.1",
     "@snack-ui/truncate-string": "0.1.5",
