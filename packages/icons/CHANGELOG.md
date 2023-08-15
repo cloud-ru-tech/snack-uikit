@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2023-08-15)
+
+
+### BREAKING CHANGES
+
+
+* **[FF-2777](https://jira.sbercloud.tech/browse/FF-2777):** replaced all s/xs icons with single ones with prop ([07ce31a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/07ce31ad2a2b1406fcec55ea7ab50952444b9d15))
+
+
+
+
 # 0.10.0 (2023-08-11)
 
 
