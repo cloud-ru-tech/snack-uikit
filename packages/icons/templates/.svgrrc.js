@@ -1,6 +1,6 @@
 module.exports = {
-  template: require('./template.js')({ size: 24 }),
-  indexTemplate: require('./indexTemplate.js'),
+  template: require('./iconComponentTemplate.js')({ size: 24 }),
+  indexTemplate: require('./wrapperComponentTemplate.js'),
   ext: 'tsx',
   svgo: true,
   svgoConfig: {

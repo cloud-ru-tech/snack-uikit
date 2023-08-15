@@ -29,10 +29,11 @@
   "license": "Apache-2.0",
   "scripts": {
     "validate:icons": "ts-node ../../scripts/validateIcons.ts",
-    "fix:icons": "cross-var rimraf svgs-fixed/$npm_config_directory && cross-var oslllo-svg-fixer -s svgs/$npm_config_directory -d svgs-fixed/$npm_config_directory --sd false",
+    "create-export-index-file": "ts-node ../../scripts/create-export-index-file.ts",
     "build:icons": "cross-var rimraf src/components/$npm_config_directory && cross-var svgr -d src/components/$npm_config_directory svgs-fixed/$npm_config_directory --config-file templates/.svgrrc.js",
+    "fix:icons": "cross-var rimraf svgs-fixed/$npm_config_directory && ts-node ../../scripts/fix-icons.ts",
     "build:interface-icons": "npm run fix:icons --directory=interface-icons && npm run build:icons --directory=interface-icons",
-    "compile": "npm run validate:icons && npm run build:interface-icons"
+    "compile": "npm run validate:icons && npm run build:interface-icons && npm run create-export-index-file"
   },
   "devDependencies": {
     "@svgr/cli": "7.0.0",

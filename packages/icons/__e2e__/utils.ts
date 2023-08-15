@@ -1,5 +1,5 @@
-import { readdirSync } from 'fs';
-import { resolve } from 'path';
+import { existsSync, lstatSync, readdirSync } from 'fs';
+import { join } from 'path';
 
 function generateDataTestId(fileName: string) {
   const name = fileName.replace(/(\.?svg)$/gi, '').replace(/[A-Z]?[a-z]+|[0-9]+|[A-Z]+(?![a-z])/g, x => {
@@ -10,10 +10,19 @@ function generateDataTestId(fileName: string) {
   return `icon${name}`;
 }
 
-const iconsFolder = resolve(process.cwd(), './packages/icons');
+export const getIconsDataTestIds = (pathToIcons: string) => {
+  const iconsDataTestIds: string[] = [];
+  const iconsFolderPath = join(__dirname, pathToIcons);
 
-export function getIconsDataTestIds(pathToIcons: string) {
-  const icons = readdirSync(resolve(iconsFolder, pathToIcons));
-
-  return icons.map(generateDataTestId);
-}
+  if (existsSync(iconsFolderPath)) {
+    readdirSync(iconsFolderPath).forEach(folder => {
+      const folderPath = join(iconsFolderPath, folder);
+      if (lstatSync(folderPath).isDirectory()) {
+        readdirSync(folderPath).forEach(file => {
+          iconsDataTestIds.push(generateDataTestId(file));
+        });
+      }
+    });
+  }
+  return iconsDataTestIds;
+};

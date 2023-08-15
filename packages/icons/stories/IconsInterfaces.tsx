@@ -11,7 +11,7 @@ type StoryProps = {
 };
 
 const meta: Meta = {
-  title: 'Documentation/Icons/Interfaces',
+  title: 'Components/Icons/Interfaces',
 };
 export default meta;
 

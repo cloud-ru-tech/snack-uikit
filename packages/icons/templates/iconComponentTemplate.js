@@ -1,6 +1,6 @@
 const generateDataTestId = require('./generateDataTestId');
 
-const template =
+const iconComponentTemplate =
   ({ size }) =>
   ({ imports, interfaces, componentName, jsx, exports }, { tpl }) => {
     const testId = 'icon' + generateDataTestId(componentName);
@@ -45,4 +45,4 @@ const template =
     `;
   };
 
-module.exports = template;
+module.exports = iconComponentTemplate;
