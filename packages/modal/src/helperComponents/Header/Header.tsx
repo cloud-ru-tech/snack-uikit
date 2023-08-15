@@ -2,8 +2,7 @@ import cn from 'classnames';
 import { ReactNode } from 'react';
 
 import { IconPredefined, IconPredefinedProps } from '@snack-ui/icon-predefined';
-import { QuestionSVG } from '@snack-ui/icons';
-import { Tooltip, TooltipProps } from '@snack-ui/tooltip';
+import { QuestionTooltip, QuestionTooltipProps } from '@snack-ui/tooltip';
 import { Typography } from '@snack-ui/typography';
 
 import { ContentAlign, TEST_IDS } from '../../constants';
@@ -11,7 +10,7 @@ import styles from './styles.module.scss';
 
 export type ModalHeaderProps = {
   title: ReactNode;
-  titleTooltip?: TooltipProps['tip'];
+  titleTooltip?: QuestionTooltipProps['tip'];
   subtitle?: ReactNode;
   picture?:
     | IconPredefinedProps['icon']
@@ -55,9 +54,7 @@ export function ModalHeader({
           </Typography>
 
           {titleTooltip && (
-            <Tooltip tip={titleTooltip} data-test-id={TEST_IDS.tooltip} triggerClassName={styles.tooltipTrigger}>
-              <QuestionSVG />
-            </Tooltip>
+            <QuestionTooltip tip={titleTooltip} size={QuestionTooltip.sizes.M} data-test-id={TEST_IDS.tooltip} />
           )}
         </div>
 

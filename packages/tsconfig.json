@@ -11,13 +11,13 @@
       "path": "./popover"
     },
     {
-      "path": "./tooltip"
-    },
-    {
       "path": "./typography"
     },
     {
       "path": "./icons"
+    },
+    {
+      "path": "./tooltip"
     },
     {
       "path": "./link"
