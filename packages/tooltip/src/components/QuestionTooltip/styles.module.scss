@@ -1,0 +1,20 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.questionTooltip {
+  display: inline-flex;
+  color: var($sys-neutral-text-light);
+
+  &[data-size='s'] {
+    svg {
+      width: var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
+      height: var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
+    }
+  }
+
+  &[data-size='m'] {
+    svg {
+      width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+      height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+    }
+  }
+}

@@ -7,7 +7,7 @@
 
 Компонент Tooltip использует под собой компонент PopoverPrivate (readme ниже);
 
-## Props
+## Tooltip Props
 
 #### **`tip?: ReactNode`**
   содержимое тултипа
@@ -37,3 +37,11 @@
 
 #### **`hoverDelayClose?: number`**
   задержка закрытия при ховере в мс
+
+
+## QuestionTooltip Props
+Те же, что и у `Tooltip`, за исключением **children** - этот проп отсутствует
+
+#### **`Size?: Size`** - *`[QuestionTooltip.sizes.S]`*
+Размер иконки
+Возможные значения: `S, M`
