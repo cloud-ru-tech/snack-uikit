@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { ReactNode } from 'react';
 
 import { IconPredefined, IconPredefinedProps } from '@snack-ui/icon-predefined';
-import { QuestionSSVG } from '@snack-ui/icons';
+import { QuestionSVG } from '@snack-ui/icons';
 import { Tooltip, TooltipProps } from '@snack-ui/tooltip';
 import { Typography } from '@snack-ui/typography';
 
@@ -56,7 +56,7 @@ export function ModalHeader({
 
           {titleTooltip && (
             <Tooltip tip={titleTooltip} data-test-id={TEST_IDS.tooltip} triggerClassName={styles.tooltipTrigger}>
-              <QuestionSSVG size={24} />
+              <QuestionSVG />
             </Tooltip>
           )}
         </div>

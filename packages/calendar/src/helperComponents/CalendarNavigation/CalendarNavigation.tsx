@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ChevronDownSSVG, ChevronDownXsSVG, ChevronUpSSVG, ChevronUpXsSVG } from '@snack-ui/icons';
+import { ChevronDownSVG, ChevronUpSVG } from '@snack-ui/icons';
 
 import { GRID_SIZE, Size, ViewLevel } from '../../constants';
 import { Button } from '../Button';
@@ -19,12 +19,12 @@ const VIEW_LEVEL_MAP = {
 
 const ICONS = {
   UP: {
-    [Size.S]: <ChevronUpXsSVG size={16} />,
-    [Size.M]: <ChevronUpSSVG />,
+    [Size.S]: <ChevronUpSVG size={16} />,
+    [Size.M]: <ChevronUpSVG />,
   },
   DOWN: {
-    [Size.S]: <ChevronDownXsSVG size={16} />,
-    [Size.M]: <ChevronDownSSVG />,
+    [Size.S]: <ChevronDownSVG size={16} />,
+    [Size.M]: <ChevronDownSVG />,
   },
 };
 

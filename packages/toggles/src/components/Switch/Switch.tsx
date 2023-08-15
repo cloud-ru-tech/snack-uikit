@@ -1,4 +1,4 @@
-import { CheckSSVG, CrossSSVG } from '@snack-ui/icons';
+import { CheckSVG, CrossSVG } from '@snack-ui/icons';
 
 import { IconSize, LabelPosition, Size, Width } from '../../constants';
 import { ToggleProps } from '../../types';
@@ -26,10 +26,10 @@ export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, ...rest
               {showIcon && (
                 <>
                   <div className={styles.flag_icon_off} {...data}>
-                    <CrossSSVG size={IconSize[Size.S]} />
+                    <CrossSVG size={IconSize[Size.S]} />
                   </div>
                   <div className={styles.flag_icon_on} {...data}>
-                    <CheckSSVG size={IconSize[Size.S]} />
+                    <CheckSVG size={IconSize[Size.S]} />
                   </div>
                 </>
               )}

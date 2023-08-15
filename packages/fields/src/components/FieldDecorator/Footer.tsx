@@ -1,4 +1,4 @@
-import { AlarmFilledXsSVG, CheckFilledXsSVG, CrossFilledXsSVG, InfoFilledXsSVG } from '@snack-ui/icons';
+import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG, InfoFilledSVG } from '@snack-ui/icons';
 import { TruncateString } from '@snack-ui/truncate-string';
 
 import { Size, ValidationState } from '../../constants';
@@ -18,25 +18,25 @@ export type FooterProps = {
 };
 
 function getValidationIcon(props: Pick<FooterProps, 'showHintIcon' | 'validationState'>) {
-  let Component: typeof InfoFilledXsSVG;
+  let Component: typeof InfoFilledSVG;
   let showIcon: boolean;
 
   switch (props.validationState) {
     case ValidationState.Success:
-      Component = CheckFilledXsSVG;
+      Component = CheckFilledSVG;
       showIcon = true;
       break;
     case ValidationState.Error:
-      Component = CrossFilledXsSVG;
+      Component = CrossFilledSVG;
       showIcon = true;
       break;
     case ValidationState.Warning:
-      Component = AlarmFilledXsSVG;
+      Component = AlarmFilledSVG;
       showIcon = true;
       break;
     case ValidationState.Default:
     default:
-      Component = InfoFilledXsSVG;
+      Component = InfoFilledSVG;
       showIcon = false;
       break;
   }

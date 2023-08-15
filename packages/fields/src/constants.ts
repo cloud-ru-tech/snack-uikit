@@ -4,6 +4,11 @@ export enum Size {
   L = 'l',
 }
 
+export enum IconSize {
+  Xs = 16,
+  S = 24,
+}
+
 export enum ButtonSize {
   S = 's',
   M = 'm',

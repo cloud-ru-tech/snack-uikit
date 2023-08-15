@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { MouseEvent, useMemo } from 'react';
 import { ToastContentProps as RtToastContentProps } from 'react-toastify';
 
-import { CrossSSVG } from '@snack-ui/icons';
+import { CrossSVG } from '@snack-ui/icons';
 import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
@@ -98,7 +98,7 @@ export function ToastSystemEvent({
           // TODO add translations
           aria-label='close notification'
         >
-          <CrossSSVG />
+          <CrossSVG />
         </button>
       )}
 

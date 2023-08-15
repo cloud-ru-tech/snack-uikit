@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { AnchorHTMLAttributes, MouseEventHandler } from 'react';
 
-import { ArrowLinksSSVG, ArrowLinksXsSVG } from '@snack-ui/icons';
+import { ArrowLinksSVG } from '@snack-ui/icons';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { OnColor, OnSurface, Size, Target } from './constants';
@@ -11,9 +11,9 @@ const getExternalIcon = (size: Size) => {
   const dataTestId = 'external-icon';
 
   if (size === Size.L) {
-    return <ArrowLinksSSVG size={24} data-test-id={dataTestId} />;
+    return <ArrowLinksSVG size={24} data-test-id={dataTestId} />;
   }
-  return <ArrowLinksXsSVG size={16} data-test-id={dataTestId} />;
+  return <ArrowLinksSVG size={16} data-test-id={dataTestId} />;
 };
 
 export type LinkProps = WithSupportProps<{

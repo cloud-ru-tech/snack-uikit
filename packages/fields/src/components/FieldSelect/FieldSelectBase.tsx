@@ -99,7 +99,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
     },
     ref,
   ) => {
-    const ArrowIcon = getArrowIcon({ size, open });
+    const { ArrowIcon, arrowIconSize } = getArrowIcon({ size, open });
     const Item = selectionMode === SelectionMode.Single ? Droplist.ItemSingle : Droplist.ItemMultiple;
 
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
@@ -169,7 +169,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
               postfix={
                 <>
                   {buttons}
-                  <ArrowIcon className={styles.arrowIcon} />
+                  <ArrowIcon size={arrowIconSize} className={styles.arrowIcon} />
                 </>
               }
             >

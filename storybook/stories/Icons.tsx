@@ -4,7 +4,7 @@ import IconsReadme from '../../packages/icons/README.md';
 import { Markdown } from './components';
 
 const meta: Meta = {
-  title: 'Documentation/Icons/Working With Icons',
+  title: 'Documentation/Working With Icons',
 };
 export default meta;
 

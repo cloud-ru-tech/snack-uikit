@@ -1,4 +1,4 @@
-import { MinusSVG, MinusXsSVG } from '@snack-ui/icons';
+import { MinusSVG } from '@snack-ui/icons';
 
 import { IconSize, Size } from '../../constants';
 
@@ -8,7 +8,7 @@ type CheckIconProps = {
 
 const SIZE_TO_ICON_MAP = {
   [Size.M]: <MinusSVG size={IconSize[Size.M]} />,
-  [Size.S]: <MinusXsSVG size={IconSize[Size.S]} />,
+  [Size.S]: <MinusSVG size={IconSize[Size.S]} />,
 };
 
 export function MinusIcon({ size }: CheckIconProps) {

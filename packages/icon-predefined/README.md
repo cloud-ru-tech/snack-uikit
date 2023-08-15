@@ -8,14 +8,14 @@
 ## Example
 
 ```tsx
-import { HeartSSVG } from '@snack-ui/icons';
+import { HeartSVG } from '@snack-ui/icons';
 import { IconPredefined } from '@snack-ui/icon-predefined';
 
 <IconPredefined
     appearance={IconPredefined.appearances.Red}
     size={IconPredefined.sizes.L}
     className='className'
-    icon={HeartSSVG}
+    icon={HeartSVG}
     decor
 />
 ```

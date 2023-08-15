@@ -1,4 +1,4 @@
-import { CrossSSVG } from '@snack-ui/icons';
+import { CrossSVG } from '@snack-ui/icons';
 import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
 import { extractSupportProps } from '@snack-ui/utils';
@@ -68,7 +68,7 @@ export function Alert({
           data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
           data-test-id='alert__close-button'
         >
-          <CrossSSVG />
+          <CrossSVG />
         </button>
       )}
     </div>

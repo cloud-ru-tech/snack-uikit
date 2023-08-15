@@ -1,15 +1,15 @@
-import { AlarmFilledSSVG, CheckFilledSSVG, CrossFilledSSVG } from '@snack-ui/icons';
+import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG } from '@snack-ui/icons';
 
 import { ToastUserActionAppearance } from './constants';
 
 export function getIcon(appearance: ToastUserActionAppearance) {
   switch (appearance) {
     case ToastUserActionAppearance.Success:
-      return <CheckFilledSSVG />;
+      return <CheckFilledSVG />;
     case ToastUserActionAppearance.Error:
-      return <CrossFilledSSVG />;
+      return <CrossFilledSVG />;
     case ToastUserActionAppearance.Warning:
-      return <AlarmFilledSSVG />;
+      return <AlarmFilledSVG />;
     case ToastUserActionAppearance.Neutral:
     default:
       return null;

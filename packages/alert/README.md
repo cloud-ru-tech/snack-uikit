@@ -10,7 +10,7 @@
 
 ```tsx
 import { Alert, AlertTop } from '@snack-ui/alert';
-import { InfoFilledSSVG } from '@snack-ui/icons';
+import { InfoFilledSVG } from '@snack-ui/icons';
 
 // Alert component displays a notification with an optional icon, title, description, and link.
 // It can be used to provide information, warnings, errors, or success messages.
@@ -38,7 +38,7 @@ import { InfoFilledSSVG } from '@snack-ui/icons';
   description='Title description'
   buttonText='Button Text'
   buttonOnClick={() => console.log('Button Clicked')}
-  buttonIcon={<InfoFilledSSVG />}
+  buttonIcon={<InfoFilledSVG />}
   onClose={() => console.log('alert top')}
 />;
 ```

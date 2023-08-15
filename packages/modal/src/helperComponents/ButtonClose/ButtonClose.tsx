@@ -1,4 +1,4 @@
-import { CrossSSVG } from '@snack-ui/icons';
+import { CrossSVG } from '@snack-ui/icons';
 
 import { TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';
@@ -15,7 +15,7 @@ export function ButtonClose({ onClick }: ButtonCloseProps) {
       aria-label='close modal'
       data-test-id={TEST_IDS.closeButton}
     >
-      <CrossSSVG size={24} />
+      <CrossSVG />
     </button>
   );
 }

@@ -1,13 +1,4 @@
-import {
-  HeartFilledSSVG,
-  HeartFilledXsSVG,
-  HeartSSVG,
-  HeartXsSVG,
-  StarFilledSSVG,
-  StarFilledXsSVG,
-  StarSSVG,
-  StarXsSVG,
-} from '@snack-ui/icons';
+import { HeartFilledSVG, HeartSVG, StarFilledSVG, StarSVG } from '@snack-ui/icons';
 
 import { FavoriteIcon, IconSize, LabelPosition, Size, Width } from '../../constants';
 import { ToggleProps } from '../../types';
@@ -17,23 +8,23 @@ import styles from './styles.module.scss';
 
 const CHECKED_ICONS = {
   [Size.M]: {
-    [FavoriteIcon.Star]: StarFilledSSVG,
-    [FavoriteIcon.Heart]: HeartFilledSSVG,
+    [FavoriteIcon.Star]: StarFilledSVG,
+    [FavoriteIcon.Heart]: HeartFilledSVG,
   },
   [Size.S]: {
-    [FavoriteIcon.Star]: StarFilledXsSVG,
-    [FavoriteIcon.Heart]: HeartFilledXsSVG,
+    [FavoriteIcon.Star]: StarFilledSVG,
+    [FavoriteIcon.Heart]: HeartFilledSVG,
   },
 };
 
 const UNCHECKED_ICONS = {
   [Size.M]: {
-    [FavoriteIcon.Star]: StarSSVG,
-    [FavoriteIcon.Heart]: HeartSSVG,
+    [FavoriteIcon.Star]: StarSVG,
+    [FavoriteIcon.Heart]: HeartSVG,
   },
   [Size.S]: {
-    [FavoriteIcon.Star]: StarXsSVG,
-    [FavoriteIcon.Heart]: HeartXsSVG,
+    [FavoriteIcon.Star]: StarSVG,
+    [FavoriteIcon.Heart]: HeartSVG,
   },
 };
 

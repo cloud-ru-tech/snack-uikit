@@ -1,6 +1,6 @@
 import { forwardRef, KeyboardEventHandler, MouseEventHandler } from 'react';
 
-import { CrossSSVG, CrossXsSVG } from '@snack-ui/icons';
+import { CrossSVG } from '@snack-ui/icons';
 
 import { ButtonSize } from '../../constants';
 import styles from './styles.module.scss';
@@ -29,8 +29,8 @@ export const ButtonClearValue = forwardRef<HTMLButtonElement, ButtonClearValuePr
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
       >
-        {size === ButtonSize.S && <CrossXsSVG />}
-        {size === ButtonSize.M && <CrossSSVG />}
+        {size === ButtonSize.S && <CrossSVG size={16} />}
+        {size === ButtonSize.M && <CrossSVG />}
       </button>
     );
   },

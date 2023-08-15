@@ -1,4 +1,4 @@
-import { QuestionXsSVG } from '@snack-ui/icons';
+import { QuestionSVG } from '@snack-ui/icons';
 import { Tooltip } from '@snack-ui/tooltip';
 import { TruncateString } from '@snack-ui/truncate-string';
 
@@ -28,7 +28,7 @@ export function Header({ label = '', labelTooltip, labelFor, size, required = fa
               placement={Tooltip.placements.Right}
               data-test-id='field-decorator__label-tooltip'
             >
-              <QuestionXsSVG size={16} className={styles.icon} data-test-id='field-decorator__label-tooltip-trigger' />
+              <QuestionSVG size={16} className={styles.icon} data-test-id='field-decorator__label-tooltip-trigger' />
             </Tooltip>
           )}
         </span>

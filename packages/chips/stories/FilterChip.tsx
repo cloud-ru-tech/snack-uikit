@@ -2,7 +2,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment, useState } from 'react';
 
-import { PlaceholderSVG, PlaceholderXsSVG } from '@snack-ui/icons';
+import { PlaceholderSVG } from '@snack-ui/icons';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -34,7 +34,7 @@ const VARIANTS_TABLE_HEADERS = Array(STATE_TABLE_HEADERS.length)
   .fill(Object.values(Variant))
   .flatMap(v => v);
 
-const icon = <PlaceholderXsSVG size={16} />;
+const icon = <PlaceholderSVG size={16} />;
 
 const options: FilterOption[] = [
   { icon, value: 'value1', label: 'Option number 1', caption: 'one', tagLabel: '+1' },

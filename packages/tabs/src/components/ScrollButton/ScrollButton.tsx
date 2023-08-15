@@ -1,5 +1,5 @@
 import { ButtonElevated } from '@snack-ui/button';
-import { ChevronLeftSSVG, ChevronRightSSVG } from '@snack-ui/icons';
+import { ChevronLeftSVG, ChevronRightSVG } from '@snack-ui/icons';
 
 import { Type } from '../../constants';
 import styles from './styles.module.scss';
@@ -25,7 +25,7 @@ export function ScrollButton({ type, onClick, direction }: ScrollButtonProps) {
     >
       <ButtonElevated
         tabIndex={-1}
-        icon={direction === 'left' ? <ChevronLeftSSVG /> : <ChevronRightSSVG />}
+        icon={direction === 'left' ? <ChevronLeftSVG /> : <ChevronRightSVG />}
         size={MAP_TYPE_TO_ICON_SIZE[type]}
         onClick={onClick}
       />

@@ -1,6 +1,6 @@
 import { forwardRef, KeyboardEventHandler, MouseEventHandler } from 'react';
 
-import { EyeClosedSSVG, EyeClosedXsSVG, EyeSSVG, EyeXsSVG } from '@snack-ui/icons';
+import { EyeClosedSVG, EyeSVG } from '@snack-ui/icons';
 
 import { ButtonSize } from '../../constants';
 import styles from './styles.module.scss';
@@ -39,13 +39,13 @@ export const ButtonHideValue = forwardRef<HTMLButtonElement, ButtonHideValueProp
       >
         {hidden ? (
           <>
-            {size === ButtonSize.S && <EyeClosedXsSVG />}
-            {size === ButtonSize.M && <EyeClosedSSVG />}
+            {size === ButtonSize.S && <EyeClosedSVG size={16} />}
+            {size === ButtonSize.M && <EyeClosedSVG />}
           </>
         ) : (
           <>
-            {size === ButtonSize.S && <EyeXsSVG />}
-            {size === ButtonSize.M && <EyeSSVG />}
+            {size === ButtonSize.S && <EyeSVG size={16} />}
+            {size === ButtonSize.M && <EyeSVG />}
           </>
         )}
       </button>

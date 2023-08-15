@@ -1,7 +1,7 @@
 import copyToClipboard from 'copy-to-clipboard';
 import { forwardRef, KeyboardEventHandler, MouseEventHandler, useEffect, useRef, useState } from 'react';
 
-import { CopySSVG, CopyXsSVG } from '@snack-ui/icons';
+import { CopySVG } from '@snack-ui/icons';
 import { Tooltip } from '@snack-ui/tooltip';
 
 import { ButtonSize } from '../../constants';
@@ -55,8 +55,8 @@ export const ButtonCopyValue = forwardRef<HTMLButtonElement, ButtonCopyValueProp
           onKeyDown={onKeyDown}
           tabIndex={tabIndex}
         >
-          {size === ButtonSize.S && <CopyXsSVG size={16} />}
-          {size === ButtonSize.M && <CopySSVG size={24} />}
+          {size === ButtonSize.S && <CopySVG size={16} />}
+          {size === ButtonSize.M && <CopySVG size={24} />}
         </button>
       </Tooltip>
     );

@@ -14,11 +14,11 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar, CalendarProps } from '@snack-ui/calendar';
 import { Dropdown } from '@snack-ui/droplist';
-import { CalendarSSVG, CalendarXsSVG } from '@snack-ui/icons';
+import { CalendarSVG } from '@snack-ui/icons';
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ContainerVariant, Size, ValidationState } from '../../constants';
+import { ContainerVariant, IconSize, Size, ValidationState } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { runAfterRerender } from '../../helpers';
 import { useButtonNavigation, useClearButton, useCopyButton } from '../../hooks';
@@ -86,7 +86,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const localRef = useRef<HTMLInputElement>(null);
     const clearButtonRef = useRef<HTMLButtonElement>(null);
     const copyButtonRef = useRef<HTMLButtonElement>(null);
-    const CalendarIcon = size === Size.S ? CalendarXsSVG : CalendarSSVG;
+    const calendarIconSize = size === Size.S ? IconSize.Xs : IconSize.S;
     const showDropList = isOpen && !readonly && !disabled;
     const showAdditionalButton = Boolean(valueProp && !disabled);
     const showClearButton = showAdditionalButton && !readonly;
@@ -275,7 +275,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
             postfix={
               <>
                 {buttons}
-                <CalendarIcon className={styles.calendarIcon} data-size={size} />
+                <CalendarSVG size={calendarIconSize} className={styles.calendarIcon} data-size={size} />
               </>
             }
           >

@@ -15,7 +15,7 @@ import {
 } from 'react';
 
 import { Avatar, AvatarProps } from '@snack-ui/avatar';
-import { ChevronRightSSVG } from '@snack-ui/icons';
+import { ChevronRightSVG } from '@snack-ui/icons';
 import { Tag } from '@snack-ui/tag';
 import { Checkbox } from '@snack-ui/toggles';
 import { TruncateString } from '@snack-ui/truncate-string';
@@ -213,7 +213,7 @@ const ForwardedBaseDroplistItem = forwardRef<HTMLButtonElement, BaseDroplistItem
 
         {hasSublist && (
           <div className={styles.expandableIcon}>
-            <ChevronRightSSVG size={24} />
+            <ChevronRightSVG size={24} />
           </div>
         )}
       </button>

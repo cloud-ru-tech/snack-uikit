@@ -12,11 +12,6 @@ type StoryProps = Omit<IconPredefinedProps, 'icon'> & {
   icon: string;
 };
 
-// используются только S иконки
-const isSSizeIcon = ([name]: [name: string, value: any]) => name.endsWith('SSVG');
-
-const icons = Object.fromEntries(Object.entries(Icons).filter(isSSizeIcon));
-
 const meta: Meta = {
   title: 'Components/Icon Predefined',
   component: IconPredefinedComponent,
@@ -25,13 +20,13 @@ export default meta;
 
 const Template: StoryFn<StoryProps> = ({ icon, ...args }) => (
   <div className={styles.wrapper}>
-    <IconPredefinedComponent {...args} icon={icons[icon]} />
+    <IconPredefinedComponent {...args} icon={Icons[icon]} />
   </div>
 );
 
 export const IconPredefined: StoryObj<StoryProps> = Template.bind({});
 
-const iconNames = Object.keys(icons);
+const iconNames = Object.keys(Icons);
 
 IconPredefined.args = {
   size: IconPredefinedComponent.sizes.M,

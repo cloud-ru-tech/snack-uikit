@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { HeartFilledSSVG } from '@snack-ui/icons';
+import { HeartFilledSVG } from '@snack-ui/icons';
 import { Scroll } from '@snack-ui/scroll';
 
 import componentChangelog from '../CHANGELOG.md';
@@ -52,7 +52,7 @@ const Template = ({
   }));
 
   if (storyIcon) {
-    items[0].icon = HeartFilledSSVG;
+    items[0].icon = HeartFilledSVG;
   }
 
   delete items.at(-1)?.onClick;

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-import { CrossSSVG } from '@snack-ui/icons';
+import { CrossSVG } from '@snack-ui/icons';
 import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
 
@@ -100,7 +100,7 @@ export function AlertTop({
             data-color={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]}
             data-test-id='alert-top__close-button'
           >
-            <CrossSSVG />
+            <CrossSVG />
           </button>
         )}
       </div>

@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { MouseEventHandler } from 'react';
 
-import { CrossSSVG, CrossXsSVG } from '@snack-ui/icons';
+import { CrossSVG } from '@snack-ui/icons';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, IconSize, Size } from './constants';
@@ -35,9 +35,9 @@ export function Tag({
       {onDelete && (
         <button type='button' className={styles.tagButton} onClick={onDelete} data-test-id='tag-remove-button'>
           {size === Size.Xs ? (
-            <CrossXsSVG size={IconSize[size]} className={styles.icon} />
+            <CrossSVG size={IconSize[size]} className={styles.icon} />
           ) : (
-            <CrossSSVG size={IconSize[size]} className={styles.icon} />
+            <CrossSVG size={IconSize[size]} className={styles.icon} />
           )}
         </button>
       )}

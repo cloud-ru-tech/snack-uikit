@@ -4,8 +4,7 @@ import path from 'path';
 import { XMLParser } from 'fast-xml-parser';
 
 import { validateIconSize, validateIconUniqueness, Validator } from './icon-validators';
-
-const SVGS_FOLDER = path.join(__dirname, '../packages/icons/svgs');
+const SVGS_FOLDER = path.join(__dirname, '../packages/icons/svgs/interface-icons');
 const OPTIONS = {
   ignoreAttributes: false,
   attributeNamePrefix: '@_',
