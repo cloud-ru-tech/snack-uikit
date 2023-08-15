@@ -1,0 +1,35 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-stepper';
+
+.icon {
+  @include composite-var($stepper-step-icon-container);
+
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &[data-state='completed'] {
+    color: var(--sys-primary-on-accent);
+    background-color: var(--sys-primary-accent-default);
+  }
+
+  &[data-state='current'] {
+    color: var(--sys-primary-accent-default);
+    background-color: var(--sys-primary-decor-default);
+  }
+
+  &[data-state='waiting'] {
+    color: var(--sys-neutral-text-light);
+    background-color: var(--sys-neutral-background);
+  }
+
+  &[data-state='loading'] {
+    color: var(--sys-primary-accent-default);
+    background-color: var(--sys-primary-decor-default);
+  }
+
+  &[data-state='rejected'] {
+    color: var(--sys-red-on-accent);
+    background-color: var(--sys-red-accent-default);
+  }
+}

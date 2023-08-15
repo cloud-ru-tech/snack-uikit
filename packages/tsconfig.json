@@ -93,6 +93,9 @@
     },
     {
       "path": "./modal"
+    },
+    {
+      "path": "./stepper"
     }
   ],
   "compilerOptions": {

@@ -1,0 +1,19 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.story {
+  margin-bottom: 1em;
+  padding: 1em;
+
+  background-color: var($sys-neutral-background1-level);
+  border: 1px solid var($sys-neutral-decor-default);
+  border-radius: var($dimension-050m);
+}
+
+.panel {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 1rem;
+}

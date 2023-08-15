@@ -1,0 +1,76 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-stepper';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.tailLine {
+  @include composite-var($stepper-step-tail-line);
+
+  flex-grow: 1;
+  background-color: var(--sys-neutral-decor-default);
+}
+
+.tail {
+  @include composite-var($stepper-step-tail-container);
+
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+
+  min-width: var($dimension-2m);
+
+  &[data-completed] .tailLine {
+    background-color: var(--sys-primary-accent-default);
+  }
+}
+
+.title {
+  overflow: hidden;
+}
+
+.step {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+
+  &:last-child {
+    max-width: max-content;
+  }
+}
+
+.content {
+  @include composite-var($stepper-step-container-content);
+
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+
+  color: var(--sys-neutral-text-main);
+
+  background-color: transparent;
+  border: none;
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    outline-color: var(--sys-available-complementary);
+    outline-offset: var(--spacing-state-focus-offset);
+  }
+
+  &:not([disabled]) {
+    cursor: pointer;
+    &:focus-visible, &:hover {
+      color: var(--sys-neutral-text-light);
+    }
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+}
