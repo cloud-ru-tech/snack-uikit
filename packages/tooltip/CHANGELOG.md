@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-08-17)
+
+
+### Features
+
+* **[FF-2776](https://jira.sbercloud.tech/browse/FF-2776):** add QuestionTooltip component ([c221931](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c2219311ad0b83f20bf1f9a3e70053629d2a5cee))
+
+
+
+
+
 ## 0.3.5 (2023-08-11)
 
 

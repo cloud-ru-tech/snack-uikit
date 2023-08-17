@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.3 (2023-08-17)
+
+
+### Bug Fixes
+
+* **[FF-2776](https://jira.sbercloud.tech/browse/FF-2776):** use QuestionTooltip instead of custom title tooltip ([1365fa4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/1365fa4d9668c55316f4efee15f6fe2a63813ed0))
+
+
+
+
+
 ## 0.1.2 (2023-08-15)
 
 
