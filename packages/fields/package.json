@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/fields",
   "title": "Fields",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -30,7 +30,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-ui/calendar": "0.1.4",
-    "@snack-ui/droplist": "0.6.5",
+    "@snack-ui/droplist": "0.6.6",
     "@snack-ui/icons": "0.11.0",
     "@snack-ui/input-private": "1.4.1",
     "@snack-ui/scroll": "0.2.1",

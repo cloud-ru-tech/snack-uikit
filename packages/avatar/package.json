@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/avatar",
   "title": "Avatar",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "sideEffects": [
     "*.css",
     "*.woff",
