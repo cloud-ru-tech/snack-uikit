@@ -41,6 +41,16 @@ const Template: StoryFn<StoryProps> = args => {
     checked: selected.includes(option),
   });
 
+  const handleClickForSublist = (sublistOptions: string[]) => {
+    const setOptions = new Set(selected);
+    const isIncluded = sublistOptions.every(el => selected.includes(el));
+    if (isIncluded) {
+      setSelected(state => state.filter(op => !setOptions.has(op)));
+    } else {
+      setSelected(state => [...state, ...sublistOptions]);
+    }
+  };
+
   const sublistProps = useMemo(() => {
     const checked = SUBLIST_OPTIONS.every(op => selected.includes(op));
     const sublistSelectedCount = selected.filter(option => SUBLIST_OPTIONS.includes(option)).length;
@@ -69,7 +79,11 @@ const Template: StoryFn<StoryProps> = args => {
           }
         >
           <Droplist.ItemMultiple {...getProps('Item 1')} />
-          <Droplist.ItemMultiple option='Item 2' {...sublistProps}>
+          <Droplist.ItemMultiple
+            option='Item 2'
+            onClick={() => handleClickForSublist(SUBLIST_OPTIONS)}
+            {...sublistProps}
+          >
             <Droplist.ItemMultiple {...getProps('Item 2-1')} />
             <Droplist.ItemMultiple {...getProps('Item 2-2')} />
             <Droplist.ItemMultiple {...getProps('Item 2-3')} />
