@@ -133,6 +133,7 @@ itemSingle.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, popoverPrivateReadme, componentChangelog],
   },
+  packageName: componentPackage.name,
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/GZSkePkicPQbtrYIu1F8GQ/Dropdown?type=design&node-id=0%3A1&t=H7kVBUAPq83jxLpg-1',

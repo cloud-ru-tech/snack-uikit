@@ -1,7 +1,9 @@
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const { globSync } = require('glob');
 const path = require('path');
+const { getDependenciesLinks } = require('./utils/getDependenciesLinks');
 
+const DEPENDENCIES_LINKS = getDependenciesLinks();
 const STORIES = globSync(`packages/${process.env.STORYBOOK_PACKAGE_NAME || '*'}/stories/**/*.{ts,tsx}`)
   .map(x => path.resolve(__dirname, `../${x}`))
   .sort((a, b) => a.localeCompare(b));
@@ -49,6 +51,7 @@ const mainConfig = {
     'storybook-dark-mode',
     '@storybook/addon-links',
     '@storybook/addon-a11y',
+    '@sbercloud/ft-storybook-deps-graph-addon',
   ],
   staticDirs: [
     { from: '../storybook/assets', to: '/storybook/assets' },
@@ -75,6 +78,7 @@ const mainConfig = {
   babel: base => ({ ...base, plugins: [...(base.plugins || []), ...(isTestServer ? ['istanbul'] : [])] }),
   env: config => ({
     ...config,
+    DEPENDENCIES_LINKS,
   }),
   webpackFinal: async config => {
     isTestServer && (config.watch = false);

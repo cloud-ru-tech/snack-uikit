@@ -23,6 +23,9 @@ const parameters: Parameters = {
       order: ['Welcome', 'Documentation', 'Components'],
     },
   },
+  dependenciesGraph: {
+    graphLinks: process.env.DEPENDENCIES_LINKS,
+  },
   badgesConfig: {
     [BADGE.PRIVATE]: {
       styles: {

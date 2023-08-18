@@ -32,6 +32,8 @@ const readmeAndDesign = {
   //  },
 };
 
+const packageName = componentPackage.name;
+
 function Template({ ...args }) {
   return (
     <Skeleton {...args}>
@@ -43,7 +45,7 @@ function Template({ ...args }) {
 export const skeleton: StoryFn<SkeletonProps> = Template.bind({});
 skeleton.args = { loading: true };
 skeleton.argTypes = { width: { type: 'string' }, height: { type: 'string' }, borderRadius: { type: 'string' } };
-skeleton.parameters = { ...readmeAndDesign, controls: { exclude: ['className'] } };
+skeleton.parameters = { ...readmeAndDesign, packageName, controls: { exclude: ['className'] } };
 
 type skeletonTextStoryArgs = SkeletonTextProps & {
   text: string;
@@ -70,6 +72,7 @@ skeletonText.args = {
 };
 skeletonText.parameters = {
   ...readmeAndDesign,
+  packageName,
   controls: { exclude: ['width', 'height', 'className'] },
 };
 skeletonText.argTypes = {
@@ -120,5 +123,6 @@ export const withSkeleton = ({ ...args }) => {
 withSkeleton.args = { loading: true };
 withSkeleton.parameters = {
   ...readmeAndDesign,
+  packageName,
   controls: { exclude: ['width', 'height', 'borderRadius', 'className'] },
 };

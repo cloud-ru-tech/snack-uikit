@@ -31,6 +31,7 @@ favorite.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
   },
+  packageName: componentPackage.name,
   design: {
     name: 'Figma',
     type: 'figma',
