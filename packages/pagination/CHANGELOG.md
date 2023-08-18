@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.19 (2023-08-18)
+
+
+### Bug Fixes
+
+* **FF-000:** fix styles after ccs rules sort ([33d5727](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/33d5727673cd2a338c1ec08dc10492301b9c8cfe))
+
+
+
+
+
 ## 0.2.18 (2023-08-17)
 
 ### Only dependencies have been changed
