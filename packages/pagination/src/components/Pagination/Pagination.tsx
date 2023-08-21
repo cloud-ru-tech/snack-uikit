@@ -13,13 +13,14 @@ export type PaginationProps = WithSupportProps<{
   total: number;
   page: number;
   onChange(page: number): void;
+  className?: string;
 }>;
 
 const FIRST_PAGE = 1;
 const ARROW_STEP = 1;
 const MAX_LENGTH = 7;
 
-export function Pagination({ total, page, onChange, ...rest }: PaginationProps) {
+export function Pagination({ total, page, onChange, className, ...rest }: PaginationProps) {
   const entries = getPaginationEntries({
     firstPage: FIRST_PAGE,
     lastPage: total,
@@ -84,7 +85,7 @@ export function Pagination({ total, page, onChange, ...rest }: PaginationProps) 
   };
 
   return (
-    <nav {...extractSupportProps(rest)}>
+    <nav className={className} {...extractSupportProps(rest)}>
       <ul className={styles.pagination}>
         <li>
           <ButtonLight

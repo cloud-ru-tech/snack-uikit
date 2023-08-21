@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { LoaderSize } from '../constants';
@@ -5,16 +7,17 @@ import styles from './styles.module.scss';
 
 export type SunProps = WithSupportProps<{
   size?: LoaderSize;
+  className?: string;
 }>;
 
-export function Sun({ size = LoaderSize.S, ...rest }: SunProps) {
+export function Sun({ size = LoaderSize.S, className, ...rest }: SunProps) {
   return (
     <svg
       viewBox='0 0 24 24'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
       id='SunSVG'
-      className={styles.sun}
+      className={cn(styles.sun, className)}
       data-size={size}
       {...extractSupportProps(rest)}
     >

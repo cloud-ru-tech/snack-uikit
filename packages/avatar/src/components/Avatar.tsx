@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { useEffect, useState } from 'react';
 
 import { StatusIndicator, StatusIndicatorProps } from '@snack-ui/status';
@@ -22,6 +23,8 @@ export type AvatarProps = WithSupportProps<{
   indicator?: StatusIndicatorProps['appearance'];
   /** Отображение двух заглавных символов имени */
   showTwoSymbols?: boolean;
+  /** CSS-класс */
+  className?: string;
 }>;
 
 const statusIndicatorSizeMap = {
@@ -46,6 +49,7 @@ export function Avatar({
   indicator,
   showTwoSymbols,
   src,
+  className,
   ...rest
 }: AvatarProps) {
   const [imageError, setImageError] = useState(false);
@@ -57,7 +61,7 @@ export function Avatar({
 
   return (
     <div
-      className={styles.avatar}
+      className={cn(styles.avatar, className)}
       data-size={size}
       data-appearance={appearance}
       data-shape={shape}

@@ -81,6 +81,7 @@ type AvatarProps = WithSupportProps<{
 | shape | enum Shape: `"round"`, `"square"` | false | Avatar.shapes.Round | Форма: круглая или квадратная |
 | indicator | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | false | - | Индикатор |
 | showTwoSymbols | `boolean` | false | - | Отображение двух заглавных символов имени |
+| className | `string` | false | - | CSS-класс |
 
 
 [//]: DOCUMENTATION_SECTION_END

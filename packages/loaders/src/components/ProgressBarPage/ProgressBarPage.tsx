@@ -1,4 +1,5 @@
 import { useNProgress } from '@tanem/react-nprogress';
+import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
@@ -9,6 +10,7 @@ export type ProgressBarPageProps = WithSupportProps<{
   animationDuration?: number;
   incrementDuration?: number;
   minimum?: number;
+  className?: string;
 }>;
 
 export function ProgressBarPage({
@@ -16,6 +18,7 @@ export function ProgressBarPage({
   incrementDuration = 800,
   inProgress,
   minimum,
+  className,
   ...rest
 }: ProgressBarPageProps) {
   const {
@@ -34,7 +37,7 @@ export function ProgressBarPage({
   }
 
   return (
-    <div className={classNames.progressBarPageContainer} {...extractSupportProps(rest)}>
+    <div className={cn(classNames.progressBarPageContainer, className)} {...extractSupportProps(rest)}>
       <div
         className={classNames.progressBarPageFiller}
         style={{ '--progress': progress, '--animation-duration': `${animation}ms` }}

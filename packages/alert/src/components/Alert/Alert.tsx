@@ -1,13 +1,15 @@
+import cn from 'classnames';
+
 import { CrossSVG } from '@snack-ui/icons';
 import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
-import { extractSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, APPEARANCE_TO_COLOR_MAP } from '../../constants';
 import { getIcon } from '../../utils';
 import styles from './styles.module.scss';
 
-export type AlertProps = {
+export type AlertProps = WithSupportProps<{
   icon?: boolean;
   title?: string;
   description: string;
@@ -15,7 +17,8 @@ export type AlertProps = {
   href?: string;
   onClose?: () => void;
   appearance?: Appearance;
-};
+  className?: string;
+}>;
 
 export function Alert({
   icon = true,
@@ -25,12 +28,12 @@ export function Alert({
   description,
   onClose,
   appearance = Appearance.Neutral,
+  className,
   ...rest
 }: AlertProps) {
   return (
     <div
-      data-test-id='alert'
-      className={styles.alert}
+      className={cn(styles.alert, className)}
       data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
       {...extractSupportProps(rest)}
     >

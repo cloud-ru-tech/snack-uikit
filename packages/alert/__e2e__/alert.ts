@@ -14,7 +14,10 @@ const getPageUrl = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
     name: 'alert',
     story: 'alert',
-    props,
+    props: {
+      'data-test-id': TEST_IDS.alert,
+      ...props,
+    },
     group: 'alert',
   });
 

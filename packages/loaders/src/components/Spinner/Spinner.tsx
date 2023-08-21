@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { LoaderSize } from '../constants';
@@ -5,15 +7,16 @@ import styles from './styles.module.scss';
 
 export type SpinnerProps = WithSupportProps<{
   size?: LoaderSize;
+  className?: string;
 }>;
 
-export function Spinner({ size = LoaderSize.S, ...rest }: SpinnerProps) {
+export function Spinner({ size = LoaderSize.S, className, ...rest }: SpinnerProps) {
   return (
     <svg
       viewBox='0 0 24 24'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
-      className={styles.spinner}
+      className={cn(styles.spinner, className)}
       data-size={size}
       {...extractSupportProps(rest)}
     >

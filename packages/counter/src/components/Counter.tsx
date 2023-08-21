@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, DEFAULT_PLUS_LIMIT, Size, Variant } from './constants';
@@ -10,6 +12,7 @@ export type CounterProps = WithSupportProps<{
   variant?: Variant;
   size?: Size;
   plusLimit?: number;
+  className?: string;
 }>;
 
 export function Counter({
@@ -18,13 +21,14 @@ export function Counter({
   variant = Variant.Count,
   size = Size.S,
   plusLimit = DEFAULT_PLUS_LIMIT,
+  className,
   ...rest
 }: CounterProps) {
   const formattedValue = formatValue({ value, variant, plusLimit });
 
   return (
     <div
-      className={classNames.counter}
+      className={cn(classNames.counter, className)}
       data-size={size}
       data-variant={variant}
       data-appearance={appearance}

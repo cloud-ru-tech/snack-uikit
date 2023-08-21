@@ -1,8 +1,10 @@
+import cn from 'classnames';
 import { ReactElement } from 'react';
 
 import { CrossSVG } from '@snack-ui/icons';
 import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, APPEARANCE_TO_COLOR_MAP } from '../../constants';
 import { AlertTopButton } from '../../helperComponents';
@@ -10,7 +12,7 @@ import { getIcon } from '../../utils';
 import { APPEARANCE_TO_COLOR_MAP_INVERT } from './constants';
 import styles from './styles.module.scss';
 
-export type AlertTopProps = {
+export type AlertTopProps = WithSupportProps<{
   icon?: boolean;
   title?: string;
   description: string;
@@ -21,7 +23,8 @@ export type AlertTopProps = {
   buttonText?: string;
   buttonOnClick?: () => void;
   buttonIcon?: ReactElement;
-};
+  className?: string;
+}>;
 
 export function AlertTop({
   icon = true,
@@ -34,9 +37,15 @@ export function AlertTop({
   buttonText,
   buttonOnClick,
   buttonIcon,
+  className,
+  ...rest
 }: AlertTopProps) {
   return (
-    <div data-test-id='alert-top' className={styles.alertTop} data-color={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]}>
+    <div
+      className={cn(styles.alertTop, className)}
+      data-color={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]}
+      {...extractSupportProps(rest)}
+    >
       <div className={styles.contentWrapper}>
         {icon && (
           <div

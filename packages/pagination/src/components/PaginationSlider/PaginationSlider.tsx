@@ -8,13 +8,14 @@ export type PaginationSliderProps = WithSupportProps<{
   total: number;
   page: number;
   onChange(page: number): void;
+  className?: string;
 }>;
 
 const FIRST_PAGE = 1;
 
-export function PaginationSlider({ total, page, onChange, ...rest }: PaginationSliderProps) {
+export function PaginationSlider({ total, page, onChange, className, ...rest }: PaginationSliderProps) {
   return (
-    <nav {...extractSupportProps(rest)}>
+    <nav className={className} {...extractSupportProps(rest)}>
       <ul className={styles.paginationSlider}>
         {getRange(FIRST_PAGE, total).map(value => (
           <li key={value}>

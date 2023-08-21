@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance } from '../../constants';
@@ -19,6 +21,7 @@ export type StatusProps = WithSupportProps<{
   size?: Size;
   appearance?: Appearance;
   hasBackground?: boolean;
+  className?: string;
 }>;
 
 export function Status({
@@ -26,11 +29,12 @@ export function Status({
   size = Size.Xs,
   appearance = Appearance.Primary,
   hasBackground,
+  className,
   ...rest
 }: StatusProps) {
   return (
     <div
-      className={styles.container}
+      className={cn(styles.container, className)}
       data-size={size}
       data-has-background={hasBackground || undefined}
       {...extractSupportProps(rest)}
