@@ -61,7 +61,7 @@ export function Footer({ length, hint, size, validationState = ValidationState.D
         </span>
       )}
       {length && (
-        <span data-test-id='field-decorator__counter'>
+        <span data-test-id='field-decorator__counter' className={styles.counterLimit}>
           <span
             data-validation={validationState}
             data-limit-exceeded={limitExceeded || undefined}
@@ -73,7 +73,6 @@ export function Footer({ length, hint, size, validationState = ValidationState.D
           <span
             data-validation={validationState}
             data-limit-exceeded={limitExceeded || undefined}
-            className={styles.counterLimitValue}
             data-test-id='field-decorator__counter-limit-value'
           >
             /{length.max}

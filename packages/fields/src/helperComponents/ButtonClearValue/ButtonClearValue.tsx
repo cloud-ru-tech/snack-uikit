@@ -25,6 +25,7 @@ export const ButtonClearValue = forwardRef<HTMLButtonElement, ButtonClearValuePr
         data-size={size}
         onClick={handleClick}
         data-test-id='button-clear-value'
+        type='button'
         ref={ref}
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}

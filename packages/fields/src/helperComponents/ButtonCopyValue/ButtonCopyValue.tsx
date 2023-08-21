@@ -54,6 +54,7 @@ export const ButtonCopyValue = forwardRef<HTMLButtonElement, ButtonCopyValueProp
           ref={ref}
           onKeyDown={onKeyDown}
           tabIndex={tabIndex}
+          type='button'
         >
           {size === ButtonSize.S && <CopySVG size={16} />}
           {size === ButtonSize.M && <CopySVG size={24} />}

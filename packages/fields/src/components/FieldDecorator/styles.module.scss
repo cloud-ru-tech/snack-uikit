@@ -120,26 +120,8 @@ $footer-typography: (
   }
 }
 
-.counterCurrentValue {
-  &[data-validation="default"] {
-    color: simple-var($sys-neutral-text-light);
-  }
-
-  &[data-limit-exceeded],
-  &[data-validation="error"] {
-    color: simple-var($sys-red-text-main);
-  }
-
-  &[data-validation="warning"] {
-    color: simple-var($sys-yellow-text-main);
-  }
-
-  &[data-validation="success"] {
-    color: simple-var($sys-green-text-light);
-  }
-}
-
-.counterLimitValue {
+.counterLimit {
+  > span {
   &[data-validation="default"] {
     color: simple-var($sys-neutral-text-light);
   }
@@ -155,5 +137,24 @@ $footer-typography: (
 
   &[data-validation="success"] {
     color: simple-var($sys-green-text-light);
+  }}
+}
+
+.counterCurrentValue {
+  &[data-limit-exceeded] {
+    &[data-validation="default"] {
+      color: simple-var($sys-neutral-text-main);
+    }
+    &[data-validation="error"] {
+      color: simple-var($sys-red-text-main);
+    }
+
+    &[data-validation="warning"] {
+      color: simple-var($sys-yellow-text-main);
+    }
+
+    &[data-validation="success"] {
+      color: simple-var($sys-green-text-light);
+    }
   }
 }

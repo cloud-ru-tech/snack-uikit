@@ -35,6 +35,7 @@ export const ButtonHideValue = forwardRef<HTMLButtonElement, ButtonHideValueProp
         data-test-id='button-hide-value'
         ref={ref}
         onKeyDown={onKeyDown}
+        type='button'
         tabIndex={disabled ? -1 : tabIndex}
       >
         {hidden ? (
