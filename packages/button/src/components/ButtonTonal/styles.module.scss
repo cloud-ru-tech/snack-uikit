@@ -2,7 +2,7 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 @import '../../styles.module';
 
-$types: 'primary', 'neutral', 'red';
+$appearances: 'primary', 'neutral', 'red';
 $sizes: 's', 'm', 'l';
 $variants: 'label-only', 'icon-only', 'icon-after';
 $icon-sizes: (
@@ -17,32 +17,32 @@ $typography: (
 );
 
 @mixin button-colors-styles {
-  @each $type in $types {
-    &[data-type='#{$type}'] {
-      @include label-color(simple-var($theme-variables, 'sys', $type, 'text-support'));
-      @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-support'));
+  @each $appearance in $appearances {
+    &[data-appearance='#{$appearance}'] {
+      @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-support'));
+      @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-support'));
 
-      background-color: simple-var($theme-variables, 'sys', $type, 'decor-default');
+      background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
 
       &:hover {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-main'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-main'));
+        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
 
-        background-color: simple-var($theme-variables, 'sys', $type, 'decor-hovered');
+        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
       }
 
       &:focus-visible {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-main'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-main'));
+        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
 
-        background-color: simple-var($theme-variables, 'sys', $type, 'decor-hovered');
+        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
       }
 
       &:active {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-main'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-main'));
+        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
 
-        background-color: simple-var($theme-variables, 'sys', $type, 'decor-activated');
+        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
       }
 
       &:disabled,
@@ -54,25 +54,25 @@ $typography: (
       }
 
       &[data-loading] {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'text-main'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'text-main'));
+        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
 
-        background-color: simple-var($theme-variables, 'sys', $type, 'decor-activated');
+        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
       }
     }
   }
 }
 
 @mixin button-outline-colors-styles {
-  @each $type in $types {
-    &[data-type='#{$type}'] {
+  @each $appearance in $appearances {
+    &[data-appearance='#{$appearance}'] {
       &:focus-visible {
-        @if $type == 'neutral' {
+        @if $appearance == 'neutral' {
           outline-color: var($sys-available-complementary);
         }
 
  @else {
-          outline-color: simple-var($theme-variables, 'sys', $type, 'accent-default');
+          outline-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
         }
       }
     }

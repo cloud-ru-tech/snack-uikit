@@ -108,7 +108,7 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | name | type | required | default value | description |
 |------|------|----------|---------------|-------------|
 | href | `string` | false | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | false | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | false | ButtonFilled.targets.Blank | HTML-аттрибут target |
 | className | `string` | false | - | CSS-класс |
 | disabled | `boolean` | false | - | Флаг неактивности компонента |
 | icon | `ReactElement` | false | - | Иконка |
@@ -116,9 +116,9 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | Size.S | Размер |
-| type | enum Type: `"primary"`, `"neutral"`, `"red"` | false | Type.Primary | Тип кнопки |
-| htmlType | "submit" &#124; "reset" &#124; "button" | false | HtmlType.Button | HTML-аттрибут type |
+| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonFilled.sizes.S | Размер |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonFilled.appearances.Primary | Внешний вид кнопки |
+| type | "submit" &#124; "reset" &#124; "button" | false | ButtonFilled.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
 ## ButtonSupport
 
@@ -126,18 +126,18 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | name | type | required | default value | description |
 |------|------|----------|---------------|-------------|
 | href | `string` | false | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | false | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | false | ButtonSupport.targets.Blank | HTML-аттрибут target |
 | className | `string` | false | - | CSS-класс |
 | disabled | `boolean` | false | - | Флаг неактивности компонента |
 | icon | `ReactElement` | false | - | Иконка |
-| iconPosition | enum IconPosition: `"before"`, `"after"` | false | IconPosition.After | Позиция иконки |
+| iconPosition | enum IconPosition: `"before"`, `"after"` | false | ButtonSupport.iconPositions.After | Позиция иконки |
 | label | `string` | false | - | Текст кнопки |
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | Size.S | Размер |
-| type | enum Type: `"primary"`, `"neutral"`, `"red"` | false | Type.Neutral | Тип кнопки |
-| htmlType | "submit" &#124; "reset" &#124; "button" | false | HtmlType.Button | HTML-аттрибут type |
+| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonSupport.sizes.S | Размер |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonSupport.appearances.Neutral | Внешний вид кнопки |
+| type | "submit" &#124; "reset" &#124; "button" | false | ButtonSupport.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
 | counter | `CounterInButtonProps` | false | - | Пропсы каунтера в кнопке |
 ## ButtonOutline
@@ -146,7 +146,7 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | name | type | required | default value | description |
 |------|------|----------|---------------|-------------|
 | href | `string` | false | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | false | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | false | ButtonOutline.targets.Blank | HTML-аттрибут target |
 | className | `string` | false | - | CSS-класс |
 | disabled | `boolean` | false | - | Флаг неактивности компонента |
 | icon | `ReactElement` | false | - | Иконка |
@@ -154,9 +154,9 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | Size.S | Размер |
-| type | enum Type: `"primary"`, `"neutral"`, `"red"` | false | Type.Primary | Тип кнопки |
-| htmlType | "submit" &#124; "reset" &#124; "button" | false | HtmlType.Button | HTML-аттрибут type |
+| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonOutline.sizes.S | Размер |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonOutline.appearances.Primary | Внешний вид кнопки |
+| type | "submit" &#124; "reset" &#124; "button" | false | ButtonOutline.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
 ## ButtonTonal
 
@@ -164,7 +164,7 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | name | type | required | default value | description |
 |------|------|----------|---------------|-------------|
 | href | `string` | false | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | false | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | false | ButtonTonal.targets.Blank | HTML-аттрибут target |
 | className | `string` | false | - | CSS-класс |
 | disabled | `boolean` | false | - | Флаг неактивности компонента |
 | icon | `ReactElement` | false | - | Иконка |
@@ -172,9 +172,9 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | Size.S | Размер |
-| type | enum Type: `"primary"`, `"neutral"`, `"red"` | false | Type.Primary | Тип кнопки |
-| htmlType | "submit" &#124; "reset" &#124; "button" | false | HtmlType.Button | HTML-аттрибут type |
+| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonTonal.sizes.S | Размер |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonTonal.appearances.Primary | Внешний вид кнопки |
+| type | "submit" &#124; "reset" &#124; "button" | false | ButtonTonal.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
 ## ButtonLight
 
@@ -182,18 +182,18 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | name | type | required | default value | description |
 |------|------|----------|---------------|-------------|
 | href | `string` | false | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | false | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | false | ButtonLight.targets.Blank | HTML-аттрибут target |
 | className | `string` | false | - | CSS-класс |
 | disabled | `boolean` | false | - | Флаг неактивности компонента |
 | icon | `ReactElement` | false | - | Иконка |
-| iconPosition | enum IconPosition: `"before"`, `"after"` | false | IconPosition.After | Позиция иконки |
+| iconPosition | enum IconPosition: `"before"`, `"after"` | false | ButtonLight.iconPositions.After | Позиция иконки |
 | label | `string` | false | - | Текст кнопки |
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | Size.S | Размер |
-| type | enum Type: `"primary"`, `"neutral"`, `"red"` | false | Type.Neutral | Тип кнопки |
-| htmlType | "submit" &#124; "reset" &#124; "button" | false | HtmlType.Button | HTML-аттрибут type |
+| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonLight.sizes.S | Размер |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonLight.appearances.Neutral | Внешний вид кнопки |
+| type | "submit" &#124; "reset" &#124; "button" | false | ButtonLight.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
 | counter | `CounterInButtonProps` | false | - | Пропсы каунтера в кнопке |
 ## ButtonElevated
@@ -209,7 +209,7 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| htmlType | "submit" &#124; "reset" &#124; "button" | false | ButtonElevated.htmlTypes.Button | HTML-аттрибут type |
+| type | "submit" &#124; "reset" &#124; "button" | false | ButtonElevated.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | false | ButtonElevated.sizes.S | Размер |
 

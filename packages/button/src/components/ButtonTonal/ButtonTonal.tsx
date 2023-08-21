@@ -2,21 +2,20 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { HtmlType, Size, Target, Type } from '../../constants';
+import { Appearance, HtmlType, Size, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
 import { CommonButtonProps } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
-import { ButtonFilled } from '../ButtonFilled';
 import styles from './styles.module.scss';
 
 export type ButtonTonalProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition'>>;
 
 export function ButtonTonal({
   className,
-  size = Size.S,
-  target = Target.Blank,
-  type = Type.Primary,
-  htmlType = HtmlType.Button,
+  size = ButtonTonal.sizes.S,
+  target = ButtonTonal.targets.Blank,
+  type = ButtonTonal.types.Button,
+  appearance = ButtonTonal.appearances.Primary,
   tabIndex,
   ...rest
 }: ButtonTonalProps) {
@@ -30,13 +29,13 @@ export function ButtonTonal({
       size={size}
       target={target}
       type={type}
-      htmlType={htmlType}
+      appearance={appearance}
       tabIndex={tabIndex}
     />
   );
 }
 
 ButtonTonal.sizes = Size;
-ButtonTonal.types = Type;
-ButtonFilled.htmlTypes = HtmlType;
-ButtonFilled.targets = Target;
+ButtonTonal.types = HtmlType;
+ButtonTonal.appearances = Appearance;
+ButtonTonal.targets = Target;

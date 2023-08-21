@@ -10,7 +10,7 @@ import { Size } from './constants';
 import styles from './styles.module.scss';
 
 export type ButtonElevatedProps = WithSupportProps<
-  Omit<CommonButtonProps, 'iconPosition' | 'label' | 'type' | 'labelClassName' | 'size'> &
+  Omit<CommonButtonProps, 'iconPosition' | 'label' | 'appearance' | 'labelClassName' | 'size'> &
     Required<Pick<CommonButtonProps, 'icon'>> & {
       /** Размер */
       size?: Size;
@@ -21,7 +21,7 @@ export function ButtonElevated({
   className,
   size = ButtonElevated.sizes.S,
   target = ButtonElevated.targets.Blank,
-  htmlType = ButtonElevated.htmlTypes.Button,
+  type = ButtonElevated.types.Button,
   tabIndex,
   ...rest
 }: ButtonElevatedProps) {
@@ -34,12 +34,12 @@ export function ButtonElevated({
       labelClassName={styles.label}
       size={size}
       target={target}
-      htmlType={htmlType}
+      type={type}
       tabIndex={tabIndex}
     />
   );
 }
 
 ButtonElevated.sizes = Size;
-ButtonElevated.htmlTypes = HtmlType;
+ButtonElevated.types = HtmlType;
 ButtonElevated.targets = Target;

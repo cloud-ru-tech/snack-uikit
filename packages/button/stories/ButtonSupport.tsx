@@ -131,7 +131,8 @@ buttonSupport.args = {
   // @ts-ignore
   icon: 'none',
   iconPosition: ButtonSupport.iconPositions.After,
-  type: ButtonSupport.types.Neutral,
+  type: ButtonSupport.types.Button,
+  appearance: ButtonSupport.appearances.Neutral,
   size: ButtonSupport.sizes.S,
   testMode: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

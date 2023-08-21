@@ -2,7 +2,7 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 @import '../../styles.module';
 
-$types: 'primary', 'neutral', 'red';
+$appearances: 'primary', 'neutral', 'red';
 $sizes: 's', 'm', 'l';
 $variants: 'label-only', 'icon-only', 'icon-after';
 $icon-sizes: (
@@ -17,32 +17,32 @@ $typography: (
 );
 
 @mixin button-colors-styles {
-  @each $type in $types {
-    &[data-type='#{$type}'] {
-      @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-default'));
-      @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-default'));
+  @each $appearance in $appearances {
+    &[data-appearance='#{$appearance}'] {
+      @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
+      @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
 
-      border-color: simple-var($theme-variables, 'sys', $type, 'accent-default');
+      border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
 
       &:hover {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
 
-        border-color: simple-var($theme-variables, 'sys', $type, 'accent-hovered');
+        border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-hovered');
       }
 
       &:focus-visible {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-hovered'));
+        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
 
-        border-color: simple-var($theme-variables, 'sys', $type, 'accent-hovered');
+        border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-hovered');
       }
 
       &:active {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
+        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
 
-        border-color: simple-var($theme-variables, 'sys', $type, 'accent-pressed');
+        border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-pressed');
       }
 
       &:disabled,
@@ -54,25 +54,25 @@ $typography: (
       }
 
       &[data-loading] {
-        @include label-color(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $type, 'accent-pressed'));
+        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
 
-        border-color: simple-var($theme-variables, 'sys', $type, 'accent-pressed');
+        border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-pressed');
       }
     }
   }
 }
 
 @mixin button-outline-colors-styles {
-  @each $type in $types {
-    &[data-type='#{$type}'] {
+  @each $appearance in $appearances {
+    &[data-appearance='#{$appearance}'] {
       &:focus-visible {
-        @if $type == 'neutral' {
+        @if $appearance == 'neutral' {
           outline-color: var($sys-available-complementary);
         }
 
  @else {
-          outline-color: simple-var($theme-variables, 'sys', $type, 'accent-default');
+          outline-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
         }
       }
     }

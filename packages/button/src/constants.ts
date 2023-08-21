@@ -1,4 +1,4 @@
-export enum Type {
+export enum Appearance {
   Primary = 'primary',
   Neutral = 'neutral',
   Red = 'red',

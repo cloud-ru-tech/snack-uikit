@@ -8,7 +8,7 @@ import {
 
 import { CounterProps } from '@snack-ui/counter';
 
-import { IconPosition, Size, Type } from './constants';
+import { Appearance, IconPosition, Size } from './constants';
 
 export type BaseButtonProps = {
   /** CSS-класс */
@@ -32,10 +32,10 @@ export type BaseButtonProps = {
   onKeyDown?: KeyboardEventHandler<HTMLElement>;
   /** Размер */
   size?: Size;
-  /** Тип кнопки */
-  type?: Type;
+  /** Внешний вид кнопки */
+  appearance?: Appearance;
   /** HTML-аттрибут type */
-  htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
   /** HTML-аттрибут tab-index */
   tabIndex?: number;
 };

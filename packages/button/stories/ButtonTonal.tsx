@@ -73,7 +73,8 @@ buttonTonal.args = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   icon: 'none',
-  type: ButtonTonal.types.Primary,
+  type: ButtonTonal.types.Button,
+  appearance: ButtonTonal.appearances.Primary,
   size: ButtonTonal.sizes.S,
   testMode: false,
 };

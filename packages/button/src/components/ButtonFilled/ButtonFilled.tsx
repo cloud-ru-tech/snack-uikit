@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { HtmlType, Size, Target, Type } from '../../constants';
+import { Appearance, HtmlType, Size, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
 import { CommonButtonProps } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
@@ -12,10 +12,10 @@ export type ButtonFilledProps = WithSupportProps<Omit<CommonButtonProps, 'iconPo
 
 export function ButtonFilled({
   className,
-  size = Size.S,
-  target = Target.Blank,
-  type = Type.Primary,
-  htmlType = HtmlType.Button,
+  size = ButtonFilled.sizes.S,
+  target = ButtonFilled.targets.Blank,
+  type = ButtonFilled.types.Button,
+  appearance = ButtonFilled.appearances.Primary,
   tabIndex,
   ...rest
 }: ButtonFilledProps) {
@@ -29,13 +29,13 @@ export function ButtonFilled({
       size={size}
       target={target}
       type={type}
-      htmlType={htmlType}
+      appearance={appearance}
       tabIndex={tabIndex}
     />
   );
 }
 
 ButtonFilled.sizes = Size;
-ButtonFilled.types = Type;
-ButtonFilled.htmlTypes = HtmlType;
+ButtonFilled.types = HtmlType;
+ButtonFilled.appearances = Appearance;
 ButtonFilled.targets = Target;

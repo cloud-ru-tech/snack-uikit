@@ -74,7 +74,8 @@ buttonOutline.args = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   icon: 'none',
-  type: ButtonOutline.types.Primary,
+  type: ButtonOutline.types.Button,
+  appearance: ButtonOutline.appearances.Primary,
   size: ButtonOutline.sizes.S,
   testMode: false,
 };
