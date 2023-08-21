@@ -1,0 +1,8 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.story {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
+}

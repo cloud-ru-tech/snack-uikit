@@ -96,6 +96,9 @@
     },
     {
       "path": "./stepper"
+    },
+    {
+      "path": "./promo-tag"
     }
   ],
   "compilerOptions": {
