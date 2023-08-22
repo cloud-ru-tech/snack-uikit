@@ -137,7 +137,7 @@ export function FilterChip({
       onOpenChange={onOpenChangeHandler}
       onFocusLeave={onFocusLeaveHandler}
       className={styles.droplist}
-      widthStrategy={Droplist.widthStrategies.Auto}
+      widthStrategy={Droplist.widthStrategies.Gte}
       triggerElement={
         <button
           {...extractSupportProps(rest)}
