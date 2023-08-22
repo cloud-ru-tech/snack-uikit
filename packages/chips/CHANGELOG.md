@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.10 (2023-08-22)
+
+
+### Bug Fixes
+
+* **[FF-2963](https://jira.sbercloud.tech/browse/FF-2963):** change strategy to Gte ([0c539d2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0c539d2ae0f1e91a2f098f18b08922ecb1479d04))
+
+
+
+
+
 ## 0.2.9 (2023-08-17)
 
 ### Only dependencies have been changed

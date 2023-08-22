@@ -3,9 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.10 (2023-08-22)
+
+
+### Bug Fixes
+
+* **[FF-2967](https://jira.sbercloud.tech/browse/FF-2967):** add forgotten className prop ([099459e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/099459ee83e61e68869ac754cdea42c6be6963ac))
+
+
+
+
+
 ## 0.2.9 (2023-08-17)
 
-**Note:** Version bump only for package @snack-ui/avatar
+### Only dependencies have been changed
+* [@snack-ui/status@0.2.6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/status/CHANGELOG.md)
 
 
 

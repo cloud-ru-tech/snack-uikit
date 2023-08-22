@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.8 (2023-08-22)
+
+
+### Bug Fixes
+
+* **[FF-2963](https://jira.sbercloud.tech/browse/FF-2963):** actions button type, select dropdown, limit counter color ([d53676f](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/d53676f747369025e03631b55f6b29b4e8732014))
+
+
+
+
+
 ## 0.4.7 (2023-08-17)
 
 ### Only dependencies have been changed

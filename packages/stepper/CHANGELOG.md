@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.3 (2023-08-22)
+
+### Only dependencies have been changed
+* [@snack-ui/loaders@0.2.9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
+
+
+
+
+
 ## 0.1.2 (2023-08-17)
 
 **Note:** Version bump only for package @snack-ui/stepper

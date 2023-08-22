@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.2 (2023-08-22)
+
+
+### Bug Fixes
+
+* **[FF-2965](https://jira.sbercloud.tech/browse/FF-2965):** z-index scrollbar resize icon ([60a8d92](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/60a8d922d6cd43d6b02e9de1160bdbe16da2cb5f))
+
+
+
+
+
 ## 0.2.1 (2023-08-14)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.5 (2023-08-22)
+
+
+### Bug Fixes
+
+* **[FF-2967](https://jira.sbercloud.tech/browse/FF-2967):** add forgotten className prop ([099459e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/099459ee83e61e68869ac754cdea42c6be6963ac))
+
+
+
+
+
 ## 0.4.4 (2023-08-18)
 
 

@@ -3,9 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2023-08-22)
+
+
+### BREAKING CHANGES
+
+
+* **[FF-2966](https://jira.sbercloud.tech/browse/FF-2966):** type -> appearance ([cede1e6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/cede1e668443c398003b1932c29a6dc52e7867a4))
+
+
+
+
 ## 0.10.1 (2023-08-17)
 
-**Note:** Version bump only for package @snack-ui/button
+### Only dependencies have been changed
+* [@snack-ui/counter@0.2.8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-ui/loaders@0.2.9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
 
 
 

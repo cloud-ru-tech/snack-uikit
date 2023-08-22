@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/stepper",
   "title": "Stepper",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -30,7 +30,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-ui/icons": "0.11.0",
-    "@snack-ui/loaders": "0.2.8",
+    "@snack-ui/loaders": "0.2.9",
     "@snack-ui/truncate-string": "0.1.6",
     "@snack-ui/typography": "0.2.4",
     "@snack-ui/utils": "1.2.0",
