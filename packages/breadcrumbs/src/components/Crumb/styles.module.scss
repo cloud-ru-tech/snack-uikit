@@ -26,7 +26,7 @@ $sizes: 'xs', 's';
   background: none;
   border: none;
 
-  &[data-clickable] {
+  a, button {
     cursor: pointer;
 
     &:focus-visible,

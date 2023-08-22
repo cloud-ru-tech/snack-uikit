@@ -5,7 +5,7 @@ import { Popover } from '@snack-ui/popover';
 import { ElementType, ItemRenderMode } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
 import { BreadcrumbsConfigChain } from '../../types';
-import { getTestId } from '../../utils/getTestId';
+import { getTestId } from '../../utils';
 import { Crumb } from '../Crumb';
 import { CrumbsTypography } from '../CrumbsTypography';
 import { Separator } from '../Separator';

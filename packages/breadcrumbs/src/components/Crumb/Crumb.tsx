@@ -5,8 +5,8 @@ import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-
 
 import { ElementType, ItemRenderMode } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
-import { RawItem } from '../../types';
-import { getTestId } from '../../utils/getTestId';
+import { Item } from '../../types';
+import { getTestId } from '../../utils';
 import { CrumbsTypography } from '../CrumbsTypography';
 import styles from './styles.module.scss';
 
@@ -15,7 +15,8 @@ export type CrumbProps = WithSupportProps<{
   className?: string;
   minWidth?: number;
   current?: boolean;
-  item: RawItem;
+  item: Item;
+  useIconOnly?: boolean;
 }>;
 
 const ELLIPSIS_LABEL_LENGTH = 8;
@@ -26,12 +27,14 @@ export const Crumb = memo(function Crumb({
   renderMode,
   className,
   item: { label: labelProp, shortLabel, icon: Icon, id, onClick, href },
+  useIconOnly: useIconOnlyProp,
   ...rest
 }: CrumbProps) {
   const { hidden, size, testId } = useContext(BreadcrumbsContext);
   const isLabelShouldBeEllipse = hidden && labelProp.length > ELLIPSIS_LABEL_LENGTH;
   const label =
     isLabelShouldBeEllipse && renderMode === ItemRenderMode.Ellipsis ? `${labelProp.substring(0, 4)}...` : labelProp;
+  const useIconOnly = Boolean(Icon && useIconOnlyProp);
 
   const minWidth = minWidthProp && renderMode === ItemRenderMode.Ellipsis ? minWidthProp : 'auto';
 
@@ -50,9 +53,11 @@ export const Crumb = memo(function Crumb({
           <Icon size={24} />
         </div>
       )}
-      <CrumbsTypography size={size} className={styles.label}>
-        {renderMode === ItemRenderMode.ShortLabel ? shortLabel : label}
-      </CrumbsTypography>
+      {!useIconOnly && (
+        <CrumbsTypography size={size} className={styles.label}>
+          {renderMode === ItemRenderMode.ShortLabel ? shortLabel : label}
+        </CrumbsTypography>
+      )}
     </>
   );
 
@@ -63,13 +68,27 @@ export const Crumb = memo(function Crumb({
   let crumb = null;
   if (href) {
     crumb = (
-      <a {...tabIndex} {...dataAttributes} className={styles.crumb} onClick={onClick} href={href} data-clickable>
+      <a
+        className={styles.crumb}
+        onClick={onClick}
+        href={href}
+        aria-label={useIconOnly ? label : undefined}
+        {...dataAttributes}
+        {...tabIndex}
+      >
         {content}
       </a>
     );
   } else if (onClick) {
     crumb = (
-      <button title={title} onClick={onClick} className={styles.crumb} {...dataAttributes} {...tabIndex} data-clickable>
+      <button
+        title={title}
+        onClick={onClick}
+        className={styles.crumb}
+        aria-label={useIconOnly ? label : undefined}
+        {...dataAttributes}
+        {...tabIndex}
+      >
         {content}
       </button>
     );

@@ -1,11 +1,36 @@
 import debounce from 'lodash.debounce';
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useCallback, useEffect, useState } from 'react';
 
-import { BreadcrumbsConfig, BreadcrumbsConfigChain } from './types';
+import { BreadcrumbsConfig, CurrentConfigState } from './types';
+import { getMaxPossibleWidth } from './utils';
 
 export type BreadcrumbsLayout = {
   setConfigs: (configs: BreadcrumbsConfig[]) => void;
-  currentConfig?: BreadcrumbsConfigChain;
+  currentConfig?: CurrentConfigState;
+};
+
+const selectConfig = (containerWidth: number, configs: BreadcrumbsConfig[]): CurrentConfigState | undefined => {
+  if (!configs.length) {
+    return;
+  }
+
+  let [bestConfig] = configs;
+
+  for (const config of configs) {
+    if (config.width <= containerWidth) {
+      if (bestConfig.width > containerWidth) {
+        bestConfig = config;
+      } else {
+        if (bestConfig.weight > config.weight) {
+          bestConfig = config;
+        }
+      }
+    }
+  }
+
+  if (bestConfig) {
+    return { chain: bestConfig.chain, containerWidth, chainWidth: bestConfig.width };
+  }
 };
 
 /**
@@ -23,61 +48,52 @@ export type BreadcrumbsLayout = {
  *  Для того чтоб отобразить breadcrumbs, нужно подобрать конфиг, максимальный по ширине, влезающий в контейнер, но с минимальным весом (наименьшим количеством сокращений).
  */
 export function useBreadcrumbsLayout(containerRef: RefObject<HTMLElement>): BreadcrumbsLayout {
-  const [currentConfig, setCurrentConfig] = useState<BreadcrumbsConfigChain | undefined>(undefined);
-  const [containerWidth, setContainerWidth] = useState(containerRef.current?.offsetWidth || 0);
+  const [currentConfig, setCurrentConfig] = useState<CurrentConfigState | undefined>(undefined);
   const [configs, setConfigs] = useState<BreadcrumbsConfig[]>([]);
+
+  const selectConfigForWidth = useCallback((width: number) => selectConfig(width, configs), [configs]);
 
   /**
    * Подбор подходящего конфига триггерится изменением ширины контейнера и изменением набора конфигов
    */
   useEffect(() => {
-    if (configs.length) {
-      let [bestConfig] = configs;
-
-      for (const config of configs) {
-        if (config.width <= containerWidth) {
-          if (bestConfig.width > containerWidth) {
-            bestConfig = config;
-          } else {
-            if (bestConfig.weight > config.weight) {
-              bestConfig = config;
-            }
-          }
-        }
-      }
-
-      if (bestConfig) {
-        setCurrentConfig(bestConfig.chain);
-      }
-    }
-  }, [configs, containerWidth]);
-
-  useEffect(() => {
-    const visibleContainer = containerRef.current;
+    const visibleContainer = containerRef.current?.parentElement;
 
     if (!visibleContainer) {
       return;
     }
 
-    const visibleContainerObserver = new ResizeObserver(
-      debounce(
-        ([
-          {
-            borderBoxSize: [{ inlineSize }],
-          },
-        ]) => {
-          setContainerWidth(inlineSize);
-        },
-        100,
-      ),
-    );
+    if (configs.length) {
+      setCurrentConfig(selectConfig(getMaxPossibleWidth(visibleContainer), configs));
+    }
+  }, [configs, containerRef]);
+
+  useEffect(() => {
+    const visibleContainer = containerRef.current?.parentElement;
+
+    if (!visibleContainer) {
+      return;
+    }
+
+    const reselectConfig = debounce(() => {
+      const width = getMaxPossibleWidth(visibleContainer);
+      setCurrentConfig(prevConfig => {
+        if (prevConfig?.containerWidth === width) {
+          return prevConfig;
+        }
+
+        const newConf = selectConfigForWidth(width);
+        return newConf || (prevConfig ? { ...prevConfig, containerWidth: width } : prevConfig);
+      });
+    }, 100);
+
+    const visibleContainerObserver = new ResizeObserver(reselectConfig);
 
     visibleContainerObserver.observe(visibleContainer);
+    visibleContainerObserver.observe(window.document.body);
 
-    return () => {
-      visibleContainerObserver.disconnect();
-    };
-  }, [containerRef]);
+    return () => visibleContainerObserver.disconnect();
+  }, [containerRef, selectConfigForWidth]);
 
   return { setConfigs, currentConfig };
 }

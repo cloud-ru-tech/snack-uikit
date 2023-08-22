@@ -106,9 +106,17 @@ test.page(getPage({ storyContainerWidth: '900px', storyUrl: true }))('Should use
     );
 });
 
-// Этот тест не проходит, пока не знаю почему
-// test.page(getPage({ storyContainerWidth: '400px' }))('Should show collapsed crumbs on hover', async t => {
-//   await t.expect(Selector(dataTestIdSelector(`${CRUMB}-collapsed`)).count).eql(0);
-//   await t.hover(Selector(dataTestIdSelector(COLLAPSE)));
-//   await t.expect(Selector(dataTestIdSelector(`${CRUMB}-collapsed`)).count).eql(2);
-// });
+test.page(getPage({ storyContainerWidth: '900px', storyOnClick: true }))('Should handle last item click', async t => {
+  const crumbs = await Selector(dataTestIdSelector(CRUMB));
+  await t.click(crumbs.nth(5));
+  await t.expect(Selector(dataTestIdSelector(CRUMB_CLICK_HOLDER)).innerText).eql('Парус');
+});
+
+test.page(getPage({ storyContainerWidth: '900px', storyOnClick: true, inactiveLastItem: true }))(
+  "Should't handle last item click because of inactiveLastItem = true",
+  async t => {
+    const crumbs = await Selector(dataTestIdSelector(CRUMB));
+    await t.click(crumbs.nth(5));
+    await t.expect(Selector(dataTestIdSelector(CRUMB_CLICK_HOLDER)).innerText).eql('');
+  },
+);

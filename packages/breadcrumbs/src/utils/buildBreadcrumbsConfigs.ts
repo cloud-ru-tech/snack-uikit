@@ -1,7 +1,7 @@
 import { ElementType, ItemRenderMode } from '../constants';
-import { BreadcrumbsConfig, Item, RawItem, SizeMap } from '../types';
+import { BreadcrumbsConfig, InnerItem, Item, SizeMap } from '../types';
 
-type Chain = Item[];
+type Chain = InnerItem[];
 
 const RENDER_MODE_WEIGHT = {
   [ItemRenderMode.Full]: 0,
@@ -14,7 +14,7 @@ const RENDER_MODE_WITH_WIDTH = [ItemRenderMode.Full, ItemRenderMode.ShortLabel, 
 
 const startsWith =
   (renderMode: ItemRenderMode) =>
-  (item: Item, tail: Chain): Chain =>
+  (item: InnerItem, tail: Chain): Chain =>
     [{ ...item, renderMode }, ...tail];
 const startsWithFull = startsWith(ItemRenderMode.Full);
 const startsWithShortLabel = startsWith(ItemRenderMode.ShortLabel);
@@ -31,6 +31,10 @@ function buildSubChain(
   { useCollapse = true, useEllipse = true }: BuildSubChainOptions,
 ): Chain[] {
   const result: Chain[] = [];
+
+  if (!current) {
+    return result;
+  }
 
   if (!rest.length) {
     result.push(startsWithFull(current, []));
@@ -58,15 +62,16 @@ function buildSubChain(
   return result;
 }
 
-const collapseAllRest = (lastElementRenderMode: ItemRenderMode, rest: Item[]) =>
+const collapseAllRest = (lastElementRenderMode: ItemRenderMode, rest: InnerItem[]) =>
   rest.map((element, index, array) => {
     const lastItem = index === array.length - 1;
     return { ...element, renderMode: lastItem ? lastElementRenderMode : ItemRenderMode.Collapsed };
   });
 
-export function buildBreadcrumbsConfigs(items: RawItem[], sizeMap: SizeMap): BreadcrumbsConfig[] {
-  const chains: Item[][] = [];
+export function buildBreadcrumbsConfigs(items: Item[], sizeMap: SizeMap): BreadcrumbsConfig[] {
+  const chains: InnerItem[][] = [];
   const [first, ...rest] = items.map(item => ({ ...item, renderMode: ItemRenderMode.Full }));
+
   buildSubChain(rest, { useCollapse: true, useEllipse: true }).forEach(subset => {
     chains.push(startsWithFull(first, subset));
     first.shortLabel && chains.push(startsWithShortLabel(first, subset));

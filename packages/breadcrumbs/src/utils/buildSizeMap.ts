@@ -8,6 +8,8 @@ const getEmptyItemSizeMap = (): ItemSizeMap => ({
   [ItemRenderMode.Full]: 0,
 });
 
+const getElementWidth = (element: HTMLElement): number => element.getBoundingClientRect().width;
+
 export function buildSizeMap(container?: Element): SizeMap | undefined {
   if (!container) {
     return;
@@ -18,13 +20,13 @@ export function buildSizeMap(container?: Element): SizeMap | undefined {
   const [separator, collapse, ...itemElements] = Array.from(children);
 
   return {
-    separator: separator.offsetWidth,
-    collapse: collapse.offsetWidth,
+    separator: getElementWidth(separator),
+    collapse: getElementWidth(collapse),
     items: itemElements.reduce((result, element) => {
       const id = element.getAttribute('data-id') as string;
       const renderMode = element.getAttribute('data-render-mode') as ItemRenderMode;
       result[id] = result[id] || getEmptyItemSizeMap();
-      result[id][renderMode] = element.offsetWidth;
+      result[id][renderMode] = getElementWidth(element);
       return result;
     }, {} as SizeMap['items']),
   };

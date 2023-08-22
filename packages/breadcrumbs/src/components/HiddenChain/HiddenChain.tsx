@@ -1,21 +1,28 @@
 import { memo, useEffect, useRef } from 'react';
 
-import { ItemRenderMode, Size } from '../../constants';
-import { BreadcrumbsConfig, RawItem } from '../../types';
+import { Size } from '../../constants';
+import { BreadcrumbsConfig, Item } from '../../types';
 import { buildBreadcrumbsConfigs, buildSizeMap } from '../../utils';
 import { Collapse } from '../Collapse';
-import { Crumb } from '../Crumb';
 import { Separator } from '../Separator';
 import { Wrapper } from '../Wrapper';
+import { useItemModesRender } from './hooks';
 
 export type HiddenChainProps = {
   separator: string;
-  items: RawItem[];
+  items: Item[];
   size: Size;
   onConfigsBuilt(config: BreadcrumbsConfig[]): void;
+  firstItemIconOnly?: boolean;
 };
 
-export const HiddenChain = memo(function HiddenChain({ size, separator, items, onConfigsBuilt }: HiddenChainProps) {
+export const HiddenChain = memo(function HiddenChain({
+  size,
+  separator,
+  items,
+  onConfigsBuilt,
+  firstItemIconOnly = false,
+}: HiddenChainProps) {
   const containerRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -35,21 +42,13 @@ export const HiddenChain = memo(function HiddenChain({ size, separator, items, o
     }
   }, [items, onConfigsBuilt]);
 
+  const renderItemModes = useItemModesRender({ firstItemIconOnly });
+
   return (
     <Wrapper size={size} hidden ref={containerRef} separator={separator} data-test-id='hidden-wrapper'>
       <Separator />
       <Collapse currentConfig={[]} />
-      {items.map(item =>
-        [
-          [ItemRenderMode.ShortLabel, item.shortLabel],
-          [ItemRenderMode.Ellipsis, item.label],
-          [ItemRenderMode.Full, item.label],
-        ].map(([mode, modeLabel]) => {
-          if (modeLabel?.length) {
-            return <Crumb renderMode={mode as ItemRenderMode} key={item.id + mode} item={item} />;
-          }
-        }),
-      )}
+      {items.map(renderItemModes)}
     </Wrapper>
   );
 });

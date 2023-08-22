@@ -2,15 +2,15 @@
 
 $sizes: 'xs', 's';
 
-.wrapper[data-hidden='true'] {
-  position: absolute;
-
+.wrapper { 
   overflow: hidden;
 
-  width: 1px;
-  height: 1px;
-
-  opacity: 0;
+  &[data-hidden='true'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
 }
 
 .row {

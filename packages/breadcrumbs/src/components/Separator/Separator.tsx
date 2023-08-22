@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { ElementType } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
-import { getTestId } from '../../utils/getTestId';
+import { getTestId } from '../../utils';
 import { CrumbsTypography } from '../CrumbsTypography';
 import styles from './styles.module.scss';
 

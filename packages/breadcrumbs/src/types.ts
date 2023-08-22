@@ -2,7 +2,7 @@ import { JSXElementConstructor } from 'react';
 
 import { ElementType, ItemRenderMode } from './constants';
 
-export type RawItem = {
+export type Item = {
   id: string;
   label: string;
   icon?: JSXElementConstructor<{ size: number }>;
@@ -11,7 +11,7 @@ export type RawItem = {
   onClick?(): void;
 };
 
-export type Item = RawItem & {
+export type InnerItem = Item & {
   renderMode: ItemRenderMode;
 };
 
@@ -42,9 +42,15 @@ export type BreadcrumbsConfigChain = Array<
   | {
       element: ElementType.Item;
       width: number;
-      item: Item;
+      item: InnerItem;
     }
 >;
+
+export type CurrentConfigState = {
+  chain: BreadcrumbsConfigChain;
+  chainWidth: number;
+  containerWidth: number;
+};
 
 export type BreadcrumbsConfig = {
   chain: BreadcrumbsConfigChain;

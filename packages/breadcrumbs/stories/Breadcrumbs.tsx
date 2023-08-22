@@ -55,9 +55,6 @@ const Template = ({
     items[0].icon = HeartFilledSVG;
   }
 
-  delete items.at(-1)?.onClick;
-  delete items.at(-1)?.href;
-
   return (
     <div>
       <style>{`.${styles.scroll} { width: ${storyContainerWidth}; }`}</style>
