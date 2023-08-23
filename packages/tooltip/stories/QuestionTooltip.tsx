@@ -1,6 +1,4 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import cn from 'classnames';
-import { Fragment } from 'react';
 
 import { Link } from '@snack-ui/link';
 
@@ -18,46 +16,41 @@ const meta: Meta = {
 export default meta;
 
 type StoryProps = QuestionTooltipProps;
-
-const headerCellClassnames = cn(styles.cell, styles.headerCell);
-const SIZES = Object.values(QuestionTooltip.sizes);
-
 const Template: StoryFn<StoryProps> = ({ ...args }) => (
-  <>
-    <div className={styles.table} style={{ '--columns': SIZES.length - 1 }}>
-      {SIZES.map(head => (
-        <div key={head} className={headerCellClassnames}>
-          {head}
-        </div>
-      ))}
-
-      {SIZES.map(size => (
-        <Fragment key={size}>
-          <div className={styles.cell}>
-            <QuestionTooltip
-              {...args}
-              size={size}
-              tip={
-                args.tip || (
-                  <div>
-                    do not press this button, please
-                    <br /> <Link href='#' text='read why' />
-                  </div>
-                )
-              }
+  <div className={styles.story}>
+    <QuestionTooltip
+      {...args}
+      tip={
+        args.tip || (
+          <div>
+            do not press this button, please
+            <br />
+            <Link
+              href='#'
+              text='read why'
+              onSurface={Link.onSurfaces.Background}
+              onColor={Link.onColors.InvertNeutral}
             />
           </div>
-        </Fragment>
-      ))}
-    </div>
-  </>
+        )
+      }
+    />
+  </div>
 );
 
 export const questionTooltip: StoryObj<StoryProps> = Template.bind({});
+
 questionTooltip.args = {
   size: QuestionTooltip.sizes.S,
+  trigger: QuestionTooltip.triggers.Click,
+  placement: QuestionTooltip.placements.Top,
 };
-questionTooltip.argTypes = { tip: { type: 'string' } };
+
+questionTooltip.argTypes = {
+  tip: { type: 'string' },
+  open: { table: { disable: true } },
+  onOpenChange: { table: { disable: true } },
+};
 
 questionTooltip.parameters = {
   readme: {

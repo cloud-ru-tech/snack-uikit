@@ -4,35 +4,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   height: 400px;
+  padding: 24px;
+
+  background-color: var($sys-neutral-background1-level);
+  border: 1px solid var($sys-neutral-decor-default);
+  border-radius: var($dimension-050m);
 }
 
 .item {
   height: 10px;
-}
-
-$border-width: 0.5px;
-
-.table {
-  display: inline-grid;
-  grid-template-columns: 60px repeat(var(--columns), 1fr);
-
-  width: fit-content;
-
-  background-color: var($sys-neutral-background1-level);
-  border: $border-width solid var($sys-neutral-decor-default);
-}
-
-.cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 8px;
-
-  border: $border-width solid var($sys-neutral-decor-disabled);
-}
-
-.headerCell {
-  text-transform: uppercase;
 }

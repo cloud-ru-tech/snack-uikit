@@ -54,7 +54,7 @@ export function ModalHeader({
           </Typography>
 
           {titleTooltip && (
-            <QuestionTooltip tip={titleTooltip} size={QuestionTooltip.sizes.M} data-test-id={TEST_IDS.tooltip} />
+            <QuestionTooltip tip={titleTooltip} size={QuestionTooltip.sizes.S} data-test-id={TEST_IDS.tooltip} />
           )}
         </div>
 

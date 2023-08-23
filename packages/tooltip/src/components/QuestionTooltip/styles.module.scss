@@ -1,17 +1,60 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
+$triggers: 'hover', 'hoverAndFocusVisible', 'hoverAndFocus', 'focus', 'focusVisible';
+
 .questionTooltip {
+  cursor: pointer;
+
   display: inline-flex;
+
+  margin: 0;
+  padding: 0;
+
   color: var($sys-neutral-text-light);
 
-  &[data-size='s'] {
+  background: none;
+  border: 0;
+
+
+  &:hover {
+    color: var($sys-neutral-text-support);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    color: var($sys-neutral-text-support);
+    outline-color: var($sys-available-complementary);
+
+  }
+
+  &:active {
+    color: var($sys-neutral-text-main)
+  }
+
+  &[data-opened='true'] {
+    &:not(:hover) {
+      color: var($sys-neutral-text-main);
+    }
+  }
+
+  @each $trigger in $triggers {
+    &[data-trigger='#{$trigger}'] {
+      &:hover {
+        color: var($sys-neutral-text-light);
+      }
+    }
+  }
+  
+
+  &[data-size='xs'] {
     svg {
       width: var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
       height: var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 
-  &[data-size='m'] {
+  &[data-size='s'] {
     svg {
       width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
       height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
