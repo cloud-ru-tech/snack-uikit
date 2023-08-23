@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-08-23)
+
+
+### Bug Fixes
+
+* **[FF-2777](https://jira.sbercloud.tech/browse/FF-2777):** using new icons ([7922fca](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/7922fca103293299554fe07d607ca54b3b571e66))
+
+
+### Features
+
+* **[FF-2964](https://jira.sbercloud.tech/browse/FF-2964):** add firstItemIconOnly prop ([addabe8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/addabe866755ffca70b53abd7a41aebe1f9f1088))
+
+
+
+
+
 ## 0.1.8 (2023-08-11)
 
 ### Only dependencies have been changed
