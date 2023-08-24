@@ -38,8 +38,8 @@ $sizes: (
 
     @each $size, $sideLength in $sizes {
       &[data-size='#{$size}'] {
-        width: $sideLength;
-        height: $sideLength;
+        width: $sideLength !important; /* stylelint-disable-line declaration-no-important */
+        height: $sideLength !important; /* stylelint-disable-line declaration-no-important */
       }
     }
   }

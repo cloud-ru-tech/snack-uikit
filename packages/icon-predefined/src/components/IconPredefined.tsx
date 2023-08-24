@@ -10,7 +10,7 @@ export type IconPredefinedProps = WithSupportProps<{
   className?: string;
   appearance?: Appearance;
   decor?: boolean;
-  icon: JSXElementConstructor<{ size?: string; className?: string }>;
+  icon: JSXElementConstructor<{ size?: number; className?: string }>;
   size?: Size;
 }>;
 
@@ -30,7 +30,12 @@ export function IconPredefined({
       className={cn(styles.decor, className)}
       {...extractSupportProps(rest)}
     >
-      <IconComponent data-size={size} data-appearance={appearance} className={styles.icon} size='' />
+      <IconComponent
+        data-size={size}
+        data-appearance={appearance}
+        className={styles.icon}
+        size={size === Size.S ? 16 : 24}
+      />
     </div>
   );
 }
