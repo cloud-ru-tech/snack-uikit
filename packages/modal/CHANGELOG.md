@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-08-24)
+
+
+### BREAKING CHANGES
+
+
+* **[FF-2989](https://jira.sbercloud.tech/browse/FF-2989):** questionTooltip size & tooltip behavior ([61b29c2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/61b29c2a87074d25f54b3d9eac66ef79003d9897))
+
+
+
+
 # 0.2.0 (2023-08-22)
 
 
