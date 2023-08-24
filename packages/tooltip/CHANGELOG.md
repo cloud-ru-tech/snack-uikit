@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.1 (2023-08-24)
+
+
+### Bug Fixes
+
+* **[FF-2989](https://jira.sbercloud.tech/browse/FF-2989):** hover focus ([bbd2fa8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/bbd2fa893cf2201d5cdd674ff628a2cb725e89ea))
+
+
+
+
+
 # 0.5.0 (2023-08-24)
 
 
