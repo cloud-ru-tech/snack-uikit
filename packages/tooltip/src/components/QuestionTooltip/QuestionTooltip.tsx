@@ -34,18 +34,19 @@ export function QuestionTooltip({
       onOpenChange={setTooltipOpened}
       trigger={trigger}
     >
-      {({ getReferenceProps, ref }) => (
-        <button
-          {...getReferenceProps()}
-          ref={ref}
-          data-size={size}
-          data-opened={tooltipOpened}
-          data-trigger={trigger}
-          className={cn(styles.questionTooltip, className)}
-        >
-          <QuestionSVG size={SIZES_MAP[size]} />
-        </button>
-      )}
+      {({ getReferenceProps, ref }) => {
+        const props = {
+          ...getReferenceProps(),
+          ref,
+          'data-size': size,
+          'data-opened': tooltipOpened,
+          'data-trigger': trigger,
+          className: cn(styles.questionTooltip, className),
+          children: <QuestionSVG size={SIZES_MAP[size]} />,
+        };
+
+        return trigger === Tooltip.triggers.Hover ? <span {...props} /> : <button {...props} />;
+      }}
     </Tooltip>
   );
 }
