@@ -65,7 +65,7 @@ export function OtherColors() {
         className={styles.description}
         tag={Typography.tags.p}
       >
-        {DESCRIPTION[OtherPalette.Available]}
+        {DESCRIPTION[OtherPalette.Blackout]}
       </Typography>
       <div className={styles.blackout}>
         <Card color={SYSTEM_PALETTE.Blackout} palette={OtherPalette.Blackout} />
