@@ -3,7 +3,10 @@ import { createElement, ReactNode } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
+import { attachVariants } from '../utils';
 import { Family, Role, Size, Tag } from './contants';
+import { generatedVariants } from './generatedVariants';
+import { GeneratedTypography } from './generatedVariants/types';
 import styles from './styles.module.scss';
 
 export type TypographyProps = WithSupportProps<{
@@ -15,7 +18,7 @@ export type TypographyProps = WithSupportProps<{
   size: Size;
 }>;
 
-export function Typography({ tag = Tag.span, className, children, family, role, size, ...rest }: TypographyProps) {
+function TypographyComponent({ tag = Tag.span, className, children, family, role, size, ...rest }: TypographyProps) {
   return createElement(
     tag,
     {
@@ -29,7 +32,11 @@ export function Typography({ tag = Tag.span, className, children, family, role, 
   );
 }
 
-Typography.families = Family;
-Typography.roles = Role;
-Typography.sizes = Size;
-Typography.tags = Tag;
+TypographyComponent.families = Family;
+TypographyComponent.roles = Role;
+TypographyComponent.sizes = Size;
+TypographyComponent.tags = Tag;
+
+export const Typography = TypographyComponent as typeof TypographyComponent & GeneratedTypography;
+
+attachVariants(generatedVariants);

@@ -3,10 +3,6 @@
 ## Installation
 `npm i @snack-ui/typography`
 
-## TODO
-
-- подумать над reusable components/classnames для специфичных компонентов (`<SansDisplayL />` / `.sans-display-l`)
-
 ## Example
 
 ```typescript jsx
@@ -22,6 +18,24 @@ import {Typography} from "@snack-ui/typography";
   Some text
 </Typography>
 ```
+
+Также чтобы не указывать пропсы family, role и size, воспользуйтесь таким вариантом:
+```typescript jsx
+<Typography.SansDisplayS tag={Typography.tags.h1} className='some-element'>
+  Some text
+</Typography.SansDisplayS>
+```
+
+Все компоненты вида ```<Typography.{Family}{Role}{Size} /> ``` автогенерятся
+
+## Как добавить новый компонент такого вида?
+1. Добавить новое свойство в один или несколько объектов Family, Role, Size в файле `constants.ts`, который лежит в  `typography/src/components/constants.ts`
+2. Запустить скрипт compile в package.json пакета `@typography`
+    ```json
+    "npm run build:typography-components && npm run build:constants && npm run build:index"
+    ```
+3. Готово! Можете использовать `Typography` с новым свойством
+
 ## Props
 
 ```typescript jsx

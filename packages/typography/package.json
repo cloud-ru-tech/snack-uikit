@@ -27,7 +27,12 @@
     "./LICENSE"
   ],
   "license": "Apache-2.0",
-  "scripts": {},
+  "scripts": {
+    "build:typography-components": "ts-node scripts/generate-components.ts",
+    "build:constants": "ts-node scripts/create-constants.ts",
+    "build:index": "ts-node scripts/create-index-file.ts",
+    "compile": "npm run build:typography-components && npm run build:constants && npm run build:index"
+  },
   "dependencies": {
     "@snack-ui/utils": "1.2.0",
     "classnames": "2.3.2"
