@@ -1,3 +1,4 @@
+import { useArgs } from '@storybook/client-api';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { MouseEventHandler, useEffect, useState } from 'react';
 
@@ -7,10 +8,11 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Modal, ModalProps } from '../src';
-import { ARG_TYPES, DEFAULT_ARGS, MODAL_IDS, PICTURE_ARGS } from './constants';
+import { Size } from '../src/constants';
+import { ARG_TYPES, CONTROLLED_MODAL_ID, DEFAULT_ARGS, MODAL_IDS, PICTURE_ARGS } from './constants';
 import styles from './styles.module.scss';
 import { ExtendedStoryProps } from './types';
-import { getPicture } from './utils';
+import { getStoryPicture } from './utils';
 
 const meta: Meta = {
   title: 'Components/Modal',
@@ -20,11 +22,19 @@ export default meta;
 
 type StoryProps = ExtendedStoryProps<ModalProps>;
 
-const Template: StoryFn<StoryProps> = ({ showPicture, ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...args }: StoryProps) => {
+  const [storyArgs, setStoryArgs] = useArgs<StoryProps>();
+
+  useEffect(() => {
+    if (storyArgs.size !== Modal.sizes.S || storyArgs.showImage) {
+      setStoryArgs({ showIcon: false });
+    }
+  }, [setStoryArgs, storyArgs.showImage, storyArgs.size]);
+
   const [isOpen, setOpen] = useState<string>();
 
   useEffect(() => {
-    setOpen(args.open ? MODAL_IDS.controlled : undefined);
+    setOpen(args.open ? CONTROLLED_MODAL_ID : undefined);
   }, [args.open]);
 
   const openModal: MouseEventHandler<HTMLButtonElement> = e => {
@@ -37,24 +47,47 @@ const Template: StoryFn<StoryProps> = ({ showPicture, ...args }: StoryProps) => 
 
   const closeModal = () => setOpen(undefined);
 
+  const alignProp = args.size === Size.M ? alignM : align;
+
   return (
     <>
-      <div className={styles.buttons}>
-        {Object.values(MODAL_IDS).map(id => (
-          <ButtonFilled
-            key={id}
-            size={ButtonFilled.sizes.M}
-            label={`Open ${id}`}
-            onClick={openModal}
-            data-test-id={`open-${id}`}
-          />
-        ))}
+      <div className={styles.wrapper}>
+        Controlled:
+        <ButtonFilled
+          size={ButtonFilled.sizes.M}
+          label='Open modal'
+          onClick={openModal}
+          data-test-id={CONTROLLED_MODAL_ID}
+        />
       </div>
 
+      <div className={styles.wrapper}>
+        <div className={styles.buttons}>
+          Examples:
+          {Object.values(MODAL_IDS).map(id => (
+            <ButtonFilled
+              key={id}
+              size={ButtonFilled.sizes.M}
+              label={`Open ${id}`}
+              onClick={openModal}
+              data-test-id={`open-${id}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <Modal
         {...args}
-        picture={getPicture({ showPicture, icon: args.icon, picture: args.picture })}
-        open={isOpen === MODAL_IDS.controlled}
+        align={alignProp}
+        picture={getStoryPicture({
+          showImage,
+          showIcon,
+          icon: args.icon,
+          picture: args.picture,
+        })}
+        open={isOpen === CONTROLLED_MODAL_ID}
         onClose={closeModal}
         approveButton={{ ...args.approveButton, onClick: closeModal }}
         cancelButton={!args.cancelButton ? undefined : { ...args.cancelButton, onClick: closeModal }}
@@ -84,7 +117,7 @@ const Template: StoryFn<StoryProps> = ({ showPicture, ...args }: StoryProps) => 
       <Modal
         {...DEFAULT_ARGS}
         content={undefined}
-        appearance={Modal.appearances.Aggressive}
+        mode={Modal.modes.Aggressive}
         open={isOpen === MODAL_IDS.aggressive}
         onClose={closeModal}
         approveButton={{ ...DEFAULT_ARGS.approveButton, onClick: closeModal }}
@@ -95,7 +128,7 @@ const Template: StoryFn<StoryProps> = ({ showPicture, ...args }: StoryProps) => 
       <Modal
         {...DEFAULT_ARGS}
         content={undefined}
-        appearance={Modal.appearances.Forced}
+        mode={Modal.modes.Forced}
         open={isOpen === MODAL_IDS.forced}
         onClose={closeModal}
         approveButton={{ ...DEFAULT_ARGS.approveButton, onClick: closeModal }}
@@ -106,7 +139,7 @@ const Template: StoryFn<StoryProps> = ({ showPicture, ...args }: StoryProps) => 
       <Modal
         title='Удалить элемент?'
         subtitle='После удаления элемента он станет недоступен'
-        appearance={Modal.appearances.Forced}
+        mode={Modal.modes.Forced}
         open={isOpen === MODAL_IDS.deleteModal}
         onClose={closeModal}
         approveButton={{ label: 'Удалить', appearance: ButtonFilled.appearances.Red, onClick: closeModal }}
@@ -129,7 +162,16 @@ modal.args = {
   },
 };
 
-modal.argTypes = ARG_TYPES;
+modal.argTypes = {
+  ...ARG_TYPES,
+  showIcon: {
+    ...ARG_TYPES.showIcon,
+    if: {
+      arg: 'size',
+      eq: Modal.sizes.S,
+    },
+  },
+};
 
 modal.parameters = {
   readme: {

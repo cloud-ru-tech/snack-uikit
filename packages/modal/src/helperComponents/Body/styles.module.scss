@@ -1,14 +1,11 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-modal';
 
 .modalBody {
+  @include composite-var($modal-body);
+
   flex: 1 1 auto;
-
   box-sizing: border-box;
-  width: calc(100% - var($dimension-1m));
-  min-height: var($dimension-2m);
-  padding-right: calc(var($space-modal-body-side) - var($dimension-1m));
-  padding-left: var($space-modal-body-side);
-
+  min-height: var($dimension-theme-general-16px);
   color: var($sys-neutral-text-main);
 
   &[data-align='center'] {

@@ -1,6 +1,7 @@
 import { ButtonFilled, ButtonLight, ButtonTonal } from '@snack-ui/button';
 
 import { Align, ContentAlign, Size } from './constants';
+import { ModalHeaderImage, ModalHeaderProps } from './helperComponents';
 
 const MAP_ALIGNS = {
   [Align.Default]: {
@@ -32,21 +33,37 @@ export function getAlignProps({ align, size }: { align: Align; size: Size }) {
   return MAP_ALIGNS[align];
 }
 
-export function getButtonsSizes(align: Align) {
-  switch (align) {
-    case Align.Vertical:
+export function getButtonsSizes({ align, size }: { align: Align; size: Size }) {
+  switch (true) {
+    case align === Align.Vertical && size === Size.S:
       return {
         filled: ButtonFilled.sizes.L,
         tonal: ButtonTonal.sizes.L,
         light: ButtonLight.sizes.L,
       };
-    case Align.Default:
-    case Align.Center:
+    case [Align.Default, Align.Center].includes(align):
     default:
       return {
         filled: ButtonFilled.sizes.M,
         tonal: ButtonTonal.sizes.M,
         light: ButtonLight.sizes.M,
       };
+  }
+}
+
+export function isPictureImage(picture: ModalHeaderProps['picture']): picture is ModalHeaderImage {
+  if (!picture) return false;
+
+  return 'src' in picture;
+}
+
+export function getPicture({ size, picture }: { size: Size; picture: ModalHeaderProps['picture'] }) {
+  switch (size) {
+    case Size.S:
+      return picture;
+    case Size.M:
+    case Size.L:
+    default:
+      return isPictureImage(picture) ? picture : undefined;
   }
 }

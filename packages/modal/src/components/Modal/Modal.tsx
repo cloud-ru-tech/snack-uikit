@@ -3,8 +3,8 @@ import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
 import { Typography } from '@snack-ui/typography';
 
-import { Align, Appearance, Size, TEST_IDS } from '../../constants';
-import { getAlignProps, getButtonsSizes } from '../../utils';
+import { Align, Mode, Size, TEST_IDS } from '../../constants';
+import { getAlignProps, getButtonsSizes, getPicture } from '../../utils';
 import { ModalCustom } from '../ModalCustom';
 import styles from './styles.module.scss';
 import { ModalLProps, ModalMProps, ModalSProps } from './types';
@@ -15,12 +15,12 @@ export function Modal({
   open,
   onClose,
   size = Size.S,
-  appearance = Appearance.Regular,
+  mode = Mode.Regular,
   align = Align.Default,
   title,
   titleTooltip,
   subtitle,
-  picture,
+  picture: pictureProp,
   content,
   approveButton,
   cancelButton,
@@ -30,10 +30,11 @@ export function Modal({
   ...rest
 }: ModalProps) {
   const aligns = getAlignProps({ align, size });
-  const buttonsSizes = getButtonsSizes(align);
+  const buttonsSizes = getButtonsSizes({ align, size });
+  const picture = getPicture({ size, picture: pictureProp });
 
   return (
-    <ModalCustom open={open} onClose={onClose} size={size} appearance={appearance} className={className} {...rest}>
+    <ModalCustom open={open} onClose={onClose} size={size} mode={mode} className={className} {...rest}>
       <ModalCustom.Header
         title={<TruncateString text={title} />}
         titleTooltip={titleTooltip}
@@ -99,5 +100,5 @@ export function Modal({
 }
 
 Modal.aligns = Align;
-Modal.appearances = Appearance;
+Modal.modes = Mode;
 Modal.sizes = Size;

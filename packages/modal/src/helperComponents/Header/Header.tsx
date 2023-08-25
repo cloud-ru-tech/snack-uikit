@@ -6,18 +6,15 @@ import { QuestionTooltip, QuestionTooltipProps } from '@snack-ui/tooltip';
 import { Typography } from '@snack-ui/typography';
 
 import { ContentAlign, TEST_IDS } from '../../constants';
+import { isPictureImage } from '../../utils';
 import styles from './styles.module.scss';
+import { ModalHeaderImage } from './types';
 
 export type ModalHeaderProps = {
   title: ReactNode;
   titleTooltip?: QuestionTooltipProps['tip'];
   subtitle?: ReactNode;
-  picture?:
-    | IconPredefinedProps['icon']
-    | {
-        src: string;
-        alt: string;
-      };
+  picture?: IconPredefinedProps['icon'] | ModalHeaderImage;
   align?: ContentAlign;
   className?: string;
 };
@@ -33,12 +30,12 @@ export function ModalHeader({
   return (
     <div className={cn(styles.header, className)} data-test-id={TEST_IDS.header}>
       {picture &&
-        (typeof picture === 'function' ? (
+        (isPictureImage(picture) ? (
+          <img src={picture.src} alt={picture.alt} className={styles.image} data-test-id={TEST_IDS.image} />
+        ) : (
           <div className={styles.icon} data-test-id={TEST_IDS.icon}>
             <IconPredefined icon={picture} size={IconPredefined.sizes.L} />
           </div>
-        ) : (
-          <img src={picture.src} alt={picture.alt} className={styles.image} data-test-id={TEST_IDS.image} />
         ))}
 
       <div className={styles.headline} data-align={align}>

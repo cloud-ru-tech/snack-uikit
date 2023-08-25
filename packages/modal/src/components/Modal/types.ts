@@ -2,12 +2,10 @@ import { ButtonFilledProps, ButtonLightProps, ButtonTonalProps } from '@snack-ui
 import { LinkProps } from '@snack-ui/link';
 
 import { Align, Size } from '../../constants';
-import { ModalBodyProps } from '../../helperComponents/Body';
-import { ModalHeaderProps } from '../../helperComponents/Header';
+import { ModalBodyProps, ModalHeaderImage, ModalHeaderProps } from '../../helperComponents';
 import { ModalCustomProps } from '../ModalCustom';
 
 type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
-  picture?: ModalHeaderProps['picture'];
   title: string;
   titleTooltip?: ModalHeaderProps['titleTooltip'];
   subtitle?: string;
@@ -24,14 +22,17 @@ type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
 export type ModalSProps = BaseModalProps & {
   size?: Size.S;
   align?: Align;
+  picture?: ModalHeaderProps['picture'];
 };
 
 export type ModalMProps = BaseModalProps & {
   size?: Size.M;
   align?: Align.Default | Align.Center;
+  picture?: ModalHeaderImage;
 };
 
 export type ModalLProps = BaseModalProps & {
   size?: Size.L;
   align?: Align.Default;
+  picture?: ModalHeaderImage;
 };

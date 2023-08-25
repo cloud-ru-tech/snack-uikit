@@ -1,5 +1,6 @@
+import { useArgs } from '@storybook/client-api';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ButtonFilled, ButtonTonal } from '@snack-ui/button';
 
@@ -9,7 +10,7 @@ import componentReadme from '../README.md';
 import { ModalCustom, ModalCustomProps } from '../src';
 import { ARG_TYPES, DEFAULT_ARGS } from './constants';
 import { ExtendedStoryProps } from './types';
-import { getPicture } from './utils';
+import { getStoryPicture } from './utils';
 
 const meta: Meta = {
   title: 'Components/Modal',
@@ -38,9 +39,18 @@ const Template: StoryFn<StoryProps> = ({
   bodyAlign,
   disclaimer,
   footerAlign,
-  showPicture,
+  showIcon,
+  showImage,
   ...args
 }: StoryProps) => {
+  const [storyArgs, setStoryArgs] = useArgs<StoryProps>();
+
+  useEffect(() => {
+    if (storyArgs.showImage) {
+      setStoryArgs({ showIcon: false });
+    }
+  }, [setStoryArgs, storyArgs.showImage]);
+
   const [isOpen, setOpen] = useState(true);
 
   const toggleModal = () => setOpen(prev => !prev);
@@ -55,7 +65,7 @@ const Template: StoryFn<StoryProps> = ({
           title={title}
           titleTooltip={titleTooltip}
           subtitle={subtitle}
-          picture={getPicture({ picture, showPicture, icon: args.icon })}
+          picture={getStoryPicture({ picture, showImage, showIcon, icon: args.icon })}
         />
 
         <ModalCustom.Body content={content} align={bodyAlign} />

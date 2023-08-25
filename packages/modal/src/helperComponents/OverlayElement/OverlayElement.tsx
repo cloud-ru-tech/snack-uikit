@@ -1,15 +1,15 @@
 import { MouseEventHandler, ReactElement } from 'react';
 
-import { Appearance, TEST_IDS } from '../../constants';
+import { TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';
 
 export type OverlayElementProps = {
   onClose(): void;
   content: ReactElement;
-  appearance: Appearance;
+  blur?: boolean;
 };
 
-export function OverlayElement({ onClose, content, appearance }: OverlayElementProps) {
+export function OverlayElement({ onClose, content, blur = false }: OverlayElementProps) {
   const handleClick: MouseEventHandler = e => {
     e.stopPropagation();
     onClose();
@@ -20,7 +20,7 @@ export function OverlayElement({ onClose, content, appearance }: OverlayElementP
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
       <div
         className={styles.modalOverlay}
-        data-appearance={appearance}
+        data-blur={blur || undefined}
         onClick={handleClick}
         data-test-id={TEST_IDS.overlay}
       />

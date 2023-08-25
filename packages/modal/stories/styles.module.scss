@@ -1,3 +1,20 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
+  margin-bottom: 16px;
+  padding: 24px;
+
+  background-color: var($sys-neutral-background1-level);
+  border: 1px solid var($sys-neutral-decor-default);
+  border-radius: var($dimension-050m);
+}
+
 .buttons {
   display: flex;
   flex-direction: column;

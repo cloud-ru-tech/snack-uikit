@@ -40,6 +40,7 @@ $sizesMap: (
   flex-direction: column;
 
   box-sizing: border-box;
+  width: 100%;
   max-height: calc(100vh - var($dimension-6m));
 
   background-color: simple-var($sys-neutral-background1-level);

@@ -4,7 +4,7 @@ export enum Size {
   L = 'l',
 }
 
-export enum Appearance {
+export enum Mode {
   Regular = 'regular',
   Aggressive = 'aggressive',
   Forced = 'forced',

@@ -3,16 +3,19 @@ import { ModalProps } from '@snack-ui/modal';
 import { PICTURE_ARGS } from './constants';
 import { ExtendedStoryProps } from './types';
 
-export function getPicture({
+export function getStoryPicture({
   picture,
   icon,
-  showPicture,
-}: Pick<ExtendedStoryProps<ModalProps>, 'picture' | 'icon' | 'showPicture'>) {
-  if (picture) return picture;
-
-  if (showPicture === 'icon' && icon) {
-    return icon;
+  showIcon,
+  showImage,
+}: Pick<ExtendedStoryProps<ModalProps>, 'picture' | 'icon' | 'showIcon' | 'showImage'>) {
+  if (showIcon) {
+    return icon || PICTURE_ARGS.icon;
   }
 
-  return PICTURE_ARGS[showPicture];
+  if (showImage) {
+    return picture || PICTURE_ARGS.image;
+  }
+
+  return undefined;
 }

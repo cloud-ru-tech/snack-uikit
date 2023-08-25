@@ -11,7 +11,7 @@
 
   background: simple-var($sys-blackout);
 
-  &[data-appearance="aggressive"], &[data-appearance="forced"] {
+  &[data-blur] {
     backdrop-filter: blur(simple-var($background-blur-background-blur));
   }
 }
