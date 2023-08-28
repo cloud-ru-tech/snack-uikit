@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-08-28)
+
+
+### BREAKING CHANGES
+
+
+* **[FF-3022](https://jira.sbercloud.tech/browse/FF-3022):** appearance -> mode, fix picture visibility, fix styles, fix story ([c0d6c6a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c0d6c6a9e01e05b31901a15b824fc917f5639aab))
+
+
+
+
 ## 0.3.1 (2023-08-24)
 
 ### Only dependencies have been changed
