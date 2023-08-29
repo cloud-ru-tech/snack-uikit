@@ -22,7 +22,7 @@ const pkg = argv.pkg || '*';
     const dist = `${folder}/${distPart}`;
     const distESM = `${dist}`;
 
-    const filesToCopy = globSync(`${src}/**/*.{woff,woff2,png}`);
+    const filesToCopy = globSync(`${src}/**/*.{woff,woff2,png,css}`);
     filesToCopy.forEach(simpleCopy({ src, distESM }));
 
     const scssFiles = globSync(`${src}/**/!(_)*.scss`);
