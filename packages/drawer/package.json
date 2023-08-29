@@ -1,0 +1,42 @@
+{
+  "name": "@snack-ui/drawer",
+  "title": "Drawer",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/drawer",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/drawer"
+  },
+  "author": "Белов Алексей <anbelov@cloud.ru>",
+  "contributors": [
+    "Белов Алексей <anbelov@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-ui/button": "0.11.0",
+    "@snack-ui/icons": "0.11.0",
+    "@snack-ui/scroll": "0.2.2",
+    "@snack-ui/tooltip": "0.5.1",
+    "@snack-ui/truncate-string": "0.1.8",
+    "@snack-ui/typography": "0.3.1",
+    "@snack-ui/utils": "1.2.0",
+    "classnames": "2.3.2",
+    "rc-drawer": "6.4.1"
+  }
+}

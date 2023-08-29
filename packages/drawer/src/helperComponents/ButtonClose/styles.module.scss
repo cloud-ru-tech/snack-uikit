@@ -1,0 +1,39 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-drawer';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.buttonClose {
+  @include composite-var($drawer-button-close);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  color: simple-var($sys-neutral-text-support);
+
+  background-color: simple-var($sys-neutral-decor-default);
+  border: 0 solid transparent;
+  outline: 0;
+  outline-offset: var($spacing-state-focus-offset);
+
+  &:hover, &:focus-visible {
+    color: simple-var($sys-neutral-text-main);
+    background-color: simple-var($sys-neutral-decor-hovered);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    outline-color: var($sys-available-complementary);
+  }
+
+  &:active {
+    color: simple-var($sys-neutral-text-main);
+    background-color: simple-var($sys-neutral-decor-activated);
+  }
+}

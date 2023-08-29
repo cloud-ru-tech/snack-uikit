@@ -1,0 +1,52 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-drawer';
+
+$sizes: (s, m, l);
+
+.drawerRoot {
+  z-index: auto !important; /* stylelint-disable-line declaration-no-important */
+}
+
+div[data-content-wrapper='true'] {
+  will-change: transform;
+
+  z-index: auto;
+
+  overflow: unset;
+
+  max-width: calc(100% - var($space-drawer-outside-gap));
+  height: 100%;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($drawer, 'window', $size);
+    }
+  }
+}
+
+.drawer {
+  overflow: unset;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  background-color: simple-var($sys-neutral-background1-level);
+  box-shadow: simple-var($box-shadow-elevation-level5);
+}
+
+.headerElements {
+  @include composite-var($drawer-header-elements-container);
+  @include composite-var($drawer-header-elements-elements-layout);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+}
+
+.mask {
+  z-index: auto !important; /* stylelint-disable-line declaration-no-important */
+  background-color: simple-var($sys-blackout);
+}

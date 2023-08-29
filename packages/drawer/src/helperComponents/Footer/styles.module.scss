@@ -1,0 +1,17 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-drawer';
+
+.footer {
+  @include composite-var($drawer-footer);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.footerActions {
+  @include composite-var($drawer-action-row);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}

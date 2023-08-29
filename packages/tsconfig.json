@@ -99,6 +99,9 @@
     },
     {
       "path": "./promo-tag"
+    },
+    {
+      "path": "./drawer"
     }
   ],
   "compilerOptions": {

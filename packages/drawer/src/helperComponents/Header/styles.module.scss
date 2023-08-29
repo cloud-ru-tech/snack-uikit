@@ -1,0 +1,36 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-drawer';
+
+.drawerHeader {
+  /* stub for proper typings */
+}
+
+.image {
+  @include composite-var($drawer-image);
+
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.headlineLayout {
+  @include composite-var($drawer-headline-layout);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.headline {
+  @include composite-var($drawer-headline);
+
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  display: grid;
+  color: var($sys-neutral-text-main);
+}
+
+.subtitle {
+  color: var($sys-neutral-text-support);
+}
