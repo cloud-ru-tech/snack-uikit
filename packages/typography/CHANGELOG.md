@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-08-29)
+
+
+### Features
+
+* **[FF-3014](https://jira.sbercloud.tech/browse/FF-3014):** add scripts to generate different variations of the Typography component ([815f334](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/815f33427938e67e62d4b888414b5f711512a96c))
+
+
+
+
+
 ## 0.2.4 (2023-07-28)
 
 **Note:** Version bump only for package @snack-ui/typography
