@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/modal",
   "title": "Modal",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "sideEffects": [
     "*.css",
     "*.woff",
