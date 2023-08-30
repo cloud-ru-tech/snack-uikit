@@ -21,10 +21,10 @@ $aligns: 'default', 'center';
   justify-content: center;
 }
 
-.headline {
+.headlineLayout {
   @each $align in $aligns {
     &[data-align="#{$align}"] {
-      @include composite-var($modal, 'headline', $align);
+      @include composite-var($modal, 'headline-layout', $align);
 
       display: flex;
       flex-direction: column;
@@ -36,9 +36,10 @@ $aligns: 'default', 'center';
   }
 }
 
-.titleWrap {
+.headline {
+  @include composite-var($modal-headline);
+
   display: flex;
-  gap: var($dimension-050m);
   align-items: center;
 }
 

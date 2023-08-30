@@ -19,7 +19,7 @@
   background-color: simple-var($sys-neutral-decor-default);
   border: 0 solid transparent;
   outline: 0;
-  outline-offset: 0;
+  outline-offset: var($spacing-state-focus-offset);
 
   &:hover, &:focus-visible {
     color: simple-var($sys-neutral-text-main);

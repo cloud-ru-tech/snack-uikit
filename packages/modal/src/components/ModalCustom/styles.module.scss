@@ -2,33 +2,7 @@
 
 $sizes: 's', 'm', 'l';
 
-/* stylelint-disable custom-property-no-missing-var-function */
-$sizesMap: (
-  's': (
-    "min-width": --modal-s-min-width,
-    "max-width": --modal-s-max-width,
-  ),
-  'm': (
-    "min-width": --modal-m-min-width,
-    "max-width": --modal-m-max-width,
-  ),
-  'l': (
-    "min-width": --modal-l-min-width,
-    "max-width": --modal-l-max-width,
-  ),
-);
-/* stylelint-enable custom-property-no-missing-var-function */
-
 .modal {
-  --modal-s-min-width: 304px;
-  --modal-s-max-width: 464px;
-  --modal-m-min-width: 624px;
-  --modal-m-max-width: 864px;
-  --modal-l-min-width: 1200px;
-  --modal-l-max-width: 1872px;
-
-  @include composite-var($modal-window);
-
   position: absolute;
   top: 50%;
   right: auto;
@@ -40,15 +14,15 @@ $sizesMap: (
   flex-direction: column;
 
   box-sizing: border-box;
-  width: 100%;
-  max-height: calc(100vh - var($dimension-6m));
+  max-width: calc(100% - (var($space-modal-outside-gap) * 2));
+  max-height: calc(100vh - (var($space-modal-outside-gap) * 2));
 
   background-color: simple-var($sys-neutral-background1-level);
   outline: none;
 
   @each $size in $sizes {
     &[data-size="#{$size}"] {
-      @include composite-var($sizesMap, $size);
+      @include composite-var($modal, 'window', $size);
     }
   }
 }

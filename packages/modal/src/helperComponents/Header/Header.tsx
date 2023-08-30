@@ -38,8 +38,8 @@ export function ModalHeader({
           </div>
         ))}
 
-      <div className={styles.headline} data-align={align}>
-        <div className={styles.titleWrap}>
+      <div className={styles.headlineLayout} data-align={align}>
+        <div className={styles.headline}>
           <Typography
             family={Typography.families.Sans}
             role={Typography.roles.Headline}
