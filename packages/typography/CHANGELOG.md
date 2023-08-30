@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.1 (2023-08-30)
+
+
+### Bug Fixes
+
+* **[FF-3014](https://jira.sbercloud.tech/browse/FF-3014):** add throwing of rest props and updated component type ([3377034](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3377034cfb454335746b22cf7a6bf7227a0be3e8))
+
+
+
+
+
 # 0.3.0 (2023-08-29)
 
 
