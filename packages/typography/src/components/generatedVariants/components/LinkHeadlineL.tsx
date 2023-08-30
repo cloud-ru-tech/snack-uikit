@@ -3,7 +3,7 @@
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
-export function LinkHeadlineL({ className, children, tag }: GeneratedTypographyProps) {
+export function LinkHeadlineL({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
       family={Typography.families.Link}
@@ -11,6 +11,7 @@ export function LinkHeadlineL({ className, children, tag }: GeneratedTypographyP
       size={Typography.sizes.L}
       tag={tag}
       className={className}
+      {...rest}
     >
       {children}
     </Typography>

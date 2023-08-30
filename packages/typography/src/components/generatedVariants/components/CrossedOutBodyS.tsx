@@ -3,7 +3,7 @@
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
-export function CrossedOutBodyS({ className, children, tag }: GeneratedTypographyProps) {
+export function CrossedOutBodyS({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
       family={Typography.families.CrossedOut}
@@ -11,6 +11,7 @@ export function CrossedOutBodyS({ className, children, tag }: GeneratedTypograph
       size={Typography.sizes.S}
       tag={tag}
       className={className}
+      {...rest}
     >
       {children}
     </Typography>

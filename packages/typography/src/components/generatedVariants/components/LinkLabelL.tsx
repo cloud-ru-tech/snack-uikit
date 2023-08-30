@@ -3,7 +3,7 @@
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
-export function LinkLabelL({ className, children, tag }: GeneratedTypographyProps) {
+export function LinkLabelL({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
       family={Typography.families.Link}
@@ -11,6 +11,7 @@ export function LinkLabelL({ className, children, tag }: GeneratedTypographyProp
       size={Typography.sizes.L}
       tag={tag}
       className={className}
+      {...rest}
     >
       {children}
     </Typography>

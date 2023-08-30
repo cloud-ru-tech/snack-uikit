@@ -3,7 +3,7 @@
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
-export function SansLabelL({ className, children, tag }: GeneratedTypographyProps) {
+export function SansLabelL({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
       family={Typography.families.Sans}
@@ -11,6 +11,7 @@ export function SansLabelL({ className, children, tag }: GeneratedTypographyProp
       size={Typography.sizes.L}
       tag={tag}
       className={className}
+      {...rest}
     >
       {children}
     </Typography>

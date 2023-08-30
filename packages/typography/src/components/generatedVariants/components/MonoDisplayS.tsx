@@ -3,7 +3,7 @@
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
-export function MonoDisplayS({ className, children, tag }: GeneratedTypographyProps) {
+export function MonoDisplayS({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
       family={Typography.families.Mono}
@@ -11,6 +11,7 @@ export function MonoDisplayS({ className, children, tag }: GeneratedTypographyPr
       size={Typography.sizes.S}
       tag={tag}
       className={className}
+      {...rest}
     >
       {children}
     </Typography>

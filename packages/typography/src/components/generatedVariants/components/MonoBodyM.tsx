@@ -3,7 +3,7 @@
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
-export function MonoBodyM({ className, children, tag }: GeneratedTypographyProps) {
+export function MonoBodyM({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
       family={Typography.families.Mono}
@@ -11,6 +11,7 @@ export function MonoBodyM({ className, children, tag }: GeneratedTypographyProps
       size={Typography.sizes.M}
       tag={tag}
       className={className}
+      {...rest}
     >
       {children}
     </Typography>

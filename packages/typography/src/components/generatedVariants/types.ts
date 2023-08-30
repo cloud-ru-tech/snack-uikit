@@ -1,15 +1,9 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 
-import { WithSupportProps } from '@snack-ui/utils';
-
-import { Tag } from '../contants';
+import { TypographyProps } from '../Typography';
 import { VARIANTS } from './constants';
 
-export type GeneratedTypographyProps = WithSupportProps<{
-  tag?: Tag;
-  className?: string;
-  children?: ReactNode;
-}>;
+export type GeneratedTypographyProps = Omit<TypographyProps, 'family' | 'role' | 'size'>;
 
 type AvailableVariants = typeof VARIANTS;
 export type GeneratedTypography = {

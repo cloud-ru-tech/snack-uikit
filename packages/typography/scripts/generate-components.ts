@@ -11,7 +11,7 @@ async function generateComponent(family: string, role: string, size: string, fol
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
-export function ${componentName}({ className, children, tag }: GeneratedTypographyProps) {
+export function ${componentName}({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
       family={Typography.families.${family}}
@@ -19,6 +19,7 @@ export function ${componentName}({ className, children, tag }: GeneratedTypograp
       size={Typography.sizes.${size}}
       tag={tag}
       className={className}
+      {...rest}
     >
       {children}
     </Typography>

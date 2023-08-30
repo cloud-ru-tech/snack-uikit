@@ -3,7 +3,7 @@
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
-export function CrossedOutLabelL({ className, children, tag }: GeneratedTypographyProps) {
+export function CrossedOutLabelL({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
       family={Typography.families.CrossedOut}
@@ -11,6 +11,7 @@ export function CrossedOutLabelL({ className, children, tag }: GeneratedTypograp
       size={Typography.sizes.L}
       tag={tag}
       className={className}
+      {...rest}
     >
       {children}
     </Typography>
