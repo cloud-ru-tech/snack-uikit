@@ -8,7 +8,7 @@
 ## Example
 
 ```typescript jsx
-import { PopoverPrivate } from "@snack-ui/pagination";
+import { PopoverPrivate } from "@snack-ui/popover-private";
 
 function App() {
   return (
@@ -37,9 +37,6 @@ function App() {
 
 #### **`hasArrow?: boolean`** - *`[undefined]`*
   параметр наличия стрелки у поповера. В размеры стрелки встроен отступ. Дополнительный отступ может быть задан параметром `offset`. У элемента стрелки нет цвета, необходимо задавать его через параметр `arrowClassName`.
-
-#### **`arrowSize?: ArrowSize`** - *`[m]`*
-  параметр управляет габаритами контейнера стрелки. Возможные значения: `s, m, l`.
 
 #### **`popoverContent: ReactNode`**
   содержимое поповера.
