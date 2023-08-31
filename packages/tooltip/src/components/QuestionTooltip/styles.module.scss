@@ -1,7 +1,5 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
-$triggers: 'hover', 'hoverAndFocusVisible', 'hoverAndFocus', 'focus', 'focusVisible';
-
 .questionTooltip {
   cursor: pointer;
 
@@ -17,35 +15,32 @@ $triggers: 'hover', 'hoverAndFocusVisible', 'hoverAndFocus', 'focus', 'focusVisi
 
 
   &:hover {
-    color: var($sys-neutral-text-support);
+    color: var($sys-neutral-text-light);
   }
 
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    color: var($sys-neutral-text-support);
     outline-color: var($sys-available-complementary);
-
   }
 
-  &:active {
-    color: var($sys-neutral-text-main)
-  }
-
-  &[data-opened='true'] {
-    &:not(:hover) {
+  &[data-trigger='click'] {
+    &[data-opened='true'] {
       color: var($sys-neutral-text-main);
     }
-  }
 
-  @each $trigger in $triggers {
-    &[data-trigger='#{$trigger}'] {
-      &:hover {
-        color: var($sys-neutral-text-light);
-      }
+    &:hover {
+      color: var($sys-neutral-text-support);
+    }
+
+    &:active {
+      color: var($sys-neutral-text-main)
+    }
+
+    &:focus-visible {
+      color: var($sys-neutral-text-support);
     }
   }
-  
 
   &[data-size='xs'] {
     svg {

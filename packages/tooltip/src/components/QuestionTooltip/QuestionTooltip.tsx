@@ -4,22 +4,18 @@ import { useState } from 'react';
 import { QuestionSVG } from '@snack-ui/icons';
 
 import { Tooltip, TooltipProps } from '../Tooltip';
-import { Size } from './constants';
+import { Size, SIZES_MAP, Trigger, TRIGGER_MAP } from './constants';
 import styles from './styles.module.scss';
 
-export type QuestionTooltipProps = Omit<TooltipProps, 'children' | 'triggerClassName'> & {
+export type QuestionTooltipProps = Omit<TooltipProps, 'children' | 'triggerClassName' | 'trigger'> & {
+  trigger?: Trigger;
   size?: Size;
   tooltipClassname?: string;
 };
 
-const SIZES_MAP = {
-  [Size.Xs]: 16,
-  [Size.S]: 24,
-};
-
 export function QuestionTooltip({
   size = Size.Xs,
-  trigger = Tooltip.triggers.Hover,
+  trigger = Trigger.Hover,
   tooltipClassname,
   className,
   ...rest
@@ -32,25 +28,26 @@ export function QuestionTooltip({
       className={tooltipClassname}
       open={tooltipOpened}
       onOpenChange={setTooltipOpened}
-      trigger={trigger}
+      trigger={TRIGGER_MAP[trigger]}
     >
-      {({ getReferenceProps, ref }) => {
-        const props = {
-          ...getReferenceProps(),
-          ref,
-          'data-size': size,
-          'data-opened': tooltipOpened,
-          'data-trigger': trigger,
-          className: cn(styles.questionTooltip, className),
-          children: <QuestionSVG size={SIZES_MAP[size]} />,
-        };
-
-        return trigger === Tooltip.triggers.Hover ? <span {...props} /> : <button {...props} />;
-      }}
+      {({ getReferenceProps, ref }) => (
+        <span
+          {...getReferenceProps()}
+          ref={ref}
+          data-size={size}
+          data-opened={tooltipOpened}
+          data-trigger={trigger}
+          className={cn(styles.questionTooltip, className)}
+          role='button'
+          tabIndex={0}
+        >
+          <QuestionSVG size={SIZES_MAP[size]} />
+        </span>
+      )}
     </Tooltip>
   );
 }
 
 QuestionTooltip.sizes = Size;
-QuestionTooltip.triggers = Tooltip.triggers;
+QuestionTooltip.triggers = Trigger;
 QuestionTooltip.placements = Tooltip.placements;
