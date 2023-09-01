@@ -85,6 +85,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       className,
       label,
       labelTooltip,
+      labelTooltipPlacement,
       required = false,
       hint,
       showHintIcon,
@@ -133,6 +134,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
         className={className}
         label={label}
         labelTooltip={labelTooltip}
+        labelTooltipPlacement={labelTooltipPlacement}
         labelFor={id}
         required={required}
         hint={hint}

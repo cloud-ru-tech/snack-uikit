@@ -16,6 +16,7 @@ import { Calendar, CalendarProps } from '@snack-ui/calendar';
 import { Dropdown } from '@snack-ui/droplist';
 import { CalendarSVG } from '@snack-ui/icons';
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
+import { Tooltip } from '@snack-ui/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { ContainerVariant, IconSize, Size, ValidationState } from '../../constants';
@@ -34,7 +35,15 @@ type InputProps = Pick<InputPrivateProps, 'id' | 'name' | 'value' | 'disabled' |
 
 type WrapperProps = Pick<
   FieldDecoratorProps,
-  'className' | 'label' | 'labelTooltip' | 'required' | 'hint' | 'showHintIcon' | 'size' | 'validationState'
+  | 'className'
+  | 'label'
+  | 'labelTooltip'
+  | 'required'
+  | 'hint'
+  | 'showHintIcon'
+  | 'size'
+  | 'validationState'
+  | 'labelTooltipPlacement'
 >;
 
 type FieldDateOwnProps = {
@@ -70,6 +79,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       className,
       label,
       labelTooltip,
+      labelTooltipPlacement,
       required = false,
       hint,
       showHintIcon,
@@ -222,6 +232,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
         className={className}
         label={label}
         labelTooltip={labelTooltip}
+        labelTooltipPlacement={labelTooltipPlacement}
         labelFor={id}
         required={required}
         hint={hint}
@@ -308,7 +319,9 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
 export const FieldDate = ForwardedFieldDate as typeof ForwardedFieldDate & {
   sizes: typeof Size;
   validationStates: typeof ValidationState;
+  labelTooltipPlacements: typeof Tooltip.placements;
 };
 
 FieldDate.sizes = Size;
 FieldDate.validationStates = ValidationState;
+FieldDate.labelTooltipPlacements = Tooltip.placements;

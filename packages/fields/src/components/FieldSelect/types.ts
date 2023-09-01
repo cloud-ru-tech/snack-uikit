@@ -27,7 +27,15 @@ type InputProps = Pick<
 
 type WrapperProps = Pick<
   FieldDecoratorProps,
-  'className' | 'label' | 'labelTooltip' | 'required' | 'hint' | 'showHintIcon' | 'size' | 'validationState'
+  | 'className'
+  | 'label'
+  | 'labelTooltip'
+  | 'required'
+  | 'hint'
+  | 'showHintIcon'
+  | 'size'
+  | 'validationState'
+  | 'labelTooltipPlacement'
 >;
 
 type FieldSelectOwnProps = {

@@ -1,5 +1,5 @@
 import { QuestionSVG } from '@snack-ui/icons';
-import { Tooltip } from '@snack-ui/tooltip';
+import { Tooltip, TooltipProps } from '@snack-ui/tooltip';
 import { TruncateString } from '@snack-ui/truncate-string';
 
 import { Size } from '../../constants';
@@ -11,9 +11,17 @@ export type HeaderProps = {
   labelFor?: string;
   required?: boolean;
   size?: Size;
+  labelTooltipPlacement?: TooltipProps['placement'];
 };
 
-export function Header({ label = '', labelTooltip, labelFor, size, required = false }: HeaderProps) {
+export function Header({
+  label = '',
+  labelTooltip,
+  labelFor,
+  size,
+  required = false,
+  labelTooltipPlacement = Tooltip.placements.Top,
+}: HeaderProps) {
   return (
     <span className={styles.header} data-size={size}>
       {label && (
@@ -23,11 +31,7 @@ export function Header({ label = '', labelTooltip, labelFor, size, required = fa
           </label>
           {required && <span data-test-id='field-decorator__required-sign'>*</span>}
           {labelTooltip && (
-            <Tooltip
-              tip={labelTooltip}
-              placement={Tooltip.placements.Right}
-              data-test-id='field-decorator__label-tooltip'
-            >
+            <Tooltip tip={labelTooltip} placement={labelTooltipPlacement} data-test-id='field-decorator__label-tooltip'>
               <QuestionSVG size={16} className={styles.icon} data-test-id='field-decorator__label-tooltip-trigger' />
             </Tooltip>
           )}

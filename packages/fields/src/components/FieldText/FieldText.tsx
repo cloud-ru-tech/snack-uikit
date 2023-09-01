@@ -3,6 +3,7 @@ import { forwardRef, ReactElement, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
+import { Tooltip } from '@snack-ui/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { ContainerVariant, Size, ValidationState } from '../../constants';
@@ -15,7 +16,15 @@ type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
 
 type WrapperProps = Pick<
   FieldDecoratorProps,
-  'className' | 'label' | 'labelTooltip' | 'required' | 'hint' | 'showHintIcon' | 'size' | 'validationState'
+  | 'className'
+  | 'label'
+  | 'labelTooltip'
+  | 'required'
+  | 'hint'
+  | 'showHintIcon'
+  | 'size'
+  | 'validationState'
+  | 'labelTooltipPlacement'
 >;
 
 type FieldTextOwnProps = {
@@ -44,6 +53,7 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       className,
       label,
       labelTooltip,
+      labelTooltipPlacement,
       required = false,
       hint,
       showHintIcon,
@@ -83,6 +93,7 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
         className={className}
         label={label}
         labelTooltip={labelTooltip}
+        labelTooltipPlacement={labelTooltipPlacement}
         labelFor={id}
         required={required}
         length={maxLength ? { max: maxLength, current: value.length } : undefined}
@@ -131,7 +142,9 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
 export const FieldText = ForwardedFieldText as typeof ForwardedFieldText & {
   sizes: typeof Size;
   validationStates: typeof ValidationState;
+  labelTooltipPlacements: typeof Tooltip.placements;
 };
 
 FieldText.sizes = Size;
 FieldText.validationStates = ValidationState;
+FieldText.labelTooltipPlacements = Tooltip.placements;

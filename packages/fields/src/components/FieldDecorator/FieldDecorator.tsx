@@ -30,6 +30,7 @@ export function FieldDecorator({
   disabled,
   readonly,
   showHintIcon,
+  labelTooltipPlacement,
   size = Size.S,
   validationState = ValidationState.Default,
   ...rest
@@ -38,7 +39,14 @@ export function FieldDecorator({
 
   return (
     <div className={cn(styles.decorator, className)} data-size={size} {...extractSupportProps(rest)}>
-      <Header required={required} label={label} labelTooltip={labelTooltip} labelFor={labelFor} size={size} />
+      <Header
+        labelTooltipPlacement={labelTooltipPlacement}
+        required={required}
+        label={label}
+        labelTooltip={labelTooltip}
+        labelFor={labelFor}
+        size={size}
+      />
       {children}
       <Footer
         length={isFieldActive ? length : undefined}

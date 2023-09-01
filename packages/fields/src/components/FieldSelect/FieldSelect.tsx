@@ -1,5 +1,7 @@
 import { forwardRef } from 'react';
 
+import { Tooltip } from '@snack-ui/tooltip';
+
 import { Size, ValidationState } from '../../constants';
 import { FieldSelectMulti } from './FieldSelectMulti';
 import { FieldSelectSingle } from './FieldSelectSingle';
@@ -29,8 +31,10 @@ export const FieldSelect = ForwardedFieldSelect as typeof ForwardedFieldSelect &
   sizes: typeof Size;
   validationStates: typeof ValidationState;
   selectionModes: typeof SelectionMode;
+  labelTooltipPlacements: typeof Tooltip.placements;
 };
 
 FieldSelect.sizes = Size;
 FieldSelect.validationStates = ValidationState;
 FieldSelect.selectionModes = SelectionMode;
+FieldSelect.labelTooltipPlacements = Tooltip.placements;

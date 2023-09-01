@@ -3,6 +3,7 @@ import { ChangeEvent, forwardRef, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Scroll } from '@snack-ui/scroll';
+import { Tooltip } from '@snack-ui/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { ContainerVariant, Size, ValidationState } from '../../constants';
@@ -16,7 +17,15 @@ type InputProps = Pick<Partial<TextAreaProps>, 'value'> &
 
 type WrapperProps = Pick<
   FieldDecoratorProps,
-  'className' | 'label' | 'labelTooltip' | 'required' | 'hint' | 'size' | 'validationState' | 'showHintIcon'
+  | 'className'
+  | 'label'
+  | 'labelTooltip'
+  | 'required'
+  | 'hint'
+  | 'size'
+  | 'validationState'
+  | 'showHintIcon'
+  | 'labelTooltipPlacement'
 >;
 
 type FieldTextAreaOwnProps = {
@@ -50,6 +59,7 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
       className,
       label,
       labelTooltip,
+      labelTooltipPlacement,
       required = false,
       hint,
       size = Size.S,
@@ -87,6 +97,7 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
         className={className}
         label={label}
         labelTooltip={labelTooltip}
+        labelTooltipPlacement={labelTooltipPlacement}
         labelFor={id}
         required={required}
         length={maxLength ? { max: maxLength, current: value.length } : undefined}
@@ -145,7 +156,9 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
 export const FieldTextArea = ForwardedFieldTextArea as typeof ForwardedFieldTextArea & {
   sizes: typeof Size;
   validationStates: typeof ValidationState;
+  labelTooltipPlacements: typeof Tooltip.placements;
 };
 
 FieldTextArea.sizes = Size;
 FieldTextArea.validationStates = ValidationState;
+FieldTextArea.labelTooltipPlacements = Tooltip.placements;
