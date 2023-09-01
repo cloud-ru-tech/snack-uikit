@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { AUTOFOCUS, ViewLevel } from '../../constants';
+import { AUTOFOCUS, ViewMode } from '../../constants';
 import { useGrid } from '../../hooks';
 import { getMonthName, getMonthShift, isTheSameMonth, isTheSameYear } from '../../utils';
 import { CalendarContext } from '../CalendarContext';
@@ -10,7 +10,7 @@ import { buildYearGrid } from './utils';
 export function YearView() {
   const {
     referenceDate,
-    setViewLevel,
+    setViewMode,
     setViewShift,
     setFocus,
     preselectedRange,
@@ -28,7 +28,7 @@ export function YearView() {
     onSelect(date: Date) {
       setFocus(AUTOFOCUS);
       setViewShift(getMonthShift(referenceDate, date));
-      setViewLevel(ViewLevel.Month);
+      setViewMode(ViewMode.Month);
     },
 
     onPreselect(date: Date) {

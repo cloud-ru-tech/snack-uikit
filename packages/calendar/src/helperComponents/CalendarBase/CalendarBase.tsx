@@ -1,11 +1,11 @@
 import cn from 'classnames';
-import { CSSProperties, RefCallback, useCallback, useMemo, useState } from 'react';
+import { CSSProperties, RefCallback, useCallback, useMemo, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { AUTOFOCUS, CalendarMode, Size, ViewLevel } from '../../constants';
-import { FocusDirection, Range } from '../../types';
+import { AUTOFOCUS, CalendarMode, Size, ViewMode } from '../../constants';
+import { BuildCellPropsFunction, FocusDirection, Range } from '../../types';
 import { getEndOfTheDay, getLocale, getTestIdBuilder, sortDates } from '../../utils';
 import { CalendarBody } from '../CalendarBody';
 import { CalendarContext } from '../CalendarContext';
@@ -21,6 +21,8 @@ export type CalendarBaseProps = WithSupportProps<{
   size?: Size;
   value?: Range;
   today?: Date | number;
+  buildCellProps?: BuildCellPropsFunction;
+  showHolidays?: boolean;
   style?: CSSProperties;
   className?: string;
   defaultValue?: Range;
@@ -45,20 +47,22 @@ export function CalendarBase({
   defaultValue,
   onChangeValue,
   today: todayProp = new Date(),
+  showHolidays = false,
   style,
   locale: localeProp,
   onFocusLeave,
+  buildCellProps,
   'data-test-id': testId,
   navigationStartRef,
   ...rest
 }: CalendarBaseProps) {
-  const [viewLevel, setViewLevel] = useState(ViewLevel.Month);
+  const [viewMode, setViewMode] = useState(ViewMode.Month);
   const [viewShift, setViewShift] = useState<number>(0);
   const [value, setValueState] = useUncontrolledProp<Range | undefined>(valueProp, defaultValue, onChangeValue);
   const today = typeof todayProp === 'number' ? new Date(todayProp) : todayProp;
   const [referenceDate] = useState(value?.[0] || today);
   const [preselectedRange, setPreselectedRange] = useState<Range | undefined>();
-  const viewDate = useViewDate(referenceDate, viewLevel, viewShift);
+  const viewDate = useViewDate(referenceDate, viewMode, viewShift);
   const [focus, setFocus] = useState<string | undefined>(autofocus ? AUTOFOCUS : undefined);
 
   const setValue = useCallback(
@@ -95,6 +99,8 @@ export function CalendarBase({
 
   const locale = useMemo(() => getLocale(localeProp), [localeProp]);
 
+  const firstNotDisableCell = useRef<[number, number]>([0, 0]);
+
   return (
     <div
       data-size={size}
@@ -109,16 +115,18 @@ export function CalendarBase({
           locale,
           size,
           value,
+          firstNotDisableCell,
           today,
+          showHolidays,
           viewDate,
           referenceDate,
           preselectedRange,
           mode,
-          viewLevel,
+          viewMode,
           viewShift,
           focus,
           setValue,
-          setViewLevel,
+          setViewMode,
           setViewShift,
           startPreselect,
           continuePreselect,
@@ -127,6 +135,7 @@ export function CalendarBase({
           setFocus,
           getTestId,
           onFocusLeave,
+          buildCellProps,
           navigationStartRef,
         }}
       >

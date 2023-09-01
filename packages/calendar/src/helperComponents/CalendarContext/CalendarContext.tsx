@@ -1,7 +1,7 @@
-import { createContext, RefCallback } from 'react';
+import { createContext, MutableRefObject, RefCallback } from 'react';
 
-import { CalendarMode, Size, ViewLevel } from '../../constants';
-import { FocusDirection, Range } from '../../types';
+import { CalendarMode, Size, ViewMode } from '../../constants';
+import { BuildCellPropsFunction, FocusDirection, Range } from '../../types';
 import { getLocale } from '../../utils';
 
 export type CalendarContextType = {
@@ -10,20 +10,23 @@ export type CalendarContextType = {
   today: Date;
   /** Дата базового дня,  */
   referenceDate: Date;
-  /** Дата начала текущего видимого периода, высчитывается от referenceDate, viewShift и viewLevel */
+  /** Дата начала текущего видимого периода, высчитывается от referenceDate, viewShift и viewMode */
   viewDate: Date;
+  showHolidays: boolean;
   value?: Range;
+  firstNotDisableCell?: MutableRefObject<[number, number]>;
   mode: CalendarMode;
   /** Предвыбранный период, когда выбрана первая дата, а вторая под ховером или фокусом */
   preselectedRange?: Range;
-  viewLevel: ViewLevel;
+  viewMode: ViewMode;
   viewShift: number;
   focus?: string;
   locale: Intl.Locale;
   onFocusLeave?(direction: FocusDirection): void;
+  buildCellProps?: BuildCellPropsFunction;
   setFocus(address: string | undefined): void;
   setValue(value: Range): void;
-  setViewLevel(viewLevel: ViewLevel): void;
+  setViewMode(viewMode: ViewMode): void;
   setViewShift(shift: number): void;
   startPreselect(date: Date): void;
   restartPreselect(): void;
@@ -44,11 +47,12 @@ export const CalendarContext = createContext<CalendarContextType>({
   viewDate: new Date(),
   referenceDate: new Date(),
   mode: CalendarMode.Date,
-  viewLevel: ViewLevel.Month,
+  viewMode: ViewMode.Month,
   viewShift: 0,
   setFocus: stub,
   setValue: stub,
-  setViewLevel: stub,
+  setViewMode: stub,
+  showHolidays: false,
   setViewShift: stub,
   startPreselect: stub,
   continuePreselect: stub,

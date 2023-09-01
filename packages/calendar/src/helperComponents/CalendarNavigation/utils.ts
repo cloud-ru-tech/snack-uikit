@@ -1,13 +1,13 @@
-import { ViewLevel } from '../../constants';
+import { ViewMode } from '../../constants';
 import { getDecadeShift, getYearShift } from '../../utils';
 
-export const getShift = (referenceDate: Date, viewDate: Date, currentViewLevel: ViewLevel): number => {
+export const getShift = (referenceDate: Date, viewDate: Date, currentViewLevel: ViewMode): number => {
   switch (currentViewLevel) {
-    case ViewLevel.Month:
+    case ViewMode.Month:
       return getYearShift(referenceDate, viewDate);
-    case ViewLevel.Year:
+    case ViewMode.Year:
       return getDecadeShift(referenceDate, viewDate);
-    case ViewLevel.Decade:
+    case ViewMode.Decade:
     default:
       return 0;
   }

@@ -67,6 +67,10 @@ $typography: (
   border-style: none;
   outline: none;
 
+  &[data-is-holiday] {
+    color: simple-var($sys-red-text-light);
+  }
+
   &:focus-visible {
     .box {
       @include outline-inside-var($container-focused-s);
@@ -77,14 +81,22 @@ $typography: (
 
   &[data-is-in-current-level-period] {
     color: simple-var($sys-neutral-text-main);
+
+    &[data-is-holiday] {
+      color: simple-var($sys-red-accent-default);
+    }
   }
 
   &[data-is-selected] {
     color: simple-var($sys-primary-on-accent);
 
-    .box {
-      background-color: simple-var($sys-primary-accent-default);
+    &[data-is-holiday] {
+      color: simple-var($sys-primary-on-accent)
     }
+
+    .box {
+       background-color: simple-var($sys-primary-accent-default);
+     }
 
     &:hover,
     &:focus-visible {
@@ -94,20 +106,24 @@ $typography: (
     }
   }
 
-  &:hover,
-  &:focus-visible {
-    &:not([data-is-selected]) {
-      .box {
-        background-color: simple-var($sys-primary-background);
-      }
-    }
-  }
-
-  &[disabled] {
+  &[data-is-disabled] {
+    cursor: not-allowed;
     color: simple-var($sys-neutral-text-disabled);
     &[data-is-selected] {
       .box {
         background-color: simple-var($sys-primary-decor-activated);
+      }
+    }
+    &[data-is-holiday] {
+      color: simple-var($sys-red-text-disabled);
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    &:not([data-is-selected]):not([data-is-disabled]) {
+      .box {
+        background-color: simple-var($sys-primary-background);
       }
     }
   }
@@ -137,6 +153,13 @@ $typography: (
 
   &[data-is-current] {
     background-color: simple-var($sys-primary-accent-default);
+
+    &[data-is-holiday] {
+      background-color: simple-var($sys-red-accent-default);
+      &[data-is-disabled] {
+        background-color: simple-var($sys-red-text-disabled);
+      }
+    }
 
     &[data-is-selected] {
       background-color: simple-var($sys-primary-on-accent);

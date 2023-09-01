@@ -1,8 +1,5 @@
 # Calendar
 
-## Todo
- - сделать возможность задизаблить даты.
-
 ## Installation
 `npm i @snack-ui/calendar`
 
@@ -36,6 +33,12 @@ import { Calendar } from '@snack-ui/calendar';
 Режим работы календаря. Доступно два режима:
 - `Calendar.modes.Date` - режим выбора даты
 - `Calendar.modes.Range` - режим выбора периода
+
+####  **`buildCellProps?: (date: Date, viewMode: 'decade' | 'month' | 'year'): {isDisabled?: boolean; isHoliday?: boolean;}`**
+Функция дает возможность задизейблить выбор дня/месяца/года, а также раскрасить выходные дни/праздники
+
+####  **`showHolidays?: boolean`**
+Раскрашивает субботу и воскресенье
 
 ####  **`className?: string`**
 CSS-класс на контейнер.

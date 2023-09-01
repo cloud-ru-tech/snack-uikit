@@ -5,9 +5,9 @@ import { CalendarContext } from '../CalendarContext';
 import { stringifyAddress } from './utils';
 
 export function useKeyboardFocus([row, column]: [number, number]) {
-  const { viewLevel, viewShift, setViewShift, setFocus, onFocusLeave } = useContext(CalendarContext);
+  const { viewMode, viewShift, setViewShift, setFocus, onFocusLeave } = useContext(CalendarContext);
 
-  const { rows, columns } = GRID_SIZE[viewLevel];
+  const { rows, columns } = GRID_SIZE[viewMode];
 
   return useCallback(
     (e: KeyboardEvent<HTMLButtonElement>) => {

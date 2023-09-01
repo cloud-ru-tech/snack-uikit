@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useContext, useMemo } from 'react';
 
-import { ViewLevel } from '../../constants';
+import { ViewMode } from '../../constants';
 import { CalendarContext } from '../CalendarContext';
 import { ColumnLabel } from '../ColumnLabel';
 import styles from './styles.module.scss';
@@ -12,11 +12,11 @@ export type ColumnLabelsProps = {
 };
 
 export function ColumnLabels({ className }: ColumnLabelsProps) {
-  const { viewLevel, locale, size } = useContext(CalendarContext);
+  const { viewMode, locale, size } = useContext(CalendarContext);
 
   const labels = useMemo(() => getWeekLabels(locale), [locale]);
 
-  if (viewLevel === ViewLevel.Month) {
+  if (viewMode === ViewMode.Month) {
     return (
       <div className={cn(styles.row, className)} data-size={size}>
         {labels.map(label => (

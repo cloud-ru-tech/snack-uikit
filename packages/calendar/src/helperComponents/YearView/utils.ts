@@ -1,11 +1,11 @@
-import { GRID_SIZE, ViewLevel } from '../../constants';
+import { GRID_SIZE, ViewMode } from '../../constants';
 import { BaseGrid, BaseGridItem } from '../../types';
 
 export const buildYearGrid = (date: Date): BaseGrid => {
   const result: BaseGrid = [];
   const year = date.getFullYear();
   let month = 0;
-  const { rows, columns } = GRID_SIZE[ViewLevel.Year];
+  const { rows, columns } = GRID_SIZE[ViewMode.Year];
 
   for (let i = 0; i < rows; i++) {
     const row: BaseGridItem[] = [];

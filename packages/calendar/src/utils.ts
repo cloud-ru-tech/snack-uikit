@@ -1,6 +1,6 @@
 import { getWeekStartByLocale } from 'weekstart';
 
-import { InRangePosition, ViewLevel } from './constants';
+import { InRangePosition, ViewMode } from './constants';
 import { Range } from './types';
 
 export const isTheSameDecade = (date1: Date, date2: Date) =>
@@ -36,13 +36,13 @@ export const getYearShift = (today: Date, targetDate: Date) => targetDate.getFul
 export const getDecadeShift = (today: Date, targetDate: Date) =>
   Math.trunc((targetDate.getFullYear() - today.getFullYear()) / 10);
 
-export const isTheSameItem = (viewLevel: ViewLevel, date1: Date, date2: Date): boolean => {
-  switch (viewLevel) {
-    case ViewLevel.Month:
+export const isTheSameItem = (viewMode: ViewMode, date1: Date, date2: Date): boolean => {
+  switch (viewMode) {
+    case ViewMode.Month:
       return isTheSameDate(date1, date2);
-    case ViewLevel.Year:
+    case ViewMode.Year:
       return isTheSameMonth(date1, date2);
-    case ViewLevel.Decade:
+    case ViewMode.Decade:
       return isTheSameYear(date1, date2);
     default:
       return false;
@@ -51,15 +51,15 @@ export const isTheSameItem = (viewLevel: ViewLevel, date1: Date, date2: Date): b
 
 export const sortDates = (dates: Date[]): Date[] => [...dates].sort((d1, d2) => d1.valueOf() - d2.valueOf());
 
-export const getInRangePosition = (date: Date, viewLevel: ViewLevel, range?: Range): InRangePosition => {
+export const getInRangePosition = (date: Date, viewMode: ViewMode, range?: Range): InRangePosition => {
   if (!range) {
     return InRangePosition.Out;
   }
 
   const [startDate, endDate] = sortDates(range);
 
-  const isStart = isTheSameItem(viewLevel, date, startDate);
-  const isEnd = isTheSameItem(viewLevel, date, endDate);
+  const isStart = isTheSameItem(viewMode, date, startDate);
+  const isEnd = isTheSameItem(viewMode, date, endDate);
 
   if (isStart && isEnd) {
     return InRangePosition.StartEnd;
@@ -86,3 +86,10 @@ export const getTestIdBuilder = (testId?: string) => (prefix: string) => testId 
 export const getLocale = (localeProp?: Intl.Locale) => localeProp || new Intl.Locale(navigator?.language || 'ru-RU');
 
 export const getStartOfWeek = (locale: Intl.Locale) => getWeekStartByLocale(locale.language);
+
+export const isWeekend = (date: Date, viewMode: ViewMode) => {
+  if (viewMode === 'month') {
+    return date.getDay() === 0 || date.getDay() === 6;
+  }
+  return false;
+};

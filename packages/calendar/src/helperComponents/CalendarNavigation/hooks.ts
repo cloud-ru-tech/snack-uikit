@@ -1,19 +1,19 @@
 import { useContext } from 'react';
 
-import { ViewLevel } from '../../constants';
+import { ViewMode } from '../../constants';
 import { getMonthName } from '../../utils';
 import { CalendarContext } from '../CalendarContext';
 
 export function usePeriodName(): string {
-  const { viewDate, viewLevel, locale } = useContext(CalendarContext);
+  const { viewDate, viewMode, locale } = useContext(CalendarContext);
 
-  switch (viewLevel) {
-    case ViewLevel.Month:
+  switch (viewMode) {
+    case ViewMode.Month:
       const year = viewDate.getFullYear();
       return `${getMonthName(viewDate, locale)} ${year}`;
-    case ViewLevel.Year:
+    case ViewMode.Year:
       return viewDate.getFullYear().toString();
-    case ViewLevel.Decade:
+    case ViewMode.Decade:
       const decadeStart = viewDate.getFullYear();
       return `${decadeStart}-${decadeStart + 9}`;
     default:

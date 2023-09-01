@@ -8,6 +8,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Calendar, CalendarProps } from '../src';
 import { CalendarMode, Size } from '../src/constants';
+import { getBuildCellProps } from './helper';
 import styles from './styles.modules.scss';
 
 const meta: Meta = {
@@ -25,6 +26,7 @@ type StoryProps = CalendarProps & {
   localeName: 'ru-RU' | 'en-US';
   dateValue: string;
   dateDefaultValue: string;
+  modeBuildCellProps: 'for-tests' | 'disable-past' | 'none';
   rangeValueStart: string;
   rangeValueEnd: string;
   rangeDefaultValueStart: string;
@@ -32,7 +34,7 @@ type StoryProps = CalendarProps & {
   dateToday: string;
 };
 
-const Template: StoryFn<StoryProps> = ({ localeName, ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args }: StoryProps) => {
   const [selectedValue, setSelectedValue] = useState<Date | Range | undefined>();
 
   const onChangeValue = (value: Date | Range) => {
@@ -81,7 +83,7 @@ const Template: StoryFn<StoryProps> = ({ localeName, ...args }: StoryProps) => {
       <Scroll resize={Scroll.resizes.Both} className={SCROLL_SIZE[args.size || Size.M]}>
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}
-        <Calendar {...props} />
+        <Calendar {...props} buildCellProps={getBuildCellProps(modeBuildCellProps)} />
       </Scroll>
       <div className={styles.valueHolder} data-test-id='calendar-value-holder'>
         {selectedValue instanceof Date && selectedValue.valueOf()}
@@ -100,18 +102,28 @@ calendar.args = {
   autofocus: false,
   localeName: 'en-US',
   fitToContainer: true,
+  modeBuildCellProps: 'none',
 };
 
 calendar.argTypes = {
   value: { table: { disable: true } },
   navigationStartRef: { table: { disable: true } },
   onChangeValue: { table: { disable: true } },
+  modeBuildCellProps: {
+    name: '[story] select buildCellProps operating mode',
+    options: ['for-tests', 'disable-past', 'none'],
+    control: { type: 'radio' },
+  },
   onFocusLeave: { table: { disable: true } },
+  buildCellProps: { table: { disable: true } },
   style: { table: { disable: true } },
   defaultValue: { table: { disable: true } },
   locale: { table: { disable: true } },
   className: { table: { disable: true } },
   today: { table: { disable: true } },
+  showHolidays: {
+    name: 'showHolidays (worked if buildCellProps return isHolidays = undefined)',
+  },
   localeName: {
     options: ['ru-RU', 'en-US'],
     control: { type: 'radio' },

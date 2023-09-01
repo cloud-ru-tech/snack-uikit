@@ -23,6 +23,8 @@ export function Item({ data, className }: CellProps) {
     onLeave,
     inRangePosition,
     isCurrent,
+    isDisabled,
+    isHoliday,
     isInCurrentLevelPeriod,
     isSelected,
     tabIndex,
@@ -31,7 +33,6 @@ export function Item({ data, className }: CellProps) {
   const ref = useRef<HTMLButtonElement>(null);
 
   const { focus, setFocus, size, getTestId, locale } = useContext(CalendarContext);
-
   useLayoutEffect(() => {
     if (stringifyAddress(address) === focus) {
       ref.current?.focus();
@@ -51,6 +52,8 @@ export function Item({ data, className }: CellProps) {
     'data-is-selected': isSelected || undefined,
     'data-in-range-position': inRangePosition,
     'data-is-current': isCurrent || undefined,
+    'data-is-holiday': isHoliday || undefined,
+    'data-is-disabled': isDisabled || undefined,
     'data-size': size,
   };
 
@@ -58,11 +61,18 @@ export function Item({ data, className }: CellProps) {
 
   date.toLocaleString(locale, { weekday: 'short' });
 
+  const handleSelect = (date: Date) => {
+    if (!isDisabled && onSelect) {
+      onSelect(date);
+    }
+  };
+
   return (
     <div className={cn(className, styles.item)} {...attributes}>
       <button
+        aria-disabled={isDisabled}
         className={styles.button}
-        onClick={() => onSelect?.(date)}
+        onClick={() => handleSelect(date)}
         onMouseEnter={() => onPreselect?.(date)}
         onFocus={() => {
           setFocus(stringifyAddress(address));

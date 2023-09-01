@@ -1,20 +1,20 @@
 import { useContext } from 'react';
 
-import { ViewLevel } from '../../constants';
+import { ViewMode } from '../../constants';
 import { CalendarContext } from '../CalendarContext';
 import { DecadeView } from '../DecadeView';
 import { MonthView } from '../MonthView';
 import { YearView } from '../YearView';
 
 export function CalendarBody() {
-  const { viewLevel } = useContext(CalendarContext);
+  const { viewMode } = useContext(CalendarContext);
 
-  switch (viewLevel) {
-    case ViewLevel.Decade:
+  switch (viewMode) {
+    case ViewMode.Decade:
       return <DecadeView />;
-    case ViewLevel.Year:
+    case ViewMode.Year:
       return <YearView />;
-    case ViewLevel.Month:
+    case ViewMode.Month:
     default:
       return <MonthView />;
   }

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ViewLevel } from '../../constants';
+import { ViewMode } from '../../constants';
 import { useGrid } from '../../hooks';
 import { getYearLabel, getYearShift, isTheSameDecade, isTheSameYear } from '../../utils';
 import { CalendarContext } from '../CalendarContext';
@@ -8,7 +8,7 @@ import { Grid } from '../Grid';
 import { buildDecadeGrid } from './utils';
 
 export function DecadeView() {
-  const { referenceDate, setViewLevel, setViewShift, preselectedRange, continuePreselect, restartPreselect } =
+  const { referenceDate, setViewMode, setViewShift, preselectedRange, continuePreselect, restartPreselect } =
     useContext(CalendarContext);
 
   const grid = useGrid({
@@ -19,7 +19,7 @@ export function DecadeView() {
 
     onSelect(date: Date) {
       setViewShift(getYearShift(referenceDate, date));
-      setViewLevel(ViewLevel.Year);
+      setViewMode(ViewMode.Year);
     },
 
     onPreselect(date: Date) {

@@ -1,4 +1,4 @@
-import { GRID_SIZE, ViewLevel } from '../../constants';
+import { GRID_SIZE, ViewMode } from '../../constants';
 import { BaseGrid, BaseGridItem } from '../../types';
 import { getStartOfWeek } from '../../utils';
 import { WEEK_STARTS_WITH_MONDAY, WEEK_STARTS_WITH_SUNDAY } from './constants';
@@ -8,7 +8,7 @@ export const buildMonthGrid = (date: Date, locale: Intl.Locale): BaseGrid => {
   const WEEK = getStartOfWeek(locale) === 0 ? WEEK_STARTS_WITH_SUNDAY : WEEK_STARTS_WITH_MONDAY;
   const startGap = WEEK.indexOf(date.getDay());
   let currentDate = new Date(date.getFullYear(), date.getMonth(), 1 - startGap);
-  const { rows } = GRID_SIZE[ViewLevel.Month];
+  const { rows } = GRID_SIZE[ViewMode.Month];
 
   for (let i = 0; i < rows; i++) {
     const week: BaseGridItem[] = [];

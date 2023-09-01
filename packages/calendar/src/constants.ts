@@ -1,4 +1,4 @@
-export enum ViewLevel {
+export enum ViewMode {
   Month = 'month',
   Year = 'year',
   Decade = 'decade',
@@ -23,9 +23,9 @@ export enum Size {
 }
 
 export const GRID_SIZE = {
-  [ViewLevel.Month]: { rows: 6, columns: 7 },
-  [ViewLevel.Year]: { rows: 4, columns: 3 },
-  [ViewLevel.Decade]: { rows: 4, columns: 3 },
+  [ViewMode.Month]: { rows: 6, columns: 7 },
+  [ViewMode.Year]: { rows: 4, columns: 3 },
+  [ViewMode.Decade]: { rows: 4, columns: 3 },
 } as const;
 
 export const AUTOFOCUS = 'autofocus';

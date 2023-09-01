@@ -22,6 +22,39 @@ const getPage = (props: object = {}) =>
 
 fixture('calendar');
 
+test.page(
+  getPage({
+    dateToday: 1697371200000, // 15 Октября 2023, 12-00
+    modeBuildCellProps: 'for-tests',
+  }),
+)('Check the focus to the first not disable cell', async t => {
+  await t.pressKey('tab');
+  await t.pressKey('down');
+  await t.pressKey('enter');
+  await t.expect(await getCalendarTextSnapshot()).eql({
+    header: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
+    items:
+      '1,2,3,4,5,6,7,8,9,10,11,12,13,[14],!15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4,5,6,7,8,9,10,11',
+    periodLevelName: 'October 2023',
+  });
+});
+
+test.page(
+  getPage({
+    dateToday: 1697371200000, // 15 Октября 2023, 12-00
+    modeBuildCellProps: 'for-tests',
+  }),
+)('Checking clicking on a disable cell so there is no selected', async t => {
+  await t.click(Selector(dataTestIdSelector(ITEM)).nth(7));
+
+  await t.expect(await getCalendarTextSnapshot()).eql({
+    header: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
+    items:
+      '1,2,3,4,5,6,7,8,9,10,11,12,13,14,!15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4,5,6,7,8,9,10,11',
+    periodLevelName: 'October 2023',
+  });
+});
+
 test.page(getPage())('Should be rendered', async t => {
   const calendar = Selector(dataTestIdSelector(TEST_ID));
   await t.expect(calendar.exists).ok();
@@ -90,7 +123,7 @@ test.page(getPage({ localeName: 'ru-RU', dateValue: 1678870800000 /* 15 март
   },
 );
 
-test.page(getPage())('Should show year view by click to viewLevelButton', async t => {
+test.page(getPage())('Should show year view by click to viewModeButton', async t => {
   await t.click(Selector(dataTestIdSelector(PERIOD_LEVEL)));
   await t.expect(await getCalendarTextSnapshot()).eql({
     header: '',
@@ -100,7 +133,7 @@ test.page(getPage())('Should show year view by click to viewLevelButton', async 
 });
 
 test.page(getPage({ localeName: 'ru-RU' }))(
-  'Should show year view in `ru` locale by click to viewLevelButton',
+  'Should show year view in `ru` locale by click to viewModeButton',
   async t => {
     await t.click(Selector(dataTestIdSelector(PERIOD_LEVEL)));
     await t.expect(await getCalendarTextSnapshot()).eql({
@@ -191,7 +224,7 @@ test.page(getPage())('Should show prev decade', async t => {
   });
 });
 
-test.page(getPage())('Should show decade even viewLevel button was clicked 3 times', async t => {
+test.page(getPage())('Should show decade even viewMode button was clicked 3 times', async t => {
   await t.click(Selector(dataTestIdSelector(PERIOD_LEVEL)));
   await t.click(Selector(dataTestIdSelector(PERIOD_LEVEL)));
   await t.click(Selector(dataTestIdSelector(PERIOD_LEVEL)));
@@ -327,7 +360,7 @@ test.page(
   });
 });
 
-test.page(getPage())('Should set focus on viewLevel button on tab', async t => {
+test.page(getPage())('Should set focus on viewMode button on tab', async t => {
   await t.pressKey('tab');
   await t.pressKey('enter');
   await t.expect(await getCalendarTextSnapshot()).eql({

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { ChevronDownSVG, ChevronUpSVG } from '@snack-ui/icons';
 
-import { GRID_SIZE, Size, ViewLevel } from '../../constants';
+import { GRID_SIZE, Size, ViewMode } from '../../constants';
 import { Button } from '../Button';
 import { CalendarContext } from '../CalendarContext';
 import { stringifyAddress } from '../Item/utils';
@@ -11,10 +11,10 @@ import { usePeriodName } from './hooks';
 import styles from './styles.module.scss';
 import { getShift } from './utils';
 
-const VIEW_LEVEL_MAP = {
-  [ViewLevel.Month]: ViewLevel.Year,
-  [ViewLevel.Year]: ViewLevel.Decade,
-  [ViewLevel.Decade]: ViewLevel.Decade,
+const VIEW_MODE_MAP = {
+  [ViewMode.Month]: ViewMode.Year,
+  [ViewMode.Year]: ViewMode.Decade,
+  [ViewMode.Decade]: ViewMode.Decade,
 };
 
 const ICONS = {
@@ -34,16 +34,17 @@ export function CalendarNavigation() {
     viewDate,
     viewShift,
     setViewShift,
-    viewLevel,
-    setViewLevel,
+    viewMode,
+    setViewMode,
     focus,
     setFocus,
     getTestId,
     size,
+    firstNotDisableCell,
   } = useContext(CalendarContext);
   const periodName = usePeriodName();
 
-  const levelButtonDisabled = viewLevel === ViewLevel.Decade;
+  const levelButtonDisabled = viewMode === ViewMode.Decade;
 
   const isArrowButtonFocused = focus && [NEXT_PERIOD_BUTTON_FOCUS_NAME, PREV_PERIOD_BUTTON_FOCUS_NAME].includes(focus);
 
@@ -52,19 +53,19 @@ export function CalendarNavigation() {
       <Button
         disabled={levelButtonDisabled}
         onClick={() => {
-          if (viewLevel === ViewLevel.Year) {
+          if (viewMode === ViewMode.Year) {
             setFocus(PREV_PERIOD_BUTTON_FOCUS_NAME);
           }
-          setViewShift(getShift(referenceDate, viewDate, viewLevel));
-          setViewLevel(VIEW_LEVEL_MAP[viewLevel]);
+          setViewShift(getShift(referenceDate, viewDate, viewMode));
+          setViewMode(VIEW_MODE_MAP[viewMode]);
         }}
         label={periodName}
         data-test-id={getTestId('period-level')}
         focusName={LEVEL_BUTTON_FOCUS_NAME}
         tabIndex={isArrowButtonFocused ? -1 : 0}
-        icon={viewLevel !== ViewLevel.Decade ? ICONS.DOWN[size] : undefined}
+        icon={viewMode !== ViewMode.Decade ? ICONS.DOWN[size] : undefined}
         onRightArrowKeyDown={() => setFocus(PREV_PERIOD_BUTTON_FOCUS_NAME)}
-        onDownArrowKeyDown={() => setFocus(stringifyAddress([0, 0]))}
+        onDownArrowKeyDown={() => setFocus(stringifyAddress(firstNotDisableCell?.current ?? [0, 0]))}
         useNavigationStartRef
       />
       <div>
@@ -81,8 +82,8 @@ export function CalendarNavigation() {
           onRightArrowKeyDown={() => setFocus(NEXT_PERIOD_BUTTON_FOCUS_NAME)}
           onLeftArrowKeyDown={() => setFocus(LEVEL_BUTTON_FOCUS_NAME)}
           onDownArrowKeyDown={() => {
-            const rightGap = viewLevel === ViewLevel.Month ? 2 : 1;
-            setFocus(stringifyAddress([0, GRID_SIZE[viewLevel].columns - rightGap]));
+            const rightGap = viewMode === ViewMode.Month ? 2 : 1;
+            setFocus(stringifyAddress([0, GRID_SIZE[viewMode].columns - rightGap]));
           }}
         />
         <Button
@@ -92,7 +93,7 @@ export function CalendarNavigation() {
           tabIndex={focus === NEXT_PERIOD_BUTTON_FOCUS_NAME ? 0 : -1}
           icon={ICONS.DOWN[size]}
           onLeftArrowKeyDown={() => setFocus(PREV_PERIOD_BUTTON_FOCUS_NAME)}
-          onDownArrowKeyDown={() => setFocus(stringifyAddress([0, GRID_SIZE[viewLevel].columns - 1]))}
+          onDownArrowKeyDown={() => setFocus(stringifyAddress([0, GRID_SIZE[viewMode].columns - 1]))}
         />
       </div>
     </div>
