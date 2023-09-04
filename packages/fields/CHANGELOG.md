@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.14 (2023-09-04)
+
+
+### Bug Fixes
+
+* **[LLM-155](https://jira.sbercloud.tech/browse/LLM-155):** labelTooltipPlacement ([0d8d4fa](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0d8d4faeac3100439f7787673c330f49b9fc08a5))
+
+
+
+
+
 ## 0.4.13 (2023-08-31)
 
 ### Only dependencies have been changed
