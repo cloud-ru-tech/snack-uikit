@@ -1,0 +1,55 @@
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-element";
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-inputPrivate";
+
+$sizes: 's', 'm';
+$icon-sizes: (
+  's': $icon-xs,
+  'm': $icon-s
+);
+
+.buttonClearValue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+
+  color: var($sys-neutral-text-light);
+
+  background-color: transparent;
+  border: none;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($input-private, 'button-clear-value', $size);
+
+      svg {
+        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: var($sys-red-text-support);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    color: var($sys-red-text-support);
+    outline-color: var($sys-red-accent-default);
+    outline-offset: var($spacing-state-focus-offset);
+  }
+
+  &:active {
+    color: var($sys-red-text-main);
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    color: var($sys-neutral-text-disabled);
+  }
+}
