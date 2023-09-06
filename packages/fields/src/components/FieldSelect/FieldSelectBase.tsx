@@ -10,12 +10,12 @@ import {
 } from 'react';
 
 import { Droplist } from '@snack-ui/droplist';
-import { InputPrivate } from '@snack-ui/input-private';
+import { InputPrivate, Size, useButtonNavigation, useClearButton } from '@snack-ui/input-private';
 import { extractSupportProps } from '@snack-ui/utils';
 
-import { ContainerVariant, Size, ValidationState } from '../../constants';
+import { ContainerVariant, ValidationState } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
-import { useButtonNavigation, useClearButton, useCopyButton } from '../../hooks';
+import { useCopyButton } from '../../hooks';
 import { useHandlers } from '../FieldDate/hooks/useHandlers';
 import { FieldDecorator } from '../FieldDecorator';
 import { getArrowIcon } from './helpers';
@@ -115,6 +115,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
       onButtonKeyDown: onButtonKeyDownProp,
       readonly,
+      submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
     const onInputKeyDownHandler = useHandlers<KeyboardEvent<HTMLInputElement>>([

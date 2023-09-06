@@ -2,14 +2,20 @@ import mergeRefs from 'merge-refs';
 import { forwardRef, ReactElement, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
+import {
+  InputPrivate,
+  InputPrivateProps,
+  moveCursorToEnd,
+  runAfterRerender,
+  Size,
+  useButtonNavigation,
+} from '@snack-ui/input-private';
 import { Tooltip } from '@snack-ui/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ContainerVariant, Size, ValidationState } from '../../constants';
+import { ContainerVariant, ValidationState } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
-import { moveCursorToEnd, runAfterRerender } from '../../helpers';
-import { useButtonNavigation, useCopyButton, useHideButton } from '../../hooks';
+import { useCopyButton, useHideButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
@@ -94,6 +100,7 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       inputRef: localRef,
       buttons: useMemo(() => [copyButtonSettings, hideButtonSettings], [copyButtonSettings, hideButtonSettings]),
       readonly,
+      submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
     return (

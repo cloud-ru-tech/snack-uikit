@@ -1,9 +1,10 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
+import { Size } from '@snack-ui/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { Size, ValidationState } from '../../constants';
+import { ValidationState } from '../../constants';
 import { Footer, FooterProps } from './Footer';
 import { Header, HeaderProps } from './Header';
 import styles from './styles.module.scss';

@@ -2,9 +2,9 @@ import copyToClipboard from 'copy-to-clipboard';
 import { forwardRef, KeyboardEventHandler, MouseEventHandler, useEffect, useRef, useState } from 'react';
 
 import { CopySVG } from '@snack-ui/icons';
+import { ButtonSize } from '@snack-ui/input-private';
 import { Tooltip } from '@snack-ui/tooltip';
 
-import { ButtonSize } from '../../constants';
 import styles from './styles.module.scss';
 
 type ButtonCopyValueProps = {

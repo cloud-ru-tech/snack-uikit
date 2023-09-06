@@ -1,10 +1,9 @@
 import { MouseEventHandler, RefObject, useMemo } from 'react';
 
+import { BUTTON_SIZE_MAP, ButtonProps, Size } from '@snack-ui/input-private';
 import { useEventHandler } from '@snack-ui/utils';
 
-import { ButtonSizeMap, Size } from '../constants';
 import { ButtonHideValue } from '../helperComponents';
-import { ButtonProps } from './types';
 
 type UseHideButtonProps = {
   hideButtonRef: RefObject<HTMLButtonElement>;
@@ -38,7 +37,7 @@ export function useHideButton({
         return (
           <ButtonHideValue
             {...props}
-            size={ButtonSizeMap[size]}
+            size={BUTTON_SIZE_MAP[size]}
             onClick={handleClick}
             hidden={hidden}
             disabled={disabled}

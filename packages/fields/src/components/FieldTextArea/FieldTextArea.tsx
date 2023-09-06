@@ -2,13 +2,14 @@ import mergeRefs from 'merge-refs';
 import { ChangeEvent, forwardRef, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
+import { Size, useButtonNavigation, useClearButton } from '@snack-ui/input-private';
 import { Scroll } from '@snack-ui/scroll';
 import { Tooltip } from '@snack-ui/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ContainerVariant, Size, ValidationState } from '../../constants';
+import { ContainerVariant, ValidationState } from '../../constants';
 import { FieldContainerPrivate, TextArea, TextAreaProps } from '../../helperComponents';
-import { useButtonNavigation, useClearButton, useCopyButton } from '../../hooks';
+import { useCopyButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
 
@@ -90,6 +91,7 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
       inputRef: localRef,
       buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
       readonly,
+      submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
     return (

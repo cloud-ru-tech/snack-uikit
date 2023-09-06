@@ -15,14 +15,21 @@ import { useUncontrolledProp } from 'uncontrollable';
 import { Calendar, CalendarProps } from '@snack-ui/calendar';
 import { Dropdown } from '@snack-ui/droplist';
 import { CalendarSVG } from '@snack-ui/icons';
-import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
+import {
+  IconSize,
+  InputPrivate,
+  InputPrivateProps,
+  runAfterRerender,
+  Size,
+  useButtonNavigation,
+  useClearButton,
+} from '@snack-ui/input-private';
 import { Tooltip } from '@snack-ui/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ContainerVariant, IconSize, Size, ValidationState } from '../../constants';
+import { ContainerVariant, ValidationState } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
-import { runAfterRerender } from '../../helpers';
-import { useButtonNavigation, useClearButton, useCopyButton } from '../../hooks';
+import { useCopyButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import { DEFAULT_LOCALE, SlotKey } from './constants';
 import { useDateField } from './hooks';
@@ -164,6 +171,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       buttons: memorizedButtons,
       onButtonKeyDown: checkForLeavingFocus,
       readonly,
+      submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
     // TODO: do not hardcode locale here

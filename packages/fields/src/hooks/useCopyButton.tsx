@@ -1,8 +1,8 @@
 import { RefObject, useMemo } from 'react';
 
-import { ButtonSizeMap, Size } from '../constants';
+import { BUTTON_SIZE_MAP, ButtonProps, Size } from '@snack-ui/input-private';
+
 import { ButtonCopyValue } from '../helperComponents';
-import { ButtonProps } from './types';
 
 type UseCopyButtonProps = {
   copyButtonRef: RefObject<HTMLButtonElement>;
@@ -17,7 +17,7 @@ export function useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy
       id: 'copy',
       ref: copyButtonRef,
       show: showCopyButton,
-      render: props => <ButtonCopyValue {...props} size={ButtonSizeMap[size]} valueToCopy={valueToCopy} />,
+      render: props => <ButtonCopyValue {...props} size={BUTTON_SIZE_MAP[size]} valueToCopy={valueToCopy} />,
     }),
     [copyButtonRef, showCopyButton, size, valueToCopy],
   );

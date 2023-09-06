@@ -2,13 +2,13 @@ import mergeRefs from 'merge-refs';
 import { forwardRef, ReactElement, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { InputPrivate, InputPrivateProps } from '@snack-ui/input-private';
+import { InputPrivate, InputPrivateProps, Size, useButtonNavigation, useClearButton } from '@snack-ui/input-private';
 import { Tooltip } from '@snack-ui/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { ContainerVariant, Size, ValidationState } from '../../constants';
+import { ContainerVariant, ValidationState } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
-import { useButtonNavigation, useClearButton, useCopyButton } from '../../hooks';
+import { useCopyButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
@@ -86,6 +86,7 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       inputRef: localRef,
       buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
       readonly,
+      submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
     return (

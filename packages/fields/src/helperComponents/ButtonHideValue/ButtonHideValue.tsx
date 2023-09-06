@@ -1,8 +1,8 @@
 import { forwardRef, KeyboardEventHandler, MouseEventHandler } from 'react';
 
 import { EyeClosedSVG, EyeSVG } from '@snack-ui/icons';
+import { ButtonSize } from '@snack-ui/input-private';
 
-import { ButtonSize } from '../../constants';
 import styles from './styles.module.scss';
 
 type ButtonHideValueProps = {

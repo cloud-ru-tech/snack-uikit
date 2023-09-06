@@ -1,8 +1,9 @@
 import { forwardRef } from 'react';
 
+import { Size } from '@snack-ui/input-private';
 import { Tooltip } from '@snack-ui/tooltip';
 
-import { Size, ValidationState } from '../../constants';
+import { ValidationState } from '../../constants';
 import { FieldSelectMulti } from './FieldSelectMulti';
 import { FieldSelectSingle } from './FieldSelectSingle';
 import { FieldSelectMultiProps, FieldSelectSingleProps, SelectionMode } from './types';

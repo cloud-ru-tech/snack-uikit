@@ -1,6 +1,7 @@
 import { KeyboardEvent, KeyboardEventHandler, RefObject, useCallback, useMemo, useRef } from 'react';
 
-import { moveCursorToEnd, runAfterRerender } from '../../../helpers';
+import { moveCursorToEnd, runAfterRerender } from '@snack-ui/input-private';
+
 import { Option } from '../types';
 
 type UseListNavigationProps = {
