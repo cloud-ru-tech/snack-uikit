@@ -102,6 +102,9 @@
     },
     {
       "path": "./drawer"
+    },
+    {
+      "path": "./search"
     }
   ],
   "compilerOptions": {

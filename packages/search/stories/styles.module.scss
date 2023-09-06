@@ -1,0 +1,39 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.wrapper {
+  resize: horizontal;
+
+  overflow: auto;
+
+  width: 584px;
+  min-width: 250px;
+  padding: 20px;
+
+  
+  background-color: var($sys-neutral-background);
+  border: 1px solid var($sys-neutral-decor-default);
+  border-radius: var($dimension-050m);
+
+  &[data-outline]{
+    background-color: var($sys-neutral-background1-level);
+  }
+}
+
+.scrollWrapper {
+  margin-top: 24px;
+}
+
+.scroll {
+  max-height: 300px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  border: solid 1px var($sys-primary-decor-default);
+  border-radius: 4px;
+}

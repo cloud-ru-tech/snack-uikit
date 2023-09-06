@@ -1,0 +1,41 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-search';
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-element";
+
+$sizes: 's', 'm', 'l';
+
+.decorator {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  background-color: var($sys-neutral-background1-level);
+  border-color: transparent;
+  border-style: solid;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($search, $size);
+    }
+  }
+
+  &[data-outline] {
+    border-color: var($sys-neutral-decor-default);
+  }
+
+  &:hover {
+    background-color: var($sys-neutral-background2-level);
+    border-color: var($sys-primary-decor-hovered);
+  }
+
+  &:focus-within,
+  &[data-focused] {
+    @include outline-var($container-focused-m);
+
+    background-color: var($sys-neutral-background2-level);
+    border-color: var($sys-primary-accent-default);
+    outline-color: var($sys-primary-decor-activated);
+  }
+}
+

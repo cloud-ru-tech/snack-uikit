@@ -1,0 +1,14 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-search';
+
+.trigger {
+  display: flex;
+  flex-grow: 1;
+}
+
+.wrap {
+  display: flex;
+}
+
+.itemList {
+  padding-top: var($space-search-drop-offset);
+}
