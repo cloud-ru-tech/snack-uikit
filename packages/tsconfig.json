@@ -105,6 +105,9 @@
     },
     {
       "path": "./search"
+    },
+    {
+      "path": "./card"
     }
   ],
   "compilerOptions": {

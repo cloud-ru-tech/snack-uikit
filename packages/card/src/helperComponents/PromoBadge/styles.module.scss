@@ -1,0 +1,10 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-card';
+
+.promoBadge {
+  @include composite-var($card-promo-badge);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+}

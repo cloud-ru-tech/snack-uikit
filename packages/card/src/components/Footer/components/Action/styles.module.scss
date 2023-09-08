@@ -1,0 +1,10 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-card';
+
+.action {
+  @include composite-var($card-action);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}

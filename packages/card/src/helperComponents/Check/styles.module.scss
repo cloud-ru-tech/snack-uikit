@@ -1,0 +1,17 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-card';
+
+.checkWrapper {
+  @include composite-var($card-check-badge);
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.checkContainer {
+  @include composite-var($card-check);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

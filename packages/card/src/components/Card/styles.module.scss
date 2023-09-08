@@ -1,0 +1,128 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-card';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes:  'm', 'l';
+
+.functionBadgeWrapper {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+
+  display: none;
+
+  &[data-visible] {
+    display: block;
+  }
+}
+
+.card {
+  @include composite-var($card-container);
+  @include outline-var($container-focused-s);
+
+  position: relative;
+  z-index: 0;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+
+  background-color: var($sys-neutral-background1-level);
+  border: 0;
+  outline-color: transparent;
+
+  &:hover {
+    .functionBadgeWrapper {
+      display: block;
+    }
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-l);
+
+    background-color: var($sys-neutral-background2-level);
+    outline-color: var($sys-primary-accent-default);
+
+    .functionBadgeWrapper {
+      display: block;
+    }
+
+    .check {
+      background-color: var($sys-primary-accent-default);
+    }
+  }
+
+  &:focus-within {
+    .functionBadgeWrapper {
+      display: block;
+    }
+  }
+
+
+  &[data-checked] {
+    outline-color: var($sys-primary-decor-activated);
+
+    .check {
+      background-color: var($sys-primary-decor-activated);
+    }
+  }
+
+  &[data-checked]:focus-visible {
+    outline-color: var($sys-primary-accent-default);
+
+    .check {
+      color: var($sys-primary-on-accent);
+      background-color: var($sys-primary-accent-default);
+    }
+  }
+
+  &[data-pointer] {
+    * {
+      cursor: pointer;
+    }
+
+    &:hover {
+      background-color: var($sys-neutral-background2-level);
+    }
+  }
+}
+
+.composition {
+  @include composite-var($card-composition-container);
+
+  position: relative;
+  box-sizing: border-box;
+}
+
+.body {
+  display: block;
+  color: var($sys-neutral-text-support);
+  text-align: initial;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  box-sizing: border-box;
+  max-width: 100%;
+  
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($card, 'content', $size, 'container');
+    }
+  }
+}
+
+.footer {
+  @include composite-var($card-footer);
+
+  box-sizing: border-box;
+}
+

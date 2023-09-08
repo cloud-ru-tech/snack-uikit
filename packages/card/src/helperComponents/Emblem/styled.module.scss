@@ -1,0 +1,21 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-card';
+
+$sizes:  'm', 'l';
+
+.img {
+  overflow: hidden;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+
+  object-fit: cover;
+  border-color: var($sys-neutral-decor-disabled);
+  border-style: solid;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($card, 'picture', $size);
+    }
+  }
+}

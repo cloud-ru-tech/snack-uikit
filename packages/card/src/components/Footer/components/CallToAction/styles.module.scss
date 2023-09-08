@@ -1,0 +1,27 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-card';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.callToAction {
+  @include composite-var($card-call-to-action);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.label {
+  color: var($sys-primary-accent-default);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var($sys-primary-accent-default);
+  
+  svg {
+    width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+    height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+  }
+}

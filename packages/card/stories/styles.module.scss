@@ -1,0 +1,18 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.wrapperResize {
+  resize: horizontal;
+
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 304px;
+  min-width: 304px;
+  padding: 20px;
+
+  background-color: var($sys-neutral-background);
+  border: 1px solid var($sys-neutral-decor-default);
+  border-radius: var($dimension-050m);
+}

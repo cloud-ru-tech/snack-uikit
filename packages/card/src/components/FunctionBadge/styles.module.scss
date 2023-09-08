@@ -1,0 +1,48 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-card';
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-element";
+
+.button {
+  @include composite-var($card-button);
+
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var($sys-neutral-text-main);
+
+  background-color: transparent;
+  border: 0;
+  outline-color: transparent;
+
+  &:hover {
+    color: var($sys-neutral-text-support);
+  }
+
+  &[data-focus],
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    color: var($sys-neutral-text-support);
+    outline-color: var($sys-available-complementary);
+  }
+
+  &:active {
+    color: var($sys-neutral-text-light);
+  }
+}
+
+.droplist {
+  padding-top: var($dimension-050m);
+}
+
+.item {
+  width: max-content;
+}
+
+.wrapper {
+  position: relative;
+}
