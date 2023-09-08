@@ -3,9 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.5.0 (2023-09-08)
+
+
+### Features
+
+* **[FF-3128](https://jira.sbercloud.tech/browse/FF-3128):** migrate ButtonClearValue, hooks, helpers from fields ([f9ef71d](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f9ef71dd98f5301911f8da2b36dea67d63648deb))
+
+
+
+
+
 ## 1.4.1 (2023-07-28)
 
-**Note:** Version bump only for package @snack-ui/input-private
+### Only dependencies have been changed
+* [@snack-ui/icons@0.12.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
 
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-09-08)
+
+
+### Features
+
+* **[FF-3128](https://jira.sbercloud.tech/browse/FF-3128):** use ButtonClearValue, hooks, helpers from input-private instead of internals ([5705edc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5705edcf4a5d0d99162dd548360bf6c89f00405b))
+* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+
+
+
 ## 0.4.14 (2023-09-04)
 
 

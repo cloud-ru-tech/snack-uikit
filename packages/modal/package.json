@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/modal",
   "title": "Modal",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -31,11 +31,11 @@
   "dependencies": {
     "@snack-ui/button": "0.11.0",
     "@snack-ui/icon-predefined": "0.1.2",
-    "@snack-ui/icons": "0.11.0",
-    "@snack-ui/link": "0.4.5",
+    "@snack-ui/icons": "0.12.0",
+    "@snack-ui/link": "0.5.0",
     "@snack-ui/scroll": "0.2.2",
-    "@snack-ui/tooltip": "0.6.0",
-    "@snack-ui/truncate-string": "0.1.9",
+    "@snack-ui/tooltip": "0.7.0",
+    "@snack-ui/truncate-string": "0.2.0",
     "@snack-ui/typography": "0.3.1",
     "@snack-ui/utils": "1.2.0",
     "classnames": "2.3.2",

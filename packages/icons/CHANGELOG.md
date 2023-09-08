@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2023-09-08)
+
+
+### Features
+
+* **[FF-3125](https://jira.sbercloud.tech/browse/FF-3125):** add search icon ([83710fc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/83710fcdcd1b0f7046266f99c3a1321d2fe93069))
+* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+
+
+
 # 0.11.0 (2023-08-15)
 
 
