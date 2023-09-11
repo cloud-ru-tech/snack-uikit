@@ -138,7 +138,7 @@ function PopoverPrivateComponent({
 
   const dismiss = useDismiss(context, {
     outsidePress: outsideClick,
-    ancestorScroll: true,
+    ancestorScroll: false,
     escapeKey: closeOnEscapeKey,
   });
   const hover = useHover(context, {
