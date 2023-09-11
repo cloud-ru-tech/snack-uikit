@@ -25,7 +25,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { Placement, PopoverWidthStrategy, Trigger } from '../../constants';
+import { DEFAULT_FALLBACK_PLACEMENTS, Placement, PopoverWidthStrategy, Trigger } from '../../constants';
 import { getArrowOffset, getPopoverRootElement, getPopoverTriggerJSX, getTriggerProps } from '../../utils';
 import { Arrow } from '../Arrow';
 import styles from './styles.module.scss';
@@ -58,6 +58,7 @@ export type PopoverPrivateProps = WithSupportProps<{
   widthStrategy?: PopoverWidthStrategy;
   closeOnEscapeKey?: boolean;
   triggerClickByKeys?: boolean;
+  fallbackPlacements?: Placement[];
 }>;
 
 function PopoverPrivateComponent({
@@ -79,6 +80,7 @@ function PopoverPrivateComponent({
   widthStrategy = PopoverWidthStrategy.Auto,
   closeOnEscapeKey = true,
   triggerClickByKeys = true,
+  fallbackPlacements = DEFAULT_FALLBACK_PLACEMENTS,
   ...rest
 }: PopoverPrivateProps) {
   const widthStrategyRef = useRef<PopoverWidthStrategy>(widthStrategy);
@@ -100,7 +102,9 @@ function PopoverPrivateComponent({
       shift(),
       offset(offsetProp + arrowOffset),
       hasArrow && arrow({ element: arrowRef, padding: (offsetProp + arrowOffset) * 2 }),
-      flip(),
+      flip({
+        fallbackPlacements,
+      }),
       size({
         apply({ rects }) {
           const floating = refs.floating.current;

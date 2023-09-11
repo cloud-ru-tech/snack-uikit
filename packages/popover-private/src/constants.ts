@@ -31,3 +31,18 @@ export enum PopoverWidthStrategy {
   Gte = 'GreatThanOrEqual',
   Eq = 'Equal',
 }
+
+export const DEFAULT_FALLBACK_PLACEMENTS = [
+  Placement.Top,
+  Placement.TopStart,
+  Placement.TopEnd,
+  Placement.RightStart,
+  Placement.Right,
+  Placement.RightEnd,
+  Placement.Bottom,
+  Placement.BottomEnd,
+  Placement.BottomStart,
+  Placement.LeftEnd,
+  Placement.Left,
+  Placement.LeftStart,
+];
