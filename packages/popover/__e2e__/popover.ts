@@ -103,7 +103,7 @@ test.page(getPage({ trigger: Trigger.HoverAndFocus }))('Opens by hover & strong 
   await verifyPopoverBehavior(t, { hover: true, focus: true, strongFocus: true });
 });
 
-test.page(getPage())('Should disappear on scroll', async t => {
+test.page(getPage())('Should not disappear on scroll', async t => {
   await t.resizeWindow(1200, 300);
 
   const button = Selector(dataTestIdSelector(BUTTON_TEST_ID));
@@ -115,7 +115,7 @@ test.page(getPage())('Should disappear on scroll', async t => {
 
   await scrollWindow(0, 10);
 
-  await t.expect(popover.exists).notOk();
+  await t.expect(popover.exists).ok();
 
   await t.resizeWindow(1200, 871);
 });
