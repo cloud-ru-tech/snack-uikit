@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2023-09-12)
+
+
+### Features
+
+* **[FF-3060](https://jira.sbercloud.tech/browse/FF-3060):** add fallback placements ([662f9af](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/662f9af48e08fa92824e250cf3e7a132f4b07f2a))
+* **[FF-3060](https://jira.sbercloud.tech/browse/FF-3060):** disable scrolling dismiss ([dd8448c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/dd8448c546c330944a2aa8d9f0bac662e5ed08a8))
+
+
+
+
+
 ## 0.6.1 (2023-08-11)
 
 
