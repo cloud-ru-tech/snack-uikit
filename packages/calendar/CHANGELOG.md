@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-09-13)
+
+
+### Features
+
+* **[FF-3009](https://jira.sbercloud.tech/browse/FF-3009):** add ability to disable day/month/year selection, prop showHolidays and colorize holidays ([98d4964](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/98d4964f47cd0b1fef98d5bf9c407297c063765b))
+
+
+
+
+
 # 0.2.0 (2023-09-08)
 
 

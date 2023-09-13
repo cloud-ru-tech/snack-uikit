@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.2 (2023-09-13)
+
+### Only dependencies have been changed
+* [@snack-ui/calendar@0.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/calendar/CHANGELOG.md)
+
+
+
+
+
 ## 0.5.1 (2023-09-12)
 
 ### Only dependencies have been changed
