@@ -12,6 +12,12 @@ $label-typography: (
 
   &[data-has-background] {
     background-color: var($sys-neutral-decor-default);
+
+    @each $size in $sizes {
+      &[data-size='#{$size}'] {
+        @include composite-var($status, 'background-container', $size);
+      }
+    }
   }
 
   @each $size in $sizes {
