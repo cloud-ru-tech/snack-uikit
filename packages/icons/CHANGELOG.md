@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2023-09-14)
+
+
+### Features
+
+* **[FF-3130](https://jira.sbercloud.tech/browse/FF-3130):** add kebab icon ([f6ac9c2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f6ac9c2d3fa3aeaf44f98fcee2af8eb3386f4932))
+
+
+
+
+
 # 0.12.0 (2023-09-08)
 
 

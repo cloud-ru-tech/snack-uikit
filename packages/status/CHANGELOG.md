@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-09-14)
+
+
+### Bug Fixes
+
+* **[FF-3130](https://jira.sbercloud.tech/browse/FF-3130):** remove padding without background ([fc46783](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/fc467839e09ca1e6abed8a57e9d7962d19c9022f))
+
+
+### Features
+
+* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+
+
+
 ## 0.2.6 (2023-08-22)
 
 

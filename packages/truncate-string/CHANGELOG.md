@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.2 (2023-09-14)
+
+### Only dependencies have been changed
+* [@snack-ui/tooltip@0.7.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/tooltip/CHANGELOG.md)
+
+
+
+
+
 ## 0.2.1 (2023-09-12)
 
 ### Only dependencies have been changed
