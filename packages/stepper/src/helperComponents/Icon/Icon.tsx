@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { CheckSVG, CrossSVG } from '@snack-ui/icons';
-import { Spinner } from '@snack-ui/loaders';
+import { Sun } from '@snack-ui/loaders';
 
 import { StepState } from '../../constants';
 import styles from './styles.module.scss';
@@ -19,7 +19,7 @@ function getContent(state: StepState, number: number) {
     case StepState.Rejected:
       return <CrossSVG />;
     case StepState.Loading:
-      return <Spinner size={Spinner.sizes.S} />;
+      return <Sun size={Sun.sizes.S} />;
     default:
       return number;
   }
