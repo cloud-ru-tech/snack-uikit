@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { ChangeEvent, ChangeEventHandler } from 'react';
 
-import { Spinner } from '@snack-ui/loaders';
+import { Sun } from '@snack-ui/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Size, Variant } from '../../constants';
@@ -29,7 +29,7 @@ export function ToggleChip({
   ...rest
 }: ToggleChipProps) {
   const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
-  const spinnerSize = size === Size.Xs ? Spinner.sizes.XS : Spinner.sizes.S;
+  const spinnerSize = size === Size.Xs ? Sun.sizes.XS : Sun.sizes.S;
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     if (disabled || loading) {
@@ -68,7 +68,7 @@ export function ToggleChip({
 
         {loading && (
           <span className={styles.spinner} data-test-id='toggle-chip__spinner'>
-            <Spinner size={spinnerSize} />
+            <Sun size={spinnerSize} />
           </span>
         )}
 

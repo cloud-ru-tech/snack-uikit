@@ -3,7 +3,7 @@ import { KeyboardEvent, MouseEventHandler, ReactNode, useCallback, useMemo, useR
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Droplist } from '@snack-ui/droplist';
-import { Spinner } from '@snack-ui/loaders';
+import { Sun } from '@snack-ui/loaders';
 import { extractSupportProps } from '@snack-ui/utils';
 
 import { Variant } from '../../constants';
@@ -33,7 +33,7 @@ export function FilterChip({
   ...rest
 }: FilterChipProps) {
   const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
-  const spinnerSize = size === Size.Xs ? Spinner.sizes.XS : Spinner.sizes.S;
+  const spinnerSize = size === Size.Xs ? Sun.sizes.XS : Sun.sizes.S;
   const isLabelExist = selectionMode === SelectionMode.Multi;
   const ref = useRef<HTMLButtonElement>(null);
   const [isDroplistOpened, setIsDroplistOpened] = useState(false);
@@ -156,7 +156,7 @@ export function FilterChip({
         >
           {loading && !isLabelExist && (
             <span className={styles.spinner} data-test-id='filter-chip__spinner'>
-              <Spinner size={spinnerSize} data-test-id='filter-chip__spinner' />
+              <Sun size={spinnerSize} data-test-id='filter-chip__spinner' />
             </span>
           )}
 
@@ -181,7 +181,7 @@ export function FilterChip({
 
               {loading ? (
                 <span className={styles.spinner} data-test-id='filter-chip__spinner'>
-                  <Spinner size={spinnerSize} />
+                  <Sun size={spinnerSize} />
                 </span>
               ) : (
                 <span className={styles.value} data-test-id='filter-chip__value'>

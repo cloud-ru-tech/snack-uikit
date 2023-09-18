@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { MouseEventHandler } from 'react';
 
-import { Spinner } from '@snack-ui/loaders';
+import { Sun } from '@snack-ui/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Size, Variant } from '../../constants';
@@ -27,7 +27,7 @@ export function AssistChip({
   ...rest
 }: AssistChipProps) {
   const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
-  const spinnerSize = size === Size.Xs ? Spinner.sizes.XS : Spinner.sizes.S;
+  const spinnerSize = size === Size.Xs ? Sun.sizes.XS : Sun.sizes.S;
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = e => {
     if (disabled || loading) {
@@ -56,7 +56,7 @@ export function AssistChip({
 
       {loading && (
         <span className={styles.spinner} data-test-id='assist-chip__spinner'>
-          <Spinner size={spinnerSize} />
+          <Sun size={spinnerSize} />
         </span>
       )}
 
