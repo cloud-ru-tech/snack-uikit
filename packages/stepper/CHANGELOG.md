@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.3 (2023-09-21)
+
+
+### Bug Fixes
+
+* **[FF-3026](https://jira.sbercloud.tech/browse/FF-3026):** replaced loader with sun in stepper ([5310087](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5310087b0d40ec9bfaf25f64797c98fc1c57427c))
+
+
+
+
+
 ## 0.2.2 (2023-09-14)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.3 (2023-09-21)
+
+
+### Bug Fixes
+
+* **[FF-3026](https://jira.sbercloud.tech/browse/FF-3026):** replaced loader with sun in chips ([3b2d86d](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3b2d86d21543b6e1aed172f1b3e55ea0905c9b46))
+
+
+
+
+
 ## 0.3.2 (2023-09-14)
 
 ### Only dependencies have been changed
