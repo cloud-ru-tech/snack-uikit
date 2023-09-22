@@ -111,6 +111,22 @@ test.page(getPage({ autocomplete: true }))(`Should be controlled by keyboard`, a
   await t.expect(input.focused).notOk('Input should be blur after tab press');
 });
 
+test.page(getPage({ autocomplete: true }))(`Should handle keypress while focus on option`, async t => {
+  const { input, list, option } = getSelectors();
+
+  await t.pressKey('tab');
+  await t.expect(list.exists).notOk("list is present although shouldn't");
+
+  await t.pressKey('o');
+  await t.expect(input.value).eql('o').wait(VALUE_LITTLE_MORE_DEBOUNCE_IN_HISTORY);
+
+  await t.pressKey('down');
+  await t.expect(option.focused).ok('Option should be focused by ArrowDown press');
+
+  await t.pressKey('o');
+  await t.expect(input.value).eql('oo').wait(VALUE_LITTLE_MORE_DEBOUNCE_IN_HISTORY);
+});
+
 test.page(getPage({ autocomplete: false }))(`Should be render without list`, async t => {
   const { input, list } = getSelectors();
 

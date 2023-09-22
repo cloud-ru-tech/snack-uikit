@@ -6,9 +6,10 @@ type UseHandlersProps = {
   localRef: RefObject<HTMLInputElement>;
   onSubmit?(value: string): void;
   onChange?(value: string): void;
+  scrollRef: RefObject<HTMLElement>;
 };
 
-export function useHandlers({ localRef, onSubmit, onChange }: UseHandlersProps) {
+export function useHandlers({ localRef, onSubmit, onChange, scrollRef }: UseHandlersProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [needsFocus, setNeedsFocus] = useState(false);
 
@@ -65,6 +66,19 @@ export function useHandlers({ localRef, onSubmit, onChange }: UseHandlersProps) 
     [localRef],
   );
 
+  const handleOptionKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+
+      // ignoring special keys (tab, arrows, backspace and etc.)
+      if (event.key.length === 1) {
+        localRef.current?.focus();
+        scrollRef.current?.scroll(0, 0);
+      }
+    },
+    [localRef, scrollRef],
+  );
+
   const handleOnFocusLeave = useCallback(
     (direction: 'common' | 'top' | 'bottom' | 'left') => {
       if (['top', 'common'].includes(direction)) {
@@ -103,6 +117,7 @@ export function useHandlers({ localRef, onSubmit, onChange }: UseHandlersProps) 
     needsFocus,
     handleOnFocusLeave,
     handleKeyDown,
+    handleOptionKeyDown,
     handleItemOnClick,
     firstElementRefCallback,
   };

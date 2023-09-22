@@ -38,13 +38,21 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
   ref,
 ) {
   const localRef = useRef<HTMLInputElement>(null);
-
-  const { handleKeyDown, handleItemOnClick, handleOnFocusLeave, isOpen, setIsOpen, firstElementRefCallback } =
-    useHandlers({
-      localRef,
-      onChange,
-      onSubmit,
-    });
+  const scrollRef = useRef<HTMLElement>(null);
+  const {
+    handleKeyDown,
+    handleOptionKeyDown,
+    handleItemOnClick,
+    handleOnFocusLeave,
+    isOpen,
+    setIsOpen,
+    firstElementRefCallback,
+  } = useHandlers({
+    localRef,
+    onChange,
+    onSubmit,
+    scrollRef,
+  });
 
   return (
     <div className={cn(styles.wrap, className)} {...rest}>
@@ -58,6 +66,7 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
         onOpenChange={setIsOpen}
         data-test-id={TEST_IDS.droplist}
         triggerClassName={styles.trigger}
+        scrollRef={scrollRef}
         triggerElement={
           <SearchDecorator
             size={size}
@@ -86,6 +95,7 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
             onClick={() => {
               handleItemOnClick(item.option);
             }}
+            onKeyDown={handleOptionKeyDown}
             data-test-id={TEST_IDS.option}
           />
         ))}
