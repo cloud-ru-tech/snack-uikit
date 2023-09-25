@@ -1,0 +1,43 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-table';
+
+.rowActionsCell {
+  position: relative;
+  border-color: inherit;
+
+  &::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: calc(0px - var($border-width-table));
+    bottom: calc(0px - var($border-width-table));
+    left: 0;
+
+    box-sizing: border-box;
+    width: 100%;
+
+    /* stylelint-disable */
+    border-left: var($border-width-table) solid;
+    border-color: inherit;
+    /* stylelint-enable */
+  }
+}
+
+.rowActionsCellWrap {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.rowActionsCellTrigger {
+  @include composite-var($table-action-layout);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}

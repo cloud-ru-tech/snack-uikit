@@ -1,0 +1,18 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-table';
+
+.selectionCell {
+  @include composite-var($table-cell-check);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.selectionCellHeader {
+  padding: 0;
+}

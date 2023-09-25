@@ -1,0 +1,28 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+/* stylelint-disable selector-pseudo-class-no-unknown */
+:global {
+  html, body, #storybook-root {
+    height: 100%;
+  }
+
+  #storybook-root {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* stylelint-enable  */
+
+.wrapper {
+  resize: horizontal;
+
+  overflow: auto;
+
+  min-width: 400px;
+  max-width: 100%;
+  height: 100%;
+  padding: 24px;
+
+  background-color: var($sys-neutral-background1-level);
+}

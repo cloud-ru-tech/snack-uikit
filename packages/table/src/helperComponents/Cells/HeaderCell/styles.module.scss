@@ -1,0 +1,76 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-table';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.tableHeaderCell {
+  @include composite-var($table-head-column);
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  background-color: inherit;
+
+  &::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: calc(100% - var($space-table-head-separator-padding) * 2);
+    height: 1px;
+
+    background-color: var($sys-neutral-decor-default);
+  }
+
+  &[data-sortable] {
+    cursor: pointer;
+  }
+
+  &[data-no-offset] {
+    &::after {
+      left: 0;
+      transform: none;
+      width: calc(100% - var($space-table-head-separator-padding));
+    }
+  }
+
+  &[data-no-padding] {
+    padding: 0;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.tableHeaderCellName {
+  @include composite-var($table-head-name-layout);
+
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+
+  color: simple-var($sys-neutral-text-light);
+}
+
+.tableHeaderSortIcon {
+  display: flex;
+  box-sizing: border-box;
+  color: simple-var($sys-neutral-text-light);
+
+  svg {
+    width: simple-var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
+    height: simple-var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
+  }
+}

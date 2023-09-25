@@ -1,0 +1,116 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-table';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.tableRow {
+  @include composite-var($table-line-container);
+
+  position: relative;
+
+  display: flex;
+
+  box-sizing: border-box;
+
+  background-color: var($sys-neutral-background1-level);
+  border-color: transparent;
+  border-style: solid none;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.rowPinnedCells {
+  position: sticky;
+  z-index: 1;
+
+  display: flex;
+
+  box-sizing: border-box;
+
+  background-color: inherit;
+  border-color: var($sys-neutral-decor-hovered);
+
+  &::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: calc(0px - var($border-width-table));
+    bottom: calc(0px - var($border-width-table));
+
+    box-sizing: border-box;
+    width: var($border-width-table);
+  }
+
+  &[data-position='left'] {
+    left: 0;
+
+    &::after {
+      right: 0;
+
+      /* stylelint-disable */
+      border-right: var($border-width-table) solid;
+      border-color: inherit;
+      /* stylelint-enable */
+    }
+  }
+
+  &[data-position='right'] {
+    right: 0;
+
+    &::after {
+      left: 0;
+
+      /* stylelint-disable */
+      border-left: var($border-width-table) solid;
+      border-color: inherit;
+      /* stylelint-enable */
+    }
+  }
+}
+
+.bodyRow {
+  &[data-disabled] {
+    cursor: not-allowed;
+    background-color: var($sys-neutral-background);
+  }
+
+  &[data-selected] {
+    background-color: var($sys-primary-background);
+
+    .rowPinnedCells {
+      border-color: var($sys-primary-decor-default);
+    }
+
+    &:hover, &[data-actions-opened] {
+      background-color: var($sys-primary-background1-level);
+      border-color: var($sys-primary-decor-hovered);
+
+      .rowPinnedCells {
+        border-color: inherit;
+      }
+    }
+  }
+
+  &[data-clickable] {
+    cursor: pointer;
+  }
+
+  &:not([data-disabled]):not([data-selected]) {
+    &:hover, &[data-actions-opened] {
+      background-color: var($sys-neutral-background2-level);
+      border-color: var($sys-neutral-decor-hovered);
+
+      .rowPinnedCells {
+        border-color: inherit;
+      }
+    }
+  }
+}
+
+.tableHeader {
+  position: sticky;
+  z-index: 3;
+  top: 0;
+  border: none;
+}

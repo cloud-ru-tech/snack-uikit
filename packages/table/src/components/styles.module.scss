@@ -1,0 +1,21 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-table';
+
+.table {
+  @include composite-var($table-table-container);
+
+  position: relative;
+  z-index: 0;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  border-color: var($sys-neutral-decor-default);
+  border-style: solid;
+}
+
+.tableContent {
+  min-width: max-content;
+}

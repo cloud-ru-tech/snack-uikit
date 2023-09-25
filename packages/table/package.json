@@ -1,0 +1,45 @@
+{
+  "name": "@snack-ui/table",
+  "title": "Table",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/table",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/table"
+  },
+  "author": "Белов Алексей <anbelov@cloud.ru>",
+  "contributors": [
+    "Белов Алексей <anbelov@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-ui/button": "0.11.0",
+    "@snack-ui/droplist": "0.7.2",
+    "@snack-ui/icons": "0.13.0",
+    "@snack-ui/loaders": "0.2.9",
+    "@snack-ui/scroll": "0.2.2",
+    "@snack-ui/toggles": "0.4.1",
+    "@snack-ui/truncate-string": "0.2.2",
+    "@snack-ui/typography": "0.3.1",
+    "@snack-ui/utils": "1.2.0",
+    "@tanstack/react-table": "8.10.1",
+    "classnames": "2.3.2",
+    "uncontrollable": "8.0.0"
+  }
+}

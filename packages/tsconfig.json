@@ -108,6 +108,9 @@
     },
     {
       "path": "./card"
+    },
+    {
+      "path": "./table"
     }
   ],
   "compilerOptions": {

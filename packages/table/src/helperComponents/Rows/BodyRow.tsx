@@ -1,0 +1,78 @@
+import { Row as TableRow } from '@tanstack/react-table';
+import { MouseEvent, useState } from 'react';
+
+import { ColumnPinPosition, TEST_IDS } from '../../constants';
+import { BodyCell } from '../Cells';
+import { RowContext } from '../contexts';
+import { useRowCells } from '../hooks';
+import { PinnedCells } from './PinnedCells';
+import { Row } from './Row';
+import styles from './styles.module.scss';
+
+export type RowInfo<TData> = {
+  id: string;
+  data: TData;
+  selected: boolean;
+  toggleSelected(value?: boolean): void;
+};
+
+export type RowClickHandler<TData> = (e: MouseEvent<HTMLDivElement>, row: RowInfo<TData>) => void;
+
+type BodyRowProps<TData> = {
+  row: TableRow<TData>;
+  onRowClick?: RowClickHandler<TData>;
+};
+
+export function BodyRow<TData>({ row, onRowClick }: BodyRowProps<TData>) {
+  const { pinnedLeft, pinnedRight, unpinned } = useRowCells(row);
+
+  const [droplistOpened, setDroplistOpen] = useState(false);
+
+  const disabled = !row.getCanSelect();
+
+  const handleRowClick = (e: MouseEvent<HTMLDivElement>) => {
+    if (disabled) return;
+
+    onRowClick?.(e, {
+      id: row.id,
+      data: row.original,
+      selected: row.getIsSelected(),
+      toggleSelected: row.toggleSelected,
+    });
+  };
+
+  return (
+    <RowContext.Provider value={{ droplistOpened, setDroplistOpen }}>
+      <Row
+        onClick={handleRowClick}
+        data-clickable={Boolean(onRowClick) || undefined}
+        data-disabled={disabled || undefined}
+        data-selected={row.getIsSelected() || undefined}
+        data-actions-opened={droplistOpened || undefined}
+        data-test-id={TEST_IDS.bodyRow}
+        data-row-id={row.id}
+        className={styles.bodyRow}
+      >
+        {pinnedLeft && (
+          <PinnedCells position={ColumnPinPosition.Left}>
+            {pinnedLeft.map(cell => (
+              <BodyCell key={cell.id} cell={cell} />
+            ))}
+          </PinnedCells>
+        )}
+
+        {unpinned.map(cell => (
+          <BodyCell key={cell.id} cell={cell} />
+        ))}
+
+        {pinnedRight && (
+          <PinnedCells position={ColumnPinPosition.Right}>
+            {pinnedRight.map(cell => (
+              <BodyCell key={cell.id} cell={cell} />
+            ))}
+          </PinnedCells>
+        )}
+      </Row>
+    </RowContext.Provider>
+  );
+}
