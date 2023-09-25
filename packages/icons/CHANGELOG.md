@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.14.0 (2023-09-25)
+
+
+### Features
+
+* **[FF-2653](https://jira.sbercloud.tech/browse/FF-2653):** add ArrowUp, ArrowDown, and "More" icons ([2a93b0d](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/2a93b0df964bc3d257e0e4fb93f40ff0aabfd211))
+
+
+
+
+
 # 0.13.0 (2023-09-14)
 
 

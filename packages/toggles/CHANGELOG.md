@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.2 (2023-09-25)
+
+
+### Bug Fixes
+
+* **[FF-3320](https://jira.sbercloud.tech/browse/FF-3320):** checkbox icon size fits container ([dd8cf36](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/dd8cf36c56d5c39444d511ead740df87b56849b2))
+
+
+
+
+
 ## 0.4.1 (2023-09-14)
 
 ### Only dependencies have been changed
