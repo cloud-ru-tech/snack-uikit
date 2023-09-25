@@ -73,6 +73,7 @@ export const Crumb = memo(function Crumb({
         onClick={onClick}
         href={href}
         aria-label={useIconOnly ? label : undefined}
+        data-clickable={true}
         {...dataAttributes}
         {...tabIndex}
       >
@@ -86,6 +87,7 @@ export const Crumb = memo(function Crumb({
         onClick={onClick}
         className={styles.crumb}
         aria-label={useIconOnly ? label : undefined}
+        data-clickable={true}
         {...dataAttributes}
         {...tabIndex}
       >

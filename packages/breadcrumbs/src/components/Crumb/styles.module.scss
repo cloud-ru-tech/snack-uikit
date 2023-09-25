@@ -26,15 +26,13 @@ $sizes: 'xs', 's';
   background: none;
   border: none;
 
-  a, button {
+  &[data-clickable] {
     cursor: pointer;
-
     &:focus-visible,
     &:hover {
       color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
     }
   }
-
 
   &[data-current='true'] {
     color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
