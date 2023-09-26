@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-09-26)
+
+
+### Features
+
+* **[FF-3196](https://jira.sbercloud.tech/browse/FF-3196):** add cursor pointer to breadcrumbs on onClick ([9393cd7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9393cd73f9f79a28fb0d913fd32982efa84e1d4d))
+
+
+
+
+
 # 0.3.0 (2023-09-12)
 
 
