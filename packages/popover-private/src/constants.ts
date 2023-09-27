@@ -32,6 +32,12 @@ export enum PopoverWidthStrategy {
   Eq = 'Equal',
 }
 
+export enum PopoverHeightStrategy {
+  Auto = 'auto',
+  Lte = 'LessThanOrEqual',
+  Eq = 'Equal',
+}
+
 export const DEFAULT_FALLBACK_PLACEMENTS = [
   Placement.Top,
   Placement.TopStart,

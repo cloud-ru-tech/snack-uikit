@@ -25,7 +25,13 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { DEFAULT_FALLBACK_PLACEMENTS, Placement, PopoverWidthStrategy, Trigger } from '../../constants';
+import {
+  DEFAULT_FALLBACK_PLACEMENTS,
+  Placement,
+  PopoverHeightStrategy,
+  PopoverWidthStrategy,
+  Trigger,
+} from '../../constants';
 import { getArrowOffset, getPopoverRootElement, getPopoverTriggerJSX, getTriggerProps } from '../../utils';
 import { Arrow } from '../Arrow';
 import styles from './styles.module.scss';
@@ -56,6 +62,7 @@ export type PopoverPrivateProps = WithSupportProps<{
   hoverDelayClose?: number;
   triggerRef?: ForwardedRef<ReferenceType | HTMLElement | null>;
   widthStrategy?: PopoverWidthStrategy;
+  heightStrategy?: PopoverHeightStrategy;
   closeOnEscapeKey?: boolean;
   triggerClickByKeys?: boolean;
   fallbackPlacements?: Placement[];
@@ -78,13 +85,12 @@ function PopoverPrivateComponent({
   hoverDelayClose,
   triggerRef,
   widthStrategy = PopoverWidthStrategy.Auto,
+  heightStrategy = PopoverHeightStrategy.Auto,
   closeOnEscapeKey = true,
   triggerClickByKeys = true,
   fallbackPlacements = DEFAULT_FALLBACK_PLACEMENTS,
   ...rest
 }: PopoverPrivateProps) {
-  const widthStrategyRef = useRef<PopoverWidthStrategy>(widthStrategy);
-  widthStrategyRef.current = widthStrategy;
   const arrowRef = useRef<HTMLDivElement | null>(null);
 
   const [isOpen, setIsOpen] = useUncontrolledProp(openProp, false, onOpenChange);
@@ -106,10 +112,23 @@ function PopoverPrivateComponent({
         fallbackPlacements,
       }),
       size({
-        apply({ rects }) {
+        apply({ rects, availableHeight }) {
           const floating = refs.floating.current;
           if (!floating) return;
-          switch (widthStrategyRef.current) {
+
+          switch (heightStrategy) {
+            case PopoverHeightStrategy.Eq:
+              floating.style.height = `${availableHeight}px`;
+              break;
+            case PopoverHeightStrategy.Lte:
+              floating.style.maxHeight = `${availableHeight}px`;
+              break;
+            case PopoverHeightStrategy.Auto:
+            default:
+              break;
+          }
+
+          switch (widthStrategy) {
             case PopoverWidthStrategy.Eq:
               floating.style.width = `${rects.reference.width}px`;
               floating.style.minWidth = '0px';
@@ -159,7 +178,7 @@ function PopoverPrivateComponent({
     <FloatingPortal root={getPopoverRootElement()}>
       <div
         {...extractSupportProps(rest)}
-        className={className}
+        className={cn(styles.floating, className)}
         ref={refs.setFloating}
         style={floatingStyles}
         {...getFloatingProps()}
@@ -209,3 +228,4 @@ export function PopoverPrivate({ children, ...props }: PopoverPrivateProps) {
 PopoverPrivate.placements = Placement;
 PopoverPrivate.triggers = Trigger;
 PopoverPrivate.widthStrategies = PopoverWidthStrategy;
+PopoverPrivate.heightStrategies = PopoverHeightStrategy;
