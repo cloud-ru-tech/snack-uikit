@@ -6,6 +6,7 @@ import {
   KeyboardEvent,
   ReactNode,
   RefCallback,
+  RefObject,
   useCallback,
   useContext,
   useEffect,
@@ -26,6 +27,7 @@ export type DroplistProps = Omit<DropdownProps, 'content' | 'children' | 'isTree
   children: ReactNode;
   onFocusLeave?: (direction: 'common' | 'top' | 'bottom' | 'left') => void;
   size?: Size;
+  scrollRef?: RefObject<HTMLElement>;
   useScroll?: boolean;
 };
 
@@ -36,6 +38,7 @@ export function Droplist({
   onFocusLeave,
   className,
   size = Size.S,
+  scrollRef,
   useScroll = true,
   open,
   closeOnEscapeKey,
@@ -150,6 +153,7 @@ export function Droplist({
           [styles.scrollContainerM]: scroll && size === Size.M,
           [styles.scrollContainerL]: scroll && size === Size.L,
         })}
+        ref={scrollRef}
         barHideStrategy={Scroll.barHideStrategies.Never}
         size={Scroll.sizes.S}
       >
