@@ -1,0 +1,32 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.notificationPanelBlank {
+  @include composite-var($notification-panel-blank-container);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.notificationPanelBlankContent {
+  @include composite-var($notification-panel-blank-text);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  text-align: center;
+}
+
+.notificationPanelBlankTitle {
+  color: var($sys-neutral-text-main);
+}
+
+.notificationPanelBlankDescription {
+  color: var($sys-neutral-text-support);
+  white-space: pre-line;
+}

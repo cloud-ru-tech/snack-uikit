@@ -111,6 +111,9 @@
     },
     {
       "path": "./table"
+    },
+    {
+      "path": "./notification"
     }
   ],
   "compilerOptions": {

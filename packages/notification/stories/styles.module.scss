@@ -1,0 +1,60 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+$border-width: 0.5px;
+
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.controlledWrapper {
+  resize: horizontal;
+
+  overflow: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
+  margin-bottom: 16px;
+  padding: 24px;
+
+  background-color: var($sys-neutral-background1-level);
+  border: 1px solid var($sys-neutral-decor-disabled);
+  border-radius: var($dimension-050m);
+}
+
+.controlledCard {
+  flex: 1 1 auto;
+}
+
+.table {
+  display: inline-grid;
+  grid-template-columns: repeat(2, max-content);
+
+  width: max-content;
+
+  background-color: var($sys-neutral-background1-level);
+  border: $border-width solid var($sys-neutral-decor-default);
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+
+  border: $border-width solid var($sys-neutral-decor-disabled);
+}
+
+.headerCell {
+  min-width: 60px;
+  text-transform: uppercase;
+}
+
+.card {
+  width: 464px;
+}

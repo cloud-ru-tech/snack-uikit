@@ -1,0 +1,104 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.notificationPanelHeader {
+  @include composite-var($notification-panel-header-container);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-bottom-style: solid;
+  border-bottom-color: var($sys-neutral-decor-default);
+
+  &::before {
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + var($border-width-notification-panel-container));
+    border-radius: inherit;
+    background-color: var($sys-neutral-accent-default);
+    opacity: var($opacity-a004);
+  }
+}
+
+.notificationPanelHeaderFunctions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notificationPanelChips {
+  @include composite-var($notification-panel-header-chips);
+
+  display: flex;
+  align-items: center;
+}
+
+.notificationPanelHeadline {
+  @include composite-var($notification-panel-header-headline);
+
+  display: flex;
+  align-items: center;
+  color: var($sys-neutral-text-main);
+}
+
+.notificationPanelTitle {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.notificationPanelBody {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.notificationPanelCard {
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.notificationPanelFooterButton {
+  @include composite-var($notification-panel-button-container);
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  color: var($sys-neutral-text-light);
+
+  background: none;
+  border-color: var($sys-neutral-decor-default);
+  border-top-style: solid;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+  outline: 0;
+  outline-offset: 0;
+
+  &:hover {
+    color: var($sys-neutral-text-support);
+  }
+
+  &:focus-visible {
+    @include outline-inside-var($container-focused-s);
+
+    color: var($sys-neutral-text-support);
+    border-color: transparent;
+    outline-color: var($sys-available-complementary);
+  }
+
+  &:active {
+    color: var($sys-neutral-text-main);
+    border-color: var($sys-neutral-decor-default);
+  }
+}

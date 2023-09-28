@@ -1,0 +1,23 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
+
+.notificationPanelPopoverWrap {
+  @include composite-var($notification-panel-container);
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.notificationPanelPopover {
+  @include composite-var($notification-panel-panel);
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  background-color: var($sys-neutral-background2-level);
+  box-shadow: var($box-shadow-elevation-level2);
+}

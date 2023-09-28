@@ -1,0 +1,172 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-notification-notificationCard';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.notificationCardFunction {
+  @include composite-var($notification-card-function-badge);
+
+  pointer-events: none;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+
+  opacity: 0;
+}
+
+.notificationCardTitleText {
+  box-sizing: border-box;
+  color: var($sys-neutral-text-main);
+}
+
+.notificationCardTitleIcon {
+  @include composite-var($notification-card-icon-type);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.notificationCard {
+  @include composite-var($notification-card-container);
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  border-bottom-color: var($sys-neutral-decor-default);
+  border-bottom-style: solid;
+
+  &::before {
+    box-sizing: border-box;
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: calc(100% + var($border-width-notification-panel-card));
+
+    opacity: var($opacity-a004);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    border-bottom-color: transparent;
+    outline-color: var($sys-available-complementary);
+  }
+
+  &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
+    &::before {
+      background-color: var($sys-neutral-accent-default);
+    }
+
+    .notificationCardFunction {
+      pointer-events: auto;
+      opacity: 1;
+    }
+  }
+
+  &[data-clickable] {
+    cursor: pointer;
+  }
+
+  &[data-unread] {
+    &::before {
+      opacity: var($opacity-a008);
+      background-color: var($sys-neutral-accent-default);
+    }
+
+    &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
+      &::before {
+        opacity: var($opacity-a004);
+      }
+    }
+  }
+
+  &[data-appearance='neutral'] {
+    .notificationCardTitleIcon {
+      color: var($sys-neutral-accent-default);
+    }
+  }
+
+  &[data-appearance='error'],
+  &[data-appearance='errorCritical'] {
+    .notificationCardTitleIcon {
+      color: var($sys-red-accent-default);
+    }
+  }
+
+  &[data-appearance='errorCritical'] {
+    &[data-unread], &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
+      &::before {
+        background-color: var($sys-red-accent-default);
+      }
+    }
+
+    .notificationCardTitleText {
+      color: var($sys-red-accent-default);
+    }
+  }
+
+  &[data-appearance='warning'] {
+    .notificationCardTitleIcon {
+      color: var($sys-yellow-accent-default);
+    }
+  }
+
+  &[data-appearance='success'] {
+    .notificationCardTitleIcon {
+      color: var($sys-green-accent-default);
+    }
+  }
+
+  &[data-skeleton] {
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.notificationCardLabel {
+  color: var($sys-neutral-text-support);
+  display: grid;
+}
+
+.notificationCardTitle {
+  @include composite-var($notification-card-title-layout);
+
+  display: flex;
+
+  &[data-center] {
+    align-items: center;
+  }
+}
+
+.notificationCardContent {
+  box-sizing: border-box;
+  color: var($sys-neutral-text-support);
+  white-space: pre-line;
+}
+
+.notificationCardFooter {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.notificationCardDate {
+  flex: 1 0 auto;
+  box-sizing: border-box;
+  color: var($sys-neutral-text-light);
+  text-align: right;
+}
