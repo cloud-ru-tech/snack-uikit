@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2023-09-28)
+
+
+### Features
+
+* add heightStrategy, add flex styles to floating element ([3c085ba](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3c085ba991001e8be919004bb5425cdf22a9725e))
+
+
+
+
+
 # 0.7.0 (2023-09-12)
 
 

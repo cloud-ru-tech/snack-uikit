@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2023-09-28)
+
+
+### Features
+
+* **[FF-2661](https://jira.sbercloud.tech/browse/FF-2661):** add Settings icon ([f13c036](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f13c0369816f837ae6e4e1aa66ee491856af5087))
+
+
+
+
+
 # 0.14.0 (2023-09-25)
 
 
