@@ -8,6 +8,8 @@ const CLOSE_BUTTON_DATA_TEST_ID = 'tag-remove-button';
 function getPage(removableMode: boolean) {
   return getTestcafeUrl({
     name: 'tag',
+    story: 'tag',
+    group: 'tag',
     props: {
       'data-test-id': TEST_ID,
       removableMode,

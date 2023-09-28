@@ -4,7 +4,8 @@ import { MouseEventHandler } from 'react';
 import { CrossSVG } from '@snack-ui/icons';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { Appearance, IconSize, Size } from './constants';
+import { Appearance, Size } from '../../constants';
+import { IconSize } from './constants';
 import styles from './styles.module.scss';
 
 export type TagProps = WithSupportProps<{

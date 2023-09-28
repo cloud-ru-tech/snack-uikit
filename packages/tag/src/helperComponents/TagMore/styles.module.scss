@@ -1,0 +1,55 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tag';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-dropList';
+
+$sizes: 'xs', 's';
+
+$label-typography: (
+  'xs': $sans-label-s,
+  's': $sans-label-m
+);
+
+.button {
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  color: var($sys-neutral-text-support);
+  white-space: nowrap;
+
+  background: none;
+  border-color: var($sys-neutral-decor-disabled);
+  border-style: solid;
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+  }
+
+  @each $size in $sizes {
+    @include composite-var($label-typography, $size);
+
+    &[data-size=#{$size}] {
+      @include composite-var($tag-more, 'container', $size, 'label-only');
+    }
+  }
+}
+
+.tagRowDroplistContainer {
+  @include composite-var($drop-list-container);
+
+  background-color: var($sys-neutral-background2-level);
+  box-shadow: var($box-shadow-elevation-level4);
+
+  @each $size in $sizes {
+    &[data-size=#{$size}] {
+      @include composite-var($tag-list, $size);
+    }
+  }
+}
+
+.tagRowDroplistScroll {
+  max-height: 200px;
+}

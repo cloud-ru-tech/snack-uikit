@@ -16,6 +16,25 @@
   border-radius: var($dimension-050m);
 }
 
+.tagRowWrapper {
+  resize: horizontal;
+
+  overflow: auto hidden;
+  display: flex;
+  gap: 8px;
+
+  width: 400px;
+  padding: 8px;
+
+  background-color: var($sys-neutral-background1-level);
+  border: 1px solid var($sys-neutral-decor-default);
+  border-radius: var($dimension-050m);
+
+  &[data-full-width='true'] {
+    width: 100%;
+  }
+}
+
 $border-width: 0.5px;
 
 .table {

@@ -9,7 +9,7 @@ import { Tag, TagProps } from '../src';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
-  title: 'Components/Tag',
+  title: 'Components/Tag/Tag',
   component: Tag,
 };
 export default meta;
