@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-09-28)
+
+
+### Features
+
+* **[FF-3194](https://jira.sbercloud.tech/browse/FF-3194):** handle keypress while focus on option ([40853b6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/40853b6e7487d0bae2422d81de5e35b3529993f6))
+
+
+
+
+
 ## 0.1.3 (2023-09-25)
 
 ### Only dependencies have been changed

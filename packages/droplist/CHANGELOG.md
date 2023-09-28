@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2023-09-28)
+
+
+### Features
+
+* **[FF-3194](https://jira.sbercloud.tech/browse/FF-3194):** add scrollRef in Droplist ([71c8074](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/71c807487801260b902f273cc756ba038afb57ac))
+
+
+
+
+
 ## 0.7.3 (2023-09-25)
 
 ### Only dependencies have been changed

@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/droplist",
   "title": "droplist",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "sideEffects": [
     "*.css",
     "*.woff",
