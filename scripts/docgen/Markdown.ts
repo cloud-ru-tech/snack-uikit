@@ -20,7 +20,7 @@ export class Markdown {
   }
 
   #markdownTableCellEscape(str: string): string {
-    return str.replaceAll('|', '&#124;');
+    return String(str).replaceAll('|', '&#124;');
   }
 
   #getTypeDescription({ name, value, raw }: PropItemType) {
