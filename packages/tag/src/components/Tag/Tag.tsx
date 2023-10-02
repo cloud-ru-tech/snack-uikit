@@ -9,10 +9,15 @@ import { IconSize } from './constants';
 import styles from './styles.module.scss';
 
 export type TagProps = WithSupportProps<{
+  /** Текст */
   label: string;
+  /** Размер */
   size?: Size;
+  /** Внешний вид */
   appearance?: Appearance;
+  /** Коллбэк на удаление */
   onDelete?: MouseEventHandler<HTMLButtonElement>;
+  /** CSS-класс */
   className?: string;
 }>;
 

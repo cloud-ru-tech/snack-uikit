@@ -76,11 +76,11 @@ type TagProps = WithSupportProps<{
 ### Props
 | name | type | required | default value | description |
 |------|------|----------|---------------|-------------|
-| label | `string` | true | - |  |
-| size | enum Size: `"xs"`, `"s"` | false | Size.Xs |  |
-| appearance | enum Appearance: `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | false | Appearance.Neutral |  |
-| onDelete | `MouseEventHandler<HTMLButtonElement>` | false | - |  |
-| className | `string` | false | - |  |
+| label | `string` | true | - | Текст |
+| size | enum Size: `"xs"`, `"s"` | false | Size.Xs | Размер |
+| appearance | enum Appearance: `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | false | Appearance.Neutral | Внешний вид |
+| onDelete | `MouseEventHandler<HTMLButtonElement>` | false | - | Коллбэк на удаление |
+| className | `string` | false | - | CSS-класс |
 ## TagRow
 
 ### Props
