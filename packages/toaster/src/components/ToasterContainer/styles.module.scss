@@ -75,3 +75,7 @@
   background-color: transparent;
   box-shadow: none;
 }
+
+.containerWithCloseAllButton {
+  margin-bottom: calc(var($size-toaster-button-close-column) + var($space-toaster-system-event-gap));
+}

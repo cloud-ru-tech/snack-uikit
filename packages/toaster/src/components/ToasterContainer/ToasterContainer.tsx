@@ -10,8 +10,6 @@ import {
   ToastPosition,
 } from 'react-toastify';
 
-import { themeVars } from '@sbercloud/figma-tokens';
-
 import { TOASTER_CONTAINER_PREFIX } from '../../constants';
 import { TOAST_SYSTEM_EVENT_TEST_IDS } from '../../testIds';
 import { ToasterType } from '../../types';
@@ -24,8 +22,6 @@ export type ToasterContainerProps = {
   displayCloseAllButton?: boolean;
   type?: ToasterType;
 };
-
-const TOASTER_CONTAINER_MB = `calc(var(${themeVars.size.toaster.buttonCloseColumn}) + var(${themeVars.space.toaster.systemEvent.gap}))`;
 
 export function ToasterContainer({
   position = toast.POSITION.BOTTOM_RIGHT,
@@ -67,10 +63,9 @@ export function ToasterContainer({
         autoClose={false}
         closeButton={false}
         draggable={false}
-        className={cn(styles[`container-${type}`], styles[position])}
-        style={{
-          marginBottom: `${hasCloseAllButton ? TOASTER_CONTAINER_MB : '0px'}`,
-        }}
+        className={cn(styles[`container-${type}`], styles[position], {
+          [styles.containerWithCloseAllButton]: hasCloseAllButton,
+        })}
         toastClassName={styles.toaster}
         bodyClassName={styles.toaster}
         position={position}
