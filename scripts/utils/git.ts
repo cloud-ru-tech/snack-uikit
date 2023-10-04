@@ -1,3 +1,6 @@
+import { execSync } from 'child_process';
+import { resolve } from 'path';
+
 import shell from 'shelljs';
 
 import { logError } from './console';
@@ -32,3 +35,17 @@ export const checkIfBehindMaster = () => {
     process.exit(1);
   }
 };
+
+export function getStagedFiles() {
+  return String(execSync(`git diff --name-only --cached`))
+    .split('\n')
+    .filter(Boolean)
+    .map(file => resolve(__dirname, './../../', file));
+}
+
+export function getChangedUnstagedFiles() {
+  return String(execSync(`git ls-files --exclude-standard --others -m`))
+    .split('\n')
+    .filter(Boolean)
+    .map(file => resolve(__dirname, './../../', file));
+}

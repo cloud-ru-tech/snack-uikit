@@ -3,3 +3,4 @@
 
 node_modules/.bin/lint-staged
 node_modules/.bin/ts-node scripts/check-dependencies.ts
+node_modules/.bin/ts-node scripts/docgen/docgenForStagedPackages.ts
