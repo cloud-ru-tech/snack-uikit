@@ -1,6 +1,6 @@
 import { Dispatch, MouseEvent, MouseEventHandler, SetStateAction } from 'react';
 
-import { ButtonLight } from '@snack-ui/button';
+import { ButtonFunction } from '@snack-ui/button';
 import { Droplist, DroplistProps } from '@snack-ui/droplist';
 import { KebabSVG } from '@snack-ui/icons';
 
@@ -33,8 +33,8 @@ export function NotificationCardFunction({ actions, open, setDroplistOpen }: Not
         firstElementRefCallback={firstElementRefCallback}
         onFocusLeave={handleDroplistFocusLeave}
         triggerElement={
-          <ButtonLight
-            size={ButtonLight.sizes.S}
+          <ButtonFunction
+            size={ButtonFunction.sizes.S}
             icon={<KebabSVG />}
             onClick={handleTriggerButtonClick}
             onKeyDown={handleTriggerButtonKeyDown}

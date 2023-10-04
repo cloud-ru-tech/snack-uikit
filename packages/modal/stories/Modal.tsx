@@ -142,7 +142,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
         mode={Modal.modes.Forced}
         open={isOpen === MODAL_IDS.deleteModal}
         onClose={closeModal}
-        approveButton={{ label: 'Удалить', appearance: ButtonFilled.appearances.Red, onClick: closeModal }}
+        approveButton={{ label: 'Удалить', appearance: ButtonFilled.appearances.Destructive, onClick: closeModal }}
         additionalButton={{ label: 'Отмена', onClick: closeModal }}
       />
     </>

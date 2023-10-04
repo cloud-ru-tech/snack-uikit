@@ -3,8 +3,8 @@ import { ReactElement } from 'react';
 import {
   ButtonFilled,
   ButtonFilledProps,
-  ButtonLight,
-  ButtonLightProps,
+  ButtonSimple,
+  ButtonSimpleProps,
   ButtonTonal,
   ButtonTonalProps,
 } from '@snack-ui/button';
@@ -28,7 +28,7 @@ export type DrawerProps = Omit<DrawerCustomProps, 'size' | 'children' | 'nestedD
     /** Кнопка отмены */
     cancelButton?: Omit<ButtonTonalProps, 'size' | 'data-test-id'>;
     /** Дополнительная кнопка */
-    additionalButton?: Omit<ButtonLightProps, 'size' | 'data-test-id'>;
+    additionalButton?: Omit<ButtonSimpleProps, 'size' | 'data-test-id'>;
     /** Вложенный Drawer */
     nestedDrawer?: ReactElement<DrawerProps>;
   };
@@ -65,20 +65,20 @@ export function Drawer({
           data-test-id={TEST_IDS.footer}
           actions={
             <>
-              {additionalButton && (
-                <ButtonLight
-                  {...additionalButton}
-                  size={ButtonLight.sizes.M}
-                  data-test-id={TEST_IDS.additionalButton}
-                />
+              {approveButton && (
+                <ButtonFilled {...approveButton} size={ButtonFilled.sizes.M} data-test-id={TEST_IDS.approveButton} />
               )}
 
               {cancelButton && (
                 <ButtonTonal {...cancelButton} size={ButtonTonal.sizes.M} data-test-id={TEST_IDS.cancelButton} />
               )}
 
-              {approveButton && (
-                <ButtonFilled {...approveButton} size={ButtonFilled.sizes.M} data-test-id={TEST_IDS.approveButton} />
+              {additionalButton && (
+                <ButtonSimple
+                  {...additionalButton}
+                  size={ButtonSimple.sizes.M}
+                  data-test-id={TEST_IDS.additionalButton}
+                />
               )}
             </>
           }

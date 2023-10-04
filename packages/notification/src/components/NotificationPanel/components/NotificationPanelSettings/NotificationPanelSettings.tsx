@@ -1,4 +1,4 @@
-import { ButtonSupport, ButtonSupportProps } from '@snack-ui/button';
+import { ButtonSimple, ButtonSimpleProps } from '@snack-ui/button';
 import { ItemSingleProps } from '@snack-ui/droplist';
 import { KebabSVG } from '@snack-ui/icons';
 
@@ -12,19 +12,19 @@ export type NotificationPanelSettingsProps = {
     'option' | 'onClick' | 'disabled' | 'icon' | 'description' | 'caption' | 'tagLabel'
   >[];
   /** Кнопка дополнительного действия панели */
-  button: Omit<ButtonSupportProps, 'label' | 'iconPosition' | 'type' | 'size' | 'data-test-id'>;
+  button: Omit<ButtonSimpleProps, 'label' | 'type' | 'size' | 'data-test-id'>;
 };
 
 export function NotificationPanelSettings({ actions, button }: NotificationPanelSettingsProps) {
-  const buttonProps: ButtonSupportProps = {
+  const buttonProps: ButtonSimpleProps = {
     ...button,
-    size: ButtonSupport.sizes.S,
+    size: ButtonSimple.sizes.S,
     icon: button.icon || <KebabSVG />,
     'data-test-id': TEST_IDS.settings.droplistTrigger,
   };
 
   if (!actions?.length) {
-    return <ButtonSupport {...buttonProps} />;
+    return <ButtonSimple {...buttonProps} />;
   }
 
   return <NotificationPanelSettingsDroplist actions={actions} button={buttonProps} />;

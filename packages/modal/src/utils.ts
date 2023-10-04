@@ -1,4 +1,4 @@
-import { ButtonFilled, ButtonLight, ButtonTonal } from '@snack-ui/button';
+import { ButtonFilled, ButtonSimple, ButtonTonal } from '@snack-ui/button';
 
 import { Align, ContentAlign, Size } from './constants';
 import { ModalHeaderImage, ModalHeaderProps } from './helperComponents';
@@ -39,14 +39,14 @@ export function getButtonsSizes({ align, size }: { align: Align; size: Size }) {
       return {
         filled: ButtonFilled.sizes.L,
         tonal: ButtonTonal.sizes.L,
-        light: ButtonLight.sizes.L,
+        simple: ButtonSimple.sizes.L,
       };
     case [Align.Default, Align.Center].includes(align):
     default:
       return {
         filled: ButtonFilled.sizes.M,
         tonal: ButtonTonal.sizes.M,
-        light: ButtonLight.sizes.M,
+        light: ButtonSimple.sizes.M,
       };
   }
 }

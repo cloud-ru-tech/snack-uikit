@@ -11,7 +11,7 @@
   @include composite-var($drawer-action-row);
 
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
+  align-items: center;
 }

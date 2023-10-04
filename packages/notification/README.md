@@ -101,7 +101,7 @@ const cards = [
 | title | `string` | true | - | Заголовок панели |
 | settings | `NotificationPanelSettingsProps` | false | - | Кнопка настроек и выпадающий список |
 | chips | `Omit<ToggleChipProps, "data-test-id" &#124; "size">[]` | false | - | Чипы для фильтрации |
-| readAllButton | `Omit<ButtonLightProps, "data-test-id">` | false | - | Кнопка в "шапке" панели |
+| readAllButton | `Omit<ButtonFunctionProps, "data-test-id"> & { onClick: MouseEventHandler<HTMLElement>; }` | false | - | Кнопка в "шапке" панели |
 | triggerElement | `ReactNode &#124; ChildrenFunction` | true | - | Элемент для открытия панели |
 | footerButton | `{ label: string; onClick: MouseEventHandler<HTMLButtonElement>; }` | false | - | Кнопка внизу панели |
 | loading | `boolean` | false | - | Состояние загрузки |

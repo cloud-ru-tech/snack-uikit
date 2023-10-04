@@ -81,7 +81,7 @@ CSS-класс на контейнере модального окна.
 #### **`cancelButton?: Omit<ButtonTonalProps, 'size' | 'data-test-id'>`**
 Вторая кнопка действия
 
-#### **`additionalButton?: Omit<ButtonLightProps, 'size' | 'data-test-id'>`**
+#### **`additionalButton?: Omit<ButtonSimpleProps, 'size' | 'data-test-id'>`**
 Дополнительная кнопка действия
 
 #### **`disclaimer?: { text: string; link?: Pick<LinkProps, 'text' | 'href' | 'target'> }`**

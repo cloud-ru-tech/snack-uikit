@@ -57,13 +57,13 @@ function ModalCustomComponent({
       )}
       className={cn(styles.modal, className)}
     >
-      {children}
-
       {mode !== Mode.Forced && (
         <div className={styles.headerElements}>
           <ButtonClose onClick={handleCloseButtonClick} />
         </div>
       )}
+
+      {children}
     </RCModal>
   );
 }

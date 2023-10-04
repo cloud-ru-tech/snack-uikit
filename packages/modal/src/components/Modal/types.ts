@@ -1,4 +1,4 @@
-import { ButtonFilledProps, ButtonLightProps, ButtonTonalProps } from '@snack-ui/button';
+import { ButtonFilledProps, ButtonSimpleProps, ButtonTonalProps } from '@snack-ui/button';
 import { LinkProps } from '@snack-ui/link';
 
 import { Align, Size } from '../../constants';
@@ -12,7 +12,7 @@ type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
   content?: ModalBodyProps['content'];
   approveButton: Omit<ButtonFilledProps, 'size' | 'data-test-id'>;
   cancelButton?: Omit<ButtonTonalProps, 'size' | 'data-test-id'>;
-  additionalButton?: Omit<ButtonLightProps, 'size' | 'data-test-id'>;
+  additionalButton?: Omit<ButtonSimpleProps, 'size' | 'data-test-id'>;
   disclaimer?: {
     text: string;
     link?: Pick<LinkProps, 'text' | 'href' | 'target'>;

@@ -75,9 +75,8 @@ const Template: StoryFn<StoryProps> = ({
           disclaimer={disclaimer}
           actions={
             <>
-              <ButtonTonal label='Cancel button' size={ButtonTonal.sizes.S} />
-
               <ButtonFilled label='Custom button' size={ButtonFilled.sizes.S} data-test-id='approve-button' />
+              <ButtonTonal label='Cancel button' size={ButtonTonal.sizes.S} />
             </>
           }
         />

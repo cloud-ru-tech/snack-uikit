@@ -44,7 +44,7 @@
 | size | enum Size: `"s"`, `"m"`, `"l"` | false | - | Размер |
 | approveButton | `Omit<ButtonFilledProps, "data-test-id" &#124; "size">` | false | - | Основная кнопка |
 | cancelButton | `Omit<ButtonTonalProps, "data-test-id" &#124; "size">` | false | - | Кнопка отмены |
-| additionalButton | `Omit<ButtonLightProps, "data-test-id" &#124; "size">` | false | - | Дополнительная кнопка |
+| additionalButton | `Omit<ButtonSimpleProps, "data-test-id" &#124; "size">` | false | - | Дополнительная кнопка |
 | nestedDrawer | `ReactElement<DrawerProps, string &#124; JSXElementConstructor<any>>` | false | - | Вложенный Drawer |
 
 

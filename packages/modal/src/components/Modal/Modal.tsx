@@ -1,4 +1,4 @@
-import { ButtonFilled, ButtonLight, ButtonTonal } from '@snack-ui/button';
+import { ButtonFilled, ButtonSimple, ButtonTonal } from '@snack-ui/button';
 import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
 import { Typography } from '@snack-ui/typography';
@@ -48,14 +48,12 @@ export function Modal({
       <ModalCustom.Footer
         actions={
           <>
-            {additionalButton && (
-              <ButtonLight
-                {...additionalButton}
-                size={buttonsSizes.light}
-                className={styles.footerButton}
-                data-test-id={TEST_IDS.additionalButton}
-              />
-            )}
+            <ButtonFilled
+              {...approveButton}
+              size={buttonsSizes.filled}
+              className={styles.footerButton}
+              data-test-id={TEST_IDS.approveButton}
+            />
 
             {cancelButton && (
               <ButtonTonal
@@ -66,12 +64,14 @@ export function Modal({
               />
             )}
 
-            <ButtonFilled
-              {...approveButton}
-              size={buttonsSizes.filled}
-              className={styles.footerButton}
-              data-test-id={TEST_IDS.approveButton}
-            />
+            {additionalButton && (
+              <ButtonSimple
+                {...additionalButton}
+                size={buttonsSizes.light}
+                className={styles.footerButton}
+                data-test-id={TEST_IDS.additionalButton}
+              />
+            )}
           </>
         }
         disclaimer={

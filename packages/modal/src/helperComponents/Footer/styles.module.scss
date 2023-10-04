@@ -4,9 +4,9 @@
   @include composite-var($modal, 'action-row');
 
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .footerDisclaimer {
@@ -34,7 +34,6 @@
     align-items: center;
 
     .footerActions {
-      flex-direction: column-reverse;
       width: 100%;
     }
 

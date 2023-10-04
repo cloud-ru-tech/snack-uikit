@@ -1,6 +1,6 @@
 import { MouseEventHandler, ReactNode, useMemo } from 'react';
 
-import { ButtonLight, ButtonLightProps } from '@snack-ui/button';
+import { ButtonFunction, ButtonFunctionProps } from '@snack-ui/button';
 import { ToggleChip, ToggleChipProps } from '@snack-ui/chips';
 import { PopoverPrivate } from '@snack-ui/popover-private';
 import { Scroll } from '@snack-ui/scroll';
@@ -29,8 +29,8 @@ export type NotificationPanelProps = {
   /** Чипы для фильтрации */
   chips?: Omit<ToggleChipProps, 'size' | 'data-test-id'>[];
   /** Кнопка в "шапке" панели */
-  readAllButton?: Omit<ButtonLightProps, 'data-test-id'> & {
-    onClick: ButtonLightProps['onClick'];
+  readAllButton?: Omit<ButtonFunctionProps, 'data-test-id'> & {
+    onClick: ButtonFunctionProps['onClick'];
   };
   /** Элемент для открытия панели */
   triggerElement: NotificationPanelPopoverProps['children'];
@@ -90,7 +90,7 @@ export function NotificationPanel({
               </div>
 
               {readAllButton && (
-                <ButtonLight
+                <ButtonFunction
                   {...readAllButton}
                   disabled={readAllButton.disabled || loading}
                   data-test-id={TEST_IDS.readAll}

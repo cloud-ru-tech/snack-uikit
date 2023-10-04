@@ -1,6 +1,6 @@
 import { KeyboardEventHandler, MouseEvent, MouseEventHandler, useState } from 'react';
 
-import { ButtonSupport, ButtonSupportProps } from '@snack-ui/button';
+import { ButtonSimple, ButtonSimpleProps } from '@snack-ui/button';
 import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
 
 import { useDroplistKeyboardNavigation } from '../../../../hooks/useDroplistKeyboardNavigation';
@@ -8,7 +8,7 @@ import { TEST_IDS } from '../../constants';
 
 type NotificationPanelSettingsDroplistProps = {
   actions: ItemSingleProps[];
-  button: ButtonSupportProps;
+  button: ButtonSimpleProps;
 };
 
 export function NotificationPanelSettingsDroplist({ actions, button }: NotificationPanelSettingsDroplistProps) {
@@ -41,7 +41,7 @@ export function NotificationPanelSettingsDroplist({ actions, button }: Notificat
       onOpenChange={setDroplistOpen}
       firstElementRefCallback={firstElementRefCallback}
       onFocusLeave={handleDroplistFocusLeave}
-      triggerElement={<ButtonSupport {...button} onClick={handleButtonClick} onKeyDown={handleButtonKeyDown} />}
+      triggerElement={<ButtonSimple {...button} onClick={handleButtonClick} onKeyDown={handleButtonKeyDown} />}
       placement={Droplist.placements.BottomEnd}
       data-test-id={TEST_IDS.settings.droplist}
     >
