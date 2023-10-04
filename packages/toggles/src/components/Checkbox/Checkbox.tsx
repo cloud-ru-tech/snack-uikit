@@ -11,7 +11,9 @@ import { MinusIcon } from './MinusIcon';
 import styles from './styles.module.scss';
 
 export type CheckboxProps = ToggleProps & {
+  /** Состояние частичного выбора */
   indeterminate?: boolean;
+  /** Состояние частичного выбора по-умолчанию */
   indeterminateDefault?: boolean;
 };
 

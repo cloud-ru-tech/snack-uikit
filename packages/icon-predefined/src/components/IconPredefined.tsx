@@ -7,10 +7,15 @@ import { Appearance, Size } from '../constants';
 import styles from './styles.module.scss';
 
 export type IconPredefinedProps = WithSupportProps<{
+  /** CSS-класс */
   className?: string;
+  /** Внешний вид */
   appearance?: Appearance;
+  /** Наличие цветной подложки */
   decor?: boolean;
+  /** JSX иконки */
   icon: JSXElementConstructor<{ size?: number; className?: string }>;
+  /** Размер */
   size?: Size;
 }>;
 

@@ -46,25 +46,79 @@ type ChildrenFunction = (params: {
 type OutsideClickHandler = (event: MouseEvent) => boolean;
 
 export type PopoverPrivateProps = WithSupportProps<{
+  /** Управляет состоянием показан/не показан. */
   open?: boolean;
+  /** Колбек отображения компонента. Срабатывает при изменении состояния open. */
   onOpenChange?: (isOpen: boolean) => void;
+  /** Закрывать ли при клике вне поповера */
   outsideClick?: boolean | OutsideClickHandler;
+  /**
+   * Положение поповера относительно своего триггера (children).
+   * @default Placement.Top
+   */
   placement: Placement;
   className?: string;
+  /** CSS-класс триггера */
   triggerClassName?: string;
+  /** Параметр наличия стрелки у поповера. В размеры стрелки встроен отступ. Дополнительный отступ может быть задан параметром `offset`. У элемента стрелки нет цвета, необходимо задавать его через параметр `arrowClassName`. */
   hasArrow?: boolean;
+  /** CSS-класс стрелки поповера */
   arrowClassName?: string;
+  /**
+   * Отступ поповера от его триггер-элемента (в пикселях).
+   * @default 0
+   */
   offset?: number;
+  /** Триггер поповера (подробнее читайте ниже) */
   children: ReactNode | ChildrenFunction;
+  /** Контент поповера */
   popoverContent: ReactNode | ReactNode[];
+  /**
+   * Условие отображения поповера:
+   * <br> - `Click` - открывать по клику
+   * <br> - `Hover` - открывать по ховеру
+   * <br> - `FocusVisible` - открывать по focus-visible
+   * <br> - `Focus` - открывать по фокусу
+   * <br> - `HoverAndFocusVisible` - открывать по ховеру и focus-visible
+   * <br> - `HoverAndFocus` - открывать по ховеру и фокусу
+   * <br> - `ClickAndFocusVisible` - открывать по клику и focus-visible
+   */
   trigger: Trigger;
+  /** Задержка открытия по ховеру */
   hoverDelayOpen?: number;
+  /** Задержка закрытия по ховеру */
   hoverDelayClose?: number;
+  /** Ref ссылка на триггер */
   triggerRef?: ForwardedRef<ReferenceType | HTMLElement | null>;
+  /**
+   * Стратегия управления шириной контейнера поповера
+   * <br> - `Auto` - соответствует ширине контента,
+   * <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире,
+   * <br> - `Eq` - Equal, строго равен ширине таргета.
+   * @default PopoverWidthStrategy.Auto
+   */
   widthStrategy?: PopoverWidthStrategy;
+  /**
+   * Стратегия управления высотой контейнера поповера
+   * <br> - `Auto` - соответствует высоте контента,
+   * <br> - `Lte` - Less Than or Equal, равен высоте таргета или меньше ее, если контент в поповере меньше,
+   * <br> - `Eq` - Equal, строго равен высоте таргета.
+   * @default PopoverHeightStrategy.Auto
+   */
   heightStrategy?: PopoverHeightStrategy;
+  /**
+   * Закрывать ли по нажатию на кнопку `Esc`
+   * @default true
+   */
   closeOnEscapeKey?: boolean;
+  /**
+   * Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `Click`)
+   * @default true
+   */
   triggerClickByKeys?: boolean;
+  /**
+   * Цепочка расположений которая будет применяться к поповеру от первого к последнему если при текущем он не влезает.
+   */
   fallbackPlacements?: Placement[];
 }>;
 

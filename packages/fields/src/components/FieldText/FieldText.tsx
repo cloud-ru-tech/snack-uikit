@@ -28,8 +28,11 @@ type WrapperProps = Pick<
 >;
 
 type FieldTextOwnProps = {
+  /** Показывать ли кнопку Копировать для поля (актуально только для `readonly = true`)  */
   showCopyButton?: boolean;
+  /** Можно ли вводить больше разрешённого кол-ва символов */
   allowMoreThanMaxLength?: boolean;
+  /** Иконка-префикс для поля */
   prefixIcon?: ReactElement;
 };
 

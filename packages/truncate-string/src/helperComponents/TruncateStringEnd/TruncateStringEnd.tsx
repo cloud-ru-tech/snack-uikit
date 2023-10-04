@@ -9,9 +9,13 @@ import styles from './styles.module.scss';
 
 export type TruncateStringEndProps = WithSupportProps<{
   className?: string;
+  /** Скрывать ли тултип с полным текстом */
   hideTooltip?: boolean;
+  /** Максимальное кол-во строк, до которого может сворачиваться текст. */
   maxLines?: number;
+  /** Положение тултипа относительно обрезанного текста. */
   placement?: TooltipProps['placement'];
+  /** Текст, который будет обрезаться */
   text: string;
 }>;
 

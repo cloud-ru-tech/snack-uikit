@@ -105,32 +105,32 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 ## Table
 Компонент таблицы
 ### Props
-| name | type | required | default value | description |
-|------|------|----------|---------------|-------------|
-| data | `TData[]` | true | - | Данные для отрисовки |
-| columnDefinitions | `ColumnDefinition<TData>[]` | true | - | Определение внешнего вида и функционала колонок |
-| sort | `{ state?: SortingState; onChange(state: SortingState): void; }` | false | - | Параметры не отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>state</strong>: Состояние сортировки для initial state (если initial state не нужен - можно вообще не передавать) <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
-| rowSelection | `{ enable: boolean &#124; ((row: Row<TData>) => boolean); onChange(state: RowSelectionState): void; multiRow?: boolean; }` | false | - | <strong>enable</strong>: Отвечает за доступность строк для выбора <br> <strong>onChange</strong>: Колбэк на выбор строк <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) |
-| onRowClick | `RowClickHandler<TData>` | false | - | Колбэк клика по строке |
-| className | `string` | false | - | CSS-класс |
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
+| data* | `TData[]` | - | Данные для отрисовки |
+| sort | `{ state?: SortingState; onChange(state: SortingState): void; }` | - | Параметры не отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>state</strong>: Состояние сортировки для initial state (если initial state не нужен - можно вообще не передавать) <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
+| rowSelection | `{ enable: boolean \| ((row: Row<TData>) => boolean); onChange(state: RowSelectionState): void; multiRow?: boolean; }` | - | <strong>enable</strong>: Отвечает за доступность строк для выбора <br> <strong>onChange</strong>: Колбэк на выбор строк <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) |
+| onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
+| className | `string` | - | CSS-класс |
 ## Table.getStatusColumnDef
 Вспомогательная функция для создания ячейки со статусом
 ### Props
-| name | type | required | default value | description |
-|------|------|----------|---------------|-------------|
-| accessorKey | `string` | true | - | Имя ключа соответствующее полю в data |
-| mapStatusToAppearance | `Record<string, StatusAppearance>` | true | - | Маппинг значений статуса на цвета |
-| enableSorting | `boolean` | false | - | Включение/выключение сортировки |
-| renderDescription | `(cellValue: string) => string` | false | - | Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса |
-| size | `number` | false | - | Размер ячейки |
-| header | `ColumnDefTemplate<HeaderContext<TData, unknown>> & (string &#124; ((ctx: HeaderContext<TData, unknown>) => string))` | false | - | Заголовок колонки |
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| mapStatusToAppearance* | `Record<string, StatusAppearance>` | - | Маппинг значений статуса на цвета |
+| accessorKey* | `string` | - | Имя ключа соответствующее полю в data |
+| enableSorting | `boolean` | - | Включение/выключение сортировки |
+| renderDescription | `(cellValue: string) => string` | - | Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса |
+| size | `number` | - | Размер ячейки |
+| header | `ColumnDefTemplate<HeaderContext<TData, unknown>> & (string \| ((ctx: HeaderContext<TData, unknown>) => string))` | - | Заголовок колонки |
 ## Table.getRowActionsColumnDef
 Вспомогательная функция для создания ячейки с дополнительными действиями у строки
 ### Props
-| name | type | required | default value | description |
-|------|------|----------|---------------|-------------|
-| actions | `RowActionProps<TData>[]` | true | - | Действия для строки |
-| pinned | `boolean` | false | - | Закрепление колонки справа в таблице |
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| actions* | `RowActionProps<TData>[]` | - | Действия для строки |
+| pinned | `boolean` | - | Закрепление колонки справа в таблице |
 
 
 [//]: DOCUMENTATION_SECTION_END

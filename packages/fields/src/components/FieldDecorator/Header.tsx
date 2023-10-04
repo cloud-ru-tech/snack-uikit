@@ -6,11 +6,20 @@ import { TruncateString } from '@snack-ui/truncate-string';
 import styles from './styles.module.scss';
 
 export type HeaderProps = {
+  /** Лейбл */
   label?: string;
+  /** Всплывающая подсказка лейбла */
   labelTooltip?: string;
+  /** Аттрибут for */
   labelFor?: string;
+  /** Является ли поле обязательным */
   required?: boolean;
+  /** Размер */
   size?: Size;
+  /**
+   * Расположение подсказки лейбла
+   * @default Tooltip.placements.Top
+   */
   labelTooltipPlacement?: TooltipProps['placement'];
 };
 

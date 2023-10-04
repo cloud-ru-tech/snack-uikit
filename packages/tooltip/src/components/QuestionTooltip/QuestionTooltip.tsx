@@ -8,8 +8,11 @@ import { Size, SIZES_MAP, Trigger, TRIGGER_MAP } from './constants';
 import styles from './styles.module.scss';
 
 export type QuestionTooltipProps = Omit<TooltipProps, 'children' | 'triggerClassName' | 'trigger'> & {
+  /** Условие отображения подсказки */
   trigger?: Trigger;
+  /** Размер */
   size?: Size;
+  /** CSS-класс контейнера подсказки */
   tooltipClassname?: string;
 };
 

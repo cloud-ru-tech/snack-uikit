@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 
 export type PopoverProps = WithSupportProps<
   {
+    /** Контент поповера */
     tip: ReactNode;
   } & Pick<
     PopoverPrivateProps,

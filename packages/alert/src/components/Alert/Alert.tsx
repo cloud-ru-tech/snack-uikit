@@ -10,16 +10,27 @@ import { getIcon } from '../../utils';
 import styles from './styles.module.scss';
 
 export type AlertProps = WithSupportProps<{
+  /** Отображать иконку */
   icon?: boolean;
+  /** Заголовок */
   title?: string;
+  /** Описание */
   description: string;
+  /** Текст ссылки */
   link?: string;
+  /** Ссылка */
   href?: string;
+  /** Колбек закрытия */
   onClose?: () => void;
+  /** Внешний вид */
   appearance?: Appearance;
+  /** CSS-класс */
   className?: string;
 }>;
 
+/**
+ * Компонент для отображения уведомления.
+ */
 export function Alert({
   icon = true,
   title,
@@ -27,7 +38,7 @@ export function Alert({
   link,
   description,
   onClose,
-  appearance = Appearance.Neutral,
+  appearance = Alert.appearances.Neutral,
   className,
   ...rest
 }: AlertProps) {

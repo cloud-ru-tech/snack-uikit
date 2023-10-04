@@ -17,17 +17,27 @@ const getExternalIcon = (size: Size) => {
 };
 
 export type LinkProps = WithSupportProps<{
+  /** Текст ссылки */
   text?: string;
+  /** CSS-класс */
   className?: string;
+  /** Ссылка */
   href?: string;
+  /** HTML-атрибут target */
   target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
+  /** Колбек обработки клика */
   onClick?: MouseEventHandler<HTMLAnchorElement>;
+  /** Размер */
   size?: Size;
+  /** Ведет ли ссылка на внешний ресурс (добавляет иконку если true) */
   external?: boolean;
+  /** Стилизует ссылку для размещения на цветном фоне */
   onColor?: OnColor;
+  /** Тип поверхности, на которой размещена ссылка */
   onSurface?: OnSurface;
 }>;
 
+/** Компонент ссылка */
 export function Link({
   text,
   className,

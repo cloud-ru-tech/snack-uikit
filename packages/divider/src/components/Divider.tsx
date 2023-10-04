@@ -6,11 +6,15 @@ import { Orientation, Weight } from './constants';
 import styles from './styles.module.scss';
 
 export type DividerProps = WithSupportProps<{
+  /** Толщина линии */
   weight?: Weight;
+  /** Ориентация */
   orientation?: Orientation;
+  /** CSS-класс */
   className?: string;
 }>;
 
+/** Компонент для визуального отделения групп компонентов */
 export function Divider({
   className,
   orientation = Orientation.Horizontal,

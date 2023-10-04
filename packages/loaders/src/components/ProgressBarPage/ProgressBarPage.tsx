@@ -6,13 +6,19 @@ import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 import classNames from './styles.module.scss';
 
 export type ProgressBarPageProps = WithSupportProps<{
+  /** Включен/выключен */
   inProgress: boolean;
+  /** Скорость анимации */
   animationDuration?: number;
+  /** Время между прогрессом */
   incrementDuration?: number;
+  /** Минимальное значение прогресс бара от 0 до 1 */
   minimum?: number;
+  /** CSS-класс */
   className?: string;
 }>;
 
+/** Компонент индикатор загрузки страницы */
 export function ProgressBarPage({
   animationDuration = 200,
   incrementDuration = 800,

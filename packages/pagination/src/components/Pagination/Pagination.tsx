@@ -10,8 +10,11 @@ import { PageNumberButton } from '../PageNumberButton';
 import styles from './styles.module.scss';
 
 export type PaginationProps = WithSupportProps<{
+  /** Общее количество страниц */
   total: number;
+  /** Текущая страница */
   page: number;
+  /** Колбек смены значения */
   onChange(page: number): void;
   className?: string;
 }>;

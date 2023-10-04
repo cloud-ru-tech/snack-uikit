@@ -12,8 +12,11 @@ import styles from './styles.module.scss';
 export type FieldDecoratorProps = WithSupportProps<
   {
     className?: string;
+    /** Контент */
     children: ReactNode;
+    /** Деактивирован ли элемент */
     disabled?: boolean;
+    /** Является ли поле доступным только на чтение */
     readonly?: boolean;
   } & HeaderProps &
     FooterProps

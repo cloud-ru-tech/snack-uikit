@@ -29,6 +29,7 @@ const UNCHECKED_ICONS = {
 };
 
 export type FavoriteProps = Omit<ToggleProps, 'disabled'> & {
+  /** Иконка */
   icon?: FavoriteIcon;
 };
 

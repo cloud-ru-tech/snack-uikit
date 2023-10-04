@@ -14,7 +14,9 @@ enum Size {
 }
 
 export type StatusIndicatorProps = WithSupportProps<{
+  /** Размер */
   size?: Size;
+  /** Внешний вид */
   appearance?: Appearance;
   className?: string;
 }>;

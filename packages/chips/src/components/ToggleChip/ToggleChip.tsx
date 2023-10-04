@@ -10,12 +10,16 @@ import styles from './styles.module.scss';
 
 export type ToggleChipProps = WithSupportProps<
   BaseChipProps & {
+    /** Отмечен ли компонент */
     checked: boolean;
+    /** Размер */
     size?: Size;
+    /** Колбек смены значения */
     onChange(checked: boolean, e: ChangeEvent<HTMLInputElement>): void;
   }
 >;
 
+/** Чип с состоянием выбран/не выбран */
 export function ToggleChip({
   icon,
   size = ToggleChip.sizes.S,

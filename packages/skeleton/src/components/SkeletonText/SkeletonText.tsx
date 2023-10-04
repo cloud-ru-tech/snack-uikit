@@ -9,8 +9,11 @@ import styles from './styles.module.scss';
 
 export type SkeletonTextProps = WithSupportProps<
   Omit<SkeletonProps, 'height'> & {
+    /** Количество строк. */
     lines?: number;
+    /** CSS-класс строки */
     rowClassName?: string;
+    /** CSS-класс линии */
     lineClassName?: string;
   }
 >;

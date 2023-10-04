@@ -12,11 +12,11 @@
 ## PromoTag
 Компонент Promo Tag
 ### Props
-| name | type | required | default value | description |
-|------|------|----------|---------------|-------------|
-| text | `string` | true | - | Текст компонента |
-| appearance | enum Appearance: `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | false | PromoTag.appearances.Primary | Внешний вид |
-| className | `string` | false | - | CSS-класс |
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| text* | `string` | - | Текст компонента |
+| appearance | enum Appearance: `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | PromoTag.appearances.Primary | Внешний вид |
+| className | `string` | - | CSS-класс |
 
 
 [//]: DOCUMENTATION_SECTION_END

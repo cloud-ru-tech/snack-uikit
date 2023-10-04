@@ -10,6 +10,7 @@ export type HiddenDropZoneProps = DropZoneProps & {
   children: ReactNode;
 };
 
+/** Компонент - скрытая дропзона */
 export function HiddenDropZone(props: HiddenDropZoneProps) {
   const { disabled = false, children, className, ...rest } = props;
 

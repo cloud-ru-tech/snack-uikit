@@ -27,12 +27,35 @@ import styles from './styles.module.scss';
 export type ScrollProps = WithSupportProps<
   PropsWithChildren<{
     className?: string;
+    /** Размер скролбаров */
     size?: Size;
+    /** Скролить ли по клику в скроллбар. */
     clickScrolling?: boolean;
+    /**
+     * Включает автоскрол при маунте и изменении размера контента:
+     * <br> - `bottom` - автоскрол вниз,
+     * <br> - `right` - автоскрол вправо,
+     */
     autoscrollTo?: AutoscrollTo;
+    /**
+     * Управление скрытием скролл баров:
+     * <br> - `Never` - показывать всегда
+     * <br> - `Leave` - скрывать когда курсор покидает компонент
+     * <br> - `Scroll` - показывать только когда происходит скроллинг
+     * <br> - `Move` - показывать при движении курсора над компонентом
+     */
     barHideStrategy?: BarHideStrategy;
+    /** Колбек события скрола. */
     onScroll?: (event?: Event) => void;
+    /**
+     * Настройка возможности регулировать Scroll-контейнер:
+     * <br> - `None` - нельзя изменять размер
+     * <br> - `Horizontal` - можно изменять размер только по горизонтали
+     * <br> - `Vertical` - можно изменять размер только по вертикали
+     * <br> - `Both` - можно изменять размер в обеих координатах
+     */
     resize?: Resize;
+    /** Отключает возможность взаимодействовать со скролбарами мышью. */
     untouchableScrollbars?: boolean;
   }>
 >;

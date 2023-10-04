@@ -13,19 +13,33 @@ import { APPEARANCE_TO_COLOR_MAP_INVERT } from './constants';
 import styles from './styles.module.scss';
 
 export type AlertTopProps = WithSupportProps<{
+  /** Отображать иконку */
   icon?: boolean;
+  /** Заголовок */
   title?: string;
+  /** Описание */
   description: string;
+  /** Текст ссылки */
   link?: string;
+  /** Ссылка */
   href?: string;
+  /** Колбек закрытия */
   onClose?: () => void;
+  /** Внешний вид */
   appearance?: Appearance;
+  /** Текст кнопки */
   buttonText?: string;
+  /** Колбек клика по кнопке */
   buttonOnClick?: () => void;
+  /** Иконка в кнопке */
   buttonIcon?: ReactElement;
+  /** CSS-класс */
   className?: string;
 }>;
 
+/**
+ * Компонент для отображения уведомления вверху экрана.
+ */
 export function AlertTop({
   icon = true,
   title,
@@ -33,7 +47,7 @@ export function AlertTop({
   link,
   href,
   onClose,
-  appearance = Appearance.Neutral,
+  appearance = AlertTop.appearances.Neutral,
   buttonText,
   buttonOnClick,
   buttonIcon,

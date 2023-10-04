@@ -6,10 +6,13 @@ import { LoaderSize } from '../constants';
 import styles from './styles.module.scss';
 
 export type SpinnerProps = WithSupportProps<{
+  /** Размер */
   size?: LoaderSize;
+  /** CSS-класс */
   className?: string;
 }>;
 
+/** Компонент спиннер */
 export function Spinner({ size = LoaderSize.S, className, ...rest }: SpinnerProps) {
   return (
     <svg

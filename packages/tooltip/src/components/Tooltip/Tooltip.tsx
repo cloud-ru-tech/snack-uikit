@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 
 export type TooltipProps = WithSupportProps<
   {
+    /** Содержимое тултипа */
     tip: ReactNode;
   } & Pick<
     PopoverPrivateProps,
@@ -17,8 +18,8 @@ export type TooltipProps = WithSupportProps<
 
 export function Tooltip({
   tip,
-  trigger = PopoverPrivate.triggers.HoverAndFocusVisible,
-  placement = PopoverPrivate.placements.Top,
+  trigger = Tooltip.triggers.HoverAndFocusVisible,
+  placement = Tooltip.placements.Top,
   children,
   ...otherProps
 }: TooltipProps) {

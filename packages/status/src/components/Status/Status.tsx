@@ -17,9 +17,13 @@ const statusIndicatorSizeMap = {
 };
 
 export type StatusProps = WithSupportProps<{
+  /** Текст */
   label: string;
+  /** Размер */
   size?: Size;
+  /** Внешний вид */
   appearance?: Appearance;
+  /** Наличие фона */
   hasBackground?: boolean;
   className?: string;
 }>;

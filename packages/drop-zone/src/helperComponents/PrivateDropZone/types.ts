@@ -11,12 +11,22 @@ export enum UploadMode {
 
 export type PrivateDropZoneProps = WithSupportProps<{
   isOver: boolean;
-  className?: string;
+  /** Колбек загрузки файла */
   onFilesUpload(files: File[]): void;
+  /** Заголовок */
   title?: string;
+  /** Описание */
   description?: ReactNode;
+  /** Деактивирован ли компонент */
   disabled?: boolean;
+  /**
+   * Режим
+   * @default UploadMode.Multiple
+   */
   mode?: UploadMode;
+  /** Режим */
   accept?: string;
+  /** CSS-класс */
+  className?: string;
 }> &
   Pick<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, DragAndDropEventNames>;

@@ -7,6 +7,7 @@ import { TogglePrivate } from '../TogglePrivate';
 import styles from './styles.module.scss';
 
 export type SwitchProps = ToggleProps & {
+  /** Показывать ли иконку в переключателе */
   showIcon?: boolean;
 };
 

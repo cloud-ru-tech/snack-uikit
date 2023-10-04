@@ -13,6 +13,10 @@ type UseClearButtonProps = {
   size: Size;
 };
 
+/**
+ * Позволяет использовать кнопку сброса значения
+ * @function hook
+ */
 export function useClearButton({ clearButtonRef, showClearButton, size, onClear }: UseClearButtonProps): ButtonProps {
   const clearEventHandler = useEventHandler(onClear);
 

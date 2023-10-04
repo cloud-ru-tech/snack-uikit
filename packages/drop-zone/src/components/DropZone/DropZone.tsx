@@ -3,6 +3,7 @@ import { useDrag } from '../../hooks/useDrag';
 
 export type DropZoneProps = Omit<PrivateDropZoneProps, 'isOver' | DropEventNames>;
 
+/** Компонент - дропзона */
 export function DropZone({ ...props }: DropZoneProps): JSX.Element {
   const { disabled = false, ...rest } = props;
 

@@ -18,19 +18,32 @@ import styles from './styles.module.scss';
 
 export type TextAreaProps = RefAttributes<HTMLTextAreaElement> &
   WithSupportProps<{
+    /** HTML-аттрибут name */
     name?: string;
+    /** HTML-аттрибут value */
     value: string;
+    /** Колбек смены значения */
     onChange?(value: string, e: ChangeEvent<HTMLTextAreaElement>): void;
+    /** HTML-аттрибут id */
     id?: string;
     className?: string;
+    /** Плейсхолдер */
     placeholder?: string;
+    /** Является ли поле доступным только на чтение */
     readonly?: boolean;
+    /** Является ли поле деактивированным */
     disabled?: boolean;
+    /** Включен ли автокомплит */
     autoComplete?: boolean;
+    /** Максимальное кол-во символов */
     maxLength?: number;
+    /** Колбек получения фокуса */
     onFocus?: FocusEventHandler<HTMLTextAreaElement>;
+    /** Колбек потери фокуса */
     onBlur?: FocusEventHandler<HTMLTextAreaElement>;
+    /** Колбек нажатия клавиши клавиатуры */
     onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>;
+    /** HTML-аттрибут tab-index */
     tabIndex?: number;
   }>;
 

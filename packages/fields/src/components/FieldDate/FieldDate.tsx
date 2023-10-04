@@ -54,10 +54,15 @@ type WrapperProps = Pick<
 >;
 
 type FieldDateOwnProps = {
+  /** Открыт date-picker */
   open?: boolean;
+  /** Колбек открытия пикера */
   onOpenChange?(value: boolean): void;
+  /** Колбек смены значения */
   onChange?(value: string): void;
+  /** Отображать ли кнопку копирования */
   showCopyButton?: boolean;
+  /** Текущая локаль календаря */
   locale?: Intl.Locale;
 };
 

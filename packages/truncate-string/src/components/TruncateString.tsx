@@ -9,8 +9,14 @@ import {
 import { Variant } from './constants';
 
 export type TruncateStringProps =
-  | ({ variant?: Variant.End } & TruncateStringEndProps)
-  | ({ variant: Variant.Middle } & TruncateStringMiddleProps);
+  | ({
+      /** Вариант обрезания строки: <br> - `End` - с конца */
+      variant?: Variant.End;
+    } & TruncateStringEndProps)
+  | ({
+      /** <br> - `Middle` - по середине */
+      variant: Variant.Middle;
+    } & TruncateStringMiddleProps);
 
 export function TruncateString({ variant = Variant.End, ...props }: TruncateStringProps) {
   switch (variant) {

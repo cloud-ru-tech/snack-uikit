@@ -10,11 +10,14 @@ import styles from './styles.module.scss';
 
 export type AssistChipProps = WithSupportProps<
   BaseChipProps & {
+    /** Размер */
     size?: Size;
+    /** Колбек обработки клика */
     onClick: MouseEventHandler<HTMLButtonElement>;
   }
 >;
 
+/** Чип с лейблом  */
 export function AssistChip({
   icon,
   size = AssistChip.sizes.S,

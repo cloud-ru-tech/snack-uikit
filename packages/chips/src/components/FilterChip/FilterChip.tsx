@@ -14,6 +14,7 @@ import { defaultMultiValueLabelFormatter, fallbackValue, normalizeValue } from '
 
 export type FilterChipProps = SingleSelectionProps | MultiSelectionProps;
 
+/** Чип единичного или множественного выбора значений */
 export function FilterChip({
   size = Size.S,
   disabled,

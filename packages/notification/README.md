@@ -79,57 +79,56 @@ const cards = [
 ## NotificationCard
 Компонент карточки уведомления
 ### Props
-| name | type | required | default value | description |
-|------|------|----------|---------------|-------------|
-| id | `string` | true | - | Идентификатор уведомления |
-| appearance | enum Appearance: `"neutral"`, `"error"`, `"errorCritical"`, `"warning"`, `"success"` | false | Appearance.Neutral | Тип уведомления |
-| label | `string` | false | - | Лейбл перез заголовком |
-| unread | `boolean` | false | - | Управление состоянием прочитано/не прочитано |
-| title | `string` | true | - | Заголовок уведомления |
-| content | `ReactNode` | true | - | Контент уведомления |
-| link | `Omit<LinkProps, "data-test-id" &#124; "size" &#124; "onColor" &#124; "onSurface">` | false | - | Ссылка |
-| date | `string` | true | - | Дата уведомления |
-| onClick | `MouseEventHandler<HTMLDivElement>` | false | - | Колбэк клика по карточке |
-| onVisible | `(cardId: string) => void` | false | - | Колбэк при попадании карточки в область видимости на 80% |
-| actions | `Pick<DroplistItemSingleProps, "onClick" &#124; "option" &#124; "caption" &#124; "description" &#124; "tagLabel" &#124; "disabled" &#124; "icon">[]` | false | - | Дополнительные действия у карточки |
-| className | `string` | false | - | CSS-класс |
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| date* | `string` | - | Дата уведомления |
+| content* | `ReactNode` | - | Контент уведомления |
+| title* | `string` | - | Заголовок уведомления |
+| id* | `string` | - | Идентификатор уведомления |
+| appearance | enum Appearance: `"neutral"`, `"error"`, `"errorCritical"`, `"warning"`, `"success"` | Appearance.Neutral | Тип уведомления |
+| label | `string` | - | Лейбл перед заголовком |
+| unread | `boolean` | - | Управление состоянием прочитано/не прочитано |
+| link | `Omit<LinkProps, "data-test-id" \| "size" \| "onColor" \| "onSurface">` | - | Ссылка |
+| onClick | `MouseEventHandler<HTMLDivElement>` | - | Колбэк клика по карточке |
+| onVisible | `(cardId: string) => void` | - | Колбэк при попадании карточки в область видимости на 80% |
+| actions | `Pick<DroplistItemSingleProps, "onClick" \| "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon">[]` | - | Дополнительные действия у карточки |
+| className | `string` | - | CSS-класс |
 ## NotificationPanel
 Компонент панели для уведомлений
 ### Props
-| name | type | required | default value | description |
-|------|------|----------|---------------|-------------|
-| title | `string` | true | - | Заголовок панели |
-| settings | `NotificationPanelSettingsProps` | false | - | Кнопка настроек и выпадающий список |
-| chips | `Omit<ToggleChipProps, "data-test-id" &#124; "size">[]` | false | - | Чипы для фильтрации |
-| readAllButton | `Omit<ButtonFunctionProps, "data-test-id"> & { onClick: MouseEventHandler<HTMLElement>; }` | false | - | Кнопка в "шапке" панели |
-| triggerElement | `ReactNode &#124; ChildrenFunction` | true | - | Элемент для открытия панели |
-| footerButton | `{ label: string; onClick: MouseEventHandler<HTMLButtonElement>; }` | false | - | Кнопка внизу панели |
-| loading | `boolean` | false | - | Состояние загрузки |
-| content | `ReactNode` | false | - | Контент для отрисовки (e.g NotificationCard &#124; NotificationPanel.Blank) |
-| skeletonsAmount | `number` | false | 2 | Количество скелетонов карточек для отображения при загрузке |
-| className | `string` | false | - |  |
-| triggerClassName | `string` | false | - |  |
-| open | `boolean` | false | - |  |
-| onOpenChange | `(isOpen: boolean) => void` | false | - |  |
-| hoverDelayOpen | `number` | false | - |  |
-| hoverDelayClose | `number` | false | - |  |
-| offset | `number` | false | - |  |
-| closeOnEscapeKey | `boolean` | false | - |  |
-| triggerClickByKeys | `boolean` | false | - |  |
-| triggerRef | `ForwardedRef<HTMLElement &#124; ReferenceType>` | false | - |  |
-| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | false | - |  |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | false | - |  |
-| contentClassName | `string` | false | - | CSS-класс для элемента содержащего контент |
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| triggerElement* | `ReactNode \| ChildrenFunction` | - | Элемент для открытия панели |
+| title* | `string` | - | Заголовок панели |
+| settings | `NotificationPanelSettingsProps` | - | Кнопка настроек и выпадающий список |
+| chips | `Omit<ToggleChipProps, "data-test-id" \| "size">[]` | - | Чипы для фильтрации |
+| readAllButton | `Omit<ButtonFunctionProps, "data-test-id"> & { onClick: MouseEventHandler<HTMLElement>; }` | - | Кнопка в "шапке" панели |
+| footerButton | `{ label: string; onClick: MouseEventHandler<HTMLButtonElement>; }` | - | Кнопка внизу панели |
+| loading | `boolean` | - | Состояние загрузки |
+| content | `ReactNode` | - | Контент для отрисовки (e.g NotificationCard \| NotificationPanel.Blank) |
+| skeletonsAmount | `number` | 2 | Количество скелетонов карточек для отображения при загрузке |
+| className | `string` | - | CSS-класс |
+| triggerClassName | `string` | - | CSS-класс триггера |
+| open | `boolean` | - | Управляет состоянием показан/не показан. |
+| onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
+| hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
+| hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
+| offset | `number` | 0 | Отступ поповера от его триггер-элемента (в пикселях). |
+| closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
+| triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `Click`) |
+| triggerRef | `ForwardedRef<HTMLElement \| ReferenceType>` | - | Ref ссылка на триггер |
+| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `Click` - открывать по клику <br> - `Hover` - открывать по ховеру <br> - `FocusVisible` - открывать по focus-visible <br> - `Focus` - открывать по фокусу <br> - `HoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `HoverAndFocus` - открывать по ховеру и фокусу <br> - `ClickAndFocusVisible` - открывать по клику и focus-visible |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Placement.Top | Положение поповера относительно своего триггера (children). |
+| contentClassName | `string` | - | CSS-класс для элемента содержащего контент |
 ## NotificationPanel.Blank
-
 ### Props
-| name | type | required | default value | description |
-|------|------|----------|---------------|-------------|
-| title | `ReactNode` | true | - | Заголовок |
-| description | `ReactNode` | false | - | Описание |
-| icon | `JSXElementConstructor<{ size?: number; className?: string; }>` | false | - | Иконка |
-| iconAppearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | false | - | Цвет обводки для иконки |
-| className | `string` | false | - | CSS-класс |
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| title* | `ReactNode` | - | Заголовок |
+| description | `ReactNode` | - | Описание |
+| icon | `JSXElementConstructor<{ size?: number; className?: string; }>` | - | Иконка |
+| iconAppearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | - | Цвет обводки для иконки |
+| className | `string` | - | CSS-класс |
 
 
 [//]: DOCUMENTATION_SECTION_END

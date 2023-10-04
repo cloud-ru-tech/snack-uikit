@@ -4,7 +4,9 @@ import { SkeletonContextProvider } from '../../context';
 import { useIsLoadingValue } from '../../hooks';
 
 type WithSkeletonProps = PropsWithChildren<{
+  /** JSX скелетон */
   skeleton: ReactNode;
+  /** Флаг состояния загрузки. Если значение true, будет отрисован блок скелетона, если false - children. */
   loading?: boolean;
 }>;
 

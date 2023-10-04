@@ -30,10 +30,15 @@ type WrapperProps = Pick<
 >;
 
 type FieldTextAreaOwnProps = {
+  /** Максимальное кол-во строк, до которого размер поля может быть увеличен */
   maxRows?: number;
+  /** Может ли ли пользователь изменять размеры поля (если св-во не включено, поле автоматически меняет свой размер) */
   resizable?: boolean;
+  /** Колбек смены значения */
   onChange?(value: string, e?: ChangeEvent<HTMLTextAreaElement>): void;
+  /** Показывать ли кнопку Копировать для поля (актуально только для `readonly = true`) */
   showCopyButton?: boolean;
+  /** Можно ли вводить больше разрешённого кол-ва символов */
   allowMoreThanMaxLength?: boolean;
 };
 

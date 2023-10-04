@@ -35,10 +35,15 @@ type WrapperProps = Pick<
 >;
 
 type FieldSecureOwnProps = {
+  /** Замаскированно ли значение поля */
   hidden?: boolean;
+  /** Колбек смены маскирования */
   onHiddenChange?(value: boolean): void;
+  /** Отображать ли кнопку копирования */
   showCopyButton?: boolean;
+  /** Можно ли вводить больше разрешённого кол-ва символов */
   allowMoreThanMaxLength?: boolean;
+  /** Иконка-префикс для поля */
   prefixIcon?: ReactElement;
 };
 

@@ -6,10 +6,13 @@ import { LoaderSize } from '../constants';
 import styles from './styles.module.scss';
 
 export type SunProps = WithSupportProps<{
+  /** Размер */
   size?: LoaderSize;
+  /** CSS-класс */
   className?: string;
 }>;
 
+/** Компонент спиннер */
 export function Sun({ size = LoaderSize.S, className, ...rest }: SunProps) {
   return (
     <svg

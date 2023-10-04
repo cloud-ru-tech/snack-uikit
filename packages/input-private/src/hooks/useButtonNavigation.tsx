@@ -14,6 +14,10 @@ type UseButtonNavigationProps<T extends HTMLInputElement | HTMLTextAreaElement> 
   submitKeys: string[];
 };
 
+/**
+ * Позволяет использовать клавиатуру для навигации по элементам управления
+ * @function hook
+ */
 export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaElement>({
   inputRef,
   setInputFocus = () => inputRef.current?.focus(),

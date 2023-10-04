@@ -6,15 +6,24 @@ import { ValidationState } from '../../constants';
 import styles from './styles.module.scss';
 
 export type FooterProps = {
+  /** Допустимая длинна текста */
   length?: {
+    /** Текущая */
     current: number;
+    /** Максимальная */
     max?: number;
   };
+  /** Подсказка внизу */
   hint?: string;
+  /** Состояние валидации */
   validationState?: ValidationState;
+  /** Размер */
   size?: Size;
+  /** Отображать иконку подсказки */
   showHintIcon?: boolean;
+  /** Является ли поле деактивированным */
   disabled?: boolean;
+  /** Доступно ли поле только на чтение */
   readonly?: boolean;
 };
 

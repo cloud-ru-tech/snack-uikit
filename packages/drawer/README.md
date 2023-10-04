@@ -12,40 +12,40 @@
 ## DrawerCustom
 Компонент-конструктор
 ### Props
-| name | type | required | default value | description |
-|------|------|----------|---------------|-------------|
-| open | `boolean` | true | - | Управление состоянием показан/не показан. |
-| onClose | `() => void` | true | - | Колбэк закрытия |
-| mode | enum Mode: `"regular"`, `"soft"` | false | - | Режим отображения |
-| position | enum Position: `"right"`, `"left"` | false | - | Расположение открытого Drawer |
-| className | `string` | false | - | CSS-класс для элемента с контентом |
-| rootClassName | `string` | false | - | CSS-класс для корневого элемента |
-| size | `string &#124; number` | false | - | Размер |
-| push | `boolean &#124; PushConfig` | false | - | Смещение при открытии "вложенного" компонента |
-| container | `string &#124; HTMLElement` | false | - | Контейнер в котором будет рендерится Drawer. По-умолчанию - body |
-| nestedDrawer | `ReactElement<DrawerCustomProps, string &#124; JSXElementConstructor<any>>` | false | - | Вложенный Drawer |
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| onClose* | `() => void` | - | Колбэк закрытия |
+| open* | `boolean` | - | Управление состоянием показан/не показан. |
+| mode | enum Mode: `"regular"`, `"soft"` | - | Режим отображения |
+| position | enum Position: `"right"`, `"left"` | - | Расположение открытого Drawer |
+| className | `string` | - | CSS-класс для элемента с контентом |
+| rootClassName | `string` | - | CSS-класс для корневого элемента |
+| size | `string \| number` | - | Размер |
+| push | `boolean \| PushConfig` | - | Смещение при открытии "вложенного" компонента |
+| container | `string \| HTMLElement` | - | Контейнер в котором будет рендерится Drawer. По-умолчанию - body |
+| nestedDrawer | `ReactElement<DrawerCustomProps, string \| JSXElementConstructor<any>>` | - | Вложенный Drawer |
 ## Drawer
 Готовый компонент Drawer
 ### Props
-| name | type | required | default value | description |
-|------|------|----------|---------------|-------------|
-| open | `boolean` | true | - | Управление состоянием показан/не показан. |
-| onClose | `() => void` | true | - | Колбэк закрытия |
-| mode | enum Mode: `"regular"`, `"soft"` | false | - | Режим отображения |
-| position | enum Position: `"right"`, `"left"` | false | - | Расположение открытого Drawer |
-| className | `string` | false | - | CSS-класс для элемента с контентом |
-| rootClassName | `string` | false | - | CSS-класс для корневого элемента |
-| container | `string &#124; HTMLElement` | false | - | Контейнер в котором будет рендерится Drawer. По-умолчанию - body |
-| titleTooltip | `ReactNode` | false | - | Тултип для заголовка |
-| image | `{ src: string; alt: string; }` | false | - | Изображение |
-| content | `ReactNode` | true | - | Контент |
-| title | `string` | true | - | Заголовок |
-| subtitle | `string` | false | - | Подзаголовок |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | - | Размер |
-| approveButton | `Omit<ButtonFilledProps, "data-test-id" &#124; "size">` | false | - | Основная кнопка |
-| cancelButton | `Omit<ButtonTonalProps, "data-test-id" &#124; "size">` | false | - | Кнопка отмены |
-| additionalButton | `Omit<ButtonSimpleProps, "data-test-id" &#124; "size">` | false | - | Дополнительная кнопка |
-| nestedDrawer | `ReactElement<DrawerProps, string &#124; JSXElementConstructor<any>>` | false | - | Вложенный Drawer |
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| title* | `string` | - | Заголовок |
+| content* | `ReactNode` | - | Контент |
+| onClose* | `() => void` | - | Колбэк закрытия |
+| open* | `boolean` | - | Управление состоянием показан/не показан. |
+| mode | enum Mode: `"regular"`, `"soft"` | - | Режим отображения |
+| position | enum Position: `"right"`, `"left"` | - | Расположение открытого Drawer |
+| className | `string` | - | CSS-класс для элемента с контентом |
+| rootClassName | `string` | - | CSS-класс для корневого элемента |
+| container | `string \| HTMLElement` | - | Контейнер в котором будет рендерится Drawer. По-умолчанию - body |
+| titleTooltip | `ReactNode` | - | Тултип для заголовка |
+| image | `{ src: string; alt: string; }` | - | Изображение |
+| subtitle | `string` | - | Подзаголовок |
+| size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
+| approveButton | `Omit<ButtonFilledProps, "data-test-id" \| "size">` | - | Основная кнопка |
+| cancelButton | `Omit<ButtonTonalProps, "data-test-id" \| "size">` | - | Кнопка отмены |
+| additionalButton | `Omit<ButtonSimpleProps, "data-test-id" \| "size">` | - | Дополнительная кнопка |
+| nestedDrawer | `ReactElement<DrawerProps, string \| JSXElementConstructor<any>>` | - | Вложенный Drawer |
 
 
 [//]: DOCUMENTATION_SECTION_END

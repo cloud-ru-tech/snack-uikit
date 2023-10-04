@@ -17,7 +17,7 @@ export type NotificationCardProps = WithSupportProps<{
   id: string;
   /** Тип уведомления */
   appearance?: Appearance;
-  /** Лейбл перез заголовком */
+  /** Лейбл перед заголовком */
   label?: string;
   /** Управление состоянием прочитано/не прочитано */
   unread?: boolean;

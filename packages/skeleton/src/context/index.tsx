@@ -3,6 +3,7 @@ import { createContext, PropsWithChildren } from 'react';
 export const SkeletonContext = createContext(false);
 
 export type SkeletonContextProviderProps = PropsWithChildren<{
+  /** Флаг состояния загрузки. Если значение true, будут отрисованы блоки скелетона. */
   loading: boolean;
 }>;
 
