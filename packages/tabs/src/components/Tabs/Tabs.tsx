@@ -3,13 +3,16 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { Type } from '../../constants';
 import { TabsContext } from '../../context';
-import { Tab } from '../Tab';
-import { TabBar } from '../TabBar';
-import { TabContent } from '../TabContent';
+import { Tab as TabComponent } from '../Tab';
+import { TabBar as TabBarComponent } from '../TabBar';
+import { TabContent as TabContentComponent } from '../TabContent';
 
 export type TabsProps<T extends string = string> = PropsWithChildren<{
+  /** Текущая вкладка */
   value?: T;
+  /** Выбранная вкладка по-умолчанию */
   defaultValue?: T;
+  /** Колбек выбора вкладки */
   onChange?: (id: T) => void;
 }>;
 
@@ -28,7 +31,10 @@ export function Tabs<T extends string = string>({ children, onChange, value, def
   );
 }
 
-Tabs.Tab = Tab;
-Tabs.TabBar = TabBar;
-Tabs.TabContent = TabContent;
 Tabs.types = Type;
+
+export namespace Tabs {
+  export const Tab = TabComponent;
+  export const TabBar = TabBarComponent;
+  export const TabContent = TabContentComponent;
+}

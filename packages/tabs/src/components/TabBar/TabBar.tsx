@@ -12,7 +12,13 @@ import { useFocusControl, useScrollContainer } from './hooks';
 import styles from './styles.module.scss';
 
 export type TabBarProps = WithSupportProps<{
+  /** Контент */
   children: ReactElement<TabProps>[];
+  /**
+   * Тип панели табов:
+   * <br> - `Primary` - когда панель табов является верхнеуровневым элементом страницы, замещающим заголовок.
+   * <br> - `Secondary` - когда панель табов расположена на том же уровне что и остальной контент
+   */
   type?: Type;
   className?: string;
 }>;

@@ -4,6 +4,7 @@ import { TabsContext } from '../../context';
 import { getTabContentId } from '../../utils';
 
 export type TabContentProps = PropsWithChildren<{
+  /** Значение таба */
   value: string;
   className?: string;
 }>;

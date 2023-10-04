@@ -1,8 +1,14 @@
-import { Typography } from './components';
+import { FunctionComponent } from 'react';
+
 import { GeneratedTypography } from './components/generatedVariants/types';
 
-export function attachVariants(variants: GeneratedTypography) {
+export function attachVariants<C extends FunctionComponent<any> & Partial<GeneratedTypography>>(
+  component: C,
+  variants: GeneratedTypography,
+): C & GeneratedTypography {
   for (const variantKey in variants) {
-    Typography[variantKey as keyof GeneratedTypography] = variants[variantKey as keyof GeneratedTypography];
+    component[variantKey as keyof GeneratedTypography] = variants[variantKey as keyof GeneratedTypography];
   }
+
+  return component as C & GeneratedTypography;
 }

@@ -11,11 +11,16 @@ import { getTabContentId } from '../../utils';
 import styles from './styles.module.scss';
 
 export type TabProps = WithSupportProps<{
+  /** Value вкладки. */
   value: string;
+  /** Заголовок вкладки. */
   label: string;
+  /** Деактивирована ли вкладка. */
   disabled?: boolean;
   className?: string;
+  /** Счетчик, отображающийся внутри кнопки переключения. */
   counter?: number;
+  /** Колбек клика по кнопке переключения. */
   onClick?(event: MouseEvent<HTMLButtonElement>): void;
 }>;
 
