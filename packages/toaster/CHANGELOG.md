@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.5 (2023-10-04)
+
+
+### Bug Fixes
+
+* **FF-0:** use classname insetad of inline styles for margin ([37ac475](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/37ac475a55d949acea27c93ea2dafce64518ee24))
+
+
+
+
+
 ## 0.3.4 (2023-09-28)
 
 ### Only dependencies have been changed
