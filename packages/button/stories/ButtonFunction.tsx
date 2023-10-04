@@ -6,18 +6,18 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { ButtonSupport, ButtonSupportProps } from '../src';
+import { ButtonFunction, ButtonFunctionProps } from '../src';
 import { CounterInButtonProps } from '../src/types';
 import { BUTTON_ARGS, COUNTER_ARGS, ICONS, STORY_WITH_COUNTER_ARG_TYPES, StoryCounterProps } from './constants';
 import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 const meta: Meta = {
-  title: 'Components/Button/Button Support',
-  component: ButtonSupport,
+  title: 'Components/Button/Button Function',
+  component: ButtonFunction,
 };
 export default meta;
 
-type StoryProps = ButtonSupportProps & StoryCounterProps & { testMode: boolean };
+type StoryProps = ButtonFunctionProps & StoryCounterProps & { testMode: boolean };
 const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
   const [counterProps, setCounterProps] = useState<CounterInButtonProps | undefined>(undefined);
@@ -46,45 +46,45 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   return (
     <>
       <ControlledWrapper>
-        <ButtonSupport {...args} counter={counterProps} onClick={inc} />
+        <ButtonFunction {...args} counter={counterProps} onClick={inc} />
       </ControlledWrapper>
 
       <TableWrapper>
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonSupport {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
+            <ButtonFunction {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
           </TableCell>
           <TableCell>
-            <ButtonSupport {...BUTTON_ARGS} icon={<PlaceholderSVG />} counter={COUNTER_ARGS} label={undefined} />
+            <ButtonFunction {...BUTTON_ARGS} icon={<PlaceholderSVG />} counter={COUNTER_ARGS} label={undefined} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label Only</TableCell>
           <TableCell>
-            <ButtonSupport {...BUTTON_ARGS} icon={undefined} label='Label Text' />
+            <ButtonFunction {...BUTTON_ARGS} icon={undefined} label='Label Text' />
           </TableCell>
           <TableCell>
-            <ButtonSupport {...BUTTON_ARGS} icon={undefined} counter={COUNTER_ARGS} label='Label Text' />
+            <ButtonFunction {...BUTTON_ARGS} icon={undefined} counter={COUNTER_ARGS} label='Label Text' />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Icon Before</TableCell>
           <TableCell>
-            <ButtonSupport
+            <ButtonFunction
               {...BUTTON_ARGS}
               icon={<PlaceholderSVG />}
-              iconPosition={ButtonSupport.iconPositions.Before}
+              iconPosition={ButtonFunction.iconPositions.Before}
               label='Label Text'
             />
           </TableCell>
           <TableCell>
-            <ButtonSupport
+            <ButtonFunction
               {...BUTTON_ARGS}
               icon={<PlaceholderSVG />}
-              iconPosition={ButtonSupport.iconPositions.Before}
+              iconPosition={ButtonFunction.iconPositions.Before}
               counter={COUNTER_ARGS}
               label='Label Text'
             />
@@ -94,18 +94,18 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
         <TableColumn>
           <TableCell>Icon After</TableCell>
           <TableCell>
-            <ButtonSupport
+            <ButtonFunction
               {...BUTTON_ARGS}
               icon={<PlaceholderSVG />}
-              iconPosition={ButtonSupport.iconPositions.After}
+              iconPosition={ButtonFunction.iconPositions.After}
               label='Label Text'
             />
           </TableCell>
           <TableCell>
-            <ButtonSupport
+            <ButtonFunction
               {...BUTTON_ARGS}
               icon={<PlaceholderSVG />}
-              iconPosition={ButtonSupport.iconPositions.After}
+              iconPosition={ButtonFunction.iconPositions.After}
               counter={COUNTER_ARGS}
               label='Label Text'
             />
@@ -121,19 +121,19 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   );
 };
 
-export const buttonSupport: StoryObj<StoryProps> = Template.bind({});
+export const buttonFunction: StoryObj<StoryProps> = Template.bind({});
 
-buttonSupport.args = {
+buttonFunction.args = {
   label: 'Label text',
   disabled: false,
   loading: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   icon: 'none',
-  iconPosition: ButtonSupport.iconPositions.After,
-  type: ButtonSupport.types.Button,
-  appearance: ButtonSupport.appearances.Neutral,
-  size: ButtonSupport.sizes.S,
+  iconPosition: ButtonFunction.iconPositions.After,
+  type: ButtonFunction.types.Button,
+  appearance: ButtonFunction.appearances.Neutral,
+  size: ButtonFunction.sizes.S,
   testMode: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -141,7 +141,7 @@ buttonSupport.args = {
   counterValue: 1,
 };
 
-buttonSupport.argTypes = {
+buttonFunction.argTypes = {
   testMode: {
     name: '[Stories]: Show onClick counter',
     control: {
@@ -169,7 +169,8 @@ buttonSupport.argTypes = {
   },
   ...STORY_WITH_COUNTER_ARG_TYPES,
 };
-buttonSupport.parameters = {
+
+buttonFunction.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
   },

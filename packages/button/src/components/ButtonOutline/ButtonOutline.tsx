@@ -2,13 +2,13 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { Appearance, HtmlType, Size, Target } from '../../constants';
+import { Appearance, HtmlType, SizeSL, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
 import { CommonButtonProps } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
 import styles from './styles.module.scss';
 
-export type ButtonOutlineProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition'>>;
+export type ButtonOutlineProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition' | 'size'> & { size?: SizeSL }>;
 
 export function ButtonOutline({
   className,
@@ -35,7 +35,7 @@ export function ButtonOutline({
   );
 }
 
-ButtonOutline.sizes = Size;
+ButtonOutline.sizes = SizeSL;
 ButtonOutline.types = HtmlType;
 ButtonOutline.appearances = Appearance;
 ButtonOutline.targets = Target;

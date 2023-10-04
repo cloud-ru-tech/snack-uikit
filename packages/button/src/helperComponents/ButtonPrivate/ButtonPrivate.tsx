@@ -5,6 +5,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, HtmlType, IconPosition, Target } from '../../constants';
 import { CommonButtonProps, CounterButtonProps } from '../../types';
+import { APPEARANCE_TO_COLOR_MAP } from './constants';
 import styles from './styles.module.scss';
 import { getChildren, getVariant } from './utils';
 
@@ -68,7 +69,7 @@ export function ButtonPrivate({
     'aria-disabled': disabled || undefined,
     'data-loading': loading || undefined,
     'data-size': size,
-    'data-appearance': appearance,
+    'data-appearance': APPEARANCE_TO_COLOR_MAP[appearance],
     'data-variant': variant,
     onClick: handleClick,
     onKeyDown,

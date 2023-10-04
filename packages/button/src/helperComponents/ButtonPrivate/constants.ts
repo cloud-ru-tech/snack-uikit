@@ -1,3 +1,5 @@
+import { Appearance } from '../../constants';
+
 export enum Variant {
   LabelOnly = 'label-only',
   IconOnly = 'icon-only',
@@ -11,3 +13,9 @@ export enum PrivateSize {
   M = 'm',
   L = 'l',
 }
+
+export const APPEARANCE_TO_COLOR_MAP = {
+  [Appearance.Neutral]: 'neutral',
+  [Appearance.Primary]: 'primary',
+  [Appearance.Destructive]: 'red',
+};

@@ -2,24 +2,25 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { Appearance, HtmlType, IconPosition, Size, Target } from '../../constants';
+import { Appearance, HtmlType, IconPosition, SizeXsM, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
 import { CommonButtonProps, CounterButtonProps } from '../../types';
 import { extractCommonButtonProps, extractCounterButtonProps } from '../../utils';
 import styles from './styles.module.scss';
 
-export type ButtonSupportProps = WithSupportProps<CommonButtonProps> & CounterButtonProps;
+export type ButtonFunctionProps = WithSupportProps<Omit<CommonButtonProps, 'size'> & { size?: SizeXsM }> &
+  CounterButtonProps;
 
-export function ButtonSupport({
+export function ButtonFunction({
   className,
-  iconPosition = ButtonSupport.iconPositions.After,
-  size = ButtonSupport.sizes.S,
-  target = ButtonSupport.targets.Blank,
-  type = ButtonSupport.types.Button,
-  appearance = ButtonSupport.appearances.Neutral,
+  iconPosition = ButtonFunction.iconPositions.After,
+  size = ButtonFunction.sizes.S,
+  target = ButtonFunction.targets.Blank,
+  type = ButtonFunction.types.Button,
+  appearance = ButtonFunction.appearances.Neutral,
   tabIndex,
   ...rest
-}: ButtonSupportProps) {
+}: ButtonFunctionProps) {
   return (
     <ButtonPrivate
       {...extractSupportProps(rest)}
@@ -38,8 +39,8 @@ export function ButtonSupport({
   );
 }
 
-ButtonSupport.iconPositions = IconPosition;
-ButtonSupport.sizes = Size;
-ButtonSupport.types = HtmlType;
-ButtonSupport.appearances = Appearance;
-ButtonSupport.targets = Target;
+ButtonFunction.iconPositions = IconPosition;
+ButtonFunction.sizes = SizeXsM;
+ButtonFunction.types = HtmlType;
+ButtonFunction.appearances = Appearance;
+ButtonFunction.targets = Target;

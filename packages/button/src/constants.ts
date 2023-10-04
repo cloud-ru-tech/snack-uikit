@@ -1,7 +1,7 @@
 export enum Appearance {
   Primary = 'primary',
   Neutral = 'neutral',
-  Red = 'red',
+  Destructive = 'destructive',
 }
 
 export enum HtmlType {
@@ -17,7 +17,13 @@ export enum Target {
   Top = '_top',
 }
 
-export enum Size {
+export enum SizeXsM {
+  Xs = 'xs',
+  S = 's',
+  M = 'm',
+}
+
+export enum SizeSL {
   S = 's',
   M = 'm',
   L = 'l',

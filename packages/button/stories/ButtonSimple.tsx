@@ -6,17 +6,17 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { ButtonFilled, ButtonFilledProps } from '../src';
-import { BUTTON_ARGS, ICONS } from './constants';
+import { ButtonSimple, ButtonSimpleProps } from '../src';
+import { BUTTON_ARGS, ICONS, STORY_WITH_COUNTER_ARG_TYPES, StoryCounterProps } from './constants';
 import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 const meta: Meta = {
-  title: 'Components/Button/Button Filled',
-  component: ButtonFilled,
+  title: 'Components/Button/Button Simple',
+  component: ButtonSimple,
 };
 export default meta;
 
-type StoryProps = ButtonFilledProps & { testMode: boolean };
+type StoryProps = ButtonSimpleProps & StoryCounterProps & { testMode: boolean };
 const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
 
@@ -31,28 +31,37 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   return (
     <>
       <ControlledWrapper>
-        <ButtonFilled {...args} onClick={inc} />
+        <ButtonSimple {...args} onClick={inc} />
       </ControlledWrapper>
 
       <TableWrapper>
         <TableColumn>
           <TableCell>Icon Only</TableCell>
           <TableCell>
-            <ButtonFilled {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
+            <ButtonSimple {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
+          </TableCell>
+          <TableCell>
+            <ButtonSimple {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label Only</TableCell>
           <TableCell>
-            <ButtonFilled {...BUTTON_ARGS} icon={undefined} label='Label Only' />
+            <ButtonSimple {...BUTTON_ARGS} icon={undefined} label='Label Text' />
+          </TableCell>
+          <TableCell>
+            <ButtonSimple {...BUTTON_ARGS} icon={undefined} label='Label Text' />
           </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label + Icon</TableCell>
           <TableCell>
-            <ButtonFilled {...BUTTON_ARGS} icon={<PlaceholderSVG />} label='IconAfter' />
+            <ButtonSimple {...BUTTON_ARGS} icon={<PlaceholderSVG />} label='Label Text' />
+          </TableCell>
+          <TableCell>
+            <ButtonSimple {...BUTTON_ARGS} icon={<PlaceholderSVG />} label='Label Text' />
           </TableCell>
         </TableColumn>
       </TableWrapper>
@@ -65,22 +74,22 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   );
 };
 
-export const buttonFilled: StoryObj<StoryProps> = Template.bind({});
+export const buttonSimple: StoryObj<StoryProps> = Template.bind({});
 
-buttonFilled.args = {
+buttonSimple.args = {
   label: 'Label text',
   disabled: false,
   loading: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   icon: 'none',
-  type: ButtonFilled.types.Button,
-  appearance: ButtonFilled.appearances.Primary,
-  size: ButtonFilled.sizes.S,
+  type: ButtonSimple.types.Button,
+  appearance: ButtonSimple.appearances.Neutral,
+  size: ButtonSimple.sizes.S,
   testMode: false,
 };
 
-buttonFilled.argTypes = {
+buttonSimple.argTypes = {
   testMode: {
     name: '[Stories]: Show onClick counter',
     control: {
@@ -100,9 +109,15 @@ buttonFilled.argTypes = {
       type: 'select',
     },
   },
+  type: {
+    control: {
+      type: 'radio',
+      options: ['neutral', 'primary', 'critical'],
+    },
+  },
+  ...STORY_WITH_COUNTER_ARG_TYPES,
 };
-
-buttonFilled.parameters = {
+buttonSimple.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
   },

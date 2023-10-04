@@ -50,7 +50,7 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
         </TableColumn>
 
         <TableColumn>
-          <TableCell>Icon After</TableCell>
+          <TableCell>Label + Icon</TableCell>
           <TableCell>
             <ButtonOutline {...BUTTON_ARGS} icon={<PlaceholderSVG />} label='IconAfter' />
           </TableCell>

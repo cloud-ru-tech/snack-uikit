@@ -1,19 +1,19 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-button-buttonLight';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-button-buttonFunction';
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 @import '../../styles.module';
 
 $appearances: 'primary', 'neutral', 'red';
-$sizes: 's', 'm', 'l';
+$sizes: 'xs', 's', 'm',;
 $variants: 'label-only', 'icon-only', 'icon-after', 'icon-before';
 $icon-sizes: (
+  'xs': $icon-s,
   's': $icon-s,
   'm': $icon-s,
-  'l': $icon-s,
 );
 $typography: (
+  'xs': $sans-label-s,
   's': $sans-label-m,
-  'm': $sans-label-l,
-  'l': $sans-label-l
+  'm': $sans-label-l
 );
 
 @mixin button-colors-styles {
@@ -59,7 +59,7 @@ $typography: (
           outline-color: var($sys-available-complementary);
         }
 
- @else {
+        @else {
           outline-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
         }
       }
@@ -68,9 +68,11 @@ $typography: (
 }
 
 .button {
-  @include button-anatomy-styles($button-light, $sizes, $variants, $typography, $icon-sizes);
-  @include loading-label-only($button-light);
+  @include button-anatomy-styles($button-function, $sizes, $variants, $typography, $icon-sizes);
+  @include loading-label-only($button-function);
   @include button-colors-styles;
   @include button-outline-colors-styles;
   @include button-common-state;
+
+  outline-offset: 0;
 }

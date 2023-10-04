@@ -33,19 +33,18 @@ const buttons: ButtonTestSpec[] = [
     testId: 'button-tonal',
   },
   {
-    name: 'button-support',
-    story: 'button-support',
-    testId: 'button-support',
-    iconBefore: true,
+    name: 'button-simple',
+    story: 'button-simple',
+    testId: 'button-simple',
   },
   {
-    name: 'button-light',
-    story: 'button-light',
-    testId: 'button-light',
+    name: 'button-function',
+    story: 'button-function',
+    testId: 'button-function',
     iconBefore: true,
   },
 ];
-const buttonsWithCounter: ButtonTestSpec['name'][] = ['button-support', 'button-light'];
+const buttonsWithCounter: ButtonTestSpec['name'][] = ['button-function'];
 const counterTestStoryProps: StoryCounterProps = { counterValue: 7 };
 
 buttons.forEach(({ name, story, testId, iconBefore }) => {

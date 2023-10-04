@@ -8,17 +8,17 @@ import { CommonButtonProps } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
 import styles from './styles.module.scss';
 
-export type ButtonTonalProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition' | 'size'> & { size?: SizeSL }>;
+export type ButtonSimpleProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition' | 'size'> & { size?: SizeSL }>;
 
-export function ButtonTonal({
+export function ButtonSimple({
   className,
-  size = ButtonTonal.sizes.S,
-  target = ButtonTonal.targets.Blank,
-  type = ButtonTonal.types.Button,
-  appearance = ButtonTonal.appearances.Primary,
+  size = ButtonSimple.sizes.S,
+  target = ButtonSimple.targets.Blank,
+  type = ButtonSimple.types.Button,
+  appearance = ButtonSimple.appearances.Neutral,
   tabIndex,
   ...rest
-}: ButtonTonalProps) {
+}: ButtonSimpleProps) {
   return (
     <ButtonPrivate
       {...extractSupportProps(rest)}
@@ -35,7 +35,7 @@ export function ButtonTonal({
   );
 }
 
-ButtonTonal.sizes = SizeSL;
-ButtonTonal.types = HtmlType;
-ButtonTonal.appearances = Appearance;
-ButtonTonal.targets = Target;
+ButtonSimple.sizes = SizeSL;
+ButtonSimple.types = HtmlType;
+ButtonSimple.appearances = Appearance;
+ButtonSimple.targets = Target;

@@ -1,4 +1,4 @@
-import { ButtonLight } from '@snack-ui/button';
+import { ButtonFunction } from '@snack-ui/button';
 import { Counter, CounterProps } from '@snack-ui/counter';
 import * as Icons from '@snack-ui/icons';
 
@@ -17,8 +17,8 @@ export const BUTTON_ARGS = {
   disabled: false,
   loading: false,
   icon: 'none',
-  iconPosition: ButtonLight.iconPositions.After,
-  size: ButtonLight.sizes.S,
+  iconPosition: ButtonFunction.iconPositions.After,
+  // size: 's',
 };
 
 export const COUNTER_ARGS = {

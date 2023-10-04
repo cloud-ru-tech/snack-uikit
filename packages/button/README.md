@@ -14,7 +14,7 @@
 ## Example
 
 ```typescript jsx
-import {ButtonFilled, ButtonLight, ButtonSupport} from "@snack-ui/button";
+import {ButtonFilled, ButtonFunction, ButtonSimple} from "@snack-ui/button";
 import {Counter} from "@snack-ui/counter";
 import {DaySVG} from "@snack-ui/icons";
 
@@ -30,10 +30,9 @@ import {DaySVG} from "@snack-ui/icons";
   loading={true}
 />
 
-<ButtonSupport
+<ButtonSimple
   label='Submit'
   onClick={() => sendForm()}
-  iconPosition={ButtonSupport.iconPositions.Before}
 />
 
 const CounterProps = { 
@@ -41,7 +40,7 @@ const CounterProps = {
   appearance: Counter.appearances.Critical,
 }
 
-<ButtonLight
+<ButtonFunction
   label='Unread Messages'
   onClick={() => openMessages()}
   counter={CounterProps}
@@ -96,8 +95,8 @@ type ButtonFilledProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition'
 type ButtonOutlineProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition'>>; // Default type Primary
 type ButtonTonalProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition'>>; // Default type Primary
 
-type ButtonLightProps = WithSupportProps<CommonButtonProps>; // Default type Neutral
-type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type Neutral
+type ButtonFunctionProps = WithSupportProps<CommonButtonProps>; // Default type Neutral
+type ButtonSimpleProps = WithSupportProps<CommonButtonProps>; // Default type Neutral
 ```
 
 [//]: DOCUMENTATION_SECTION_START
@@ -116,30 +115,28 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonFilled.sizes.S | Размер |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonFilled.appearances.Primary | Внешний вид кнопки |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | false | ButtonFilled.appearances.Primary | Внешний вид кнопки |
 | type | "submit" &#124; "reset" &#124; "button" | false | ButtonFilled.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
-## ButtonSupport
+| size | enum SizeSL: `"s"`, `"m"`, `"l"` | false | ButtonFilled.sizes.S |  |
+## ButtonSimple
 
 ### Props
 | name | type | required | default value | description |
 |------|------|----------|---------------|-------------|
 | href | `string` | false | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | false | ButtonSupport.targets.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | false | ButtonSimple.targets.Blank | HTML-аттрибут target |
 | className | `string` | false | - | CSS-класс |
 | disabled | `boolean` | false | - | Флаг неактивности компонента |
 | icon | `ReactElement` | false | - | Иконка |
-| iconPosition | enum IconPosition: `"before"`, `"after"` | false | ButtonSupport.iconPositions.After | Позиция иконки |
 | label | `string` | false | - | Текст кнопки |
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonSupport.sizes.S | Размер |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonSupport.appearances.Neutral | Внешний вид кнопки |
-| type | "submit" &#124; "reset" &#124; "button" | false | ButtonSupport.types.Button | HTML-аттрибут type |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | false | ButtonSimple.appearances.Neutral | Внешний вид кнопки |
+| type | "submit" &#124; "reset" &#124; "button" | false | ButtonSimple.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
-| counter | `CounterInButtonProps` | false | - | Пропсы каунтера в кнопке |
+| size | enum SizeSL: `"s"`, `"m"`, `"l"` | false | ButtonSimple.sizes.S |  |
 ## ButtonOutline
 
 ### Props
@@ -154,10 +151,10 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonOutline.sizes.S | Размер |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonOutline.appearances.Primary | Внешний вид кнопки |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | false | ButtonOutline.appearances.Primary | Внешний вид кнопки |
 | type | "submit" &#124; "reset" &#124; "button" | false | ButtonOutline.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
+| size | enum SizeSL: `"s"`, `"m"`, `"l"` | false | ButtonOutline.sizes.S |  |
 ## ButtonTonal
 
 ### Props
@@ -172,29 +169,29 @@ type ButtonSupportProps = WithSupportProps<CommonButtonProps>; // Default type N
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonTonal.sizes.S | Размер |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonTonal.appearances.Primary | Внешний вид кнопки |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | false | ButtonTonal.appearances.Primary | Внешний вид кнопки |
 | type | "submit" &#124; "reset" &#124; "button" | false | ButtonTonal.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
-## ButtonLight
+| size | enum SizeSL: `"s"`, `"m"`, `"l"` | false | ButtonTonal.sizes.S |  |
+## ButtonFunction
 
 ### Props
 | name | type | required | default value | description |
 |------|------|----------|---------------|-------------|
+| iconPosition | enum IconPosition: `"before"`, `"after"` | false | ButtonFunction.iconPositions.After | Позиция иконки |
 | href | `string` | false | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | false | ButtonLight.targets.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | false | ButtonFunction.targets.Blank | HTML-аттрибут target |
 | className | `string` | false | - | CSS-класс |
 | disabled | `boolean` | false | - | Флаг неактивности компонента |
 | icon | `ReactElement` | false | - | Иконка |
-| iconPosition | enum IconPosition: `"before"`, `"after"` | false | ButtonLight.iconPositions.After | Позиция иконки |
 | label | `string` | false | - | Текст кнопки |
 | loading | `boolean` | false | - | Флаг состояния загрузки |
 | onClick | `MouseEventHandler<HTMLElement>` | false | - | Колбек обработки клика |
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | false | - | Колбек обработки нажатия клавиши |
-| size | enum Size: `"s"`, `"m"`, `"l"` | false | ButtonLight.sizes.S | Размер |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | false | ButtonLight.appearances.Neutral | Внешний вид кнопки |
-| type | "submit" &#124; "reset" &#124; "button" | false | ButtonLight.types.Button | HTML-аттрибут type |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | false | ButtonFunction.appearances.Neutral | Внешний вид кнопки |
+| type | "submit" &#124; "reset" &#124; "button" | false | ButtonFunction.types.Button | HTML-аттрибут type |
 | tabIndex | `number` | false | - | HTML-аттрибут tab-index |
+| size | enum SizeXsM: `"xs"`, `"s"`, `"m"` | false | ButtonFunction.sizes.S |  |
 | counter | `CounterInButtonProps` | false | - | Пропсы каунтера в кнопке |
 ## ButtonElevated
 

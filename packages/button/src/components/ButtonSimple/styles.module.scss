@@ -1,4 +1,4 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-button-buttonSupport';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-button-buttonSimple';
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 @import '../../styles.module';
 
@@ -68,8 +68,8 @@ $typography: (
 }
 
 .button {
-  @include button-anatomy-styles($button-support, $sizes, $variants, $typography, $icon-sizes);
-  @include loading-label-only($button-support);
+  @include button-anatomy-styles($button-simple, $sizes, $variants, $typography, $icon-sizes);
+  @include loading-label-only($button-simple);
   @include button-colors-styles;
   @include button-outline-colors-styles;
   @include button-common-state;
