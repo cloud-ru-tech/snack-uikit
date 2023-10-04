@@ -1,7 +1,7 @@
 import { Row } from '@tanstack/react-table';
 import { MouseEvent } from 'react';
 
-import { ButtonLight } from '@snack-ui/button';
+import { ButtonFunction } from '@snack-ui/button';
 import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
 import { MoreSVG } from '@snack-ui/icons';
 
@@ -60,7 +60,7 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
           onOpenChange={setDroplistOpen}
           placement={Droplist.placements.BottomEnd}
           triggerElement={
-            <ButtonLight icon={<MoreSVG size={24} />} data-test-id={TEST_IDS.rowActions.droplistTrigger} />
+            <ButtonFunction icon={<MoreSVG size={24} />} data-test-id={TEST_IDS.rowActions.droplistTrigger} />
           }
           triggerClassName={styles.rowActionsCellTrigger}
           size={Droplist.sizes.S}
