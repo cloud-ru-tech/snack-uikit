@@ -74,5 +74,7 @@ $typography: (
   @include button-outline-colors-styles;
   @include button-common-state;
 
-  outline-offset: 0;
+  &:focus-visible {
+    outline-offset: 0;
+  }
 }
