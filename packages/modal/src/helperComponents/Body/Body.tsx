@@ -7,7 +7,9 @@ import { ContentAlign, TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';
 
 export type ModalBodyProps = {
+  /** Содержимое модального окна */
   content: ReactNode;
+  /** Выравнивание контента */
   align?: ContentAlign;
   className?: string;
 };

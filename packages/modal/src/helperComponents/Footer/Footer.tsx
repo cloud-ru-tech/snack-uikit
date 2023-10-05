@@ -5,8 +5,11 @@ import { Align, TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';
 
 export type ModalFooterProps = {
+  /** Параметр для передачи кнопок */
   actions: ReactNode;
+  /** Параметр для небольшого текста под кнопками */
   disclaimer?: ReactNode;
+  /** Выравнивание контента */
   align?: Align;
   className?: string;
 };

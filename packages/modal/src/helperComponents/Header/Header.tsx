@@ -11,10 +11,15 @@ import styles from './styles.module.scss';
 import { ModalHeaderImage } from './types';
 
 export type ModalHeaderProps = {
+  /** Заголовок модального окна */
   title: ReactNode;
+  /** Тултип для заголовка */
   titleTooltip?: QuestionTooltipProps['tip'];
+  /** Подзаголовок */
   subtitle?: ReactNode;
+  /** Можно передать иконку из пакета `@snack-ui/icon-predefined` или путь к картинке и атрибут `alt` */
   picture?: IconPredefinedProps['icon'] | ModalHeaderImage;
+  /** Выравнивание контента */
   align?: ContentAlign;
   className?: string;
 };

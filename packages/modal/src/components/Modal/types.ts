@@ -28,31 +28,27 @@ type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
 };
 
 export type ModalSProps = BaseModalProps & {
-  /* Размер */
+  /** Размер */
   size?: Size.S;
-  /*
+  /**
    * Выравнивание, для разных размеров доступны разные значения
    * <br> для `Size.S` - все
    */
   align?: Align;
-  /* Можно передать иконку из пакета `@snack-ui/icon-predefined`, или путь к картинке и атрибут `alt` */
+  /** Можно передать иконку из пакета `@snack-ui/icon-predefined`, или путь к картинке и атрибут `alt` */
   picture?: ModalHeaderProps['picture'];
 };
 
 export type ModalMProps = BaseModalProps & {
   size?: Size.M;
-  /*
-   * <br> для `Size.M` - `Align.Default | Align.Center`
-   */
+  /** <br> для `Size.M` - `Align.Default | Align.Center` */
   align?: Align.Default | Align.Center;
   picture?: ModalHeaderImage;
 };
 
 export type ModalLProps = BaseModalProps & {
   size?: Size.L;
-  /*
-   * <br> для `Size.L` - `Align.Default`
-   */
+  /** <br> для `Size.L` - `Align.Default` */
   align?: Align.Default;
   picture?: ModalHeaderImage;
 };

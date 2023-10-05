@@ -42,7 +42,7 @@ export type ModalCustomProps = WithSupportProps<{
   children: ReactNode;
 }>;
 
-function ModalCustomComponent({
+export function ModalCustom({
   open,
   onClose,
   size = Size.S,
@@ -83,22 +83,14 @@ function ModalCustomComponent({
   );
 }
 
-export const ModalCustom = ModalCustomComponent as typeof ModalCustomComponent & {
-  modes: typeof Mode;
-  sizes: typeof Size;
-  Header: typeof ModalHeader;
-  Body: typeof ModalBody;
-  Footer: typeof ModalFooter;
-};
-
 ModalCustom.modes = Mode;
 ModalCustom.sizes = Size;
-ModalCustom.Header = ModalHeader;
-ModalCustom.Body = ModalBody;
-ModalCustom.Footer = ModalFooter;
 
 export namespace ModalCustom {
   export type HeaderProps = ModalHeaderProps;
   export type BodyProps = ModalBodyProps;
   export type FooterProps = ModalFooterProps;
+  export const Header = ModalHeader;
+  export const Body = ModalBody;
+  export const Footer = ModalFooter;
 }
