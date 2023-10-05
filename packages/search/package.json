@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/search",
   "title": "Search",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -31,7 +31,7 @@
   "dependencies": {
     "@snack-ui/droplist": "0.8.1",
     "@snack-ui/icons": "0.15.0",
-    "@snack-ui/input-private": "1.5.3",
+    "@snack-ui/input-private": "1.5.4",
     "@snack-ui/loaders": "0.2.9",
     "@snack-ui/utils": "1.2.0",
     "classnames": "2.3.2",

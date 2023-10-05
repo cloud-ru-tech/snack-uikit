@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.5.4 (2023-10-05)
+
+
+### Bug Fixes
+
+* **[FF-1](https://jira.sbercloud.tech/browse/FF-1):** add input text and placeholder overflow ([6f76de5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/6f76de522dbdec6527054642ced94f534bd075bd))
+
+
+
+
+
 ## 1.5.3 (2023-09-28)
 
 ### Only dependencies have been changed

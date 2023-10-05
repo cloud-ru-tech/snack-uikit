@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.7 (2023-10-05)
+
+### Only dependencies have been changed
+* [@snack-ui/input-private@1.5.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/input-private/CHANGELOG.md)
+
+
+
+
+
 ## 0.5.6 (2023-09-28)
 
 ### Only dependencies have been changed
