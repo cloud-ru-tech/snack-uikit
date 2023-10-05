@@ -1,6 +1,7 @@
 import cn from 'classnames';
+import { forwardRef } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, HtmlType, IconPosition, SizeXsM, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
@@ -11,18 +12,22 @@ import styles from './styles.module.scss';
 export type ButtonFunctionProps = WithSupportProps<Omit<CommonButtonProps, 'size'> & { size?: SizeXsM }> &
   CounterButtonProps;
 
-export function ButtonFunction({
-  className,
-  iconPosition = ButtonFunction.iconPositions.After,
-  size = ButtonFunction.sizes.S,
-  target = ButtonFunction.targets.Blank,
-  type = ButtonFunction.types.Button,
-  appearance = ButtonFunction.appearances.Neutral,
-  tabIndex,
-  ...rest
-}: ButtonFunctionProps) {
-  return (
+const ForwardedButtonFunction = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonFunctionProps>(
+  (
+    {
+      className,
+      iconPosition = IconPosition.After,
+      size = SizeXsM.S,
+      target = Target.Blank,
+      type = HtmlType.Button,
+      appearance = Appearance.Neutral,
+      tabIndex,
+      ...rest
+    },
+    ref,
+  ) => (
     <ButtonPrivate
+      {...extractDataProps(rest)}
       {...extractSupportProps(rest)}
       {...extractCounterButtonProps(rest)}
       {...extractCommonButtonProps(rest)}
@@ -35,9 +40,18 @@ export function ButtonFunction({
       type={type}
       appearance={appearance}
       tabIndex={tabIndex}
+      ref={ref}
     />
-  );
-}
+  ),
+);
+
+export const ButtonFunction = ForwardedButtonFunction as typeof ForwardedButtonFunction & {
+  types: typeof HtmlType;
+  iconPositions: typeof IconPosition;
+  sizes: typeof SizeXsM;
+  appearances: typeof Appearance;
+  targets: typeof Target;
+};
 
 ButtonFunction.iconPositions = IconPosition;
 ButtonFunction.sizes = SizeXsM;

@@ -1,6 +1,7 @@
 import cn from 'classnames';
+import { forwardRef } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, HtmlType, SizeSL, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
@@ -10,17 +11,21 @@ import styles from './styles.module.scss';
 
 export type ButtonFilledProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition' | 'size'> & { size?: SizeSL }>;
 
-export function ButtonFilled({
-  className,
-  size = ButtonFilled.sizes.S,
-  target = ButtonFilled.targets.Blank,
-  type = ButtonFilled.types.Button,
-  appearance = ButtonFilled.appearances.Primary,
-  tabIndex,
-  ...rest
-}: ButtonFilledProps) {
-  return (
+const ForwardedButtonFilled = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonFilledProps>(
+  (
+    {
+      className,
+      size = SizeSL.S,
+      target = Target.Blank,
+      type = HtmlType.Button,
+      appearance = Appearance.Primary,
+      tabIndex,
+      ...rest
+    },
+    ref,
+  ) => (
     <ButtonPrivate
+      {...extractDataProps(rest)}
       {...extractSupportProps(rest)}
       {...extractCommonButtonProps(rest)}
       className={cn(styles.button, className)}
@@ -31,9 +36,17 @@ export function ButtonFilled({
       type={type}
       appearance={appearance}
       tabIndex={tabIndex}
+      ref={ref}
     />
-  );
-}
+  ),
+);
+
+export const ButtonFilled = ForwardedButtonFilled as typeof ForwardedButtonFilled & {
+  types: typeof HtmlType;
+  sizes: typeof SizeSL;
+  appearances: typeof Appearance;
+  targets: typeof Target;
+};
 
 ButtonFilled.sizes = SizeSL;
 ButtonFilled.types = HtmlType;

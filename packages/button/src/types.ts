@@ -1,6 +1,7 @@
 import {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
+  FocusEventHandler,
   KeyboardEventHandler,
   MouseEventHandler,
   ReactElement,
@@ -30,6 +31,10 @@ export type BaseButtonProps = {
   onClick?: MouseEventHandler<HTMLElement>;
   /** Колбек обработки нажатия клавиши */
   onKeyDown?: KeyboardEventHandler<HTMLElement>;
+  /** Колбек обработки фокуса */
+  onFocus?: FocusEventHandler<HTMLAnchorElement | HTMLButtonElement>;
+  /** Колбек обработки блюра */
+  onBlur?: FocusEventHandler<HTMLAnchorElement | HTMLButtonElement>;
   /** Размер */
   size?: SizeXsM | SizeSL;
   /** Внешний вид кнопки */

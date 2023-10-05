@@ -1,6 +1,7 @@
 import cn from 'classnames';
+import { forwardRef } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, HtmlType, SizeSL, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
@@ -10,17 +11,21 @@ import styles from './styles.module.scss';
 
 export type ButtonOutlineProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition' | 'size'> & { size?: SizeSL }>;
 
-export function ButtonOutline({
-  className,
-  size = ButtonOutline.sizes.S,
-  target = ButtonOutline.targets.Blank,
-  type = ButtonOutline.types.Button,
-  appearance = ButtonOutline.appearances.Primary,
-  tabIndex,
-  ...rest
-}: ButtonOutlineProps) {
-  return (
+const ForwardedButtonOutline = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonOutlineProps>(
+  (
+    {
+      className,
+      size = SizeSL.S,
+      target = Target.Blank,
+      type = HtmlType.Button,
+      appearance = Appearance.Primary,
+      tabIndex,
+      ...rest
+    },
+    ref,
+  ) => (
     <ButtonPrivate
+      {...extractDataProps(rest)}
       {...extractSupportProps(rest)}
       {...extractCommonButtonProps(rest)}
       className={cn(styles.button, className)}
@@ -31,9 +36,17 @@ export function ButtonOutline({
       type={type}
       appearance={appearance}
       tabIndex={tabIndex}
+      ref={ref}
     />
-  );
-}
+  ),
+);
+
+export const ButtonOutline = ForwardedButtonOutline as typeof ForwardedButtonOutline & {
+  types: typeof HtmlType;
+  sizes: typeof SizeSL;
+  appearances: typeof Appearance;
+  targets: typeof Target;
+};
 
 ButtonOutline.sizes = SizeSL;
 ButtonOutline.types = HtmlType;

@@ -11,7 +11,9 @@ export function extractCommonButtonProps({
   label,
   loading,
   onClick,
+  onFocus,
+  onBlur,
   onKeyDown,
 }: CommonButtonProps) {
-  return { disabled, href, icon, label, loading, onClick, onKeyDown };
+  return { disabled, href, icon, label, loading, onClick, onKeyDown, onFocus, onBlur };
 }

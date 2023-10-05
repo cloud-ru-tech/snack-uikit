@@ -1,6 +1,7 @@
 import cn from 'classnames';
+import { forwardRef } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, HtmlType, SizeSL, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
@@ -10,17 +11,21 @@ import styles from './styles.module.scss';
 
 export type ButtonSimpleProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition' | 'size'> & { size?: SizeSL }>;
 
-export function ButtonSimple({
-  className,
-  size = ButtonSimple.sizes.S,
-  target = ButtonSimple.targets.Blank,
-  type = ButtonSimple.types.Button,
-  appearance = ButtonSimple.appearances.Neutral,
-  tabIndex,
-  ...rest
-}: ButtonSimpleProps) {
-  return (
+const ForwardedButtonSimple = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonSimpleProps>(
+  (
+    {
+      className,
+      size = SizeSL.S,
+      target = Target.Blank,
+      type = HtmlType.Button,
+      appearance = Appearance.Neutral,
+      tabIndex,
+      ...rest
+    },
+    ref,
+  ) => (
     <ButtonPrivate
+      {...extractDataProps(rest)}
       {...extractSupportProps(rest)}
       {...extractCommonButtonProps(rest)}
       className={cn(styles.button, className)}
@@ -31,9 +36,17 @@ export function ButtonSimple({
       type={type}
       appearance={appearance}
       tabIndex={tabIndex}
+      ref={ref}
     />
-  );
-}
+  ),
+);
+
+export const ButtonSimple = ForwardedButtonSimple as typeof ForwardedButtonSimple & {
+  types: typeof HtmlType;
+  sizes: typeof SizeSL;
+  appearances: typeof Appearance;
+  targets: typeof Target;
+};
 
 ButtonSimple.sizes = SizeSL;
 ButtonSimple.types = HtmlType;

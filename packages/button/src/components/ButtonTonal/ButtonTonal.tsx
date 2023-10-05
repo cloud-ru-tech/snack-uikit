@@ -1,6 +1,7 @@
 import cn from 'classnames';
+import { forwardRef } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, HtmlType, SizeSL, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
@@ -10,17 +11,21 @@ import styles from './styles.module.scss';
 
 export type ButtonTonalProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition' | 'size'> & { size?: SizeSL }>;
 
-export function ButtonTonal({
-  className,
-  size = ButtonTonal.sizes.S,
-  target = ButtonTonal.targets.Blank,
-  type = ButtonTonal.types.Button,
-  appearance = ButtonTonal.appearances.Primary,
-  tabIndex,
-  ...rest
-}: ButtonTonalProps) {
-  return (
+const ForwardedButtonTonal = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonTonalProps>(
+  (
+    {
+      className,
+      size = SizeSL.S,
+      target = Target.Blank,
+      type = HtmlType.Button,
+      appearance = Appearance.Primary,
+      tabIndex,
+      ...rest
+    },
+    ref,
+  ) => (
     <ButtonPrivate
+      {...extractDataProps(rest)}
       {...extractSupportProps(rest)}
       {...extractCommonButtonProps(rest)}
       className={cn(styles.button, className)}
@@ -31,9 +36,17 @@ export function ButtonTonal({
       type={type}
       appearance={appearance}
       tabIndex={tabIndex}
+      ref={ref}
     />
-  );
-}
+  ),
+);
+
+export const ButtonTonal = ForwardedButtonTonal as typeof ForwardedButtonTonal & {
+  types: typeof HtmlType;
+  sizes: typeof SizeSL;
+  appearances: typeof Appearance;
+  targets: typeof Target;
+};
 
 ButtonTonal.sizes = SizeSL;
 ButtonTonal.types = HtmlType;
