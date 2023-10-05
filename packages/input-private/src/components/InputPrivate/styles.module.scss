@@ -8,6 +8,7 @@
   padding: 0;
 
   color: simple-var($sys-neutral-text-main);
+  text-overflow: ellipsis;
 
   background-color: transparent;
   border: none;
@@ -20,6 +21,10 @@
 
   &:read-only {
     color: simple-var($sys-neutral-text-support);
+  }
+
+  &:placeholder-shown {
+    text-overflow: ellipsis;
   }
 
   &[disabled] {
