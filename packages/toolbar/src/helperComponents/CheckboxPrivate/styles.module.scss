@@ -1,0 +1,24 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toolbar';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+
+.checkboxWrapper {
+  @include composite-var($toolbar-checkbox);
+
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    outline-color: var($sys-available-complementary);
+  }
+}

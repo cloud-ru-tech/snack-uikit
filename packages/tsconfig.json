@@ -114,6 +114,9 @@
     },
     {
       "path": "./notification"
+    },
+    {
+      "path": "./toolbar"
     }
   ],
   "compilerOptions": {

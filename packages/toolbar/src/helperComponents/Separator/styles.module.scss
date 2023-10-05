@@ -1,0 +1,7 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.separator {
+  flex-shrink: 0;
+  width: var($border-width-toolbar-separator);
+  background-color: var($sys-neutral-decor-default);
+}
