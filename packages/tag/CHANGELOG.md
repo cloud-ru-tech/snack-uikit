@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-10-05)
+
+
+### Features
+
+* **[FF-3156](https://jira.sbercloud.tech/browse/FF-3156):** TagRow ([e99f199](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/e99f1990285b11e438160cbcaa709ee95934750a))
+
+
+
+
+
 ## 0.2.3 (2023-09-28)
 
 ### Only dependencies have been changed
