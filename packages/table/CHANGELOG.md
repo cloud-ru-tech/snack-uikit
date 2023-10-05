@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-10-05)
+
+
+### Features
+
+* **[FF-3409](https://jira.sbercloud.tech/browse/FF-3409):** replace ButtonLight to ButtonFunction ([e76a1db](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/e76a1dbf2e2db07a9197c413619e4df6f5976246))
+
+
+
+
+
 ## 0.1.2 (2023-09-28)
 
 ### Only dependencies have been changed

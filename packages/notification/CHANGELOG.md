@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-10-05)
+
+
+### BREAKING CHANGES
+
+
+* **[FF-3409](https://jira.sbercloud.tech/browse/FF-3409):** update actions buttons typings, fix focus order ([b9edc06](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b9edc06e4e8db6b8c5dbe39ab4d26b770bf7f820))
+
+
+
+
 # 0.1.0 (2023-09-28)
 
 

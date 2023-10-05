@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2023-10-05)
+
+
+### Features
+
+* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **[FF-3409](https://jira.sbercloud.tech/browse/FF-3409):** rename ButtonLight to ButtonSimple, ButtonSupport to ButtonFunction; remove counter in ButtonSimple; change apperance Red to Destructive; in ButtonFunction (later ButtonSupport) added size Xs & removed size L ([09f9e0a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/09f9e0a3925c2ffaa81a86584b28c6b4824c39db))
+
+
+
+
 # 0.11.0 (2023-08-22)
 
 
