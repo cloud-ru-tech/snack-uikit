@@ -1,6 +1,7 @@
 @import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
 
 .story {
+  width: fit-content;
   padding: 2rem;
   background-color: simple-var($sys-neutral-background1-level);
 }

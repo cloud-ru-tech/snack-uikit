@@ -6,6 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { DropZone, DropZoneProps } from '../src';
+import styles from './styles.module.scss';
 
 const meta: Meta = {
   title: 'Components/Drop Zone/Drop Zone',
@@ -17,7 +18,7 @@ type StoryProps = DropZoneProps;
 const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const [files, setFiles] = useState<File[]>([]);
   return (
-    <>
+    <div className={styles.wrapper}>
       <DropZone {...args} onFilesUpload={setFiles} />
       {files.map(file => (
         <div key={file.name}>
@@ -33,7 +34,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
           <br />
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

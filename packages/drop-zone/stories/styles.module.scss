@@ -18,3 +18,17 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.wrapper {
+    resize: horizontal;
+
+    overflow: auto;
+
+    width: 500px;
+    min-width: 300px;
+    padding: 24px;
+
+    background-color: var($sys-neutral-background1-level);
+    border: 1px solid var($sys-neutral-decor-default);
+    border-radius: var($dimension-050m);
+}

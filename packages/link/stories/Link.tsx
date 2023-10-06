@@ -64,27 +64,30 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
     <div className={styles.wrapper} data-appearance={args.onColor} data-on-surface={args.onSurface}>
       <Link {...args} />
     </div>
-    <Table
-      header='onColor'
-      options={colors.map(color => ({
-        header: color,
-        props: { onColor: color, text: DEFAULT_TEXT, onSurface: DEFAULT_SURFACE, size: DEFAULT_SIZE },
-      }))}
-    />
-    <Table
-      header='onSurface'
-      options={surfaces.map(surface => ({
-        header: surface,
-        props: { onColor: DEFAULT_COLOR, text: DEFAULT_TEXT, onSurface: surface },
-      }))}
-    />
-    <Table
-      header='size'
-      options={sizes.map(size => ({
-        header: size,
-        props: { onColor: DEFAULT_COLOR, text: DEFAULT_TEXT, size: size, onSurface: DEFAULT_SURFACE },
-      }))}
-    />
+
+    <div>
+      <Table
+        header='onColor'
+        options={colors.map(color => ({
+          header: color,
+          props: { onColor: color, text: DEFAULT_TEXT, onSurface: DEFAULT_SURFACE, size: DEFAULT_SIZE },
+        }))}
+      />
+      <Table
+        header='onSurface'
+        options={surfaces.map(surface => ({
+          header: surface,
+          props: { onColor: DEFAULT_COLOR, text: DEFAULT_TEXT, onSurface: surface },
+        }))}
+      />
+      <Table
+        header='size'
+        options={sizes.map(size => ({
+          header: size,
+          props: { onColor: DEFAULT_COLOR, text: DEFAULT_TEXT, size: size, onSurface: DEFAULT_SURFACE },
+        }))}
+      />
+    </div>
   </>
 );
 
