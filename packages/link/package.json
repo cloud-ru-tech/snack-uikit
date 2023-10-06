@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/link",
   "title": "Link",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "sideEffects": [
     "*.css",
     "*.woff",

@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/popover-private",
   "title": "Popover Private",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "sideEffects": [
     "*.css",
     "*.woff",

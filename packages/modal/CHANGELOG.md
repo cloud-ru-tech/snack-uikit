@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.1 (2023-10-06)
+
+
+### Bug Fixes
+
+* **[FF-3023](https://jira.sbercloud.tech/browse/FF-3023):** update modal component docs ([f30b760](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f30b76025df2fc5e2b82374929a34f57de8d216d))
+
+
+
+
+
 # 0.6.0 (2023-10-05)
 
 

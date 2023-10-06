@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-10-06)
+
+
+### Bug Fixes
+
+* **[FF-3023](https://jira.sbercloud.tech/browse/FF-3023):** update docs and export structure ([3da8606](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3da860623da0bc12030d17406d6b107300f5ae9c))
+
+
+### Features
+
+* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+
+
+
 ## 0.3.1 (2023-08-30)
 
 

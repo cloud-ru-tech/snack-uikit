@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.5 (2023-10-06)
+
+
+### Bug Fixes
+
+* **[FF-3023](https://jira.sbercloud.tech/browse/FF-3023):** update docs and export structure ([3da8606](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3da860623da0bc12030d17406d6b107300f5ae9c))
+
+
+
+
+
 ## 0.3.4 (2023-10-05)
 
 ### Only dependencies have been changed
