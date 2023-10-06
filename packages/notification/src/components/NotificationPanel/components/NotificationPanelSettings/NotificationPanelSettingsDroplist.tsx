@@ -14,14 +14,8 @@ type NotificationPanelSettingsDroplistProps = {
 export function NotificationPanelSettingsDroplist({ actions, button }: NotificationPanelSettingsDroplistProps) {
   const [isDroplistOpen, setDroplistOpen] = useState(false);
 
-  const { handleTriggerButtonClick, handleTriggerButtonKeyDown, firstElementRefCallback, handleDroplistFocusLeave } =
+  const { triggerButtonRef, handleTriggerButtonKeyDown, firstElementRefCallback, handleDroplistFocusLeave } =
     useDroplistKeyboardNavigation({ setDroplistOpen });
-
-  const handleButtonClick: MouseEventHandler<HTMLButtonElement> = e => {
-    button.onClick?.(e);
-
-    handleTriggerButtonClick(e);
-  };
 
   const handleButtonKeyDown: KeyboardEventHandler<HTMLButtonElement> = e => {
     button.onKeyDown?.(e);
@@ -41,7 +35,9 @@ export function NotificationPanelSettingsDroplist({ actions, button }: Notificat
       onOpenChange={setDroplistOpen}
       firstElementRefCallback={firstElementRefCallback}
       onFocusLeave={handleDroplistFocusLeave}
-      triggerElement={<ButtonSimple {...button} onClick={handleButtonClick} onKeyDown={handleButtonKeyDown} />}
+      useScroll
+      triggerRef={triggerButtonRef}
+      triggerElement={<ButtonSimple {...button} onKeyDown={handleButtonKeyDown} />}
       placement={Droplist.placements.BottomEnd}
       data-test-id={TEST_IDS.settings.droplist}
     >

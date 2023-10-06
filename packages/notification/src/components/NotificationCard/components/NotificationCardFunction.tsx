@@ -15,7 +15,7 @@ export type NotificationCardFunctionProps = Required<Pick<NotificationCardProps,
   };
 
 export function NotificationCardFunction({ actions, open, setDroplistOpen }: NotificationCardFunctionProps) {
-  const { firstElementRefCallback, handleDroplistFocusLeave, handleTriggerButtonKeyDown, handleTriggerButtonClick } =
+  const { triggerButtonRef, firstElementRefCallback, handleDroplistFocusLeave, handleTriggerButtonKeyDown } =
     useDroplistKeyboardNavigation({ setDroplistOpen });
 
   const handleActionClick = (e: MouseEvent, cb?: MouseEventHandler) => {
@@ -32,11 +32,12 @@ export function NotificationCardFunction({ actions, open, setDroplistOpen }: Not
         placement={Droplist.placements.BottomEnd}
         firstElementRefCallback={firstElementRefCallback}
         onFocusLeave={handleDroplistFocusLeave}
+        triggerRef={triggerButtonRef}
+        useScroll
         triggerElement={
           <ButtonFunction
             size={ButtonFunction.sizes.S}
             icon={<KebabSVG />}
-            onClick={handleTriggerButtonClick}
             onKeyDown={handleTriggerButtonKeyDown}
             data-test-id={TEST_IDS.actions.droplistTrigger}
           />

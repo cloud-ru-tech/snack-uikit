@@ -1,4 +1,4 @@
-import { Dispatch, KeyboardEvent, MouseEvent, SetStateAction, useCallback, useRef, useState } from 'react';
+import { Dispatch, KeyboardEvent, SetStateAction, useCallback, useRef, useState } from 'react';
 
 const TRIGGER_OPEN_DROPLIST_KEY_KEYS = [
   ' ', // <- Space key
@@ -31,14 +31,6 @@ export function useDroplistKeyboardNavigation({ setDroplistOpen }: UseDroplistKe
     [setDroplistOpen],
   );
 
-  const handleTriggerButtonClick = useCallback(
-    (e: MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      setDroplistOpen(prevIsOpen => !prevIsOpen);
-    },
-    [setDroplistOpen],
-  );
-
   const firstElementRefCallback = (el: HTMLButtonElement | null) => {
     needsFocus && el?.focus();
     setNeedsFocus(false);
@@ -57,7 +49,6 @@ export function useDroplistKeyboardNavigation({ setDroplistOpen }: UseDroplistKe
 
   return {
     handleTriggerButtonKeyDown,
-    handleTriggerButtonClick,
     firstElementRefCallback,
     handleDroplistFocusLeave,
     triggerButtonRef,
