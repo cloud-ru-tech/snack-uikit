@@ -60,7 +60,9 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
           onOpenChange={setDroplistOpen}
           placement={Droplist.placements.BottomEnd}
           triggerElement={
-            <ButtonFunction icon={<MoreSVG size={24} />} data-test-id={TEST_IDS.rowActions.droplistTrigger} />
+            <span>
+              <ButtonFunction icon={<MoreSVG size={24} />} data-test-id={TEST_IDS.rowActions.droplistTrigger} />
+            </span>
           }
           triggerClassName={styles.rowActionsCellTrigger}
           size={Droplist.sizes.S}
