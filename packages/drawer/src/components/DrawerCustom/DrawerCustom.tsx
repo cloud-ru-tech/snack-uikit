@@ -78,6 +78,7 @@ function DrawerCustomComponent({
       rootClassName={cn(styles.drawerRoot, rootClassName)}
       data-content-wrapper={true}
       data-size={isPredefinedSize ? size : undefined}
+      data-mode={mode}
       {...motionProps}
       {...extractSupportProps(rest)}
     >

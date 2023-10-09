@@ -1,6 +1,11 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-drawer';
 
-$sizes: (s, m, l);
+$sizes: ('s', 'm', 'l');
+$modes: ('regular', 'soft');
+$drawer-background-color: (
+  'regular': $sys-neutral-background1-level,
+  'soft': $sys-neutral-background2-level,
+);
 
 .drawerRoot {
   z-index: auto !important; /* stylelint-disable-line declaration-no-important */
@@ -21,6 +26,14 @@ div[data-content-wrapper='true'] {
       @include composite-var($drawer, 'window', $size);
     }
   }
+
+  @each $mode in $modes {
+    &[data-mode='#{$mode}'] {
+      .drawer {
+        background-color: simple-var($drawer-background-color, $mode);
+      }
+    }
+  }
 }
 
 .drawer {
@@ -30,7 +43,6 @@ div[data-content-wrapper='true'] {
 
   box-sizing: border-box;
 
-  background-color: simple-var($sys-neutral-background1-level);
   box-shadow: simple-var($box-shadow-elevation-level5);
 }
 
