@@ -26,6 +26,8 @@ $label-typography: (
 
   &:focus-visible {
     @include outline-var($container-focused-s);
+
+    outline-color: var($sys-available-complementary);
   }
 
   @each $size in $sizes {

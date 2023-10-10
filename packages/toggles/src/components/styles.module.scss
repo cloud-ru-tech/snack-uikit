@@ -1,3 +1,5 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toggles';
+
 $sizes: 's', 'm';
 
 @mixin container($component) {
@@ -17,9 +19,5 @@ $sizes: 's', 'm';
     &[data-size='s'] {
       outline-offset: simple-var($theme-variables, 'border-width', 'state-focus', 's');
     }
-  }
-
-  &[data-checked=true] {
-    outline-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
   }
 }

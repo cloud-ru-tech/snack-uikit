@@ -81,14 +81,7 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
         @include outline-var($container-focused-s);
 
         color: simple-var($theme-variables, 'sys', $color, 'text-support');
-        
-        @if $color == 'neutral'{
-          outline-color: var($sys-available-complementary);
-        }
-
-        @else {
-          outline-color: simple-var($theme-variables, 'sys', $color, 'accent-default');
-        }
+        outline-color: var($sys-available-complementary);
       }
       
       &:active {
