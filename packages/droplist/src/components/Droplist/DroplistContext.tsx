@@ -5,6 +5,7 @@ import { Size } from '../../constants';
 type DroplistContextValue = {
   isNested?: boolean;
   focusPosition?: number;
+  scrollRefCurrent?: HTMLElement | null;
   setFocusPosition(focusPosition: number): void;
   itemKeyDownHandler(e: KeyboardEvent<HTMLButtonElement>): void;
   resetFocusPosition(): void;
@@ -14,6 +15,7 @@ type DroplistContextValue = {
 
 export const DroplistContext = createContext<DroplistContextValue>({
   isNested: false,
+  scrollRefCurrent: null,
   itemKeyDownHandler() {
     /* stub */
   },

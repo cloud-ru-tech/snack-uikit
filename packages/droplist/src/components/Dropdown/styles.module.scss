@@ -4,6 +4,7 @@
   @include composite-var($drop-list-container);
 
   overflow: hidden;
+  box-sizing: border-box;
   background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
   box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level4');
 }

@@ -11,6 +11,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 
@@ -95,6 +96,9 @@ export function Droplist({
             }
             return prev + 1;
           });
+
+          e.preventDefault();
+
           return;
         case 'ArrowUp':
           setFocusIndex((prev = 0) => {
@@ -104,6 +108,9 @@ export function Droplist({
             }
             return prev - 1;
           });
+
+          e.preventDefault();
+
           return;
         case 'Escape':
           if (!closeOnEscapeKey) {
@@ -134,12 +141,17 @@ export function Droplist({
 
   const scroll = useScroll && count >= SCROLL_APPLYING_ITEMS_COUNT;
 
+  const scrollRefInside = useRef<HTMLElement>(null);
+
+  const resultRef = useMemo(() => (scrollRef !== undefined ? scrollRef : scrollRefInside), [scrollRef]);
+
   const itemsJSX = (
     <DroplistContext.Provider
       value={{
         size,
         isNested: true,
         focusPosition,
+        scrollRefCurrent: resultRef?.current,
         setFocusPosition,
         resetFocusPosition,
         itemKeyDownHandler,
@@ -153,7 +165,7 @@ export function Droplist({
           [styles.scrollContainerM]: scroll && size === Size.M,
           [styles.scrollContainerL]: scroll && size === Size.L,
         })}
-        ref={scrollRef}
+        ref={resultRef}
         barHideStrategy={Scroll.barHideStrategies.Never}
         size={Scroll.sizes.S}
       >

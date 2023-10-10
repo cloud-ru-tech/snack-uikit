@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { DroplistItem, DroplistItemProps } from '../../helperCompoonents';
+import { DroplistItem, DroplistItemProps } from '../../helperComponents';
 
 export type DroplistItemSingleProps = Omit<DroplistItemProps, 'variant' | 'indeterminate'>;
 

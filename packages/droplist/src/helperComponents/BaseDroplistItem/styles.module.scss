@@ -102,10 +102,12 @@ $typography: (
   flex-direction: row;
 
   box-sizing: border-box;
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   margin: 0;
   padding: 0;
 
+  color: simple-var($sys-neutral-text-main);
   text-align: start;
 
   appearance: unset;
