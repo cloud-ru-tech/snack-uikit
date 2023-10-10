@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { Size } from '../../constants';
+import { PRIVATE_SEARCH_TEST_IDS, Size } from '../../constants';
 import { SearchDecorator } from '../SearchDecorator';
 import { SearchPrivate, SearchPrivateProps } from '../SearchPrivate';
 
@@ -25,6 +25,7 @@ export const SearchFieldText = forwardRef<HTMLInputElement, SearchTextFieldProps
         onSubmit={onSubmit}
         placeholder={placeholder}
         loading={loading}
+        data-test-id={PRIVATE_SEARCH_TEST_IDS.field}
       />
     </SearchDecorator>
   );

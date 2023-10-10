@@ -4,7 +4,7 @@ import { forwardRef, useRef } from 'react';
 
 import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
 
-import { Size, TEST_IDS } from '../../constants';
+import { PRIVATE_SEARCH_TEST_IDS, Size, TEST_IDS } from '../../constants';
 import { SearchDecorator } from '../SearchDecorator';
 import { SearchPrivate, SearchPrivateProps } from '../SearchPrivate';
 import { useHandlers } from './hooks';
@@ -84,6 +84,7 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
               onKeyDown={handleKeyDown}
               onFocus={onFocus}
               size={size}
+              data-test-id={PRIVATE_SEARCH_TEST_IDS.field}
             />
           </SearchDecorator>
         }

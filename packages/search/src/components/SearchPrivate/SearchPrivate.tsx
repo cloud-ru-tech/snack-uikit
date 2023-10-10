@@ -12,7 +12,7 @@ import {
   useClearButton,
 } from '@snack-ui/input-private';
 import { Sun } from '@snack-ui/loaders';
-import { WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { PRIVATE_SEARCH_TEST_IDS, Size } from '../../constants';
 import styles from './styles.module.scss';
@@ -42,6 +42,7 @@ const SearchPrivateComponent = forwardRef<HTMLInputElement, SearchPrivateProps>(
     onBlur,
     onSubmit,
     className,
+    ...rest
   },
   ref,
 ) {
@@ -94,7 +95,7 @@ const SearchPrivateComponent = forwardRef<HTMLInputElement, SearchPrivateProps>(
   );
 
   return (
-    <div className={cn(styles.container, className)} data-size={size} data-test-id={PRIVATE_SEARCH_TEST_IDS.field}>
+    <div className={cn(styles.container, className)} data-size={size} {...extractSupportProps(rest)}>
       <span className={styles.prefix}>
         {loading ? (
           <Sun data-test-id={PRIVATE_SEARCH_TEST_IDS.iconSun} />
