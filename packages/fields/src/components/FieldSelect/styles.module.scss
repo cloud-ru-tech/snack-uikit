@@ -10,14 +10,11 @@ $icons-sizes: (
 );
 
 .trigger {
+  top: var($space-drop-list-drop-offset);
   display: block;
   width: 100%;
 }
 
-.itemList {
-  padding-top: var($space-fields-drop-offset);
-  padding-bottom: var($space-fields-drop-offset);
-}
 
 .scrollContainerS {
   max-height: 256px;

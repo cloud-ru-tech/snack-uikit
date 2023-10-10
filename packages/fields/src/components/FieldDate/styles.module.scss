@@ -1,5 +1,6 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-fields';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-dropList';
 
 $sizes: 's', 'm', 'l';
 $icons-sizes: (
@@ -9,13 +10,11 @@ $icons-sizes: (
 );
 
 .trigger {
+  top: var($space-drop-list-drop-offset);
   display: block;
   width: 100%;
 }
 
-.itemList {
-  margin-top: 0;
-}
 
 .calendarWrapper {
   width: 100%;

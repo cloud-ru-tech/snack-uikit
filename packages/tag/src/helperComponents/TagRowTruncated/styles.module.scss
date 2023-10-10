@@ -52,7 +52,7 @@ $sizes: 'xs', 's';
 
 .hiddenMoreButton {
   position: absolute;
-  top: var($space-search-drop-offset); // dirty offset hack
+  top: var($space-drop-list-drop-offset); // dirty offset hack
   left: 0;
   visibility: hidden;
 }
