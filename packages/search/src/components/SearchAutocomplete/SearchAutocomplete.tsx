@@ -2,7 +2,7 @@ import cn from 'classnames';
 import mergeRefs from 'merge-refs';
 import { forwardRef, useRef } from 'react';
 
-import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
+import { Droplist, ItemSingleProps, useGetDropdownOffset } from '@snack-ui/droplist';
 
 import { PRIVATE_SEARCH_TEST_IDS, Size, TEST_IDS } from '../../constants';
 import { SearchDecorator } from '../SearchDecorator';
@@ -39,6 +39,10 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
 ) {
   const localRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLElement>(null);
+
+  const triggerRef = useRef<HTMLElement>(null);
+  const dropdownOffset = useGetDropdownOffset(triggerRef);
+
   const {
     handleKeyDown,
     handleOptionKeyDown,
@@ -58,7 +62,6 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
     <div className={cn(styles.wrap, className)} {...rest}>
       <Droplist
         open={Boolean(localRef.current?.value) && isOpen && options.length > 0}
-        className={styles.itemList}
         firstElementRefCallback={firstElementRefCallback}
         useScroll
         size={size}
@@ -66,6 +69,8 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
         onOpenChange={setIsOpen}
         data-test-id={TEST_IDS.droplist}
         triggerClassName={styles.trigger}
+        triggerRef={triggerRef}
+        offset={dropdownOffset}
         scrollRef={scrollRef}
         triggerElement={
           <SearchDecorator

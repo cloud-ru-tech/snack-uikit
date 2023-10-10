@@ -1,6 +1,7 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-search';
 
 .trigger {
+  top: var($space-drop-list-drop-offset);
   display: flex;
   flex-grow: 1;
 }
@@ -9,6 +10,3 @@
   display: flex;
 }
 
-.itemList {
-  padding-top: var($space-drop-list-drop-offset);
-}
