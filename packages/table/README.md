@@ -131,6 +131,20 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | actions* | `RowActionProps<TData>[]` | - | Действия для строки |
 | pinned | `boolean` | - | Закрепление колонки справа в таблице |
+## exportToCSV
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| columnDefinitions* | `ColumnDefinition<TData>[]` | - |  |
+| data* | `TData[]` | - |  |
+| fileName | `string` | Table |  |
+## exportToXLSX
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| columnDefinitions* | `ColumnDefinition<TData>[]` | - |  |
+| data* | `TData[]` | - |  |
+| fileName | `string` | Table |  |
 
 
 [//]: DOCUMENTATION_SECTION_END

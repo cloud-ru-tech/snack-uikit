@@ -83,6 +83,9 @@ export function getStatusColumnDef<TData>({
     noHeaderCellBorderOffset: hasDescription,
     size: hasDescription ? (size as number) : MIN_STATUS_CELL_SIZE,
     minSize: MIN_STATUS_CELL_SIZE,
+    meta: {
+      skipOnExport: true,
+    },
     accessorKey,
     enableSorting,
     header: hasDescription ? header : undefined,

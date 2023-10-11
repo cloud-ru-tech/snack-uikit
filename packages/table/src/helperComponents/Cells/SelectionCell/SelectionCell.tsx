@@ -47,5 +47,8 @@ export function getSelectionCellColumnDef<TData>(): ColumnDefinition<TData> {
         <SelectionCell isMulti={isMulti} checked={row.getIsSelected()} onChange={row.getToggleSelectedHandler()} />
       );
     },
+    meta: {
+      skipOnExport: true,
+    },
   };
 }

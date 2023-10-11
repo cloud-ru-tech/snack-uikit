@@ -1,4 +1,11 @@
-import { CellContext, ColumnDef, HeaderContext, RowSelectionState, SortingState } from '@tanstack/react-table';
+import {
+  CellContext,
+  ColumnDef,
+  ColumnMeta,
+  HeaderContext,
+  RowSelectionState,
+  SortingState,
+} from '@tanstack/react-table';
 
 import { ColumnAlign, ColumnPinPosition } from './constants';
 import { Except } from './helperComponents/types';
@@ -29,6 +36,8 @@ type BaseColumnDefinition<TData> = Except<
   cellClassName?: string;
   /** CSS-класс для ячейки в теле таблицы */
   headerClassName?: string;
+  /** Пропуск в экспорте */
+  meta?: ColumnMeta<TData, unknown> & { skipOnExport?: boolean };
 };
 
 type NormalColumnDefinition<TData> = BaseColumnDefinition<TData> & {

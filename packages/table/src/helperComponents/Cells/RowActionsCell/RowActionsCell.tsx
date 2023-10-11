@@ -91,6 +91,9 @@ export function getRowActionsColumnDef<TData>({
     id: 'rowActions',
     pinned: pinned ? ColumnPinPosition.Right : (undefined as never),
     size: 64,
+    meta: {
+      skipOnExport: true,
+    },
     noBodyCellPadding: true,
     cellClassName: styles.rowActionsCell,
     cell: ({ row }) => <RowActionsCell row={row} actions={actions} />,
