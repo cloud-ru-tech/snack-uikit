@@ -31,10 +31,6 @@ export function Header({
   required = false,
   labelTooltipPlacement = Tooltip.placements.Top,
 }: HeaderProps) {
-  if (!label) {
-    return null;
-  }
-
   return (
     <span className={styles.header} data-size={size}>
       {label && (

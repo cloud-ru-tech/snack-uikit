@@ -84,7 +84,7 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
     const copyButtonRef = useRef<HTMLButtonElement>(null);
     const hideButtonRef = useRef<HTMLButtonElement>(null);
     const [value, onChange] = useUncontrolledProp(valueProp, '', onChangeProp);
-    const [hidden, setHidden] = useUncontrolledProp(hiddenProp, false, onHiddenChange);
+    const [hidden, setHidden] = useUncontrolledProp(hiddenProp, true, onHiddenChange);
     const showCopyButton = showCopyButtonProp && Boolean(value) && readonly && !disabled;
     const showHideButton = !(readonly && !value);
 

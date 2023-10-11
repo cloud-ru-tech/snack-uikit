@@ -33,15 +33,15 @@ test.page(visit({ value: 'Test value' }))('Should toggle value visibility by cli
   const input = getInputInner(wrapper);
   const hideButton = getButtonHideValue(wrapper);
 
-  await t.expect(input.getAttribute('type')).eql('text');
-
-  await t.click(hideButton);
-
   await t.expect(input.getAttribute('type')).eql('password');
 
   await t.click(hideButton);
 
   await t.expect(input.getAttribute('type')).eql('text');
+
+  await t.click(hideButton);
+
+  await t.expect(input.getAttribute('type')).eql('password');
 });
 
 // hide with keyboard
@@ -49,18 +49,18 @@ test.page(visit({ value: 'Test value' }))('Should toggle value visibility with k
   const wrapper = Selector(dataTestIdSelector(TEST_ID));
   const input = getInputInner(wrapper);
 
-  await t.expect(input.getAttribute('type')).eql('text');
+  await t.expect(input.getAttribute('type')).eql('password');
 
   await t.pressKey('tab').pressKey('right').pressKey('right').pressKey('enter');
-  await t.expect(input.getAttribute('type')).eql('password');
-  await t.pressKey('right').pressKey('enter');
   await t.expect(input.getAttribute('type')).eql('text');
+  await t.pressKey('right').pressKey('enter');
+  await t.expect(input.getAttribute('type')).eql('password');
 
   // not working in FF
   if (t.browser.name === 'Chrome') {
     await t.pressKey('right').pressKey('space');
-    await t.expect(input.getAttribute('type')).eql('password');
-    await t.pressKey('right').pressKey('space');
     await t.expect(input.getAttribute('type')).eql('text');
+    await t.pressKey('right').pressKey('space');
+    await t.expect(input.getAttribute('type')).eql('password');
   }
 });

@@ -43,14 +43,16 @@ export function FieldDecorator({
 
   return (
     <div className={cn(styles.decorator, className)} data-size={size} {...extractSupportProps(rest)}>
-      <Header
-        labelTooltipPlacement={labelTooltipPlacement}
-        required={required}
-        label={label}
-        labelTooltip={labelTooltip}
-        labelFor={labelFor}
-        size={size}
-      />
+      {label && (
+        <Header
+          labelTooltipPlacement={labelTooltipPlacement}
+          required={required}
+          label={label}
+          labelTooltip={labelTooltip}
+          labelFor={labelFor}
+          size={size}
+        />
+      )}
       {children}
       <Footer
         length={isFieldActive ? length : undefined}
