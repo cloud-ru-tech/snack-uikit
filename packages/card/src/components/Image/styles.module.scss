@@ -25,8 +25,8 @@ $modes: 'little', 'middle', 'background';
         object-fit: cover;
 
         &[data-fading]{
-          -webkit-mask-image: var($gradient-linear-mask-90deg);
-          mask-image: var($gradient-linear-mask-90deg);
+          -webkit-mask-image: $gradient-linear-mask-90deg;
+          mask-image: $gradient-linear-mask-90deg;
         }
       }
 

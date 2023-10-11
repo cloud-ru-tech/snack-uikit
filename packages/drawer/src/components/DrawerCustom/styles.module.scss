@@ -18,7 +18,7 @@ div[data-content-wrapper='true'] {
 
   overflow: unset;
 
-  max-width: calc(100% - var($space-drawer-outside-gap));
+  max-width: calc(100% - $space-drawer-outside-gap);
   height: 100%;
 
   @each $size in $sizes {

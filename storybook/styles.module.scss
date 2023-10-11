@@ -52,6 +52,6 @@ body {
   @include composite-var($sans-body-s);
 
   box-sizing: border-box;
-  color: var($sys-neutral-text-main);
-  background-color: var($sys-neutral-background);
+  color: $sys-neutral-text-main;
+  background-color: $sys-neutral-background;
 }

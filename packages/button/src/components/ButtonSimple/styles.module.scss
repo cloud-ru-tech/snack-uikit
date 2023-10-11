@@ -56,7 +56,7 @@ $typography: (
     &[data-appearance='#{$appearance}'] {
       &:focus-visible {
         @if $appearance == 'neutral' {
-          outline-color: var($sys-available-complementary);
+          outline-color: $sys-available-complementary;
         }
 
  @else {

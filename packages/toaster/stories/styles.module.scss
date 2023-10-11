@@ -3,17 +3,17 @@
 
 .wrapper {
   display: flex;
-  gap: var($dimension-1m);
+  gap: $dimension-1m;
   align-items: center;
   justify-content: center;
 
   width: max-content;
-  margin-bottom: var($dimension-2m);
-  padding: var($dimension-3m);
+  margin-bottom: $dimension-2m;
+  padding: $dimension-3m;
 
-  background-color: var($sys-neutral-background1-level);
-  border: 1px solid var($sys-neutral-decor-default);
-  border-radius: var($dimension-050m);
+  background-color: $sys-neutral-background1-level;
+  border: 1px solid $sys-neutral-decor-default;
+  border-radius: $dimension-050m;
 }
 
 $border-width: 0.5px;
@@ -21,8 +21,8 @@ $border-width: 0.5px;
 .table {
   display: inline-grid;
   grid-template-columns: repeat(2, max-content);
-  background-color: var($sys-neutral-background1-level);
-  border: $border-width solid var($sys-neutral-decor-default);
+  background-color: $sys-neutral-background1-level;
+  border: $border-width solid $sys-neutral-decor-default;
 }
 
 .cell {
@@ -30,13 +30,13 @@ $border-width: 0.5px;
   align-items: center;
   justify-content: center;
 
-  padding: var($dimension-1m);
+  padding: $dimension-1m;
 
-  border: $border-width solid var($sys-neutral-decor-disabled);
+  border: $border-width solid $sys-neutral-decor-disabled;
 }
 
 .headerCell {
-  min-width: var($dimension-6m);
+  min-width: $dimension-6m;
   text-transform: uppercase;
 }
 

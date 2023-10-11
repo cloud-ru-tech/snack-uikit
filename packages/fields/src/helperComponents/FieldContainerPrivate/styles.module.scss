@@ -152,11 +152,11 @@ $variants: 'single-line-container', 'multi-line-container';
 .prefix {
   display: inline-flex;
   flex-shrink: 0;
-  color: var($sys-neutral-text-disabled);
+  color: $sys-neutral-text-disabled;
 }
 
 .postfix {
   display: inline-flex;
   flex-shrink: 0;
-  gap: var($space-fields-postfix-gap)
+  gap: $space-fields-postfix-gap;
 }

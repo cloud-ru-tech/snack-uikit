@@ -2,8 +2,8 @@
 
 .themeWrapper {
   padding: 16px;
-  background-color: var($sys-neutral-background);
-  border: var($border-width-018m) solid var($sys-neutral-decor-default);
+  background-color: $sys-neutral-background;
+  border: $border-width-018m solid $sys-neutral-decor-default;
 }
 
 .buttonWrapper {

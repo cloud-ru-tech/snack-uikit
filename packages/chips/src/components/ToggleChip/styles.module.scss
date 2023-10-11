@@ -36,7 +36,7 @@ $typography: (
 
     color: simple-var($theme-variables, 'sys', 'neutral', 'text-main');
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-hovered');
-    outline-color: var($sys-available-complementary);
+    outline-color: $sys-available-complementary;
   }
 
   &:active + .toggleChipContent {
@@ -95,7 +95,7 @@ $typography: (
       &:focus-visible + .toggleChipContent {
         color: simple-var($theme-variables, 'sys', 'primary', 'on-accent');
         background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
-        outline-color: var($sys-primary-accent-default);
+        outline-color: $sys-primary-accent-default;
       }
 
       &:active + .toggleChipContent {

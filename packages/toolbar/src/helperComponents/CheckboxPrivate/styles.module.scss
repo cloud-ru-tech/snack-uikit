@@ -19,6 +19,6 @@
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    outline-color: var($sys-available-complementary);
+    outline-color: $sys-available-complementary;
   }
 }

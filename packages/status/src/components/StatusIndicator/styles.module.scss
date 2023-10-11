@@ -22,7 +22,7 @@ $sizes: 'xxs', 'xs', 's', 'm', 'l';
 
 .indicator {
   box-sizing: border-box;
-  border: 0 solid var($sys-neutral-background1-level);
+  border: 0 solid $sys-neutral-background1-level;
 
   @each $appearance in $appearances-system {
     &[data-appearance='#{$appearance}'] {

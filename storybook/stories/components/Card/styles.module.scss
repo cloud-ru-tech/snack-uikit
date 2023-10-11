@@ -4,47 +4,53 @@ $cell-width: 360px;
 $cell-height: 280px;
 
 .card {
-  box-sizing: border-box;
+  @include composite-var($sans-body-m);
+
+  cursor: pointer;
+
   display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
   width: $cell-width;
   height: $cell-height;
   padding: 8px;
-  color: var($sys-primary-text-main);
+
+  color: $sys-primary-text-main;
   text-align: center;
   text-decoration: none;
-  cursor: pointer;
-  background-color: var($sys-neutral-background1-level);
+
+  background-color: $sys-neutral-background1-level;
   border: 0;
   border-radius: 16px;
+
   transition: background-color 100ms;
 
-  @include composite-var($sans-body-m);
-
   &[data-small] {
+    @include composite-var($sans-body-s);
+
     gap: 4px;
     width: calc($cell-width / 1.75);
     height: calc($cell-height / 1.75);
-
-    @include composite-var($sans-body-s);
   }
 
 
   &:hover {
-    background-color: var($sys-primary-decor-hovered);
+    background-color: $sys-primary-decor-hovered;
   }
 
   &:focus-visible {
     @include outline-var($container-focused-s);
-    background-color: var($sys-primary-decor-hovered);
-    outline-offset: var($spacing-state-focus-offset);
+
+    background-color: $sys-primary-decor-hovered;
+    outline-offset: $spacing-state-focus-offset;
   }
 
   &:active {
-    background-color: var($sys-primary-decor-hovered);
+    background-color: $sys-primary-decor-hovered;
   }
 }
 

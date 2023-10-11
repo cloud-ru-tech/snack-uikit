@@ -10,9 +10,9 @@
   height: 100%;
   padding: 16px;
 
-  font-family: var($sans-display-m-font-family);
+  font-family: $sans-display-m-font-family;
 
-  border: 1px solid var($sys-neutral-decor-disabled);
+  border: 1px solid $sys-neutral-decor-disabled;
 }
 
 .tableWrapper {
@@ -21,8 +21,8 @@
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
 
-  background-color: var($sys-neutral-background1-level);
-  border: 1px solid var($sys-neutral-decor-disabled);
+  background-color: $sys-neutral-background1-level;
+  border: 1px solid $sys-neutral-decor-disabled;
 }
 
 .tableColumn {
@@ -45,7 +45,7 @@
   margin-bottom: 16px;
   padding: 0 24px;
 
-  background-color: var($sys-neutral-background1-level);
-  border: 1px solid var($sys-neutral-decor-disabled);
-  border-radius: var($dimension-050m);
+  background-color: $sys-neutral-background1-level;
+  border: 1px solid $sys-neutral-decor-disabled;
+  border-radius: $dimension-050m;
 }

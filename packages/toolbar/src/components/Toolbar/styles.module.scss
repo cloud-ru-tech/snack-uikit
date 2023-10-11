@@ -9,7 +9,7 @@
   @include composite-var($toolbar-container);
 
   display: flex;
-  background-color: var($sys-neutral-background1-level);
+  background-color: $sys-neutral-background1-level;
 }
 
 .search {
@@ -19,7 +19,7 @@
     @include outline-var($container-focused-s);
 
     position: relative;
-    outline-color: var($sys-available-complementary);
+    outline-color: $sys-available-complementary;
   }
 }
 

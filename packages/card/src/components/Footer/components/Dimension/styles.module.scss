@@ -19,13 +19,13 @@
 }
 
 .currentValue {
-  color: var($sys-neutral-text-main);
+  color: $sys-neutral-text-main;
 }
 
 .oldValue {
-  color: var($sys-neutral-text-light);
+  color: $sys-neutral-text-light;
 }
 
 .dimension {
-  color: var($sys-neutral-text-light);
+  color: $sys-neutral-text-light;
 }

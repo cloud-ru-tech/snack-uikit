@@ -12,7 +12,7 @@
   min-width: 304px;
   padding: 20px;
 
-  background-color: var($sys-neutral-background);
-  border: 1px solid var($sys-neutral-decor-default);
-  border-radius: var($dimension-050m);
+  background-color: $sys-neutral-background;
+  border: 1px solid $sys-neutral-decor-default;
+  border-radius: $dimension-050m;
 }

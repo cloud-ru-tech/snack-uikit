@@ -1,4 +1,3 @@
-@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-card';
 
 $sizes:  'm', 'l';
@@ -10,7 +9,7 @@ $sizes:  'm', 'l';
   box-sizing: border-box;
 
   object-fit: cover;
-  border-color: var($sys-neutral-decor-disabled);
+  border-color: $sys-neutral-decor-disabled;
   border-style: solid;
 
   @each $size in $sizes {

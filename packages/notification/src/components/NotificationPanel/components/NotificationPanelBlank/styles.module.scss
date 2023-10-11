@@ -23,10 +23,10 @@
 }
 
 .notificationPanelBlankTitle {
-  color: var($sys-neutral-text-main);
+  color: $sys-neutral-text-main;
 }
 
 .notificationPanelBlankDescription {
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
   white-space: pre-line;
 }

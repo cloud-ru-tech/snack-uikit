@@ -24,13 +24,13 @@ $on-surfaces: 'background', 'decor', 'accent';
 
             &:hover {
               color: simple-var($theme-variables, 'sys', $color, 'on-accent');
-              opacity: var($opacity-a080);
+              opacity: $opacity-a080;
             }
             &:focus-visible {
               @include outline-var($container-focused-s);
 
-              opacity: var($opacity-a080);
-              outline-color: var($sys-available-on-complementary);
+              opacity: $opacity-a080;
+              outline-color: $sys-available-on-complementary;
             }
           }
 
@@ -46,11 +46,11 @@ $on-surfaces: 'background', 'decor', 'accent';
               color: simple-var($theme-variables, 'sys', $color, 'text-main');
 
               @if $color == 'invert-neutral' {
-                outline-color: var($sys-available-on-complementary);
+                outline-color: $sys-available-on-complementary;
               }
 
               @else {
-                outline-color: var($sys-available-complementary);
+                outline-color: $sys-available-complementary;
               }
             }
           }

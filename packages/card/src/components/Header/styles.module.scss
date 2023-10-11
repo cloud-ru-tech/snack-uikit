@@ -24,16 +24,16 @@ $sizes:  'm', 'l';
 .title {
   display: block;
   max-width: 100%;
-  color: var($sys-neutral-text-main);
+  color: $sys-neutral-text-main;
 }
 
 .metadata {
   max-width: 100%;
-  color: var($sys-neutral-text-light);
+  color: $sys-neutral-text-light;
 }
 
 .description {
   max-width: 100%;
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
 }
 

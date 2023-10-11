@@ -10,7 +10,7 @@ $icons-sizes: (
 );
 
 .triggerClassName {
-  --offset: #{var($space-drop-list-drop-offset)};
+  --offset: #{$space-drop-list-drop-offset};
   
   display: block;
   width: 100%;
@@ -54,7 +54,7 @@ $icons-sizes: (
       .arrowIcon {
         width: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
         height: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-        color: var($sys-neutral-text-light);
+        color: $sys-neutral-text-light;
       }
 
       &[data-variant='#{$containerVariant}'] {
@@ -74,13 +74,13 @@ $icons-sizes: (
 
   &:hover, &:focus-within, &[data-focused] {
     .arrowIcon {
-      color: var($sys-neutral-text-support);
+      color: $sys-neutral-text-support;
     }
   }
 
   &[data-disabled], &[data-readonly] {
     .arrowIcon {
-      color: var($sys-neutral-text-disabled);
+      color: $sys-neutral-text-disabled;
     }
   }
 }

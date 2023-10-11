@@ -8,7 +8,7 @@
   width: 100px;
   height: 100px;
 
-  background-color: var($sys-neutral-background2-level);
-  border: 1px solid var($sys-neutral-decor-default);
+  background-color: $sys-neutral-background2-level;
+  border: 1px solid $sys-neutral-decor-default;
   border-radius: 10%;
 }

@@ -12,12 +12,12 @@
   justify-content: center;
 
   box-sizing: border-box;
-  min-width: var($size-pagination-page-button-mininal-width);
+  min-width: $size-pagination-page-button-mininal-width;
   margin: 0;
   padding-top: 0;
   padding-bottom: 0;
 
-  color: var($sys-neutral-accent-default);
+  color: $sys-neutral-accent-default;
   text-decoration: none;
   text-transform: none;
 
@@ -27,41 +27,41 @@
   outline-offset: 0;
 
   &:hover {
-    color: var($sys-neutral-text-main);
-    background-color: var($sys-primary-decor-hovered);
+    color: $sys-neutral-text-main;
+    background-color: $sys-primary-decor-hovered;
   }
 
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    color: var($sys-neutral-text-main);
-    background-color: var($sys-primary-decor-hovered);
-    outline-color: var($sys-primary-accent-default);
-    outline-offset: var($spacing-state-focus-offset);
+    color: $sys-neutral-text-main;
+    background-color: $sys-primary-decor-hovered;
+    outline-color: $sys-primary-accent-default;
+    outline-offset: $spacing-state-focus-offset;
   }
 
   &:active {
-    color: var($sys-primary-on-accent);
-    background-color: var($sys-primary-accent-pressed);
+    color: $sys-primary-on-accent;
+    background-color: $sys-primary-accent-pressed;
   }
 
   &[data-activated] {
-    color: var($sys-primary-on-accent);
-    background-color: var($sys-primary-accent-default);
+    color: $sys-primary-on-accent;
+    background-color: $sys-primary-accent-default;
 
     &:hover {
-      color: var($sys-primary-on-accent);
-      background-color: var($sys-primary-accent-hovered);
+      color: $sys-primary-on-accent;
+      background-color: $sys-primary-accent-hovered;
     }
 
     &:focus-visible {
-      color: var($sys-primary-on-accent);
-      background-color: var($sys-primary-accent-hovered);
+      color: $sys-primary-on-accent;
+      background-color: $sys-primary-accent-hovered;
     }
 
     &:active {
-      color: var($sys-primary-on-accent);
-      background-color: var($sys-primary-accent-pressed);
+      color: $sys-primary-on-accent;
+      background-color: $sys-primary-accent-pressed;
     }
   }
 }

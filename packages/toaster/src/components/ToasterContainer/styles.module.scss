@@ -19,26 +19,26 @@
   box-sizing: border-box;
   width: 100%;
 
-  color: var($sys-invert-neutral-text-main);
+  color: $sys-invert-neutral-text-main;
 
-  background-color: var($sys-invert-neutral-background);
+  background-color: $sys-invert-neutral-background;
   border: none;
   outline: none;
 
   &:hover {
-    background-color: var($sys-invert-neutral-decor-hovered);
+    background-color: $sys-invert-neutral-decor-hovered;
   }
 
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    background-color: var($sys-invert-neutral-decor-hovered);
-    outline-color: var($sys-available-complementary);
-    outline-offset: var($spacing-state-focus-offset);
+    background-color: $sys-invert-neutral-decor-hovered;
+    outline-color: $sys-available-complementary;
+    outline-offset: $spacing-state-focus-offset;
   }
 
   &:active {
-    color: var($sys-invert-neutral-text-light);
+    color: $sys-invert-neutral-text-light;
   }
 }
 
@@ -77,5 +77,5 @@
 }
 
 .containerWithCloseAllButton {
-  margin-bottom: calc(var($size-toaster-button-close-column) + var($space-toaster-system-event-gap));
+  margin-bottom: calc($size-toaster-button-close-column + $space-toaster-system-event-gap);
 }

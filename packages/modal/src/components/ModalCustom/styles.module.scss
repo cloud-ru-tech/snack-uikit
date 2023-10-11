@@ -14,8 +14,8 @@ $sizes: 's', 'm', 'l';
   flex-direction: column;
 
   box-sizing: border-box;
-  max-width: calc(100% - (var($space-modal-outside-gap) * 2));
-  max-height: calc(100vh - (var($space-modal-outside-gap) * 2));
+  max-width: calc(100% - ($space-modal-outside-gap * 2));
+  max-height: calc(100vh - ($space-modal-outside-gap * 2));
 
   background-color: simple-var($sys-neutral-background1-level);
   outline: none;

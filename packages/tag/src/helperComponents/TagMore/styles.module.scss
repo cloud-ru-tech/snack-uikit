@@ -17,17 +17,17 @@ $label-typography: (
 
   box-sizing: border-box;
 
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
   white-space: nowrap;
 
   background: none;
-  border-color: var($sys-neutral-decor-disabled);
+  border-color: $sys-neutral-decor-disabled;
   border-style: solid;
 
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    outline-color: var($sys-available-complementary);
+    outline-color: $sys-available-complementary;
   }
 
   @each $size in $sizes {
@@ -42,8 +42,8 @@ $label-typography: (
 .tagRowDroplistContainer {
   @include composite-var($drop-list-container);
 
-  background-color: var($sys-neutral-background2-level);
-  box-shadow: var($box-shadow-elevation-level4);
+  background-color: $sys-neutral-background2-level;
+  box-shadow: $box-shadow-elevation-level4;
 
   @each $size in $sizes {
     &[data-size=#{$size}] {
@@ -57,5 +57,5 @@ $label-typography: (
 }
 
 .triggerClassName {
-  --offset: #{var($space-drop-list-drop-offset)}; 
+  --offset: #{$space-drop-list-drop-offset}; 
 }

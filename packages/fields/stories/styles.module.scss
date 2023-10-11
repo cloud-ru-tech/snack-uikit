@@ -2,8 +2,8 @@
 
 .wrapper {
   padding: 16px;
-  background: var($sys-neutral-background1-level);
-  border: 1px solid var($sys-neutral-decor-default);
+  background: $sys-neutral-background1-level;
+  border: 1px solid $sys-neutral-decor-default;
 
   &[data-size='s'] {
     width: 256px;

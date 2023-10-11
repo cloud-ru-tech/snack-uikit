@@ -11,14 +11,14 @@ $sizes: 's', 'xs';
 }
 
 .progressBarContainer {
-  @include progress-anatomy-styles
-;
+  @include progress-anatomy-styles;
 
-  background-color: var($sys-neutral-decor-default);}
+  background-color: $sys-neutral-decor-default;
+}
 
 .progressBarFiller {
   width: var(--progress);
   height: 100%;
-  background-color: var($sys-primary-accent-default);
+  background-color: $sys-primary-accent-default;
   border-radius: inherit;
 }

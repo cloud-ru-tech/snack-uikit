@@ -11,7 +11,7 @@ $label-typography: (
   align-items: center;
 
   &[data-has-background] {
-    background-color: var($sys-neutral-decor-default);
+    background-color: $sys-neutral-decor-default;
 
     @each $size in $sizes {
       &[data-size='#{$size}'] {
@@ -32,5 +32,5 @@ $label-typography: (
 }
 
 .label {
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
 }

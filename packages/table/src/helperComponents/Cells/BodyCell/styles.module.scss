@@ -3,7 +3,7 @@
 .tableBodyCell {
   @include composite-var($table-cells);
 
-  color: var($sys-neutral-text-main);
+  color: $sys-neutral-text-main;
 
   &[data-align='right'] {
     justify-content: flex-end;

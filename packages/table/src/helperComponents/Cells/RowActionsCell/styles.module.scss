@@ -9,15 +9,15 @@
     content: '';
 
     position: absolute;
-    top: calc(0px - var($border-width-table-container));
-    bottom: calc(0px - var($border-width-table-container));
+    top: calc(0px - $border-width-table-container);
+    bottom: calc(0px - $border-width-table-container);
     left: 0;
 
     box-sizing: border-box;
     width: 100%;
 
     /* stylelint-disable */
-    border-left: var($border-width-table-container) solid;
+    border-left: $border-width-table-container solid;
     border-color: inherit;
     /* stylelint-enable */
   }

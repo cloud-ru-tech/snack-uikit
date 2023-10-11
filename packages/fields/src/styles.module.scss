@@ -15,7 +15,7 @@ $icon-sizes: (
   margin: 0;
   padding: 0;
 
-  color: var($sys-neutral-text-light);
+  color: $sys-neutral-text-light;
 
   background-color: transparent;
   border: none;
@@ -33,23 +33,23 @@ $icon-sizes: (
 
   &:hover {
     cursor: pointer;
-    color: var($sys-neutral-text-support);
+    color: $sys-neutral-text-support;
   }
 
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    color: var($sys-neutral-text-support);
-    outline-color: var($sys-available-complementary);
-    outline-offset: var($spacing-state-focus-offset);
+    color: $sys-neutral-text-support;
+    outline-color: $sys-available-complementary;
+    outline-offset: $spacing-state-focus-offset;
   }
 
   &:active {
-    color: var($sys-neutral-text-main);
+    color: $sys-neutral-text-main;
   }
 
   &[data-disabled] {
     cursor: not-allowed;
-    color: var($sys-neutral-text-disabled);
+    color: $sys-neutral-text-disabled;
   }
 }

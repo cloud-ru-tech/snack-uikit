@@ -35,7 +35,7 @@ export function Palette({ colors }: PaletteProps) {
                     [styles.firstRowCell]: colorIndex === 0,
                     [styles.lastRowCell]: colorIndex === colors.length - 1,
                   })}
-                  style={{ backgroundColor: `var(${themeVars.ref[color][tone]})` }}
+                  style={{ backgroundColor: themeVars.ref[color][tone] }}
                 />
               </Fragment>
             ))}

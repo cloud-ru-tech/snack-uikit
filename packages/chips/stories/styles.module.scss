@@ -17,9 +17,9 @@
   height: 160px;
   padding: 0 24px;
 
-  background-color: var($sys-neutral-background1-level);
-  border: 1px solid var($sys-neutral-decor-default);
-  border-radius: var($dimension-050m);
+  background-color: $sys-neutral-background1-level;
+  border: 1px solid $sys-neutral-decor-default;
+  border-radius: $dimension-050m;
 }
 
 $border-width: 0.5px;
@@ -36,8 +36,8 @@ $border-width: 0.5px;
 
   width: max-content;
 
-  background-color: var($sys-neutral-background1-level);
-  border: $border-width solid var($sys-neutral-decor-default);
+  background-color: $sys-neutral-background1-level;
+  border: $border-width solid $sys-neutral-decor-default;
 }
 
 .cell {
@@ -47,7 +47,7 @@ $border-width: 0.5px;
 
   padding: 8px;
 
-  border: $border-width solid var($sys-neutral-decor-disabled);
+  border: $border-width solid $sys-neutral-decor-disabled;
 }
 
 .headerCell {

@@ -2,15 +2,17 @@
 
 .card {
   padding: 48px 8px 8px 8px;
-  border: 1px solid var($sys-neutral-decor-default);
+  border: 1px solid $sys-neutral-decor-default;
   border-radius: 16px;
 }
 
 .content {
   padding: 8px 8px 4px 8px;
-  color: var($sys-neutral-text-support);
-  background-color: var($sys-neutral-background1-level);
-  border: 1px solid var($sys-neutral-decor-default);
+
+  color: $sys-neutral-text-support;
+
+  background-color: $sys-neutral-background1-level;
+  border: 1px solid $sys-neutral-decor-default;
   border-radius: 8px;
 }
 
@@ -23,14 +25,14 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  color: var($sys-neutral-text-light);
+  color: $sys-neutral-text-light;
 }
 
 .value {
   flex: 1;
   min-width: 0;
   margin-left: 4px;
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
 }
 
 .divider {
@@ -39,5 +41,5 @@
 
 .description {
   min-width: 0;
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
 }

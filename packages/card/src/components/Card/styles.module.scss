@@ -31,7 +31,7 @@ $sizes:  'm', 'l';
 
   text-align: left;
 
-  background-color: var($sys-neutral-background1-level);
+  background-color: $sys-neutral-background1-level;
   border: 0;
   outline-color: transparent;
 
@@ -44,15 +44,15 @@ $sizes:  'm', 'l';
   &:focus-visible {
     @include outline-var($container-focused-l);
 
-    background-color: var($sys-neutral-background2-level);
-    outline-color: var($sys-primary-accent-default);
+    background-color: $sys-neutral-background2-level;
+    outline-color: $sys-primary-accent-default;
 
     .functionBadgeWrapper {
       display: block;
     }
 
     .check {
-      background-color: var($sys-primary-accent-default);
+      background-color: $sys-primary-accent-default;
     }
   }
 
@@ -64,19 +64,19 @@ $sizes:  'm', 'l';
 
 
   &[data-checked] {
-    outline-color: var($sys-primary-decor-activated);
+    outline-color: $sys-primary-decor-activated;
 
     .check {
-      background-color: var($sys-primary-decor-activated);
+      background-color: $sys-primary-decor-activated;
     }
   }
 
   &[data-checked]:focus-visible {
-    outline-color: var($sys-primary-accent-default);
+    outline-color: $sys-primary-accent-default;
 
     .check {
-      color: var($sys-primary-on-accent);
-      background-color: var($sys-primary-accent-default);
+      color: $sys-primary-on-accent;
+      background-color: $sys-primary-accent-default;
     }
   }
 
@@ -86,7 +86,7 @@ $sizes:  'm', 'l';
     }
 
     &:hover {
-      background-color: var($sys-neutral-background2-level);
+      background-color: $sys-neutral-background2-level;
     }
   }
 }
@@ -100,7 +100,7 @@ $sizes:  'm', 'l';
 
 .body {
   display: block;
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
   text-align: initial;
 }
 

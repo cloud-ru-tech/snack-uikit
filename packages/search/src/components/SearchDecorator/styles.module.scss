@@ -10,7 +10,7 @@ $sizes: 's', 'm', 'l';
 
   box-sizing: border-box;
 
-  background-color: var($sys-neutral-background1-level);
+  background-color: $sys-neutral-background1-level;
   border-color: transparent;
   border-style: solid;
 
@@ -21,21 +21,21 @@ $sizes: 's', 'm', 'l';
   }
 
   &[data-outline] {
-    border-color: var($sys-neutral-decor-default);
+    border-color: $sys-neutral-decor-default;
   }
 
   &:hover {
-    background-color: var($sys-neutral-background2-level);
-    border-color: var($sys-primary-decor-hovered);
+    background-color: $sys-neutral-background2-level;
+    border-color: $sys-primary-decor-hovered;
   }
 
   &:focus-within,
   &[data-focused] {
     @include outline-var($container-focused-m);
 
-    background-color: var($sys-neutral-background2-level);
-    border-color: var($sys-primary-accent-default);
-    outline-color: var($sys-primary-decor-activated);
+    background-color: $sys-neutral-background2-level;
+    border-color: $sys-primary-accent-default;
+    outline-color: $sys-primary-decor-activated;
   }
 }
 

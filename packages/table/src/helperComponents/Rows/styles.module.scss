@@ -10,7 +10,7 @@
 
   box-sizing: border-box;
 
-  background-color: var($sys-neutral-background1-level);
+  background-color: $sys-neutral-background1-level;
   border-color: transparent;
   border-style: solid none;
 
@@ -28,18 +28,18 @@
   box-sizing: border-box;
 
   background-color: inherit;
-  border-color: var($sys-neutral-decor-hovered);
+  border-color: $sys-neutral-decor-hovered;
 
   &::after {
     pointer-events: none;
     content: '';
 
     position: absolute;
-    top: calc(0px - var($border-width-table-container));
-    bottom: calc(0px - var($border-width-table-container));
+    top: calc(0px - $border-width-table-container);
+    bottom: calc(0px - $border-width-table-container);
 
     box-sizing: border-box;
-    width: var($border-width-table-container);
+    width: $border-width-table-container;
   }
 
   &[data-position='left'] {
@@ -49,7 +49,7 @@
       right: 0;
 
       /* stylelint-disable */
-      border-right: var($border-width-table-container) solid;
+      border-right: $border-width-table-container solid;
       border-color: inherit;
       /* stylelint-enable */
     }
@@ -62,7 +62,7 @@
       left: 0;
 
       /* stylelint-disable */
-      border-left: var($border-width-table-container) solid;
+      border-left: $border-width-table-container solid;
       border-color: inherit;
       /* stylelint-enable */
     }
@@ -72,19 +72,19 @@
 .bodyRow {
   &[data-disabled] {
     cursor: not-allowed;
-    background-color: var($sys-neutral-background);
+    background-color: $sys-neutral-background;
   }
 
   &[data-selected] {
-    background-color: var($sys-primary-background);
+    background-color: $sys-primary-background;
 
     .rowPinnedCells {
-      border-color: var($sys-primary-decor-default);
+      border-color: $sys-primary-decor-default;
     }
 
     &:hover, &[data-actions-opened] {
-      background-color: var($sys-primary-background1-level);
-      border-color: var($sys-primary-decor-hovered);
+      background-color: $sys-primary-background1-level;
+      border-color: $sys-primary-decor-hovered;
 
       .rowPinnedCells {
         border-color: inherit;
@@ -98,8 +98,8 @@
 
   &:not([data-disabled]):not([data-selected]) {
     &:hover, &[data-actions-opened] {
-      background-color: var($sys-neutral-background2-level);
-      border-color: var($sys-neutral-decor-hovered);
+      background-color: $sys-neutral-background2-level;
+      border-color: $sys-neutral-decor-hovered;
 
       .rowPinnedCells {
         border-color: inherit;

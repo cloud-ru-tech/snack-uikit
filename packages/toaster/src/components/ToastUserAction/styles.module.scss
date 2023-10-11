@@ -9,15 +9,15 @@
   justify-content: center;
 
   svg {
-    width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
-    height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }
 
 .label {
   @include composite-var($sans-label-l);
 
-  color: var($sys-invert-neutral-text-main);
+  color: $sys-invert-neutral-text-main;
 }
 
 .content {
@@ -35,7 +35,7 @@
 
   box-sizing: border-box;
 
-  background-color: var($sys-invert-neutral-background);
+  background-color: $sys-invert-neutral-background;
 
   &[data-variant='label-only'] {
     @include composite-var($toaster-user-action-toast-container-label-only);
@@ -47,19 +47,19 @@
 
   &[data-appearance='error'] {
     .icon {
-      color: var($sys-red-accent-default);
+      color: $sys-red-accent-default;
     }
   }
 
   &[data-appearance='warning'] {
     .icon {
-      color: var($sys-yellow-accent-default);
+      color: $sys-yellow-accent-default;
     }
   }
 
   &[data-appearance='success'] {
     .icon {
-      color: var($sys-green-accent-default);
+      color: $sys-green-accent-default;
     }
   }
 }

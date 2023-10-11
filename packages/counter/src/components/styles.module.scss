@@ -31,7 +31,7 @@ $key-typography: (
     &[data-appearance='#{$appearance}'] {
       color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
       background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
-      border-color: var($sys-neutral-background1-level);
+      border-color: $sys-neutral-background1-level;
     }
   }
 

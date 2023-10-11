@@ -5,23 +5,28 @@
   @include composite-var($notification-panel-header-container);
 
   position: relative;
+
   display: flex;
   flex-direction: column;
+
+  border-bottom-color: $sys-neutral-decor-default;
   border-bottom-style: solid;
-  border-bottom-color: var($sys-neutral-decor-default);
 
   &::before {
-    box-sizing: border-box;
-    content: '';
     pointer-events: none;
+    content: '';
+
     position: absolute;
     top: 0;
     left: 0;
+
+    box-sizing: border-box;
     width: 100%;
-    height: calc(100% + var($border-width-notification-panel-container));
+    height: calc(100% + $border-width-notification-panel-container);
+
+    opacity: $opacity-a004;
+    background-color: $sys-neutral-accent-default;
     border-radius: inherit;
-    background-color: var($sys-neutral-accent-default);
-    opacity: var($opacity-a004);
   }
 }
 
@@ -43,7 +48,7 @@
 
   display: flex;
   align-items: center;
-  color: var($sys-neutral-text-main);
+  color: $sys-neutral-text-main;
 }
 
 .notificationPanelTitle {
@@ -74,10 +79,10 @@
   margin: 0;
   padding: 0;
 
-  color: var($sys-neutral-text-light);
+  color: $sys-neutral-text-light;
 
   background: none;
-  border-color: var($sys-neutral-decor-default);
+  border-color: $sys-neutral-decor-default;
   border-top-style: solid;
   border-right: none;
   border-bottom: none;
@@ -86,19 +91,19 @@
   outline-offset: 0;
 
   &:hover {
-    color: var($sys-neutral-text-support);
+    color: $sys-neutral-text-support;
   }
 
   &:focus-visible {
     @include outline-inside-var($container-focused-s);
 
-    color: var($sys-neutral-text-support);
+    color: $sys-neutral-text-support;
     border-color: transparent;
-    outline-color: var($sys-available-complementary);
+    outline-color: $sys-available-complementary;
   }
 
   &:active {
-    color: var($sys-neutral-text-main);
-    border-color: var($sys-neutral-decor-default);
+    color: $sys-neutral-text-main;
+    border-color: $sys-neutral-decor-default;
   }
 }

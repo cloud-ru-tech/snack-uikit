@@ -12,31 +12,31 @@
   align-items: center;
   justify-content: center;
 
-  color: var($sys-neutral-text-main);
+  color: $sys-neutral-text-main;
 
   background-color: transparent;
   border: 0;
   outline-color: transparent;
 
   &:hover {
-    color: var($sys-neutral-text-support);
+    color: $sys-neutral-text-support;
   }
 
   &[data-focus],
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    color: var($sys-neutral-text-support);
-    outline-color: var($sys-available-complementary);
+    color: $sys-neutral-text-support;
+    outline-color: $sys-available-complementary;
   }
 
   &:active {
-    color: var($sys-neutral-text-light);
+    color: $sys-neutral-text-light;
   }
 }
 
 .triggerClassName {
-  --offset: #{var($space-drop-list-drop-offset)};
+  --offset: #{$space-drop-list-drop-offset};
 }
 
 .wrapper {

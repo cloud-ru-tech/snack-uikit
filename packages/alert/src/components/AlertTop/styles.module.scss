@@ -13,7 +13,7 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
     @each $color in $colors {
         &[data-color='#{$color}'] {
             @if $color == 'invert-neutral'{
-                background-color: var($sys-invert-neutral-background);
+                background-color:$sys-invert-neutral-background;
             }
       
             @else {
@@ -27,7 +27,7 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
     @each $color in $colors {
         &[data-color='#{$color}'] {
             @if $color == 'invert-neutral'{
-                color: var($sys-invert-neutral-text-main);
+                color:$sys-invert-neutral-text-main;
             }
 
             @else {
@@ -43,7 +43,7 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
     @each $color in $colors {
         &[data-color='#{$color}'] {
             @if $color == 'invert-neutral'{
-                color: var($sys-invert-neutral-text-main);
+                color:$sys-invert-neutral-text-main;
             }
 
             @else {
@@ -61,7 +61,7 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
     @each $color in $colors {
         &[data-color='#{$color}'] {
             @if $color == 'invert-neutral'{
-                color: var($sys-invert-neutral-text-main);
+                color:$sys-invert-neutral-text-main;
             }
 
             @else {
@@ -112,31 +112,31 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
     @each $color in $colors {
         &[data-color='#{$color}'] {
             @if $color == 'invert-neutral'{
-                color: var($sys-invert-neutral-text-main);
+                color: $sys-invert-neutral-text-main;
             }
 
             @else {
                 color: simple-var($theme-variables, 'sys', $color, 'on-accent');
             }
             
-            opacity: var($opacity-a080);
+            opacity: $opacity-a080;
 
             &:hover {
                 opacity: unset;
-                background-color: var($sys-opacity-hovered);
+                background-color: $sys-opacity-hovered;
             }
 
             &:focus-visible {
                 @include outline-var($container-focused-s);
 
                 opacity: unset;
-                background-color: var($sys-opacity-hovered);
-                outline-color: var($sys-available-on-complementary);
+                background-color: $sys-opacity-hovered;
+                outline-color: $sys-available-on-complementary;
             }
 
             &:active {
-                opacity: var($opacity-a080);
-                background-color: var($sys-opacity-activated);
+                opacity: $opacity-a080;
+                background-color: $sys-opacity-activated;
             }
 
         }
@@ -145,6 +145,6 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
 .actions {
     display: flex;
-    gap: 16px;
+    gap: $dimension-2m;
     align-items: center;
 }

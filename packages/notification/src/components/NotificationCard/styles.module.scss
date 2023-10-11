@@ -17,7 +17,7 @@
 
 .notificationCardTitleText {
   box-sizing: border-box;
-  color: var($sys-neutral-text-main);
+  color: $sys-neutral-text-main;
 }
 
 .notificationCardTitleIcon {
@@ -39,11 +39,10 @@
 
   box-sizing: border-box;
 
-  border-bottom-color: var($sys-neutral-decor-default);
+  border-bottom-color: $sys-neutral-decor-default;
   border-bottom-style: solid;
 
   &::before {
-    box-sizing: border-box;
     pointer-events: none;
     content: '';
 
@@ -51,22 +50,23 @@
     top: 0;
     left: 0;
 
+    box-sizing: border-box;
     width: 100%;
-    height: calc(100% + var($border-width-notification-panel-card));
+    height: calc(100% + $border-width-notification-panel-card);
 
-    opacity: var($opacity-a004);
+    opacity: $opacity-a004;
   }
 
   &:focus-visible {
     @include outline-var($container-focused-s);
 
     border-bottom-color: transparent;
-    outline-color: var($sys-available-complementary);
+    outline-color: $sys-available-complementary;
   }
 
   &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
     &::before {
-      background-color: var($sys-neutral-accent-default);
+      background-color: $sys-neutral-accent-default;
     }
 
     .notificationCardFunction {
@@ -81,51 +81,51 @@
 
   &[data-unread] {
     &::before {
-      opacity: var($opacity-a008);
-      background-color: var($sys-neutral-accent-default);
+      opacity: $opacity-a008;
+      background-color: $sys-neutral-accent-default;
     }
 
     &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
       &::before {
-        opacity: var($opacity-a004);
+        opacity: $opacity-a004;
       }
     }
   }
 
   &[data-appearance='neutral'] {
     .notificationCardTitleIcon {
-      color: var($sys-neutral-accent-default);
+      color: $sys-neutral-accent-default;
     }
   }
 
   &[data-appearance='error'],
   &[data-appearance='errorCritical'] {
     .notificationCardTitleIcon {
-      color: var($sys-red-accent-default);
+      color: $sys-red-accent-default;
     }
   }
 
   &[data-appearance='errorCritical'] {
     &[data-unread], &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
       &::before {
-        background-color: var($sys-red-accent-default);
+        background-color: $sys-red-accent-default;
       }
     }
 
     .notificationCardTitleText {
-      color: var($sys-red-accent-default);
+      color: $sys-red-accent-default;
     }
   }
 
   &[data-appearance='warning'] {
     .notificationCardTitleIcon {
-      color: var($sys-yellow-accent-default);
+      color: $sys-yellow-accent-default;
     }
   }
 
   &[data-appearance='success'] {
     .notificationCardTitleIcon {
-      color: var($sys-green-accent-default);
+      color: $sys-green-accent-default;
     }
   }
 
@@ -137,8 +137,8 @@
 }
 
 .notificationCardLabel {
-  color: var($sys-neutral-text-support);
   display: grid;
+  color: $sys-neutral-text-support;
 }
 
 .notificationCardTitle {
@@ -153,7 +153,7 @@
 
 .notificationCardContent {
   box-sizing: border-box;
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
   white-space: pre-line;
 }
 
@@ -167,6 +167,6 @@
 .notificationCardDate {
   flex: 1 0 auto;
   box-sizing: border-box;
-  color: var($sys-neutral-text-light);
+  color: $sys-neutral-text-light;
   text-align: right;
 }

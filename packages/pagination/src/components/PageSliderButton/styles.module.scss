@@ -23,14 +23,14 @@
   .pageButtonSliderDot {
     @include composite-var($pagination-page-button-slider-dot-page-default);
 
-    background-color: var($sys-neutral-decor-default);
+    background-color: $sys-neutral-decor-default;
   }
 
   &:hover {
     .pageButtonSliderDot {
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-      background-color: var($sys-neutral-accent-hovered);
+      background-color: $sys-neutral-accent-hovered;
     }
   }
 
@@ -39,9 +39,9 @@
       @include outline-var($container-focused-s);
       @include composite-var($pagination-page-button-slider-dot-page-default);
 
-      background-color: var($sys-neutral-accent-hovered);
-      outline-color: var($sys-primary-accent-default);
-      outline-offset: var($spacing-state-focus-offset);
+      background-color: $sys-neutral-accent-hovered;
+      outline-color: $sys-primary-accent-default;
+      outline-offset: $spacing-state-focus-offset;
     }
   }
 
@@ -49,7 +49,7 @@
     .pageButtonSliderDot {
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-      background-color: var($sys-primary-accent-pressed);
+      background-color: $sys-primary-accent-pressed;
     }
   }
 
@@ -58,14 +58,14 @@
     .pageButtonSliderDot {
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-      background-color: var($sys-primary-accent-default);
+      background-color: $sys-primary-accent-default;
     }
 
     &:hover {
       .pageButtonSliderDot {
         @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-        background-color: var($sys-primary-accent-hovered);
+        background-color: $sys-primary-accent-hovered;
       }
     }
 
@@ -73,7 +73,7 @@
       .pageButtonSliderDot {
         @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-        background-color: var($sys-primary-accent-hovered);
+        background-color: $sys-primary-accent-hovered;
       }
     }
 
@@ -81,7 +81,7 @@
       .pageButtonSliderDot {
         @include composite-var($pagination-page-button-slider-dot-page-default);
 
-        background-color: var($sys-neutral-accent-default);
+        background-color: $sys-neutral-accent-default;
       }
     }
   }

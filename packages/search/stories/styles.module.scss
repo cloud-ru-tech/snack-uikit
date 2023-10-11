@@ -10,12 +10,12 @@
   padding: 20px;
 
   
-  background-color: var($sys-neutral-background);
-  border: 1px solid var($sys-neutral-decor-default);
-  border-radius: var($dimension-050m);
+  background-color: $sys-neutral-background;
+  border: 1px solid $sys-neutral-decor-default;
+  border-radius: $dimension-050m;
 
   &[data-outline]{
-    background-color: var($sys-neutral-background1-level);
+    background-color: $sys-neutral-background1-level;
   }
 }
 
@@ -34,6 +34,6 @@
 }
 
 .card {
-  border: solid 1px var($sys-primary-decor-default);
+  border: solid 1px $sys-primary-decor-default;
   border-radius: 4px;
 }

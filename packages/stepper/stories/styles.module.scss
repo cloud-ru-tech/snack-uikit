@@ -4,9 +4,9 @@
   margin-bottom: 1em;
   padding: 1em;
 
-  background-color: var($sys-neutral-background1-level);
-  border: 1px solid var($sys-neutral-decor-default);
-  border-radius: var($dimension-050m);
+  background-color: $sys-neutral-background1-level;
+  border: 1px solid $sys-neutral-decor-default;
+  border-radius: $dimension-050m;
 }
 
 .panel {

@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG, InfoFilledSVG } from '@snack-ui/icons';
 import { Size } from '@snack-ui/input-private';
 
@@ -59,6 +61,8 @@ export function Footer({ length, hint, size, validationState = ValidationState.D
   const isReverseContainer = !hint && length;
   const limitExceeded = length && length.max && length.current > length.max;
 
+  const icon = useMemo(() => getValidationIcon({ validationState, showHintIcon }), [showHintIcon, validationState]);
+
   if (!hint && !length) {
     return null;
   }
@@ -67,9 +71,11 @@ export function Footer({ length, hint, size, validationState = ValidationState.D
     <span className={styles.footer} data-reverse={isReverseContainer || undefined} data-size={size}>
       {hint && (
         <span className={styles.hintLayout}>
-          <span className={styles.hintIconContainer} data-size={size}>
-            {getValidationIcon({ validationState, showHintIcon })}
-          </span>
+          {icon && (
+            <span className={styles.hintIconContainer} data-size={size}>
+              {icon}
+            </span>
+          )}
           <span className={styles.hint} data-validation={validationState} data-test-id='field-decorator__hint'>
             {hint}
           </span>

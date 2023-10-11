@@ -5,7 +5,7 @@
   @include composite-var($stepper-step-tail-line);
 
   flex-grow: 1;
-  background-color: var(--sys-neutral-decor-default);
+  background-color: $sys-neutral-decor-default;
 }
 
 .tail {
@@ -16,10 +16,10 @@
   flex-shrink: 1;
   align-items: center;
 
-  min-width: var($dimension-2m);
+  min-width: $dimension-2m;
 
   &[data-completed] .tailLine {
-    background-color: var(--sys-primary-accent-default);
+    background-color: $sys-primary-accent-default;
   }
 }
 
@@ -51,7 +51,7 @@
   margin: 0;
   padding: 0;
 
-  color: var(--sys-neutral-text-main);
+  color: $sys-neutral-text-main;
 
   background-color: transparent;
   border: none;
@@ -59,14 +59,14 @@
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    outline-color: var(--sys-available-complementary);
-    outline-offset: var(--spacing-state-focus-offset);
+    outline-color: $sys-available-complementary;
+    outline-offset: $spacing-state-focus-offset;
   }
 
   &:not([disabled]) {
     cursor: pointer;
     &:focus-visible, &:hover {
-      color: var(--sys-neutral-text-light);
+      color: $sys-neutral-text-light;
     }
   }
 }

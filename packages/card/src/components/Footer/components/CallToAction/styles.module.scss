@@ -11,17 +11,17 @@
 }
 
 .label {
-  color: var($sys-primary-accent-default);
+  color: $sys-primary-accent-default;
 }
 
 .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var($sys-primary-accent-default);
+  color: $sys-primary-accent-default;
   
   svg {
-    width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
-    height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }

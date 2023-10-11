@@ -21,8 +21,8 @@ $link-surface: (
   margin-bottom: 16px;
   padding: 0 24px;
 
-  border: 1px solid var($sys-neutral-decor-default);
-  border-radius: var($dimension-050m);
+  border: 1px solid $sys-neutral-decor-default;
+  border-radius: $dimension-050m;
 
   @each $on-surface in $on-surfaces {
     &[data-on-surface='#{$on-surface}'] {
@@ -44,8 +44,8 @@ $border-width: 0.5px;
 
   margin-right: 16px;
 
-  background-color: var($sys-neutral-background1-level);
-  border: $border-width solid var($sys-neutral-decor-default);
+  background-color: $sys-neutral-background1-level;
+  border: $border-width solid $sys-neutral-decor-default;
 }
 
 .cell {
@@ -55,7 +55,7 @@ $border-width: 0.5px;
 
   padding: 8px;
 
-  border: $border-width solid var($sys-neutral-decor-disabled);
+  border: $border-width solid $sys-neutral-decor-disabled;
 
   @each $on-surface in $on-surfaces {
     &[data-on-surface='#{$on-surface}'] {

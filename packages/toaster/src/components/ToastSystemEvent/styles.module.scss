@@ -3,29 +3,29 @@
 @import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
 
 @mixin colorMap($background-color, $icon-color, $title-color, $description-color, $progress-color) {
-  background-color: var($background-color);
+  background-color: $background-color;
 
   .icon {
-    color: var($icon-color);
+    color: $icon-color;
   }
 
   .title {
-    color: var($title-color);
+    color: $title-color;
   }
 
   .description {
-    color: var($description-color);
+    color: $description-color;
   }
 
   .progress {
-    background-color: var($progress-color);
+    background-color: $progress-color;
   }
 }
 
 .icon {
   svg {
-    width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
-    height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }
 
@@ -42,31 +42,31 @@
   margin: 0;
   padding: 0;
 
-  color: var($sys-invert-neutral-text-light);
+  color: $sys-invert-neutral-text-light;
 
   background-color: transparent;
   border: none;
 
   svg {
-    width: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
-    height: var($icon-s) !important; /* stylelint-disable-line declaration-no-important */
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 
   &:hover {
-    color: var($sys-invert-neutral-text-main);
+    color: $sys-invert-neutral-text-main;
   }
 
   &:focus,
   &:active {
-    color: var($sys-invert-neutral-accent-pressed);
+    color: $sys-invert-neutral-accent-pressed;
   }
 
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    color: var($sys-invert-neutral-text-main);
-    outline-color: var($sys-available-on-complementary);
-    outline-offset: var($spacing-state-focus-offset);
+    color: $sys-invert-neutral-text-main;
+    outline-color: $sys-available-on-complementary;
+    outline-offset: $spacing-state-focus-offset;
   }
 }
 
@@ -158,8 +158,8 @@
     );
     
     .buttonClose {
-      color: var($sys-red-on-accent);
-      opacity: var($opacity-a064);
+      color: $sys-red-on-accent;
+      opacity: $opacity-a064;
 
       &:hover,
       &:focus-visible {
@@ -167,7 +167,7 @@
       }
 
       &:active {
-        opacity: var($opacity-a048);
+        opacity: $opacity-a048;
       }
     }
   }

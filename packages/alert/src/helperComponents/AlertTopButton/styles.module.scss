@@ -18,24 +18,24 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
     white-space: nowrap;
 
-    opacity: var($opacity-a080);
+    opacity: $opacity-a080;
     background: none;
     border: 0;
     
     &:hover {
         opacity: unset;
-        background-color: var($sys-opacity-hovered);
+        background-color: $sys-opacity-hovered;
     }
     &:focus-visible {
         @include outline-var($container-focused-s);
 
         opacity: unset;
-        background-color: var($sys-opacity-hovered);
-        outline-color: var($sys-available-on-complementary);
+        background-color: $sys-opacity-hovered;
+        outline-color: $sys-available-on-complementary;
     }
     &:active {
-        opacity: var($opacity-a080);
-        background-color: var($sys-opacity-activated);
+        opacity: $opacity-a080;
+        background-color: $sys-opacity-activated;
     }
 
     @each $color in $colors {

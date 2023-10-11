@@ -2,15 +2,13 @@
 @import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
 
 .separator {
-  position: relative;
-
   flex-shrink: 0;
 
   box-sizing: border-box;
-  width: var($border-width-toolbar-separator);
-  margin: var($space-toolbar-separator-padding) 0;
+  width: $border-width-toolbar-separator;
+  margin: $space-toolbar-separator-padding 0;
 
-  background-color: var($sys-neutral-decor-default);
+  background-color: $sys-neutral-decor-default;
 }
 
 

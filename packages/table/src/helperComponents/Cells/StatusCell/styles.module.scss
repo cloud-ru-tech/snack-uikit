@@ -4,13 +4,13 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
 
 .statusCell {
   display: flex;
-  gap: var($space-table-cell-gap);
+  gap: $space-table-cell-gap;
   align-items: center;
 
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding-right: var($space-table-cell-padding);
+  padding-right: $space-table-cell-padding;
 
   &[data-no-label] {
     padding-right: 0;
@@ -20,7 +20,7 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
 .statusCellLabel {
   box-sizing: border-box;
   min-width: 0;
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
 }
 
 .statusCellIndicator {
@@ -40,8 +40,8 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
     content: '';
 
     position: absolute;
-    top: calc(0px - var($border-width-table-container));
-    bottom: calc(0px - var($border-width-table-container));
+    top: calc(0px - $border-width-table-container);
+    bottom: calc(0px - $border-width-table-container);
     left: 0;
 
     box-sizing: border-box;

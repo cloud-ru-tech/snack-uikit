@@ -23,7 +23,7 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
 .title {
   @include composite-var($sans-title-s);
 
-  color: var($sys-neutral-text-main);
+  color: $sys-neutral-text-main;
 }
 
 .textlayout {
@@ -35,7 +35,7 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
 .description {
   @include composite-var($sans-body-m);
 
-  color: var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
   word-wrap: break-word;
 }
 
@@ -81,7 +81,7 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
         @include outline-var($container-focused-s);
 
         color: simple-var($theme-variables, 'sys', $color, 'text-support');
-        outline-color: var($sys-available-complementary);
+        outline-color: $sys-available-complementary;
       }
       
       &:active {
