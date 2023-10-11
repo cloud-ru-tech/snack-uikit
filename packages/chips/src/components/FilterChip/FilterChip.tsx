@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { KeyboardEvent, MouseEventHandler, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Droplist, useGetDropdownOffset } from '@snack-ui/droplist';
+import { Droplist } from '@snack-ui/droplist';
 import { Sun } from '@snack-ui/loaders';
 import { extractSupportProps } from '@snack-ui/utils';
 
@@ -38,9 +38,6 @@ export function FilterChip({
   const isLabelExist = selectionMode === SelectionMode.Multi;
   const ref = useRef<HTMLButtonElement>(null);
   const [isDroplistOpened, setIsDroplistOpened] = useState(false);
-
-  const triggerRef = useRef<HTMLElement>(null);
-  const dropdownOffset = useGetDropdownOffset(triggerRef);
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = e => {
     if (loading || disabled) return;
@@ -140,9 +137,7 @@ export function FilterChip({
       firstElementRefCallback={setFirstListElementFocus}
       onOpenChange={onOpenChangeHandler}
       onFocusLeave={onFocusLeaveHandler}
-      triggerClassName={styles.droplist}
-      triggerRef={triggerRef}
-      offset={dropdownOffset}
+      triggerClassName={styles.triggerClassName}
       widthStrategy={Droplist.widthStrategies.Gte}
       triggerElement={
         <button

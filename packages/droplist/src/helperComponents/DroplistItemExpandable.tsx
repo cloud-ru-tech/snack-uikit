@@ -65,6 +65,7 @@ export const DroplistItemExpandable = forwardRef<HTMLButtonElement, DroplistItem
         firstElementRefCallback={setFirstElementRef}
         onOpenChange={setIsOpen}
         onFocusLeave={focusLeaveHandler}
+        offset={0}
       >
         {children}
       </Droplist>

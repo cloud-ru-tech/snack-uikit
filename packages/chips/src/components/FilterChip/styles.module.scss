@@ -70,6 +70,7 @@ $valueTypography: (
   }
 }
 
-.droplist {
-  top: calc(var($border-state-focus-s-border-width) + var($space-drop-list-drop-offset));
+
+.triggerClassName {
+  --offset: #{calc(var($border-state-focus-s-border-width) + var($space-drop-list-drop-offset))};
 }

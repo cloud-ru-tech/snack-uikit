@@ -9,8 +9,9 @@ $icons-sizes: (
   'l': $icon-s
 );
 
-.trigger {
-  top: var($space-drop-list-drop-offset);
+.triggerClassName {
+  --offset: #{var($space-drop-list-drop-offset)};
+  
   display: block;
   width: 100%;
 }

@@ -35,12 +35,8 @@
   }
 }
 
-.droplist {
-  padding-top: var($dimension-050m);
-}
-
-.item {
-  width: max-content;
+.triggerClassName {
+  --offset: #{var($space-drop-list-drop-offset)};
 }
 
 .wrapper {

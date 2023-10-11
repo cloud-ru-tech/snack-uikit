@@ -7,10 +7,9 @@ import {
   RefCallback,
   RefObject,
   useMemo,
-  useRef,
 } from 'react';
 
-import { Droplist, useGetDropdownOffset } from '@snack-ui/droplist';
+import { Droplist } from '@snack-ui/droplist';
 import { InputPrivate, Size, useButtonNavigation, useClearButton } from '@snack-ui/input-private';
 import { extractSupportProps } from '@snack-ui/utils';
 
@@ -119,9 +118,6 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
-    const triggerRef = useRef<HTMLElement>(null);
-    const dropdownOffset = useGetDropdownOffset(triggerRef);
-
     const onInputKeyDownHandler = useHandlers<KeyboardEvent<HTMLInputElement>>([
       inputKeyDownNavigationHandler,
       onInputKeyDownProp,
@@ -152,12 +148,10 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       >
         <Droplist
           trigger={Droplist.triggers.Click}
-          triggerClassName={styles.trigger}
+          triggerClassName={styles.triggerClassName}
           triggerClickByKeys={!searchable}
           placement={Droplist.placements.Bottom}
           onFocusLeave={onFocusLeaveHandler}
-          triggerRef={triggerRef}
-          offset={dropdownOffset}
           firstElementRefCallback={firstDroplistItemRefCallback}
           data-test-id='field-select__list'
           {...(readonly || disabled ? { open: false } : { open, onOpenChange })}

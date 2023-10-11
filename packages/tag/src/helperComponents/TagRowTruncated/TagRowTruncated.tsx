@@ -8,7 +8,7 @@ import { Size } from '../../constants';
 import { TagRowItemInner } from '../../types';
 import { TagList } from '../TagList';
 import { TagMore } from '../TagMore';
-import { useGetDropdownOffset, useResizeObserver } from './hooks';
+import { useResizeObserver } from './hooks';
 import styles from './styles.module.scss';
 import { getGapWidth } from './utils';
 
@@ -58,7 +58,6 @@ export function TagRowTruncated({
   }
 
   const gapWidth = getGapWidth(hiddenRowElementRef);
-  const dropdownOffset = useGetDropdownOffset(hiddenMoreButtonWrapperRef);
 
   useEffect(() => {
     if (maxWidth < 1) {
@@ -120,13 +119,7 @@ export function TagRowTruncated({
       <div className={styles.visibleRow} data-size={size} data-test-id={TAG_ROW_TEST_IDS.visibleTagsWrapper}>
         <TagList items={visibleTags} size={size} onItemRemove={onItemRemove} />
         {hiddenTags.length > 0 && (
-          <TagMore
-            items={hiddenTags}
-            text={moreButtonLabel}
-            size={size}
-            dropdownOffset={dropdownOffset}
-            onItemRemove={onItemRemove}
-          />
+          <TagMore items={hiddenTags} text={moreButtonLabel} size={size} onItemRemove={onItemRemove} />
         )}
       </div>
     </div>

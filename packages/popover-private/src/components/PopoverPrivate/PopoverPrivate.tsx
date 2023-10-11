@@ -34,6 +34,7 @@ import {
 } from '../../constants';
 import { getArrowOffset, getPopoverRootElement, getPopoverTriggerJSX, getTriggerProps } from '../../utils';
 import { Arrow } from '../Arrow';
+import { useOffset } from './hooks';
 import styles from './styles.module.scss';
 
 type GetReferencePropsFunc = ReturnType<typeof useInteractions>['getReferenceProps'];
@@ -131,7 +132,7 @@ function PopoverPrivateComponent({
   placement: placementProp = Placement.Top,
   hasArrow,
   arrowClassName,
-  offset: offsetProp = 0,
+  offset: offsetProp,
   popoverContent,
   trigger,
   outsideClick,
@@ -151,6 +152,8 @@ function PopoverPrivateComponent({
 
   const nodeId = useFloatingNodeId();
 
+  const offsetValue = useOffset({ triggerClassName, offsetProp });
+
   const arrowOffset = getArrowOffset(arrowRef.current);
   const { floatingStyles, refs, context, middlewareData, placement } = useFloating({
     nodeId,
@@ -160,8 +163,8 @@ function PopoverPrivateComponent({
     whileElementsMounted: autoUpdate,
     middleware: [
       shift(),
-      offset(offsetProp + arrowOffset),
-      hasArrow && arrow({ element: arrowRef, padding: (offsetProp + arrowOffset) * 2 }),
+      offset(offsetValue + arrowOffset),
+      hasArrow && arrow({ element: arrowRef, padding: (offsetValue + arrowOffset) * 2 }),
       flip({
         fallbackPlacements,
       }),
@@ -204,6 +207,7 @@ function PopoverPrivateComponent({
   const setReference: typeof refs.setReference = useCallback(
     node => {
       refs.setReference(node);
+
       if (triggerRef) {
         typeof triggerRef === 'function' ? triggerRef(node) : (triggerRef.current = node);
       }

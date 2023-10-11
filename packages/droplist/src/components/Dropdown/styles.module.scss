@@ -8,3 +8,7 @@
   background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
   box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level4');
 }
+
+.defaultTriggerClassName {
+  --offset: #{var($space-drop-list-drop-offset)};
+}

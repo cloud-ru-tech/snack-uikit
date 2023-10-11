@@ -1,4 +1,5 @@
 import { Placement, ReferenceType, useInteractions } from '@floating-ui/react';
+import cn from 'classnames';
 import { cloneElement, CSSProperties, HTMLProps, isValidElement, MutableRefObject, ReactNode } from 'react';
 import { isForwardRef, isValidElementType } from 'react-is';
 
@@ -67,7 +68,10 @@ export const getPopoverTriggerJSX = ({
   if (isValidElement(children)) {
     if (isForwardRef(children) || isValidElementType(children)) {
       return cloneElement(children, {
-        ...getReferenceProps(children.props as HTMLProps<HTMLElement>),
+        ...getReferenceProps({
+          ...(children.props as HTMLProps<HTMLElement>),
+          className: cn(children.props.className, validElementWrapperClassName),
+        }),
         ref: setReference,
       });
     }

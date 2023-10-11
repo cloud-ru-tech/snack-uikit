@@ -13,23 +13,16 @@ type TagMoreProps = {
   items: TagRowItemInner[];
   size: Size;
   text?: string;
-  dropdownOffset?: number;
   buttonRef?: Ref<HTMLButtonElement>;
   onItemRemove?(item: string): void;
 };
 
-export function TagMore({
-  items,
-  text = '',
-  size = Size.Xs,
-  dropdownOffset = 4,
-  buttonRef,
-  onItemRemove,
-}: TagMoreProps) {
+export function TagMore({ items, text = '', size = Size.Xs, buttonRef, onItemRemove }: TagMoreProps) {
   return (
     <PopoverPrivate
       placement={PopoverPrivate.placements.BottomEnd}
       trigger={PopoverPrivate.triggers.HoverAndFocusVisible}
+      triggerClassName={styles.triggerClassName}
       popoverContent={
         <div className={styles.tagRowDroplistContainer} data-size={size}>
           <Scroll
@@ -47,7 +40,6 @@ export function TagMore({
           </Scroll>
         </div>
       }
-      offset={dropdownOffset}
       hasArrow={false}
     >
       <button

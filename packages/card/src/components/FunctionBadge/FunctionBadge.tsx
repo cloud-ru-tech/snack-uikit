@@ -72,7 +72,6 @@ export function FunctionBadge({ icon, options }: FunctionBadgeProps) {
       <Droplist
         open={isOpen}
         onOpenChange={setIsOpen}
-        className={styles.droplist}
         firstElementRefCallback={firstElementRefCallback}
         widthStrategy={Droplist.widthStrategies.Gte}
         useScroll

@@ -13,7 +13,7 @@ import {
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar, CalendarProps } from '@snack-ui/calendar';
-import { Dropdown, useGetDropdownOffset } from '@snack-ui/droplist';
+import { Dropdown } from '@snack-ui/droplist';
 import { CalendarSVG } from '@snack-ui/icons';
 import {
   IconSize,
@@ -240,9 +240,6 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       [dateInputClickHandler, isOpen],
     );
 
-    const triggerRef = useRef<HTMLElement>(null);
-    const dropdownOffset = useGetDropdownOffset(triggerRef);
-
     return (
       <FieldDecorator
         className={className}
@@ -261,9 +258,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       >
         <Dropdown
           trigger={Dropdown.triggers.Click}
-          offset={dropdownOffset}
-          triggerRef={triggerRef}
-          triggerClassName={styles.trigger}
+          triggerClassName={styles.triggerClassName}
           widthStrategy={Dropdown.widthStrategies.Gte}
           {...(readonly || disabled
             ? { open: false }

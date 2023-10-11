@@ -55,3 +55,7 @@ $label-typography: (
 .tagRowDroplistScroll {
   max-height: 200px;
 }
+
+.triggerClassName {
+  --offset: #{var($space-drop-list-drop-offset)}; 
+}

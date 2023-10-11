@@ -1,7 +1,8 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-search';
 
-.trigger {
-  top: var($space-drop-list-drop-offset);
+.triggerClassName {
+  --offset: #{var($space-drop-list-drop-offset)};
+
   display: flex;
   flex-grow: 1;
 }

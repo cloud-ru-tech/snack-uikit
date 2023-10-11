@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { ReactNode } from 'react';
 
 import { PopoverPrivate, PopoverPrivateProps } from '@snack-ui/popover-private';
@@ -32,6 +33,7 @@ export function Dropdown({
   placement = PopoverPrivate.placements.BottomStart,
   children,
   widthStrategy = PopoverPrivate.widthStrategies.Gte,
+  triggerClassName,
   ...otherProps
 }: DropdownProps) {
   if (!children) {
@@ -45,6 +47,7 @@ export function Dropdown({
       trigger={trigger}
       hasArrow={false}
       widthStrategy={widthStrategy}
+      triggerClassName={cn(styles.defaultTriggerClassName, triggerClassName)}
       {...otherProps}
     >
       {children}
