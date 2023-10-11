@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/table",
   "title": "Table",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,13 +29,13 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/button": "0.12.1",
-    "@snack-ui/droplist": "0.8.3",
-    "@snack-ui/icons": "0.15.0",
+    "@snack-ui/button": "0.13.0",
+    "@snack-ui/droplist": "0.8.4",
+    "@snack-ui/icons": "0.16.0",
     "@snack-ui/loaders": "0.3.0",
     "@snack-ui/scroll": "0.3.0",
-    "@snack-ui/toggles": "0.4.4",
-    "@snack-ui/truncate-string": "0.2.5",
+    "@snack-ui/toggles": "0.4.5",
+    "@snack-ui/truncate-string": "0.2.6",
     "@snack-ui/typography": "0.4.0",
     "@snack-ui/utils": "1.2.0",
     "@tanstack/react-table": "8.10.1",

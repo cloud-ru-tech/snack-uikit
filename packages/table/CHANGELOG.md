@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.3 (2023-10-11)
+
+
+### Bug Fixes
+
+* **[FF-3409](https://jira.sbercloud.tech/browse/FF-3409):** fix RowActionsCell button ([9704aba](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9704aba6527f0e6fce0e90982aeca62adff57d34))
+
+
+
+
+
 ## 0.2.2 (2023-10-06)
 
 ### Only dependencies have been changed

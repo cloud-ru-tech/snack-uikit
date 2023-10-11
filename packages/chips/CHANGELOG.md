@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.9 (2023-10-11)
+
+### Only dependencies have been changed
+* [@snack-ui/droplist@0.8.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+
+
+
+
+
 ## 0.3.8 (2023-10-06)
 
 ### Only dependencies have been changed

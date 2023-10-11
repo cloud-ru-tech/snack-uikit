@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.5 (2023-10-11)
+
+
+### Bug Fixes
+
+* **FF-0000:** add extractDataProps into SearchPrivate ([748f894](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/748f89498bf8d9fe42eb2556eeaa071853c5a4a5))
+
+
+
+
+
 ## 0.2.4 (2023-10-06)
 
 ### Only dependencies have been changed

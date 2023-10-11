@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2023-10-11)
+
+
+### Bug Fixes
+
+* **[FF-3409](https://jira.sbercloud.tech/browse/FF-3409):** fix offset ButtonFunction; add flex-shrink ([07dda6c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/07dda6cf585c7919ff5f56bc365b2f27f46ea092))
+
+
+### Features
+
+* **[FF-3409](https://jira.sbercloud.tech/browse/FF-3409):** add ref, onFocus, onBlur; extractDataProps, ([f8ef7bc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f8ef7bc19977719c5619fd8f358e7bb4e835fba6))
+
+
+
+
+
 ## 0.12.1 (2023-10-06)
 
 ### Only dependencies have been changed

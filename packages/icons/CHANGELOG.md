@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.16.0 (2023-10-11)
+
+
+### Features
+
+* **[FF-2872](https://jira.sbercloud.tech/browse/FF-2872):** add Update & Trash icons ([b3c5ed0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b3c5ed03e86cc52e864869d6609f230a76b3ff22))
+
+
+
+
+
 # 0.15.0 (2023-09-28)
 
 
