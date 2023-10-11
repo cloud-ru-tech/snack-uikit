@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-10-11)
+
+
+### Features
+
+* **[FF-3392](https://jira.sbercloud.tech/browse/FF-3392):** added csv,xlsx export functions ([d4f1a68](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/d4f1a68e0ec8c47ab3f3865c13846d4a097b386a))
+
+
+
+
+
 ## 0.2.3 (2023-10-11)
 
 
