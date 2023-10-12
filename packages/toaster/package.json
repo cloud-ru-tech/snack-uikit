@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/toaster",
   "title": "Toaster",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -30,8 +30,8 @@
   "scripts": {},
   "dependencies": {
     "@snack-ui/icons": "0.16.0",
-    "@snack-ui/link": "0.5.5",
-    "@snack-ui/truncate-string": "0.2.7",
+    "@snack-ui/link": "0.5.6",
+    "@snack-ui/truncate-string": "0.2.8",
     "@snack-ui/utils": "1.2.0",
     "classnames": "2.3.2",
     "react-toastify": "9.1.3"
