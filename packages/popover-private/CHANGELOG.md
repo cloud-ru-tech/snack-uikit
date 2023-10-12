@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2023-10-12)
+
+
+### Features
+
+* **[FF-3321](https://jira.sbercloud.tech/browse/FF-3321):** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c193b4fcf778d2278bd739affb7c2c4966a417db))
+
+
+
+
+
 ## 0.8.1 (2023-10-06)
 
 **Note:** Version bump only for package @snack-ui/popover-private
