@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.3 (2023-10-12)
+
+
+### Bug Fixes
+
+* **[FF-3206](https://jira.sbercloud.tech/browse/FF-3206):** fixed background color in Drawer ([cffde71](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/cffde712c786426b9c0f61d7da6223a361f97312))
+
+
+
+
+
 ## 0.3.2 (2023-10-11)
 
 ### Only dependencies have been changed
