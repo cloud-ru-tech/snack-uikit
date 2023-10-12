@@ -1,7 +1,17 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toolbar';
 @import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
 
 .separator {
+  position: relative;
+
   flex-shrink: 0;
+
+  box-sizing: border-box;
   width: var($border-width-toolbar-separator);
+  margin: var($space-toolbar-separator-padding) 0;
+
   background-color: var($sys-neutral-decor-default);
 }
+
+
+
