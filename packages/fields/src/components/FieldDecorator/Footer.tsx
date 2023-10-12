@@ -1,6 +1,5 @@
 import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG, InfoFilledSVG } from '@snack-ui/icons';
 import { Size } from '@snack-ui/input-private';
-import { TruncateString } from '@snack-ui/truncate-string';
 
 import { ValidationState } from '../../constants';
 import styles from './styles.module.scss';
@@ -60,13 +59,19 @@ export function Footer({ length, hint, size, validationState = ValidationState.D
   const isReverseContainer = !hint && length;
   const limitExceeded = length && length.max && length.current > length.max;
 
+  if (!hint && !length) {
+    return null;
+  }
+
   return (
     <span className={styles.footer} data-reverse={isReverseContainer || undefined} data-size={size}>
       {hint && (
         <span className={styles.hintLayout}>
-          {getValidationIcon({ validationState, showHintIcon })}
+          <span className={styles.hintIconContainer} data-size={size}>
+            {getValidationIcon({ validationState, showHintIcon })}
+          </span>
           <span className={styles.hint} data-validation={validationState} data-test-id='field-decorator__hint'>
-            <TruncateString text={hint} />
+            {hint}
           </span>
         </span>
       )}

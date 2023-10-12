@@ -12,6 +12,11 @@ $footer-typography: (
   'm': $sans-body-m,
   'l': $sans-body-m
 );
+$hint-icon-container: (
+  's': $fields-hint-icon-container-s,
+  'm': $fields-hint-icon-container-m,
+  'l': $fields-hint-icon-container-m
+);
 
 .decorator {
   display: flex;
@@ -31,7 +36,6 @@ $footer-typography: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($fields, 'label', $size);
       @include composite-var($header-typography, $size);
     }
   }
@@ -55,7 +59,6 @@ $footer-typography: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($fields, 'hint', $size);
       @include composite-var($footer-typography, $size);
     }
   }
@@ -69,7 +72,20 @@ $footer-typography: (
   @include composite-var($fields-hint-hint-layout);
 
   display: inline-flex;
+  align-items: flex-start;
+}
+
+.hintIconContainer {
+  display: flex;
+  flex-shrink: 0;
   align-items: center;
+  justify-content: center;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($hint-icon-container, $size);
+    }
+  }
 }
 
 .hint {
