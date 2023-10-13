@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.2 (2023-10-13)
+
+
+### Bug Fixes
+
+* **[FF-3327](https://jira.sbercloud.tech/browse/FF-3327):** fix checked icon color ([c0c6020](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c0c60201a50375dccd09710053a33543b3789185))
+
+
+
+
+
 ## 0.5.1 (2023-10-13)
 
 ### Only dependencies have been changed

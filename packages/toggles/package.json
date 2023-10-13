@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/toggles",
   "title": "Toggles",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "sideEffects": [
     "*.css",
     "*.woff",
