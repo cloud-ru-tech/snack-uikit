@@ -21,9 +21,7 @@ export type PromoTagProps = WithSupportProps<{
 export function PromoTag({ appearance = PromoTag.appearances.Primary, className, text, ...props }: PromoTagProps) {
   return (
     <div className={cn(styles.promoTag, className)} data-appearance={appearance} {...extractSupportProps(props)}>
-      <Typography family={Typography.families.Sans} size={Typography.sizes.S} role={Typography.roles.Label}>
-        {text}
-      </Typography>
+      <Typography.SansLabelL tag={Typography.tags.span}>{text}</Typography.SansLabelL>
     </div>
   );
 }

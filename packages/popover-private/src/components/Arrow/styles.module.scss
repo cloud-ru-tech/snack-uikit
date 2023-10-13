@@ -3,7 +3,7 @@
 .arrowContainer {
   position: absolute;
   display: flex;
-  padding-left: simple-var($theme-variables, 'space', 'popover-pointer', 'offset');
+  padding-left: $space-popover-pointer-offset;
 }
 
 .arrowElement {

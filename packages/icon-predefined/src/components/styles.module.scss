@@ -47,6 +47,6 @@ $sizes: (
 
   // для желтого исключение
   &[data-appearance='yellow'] {
-    color: simple-var($sys-yellow-text-light);
+    color: $sys-yellow-text-light;
   }
 }

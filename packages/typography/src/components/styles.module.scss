@@ -5,6 +5,7 @@ $roles: 'display', 'headline', 'title', 'label', 'body';
 $sizes: 's', 'm', 'l';
 
 .typography {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 

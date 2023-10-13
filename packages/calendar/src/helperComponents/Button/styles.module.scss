@@ -43,5 +43,5 @@ $typography: (
 
 .icon {
   display: inline-flex;
-  color: simple-var($sys-neutral-text-light);
+  color: $sys-neutral-text-light;
 }

@@ -43,6 +43,6 @@ $sizes: 's', 'm';
   }
   &[data-disabled=true] {
     cursor: not-allowed;
-    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+    color: $sys-neutral-text-disabled;
   }
 }
