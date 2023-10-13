@@ -58,7 +58,7 @@ $sizes: 's', 'm';
   width: 100%;
   height: 100%;
 
-  color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
+  color: simple-var($theme-variables, 'sys', 'primary', 'on-accent');
 
   &[data-indeterminate=true],
   &[data-checked=true] {
