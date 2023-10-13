@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.9 (2023-10-13)
+
+### Only dependencies have been changed
+* [@snack-ui/popover-private@0.9.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/popover-private/CHANGELOG.md)
+
+
+
+
+
 ## 0.7.8 (2023-10-12)
 
 **Note:** Version bump only for package @snack-ui/tooltip

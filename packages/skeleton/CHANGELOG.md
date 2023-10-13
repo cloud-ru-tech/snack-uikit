@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2023-10-13)
+
+**Note:** Version bump only for package @snack-ui/skeleton
+
+
+
+
+
 # 0.2.0 (2023-10-06)
 
 

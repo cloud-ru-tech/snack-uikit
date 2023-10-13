@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.6 (2023-10-13)
+
+**Note:** Version bump only for package @snack-ui/calendar
+
+
+
+
+
 ## 0.3.5 (2023-10-11)
 
 ### Only dependencies have been changed
