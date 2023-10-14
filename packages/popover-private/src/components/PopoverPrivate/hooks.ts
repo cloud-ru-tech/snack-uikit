@@ -6,7 +6,7 @@ type UseOffsetProps = {
 };
 
 export function useOffset({ triggerClassName, offsetProp }: UseOffsetProps) {
-  const elem = document.querySelector('.' + String(triggerClassName).replace(/\s+/g, '.'));
+  const elem = document.querySelector('.' + String(triggerClassName).split(/\s+/g).map(CSS.escape).join('.'));
 
   const styles = elem ? getComputedStyle(elem) : null;
 
