@@ -20,10 +20,11 @@ import { Scroll } from '@snack-ui/scroll';
 import { SCROLL_APPLYING_ITEMS_COUNT, Size } from '../../constants';
 import { Dropdown, DropdownProps } from '../Dropdown';
 import { DroplistContext } from './DroplistContext';
+import { useKeyboardNavigation } from './hooks';
 import styles from './styles.modules.scss';
 
 export type DroplistProps = Omit<DropdownProps, 'content' | 'children' | 'isTreeRoot'> & {
-  firstElementRefCallback?: RefCallback<HTMLButtonElement>;
+  firstElementRefCallback?: RefCallback<HTMLElement>;
   triggerElement: DropdownProps['children'];
   children: ReactNode;
   onFocusLeave?: (direction: 'common' | 'top' | 'bottom' | 'left') => void;
@@ -189,3 +190,4 @@ export function Droplist({
 
 Droplist.placements = Dropdown.placements;
 Droplist.triggers = Dropdown.triggers;
+Droplist.useKeyboardNavigation = useKeyboardNavigation;

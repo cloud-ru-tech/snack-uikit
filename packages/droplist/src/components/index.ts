@@ -2,6 +2,7 @@ import { PopoverPrivate } from '@snack-ui/popover-private';
 
 import { Size } from '../constants';
 import { Droplist as DroplistComponent } from './Droplist';
+import { useKeyboardNavigation } from './Droplist/hooks';
 import { DroplistItemMultiple, DroplistItemSingle } from './DroplistItem';
 import { NoData } from './NoData';
 
@@ -24,6 +25,7 @@ export const Droplist = DroplistComponent as typeof DroplistComponent & {
   widthStrategies: typeof PopoverPrivate.widthStrategies;
   ItemSingle: typeof DroplistItemSingle;
   ItemMultiple: typeof DroplistItemMultiple;
+  useKeyboardNavigation: typeof useKeyboardNavigation;
 };
 
 Droplist.sizes = Size;
@@ -33,3 +35,4 @@ Droplist.placements = PopoverPrivate.placements;
 Droplist.widthStrategies = PopoverPrivate.widthStrategies;
 Droplist.ItemSingle = DroplistItemSingle;
 Droplist.ItemMultiple = DroplistItemMultiple;
+Droplist.useKeyboardNavigation = useKeyboardNavigation;

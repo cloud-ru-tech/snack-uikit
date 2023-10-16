@@ -1,5 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { KeyboardEvent, useState } from 'react';
+import { useState } from 'react';
 
 import { ButtonFilled } from '@snack-ui/button';
 
@@ -8,6 +8,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Droplist, DroplistProps } from '../src';
+import { DroplistItemSingleProps } from '../src/components/DroplistItem';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -23,22 +24,22 @@ const Sublist = ['Item 2-1', 'Item 2-2', 'Item 2-3', 'Item 2-4'];
 const Template: StoryFn<StoryProps> = args => {
   const [selected, setSelected] = useState('Item 1');
   const [isOpen, setIsOpen] = useState(false);
-  const [needsFocus, setNeedsFocus] = useState(false);
 
-  const onKeyDownButtonHandle = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (['Space', 'ArrowDown'].includes(e.key)) {
-      e.preventDefault();
-      setNeedsFocus(true);
-      setIsOpen(true);
-    }
-  };
+  const {
+    firstElementRefCallback,
+    handleDroplistFocusLeave,
+    handleDroplistItemClick,
+    handleTriggerKeyDown,
+    handleDroplistItemKeyDown,
+    triggerElementRef,
+  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({ setDroplistOpen: setIsOpen });
 
-  const getProps = (option: string) => ({
+  const getProps = (option: string): DroplistItemSingleProps => ({
     option,
-    onClick: () => {
-      setSelected(option);
-      setIsOpen(false);
+    onClick: e => {
+      handleDroplistItemClick(e, () => setSelected(option));
     },
+    onKeyDown: handleDroplistItemKeyDown,
     checked: selected === option,
   });
 
@@ -47,15 +48,14 @@ const Template: StoryFn<StoryProps> = args => {
       <div className={styles.wrapper}>
         <Droplist
           {...args}
-          firstElementRefCallback={el => {
-            needsFocus && el?.focus();
-            setNeedsFocus(false);
-          }}
+          firstElementRefCallback={firstElementRefCallback}
+          onFocusLeave={handleDroplistFocusLeave}
           open={isOpen}
           onOpenChange={setIsOpen}
+          triggerRef={triggerElementRef}
           triggerElement={
             <ButtonFilled
-              onKeyDown={onKeyDownButtonHandle}
+              onKeyDown={handleTriggerKeyDown}
               className={styles.button}
               label='Click to see the droplist'
               data-test-id='button-with-droplist'

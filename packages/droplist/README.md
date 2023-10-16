@@ -5,7 +5,7 @@
 
 [Changelog](./CHANGELOG.md)
 
-Пакет экспортирует 3 компонента:
+Пакет экспортирует 4 компонента:
 - `Dropdown` - компонент выпадающего контейнера общего назначения
 - `Droplist` - компонент выпадащего вложенного меню
 - `ItemSingle` - айтем списка меню с единичным выбором
@@ -25,6 +25,55 @@
 Важное уточнение, если переменная передается через  scss-var она должна быть обернута в `#{ }`
 
 Если значение явно передано через prop `offset`, то будет применено значение пропа.
+
+
+### Управление с клавиатуры
+
+Для настройки управления/переключения между айметами и триггером с клавиатуры можно воспользоваться хуком `Droplist.useKeyboardNavigation<T>({setDroplistOpen})`
+
+Пример использования: 
+
+```typescript
+  const MyComponent = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const {
+      firstElementRefCallback,
+      handleDroplistFocusLeave,
+      handleTriggerKeyDown,
+      handleDroplistItemKeyDown,
+      triggerElementRef,
+    } = Droplist.useKeyboardNavigation<HTMLButtonElement>({ setDroplistOpen: setIsOpen });
+
+    const options =  Array.from({ length: 10 }).map((_, i) => ({
+        option: `Option ${i + 1}`,
+        onKeyDown: handleDroplistItemKeyDown, 
+        onClick: () => {}
+      }));
+
+
+    return (
+      <Droplist
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        firstElementRefCallback={firstElementRefCallback}
+        onFocusLeave={handleDroplistFocusLeave}
+        triggerElement={
+          <button
+            onKeyDown={handleTriggerKeyDown}
+            ref={triggerElementRef}
+          > 
+            Click
+          </button>
+        }
+      >
+        {oprions.map(option => 
+          <Droplist.ItemSingle {...option} />
+        )}
+      </Droplist>
+    )
+  }
+```
 
 ### Общие пропсы для `ItemSingle` и `ItemMultiple`
 
@@ -159,7 +208,7 @@ CSS-класс на обёртке триггера поповера.
 | triggerRef | `ForwardedRef<HTMLElement \| ReferenceType>` | - | Ref ссылка на триггер |
 | trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `Click` - открывать по клику <br> - `Hover` - открывать по ховеру <br> - `FocusVisible` - открывать по focus-visible <br> - `Focus` - открывать по фокусу <br> - `HoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `HoverAndFocus` - открывать по ховеру и фокусу <br> - `ClickAndFocusVisible` - открывать по клику и focus-visible |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Placement.Top | Положение поповера относительно своего триггера (children). |
-| firstElementRefCallback | `(instance: HTMLButtonElement) => void` | - |  |
+| firstElementRefCallback | `(instance: HTMLElement) => void` | - |  |
 | onFocusLeave | `(direction: "common" \| "top" \| "bottom" \| "left") => void` | - |  |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - |  |
 | scrollRef | `RefObject<HTMLElement>` | - |  |
