@@ -2,7 +2,9 @@
 
 $sizes: 'xs', 's';
 
-.wrapper { 
+.wrapper {
+  @include composite-var($breadcrumbs, 'container'); 
+
   overflow: hidden;
 
   &[data-hidden='true'] {
