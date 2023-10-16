@@ -1,10 +1,9 @@
-import { Dispatch, MouseEvent, MouseEventHandler, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 import { ButtonFunction } from '@snack-ui/button';
 import { Droplist, DroplistProps } from '@snack-ui/droplist';
 import { KebabSVG } from '@snack-ui/icons';
 
-import { useDroplistKeyboardNavigation } from '../../../hooks/useDroplistKeyboardNavigation';
 import { TEST_IDS } from '../constants';
 import { NotificationCardProps } from '../NotificationCard';
 import styles from '../styles.module.scss';
@@ -15,14 +14,16 @@ export type NotificationCardFunctionProps = Required<Pick<NotificationCardProps,
   };
 
 export function NotificationCardFunction({ actions, open, setDroplistOpen }: NotificationCardFunctionProps) {
-  const { triggerButtonRef, firstElementRefCallback, handleDroplistFocusLeave, handleTriggerButtonKeyDown } =
-    useDroplistKeyboardNavigation({ setDroplistOpen });
-
-  const handleActionClick = (e: MouseEvent, cb?: MouseEventHandler) => {
-    setDroplistOpen(false);
-
-    cb?.(e);
-  };
+  const {
+    firstElementRefCallback,
+    triggerElementRef,
+    handleDroplistFocusLeave,
+    handleTriggerKeyDown,
+    handleDroplistItemKeyDown,
+    handleDroplistItemClick,
+  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({
+    setDroplistOpen,
+  });
 
   return (
     <div className={styles.notificationCardFunction} data-test-id={TEST_IDS.actions.wrapper}>
@@ -32,13 +33,13 @@ export function NotificationCardFunction({ actions, open, setDroplistOpen }: Not
         placement={Droplist.placements.BottomEnd}
         firstElementRefCallback={firstElementRefCallback}
         onFocusLeave={handleDroplistFocusLeave}
-        triggerRef={triggerButtonRef}
+        triggerRef={triggerElementRef}
         useScroll
         triggerElement={
           <ButtonFunction
             size={ButtonFunction.sizes.S}
             icon={<KebabSVG />}
-            onKeyDown={handleTriggerButtonKeyDown}
+            onKeyDown={handleTriggerKeyDown}
             data-test-id={TEST_IDS.actions.droplistTrigger}
           />
         }
@@ -48,8 +49,9 @@ export function NotificationCardFunction({ actions, open, setDroplistOpen }: Not
           <Droplist.ItemSingle
             {...action}
             key={action.option}
-            onClick={e => handleActionClick(e, action.onClick)}
+            onClick={e => handleDroplistItemClick(e, action.onClick)}
             data-test-id={TEST_IDS.actions.droplistAction}
+            onKeyDown={handleDroplistItemKeyDown}
           />
         ))}
       </Droplist>

@@ -1,13 +1,12 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { forwardRef, useRef } from 'react';
+import { forwardRef, KeyboardEvent, useCallback, useRef, useState } from 'react';
 
 import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
 
 import { PRIVATE_SEARCH_TEST_IDS, Size, TEST_IDS } from '../../constants';
 import { SearchDecorator } from '../SearchDecorator';
 import { SearchPrivate, SearchPrivateProps } from '../SearchPrivate';
-import { useHandlers } from './hooks';
 import styles from './styles.module.scss';
 
 export type SearchAutocompleteProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
@@ -37,41 +36,61 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
   },
   ref,
 ) {
-  const localRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLElement>(null);
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const {
-    handleKeyDown,
-    handleOptionKeyDown,
-    handleItemOnClick,
-    handleOnFocusLeave,
-    isOpen,
-    setIsOpen,
     firstElementRefCallback,
-  } = useHandlers({
-    localRef,
-    onChange,
-    onSubmit,
-    scrollRef,
+    handleDroplistFocusLeave,
+    handleDroplistItemClick,
+    handleTriggerKeyDown,
+    handleDroplistItemKeyDown,
+    triggerElementRef,
+  } = Droplist.useKeyboardNavigation<HTMLInputElement>({
+    setDroplistOpen: setIsOpen,
+    triggerType: Droplist.useKeyboardNavigation.triggerTypes.Input,
   });
+
+  const handleOptionKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+
+      // ignoring special keys (tab, arrows, backspace and etc.)
+      if (event.key.length === 1) {
+        triggerElementRef.current?.focus();
+        scrollRef.current?.scroll(0, 0);
+      }
+    },
+    [triggerElementRef, scrollRef],
+  );
+
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    handleTriggerKeyDown(e);
+
+    if (e.key.length === 1) {
+      setIsOpen(true);
+    }
+  };
 
   return (
     <div className={cn(styles.wrap, className)} {...rest}>
       <Droplist
-        open={Boolean(localRef.current?.value) && isOpen && options.length > 0}
+        open={Boolean(triggerElementRef.current?.value) && isOpen && options.length > 0}
         firstElementRefCallback={firstElementRefCallback}
         useScroll
         size={size}
-        onFocusLeave={handleOnFocusLeave}
+        onFocusLeave={handleDroplistFocusLeave}
         onOpenChange={setIsOpen}
         data-test-id={TEST_IDS.droplist}
         triggerClassName={styles.triggerClassName}
         scrollRef={scrollRef}
+        triggerRef={triggerElementRef}
         triggerElement={
           <SearchDecorator
             size={size}
             outline={outline || undefined}
-            focused={(isOpen && Boolean(localRef.current?.value)) || undefined}
+            focused={(isOpen && Boolean(triggerElementRef.current?.value)) || undefined}
             data-test-id={TEST_IDS.decorator}
           >
             <SearchPrivate
@@ -80,8 +99,8 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
               onChange={onChange}
               onSubmit={onSubmit}
               placeholder={placeholder}
-              ref={mergeRefs(ref, localRef)}
-              onKeyDown={handleKeyDown}
+              ref={mergeRefs(ref, triggerElementRef)}
+              onKeyDown={onKeyDown}
               onFocus={onFocus}
               size={size}
               data-test-id={PRIVATE_SEARCH_TEST_IDS.field}
@@ -93,10 +112,13 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
           <Droplist.ItemSingle
             {...item}
             key={item.option}
-            onClick={() => {
-              handleItemOnClick(item.option);
+            onClick={e => {
+              handleDroplistItemClick(e);
+              onChange?.(item.option);
+              onSubmit?.(item.option);
+              triggerElementRef.current?.blur();
             }}
-            onKeyDown={handleOptionKeyDown}
+            onKeyDown={e => handleDroplistItemKeyDown(e, handleOptionKeyDown)}
             data-test-id={TEST_IDS.option}
           />
         ))}

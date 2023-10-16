@@ -43,7 +43,7 @@ test.page(getPage({ autocomplete: true }))(
     await t.expect(input.value).eql('o').wait(VALUE_LITTLE_MORE_DEBOUNCE_IN_HISTORY);
     await t.expect(list.exists).ok('list is not present after input');
 
-    await t.pressKey('esc');
+    await t.pressKey('up');
     await t.expect(list.exists).notOk('list is present after esc');
     await t.expect(input.value).eql('o');
   },

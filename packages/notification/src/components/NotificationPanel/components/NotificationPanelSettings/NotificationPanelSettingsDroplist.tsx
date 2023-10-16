@@ -1,9 +1,8 @@
-import { KeyboardEventHandler, MouseEvent, MouseEventHandler, useState } from 'react';
+import { useState } from 'react';
 
 import { ButtonSimple, ButtonSimpleProps } from '@snack-ui/button';
 import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
 
-import { useDroplistKeyboardNavigation } from '../../../../hooks/useDroplistKeyboardNavigation';
 import { TEST_IDS } from '../../constants';
 
 type NotificationPanelSettingsDroplistProps = {
@@ -14,20 +13,16 @@ type NotificationPanelSettingsDroplistProps = {
 export function NotificationPanelSettingsDroplist({ actions, button }: NotificationPanelSettingsDroplistProps) {
   const [isDroplistOpen, setDroplistOpen] = useState(false);
 
-  const { triggerButtonRef, handleTriggerButtonKeyDown, firstElementRefCallback, handleDroplistFocusLeave } =
-    useDroplistKeyboardNavigation({ setDroplistOpen });
-
-  const handleButtonKeyDown: KeyboardEventHandler<HTMLButtonElement> = e => {
-    button.onKeyDown?.(e);
-
-    handleTriggerButtonKeyDown(e);
-  };
-
-  const handleActionClick = (e: MouseEvent<HTMLButtonElement>, cb?: MouseEventHandler<HTMLButtonElement>) => {
-    setDroplistOpen(false);
-
-    cb?.(e);
-  };
+  const {
+    firstElementRefCallback,
+    triggerElementRef,
+    handleDroplistFocusLeave,
+    handleTriggerKeyDown,
+    handleDroplistItemKeyDown,
+    handleDroplistItemClick,
+  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({
+    setDroplistOpen,
+  });
 
   return (
     <Droplist
@@ -36,8 +31,8 @@ export function NotificationPanelSettingsDroplist({ actions, button }: Notificat
       firstElementRefCallback={firstElementRefCallback}
       onFocusLeave={handleDroplistFocusLeave}
       useScroll
-      triggerRef={triggerButtonRef}
-      triggerElement={<ButtonSimple {...button} onKeyDown={handleButtonKeyDown} />}
+      triggerRef={triggerElementRef}
+      triggerElement={<ButtonSimple {...button} onKeyDown={handleTriggerKeyDown} />}
       placement={Droplist.placements.BottomEnd}
       data-test-id={TEST_IDS.settings.droplist}
     >
@@ -45,7 +40,8 @@ export function NotificationPanelSettingsDroplist({ actions, button }: Notificat
         <Droplist.ItemSingle
           {...action}
           key={action.option}
-          onClick={e => handleActionClick(e, action.onClick)}
+          onClick={e => handleDroplistItemClick(e, action.onClick)}
+          onKeyDown={handleDroplistItemKeyDown}
           data-test-id={TEST_IDS.settings.droplistAction}
         />
       ))}

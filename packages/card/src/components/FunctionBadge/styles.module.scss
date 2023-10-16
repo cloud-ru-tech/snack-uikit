@@ -22,7 +22,6 @@
     color: $sys-neutral-text-support;
   }
 
-  &[data-focus],
   &:focus-visible {
     @include outline-var($container-focused-s);
 

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { KeyboardEvent, MouseEventHandler, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import { MouseEventHandler, ReactNode, useCallback, useMemo, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Droplist } from '@snack-ui/droplist';
@@ -36,8 +36,18 @@ export function FilterChip({
   const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
   const spinnerSize = size === Size.Xs ? Sun.sizes.XS : Sun.sizes.S;
   const isLabelExist = selectionMode === SelectionMode.Multi;
-  const ref = useRef<HTMLButtonElement>(null);
+
   const [isDroplistOpened, setIsDroplistOpened] = useState(false);
+
+  const {
+    firstElementRefCallback,
+    triggerElementRef,
+    handleDroplistFocusLeave,
+    handleTriggerKeyDown,
+    handleDroplistItemKeyDown,
+  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({
+    setDroplistOpen: setIsDroplistOpened,
+  });
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = e => {
     if (loading || disabled) return;
@@ -79,7 +89,7 @@ export function FilterChip({
           if (selectionMode === SelectionMode.Single) {
             setSelectedValue([value]);
             setIsDroplistOpened(false);
-            ref.current?.focus();
+            triggerElementRef.current?.focus();
           } else {
             if (checked) {
               setSelectedValue(selectedValue.filter(selected => selected !== value));
@@ -95,38 +105,24 @@ export function FilterChip({
             option={label}
             checked={checked}
             onChange={onChangeHandler}
+            onKeyDown={handleDroplistItemKeyDown}
             data-test-id={testId && `${testId}__option`}
           />
         );
       }),
-    [Item, options, selectedValue, selectionMode, setSelectedValue, testId],
+    [
+      Item,
+      handleDroplistItemKeyDown,
+      options,
+      selectedValue,
+      selectionMode,
+      setSelectedValue,
+      testId,
+      triggerElementRef,
+    ],
   );
 
-  const [autofocus, setAutofocus] = useState(false);
-
-  const setFirstListElementFocus = (element: HTMLButtonElement | null) => {
-    if (autofocus && element) {
-      element.focus();
-      setAutofocus(false);
-    }
-  };
-
   const onOpenChangeHandler = (opened: boolean) => !opened && setIsDroplistOpened(false);
-
-  const onKeyDownHandler = (e: KeyboardEvent<HTMLButtonElement>) => {
-    if (e.key === 'ArrowDown' || e.key === 'Space') {
-      e.preventDefault();
-      setAutofocus(true);
-      setIsDroplistOpened(true);
-    }
-  };
-
-  const onFocusLeaveHandler = (direction: string) => {
-    if (['common', 'top'].includes(direction)) {
-      ref.current?.focus();
-      setIsDroplistOpened(false);
-    }
-  };
 
   const [singleSelectedOption] = selectedOptions;
 
@@ -134,16 +130,16 @@ export function FilterChip({
     <Droplist
       trigger={Droplist.triggers.Click}
       open={isDroplistOpened}
-      firstElementRefCallback={setFirstListElementFocus}
+      firstElementRefCallback={firstElementRefCallback}
       onOpenChange={onOpenChangeHandler}
-      onFocusLeave={onFocusLeaveHandler}
+      onFocusLeave={handleDroplistFocusLeave}
       triggerClassName={styles.triggerClassName}
       widthStrategy={Droplist.widthStrategies.Gte}
       triggerElement={
         <button
           {...extractSupportProps(rest)}
           type='button'
-          ref={ref}
+          ref={triggerElementRef}
           className={cn(styles.filterChip, className)}
           data-size={size}
           data-variant={variant}
@@ -152,7 +148,7 @@ export function FilterChip({
           data-test-id={testId || undefined}
           disabled={!loading && disabled}
           onClick={handleClick}
-          onKeyDown={onKeyDownHandler}
+          onKeyDown={handleTriggerKeyDown}
           tabIndex={tabIndex}
         >
           {loading && !isLabelExist && (

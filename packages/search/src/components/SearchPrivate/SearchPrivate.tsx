@@ -80,6 +80,7 @@ const SearchPrivateComponent = forwardRef<HTMLInputElement, SearchPrivateProps>(
 
       if (e.key === 'Enter' && localRef.current?.value) {
         onSubmit && onSubmit(localRef.current.value);
+        // TODO: think about remove blur behavior
         localRef.current?.blur();
       }
     },

@@ -39,10 +39,17 @@ type RowActionsCellProps<TData> = {
 function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
   const { droplistOpened, setDroplistOpen } = useRowContext();
 
+  const {
+    triggerElementRef,
+    handleDroplistFocusLeave,
+    handleDroplistItemKeyDown,
+    handleTriggerKeyDown,
+    handleDroplistItemClick,
+    firstElementRefCallback,
+  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({ setDroplistOpen });
+
   const handleItemClick = (item: RowActionProps<TData>) => (e: MouseEvent<HTMLButtonElement>) => {
     item.onClick({ rowId: row.id, itemId: item.id, data: row.original }, e);
-
-    setDroplistOpen(false);
   };
 
   const disabled = !row.getCanSelect();
@@ -59,9 +66,16 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
           open={droplistOpened}
           onOpenChange={setDroplistOpen}
           placement={Droplist.placements.BottomEnd}
+          firstElementRefCallback={firstElementRefCallback}
+          onFocusLeave={handleDroplistFocusLeave}
           triggerElement={
             <span>
-              <ButtonFunction icon={<MoreSVG size={24} />} data-test-id={TEST_IDS.rowActions.droplistTrigger} />
+              <ButtonFunction
+                icon={<MoreSVG size={24} />}
+                data-test-id={TEST_IDS.rowActions.droplistTrigger}
+                onKeyDown={handleTriggerKeyDown}
+                ref={triggerElementRef}
+              />
             </span>
           }
           triggerClassName={styles.rowActionsCellTrigger}
@@ -72,8 +86,9 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
             <Droplist.ItemSingle
               {...item}
               key={`${row.id}-${item.id || item.option}`}
-              onClick={handleItemClick(item)}
+              onClick={e => handleDroplistItemClick(e, handleItemClick(item))}
               data-test-id={TEST_IDS.rowActions.option}
+              onKeyDown={handleDroplistItemKeyDown}
             />
           ))}
         </Droplist>

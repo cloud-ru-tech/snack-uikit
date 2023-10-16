@@ -112,7 +112,12 @@ test.page(
   await t.expect(functionBadge.focused).ok(`Card.FunctionBadge should be focused`);
   await t.expect(droplist.exists).notOk(`Droplist options shouldn't be rendered`);
 
-  await t.pressKey('down').pressKey('enter').expect(toast.exists).ok('Toast should be render after option click');
+  await t
+    .pressKey('down')
+    .pressKey('down')
+    .pressKey('enter')
+    .expect(toast.exists)
+    .ok('Toast should be render after option click');
 });
 
 test.page(
