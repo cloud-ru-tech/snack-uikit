@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2023-10-16)
+
+
+### Features
+
+* **FF-0000:** add Folder/FolderOpen/File/Filter/Pinned/UnPinned icons ([6efdbbb](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/6efdbbb006771db502976ac4f1e4c5e175d5670e))
+
+
+
+
+
 # 0.16.0 (2023-10-11)
 
 

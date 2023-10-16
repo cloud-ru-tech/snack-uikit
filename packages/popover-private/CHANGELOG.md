@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.2 (2023-10-16)
+
+
+### Bug Fixes
+
+* **FF-0000:** add CSS.escape() into querySelector ([9d482dc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9d482dc8fbfba4aa8ee90a423d8e4c28266fa00b))
+
+
+
+
+
 ## 0.9.1 (2023-10-13)
 
 **Note:** Version bump only for package @snack-ui/popover-private

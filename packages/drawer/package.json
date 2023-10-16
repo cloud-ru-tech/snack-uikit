@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/drawer",
   "title": "Drawer",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -30,10 +30,10 @@
   "scripts": {},
   "dependencies": {
     "@snack-ui/button": "0.13.1",
-    "@snack-ui/icons": "0.16.0",
+    "@snack-ui/icons": "0.17.0",
     "@snack-ui/scroll": "0.3.1",
-    "@snack-ui/tooltip": "0.7.9",
-    "@snack-ui/truncate-string": "0.2.9",
+    "@snack-ui/tooltip": "0.7.10",
+    "@snack-ui/truncate-string": "0.2.10",
     "@snack-ui/typography": "0.4.1",
     "@snack-ui/utils": "1.2.0",
     "classnames": "2.3.2",
