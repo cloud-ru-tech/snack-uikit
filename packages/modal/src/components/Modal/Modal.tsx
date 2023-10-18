@@ -1,4 +1,4 @@
-import { ButtonFilled, ButtonSimple, ButtonTonal } from '@snack-ui/button';
+import { ButtonFilled, ButtonOutline, ButtonSimple } from '@snack-ui/button';
 import { Link } from '@snack-ui/link';
 import { TruncateString } from '@snack-ui/truncate-string';
 import { Typography } from '@snack-ui/typography';
@@ -56,9 +56,9 @@ export function Modal({
             />
 
             {cancelButton && (
-              <ButtonTonal
+              <ButtonOutline
                 {...cancelButton}
-                size={buttonsSizes.tonal}
+                size={buttonsSizes.outline}
                 className={styles.footerButton}
                 data-test-id={TEST_IDS.cancelButton}
               />

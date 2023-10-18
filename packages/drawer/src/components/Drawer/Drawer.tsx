@@ -3,10 +3,10 @@ import { ReactElement } from 'react';
 import {
   ButtonFilled,
   ButtonFilledProps,
+  ButtonOutline,
+  ButtonOutlineProps,
   ButtonSimple,
   ButtonSimpleProps,
-  ButtonTonal,
-  ButtonTonalProps,
 } from '@snack-ui/button';
 import { TruncateString } from '@snack-ui/truncate-string';
 
@@ -26,7 +26,7 @@ export type DrawerProps = Omit<DrawerCustomProps, 'size' | 'children' | 'nestedD
     /** Основная кнопка */
     approveButton?: Omit<ButtonFilledProps, 'size' | 'data-test-id'>;
     /** Кнопка отмены */
-    cancelButton?: Omit<ButtonTonalProps, 'size' | 'data-test-id'>;
+    cancelButton?: Omit<ButtonOutlineProps, 'size' | 'data-test-id'>;
     /** Дополнительная кнопка */
     additionalButton?: Omit<ButtonSimpleProps, 'size' | 'data-test-id'>;
     /** Вложенный Drawer */
@@ -70,7 +70,7 @@ export function Drawer({
               )}
 
               {cancelButton && (
-                <ButtonTonal {...cancelButton} size={ButtonTonal.sizes.M} data-test-id={TEST_IDS.cancelButton} />
+                <ButtonOutline {...cancelButton} size={ButtonOutline.sizes.M} data-test-id={TEST_IDS.cancelButton} />
               )}
 
               {additionalButton && (

@@ -43,7 +43,7 @@
 | subtitle | `string` | - | Подзаголовок |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
 | approveButton | `Omit<ButtonFilledProps, "data-test-id" \| "size">` | - | Основная кнопка |
-| cancelButton | `Omit<ButtonTonalProps, "data-test-id" \| "size">` | - | Кнопка отмены |
+| cancelButton | `Omit<ButtonOutlineProps, "data-test-id" \| "size">` | - | Кнопка отмены |
 | additionalButton | `Omit<ButtonSimpleProps, "data-test-id" \| "size">` | - | Дополнительная кнопка |
 | nestedDrawer | `ReactElement<DrawerProps, string \| JSXElementConstructor<any>>` | - | Вложенный Drawer |
 

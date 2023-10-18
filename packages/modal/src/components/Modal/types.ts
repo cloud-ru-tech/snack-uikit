@@ -1,4 +1,4 @@
-import { ButtonFilledProps, ButtonSimpleProps, ButtonTonalProps } from '@snack-ui/button';
+import { ButtonFilledProps, ButtonOutlineProps, ButtonSimpleProps } from '@snack-ui/button';
 import { LinkProps } from '@snack-ui/link';
 
 import { Align, Size } from '../../constants';
@@ -17,7 +17,7 @@ type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
   /** Основная кнопка действия */
   approveButton: Omit<ButtonFilledProps, 'size' | 'data-test-id'>;
   /** Кнопка отмены */
-  cancelButton?: Omit<ButtonTonalProps, 'size' | 'data-test-id'>;
+  cancelButton?: Omit<ButtonOutlineProps, 'size' | 'data-test-id'>;
   /** Вторая кнопка действия */
   additionalButton?: Omit<ButtonSimpleProps, 'size' | 'data-test-id'>;
   /** Небольшой текст под кнопками футера с возможностью передать дополнительно ссылку */

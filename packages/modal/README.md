@@ -63,7 +63,7 @@
 | titleTooltip | `ReactNode` | - | Всплывающая подсказка для заголовка |
 | subtitle | `string` | - | Подзаголовок |
 | content | `ReactNode` | - | Содержимое модального окна |
-| cancelButton | `Omit<ButtonTonalProps, "data-test-id" \| "size">` | - | Кнопка отмены |
+| cancelButton | `Omit<ButtonOutlineProps, "data-test-id" \| "size">` | - | Кнопка отмены |
 | additionalButton | `Omit<ButtonSimpleProps, "data-test-id" \| "size">` | - | Вторая кнопка действия |
 | disclaimer | `{ text: string; link?: Pick<LinkProps, "text" \| "href" \| "target">; }` | - | Небольшой текст под кнопками футера с возможностью передать дополнительно ссылку |
 | size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
