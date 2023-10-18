@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-10-18)
+
+
+### Features
+
+* **[FF-3326](https://jira.sbercloud.tech/browse/FF-3326):** use useKeyboardNavigation from Droplist package instead of local implementation ([9615d55](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9615d5589ee6743ad7fc24c95e1fb96a9ab42752))
+
+
+
+
+
 ## 0.3.5 (2023-10-16)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2023-10-18)
+
+
+### Features
+
+* **[FF-3326](https://jira.sbercloud.tech/browse/FF-3326):** add useKeyboardNavigation hook ([720c3cc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/720c3ccfb66bea007edcb846a3903050efb2aff1))
+
+
+
+
+
 ## 0.9.4 (2023-10-16)
 
 ### Only dependencies have been changed
