@@ -17,11 +17,11 @@ $typography: (
 );
 
 @mixin button-colors-styles {
+  @include label-color($sys-neutral-text-light);
+  @include icon-fill($sys-neutral-text-light);
+  
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
-      @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'accent-default'));
-      @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
-
       &:hover {
         @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
