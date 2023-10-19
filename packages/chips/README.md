@@ -94,6 +94,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"` | Size.S | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек обработки клика |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | FilterChip.placements.BottomStart |  |
 | label | `string` | - | Лейбл компонента. Обязателен в режиме Multi. |
 | value | `string \| string[]` | - | Значение компонента. string в режиме single и string[] в режиме multi. |
 | defaultValue | `string \| string[]` | - | Значение компонента по-умолчанию. string в режиме single и string[] в режиме multi. |

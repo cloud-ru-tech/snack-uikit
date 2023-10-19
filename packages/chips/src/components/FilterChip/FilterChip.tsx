@@ -30,6 +30,7 @@ export function FilterChip({
   onChangeValue,
   selectionMode,
   labelFormatter,
+  placement = FilterChip.placements.BottomStart,
   'data-test-id': testId,
   ...rest
 }: FilterChipProps) {
@@ -135,6 +136,7 @@ export function FilterChip({
       onFocusLeave={handleDroplistFocusLeave}
       triggerClassName={styles.triggerClassName}
       widthStrategy={Droplist.widthStrategies.Gte}
+      placement={placement}
       triggerElement={
         <button
           {...extractSupportProps(rest)}
@@ -198,3 +200,4 @@ export function FilterChip({
 FilterChip.sizes = Size;
 FilterChip.variants = Variant;
 FilterChip.selectionModes = SelectionMode;
+FilterChip.placements = Droplist.placements;

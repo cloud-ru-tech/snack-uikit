@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 
-import { ItemSingleProps } from '@snack-ui/droplist';
+import { DroplistProps, ItemSingleProps } from '@snack-ui/droplist';
 import { WithSupportProps } from '@snack-ui/utils';
 
 import { BaseChipProps } from '../../types';
@@ -19,6 +19,7 @@ type CommonProps = WithSupportProps<
     size?: Size;
     /** Колбек обработки клика */
     onClick?: MouseEventHandler<HTMLButtonElement>;
+    placement?: DroplistProps['placement'];
   }
 >;
 
