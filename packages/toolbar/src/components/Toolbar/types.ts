@@ -30,6 +30,8 @@ export type CommonToolbarProps = {
   loading?: boolean;
   /** Класснейм */
   className?: string;
+  /** Внешний бордер */
+  outline?: boolean;
 };
 
 export type CheckedToolbarProps = CommonToolbarProps & CheckboxPrivateProps & OptionalProps;

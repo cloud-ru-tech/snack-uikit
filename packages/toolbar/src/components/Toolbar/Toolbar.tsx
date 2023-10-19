@@ -13,13 +13,13 @@ import { CheckedToolbarProps, DefaultToolbarProps } from './types';
 
 export type ToolbarProps = WithSupportProps<DefaultToolbarProps | CheckedToolbarProps>;
 
-export function Toolbar({ className, actions, moreActions, onRefresh, ...rest }: ToolbarProps) {
+export function Toolbar({ className, actions, outline, moreActions, onRefresh, ...rest }: ToolbarProps) {
   return (
     <div
       className={cn(styles.container, className)}
-      data-no-button-more={Boolean(!moreActions) || undefined}
       {...extractSupportProps(rest)}
       {...extractDataProps(rest)}
+      data-outline={outline || undefined}
     >
       {isCheckedToolbarProps(rest) && (
         <>

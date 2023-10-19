@@ -13,6 +13,6 @@ export function generateOptions(length: number) {
   }));
 }
 
-export function extractToolbarArgs<T extends ToolbarProps>({ placeholder, loading }: Partial<T>) {
-  return { placeholder, loading };
+export function extractToolbarArgs<T extends ToolbarProps>({ placeholder, loading, outline }: Partial<T>) {
+  return { placeholder, loading, outline };
 }

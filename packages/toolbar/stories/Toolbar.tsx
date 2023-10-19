@@ -112,6 +112,7 @@ toolbar.args = {
   value: '',
   placeholder: 'Search',
   loading: false,
+  outline: false,
   showCheckbox: true,
   checked: false,
   indeterminate: false,

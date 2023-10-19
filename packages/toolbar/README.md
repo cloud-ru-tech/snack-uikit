@@ -19,6 +19,7 @@ Toolbar
 | placeholder | `string` | - | Плейсхолдер |
 | loading | `boolean` | - | Состояние загрузки |
 | className | `string` | - | Класснейм |
+| outline | `boolean` | - | Внешний бордер |
 | onCheck | `() => void` | - | Колбек смены значения чекбокса |
 | onDelete | `() => void` | - | Колбек удаления |
 | checked | `boolean` | - | Значения чекбокса |
