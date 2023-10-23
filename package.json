@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@geometricpanda/storybook-addon-badges": "2.0.0",
-    "@sbercloud/ft-all-linters-pack": "2.2.11",
+    "@sbercloud/ft-all-linters-pack": "4.0.5-preview-512ae794.0",
     "@sbercloud/ft-config-babel": "2.1.1",
     "@sbercloud/ft-config-vitest": "2.0.0",
     "@sbercloud/ft-conventional-changelog": "1.2.3",
@@ -80,7 +80,7 @@
     "fast-xml-parser": "4.2.4",
     "glob": "10.2.7",
     "inquirer": "8.2.5",
-    "lerna": "6.6.2",
+    "lerna": "7.4.1",
     "lodash.debounce": "4.0.8",
     "minimist": "1.2.8",
     "nyc": "15.1.0",
@@ -116,6 +116,6 @@
     "testcafe-browser-tools": "2.0.23"
   },
   "workspaces": [
-    "./packages/*"
+    "packages/*"
   ]
 }
