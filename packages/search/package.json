@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/search",
   "title": "Search",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,11 +29,11 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/droplist": "0.10.0",
+    "@snack-ui/droplist": "0.10.1",
     "@snack-ui/icons": "0.17.0",
-    "@snack-ui/input-private": "1.5.8",
-    "@snack-ui/loaders": "0.3.1",
-    "@snack-ui/utils": "1.2.0",
+    "@snack-ui/input-private": "1.5.9",
+    "@snack-ui/loaders": "0.3.2",
+    "@snack-ui/utils": "1.3.0",
     "classnames": "2.3.2",
     "merge-refs": "1.0.0",
     "uncontrollable": "8.0.4"

@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/typography",
   "title": "Typography",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -34,7 +34,7 @@
     "compile": "npm run build:typography-components && npm run build:constants && npm run build:index"
   },
   "dependencies": {
-    "@snack-ui/utils": "1.2.0",
+    "@snack-ui/utils": "1.3.0",
     "classnames": "2.3.2"
   }
 }

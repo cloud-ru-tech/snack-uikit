@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.7 (2023-10-25)
+
+### Only dependencies have been changed
+* [@snack-ui/calendar@0.3.8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/input-private@1.5.9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/input-private/CHANGELOG.md)
+* [@snack-ui/scroll@0.3.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/scroll/CHANGELOG.md)
+* [@snack-ui/tooltip@0.7.11](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-ui/truncate-string@0.2.11](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-ui/utils@1.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.7.6 (2023-10-18)
 
 ### Only dependencies have been changed
