@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/no-deprecated
 import { render } from 'react-dom';
 import { toast, ToastOptions as RtToastOptions } from 'react-toastify';
 

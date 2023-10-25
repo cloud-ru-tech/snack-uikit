@@ -22,12 +22,15 @@ export function buildSizeMap(container?: Element): SizeMap | undefined {
   return {
     separator: getElementWidth(separator),
     collapse: getElementWidth(collapse),
-    items: itemElements.reduce((result, element) => {
-      const id = element.getAttribute('data-id') as string;
-      const renderMode = element.getAttribute('data-render-mode') as ItemRenderMode;
-      result[id] = result[id] || getEmptyItemSizeMap();
-      result[id][renderMode] = getElementWidth(element);
-      return result;
-    }, {} as SizeMap['items']),
+    items: itemElements.reduce(
+      (result, element) => {
+        const id = element.getAttribute('data-id') as string;
+        const renderMode = element.getAttribute('data-render-mode') as ItemRenderMode;
+        result[id] = result[id] || getEmptyItemSizeMap();
+        result[id][renderMode] = getElementWidth(element);
+        return result;
+      },
+      {} as SizeMap['items'],
+    ),
   };
 }

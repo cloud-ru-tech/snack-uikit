@@ -14,8 +14,7 @@ const RENDER_MODE_WITH_WIDTH = [ItemRenderMode.Full, ItemRenderMode.ShortLabel, 
 
 const startsWith =
   (renderMode: ItemRenderMode) =>
-  (item: InnerItem, tail: Chain): Chain =>
-    [{ ...item, renderMode }, ...tail];
+  (item: InnerItem, tail: Chain): Chain => [{ ...item, renderMode }, ...tail];
 const startsWithFull = startsWith(ItemRenderMode.Full);
 const startsWithShortLabel = startsWith(ItemRenderMode.ShortLabel);
 const startsWithEllipsis = startsWith(ItemRenderMode.Ellipsis);

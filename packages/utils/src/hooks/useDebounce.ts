@@ -4,7 +4,7 @@ import { useEventHandler } from './useEventHandler';
 
 export function useDebounce(callback: () => void, timeout = 0) {
   const timeStampRef = useRef<number>(0);
-  let timerId: any = -1;
+  let timerId: NodeJS.Timeout | number = -1;
 
   return useEventHandler(() => {
     window.requestAnimationFrame(timestamp => {
