@@ -5,6 +5,6 @@ export type StubData = {
   col3: number;
   col4: number;
   col5: number;
-  col6: string;
+  col6: number;
   date: number;
 };

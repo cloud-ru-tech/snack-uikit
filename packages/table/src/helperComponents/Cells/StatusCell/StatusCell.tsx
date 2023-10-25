@@ -1,4 +1,3 @@
-import { Sun } from '@snack-ui/loaders';
 import { TruncateString } from '@snack-ui/truncate-string';
 import { Typography } from '@snack-ui/typography';
 
@@ -18,7 +17,7 @@ type BaseStatusColumnDef = {
   /** Имя ключа соответствующее полю в data */
   accessorKey: string;
   /** Маппинг значений статуса на цвета */
-  mapStatusToAppearance: Record<string, StatusAppearance>;
+  mapStatusToAppearance(value: string | number): StatusAppearance;
   /** Включение/выключение сортировки */
   enableSorting?: boolean;
 };
@@ -48,10 +47,9 @@ function StatusCell({ appearance, label }: StatusCellProps) {
       <div
         data-appearance={isLoading ? undefined : appearance}
         className={styles.statusCellIndicator}
+        data-loading={isLoading || undefined}
         data-test-id={TEST_IDS.statusIndicator}
-      >
-        {isLoading && <Sun size={Sun.sizes.XS} />}
-      </div>
+      />
 
       {label && (
         <div className={styles.statusCellLabel} data-test-id={TEST_IDS.statusLabel}>
@@ -91,7 +89,7 @@ export function getStatusColumnDef<TData>({
     header: hasDescription ? header : undefined,
     cell: ({ getValue }) => {
       const value = getValue<string>();
-      const appearance = mapStatusToAppearance[value];
+      const appearance = mapStatusToAppearance(value);
 
       return <StatusCell appearance={appearance} label={renderDescription ? renderDescription(value) : undefined} />;
     },

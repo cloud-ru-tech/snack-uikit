@@ -47,13 +47,6 @@ const selectors = {
   },
 };
 
-async function getElementPosition(element: Selector, position: 'left' | 'top') {
-  const pos = await element.getBoundingClientRectProperty(position);
-
-  // .toFixed() is needed to fix miscalculation in < 1px
-  return pos.toFixed();
-}
-
 function getPage(props?: Record<string, unknown>) {
   return getTestcafeUrl({
     name: 'table',
@@ -67,14 +60,10 @@ function getPage(props?: Record<string, unknown>) {
 
 fixture('Table').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
 
-function getScrollableElement() {
-  // TODO: need to find solution to detect scrollable div not by classname
-  return Selector(dataTestIdSelector(STORY_TEST_IDS.table)).find('.os-viewport');
-}
-
 test.page(
   getPage({
     rowsAmount: ROWS_AMOUNT,
+    pageSize: ROWS_AMOUNT,
   }),
 )('Renders correctly with proper amount of rows, has pinnedCells and Status column with label', async t => {
   await t.expect(Selector(dataTestIdSelector(STORY_TEST_IDS.table)).exists).ok('Table is not rendered');
@@ -88,54 +77,6 @@ test.page(
 
   await t.expect(statusIndicator.exists).ok('No status indicator found');
   await t.expect(statusLabel.exists).ok('No status label found');
-});
-
-test
-  .page(getPage())
-  .before(async t => {
-    await t.resizeWindow(1000, 800);
-  })
-  .after(async t => {
-    await t.resizeWindow(1200, 900);
-  })('Scroll is working correctly, header is always on top, pinned cells not scrolling', async t => {
-  const header = Selector(dataTestIdSelector(TEST_IDS.headerRow));
-  const { row, pinnedCells } = selectors.getRow(0);
-
-  const content = getScrollableElement();
-
-  await t.expect(content.scrollTop).eql(0, 'Scroll should be in 0 position');
-  await t.expect(content.scrollLeft).eql(0, 'Scroll should be in 0 position');
-
-  const positionsBeforeScroll = {
-    header: await getElementPosition(header, 'top'),
-    row: await getElementPosition(row, 'top'),
-    pinnedCells: {
-      left: await getElementPosition(pinnedCells.left, 'left'),
-      right: await getElementPosition(pinnedCells.right, 'left'),
-    },
-  };
-
-  await t.scroll(content, 'bottomRight');
-
-  const positionsAfterScroll = {
-    header: await getElementPosition(header, 'top'),
-    row: await getElementPosition(row, 'top'),
-    pinnedCells: {
-      left: await getElementPosition(pinnedCells.left, 'left'),
-      right: await getElementPosition(pinnedCells.right, 'left'),
-    },
-  };
-
-  await t.expect(content.scrollTop).notEql(0);
-  await t.expect(content.scrollLeft).notEql(0);
-  await t.expect(positionsAfterScroll.header).eql(positionsBeforeScroll.header, 'Header position has changed');
-  await t.expect(positionsAfterScroll.row).notEql(positionsBeforeScroll.row, 'Row position has not changed');
-  await t
-    .expect(positionsAfterScroll.pinnedCells.left)
-    .eql(positionsBeforeScroll.pinnedCells.left, 'Left pinned cells position has changed');
-  await t
-    .expect(positionsAfterScroll.pinnedCells.right)
-    .eql(positionsBeforeScroll.pinnedCells.right, 'Right pinned cells position has changed');
 });
 
 test.page(

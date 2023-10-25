@@ -13,10 +13,6 @@
   background-color: $sys-neutral-background1-level;
   border-color: transparent;
   border-style: solid none;
-
-  &:last-of-type {
-    border-bottom: none;
-  }
 }
 
 .rowPinnedCells {
@@ -28,18 +24,18 @@
   box-sizing: border-box;
 
   background-color: inherit;
-  border-color: $sys-neutral-decor-hovered;
+  border-color: $sys-neutral-decor-default;
 
   &::after {
     pointer-events: none;
     content: '';
 
     position: absolute;
-    top: calc(0px - $border-width-table-container);
-    bottom: calc(0px - $border-width-table-container);
+    top: calc(0px - $border-width-table);
+    bottom: calc(0px - $border-width-table);
 
     box-sizing: border-box;
-    width: $border-width-table-container;
+    width: $border-width-table;
   }
 
   &[data-position='left'] {
@@ -49,7 +45,7 @@
       right: 0;
 
       /* stylelint-disable */
-      border-right: $border-width-table-container solid;
+      border-right: $border-width-table solid;
       border-color: inherit;
       /* stylelint-enable */
     }
@@ -62,7 +58,7 @@
       left: 0;
 
       /* stylelint-disable */
-      border-left: $border-width-table-container solid;
+      border-left: $border-width-table solid;
       border-color: inherit;
       /* stylelint-enable */
     }
@@ -106,6 +102,8 @@
       }
     }
   }
+
+  
 }
 
 .tableHeader {

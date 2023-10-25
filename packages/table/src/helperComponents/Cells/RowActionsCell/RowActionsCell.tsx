@@ -1,4 +1,4 @@
-import { Row } from '@tanstack/react-table';
+import { CellContext, Row } from '@tanstack/react-table';
 import { MouseEvent } from 'react';
 
 import { ButtonFunction } from '@snack-ui/button';
@@ -22,13 +22,6 @@ export type RowActionProps<TData> = Pick<
 > & {
   id?: string;
   onClick(row: RowActionInfo<TData>, e: MouseEvent<HTMLButtonElement>): void;
-};
-
-export type RowActionsColumnDefProps<TData> = {
-  /** Действия для строки */
-  actions: RowActionProps<TData>[];
-  /** Закрепление колонки справа в таблице */
-  pinned?: boolean;
 };
 
 type RowActionsCellProps<TData> = {
@@ -97,20 +90,29 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
   );
 }
 
+export type ActionsGenerator<TData> = (cell: CellContext<TData, unknown>) => RowActionProps<TData>[];
+
+export type RowActionsColumnDefProps<TData> = {
+  /** Действия для строки */
+  actionsGenerator: ActionsGenerator<TData>;
+  /** Закрепление колонки справа в таблице */
+  pinned?: boolean;
+};
+
 /** Вспомогательная функция для создания ячейки с дополнительными действиями у строки */
 export function getRowActionsColumnDef<TData>({
-  actions,
+  actionsGenerator,
   pinned,
 }: RowActionsColumnDefProps<TData>): ColumnDefinition<TData> {
   return {
     id: 'rowActions',
     pinned: pinned ? ColumnPinPosition.Right : (undefined as never),
-    size: 64,
+    size: 40,
     meta: {
       skipOnExport: true,
     },
     noBodyCellPadding: true,
     cellClassName: styles.rowActionsCell,
-    cell: ({ row }) => <RowActionsCell row={row} actions={actions} />,
+    cell: cell => <RowActionsCell row={cell.row} actions={actionsGenerator(cell)} />,
   };
 }

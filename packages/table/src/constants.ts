@@ -24,3 +24,8 @@ export const TEST_IDS = {
   statusIndicator: 'table__status-indicator',
   statusLabel: 'table__status-label',
 };
+
+export enum SortFn {
+  DateTime = 'datetime',
+  AlphaNumeric = 'alphanumeric',
+}

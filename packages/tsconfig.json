@@ -110,13 +110,13 @@
       "path": "./card"
     },
     {
+      "path": "./toolbar"
+    },
+    {
       "path": "./table"
     },
     {
       "path": "./notification"
-    },
-    {
-      "path": "./toolbar"
     }
   ],
   "compilerOptions": {

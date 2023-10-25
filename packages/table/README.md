@@ -109,16 +109,28 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
 | data* | `TData[]` | - | Данные для отрисовки |
-| sort | `{ state?: SortingState; onChange(state: SortingState): void; }` | - | Параметры не отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>state</strong>: Состояние сортировки для initial state (если initial state не нужен - можно вообще не передавать) <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
-| rowSelection | `{ enable: boolean \| ((row: Row<TData>) => boolean); onChange(state: RowSelectionState): void; multiRow?: boolean; }` | - | <strong>enable</strong>: Отвечает за доступность строк для выбора <br> <strong>onChange</strong>: Колбэк на выбор строк <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) |
+| sorting | `{ initialState?: SortingState; state?: SortingState; onChange?(state: SortingState): void; }` | - | Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>initialState</strong>: Начальное состояние сортировки <br> <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
+| rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
+| search | `{ initialValue?: string; state?: string; placeholder?: string; loading?: boolean; onChange?(value: string): void; }` | - | Параметры за глобальный поиск в таблице <br> <strong>initialState</strong>: Начальное состояние строки поиска <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>placeholder</strong>: Placeholder строки поиска @default 'Search...'<br> <strong>loading</strong>: Состояние загрузки в строке поиска <br> <strong>onChange</strong>: Колбэк на изменение данных в строке поиска |
+| pageSize | `number` | 10 | Максимальное кол-во строк на страницу @default 10 |
+| pagination | `{ state?: PaginationState; options?: number[]; optionsLabel?: string; onChange?(state: PaginationState): void; }` | - | Параметры за пагинацию в таблице <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу<br> <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу @default 'Rows volume' <br> <strong>onChange</strong>: Колбэк на изменение пагинации |
 | onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
 | className | `string` | - | CSS-класс |
+| loading | `boolean` | - | Состояние загрузки |
+| onRefresh | `() => void` | - | Колбек обновления данных |
+| onDelete | `(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void) => void` | - | Колбек удаления выбранных |
+| outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
+| columnFilters | `ReactNode` | - | Фильтры |
+| exportFileName | `string` | - | Название файла при экспорте CSV/XLXS |
+| moreActions | `Pick<DroplistItemSingleProps, "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon" \| "onClick">[]` | - | Элементы выпадающего списка кнопки с действиями |
+| noDataState | `TableEmptyStateProps` | {   icon: CrossSVG,   appearance: IconPredefined.appearances.Red,   title: 'Data collection error',   description: 'Try refreshing the page', } as const | Экран при отстутствии данных |
+| noResultsState | `TableEmptyStateProps` | {   icon: SearchSVG,   appearance: IconPredefined.appearances.Neutral,   title: 'Not found',   description: 'Try entering another query', } as const | Экран при отстутствии результатов поиска |
 ## Table.getStatusColumnDef
 Вспомогательная функция для создания ячейки со статусом
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| mapStatusToAppearance* | `Record<string, StatusAppearance>` | - | Маппинг значений статуса на цвета |
+| mapStatusToAppearance* | `(value: string \| number) => StatusAppearance` | - | Маппинг значений статуса на цвета |
 | accessorKey* | `string` | - | Имя ключа соответствующее полю в data |
 | enableSorting | `boolean` | - | Включение/выключение сортировки |
 | renderDescription | `(cellValue: string) => string` | - | Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса |
@@ -129,7 +141,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| actions* | `RowActionProps<TData>[]` | - | Действия для строки |
+| actionsGenerator* | `ActionsGenerator<TData>` | - | Действия для строки |
 | pinned | `boolean` | - | Закрепление колонки справа в таблице |
 ## exportToCSV
 ### Props

@@ -34,14 +34,18 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
   justify-content: center;
 
   box-sizing: border-box;
-  height: 100%;
+  width: $size-table-cell-status-indicator-horizontal;
+
+  background-color: inherit;
 
   &::after {
+    @include composite-var($table-status-indicator);
+
     content: '';
 
     position: absolute;
-    top: calc(0px - $border-width-table-container);
-    bottom: calc(0px - $border-width-table-container);
+    top: 0;
+    bottom: 0;
     left: 0;
 
     box-sizing: border-box;
@@ -54,5 +58,38 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
         background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
       }
     }
+  }
+
+  &[data-loading] {
+    position: relative;
+  
+    &::after {
+      content: '';
+  
+      position: absolute;
+      left:0;
+      
+      width: 100%;
+      height: auto;
+      
+      background-color: $sys-neutral-decor-default;
+  
+      animation: loading ease-in-out 0.8s infinite alternate;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    top: 0;
+    bottom: calc(100% - $dimension-050m);
+  }
+  50% {
+    top: 0;
+    bottom: 0;
+  }
+  100% {
+    top: calc(100% - $dimension-050m);
+    bottom: 0;
   }
 }

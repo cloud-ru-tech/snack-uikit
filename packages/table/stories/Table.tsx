@@ -1,23 +1,22 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { PlaceholderSVG } from '@snack-ui/icons';
 import { toaster } from '@snack-ui/toaster';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import {
-  CellContext,
   ColumnDefinition,
   HeaderContext,
   RowActionInfo,
   RowClickHandler,
+  RowSelectionState,
   Table,
   TableProps,
 } from '../src';
 import { STORY_TEST_IDS, StoryStatusColumnViewMode } from './constants';
-import { generateRows } from './helpers';
+import { generateRows, numberFormatter } from './helpers';
 import styles from './styles.module.scss';
 import { StubData } from './types';
 
@@ -40,14 +39,15 @@ type StoryProps = Omit<Props, 'rowSelection' | 'sort'> & {
 };
 
 const renderHeader = (ctx: HeaderContext<StubData, unknown>) => `Table column №${ctx.column.id}`;
-const renderCell = (ctx: CellContext<StubData, unknown>) => `Cell ${ctx.column.id}.${ctx.row.index + 1}`;
+const accessorFn = (key: keyof StubData) => (row: StubData) =>
+  `Cell ${Math.trunc(Number(row[key]) / 5) + 1}.${(Number(row[key]) % 5) + 1}`;
 
 const columnDefinitions: ColumnDefinition<StubData>[] = [
   {
     id: '1',
     accessorKey: 'col1',
+    accessorFn: accessorFn('col1'),
     header: renderHeader,
-    cell: renderCell,
     size: 140,
     enableSorting: true,
     sortDescFirst: true,
@@ -56,8 +56,8 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
   {
     id: '2',
     accessorKey: 'col2',
+    accessorFn: accessorFn('col2'),
     header: renderHeader,
-    cell: renderCell,
     size: 140,
     pinned: Table.columnPinPositions.Left,
     enableSorting: true,
@@ -65,27 +65,29 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
   {
     id: '3',
     accessorKey: 'col3',
+    accessorFn: accessorFn('col3'),
     header: renderHeader,
-    cell: renderCell,
     minSize: 110,
+    sortDescFirst: true,
   },
   {
     id: '4',
     accessorKey: 'col4',
+    accessorFn: accessorFn('col4'),
     header: renderHeader,
-    cell: renderCell,
     enableSorting: true,
   },
   {
     id: '5',
     accessorKey: 'col5',
     header: renderHeader,
-    cell: renderCell,
+    accessorFn: accessorFn('col5'),
     enableSorting: true,
   },
   {
     id: '6',
     accessorKey: 'col6',
+    cell: cell => numberFormatter.format(cell.getValue<number>()),
     header: renderHeader,
     size: 150,
     align: Table.columnAligns.Right,
@@ -99,8 +101,9 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     size: 146,
     align: Table.columnAligns.Right,
     pinned: Table.columnPinPositions.Right,
-    cell: info =>
-      new Date(info.getValue<number>()).toLocaleDateString('ru-RU', {
+    sortingFn: (a, b) => a.original.date - b.original.date,
+    accessorFn: row =>
+      new Date(row.date).toLocaleDateString('ru-RU', {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
@@ -122,6 +125,20 @@ const Template: StoryFn<StoryProps> = ({
 }: StoryProps) => {
   const data = useMemo(() => generateRows(rowsAmount), [rowsAmount]);
 
+  const [filteredData, setFilteredData] = useState(data);
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
+
+  const onDelete = useCallback(
+    (rowSelectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void) => {
+      setFilteredData(data => data.filter((_, index) => !rowSelectionState?.[index]));
+      resetRowSelection();
+    },
+    [],
+  );
+
   const columns = useMemo(() => {
     let colDefs = [...columnDefinitions];
 
@@ -138,7 +155,7 @@ const Template: StoryFn<StoryProps> = ({
       colDefs = [
         Table.getStatusColumnDef<StubData>({
           accessorKey: 'status',
-          mapStatusToAppearance: Table.statusAppearances,
+          mapStatusToAppearance: value => Table.statusAppearances[value],
           ...statusColDefProps,
         }),
         ...colDefs,
@@ -156,11 +173,10 @@ const Template: StoryFn<StoryProps> = ({
       colDefs.push(
         Table.getRowActionsColumnDef({
           pinned: true,
-          actions: [
+          actionsGenerator: () => [
             {
               id: 'action-1',
               option: 'action 1',
-              icon: <PlaceholderSVG />,
               onClick: handleRowActionClick,
             },
             {
@@ -187,19 +203,26 @@ const Template: StoryFn<StoryProps> = ({
     });
   };
 
+  const onRefresh = () => {
+    setFilteredData(data);
+  };
+
   return (
     <div className={styles.wrapper}>
       <Table
         {...args}
         columnDefinitions={columns}
-        data={data}
+        data={filteredData}
+        onDelete={onDelete}
+        className={styles.className}
+        pagination={{ options: [5, 10] }}
         rowSelection={{
           multiRow: rowSelectionMode === 'multi',
           enable: disableSomeRows
             ? row => !['Not', 'Loading'].includes(row.original.status)
             : Boolean(rowSelectionMode) || undefined,
-          onChange: () => {},
         }}
+        onRefresh={onRefresh}
         onRowClick={enableOnRowClick ? handleRowClick : undefined}
       />
     </div>
@@ -210,6 +233,7 @@ export const table: StoryObj<StoryProps> = Template.bind({});
 
 table.args = {
   rowsAmount: 35,
+  loading: false,
   statusColumnViewMode: StoryStatusColumnViewMode.Full,
   showActionsColumn: true,
   data: [],

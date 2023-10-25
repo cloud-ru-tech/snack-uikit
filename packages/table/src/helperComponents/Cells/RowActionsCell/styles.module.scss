@@ -9,15 +9,15 @@
     content: '';
 
     position: absolute;
-    top: calc(0px - $border-width-table-container);
-    bottom: calc(0px - $border-width-table-container);
+    top: calc(0px - $border-width-table);
+    bottom: calc(0px - $border-width-table);
     left: 0;
 
     box-sizing: border-box;
     width: 100%;
 
     /* stylelint-disable */
-    border-left: $border-width-table-container solid;
+    border-left: $border-width-table solid;
     border-color: inherit;
     /* stylelint-enable */
   }
@@ -30,7 +30,7 @@
 }
 
 .rowActionsCellTrigger {
-  @include composite-var($table-action-layout);
+  @include composite-var($table-cells-action);
 
   display: flex;
   align-items: center;

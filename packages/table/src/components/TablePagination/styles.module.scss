@@ -1,0 +1,24 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-table';
+
+.footer {
+  @include composite-var($table-footer);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pagination {
+  flex: 1;
+}
+
+
+.rowsVolumeLabel { 
+  color: $sys-neutral-text-light;
+}
+
+.rowsVolumeWrapper {
+  display: flex;
+  gap: $dimension-050m;
+  align-items: center;
+}

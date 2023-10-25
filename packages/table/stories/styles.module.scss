@@ -2,8 +2,7 @@
 
 .wrapper {
   resize: auto;
-
-
+  
   overflow: auto;
 
   min-width: 400px;
@@ -13,5 +12,6 @@
   max-height: 750px;
   padding: 24px;
 
-  background-color: $sys-neutral-background1-level;
+  background-color: $sys-neutral-background;
 }
+

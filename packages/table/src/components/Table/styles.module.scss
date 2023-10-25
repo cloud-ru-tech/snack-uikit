@@ -1,0 +1,55 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-table';
+
+.table {
+  @include composite-var($table-table-container);
+
+  position: relative;
+  z-index: 0;
+
+  /* stylelint-disable-next-line declaration-no-important */
+  overflow: hidden !important;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  max-height: calc((var(--page-size, 10) * $size-table-line-height) + $size-table-line-height + $border-width-table * 2);
+
+  background-color: $sys-neutral-background1-level;
+  border-color: $sys-neutral-background1-level;
+  border-style: solid;
+}
+
+.scrollWrapper {
+  &[data-outline] {
+    .table {
+      border-color: $sys-neutral-decor-default;
+    }
+  }
+}
+
+.tableContent {
+  min-width: max-content;
+}
+
+.header {
+  @include composite-var($table-header);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  flex: 1 0 auto;
+}
+
+.filtersWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $dimension-1m;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.skeleton {
+  padding: 0 $dimension-1m;
+}
