@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-10-26)
+
+
+### Features
+
+* **[FF-3309](https://jira.sbercloud.tech/browse/FF-3309):** add outline prop into Toolbar ([49d4c02](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/49d4c028a41c7927264baa2700617913cacd9db9))
+
+
+
+
+
 ## 0.1.7 (2023-10-25)
 
 ### Only dependencies have been changed

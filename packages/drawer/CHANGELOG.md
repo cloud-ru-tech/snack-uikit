@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-10-26)
+
+
+### Features
+
+* **[FF-3309](https://jira.sbercloud.tech/browse/FF-3309):** change cancelButton to ButtonOutline ([9ab0ecf](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9ab0ecf4ff2ccf7b78097788ef52f5d005fd3e7d))
+
+
+
+
+
 ## 0.3.8 (2023-10-25)
 
 ### Only dependencies have been changed

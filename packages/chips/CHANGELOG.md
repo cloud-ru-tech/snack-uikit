@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-10-26)
+
+
+### Features
+
+* **[FF-3309](https://jira.sbercloud.tech/browse/FF-3309):** add placement prop into FilterChip ([1dbb356](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/1dbb356505583e9925e8af04aa8014b1334b8cef))
+
+
+
+
+
 ## 0.5.1 (2023-10-25)
 
 ### Only dependencies have been changed

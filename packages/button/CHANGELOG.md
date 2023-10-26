@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.3 (2023-10-26)
+
+
+### Bug Fixes
+
+* **[FF-3309](https://jira.sbercloud.tech/browse/FF-3309):** change ButtonFunction icon/label color in default state ([344d45c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/344d45ca6040abfee231c4d5e20e7b025e8d0647))
+
+
+
+
+
 ## 0.13.2 (2023-10-25)
 
 ### Only dependencies have been changed
