@@ -120,7 +120,7 @@ export type TableProps<TData extends object> = WithSupportProps<{
   /** Фильтры*/
   columnFilters?: ReactNode;
 
-  /** Название файла при экспорте CSV/XLXS*/
+  /** Название файла при экспорте CSV/XLSX*/
   exportFileName?: string;
 
   /** Элементы выпадающего списка кнопки с действиями */

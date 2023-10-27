@@ -121,7 +121,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | onDelete | `(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void) => void` | - | Колбек удаления выбранных |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
 | columnFilters | `ReactNode` | - | Фильтры |
-| exportFileName | `string` | - | Название файла при экспорте CSV/XLXS |
+| exportFileName | `string` | - | Название файла при экспорте CSV/XLSX |
 | moreActions | `Pick<DroplistItemSingleProps, "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon" \| "onClick">[]` | - | Элементы выпадающего списка кнопки с действиями |
 | noDataState | `TableEmptyStateProps` | {   icon: CrossSVG,   appearance: IconPredefined.appearances.Red,   title: 'Data collection error',   description: 'Try refreshing the page', } as const | Экран при отстутствии данных |
 | noResultsState | `TableEmptyStateProps` | {   icon: SearchSVG,   appearance: IconPredefined.appearances.Neutral,   title: 'Not found',   description: 'Try entering another query', } as const | Экран при отстутствии результатов поиска |
