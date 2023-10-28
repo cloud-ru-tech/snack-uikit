@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/table",
   "title": "Table",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "sideEffects": [
     "*.css",
     "*.woff",
