@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.3 (2023-10-28)
+
+
+### Bug Fixes
+
+* **[FF-3460](https://jira.sbercloud.tech/browse/FF-3460):** change Typoghraphy to corrent ([b61e755](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b61e755d78317c75c134e7c297c3c7b9fbc7fe5d))
+
+
+
+
+
 ## 0.2.2 (2023-10-25)
 
 ### Only dependencies have been changed
