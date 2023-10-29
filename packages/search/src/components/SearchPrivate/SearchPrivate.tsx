@@ -96,7 +96,7 @@ const SearchPrivateComponent = forwardRef<HTMLInputElement, SearchPrivateProps>(
   );
 
   return (
-    <div className={cn(styles.container, className)} data-size={size} {...extractSupportProps(rest)}>
+    <div className={cn(styles.container, className)} {...extractSupportProps(rest)} data-size={size}>
       <span className={styles.prefix}>
         {loading ? (
           <Sun data-test-id={PRIVATE_SEARCH_TEST_IDS.iconSun} />

@@ -103,12 +103,12 @@ export function CalendarBase({
 
   return (
     <div
-      data-size={size}
-      data-fit-to-container={fitToContainer || undefined}
+      {...extractSupportProps(rest)}
       className={cn(styles.calendar, className, CONTAINER_SIZE_MAP[size])}
       style={style}
+      data-size={size}
+      data-fit-to-container={fitToContainer || undefined}
       data-test-id={testId}
-      {...extractSupportProps(rest)}
     >
       <CalendarContext.Provider
         value={{

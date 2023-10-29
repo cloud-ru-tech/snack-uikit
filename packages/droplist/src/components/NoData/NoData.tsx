@@ -10,7 +10,7 @@ export type DroplistNoDataProps = WithSupportProps<{
 
 export function NoData({ label, size = Size.S, ...rest }: DroplistNoDataProps) {
   return (
-    <div data-size={size} className={styles.droplistItemNoData} {...extractSupportProps(rest)}>
+    <div className={styles.droplistItemNoData} {...extractSupportProps(rest)} data-size={size}>
       <span className={styles.label}>{label}</span>
     </div>
   );

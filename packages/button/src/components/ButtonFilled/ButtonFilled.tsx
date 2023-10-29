@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { forwardRef } from 'react';
 
-import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, HtmlType, SizeSL, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
@@ -25,7 +25,6 @@ const ForwardedButtonFilled = forwardRef<HTMLButtonElement | HTMLAnchorElement, 
     ref,
   ) => (
     <ButtonPrivate
-      {...extractDataProps(rest)}
       {...extractSupportProps(rest)}
       {...extractCommonButtonProps(rest)}
       className={cn(styles.button, className)}

@@ -62,10 +62,10 @@ export function Avatar({
   return (
     <div
       className={cn(styles.avatar, className)}
+      {...extractSupportProps(rest)}
       data-size={size}
       data-appearance={appearance}
       data-shape={shape}
-      {...extractSupportProps(rest)}
     >
       {src && !imageError ? (
         <img data-test-id='image' className={styles.image} src={src} onError={() => setImageError(true)} alt='' />

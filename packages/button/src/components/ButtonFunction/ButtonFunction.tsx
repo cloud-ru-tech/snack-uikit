@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { forwardRef } from 'react';
 
-import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, HtmlType, IconPosition, SizeXsM, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
@@ -27,7 +27,6 @@ const ForwardedButtonFunction = forwardRef<HTMLButtonElement | HTMLAnchorElement
     ref,
   ) => (
     <ButtonPrivate
-      {...extractDataProps(rest)}
       {...extractSupportProps(rest)}
       {...extractCounterButtonProps(rest)}
       {...extractCommonButtonProps(rest)}

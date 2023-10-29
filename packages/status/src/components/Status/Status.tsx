@@ -39,9 +39,9 @@ export function Status({
   return (
     <div
       className={cn(styles.container, className)}
+      {...extractSupportProps(rest)}
       data-size={size}
       data-has-background={hasBackground || undefined}
-      {...extractSupportProps(rest)}
     >
       <StatusIndicator appearance={appearance} size={statusIndicatorSizeMap[size]} />
       <span className={styles.label}>{label}</span>

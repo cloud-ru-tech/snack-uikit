@@ -66,13 +66,13 @@ export function Card({
       <div
         ref={localRef}
         className={cn(styles.card, className)}
+        {...extractSupportProps(rest)}
         onClick={onClick}
         data-checked={checked || undefined}
         data-pointer={onClick ? true : undefined}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
         onKeyDown={onKeyDown}
-        {...extractSupportProps(rest)}
       >
         {image}
 

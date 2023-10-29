@@ -28,7 +28,7 @@ export function StatusIndicator({
   ...rest
 }: StatusIndicatorProps) {
   return (
-    <div className={cn(styles.container, className)} data-size={size} {...extractSupportProps(rest)}>
+    <div className={cn(styles.container, className)} {...extractSupportProps(rest)} data-size={size}>
       <div className={styles.indicator} data-appearance={appearance}></div>
     </div>
   );

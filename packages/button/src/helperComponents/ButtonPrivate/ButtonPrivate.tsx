@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { ForwardedRef, forwardRef, MouseEvent } from 'react';
 
-import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Appearance, HtmlType, IconPosition, Target } from '../../constants';
 import { CommonButtonProps, CounterButtonProps } from '../../types';
@@ -69,7 +69,6 @@ export const ButtonPrivate = forwardRef<HTMLButtonElement | HTMLAnchorElement, B
     };
 
     const buttonProps = {
-      ...extractDataProps(rest),
       ...extractSupportProps(rest),
       className: cn(styles.button, className),
       'data-disabled': disabled || undefined,

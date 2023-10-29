@@ -52,7 +52,7 @@ export function ToastSystemEvent({
   const icon = useMemo(() => getIcon(appearance), [appearance]);
 
   return (
-    <div className={cn(styles.container, className)} data-appearance={appearance} {...extractSupportProps(rest)}>
+    <div className={cn(styles.container, className)} {...extractSupportProps(rest)} data-appearance={appearance}>
       <div className={styles.icon}>{icon}</div>
 
       <div className={styles.content}>

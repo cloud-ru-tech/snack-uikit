@@ -42,7 +42,7 @@ export function FieldDecorator({
   const isFieldActive = !disabled && !readonly;
 
   return (
-    <div className={cn(styles.decorator, className)} data-size={size} {...extractSupportProps(rest)}>
+    <div className={cn(styles.decorator, className)} {...extractSupportProps(rest)} data-size={size}>
       {label && (
         <Header
           labelTooltipPlacement={labelTooltipPlacement}

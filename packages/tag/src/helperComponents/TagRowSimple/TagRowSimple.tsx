@@ -18,7 +18,7 @@ type TagRowSimpleProps = {
 
 export function TagRowSimple({ items, size, onItemRemove, setTagRef, className, ...rest }: TagRowSimpleProps) {
   return (
-    <div {...extractSupportProps(rest)} className={cn(styles.tagRowSimpleWrapper, className)} data-size={size}>
+    <div className={cn(styles.tagRowSimpleWrapper, className)} {...extractSupportProps(rest)} data-size={size}>
       <TagList items={items} size={size} onItemRemove={onItemRemove} setTagRef={setTagRef} />
     </div>
   );

@@ -20,8 +20,8 @@ export function Spinner({ size = LoaderSize.S, className, ...rest }: SpinnerProp
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
       className={cn(styles.spinner, className)}
-      data-size={size}
       {...extractSupportProps(rest)}
+      data-size={size}
     >
       <mask id='spinnerMask'>
         <circle opacity='0.24' cx='11.8926' cy='12' r='9' strokeWidth='1.5' />

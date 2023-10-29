@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { memo, useContext } from 'react';
 
-import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { ElementType, ItemRenderMode } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
@@ -105,7 +105,6 @@ export const Crumb = memo(function Crumb({
   return (
     <li
       {...extractSupportProps(rest)}
-      {...extractDataProps(rest)}
       {...dataAttributes}
       data-test-id={getTestId('crumb', testId)}
       className={cn(styles.wrapper, className)}

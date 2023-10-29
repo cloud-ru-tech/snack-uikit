@@ -15,10 +15,10 @@ export function PageButton({ label, activated, onClick, setButtonRef, ...rest }:
   return (
     <button
       className={styles.pageButton}
-      data-activated={activated || undefined}
       onClick={onClick}
       ref={setButtonRef}
       {...extractSupportProps(rest)}
+      data-activated={activated || undefined}
     >
       {label}
     </button>

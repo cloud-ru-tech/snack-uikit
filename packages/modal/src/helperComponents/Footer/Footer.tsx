@@ -1,10 +1,12 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+
 import { Align, TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';
 
-export type ModalFooterProps = {
+export type ModalFooterProps = WithSupportProps<{
   /** Параметр для передачи кнопок */
   actions: ReactNode;
   /** Параметр для небольшого текста под кнопками */
@@ -12,11 +14,16 @@ export type ModalFooterProps = {
   /** Выравнивание контента */
   align?: Align;
   className?: string;
-};
+}>;
 
-export function ModalFooter({ actions, disclaimer, align = Align.Default, className }: ModalFooterProps) {
+export function ModalFooter({ actions, disclaimer, align = Align.Default, className, ...rest }: ModalFooterProps) {
   return (
-    <div data-align={align} className={cn(styles.footer, className)} data-test-id={TEST_IDS.footer}>
+    <div
+      data-align={align}
+      className={cn(styles.footer, className)}
+      {...extractSupportProps(rest)}
+      data-test-id={TEST_IDS.footer}
+    >
       <div className={styles.footerActions}>{actions}</div>
 
       {disclaimer && (

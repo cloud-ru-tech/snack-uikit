@@ -283,7 +283,11 @@ export function Table<TData extends object>({
 
   return (
     <>
-      <div style={{ '--page-size': tablePaginationState.pageSize }} className={className}>
+      <div
+        style={{ '--page-size': tablePaginationState.pageSize }}
+        className={className}
+        {...extractSupportProps(rest)}
+      >
         <div className={styles.header}>
           <Toolbar
             value={globalFilter}
@@ -309,7 +313,7 @@ export function Table<TData extends object>({
         </div>
 
         <div className={styles.scrollWrapper} data-outline={outline || undefined}>
-          <Scroll size={Scroll.sizes.S} className={styles.table} {...extractSupportProps(rest)}>
+          <Scroll size={Scroll.sizes.S} className={styles.table}>
             <div className={styles.tableContent}>
               <TableContext.Provider value={{ table }}>
                 {loading ? (

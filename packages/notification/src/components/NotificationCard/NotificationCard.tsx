@@ -110,12 +110,12 @@ export function NotificationCard({
       role='button'
       onClick={onClick}
       tabIndex={0}
+      {...extractSupportProps(rest)}
       data-appearance={appearance}
       data-unread={unread || undefined}
       data-clickable={Boolean(onClick) || undefined}
       data-droplist-open={isDroplistOpen || undefined}
       className={cn(styles.notificationCard, className)}
-      {...extractSupportProps(rest)}
     >
       {actions?.length && (
         <NotificationCardFunction actions={actions} open={isDroplistOpen} setDroplistOpen={setDroplistOpen} />

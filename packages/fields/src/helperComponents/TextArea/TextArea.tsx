@@ -12,7 +12,7 @@ import {
 } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
-import { excludeSupportProps, extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import styles from './styles.module.scss';
 
@@ -95,7 +95,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
         minRows={3}
-        {...extractDataProps(excludeSupportProps(rest))}
         {...extractSupportProps(rest)}
       />
     );

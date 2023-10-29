@@ -36,10 +36,10 @@ export function Counter({
   return (
     <div
       className={cn(classNames.counter, className)}
+      {...extractSupportProps(rest)}
       data-size={size}
       data-variant={variant}
       data-appearance={appearance}
-      {...extractSupportProps(rest)}
     >
       {formattedValue}
     </div>

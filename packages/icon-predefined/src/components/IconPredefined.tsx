@@ -29,11 +29,11 @@ export function IconPredefined({
 }: IconPredefinedProps) {
   return (
     <div
+      className={cn(styles.decor, className)}
+      {...extractSupportProps(rest)}
       data-size={size}
       data-decor={decor || undefined}
       data-appearance={appearance}
-      className={cn(styles.decor, className)}
-      {...extractSupportProps(rest)}
     >
       <IconComponent
         data-size={size}

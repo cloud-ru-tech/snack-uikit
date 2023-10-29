@@ -21,8 +21,8 @@ export function Sun({ size = LoaderSize.S, className, ...rest }: SunProps) {
       xmlns='http://www.w3.org/2000/svg'
       id='SunSVG'
       className={cn(styles.sun, className)}
-      data-size={size}
       {...extractSupportProps(rest)}
+      data-size={size}
     >
       <path d='M12 4V7' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
       <path d='M6.34302 6.34314L8.46434 8.46446' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />

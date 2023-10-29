@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { CSSProperties, MouseEventHandler, ReactElement, ReactNode, RefObject } from 'react';
 
 import { Size } from '@snack-ui/input-private';
-import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { ContainerVariant, ValidationState } from '../../constants';
 import styles from './styles.module.scss';
@@ -64,7 +64,6 @@ export function FieldContainerPrivate({
       onMouseDown={onMouseDown}
       role='textbox'
       tabIndex={-1}
-      {...extractDataProps(rest)}
       {...extractSupportProps(rest)}
     >
       {prefix && (

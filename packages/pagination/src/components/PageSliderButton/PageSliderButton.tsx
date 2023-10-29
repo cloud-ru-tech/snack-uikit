@@ -11,9 +11,9 @@ export function PageSliderButton({ activated, onClick, ...rest }: PageSliderButt
   return (
     <button
       className={styles.pageButtonSlider}
-      data-activated={activated || undefined}
       onClick={onClick}
       {...extractSupportProps(rest)}
+      data-activated={activated || undefined}
     >
       <div className={styles.pageButtonSliderDot} />
     </button>

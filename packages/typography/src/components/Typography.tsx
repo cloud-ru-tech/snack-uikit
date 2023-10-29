@@ -39,10 +39,10 @@ function TypographyComponent({
     tag,
     {
       className: cn(styles.typography, className),
+      ...extractSupportProps(rest),
       'data-family': family,
       'data-role': role,
       'data-size': size,
-      ...extractSupportProps(rest),
     },
     children,
   );

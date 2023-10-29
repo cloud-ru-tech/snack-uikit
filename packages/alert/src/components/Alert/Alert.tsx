@@ -45,8 +45,8 @@ export function Alert({
   return (
     <div
       className={cn(styles.alert, className)}
-      data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
       {...extractSupportProps(rest)}
+      data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
     >
       {icon && (
         <div className={styles.icon} data-color={APPEARANCE_TO_COLOR_MAP[appearance]} data-test-id='alert__icon'>

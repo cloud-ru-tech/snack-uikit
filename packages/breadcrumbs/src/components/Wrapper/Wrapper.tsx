@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { forwardRef, PropsWithChildren } from 'react';
 
-import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Size } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
@@ -23,7 +23,6 @@ export const Wrapper = forwardRef<HTMLUListElement, WrapperProps>(function Hidde
   return (
     <nav
       {...extractSupportProps(rest)}
-      {...extractDataProps(rest)}
       className={cn(styles.wrapper, className)}
       data-test-id={testId}
       data-hidden={hidden}

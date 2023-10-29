@@ -31,7 +31,7 @@ export function Header({ title, description, metadata, emblem, className, size: 
   const size = sizeProp || sizeContext;
 
   return (
-    <div className={cn(styles.titleLayout, className)} data-size={size} {...excludeSupportProps(rest)}>
+    <div className={cn(styles.titleLayout, className)} {...excludeSupportProps(rest)} data-size={size}>
       {emblem && <Emblem {...emblem} />}
 
       <div className={styles.contentLayout}>

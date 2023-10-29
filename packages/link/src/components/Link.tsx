@@ -56,11 +56,11 @@ export function Link({
       href={href}
       target={target}
       onClick={onClick}
+      {...extractSupportProps(rest)}
       data-size={size}
       data-on-surface={onSurface}
       data-color={onColor}
       rel={target === Target.Blank ? 'noopener noreferrer' : undefined}
-      {...extractSupportProps(rest)}
     >
       {text}
       {external && getExternalIcon(size)}

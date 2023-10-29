@@ -36,9 +36,9 @@ export function ToastUserAction({
   return (
     <div
       className={cn(styles.container, className)}
+      {...extractSupportProps(rest)}
       data-appearance={appearance}
       data-variant={icon ? Variant.WithIcon : Variant.LabelOnly}
-      {...extractSupportProps(rest)}
     >
       <div className={styles.content}>
         {icon && (

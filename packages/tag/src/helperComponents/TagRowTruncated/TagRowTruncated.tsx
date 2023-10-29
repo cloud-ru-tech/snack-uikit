@@ -109,7 +109,7 @@ export function TagRowTruncated({
   }, [items, rowLimit, maxWidth, onItemRemove, gapWidth, firstVisibleTagWidth]);
 
   return (
-    <div {...extractSupportProps(rest)} className={cn(styles.wrapper, className)} data-size={size}>
+    <div className={cn(styles.wrapper, className)} {...extractSupportProps(rest)} data-size={size}>
       <div className={styles.hiddenRow} ref={hiddenRowElementRef} data-size={size}>
         <TagList items={items} size={size} onItemRemove={onItemRemove} setTagRef={setTagElement} />
       </div>

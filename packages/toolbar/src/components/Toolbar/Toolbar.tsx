@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { ButtonFunction } from '@snack-ui/button';
 import { UpdateSVG } from '@snack-ui/icons';
 import { SearchPrivate } from '@snack-ui/search';
-import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { TEST_IDS } from '../../constants';
 import { CheckboxPrivate, MoreActions, Separator } from '../../helperComponents';
@@ -15,12 +15,7 @@ export type ToolbarProps = WithSupportProps<DefaultToolbarProps | CheckedToolbar
 
 export function Toolbar({ className, actions, outline, moreActions, onRefresh, ...rest }: ToolbarProps) {
   return (
-    <div
-      className={cn(styles.container, className)}
-      {...extractSupportProps(rest)}
-      {...extractDataProps(rest)}
-      data-outline={outline || undefined}
-    >
+    <div className={cn(styles.container, className)} {...extractSupportProps(rest)} data-outline={outline || undefined}>
       {isCheckedToolbarProps(rest) && (
         <>
           <CheckboxPrivate {...extractCheckboxPrivateProps(rest)} />

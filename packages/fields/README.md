@@ -170,7 +170,7 @@ const [isOpen, setIsOpen] = useState(false);
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | labelFor | `string` | - | Аттрибут for |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
+| size | `any` | Size.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
 | length | `{ current: number; max?: number; }` | - | Допустимая длинна текста |
 | hint | `string` | - | Подсказка внизу |
@@ -180,24 +180,24 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| onBlur* | `InputPrivateProps` | - |  |
+| onFocus* | `InputPrivateProps` | - |  |
+| maxLength* | `InputPrivateProps` | - |  |
+| placeholder* | `InputPrivateProps` | - |  |
+| name* | `InputPrivateProps` | - |  |
+| id* | `InputPrivateProps` | - |  |
+| onChange* | `InputPrivateProps` | - |  |
+| value* | `InputPrivateProps` | - |  |
 | showCopyButton | `boolean` | - | Показывать ли кнопку Копировать для поля (актуально только для `readonly = true`) |
 | allowMoreThanMaxLength | `boolean` | - | Можно ли вводить больше разрешённого кол-ва символов |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
-| value | `string` | - | Значение input |
-| onChange | `(value: string, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
-| disabled | `boolean` | - | Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| placeholder | `string` | - | Значение плейсхолдера |
-| maxLength | `number` | - |  |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| disabled | `InputPrivateProps` | - |  |
+| readonly | `InputPrivateProps` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
+| size | `any` | Size.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | ValidationState.Default | Состояние валидации |
@@ -226,7 +226,7 @@ const [isOpen, setIsOpen] = useState(false);
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
+| size | `any` | Size.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | ValidationState.Default | Состояние валидации |
@@ -237,26 +237,26 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| onBlur* | `InputPrivateProps` | - |  |
+| onFocus* | `InputPrivateProps` | - |  |
+| maxLength* | `InputPrivateProps` | - |  |
+| placeholder* | `InputPrivateProps` | - |  |
+| name* | `InputPrivateProps` | - |  |
+| id* | `InputPrivateProps` | - |  |
+| onChange* | `InputPrivateProps` | - |  |
+| value* | `InputPrivateProps` | - |  |
 | hidden | `boolean` | - | Замаскированно ли значение поля |
 | onHiddenChange | `(value: boolean) => void` | - | Колбек смены маскирования |
 | showCopyButton | `boolean` | - | Отображать ли кнопку копирования |
 | allowMoreThanMaxLength | `boolean` | - | Можно ли вводить больше разрешённого кол-ва символов |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
-| value | `string` | - | Значение input |
-| onChange | `(value: string, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
-| disabled | `boolean` | - | Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| placeholder | `string` | - | Значение плейсхолдера |
-| maxLength | `number` | - |  |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| disabled | `InputPrivateProps` | - |  |
+| readonly | `InputPrivateProps` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
+| size | `any` | Size.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | ValidationState.Default | Состояние валидации |
@@ -267,23 +267,23 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| value* | `string` | - | Значение input |
+| onBlur* | `InputPrivateProps` | - |  |
+| onFocus* | `InputPrivateProps` | - |  |
+| name* | `InputPrivateProps` | - |  |
+| id* | `InputPrivateProps` | - |  |
+| value* | `InputPrivateProps` | - |  |
 | open | `boolean` | - | Открыт date-picker |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
 | onChange | `(value: string) => void` | - | Колбек смены значения |
 | showCopyButton | `boolean` | - | Отображать ли кнопку копирования |
 | locale | `Locale` | new Intl.Locale('ru-RU') | Текущая локаль календаря |
-| disabled | `boolean` | - | Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| disabled | `InputPrivateProps` | - |  |
+| readonly | `InputPrivateProps` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
+| size | `any` | Size.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | ValidationState.Default | Состояние валидации |
@@ -294,6 +294,13 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| onBlur* | `InputPrivateProps` | - |  |
+| onFocus* | `InputPrivateProps` | - |  |
+| placeholder* | `InputPrivateProps` | - |  |
+| name* | `InputPrivateProps` | - |  |
+| id* | `InputPrivateProps` | - |  |
+| readonly* | `InputPrivateProps` | - |  |
+| disabled* | `InputPrivateProps` | - |  |
 | options* | `Option[]` | - | Массив опций выпадающего списка |
 | selectionMode | enum SelectionMode: `"single"`, `"multi"` | SelectionMode.Single |  |
 | open | `boolean` | - | Открыт ли выпадающий список |
@@ -303,18 +310,11 @@ const [isOpen, setIsOpen] = useState(false);
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
 | noDataText | `string` | - | Текст отсутствия доступных значений |
 | locale | `Locale` | - | Текущая локаль |
-| disabled | `boolean` | false | Является ли поле деактивированным |
-| readonly | `boolean` | false | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| placeholder | `string` | - | Значение плейсхолдера |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
+| size | `any` | - | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | - | Состояние валидации |

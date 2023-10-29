@@ -57,8 +57,8 @@ export function AlertTop({
   return (
     <div
       className={cn(styles.alertTop, className)}
-      data-color={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]}
       {...extractSupportProps(rest)}
+      data-color={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]}
     >
       <div className={styles.contentWrapper}>
         {icon && (

@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { forwardRef } from 'react';
 
-import { extractDataProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { HtmlType, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
@@ -21,7 +21,6 @@ export type ButtonElevatedProps = WithSupportProps<
 const ForwardedButtonElevated = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonElevatedProps>(
   ({ className, size = Size.S, target = Target.Blank, type = HtmlType.Button, tabIndex, ...rest }, ref) => (
     <ButtonPrivate
-      {...extractDataProps(rest)}
       {...extractSupportProps(rest)}
       {...extractCommonButtonProps(rest)}
       className={cn(styles.button, className)}

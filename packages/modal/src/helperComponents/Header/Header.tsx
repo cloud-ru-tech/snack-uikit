@@ -4,13 +4,14 @@ import { ReactNode } from 'react';
 import { IconPredefined, IconPredefinedProps } from '@snack-ui/icon-predefined';
 import { QuestionTooltip, QuestionTooltipProps } from '@snack-ui/tooltip';
 import { Typography } from '@snack-ui/typography';
+import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { ContentAlign, TEST_IDS } from '../../constants';
 import { isPictureImage } from '../../utils';
 import styles from './styles.module.scss';
 import { ModalHeaderImage } from './types';
 
-export type ModalHeaderProps = {
+export type ModalHeaderProps = WithSupportProps<{
   /** Заголовок модального окна */
   title: ReactNode;
   /** Тултип для заголовка */
@@ -22,7 +23,7 @@ export type ModalHeaderProps = {
   /** Выравнивание контента */
   align?: ContentAlign;
   className?: string;
-};
+}>;
 
 export function ModalHeader({
   title,
@@ -31,9 +32,10 @@ export function ModalHeader({
   align = ContentAlign.Default,
   picture,
   className,
+  ...rest
 }: ModalHeaderProps) {
   return (
-    <div className={cn(styles.header, className)} data-test-id={TEST_IDS.header}>
+    <div className={cn(styles.header, className)} {...extractSupportProps(rest)} data-test-id={TEST_IDS.header}>
       {picture &&
         (isPictureImage(picture) ? (
           <img src={picture.src} alt={picture.alt} className={styles.image} data-test-id={TEST_IDS.image} />

@@ -46,6 +46,7 @@ export function PrivateDropZone({
     <button
       className={cn(className, classNames.container)}
       type={'button'}
+      {...extractSupportProps(rest)}
       data-over={isOver || undefined}
       data-disabled={disabled || undefined}
       onClick={handleAttachFile}
@@ -53,7 +54,6 @@ export function PrivateDropZone({
       onDrop={handleDrop}
       onDragLeave={onDragLeave}
       onDragOver={onDragOver}
-      {...extractSupportProps(rest)}
     >
       <h4 data-test-id='title' className={classNames.title}>
         {title}

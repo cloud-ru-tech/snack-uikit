@@ -76,11 +76,11 @@ function DrawerCustomComponent({
       getContainer={container}
       className={cn(styles.drawer, className)}
       rootClassName={cn(styles.drawerRoot, rootClassName)}
+      {...extractSupportProps(rest)}
       data-content-wrapper={true}
       data-size={isPredefinedSize ? size : undefined}
       data-mode={mode}
       {...motionProps}
-      {...extractSupportProps(rest)}
     >
       <div className={styles.headerElements}>
         <ButtonClose onClick={onClose} />

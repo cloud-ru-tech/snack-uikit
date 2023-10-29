@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { ChangeEventHandler, forwardRef } from 'react';
 
-import { excludeSupportProps, extractDataProps, extractSupportProps } from '@snack-ui/utils';
+import { extractSupportProps } from '@snack-ui/utils';
 
 import { Type } from './constants';
 import styles from './styles.module.scss';
@@ -55,7 +55,6 @@ const ForwardedPrivateInput = forwardRef<HTMLInputElement, InputPrivateProps>(
         tabIndex={tabIndex}
         onClick={onClick}
         onMouseDown={onMouseDown}
-        {...extractDataProps(excludeSupportProps(rest))}
         {...extractSupportProps(rest)}
       />
     );
