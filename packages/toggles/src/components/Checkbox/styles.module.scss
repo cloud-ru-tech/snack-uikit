@@ -4,6 +4,11 @@
 
 $sizes: 's', 'm';
 
+$icon-sizes: (
+  's': $icon-xs,
+  'm': $icon-s,
+);
+
 .container {
   @include container('checkbox');
 }
@@ -44,6 +49,11 @@ $sizes: 's', 'm';
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       @include composite-var($toggles, $size, 'checkbox', 'box');
+
+      svg {
+        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      }
     }
   }
 }

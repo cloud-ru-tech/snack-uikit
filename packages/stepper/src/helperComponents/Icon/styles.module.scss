@@ -1,4 +1,5 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-stepper';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
 .icon {
   @include composite-var($stepper-step-status-container);
@@ -7,6 +8,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
 
   &[data-state='completed'] {
     color: $sys-primary-accent-default;

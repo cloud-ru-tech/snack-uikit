@@ -4,50 +4,52 @@
 $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
 .alertTopButton {
-    @include composite-var($alert-top-button-button-action);
-    @include composite-var($sans-label-l);
+  @include composite-var($alert-top-button-button-action);
+  @include composite-var($sans-label-l);
 
-    cursor: pointer;
+  cursor: pointer;
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    box-sizing: border-box;
-    margin: 0;
-    margin-left: auto;
+  box-sizing: border-box;
+  margin: 0;
+  margin-left: auto;
 
-    white-space: nowrap;
+  white-space: nowrap;
 
+  opacity: $opacity-a080;
+  background: none;
+  border: 0;
+
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  &:hover {
+    opacity: unset;
+    background-color: $sys-opacity-hovered;
+  }
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    opacity: unset;
+    background-color: $sys-opacity-hovered;
+    outline-color: $sys-available-on-complementary;
+  }
+  &:active {
     opacity: $opacity-a080;
-    background: none;
-    border: 0;
-    
-    &:hover {
-        opacity: unset;
-        background-color: $sys-opacity-hovered;
-    }
-    &:focus-visible {
-        @include outline-var($container-focused-s);
+    background-color: $sys-opacity-activated;
+  }
 
-        opacity: unset;
-        background-color: $sys-opacity-hovered;
-        outline-color: $sys-available-on-complementary;
+  @each $color in $colors {
+    &[data-color='#{$color}'] {
+      @if $color == 'invert-neutral' {
+        color: simple-var($theme-variables, 'sys', $color, 'text-main');
+      } @else {
+        color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+      }
     }
-    &:active {
-        opacity: $opacity-a080;
-        background-color: $sys-opacity-activated;
-    }
-
-    @each $color in $colors {
-        &[data-color='#{$color}'] {
-            @if $color == 'invert-neutral'{
-                color: simple-var($theme-variables, 'sys', $color, 'text-main');
-            }
-
-            @else {
-                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
-                
-            }
-        }
-    }
+  }
 }

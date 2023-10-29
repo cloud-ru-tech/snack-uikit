@@ -36,4 +36,9 @@
     color: simple-var($sys-neutral-text-main);
     background-color: simple-var($sys-neutral-decor-activated);
   }
+
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
 }

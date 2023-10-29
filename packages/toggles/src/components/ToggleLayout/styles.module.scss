@@ -1,6 +1,12 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-toggles';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm';
+
+$icon-sizes: (
+  's': $icon-xs,
+  'm': $icon-s,
+);
 
 .toggleLayout {
   cursor: pointer;
@@ -14,6 +20,11 @@ $sizes: 's', 'm';
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       @include composite-var($toggles, 'container', $size);
+
+      svg {
+        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      }
     }
   }
 

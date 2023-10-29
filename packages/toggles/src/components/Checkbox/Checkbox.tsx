@@ -2,12 +2,12 @@ import mergeRefs from 'merge-refs';
 import { useCallback, useEffect, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
+import { CheckSVG, MinusSVG } from '@snack-ui/icons';
+
 import { LabelPosition, Size, Width } from '../../constants';
 import { ToggleProps } from '../../types';
 import { getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
-import { CheckIcon } from './CheckIcon';
-import { MinusIcon } from './MinusIcon';
 import styles from './styles.module.scss';
 
 export type CheckboxProps = ToggleProps & {
@@ -51,13 +51,12 @@ export function Checkbox({
       data-test-id={dataTestId}
       ref={ref}
       render={function Checkbox(visualState) {
-        const { size } = visualState;
         const data = getVisualStateAttributes({ ...visualState, indeterminate: Boolean(indeterminate) });
         return (
           <div className={styles.container} {...data}>
             <div className={styles.box} {...data} />
             <div className={styles.icon} {...data}>
-              {indeterminate ? <MinusIcon size={size} /> : <CheckIcon size={size} />}
+              {indeterminate ? <MinusSVG /> : <CheckSVG />}
             </div>
           </div>
         );

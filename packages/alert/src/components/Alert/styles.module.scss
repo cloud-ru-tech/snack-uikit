@@ -54,6 +54,11 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
       color: simple-var($theme-variables, 'sys', $color, 'accent-default');
     }
   }  
+
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
 }
 
 .closeButton {
@@ -62,12 +67,20 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
   cursor: pointer;
 
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   margin-left: auto;
   padding: 0;
 
   background: none;
   border: none;
+
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
 
   @each $color in $colors { 
     &[data-color='#{$color}'] {

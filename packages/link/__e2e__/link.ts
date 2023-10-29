@@ -3,7 +3,7 @@ import { fixture, Selector, test } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
 const TEST_ID = 'link-on-surface-test';
-const EXTERNAL_ICON_TEST_ID = 'external-icon';
+const EXTERNAL_ICON_TEST_ID = 'link__external-icon';
 
 const getPageUrl = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({

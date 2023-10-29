@@ -7,15 +7,6 @@ import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 import { OnColor, OnSurface, Size, Target } from './constants';
 import styles from './styles.module.scss';
 
-const getExternalIcon = (size: Size) => {
-  const dataTestId = 'external-icon';
-
-  if (size === Size.L) {
-    return <ArrowLinksSVG size={24} data-test-id={dataTestId} />;
-  }
-  return <ArrowLinksSVG size={16} data-test-id={dataTestId} />;
-};
-
 export type LinkProps = WithSupportProps<{
   /** Текст ссылки */
   text?: string;
@@ -63,7 +54,7 @@ export function Link({
       rel={target === Target.Blank ? 'noopener noreferrer' : undefined}
     >
       {text}
-      {external && getExternalIcon(size)}
+      {external && <ArrowLinksSVG data-test-id='link__external-icon' />}
     </a>
   );
 }

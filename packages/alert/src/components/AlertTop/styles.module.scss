@@ -4,147 +4,154 @@
 $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
 .alertTop {
-    @include composite-var($alert-top-container-container);
+  @include composite-var($alert-top-container-container);
 
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
 
-    @each $color in $colors {
-        &[data-color='#{$color}'] {
-            @if $color == 'invert-neutral'{
-                background-color:$sys-invert-neutral-background;
-            }
-      
-            @else {
-                background-color: simple-var($theme-variables, 'sys', $color, 'accent-default');
-            }
-        }
-       }
+  @each $color in $colors {
+    &[data-color='#{$color}'] {
+      @if $color == 'invert-neutral'{
+        background-color:$sys-invert-neutral-background;
+      }
+
+      @else {
+        background-color: simple-var($theme-variables, 'sys', $color, 'accent-default');
+      }
+    }
+  }
 }
 
 .icon {
-    @each $color in $colors {
-        &[data-color='#{$color}'] {
-            @if $color == 'invert-neutral'{
-                color:$sys-invert-neutral-text-main;
-            }
+  @each $color in $colors {
+    &[data-color='#{$color}'] {
+      @if $color == 'invert-neutral'{
+        color:$sys-invert-neutral-text-main;
+      }
 
-            @else {
-                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
-            }
-        }
+      @else {
+        color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+      }
     }
+  }
+
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
 }
 
 .title {
-    @include composite-var($sans-title-s);
+  @include composite-var($sans-title-s);
 
-    @each $color in $colors {
-        &[data-color='#{$color}'] {
-            @if $color == 'invert-neutral'{
-                color:$sys-invert-neutral-text-main;
-            }
+  @each $color in $colors {
+    &[data-color='#{$color}'] {
+      @if $color == 'invert-neutral'{
+        color:$sys-invert-neutral-text-main;
+      }
 
-            @else {
-                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
-            }
-        }
+      @else {
+        color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+      }
     }
+  }
 }
 
 .description {
-    @include composite-var($sans-body-m);
+  @include composite-var($sans-body-m);
 
-    word-wrap: break-word;
+  word-wrap: break-word;
 
-    @each $color in $colors {
-        &[data-color='#{$color}'] {
-            @if $color == 'invert-neutral'{
-                color:$sys-invert-neutral-text-main;
-            }
+  @each $color in $colors {
+    &[data-color='#{$color}'] {
+      @if $color == 'invert-neutral'{
+        color:$sys-invert-neutral-text-main;
+      }
 
-            @else {
-                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
-            }
-        }
+      @else {
+        color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+      }
     }
+  }
 }
 
 .contentWrapper {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    min-width: 0;
+  display: flex;
+  gap: $dimension-2m;
+  align-items: center;
+  min-width: 0;
 }   
 
 
 .contentLayout {
-    @include composite-var($alert-top-container-content-layout);
+  @include composite-var($alert-top-container-content-layout);
 
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    
+  display: flex;
+  flex-direction: column;
+  min-width: 0; 
 }
 
 .textLayout {
-    overflow: hidden;
-
+  overflow: hidden;
 }
 
 .closeButton {
-    @include composite-var($alert-top-button-button-close);
+  @include composite-var($alert-top-button-button-close);
 
-    cursor: pointer;
+  cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 
-    background: none;
-    border: none;
+  background: none;
+  border: none;
 
-    @each $color in $colors {
-        &[data-color='#{$color}'] {
-            @if $color == 'invert-neutral'{
-                color: $sys-invert-neutral-text-main;
-            }
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
 
-            @else {
-                color: simple-var($theme-variables, 'sys', $color, 'on-accent');
-            }
-            
-            opacity: $opacity-a080;
+  @each $color in $colors {
+    &[data-color='#{$color}'] {
+      @if $color == 'invert-neutral'{
+        color: $sys-invert-neutral-text-main;
+      }
 
-            &:hover {
-                opacity: unset;
-                background-color: $sys-opacity-hovered;
-            }
+      @else {
+        color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+      }
+      
+      opacity: $opacity-a080;
 
-            &:focus-visible {
-                @include outline-var($container-focused-s);
+      &:hover {
+        opacity: unset;
+        background-color: $sys-opacity-hovered;
+      }
 
-                opacity: unset;
-                background-color: $sys-opacity-hovered;
-                outline-color: $sys-available-on-complementary;
-            }
+      &:focus-visible {
+        @include outline-var($container-focused-s);
 
-            &:active {
-                opacity: $opacity-a080;
-                background-color: $sys-opacity-activated;
-            }
+        opacity: unset;
+        background-color: $sys-opacity-hovered;
+        outline-color: $sys-available-on-complementary;
+      }
 
-        }
+      &:active {
+        opacity: $opacity-a080;
+        background-color: $sys-opacity-activated;
+      } 
     }
+  }
 }
 
 .actions {
-    display: flex;
-    gap: $dimension-2m;
-    align-items: center;
+  display: flex;
+  gap: $dimension-2m;
+  align-items: center;
 }

@@ -1,31 +1,19 @@
 import { HeartFilledSVG, HeartSVG, StarFilledSVG, StarSVG } from '@snack-ui/icons';
 
-import { FavoriteIcon, IconSize, LabelPosition, Size, Width } from '../../constants';
+import { FavoriteIcon, LabelPosition, Size, Width } from '../../constants';
 import { ToggleProps } from '../../types';
 import { getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
 import styles from './styles.module.scss';
 
 const CHECKED_ICONS = {
-  [Size.M]: {
-    [FavoriteIcon.Star]: StarFilledSVG,
-    [FavoriteIcon.Heart]: HeartFilledSVG,
-  },
-  [Size.S]: {
-    [FavoriteIcon.Star]: StarFilledSVG,
-    [FavoriteIcon.Heart]: HeartFilledSVG,
-  },
+  [FavoriteIcon.Star]: StarFilledSVG,
+  [FavoriteIcon.Heart]: HeartFilledSVG,
 };
 
 const UNCHECKED_ICONS = {
-  [Size.M]: {
-    [FavoriteIcon.Star]: StarSVG,
-    [FavoriteIcon.Heart]: HeartSVG,
-  },
-  [Size.S]: {
-    [FavoriteIcon.Star]: StarSVG,
-    [FavoriteIcon.Heart]: HeartSVG,
-  },
+  [FavoriteIcon.Star]: StarSVG,
+  [FavoriteIcon.Heart]: HeartSVG,
 };
 
 export type FavoriteProps = Omit<ToggleProps, 'disabled'> & {
@@ -47,11 +35,11 @@ export function Favorite({
       ref={inputRef}
       size={size}
       render={function Favorite(visualState) {
-        const Icon = visualState.checked ? CHECKED_ICONS[size][icon] : UNCHECKED_ICONS[size][icon];
+        const Icon = visualState.checked ? CHECKED_ICONS[icon] : UNCHECKED_ICONS[icon];
         const data = getVisualStateAttributes({ ...visualState, icon });
         return (
           <div className={styles.container} {...data}>
-            <Icon className={styles.icon} size={IconSize[size]} {...data} />
+            <Icon className={styles.icon} {...data} />
           </div>
         );
       }}

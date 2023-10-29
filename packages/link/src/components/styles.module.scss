@@ -4,6 +4,11 @@
 $sizes: 's', 'm', 'l';
 $colors: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
 $on-surfaces: 'background', 'decor', 'accent';
+$icon-sizes: (
+  's': $icon-xs,
+  'm': $icon-s,
+  'l': $icon-s,
+);
 
 .link {
   cursor: pointer;
@@ -66,7 +71,14 @@ $on-surfaces: 'background', 'decor', 'accent';
               }
 
               @include composite-var($link, 'container', $size);
+
+              svg {
+                width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+                height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+              }
             }
+
+            
           }
         }
       }

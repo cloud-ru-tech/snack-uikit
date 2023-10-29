@@ -32,6 +32,11 @@
   &:active {
     color: $sys-neutral-text-light;
   }
+
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
 }
 
 .triggerClassName {
