@@ -1,8 +1,7 @@
 import { AriaAttributes } from 'react';
 
-const DATA_REGEXP = /^data-/;
 const DATA_TEST_REGEXP = /^data-test-/;
-const DATA_TEST_AND_ARIA_REGEXP = /^(data-test|aria)-/;
+const DATA_AND_ARIA_REGEXP = /^(data|aria)-/;
 
 function excludeProps<T extends Record<string, unknown>>(props: T, regexp: RegExp) {
   return Object.keys(props)
@@ -33,11 +32,7 @@ export type WithSupportProps<T> = {
   T;
 
 export function excludeSupportProps<T extends Record<string, unknown>>(props: T) {
-  return excludeProps(props, DATA_TEST_AND_ARIA_REGEXP);
-}
-
-export function extractDataProps<T extends Record<string, unknown>>(props: T) {
-  return extractProps(props, DATA_REGEXP);
+  return excludeProps(props, DATA_AND_ARIA_REGEXP);
 }
 
 export function extractDataTestProps<T extends Record<string, unknown>>(props: T) {
@@ -45,5 +40,5 @@ export function extractDataTestProps<T extends Record<string, unknown>>(props: T
 }
 
 export function extractSupportProps<T extends Record<string, unknown>>(props: T) {
-  return extractProps(props, DATA_TEST_AND_ARIA_REGEXP);
+  return extractProps(props, DATA_AND_ARIA_REGEXP);
 }

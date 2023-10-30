@@ -7,10 +7,10 @@ describe('extractSupportProps', () => {
       'data-test-x': 2,
       'aria-role': 'button',
       'aria-x': 2,
+      'data-other-attr': 'text',
     };
 
     const otherProps = {
-      'data-other-attr': 'text',
       'some-other-prop': 'text',
     };
 
