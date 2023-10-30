@@ -35,12 +35,7 @@ export function IconPredefined({
       data-decor={decor || undefined}
       data-appearance={appearance}
     >
-      <IconComponent
-        data-size={size}
-        data-appearance={appearance}
-        className={styles.icon}
-        size={size === Size.S ? 16 : 24}
-      />
+      <IconComponent data-size={size} data-appearance={appearance} className={styles.icon} />
     </div>
   );
 }

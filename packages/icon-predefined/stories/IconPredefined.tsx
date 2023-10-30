@@ -32,7 +32,7 @@ IconPredefined.args = {
   size: IconPredefinedComponent.sizes.M,
   appearance: IconPredefinedComponent.appearances.Primary,
   decor: true,
-  icon: iconNames[0],
+  icon: 'PlaceholderSVG',
 };
 IconPredefined.argTypes = {
   icon: {
