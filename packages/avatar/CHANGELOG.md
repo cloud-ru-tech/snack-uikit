@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.4 (2023-10-31)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+
+
+
+
+
 ## 0.3.3 (2023-10-25)
 
 ### Only dependencies have been changed
@@ -84,7 +95,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.2.6 (2023-06-23)
 
-**Note:** Version bump only for package @snack-ui/avatar
+### Only dependencies have been changed
+* [@snack-ui/status@0.3.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/status/CHANGELOG.md)
+* [@snack-ui/utils@2.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

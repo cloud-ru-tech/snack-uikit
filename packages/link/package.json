@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/link",
   "title": "Link",
-  "version": "0.5.9",
+  "version": "0.5.10",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -30,7 +30,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-ui/icons": "0.18.0",
-    "@snack-ui/utils": "1.3.0",
+    "@snack-ui/utils": "2.0.0",
     "classnames": "2.3.2"
   }
 }

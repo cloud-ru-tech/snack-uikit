@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.10 (2023-10-31)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+
+
+
+
+
 ## 0.3.9 (2023-10-26)
 
 ### Only dependencies have been changed
@@ -32,7 +43,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.3.6 (2023-10-13)
 
-**Note:** Version bump only for package @snack-ui/calendar
+### Only dependencies have been changed
+* [@snack-ui/utils@2.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

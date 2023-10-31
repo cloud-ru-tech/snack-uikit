@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2023-10-31)
+
+
+### BREAKING CHANGES
+
+
+* **FF-0000:** insert (extract/exclude)DataProps into (extract/exclude)SupportProps ([7aca240](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/7aca2408d5703e0ff440bfd1cde4c8dac6b25cf1))
+
+
+
+
 # 1.3.0 (2023-10-25)
 
 

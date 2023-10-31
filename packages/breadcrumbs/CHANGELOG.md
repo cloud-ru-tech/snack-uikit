@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.9 (2023-10-31)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+
+
+
+
+
 ## 0.4.8 (2023-10-25)
 
 ### Only dependencies have been changed
@@ -46,7 +57,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.4.4 (2023-10-12)
 
-**Note:** Version bump only for package @snack-ui/breadcrumbs
+### Only dependencies have been changed
+* [@snack-ui/popover@0.3.7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-ui/typography@0.4.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/utils@2.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 
