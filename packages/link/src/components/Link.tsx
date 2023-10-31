@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { AnchorHTMLAttributes, MouseEventHandler } from 'react';
 
 import { ArrowLinksSVG } from '@snack-ui/icons';
+import { TruncateString } from '@snack-ui/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { OnColor, OnSurface, Size, Target } from './constants';
@@ -30,7 +31,7 @@ export type LinkProps = WithSupportProps<{
 
 /** Компонент ссылка */
 export function Link({
-  text,
+  text = '',
   className,
   href = '#',
   target = Target.Blank,
@@ -53,8 +54,8 @@ export function Link({
       data-color={onColor}
       rel={target === Target.Blank ? 'noopener noreferrer' : undefined}
     >
-      {text}
-      {external && <ArrowLinksSVG data-test-id='link__external-icon' />}
+      <TruncateString text={text} maxLines={1} />
+      {external && <ArrowLinksSVG data-test-id='link__external-icon' className={styles.icon} />}
     </a>
   );
 }

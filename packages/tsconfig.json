@@ -20,6 +20,9 @@
       "path": "./tooltip"
     },
     {
+      "path": "./truncate-string"
+    },
+    {
       "path": "./link"
     },
     {
@@ -64,9 +67,7 @@
     {
       "path": "./breadcrumbs"
     },
-    {
-      "path": "./truncate-string"
-    },
+
     {
       "path": "./tag"
     },

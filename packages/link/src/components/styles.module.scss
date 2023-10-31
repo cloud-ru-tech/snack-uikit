@@ -19,6 +19,7 @@ $icon-sizes: (
   width: fit-content;
 
   text-decoration: none;
+  max-width: 100%;
 
   @each $on-surface in $on-surfaces {
     &[data-on-surface='#{$on-surface}'] {
@@ -77,8 +78,6 @@ $icon-sizes: (
                 height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
               }
             }
-
-            
           }
         }
       }
@@ -86,3 +85,6 @@ $icon-sizes: (
   }
 }
 
+.icon {
+  flex-shrink: 0;
+}
