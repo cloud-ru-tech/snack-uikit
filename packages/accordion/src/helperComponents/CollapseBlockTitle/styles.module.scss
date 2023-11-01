@@ -1,0 +1,65 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-accordion';
+
+.button {
+  &[data-expanded] {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.header {
+  @include composite-var($collapse-block-container-header-container);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin: calc(0px - var(--accordion-header-padding-vertical, 0px)) calc(0px - var(--accordion-header-padding-horizontal, 0px));
+  padding: var(--accordion-header-padding-vertical, 0px) var(--accordion-header-padding-horizontal, 0px);
+  
+  > * {
+    cursor: pointer;
+  }
+
+  &:hover {
+    .button  { 
+      span {
+        color: $sys-neutral-accent-hovered;
+      }
+    }
+  }
+}
+
+.headline {
+  @include composite-var($collapse-block-container-header-headline);
+
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.title {
+  max-width: 100%;
+  color: $sys-neutral-text-main;
+}
+
+.subtitle {
+  max-width: 100%;
+  color: $sys-neutral-text-support;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100% - var(--width, 0px) - $space-accordion-collapse-block-title-gap);
+}
+
+.functionLayout {
+  @include composite-var($collapse-block-container-header-function-layout);
+
+  display: flex;
+  flex-shrink: 0;
+}

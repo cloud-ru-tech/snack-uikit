@@ -1,0 +1,14 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-accordion';
+
+.container {
+  @include composite-var($collapse-block-container-primary);
+
+  max-width: 100%;
+  background-color: $sys-neutral-background1-level;
+
+  &:focus-within,
+  &:hover{
+    background-color: $sys-neutral-background2-level;
+    box-shadow: $box-shadow-elevation-level2;
+  }
+}

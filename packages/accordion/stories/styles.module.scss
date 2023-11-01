@@ -1,0 +1,18 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $dimension-1m;
+}
+
+.wrapper {
+  resize: horizontal;
+
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+
+  width: 400px;
+  padding: $dimension-1m;
+}

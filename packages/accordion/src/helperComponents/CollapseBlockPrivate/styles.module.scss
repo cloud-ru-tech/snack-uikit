@@ -1,0 +1,50 @@
+$duration: 300ms;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: gap $duration;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  &[aria-expanded='false'] {
+    gap: 0
+  }
+}
+
+.contentWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  transition: grid-template-rows $duration;
+
+  &[aria-hidden='true'] {
+    overflow: hidden;
+  }
+
+  &[aria-hidden='false'] {
+    grid-template-rows: 1fr;
+
+    >div[data-content] {
+      visibility: visible;
+    }
+  }
+}
+
+.content {
+  overflow: hidden;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+
+  visibility: hidden;
+
+  transition: visibility $duration;  
+}

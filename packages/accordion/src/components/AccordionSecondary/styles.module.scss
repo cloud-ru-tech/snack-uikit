@@ -1,0 +1,11 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-accordion';
+
+.accordionSecondary {
+  --accordion-header-padding-horizontal: #{$space-accordion-collapse-block-secondary-horizontal-padding};
+  --accordion-header-padding-vertical: #{$space-accordion-collapse-block-secondary-vertical-padding};
+
+  @include composite-var($accordion-secondary);
+
+  display: flex;
+  flex-direction: column;
+}

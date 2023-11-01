@@ -118,6 +118,9 @@
     },
     {
       "path": "./notification"
+    },
+    {
+      "path": "./accordion"
     }
   ],
   "compilerOptions": {

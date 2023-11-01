@@ -1,0 +1,43 @@
+{
+  "name": "@snack-ui/accordion",
+  "title": "Accordion",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/accordion",
+  "repository": {
+    "type": "git",
+    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "directory": "packages/accordion"
+  },
+  "author": "Nikita Ershov <niershov@cloud.ru>",
+  "contributors": [
+    "Nikita Ershov <niershov@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-ui/button": "0.13.4",
+    "@snack-ui/icons": "0.18.0",
+    "@snack-ui/tooltip": "0.7.13",
+    "@snack-ui/truncate-string": "0.2.13",
+    "@snack-ui/typography": "0.4.3",
+    "@snack-ui/utils":"2.0.0",
+    "classnames": "2.3.2",
+    "uncontrollable": "8.0.4"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}
