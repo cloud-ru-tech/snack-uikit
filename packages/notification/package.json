@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/notification",
   "title": "Notification",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -34,7 +34,7 @@
     "@snack-ui/droplist": "0.10.3",
     "@snack-ui/icon-predefined": "0.2.4",
     "@snack-ui/icons": "0.18.0",
-    "@snack-ui/link": "0.5.10",
+    "@snack-ui/link": "0.6.0",
     "@snack-ui/popover-private": "0.9.4",
     "@snack-ui/scroll": "0.3.3",
     "@snack-ui/skeleton": "0.2.3",

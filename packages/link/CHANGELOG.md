@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-11-01)
+
+
+### Features
+
+* **[FF-3641](https://jira.sbercloud.tech/browse/FF-3641):** add truncate into link ([2580869](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/2580869cee418ef0d1660589b8f67c6946b90846))
+
+
+
+
+
 ## 0.5.10 (2023-10-31)
 
 
