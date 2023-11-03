@@ -35,6 +35,7 @@ export function Header({
     <span className={styles.header} data-size={size}>
       {label && (
         <span className={styles.labelLayout}>
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label className={styles.label} htmlFor={labelFor} data-test-id='field-decorator__label'>
             <TruncateString text={label} />
           </label>

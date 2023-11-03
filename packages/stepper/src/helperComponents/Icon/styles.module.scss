@@ -25,17 +25,17 @@
   }
 
   &[data-state='waiting'] {
-    border-style: solid;
     box-sizing: border-box;
     color: $sys-neutral-text-support;
     border-color: $sys-neutral-decor-default;
+    border-style: solid;
   }
 
   &[data-state='loading'] {
-    border-style: solid;
     box-sizing: border-box;
     color: $sys-neutral-accent-default;
     border-color: $sys-neutral-decor-default;
+    border-style: solid;
   }
 
   &[data-state='rejected'] {

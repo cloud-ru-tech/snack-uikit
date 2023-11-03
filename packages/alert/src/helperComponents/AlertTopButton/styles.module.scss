@@ -47,7 +47,9 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
     &[data-color='#{$color}'] {
       @if $color == 'invert-neutral' {
         color: simple-var($theme-variables, 'sys', $color, 'text-main');
-      } @else {
+      }
+
+ @else {
         color: simple-var($theme-variables, 'sys', $color, 'on-accent');
       }
     }

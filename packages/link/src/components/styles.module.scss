@@ -17,9 +17,9 @@ $icon-sizes: (
   align-items: center;
 
   width: fit-content;
+  max-width: 100%;
 
   text-decoration: none;
-  max-width: 100%;
 
   @each $on-surface in $on-surfaces {
     &[data-on-surface='#{$on-surface}'] {

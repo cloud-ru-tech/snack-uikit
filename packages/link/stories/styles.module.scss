@@ -11,13 +11,14 @@ $link-surface: (
 );
 
 .wrapper {
+  resize: both;
+
+  overflow: auto;
   display: flex;
   gap: 8px;
   align-items: center;
-  resize: both;
-  width: 200px;
-  overflow: auto;
 
+  width: 200px;
   height: 64px;
   margin-bottom: 16px;
   padding: 0 24px;

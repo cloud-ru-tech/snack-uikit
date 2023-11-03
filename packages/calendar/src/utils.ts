@@ -81,7 +81,7 @@ export const getInRangePosition = (date: Date, viewMode: ViewMode, range?: Range
 export const getEndOfTheDay = (date: Date) =>
   new Date(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).valueOf() - 1);
 
-export const getTestIdBuilder = (testId?: string) => (prefix: string) => (testId ? `${prefix}-${testId}` : undefined);
+export const getTestIdBuilder = (testId?: string) => (prefix: string) => testId ? `${prefix}-${testId}` : undefined;
 
 export const getLocale = (localeProp?: Intl.Locale) => localeProp || new Intl.Locale(navigator?.language || 'ru-RU');
 

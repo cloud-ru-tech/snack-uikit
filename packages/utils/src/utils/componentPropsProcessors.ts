@@ -16,14 +16,11 @@ function excludeProps<T extends Record<string, unknown>>(props: T, regexp: RegEx
 }
 
 function extractProps<T extends Record<string, unknown>>(props: T, regex: RegExp) {
-  return Object.keys(props).reduce(
-    (nextProps, prop) => {
-      if (prop.match(regex)) nextProps[prop] = props[prop];
+  return Object.keys(props).reduce((nextProps, prop) => {
+    if (prop.match(regex)) nextProps[prop] = props[prop];
 
-      return nextProps;
-    },
-    {} as Record<string, unknown>,
-  );
+    return nextProps;
+  }, {} as Record<string, unknown>);
 }
 
 export type WithSupportProps<T> = {
