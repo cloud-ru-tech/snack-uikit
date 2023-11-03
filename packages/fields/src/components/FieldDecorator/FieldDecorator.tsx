@@ -64,3 +64,6 @@ export function FieldDecorator({
     </div>
   );
 }
+
+FieldDecorator.validationStates = ValidationState;
+FieldDecorator.sizes = Size;

@@ -5,6 +5,9 @@
   background: $sys-neutral-background1-level;
   border: 1px solid $sys-neutral-decor-default;
 
+  overflow: hidden;
+  resize: horizontal;
+
   &[data-size='s'] {
     width: 256px;
   }

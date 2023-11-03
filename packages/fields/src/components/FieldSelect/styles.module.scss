@@ -12,7 +12,6 @@ $icons-sizes: (
 .triggerClassName {
   --offset: #{$space-drop-list-drop-offset};
   
-  display: block;
   width: 100%;
 }
 
@@ -49,6 +48,8 @@ $icons-sizes: (
 }
 
 .container {
+  flex: 1 1 0;
+
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       .arrowIcon {
