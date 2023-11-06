@@ -1,4 +1,4 @@
-import { JSXElementConstructor } from 'react';
+import { JSXElementConstructor, MouseEventHandler } from 'react';
 
 import { ElementType, ItemRenderMode } from './constants';
 
@@ -8,7 +8,7 @@ export type Item = {
   icon?: JSXElementConstructor<{ size: number }>;
   href?: string;
   shortLabel?: string;
-  onClick?(): void;
+  onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 };
 
 export type InnerItem = Item & {
