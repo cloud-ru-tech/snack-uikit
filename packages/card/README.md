@@ -28,7 +28,10 @@ import { Card, SearchPrivate } from "@snack-ui/card";
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| checked | `boolean` | - | Управление состоянием выбран/не выбран. |
+| disabled | `boolean` | - | Управление состоянием интерактивности |
+| checked | `boolean` | - | Управление состоянием выбран/не выбран |
+| outline | `boolean` | - | Управление состоянием наличия обводки |
+| multipleSelection | `boolean` | - | Отображение галочки для режима массового выделения карточек |
 | onClick | `() => void` | - | Колбек на клик по карточке |
 | size | enum Size: `"m"`, `"l"` | - | Размер |
 | promoBadge | `string` | - | Текст для PromoBadge |

@@ -56,6 +56,7 @@ const Template: StoryFn<StoryProps> = ({
   imageSrc,
   pictureSrc,
   showFading,
+  disabled,
   ...args
 }: StoryProps) => {
   const [checked, setChecked] = useState<boolean>(checkedProp || false);
@@ -123,6 +124,7 @@ const Template: StoryFn<StoryProps> = ({
     <div className={styles.wrapperResize}>
       <Card
         {...args}
+        disabled={disabled}
         checked={checked}
         onClick={clickable ? () => setChecked(prevChecked => !prevChecked) : undefined}
         image={image}
@@ -138,8 +140,11 @@ const Template: StoryFn<StoryProps> = ({
 export const card: StoryObj<StoryProps> = Template.bind({});
 
 card.args = {
+  disabled: false,
   clickable: true,
   checked: false,
+  multipleSelection: true,
+  outline: false,
   promoBadge: 'Promo badge',
   size: Card.sizes.M,
   title: 'Title truncate 1 line',
@@ -158,6 +163,28 @@ card.args = {
 card.argTypes = {
   clickable: {
     name: '[Story]: Show behavior card with onClick',
+    if: {
+      arg: 'disabled',
+      eq: false,
+    },
+  },
+  checked: {
+    if: {
+      arg: 'clickable',
+      neq: false,
+    },
+  },
+  multipleSelection: {
+    if: {
+      arg: 'clickable',
+      neq: false,
+    },
+  },
+  outline: {
+    if: {
+      arg: 'disabled',
+      eq: false,
+    },
   },
   title: {
     name: '[Story]: Card.Header title',

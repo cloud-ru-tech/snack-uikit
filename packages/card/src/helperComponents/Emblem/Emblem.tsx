@@ -9,7 +9,7 @@ type PictureProps = {
   alt: string;
 };
 
-export type EmblemProps = PictureProps | { icon: IconPredefinedProps['icon'] };
+export type EmblemProps = PictureProps | Pick<IconPredefinedProps, 'icon' | 'decor' | 'appearance'>;
 
 function isPictureProps(props: EmblemProps): props is PictureProps {
   return 'src' in props && 'alt' in props;
@@ -33,9 +33,12 @@ export function Emblem(props: EmblemProps) {
   return (
     <IconPredefined
       icon={props.icon}
-      appearance={IconPredefined.appearances.Primary}
+      appearance={props.appearance ?? IconPredefined.appearances.Primary}
+      decor={props.decor ?? true}
       size={size}
       data-test-id={TEST_IDS.emblemIcon}
     />
   );
 }
+
+Emblem.appearances = IconPredefined.appearances;

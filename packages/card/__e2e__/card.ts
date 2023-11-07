@@ -125,8 +125,9 @@ test.page(
     title: MOCK_DATA.title,
     metadata: MOCK_DATA.metadata,
     description: MOCK_DATA.description,
+    multipleSelection: true,
   }),
-)(`Card.Check should changed by click`, async t => {
+)(`Card.Check should appear when card is checked in multipleSelection mode`, async t => {
   const { check, card } = getSelectors();
 
   await t.expect(check.exists).notOk(`Card.Check shouldn't render`);
@@ -134,4 +135,21 @@ test.page(
   await t.click(card).expect(check.exists).ok(`Card.Check should render after click`);
 
   await t.click(card).expect(check.exists).notOk(`Card.Check shouldn't render after second click`);
+});
+
+test.page(
+  getPage({
+    title: MOCK_DATA.title,
+    metadata: MOCK_DATA.metadata,
+    description: MOCK_DATA.description,
+    multipleSelection: false,
+  }),
+)(`Card.Check should not appear when card is checked without multipleSelection mode`, async t => {
+  const { check, card } = getSelectors();
+
+  await t.expect(check.exists).notOk(`Card.Check shouldn't render`);
+
+  await t.click(card).expect(check.exists).notOk(`Card.Check shouldn't render after card is checked`);
+
+  await t.click(card).expect(check.exists).notOk(`Card.Check shouldn't render after card is unchecked`);
 });

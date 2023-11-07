@@ -5,7 +5,6 @@ $sizes:  'm', 'l';
 
 .functionBadgeWrapper {
   position: absolute;
-  z-index: 1;
   top: 0;
   right: 0;
 
@@ -16,12 +15,16 @@ $sizes:  'm', 'l';
   }
 }
 
+.composition {
+  @include composite-var($card-composition-container);
+
+  box-sizing: border-box;
+}
+
 .card {
   @include composite-var($card-container);
-  @include outline-var($container-focused-s);
 
   position: relative;
-  z-index: 0;
 
   overflow: hidden;
 
@@ -62,22 +65,10 @@ $sizes:  'm', 'l';
     }
   }
 
-
-  &[data-checked] {
-    outline-color: $sys-primary-decor-activated;
-
-    .check {
-      background-color: $sys-primary-decor-activated;
-    }
-  }
-
-  &[data-checked]:focus-visible {
-    outline-color: $sys-primary-accent-default;
-
-    .check {
-      color: $sys-primary-on-accent;
-      background-color: $sys-primary-accent-default;
-    }
+  &[data-outline] {
+    @include outline-var($container-focused-s);
+    outline-width: $border-width-card-container;
+    outline-color: $sys-neutral-decor-default;
   }
 
   &[data-pointer] {
@@ -85,18 +76,76 @@ $sizes:  'm', 'l';
       cursor: pointer;
     }
 
+    &[data-outline] {
+      &:hover {
+        box-shadow: none;
+        outline-color: $sys-neutral-decor-hovered;
+      }
+
+      &:focus-visible {
+        @include outline-var($container-focused-l);
+        outline-color: $sys-primary-accent-default;
+      }
+    }
+
+    &[data-checked] {
+      @include outline-var($container-focused-s);
+      outline-width: $border-width-card-container;
+      outline-color: $sys-primary-decor-activated;
+
+      &:hover {
+        box-shadow: none;
+        outline-color: $sys-primary-decor-hovered;
+      }
+
+      .contentWrapper {
+        position: relative;
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
+          background-color: $sys-primary-accent-default;
+          opacity: $opacity-a008;
+        }
+      }
+
+      .check {
+        color: $sys-primary-on-accent;
+        background-color: $sys-primary-accent-default;
+      }
+    }
+
+    &[data-checked]:focus-visible {
+      @include outline-var($container-focused-l);
+      outline-color: $sys-primary-accent-default;
+
+      .check {
+        color: $sys-primary-on-accent;
+        background-color: $sys-primary-accent-default;
+      }
+    }
+
     &:hover {
+      box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
       background-color: $sys-neutral-background2-level;
     }
   }
+
+  &[data-disabled] {
+    @include outline-var($container-focused-s);
+    outline-width: $border-width-card-container;
+    outline-color: $sys-neutral-decor-default;
+
+    background-color: $sys-neutral-background;
+  }
 }
 
-.composition {
-  @include composite-var($card-composition-container);
-
-  position: relative;
-  box-sizing: border-box;
-}
 
 .body {
   display: block;
@@ -110,9 +159,11 @@ $sizes:  'm', 'l';
   align-items: flex-start;
   justify-content: flex-start;
 
+  position: relative;
+
   box-sizing: border-box;
   max-width: 100%;
-  
+
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       @include composite-var($card, 'content', $size, 'container');
@@ -122,6 +173,8 @@ $sizes:  'm', 'l';
 
 .footer {
   @include composite-var($card-footer);
+
+  position: relative;
 
   box-sizing: border-box;
 }

@@ -4,6 +4,7 @@ import { ButtonFilled, ButtonFilledProps } from '@snack-ui/button';
 import { excludeSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Size } from '../../../../constants';
+import { useCardContext } from '../../../../context';
 import { Dimension, DimensionProps } from '../Dimension';
 import styles from './styles.module.scss';
 
@@ -19,9 +20,18 @@ export type FooterPromoProps = WithSupportProps<{
 }>;
 
 export function FooterPromo({ volume, button, className, size, ...rest }: FooterPromoProps) {
+  const { disabled } = useCardContext();
+
   return (
     <div className={cn(styles.promo, className)} {...excludeSupportProps(rest)}>
-      {button && <ButtonFilled {...button} appearance={ButtonFilled.appearances.Primary} size={ButtonFilled.sizes.M} />}
+      {button && (
+        <ButtonFilled
+          {...button}
+          appearance={ButtonFilled.appearances.Primary}
+          size={ButtonFilled.sizes.M}
+          disabled={disabled}
+        />
+      )}
       {volume && <Dimension {...volume} size={size} />}
     </div>
   );

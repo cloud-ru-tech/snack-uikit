@@ -4,10 +4,12 @@ import { Size } from './constants';
 
 type CardContextValue = {
   size: Size;
+  disabled: boolean;
 };
 
 export const CardContext = createContext<CardContextValue>({
   size: Size.M,
+  disabled: false,
 });
 
 export function useCardContext() {
