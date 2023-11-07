@@ -37,6 +37,7 @@
 | trigger | enum Trigger: `"hover"`, `"click"` | Trigger.Hover | Условие отображения подсказки |
 | size | enum Size: `"s"`, `"xs"` | Size.Xs | Размер |
 | tooltipClassname | `string` | - | CSS-класс контейнера подсказки |
+| triggerDataTestId | `string` | - | data-test-id для триггера |
 
 
 [//]: DOCUMENTATION_SECTION_END

@@ -14,6 +14,8 @@ export type QuestionTooltipProps = Omit<TooltipProps, 'children' | 'triggerClass
   size?: Size;
   /** CSS-класс контейнера подсказки */
   tooltipClassname?: string;
+  /** data-test-id для триггера */
+  triggerDataTestId?: string;
 };
 
 export function QuestionTooltip({
@@ -21,6 +23,7 @@ export function QuestionTooltip({
   trigger = Trigger.Hover,
   tooltipClassname,
   className,
+  triggerDataTestId,
   ...rest
 }: QuestionTooltipProps) {
   const [tooltipOpened, setTooltipOpened] = useState(false);
@@ -44,7 +47,7 @@ export function QuestionTooltip({
           role='button'
           tabIndex={0}
         >
-          <QuestionSVG size={SIZES_MAP[size]} />
+          <QuestionSVG size={SIZES_MAP[size]} data-test-id={triggerDataTestId} />
         </span>
       )}
     </Tooltip>
