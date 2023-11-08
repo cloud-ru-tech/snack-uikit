@@ -215,7 +215,9 @@ const Template: StoryFn<StoryProps> = ({
         data={filteredData}
         onDelete={onDelete}
         className={styles.className}
-        pagination={{ options: [5, 10] }}
+        pagination={{
+          options: [5, 10],
+        }}
         rowSelection={{
           multiRow: rowSelectionMode === 'multi',
           enable: disableSomeRows
@@ -232,7 +234,8 @@ const Template: StoryFn<StoryProps> = ({
 export const table: StoryObj<StoryProps> = Template.bind({});
 
 table.args = {
-  suppressPagination: true,
+  suppressPagination: false,
+  suppressToolbar: false,
   rowsAmount: 35,
   loading: false,
   statusColumnViewMode: StoryStatusColumnViewMode.Full,

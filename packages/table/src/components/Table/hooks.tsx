@@ -26,7 +26,7 @@ export function useStateControl<TState>(
 
   const [state, onStateChange] = useUncontrolledProp<TState>(
     control?.state,
-    control?.state || control?.initialState || defaultState,
+    control?.state ?? control?.initialState ?? defaultState,
     onControlState,
   );
 

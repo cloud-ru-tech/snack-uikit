@@ -3,10 +3,15 @@ import {
   ColumnDef,
   ColumnMeta,
   HeaderContext,
+  PaginationState,
+  RowSelectionOptions,
   RowSelectionState,
   SortingState,
 } from '@tanstack/react-table';
 
+import { ToolbarProps } from '@snack-ui/toolbar';
+
+import { TableEmptyStateProps } from './components/TableEmptyState';
 import { ColumnAlign, ColumnPinPosition } from './constants';
 import { Except } from './helperComponents/types';
 
@@ -63,4 +68,13 @@ export type {
   RowClickHandler,
 } from './helperComponents';
 
-export type { RowSelectionState, SortingState, CellContext, HeaderContext };
+export {
+  type PaginationState,
+  type SortingState,
+  type RowSelectionState,
+  type RowSelectionOptions,
+  type TableEmptyStateProps,
+  type ToolbarProps,
+  type HeaderContext,
+  type CellContext,
+};

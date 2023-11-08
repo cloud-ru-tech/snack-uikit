@@ -114,6 +114,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | search | `{ initialValue?: string; state?: string; placeholder?: string; loading?: boolean; onChange?(value: string): void; }` | - | Параметры за глобальный поиск в таблице <br> <strong>initialState</strong>: Начальное состояние строки поиска <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>placeholder</strong>: Placeholder строки поиска @default 'Search...'<br> <strong>loading</strong>: Состояние загрузки в строке поиска <br> <strong>onChange</strong>: Колбэк на изменение данных в строке поиска |
 | pageSize | `number` | 10 | Максимальное кол-во строк на страницу @default 10 |
 | pagination | `{ state?: PaginationState; options?: number[]; optionsLabel?: string; onChange?(state: PaginationState): void; }` | - | Параметры за пагинацию в таблице <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу<br> <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу @default 'Rows volume' <br> <strong>onChange</strong>: Колбэк на изменение пагинации |
+| pageCount | `number` | - | Кол-во страниц (используется для внешнего управления) |
 | onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
 | className | `string` | - | CSS-класс |
 | loading | `boolean` | - | Состояние загрузки |

@@ -13,6 +13,7 @@ import {
 } from '@tanstack/react-table';
 import { ReactNode, useCallback, useMemo } from 'react';
 
+import { IconPredefined } from '@snack-ui/icon-predefined';
 import { Scroll } from '@snack-ui/scroll';
 import { SkeletonContextProvider } from '@snack-ui/skeleton';
 import { Toolbar, ToolbarProps } from '@snack-ui/toolbar';
@@ -100,6 +101,9 @@ export type TableProps<TData extends object> = WithSupportProps<{
     onChange?(state: PaginationState): void;
   };
 
+  /** Кол-во страниц (используется для внешнего управления) */
+  pageCount?: number;
+
   /** Колбэк клика по строке */
   onRowClick?: RowClickHandler<TData>;
   /** CSS-класс */
@@ -156,6 +160,7 @@ export function Table<TData extends object>({
   onDelete,
 
   pageSize = 10,
+  pageCount,
   loading = false,
   outline = false,
 
@@ -176,11 +181,19 @@ export function Table<TData extends object>({
     {},
   );
 
+  const defaultPaginationState = useMemo(
+    () => ({
+      pageIndex: 0,
+      pageSize,
+    }),
+    [pageSize],
+  );
+
   const { state: sorting, onStateChange: onSortingChange } = useStateControl<SortingState>(sortingProp, []);
-  const { state: pagination, onStateChange: onPaginationChange } = useStateControl<PaginationState>(paginationProp, {
-    pageIndex: 0,
-    pageSize,
-  });
+  const { state: pagination, onStateChange: onPaginationChange } = useStateControl<PaginationState>(
+    paginationProp,
+    defaultPaginationState,
+  );
 
   const enableSelection = Boolean(rowSelectionProp?.enable);
 
@@ -216,7 +229,7 @@ export function Table<TData extends object>({
   }, [tableColumns]);
 
   const table = useReactTable<TData>({
-    data: data,
+    data,
     columns: tableColumns,
 
     state: {
@@ -224,8 +237,10 @@ export function Table<TData extends object>({
       globalFilter,
       rowSelection,
       sorting,
-      pagination: !suppressPagination ? pagination : undefined,
+      pagination,
     },
+
+    pageCount,
 
     defaultColumn: {
       enableSorting: false,
@@ -244,15 +259,11 @@ export function Table<TData extends object>({
     enableSorting: true,
     manualSorting: false,
     enableMultiSort: false,
+    manualPagination: pageCount !== undefined,
     onSortingChange,
     getSortedRowModel: getSortedRowModel(),
-
-    ...(!suppressPagination
-      ? {
-          onPaginationChange,
-          getPaginationRowModel: getPaginationRowModel(),
-        }
-      : {}),
+    onPaginationChange,
+    getPaginationRowModel: getPaginationRowModel(),
 
     getCoreRowModel: getCoreRowModel(),
   });
@@ -288,12 +299,12 @@ export function Table<TData extends object>({
 
   const tableRows = table.getRowModel().rows;
   const loadingTableRows = loadingTable.getRowModel().rows;
-  const tablePaginationState = table.getState().pagination;
+  const tablePagination = table.getState().pagination;
 
   return (
     <>
       <div
-        style={{ '--page-size': !suppressPagination ? tablePaginationState?.pageSize : pageSize }}
+        style={{ '--page-size': !suppressPagination ? tablePagination?.pageSize : pageSize }}
         className={className}
         {...extractSupportProps(rest)}
       >
@@ -355,6 +366,7 @@ export function Table<TData extends object>({
             table={table}
             options={paginationProp?.options}
             optionsLabel={paginationProp?.optionsLabel}
+            pageCount={pageCount}
           />
         )}
       </div>
@@ -367,3 +379,4 @@ Table.columnAligns = ColumnAlign;
 Table.getStatusColumnDef = getStatusColumnDef;
 Table.statusAppearances = StatusAppearance;
 Table.getRowActionsColumnDef = getRowActionsColumnDef;
+Table.emptyStateAppearances = IconPredefined.appearances;

@@ -11,6 +11,7 @@ export type TablePaginationProps<TData> = {
   table: Table<TData>;
   options?: number[];
   optionsLabel?: string;
+  pageCount?: number;
 };
 
 export function TablePagination<TData>({
