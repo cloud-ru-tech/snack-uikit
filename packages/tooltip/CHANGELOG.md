@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.14 (2023-11-08)
+
+
+### Bug Fixes
+
+* **[FF-3110](https://jira.sbercloud.tech/browse/FF-3110):** add triggerDataTestId into QuestionTooltip ([1822f9c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/1822f9c163798ba7ea285e82e33a8967a0fe990c))
+
+
+
+
+
 ## 0.7.13 (2023-10-31)
 
 ### Only dependencies have been changed
@@ -53,7 +64,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.7.8 (2023-10-12)
 
-**Note:** Version bump only for package @snack-ui/tooltip
+### Only dependencies have been changed
+* [@snack-ui/popover-private@0.9.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/popover-private/CHANGELOG.md)
+* [@snack-ui/utils@2.0.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

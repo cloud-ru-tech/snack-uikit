@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/counter",
   "title": "Counter",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,7 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/utils": "2.0.0",
+    "@snack-ui/utils": "2.0.1",
     "classnames": "2.3.2"
   }
 }
