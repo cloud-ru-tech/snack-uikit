@@ -125,6 +125,8 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | moreActions | `Pick<DroplistItemSingleProps, "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon" \| "onClick">[]` | - | Элементы выпадающего списка кнопки с действиями |
 | noDataState | `TableEmptyStateProps` | {   icon: CrossSVG,   appearance: IconPredefined.appearances.Red,   title: 'Data collection error',   description: 'Try refreshing the page', } as const | Экран при отстутствии данных |
 | noResultsState | `TableEmptyStateProps` | {   icon: SearchSVG,   appearance: IconPredefined.appearances.Neutral,   title: 'Not found',   description: 'Try entering another query', } as const | Экран при отстутствии результатов поиска |
+| suppressToolbar | `boolean` | - | Отключение тулбара |
+| suppressPagination | `boolean` | - | Отключение пагинации |
 ## Table.getStatusColumnDef
 Вспомогательная функция для создания ячейки со статусом
 ### Props

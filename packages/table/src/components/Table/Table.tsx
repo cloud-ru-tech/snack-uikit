@@ -130,6 +130,11 @@ export type TableProps<TData extends object> = WithSupportProps<{
   noDataState?: TableEmptyStateProps;
   /** Экран при отстутствии результатов поиска */
   noResultsState?: TableEmptyStateProps;
+
+  /** Отключение тулбара */
+  suppressToolbar?: boolean;
+  /** Отключение пагинации */
+  suppressPagination?: boolean;
 }>;
 
 /** Компонент таблицы */
@@ -159,6 +164,9 @@ export function Table<TData extends object>({
 
   noDataState = DEFAULT_NO_DATA_TABLE_STATE,
   noResultsState = DEFAULT_NO_RESULTS_TABLE_STATE,
+
+  suppressToolbar = false,
+  suppressPagination = false,
 
   ...rest
 }: TableProps<TData>) {
@@ -216,7 +224,7 @@ export function Table<TData extends object>({
       globalFilter,
       rowSelection,
       sorting,
-      pagination,
+      pagination: !suppressPagination ? pagination : undefined,
     },
 
     defaultColumn: {
@@ -239,8 +247,12 @@ export function Table<TData extends object>({
     onSortingChange,
     getSortedRowModel: getSortedRowModel(),
 
-    onPaginationChange,
-    getPaginationRowModel: getPaginationRowModel(),
+    ...(!suppressPagination
+      ? {
+          onPaginationChange,
+          getPaginationRowModel: getPaginationRowModel(),
+        }
+      : {}),
 
     getCoreRowModel: getCoreRowModel(),
   });
@@ -248,7 +260,6 @@ export function Table<TData extends object>({
   const { loadingTable } = useLoadingTable({ pageSize, columnDefinitions: tableColumns, columnPinning });
 
   const handleOnRefresh = useCallback(() => {
-    table.resetGlobalFilter();
     table.resetRowSelection();
     onRefresh?.();
   }, [onRefresh, table]);
@@ -261,8 +272,6 @@ export function Table<TData extends object>({
     if (onDelete) {
       onDelete(table.getState().rowSelection, table.resetRowSelection);
     }
-
-    return undefined;
   }, [loading, onDelete, table]);
 
   const handleOnCheck = useCallback(() => {
@@ -284,33 +293,35 @@ export function Table<TData extends object>({
   return (
     <>
       <div
-        style={{ '--page-size': tablePaginationState.pageSize }}
+        style={{ '--page-size': !suppressPagination ? tablePaginationState?.pageSize : pageSize }}
         className={className}
         {...extractSupportProps(rest)}
       >
-        <div className={styles.header}>
-          <Toolbar
-            value={globalFilter}
-            onChange={onGlobalFilterChange}
-            checked={rowSelectionProp?.multiRow ? table.getIsAllPageRowsSelected() : false}
-            indeterminate={table.getIsSomePageRowsSelected() && !loading}
-            className={styles.toolbar}
-            onRefresh={handleOnRefresh}
-            onDelete={handleOnDelete}
-            onCheck={handleOnCheck}
-            outline={outline}
-            loading={search?.loading}
-            placeholder={search?.placeholder || 'Search...'}
-            actions={
-              exportFileName ? (
-                <ExportButton fileName={exportFileName} columnDefinitions={columnDefinitions} data={data} />
-              ) : undefined
-            }
-            moreActions={moreActions}
-          />
+        {!suppressToolbar && (
+          <div className={styles.header}>
+            <Toolbar
+              value={globalFilter}
+              onChange={onGlobalFilterChange}
+              checked={rowSelectionProp?.multiRow ? table.getIsAllPageRowsSelected() : false}
+              indeterminate={table.getIsSomePageRowsSelected() && !loading}
+              className={styles.toolbar}
+              onRefresh={handleOnRefresh}
+              onDelete={enableSelection && onDelete ? handleOnDelete : undefined}
+              onCheck={enableSelection ? handleOnCheck : undefined}
+              outline={outline}
+              loading={search?.loading}
+              placeholder={search?.placeholder || 'Search...'}
+              actions={
+                exportFileName ? (
+                  <ExportButton fileName={exportFileName} columnDefinitions={columnDefinitions} data={data} />
+                ) : undefined
+              }
+              moreActions={moreActions}
+            />
 
-          {columnFiltersProp && <div className={styles.filtersWrapper}> {columnFiltersProp} </div>}
-        </div>
+            {columnFiltersProp && <div className={styles.filtersWrapper}> {columnFiltersProp} </div>}
+          </div>
+        )}
 
         <div className={styles.scrollWrapper} data-outline={outline || undefined}>
           <Scroll size={Scroll.sizes.S} className={styles.table}>
@@ -339,7 +350,13 @@ export function Table<TData extends object>({
           </Scroll>
         </div>
 
-        <TablePagination table={table} options={paginationProp?.options} optionsLabel={paginationProp?.optionsLabel} />
+        {!suppressPagination && (
+          <TablePagination
+            table={table}
+            options={paginationProp?.options}
+            optionsLabel={paginationProp?.optionsLabel}
+          />
+        )}
       </div>
     </>
   );

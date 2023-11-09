@@ -232,6 +232,7 @@ const Template: StoryFn<StoryProps> = ({
 export const table: StoryObj<StoryProps> = Template.bind({});
 
 table.args = {
+  suppressPagination: true,
   rowsAmount: 35,
   loading: false,
   statusColumnViewMode: StoryStatusColumnViewMode.Full,

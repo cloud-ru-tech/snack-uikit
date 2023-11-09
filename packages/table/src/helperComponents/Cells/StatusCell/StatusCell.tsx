@@ -87,8 +87,19 @@ export function getStatusColumnDef<TData>({
     accessorKey,
     enableSorting,
     header: hasDescription ? header : undefined,
-    cell: ({ getValue }) => {
-      const value = getValue<string>();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    accessorFn: (row: any) =>
+      renderDescription && Object.hasOwn(row as object, accessorKey)
+        ? renderDescription(row[accessorKey] as string)
+        : undefined,
+    cell: cell => {
+      const value =
+        typeof cell.row.original === 'object' && Object.hasOwn(cell.row.original as object, accessorKey)
+          ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            (cell.row.original[accessorKey] as string)
+          : cell.getValue<string>();
+
       const appearance = mapStatusToAppearance(value);
 
       return <StatusCell appearance={appearance} label={renderDescription ? renderDescription(value) : undefined} />;
