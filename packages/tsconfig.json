@@ -121,6 +121,9 @@
     },
     {
       "path": "./accordion"
+    },
+    {
+      "path": "./tree"
     }
   ],
   "compilerOptions": {

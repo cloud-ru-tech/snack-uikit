@@ -1,0 +1,40 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tree';
+
+.expandableTreeNode {
+  position: relative;
+  width: 100%;
+}
+
+.expandableContent {
+  box-sizing: border-box;
+  display: flex;
+
+  min-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+
+  transition: visibility 200ms;
+}
+
+.expandableWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+
+  &[data-expanded='true'] {
+    grid-template-rows: 1fr;
+    overflow: unset;
+
+    .expandableContent {
+      visibility: visible;
+    }
+  }
+}
+
+.expandableNested {
+  min-width: 0;
+  width: 100%;
+}

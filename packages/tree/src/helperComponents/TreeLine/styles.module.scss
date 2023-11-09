@@ -1,0 +1,50 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tree';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.treeLine {
+  position: relative;
+  pointer-events: none;
+  flex-shrink: 0;
+  width: $size-tree-item-line-width;
+  visibility: hidden;
+
+  &[data-visible] {
+    visibility: visible;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: calc(100% - ($size-tree-item-height / 2));
+      transform: translateX(-50%);
+      background: $sys-neutral-decor-default;
+    }
+  }
+
+  &[data-half-height] {
+    &::after {
+      height: calc(100% - ($size-tree-item-height / 2));
+    }
+  }
+
+  &[data-horizontal] {
+    &::after {
+      left: -50%;
+      top: 50%;
+      height: 1px;
+      width: calc(150% - $space-tree-item-child-line-padding);
+      transform: translateY(-50%);
+    }
+
+    &[data-half-width] {
+      width: 0;
+
+      &::after {
+        width: calc($size-tree-item-line-width / 2);
+        left: calc(0px - $size-tree-item-line-width / 2);
+      }
+    }
+  }
+}

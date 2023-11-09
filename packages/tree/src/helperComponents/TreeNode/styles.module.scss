@@ -1,0 +1,134 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tree';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+.treeNode {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.treeNodeIcon {
+  box-sizing: border-box;
+  color: $sys-neutral-text-support;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.treeNodeTitle {
+  box-sizing: border-box;
+  flex-grow: 1;
+  color: $sys-neutral-text-main;
+  min-width: $size-tree-item-checkbox-wrap;
+}
+
+.treeNodeActions {
+  display: flex;
+  visibility: hidden;
+
+  &:focus-visible, &[data-focused] {
+    visibility: visible;
+  }
+}
+
+.treeNodeContent {
+  @include composite-var($tree-item-content-layout);
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: $radius-tree-item-content-layout;
+  width: 100%;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    pointer-events: none;
+    background-color: $sys-neutral-accent-default;
+    opacity: 0;
+  }
+
+  &:hover, &:focus-visible, &[data-droplist-active] {
+    &::before {
+      opacity: $opacity-a008;
+    }
+
+    .treeNodeActions {
+      visibility: visible;
+    }
+  }
+
+  &:focus-visible {
+    @include outline-inside-var($container-focused-s);
+
+    outline-color: $sys-available-complementary;
+  }
+
+  &[data-multiselect] {
+    cursor: default;
+  }
+
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+
+    &::before {
+      display: none;
+    }
+
+    .treeNodeTitle, .treeNodeIcon {
+      color: $sys-neutral-text-disabled;
+    }
+  }
+
+  &[aria-selected='true']:not([data-multiselect]) {
+    &::before {
+      background-color: $sys-primary-accent-default;
+      opacity: $opacity-a008;
+    }
+
+    &:hover {
+      &::before {
+        opacity: $opacity-a016;
+      }
+    }
+  }
+}
+
+.treeNodeCheckboxWrap {
+  @include composite-var($tree-item-checkbox-wrap);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.treeNodeExpandButton {
+  box-sizing: border-box;
+
+  svg {
+    transition: transform 0.2s ease;
+  }
+
+  &[data-expanded] {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+}

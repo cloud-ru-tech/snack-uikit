@@ -1,0 +1,16 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.storyWrap {
+  resize: horizontal;
+
+  overflow: hidden visible;
+
+  min-width: 160px;
+  max-width: 100%;
+  width: 250px;
+  padding: 24px;
+
+  background-color: $sys-neutral-background1-level;
+  border: 1px solid $sys-neutral-decor-default;
+  border-radius: $dimension-050m;
+}
