@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.5 (2023-11-09)
+
+
+### Bug Fixes
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** add manual pagination control ([9d9b732](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9d9b732258e06bd586f9cb06feec93bbc16e38b1))
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** fix onDelete/onCheck action ([b46ebe5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b46ebe5a123aed64e3aecf2bf8fc2165ce9deb60))
+
+
+
+
+
 ## 0.5.4 (2023-11-09)
 
 ### Only dependencies have been changed

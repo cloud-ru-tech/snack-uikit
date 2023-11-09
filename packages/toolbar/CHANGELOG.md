@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.4 (2023-11-09)
+
+
+### Bug Fixes
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** onCheck unnecessary prop ([fda26ff](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/fda26ff00ef7f6807622af66f87333bd74a7a812))
+
+
+
+
+
 ## 0.2.3 (2023-11-09)
 
 ### Only dependencies have been changed

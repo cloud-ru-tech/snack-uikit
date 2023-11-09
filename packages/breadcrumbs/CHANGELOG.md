@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.11 (2023-11-09)
+
+
+### Bug Fixes
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** add e into onClick in Items ([112bdb2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/112bdb25775b082702c119d4d382b3571796ac57))
+
+
+
+
+
 ## 0.4.10 (2023-11-08)
 
 ### Only dependencies have been changed

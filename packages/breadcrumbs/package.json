@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/breadcrumbs",
   "title": "Breadcrumbs",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "sideEffects": [
     "*.css",
     "*.woff",

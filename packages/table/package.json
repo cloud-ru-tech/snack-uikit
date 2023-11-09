@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/table",
   "title": "Table",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -38,7 +38,7 @@
     "@snack-ui/scroll": "0.3.4",
     "@snack-ui/skeleton": "0.2.4",
     "@snack-ui/toggles": "0.5.8",
-    "@snack-ui/toolbar": "0.2.3",
+    "@snack-ui/toolbar": "0.2.4",
     "@snack-ui/truncate-string": "0.2.15",
     "@snack-ui/typography": "0.4.4",
     "@snack-ui/utils": "2.0.1",

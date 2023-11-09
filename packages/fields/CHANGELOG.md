@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.12 (2023-11-09)
+
+
+### Bug Fixes
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** add validationStates/sizes into FieldDecorator; fix Select width ([97f2e4a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/97f2e4ad349b9e211f9686ae21d2eaa1ee2ce716))
+
+
+
+
+
 ## 0.7.11 (2023-11-09)
 
 ### Only dependencies have been changed
