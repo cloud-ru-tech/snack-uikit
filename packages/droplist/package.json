@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/droplist",
   "title": "droplist",
-  "version": "0.10.4",
+  "version": "0.10.5",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -31,12 +31,12 @@
   "dependencies": {
     "@floating-ui/react": "0.23.1",
     "@snack-ui/avatar": "0.3.5",
-    "@snack-ui/icons": "0.18.0",
+    "@snack-ui/icons": "0.18.1",
     "@snack-ui/popover-private": "0.9.5",
     "@snack-ui/scroll": "0.3.4",
-    "@snack-ui/tag": "0.4.7",
-    "@snack-ui/toggles": "0.5.7",
-    "@snack-ui/truncate-string": "0.2.14",
+    "@snack-ui/tag": "0.4.8",
+    "@snack-ui/toggles": "0.5.8",
+    "@snack-ui/truncate-string": "0.2.15",
     "@snack-ui/utils": "2.0.1",
     "classnames": "2.3.2"
   }

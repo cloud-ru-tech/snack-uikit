@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/chips",
   "title": "Chips",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,7 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/droplist": "0.10.4",
+    "@snack-ui/droplist": "0.10.5",
     "@snack-ui/loaders": "0.3.4",
     "@snack-ui/utils": "2.0.1",
     "classnames": "2.3.2",

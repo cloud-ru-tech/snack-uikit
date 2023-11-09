@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/tabs",
   "title": "Tabs",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -31,7 +31,7 @@
   "dependencies": {
     "@snack-ui/button": "0.13.5",
     "@snack-ui/counter": "0.3.4",
-    "@snack-ui/icons": "0.18.0",
+    "@snack-ui/icons": "0.18.1",
     "@snack-ui/typography": "0.4.4",
     "@snack-ui/utils": "2.0.1",
     "classnames": "2.3.2",

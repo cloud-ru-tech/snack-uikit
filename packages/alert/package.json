@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/alert",
   "title": "Alert",
-  "version": "0.5.15",
+  "version": "0.5.16",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,9 +29,9 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/icons": "0.18.0",
-    "@snack-ui/link": "0.6.1",
-    "@snack-ui/truncate-string": "0.2.14",
+    "@snack-ui/icons": "0.18.1",
+    "@snack-ui/link": "0.6.2",
+    "@snack-ui/truncate-string": "0.2.15",
     "@snack-ui/utils": "2.0.1",
     "classnames": "2.3.2"
   }
