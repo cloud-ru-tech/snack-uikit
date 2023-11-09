@@ -9,11 +9,11 @@ import styles from './styles.module.scss';
 
 export type CheckboxPrivateProps = {
   /** Колбек смены значения чекбокса*/
-  onCheck(): void;
+  onCheck?(): void;
   /** Колбек удаления */
   onDelete?(): void;
   /** Значения чекбокса*/
-  checked: boolean;
+  checked?: boolean;
   /** Состояние частичного выбора */
   indeterminate?: boolean;
 };
@@ -22,7 +22,7 @@ export function CheckboxPrivate({ checked, onCheck, onDelete, indeterminate }: C
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLDivElement>) => {
       if (e.key === ' ') {
-        onCheck();
+        onCheck?.();
       }
     },
     [onCheck],
