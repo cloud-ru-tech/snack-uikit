@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.2 (2023-11-10)
+
+
+### Bug Fixes
+
+* **FF-0001:** change QuestionTooltip size to S ([55bd31c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/55bd31c1d14593a277e57bec706e42a07992e68a))
+
+
+
+
+
 ## 0.1.1 (2023-11-09)
 
 ### Only dependencies have been changed
