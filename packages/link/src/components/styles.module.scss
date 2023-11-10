@@ -20,6 +20,7 @@ $icon-sizes: (
   max-width: 100%;
 
   text-decoration: none;
+  text-decoration-skip-ink: none;
 
   @each $on-surface in $on-surfaces {
     &[data-on-surface='#{$on-surface}'] {
