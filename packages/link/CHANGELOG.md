@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.3 (2023-11-10)
+
+
+### Bug Fixes
+
+* **FF-00:** make line non-interruptable ([510d20b](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/510d20bedf6ada968d37330449ab23d0d4226d0e))
+
+
+
+
+
 ## 0.6.2 (2023-11-09)
 
 ### Only dependencies have been changed
