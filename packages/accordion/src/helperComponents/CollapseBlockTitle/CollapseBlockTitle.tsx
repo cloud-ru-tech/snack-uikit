@@ -49,7 +49,7 @@ export function CollapseBlockTitle({
             <TruncateString text={title} maxLines={1} />
           </Typography.SansTitleM>
 
-          {tip && <QuestionTooltip tip={tip} triggerDataTestId={TEST_IDS.tooltip} />}
+          {tip && <QuestionTooltip size={QuestionTooltip.sizes.S} tip={tip} triggerDataTestId={TEST_IDS.tooltip} />}
         </div>
 
         {description && (
