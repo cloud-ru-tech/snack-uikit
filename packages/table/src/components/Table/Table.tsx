@@ -70,10 +70,10 @@ export type TableProps<TData extends object> = WithSupportProps<{
     multiRow?: boolean;
     onChange?(state: RowSelectionState): void;
   };
-  /** Параметры за глобальный поиск в таблице <br>
+  /** Параметры отвечают за глобальный поиск в таблице <br>
    * <strong>initialState</strong>: Начальное состояние строки поиска <br>
    * <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br>
-   * <strong>placeholder</strong>: Placeholder строки поиска @default 'Search...'<br>
+   * <strong>placeholder</strong>: Placeholder строки поиска @default 'Search'<br>
    * <strong>loading</strong>: Состояние загрузки в строке поиска <br>
    * <strong>onChange</strong>: Колбэк на изменение данных в строке поиска
    *  */
@@ -88,9 +88,9 @@ export type TableProps<TData extends object> = WithSupportProps<{
   /** Максимальное кол-во строк на страницу @default 10 */
   pageSize?: number;
 
-  /** Параметры за пагинацию в таблице <br>
+  /** Параметры отвечают за пагинацию в таблице <br>
    * <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br>
-   * <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу<br>
+   * <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу <br>
    * <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу @default 'Rows volume' <br>
    * <strong>onChange</strong>: Колбэк на изменение пагинации
    *  */
@@ -118,13 +118,13 @@ export type TableProps<TData extends object> = WithSupportProps<{
   /** Колбек удаления выбранных */
   onDelete?(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void): void;
 
-  /** Внешний бордер для тулбара и таблицы*/
+  /** Внешний бордер для тулбара и таблицы */
   outline?: boolean;
 
-  /** Фильтры*/
+  /** Фильтры */
   columnFilters?: ReactNode;
 
-  /** Название файла при экспорте CSV/XLSX*/
+  /** Название файла при экспорте CSV/XLSX */
   exportFileName?: string;
 
   /** Элементы выпадающего списка кнопки с действиями */
@@ -313,15 +313,18 @@ export function Table<TData extends object>({
             <Toolbar
               value={globalFilter}
               onChange={onGlobalFilterChange}
-              checked={rowSelectionProp?.multiRow ? table.getIsAllPageRowsSelected() : false}
-              indeterminate={table.getIsSomePageRowsSelected() && !loading}
+              checked={table.getIsAllPageRowsSelected()}
+              indeterminate={table.getIsSomePageRowsSelected()}
               className={styles.toolbar}
               onRefresh={handleOnRefresh}
               onDelete={enableSelection && onDelete ? handleOnDelete : undefined}
               onCheck={enableSelection ? handleOnCheck : undefined}
               outline={outline}
               loading={search?.loading}
-              placeholder={search?.placeholder || 'Search...'}
+              placeholder={search?.placeholder || 'Search'}
+              selectionMode={
+                rowSelectionProp?.multiRow ? Toolbar.selectionModes.Multiple : Toolbar.selectionModes.Single
+              }
               actions={
                 exportFileName ? (
                   <ExportButton fileName={exportFileName} columnDefinitions={columnDefinitions} data={data} />
