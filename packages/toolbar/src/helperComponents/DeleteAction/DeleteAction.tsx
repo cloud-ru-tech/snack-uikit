@@ -5,9 +5,10 @@ import { TrashSVG } from '@snack-ui/icons';
 import { Checkbox } from '@snack-ui/toggles';
 
 import { TEST_IDS } from '../../constants';
+import { SelectionMode } from './constants';
 import styles from './styles.module.scss';
 
-export type CheckboxPrivateProps = {
+export type DeleteActionProps = {
   /** Колбек смены значения чекбокса*/
   onCheck?(): void;
   /** Колбек удаления */
@@ -16,9 +17,17 @@ export type CheckboxPrivateProps = {
   checked?: boolean;
   /** Состояние частичного выбора */
   indeterminate?: boolean;
+  /** Режим выбора @default SelectionMode.Multiple*/
+  selectionMode?: SelectionMode;
 };
 
-export function CheckboxPrivate({ checked, onCheck, onDelete, indeterminate }: CheckboxPrivateProps) {
+export function DeleteAction({
+  checked,
+  onCheck,
+  onDelete,
+  indeterminate,
+  selectionMode = SelectionMode.Multiple,
+}: DeleteActionProps) {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLDivElement>) => {
       if (e.key === ' ') {
@@ -30,17 +39,19 @@ export function CheckboxPrivate({ checked, onCheck, onDelete, indeterminate }: C
 
   return (
     <>
-      <div
-        className={styles.checkboxWrapper}
-        onClick={onCheck}
-        tabIndex={0}
-        role='checkbox'
-        aria-checked={checked}
-        onKeyDown={handleKeyDown}
-        data-test-id={TEST_IDS.checkbox}
-      >
-        <Checkbox size={Checkbox.sizes.S} checked={checked} indeterminate={indeterminate} tabIndex={-1} />
-      </div>
+      {selectionMode === SelectionMode.Multiple && (
+        <div
+          className={styles.checkboxWrapper}
+          onClick={onCheck}
+          tabIndex={0}
+          role='checkbox'
+          aria-checked={checked}
+          onKeyDown={handleKeyDown}
+          data-test-id={TEST_IDS.checkbox}
+        >
+          <Checkbox size={Checkbox.sizes.S} checked={checked} indeterminate={indeterminate} tabIndex={-1} />
+        </div>
+      )}
 
       {onDelete && (
         <ButtonFunction

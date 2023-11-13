@@ -113,6 +113,7 @@ toolbar.args = {
   placeholder: 'Search',
   loading: false,
   outline: false,
+  selectionMode: Toolbar.selectionModes.Multiple,
   showCheckbox: true,
   checked: false,
   indeterminate: false,

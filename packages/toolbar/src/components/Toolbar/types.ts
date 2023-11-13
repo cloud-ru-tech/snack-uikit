@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { ItemSingleProps } from '@snack-ui/droplist';
 
-import { CheckboxPrivateProps } from '../../helperComponents';
+import { DeleteActionProps } from '../../helperComponents';
 import { NeverOrUndefined, RequireAtLeastOne } from './typesUtils';
 
 type OptionalProps = {
@@ -34,8 +34,8 @@ export type CommonToolbarProps = {
   outline?: boolean;
 };
 
-export type CheckedToolbarProps = CommonToolbarProps & CheckboxPrivateProps & OptionalProps;
+export type CheckedToolbarProps = CommonToolbarProps & DeleteActionProps & OptionalProps;
 
 export type DefaultToolbarProps = CommonToolbarProps &
-  NeverOrUndefined<CheckboxPrivateProps> &
+  NeverOrUndefined<DeleteActionProps> &
   RequireAtLeastOne<OptionalProps>;

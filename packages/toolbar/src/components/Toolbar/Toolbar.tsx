@@ -6,8 +6,8 @@ import { SearchPrivate } from '@snack-ui/search';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { TEST_IDS } from '../../constants';
-import { CheckboxPrivate, MoreActions, Separator } from '../../helperComponents';
-import { extractCheckboxPrivateProps, extractSearchPrivateProps, isCheckedToolbarProps } from './helpers';
+import { DeleteAction, MoreActions, SelectionMode, Separator } from '../../helperComponents';
+import { extractDeleteActionProps, extractSearchPrivateProps, isDeleteActionProps } from './helpers';
 import styles from './styles.module.scss';
 import { CheckedToolbarProps, DefaultToolbarProps } from './types';
 
@@ -16,9 +16,9 @@ export type ToolbarProps = WithSupportProps<DefaultToolbarProps | CheckedToolbar
 export function Toolbar({ className, actions, outline, moreActions, onRefresh, ...rest }: ToolbarProps) {
   return (
     <div className={cn(styles.container, className)} {...extractSupportProps(rest)} data-outline={outline || undefined}>
-      {isCheckedToolbarProps(rest) && (
+      {isDeleteActionProps(rest) && (
         <>
-          <CheckboxPrivate {...extractCheckboxPrivateProps(rest)} />
+          <DeleteAction {...extractDeleteActionProps(rest)} />
           <Separator />
         </>
       )}
@@ -61,3 +61,5 @@ export function Toolbar({ className, actions, outline, moreActions, onRefresh, .
     </div>
   );
 }
+
+Toolbar.selectionModes = SelectionMode;
