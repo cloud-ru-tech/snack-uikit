@@ -1,7 +1,7 @@
 import { MouseEventHandler, ReactNode, useMemo } from 'react';
 
 import { ButtonFunction, ButtonFunctionProps } from '@snack-ui/button';
-import { ToggleChip, ToggleChipProps } from '@snack-ui/chips';
+import { ChipToggle, ChipToggleProps } from '@snack-ui/chips';
 import { PopoverPrivate } from '@snack-ui/popover-private';
 import { Scroll } from '@snack-ui/scroll';
 import { SkeletonContextProvider, WithSkeleton } from '@snack-ui/skeleton';
@@ -27,7 +27,7 @@ export type NotificationPanelProps = {
   /** Кнопка настроек и выпадающий список */
   settings?: NotificationPanelSettingsProps;
   /** Чипы для фильтрации */
-  chips?: Omit<ToggleChipProps, 'size' | 'data-test-id'>[];
+  chips?: Omit<ChipToggleProps, 'size' | 'data-test-id'>[];
   /** Кнопка в "шапке" панели */
   readAllButton?: Omit<ButtonFunctionProps, 'data-test-id'> & {
     onClick: ButtonFunctionProps['onClick'];
@@ -79,11 +79,11 @@ export function NotificationPanel({
             <div className={styles.notificationPanelHeaderFunctions}>
               <div className={styles.notificationPanelChips}>
                 {chips?.map(chip => (
-                  <ToggleChip
+                  <ChipToggle
                     {...chip}
                     key={chip.label}
                     data-test-id={`${TEST_IDS.chip}-${chip.label}`}
-                    size={ToggleChip.sizes.Xs}
+                    size={ChipToggle.sizes.Xs}
                     disabled={chip.disabled || loading}
                   />
                 ))}

@@ -101,8 +101,8 @@ const cards = [
 | triggerElement* | `ReactNode \| ChildrenFunction` | - | Элемент для открытия панели |
 | title* | `string` | - | Заголовок панели |
 | settings | `NotificationPanelSettingsProps` | - | Кнопка настроек и выпадающий список |
-| chips | `Omit<ToggleChipProps, "data-test-id" \| "size">[]` | - | Чипы для фильтрации |
-| readAllButton | `Omit<ButtonFunctionProps, "data-test-id"> & { onClick: ButtonFunctionProps; }` | - | Кнопка в "шапке" панели |
+| chips | `Omit<ChipToggleProps, "data-test-id" \| "size">[]` | - | Чипы для фильтрации |
+| readAllButton | `Omit<ButtonFunctionProps, "data-test-id"> & { onClick: MouseEventHandler<HTMLElement>; }` | - | Кнопка в "шапке" панели |
 | footerButton | `{ label: string; onClick: MouseEventHandler<HTMLButtonElement>; }` | - | Кнопка внизу панели |
 | loading | `boolean` | - | Состояние загрузки |
 | content | `ReactNode` | - | Контент для отрисовки (e.g NotificationCard \| NotificationPanel.Blank) |

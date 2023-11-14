@@ -1,7 +1,7 @@
 import { Table } from '@tanstack/react-table';
 import { useCallback, useMemo } from 'react';
 
-import { FilterChip } from '@snack-ui/chips';
+import { ChipChoice } from '@snack-ui/chips';
 import { Pagination } from '@snack-ui/pagination';
 import { Typography } from '@snack-ui/typography';
 
@@ -61,12 +61,12 @@ export function TablePagination<TData>({
             <Typography.SansBodyS className={styles.rowsVolumeLabel}>{optionsLabel}</Typography.SansBodyS>
           )}
 
-          <FilterChip
-            selectionMode={FilterChip.selectionModes.Single}
+          <ChipChoice.Single
             value={String(tablePaginationState.pageSize)}
-            onChangeValue={handleRowsVolumeOnChange}
-            placement={FilterChip.placements.Top}
+            onChange={handleRowsVolumeOnChange}
+            placement={ChipChoice.placements.Top}
             options={options}
+            showClearButton={false}
           />
         </div>
       )}

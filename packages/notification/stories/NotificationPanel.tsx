@@ -2,7 +2,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 
 import { ButtonTonal } from '@snack-ui/button';
-import { ToggleChipProps } from '@snack-ui/chips';
+import { ChipToggleProps } from '@snack-ui/chips';
 import { PlaceholderSVG } from '@snack-ui/icons';
 
 import componentChangelog from '../CHANGELOG.md';
@@ -20,7 +20,7 @@ export default meta;
 
 type StoryProps = Omit<NotificationPanelProps, 'chips' | 'readAllButton' | 'footerButton'> & {
   amount: number;
-  chips: Omit<ToggleChipProps, 'onChange'>[];
+  chips: Omit<ChipToggleProps, 'onChange'>[];
   readAllButton: Omit<NotificationPanelProps['readAllButton'], 'onClick'>;
   footerButton?: {
     label: string;
