@@ -75,3 +75,5 @@ export function Header({ title, description, metadata, emblem, className, size: 
     </div>
   );
 }
+
+Header.emblemIconAppearances = Emblem.appearances;

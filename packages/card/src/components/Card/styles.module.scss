@@ -7,7 +7,6 @@ $sizes:  'm', 'l';
   position: absolute;
   top: 0;
   right: 0;
-
   display: none;
 
   &[data-visible] {
@@ -67,8 +66,9 @@ $sizes:  'm', 'l';
 
   &[data-outline] {
     @include outline-var($container-focused-s);
-    outline-width: $border-width-card-container;
+
     outline-color: $sys-neutral-decor-default;
+    outline-width: $border-width-card-container;
   }
 
   &[data-pointer] {
@@ -78,24 +78,26 @@ $sizes:  'm', 'l';
 
     &[data-outline] {
       &:hover {
-        box-shadow: none;
         outline-color: $sys-neutral-decor-hovered;
+        box-shadow: none;
       }
 
       &:focus-visible {
         @include outline-var($container-focused-l);
+
         outline-color: $sys-primary-accent-default;
       }
     }
 
     &[data-checked] {
       @include outline-var($container-focused-s);
-      outline-width: $border-width-card-container;
+
       outline-color: $sys-primary-decor-activated;
+      outline-width: $border-width-card-container;
 
       &:hover {
-        box-shadow: none;
         outline-color: $sys-primary-decor-hovered;
+        box-shadow: none;
       }
 
       .contentWrapper {
@@ -110,8 +112,8 @@ $sizes:  'm', 'l';
           bottom: 0;
           left: 0;
 
-          background-color: $sys-primary-accent-default;
           opacity: $opacity-a008;
+          background-color: $sys-primary-accent-default;
         }
       }
 
@@ -123,6 +125,7 @@ $sizes:  'm', 'l';
 
     &[data-checked]:focus-visible {
       @include outline-var($container-focused-l);
+
       outline-color: $sys-primary-accent-default;
 
       .check {
@@ -132,17 +135,22 @@ $sizes:  'm', 'l';
     }
 
     &:hover {
-      box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
       background-color: $sys-neutral-background2-level;
+      box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
     }
   }
 
   &[data-disabled] {
     @include outline-var($container-focused-s);
-    outline-width: $border-width-card-container;
-    outline-color: $sys-neutral-decor-default;
 
+    cursor: not-allowed;
     background-color: $sys-neutral-background;
+    outline-color: $sys-neutral-decor-default;
+    outline-width: $border-width-card-container;
+    
+    * > {
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -154,12 +162,12 @@ $sizes:  'm', 'l';
 }
 
 .content {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-
-  position: relative;
 
   box-sizing: border-box;
   max-width: 100%;
@@ -175,7 +183,6 @@ $sizes:  'm', 'l';
   @include composite-var($card-footer);
 
   position: relative;
-
   box-sizing: border-box;
 }
 
