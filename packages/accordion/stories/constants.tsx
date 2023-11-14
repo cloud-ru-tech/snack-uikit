@@ -7,8 +7,11 @@ export const DEFAULT_PROPS = {
 export const COLLAPSE_BLOCK_STORY_SETTINGS = {
   args: {
     id: '1',
+    customHeader: false,
     title: DEFAULT_PROPS.title,
     description: DEFAULT_PROPS.description,
+    name: 'Ivan Petrov',
+    metadata: 'Engineer Cloud.ru',
     showTip: true,
     tip: DEFAULT_PROPS.tip,
     showActions: true,
@@ -18,6 +21,37 @@ export const COLLAPSE_BLOCK_STORY_SETTINGS = {
   argTypes: {
     id: {
       type: 'string',
+    },
+    customHeader: {
+      name: '[Story]: Header instead CollapseBlockHeader',
+    },
+    title: {
+      name: 'CollapseBlockHeader.title',
+      if: {
+        arg: 'customHeader',
+        eq: false,
+      },
+    },
+    description: {
+      name: 'CollapseBlockHeader.description',
+      if: {
+        arg: 'customHeader',
+        eq: false,
+      },
+    },
+    name: {
+      if: {
+        arg: 'customHeader',
+        eq: true,
+      },
+      name: '[Story]: field in custom Header',
+    },
+    metadata: {
+      if: {
+        arg: 'customHeader',
+        eq: true,
+      },
+      name: '[Story]: field in custom Header',
     },
     showTip: {
       type: 'boolean',
@@ -34,6 +68,7 @@ export const COLLAPSE_BLOCK_STORY_SETTINGS = {
       },
     },
     tip: {
+      name: 'CollapseBlockHeader.tip (or tip in custom Header',
       type: 'string',
       defaultValue: DEFAULT_PROPS.tip,
       if: {

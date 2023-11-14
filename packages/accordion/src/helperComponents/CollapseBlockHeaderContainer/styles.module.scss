@@ -33,24 +33,6 @@
   }
 }
 
-.headline {
-  @include composite-var($collapse-block-container-header-headline);
-
-  display: flex;
-  align-items: center;
-  max-width: 100%;
-}
-
-.title {
-  max-width: 100%;
-  color: $sys-neutral-text-main;
-}
-
-.subtitle {
-  max-width: 100%;
-  color: $sys-neutral-text-support;
-}
-
 .text {
   display: flex;
   flex-direction: column;

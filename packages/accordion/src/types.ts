@@ -8,11 +8,7 @@ export type CollapseBlockProps = WithSupportProps<{
   /** Уникальный id блока */
   id: string;
   /** Заголовок */
-  title: string;
-  /** Подзаголовок */
-  description?: string;
-  /** Тултип */
-  tip?: ReactNode;
+  header: ReactNode;
   /** Дополнительные действия */
   actions?: ReactNode;
   /** Вложенный контент */

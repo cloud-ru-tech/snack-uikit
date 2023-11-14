@@ -9,9 +9,10 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { AccordionSecondary, CollapseBlockProps } from '../src';
+import { CollapseBlockHeaderProps } from '../src/helperComponents';
 import { TEST_IDS } from '../src/testIds';
 import { COLLAPSE_BLOCK_STORY_SETTINGS } from './constants';
-import { Content } from './helperComponents';
+import { Content, CustomHeader } from './helperComponents';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -25,9 +26,12 @@ type StoryProps = CollapseBlockProps & {
   showTip: boolean;
   showActions: boolean;
   expanded: boolean;
-};
+  customHeader: boolean;
+  name?: string;
+  metadata?: string;
+} & CollapseBlockHeaderProps;
 
-const Template: StoryFn<StoryProps> = (args: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, ...args }: StoryProps) => {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   useEffect(() => {
@@ -36,12 +40,12 @@ const Template: StoryFn<StoryProps> = (args: StoryProps) => {
         return null;
       }
 
-      return args.id;
+      return id;
     });
-  }, [args.expanded, args.id]);
+  }, [args.expanded, id]);
 
   const actions = useMemo(() => {
-    if (args.showActions) {
+    if (showActions) {
       return (
         <ButtonFunction
           icon={<PlaceholderSVG />}
@@ -54,12 +58,17 @@ const Template: StoryFn<StoryProps> = (args: StoryProps) => {
         />
       );
     }
-  }, [args.showActions]);
+  }, [showActions]);
 
   return (
     <div className={styles.wrapper}>
       <AccordionSecondary expanded={expanded} onExpandedChange={setExpanded}>
-        <AccordionSecondary.CollapseBlock {...args} actions={actions}>
+        <AccordionSecondary.CollapseBlock
+          id={id}
+          actions={actions}
+          data-test-id={args['data-test-id']}
+          header={customHeader ? <CustomHeader {...args} /> : <AccordionSecondary.CollapseBlockHeader {...args} />}
+        >
           <Content />
         </AccordionSecondary.CollapseBlock>
       </AccordionSecondary>
@@ -71,7 +80,7 @@ export const collapseBlockSecondary: StoryObj<StoryProps> = Template.bind({});
 
 collapseBlockSecondary.args = COLLAPSE_BLOCK_STORY_SETTINGS.args;
 
-collapseBlockSecondary.argTypes = COLLAPSE_BLOCK_STORY_SETTINGS.argTypes as Partial<ArgTypes<StoryProps>>;
+collapseBlockSecondary.argTypes = COLLAPSE_BLOCK_STORY_SETTINGS.argTypes as unknown as Partial<ArgTypes<StoryProps>>;
 
 collapseBlockSecondary.parameters = {
   readme: {

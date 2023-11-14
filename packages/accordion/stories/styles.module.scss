@@ -16,3 +16,15 @@
   width: 400px;
   padding: $dimension-1m;
 }
+
+.customHeader {
+  display: flex;
+  flex-direction: column;
+  gap: $dimension-1m;
+}
+
+.headline {
+  display: flex;
+  gap: $dimension-1m;
+  align-items: center;
+}

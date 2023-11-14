@@ -31,7 +31,12 @@ const Template: StoryFn<AccordionProps> = ({ mode }: AccordionProps) => {
       {/* @ts-ignore */}
       <AccordionSecondary expanded={expanded} onExpandedChange={setExpanded} mode={mode}>
         {Array.from({ length: 2 }).map((_, i) => (
-          <AccordionSecondary.CollapseBlock key={i} id={String(i)} {...DEFAULT_PROPS} data-test-id={STORY_TEST_IDS[i]}>
+          <AccordionSecondary.CollapseBlock
+            key={i}
+            id={String(i)}
+            header={<AccordionSecondary.CollapseBlockHeader {...DEFAULT_PROPS} />}
+            data-test-id={STORY_TEST_IDS[i]}
+          >
             <Content />
           </AccordionSecondary.CollapseBlock>
         ))}

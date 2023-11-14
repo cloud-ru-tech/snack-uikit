@@ -9,6 +9,7 @@ const getPageUrlCollapseBlockPrimary = (props: Record<string, unknown> = {}) =>
     story: 'collapse-block-primary',
     props: {
       'data-test-id': TEST_IDS.collapseBlock,
+      customHeader: false,
       ...props,
     },
     group: 'accordion',
@@ -20,6 +21,7 @@ const getPageUrlCollapseBlockSecondary = (props: Record<string, unknown> = {}) =
     story: 'collapse-block-secondary',
     props: {
       'data-test-id': TEST_IDS.collapseBlock,
+      customHeader: false,
       ...props,
     },
     group: 'accordion',
@@ -47,7 +49,12 @@ const MOCK_DATA = {
 
 [getPageUrlCollapseBlockPrimary, getPageUrlCollapseBlockSecondary].map(getPageUrl => {
   test.page(
-    getPageUrl({ title: MOCK_DATA.title, description: MOCK_DATA.description, showTip: true, showActions: true }),
+    getPageUrl({
+      title: MOCK_DATA.title,
+      description: MOCK_DATA.description,
+      showTip: true,
+      showActions: true,
+    }),
   )(`Render all`, async t => {
     const { title, description, chevron, tooltip, actions } = getSelectors();
 

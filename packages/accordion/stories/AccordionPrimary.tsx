@@ -30,20 +30,36 @@ const Template: StoryFn<AccordionProps> = ({ mode }: AccordionProps) => {
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <AccordionPrimary expanded={expanded} onExpandedChange={setExpanded} mode={mode}>
-        <AccordionPrimary.CollapseBlock id='1' {...DEFAULT_PROPS} data-test-id={STORY_TEST_IDS[0]}>
+        <AccordionPrimary.CollapseBlock
+          id='1'
+          data-test-id={STORY_TEST_IDS[0]}
+          header={<AccordionPrimary.CollapseBlockHeader {...DEFAULT_PROPS} />}
+        >
           <AccordionSecondary mode={mode}>
             {Array.from({ length: 2 }).map((_, i) => (
-              <AccordionSecondary.CollapseBlock key={i} id={String(i)} {...DEFAULT_PROPS}>
+              <AccordionSecondary.CollapseBlock
+                key={i}
+                id={String(i)}
+                header={<AccordionSecondary.CollapseBlockHeader {...DEFAULT_PROPS} />}
+              >
                 <Content />
               </AccordionSecondary.CollapseBlock>
             ))}
           </AccordionSecondary>
         </AccordionPrimary.CollapseBlock>
 
-        <AccordionPrimary.CollapseBlock id='2' {...DEFAULT_PROPS} data-test-id={STORY_TEST_IDS[1]}>
+        <AccordionPrimary.CollapseBlock
+          id='2'
+          data-test-id={STORY_TEST_IDS[1]}
+          header={<AccordionPrimary.CollapseBlockHeader {...DEFAULT_PROPS} />}
+        >
           <AccordionSecondary mode={mode}>
             {Array.from({ length: 2 }).map((_, i) => (
-              <AccordionSecondary.CollapseBlock key={i} id={String(i)} {...DEFAULT_PROPS}>
+              <AccordionSecondary.CollapseBlock
+                key={i}
+                id={String(i)}
+                header={<AccordionSecondary.CollapseBlockHeader {...DEFAULT_PROPS} />}
+              >
                 <Content />
               </AccordionSecondary.CollapseBlock>
             ))}

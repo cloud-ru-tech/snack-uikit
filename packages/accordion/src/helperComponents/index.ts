@@ -1,3 +1,4 @@
 export * from './CollapseBlockPrivate';
-export * from './CollapseBlockTitle';
+export * from './CollapseBlockHeader';
 export * from './Accordion';
+export * from './CollapseBlockHeaderContainer';
