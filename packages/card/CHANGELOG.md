@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.1 (2023-11-14)
+
+
+### Bug Fixes
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** bind emblemIconAppearance into Card.Header; set cursor not-allowed in disabled state ([5bf83dc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5bf83dcee120db0fbdd3905cb39b0e6d0656f335))
+
+
+
+
+
 # 0.4.0 (2023-11-14)
 
 
