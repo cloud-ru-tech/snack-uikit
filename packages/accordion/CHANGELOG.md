@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-11-14)
+
+
+### Features
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** add opportunity use custom header ([ffdbfaf](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/ffdbfaf3dc8d07943c31bf0e9bdf4e93cb62f9c8))
+
+
+
+
+
 ## 0.1.2 (2023-11-10)
 
 

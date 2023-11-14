@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-11-14)
+
+
+### Features
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** add selectionMode for hide delete button ([df66297](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/df66297920344ed68f41453f5cd7e6f082a033d6))
+
+
+
+
+
 ## 0.2.4 (2023-11-09)
 
 

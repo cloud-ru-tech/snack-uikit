@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.6 (2023-11-14)
+
+
+### Bug Fixes
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** fix radio selection view ([918c07f](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/918c07fefb3db21eb03501105a9a89703e72ec84))
+
+
+
+
+
 ## 0.5.5 (2023-11-09)
 
 
