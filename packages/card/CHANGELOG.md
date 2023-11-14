@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-11-14)
+
+
+### Features
+
+* **[FF-3279](https://jira.sbercloud.tech/browse/FF-3279):** Card enhancements ([c9f8e33](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c9f8e339fdb08ae7168cb5fdcea3b9e6d8c5997e))
+
+
+
+
+
 ## 0.3.6 (2023-11-09)
 
 ### Only dependencies have been changed
