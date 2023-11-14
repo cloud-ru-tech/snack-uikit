@@ -68,7 +68,8 @@ export const validateClicks = (visit: VisitCallback, getComponent: GetComponent)
   test.page(visit({ disabled: true }))('should be disabled and click is ignored', async t => {
     const { chip } = getComponent();
 
-    await t.expect(chip.hasAttribute('disabled')).ok();
+    const hasDisabledAttribute = (await chip.hasAttribute('disabled')) || (await chip.hasAttribute('data-disabled'));
+    await t.expect(hasDisabledAttribute).ok();
     await t.expect(chip.getStyleProperty('cursor')).eql('not-allowed');
 
     await t.click(chip);

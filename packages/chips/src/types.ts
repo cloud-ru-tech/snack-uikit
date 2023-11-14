@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 export type BaseChipProps = {
   /** Лейбл */
   label: string;
-  /** Деактивирован ли компонент. */
+  /** Деактивирован ли компонент */
   disabled?: boolean;
   /** Состояние загрузки */
   loading?: boolean;

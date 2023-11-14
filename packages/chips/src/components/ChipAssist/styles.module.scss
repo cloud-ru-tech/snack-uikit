@@ -1,0 +1,60 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-chips-chipAssist';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../../styles.module';
+
+$sizes: 'xs', 's', 'm', 'l';
+
+$typography: (
+  'xs': $sans-label-s,
+  's': $sans-label-m,
+  'm': $sans-label-m,
+  'l': $sans-label-l,
+);
+
+.assistChip {
+  @include chip-defaults;
+  @include chip-anatomy-styles($chip-assist, $sizes, $typography);
+
+  color: $sys-neutral-text-support;
+  background-color: $sys-neutral-background1-level;
+  border-color: $sys-neutral-decor-default;
+
+  .icon {
+    color: $sys-neutral-text-light;
+  }
+
+  &:hover {
+    color: $sys-neutral-text-main;
+    background-color: $sys-neutral-background2-level;
+    border-color: $sys-neutral-decor-hovered;
+  }
+
+  &:focus-visible {
+    @include chip-outline;
+
+    color: $sys-neutral-text-main;
+    background-color: $sys-neutral-background2-level;
+    border-color: $sys-neutral-decor-hovered;
+  }
+
+  &:active {
+    color: $sys-neutral-text-main;
+    background-color: $sys-neutral-background;
+    border-color: $sys-neutral-decor-activated;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: $sys-neutral-text-light;
+    background-color: $sys-neutral-background;
+    border-color: $sys-neutral-decor-hovered;
+  }
+
+  &[data-loading] {
+    @include chip-loading-state($chip-assist, '&[data-variant="label-only"]', label);
+
+    color: $sys-neutral-text-main;
+    background-color: $sys-neutral-background;
+    border-color: $sys-neutral-decor-activated;
+  }
+}

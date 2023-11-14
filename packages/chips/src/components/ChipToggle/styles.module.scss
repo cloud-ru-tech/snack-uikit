@@ -1,0 +1,153 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-chips-chipToggle';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../../styles.module';
+
+$sizes: 'xs', 's', 'm', 'l';
+
+$typography: (
+  'xs': $sans-label-s,
+  's': $sans-label-m,
+  'm': $sans-label-m,
+  'l': $sans-label-l,
+);
+
+.toggleChipContent {
+  @include chip-defaults;
+
+  color: $sys-neutral-text-support;
+  background-color: $sys-neutral-background1-level;
+  border-color: $sys-neutral-decor-default;
+}
+
+.toggleChipInput {
+  pointer-events: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 0;
+  height: 0;
+
+  opacity: 0;
+
+  &:focus-visible + .toggleChipContent {
+    @include chip-outline;
+
+    color: $sys-neutral-text-main;
+    background-color: $sys-neutral-background2-level;
+    border-color: $sys-neutral-decor-hovered;
+  }
+}
+
+.toggleChip {
+  @include chip-anatomy-styles($chip-toggle, $sizes, $typography, toggleChipContent);
+
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  outline: 0;
+  outline-offset: 0;
+
+  .icon {
+    color: $sys-neutral-text-support;
+  }
+
+  &:hover {
+   .toggleChipContent {
+      color: $sys-neutral-text-main;
+      background-color: $sys-neutral-background2-level;
+      border-color: $sys-neutral-decor-hovered;
+    }
+  }
+
+  &:active {
+    .toggleChipContent {
+      color: $sys-neutral-text-main;
+      background-color: $sys-neutral-background;
+      border-color: $sys-neutral-decor-activated;
+    }
+  }
+
+  &[data-loading] {
+    @include chip-loading-state($chip-toggle, '&[data-variant="label-only"]', label, toggleChipContent);
+
+    .toggleChipContent {
+      color: $sys-neutral-text-main;
+      background-color: $sys-neutral-background;
+      border-color: $sys-neutral-decor-activated;
+    }
+  }
+
+  &[data-disabled] {
+    .toggleChipContent {
+      cursor: not-allowed;
+      color: $sys-neutral-text-light;
+      background-color: $sys-neutral-background;
+      border-color: $sys-neutral-decor-disabled;
+    }
+
+    .icon {
+      color: $sys-neutral-text-light;
+    }
+  }
+
+  &[data-checked] {
+    .icon {
+      color: $sys-primary-text-support;
+    }
+
+    .toggleChipContent {
+      color: $sys-primary-text-support;
+      background-color: $sys-primary-decor-default;
+      border-color: transparent;
+    }
+
+    &:hover {
+      .toggleChipContent {
+        color: $sys-primary-text-main;
+        background-color: $sys-primary-decor-hovered;
+        border-color: transparent;
+      }
+    }
+
+    &:active {
+      .toggleChipContent {
+        color: $sys-primary-text-main;
+        background-color: $sys-primary-decor-activated;
+        border-color: transparent;
+      }
+    }
+
+    .toggleChipInput {
+      &:focus-visible + .toggleChipContent {
+        color: $sys-primary-text-main;
+        background-color: $sys-primary-decor-hovered;
+        border-color: transparent;
+      }
+    }
+
+    &[data-loading] {
+      .toggleChipInput + .toggleChipContent {
+        color: $sys-neutral-text-main;
+        background-color: $sys-neutral-background;
+        border-color: $sys-neutral-decor-activated;
+      }
+    }
+
+    &[data-disabled] {
+      .toggleChipInput + .toggleChipContent {
+        color: $sys-neutral-text-light;
+        background-color: $sys-neutral-decor-disabled;
+        border-color: transparent;
+      }
+
+      .icon {
+        color: $sys-neutral-text-light;
+      }
+    }
+  }
+}

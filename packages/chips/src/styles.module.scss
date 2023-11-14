@@ -1,7 +1,5 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
-$variants: 'label-only', 'icon-before';
-
 @mixin chip-defaults {
   cursor: pointer;
 
@@ -42,60 +40,68 @@ $variants: 'label-only', 'icon-before';
 @mixin chip-anatomy-styles($chip-theme, $sizes, $typography, $contentClassName: null) {
   @include icon-size;
 
+  .labelLayout {
+    display: inline-flex;
+    align-items: center;
+  }
+
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       .label {
         @include composite-var($typography, $size);
       }
 
-      @each $variant in $variants {
-        &[data-variant='#{$variant}'] {
-          @if($size != 'xs' or $variant != 'icon-before') {
-            @if ($contentClassName) {
-              .#{$contentClassName} {
-                @include composite-var($chip-theme, 'container', $size, $variant);
-              }
-            }
+      .labelLayout {
+        @include composite-var($chip-theme, 'label-layout', $size);
+      }
 
-            @else {
-              @include composite-var($chip-theme, 'container', $size, $variant);
-            }
-          }
+      @if ($contentClassName) {
+        .#{$contentClassName} {
+          @include composite-var($chip-theme, 'container', $size);
         }
+      }
+
+ @else {
+        @include composite-var($chip-theme, 'container', $size);
+
       }
     }
   }
 }
 
-@mixin chip-loading-state($chip-theme, $condition, $classNamesToHide, $contentClassName: null) {
+@mixin chip-loading-state($chip-theme, $condition, $classNamesToHide, $contentClassName: null, $relativeSpinner: null) {
   @if ($contentClassName) {
     .#{$contentClassName} {
       cursor: progress;
     }
   }
 
-  @else {
+ @else {
     cursor: progress;
   }
 
   #{$condition} {
-    @each $className in $classNamesToHide {
-      .#{$className} {
-        @include composite-var($chip-theme, 'label', 'load-label-only');
+    @if $classNamesToHide {
+      @each $className in $classNamesToHide {
+        .#{$className} {
+          @include composite-var($chip-theme, 'label-layout', 'label', 'load-label-only');
+        }
       }
     }
 
     .spinner {
-      position: absolute;
-      top: 0;
-      left: 0;
+      @if not $relativeSpinner {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+      }
 
       display: flex;
       align-items: center;
       justify-content: center;
-
-      width: 100%;
-      height: 100%;
     }
   }
 }
@@ -103,16 +109,6 @@ $variants: 'label-only', 'icon-before';
 @mixin chip-outline {
   @include outline-var($container-focused-s);
 
-  outline-color: $sys-primary-accent-default;
+  outline-color: $sys-available-complementary;
   outline-offset: $spacing-state-focus-offset;
-}
-
-@mixin chip-disabled($bgColor: null, $excludeBorder: null) {
-  cursor: not-allowed;
-  color: simple-var($theme-variables, 'sys', 'neutral', 'text-light');
-  background-color: if($bgColor, $bgColor, simple-var($theme-variables, 'sys', 'neutral', 'background'));
-
-  @if not $excludeBorder {
-    border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
-  }
 }

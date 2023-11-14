@@ -67,7 +67,6 @@
     {
       "path": "./breadcrumbs"
     },
-
     {
       "path": "./tag"
     },
@@ -75,13 +74,13 @@
       "path": "./droplist"
     },
     {
+      "path": "./calendar"
+    },
+    {
       "path": "./chips"
     },
     {
       "path": "./icon-predefined"
-    },
-    {
-      "path": "./calendar"
     },
     {
       "path": "./fields"

@@ -4,11 +4,11 @@ import { MouseEventHandler } from 'react';
 import { Sun } from '@snack-ui/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { Size, Variant } from '../../constants';
+import { CHIP_ASSIST_TEST_IDS, Size, Variant } from '../../constants';
 import { BaseChipProps } from '../../types';
 import styles from './styles.module.scss';
 
-export type AssistChipProps = WithSupportProps<
+export type ChipAssistProps = WithSupportProps<
   BaseChipProps & {
     /** Размер */
     size?: Size;
@@ -18,9 +18,9 @@ export type AssistChipProps = WithSupportProps<
 >;
 
 /** Чип с лейблом  */
-export function AssistChip({
+export function ChipAssist({
   icon,
-  size = AssistChip.sizes.S,
+  size = ChipAssist.sizes.S,
   label,
   disabled,
   loading,
@@ -28,7 +28,7 @@ export function AssistChip({
   className,
   tabIndex,
   ...rest
-}: AssistChipProps) {
+}: ChipAssistProps) {
   const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
   const spinnerSize = size === Size.Xs ? Sun.sizes.XS : Sun.sizes.S;
 
@@ -52,22 +52,22 @@ export function AssistChip({
       className={cn(styles.assistChip, className)}
     >
       {variant === Variant.IconBefore && !loading && (
-        <span className={styles.icon} data-test-id='assist-chip__icon'>
+        <span className={styles.icon} data-test-id={CHIP_ASSIST_TEST_IDS.icon}>
           {icon}
         </span>
       )}
 
       {loading && (
-        <span className={styles.spinner} data-test-id='assist-chip__spinner'>
+        <span className={styles.spinner} data-test-id={CHIP_ASSIST_TEST_IDS.spinner}>
           <Sun size={spinnerSize} />
         </span>
       )}
 
-      <span className={styles.label} data-test-id='assist-chip__label'>
+      <span className={cn(styles.labelLayout, styles.label)} data-test-id={CHIP_ASSIST_TEST_IDS.label}>
         {label}
       </span>
     </button>
   );
 }
 
-AssistChip.sizes = Size;
+ChipAssist.sizes = Size;

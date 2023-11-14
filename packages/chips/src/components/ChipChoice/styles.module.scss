@@ -1,0 +1,90 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-chips-chipChoice';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '../../styles.module';
+
+$sizes: 'xs', 's', 'm', 'l';
+
+$labelTypography: (
+  'xs': $light-label-s,
+  's': $light-label-m,
+  'm': $light-label-m,
+  'l': $light-label-l,
+);
+
+$valueTypography: (
+  'xs': $sans-label-s,
+  's': $sans-label-m,
+  'm': $sans-label-m,
+  'l': $sans-label-l,
+);
+
+.label, .value {
+  display: inline-flex;
+  align-items: center;
+}
+
+.choiceChip {
+  @include chip-defaults;
+  @include chip-anatomy-styles($chip-choice, $sizes, $labelTypography);
+
+  background-color: $sys-neutral-background1-level;
+  border-color: $sys-neutral-decor-default;
+
+  .label, .value {
+    color: $sys-neutral-text-support;
+  }
+
+  .icon {
+    color: $sys-neutral-text-light;
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      .value {
+        @include composite-var($valueTypography, $size);
+      }
+    }
+  }
+
+  &:hover, &:active, &:focus-visible {
+    background-color: $sys-neutral-background2-level;
+    border-color: $sys-neutral-decor-hovered;
+
+    .label {
+      color: $sys-neutral-text-support;
+    }
+
+    .value {
+      color: $sys-neutral-text-main;
+    }
+  }
+
+  &:focus-visible {
+    @include chip-outline;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    background-color: $sys-neutral-background;
+    border-color: $sys-neutral-decor-disabled;
+
+    .label, .value {
+      color: $sys-neutral-text-light;
+    }
+  }
+
+  &[data-loading] {
+    @include chip-loading-state($chip-choice, true, null, null, true);
+
+    background-color: $sys-neutral-background;
+    border-color: $sys-neutral-decor-activated;
+
+    .label, .value {
+      color: $sys-neutral-text-support;
+    }
+  }
+}
+
+.triggerClassName {
+  --offset: #{calc($border-state-focus-s-border-width + $space-drop-list-drop-offset)};
+}

@@ -1,0 +1,50 @@
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-element";
+@import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-chips-chipChoice";
+
+$sizes: 'xxs', 'xs';
+$icon-sizes: (
+  'xxs': $icon-xs,
+  'xs': $icon-s
+);
+
+.buttonClearValue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+
+  color: $sys-neutral-text-light;
+
+  background-color: transparent;
+  border: none;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($chip-choice, 'button-clear-value', $size);
+
+      svg {
+        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: $sys-neutral-text-support;
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    color: $sys-neutral-text-support;
+    outline-color: $sys-available-complementary;
+    outline-offset: $spacing-state-focus-offset;
+  }
+
+  &:active {
+    color: $sys-neutral-text-main;
+  }
+}

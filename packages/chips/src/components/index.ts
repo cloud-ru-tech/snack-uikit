@@ -1,3 +1,3 @@
-export * from './AssistChip';
-export * from './ToggleChip';
-export * from './FilterChip';
+export * from './ChipAssist';
+export * from './ChipToggle';
+export * from './ChipChoice';

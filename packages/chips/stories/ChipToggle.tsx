@@ -7,14 +7,14 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { ToggleChip, ToggleChipProps } from '../src';
+import { ChipToggle, ChipToggleProps } from '../src';
 import { Size, Variant } from '../src/constants';
 import { ICONS } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
-  title: 'Components/Chips/ToggleChip',
-  component: ToggleChip,
+  title: 'Components/Chips/ChipToggle',
+  component: ChipToggle,
 };
 export default meta;
 
@@ -26,21 +26,21 @@ const VARIANTS_TABLE_HEADERS = Array(STATE_TABLE_HEADERS.length)
 
 const noop = () => {};
 
-function ToggleChips(props: Pick<ToggleChipProps, 'size' | 'loading' | 'disabled' | 'checked'>) {
+function ToggleChips(props: Pick<ChipToggleProps, 'size' | 'loading' | 'disabled' | 'checked'>) {
   return (
     <>
       <div className={styles.cell}>
-        <ToggleChip label='Label text' onChange={noop} {...props} />
+        <ChipToggle label='Label text' onChange={noop} {...props} />
       </div>
 
       <div className={styles.cell}>
-        <ToggleChip label='Label text' icon={<PlaceholderSVG />} onChange={noop} {...props} />
+        <ChipToggle label='Label text' icon={<PlaceholderSVG />} onChange={noop} {...props} />
       </div>
     </>
   );
 }
 
-const Template: StoryFn<ToggleChipProps> = ({ ...args }: ToggleChipProps) => {
+const Template: StoryFn<ChipToggleProps> = ({ ...args }: ChipToggleProps) => {
   const [checked, setChecked] = useState(args.checked);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Template: StoryFn<ToggleChipProps> = ({ ...args }: ToggleChipProps) => {
     <div className={styles.pageWrapper}>
       <div className={styles.wrapper}>
         Controlled:
-        <ToggleChip {...args} checked={checked} onChange={setChecked} />
+        <ChipToggle {...args} checked={checked} onChange={setChecked} />
       </div>
 
       <div className={styles.table}>
@@ -91,21 +91,21 @@ const Template: StoryFn<ToggleChipProps> = ({ ...args }: ToggleChipProps) => {
   );
 };
 
-export const toggleChip: StoryObj<ToggleChipProps> = Template.bind({});
+export const chipToggle: StoryObj<ChipToggleProps> = Template.bind({});
 
-toggleChip.args = {
+chipToggle.args = {
   label: 'Label text',
-  size: ToggleChip.sizes.S,
+  size: ChipToggle.sizes.S,
   disabled: false,
   loading: false,
   checked: false,
-  'data-test-id': 'toggle-chip',
+  'data-test-id': 'chip-toggle',
   tabIndex: undefined,
   className: undefined,
   onChange: undefined,
 };
 
-toggleChip.argTypes = {
+chipToggle.argTypes = {
   size: { control: { type: 'radio' } },
   icon: {
     name: '[Stories]: Show icon examples',
@@ -117,7 +117,7 @@ toggleChip.argTypes = {
   },
 };
 
-toggleChip.parameters = {
+chipToggle.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
   },

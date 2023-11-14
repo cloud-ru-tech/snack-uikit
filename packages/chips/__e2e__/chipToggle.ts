@@ -1,42 +1,37 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
+import { CHIP_TOGGLE_TEST_IDS } from '../src/constants';
 import { runCommonTests } from './utils/commonTests';
 
-const TEST_IDS = {
-  chip: 'toggleChip',
-  input: 'toggle-chip__input',
-  label: 'toggle-chip__label',
-  icon: 'toggle-chip__icon',
-  spinner: 'toggle-chip__spinner',
-};
+const BASE_TEST_ID = 'toggleChip';
 
 const LABEL_TEXT = 'Test text';
 
 const getPage = (props: Record<string, unknown> & { icon?: string } = {}) =>
   getTestcafeUrl({
-    name: 'togglechip',
-    story: 'toggle-chip',
+    name: 'chiptoggle',
+    story: 'chip-toggle',
     group: 'chips',
     props: {
-      'data-test-id': TEST_IDS.chip,
+      'data-test-id': BASE_TEST_ID,
       ...props,
     },
   });
 
 function getComponent() {
-  const chip = Selector(dataTestIdSelector(TEST_IDS.chip));
+  const chip = Selector(dataTestIdSelector(BASE_TEST_ID));
 
   return {
     chip,
-    input: chip.find(dataTestIdSelector(TEST_IDS.input)),
-    label: chip.find(dataTestIdSelector(TEST_IDS.label)),
-    icon: chip.find(dataTestIdSelector(TEST_IDS.icon)).find('svg'),
-    spinner: chip.find(dataTestIdSelector(TEST_IDS.spinner)).find('svg'),
+    input: chip.find(dataTestIdSelector(CHIP_TOGGLE_TEST_IDS.input)),
+    label: chip.find(dataTestIdSelector(CHIP_TOGGLE_TEST_IDS.label)),
+    icon: chip.find(dataTestIdSelector(CHIP_TOGGLE_TEST_IDS.icon)).find('svg'),
+    spinner: chip.find(dataTestIdSelector(CHIP_TOGGLE_TEST_IDS.spinner)).find('svg'),
   };
 }
 
-fixture('ToggleChip');
+fixture('ChipToggle');
 
 test.page(getPage({ label: LABEL_TEXT }))(`should render with label "${LABEL_TEXT}" and click is working`, async t => {
   const { chip, input, label } = getComponent();

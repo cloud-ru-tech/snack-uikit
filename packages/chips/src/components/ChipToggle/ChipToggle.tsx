@@ -4,11 +4,11 @@ import { ChangeEvent, ChangeEventHandler } from 'react';
 import { Sun } from '@snack-ui/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
-import { Size, Variant } from '../../constants';
+import { CHIP_TOGGLE_TEST_IDS, Size, Variant } from '../../constants';
 import { BaseChipProps } from '../../types';
 import styles from './styles.module.scss';
 
-export type ToggleChipProps = WithSupportProps<
+export type ChipToggleProps = WithSupportProps<
   BaseChipProps & {
     /** Отмечен ли компонент */
     checked: boolean;
@@ -20,9 +20,9 @@ export type ToggleChipProps = WithSupportProps<
 >;
 
 /** Чип с состоянием выбран/не выбран */
-export function ToggleChip({
+export function ChipToggle({
   icon,
-  size = ToggleChip.sizes.S,
+  size = ChipToggle.sizes.S,
   label,
   checked,
   disabled,
@@ -31,7 +31,7 @@ export function ToggleChip({
   className,
   tabIndex = 0,
   ...rest
-}: ToggleChipProps) {
+}: ChipToggleProps) {
   const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
   const spinnerSize = size === Size.Xs ? Sun.sizes.XS : Sun.sizes.S;
 
@@ -54,7 +54,7 @@ export function ToggleChip({
       className={cn(styles.toggleChip, className)}
     >
       <input
-        data-test-id='toggle-chip__input'
+        data-test-id={CHIP_TOGGLE_TEST_IDS.input}
         type='checkbox'
         checked={checked}
         onChange={handleChange}
@@ -65,18 +65,18 @@ export function ToggleChip({
 
       <span className={styles.toggleChipContent}>
         {variant === Variant.IconBefore && !loading && (
-          <span className={styles.icon} data-test-id='toggle-chip__icon'>
+          <span className={styles.icon} data-test-id={CHIP_TOGGLE_TEST_IDS.icon}>
             {icon}
           </span>
         )}
 
         {loading && (
-          <span className={styles.spinner} data-test-id='toggle-chip__spinner'>
+          <span className={styles.spinner} data-test-id={CHIP_TOGGLE_TEST_IDS.spinner}>
             <Sun size={spinnerSize} />
           </span>
         )}
 
-        <span className={styles.label} data-test-id='toggle-chip__label'>
+        <span className={cn(styles.labelLayout, styles.label)} data-test-id={CHIP_TOGGLE_TEST_IDS.label}>
           {label}
         </span>
       </span>
@@ -84,4 +84,4 @@ export function ToggleChip({
   );
 }
 
-ToggleChip.sizes = Size;
+ChipToggle.sizes = Size;

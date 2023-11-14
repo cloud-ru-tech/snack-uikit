@@ -7,14 +7,14 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { AssistChip, AssistChipProps } from '../src';
+import { ChipAssist, ChipAssistProps } from '../src';
 import { Size, Variant } from '../src/constants';
 import { ICONS } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
-  title: 'Components/Chips/AssistChip',
-  component: AssistChip,
+  title: 'Components/Chips/ChipAssist',
+  component: ChipAssist,
 };
 export default meta;
 
@@ -24,19 +24,19 @@ const VARIANTS_TABLE_HEADERS = Array(STATE_TABLE_HEADERS.length)
   .fill(Object.values(Variant))
   .flatMap(v => v);
 
-type StoryProps = AssistChipProps & { showClickCounter?: boolean };
+type StoryProps = ChipAssistProps & { showClickCounter?: boolean };
 
 const noop = () => {};
 
-function AssistChips(props: Pick<AssistChipProps, 'size' | 'loading' | 'disabled'>) {
+function AssistChips(props: Pick<ChipAssistProps, 'size' | 'loading' | 'disabled'>) {
   return (
     <>
       <div className={styles.cell}>
-        <AssistChip label='Label text' onClick={noop} {...props} />
+        <ChipAssist label='Label text' onClick={noop} {...props} />
       </div>
 
       <div className={styles.cell}>
-        <AssistChip label='Label text' icon={<PlaceholderSVG />} onClick={noop} {...props} />
+        <ChipAssist label='Label text' icon={<PlaceholderSVG />} onClick={noop} {...props} />
       </div>
     </>
   );
@@ -52,7 +52,7 @@ const Template: StoryFn<StoryProps> = ({ showClickCounter, ...args }: StoryProps
     <div className={styles.pageWrapper}>
       <div className={styles.wrapper}>
         Controlled:
-        <AssistChip {...args} onClick={increaseCounter} />
+        <ChipAssist {...args} onClick={increaseCounter} />
       </div>
 
       {showClickCounter && (
@@ -94,21 +94,21 @@ const Template: StoryFn<StoryProps> = ({ showClickCounter, ...args }: StoryProps
   );
 };
 
-export const assistChip: StoryObj<StoryProps> = Template.bind({});
+export const chipAssist: StoryObj<StoryProps> = Template.bind({});
 
-assistChip.args = {
+chipAssist.args = {
   label: 'Label text',
-  size: AssistChip.sizes.S,
+  size: ChipAssist.sizes.S,
   disabled: false,
   loading: false,
-  'data-test-id': 'assist-chip',
+  'data-test-id': 'chip-assist',
   tabIndex: undefined,
   className: undefined,
   onClick: undefined,
   showClickCounter: false,
 };
 
-assistChip.argTypes = {
+chipAssist.argTypes = {
   size: { control: { type: 'radio' } },
   icon: {
     name: '[Stories]: Show icon examples',
@@ -123,7 +123,7 @@ assistChip.argTypes = {
   },
 };
 
-assistChip.parameters = {
+chipAssist.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
   },
