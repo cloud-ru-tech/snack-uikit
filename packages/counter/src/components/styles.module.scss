@@ -38,8 +38,7 @@ $key-typography: (
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       @include composite-var($value-typography, $size);
-
-      min-width: simple-var($theme-variables, 'size', 'counter', $size, 'minimal-width');
+      @include composite-var($counter, $size);
 
       .plus {
         @include composite-var($plus-typography, $size);
@@ -47,12 +46,6 @@ $key-typography: (
 
       .key {
         @include composite-var($key-typography, $size);
-      }
-
-      @each $variant in $variants {
-        &[data-variant='#{$variant}'] {
-          @include composite-var($counter, 'container', $size, $variant);
-        }
       }
     }
   }
