@@ -177,6 +177,7 @@ const ForwardedBaseDroplistItem = forwardRef<HTMLButtonElement, BaseDroplistItem
               onChange={onChange}
               checked={checked}
               indeterminate={indeterminate}
+              data-test-id={getTestId('checkbox')}
             />
           </div>
         )}
