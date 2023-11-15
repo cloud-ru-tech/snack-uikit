@@ -1,77 +1,58 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useEffect, useState } from 'react';
 
-import { useToggleGroup } from '@snack-ui/toggles';
+import { ToggleGroup, ToggleGroupProps } from '@snack-ui/toggles';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { Mode } from '../src/constants';
-import { ToggleItemState } from '../src/types';
+import { SelectionMode } from '../src/constants';
+import { ToggleCard } from './helperComponets';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
   title: 'Components/Toggles/Toggle Group',
+  component: ToggleGroup,
 };
 
 export default meta;
 
-type Data = {
-  id: string;
-  label: string;
-};
+const ITEMS = [
+  { id: '1', label: 'item1' },
+  { id: '2', label: 'item2' },
+  { id: '3', label: 'item3' },
+  { id: '4', label: 'item4' },
+];
 
-export type ToggleGroupStoryProps = {
-  mode: Mode;
-  items: ToggleItemState<Data>[];
-};
+const Template: StoryFn<ToggleGroupProps> = ({ selectionMode = SelectionMode.Single }) => {
+  const [value, setValue] = useState<string | string[] | undefined>(
+    selectionMode === ToggleGroup.selectionModes.Single ? undefined : [],
+  );
 
-const Template: StoryFn<ToggleGroupStoryProps> = ({ ...args }) => {
-  const items = useToggleGroup(args.mode, args.items);
+  useEffect(() => {
+    setValue(selectionMode === ToggleGroup.selectionModes.Single ? undefined : []);
+  }, [selectionMode]);
 
   return (
-    <>
-      {items.map(({ checked, setChecked, data }) => (
-        <button
-          data-test-id={`item-${data.id}`}
-          data-checked={checked}
-          className={checked ? styles.checked : styles.unchecked}
-          onClick={() => setChecked(!checked)}
-          key={data.label}
-        >
-          {data.label}
-        </button>
-      ))}
-    </>
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    <ToggleGroup selectionMode={selectionMode} value={value} onChange={setValue}>
+      <div className={styles.toggleGroup}>
+        {ITEMS.map(props => (
+          <ToggleCard key={props.id} {...props} />
+        ))}
+      </div>
+    </ToggleGroup>
   );
 };
 
-export const toggleGroup: StoryObj<ToggleGroupStoryProps> = Template.bind({});
+export const toggleGroup: StoryObj<ToggleGroupProps> = Template.bind({});
 
 toggleGroup.args = {
-  mode: useToggleGroup.modes.Radio,
-  items: [
-    {
-      checked: false,
-      data: { id: '1', label: 'item1' },
-    },
-    {
-      checked: false,
-      data: { id: '2', label: 'item2' },
-    },
-    {
-      checked: false,
-      data: { id: '3', label: 'item3' },
-    },
-    {
-      checked: false,
-      data: { id: '4', label: 'item4' },
-    },
-  ],
+  selectionMode: ToggleGroup.selectionModes.Multiple,
 };
 
-toggleGroup.argTypes = {
-  mode: { control: { type: 'radio' }, options: [useToggleGroup.modes.Radio, useToggleGroup.modes.Checkbox] },
-};
+toggleGroup.argTypes = {};
 
 toggleGroup.parameters = {
   readme: {

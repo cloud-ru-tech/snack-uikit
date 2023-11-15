@@ -26,3 +26,10 @@
     content: '🌚 ';
   }
 }
+
+
+.toggleGroup {
+  display: flex;
+  gap: $dimension-1m;
+  align-items: center;
+}

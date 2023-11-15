@@ -4,15 +4,6 @@ import { WithSupportProps } from '@snack-ui/utils';
 
 import { LabelPosition, Mode, Size, Width } from './constants';
 
-export type ToggleItemState<D = undefined> = {
-  checked: boolean;
-  data: D;
-};
-
-export type ToggleItem<D> = ToggleItemState<D> & {
-  setChecked: (checked: boolean) => void;
-};
-
 export type InputVisualState = {
   focusVisible: boolean;
   disabled: boolean;

@@ -22,3 +22,8 @@ export enum FavoriteIcon {
   Star = 'star',
   Heart = 'heart',
 }
+
+export enum SelectionMode {
+  Single = 'single',
+  Multiple = 'multiple',
+}
