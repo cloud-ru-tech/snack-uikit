@@ -100,7 +100,7 @@ return (
 | label | `string` | - | Лейбл |
 | labelPosition | enum LabelPosition: `"left"`, `"right"` | - | Расположение лейбла |
 | width | enum Width: `"auto"`, `"full"` | - | Ширина <br> - `auto` автоматическое <br> - `full` все доступное место по ширине (игнорируется когда не передан проп label) |
-| size | enum Size: `"s"`, `"m"` | - | Размер |
+| size | enum Size: `"s"`, `"m"` | Size.M | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 | indeterminate | `boolean` | - | Состояние частичного выбора |
 | indeterminateDefault | `boolean` | - | Состояние частичного выбора по-умолчанию |
@@ -124,7 +124,7 @@ return (
 | label | `string` | - | Лейбл |
 | labelPosition | enum LabelPosition: `"left"`, `"right"` | - | Расположение лейбла |
 | width | enum Width: `"auto"`, `"full"` | - | Ширина <br> - `auto` автоматическое <br> - `full` все доступное место по ширине (игнорируется когда не передан проп label) |
-| size | enum Size: `"s"`, `"m"` | - | Размер |
+| size | enum Size: `"s"`, `"m"` | Size.M | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 | showIcon | `boolean` | - | Показывать ли иконку в переключателе |
 ## Radio

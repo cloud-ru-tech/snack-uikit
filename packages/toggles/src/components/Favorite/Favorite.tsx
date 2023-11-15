@@ -1,8 +1,10 @@
+import { useMemo } from 'react';
+
 import { HeartFilledSVG, HeartSVG, StarFilledSVG, StarSVG } from '@snack-ui/icons';
 
 import { FavoriteIcon, LabelPosition, Size, Width } from '../../constants';
 import { ToggleProps } from '../../types';
-import { getVisualStateAttributes } from '../../utils';
+import { getIconSize, getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
 import styles from './styles.module.scss';
 
@@ -28,6 +30,8 @@ export function Favorite({
   icon = FavoriteIcon.Heart,
   ...restProps
 }: FavoriteProps) {
+  const iconSize = useMemo(() => getIconSize(size), [size]);
+
   return (
     <TogglePrivate
       {...restProps}
@@ -39,7 +43,7 @@ export function Favorite({
         const data = getVisualStateAttributes({ ...visualState, icon });
         return (
           <div className={styles.container} {...data}>
-            <Icon className={styles.icon} {...data} />
+            <Icon className={styles.icon} {...data} size={iconSize} />
           </div>
         );
       }}

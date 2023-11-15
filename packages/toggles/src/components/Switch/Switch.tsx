@@ -1,8 +1,10 @@
+import { useMemo } from 'react';
+
 import { CheckSVG, CrossSVG } from '@snack-ui/icons';
 
-import { IconSize, LabelPosition, Size, Width } from '../../constants';
+import { LabelPosition, Size, Width } from '../../constants';
 import { ToggleProps } from '../../types';
-import { getVisualStateAttributes } from '../../utils';
+import { getIconSize, getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
 import styles from './styles.module.scss';
 
@@ -11,10 +13,13 @@ export type SwitchProps = ToggleProps & {
   showIcon?: boolean;
 };
 
-export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, ...restProps }: SwitchProps) {
+export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, size = Size.M, ...restProps }: SwitchProps) {
+  const iconSize = useMemo(() => getIconSize(size), [size]);
+
   return (
     <TogglePrivate
       {...restProps}
+      size={size}
       data-test-id={dataTestId}
       ref={inputRef}
       render={function Switch(visualState) {
@@ -27,10 +32,10 @@ export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, ...rest
               {showIcon && (
                 <>
                   <div className={styles.flag_icon_off} {...data}>
-                    <CrossSVG size={IconSize[Size.S]} />
+                    <CrossSVG size={iconSize} />
                   </div>
                   <div className={styles.flag_icon_on} {...data}>
-                    <CheckSVG size={IconSize[Size.S]} />
+                    <CheckSVG size={iconSize} />
                   </div>
                 </>
               )}

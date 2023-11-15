@@ -1,4 +1,4 @@
-import { Mode } from './constants';
+import { Mode, Size } from './constants';
 import { DataAttributes, ToggleItemState } from './types';
 
 /**
@@ -24,4 +24,16 @@ export function getVisualStateAttributes(state: Record<string, string | boolean>
     result[`data-${name.toLowerCase()}`] = value;
     return result;
   }, {});
+}
+
+export function getIconSize(size?: Size) {
+  switch (size) {
+    case Size.S: {
+      return 16;
+    }
+    case Size.M:
+    default: {
+      return 24;
+    }
+  }
 }

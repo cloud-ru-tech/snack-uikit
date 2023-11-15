@@ -22,8 +22,3 @@ export enum FavoriteIcon {
   Star = 'star',
   Heart = 'heart',
 }
-
-export const IconSize = {
-  [Size.S]: 16,
-  [Size.M]: 24,
-};

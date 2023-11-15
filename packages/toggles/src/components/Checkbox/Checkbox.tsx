@@ -1,12 +1,12 @@
 import mergeRefs from 'merge-refs';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { CheckSVG, MinusSVG } from '@snack-ui/icons';
 
 import { LabelPosition, Size, Width } from '../../constants';
 import { ToggleProps } from '../../types';
-import { getVisualStateAttributes } from '../../utils';
+import { getIconSize, getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
 import styles from './styles.module.scss';
 
@@ -23,6 +23,7 @@ export function Checkbox({
   indeterminateDefault,
   onChange: onChangeProp,
   'data-test-id': dataTestId,
+  size = Size.M,
   ...restProps
 }: CheckboxProps) {
   const localRef = useRef<HTMLInputElement>(null);
@@ -44,9 +45,12 @@ export function Checkbox({
     }
   }, [localRef, indeterminate]);
 
+  const iconSize = useMemo(() => getIconSize(size), [size]);
+
   return (
     <TogglePrivate
       {...restProps}
+      size={size}
       onChange={onChange}
       data-test-id={dataTestId}
       ref={ref}
@@ -56,7 +60,7 @@ export function Checkbox({
           <div className={styles.container} {...data}>
             <div className={styles.box} {...data} />
             <div className={styles.icon} {...data}>
-              {indeterminate ? <MinusSVG /> : <CheckSVG />}
+              {indeterminate ? <MinusSVG size={iconSize} /> : <CheckSVG size={iconSize} />}
             </div>
           </div>
         );
