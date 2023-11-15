@@ -1,9 +1,10 @@
 @import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
 
-$sizes: 's', 'm';
+$sizes: 's', 'm', 'l';
 $typography: (
   's': $sans-body-s,
   'm': $sans-body-m,
+  'l': $sans-body-l,
 );
 
 .wrapper {

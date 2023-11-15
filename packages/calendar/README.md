@@ -32,7 +32,7 @@ import { Calendar } from '@snack-ui/calendar';
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | mode* | enum CalendarMode: `"date"`, `"range"` | - | Режим работы календаря: <br> - `Calendar.modes.Date` - режим выбора даты <br> - `Calendar.modes.Date` - режим выбора периода |
-| size | enum Size: `"s"`, `"m"` | Calendar.sizes.M | Размер |
+| size | enum Size: `"s"`, `"m"`, `"l"` | Calendar.sizes.M | Размер |
 | today | `number \| Date` | - | Дата сегодняшнего дня |
 | showHolidays | `boolean` | - | Раскрашивает субботу и воскресенье |
 | buildCellProps | `(date: Date, viewMode: ViewMode) => { isDisabled?: boolean; isHoliday?: boolean };` | - | Колбек установки свойств ячейка календаря. Вызывается на построение каждой ячейки. Принимает два параметра: <br> `Date` - дата ячейки <br> `ViewMode`: <br>  - `Calendar.viewMode.Month` отображение месяца, каждая ячейка - 1 день <br>  - `Calendar.viewMode.Year` отображение года, каждая ячейка - 1 месяц <br>  - `Calendar.viewMode.Decade` отображение декады, каждая ячейка - 1 год <br><br> Колбек должен возвращать объект с полями, отвечающими за задизаленность и подкраску ячейки. |

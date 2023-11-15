@@ -21,10 +21,12 @@ const ICONS = {
   UP: {
     [Size.S]: <ChevronUpSVG size={16} />,
     [Size.M]: <ChevronUpSVG />,
+    [Size.L]: <ChevronUpSVG />,
   },
   DOWN: {
     [Size.S]: <ChevronDownSVG size={16} />,
     [Size.M]: <ChevronDownSVG />,
+    [Size.L]: <ChevronDownSVG />,
   },
 };
 

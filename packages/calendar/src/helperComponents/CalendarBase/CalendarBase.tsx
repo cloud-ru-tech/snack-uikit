@@ -35,6 +35,7 @@ export type CalendarBaseProps = WithSupportProps<{
 const CONTAINER_SIZE_MAP = {
   [Size.S]: styles.calendarSizeS,
   [Size.M]: styles.calendarSizeM,
+  [Size.L]: styles.calendarSizeL,
 };
 
 export function CalendarBase({

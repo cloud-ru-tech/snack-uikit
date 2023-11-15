@@ -1,6 +1,6 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-calendar';
 
-$sizes: 's', 'm';
+$sizes: 's', 'm', 'l';
 
 .calendar {
   --min-width-s: 240px;
@@ -19,13 +19,6 @@ $sizes: 's', 'm';
     width: 100%;
     height: 100%;
   }
-
-  @each $size in $sizes {
-    &[data-size='#{$size}'] {
-      min-width: var(--min-width-#{$size});
-      min-height: var(--min-height-#{$size});
-    }
-  }
 }
 
 /**
@@ -33,13 +26,15 @@ $sizes: 's', 'm';
   чтоб было легко задать размер "снаружи".
 */
 .calendarSizeS {
-  width: var(--min-width-s);
-  height: var(--min-height-s);
+  @include composite-var($calendar-container-s);
 }
 
 .calendarSizeM {
-  width: var(--min-width-m);
-  height: var(--min-height-m);
+  @include composite-var($calendar-container-m);
+}
+
+.calendarSizeL {
+  @include composite-var($calendar-container-l);
 }
 
 .header {

@@ -20,6 +20,7 @@ export default meta;
 const SCROLL_SIZE = {
   [Size.S]: styles.scroll_s,
   [Size.M]: styles.scroll_m,
+  [Size.L]: styles.scroll_l,
 };
 
 type StoryProps = CalendarProps & {

@@ -1,10 +1,11 @@
 @import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-calendar";
 @import "@sbercloud/figma-tokens/build/scss/components/styles-tokens-element";
 
-$sizes: 's', 'm';
+$sizes: 's', 'm', 'l';
 $typography: (
-  's': $sans-title-s,
-  'm': $sans-title-m,
+  's': $sans-label-s,
+  'm': $sans-label-m,
+  'l': $sans-label-l,
 );
 
 .button {

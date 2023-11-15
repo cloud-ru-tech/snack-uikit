@@ -20,6 +20,7 @@ export enum InRangePosition {
 export enum Size {
   S = 's',
   M = 'm',
+  L = 'l',
 }
 
 export const GRID_SIZE = {
