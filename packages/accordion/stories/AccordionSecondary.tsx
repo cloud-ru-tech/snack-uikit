@@ -16,20 +16,20 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryFn<AccordionProps> = ({ mode }: AccordionProps) => {
-  const [expanded, setExpanded] = useState<string | string[] | null>(
-    mode === AccordionSecondary.modes.Single ? null : [],
+const Template: StoryFn<AccordionProps> = ({ selectionMode }: AccordionProps) => {
+  const [expanded, setExpanded] = useState<string | string[] | undefined>(
+    selectionMode === AccordionSecondary.selectionModes.Single ? undefined : [],
   );
 
   useEffect(() => {
-    setExpanded(mode === AccordionSecondary.modes.Single ? null : []);
-  }, [mode]);
+    setExpanded(selectionMode === AccordionSecondary.selectionModes.Single ? undefined : []);
+  }, [selectionMode]);
 
   return (
     <div className={styles.wrapper}>
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
-      <AccordionSecondary expanded={expanded} onExpandedChange={setExpanded} mode={mode}>
+      <AccordionSecondary expanded={expanded} onExpandedChange={setExpanded} selectionMode={selectionMode}>
         {Array.from({ length: 2 }).map((_, i) => (
           <AccordionSecondary.CollapseBlock
             key={i}
@@ -48,7 +48,7 @@ const Template: StoryFn<AccordionProps> = ({ mode }: AccordionProps) => {
 export const accordionSecondary: StoryObj<AccordionProps> = Template.bind({});
 
 accordionSecondary.args = {
-  mode: AccordionSecondary.modes.Single,
+  selectionMode: AccordionSecondary.selectionModes.Single,
 };
 
 accordionSecondary.argTypes = {};

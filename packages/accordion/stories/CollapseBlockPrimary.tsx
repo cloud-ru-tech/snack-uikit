@@ -32,12 +32,12 @@ type StoryProps = CollapseBlockProps & {
 } & CollapseBlockHeaderProps;
 
 const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, ...args }: StoryProps) => {
-  const [expanded, setExpanded] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string>();
 
   useEffect(() => {
     setExpanded(() => {
       if (!args.expanded) {
-        return null;
+        return undefined;
       }
 
       return id;

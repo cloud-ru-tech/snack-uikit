@@ -33,7 +33,7 @@ function getSelectors() {
 }
 
 [getPageUrlAccordionPrimary, getPageUrlAccordionSecondary].map(getPageUrl => {
-  test.page(getPageUrl({ mode: 'single' }))(`Single mode`, async t => {
+  test.page(getPageUrl({ selectionMode: 'single' }))(`Single mode`, async t => {
     const { collapseBlockFirst, collapseBlockSecond } = getSelectors();
 
     await t.expect(collapseBlockFirst.getAttribute('aria-expanded')).eql('false');
@@ -50,7 +50,7 @@ function getSelectors() {
     await t.expect(collapseBlockSecond.getAttribute('aria-expanded')).eql('true');
   });
 
-  test.page(getPageUrl({ mode: 'multiple' }))(`Multiple mode`, async t => {
+  test.page(getPageUrl({ selectionMode: 'multiple' }))(`Multiple mode`, async t => {
     const { collapseBlockFirst, collapseBlockSecond } = getSelectors();
 
     await t.expect(collapseBlockFirst.getAttribute('aria-expanded')).eql('false');

@@ -40,8 +40,8 @@
 | className | `string` | - | CSS-класс |
 | expandedDefault | `string \| string[]` | - | Начальное состояние |
 | expanded | `string \| string[]` | - | Controlled состояние |
-| onExpandedChange | `((id: string) => void) \| ((id: string[]) => void)` | - | Controlled обработчик измения состояния |
-| mode | enum AccordionMode: `"single"`, `"multiple"` | - | Режим работы аккордиона |
+| onExpandedChange | `((value: string) => void) \| ((value: string[]) => void)` | - | Controlled обработчик измения состояния |
+| selectionMode | enum SelectionMode: `"single"`, `"multiple"` | - | Режим работы аккордиона |
 ## AccordionSecondary
 ### Props
 | name | type | default value | description |
@@ -50,8 +50,8 @@
 | className | `string` | - | CSS-класс |
 | expandedDefault | `string \| string[]` | - | Начальное состояние |
 | expanded | `string \| string[]` | - | Controlled состояние |
-| onExpandedChange | `((id: string) => void) \| ((id: string[]) => void)` | - | Controlled обработчик измения состояния |
-| mode | enum AccordionMode: `"single"`, `"multiple"` | - | Режим работы аккордиона |
+| onExpandedChange | `((value: string) => void) \| ((value: string[]) => void)` | - | Controlled обработчик измения состояния |
+| selectionMode | enum SelectionMode: `"single"`, `"multiple"` | - | Режим работы аккордиона |
 
 
 [//]: DOCUMENTATION_SECTION_END

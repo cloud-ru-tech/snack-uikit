@@ -31,7 +31,7 @@ export function CustomHeader({ tip, name = 'Ivan Petrov', metadata }: CustomHead
       <div className={styles.headline}>
         <Avatar name={name} showTwoSymbols />
         <Typography.SansHeadlineS>{name}</Typography.SansHeadlineS>
-        {tip && <QuestionTooltip tip={tip} />}
+        {tip && <QuestionTooltip tip={tip} size={QuestionTooltip.sizes.S} />}
       </div>
 
       {metadata && <Typography.SansLabelM>{metadata}</Typography.SansLabelM>}

@@ -31,11 +31,11 @@
   "dependencies": {
     "@snack-ui/button": "0.13.6",
     "@snack-ui/icons": "0.18.1",
+    "@snack-ui/toggles": "0.5.8",
     "@snack-ui/tooltip": "0.7.15",
     "@snack-ui/truncate-string": "0.2.15",
     "@snack-ui/typography": "0.4.4",
     "@snack-ui/utils": "2.0.1",
-    "classnames": "2.3.2",
-    "uncontrollable": "8.0.4"
+    "classnames": "2.3.2"
   }
 }

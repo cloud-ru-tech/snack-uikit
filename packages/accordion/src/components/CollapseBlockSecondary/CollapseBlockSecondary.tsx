@@ -1,14 +1,14 @@
 import cn from 'classnames';
 
+import { useToggleGroup } from '@snack-ui/toggles';
 import { extractSupportProps } from '@snack-ui/utils';
 
 import { CollapseBlockHeaderContainer, CollapseBlockPrivate } from '../../helperComponents';
-import { useAccordion } from '../../hooks';
 import { CollapseBlockProps } from '../../types';
 import styles from './styles.module.scss';
 
 export function CollapseBlockSecondary({ header, children, id, actions, className, ...rest }: CollapseBlockProps) {
-  const { isExpanded, handleExpandedChange } = useAccordion(id);
+  const { isChecked: isExpanded, handleClick: handleExpandedChange } = useToggleGroup(id);
 
   return (
     <CollapseBlockPrivate

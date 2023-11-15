@@ -1,8 +1,7 @@
 import { ReactElement, ReactNode } from 'react';
 
+import { ToggleGroup } from '@snack-ui/toggles';
 import { WithSupportProps } from '@snack-ui/utils';
-
-import { AccordionMode } from './constants';
 
 export type CollapseBlockProps = WithSupportProps<{
   /** Уникальный id блока */
@@ -28,11 +27,11 @@ export type AccordionProps = WithSupportProps<{
         /** Начальное состояние */
         expandedDefault?: string;
         /** Controlled состояние */
-        expanded?: string | string[] | null;
+        expanded?: string;
         /** Controlled обработчик измения состояния */
-        onExpandedChange?(id: string | null): void;
+        onExpandedChange?(value: (string | undefined) | string): void;
         /** Режим работы аккордиона */
-        mode?: AccordionMode.Single;
+        selectionMode?: typeof ToggleGroup.selectionModes.Single;
       }
     | {
         /** Начальное состояние */
@@ -40,8 +39,8 @@ export type AccordionProps = WithSupportProps<{
         /** Controlled состояние */
         expanded?: string[];
         /** Controlled обработчик измения состояния */
-        onExpandedChange?(id: string[]): void;
+        onExpandedChange?(value: (string[] | undefined) | string[]): void;
         /** Режим работы аккордиона */
-        mode: AccordionMode.Multiple;
+        selectionMode: typeof ToggleGroup.selectionModes.Multiple;
       }
   );
