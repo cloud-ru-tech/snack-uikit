@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-11-16)
+
+
+### Bug Fixes
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** fix icon size ([0404e17](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0404e17469dcd857e91da5e2183de19412691744))
+
+
+### BREAKING CHANGES
+
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** add ToggleGroup ([7a398cb](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/7a398cb4e6bbcd760eacdf4839708da7ae1f1761))
+
+
+
+
 ## 0.5.8 (2023-11-09)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-11-16)
+
+
+### BREAKING CHANGES
+
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** use control hook from @snack-ui/toggles ([7883ab8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/7883ab8214b0cc4ed6ad0f1491210f9980efc310))
+
+
+
+
 ## 0.2.1 (2023-11-16)
 
 ### Only dependencies have been changed
