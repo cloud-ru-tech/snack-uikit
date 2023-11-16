@@ -45,6 +45,7 @@ export function ChipChoiceCustom({
   className,
   tabIndex = 0,
   placement = Droplist.placements.BottomStart,
+  widthStrategy = Droplist.widthStrategies.Gte,
   onClearButtonClick,
   showClearButton: showClearButtonProp = true,
   children,
@@ -126,7 +127,7 @@ export function ChipChoiceCustom({
       onOpenChange={onOpenChangeHandler}
       onFocusLeave={handleDroplistFocusLeave}
       triggerClassName={styles.triggerClassName}
-      widthStrategy={Droplist.widthStrategies.Gte}
+      widthStrategy={widthStrategy}
       placement={placement}
       size={DROPLIST_SIZE_MAP[size]}
       data-test-id={CHIP_CHOICE_TEST_IDS.droplist}

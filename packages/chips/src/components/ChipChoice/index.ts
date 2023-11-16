@@ -33,4 +33,5 @@ export namespace ChipChoice {
   export const sizes = Size;
   export const variants = Variant;
   export const placements = Droplist.placements;
+  export const widthStrategies = Droplist.widthStrategies;
 }

@@ -125,6 +125,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | valueToRender | `ReactNode` | - | Отображаемое значение |
 | value | `string \| Date \| string[] \| [Date, Date]` | - | Фактическое значение. Используется для отображения кнопки очистки, если свойство <strong>showClearButton=true</strong> |
 | onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
@@ -144,6 +145,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | value | `string` | - | Значение компонента |
 | defaultValue | `string` | - | Значение компонента по умолчанию |
 | onChange | `(value: string) => void` | - | Колбек смены значения |
@@ -163,6 +165,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | value | `string[]` | - | Значение компонента |
 | defaultValue | `string[]` | - | Значение компонента по умолчанию |
 | onChange | `(value: string[]) => void` | - | Колбек смены значения |
@@ -181,6 +184,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | value | `Date` | - | Значение компонента |
 | defaultValue | `Date` | - | Значение компонента по-умолчанию |
 | onChange | `(value: Date) => void` | - | Колбек смены значения |
@@ -199,6 +203,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | value | `Range` | - | Значение компонента |
 | defaultValue | `Range` | - | Значение компонента по умолчанию |
 | onChange | `(value: Range) => void` | - | Колбек смены значения |

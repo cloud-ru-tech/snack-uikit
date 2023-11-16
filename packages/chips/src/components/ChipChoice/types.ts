@@ -21,5 +21,13 @@ export type ChipChoiceCommonProps = WithSupportProps<
     showClearButton?: boolean;
     /** Расположение выпадающего меню */
     placement?: DroplistProps['placement'];
+    /**
+     * Стратегия управления шириной контейнера поповера
+     * <br> - `Auto` - соответствует ширине контента,
+     * <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире,
+     * <br> - `Eq` - Equal, строго равен ширине таргета.
+     * @default Gte
+     */
+    widthStrategy?: DroplistProps['widthStrategy'];
   }
 >;
