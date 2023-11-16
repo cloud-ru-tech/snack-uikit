@@ -14,6 +14,7 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | tip* | `ReactNode` | - | Содержимое тултипа |
+| disableMaxWidth | `boolean` | - | Отключение ограничения ширины тултипа @default false |
 | className | `string` | - | CSS-класс |
 | triggerClassName | `string` | - | CSS-класс триггера |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |
@@ -34,6 +35,7 @@
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Placement.Top | Положение поповера относительно своего триггера (children). |
+| disableMaxWidth | `boolean` | - | Отключение ограничения ширины тултипа @default false |
 | trigger | enum Trigger: `"hover"`, `"click"` | Trigger.Hover | Условие отображения подсказки |
 | size | enum Size: `"s"`, `"xs"` | Size.Xs | Размер |
 | tooltipClassname | `string` | - | CSS-класс контейнера подсказки |

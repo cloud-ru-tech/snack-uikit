@@ -9,6 +9,8 @@ export type PopoverProps = WithSupportProps<
   {
     /** Контент поповера */
     tip: ReactNode;
+    /** Отключение ограничения ширины поповера @default false */
+    disableMaxWidth?: boolean;
   } & Pick<
     PopoverPrivateProps,
     | 'trigger'
@@ -27,6 +29,7 @@ export function Popover({
   tip,
   trigger = PopoverPrivate.triggers.Click,
   placement = PopoverPrivate.placements.Top,
+  disableMaxWidth = false,
   children,
   ...otherProps
 }: PopoverProps) {
@@ -37,8 +40,13 @@ export function Popover({
   return (
     <PopoverPrivate
       placement={placement}
-      popoverContent={<div className={styles.popoverContainer}>{tip}</div>}
-      arrowClassName={styles.popoverArrow}
+      popoverContent={
+        <div className={styles.popoverContainer} data-disable-max-width={disableMaxWidth}>
+          {tip}
+        </div>
+      }
+      arrowContainerClassName={styles.popoverArrowContainer}
+      arrowElementClassName={styles.popoverArrowElement}
       trigger={trigger}
       hasArrow
       {...otherProps}

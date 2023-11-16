@@ -1,14 +1,35 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tooltip';
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
+
 .tooltipContainer {
   @include composite-var($tooltip-container);
 
   overflow: hidden;
+  box-sizing: border-box;
   color: simple-var($theme-variables, 'sys', 'invert-neutral', 'text-main');
   background-color: simple-var($theme-variables, 'sys', 'invert-neutral', 'background');
+
+  &[data-disable-max-width='true'] {
+    max-width: none;
+  }
 }
 
-.tooltipArrow {
-  color: simple-var($theme-variables, 'sys', 'invert-neutral', 'background');
+.tooltipArrowContainer {
+  @include composite-var($tooltip-tooltip-pointer);
+
+  position: absolute;
+
+  display: flex;
+
+  padding-top: 0;
+  padding-bottom: 0;
+
+  color: $sys-invert-neutral-background;
+}
+
+.tooltipArrowElement {
+  @include composite-var($tooltip-pointer-arrow);
+
+  fill: currentColor;
 }

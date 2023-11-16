@@ -25,7 +25,8 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
         tip={
           args.tip || (
             <div>
-              do not press this button, please
+              do not press this button, please do not press this button, please do not press this button, please do not
+              press this button, please do not press this button, please
               <br />
               <Link
                 href='#'
@@ -48,6 +49,7 @@ export const tooltip: StoryObj<StoryProps> = Template.bind({});
 tooltip.args = {
   trigger: Tooltip.triggers.Hover,
   placement: Tooltip.placements.Top,
+  disableMaxWidth: false,
 };
 tooltip.argTypes = { tip: { type: 'string' } };
 

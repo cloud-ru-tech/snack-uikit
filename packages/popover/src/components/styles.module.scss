@@ -4,10 +4,30 @@
   @include composite-var($popover-container);
 
   overflow: hidden;
+  box-sizing: border-box;
   background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
   box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level5');
+
+  &[data-disable-max-width='true'] {
+    max-width: none;
+  }
 }
 
-.popoverArrow {
+.popoverArrowContainer {
+  @include composite-var($popover-popover-pointer);
+
+  position: absolute;
+
+  display: flex;
+
+  padding-top: 0;
+  padding-bottom: 0;
+
   color: $sys-neutral-background2-level;
+}
+
+.popoverArrowElement {
+  @include composite-var($popover-pointer-arrow);
+
+  fill: currentColor;
 }

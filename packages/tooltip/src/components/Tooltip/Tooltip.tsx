@@ -9,6 +9,8 @@ export type TooltipProps = WithSupportProps<
   {
     /** Содержимое тултипа */
     tip: ReactNode;
+    /** Отключение ограничения ширины тултипа @default false */
+    disableMaxWidth?: boolean;
   } & Pick<
     PopoverPrivateProps,
     'className' | 'triggerClassName' | 'open' | 'onOpenChange' | 'hoverDelayOpen' | 'hoverDelayClose'
@@ -21,6 +23,7 @@ export function Tooltip({
   trigger = Tooltip.triggers.HoverAndFocusVisible,
   placement = Tooltip.placements.Top,
   children,
+  disableMaxWidth = false,
   ...otherProps
 }: TooltipProps) {
   if (!children) {
@@ -30,9 +33,14 @@ export function Tooltip({
   return (
     <PopoverPrivate
       placement={placement}
-      popoverContent={<div className={styles.tooltipContainer}>{tip}</div>}
-      arrowClassName={styles.tooltipArrow}
+      popoverContent={
+        <div className={styles.tooltipContainer} data-disable-max-width={disableMaxWidth}>
+          {tip}
+        </div>
+      }
       trigger={trigger}
+      arrowContainerClassName={styles.tooltipArrowContainer}
+      arrowElementClassName={styles.tooltipArrowElement}
       hasArrow
       {...otherProps}
     >
