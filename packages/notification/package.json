@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/notification",
   "title": "Notification",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,9 +29,9 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/button": "0.13.5",
-    "@snack-ui/chips": "0.6.3",
-    "@snack-ui/droplist": "0.10.5",
+    "@snack-ui/button": "0.13.6",
+    "@snack-ui/chips": "0.7.0",
+    "@snack-ui/droplist": "0.10.6",
     "@snack-ui/icon-predefined": "0.2.5",
     "@snack-ui/icons": "0.18.1",
     "@snack-ui/link": "0.6.3",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2023-11-16)
+
+
+### BREAKING CHANGES
+
+
+* **[FF-3712](https://jira.sbercloud.tech/browse/FF-3712):** chips rename, tokens update, split ChipChoice ([5c2f77e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5c2f77e895a0911f29ef066c99b060af6a28af4b))
+
+
+
+
 ## 0.6.3 (2023-11-09)
 
 ### Only dependencies have been changed

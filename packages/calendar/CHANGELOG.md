@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-11-16)
+
+
+### Features
+
+* **[FF-3712](https://jira.sbercloud.tech/browse/FF-3712):** add size L to calendar ([afb8de7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/afb8de71ce20d2e38e48bc01124746069d14aed3))
+
+
+
+
+
 ## 0.3.12 (2023-11-09)
 
 ### Only dependencies have been changed

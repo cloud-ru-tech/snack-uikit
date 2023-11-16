@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.6 (2023-11-16)
+
+
+### Bug Fixes
+
+* **[FF-3712](https://jira.sbercloud.tech/browse/FF-3712):** add data-test-id to checkbox ([3fb73f4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3fb73f463914b2dd3d77402e62f1f55ee0f79679))
+
+
+
+
+
 ## 0.10.5 (2023-11-09)
 
 ### Only dependencies have been changed

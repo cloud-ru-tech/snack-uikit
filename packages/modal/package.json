@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/modal",
   "title": "Modal",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -29,7 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/button": "0.13.5",
+    "@snack-ui/button": "0.13.6",
     "@snack-ui/icon-predefined": "0.2.5",
     "@snack-ui/icons": "0.18.1",
     "@snack-ui/link": "0.6.3",

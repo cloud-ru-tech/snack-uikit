@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.8 (2023-11-16)
+
+
+### Bug Fixes
+
+* **[FF-3712](https://jira.sbercloud.tech/browse/FF-3712):** chips usage update ([dee75b1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/dee75b1725afdc1a90d734b55c3d18f4f168664f))
+
+
+
+
+
 ## 0.3.7 (2023-11-10)
 
 ### Only dependencies have been changed

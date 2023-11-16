@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.6 (2023-11-16)
+
+### Only dependencies have been changed
+* [@snack-ui/counter@0.3.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
+
+
+
+
+
 ## 0.13.5 (2023-11-08)
 
 ### Only dependencies have been changed
