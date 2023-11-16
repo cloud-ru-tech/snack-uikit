@@ -63,8 +63,11 @@ export type PopoverPrivateProps = WithSupportProps<{
   triggerClassName?: string;
   /** Параметр наличия стрелки у поповера. В размеры стрелки встроен отступ. Дополнительный отступ может быть задан параметром `offset`. У элемента стрелки нет цвета, необходимо задавать его через параметр `arrowClassName`. */
   hasArrow?: boolean;
+
+  /** CSS-класс контейнера стрелки поповера */
+  arrowContainerClassName?: string;
   /** CSS-класс стрелки поповера */
-  arrowClassName?: string;
+  arrowElementClassName?: string;
   /**
    * Отступ поповера от его триггер-элемента (в пикселях).
    * @default 0
@@ -131,7 +134,6 @@ function PopoverPrivateComponent({
   onOpenChange,
   placement: placementProp = Placement.Top,
   hasArrow,
-  arrowClassName,
   offset: offsetProp,
   popoverContent,
   trigger,
@@ -144,6 +146,8 @@ function PopoverPrivateComponent({
   closeOnEscapeKey = true,
   triggerClickByKeys = true,
   fallbackPlacements = DEFAULT_FALLBACK_PLACEMENTS,
+  arrowContainerClassName,
+  arrowElementClassName,
   ...rest
 }: PopoverPrivateProps) {
   const arrowRef = useRef<HTMLDivElement | null>(null);
@@ -247,7 +251,8 @@ function PopoverPrivateComponent({
             placement={placement}
             x={middlewareData.arrow.x}
             y={middlewareData.arrow.y}
-            className={arrowClassName}
+            arrowContainerClassName={arrowContainerClassName}
+            arrowElementClassName={arrowElementClassName}
             arrowRef={arrowRef}
           />
         )}

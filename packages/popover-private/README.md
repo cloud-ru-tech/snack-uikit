@@ -39,7 +39,8 @@ function App() {
 | className | `string` | - | CSS-класс |
 | triggerClassName | `string` | - | CSS-класс триггера |
 | hasArrow | `boolean` | - | Параметр наличия стрелки у поповера. В размеры стрелки встроен отступ. Дополнительный отступ может быть задан параметром `offset`. У элемента стрелки нет цвета, необходимо задавать его через параметр `arrowClassName`. |
-| arrowClassName | `string` | - | CSS-класс стрелки поповера |
+| arrowContainerClassName | `string` | - | CSS-класс контейнера стрелки поповера |
+| arrowElementClassName | `string` | - | CSS-класс стрелки поповера |
 | offset | `number` | 0 | Отступ поповера от его триггер-элемента (в пикселях). |
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
