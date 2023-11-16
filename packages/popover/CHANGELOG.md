@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-11-16)
+
+
+### Features
+
+* **[FF-3701](https://jira.sbercloud.tech/browse/FF-3701):** use self styles for arrow; add max-min width; add disableMaxWidth prop ([4c43f2f](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/4c43f2f59fd907715e0d5d8b0aab76f33b01ba4c))
+
+
+### BREAKING CHANGES
+
+
+* **[FF-3701](https://jira.sbercloud.tech/browse/FF-3701):** remove arrow styles & add arrow classnames into props ([fb9ead8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/fb9ead8355a58cab638f8a4ef66af730566ddd2f))
+
+
+
+
 ## 0.3.8 (2023-11-08)
 
 ### Only dependencies have been changed
