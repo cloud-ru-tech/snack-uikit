@@ -23,3 +23,10 @@ export const DROPLIST_SIZE_MAP = {
   [Size.M]: Droplist.sizes.M,
   [Size.L]: Droplist.sizes.L,
 };
+
+export enum ChipChoiceType {
+  Multi = 'multi',
+  Date = 'date',
+  DateRange = 'date-range',
+  Single = 'single',
+}

@@ -35,7 +35,13 @@ export function ChipChoiceDate({
   const clearValue = () => setSelectedValue(undefined);
 
   return (
-    <ChipChoiceCustom onClearButtonClick={clearValue} value={selectedValue} valueToRender={valueToRender} {...rest}>
+    <ChipChoiceCustom
+      onClearButtonClick={clearValue}
+      value={selectedValue}
+      valueToRender={valueToRender}
+      size={size}
+      {...rest}
+    >
       {({ closeDroplist }) => (
         <Calendar
           mode={Calendar.modes.Date}

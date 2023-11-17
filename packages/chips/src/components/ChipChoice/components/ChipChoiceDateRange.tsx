@@ -43,7 +43,13 @@ export function ChipChoiceDateRange({
   const clearValue = () => setSelectedValue(undefined);
 
   return (
-    <ChipChoiceCustom value={selectedValue} valueToRender={valueToRender} onClearButtonClick={clearValue} {...rest}>
+    <ChipChoiceCustom
+      value={selectedValue}
+      valueToRender={valueToRender}
+      onClearButtonClick={clearValue}
+      size={size}
+      {...rest}
+    >
       {({ closeDroplist }) => (
         <Calendar
           mode={Calendar.modes.Range}
@@ -53,7 +59,8 @@ export function ChipChoiceDateRange({
             setSelectedValue(range);
             closeDroplist();
           }}
-          navigationStartRef={element => element?.focus()}
+          // bug with focus
+          // navigationStartRef={element => element?.focus()}
           onFocusLeave={closeDroplist}
         />
       )}

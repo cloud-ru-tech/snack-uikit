@@ -123,7 +123,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения |
+| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | valueToRender | `ReactNode` | - | Отображаемое значение |
@@ -143,7 +143,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения |
+| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | value | `string` | - | Значение компонента |
@@ -163,7 +163,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения |
+| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | value | `string[]` | - | Значение компонента |
@@ -182,7 +182,7 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения |
+| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | value | `Date` | - | Значение компонента |
@@ -201,13 +201,25 @@ import { PlaceholderSVG } from '@snack-ui/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения |
+| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
 | value | `Range` | - | Значение компонента |
 | defaultValue | `Range` | - | Значение компонента по умолчанию |
 | onChange | `(value: Range) => void` | - | Колбек смены значения |
 | valueFormatter | `(value?: Range) => string` | - | Колбек формирующий строковое представление выбранного значения. Принимает массив выбранных значений |
+## ChipChoiceRow
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| filters* | `(Pick<{ id: string; } & { type: ChipChoiceType.Multi; } & { 'data-test-id'?: string; } & AriaAttributes & Partial<BaseChipProps> & { ...; } & { ...; }, "data-test-id" \| ... 9 more ... \| "type"> \| Pick<...> \| Pick<...> \| Pick<...>)[]` | - | Массив чипов |
+| value | `FiltersState` | - | Состояние фильтров |
+| defaultValue | `Partial<TState>` | - | Начальное состояние фильтров |
+| onChange | `(filters: TState) => void` | - | Колбек изменения состояния фильтров |
+| size | enum Size: `"xs"`, `"s"`, `"m"` | Size.S | Размер @default Size.S |
+| className | `string` | - | CSS-класс |
+| showClearAllButton | `boolean` | true | Скрыть/показать кнопку очиски @default true |
+| clearAllButtonLabel | `string` | Clear all | Текст кнопки очистки @default 'Clear all' |
 
 
 [//]: DOCUMENTATION_SECTION_END

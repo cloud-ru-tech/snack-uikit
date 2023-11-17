@@ -30,6 +30,10 @@ export const CHIP_CHOICE_TEST_IDS = {
   droplist: 'chip-choice__droplist',
 };
 
+export const CHIP_CHOICE_ROW_IDS = {
+  clearAllButton: 'chip-choice-row__clear-all-button',
+};
+
 export const CHIP_TOGGLE_TEST_IDS = {
   input: 'chip-toggle__input',
   icon: 'chip-toggle__icon',

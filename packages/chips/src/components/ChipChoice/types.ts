@@ -17,7 +17,7 @@ export type ChipChoiceCommonProps = WithSupportProps<
     size?: Size;
     /** Колбек обработки клика */
     onClick?: MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
-    /** Отображение кнопки очистки значения */
+    /** Отображение кнопки очистки значения @default true*/
     showClearButton?: boolean;
     /** Расположение выпадающего меню */
     placement?: DroplistProps['placement'];

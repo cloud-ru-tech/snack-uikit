@@ -13,6 +13,7 @@ import {
   ChipChoiceSingle,
   ChipChoiceSingleProps,
 } from './components';
+import { ChipChoiceType } from './constants';
 
 export type { FilterOption } from './types';
 
@@ -34,4 +35,5 @@ export namespace ChipChoice {
   export const variants = Variant;
   export const placements = Droplist.placements;
   export const widthStrategies = Droplist.widthStrategies;
+  export const types = ChipChoiceType;
 }
