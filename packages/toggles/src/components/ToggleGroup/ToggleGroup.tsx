@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect } from 'react';
+import { ReactNode, useCallback } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { SelectionMode } from '../../constants';
@@ -37,7 +37,9 @@ export function ToggleGroup({
   selectionMode = SelectionMode.Single,
   defaultValue,
 }: ToggleGroupProps) {
-  const [value, setValue] = useUncontrolledProp<string | string[] | undefined>(valueProp, defaultValue, onChangeProp);
+  const [value, setValue] = useUncontrolledProp<string | string[] | undefined>(valueProp, defaultValue, cb => {
+    onChangeProp?.(cb(value));
+  });
 
   const onChange = useCallback(
     (newValue: string) => {
@@ -47,42 +49,24 @@ export function ToggleGroup({
             return newValue;
           }
 
-          return '';
+          return undefined;
         });
       }
 
       return setValue((oldValues: string[] | undefined = []) => {
-        if (oldValues.includes(newValue)) {
-          return oldValues.filter(oldValue => oldValue !== newValue);
+        if (Array.isArray(oldValues)) {
+          if (oldValues.includes(newValue)) {
+            return oldValues.filter(oldValue => oldValue !== newValue);
+          }
+
+          return oldValues.concat(newValue);
         }
 
-        return oldValues.concat(newValue);
+        return undefined;
       });
     },
     [selectionMode, setValue],
   );
-
-  useEffect(() => {
-    if (selectionMode === SelectionMode.Single) {
-      setValue((value: string[] | string) => {
-        if (Array.isArray(value)) {
-          return undefined;
-        }
-
-        return value;
-      });
-
-      return;
-    }
-
-    setValue((value: string[] | string) => {
-      if (!Array.isArray(value)) {
-        return undefined;
-      }
-
-      return value;
-    });
-  }, [selectionMode, setValue]);
 
   return (
     <ToggleGroupContext.Provider value={{ value, onChange, selectionMode }}>{children}</ToggleGroupContext.Provider>
