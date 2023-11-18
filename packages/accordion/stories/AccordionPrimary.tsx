@@ -17,12 +17,10 @@ const meta: Meta = {
 export default meta;
 
 const Template: StoryFn<AccordionProps> = ({ selectionMode }: AccordionProps) => {
-  const [expanded, setExpanded] = useState<string | string[] | undefined>(
-    selectionMode === AccordionPrimary.selectionModes.Single ? undefined : [],
-  );
+  const [expanded, setExpanded] = useState<string | string[] | undefined>(undefined);
 
   useEffect(() => {
-    setExpanded(selectionMode === AccordionPrimary.selectionModes.Single ? undefined : []);
+    setExpanded(undefined);
   }, [selectionMode]);
 
   return (

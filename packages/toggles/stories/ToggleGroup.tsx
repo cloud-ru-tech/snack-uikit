@@ -25,12 +25,10 @@ const ITEMS = [
 ];
 
 const Template: StoryFn<ToggleGroupProps> = ({ selectionMode = SelectionMode.Single }) => {
-  const [value, setValue] = useState<string | string[] | undefined>(
-    selectionMode === ToggleGroup.selectionModes.Single ? undefined : [],
-  );
+  const [value, setValue] = useState<string | string[] | undefined>(undefined);
 
   useEffect(() => {
-    setValue(selectionMode === ToggleGroup.selectionModes.Single ? undefined : []);
+    setValue(undefined);
   }, [selectionMode]);
 
   return (

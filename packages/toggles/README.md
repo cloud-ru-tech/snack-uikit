@@ -175,7 +175,7 @@ return (
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| __@iterator@829* | `() => IterableIterator<string>` | - | Iterator |
+| __@iterator@977* | `() => IterableIterator<string>` | - | Iterator |
 | at* | `(index: number) => string` | - | Returns a new String consisting of the single UTF-16 code unit located at the specified index. @param index The zero-based index of the desired code unit. A negative index will count back from the last item. |
 | replaceAll* | `{ (searchValue: string \| RegExp, replaceValue: string): string; (searchValue: string \| RegExp, replacer: (substring: string, ...args: any[]) => string): string; }` | - | Replace all instances of a substring in a string, using a regular expression or search string. @param searchValue A string to search for. @param replaceValue A string containing the text to replace for every successful match of searchValue in this string. @param searchValue A string to search for. @param replacer A function that returns the replacement text. |
 | matchAll* | `(regexp: RegExp) => IterableIterator<RegExpMatchArray>` | - | Matches a string with a regular expression, and returns an iterable of matches containing the results of that search. @param regexp A variable name or string literal containing the regular expression pattern and flags. |
