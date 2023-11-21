@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-11-21)
+
+
+### Features
+
+* **[FF-3711](https://jira.sbercloud.tech/browse/FF-3711):** update rows volume chip view ([bbd7a80](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/bbd7a80b3bfd273f182cc1e8f9e96bf9d3e924df))
+
+
+
+
+
 ## 0.5.10 (2023-11-21)
 
 ### Only dependencies have been changed

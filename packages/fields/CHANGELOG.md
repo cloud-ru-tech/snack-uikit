@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2023-11-21)
+
+
+### Features
+
+* **[FF-3711](https://jira.sbercloud.tech/browse/FF-3711):** change copy event indication ([9ee3cea](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9ee3ceaec885b05b2c29ce8494165a57a8d161d5))
+
+
+
+
+
 ## 0.7.16 (2023-11-21)
 
 ### Only dependencies have been changed

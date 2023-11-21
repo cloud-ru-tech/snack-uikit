@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/tabs",
   "title": "Tabs",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "sideEffects": [
     "*.css",
     "*.woff",

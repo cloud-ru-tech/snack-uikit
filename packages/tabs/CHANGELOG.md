@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.16 (2023-11-21)
+
+
+### Bug Fixes
+
+* **[FF-3711](https://jira.sbercloud.tech/browse/FF-3711):** add divider into TabBar ([06a9c52](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/06a9c52939363647780b09322b0ba88a3b3748ff))
+
+
+
+
+
 ## 0.3.15 (2023-11-16)
 
 ### Only dependencies have been changed

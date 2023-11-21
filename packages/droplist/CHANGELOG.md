@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.10 (2023-11-21)
+
+
+### Bug Fixes
+
+* **[FF-3711](https://jira.sbercloud.tech/browse/FF-3711):** remove grid style from baseItem ([0f0bfa4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0f0bfa41bb425d01f7925e1f5ce833592ae72d2c))
+
+
+
+
+
 ## 0.10.9 (2023-11-21)
 
 ### Only dependencies have been changed
