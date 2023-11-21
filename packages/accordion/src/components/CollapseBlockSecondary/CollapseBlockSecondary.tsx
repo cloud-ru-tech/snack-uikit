@@ -8,7 +8,7 @@ import { CollapseBlockProps } from '../../types';
 import styles from './styles.module.scss';
 
 export function CollapseBlockSecondary({ header, children, id, actions, className, ...rest }: CollapseBlockProps) {
-  const { isChecked: isExpanded, handleClick: handleExpandedChange } = useToggleGroup(id);
+  const { isChecked: isExpanded, handleClick: handleExpandedChange } = useToggleGroup({ value: id });
 
   return (
     <CollapseBlockPrivate
