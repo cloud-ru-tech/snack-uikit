@@ -10,6 +10,7 @@ import styles from './styles.module.scss';
 
 type StoryType = Omit<TabsProps, 'value'> & {
   defaultValue?: string;
+  disableDivider?: boolean;
   type: Type;
   'data-test-id'?: string;
 };
@@ -39,10 +40,10 @@ const tabsData = [
   { value: 'tab16', label: 'Tab 16' },
 ];
 
-const Template: StoryFn<StoryType> = function ({ type, defaultValue, ...args }) {
+const Template: StoryFn<StoryType> = function ({ type, defaultValue, disableDivider, ...args }) {
   return (
     <Tabs {...args} defaultValue={defaultValue}>
-      <Tabs.TabBar type={type} {...extractSupportProps(args)}>
+      <Tabs.TabBar {...(type === Type.Secondary ? { disableDivider, type } : { type })} {...extractSupportProps(args)}>
         {tabsData.map(props => (
           <Tabs.Tab key={props.value} {...props} />
         ))}
@@ -62,6 +63,7 @@ const tabIds = Object.values(tabsData).map(({ value }) => value);
 tabs.args = {
   type: Type.Primary,
   defaultValue: tabIds[0],
+  disableDivider: false,
 };
 
 tabs.argTypes = {
@@ -84,6 +86,12 @@ tabs.argTypes = {
     options: tabIds,
     control: {
       type: 'select',
+    },
+  },
+  disableDivider: {
+    if: {
+      arg: 'type',
+      eq: Type.Secondary,
     },
   },
 };

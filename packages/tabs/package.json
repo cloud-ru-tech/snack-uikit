@@ -31,6 +31,7 @@
   "dependencies": {
     "@snack-ui/button": "0.13.6",
     "@snack-ui/counter": "0.3.5",
+    "@snack-ui/divider": "1.2.4",
     "@snack-ui/icons": "0.18.1",
     "@snack-ui/typography": "0.4.4",
     "@snack-ui/utils": "2.0.1",

@@ -52,8 +52,9 @@ const [value, setValue] = useState('tab1');
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | children* | `ReactElement<TabProps, string \| JSXElementConstructor<any>>[]` | - | Контент |
-| type | enum Type: `"primary"`, `"secondary"` | - | Тип панели табов: <br> - `Primary` - когда панель табов является верхнеуровневым элементом страницы, замещающим заголовок. <br> - `Secondary` - когда панель табов расположена на том же уровне что и остальной контент |
 | className | `string` | - | CSS-класс |
+| type | enum Type: `"primary"`, `"secondary"` | - | Тип панели табов: @default Type.Primary <br> - `Primary` - когда панель табов является верхнеуровневым элементом страницы, замещающим заголовок. <br> - `Secondary` - когда панель табов расположена на том же уровне что и остальной контент |
+| disableDivider | `boolean` | - |  |
 ## Tabs.TabContent
 ### Props
 | name | type | default value | description |

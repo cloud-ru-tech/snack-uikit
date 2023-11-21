@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { Children, KeyboardEvent, ReactElement, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
+import { Divider } from '@snack-ui/divider';
 import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
 
 import { Type } from '../../constants';
@@ -11,17 +12,28 @@ import { TabProps } from '../Tab';
 import { useFocusControl, useScrollContainer } from './hooks';
 import styles from './styles.module.scss';
 
-export type TabBarProps = WithSupportProps<{
-  /** Контент */
-  children: ReactElement<TabProps>[];
-  /**
-   * Тип панели табов:
-   * <br> - `Primary` - когда панель табов является верхнеуровневым элементом страницы, замещающим заголовок.
-   * <br> - `Secondary` - когда панель табов расположена на том же уровне что и остальной контент
-   */
-  type?: Type;
-  className?: string;
-}>;
+export type TabBarProps = WithSupportProps<
+  {
+    /** Контент */
+    children: ReactElement<TabProps>[];
+
+    className?: string;
+  } & (
+    | {
+        /**
+         * Тип панели табов: @default Type.Primary
+         * <br> - `Primary` - когда панель табов является верхнеуровневым элементом страницы, замещающим заголовок.
+         * <br> - `Secondary` - когда панель табов расположена на том же уровне что и остальной контент
+         */
+        type?: Type.Primary;
+        disableDivider?: never;
+      }
+    | {
+        type: Type.Secondary;
+        disableDivider?: boolean;
+      }
+  )
+>;
 
 type MarkerPosition = {
   left: number;
@@ -116,11 +128,17 @@ export function TabBar({ children, className, type = Type.Primary, ...otherProps
   return (
     <div className={cn(styles.tabBar, className)} role='tablist' {...extractSupportProps(otherProps)}>
       <ScrollContainer className={styles.scrollContainer} innerRef={scrollContainerRef}>
+        {!otherProps.disableDivider && (
+          <span>
+            <Divider weight={Divider.weights.Regular} className={styles.divider} />
+          </span>
+        )}
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div className={styles.tabsRow} data-type={type} onKeyDown={handleKeyDown}>
           <TabBarContext.Provider value={{ onSelect: onSelectHandler, type, focusedTab, onFocus: onFocusHandler }}>
             {children}
           </TabBarContext.Provider>
+
           <div className={styles.marker} style={markerPosition} data-type={type} />
         </div>
       </ScrollContainer>
