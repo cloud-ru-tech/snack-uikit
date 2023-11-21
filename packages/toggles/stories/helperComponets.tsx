@@ -7,7 +7,7 @@ export type ToggleCardProps = {
 };
 
 export function ToggleCard({ id, label }: ToggleCardProps) {
-  const { isChecked, handleClick } = useToggleGroup(id);
+  const { isChecked, handleClick } = useToggleGroup({ value: id });
 
   return (
     <button

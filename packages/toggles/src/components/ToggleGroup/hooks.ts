@@ -3,7 +3,11 @@ import { useCallback, useMemo } from 'react';
 import { SelectionMode } from '../../constants';
 import { useToggleGroupContext } from '../../context';
 
-export function useToggleGroup(itemValue: string) {
+type UseToggleGroupProps = {
+  value: string;
+};
+
+export function useToggleGroup({ value: itemValue }: UseToggleGroupProps) {
   const { value, onChange, selectionMode } = useToggleGroupContext();
 
   const isChecked = useMemo(() => {
