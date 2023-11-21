@@ -70,10 +70,6 @@ export function getButtonCopyValue(wrapper: Selector) {
   return wrapper.find(dataTestIdSelector('button-copy-value'));
 }
 
-export function getCopyValueTooltip() {
-  return Selector(dataTestIdSelector('button-copy-value__tooltip'));
-}
-
 export function getButtonHideValue(wrapper: Selector) {
   return wrapper.find(dataTestIdSelector('button-hide-value'));
 }

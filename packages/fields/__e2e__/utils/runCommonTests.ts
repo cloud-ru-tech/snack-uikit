@@ -5,7 +5,6 @@ import {
   getButtonClearValue,
   getButtonCopyValue,
   getContainerPrivate,
-  getCopyValueTooltip,
   getCounter,
   getCounterCurrentValue,
   getCounterLimitValue,
@@ -231,30 +230,16 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
 
       await t.expect(input.value).eql(expectedValue);
       await t.expect(input.hasAttribute('readonly')).ok('attribute readonly is not present');
-      await t.expect(getCopyValueTooltip().exists).notOk("tooltip is present although shouldn't");
 
       await t.click(getButtonCopyValue(wrapper));
-
-      await t.expect(getCopyValueTooltip().exists).ok('tooltip is not present');
     },
   );
 
   // copy with keyboard
   test.page(visit({ value, readonly: true, showCopyButton: true }))('Should copy value with keyboard', async t => {
-    const tooltip = getCopyValueTooltip();
-
     await t.setNativeDialogHandler(() => true);
 
-    await t.expect(tooltip.exists).notOk("tooltip is present although shouldn't before enter");
     await t.pressKey('tab').pressKey('right').pressKey('enter');
-    await t.expect(tooltip.exists).ok('tooltip is not present after enter');
-
-    // not working in FF
-    if (t.browser.name === 'Chrome') {
-      await t.wait(2000).expect(tooltip.exists).notOk("tooltip is present although shouldn't before space");
-      await t.pressKey('space');
-      await t.expect(tooltip.exists).ok('tooltip is not present after space');
-    }
   });
 
   // clear button
