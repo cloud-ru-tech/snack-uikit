@@ -22,13 +22,13 @@ $typography: (
 );
 
 .headline {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
+  display: flex;
   align-items: center;
 }
 
 .option {
   overflow: hidden;
+  flex: 1;
   color: simple-var($sys-neutral-text-main);
 }
 
