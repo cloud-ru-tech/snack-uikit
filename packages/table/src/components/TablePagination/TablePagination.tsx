@@ -3,7 +3,6 @@ import { useCallback, useMemo } from 'react';
 
 import { ChipChoice } from '@snack-ui/chips';
 import { Pagination } from '@snack-ui/pagination';
-import { Typography } from '@snack-ui/typography';
 
 import styles from './styles.module.scss';
 
@@ -17,7 +16,7 @@ export type TablePaginationProps<TData> = {
 export function TablePagination<TData>({
   table,
   options: optionsProp,
-  optionsLabel = 'Rows volume',
+  optionsLabel = 'Rows volume: ',
 }: TablePaginationProps<TData>) {
   const handlePaginationOnChange = useCallback(
     (pageIndex: number) => {
@@ -56,19 +55,15 @@ export function TablePagination<TData>({
       )}
 
       {options && table.getRowModel().rows.length >= Number(options[0].value) && (
-        <div className={styles.rowsVolumeWrapper}>
-          {optionsLabel && (
-            <Typography.SansBodyS className={styles.rowsVolumeLabel}>{optionsLabel}</Typography.SansBodyS>
-          )}
-
-          <ChipChoice.Single
-            value={String(tablePaginationState.pageSize)}
-            onChange={handleRowsVolumeOnChange}
-            placement={ChipChoice.placements.Top}
-            options={options}
-            showClearButton={false}
-          />
-        </div>
+        <ChipChoice.Single
+          value={String(tablePaginationState.pageSize)}
+          onChange={handleRowsVolumeOnChange}
+          placement={ChipChoice.placements.TopEnd}
+          options={options}
+          label={optionsLabel}
+          widthStrategy={ChipChoice.widthStrategies.Auto}
+          showClearButton={false}
+        />
       )}
     </div>
   );

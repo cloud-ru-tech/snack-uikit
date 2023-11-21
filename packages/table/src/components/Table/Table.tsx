@@ -91,7 +91,7 @@ export type TableProps<TData extends object> = WithSupportProps<{
   /** Параметры отвечают за пагинацию в таблице <br>
    * <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br>
    * <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу <br>
-   * <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу @default 'Rows volume' <br>
+   * <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу @default 'Rows volume: ' <br>
    * <strong>onChange</strong>: Колбэк на изменение пагинации
    *  */
   pagination?: {
