@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.1 (2023-11-21)
+
+
+### Bug Fixes
+
+* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** remove useless useEffect from ToggleGroup ([9f53c2e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9f53c2ecf7e61d5ea4e8be3cfa6d1e70caeac821))
+* **[FF-3755](https://jira.sbercloud.tech/browse/FF-3755):** change hook typings ([1fd4f9b](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/1fd4f9bd35e2d94128ac1b3749065ea4fbd4ea5c))
+
+
+
+
+
 # 0.6.0 (2023-11-16)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2023-11-21)
+
+
+### Features
+
+* **[FF-3755](https://jira.sbercloud.tech/browse/FF-3755):** add chipChoiceRow ([a87afab](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/a87afab118c90625cee26382d6093207857fe3ec))
+* **[FF-3755](https://jira.sbercloud.tech/browse/FF-3755):** add withwidthStrategies prop ([9855be6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9855be67d295c24172d7471482e5f0bcf7eac75c))
+
+
+
+
+
 ## 0.7.2 (2023-11-16)
 
 ### Only dependencies have been changed
