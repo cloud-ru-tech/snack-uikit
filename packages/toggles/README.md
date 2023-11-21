@@ -88,9 +88,6 @@ return (
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек потери фокуса |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек приобретения фокуса |
 | className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelPosition | enum LabelPosition: `"left"`, `"right"` | - | Расположение лейбла |
-| width | enum Width: `"auto"`, `"full"` | - | Ширина <br> - `auto` автоматическое <br> - `full` все доступное место по ширине (игнорируется когда не передан проп label) |
 | size | enum Size: `"s"`, `"m"` | Size.M | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 | indeterminate | `boolean` | - | Состояние частичного выбора |
@@ -112,9 +109,6 @@ return (
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек потери фокуса |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек приобретения фокуса |
 | className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelPosition | enum LabelPosition: `"left"`, `"right"` | - | Расположение лейбла |
-| width | enum Width: `"auto"`, `"full"` | - | Ширина <br> - `auto` автоматическое <br> - `full` все доступное место по ширине (игнорируется когда не передан проп label) |
 | size | enum Size: `"s"`, `"m"` | Size.M | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 | showIcon | `boolean` | - | Показывать ли иконку в переключателе |
@@ -135,9 +129,6 @@ return (
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек потери фокуса |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек приобретения фокуса |
 | className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelPosition | enum LabelPosition: `"left"`, `"right"` | - | Расположение лейбла |
-| width | enum Width: `"auto"`, `"full"` | - | Ширина <br> - `auto` автоматическое <br> - `full` все доступное место по ширине (игнорируется когда не передан проп label) |
 | size | enum Size: `"s"`, `"m"` | - | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 ## Favorite
@@ -156,9 +147,6 @@ return (
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек потери фокуса |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек приобретения фокуса |
 | className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelPosition | enum LabelPosition: `"left"`, `"right"` | - | Расположение лейбла |
-| width | enum Width: `"auto"`, `"full"` | - | Ширина <br> - `auto` автоматическое <br> - `full` все доступное место по ширине (игнорируется когда не передан проп label) |
 | size | enum Size: `"s"`, `"m"` | Size.M | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 | icon | enum FavoriteIcon: `"star"`, `"heart"` | FavoriteIcon.Heart | Иконка |

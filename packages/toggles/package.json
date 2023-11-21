@@ -30,7 +30,6 @@
   "scripts": {},
   "dependencies": {
     "@snack-ui/icons": "0.18.1",
-    "@snack-ui/typography": "0.4.4",
     "@snack-ui/utils": "2.0.1",
     "classnames": "2.3.2",
     "merge-refs": "1.2.1",

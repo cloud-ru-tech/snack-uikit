@@ -1,9 +1,10 @@
+import cn from 'classnames';
 import { forwardRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { LabelPosition, Mode, Size, Width } from '../../constants';
+import { Mode, Size } from '../../constants';
 import { TogglePrivateProps } from '../../types';
-import { ToggleLayout } from '../ToggleLayout';
+import { getVisualStateAttributes } from '../../utils';
 import styles from './styles.module.scss';
 
 export const TogglePrivate = forwardRef<HTMLInputElement, TogglePrivateProps>(function TogglePrivate(
@@ -16,10 +17,7 @@ export const TogglePrivate = forwardRef<HTMLInputElement, TogglePrivateProps>(fu
     onFocus,
     disabled,
     className,
-    label,
     size = Size.M,
-    labelPosition = LabelPosition.Right,
-    width = Width.Auto,
     mode = Mode.Checkbox,
     'data-test-id': testId,
     ...otherProps
@@ -39,15 +37,13 @@ export const TogglePrivate = forwardRef<HTMLInputElement, TogglePrivateProps>(fu
   };
 
   return (
-    <ToggleLayout
-      className={className}
-      label={label}
-      labelPosition={labelPosition}
-      width={width}
-      size={size}
+    <span
+      className={cn(className, styles.toggleLayout)}
+      data-size={size}
       data-test-id={testId}
-      visualState={visualState}
-      onHover={setHover}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      {...getVisualStateAttributes(visualState)}
     >
       {render(visualState)}
       <input
@@ -68,6 +64,6 @@ export const TogglePrivate = forwardRef<HTMLInputElement, TogglePrivateProps>(fu
           onBlur?.(event);
         }}
       />
-    </ToggleLayout>
+    </span>
   );
 });

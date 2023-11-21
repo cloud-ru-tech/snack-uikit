@@ -2,7 +2,7 @@ import { FocusEventHandler, MouseEventHandler, ReactNode, RefObject } from 'reac
 
 import { WithSupportProps } from '@snack-ui/utils';
 
-import { LabelPosition, Mode, Size, Width } from './constants';
+import { Mode, Size } from './constants';
 
 export type InputVisualState = {
   focusVisible: boolean;
@@ -16,16 +16,6 @@ export type DataAttributes = Record<`data-${string}`, string | boolean>;
 
 export type TogglePrivateProps = WithSupportProps<{
   className?: string;
-  /** Лейбл */
-  label?: string;
-  /** Расположение лейбла */
-  labelPosition?: LabelPosition;
-  /**
-   * Ширина
-   * <br> - `auto` автоматическое
-   * <br> - `full` все доступное место по ширине (игнорируется когда не передан проп label)
-   */
-  width?: Width;
   /** Размер */
   size?: Size;
   /** Колбек рендера компонента */
@@ -74,9 +64,6 @@ export type ToggleProps = WithSupportProps<
     | 'onBlur'
     | 'onFocus'
     | 'className'
-    | 'label'
-    | 'labelPosition'
-    | 'width'
     | 'size'
   > & {
     inputRef?: RefObject<HTMLInputElement>;

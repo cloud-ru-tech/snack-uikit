@@ -1,4 +1,4 @@
-import { LabelPosition, Mode, Size, Width } from '../../constants';
+import { Mode, Size } from '../../constants';
 import { ToggleProps } from '../../types';
 import { getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
@@ -27,6 +27,4 @@ export function Radio({ inputRef, 'data-test-id': dataTestId, ...restProps }: Ra
   );
 }
 
-Radio.labelPositions = LabelPosition;
 Radio.sizes = Size;
-Radio.width = Width;

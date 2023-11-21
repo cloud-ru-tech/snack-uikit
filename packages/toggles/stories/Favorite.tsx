@@ -4,7 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Favorite, FavoriteProps } from '../src';
-import { FavoriteIcon, LabelPosition, Size, Width } from '../src/constants';
+import { FavoriteIcon, Size } from '../src/constants';
 
 const meta: Meta = {
   title: 'Components/Toggles/Favorite',
@@ -18,9 +18,6 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => <Favorite {...args} />;
 export const favorite: StoryObj<StoryProps> = Template.bind({});
 
 favorite.args = {
-  label: 'Text body',
-  labelPosition: LabelPosition.Right,
-  width: Width.Auto,
   size: Size.M,
   icon: FavoriteIcon.Star,
 };

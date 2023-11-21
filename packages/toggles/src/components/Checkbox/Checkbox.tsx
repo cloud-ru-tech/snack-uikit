@@ -4,7 +4,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { CheckSVG, MinusSVG } from '@snack-ui/icons';
 
-import { LabelPosition, Size, Width } from '../../constants';
+import { Size } from '../../constants';
 import { ToggleProps } from '../../types';
 import { getIconSize, getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
@@ -69,6 +69,4 @@ export function Checkbox({
   );
 }
 
-Checkbox.labelPositions = LabelPosition;
 Checkbox.sizes = Size;
-Checkbox.width = Width;

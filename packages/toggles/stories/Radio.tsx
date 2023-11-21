@@ -4,7 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Radio, RadioProps } from '../src';
-import { LabelPosition, Size, Width } from '../src/constants';
+import { Size } from '../src/constants';
 
 const meta: Meta = {
   title: 'Components/Toggles/Radio',
@@ -18,9 +18,6 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => <Radio {...args} />;
 export const radio: StoryObj<StoryProps> = Template.bind({});
 
 radio.args = {
-  label: 'Text body',
-  labelPosition: LabelPosition.Right,
-  width: Width.Auto,
   size: Size.M,
 };
 

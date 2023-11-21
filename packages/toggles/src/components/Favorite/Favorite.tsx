@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { HeartFilledSVG, HeartSVG, StarFilledSVG, StarSVG } from '@snack-ui/icons';
 
-import { FavoriteIcon, LabelPosition, Size, Width } from '../../constants';
+import { FavoriteIcon, Size } from '../../constants';
 import { ToggleProps } from '../../types';
 import { getIconSize, getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
@@ -51,6 +51,4 @@ export function Favorite({
   );
 }
 
-Favorite.labelPositions = LabelPosition;
 Favorite.sizes = Size;
-Favorite.width = Width;

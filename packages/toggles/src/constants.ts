@@ -3,16 +3,6 @@ export enum Mode {
   Radio = 'radio',
 }
 
-export enum LabelPosition {
-  Left = 'left',
-  Right = 'right',
-}
-
-export enum Width {
-  Auto = 'auto',
-  Full = 'full',
-}
-
 export enum Size {
   S = 's',
   M = 'm',

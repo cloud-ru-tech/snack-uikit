@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { CheckSVG, CrossSVG } from '@snack-ui/icons';
 
-import { LabelPosition, Size, Width } from '../../constants';
+import { Size } from '../../constants';
 import { ToggleProps } from '../../types';
 import { getIconSize, getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
@@ -47,6 +47,4 @@ export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, size = 
   );
 }
 
-Switch.labelPositions = LabelPosition;
 Switch.sizes = Size;
-Switch.width = Width;
