@@ -123,6 +123,9 @@
     },
     {
       "path": "./tree"
+    },
+    {
+      "path": "./timeline"
     }
   ],
   "compilerOptions": {

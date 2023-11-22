@@ -1,0 +1,52 @@
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-timeline';
+@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+
+$positions: 'center', 'end';
+
+.trackLine {
+  height: 100%;
+  width: $border-timeline-track-line-solid-border-width;
+  background: $sys-neutral-decor-default;
+
+  &[data-style='dashed'] {
+    background: repeating-linear-gradient(to bottom, transparent 0 $dimension-050m, $sys-neutral-decor-default 0 #{calc($dimension-1m + $dimension-050m)});
+  }
+}
+
+.track {
+  @include composite-var($timeline-track-container);
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &[data-dot-variant='default'] {
+    .trackLine {
+      &[data-style='dashed'] {
+        background-position-y: #{calc($dimension-0m - $dimension-1m)};
+      }
+    }
+  }
+
+  &[data-dot-variant='subEvent'] {
+    .trackLine {
+      &[data-style='dashed'] {
+        background-position-y: #{calc($dimension-0m - $dimension-050m)};
+      }
+    }
+  }
+
+  @each $position in $positions {
+    &[data-position='#{$position}'] {
+      .trackLinePre {
+        position: absolute;
+        top: 0;
+
+        @include composite-var($timeline-track-line-before-height);
+        min-height: $size-timeline-track-line-before-height;
+      }
+    }
+  }
+}
