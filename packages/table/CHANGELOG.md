@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.2 (2023-11-22)
+
+
+### Bug Fixes
+
+* **[FF-3711](https://jira.sbercloud.tech/browse/FF-3711):** fix align sort icon in header ([c527892](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c52789250585c3d778743175ad6168dfe816e172))
+
+
+
+
+
 ## 0.6.1 (2023-11-22)
 
 ### Only dependencies have been changed
