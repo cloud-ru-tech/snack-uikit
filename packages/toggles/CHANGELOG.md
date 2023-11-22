@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2023-11-22)
+
+
+### BREAKING CHANGES
+
+
+* **[FF-3774](https://jira.sbercloud.tech/browse/FF-3774):** remove useless label from toggles ([5b19694](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5b1969476432a3201d9f5f7ecb8b172867ab731e))
+
+
+
+
 ## 0.6.1 (2023-11-21)
 
 

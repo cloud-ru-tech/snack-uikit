@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/accordion",
   "title": "Accordion",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -31,7 +31,7 @@
   "dependencies": {
     "@snack-ui/button": "0.13.6",
     "@snack-ui/icons": "0.18.1",
-    "@snack-ui/toggles": "0.6.1",
+    "@snack-ui/toggles": "0.7.0",
     "@snack-ui/tooltip": "0.8.0",
     "@snack-ui/truncate-string": "0.2.16",
     "@snack-ui/typography": "0.4.4",
