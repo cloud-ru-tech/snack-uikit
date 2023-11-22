@@ -58,7 +58,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     accessorKey: 'col2',
     accessorFn: accessorFn('col2'),
     header: renderHeader,
-    size: 140,
+    size: 200,
     pinned: Table.columnPinPositions.Left,
     enableSorting: true,
   },

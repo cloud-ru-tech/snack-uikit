@@ -53,12 +53,10 @@
 .tableHeaderCellName {
   @include composite-var($table-head-name-layout);
 
-  display: flex;
-  flex-grow: 1;
+  display: inline-flex;
   align-items: center;
 
   box-sizing: border-box;
-  width: 100%;
   min-width: 0;
 
   color: simple-var($sys-neutral-text-light);
