@@ -33,6 +33,7 @@ import { Link } from '@snack-ui/link';
 | className | `string` | - | CSS-класс |
 | href | `string` | # | Ссылка |
 | target | `HTMLAttributeAnchorTarget` | Target.Blank | HTML-атрибут target |
+| download | `string` | - | HTML-атрибут download |
 | onClick | `MouseEventHandler<HTMLAnchorElement>` | - | Колбек обработки клика |
 | size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
 | external | `boolean` | - | Ведет ли ссылка на внешний ресурс (добавляет иконку если true) |

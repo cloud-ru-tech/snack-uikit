@@ -17,6 +17,8 @@ export type LinkProps = WithSupportProps<{
   href?: string;
   /** HTML-атрибут target */
   target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
+  /** HTML-атрибут download */
+  download?: string;
   /** Колбек обработки клика */
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   /** Размер */
@@ -35,6 +37,7 @@ export function Link({
   className,
   href = '#',
   target = Target.Blank,
+  download,
   onClick,
   onSurface = OnSurface.Background,
   size = Size.S,
@@ -47,6 +50,7 @@ export function Link({
       className={cn(styles.link, className)}
       href={href}
       target={target}
+      download={download}
       onClick={onClick}
       {...extractSupportProps(rest)}
       data-size={size}

@@ -111,6 +111,9 @@ link.argTypes = {
       options: Object.values(Link.targets),
     },
   },
+  download: {
+    type: 'string',
+  },
 };
 
 link.parameters = {
