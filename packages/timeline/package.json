@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/timeline",
   "title": "Timeline",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -31,7 +31,5 @@
   "dependencies": {
     "@snack-ui/utils": "2.0.1",
     "classnames": "2.3.2"
-  },
-  "devDependencies": {},
-  "peerDependencies": {}
+  }
 }
