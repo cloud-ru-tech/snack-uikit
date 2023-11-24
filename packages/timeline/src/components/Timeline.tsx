@@ -68,7 +68,7 @@ export function Timeline({
   ...rest
 }: TimelineProps) {
   return (
-    <div className={styles.timelineWrapper} data-fullWidth={fullWidth || undefined} data-test-id={'timeline-track'}>
+    <div className={styles.timelineWrapper} data-full-width={fullWidth || undefined} data-test-id={'timeline-track'}>
       <div className={cn(styles.timeline, className)} {...extractSupportProps(rest)}>
         {items.map(({ contentPosition: itemContentPosition, ...itemProps }, index) => (
           <TrackItem
