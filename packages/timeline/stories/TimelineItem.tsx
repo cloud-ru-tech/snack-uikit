@@ -5,11 +5,13 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { TrackItem, TrackItemProps } from '../src/helperComponents/TrackItem';
 import { DemoComponent } from './helperComponents/DemoComponent';
+import styles from './styles.module.scss';
 
 const meta: Meta = {
   title: 'Components/Timeline/Timeline Item',
   component: TrackItem,
 };
+
 export default meta;
 
 type StoryProps = Omit<TrackItemProps, 'alternateMode'> & {
@@ -19,7 +21,7 @@ type StoryProps = Omit<TrackItemProps, 'alternateMode'> & {
 };
 
 const Template: StoryFn<StoryProps> = ({ contentTitle, contentDescription, showOpposite, ...args }: StoryProps) => (
-  <div>
+  <div className={styles.wrapper}>
     <TrackItem
       {...args}
       content={<DemoComponent title={contentTitle} description={contentDescription} />}
