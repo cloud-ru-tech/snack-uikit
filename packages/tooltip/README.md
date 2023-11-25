@@ -14,7 +14,7 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | tip* | `ReactNode` | - | Содержимое тултипа |
-| disableMaxWidth | `boolean` | - | Отключение ограничения ширины тултипа @default false |
+| disableMaxWidth | `boolean` | - | Отключение ограничения ширины тултипа |
 | className | `string` | - | CSS-класс |
 | triggerClassName | `string` | - | CSS-класс триггера |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |

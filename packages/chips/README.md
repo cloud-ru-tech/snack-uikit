@@ -123,13 +123,13 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | valueToRender | `ReactNode` | - | Отображаемое значение |
 | value | `string \| Date \| string[] \| [Date, Date]` | - | Фактическое значение. Используется для отображения кнопки очистки, если свойство <strong>showClearButton=true</strong> |
 | onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
-| children | `ReactNode \| ((props: { handleDroplistItemKeyDown: (e: KeyboardEvent<Element>, cb?: KeyboardEventHandler<Element>) => void; closeDroplist(): void; }) => ReactNode)` | - | Контент выпадающего меню <br> <br> Принимает <strong>ReactNode</strong> <br> Или функцию с аргументами: <br> <strong>handleDroplistItemKeyDown</strong>: Обработчик нажатия клавиши на элемент выпадающего меню <br> <strong>closeDroplist</strong>: Метод для закрытия выпадающего меню |
+| children | `ReactNode \| ((props: { handleDroplistItemKeyDown: (e: KeyboardEvent<Element>, cb?: KeyboardEventHandler) => void; closeDroplist(): void; }) => ReactNode)` | - | Контент выпадающего меню <br> <br> Принимает <strong>ReactNode</strong> <br> Или функцию с аргументами: <br> <strong>handleDroplistItemKeyDown</strong>: Обработчик нажатия клавиши на элемент выпадающего меню <br> <strong>closeDroplist</strong>: Метод для закрытия выпадающего меню |
 ## ChipChoice.Single
 ### Props
 | name | type | default value | description |
@@ -143,7 +143,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | value | `string` | - | Значение компонента |
@@ -163,7 +163,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | value | `string[]` | - | Значение компонента |
@@ -182,7 +182,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | value | `Date` | - | Значение компонента |
@@ -201,7 +201,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | value | `Range` | - | Значение компонента |
@@ -218,8 +218,8 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | onChange | `(filters: TState) => void` | - | Колбек изменения состояния фильтров |
 | size | enum ChipChoiceRowSize: `"xs"`, `"s"`, `"m"` | s | Размер @default 's' |
 | className | `string` | - | CSS-класс |
-| showClearAllButton | `boolean` | true | Скрыть/показать кнопку очиски @default true |
-| clearAllButtonLabel | `string` | Clear all | Текст кнопки очистки @default 'Clear all' |
+| showClearAllButton | `boolean` | true | Скрыть/показать кнопку очиски |
+| clearAllButtonLabel | `string` | Clear all | Текст кнопки очистки |
 
 
 [//]: DOCUMENTATION_SECTION_END

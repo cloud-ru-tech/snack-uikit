@@ -42,7 +42,7 @@ import { Calendar } from '@snack-uikit/calendar';
 | autofocus | `boolean` | - | Автофокус |
 | locale | `Intl.Locale` | Проставляется в соответствие с языком в настройках браузера | Локаль, в соответствие с которой выставляется язык названий и первый день недели |
 | onFocusLeave | `(direction: FocusDirection) => void` | - | Колбек потери фокуса. Вызывается со значением `next`, когда фокус покидает компонент, передвигаясь вперед, по клавише `tab`. Со значением `prev` - по клавише стрелки вверх или `shift + tab`. |
-| navigationStartRef | `(instance: HTMLButtonElement) => void` | - | Ref-callback на первый доступный интерактивный элемент |
+| navigationStartRef | `RefCallback<HTMLButtonElement>` | - | Ref-callback на первый доступный интерактивный элемент |
 | value | `Date \| Range` | - | Выбранное значение.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) |
 | defaultValue | `Date \| Range` | - | Значение по-умолчанию для uncontrolled.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) |
 | onChangeValue | `((value: Date) => void) \| ((value: Range) => void)` | - | Колбек выбора значения.<br> - в режиме date принимает тип `Date` <br> - в режиме range принимает тип `Range` |
