@@ -1,4 +1,4 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useMemo, useState } from 'react';
 
 import { IconPredefinedProps } from '@snack-uikit/icon-predefined';
@@ -132,7 +132,8 @@ const Template: StoryFn<StoryProps> = ({
     </div>
   );
 };
-export const card: StoryObj<StoryProps> = Template.bind({});
+
+export const card = Template.bind({});
 
 card.args = {
   disabled: false,

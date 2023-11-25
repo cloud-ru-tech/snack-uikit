@@ -1,4 +1,4 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
 import componentChangelog from '../CHANGELOG.md';
@@ -69,7 +69,7 @@ const Template: StoryFn<AccordionProps> = ({ selectionMode }: AccordionProps) =>
   );
 };
 
-export const accordionPrimary: StoryObj<AccordionProps> = Template.bind({});
+export const accordionPrimary = Template.bind({});
 
 accordionPrimary.args = {
   selectionMode: SELECTION_MODE.Single,

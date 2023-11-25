@@ -9,7 +9,7 @@ import { PARAM_COLOR_MAP_KEY, PARAM_KEY } from '@cloud-ru/ft-storybook-brand-add
 import { themes as additionalThemes } from '../themes.config';
 import { BADGE, Brand, DEFAULT_BRAND_COLORS_MAP, DEFAULT_BRAND_MAP } from './constants';
 
-const brandInfo: ThemeVars = {
+const brandInfo: Partial<ThemeVars> = {
   base: 'light',
   brandTitle: 'Snack UI',
   brandUrl: '/',

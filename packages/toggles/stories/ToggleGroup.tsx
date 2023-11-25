@@ -1,4 +1,4 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
 import { ToggleGroup, ToggleGroupProps } from '@snack-uikit/toggles';
@@ -44,7 +44,7 @@ const Template: StoryFn<ToggleGroupProps> = ({ selectionMode = SELECTION_MODE.Si
   );
 };
 
-export const toggleGroup: StoryObj<ToggleGroupProps> = Template.bind({});
+export const toggleGroup = Template.bind({});
 
 toggleGroup.args = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

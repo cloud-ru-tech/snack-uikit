@@ -1,5 +1,5 @@
 import { useArgs } from '@storybook/client-api';
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { MouseEventHandler, useEffect, useState } from 'react';
 
 import { ButtonFilled } from '@snack-uikit/button';
@@ -138,7 +138,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
   );
 };
 
-export const modal: StoryObj<StoryProps> = Template.bind({});
+export const modal = Template.bind({});
 
 modal.args = {
   ...DEFAULT_ARGS,

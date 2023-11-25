@@ -1,4 +1,4 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import debounce from 'lodash.debounce';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -108,7 +108,7 @@ const Template: StoryFn<SearchProps> = ({ autocomplete, ...args }: SearchProps) 
   );
 };
 
-export const search: StoryObj<SearchProps> = Template.bind({});
+export const search = Template.bind({});
 
 search.args = {
   size: SIZE.S,

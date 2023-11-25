@@ -1,4 +1,4 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { Scroll } from '@snack-uikit/scroll';
@@ -95,7 +95,7 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
   );
 };
 
-export const calendar: StoryObj<StoryProps> = Template.bind({});
+export const calendar = Template.bind({});
 
 calendar.args = {
   size: SIZE.M,

@@ -1,4 +1,4 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
 import { EyeClosedSVG, EyeSVG } from '@snack-uikit/icons';
@@ -134,7 +134,7 @@ const Template: StoryFn<StoryProps> = ({ selectionMode, enableNodeActions, ...pr
   );
 };
 
-export const tree: StoryObj<StoryProps> = Template.bind({});
+export const tree = Template.bind({});
 
 tree.args = {
   enableNodeActions: true,
