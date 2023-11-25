@@ -23,7 +23,7 @@ const getComponent = (exportEntries, nameComponent, size) => {
     return ${
       isSingleIcon
         ? '<SSVG size={size} {...props} />'
-        : `size >= 20 ? <SSVG size={size} {...props} /> : <XsSVG size={size} {...props} />`
+        : `Number(size) >= 20 ? <SSVG size={size} {...props} /> : <XsSVG size={size} {...props} />`
     }
   };
 

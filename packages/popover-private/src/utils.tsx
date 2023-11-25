@@ -73,6 +73,8 @@ export const getPopoverTriggerJSX = ({
           ...(children.props as HTMLProps<HTMLElement>),
           className: cn(children.props.className, validElementWrapperClassName),
         }),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         ref: setReference,
       });
     }
