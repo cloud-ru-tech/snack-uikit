@@ -3,6 +3,8 @@
 
 $sizes:  'm', 'l';
 
+$snack-ui-card-background-color: var(--snack-ui-card-background-color);
+
 .functionBadgeWrapper {
   position: absolute;
   top: 0;
@@ -17,12 +19,14 @@ $sizes:  'm', 'l';
 .composition {
   @include composite-var($card-composition-container);
 
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
 
 .card {
-  @include composite-var($card-container);
+  --snack-ui-card-background-color: #{$sys-neutral-background1-level};
 
+  @include composite-var($card-container);
+  
   position: relative;
 
   overflow: hidden;
@@ -32,8 +36,8 @@ $sizes:  'm', 'l';
   padding: 0;
 
   text-align: left;
-
-  background-color: $sys-neutral-background1-level;
+  
+  background-color: $snack-ui-card-background-color;
   border: 0;
   outline-color: transparent;
 
@@ -43,10 +47,15 @@ $sizes:  'm', 'l';
     }
   }
 
+  &:hover,
+  &:focus-visible {
+    --snack-ui-card-background-color: #{$sys-neutral-background2-level};
+  }
+
+
   &:focus-visible {
     @include outline-var($container-focused-l);
 
-    background-color: $sys-neutral-background2-level;
     outline-color: $sys-primary-accent-default;
 
     .functionBadgeWrapper {
@@ -101,20 +110,7 @@ $sizes:  'm', 'l';
       }
 
       .contentWrapper {
-        position: relative;
-
-        &::before {
-          content: '';
-
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-
-          opacity: $opacity-a008;
-          background-color: $sys-primary-accent-default;
-        }
+        background-color: color-on-background-with-opacity($sys-primary-accent-default, $snack-ui-card-background-color, $opacity-a008);
       }
 
       .check {
@@ -135,7 +131,6 @@ $sizes:  'm', 'l';
     }
 
     &:hover {
-      background-color: $sys-neutral-background2-level;
       box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
     }
   }
@@ -162,8 +157,6 @@ $sizes:  'm', 'l';
 }
 
 .content {
-  position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;

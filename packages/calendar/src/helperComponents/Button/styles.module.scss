@@ -8,6 +8,7 @@ $typography: (
   'l': $sans-label-l,
 );
 
+
 .button {
   display: inline-flex;
   flex-direction: row;
@@ -24,7 +25,7 @@ $typography: (
 
     &:hover,
     &:focus-visible {
-      background-color: simple-var($sys-primary-background);
+      background-color: color-with-opacity($sys-neutral-accent-default, $opacity-a008);
     }
 
     &:focus-visible {

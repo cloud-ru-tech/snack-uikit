@@ -21,6 +21,10 @@ $typography: (
   ),
 );
 
+@function color-with-opacity($color, $background-color, $opacity) {
+  @return color-mix(in srgb, $color, $background-color calc((1 - $opacity) * 100%));
+}
+
 .headline {
   display: flex;
   align-items: center;
@@ -138,20 +142,23 @@ $typography: (
   }
 
   &[data-open],
-  &:hover {
-    background-color: simple-var($sys-primary-background);
+  &:hover, 
+  &:focus-visible {
+    background-color: color-with-opacity($sys-neutral-accent-default, $sys-neutral-background2-level, $opacity-a008);
   }
 
   &:focus-visible {
     @include outline-inside-var($container-focused-s);
-
-    background-color: simple-var($sys-primary-background);
   }
 
   &:disabled {
     cursor: not-allowed;
-    background-color: simple-var($sys-neutral-background1-level);
+    background-color: $sys-neutral-background1-level;
     outline: none;
+
+    &::before {
+      display: none;
+    }
 
     .option, .description, .caption, .expandableIcon {
       color: simple-var($sys-neutral-text-disabled);
@@ -161,10 +168,9 @@ $typography: (
   &[data-has-checked],
   &[data-checked] {
     &[data-variant='single'] {
-      background-color: simple-var($sys-primary-decor-default);
-
+      background-color: color-with-opacity($sys-primary-accent-default, $sys-neutral-background2-level, $opacity-a008);
       &:hover {
-        background-color: simple-var($sys-primary-background);
+        background-color: color-with-opacity($sys-primary-accent-default, $sys-neutral-background2-level, $opacity-a016);
       }
     }
 
@@ -181,11 +187,15 @@ $typography: (
 
     &:disabled {
       &[data-variant='single'] {
-        background-color: simple-var($sys-primary-background1-level);
+        background-color: $sys-neutral-background1-level;
+
+        &::before {
+          display: none;
+        }
       }
 
       .markerContainer:before {
-        background-color: simple-var($sys-primary-text-disabled);
+        background-color: simple-var($sys-neutral-text-disabled);
       }
     }
   }

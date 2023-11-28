@@ -12,6 +12,16 @@ $typography: (
   display: flex;
 }
 
+.label {
+  @include composite-var($calendar-item-label-decorator);
+}
+
+.marker {
+  @include composite-var($calendar-item-marker);
+
+  background-color: $sys-primary-accent-default;
+}
+
 .range,
 .box {
   position: absolute;
@@ -29,7 +39,7 @@ $typography: (
 
 .range {
   &:not([data-in-range-position='out']) {
-    background-color: simple-var($sys-primary-decor-default);
+    background-color: $sys-primary-decor-default;
   }
 
   &[data-in-range-position='in'] {
@@ -88,6 +98,24 @@ $typography: (
     }
   }
 
+  &[data-is-disabled] {
+    cursor: not-allowed;
+    color: simple-var($sys-neutral-text-disabled);
+    background-color: $sys-neutral-background;
+
+    .marker {
+      background-color: currentColor
+    }
+
+    .box, .range {
+      background-color: transparent;
+    }
+    
+    &[data-is-holiday] {
+      color: simple-var($sys-red-text-disabled);
+    }
+  }
+
   &[data-is-selected] {
     color: simple-var($sys-primary-on-accent);
 
@@ -96,27 +124,24 @@ $typography: (
     }
 
     .box {
-       background-color: simple-var($sys-primary-accent-default);
+      background-color: $sys-primary-accent-default;
      }
+
+    .marker {
+      background-color: $sys-primary-on-accent;
+    }
 
     &:hover,
     &:focus-visible {
-      .box {
-        background-color: simple-var($sys-primary-accent-hovered);
-      }
-    }
-  }
+      color: $sys-neutral-text-main;
 
-  &[data-is-disabled] {
-    cursor: not-allowed;
-    color: simple-var($sys-neutral-text-disabled);
-    &[data-is-selected] {
-      .box {
-        background-color: simple-var($sys-primary-decor-activated);
+      .marker {
+        background-color: $sys-primary-accent-default;
       }
-    }
-    &[data-is-holiday] {
-      color: simple-var($sys-red-text-disabled);
+
+      .box {
+        background-color: color-on-background-with-opacity($sys-primary-accent-default, $sys-primary-decor-default, $opacity-a016);
+      }
     }
   }
 
@@ -124,7 +149,13 @@ $typography: (
   &:focus-visible {
     &:not([data-is-selected]):not([data-is-disabled]) {
       .box {
-        background-color: simple-var($sys-primary-background);
+        background-color: color-on-background-with-opacity($sys-neutral-accent-default, $sys-neutral-background2-level,  $opacity-a016);
+      }   
+      
+      .range {
+        +.box {
+          background-color: color-on-background-with-opacity($sys-primary-accent-default, $sys-primary-decor-default, $opacity-a016);
+        }
       }
     }
   }
@@ -138,38 +169,4 @@ $typography: (
 
 .content {
   position: relative;
-
-  @each $size in $sizes {
-    &[data-size='#{$size}'] {
-      @include composite-var($calendar, 'item', 'box', 'content', $size);
-    }
-  }
-}
-
-.marker {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  left: 0;
-
-  &[data-is-current] {
-    background-color: simple-var($sys-primary-accent-default);
-
-    &[data-is-holiday] {
-      background-color: simple-var($sys-red-accent-default);
-      &[data-is-disabled] {
-        background-color: simple-var($sys-red-text-disabled);
-      }
-    }
-
-    &[data-is-selected] {
-      background-color: simple-var($sys-primary-on-accent);
-    }
-
-    @each $size in $sizes {
-      &[data-size='#{$size}'] {
-        @include composite-var($calendar, 'item', 'box', 'content', 'marker', $size);
-      }
-    }
-  }
 }

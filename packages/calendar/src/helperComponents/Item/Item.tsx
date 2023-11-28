@@ -92,7 +92,7 @@ export function Item({ data, className }: CellProps) {
         {isInRange && <div className={styles.range} {...attributes} />}
         <div className={styles.box} {...attributes} />
         <div className={styles.content} {...attributes}>
-          <span>{label}</span>
+          <span className={styles.label}>{label}</span>
           {isCurrent && <div className={styles.marker} {...attributes} />}
         </div>
       </button>

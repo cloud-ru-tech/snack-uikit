@@ -1,7 +1,15 @@
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-table';
 @import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
 
+$snack-ui-table-row-background: var(--snack-ui-table-row-background);
+
+@function color-with-opacity-local($color, $opacity) {
+  @return color-on-background-with-opacity($color, $snack-ui-table-row-background, $opacity);
+}
+
 .tableRow {
+  --snack-ui-table-row-background: #{$sys-neutral-background1-level};
+
   @include composite-var($table-line-container);
 
   position: relative;
@@ -10,7 +18,7 @@
 
   box-sizing: border-box;
 
-  background-color: $sys-neutral-background1-level;
+  background-color: $snack-ui-table-row-background;
   border-color: transparent;
   border-style: solid none;
 }
@@ -23,7 +31,7 @@
 
   box-sizing: border-box;
 
-  background-color: inherit;
+  background-color: $snack-ui-table-row-background;
   border-color: $sys-neutral-decor-default;
 
   &::after {
@@ -69,21 +77,27 @@
   &[data-disabled] {
     cursor: not-allowed;
     background-color: $sys-neutral-background;
+
+    .rowPinnedCells {
+      background-color: $sys-neutral-background;
+    }
   }
 
   &[data-selected] {
-    background-color: $sys-primary-background;
+    background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a008);
 
     .rowPinnedCells {
-      border-color: $sys-primary-decor-default;
+      background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a008);
+      border-color: $sys-neutral-decor-default;
     }
 
     &:hover, &[data-actions-opened] {
-      background-color: $sys-primary-background1-level;
-      border-color: $sys-primary-decor-hovered;
+      background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a016);
+      border-color: $sys-neutral-decor-hovered;
 
       .rowPinnedCells {
-        border-color: inherit;
+        background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a016);
+        border-color: $sys-neutral-decor-hovered;
       }
     }
   }
@@ -94,16 +108,15 @@
 
   &:not([data-disabled]):not([data-selected]) {
     &:hover, &[data-actions-opened] {
-      background-color: $sys-neutral-background2-level;
+      background-color: color-with-opacity-local($sys-neutral-accent-default, $opacity-a008);
       border-color: $sys-neutral-decor-hovered;
 
       .rowPinnedCells {
+        background-color: color-with-opacity-local($sys-neutral-accent-default, $opacity-a008);        
         border-color: inherit;
       }
     }
   }
-
-  
 }
 
 .tableHeader {
