@@ -29,7 +29,7 @@ const mainConfig = {
         },
       },
     },
-    '@sbercloud/ft-storybook-readme-addon',
+    '@cloud-ru/ft-storybook-readme-addon',
     'storybook-addon-designs',
     {
       name: '@storybook/addon-storysource',
@@ -47,11 +47,11 @@ const mainConfig = {
       },
     },
     '@geometricpanda/storybook-addon-badges',
-    '@sbercloud/ft-storybook-brand-addon',
+    '@cloud-ru/ft-storybook-brand-addon',
     'storybook-dark-mode',
     '@storybook/addon-links',
     '@storybook/addon-a11y',
-    '@sbercloud/ft-storybook-deps-graph-addon',
+    '@cloud-ru/ft-storybook-deps-graph-addon',
   ],
   staticDirs: [
     { from: '../storybook/assets', to: '/storybook/assets' },

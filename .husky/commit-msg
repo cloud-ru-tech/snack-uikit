@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-node_modules/.bin/sbercloud-commit-message
+node_modules/.bin/cloud-ru-commit-message

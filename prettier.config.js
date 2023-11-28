@@ -1,1 +1,1 @@
-module.exports = require('@sbercloud/ft-all-linters-pack').defaultPrettierConfig;
+module.exports = require('@cloud-ru/ft-config-prettier').defaultPrettierConfig;

@@ -77,7 +77,7 @@ export function ChipChoiceRow<TState extends FiltersState>({
         <ForwardedChipChoice
           key={filter.id}
           {...filter}
-          value={state[filter.id] as any}
+          value={state[filter.id] as never}
           size={MAP_ROW_SIZE_TO_CHOICE_SIZE[size]}
           onChange={(value: FilterValue) => handleChange(filter.id, value)}
         />

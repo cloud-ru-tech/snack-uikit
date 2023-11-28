@@ -1,7 +1,10 @@
 module.exports = {
-  extends: ['@sbercloud/eslint-config/monorepo', 'plugin:testcafe-community/recommended'],
+  extends: ['@cloud-ru/eslint-config/monorepo', 'plugin:testcafe-community/recommended'],
   plugins: ['testcafe-community'],
-  rules: { '@typescript-eslint/no-namespace': 'off' },
+  rules: {
+    '@typescript-eslint/no-namespace': 'off',
+    'prettier/prettier': 'off',
+  },
   ignorePatterns: 'packages/icons/src',
   overrides: [
     {

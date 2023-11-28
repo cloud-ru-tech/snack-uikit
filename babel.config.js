@@ -1,1 +1,1 @@
-module.exports = require('@sbercloud/ft-config-babel').defaultBabelConfig;
+module.exports = require('@cloud-ru/ft-config-babel').defaultBabelConfig;

@@ -4,7 +4,7 @@ import { themes, ThemeVars } from '@storybook/theming';
 import { DecoratorFunction, GlobalTypes, Parameters } from '@storybook/types';
 import { withDesign } from 'storybook-addon-designs';
 
-import { PARAM_COLOR_MAP_KEY, PARAM_KEY } from '@sbercloud/ft-storybook-brand-addon';
+import { PARAM_COLOR_MAP_KEY, PARAM_KEY } from '@cloud-ru/ft-storybook-brand-addon';
 
 import { BADGE, Brand, DEFAULT_BRAND_COLORS_MAP, DEFAULT_BRAND_MAP } from './constants';
 
