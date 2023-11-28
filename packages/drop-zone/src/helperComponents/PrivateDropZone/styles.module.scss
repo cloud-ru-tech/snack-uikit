@@ -3,7 +3,7 @@
 
 .container {
   @include composite-var($drop-zone-container-single);
-  @include composite-var($drop-zone-lauout-content-single);
+  @include composite-var($drop-zone-content-layout-single);
 
   cursor: pointer;
 
