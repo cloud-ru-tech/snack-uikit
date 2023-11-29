@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/drop-zone",
   "title": "Drop Zone",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "sideEffects": [
     "*.css",
     "*.woff",
