@@ -1,0 +1,19 @@
+@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+
+.editor {
+  background-color: inherit;
+
+  &::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    opacity: $opacity-a004;
+    background-color: $sys-neutral-accent-default;
+  }
+}
