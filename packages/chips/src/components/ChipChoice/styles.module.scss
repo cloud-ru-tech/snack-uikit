@@ -7,14 +7,14 @@ $sizes: 'xs', 's', 'm', 'l';
 $labelTypography: (
   'xs': $light-label-s,
   's': $light-label-m,
-  'm': $light-label-m,
+  'm': $sans-label-l,
   'l': $light-label-l,
 );
 
 $valueTypography: (
   'xs': $sans-label-s,
   's': $sans-label-m,
-  'm': $sans-label-m,
+  'm': $sans-label-l,
   'l': $sans-label-l,
 );
 
