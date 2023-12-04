@@ -316,7 +316,7 @@ export function Table<TData extends object>({
               checked={table.getIsAllPageRowsSelected()}
               indeterminate={table.getIsSomePageRowsSelected()}
               className={styles.toolbar}
-              onRefresh={handleOnRefresh}
+              onRefresh={onRefresh ? handleOnRefresh : undefined}
               onDelete={enableSelection && onDelete ? handleOnDelete : undefined}
               onCheck={enableSelection ? handleOnCheck : undefined}
               outline={outline}
