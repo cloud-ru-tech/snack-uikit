@@ -6,7 +6,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.3 (2023-11-22)
 
 ### Only dependencies have been changed
-* [@snack-ui/toggles@0.7.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-ui/toggles@0.7.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
 
 
 
@@ -17,7 +17,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Dependencies
 
-* **[FF-3755](https://jira.sbercloud.tech/browse/FF-3755):** update usage useToggleGroup hook ([2853b72](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/2853b721523dec2201d1008a43c7daf3a2882805))
+* **FF-3755:** update usage useToggleGroup hook ([2853b72](https://github.com/cloud-ru-tech/snack-uikit/commit/2853b721523dec2201d1008a43c7daf3a2882805))
 
 
 
@@ -26,8 +26,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.1 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.8.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/tooltip/CHANGELOG.md)
-* [@snack-ui/truncate-string@0.2.16](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-ui/tooltip@0.8.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-ui/truncate-string@0.2.16](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
 
 
 
@@ -39,7 +39,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGES
 
 
-* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** use control hook from @snack-ui/toggles ([7883ab8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/7883ab8214b0cc4ed6ad0f1491210f9980efc310))
+* **FF-3643:** use control hook from @snack-ui/toggles ([7883ab8](https://github.com/cloud-ru-tech/snack-uikit/commit/7883ab8214b0cc4ed6ad0f1491210f9980efc310))
 
 
 
@@ -47,7 +47,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.1 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/button@0.13.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
 
 
 
@@ -58,7 +58,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3643](https://jira.sbercloud.tech/browse/FF-3643):** add opportunity use custom header ([ffdbfaf](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/ffdbfaf3dc8d07943c31bf0e9bdf4e93cb62f9c8))
+* **FF-3643:** add opportunity use custom header ([ffdbfaf](https://github.com/cloud-ru-tech/snack-uikit/commit/ffdbfaf3dc8d07943c31bf0e9bdf4e93cb62f9c8))
 
 
 
@@ -69,7 +69,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0001:** change QuestionTooltip size to S ([55bd31c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/55bd31c1d14593a277e57bec706e42a07992e68a))
+* **FF-0001:** change QuestionTooltip size to S ([55bd31c](https://github.com/cloud-ru-tech/snack-uikit/commit/55bd31c1d14593a277e57bec706e42a07992e68a))
 
 
 
@@ -78,9 +78,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.1 (2023-11-09)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.18.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
-* [@snack-ui/tooltip@0.7.15](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/tooltip/CHANGELOG.md)
-* [@snack-ui/truncate-string@0.2.15](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-ui/icons@0.18.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/tooltip@0.7.15](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-ui/truncate-string@0.2.15](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
 
 
 
@@ -91,7 +91,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3110](https://jira.sbercloud.tech/browse/FF-3110):** add accordion ([9c9f59e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9c9f59e3e7117811f3d65aa19c64ca4f54796e2c))
+* **FF-3110:** add accordion ([9c9f59e](https://github.com/cloud-ru-tech/snack-uikit/commit/9c9f59e3e7117811f3d65aa19c64ca4f54796e2c))
 
 
 

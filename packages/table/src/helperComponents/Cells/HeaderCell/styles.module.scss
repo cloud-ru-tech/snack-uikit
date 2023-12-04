@@ -1,5 +1,5 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-table';
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .tableHeaderCell {
   @include composite-var($table-head-column);

@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-3711](https://jira.sbercloud.tech/browse/FF-3711):** add divider into TabBar ([06a9c52](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/06a9c52939363647780b09322b0ba88a3b3748ff))
+* **FF-3711:** add divider into TabBar ([06a9c52](https://github.com/cloud-ru-tech/snack-uikit/commit/06a9c52939363647780b09322b0ba88a3b3748ff))
 
 
 
@@ -17,8 +17,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.15 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.3.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-ui/button@0.13.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/counter@0.3.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
 
 
 
@@ -27,7 +27,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.14 (2023-11-09)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.18.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/icons@0.18.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -36,10 +36,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.13 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.3.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/typography@0.4.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@2.0.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/button@0.13.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/counter@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-ui/typography@0.4.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -50,7 +50,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0000:** remove extractDataProps ([9d676b9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
 
 
 
@@ -59,8 +59,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.11 (2023-10-26)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/icons@0.18.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/button@0.13.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/icons@0.18.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -69,10 +69,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.10 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.3.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/typography@0.4.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@1.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/button@0.13.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/counter@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-ui/typography@0.4.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -81,7 +81,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.9 (2023-10-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.17.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/icons@0.17.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -90,7 +90,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.8 (2023-10-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.4.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/typography@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -99,8 +99,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.7 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.3.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-ui/button@0.13.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/counter@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
 
 
 
@@ -109,8 +109,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.6 (2023-10-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/icons@0.16.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/button@0.13.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/icons@0.16.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -121,7 +121,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-3023](https://jira.sbercloud.tech/browse/FF-3023):** update docs and export structure ([3da8606](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3da860623da0bc12030d17406d6b107300f5ae9c))
+* **FF-3023:** update docs and export structure ([3da8606](https://github.com/cloud-ru-tech/snack-uikit/commit/3da860623da0bc12030d17406d6b107300f5ae9c))
 
 
 
@@ -130,7 +130,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.4 (2023-10-05)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.12.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/button@0.12.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
 
 
 
@@ -139,7 +139,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.3 (2023-09-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.15.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/icons@0.15.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -148,7 +148,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.2 (2023-09-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.14.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/icons@0.14.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -157,7 +157,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.1 (2023-09-14)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.13.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/icons@0.13.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -168,7 +168,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
 
 
 
@@ -177,7 +177,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.14 (2023-08-30)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.3.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/typography@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -186,7 +186,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.13 (2023-08-29)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/typography@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -195,8 +195,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.12 (2023-08-22)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.11.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.2.8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-ui/button@0.11.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/counter@0.2.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
 
 
 
@@ -205,7 +205,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.11 (2023-08-17)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.10.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/button@0.10.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
 
 
 
@@ -216,7 +216,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2777](https://jira.sbercloud.tech/browse/FF-2777):** using new icons ([7922fca](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
 
 
 
@@ -225,7 +225,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.9 (2023-08-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.10.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/icons@0.10.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -236,7 +236,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** KeyDown handling ([b569117](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b569117c7a96312c2b26b8b8e206c44211795a66))
+* **FF-2641:** KeyDown handling ([b569117](https://github.com/cloud-ru-tech/snack-uikit/commit/b569117c7a96312c2b26b8b8e206c44211795a66))
 
 
 
@@ -245,9 +245,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.7 (2023-07-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.9.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.2.7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/typography@0.2.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/button@0.9.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/counter@0.2.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-ui/typography@0.2.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -256,7 +256,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.6 (2023-07-26)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.9.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/icons@0.9.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -265,7 +265,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.5 (2023-07-05)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.8.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/icons@0.8.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -276,7 +276,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2267](https://jira.sbercloud.tech/browse/FF-2267):** update chevron icon ([98fee9e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/98fee9e64101d0cf655ab055373b347b2ca7d9f1))
+* **FF-2267:** update chevron icon ([98fee9e](https://github.com/cloud-ru-tech/snack-uikit/commit/98fee9e64101d0cf655ab055373b347b2ca7d9f1))
 
 
 
@@ -285,9 +285,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.3 (2023-06-23)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.9.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.2.6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/icons@0.6.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/button@0.9.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/counter@0.2.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-ui/icons@0.6.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -296,7 +296,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.2 (2023-06-22)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.6.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-ui/icons@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -305,10 +305,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.1 (2023-06-20)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.9.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.2.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/typography@0.2.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@1.2.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/button@0.9.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/counter@0.2.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-ui/typography@0.2.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/utils@1.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -320,7 +320,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGES
 
 
-* **[FF-2559](https://jira.sbercloud.tech/browse/FF-2559):** props id and selectedTab renamed to value ([4a5ba09](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/4a5ba09ca63192f63e5d3779c029b5e75b3a8b96))
+* **FF-2559:** props id and selectedTab renamed to value ([4a5ba09](https://github.com/cloud-ru-tech/snack-uikit/commit/4a5ba09ca63192f63e5d3779c029b5e75b3a8b96))
 
 
 
@@ -330,7 +330,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0:** move utils to usual deps ([ebe441a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
 
 
 
@@ -339,7 +339,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.2 (2023-06-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.9.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
+* [@snack-ui/button@0.9.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
 
 
 
@@ -350,8 +350,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2259](https://jira.sbercloud.tech/browse/FF-2259):** increase click area ([a1e7101](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/a1e710187c7374a28a202848983943707fdcad3e))
-* **[FF-2259](https://jira.sbercloud.tech/browse/FF-2259):** type inference in Tabs component ([6275edd](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/6275eddf1ab77caf3a94e27290a11e7b800d15d5))
+* **FF-2259:** increase click area ([a1e7101](https://github.com/cloud-ru-tech/snack-uikit/commit/a1e710187c7374a28a202848983943707fdcad3e))
+* **FF-2259:** type inference in Tabs component ([6275edd](https://github.com/cloud-ru-tech/snack-uikit/commit/6275eddf1ab77caf3a94e27290a11e7b800d15d5))
 
 
 
@@ -362,7 +362,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2259](https://jira.sbercloud.tech/browse/FF-2259):** add tabs package ([6719f6c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/6719f6c227c227f4b559b920540f9edd3c0148db))
+* **FF-2259:** add tabs package ([6719f6c](https://github.com/cloud-ru-tech/snack-uikit/commit/6719f6c227c227f4b559b920540f9edd3c0148db))
 
 
 

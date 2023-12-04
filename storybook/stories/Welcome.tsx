@@ -3,7 +3,8 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Link } from '@snack-ui/link';
 
-import { Card } from './components';
+import { Card, CloudRuFullLogo } from './components';
+import { GitHubLogo } from './components/GitHubLogo';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -18,7 +19,7 @@ const Template: StoryFn = () => (
         Библиотека компонентов
         <br />
         компании{' '}
-        <Link text='Cloud' href='https://sbercloud.ru/' size={Link.sizes.M} onClick={e => e.stopPropagation()} /> и
+        <Link text='Cloud.ru' href='https://cloud.ru/' size={Link.sizes.M} onClick={e => e.stopPropagation()} /> и
         сообщества{' '}
         <Link
           text='TeamSnack'
@@ -30,10 +31,9 @@ const Template: StoryFn = () => (
 
       <div className={styles.imagesWrapper} style={{ '--image-height': '16px' }}>
         <img alt='lerna' src='https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg' />
-        <img
+        {/* TODO: вернуть когда переедем на github полностью <img
           alt='coverage'
-          src='https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/badges/master/coverage.svg?job=testcafe-coverage&key_text=coverage&&key_width=100/coverage.svg)](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/badges/master/coverage.svg?job=testcafe-coverage&key_text=coverage&&key_width=100'
-        />
+        /> */}
       </div>
 
       <div className={styles.imagesWrapper} style={{ '--image-height': '32px' }}>
@@ -44,7 +44,7 @@ const Template: StoryFn = () => (
       </div>
 
       <div className={styles.imagesWrapper} style={{ '--image-height': '24px' }}>
-        <img alt='Cloud.ru' src='storybook/assets/CloudRuFullLogo.svg' />
+        <CloudRuFullLogo />
         &
         <img alt='teamsnack' src='storybook/assets/TeamSnack.jpg' />
       </div>
@@ -59,20 +59,18 @@ const Template: StoryFn = () => (
     <Card
       header='Figma'
       image='https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg'
+      // TODO: провалидировать
       href='https://www.figma.com/files/1101513230643708615/team/1194627249980298820/DS-(FF)'
     />
 
     <Card
       header='Figma Tokens'
       image='https://amzn.github.io/style-dictionary/assets/logo.png'
-      href='https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/figma-tokens'
+      // TODO: ссылка на npmjs
+      href='https://npmjs.org/cloud-ru-tech/figma-tokens'
     />
 
-    <Card
-      header='Gitlab'
-      image='https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/144_Gitlab_logo_logos-512.png'
-      href='https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit'
-    />
+    <Card header='GitHub' image={<GitHubLogo />} href='https://github.com/cloud-ru-tech/snack-uikit' />
   </div>
 );
 

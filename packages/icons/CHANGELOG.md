@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-3511](https://jira.sbercloud.tech/browse/FF-3511):** replaced folder icons ([dc798f4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/dc798f4767272a1f559bbb95d0bcf020a762815a))
+* **FF-3511:** replaced folder icons ([dc798f4](https://github.com/cloud-ru-tech/snack-uikit/commit/dc798f4767272a1f559bbb95d0bcf020a762815a))
 
 
 
@@ -19,7 +19,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3309](https://jira.sbercloud.tech/browse/FF-3309):** add Download/Upload icons ([fd41291](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/fd412910c344df16538ed1093d20d711d4c79e42))
+* **FF-3309:** add Download/Upload icons ([fd41291](https://github.com/cloud-ru-tech/snack-uikit/commit/fd412910c344df16538ed1093d20d711d4c79e42))
 
 
 
@@ -30,7 +30,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **FF-0000:** add Folder/FolderOpen/File/Filter/Pinned/UnPinned icons ([6efdbbb](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/6efdbbb006771db502976ac4f1e4c5e175d5670e))
+* **FF-0000:** add Folder/FolderOpen/File/Filter/Pinned/UnPinned icons ([6efdbbb](https://github.com/cloud-ru-tech/snack-uikit/commit/6efdbbb006771db502976ac4f1e4c5e175d5670e))
 
 
 
@@ -41,7 +41,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2872](https://jira.sbercloud.tech/browse/FF-2872):** add Update & Trash icons ([b3c5ed0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b3c5ed03e86cc52e864869d6609f230a76b3ff22))
+* **FF-2872:** add Update & Trash icons ([b3c5ed0](https://github.com/cloud-ru-tech/snack-uikit/commit/b3c5ed03e86cc52e864869d6609f230a76b3ff22))
 
 
 
@@ -52,7 +52,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2661](https://jira.sbercloud.tech/browse/FF-2661):** add Settings icon ([f13c036](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f13c0369816f837ae6e4e1aa66ee491856af5087))
+* **FF-2661:** add Settings icon ([f13c036](https://github.com/cloud-ru-tech/snack-uikit/commit/f13c0369816f837ae6e4e1aa66ee491856af5087))
 
 
 
@@ -63,7 +63,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2653](https://jira.sbercloud.tech/browse/FF-2653):** add ArrowUp, ArrowDown, and "More" icons ([2a93b0d](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/2a93b0df964bc3d257e0e4fb93f40ff0aabfd211))
+* **FF-2653:** add ArrowUp, ArrowDown, and "More" icons ([2a93b0d](https://github.com/cloud-ru-tech/snack-uikit/commit/2a93b0df964bc3d257e0e4fb93f40ff0aabfd211))
 
 
 
@@ -74,7 +74,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3130](https://jira.sbercloud.tech/browse/FF-3130):** add kebab icon ([f6ac9c2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f6ac9c2d3fa3aeaf44f98fcee2af8eb3386f4932))
+* **FF-3130:** add kebab icon ([f6ac9c2](https://github.com/cloud-ru-tech/snack-uikit/commit/f6ac9c2d3fa3aeaf44f98fcee2af8eb3386f4932))
 
 
 
@@ -85,8 +85,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3125](https://jira.sbercloud.tech/browse/FF-3125):** add search icon ([83710fc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/83710fcdcd1b0f7046266f99c3a1321d2fe93069))
-* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+* **FF-3125:** add search icon ([83710fc](https://github.com/cloud-ru-tech/snack-uikit/commit/83710fcdcd1b0f7046266f99c3a1321d2fe93069))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
 
 
 
@@ -98,7 +98,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGES
 
 
-* **[FF-2777](https://jira.sbercloud.tech/browse/FF-2777):** replaced all s/xs icons with single ones with prop ([07ce31a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/07ce31ad2a2b1406fcec55ea7ab50952444b9d15))
+* **FF-2777:** replaced all s/xs icons with single ones with prop ([07ce31a](https://github.com/cloud-ru-tech/snack-uikit/commit/07ce31ad2a2b1406fcec55ea7ab50952444b9d15))
 
 
 
@@ -108,7 +108,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2651](https://jira.sbercloud.tech/browse/FF-2651):** add QuestionS icon ([c9115c8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c9115c8bd0d9e3bf39e277d9cfd8506c49761a24))
+* **FF-2651:** add QuestionS icon ([c9115c8](https://github.com/cloud-ru-tech/snack-uikit/commit/c9115c8bd0d9e3bf39e277d9cfd8506c49761a24))
 
 
 
@@ -119,7 +119,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2650](https://jira.sbercloud.tech/browse/FF-2650):** alert, alert top ([08d64ee](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/08d64ee5059b0b72368771dda04881730f637a7b))
+* **FF-2650:** alert, alert top ([08d64ee](https://github.com/cloud-ru-tech/snack-uikit/commit/08d64ee5059b0b72368771dda04881730f637a7b))
 
 
 
@@ -130,7 +130,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2264](https://jira.sbercloud.tech/browse/FF-2264):** new icons have been added ([51f1863](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/51f1863453fd93e25417c04746e39b33eda03f19))
+* **FF-2264:** new icons have been added ([51f1863](https://github.com/cloud-ru-tech/snack-uikit/commit/51f1863453fd93e25417c04746e39b33eda03f19))
 
 
 
@@ -141,12 +141,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2267](https://jira.sbercloud.tech/browse/FF-2267):** update chevron icon ([98fee9e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/98fee9e64101d0cf655ab055373b347b2ca7d9f1))
+* **FF-2267:** update chevron icon ([98fee9e](https://github.com/cloud-ru-tech/snack-uikit/commit/98fee9e64101d0cf655ab055373b347b2ca7d9f1))
 
 
 ### Features
 
-* **[FF-2267](https://jira.sbercloud.tech/browse/FF-2267):** add icon component ([cf25f4c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/cf25f4c709bf7f8abfad80f3da1ebd6f6f14883d))
+* **FF-2267:** add icon component ([cf25f4c](https://github.com/cloud-ru-tech/snack-uikit/commit/cf25f4c709bf7f8abfad80f3da1ebd6f6f14883d))
 
 
 
@@ -165,7 +165,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2543](https://jira.sbercloud.tech/browse/FF-2543):** add cross xs icon ([5fd93d9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5fd93d93e2ca0eb71825d68184efd7ddfcbdd94a))
+* **FF-2543:** add cross xs icon ([5fd93d9](https://github.com/cloud-ru-tech/snack-uikit/commit/5fd93d93e2ca0eb71825d68184efd7ddfcbdd94a))
 
 
 
@@ -176,7 +176,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2257](https://jira.sbercloud.tech/browse/FF-2257):** add toggle components: Switch, Checkbox, Radio and Favorite ([5a34aca](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5a34acade3674e020034529b2b2aaddbe4b4f62a))
+* **FF-2257:** add toggle components: Switch, Checkbox, Radio and Favorite ([5a34aca](https://github.com/cloud-ru-tech/snack-uikit/commit/5a34acade3674e020034529b2b2aaddbe4b4f62a))
 
 
 
@@ -187,7 +187,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2255](https://jira.sbercloud.tech/browse/FF-2255):** new palette migration ([f3bc490](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f3bc490bb4ddde4353009b55da2d04f87a7d9de9))
+* **FF-2255:** new palette migration ([f3bc490](https://github.com/cloud-ru-tech/snack-uikit/commit/f3bc490bb4ddde4353009b55da2d04f87a7d9de9))
 
 
 
@@ -198,7 +198,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[LK-1769](https://jira.sbercloud.tech/browse/LK-1769):** jest to vitest ([9afff90](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9afff90db1e60c2255361b396c096c14f923d676))
+* **LK-1769:** jest to vitest ([9afff90](https://github.com/cloud-ru-tech/snack-uikit/commit/9afff90db1e60c2255361b396c096c14f923d676))
 
 
 
@@ -217,7 +217,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2031](https://jira.sbercloud.tech/browse/FF-2031):** add arrow links icons ([f4e0dcb](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f4e0dcb5e296a579442c6c2c50f048bfcc2ac8e0))
+* **FF-2031:** add arrow links icons ([f4e0dcb](https://github.com/cloud-ru-tech/snack-uikit/commit/f4e0dcb5e296a579442c6c2c50f048bfcc2ac8e0))
 
 
 
@@ -228,7 +228,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2080](https://jira.sbercloud.tech/browse/FF-2080):** add chevron icons ([2b0e8b3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/2b0e8b3ad2e41ac7137a390fe469eb1d1274ad63))
+* **FF-2080:** add chevron icons ([2b0e8b3](https://github.com/cloud-ru-tech/snack-uikit/commit/2b0e8b3ad2e41ac7137a390fe469eb1d1274ad63))
 
 
 
@@ -239,7 +239,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-1952](https://jira.sbercloud.tech/browse/FF-1952):** add icons package ([0d418bf](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0d418bfd1dbff508cbc12af5f5fcdeb43c1da919))
+* **FF-1952:** add icons package ([0d418bf](https://github.com/cloud-ru-tech/snack-uikit/commit/0d418bfd1dbff508cbc12af5f5fcdeb43c1da919))
 
 
 

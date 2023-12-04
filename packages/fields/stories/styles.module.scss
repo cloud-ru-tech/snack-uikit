@@ -1,12 +1,14 @@
-@import "@sbercloud/figma-tokens/build/scss/styles-theme-variables";
+@import "@snack-uikit/figma-tokens/build/scss/styles-theme-variables";
 
 .wrapper {
-  padding: 16px;
-  background: $sys-neutral-background1-level;
-  border: 1px solid $sys-neutral-decor-default;
+  resize: horizontal;
 
   overflow: hidden;
-  resize: horizontal;
+
+  padding: 16px;
+
+  background: $sys-neutral-background1-level;
+  border: 1px solid $sys-neutral-decor-default;
 
   &[data-size='s'] {
     width: 256px;

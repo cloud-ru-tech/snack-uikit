@@ -1,13 +1,13 @@
-@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
   resize: both;
   
   overflow: auto;
 
+  width: 400px;
   min-width: 400px;
   max-width: 100%;
-  width: 400px;
   height: 320px;
   padding: 24px;
 

@@ -1,4 +1,4 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-popover';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-popover';
 
 .popoverContainer {
   @include composite-var($popover-container);

@@ -6,8 +6,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.5 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.4.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@2.0.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/typography@0.4.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -18,7 +18,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0000:** remove extractDataProps ([9d676b9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
 
 
 
@@ -29,7 +29,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-3460](https://jira.sbercloud.tech/browse/FF-3460):** change Typoghraphy to corrent ([b61e755](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b61e755d78317c75c134e7c297c3c7b9fbc7fe5d))
+* **FF-3460:** change Typoghraphy to corrent ([b61e755](https://github.com/cloud-ru-tech/snack-uikit/commit/b61e755d78317c75c134e7c297c3c7b9fbc7fe5d))
 
 
 
@@ -38,8 +38,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.2 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.4.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@1.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/typography@0.4.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -48,7 +48,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.1 (2023-10-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.4.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/typography@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -59,7 +59,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
 
 
 
@@ -68,7 +68,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.2 (2023-08-30)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.3.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/typography@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -77,7 +77,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.1 (2023-08-29)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-ui/typography@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -88,7 +88,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2662](https://jira.sbercloud.tech/browse/FF-2662):** add promo-tag package ([e89ef03](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/e89ef0305172543630d53fb4da4db98151eac9af))
+* **FF-2662:** add promo-tag package ([e89ef03](https://github.com/cloud-ru-tech/snack-uikit/commit/e89ef0305172543630d53fb4da4db98151eac9af))
 
 
 

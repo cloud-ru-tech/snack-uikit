@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { Fragment } from 'react';
 
-import { themeVars } from '@sbercloud/figma-tokens';
 import { Typography } from '@snack-ui/typography';
+import { themeVars } from '@snack-uikit/figma-tokens';
 
 import { capitalize } from '../../../utils';
 import { TONES } from '../../constants';

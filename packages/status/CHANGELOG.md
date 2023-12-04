@@ -6,7 +6,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.5 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@2.0.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -17,7 +17,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0000:** remove extractDataProps ([9d676b9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
 
 
 
@@ -26,7 +26,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.3 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@1.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -35,7 +35,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.2 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@2.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -54,12 +54,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-3130](https://jira.sbercloud.tech/browse/FF-3130):** remove padding without background ([fc46783](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/fc467839e09ca1e6abed8a57e9d7962d19c9022f))
+* **FF-3130:** remove padding without background ([fc46783](https://github.com/cloud-ru-tech/snack-uikit/commit/fc467839e09ca1e6abed8a57e9d7962d19c9022f))
 
 
 ### Features
 
-* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
 
 
 
@@ -70,7 +70,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2967](https://jira.sbercloud.tech/browse/FF-2967):** add forgotten className prop ([099459e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/099459ee83e61e68869ac754cdea42c6be6963ac))
+* **FF-2967:** add forgotten className prop ([099459e](https://github.com/cloud-ru-tech/snack-uikit/commit/099459ee83e61e68869ac754cdea42c6be6963ac))
 
 
 
@@ -79,7 +79,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.5 (2023-06-20)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@1.2.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@1.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -90,7 +90,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0:** move utils to usual deps ([ebe441a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
 
 
 
@@ -101,7 +101,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2257](https://jira.sbercloud.tech/browse/FF-2257):** up utils ([5dd5d28](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5dd5d28cdbe14973dcc36759e7db003249930a4b))
+* **FF-2257:** up utils ([5dd5d28](https://github.com/cloud-ru-tech/snack-uikit/commit/5dd5d28cdbe14973dcc36759e7db003249930a4b))
 
 
 
@@ -110,7 +110,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.2 (2023-05-15)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@1.1.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@1.1.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -121,7 +121,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2255](https://jira.sbercloud.tech/browse/FF-2255):** new palette migration ([f3bc490](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f3bc490bb4ddde4353009b55da2d04f87a7d9de9))
+* **FF-2255:** new palette migration ([f3bc490](https://github.com/cloud-ru-tech/snack-uikit/commit/f3bc490bb4ddde4353009b55da2d04f87a7d9de9))
 
 
 
@@ -132,7 +132,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[LK-1769](https://jira.sbercloud.tech/browse/LK-1769):** jest to vitest ([9afff90](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9afff90db1e60c2255361b396c096c14f923d676))
+* **LK-1769:** jest to vitest ([9afff90](https://github.com/cloud-ru-tech/snack-uikit/commit/9afff90db1e60c2255361b396c096c14f923d676))
 
 
 
@@ -151,8 +151,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-1954](https://jira.sbercloud.tech/browse/FF-1954):** add status ([88fbf1f](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/88fbf1fa69f5e32e45b79d495cbeef8bea521303))
-* **[FF-1954](https://jira.sbercloud.tech/browse/FF-1954):** add status indicator ([4357eb0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/4357eb0a5e54fd0d3e845ac8ff85a75bce54cbce))
+* **FF-1954:** add status ([88fbf1f](https://github.com/cloud-ru-tech/snack-uikit/commit/88fbf1fa69f5e32e45b79d495cbeef8bea521303))
+* **FF-1954:** add status indicator ([4357eb0](https://github.com/cloud-ru-tech/snack-uikit/commit/4357eb0a5e54fd0d3e845ac8ff85a75bce54cbce))
 
 
 

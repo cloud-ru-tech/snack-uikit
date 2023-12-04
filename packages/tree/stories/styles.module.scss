@@ -1,13 +1,13 @@
-@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .storyWrap {
   resize: horizontal;
 
   overflow: hidden visible;
 
+  width: 250px;
   min-width: 160px;
   max-width: 100%;
-  width: 250px;
   padding: 24px;
 
   background-color: $sys-neutral-background1-level;

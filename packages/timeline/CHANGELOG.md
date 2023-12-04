@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-3711](https://jira.sbercloud.tech/browse/FF-3711):** fix style data-attribute ([7fa0756](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/7fa0756c2a7203f197be0d9b5c077060d617d8f6))
+* **FF-3711:** fix style data-attribute ([7fa0756](https://github.com/cloud-ru-tech/snack-uikit/commit/7fa0756c2a7203f197be0d9b5c077060d617d8f6))
 
 
 
@@ -19,7 +19,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3737](https://jira.sbercloud.tech/browse/FF-3737):** Timeline ([1ffdc5e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/1ffdc5e8f37ea30237c40252ba843d48326ca7a5))
+* **FF-3737:** Timeline ([1ffdc5e](https://github.com/cloud-ru-tech/snack-uikit/commit/1ffdc5e8f37ea30237c40252ba843d48326ca7a5))
 
 
 

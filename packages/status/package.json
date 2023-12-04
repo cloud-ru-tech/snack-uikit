@@ -16,9 +16,9 @@
     "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
     "directory": "packages/status"
   },
-  "author": "Anna Kozlova <apkozlova@sbercloud.ru>",
+  "author": "Anna Kozlova <apkozlova@cloud.ru>",
   "contributors": [
-    "Anna Kozlova <apkozlova@sbercloud.ru>"
+    "Anna Kozlova <apkozlova@cloud.ru>"
   ],
   "files": [
     "dist",

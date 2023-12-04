@@ -1,5 +1,5 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-pagination';
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-pagination';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .pageButton {
   @include composite-var($pagination-page-button-container);

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import { Typography } from '@snack-ui/typography';
 
@@ -9,15 +9,17 @@ type CardProps = {
   onClick?(): void;
   children?: ReactNode;
   header: ReactNode;
-  image?: string;
+  image?: string | ReactNode;
   small?: boolean;
 };
 
 export function Card({ href, image, onClick, children, header, small }: CardProps) {
+  const img = typeof image === 'string' ? <img alt={String(header)} src={image} height={40} /> : image;
+
   const content = (
     <>
       <div className={styles.row}>
-        {image && <img alt={String(header)} src={image} height={40} />}
+        {img}
 
         <Typography
           family={Typography.families.Sans}

@@ -47,7 +47,7 @@ npm i --save-dev @snack-ui/button
 import { createContext, useEffect } from 'react';
 import { useThemeConfig } from '@snack-ui/utils';
 import { ButtonFilled } from '@snack-ui/button';
-import DefaultBrand from '@sbercloud/figma-tokens/build/css/brand.module.css';
+import DefaultBrand from '@snack-uikit/figma-tokens/build/css/brand.module.css';
 
 export enum Theme {
   Light = 'Light',

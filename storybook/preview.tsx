@@ -6,6 +6,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { PARAM_COLOR_MAP_KEY, PARAM_KEY } from '@cloud-ru/ft-storybook-brand-addon';
 
+import { themes as additionalThemes } from '../themes.config';
 import { BADGE, Brand, DEFAULT_BRAND_COLORS_MAP, DEFAULT_BRAND_MAP } from './constants';
 
 const brandInfo: ThemeVars = {
@@ -53,23 +54,27 @@ const globalTypes: GlobalTypes = {
   [PARAM_COLOR_MAP_KEY]: {
     name: 'Brand Map with Colors',
     description: 'Map of color for brands list',
-    defaultValue: DEFAULT_BRAND_COLORS_MAP,
+    defaultValue: {
+      ...DEFAULT_BRAND_COLORS_MAP,
+      ...additionalThemes.reduce((res, theme) => {
+        res[theme.key] = theme.color;
+        return res;
+      }, {}),
+    },
   },
   [Brand.Default]: {
     name: 'Brand Default',
     description: '',
     defaultValue: DEFAULT_BRAND_MAP[Brand.Default],
   },
-  [Brand.Cloud]: {
-    name: 'Brand Cloud',
-    description: '',
-    defaultValue: DEFAULT_BRAND_MAP[Brand.Cloud],
-  },
-  [Brand.MLSpace]: {
-    name: 'Brand MLSpace',
-    description: '',
-    defaultValue: DEFAULT_BRAND_MAP[Brand.MLSpace],
-  },
+  ...additionalThemes.reduce((res, { key, name, defaultValue }) => {
+    res[key] = {
+      name,
+      description: '',
+      defaultValue,
+    };
+    return res;
+  }, {}),
 };
 
 const decorators: DecoratorFunction[] = [withDesign];

@@ -9,7 +9,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "add-package": "ts-node scripts/npm-init",
-    "build:storybook": "cross-env TEST_SERVER=true storybook build -c storybook",
+    "build:storybook": "npm run install:themes && cross-env TEST_SERVER=true storybook build -c storybook",
     "build:packages": "npm run clean:all && npm run deps:packages && lerna run compile && npm run build:ts && npm run build:css",
     "build:css": "ts-node scripts/compileCSS",
     "docgen": "ts-node scripts/docgen/docgenForAllPackages",
@@ -23,20 +23,19 @@
     "deps:global": "npm i",
     "deps:packages": "npm i --workspaces",
     "deps:reinstall": "npm run clean:all && rm -rf node_modules package-lock.json && npm cache clean -f && npm run deps:all",
-    "storybook:all": "storybook dev -c storybook -p 6006",
-    "storybook:partial": "ts-node scripts/start-storybook-partially",
+    "storybook:all": "npm run install:themes && storybook dev -c storybook -p 6006",
+    "storybook:partial": "npm run install:themes && ts-node scripts/start-storybook-partially",
     "test:coverage": "ts-node scripts/testcafe-coverage-packages",
     "test:ci": "ts-node scripts/run-tests",
     "test:testcafe": "testcafe chrome --config-file testcafe.config.js --live",
     "test:testcafe:local": "cross-env TEST_LOCAL=true npm run test:testcafe",
     "test:testcafe:branch": "cross-env TEST_ON_BRANCH=true npm run test:testcafe",
     "test:unit": "vitest run",
-    "test:unit:local": "vitest"
+    "test:unit:local": "vitest",
+    "install:themes": "ts-node scripts/install-additional-themes"
   },
   "dependencies": {
-    "@sbercloud/figma-tokens": "10.0.0",
-    "@sbercloud/figma-tokens-cloud-platform": "10.0.0",
-    "@sbercloud/figma-tokens-mlspace": "10.0.0",
+    "@snack-uikit/figma-tokens": "10.0.1-ebfb608f.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

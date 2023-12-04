@@ -24,7 +24,7 @@ import {DaySVG} from "@snack-ui/icons";
   icon={<DaySVG />}
   size={ButtonFilled.sizes.M}
   type={ButtonFilled.types.Critical}
-  href='https://sbercloud.ru/'
+  href='https://cloud.ru/'
   target='_blank'
   disabled={true}
   loading={true}

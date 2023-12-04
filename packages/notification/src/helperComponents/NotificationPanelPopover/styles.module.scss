@@ -1,4 +1,4 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
 
 .notificationPanelPopoverWrap {
   @include composite-var($notification-panel-container);

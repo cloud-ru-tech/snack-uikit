@@ -1,4 +1,4 @@
-import theme from '@sbercloud/figma-tokens/build/tokens/themes/tokens-light.json';
+import theme from '@snack-uikit/figma-tokens/build/tokens/themes/tokens-light.json';
 
 export enum SystemPalette {
   Primary = 'Primary',

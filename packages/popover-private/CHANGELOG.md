@@ -9,7 +9,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGES
 
 
-* **[FF-3701](https://jira.sbercloud.tech/browse/FF-3701):** remove arrow styles & add arrow classnames into props ([fb9ead8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/fb9ead8355a58cab638f8a4ef66af730566ddd2f))
+* **FF-3701:** remove arrow styles & add arrow classnames into props ([fb9ead8](https://github.com/cloud-ru-tech/snack-uikit/commit/fb9ead8355a58cab638f8a4ef66af730566ddd2f))
 
 
 
@@ -17,7 +17,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.9.5 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@2.0.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -26,7 +26,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.9.4 (2023-10-31)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@2.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -35,7 +35,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.9.3 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@1.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -46,7 +46,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0000:** add CSS.escape() into querySelector ([9d482dc](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9d482dc8fbfba4aa8ee90a423d8e4c28266fa00b))
+* **FF-0000:** add CSS.escape() into querySelector ([9d482dc](https://github.com/cloud-ru-tech/snack-uikit/commit/9d482dc8fbfba4aa8ee90a423d8e4c28266fa00b))
 
 
 
@@ -65,7 +65,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3321](https://jira.sbercloud.tech/browse/FF-3321):** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c193b4fcf778d2278bd739affb7c2c4966a417db))
+* **FF-3321:** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://github.com/cloud-ru-tech/snack-uikit/commit/c193b4fcf778d2278bd739affb7c2c4966a417db))
 
 
 
@@ -84,7 +84,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add heightStrategy, add flex styles to floating element ([3c085ba](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3c085ba991001e8be919004bb5425cdf22a9725e))
+* add heightStrategy, add flex styles to floating element ([3c085ba](https://github.com/cloud-ru-tech/snack-uikit/commit/3c085ba991001e8be919004bb5425cdf22a9725e))
 
 
 
@@ -95,8 +95,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3060](https://jira.sbercloud.tech/browse/FF-3060):** add fallback placements ([662f9af](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/662f9af48e08fa92824e250cf3e7a132f4b07f2a))
-* **[FF-3060](https://jira.sbercloud.tech/browse/FF-3060):** disable scrolling dismiss ([dd8448c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/dd8448c546c330944a2aa8d9f0bac662e5ed08a8))
+* **FF-3060:** add fallback placements ([662f9af](https://github.com/cloud-ru-tech/snack-uikit/commit/662f9af48e08fa92824e250cf3e7a132f4b07f2a))
+* **FF-3060:** disable scrolling dismiss ([dd8448c](https://github.com/cloud-ru-tech/snack-uikit/commit/dd8448c546c330944a2aa8d9f0bac662e5ed08a8))
 
 
 
@@ -107,7 +107,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2651](https://jira.sbercloud.tech/browse/FF-2651):** remove useless arrowSize, fixed arrow position ([4988063](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/49880631a19489f6a5881f771c1b7a7dba8d685a))
+* **FF-2651:** remove useless arrowSize, fixed arrow position ([4988063](https://github.com/cloud-ru-tech/snack-uikit/commit/49880631a19489f6a5881f771c1b7a7dba8d685a))
 
 
 
@@ -118,7 +118,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** add nesting behavior ([16b6bb0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/16b6bb065d544444ddf07f2d6790026ea7c59203))
+* **FF-2641:** add nesting behavior ([16b6bb0](https://github.com/cloud-ru-tech/snack-uikit/commit/16b6bb065d544444ddf07f2d6790026ea7c59203))
 
 
 
@@ -137,13 +137,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2264](https://jira.sbercloud.tech/browse/FF-2264):** always pass classname to trigger wrapper ([a9d0f5c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/a9d0f5c4d1dc92f66757d509499a0a566d605110))
+* **FF-2264:** always pass classname to trigger wrapper ([a9d0f5c](https://github.com/cloud-ru-tech/snack-uikit/commit/a9d0f5c4d1dc92f66757d509499a0a566d605110))
 
 
 ### Features
 
-* **[FF-2264](https://jira.sbercloud.tech/browse/FF-2264):** add closeOnEscapeKey property ([3a722e7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3a722e702bb36d2c977cfcdb9aa3217bce7240ab))
-* **[FF-2264](https://jira.sbercloud.tech/browse/FF-2264):** add triggerClickByKeys property ([9350a92](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9350a927d6450f8365b79be85d0ca4d079142b6f))
+* **FF-2264:** add closeOnEscapeKey property ([3a722e7](https://github.com/cloud-ru-tech/snack-uikit/commit/3a722e702bb36d2c977cfcdb9aa3217bce7240ab))
+* **FF-2264:** add triggerClickByKeys property ([9350a92](https://github.com/cloud-ru-tech/snack-uikit/commit/9350a927d6450f8365b79be85d0ca4d079142b6f))
 
 
 
@@ -154,7 +154,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2485](https://jira.sbercloud.tech/browse/FF-2485):** add triggerClassName prop ([29ebbf5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/29ebbf5c646b57ec1bbf474d7cca82e4cc21d5ac))
+* **FF-2485:** add triggerClassName prop ([29ebbf5](https://github.com/cloud-ru-tech/snack-uikit/commit/29ebbf5c646b57ec1bbf474d7cca82e4cc21d5ac))
 
 
 
@@ -165,7 +165,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2258](https://jira.sbercloud.tech/browse/FF-2258):** add shift to fit the viewport ([8b6a0f5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/8b6a0f58383f353b92a19b1e1dc9f6044f2d0320))
+* **FF-2258:** add shift to fit the viewport ([8b6a0f5](https://github.com/cloud-ru-tech/snack-uikit/commit/8b6a0f58383f353b92a19b1e1dc9f6044f2d0320))
 
 
 
@@ -176,7 +176,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0:** move utils to usual deps ([ebe441a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
 
 
 
@@ -187,7 +187,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2458](https://jira.sbercloud.tech/browse/FF-2458):** content centering ([0a9db7c](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0a9db7caed8b17bd89ed9ae55dbc9ad7935511ba))
+* **FF-2458:** content centering ([0a9db7c](https://github.com/cloud-ru-tech/snack-uikit/commit/0a9db7caed8b17bd89ed9ae55dbc9ad7935511ba))
 
 
 
@@ -198,7 +198,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2257](https://jira.sbercloud.tech/browse/FF-2257):** up utils ([5dd5d28](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5dd5d28cdbe14973dcc36759e7db003249930a4b))
+* **FF-2257:** up utils ([5dd5d28](https://github.com/cloud-ru-tech/snack-uikit/commit/5dd5d28cdbe14973dcc36759e7db003249930a4b))
 
 
 
@@ -209,7 +209,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2263](https://jira.sbercloud.tech/browse/FF-2263):** add widthStrategy property ([8a1efab](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/8a1efabebc8e8b21c2cd2c9786de5477ae4ca256))
+* **FF-2263:** add widthStrategy property ([8a1efab](https://github.com/cloud-ru-tech/snack-uikit/commit/8a1efabebc8e8b21c2cd2c9786de5477ae4ca256))
 
 
 
@@ -218,7 +218,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.2 (2023-05-15)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@1.1.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@1.1.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -229,7 +229,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2255](https://jira.sbercloud.tech/browse/FF-2255):** new palette migration ([f3bc490](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/f3bc490bb4ddde4353009b55da2d04f87a7d9de9))
+* **FF-2255:** new palette migration ([f3bc490](https://github.com/cloud-ru-tech/snack-uikit/commit/f3bc490bb4ddde4353009b55da2d04f87a7d9de9))
 
 
 
@@ -240,7 +240,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2186](https://jira.sbercloud.tech/browse/FF-2186):** add popover-private package ([e3f2469](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/e3f24695ace62bf6f2b2bdb3be57962dbfd662b8))
+* **FF-2186:** add popover-private package ([e3f2469](https://github.com/cloud-ru-tech/snack-uikit/commit/e3f24695ace62bf6f2b2bdb3be57962dbfd662b8))
 
 
 

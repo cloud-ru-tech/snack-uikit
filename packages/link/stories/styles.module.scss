@@ -1,6 +1,6 @@
 @use "sass:map";
 
-@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $appearance: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
 $on-surfaces: 'background', 'decor', 'accent';

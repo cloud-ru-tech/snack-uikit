@@ -1,5 +1,5 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 'xs', 's';
 
@@ -12,7 +12,7 @@ $sizes: 'xs', 's';
   }
 }
 
-a.crumb, .crumb {
+.crumb, a.crumb {
   display: flex;
   align-items: center;
 

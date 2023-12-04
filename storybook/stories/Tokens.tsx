@@ -1,7 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import TokensChangelog from '@sbercloud/figma-tokens/CHANGELOG.md';
-import TokensReadme from '@sbercloud/figma-tokens/README.md';
+import TokensChangelog from '@snack-uikit/figma-tokens/CHANGELOG.md';
+import TokensReadme from '@snack-uikit/figma-tokens/README.md';
 
 import { BasePalette, Markdown, SystemPaletteStory } from './components';
 

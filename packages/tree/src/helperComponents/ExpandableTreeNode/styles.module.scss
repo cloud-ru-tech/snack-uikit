@@ -1,4 +1,4 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tree';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree';
 
 .expandableTreeNode {
   position: relative;
@@ -6,27 +6,30 @@
 }
 
 .expandableContent {
-  box-sizing: border-box;
+  overflow: hidden;
   display: flex;
 
+  box-sizing: border-box;
   min-height: 0;
+
   visibility: hidden;
-  overflow: hidden;
 
   transition: visibility 200ms;
 }
 
 .expandableWrap {
+  overflow: hidden;
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 200ms;
+
   box-sizing: border-box;
   width: 100%;
-  overflow: hidden;
+
+  transition: grid-template-rows 200ms;
 
   &[data-expanded='true'] {
-    grid-template-rows: 1fr;
     overflow: unset;
+    grid-template-rows: 1fr;
 
     .expandableContent {
       visibility: visible;
@@ -35,6 +38,6 @@
 }
 
 .expandableNested {
-  min-width: 0;
   width: 100%;
+  min-width: 0;
 }

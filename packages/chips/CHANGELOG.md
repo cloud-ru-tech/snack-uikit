@@ -14,8 +14,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.8.3 (2023-11-29)
 
 ### Only dependencies have been changed
-* [@snack-ui/calendar@0.4.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/calendar/CHANGELOG.md)
-* [@snack-ui/droplist@0.10.12](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/calendar@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -24,7 +24,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.8.2 (2023-11-22)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.11](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -33,7 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.8.1 (2023-11-21)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.10](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -44,8 +44,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3755](https://jira.sbercloud.tech/browse/FF-3755):** add chipChoiceRow ([a87afab](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/a87afab118c90625cee26382d6093207857fe3ec))
-* **[FF-3755](https://jira.sbercloud.tech/browse/FF-3755):** add withwidthStrategies prop ([9855be6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9855be67d295c24172d7471482e5f0bcf7eac75c))
+* **FF-3755:** add chipChoiceRow ([a87afab](https://github.com/cloud-ru-tech/snack-uikit/commit/a87afab118c90625cee26382d6093207857fe3ec))
+* **FF-3755:** add withwidthStrategies prop ([9855be6](https://github.com/cloud-ru-tech/snack-uikit/commit/9855be67d295c24172d7471482e5f0bcf7eac75c))
 
 
 
@@ -54,7 +54,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.7.2 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -63,7 +63,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.7.1 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -75,7 +75,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGES
 
 
-* **[FF-3712](https://jira.sbercloud.tech/browse/FF-3712):** chips rename, tokens update, split ChipChoice ([5c2f77e](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5c2f77e895a0911f29ef066c99b060af6a28af4b))
+* **FF-3712:** chips rename, tokens update, split ChipChoice ([5c2f77e](https://github.com/cloud-ru-tech/snack-uikit/commit/5c2f77e895a0911f29ef066c99b060af6a28af4b))
 
 
 
@@ -83,7 +83,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.6.3 (2023-11-09)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -92,9 +92,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.6.2 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/loaders@0.3.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
-* [@snack-ui/utils@2.0.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/loaders@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -103,9 +103,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.6.1 (2023-10-31)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/loaders@0.3.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
-* [@snack-ui/utils@2.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/loaders@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-ui/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -116,7 +116,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3309](https://jira.sbercloud.tech/browse/FF-3309):** add placement prop into FilterChip ([1dbb356](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/1dbb356505583e9925e8af04aa8014b1334b8cef))
+* **FF-3309:** add placement prop into FilterChip ([1dbb356](https://github.com/cloud-ru-tech/snack-uikit/commit/1dbb356505583e9925e8af04aa8014b1334b8cef))
 
 
 
@@ -125,9 +125,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.5.1 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/loaders@0.3.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
-* [@snack-ui/utils@1.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/droplist@0.10.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/loaders@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -138,7 +138,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-3326](https://jira.sbercloud.tech/browse/FF-3326):** use useKeyboardNavigation from Droplist package instead of local implementation ([9615d55](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/9615d5589ee6743ad7fc24c95e1fb96a9ab42752))
+* **FF-3326:** use useKeyboardNavigation from Droplist package instead of local implementation ([9615d55](https://github.com/cloud-ru-tech/snack-uikit/commit/9615d5589ee6743ad7fc24c95e1fb96a9ab42752))
 
 
 
@@ -147,7 +147,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.4 (2023-10-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.9.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.9.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -156,7 +156,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.3 (2023-10-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.9.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.9.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -165,7 +165,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.2 (2023-10-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.9.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.9.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -174,8 +174,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.1 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.9.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/loaders@0.3.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-ui/droplist@0.9.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/loaders@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/loaders/CHANGELOG.md)
 
 
 
@@ -186,12 +186,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-3327](https://jira.sbercloud.tech/browse/FF-3327):** fix offset in bad cases (left/top/right placement) ([93d68ba](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/93d68ba403f1b790ca37668fbce3aec88bc3ed1a))
+* **FF-3327:** fix offset in bad cases (left/top/right placement) ([93d68ba](https://github.com/cloud-ru-tech/snack-uikit/commit/93d68ba403f1b790ca37668fbce3aec88bc3ed1a))
 
 
 ### Features
 
-* **[FF-3321](https://jira.sbercloud.tech/browse/FF-3321):** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c193b4fcf778d2278bd739affb7c2c4966a417db))
+* **FF-3321:** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://github.com/cloud-ru-tech/snack-uikit/commit/c193b4fcf778d2278bd739affb7c2c4966a417db))
 
 
 
@@ -200,7 +200,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.9 (2023-10-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.8.4](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.8.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -209,8 +209,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.8 (2023-10-06)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.8.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/loaders@0.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-ui/droplist@0.8.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/loaders@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/loaders/CHANGELOG.md)
 
 
 
@@ -219,7 +219,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.7 (2023-10-05)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.8.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.8.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -228,7 +228,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.6 (2023-09-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.8.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.8.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -237,7 +237,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.5 (2023-09-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.8.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.8.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -246,7 +246,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.4 (2023-09-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.7.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.7.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -257,7 +257,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-3026](https://jira.sbercloud.tech/browse/FF-3026):** replaced loader with sun in chips ([3b2d86d](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/3b2d86d21543b6e1aed172f1b3e55ea0905c9b46))
+* **FF-3026:** replaced loader with sun in chips ([3b2d86d](https://github.com/cloud-ru-tech/snack-uikit/commit/3b2d86d21543b6e1aed172f1b3e55ea0905c9b46))
 
 
 
@@ -266,7 +266,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.2 (2023-09-14)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.7.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.7.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -275,7 +275,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.1 (2023-09-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.7.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.7.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -286,7 +286,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
 
 
 
@@ -295,7 +295,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.15 (2023-08-31)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.12](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -304,7 +304,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.14 (2023-08-30)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.11](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -313,7 +313,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.13 (2023-08-29)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.10](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -322,7 +322,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.12 (2023-08-24)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -331,7 +331,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.11 (2023-08-24)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -342,7 +342,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2963](https://jira.sbercloud.tech/browse/FF-2963):** change strategy to Gte ([0c539d2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/0c539d2ae0f1e91a2f098f18b08922ecb1479d04))
+* **FF-2963:** change strategy to Gte ([0c539d2](https://github.com/cloud-ru-tech/snack-uikit/commit/0c539d2ae0f1e91a2f098f18b08922ecb1479d04))
 
 
 
@@ -351,7 +351,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.9 (2023-08-17)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.6](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -360,7 +360,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.8 (2023-08-17)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -371,7 +371,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2777](https://jira.sbercloud.tech/browse/FF-2777):** using new icons ([7922fca](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
 
 
 
@@ -380,7 +380,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.6 (2023-08-14)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.3](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -389,7 +389,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.5 (2023-08-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -398,7 +398,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.4 (2023-08-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.6.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.6.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -409,7 +409,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2641](https://jira.sbercloud.tech/browse/FF-2641):** move chips to the new droplist ([5b54f02](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5b54f02c177ce85bfc0f6785419320f1b13a5650))
+* **FF-2641:** move chips to the new droplist ([5b54f02](https://github.com/cloud-ru-tech/snack-uikit/commit/5b54f02c177ce85bfc0f6785419320f1b13a5650))
 
 
 
@@ -418,8 +418,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.2 (2023-07-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.5.2](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/loaders@0.2.8](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-ui/droplist@0.5.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/loaders@0.2.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/loaders/CHANGELOG.md)
 
 
 
@@ -428,7 +428,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.1 (2023-07-26)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.5.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-ui/droplist@0.5.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
 
 
 
@@ -439,7 +439,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2640](https://jira.sbercloud.tech/browse/FF-2640):** add droplist to filter chip ([60d9608](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/60d96087161a40d496089248398ef13cadd511b9))
+* **FF-2640:** add droplist to filter chip ([60d9608](https://github.com/cloud-ru-tech/snack-uikit/commit/60d96087161a40d496089248398ef13cadd511b9))
 
 
 
@@ -450,7 +450,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0000:** remove icon-before case in xs size from mixin ([b56defb](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/b56defbe0fe785af1dddc019ae87c2fdcee964a9))
+* **FF-0000:** remove icon-before case in xs size from mixin ([b56defb](https://github.com/cloud-ru-tech/snack-uikit/commit/b56defbe0fe785af1dddc019ae87c2fdcee964a9))
 
 
 
@@ -459,7 +459,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.1 (2023-06-23)
 
 ### Only dependencies have been changed
-* [@snack-ui/loaders@0.2.7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-ui/loaders@0.2.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/loaders/CHANGELOG.md)
 
 
 
@@ -470,7 +470,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2528](https://jira.sbercloud.tech/browse/FF-2528):** add chips package ([65f6ab9](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/65f6ab9eb805d88a7a435358bb384c503513e5ef))
+* **FF-2528:** add chips package ([65f6ab9](https://github.com/cloud-ru-tech/snack-uikit/commit/65f6ab9eb805d88a7a435358bb384c503513e5ef))
 
 
 

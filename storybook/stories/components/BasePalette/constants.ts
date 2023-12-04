@@ -1,4 +1,4 @@
-import { themeVars } from '@sbercloud/figma-tokens';
+import { themeVars } from '@snack-uikit/figma-tokens';
 
 export const TONES = Object.keys(themeVars.ref.gray);
 

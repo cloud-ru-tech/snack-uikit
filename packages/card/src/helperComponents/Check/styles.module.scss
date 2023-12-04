@@ -1,4 +1,4 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-card';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
 
 .checkWrapper {
   @include composite-var($card-check-badge);

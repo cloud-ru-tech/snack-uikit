@@ -1,4 +1,4 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-dropList';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
 
 .droplistContainer {
   @include composite-var($drop-list-container);

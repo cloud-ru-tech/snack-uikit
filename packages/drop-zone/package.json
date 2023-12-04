@@ -16,9 +16,9 @@
     "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
     "directory": "packages/drop-zone"
   },
-  "author": "Akhremenko Grigorii <gaahremenko@sbercloud.ru>",
+  "author": "Akhremenko Grigorii <gaahremenko@cloud.ru>",
   "contributors": [
-    "Akhremenko Grigorii <gaahremenko@sbercloud.ru>"
+    "Akhremenko Grigorii <gaahremenko@cloud.ru>"
   ],
   "files": [
     "dist",

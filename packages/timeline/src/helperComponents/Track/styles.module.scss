@@ -1,11 +1,11 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-timeline';
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-timeline';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $positions: 'center', 'end';
 
 .trackLine {
-  height: 100%;
   width: $border-timeline-track-line-solid-border-width;
+  height: 100%;
   background: $sys-neutral-decor-default;
 
   &[data-style='dashed'] {
@@ -17,7 +17,6 @@ $positions: 'center', 'end';
   @include composite-var($timeline-track-container);
 
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,10 +40,10 @@ $positions: 'center', 'end';
   @each $position in $positions {
     &[data-position='#{$position}'] {
       .trackLinePre {
+        @include composite-var($timeline-track-line-before-height);
+
         position: absolute;
         top: 0;
-
-        @include composite-var($timeline-track-line-before-height);
         min-height: $size-timeline-track-line-before-height;
       }
     }

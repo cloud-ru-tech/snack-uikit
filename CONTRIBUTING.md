@@ -119,25 +119,13 @@ packages
 1. Создайте feature ветку от последнего master
 2. Запустите команду `npm run build:packages`
 3. Запустите команду `npm run add-package`
-4. Выпустите превью-пакет на ветке с токенами в [основном репозитории](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/figma-tokens) и заиспользуйте его в uikit-e.
+4. Установите новую версию пакета figma-tokens, содержащую необходимые для компонента токены.
 5. Реализуйте необходимый компонент или утилиту согласно Conventional commit approach
 6. Создайте pull request
 7. Получите аппрув
 8. `git pull -r origin master`, если это необходимо
-9. Зарелизьте токены для компонента:
-    - Смержите ветку с токенами в [основном репозитории](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/figma-tokens)
-    - Дождитесь выпуска версии в  основном репозитории, а затем синхронизации форков и выпуска версии в них:
-        - [Форк Cloud Platform](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/figma-tokens-cloud-platform)
-        - [Форк MLSpace](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/figma-tokens-mlspace)
-    - Заиспользуйте новые версии токенов в uikit
-10. Для релиза первой стабильной версии необходимо
-- `git fetch --all --prune --prune-tags `
-- запустить `npm run changelog`
-- В сгенерированном диффе поправить версии на необходимые
-- сделать коммит
-- запустить `lerna version --exact --message "Version bump"`
-11. Убедитесь, что все изменения актуальны и правильны
-12. Смержите в master
+9. Убедитесь, что все изменения актуальны и правильны
+10. Смержите в master
 
 ### Внесение изменений в существующий пакет
 
@@ -265,13 +253,13 @@ Effects имеет 2 модификации - темная и светлая. Э
 
 ### Как использовать токены в компонентах
 
-1. Проверьте, что в uikit подключен пакет `@sbercloud/figma-tokens` актуальной версии
+1. Проверьте, что в uikit подключен пакет `@snack-ui/figma-tokens` актуальной версии
 2. Создайте файл для компонента (напр., `ButtonFilled.tsx`) и scss-файл для стилей (`styles.module.scss`), который импортится в файл компонента
 3. Подключите файлы с токенами в `styles.module.scss` (тематические, компонентные - какие нужны):
     * файлы с токенами компонентов по умолчанию уже включают в себя тематические токены
 ```scss
-@import '@sbercloud/figma-tokens/build/scss/styles-theme-variables';
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-***';
+@import '@snack-ui/figma-tokens/build/scss/styles-theme-variables';
+@import '@snack-ui/figma-tokens/build/scss/components/styles-tokens-***';
 ```
 4. Соберите стили компонента по макетам в figma, подключая токены через `var`, `simple-var` или `composite-var`
     * в scss можно также добавлять миксины и различные функции, чтобы убирать дублирование кода, пример:
@@ -297,7 +285,7 @@ $variants: label-only, icon-only, label-icon;
   @include button-anatomy-styles;
 }
 ```
-5. Подключите scss-файл в компонент в виде объекта с класснеймами, и далее используйте следующим образом:
+5. Подключите scss-файл в компонент в виде объекта с именами CSS-классов, и далее используйте следующим образом:
 
 ```tsx
 import styles from './styles.module.scss';

@@ -36,3 +36,6 @@ reports
 .nyc_output
 /reports/jest-report.xml
 /public
+
+snack.config.ts
+themes.config.ts

@@ -1,4 +1,4 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-pagination';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-pagination';
 
 .pagination {
   @include composite-var($pagination-container);

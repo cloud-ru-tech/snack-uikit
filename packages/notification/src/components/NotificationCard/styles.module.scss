@@ -1,5 +1,5 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-notification-notificationCard';
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationCard';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .notificationCardFunction {
   @include composite-var($notification-card-function-badge);

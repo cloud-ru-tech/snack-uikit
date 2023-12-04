@@ -1,5 +1,5 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-modal';
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .buttonClose {
   @include composite-var($modal-button-close);

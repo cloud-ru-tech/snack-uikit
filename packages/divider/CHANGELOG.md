@@ -6,7 +6,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 1.2.4 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@2.0.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -15,7 +15,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 1.2.3 (2023-10-31)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@2.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -24,7 +24,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 1.2.2 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@1.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -43,7 +43,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-875](https://jira.sbercloud.tech/browse/FF-875):** add utils for dependencies graph ([53cd7be](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
 
 
 
@@ -60,7 +60,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 1.1.3 (2023-06-20)
 
 ### Only dependencies have been changed
-* [@snack-ui/utils@1.2.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-ui/utils@1.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -71,7 +71,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **FF-0:** move utils to usual deps ([ebe441a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
 
 
 
@@ -82,7 +82,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **[FF-2458](https://jira.sbercloud.tech/browse/FF-2458):** changing props to optional ([c174179](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/c174179d63eed481682ae2363714bc6dbb7f22cb))
+* **FF-2458:** changing props to optional ([c174179](https://github.com/cloud-ru-tech/snack-uikit/commit/c174179d63eed481682ae2363714bc6dbb7f22cb))
 
 
 
@@ -93,7 +93,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **[FF-2260](https://jira.sbercloud.tech/browse/FF-2260):** add divider package ([84521f1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/84521f1b055dbbdde5f3467e8fa0e5b3b6ff23d1))
+* **FF-2260:** add divider package ([84521f1](https://github.com/cloud-ru-tech/snack-uikit/commit/84521f1b055dbbdde5f3467e8fa0e5b3b6ff23d1))
 
 
 

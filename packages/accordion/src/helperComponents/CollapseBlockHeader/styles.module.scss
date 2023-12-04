@@ -1,4 +1,4 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-accordion';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
 
 .headline {
   @include composite-var($collapse-block-container-header-headline);

@@ -1,20 +1,22 @@
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-tree';
-@import '@sbercloud/figma-tokens/build/scss/components/styles-tokens-element';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .treeNode {
-  box-sizing: border-box;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
   width: 100%;
 }
 
 .treeNodeIcon {
-  box-sizing: border-box;
-  color: $sys-neutral-text-support;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+
+  box-sizing: border-box;
+
+  color: $sys-neutral-text-support;
 
   svg {
     width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
@@ -23,10 +25,10 @@
 }
 
 .treeNodeTitle {
-  box-sizing: border-box;
   flex-grow: 1;
-  color: $sys-neutral-text-main;
+  box-sizing: border-box;
   min-width: $size-tree-item-checkbox-wrap;
+  color: $sys-neutral-text-main;
 }
 
 .treeNodeActions {
@@ -41,26 +43,33 @@
 .treeNodeContent {
   @include composite-var($tree-item-content-layout);
 
-  box-sizing: border-box;
-  position: relative;
-  display: flex;
-  align-items: center;
-  border-radius: $radius-tree-item-content-layout;
-  width: 100%;
   cursor: pointer;
 
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  border-radius: $radius-tree-item-content-layout;
+
   &::before {
+    pointer-events: none;
     content: '';
-    box-sizing: border-box;
+
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
+
+    box-sizing: border-box;
     width: 100%;
-    border-radius: inherit;
-    pointer-events: none;
-    background-color: $sys-neutral-accent-default;
+    height: 100%;
+
     opacity: 0;
+    background-color: $sys-neutral-accent-default;
+    border-radius: inherit;
   }
 
   &:hover, &:focus-visible, &[data-droplist-active] {
@@ -97,8 +106,8 @@
 
   &[aria-selected='true']:not([data-multiselect]) {
     &::before {
-      background-color: $sys-primary-accent-default;
       opacity: $opacity-a008;
+      background-color: $sys-primary-accent-default;
     }
 
     &:hover {
@@ -112,11 +121,12 @@
 .treeNodeCheckboxWrap {
   @include composite-var($tree-item-checkbox-wrap);
 
-  box-sizing: border-box;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+
+  box-sizing: border-box;
 }
 
 .treeNodeExpandButton {
