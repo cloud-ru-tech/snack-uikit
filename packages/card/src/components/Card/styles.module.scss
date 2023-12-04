@@ -3,8 +3,6 @@
 
 $sizes:  'm', 'l';
 
-$snack-ui-card-background-color: var(--snack-ui-card-background-color);
-
 .functionBadgeWrapper {
   position: absolute;
   top: 0;
@@ -23,8 +21,6 @@ $snack-ui-card-background-color: var(--snack-ui-card-background-color);
 }
 
 .card {
-  --snack-ui-card-background-color: #{$sys-neutral-background1-level};
-
   @include composite-var($card-container);
   
   position: relative;
@@ -37,7 +33,7 @@ $snack-ui-card-background-color: var(--snack-ui-card-background-color);
 
   text-align: left;
   
-  background-color: $snack-ui-card-background-color;
+  background-color: $sys-neutral-background1-level;
   border: 0;
   outline-color: transparent;
 
@@ -56,6 +52,7 @@ $snack-ui-card-background-color: var(--snack-ui-card-background-color);
   &:focus-visible {
     @include outline-var($container-focused-l);
 
+    background-color: $sys-neutral-background2-level;
     outline-color: $sys-primary-accent-default;
 
     .functionBadgeWrapper {
@@ -110,7 +107,20 @@ $snack-ui-card-background-color: var(--snack-ui-card-background-color);
       }
 
       .contentWrapper {
-        background-color: color-on-background-with-opacity($sys-primary-accent-default, $snack-ui-card-background-color, $opacity-a008);
+        position: relative;
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
+          opacity: $opacity-a008;
+          background-color: $sys-primary-accent-default;
+        }
       }
 
       .check {
@@ -157,6 +167,8 @@ $snack-ui-card-background-color: var(--snack-ui-card-background-color);
 }
 
 .content {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
