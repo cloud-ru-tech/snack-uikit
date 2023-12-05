@@ -1,7 +1,7 @@
 {
   "name": "@snack-ui/notification",
   "title": "Notification",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -30,7 +30,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-ui/button": "0.13.6",
-    "@snack-ui/chips": "0.8.3",
+    "@snack-ui/chips": "0.8.4",
     "@snack-ui/droplist": "0.10.12",
     "@snack-ui/icon-predefined": "0.2.5",
     "@snack-ui/icons": "0.18.1",
