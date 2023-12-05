@@ -30,7 +30,10 @@
 }
 
 .rowActionsCellTrigger {
+  --offset: 0px;
+
   @include composite-var($table-cells-action);
+  
 
   cursor: pointer;
 
