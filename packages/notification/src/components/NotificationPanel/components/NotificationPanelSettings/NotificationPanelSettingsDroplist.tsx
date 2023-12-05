@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { ButtonSimple, ButtonSimpleProps } from '@snack-ui/button';
-import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
+import { ButtonSimple, ButtonSimpleProps } from '@snack-uikit/button';
+import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
 
 import { TEST_IDS } from '../../constants';
 

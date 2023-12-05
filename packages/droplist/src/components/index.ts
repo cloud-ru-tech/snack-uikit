@@ -1,4 +1,4 @@
-import { PopoverPrivate } from '@snack-ui/popover-private';
+import { PopoverPrivate } from '@snack-uikit/popover-private';
 
 import { Size } from '../constants';
 import { Droplist as DroplistComponent } from './Droplist';

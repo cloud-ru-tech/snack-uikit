@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
-import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG, InfoFilledSVG } from '@snack-ui/icons';
-import { Size } from '@snack-ui/input-private';
+import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG, InfoFilledSVG } from '@snack-uikit/icons';
+import { Size } from '@snack-uikit/input-private';
 
 import { ValidationState } from '../../constants';
 import styles from './styles.module.scss';

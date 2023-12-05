@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
-import { ButtonFilled, ButtonFilledProps } from '@snack-ui/button';
-import { excludeSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { ButtonFilled, ButtonFilledProps } from '@snack-uikit/button';
+import { excludeSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Size } from '../../../../constants';
 import { useCardContext } from '../../../../context';

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { ChevronLeftSVG, ChevronRightSVG } from '@snack-ui/icons';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { ButtonFunction } from '@snack-uikit/button';
+import { ChevronLeftSVG, ChevronRightSVG } from '@snack-uikit/icons';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { getPaginationEntries, PaginationEntry, PaginationEntryKind } from '../../utils';
 import { PageMoreButton } from '../PageMoreButton';

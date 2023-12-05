@@ -1,7 +1,7 @@
 # TabBar
 
 ## Installation
-`npm i @snack-ui/tabs`
+`npm i @snack-uikit/tabs`
 
 [Changelog](./CHANGELOG.md)
 

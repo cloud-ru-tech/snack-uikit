@@ -1,4 +1,4 @@
-import { IconPredefinedProps } from '@snack-ui/icon-predefined';
+import { IconPredefinedProps } from '@snack-uikit/icon-predefined';
 
 import { Align } from '../src/constants';
 

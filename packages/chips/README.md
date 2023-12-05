@@ -1,7 +1,7 @@
 # Chips
 
 ## Installation
-`npm i @snack-ui/chips`
+`npm i @snack-uikit/chips`
 
 [Changelog](./CHANGELOG.md)
 
@@ -12,8 +12,8 @@
 ## Example
 
 ```typescript jsx
-import { ChipAssist, ChipChoice, ChipToggle } from '@snack-ui/chips';
-import { PlaceholderSVG } from '@snack-ui/icons';
+import { ChipAssist, ChipChoice, ChipToggle } from '@snack-uikit/chips';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
 <ChipAssist
   label='Label'

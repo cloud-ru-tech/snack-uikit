@@ -1,6 +1,6 @@
 import { ChangeEvent, FocusEventHandler, KeyboardEventHandler, MouseEventHandler, RefAttributes } from 'react';
 
-import { WithSupportProps } from '@snack-ui/utils';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { Type } from './constants';
 

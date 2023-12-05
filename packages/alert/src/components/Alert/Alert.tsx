@@ -1,9 +1,9 @@
 import cn from 'classnames';
 
-import { CrossSVG } from '@snack-ui/icons';
-import { Link } from '@snack-ui/link';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { CrossSVG } from '@snack-uikit/icons';
+import { Link } from '@snack-uikit/link';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Appearance, APPEARANCE_TO_COLOR_MAP } from '../../constants';
 import { getIcon } from '../../utils';

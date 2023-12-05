@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/fields",
+  "name": "@snack-uikit/fields",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Fields",
   "version": "0.8.2",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "Common form elements",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/fields",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/fields",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/fields"
   },
   "author": "Akhremenko Grigorii <gaahremenko@cloud.ru>",
@@ -29,14 +32,14 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/calendar": "0.4.1",
-    "@snack-ui/droplist": "0.10.12",
-    "@snack-ui/icons": "0.18.1",
-    "@snack-ui/input-private": "1.5.13",
-    "@snack-ui/scroll": "0.3.4",
-    "@snack-ui/tooltip": "0.8.0",
-    "@snack-ui/truncate-string": "0.2.16",
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/calendar": "0.4.1",
+    "@snack-uikit/droplist": "0.10.12",
+    "@snack-uikit/icons": "0.18.1",
+    "@snack-uikit/input-private": "1.5.13",
+    "@snack-uikit/scroll": "0.3.4",
+    "@snack-uikit/tooltip": "0.8.0",
+    "@snack-uikit/truncate-string": "0.2.16",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2",
     "copy-to-clipboard": "3.3.3",
     "merge-refs": "1.0.0",

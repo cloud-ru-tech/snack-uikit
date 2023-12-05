@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useMemo } from 'react';
 
-import { WithSupportProps } from '@snack-ui/utils';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { useIsLoadingValue } from '../../hooks';
 import { Skeleton, SkeletonProps } from '../Skeleton';

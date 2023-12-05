@@ -1,6 +1,6 @@
-# Snack Uikit [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![coverage](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/badges/master/coverage.svg?job=testcafe-coverage&key_text=coverage&&key_width=100/coverage.svg)](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/badges/master/coverage.svg?job=testcafe-coverage&key_text=coverage&&key_width=100)
+# Snack Uikit [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-Snack Uikit - [библиотека компонентов](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit) компании [Cloud.ru](https://cloud.ru/) и сообщества [TeamSnack](https://t.me/+tN0DDzHaDVc3M2Iy), в которой каждый компонент это отдельный npm-пакет, со своей версионностью и зависимостями.
+Snack Uikit - [библиотека компонентов](https://cloud-ru-tech.github.io/snack-uikit) компании [Cloud.ru](https://cloud.ru/) и сообщества [TeamSnack](https://t.me/+tN0DDzHaDVc3M2Iy), в которой каждый компонент это отдельный npm-пакет, со своей версионностью и зависимостями.
 
 ![Cloud](storybook/assets/CloudRuFullLogo.svg)   
 
@@ -23,18 +23,9 @@ Snack Uikit - [библиотека компонентов](https://git.sberclou
 ![Firefox](storybook/assets/FirefoxLogo.svg)
 
 # Installation
-
-1. Получить доступ к [snack-uikit](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit)
-2. Создать `.npmrc` в корневой директории. Содержание `.npmrc`:
 ```text
-@snack-ui:registry=https://pkg.sbercloud.tech/artifactory/api/npm/sc-uikit-npm/
+npm i --save @snack-uikit/button
 ```
-3. Обновить версию [@sbercloud/ft-config-webpack-spa](https://git.sbercloud.tech/sbercloud-ui/business-tools/frontend-tools/-/tree/master/packages/config-webpack-spa) минимум до 0.6.0
-4. Установить необходимый пакет, например:
-```text
-npm i --save-dev @snack-ui/button
-```
-
 
 # Usage
 
@@ -45,8 +36,8 @@ npm i --save-dev @snack-ui/button
 
 ```typescript jsx
 import { createContext, useEffect } from 'react';
-import { useThemeConfig } from '@snack-ui/utils';
-import { ButtonFilled } from '@snack-ui/button';
+import { useThemeConfig } from '@snack-uikit/utils';
+import { ButtonFilled } from '@snack-uikit/button';
 import DefaultBrand from '@snack-uikit/figma-tokens/build/css/brand.module.css';
 
 export enum Theme {
@@ -90,9 +81,9 @@ function App() {
 
 # Team
 
-`Development Team` - Трифонов Михаил, Ахременко Григорий, Безматерных Дмитрий, Белов Алексей, Ершов Никита, Козлова Анна, Круглов Дмитрий, Хлупин Сергей 
+`Development Team` - Трифонов Михаил, Ахременко Григорий, Безматерных Дмитрий, Белов Алексей, Ершов Никита, Козлова Анна, Круглов Дмитрий, Хлупин Сергей, Белявский Илья
 
-`Design Team` - Малокостов Игорь
+`Design Team` - Малокостов Игорь, Алексеев Алексей
 
 # Contribution
 

@@ -1,4 +1,4 @@
-import { ModalProps } from '@snack-ui/modal';
+import { ModalProps } from '@snack-uikit/modal';
 
 import { PICTURE_ARGS } from './constants';
 import { ExtendedStoryProps } from './types';

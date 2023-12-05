@@ -1,7 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 
-import { ButtonFilled } from '@snack-ui/button';
+import { ButtonFilled } from '@snack-uikit/button';
 
 import popoverPrivateReadme from '../../popover-private/README.md';
 import componentChangelog from '../CHANGELOG.md';

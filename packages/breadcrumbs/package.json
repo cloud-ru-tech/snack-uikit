@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/breadcrumbs",
+  "name": "@snack-uikit/breadcrumbs",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Breadcrumbs",
   "version": "0.4.13",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/breadcrumbs",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/breadcrumbs",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/breadcrumbs"
   },
   "author": "Сергей Хлупин <svhlupin@cloud.ru>",
@@ -29,9 +32,9 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/popover": "0.4.0",
-    "@snack-ui/typography": "0.4.4",
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/popover": "0.4.0",
+    "@snack-uikit/typography": "0.4.4",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2",
     "lodash.debounce": "4.0.8"
   }

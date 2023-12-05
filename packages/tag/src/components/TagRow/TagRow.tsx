@@ -1,4 +1,4 @@
-import { WithSupportProps } from '@snack-ui/utils';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { Appearance, Size } from '../../constants';
 import { TagRowSimple, TagRowTruncated } from '../../helperComponents';

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { Droplist } from '@snack-ui/droplist';
-import { DownloadSVG } from '@snack-ui/icons';
+import { ButtonFunction } from '@snack-uikit/button';
+import { Droplist } from '@snack-uikit/droplist';
+import { DownloadSVG } from '@snack-uikit/icons';
 
 import { exportToCSV, exportToXLSX } from '../../exportTable';
 import { ColumnDefinition } from '../../types';

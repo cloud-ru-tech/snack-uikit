@@ -1,10 +1,10 @@
 {
   "name": "snack-ui",
   "description": "Cloud Product Uikit",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/",
+  "homepage": "https://cloud-ru-tech.github.io/snack-uikit",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git"
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git"
   },
   "license": "Apache-2.0",
   "scripts": {
@@ -35,7 +35,7 @@
     "install:themes": "ts-node scripts/install-additional-themes"
   },
   "dependencies": {
-    "@snack-uikit/figma-tokens": "10.0.1-ebfb608f.0",
+    "@snack-uikit/figma-tokens": "11.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

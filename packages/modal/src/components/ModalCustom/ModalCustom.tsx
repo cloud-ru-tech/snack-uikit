@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { ReactNode } from 'react';
 import RCModal from 'react-modal';
 
-import { WithSupportProps } from '@snack-ui/utils';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { Mode, Size } from '../../constants';
 import {

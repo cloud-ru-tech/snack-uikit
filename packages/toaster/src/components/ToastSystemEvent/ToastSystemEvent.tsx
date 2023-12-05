@@ -2,10 +2,10 @@ import cn from 'classnames';
 import { MouseEvent, useMemo } from 'react';
 import { ToastContentProps as RtToastContentProps } from 'react-toastify';
 
-import { CrossSVG } from '@snack-ui/icons';
-import { Link } from '@snack-ui/link';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { CrossSVG } from '@snack-uikit/icons';
+import { Link } from '@snack-uikit/link';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { AUTO_CLOSE_TIME } from '../../constants';
 import { TOAST_SYSTEM_EVENT_TEST_IDS } from '../../testIds';

@@ -1,7 +1,7 @@
 # Drawer
 
 ## Installation
-`npm i @snack-ui/drawer`
+`npm i @snack-uikit/drawer`
 
 [Changelog](./CHANGELOG.md)
 

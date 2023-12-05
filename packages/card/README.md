@@ -1,14 +1,14 @@
 # Card
 
 ## Installation
-`npm i @snack-ui/card`
+`npm i @snack-uikit/card`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```typescript jsx
-import { Card, SearchPrivate } from "@snack-ui/card";
+import { Card, SearchPrivate } from "@snack-uikit/card";
 
   <Card
     checked={checked}

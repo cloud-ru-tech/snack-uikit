@@ -1,11 +1,11 @@
 import cn from 'classnames';
 import { MouseEventHandler, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
-import { ItemSingleProps } from '@snack-ui/droplist';
-import { Link, LinkProps } from '@snack-ui/link';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { Typography } from '@snack-ui/typography';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { ItemSingleProps } from '@snack-uikit/droplist';
+import { Link, LinkProps } from '@snack-uikit/link';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { Typography } from '@snack-uikit/typography';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { NotificationCardFunction } from './components';
 import { Appearance, TEST_IDS } from './constants';

@@ -1,6 +1,6 @@
 import { PropsWithChildren, useContext } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TabsContext } from '../../context';
 import { getTabContentId } from '../../utils';

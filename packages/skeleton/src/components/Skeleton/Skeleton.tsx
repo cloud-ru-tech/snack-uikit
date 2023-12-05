@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { CSSProperties, PropsWithChildren } from 'react';
 
-import { WithSupportProps } from '@snack-ui/utils';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { useIsLoadingValue } from '../../hooks';
 import styles from './styles.module.scss';

@@ -1,7 +1,7 @@
 # Tree
 
 ## Installation
-`npm i @snack-ui/tree`
+`npm i @snack-uikit/tree`
 
 [Changelog](./CHANGELOG.md)
 
@@ -10,7 +10,7 @@
 #### selectionMode = Tree.selectionModes.Single
 
 ```typescript jsx
-import { Tree } from '@snack-ui/tree';
+import { Tree } from '@snack-uikit/tree';
 
 // ...
 
@@ -23,7 +23,7 @@ const [selectedNode, setSelected] = useState<TreeNodeId>();
 
 #### selectionMode = Tree.selectionModes.Multi
 ```typescript jsx
-import { Tree } from '@snack-ui/tree';
+import { Tree } from '@snack-uikit/tree';
 
 // ...
 

@@ -1,7 +1,7 @@
 # Divider
 
 ## Installation
-`npm i @snack-ui/divider`
+`npm i @snack-uikit/divider`
 
 [Changelog](./CHANGELOG.md)
 

@@ -6,7 +6,7 @@
 - сбрасывать состояние tabIndex-ов при потере фокуса c кнопок
 
 ## Installation
-`npm i @snack-ui/fields`
+`npm i @snack-uikit/fields`
 
 [Changelog](./CHANGELOG.md)
 
@@ -16,8 +16,8 @@
 
 ```tsx
 import { useState } from 'react';
-import { FieldDate, FieldSecure, FieldSelect, FieldText, FieldTextArea } from '@snack-ui/fields';
-import { PlaceholderSVG } from '@snack-ui/icons';
+import { FieldDate, FieldSecure, FieldSelect, FieldText, FieldTextArea } from '@snack-uikit/fields';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
 const [value, setValue] = useState('11.11.1111');
 const [isOpen, setIsOpen] = useState(false);

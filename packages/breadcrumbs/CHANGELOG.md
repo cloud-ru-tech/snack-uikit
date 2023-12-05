@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.4.13 (2023-11-23)
 
-**Note:** Version bump only for package @snack-ui/breadcrumbs
+**Note:** Version bump only for package @snack-uikit/breadcrumbs
 
 
 
@@ -14,7 +14,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.12 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/popover@0.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
 
 
 
@@ -34,9 +34,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.10 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.3.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
-* [@snack-ui/typography@0.4.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/popover@0.3.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/typography@0.4.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -56,9 +56,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.8 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.3.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
-* [@snack-ui/typography@0.4.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/popover@0.3.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/typography@0.4.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -78,7 +78,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.6 (2023-10-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.3.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/popover@0.3.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
 
 
 
@@ -87,8 +87,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.5 (2023-10-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
-* [@snack-ui/typography@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/popover@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/typography@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -97,9 +97,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.4 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.3.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
-* [@snack-ui/typography@0.4.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/popover@0.3.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/typography@0.4.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -108,7 +108,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.3 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/popover@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
 
 
 
@@ -117,8 +117,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.2 (2023-10-06)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
-* [@snack-ui/typography@0.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/popover@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/typography@0.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -127,7 +127,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.4.1 (2023-09-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/popover@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
 
 
 
@@ -158,7 +158,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.2 (2023-08-30)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/typography@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -167,7 +167,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.1 (2023-08-29)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/typography@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -192,7 +192,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.8 (2023-08-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.2.14](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/popover@0.2.14](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
 
 
 
@@ -212,8 +212,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.6 (2023-07-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.2.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
-* [@snack-ui/typography@0.2.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/popover@0.2.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/typography@0.2.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -222,7 +222,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.5 (2023-07-05)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.2.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/popover@0.2.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
 
 
 
@@ -231,7 +231,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.4 (2023-06-23)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.2.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/popover@0.2.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
 
 
 
@@ -240,7 +240,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.3 (2023-06-22)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.2.13](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/popover@0.2.13](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
 
 
 
@@ -249,9 +249,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.2 (2023-06-20)
 
 ### Only dependencies have been changed
-* [@snack-ui/popover@0.2.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
-* [@snack-ui/typography@0.2.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@1.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/popover@0.2.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/typography@0.2.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@1.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 

@@ -1,5 +1,5 @@
-import { CheckSVG, CopySVG } from '@snack-ui/icons';
-import { ButtonSize } from '@snack-ui/input-private';
+import { CheckSVG, CopySVG } from '@snack-uikit/icons';
+import { ButtonSize } from '@snack-uikit/input-private';
 
 type GetIconProps = {
   size: ButtonSize;

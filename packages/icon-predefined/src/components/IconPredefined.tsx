@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { JSXElementConstructor } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Appearance, Size } from '../constants';
 import styles from './styles.module.scss';

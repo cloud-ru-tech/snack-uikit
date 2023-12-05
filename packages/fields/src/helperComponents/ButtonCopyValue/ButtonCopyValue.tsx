@@ -1,7 +1,7 @@
 import copyToClipboard from 'copy-to-clipboard';
 import { forwardRef, KeyboardEventHandler, MouseEventHandler, useEffect, useRef, useState } from 'react';
 
-import { ButtonSize } from '@snack-ui/input-private';
+import { ButtonSize } from '@snack-uikit/input-private';
 
 import { getIcon } from './helpers';
 import styles from './styles.module.scss';

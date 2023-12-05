@@ -1,4 +1,4 @@
-import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG } from '@snack-ui/icons';
+import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG } from '@snack-uikit/icons';
 
 import { ToastUserActionAppearance } from './constants';
 

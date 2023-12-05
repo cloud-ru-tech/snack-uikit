@@ -1,6 +1,6 @@
 import { CSSProperties, RefCallback, useCallback } from 'react';
 
-import { WithSupportProps } from '@snack-ui/utils';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { CalendarMode, Size, ViewMode } from '../../constants';
 import { CalendarBase } from '../../helperComponents/CalendarBase';

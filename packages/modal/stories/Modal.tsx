@@ -2,7 +2,7 @@ import { useArgs } from '@storybook/client-api';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { MouseEventHandler, useEffect, useState } from 'react';
 
-import { ButtonFilled } from '@snack-ui/button';
+import { ButtonFilled } from '@snack-uikit/button';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

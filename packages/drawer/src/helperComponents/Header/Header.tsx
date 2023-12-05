@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
-import { QuestionTooltip, TooltipProps } from '@snack-ui/tooltip';
-import { Typography } from '@snack-ui/typography';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { QuestionTooltip, TooltipProps } from '@snack-uikit/tooltip';
+import { Typography } from '@snack-uikit/typography';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';

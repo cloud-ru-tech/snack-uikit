@@ -2,9 +2,9 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import debounce from 'lodash.debounce';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
-import { Scroll } from '@snack-ui/scroll';
-import { toaster } from '@snack-ui/toaster';
+import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
+import { Scroll } from '@snack-uikit/scroll';
+import { toaster } from '@snack-uikit/toaster';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

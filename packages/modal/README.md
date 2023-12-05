@@ -1,7 +1,7 @@
 # Modal
 
 ## Installation
-`npm i @snack-ui/modal`
+`npm i @snack-uikit/modal`
 
 [Changelog](./CHANGELOG.md)
 
@@ -32,7 +32,7 @@
 | title* | `ReactNode` | - | Заголовок модального окна |
 | titleTooltip | `ReactNode` | - | Тултип для заголовка |
 | subtitle | `ReactNode` | - | Подзаголовок |
-| picture | `JSXElementConstructor<{ size?: number; className?: string; }> \| ModalHeaderImage` | - | Можно передать иконку из пакета `@snack-ui/icon-predefined` или путь к картинке и атрибут `alt` |
+| picture | `JSXElementConstructor<{ size?: number; className?: string; }> \| ModalHeaderImage` | - | Можно передать иконку из пакета `@snack-uikit/icon-predefined` или путь к картинке и атрибут `alt` |
 | align | enum ContentAlign: `"default"`, `"center"` | - | Выравнивание контента |
 | className | `string` | - | CSS-класс |
 ## ModalCustom.Body
@@ -68,7 +68,7 @@
 | disclaimer | `{ text: string; link?: Pick<LinkProps, "text" \| "href" \| "target">; }` | - | Небольшой текст под кнопками футера с возможностью передать дополнительно ссылку |
 | size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
 | align | enum Align: `"default"`, `"center"`, `"vertical"` | Align.Default | Выравнивание, для разных размеров доступны разные значения <br> для `Size.S` - все <br> для `Size.M` - `Align.Default \| Align.Center` <br> для `Size.L` - `Align.Default` |
-| picture | `JSXElementConstructor<{ size?: number; className?: string; }> \| ModalHeaderImage` | - | Можно передать иконку из пакета `@snack-ui/icon-predefined`, или путь к картинке и атрибут `alt` |
+| picture | `JSXElementConstructor<{ size?: number; className?: string; }> \| ModalHeaderImage` | - | Можно передать иконку из пакета `@snack-uikit/icon-predefined`, или путь к картинке и атрибут `alt` |
 
 
 [//]: DOCUMENTATION_SECTION_END

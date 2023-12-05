@@ -2,7 +2,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import cn from 'classnames';
 import { useDarkMode } from 'storybook-dark-mode';
 
-import { ButtonFilled } from '@snack-ui/button';
+import { ButtonFilled } from '@snack-uikit/button';
 import BrandThemes from '@snack-uikit/figma-tokens/build/css/brand.module.css';
 
 import componentChangelog from '../CHANGELOG.md';

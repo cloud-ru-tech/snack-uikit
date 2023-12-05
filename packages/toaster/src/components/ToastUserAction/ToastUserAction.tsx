@@ -2,8 +2,8 @@ import cn from 'classnames';
 import { MouseEvent, useMemo } from 'react';
 import { ToastContentProps as RtToastContentProps } from 'react-toastify';
 
-import { Link } from '@snack-ui/link';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Link } from '@snack-uikit/link';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TOAST_USER_ACTION_TEST_IDS } from '../../testIds';
 import { ToastUserActionAppearance, Variant } from './constants';

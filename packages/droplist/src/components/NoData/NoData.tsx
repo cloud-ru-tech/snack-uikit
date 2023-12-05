@@ -1,4 +1,4 @@
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Size } from '../../constants';
 import styles from './styles.module.scss';

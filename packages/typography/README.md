@@ -1,14 +1,14 @@
 # Typography
 
 ## Installation
-`npm i @snack-ui/typography`
+`npm i @snack-uikit/typography`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```typescript jsx
-import {Typography} from "@snack-ui/typography";
+import {Typography} from "@snack-uikit/typography";
 
 <Typography 
   family={Typography.families.Sans}

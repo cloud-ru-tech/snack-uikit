@@ -6,6 +6,6 @@
 
 ## Installation
 
-`npm i @snack-ui/utils`
+`npm i @snack-uikit/utils`
 
 [Changelog](./CHANGELOG.md)

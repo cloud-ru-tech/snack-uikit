@@ -1,4 +1,4 @@
-import { extractDataTestProps } from '@snack-ui/utils';
+import { extractDataTestProps } from '@snack-uikit/utils';
 
 export const getDataTestAttributes = (rest: Record<string, unknown>) => {
   const dataTestProps = extractDataTestProps(rest);

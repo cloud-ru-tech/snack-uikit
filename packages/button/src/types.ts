@@ -7,7 +7,7 @@ import {
   ReactElement,
 } from 'react';
 
-import { CounterProps } from '@snack-ui/counter';
+import { CounterProps } from '@snack-uikit/counter';
 
 import { Appearance, IconPosition, SizeSL, SizeXsM } from './constants';
 

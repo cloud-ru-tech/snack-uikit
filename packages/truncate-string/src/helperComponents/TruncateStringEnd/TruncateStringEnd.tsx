@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 
-import { Tooltip, TooltipProps } from '@snack-ui/tooltip';
-import { extractSupportProps, useDebounce, WithSupportProps } from '@snack-ui/utils';
+import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';
+import { extractSupportProps, useDebounce, WithSupportProps } from '@snack-uikit/utils';
 
 import { isEllipsisActive } from '../../helpers';
 import styles from './styles.module.scss';

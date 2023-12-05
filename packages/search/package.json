@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/search",
+  "name": "@snack-uikit/search",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Search",
   "version": "0.4.12",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "Search",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/search",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/search",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/search"
   },
   "author": "Nikita Ershov <niershov@cloud.ru>",
@@ -29,11 +32,11 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/droplist": "0.10.12",
-    "@snack-ui/icons": "0.18.1",
-    "@snack-ui/input-private": "1.5.13",
-    "@snack-ui/loaders": "0.3.4",
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/droplist": "0.10.12",
+    "@snack-uikit/icons": "0.18.1",
+    "@snack-uikit/input-private": "1.5.13",
+    "@snack-uikit/loaders": "0.3.4",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2",
     "merge-refs": "1.0.0",
     "uncontrollable": "8.0.4"

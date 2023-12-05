@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useState } from 'react';
 
-import { QuestionSVG } from '@snack-ui/icons';
+import { QuestionSVG } from '@snack-uikit/icons';
 
 import { Tooltip, TooltipProps } from '../Tooltip';
 import { Size, SIZES_MAP, Trigger, TRIGGER_MAP } from './constants';

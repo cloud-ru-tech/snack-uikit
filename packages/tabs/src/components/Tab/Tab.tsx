@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { FocusEvent, KeyboardEvent, MouseEvent, useCallback, useContext, useEffect, useRef } from 'react';
 
-import { Counter } from '@snack-ui/counter';
-import { Typography } from '@snack-ui/typography';
-import { WithSupportProps } from '@snack-ui/utils';
+import { Counter } from '@snack-uikit/counter';
+import { Typography } from '@snack-uikit/typography';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { Type } from '../../constants';
 import { TabBarContext, TabsContext } from '../../context';

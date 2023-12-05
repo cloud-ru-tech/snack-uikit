@@ -1,9 +1,9 @@
 import { ArgTypes, Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useEffect, useMemo, useState } from 'react';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { PlaceholderSVG } from '@snack-ui/icons';
-import { toaster } from '@snack-ui/toaster';
+import { ButtonFunction } from '@snack-uikit/button';
+import { PlaceholderSVG } from '@snack-uikit/icons';
+import { toaster } from '@snack-uikit/toaster';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

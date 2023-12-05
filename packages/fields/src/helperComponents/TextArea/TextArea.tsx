@@ -12,7 +12,7 @@ import {
 } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import styles from './styles.module.scss';
 

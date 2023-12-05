@@ -2,7 +2,7 @@
 
 ## Installation
 
-`npm i @snack-ui/link`
+`npm i @snack-uikit/link`
 
 [Changelog](./CHANGELOG.md)
 
@@ -11,7 +11,7 @@
 ## Example
 
 ```tsx
-import { Link } from '@snack-ui/link';
+import { Link } from '@snack-uikit/link';
 
 <Link
   onSurface={Link.onSurfaces.Accent}

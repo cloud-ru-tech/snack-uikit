@@ -1,6 +1,6 @@
 import { MouseEvent } from 'react';
 
-import { Checkbox, Radio } from '@snack-ui/toggles';
+import { Checkbox, Radio } from '@snack-uikit/toggles';
 
 import { ColumnPinPosition, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';

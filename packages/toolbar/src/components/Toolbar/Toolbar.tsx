@@ -1,9 +1,9 @@
 import cn from 'classnames';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { UpdateSVG } from '@snack-ui/icons';
-import { SearchPrivate } from '@snack-ui/search';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { ButtonFunction } from '@snack-uikit/button';
+import { UpdateSVG } from '@snack-uikit/icons';
+import { SearchPrivate } from '@snack-uikit/search';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TEST_IDS } from '../../constants';
 import { DeleteAction, MoreActions, SelectionMode, Separator } from '../../helperComponents';

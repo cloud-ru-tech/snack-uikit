@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/stepper",
+  "name": "@snack-uikit/stepper",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Stepper",
   "version": "0.2.18",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/stepper",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/stepper",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/stepper"
   },
   "author": "Сергей Хлупин <svhlupin@cloud.ru>",
@@ -29,11 +32,11 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/icons": "0.18.1",
-    "@snack-ui/loaders": "0.3.4",
-    "@snack-ui/truncate-string": "0.2.16",
-    "@snack-ui/typography": "0.4.4",
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/icons": "0.18.1",
+    "@snack-uikit/loaders": "0.3.4",
+    "@snack-uikit/truncate-string": "0.2.16",
+    "@snack-uikit/typography": "0.4.4",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2"
   }
 }

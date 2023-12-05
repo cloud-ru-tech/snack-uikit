@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ChevronDownSVG, ChevronUpSVG } from '@snack-ui/icons';
+import { ChevronDownSVG, ChevronUpSVG } from '@snack-uikit/icons';
 
 import { GRID_SIZE, Size, ViewMode } from '../../constants';
 import { Button } from '../Button';

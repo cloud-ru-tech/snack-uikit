@@ -1,7 +1,7 @@
 # Truncate String
 
 ## Installation
-`npm i @snack-ui/truncate-string`
+`npm i @snack-uikit/truncate-string`
 
 [Changelog](./CHANGELOG.md)
 

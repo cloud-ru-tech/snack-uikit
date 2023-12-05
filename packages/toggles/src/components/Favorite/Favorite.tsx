@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { HeartFilledSVG, HeartSVG, StarFilledSVG, StarSVG } from '@snack-ui/icons';
+import { HeartFilledSVG, HeartSVG, StarFilledSVG, StarSVG } from '@snack-uikit/icons';
 
 import { FavoriteIcon, Size } from '../../constants';
 import { ToggleProps } from '../../types';

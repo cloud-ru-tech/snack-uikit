@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/icon-predefined",
+  "name": "@snack-uikit/icon-predefined",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Icon Predefined",
   "version": "0.2.5",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/icon-predefined",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/icon-predefined",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/icon-predefined"
   },
   "author": "Сергей Хлупин <svhlupin@cloud.ru>",
@@ -29,7 +32,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2"
   }
 }

@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/tooltip",
+  "name": "@snack-uikit/tooltip",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Tooltip",
   "version": "0.8.0",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/tooltip",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/tooltip",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/tooltip"
   },
   "author": "Сергей Хлупин <svhlupin@cloud.ru>",
@@ -29,9 +32,9 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/icons": "0.18.1",
-    "@snack-ui/popover-private": "0.10.0",
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/icons": "0.18.1",
+    "@snack-uikit/popover-private": "0.10.0",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2"
   }
 }

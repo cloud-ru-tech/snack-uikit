@@ -1,6 +1,6 @@
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Calendar } from '@snack-ui/calendar';
+import { Calendar } from '@snack-uikit/calendar';
 
 import { DEFAULT_EMPTY_VALUE, Size } from '../../../constants';
 import { CALENDAR_SIZE_MAP } from '../constants';

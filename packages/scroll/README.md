@@ -1,7 +1,7 @@
 # Scroll
 
 ## Installation
-`npm i @snack-ui/scroll`
+`npm i @snack-uikit/scroll`
 
 [Changelog](./CHANGELOG.md)
 

@@ -2,7 +2,7 @@ import { ColumnPinningState, getCoreRowModel, useReactTable } from '@tanstack/re
 import { useCallback, useMemo } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { SkeletonText } from '@snack-ui/skeleton';
+import { SkeletonText } from '@snack-uikit/skeleton';
 
 import { ColumnDefinition } from '../../types';
 import styles from './styles.module.scss';

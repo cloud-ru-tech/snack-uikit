@@ -1,7 +1,7 @@
 import { MouseEvent, MouseEventHandler, ReactNode } from 'react';
 
-import { ItemSingleProps } from '@snack-ui/droplist';
-import { WithSupportProps } from '@snack-ui/utils';
+import { ItemSingleProps } from '@snack-uikit/droplist';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { SelectionMode } from './constants';
 

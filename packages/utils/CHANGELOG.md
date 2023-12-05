@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 2.0.1 (2023-11-08)
 
-**Note:** Version bump only for package @snack-ui/utils
+**Note:** Version bump only for package @snack-uikit/utils
 
 
 
@@ -74,7 +74,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.2.2 (2023-04-07)
 
-**Note:** Version bump only for package @snack-ui/utils
+**Note:** Version bump only for package @snack-uikit/utils
 
 
 
@@ -82,7 +82,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.2.1 (2023-03-14)
 
-**Note:** Version bump only for package @snack-ui/utils
+**Note:** Version bump only for package @snack-uikit/utils
 
 
 

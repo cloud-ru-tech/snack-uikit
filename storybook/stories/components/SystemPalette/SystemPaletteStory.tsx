@@ -1,5 +1,5 @@
-import { Divider } from '@snack-ui/divider';
-import { Tabs } from '@snack-ui/tabs';
+import { Divider } from '@snack-uikit/divider';
+import { Tabs } from '@snack-uikit/tabs';
 
 import { capitalize } from '../utils';
 import { TABS } from './constants/content';

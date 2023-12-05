@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { CSSProperties, MouseEventHandler, ReactElement, ReactNode, RefObject } from 'react';
 
-import { Size } from '@snack-ui/input-private';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Size } from '@snack-uikit/input-private';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { ContainerVariant, ValidationState } from '../../constants';
 import styles from './styles.module.scss';

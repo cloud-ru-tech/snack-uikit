@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { createElement, ReactNode } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { attachVariants } from '../utils';
 import { Family, Role, Size, Tag } from './contants';

@@ -1,7 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
-import { ToggleGroup, ToggleGroupProps } from '@snack-ui/toggles';
+import { ToggleGroup, ToggleGroupProps } from '@snack-uikit/toggles';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

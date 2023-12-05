@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { forwardRef } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Appearance, HtmlType, IconPosition, SizeXsM, Target } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';

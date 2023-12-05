@@ -6,7 +6,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.16 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.8.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.8.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -15,7 +15,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.15 (2023-11-09)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.15](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.15](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -24,8 +24,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.14 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.14](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
-* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.14](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -34,8 +34,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.13 (2023-10-31)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.13](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
-* [@snack-ui/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.13](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -44,7 +44,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.12 (2023-10-26)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -53,8 +53,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.11 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
-* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -63,7 +63,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.10 (2023-10-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -72,7 +72,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.9 (2023-10-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -81,7 +81,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.8 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -90,7 +90,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.7 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -99,7 +99,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.6 (2023-10-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -108,7 +108,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.5 (2023-10-06)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -117,7 +117,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.4 (2023-09-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -126,7 +126,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.3 (2023-09-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -135,7 +135,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.2 (2023-09-14)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -144,7 +144,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.1 (2023-09-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.7.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.7.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -164,7 +164,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.9 (2023-08-31)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -173,7 +173,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.8 (2023-08-24)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.5.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.5.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -182,7 +182,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.7 (2023-08-24)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.5.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.5.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -191,7 +191,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.6 (2023-08-17)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -200,7 +200,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.5 (2023-08-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.3.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.3.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -209,7 +209,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.4 (2023-08-02)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -218,7 +218,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.3 (2023-07-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -227,7 +227,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.2 (2023-07-05)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 
@@ -236,7 +236,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.1 (2023-06-23)
 
 ### Only dependencies have been changed
-* [@snack-ui/tooltip@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
 
 
 

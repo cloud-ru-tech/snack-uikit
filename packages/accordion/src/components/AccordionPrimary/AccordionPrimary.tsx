@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { ToggleGroup } from '@snack-ui/toggles';
+import { ToggleGroup } from '@snack-uikit/toggles';
 
 import { Accordion } from '../../helperComponents';
 import { AccordionProps } from '../../types';

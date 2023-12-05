@@ -1,8 +1,8 @@
 import { Dispatch, KeyboardEventHandler, SetStateAction, useEffect } from 'react';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
-import { KebabSVG } from '@snack-ui/icons';
+import { ButtonFunction } from '@snack-uikit/button';
+import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
+import { KebabSVG } from '@snack-uikit/icons';
 
 import { TEST_IDS } from '../../../constants';
 import { TreeNodeProps } from '../../../types';

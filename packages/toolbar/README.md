@@ -1,7 +1,7 @@
 # Toolbar
 
 ## Installation
-`npm i @snack-ui/toolbar`
+`npm i @snack-uikit/toolbar`
 
 [Changelog](./CHANGELOG.md)
 

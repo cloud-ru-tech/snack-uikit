@@ -3,7 +3,7 @@
 Компонент отображения состояния пошагового процесса.
 
 ## Installation
-`npm i @snack-ui/stepper`
+`npm i @snack-uikit/stepper`
 
 [Changelog](./CHANGELOG.md)
 

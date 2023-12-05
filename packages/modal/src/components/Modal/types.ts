@@ -1,5 +1,5 @@
-import { ButtonFilledProps, ButtonOutlineProps, ButtonSimpleProps } from '@snack-ui/button';
-import { LinkProps } from '@snack-ui/link';
+import { ButtonFilledProps, ButtonOutlineProps, ButtonSimpleProps } from '@snack-uikit/button';
+import { LinkProps } from '@snack-uikit/link';
 
 import { Align, Size } from '../../constants';
 import { ModalBodyProps, ModalHeaderImage, ModalHeaderProps } from '../../helperComponents';
@@ -35,7 +35,7 @@ export type ModalSProps = BaseModalProps & {
    * <br> для `Size.S` - все
    */
   align?: Align;
-  /** Можно передать иконку из пакета `@snack-ui/icon-predefined`, или путь к картинке и атрибут `alt` */
+  /** Можно передать иконку из пакета `@snack-uikit/icon-predefined`, или путь к картинке и атрибут `alt` */
   picture?: ModalHeaderProps['picture'];
 };
 

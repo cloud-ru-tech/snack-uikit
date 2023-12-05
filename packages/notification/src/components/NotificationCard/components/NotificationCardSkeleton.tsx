@@ -1,4 +1,4 @@
-import { Skeleton, SkeletonText } from '@snack-ui/skeleton';
+import { Skeleton, SkeletonText } from '@snack-uikit/skeleton';
 
 import { TEST_IDS } from '../../NotificationPanel/constants';
 import styles from '../styles.module.scss';

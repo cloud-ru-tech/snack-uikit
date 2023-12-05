@@ -1,5 +1,5 @@
-import { TruncateString } from '@snack-ui/truncate-string';
-import { Typography } from '@snack-ui/typography';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { Typography } from '@snack-uikit/typography';
 
 import { ColumnPinPosition, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';

@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode } from 'react';
 
-import { ToggleGroup } from '@snack-ui/toggles';
-import { WithSupportProps } from '@snack-ui/utils';
+import { ToggleGroup } from '@snack-uikit/toggles';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 export type CollapseBlockProps = WithSupportProps<{
   /** Уникальный id блока */

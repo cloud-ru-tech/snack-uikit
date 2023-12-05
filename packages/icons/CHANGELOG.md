@@ -154,7 +154,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.6.1 (2023-06-23)
 
-**Note:** Version bump only for package @snack-ui/icons
+**Note:** Version bump only for package @snack-uikit/icons
 
 
 
@@ -206,7 +206,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.3.1 (2023-04-07)
 
-**Note:** Version bump only for package @snack-ui/icons
+**Note:** Version bump only for package @snack-uikit/icons
 
 
 

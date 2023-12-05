@@ -1,7 +1,7 @@
 # Droplist
 
 ## Installation
-`npm i @snack-ui/droplist`
+`npm i @snack-uikit/droplist`
 
 [Changelog](./CHANGELOG.md)
 

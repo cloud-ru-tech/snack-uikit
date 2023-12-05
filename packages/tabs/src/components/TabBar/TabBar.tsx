@@ -2,8 +2,8 @@ import cn from 'classnames';
 import { Children, KeyboardEvent, ReactElement, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
-import { Divider } from '@snack-ui/divider';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Divider } from '@snack-uikit/divider';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Type } from '../../constants';
 import { TabBarContext, TabsContext } from '../../context';

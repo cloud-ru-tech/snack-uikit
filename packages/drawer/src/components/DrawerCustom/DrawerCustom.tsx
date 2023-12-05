@@ -4,7 +4,7 @@ import cn from 'classnames';
 import RcDrawer, { DrawerProps as RcDrawerProps } from 'rc-drawer';
 import { PropsWithChildren, ReactElement } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Mode, Position, Size, SIZE_AS_VALUES } from '../../constants';
 import {

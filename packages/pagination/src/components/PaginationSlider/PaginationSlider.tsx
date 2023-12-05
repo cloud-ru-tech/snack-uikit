@@ -1,4 +1,4 @@
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { getRange } from '../../utils';
 import { PageSliderButton } from '../PageSliderButton';

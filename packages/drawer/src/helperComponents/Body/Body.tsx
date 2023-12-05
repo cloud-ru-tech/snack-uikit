@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
-import { Scroll } from '@snack-ui/scroll';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Scroll } from '@snack-uikit/scroll';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import styles from './styles.module.scss';
 

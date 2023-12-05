@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/accordion",
+  "name": "@snack-uikit/accordion",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Accordion",
   "version": "0.3.3",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/accordion",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/accordion",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/accordion"
   },
   "author": "Nikita Ershov <niershov@cloud.ru>",
@@ -29,13 +32,13 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/button": "0.13.6",
-    "@snack-ui/icons": "0.18.1",
-    "@snack-ui/toggles": "0.7.0",
-    "@snack-ui/tooltip": "0.8.0",
-    "@snack-ui/truncate-string": "0.2.16",
-    "@snack-ui/typography": "0.4.4",
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/button": "0.13.6",
+    "@snack-uikit/icons": "0.18.1",
+    "@snack-uikit/toggles": "0.7.0",
+    "@snack-uikit/tooltip": "0.8.0",
+    "@snack-uikit/truncate-string": "0.2.16",
+    "@snack-uikit/typography": "0.4.4",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2"
   }
 }

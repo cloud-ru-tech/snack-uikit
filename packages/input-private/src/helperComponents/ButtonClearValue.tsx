@@ -1,6 +1,6 @@
 import { forwardRef, KeyboardEventHandler, MouseEventHandler } from 'react';
 
-import { CrossSVG } from '@snack-ui/icons';
+import { CrossSVG } from '@snack-uikit/icons';
 
 import { ButtonSize } from '../constants';
 import styles from './styles.module.scss';

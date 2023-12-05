@@ -1,6 +1,6 @@
 import { KeyboardEventHandler, MouseEventHandler, RefObject, useCallback, useState } from 'react';
 
-import { useEventHandler } from '@snack-ui/utils';
+import { useEventHandler } from '@snack-uikit/utils';
 
 import { isCursorInTheEnd, runAfterRerender, selectAll } from '../helpers';
 import { ButtonProps } from './types';

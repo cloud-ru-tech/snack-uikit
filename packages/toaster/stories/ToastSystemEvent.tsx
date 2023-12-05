@@ -2,7 +2,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
-import { ButtonFilled } from '@snack-ui/button';
+import { ButtonFilled } from '@snack-uikit/button';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

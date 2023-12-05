@@ -1,7 +1,7 @@
 # Table
 
 ## Installation
-`npm i @snack-ui/table`
+`npm i @snack-uikit/table`
 
 [Changelog](./CHANGELOG.md)
 
@@ -20,7 +20,7 @@
 ## Example
 
 ```typescript jsx
-import { Table } from '@snack-ui/table';
+import { Table } from '@snack-uikit/table';
 
 // ...
 

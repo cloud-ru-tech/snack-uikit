@@ -1,14 +1,14 @@
 # Loaders
 
 ## Installation
-`npm i @snack-ui/loaders`
+`npm i @snack-uikit/loaders`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```typescript jsx
-import {ProgressBar, ProgressBarPage, Spinner, Sun} from "@snack-ui/loaders";
+import {ProgressBar, ProgressBarPage, Spinner, Sun} from "@snack-uikit/loaders";
 
 <ProgressBar
   progress={20}

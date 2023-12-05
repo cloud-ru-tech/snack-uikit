@@ -1,6 +1,6 @@
 import { ArgTypes } from '@storybook/types';
 
-import { PlaceholderSVG } from '@snack-ui/icons';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
 import { ChipChoice, FilterOption } from '../../src';
 import { ICONS } from '../constants';

@@ -15,7 +15,7 @@ import {
   useState,
 } from 'react';
 
-import { Scroll } from '@snack-ui/scroll';
+import { Scroll } from '@snack-uikit/scroll';
 
 import { SCROLL_APPLYING_ITEMS_COUNT, Size } from '../../constants';
 import { Dropdown, DropdownProps } from '../Dropdown';

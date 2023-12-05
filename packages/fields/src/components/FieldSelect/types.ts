@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 
-import { ItemSingleProps } from '@snack-ui/droplist';
-import { InputPrivateProps } from '@snack-ui/input-private';
-import { WithSupportProps } from '@snack-ui/utils';
+import { ItemSingleProps } from '@snack-uikit/droplist';
+import { InputPrivateProps } from '@snack-uikit/input-private';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { FieldDecoratorProps } from '../FieldDecorator';
 

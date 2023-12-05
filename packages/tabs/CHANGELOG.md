@@ -17,8 +17,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.15 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.3.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-uikit/button@0.13.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/counter@0.3.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
 
 
 
@@ -27,7 +27,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.14 (2023-11-09)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.18.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/icons@0.18.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -36,10 +36,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.13 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/typography@0.4.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/button@0.13.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/counter@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-uikit/typography@0.4.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -59,8 +59,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.11 (2023-10-26)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/icons@0.18.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/button@0.13.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/icons@0.18.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -69,10 +69,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.10 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/typography@0.4.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/button@0.13.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/counter@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-uikit/typography@0.4.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -81,7 +81,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.9 (2023-10-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.17.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/icons@0.17.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -90,7 +90,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.8 (2023-10-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/typography@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -99,8 +99,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.7 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-uikit/button@0.13.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/counter@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
 
 
 
@@ -109,8 +109,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.6 (2023-10-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/icons@0.16.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/button@0.13.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/icons@0.16.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -130,7 +130,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.4 (2023-10-05)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.12.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/button@0.12.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
 
 
 
@@ -139,7 +139,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.3 (2023-09-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.15.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/icons@0.15.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -148,7 +148,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.2 (2023-09-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.14.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/icons@0.14.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -157,7 +157,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.1 (2023-09-14)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.13.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/icons@0.13.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -177,7 +177,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.14 (2023-08-30)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/typography@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -186,7 +186,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.13 (2023-08-29)
 
 ### Only dependencies have been changed
-* [@snack-ui/typography@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/typography@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -195,8 +195,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.12 (2023-08-22)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.11.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.2.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-uikit/button@0.11.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/counter@0.2.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
 
 
 
@@ -205,7 +205,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.11 (2023-08-17)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.10.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/button@0.10.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
 
 
 
@@ -225,7 +225,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.9 (2023-08-11)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.10.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/icons@0.10.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -245,9 +245,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.7 (2023-07-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.9.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.2.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/typography@0.2.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/button@0.9.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/counter@0.2.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-uikit/typography@0.2.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 
@@ -256,7 +256,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.6 (2023-07-26)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.9.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/icons@0.9.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -265,7 +265,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.5 (2023-07-05)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.8.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/icons@0.8.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -285,9 +285,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.3 (2023-06-23)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.9.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.2.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/icons@0.6.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/button@0.9.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/counter@0.2.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-uikit/icons@0.6.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -296,7 +296,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.2 (2023-06-22)
 
 ### Only dependencies have been changed
-* [@snack-ui/icons@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/icons@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
 
 
 
@@ -305,10 +305,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.1 (2023-06-20)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.9.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/counter@0.2.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
-* [@snack-ui/typography@0.2.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
-* [@snack-ui/utils@1.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/button@0.9.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/counter@0.2.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-uikit/typography@0.2.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@1.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -339,7 +339,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.2 (2023-06-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.9.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/button@0.9.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
 
 
 

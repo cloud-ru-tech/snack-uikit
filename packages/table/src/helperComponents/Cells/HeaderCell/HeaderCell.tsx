@@ -1,7 +1,7 @@
 import { flexRender, Header } from '@tanstack/react-table';
 import cn from 'classnames';
 
-import { TruncateString } from '@snack-ui/truncate-string';
+import { TruncateString } from '@snack-uikit/truncate-string';
 
 import { TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';

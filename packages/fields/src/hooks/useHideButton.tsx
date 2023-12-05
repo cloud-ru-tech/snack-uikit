@@ -1,7 +1,7 @@
 import { MouseEventHandler, RefObject, useMemo } from 'react';
 
-import { BUTTON_SIZE_MAP, ButtonProps, Size } from '@snack-ui/input-private';
-import { useEventHandler } from '@snack-ui/utils';
+import { BUTTON_SIZE_MAP, ButtonProps, Size } from '@snack-uikit/input-private';
+import { useEventHandler } from '@snack-uikit/utils';
 
 import { ButtonHideValue } from '../helperComponents';
 

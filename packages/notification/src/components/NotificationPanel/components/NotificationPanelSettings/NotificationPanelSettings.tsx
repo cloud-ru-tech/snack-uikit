@@ -1,6 +1,6 @@
-import { ButtonSimple, ButtonSimpleProps } from '@snack-ui/button';
-import { ItemSingleProps } from '@snack-ui/droplist';
-import { KebabSVG } from '@snack-ui/icons';
+import { ButtonSimple, ButtonSimpleProps } from '@snack-uikit/button';
+import { ItemSingleProps } from '@snack-uikit/droplist';
+import { KebabSVG } from '@snack-uikit/icons';
 
 import { TEST_IDS } from '../../constants';
 import { NotificationPanelSettingsDroplist } from './NotificationPanelSettingsDroplist';

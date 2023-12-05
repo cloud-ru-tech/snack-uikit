@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { MouseEventHandler } from 'react';
 
-import { Sun } from '@snack-ui/loaders';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Sun } from '@snack-uikit/loaders';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CHIP_ASSIST_TEST_IDS, Size, Variant } from '../../constants';
 import { BaseChipProps } from '../../types';

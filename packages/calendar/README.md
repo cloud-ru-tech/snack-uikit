@@ -1,14 +1,14 @@
 # Calendar
 
 ## Installation
-`npm i @snack-ui/calendar`
+`npm i @snack-uikit/calendar`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```tsx
-import { Calendar } from '@snack-ui/calendar';
+import { Calendar } from '@snack-uikit/calendar';
 
 <Calendar
   mode={Calendar.modes.Date}

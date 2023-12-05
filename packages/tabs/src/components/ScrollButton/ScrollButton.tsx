@@ -1,5 +1,5 @@
-import { ButtonElevated } from '@snack-ui/button';
-import { ChevronLeftSVG, ChevronRightSVG } from '@snack-ui/icons';
+import { ButtonElevated } from '@snack-uikit/button';
+import { ChevronLeftSVG, ChevronRightSVG } from '@snack-uikit/icons';
 
 import { Type } from '../../constants';
 import styles from './styles.module.scss';

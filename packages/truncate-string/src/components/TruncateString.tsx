@@ -1,4 +1,4 @@
-import { Tooltip } from '@snack-ui/tooltip';
+import { Tooltip } from '@snack-uikit/tooltip';
 
 import {
   TruncateStringEnd,

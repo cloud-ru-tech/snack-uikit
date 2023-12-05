@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { KeyboardEventHandler, MouseEventHandler, ReactNode, useCallback, useRef, useState } from 'react';
 
-import { Droplist } from '@snack-ui/droplist';
-import { Sun } from '@snack-ui/loaders';
-import { extractSupportProps } from '@snack-ui/utils';
+import { Droplist } from '@snack-uikit/droplist';
+import { Sun } from '@snack-uikit/loaders';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import { CHIP_CHOICE_TEST_IDS, Size, Variant } from '../../../../constants';
 import { ButtonClearValue } from '../../../../helperComponents';

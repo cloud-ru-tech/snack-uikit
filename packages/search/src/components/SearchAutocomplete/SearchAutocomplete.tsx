@@ -2,7 +2,7 @@ import cn from 'classnames';
 import mergeRefs from 'merge-refs';
 import { forwardRef, KeyboardEvent, useCallback, useRef, useState } from 'react';
 
-import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
+import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
 
 import { PRIVATE_SEARCH_TEST_IDS, Size, TEST_IDS } from '../../constants';
 import { SearchDecorator } from '../SearchDecorator';

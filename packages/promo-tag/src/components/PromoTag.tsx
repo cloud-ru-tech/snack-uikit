@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
-import { Typography } from '@snack-ui/typography';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Typography } from '@snack-uikit/typography';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Appearance } from '../constants';
 import styles from './styles.module.scss';

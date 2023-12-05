@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 
-import { Scroll } from '@snack-ui/scroll';
+import { Scroll } from '@snack-uikit/scroll';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
-import { IconPredefined, IconPredefinedProps } from '@snack-ui/icon-predefined';
-import { Typography } from '@snack-ui/typography';
+import { IconPredefined, IconPredefinedProps } from '@snack-uikit/icon-predefined';
+import { Typography } from '@snack-uikit/typography';
 
 import styles from './styles.module.scss';
 

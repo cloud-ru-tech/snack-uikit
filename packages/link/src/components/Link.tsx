@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { AnchorHTMLAttributes, MouseEventHandler } from 'react';
 
-import { ArrowLinksSVG } from '@snack-ui/icons';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { ArrowLinksSVG } from '@snack-uikit/icons';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { OnColor, OnSurface, Size, Target } from './constants';
 import styles from './styles.module.scss';

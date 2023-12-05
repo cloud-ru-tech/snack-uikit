@@ -253,13 +253,13 @@ Effects имеет 2 модификации - темная и светлая. Э
 
 ### Как использовать токены в компонентах
 
-1. Проверьте, что в uikit подключен пакет `@snack-ui/figma-tokens` актуальной версии
+1. Проверьте, что в uikit подключен пакет `@snack-uikit/figma-tokens` актуальной версии
 2. Создайте файл для компонента (напр., `ButtonFilled.tsx`) и scss-файл для стилей (`styles.module.scss`), который импортится в файл компонента
 3. Подключите файлы с токенами в `styles.module.scss` (тематические, компонентные - какие нужны):
     * файлы с токенами компонентов по умолчанию уже включают в себя тематические токены
 ```scss
-@import '@snack-ui/figma-tokens/build/scss/styles-theme-variables';
-@import '@snack-ui/figma-tokens/build/scss/components/styles-tokens-***';
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-***';
 ```
 4. Соберите стили компонента по макетам в figma, подключая токены через `var`, `simple-var` или `composite-var`
     * в scss можно также добавлять миксины и различные функции, чтобы убирать дублирование кода, пример:

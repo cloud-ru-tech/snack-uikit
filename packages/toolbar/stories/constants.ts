@@ -1,4 +1,4 @@
-import { ItemSingleProps } from '@snack-ui/droplist';
+import { ItemSingleProps } from '@snack-uikit/droplist';
 
 import { generateOptions } from './helpers';
 

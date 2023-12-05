@@ -1,6 +1,6 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { PlaceholderSVG } from '@snack-ui/icons';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

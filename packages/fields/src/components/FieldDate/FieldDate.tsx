@@ -12,9 +12,9 @@ import {
 } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Calendar, CalendarProps } from '@snack-ui/calendar';
-import { Dropdown } from '@snack-ui/droplist';
-import { CalendarSVG } from '@snack-ui/icons';
+import { Calendar, CalendarProps } from '@snack-uikit/calendar';
+import { Dropdown } from '@snack-uikit/droplist';
+import { CalendarSVG } from '@snack-uikit/icons';
 import {
   IconSize,
   InputPrivate,
@@ -23,9 +23,9 @@ import {
   Size,
   useButtonNavigation,
   useClearButton,
-} from '@snack-ui/input-private';
-import { Tooltip } from '@snack-ui/tooltip';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+} from '@snack-uikit/input-private';
+import { Tooltip } from '@snack-uikit/tooltip';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { ContainerVariant, ValidationState } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';

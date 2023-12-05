@@ -1,6 +1,6 @@
 import { FocusEventHandler, MouseEventHandler, ReactNode, RefObject } from 'react';
 
-import { WithSupportProps } from '@snack-ui/utils';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { Mode, Size } from './constants';
 

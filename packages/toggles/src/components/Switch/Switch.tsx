@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { CheckSVG, CrossSVG } from '@snack-ui/icons';
+import { CheckSVG, CrossSVG } from '@snack-uikit/icons';
 
 import { Size } from '../../constants';
 import { ToggleProps } from '../../types';

@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/typography",
+  "name": "@snack-uikit/typography",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Typography",
   "version": "0.4.4",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "Текст во всех доступных стилях",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/typography",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/typography",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/typography"
   },
   "author": "Anna Kozlova <apkozlova@cloud.ru>",
@@ -34,7 +37,7 @@
     "compile": "npm run build:typography-components && npm run build:constants && npm run build:index"
   },
   "dependencies": {
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2"
   }
 }

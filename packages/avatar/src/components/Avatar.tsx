@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
 
-import { StatusIndicator, StatusIndicatorProps } from '@snack-ui/status';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { StatusIndicator, StatusIndicatorProps } from '@snack-uikit/status';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Appearance, Shape, Size } from './constants';
 import styles from './styles.module.scss';

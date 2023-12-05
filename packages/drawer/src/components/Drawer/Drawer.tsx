@@ -7,8 +7,8 @@ import {
   ButtonOutlineProps,
   ButtonSimple,
   ButtonSimpleProps,
-} from '@snack-ui/button';
-import { TruncateString } from '@snack-ui/truncate-string';
+} from '@snack-uikit/button';
+import { TruncateString } from '@snack-uikit/truncate-string';
 
 import { Mode, NESTED_DRAWER_PUSH_DISTANCE, Position, Size, TEST_IDS } from '../../constants';
 import { DrawerBodyProps, DrawerHeaderProps } from '../../helperComponents';

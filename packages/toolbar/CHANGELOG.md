@@ -6,8 +6,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.7 (2023-11-29)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
 
 
 
@@ -16,9 +16,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.6 (2023-11-22)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.7.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.7.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
 
 
 
@@ -27,8 +27,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.5 (2023-11-21)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
 
 
 
@@ -37,9 +37,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.4 (2023-11-21)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.6.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.6.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
 
 
 
@@ -48,8 +48,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.3 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
 
 
 
@@ -58,9 +58,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.2 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
 
 
 
@@ -69,9 +69,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.1 (2023-11-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/droplist@0.10.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/button@0.13.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
 
 
 
@@ -102,10 +102,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.3 (2023-11-09)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/icons@0.18.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
-* [@snack-ui/search@0.4.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.5.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/icons@0.18.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/search@0.4.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.5.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
 
 
 
@@ -114,11 +114,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.2 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/droplist@0.10.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.5.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
-* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/button@0.13.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.5.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -149,11 +149,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.7 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/droplist@0.10.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.5.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
-* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/button@0.13.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.5.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -162,8 +162,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.6 (2023-10-18)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.10.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/droplist@0.10.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
 
 
 
@@ -172,10 +172,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.5 (2023-10-16)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.9.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/icons@0.17.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
-* [@snack-ui/search@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.5.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/droplist@0.9.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/icons@0.17.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/search@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.5.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
 
 
 
@@ -184,9 +184,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.4 (2023-10-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.9.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.5.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/droplist@0.9.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.5.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
 
 
 
@@ -195,9 +195,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.3 (2023-10-13)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.9.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.5.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/droplist@0.9.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.5.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
 
 
 
@@ -206,9 +206,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.2 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/button@0.13.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
-* [@snack-ui/droplist@0.9.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/button@0.13.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/droplist@0.9.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
 
 
 
@@ -217,9 +217,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.1 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/droplist@0.9.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
-* [@snack-ui/search@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
-* [@snack-ui/toggles@0.5.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/droplist@0.9.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/search@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search/CHANGELOG.md)
+* [@snack-uikit/toggles@0.5.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
 
 
 

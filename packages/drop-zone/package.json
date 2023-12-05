@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/drop-zone",
+  "name": "@snack-uikit/drop-zone",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Drop Zone",
   "version": "0.4.5",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "Зона загрузки файлов (обычная и скрытая)",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/drop-zone",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/drop-zone",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/drop-zone"
   },
   "author": "Akhremenko Grigorii <gaahremenko@cloud.ru>",
@@ -29,7 +32,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2"
   },
   "peerDependencies": {

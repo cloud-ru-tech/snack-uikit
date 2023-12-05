@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
-import { QuestionTooltip } from '@snack-ui/tooltip';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { Typography } from '@snack-ui/typography';
-import { WithSupportProps } from '@snack-ui/utils';
+import { QuestionTooltip } from '@snack-uikit/tooltip';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { Typography } from '@snack-uikit/typography';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { TEST_IDS } from '../../testIds';
 import styles from './styles.module.scss';

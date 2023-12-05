@@ -1,7 +1,7 @@
 # Timeline
 
 ## Installation
-`npm i @snack-ui/timeline`
+`npm i @snack-uikit/timeline`
 
 [Changelog](./CHANGELOG.md)
 

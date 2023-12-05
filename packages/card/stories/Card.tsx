@@ -1,8 +1,8 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useEffect, useMemo, useState } from 'react';
 
-import { IconPredefinedProps } from '@snack-ui/icon-predefined';
-import { KebabSVG, PlaceholderSVG } from '@snack-ui/icons';
+import { IconPredefinedProps } from '@snack-uikit/icon-predefined';
+import { KebabSVG, PlaceholderSVG } from '@snack-uikit/icons';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

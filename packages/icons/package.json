@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/icons",
+  "name": "@snack-uikit/icons",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Icons",
   "version": "0.18.1",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "Пакет с иконками",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/icons",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/icons",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/icons"
   },
   "author": "Anna Kozlova <apkozlova@cloud.ru>",

@@ -1,7 +1,7 @@
 # Icons
 
 ## Installation
-`npm i @snack-ui/icons`
+`npm i @snack-uikit/icons`
 
 ## Как добавить новую иконку
 
@@ -22,7 +22,7 @@
 ## Examples
 
 ```typescript jsx
-import { ChevronLeftSVG }  from '@snack-ui/icons';
+import { ChevronLeftSVG }  from '@snack-uikit/icons';
 
 <ChevronLeftSVG size={24}/>
 ```

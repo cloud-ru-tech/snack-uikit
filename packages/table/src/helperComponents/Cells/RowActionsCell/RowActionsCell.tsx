@@ -1,9 +1,9 @@
 import { CellContext, Row } from '@tanstack/react-table';
 import { MouseEvent } from 'react';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { Droplist, ItemSingleProps } from '@snack-ui/droplist';
-import { MoreSVG } from '@snack-ui/icons';
+import { ButtonFunction } from '@snack-uikit/button';
+import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
+import { MoreSVG } from '@snack-uikit/icons';
 
 import { ColumnPinPosition, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';

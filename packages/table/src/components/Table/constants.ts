@@ -1,5 +1,5 @@
-import { IconPredefined } from '@snack-ui/icon-predefined';
-import { CrossSVG, SearchSVG } from '@snack-ui/icons';
+import { IconPredefined } from '@snack-uikit/icon-predefined';
+import { CrossSVG, SearchSVG } from '@snack-uikit/icons';
 
 import { TableEmptyStateProps } from '../TableEmptyState';
 

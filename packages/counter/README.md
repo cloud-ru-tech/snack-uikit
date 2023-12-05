@@ -1,14 +1,14 @@
 # Counter
 
 ## Installation
-`npm i @snack-ui/counter`
+`npm i @snack-uikit/counter`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```typescript jsx
-import {Counter} from "@snack-ui/counter";
+import {Counter} from "@snack-uikit/counter";
 
 <Counter
   value={42}

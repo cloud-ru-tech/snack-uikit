@@ -1,7 +1,7 @@
 import { MouseEventHandler } from 'react';
 
-import { ItemSingleProps } from '@snack-ui/droplist';
-import { toaster } from '@snack-ui/toaster';
+import { ItemSingleProps } from '@snack-uikit/droplist';
+import { toaster } from '@snack-uikit/toaster';
 
 import { Card } from '../src';
 import { generateOptions } from './helpers';
@@ -64,7 +64,7 @@ export const OPTIONS_LENGTH = 3;
 
 export const OPTIONS: ItemSingleProps[] = generateOptions(OPTIONS_LENGTH);
 
-import * as Icons from '@snack-ui/icons';
+import * as Icons from '@snack-uikit/icons';
 
 export const ICONS = {
   ...Object.fromEntries(

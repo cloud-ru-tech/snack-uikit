@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-import { PopoverPrivate, PopoverPrivateProps } from '@snack-ui/popover-private';
-import { WithSupportProps } from '@snack-ui/utils';
+import { PopoverPrivate, PopoverPrivateProps } from '@snack-uikit/popover-private';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import styles from './styles.module.scss';
 

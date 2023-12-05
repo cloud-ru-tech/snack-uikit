@@ -1,4 +1,4 @@
-import { PlaceholderSVG } from '@snack-ui/icons';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
 import { TreeNodeProps } from '../src';
 

@@ -1,9 +1,9 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 
-import { ButtonTonal } from '@snack-ui/button';
-import { ChipToggleProps } from '@snack-ui/chips';
-import { PlaceholderSVG } from '@snack-ui/icons';
+import { ButtonTonal } from '@snack-uikit/button';
+import { ChipToggleProps } from '@snack-uikit/chips';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

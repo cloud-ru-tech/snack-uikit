@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { CheckSVG } from '@snack-ui/icons';
+import { CheckSVG } from '@snack-uikit/icons';
 
 import { TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';

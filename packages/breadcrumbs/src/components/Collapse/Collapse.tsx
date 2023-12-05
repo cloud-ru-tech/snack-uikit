@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { Popover } from '@snack-ui/popover';
+import { Popover } from '@snack-uikit/popover';
 
 import { ElementType, ItemRenderMode } from '../../constants';
 import { BreadcrumbsContext } from '../../context';

@@ -1,6 +1,6 @@
 import { Icons } from '@storybook/components';
 import copyToClipboard from 'copy-to-clipboard';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { useDarkMode } from 'storybook-dark-mode';

@@ -1,6 +1,6 @@
 import { RefObject, useMemo } from 'react';
 
-import { BUTTON_SIZE_MAP, ButtonProps, Size } from '@snack-ui/input-private';
+import { BUTTON_SIZE_MAP, ButtonProps, Size } from '@snack-uikit/input-private';
 
 import { ButtonCopyValue } from '../helperComponents';
 

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { extractSupportProps } from '@snack-ui/utils';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import { Size } from '../../constants';
 import { SearchAutocomplete, SearchAutocompleteProps } from '../SearchAutocomplete';

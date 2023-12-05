@@ -1,7 +1,7 @@
-import { ButtonFilled, ButtonOutline, ButtonSimple } from '@snack-ui/button';
-import { Link } from '@snack-ui/link';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { Typography } from '@snack-ui/typography';
+import { ButtonFilled, ButtonOutline, ButtonSimple } from '@snack-uikit/button';
+import { Link } from '@snack-uikit/link';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { Typography } from '@snack-uikit/typography';
 
 import { Align, Mode, Size, TEST_IDS } from '../../constants';
 import { getAlignProps, getButtonsSizes, getPicture } from '../../utils';

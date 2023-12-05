@@ -2,15 +2,15 @@
 
 ## Installation
 
-`npm i @snack-ui/alert`
+`npm i @snack-uikit/alert`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```tsx
-import { Alert, AlertTop } from '@snack-ui/alert';
-import { InfoFilledSVG } from '@snack-ui/icons';
+import { Alert, AlertTop } from '@snack-uikit/alert';
+import { InfoFilledSVG } from '@snack-uikit/icons';
 
 // Alert component displays a notification with an optional icon, title, description, and link.
 // It can be used to provide information, warnings, errors, or success messages.

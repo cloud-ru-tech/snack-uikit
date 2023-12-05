@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
-import { ButtonFilled, ButtonFilledProps, ButtonTonal, ButtonTonalProps } from '@snack-ui/button';
-import { excludeSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { ButtonFilled, ButtonFilledProps, ButtonTonal, ButtonTonalProps } from '@snack-uikit/button';
+import { excludeSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { useCardContext } from '../../../../context';
 import styles from './styles.module.scss';

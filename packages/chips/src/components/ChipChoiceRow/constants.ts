@@ -1,4 +1,4 @@
-import { ButtonFunction } from '@snack-ui/button';
+import { ButtonFunction } from '@snack-uikit/button';
 
 import { ChipChoice } from '../ChipChoice';
 

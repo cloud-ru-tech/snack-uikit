@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { CrossSVG } from '@snack-ui/icons';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { ButtonFunction } from '@snack-uikit/button';
+import { CrossSVG } from '@snack-uikit/icons';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CHIP_CHOICE_ROW_IDS } from '../../constants';
 import { ForwardedChipChoice } from './components';

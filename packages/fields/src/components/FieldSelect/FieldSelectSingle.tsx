@@ -1,7 +1,7 @@
 import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { selectAll } from '@snack-ui/input-private';
+import { selectAll } from '@snack-uikit/input-private';
 
 import { DEFAULT_LOCALE, EMPTY_OPTION } from './constants';
 import { FieldSelectBase } from './FieldSelectBase';

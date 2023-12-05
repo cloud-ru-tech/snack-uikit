@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
-import { Typography } from '@snack-ui/typography';
-import { excludeSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Typography } from '@snack-uikit/typography';
+import { excludeSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import styles from './styles.module.scss';
 

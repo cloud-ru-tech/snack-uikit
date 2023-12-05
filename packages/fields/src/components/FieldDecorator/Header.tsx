@@ -1,7 +1,7 @@
-import { QuestionSVG } from '@snack-ui/icons';
-import { Size } from '@snack-ui/input-private';
-import { Tooltip, TooltipProps } from '@snack-ui/tooltip';
-import { TruncateString } from '@snack-ui/truncate-string';
+import { QuestionSVG } from '@snack-uikit/icons';
+import { Size } from '@snack-uikit/input-private';
+import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';
+import { TruncateString } from '@snack-uikit/truncate-string';
 
 import styles from './styles.module.scss';
 

@@ -12,7 +12,7 @@ import {
   useState,
 } from 'react';
 
-import { WithSupportProps } from '@snack-ui/utils';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import {
   AUTOSCROLL_ENABLE_LIMIT,

@@ -1,7 +1,7 @@
 # Search
 
 ## Installation
-`npm i @snack-ui/search`
+`npm i @snack-uikit/search`
 
 [Changelog](./CHANGELOG.md)
 
@@ -12,7 +12,7 @@
 ## Example
 
 ```typescript jsx
-import { Search, SearchPrivate } from "@snack-ui/search";
+import { Search, SearchPrivate } from "@snack-uikit/search";
 
 <Search
   value={value}

@@ -1,4 +1,4 @@
-import { IconPredefined, IconPredefinedProps } from '@snack-ui/icon-predefined';
+import { IconPredefined, IconPredefinedProps } from '@snack-uikit/icon-predefined';
 
 import { TEST_IDS } from '../../constants';
 import { useCardContext } from '../../context';

@@ -1,6 +1,6 @@
 import { memo, useMemo, useRef } from 'react';
 
-import { WithSupportProps } from '@snack-ui/utils';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { ElementType, ItemRenderMode, SEPARATOR, Size } from '../../constants';
 import { useBreadcrumbsLayout } from '../../hooks';

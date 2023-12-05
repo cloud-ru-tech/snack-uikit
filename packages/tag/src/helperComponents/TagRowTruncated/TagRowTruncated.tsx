@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TAG_ROW_TEST_IDS } from '../../components/TagRow/constants';
 import { Size } from '../../constants';

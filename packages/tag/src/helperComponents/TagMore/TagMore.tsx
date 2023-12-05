@@ -1,7 +1,7 @@
 import { Ref } from 'react';
 
-import { PopoverPrivate } from '@snack-ui/popover-private';
-import { Scroll } from '@snack-ui/scroll';
+import { PopoverPrivate } from '@snack-uikit/popover-private';
+import { Scroll } from '@snack-uikit/scroll';
 
 import { TAG_ROW_TEST_IDS } from '../../components/TagRow/constants';
 import { Size } from '../../constants';

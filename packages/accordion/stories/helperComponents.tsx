@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
-import { Avatar } from '@snack-ui/avatar';
-import { QuestionTooltip } from '@snack-ui/tooltip';
-import { Typography } from '@snack-ui/typography';
+import { Avatar } from '@snack-uikit/avatar';
+import { QuestionTooltip } from '@snack-uikit/tooltip';
+import { Typography } from '@snack-uikit/typography';
 
 import styles from './styles.module.scss';
 

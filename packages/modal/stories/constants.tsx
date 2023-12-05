@@ -1,6 +1,6 @@
 import { ArgTypes } from '@storybook/types';
 
-import * as Icons from '@snack-ui/icons';
+import * as Icons from '@snack-uikit/icons';
 
 import { Modal, ModalCustomProps, ModalProps } from '../src';
 import image from './image.jpg';

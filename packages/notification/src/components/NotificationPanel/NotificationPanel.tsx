@@ -1,12 +1,12 @@
 import { MouseEventHandler, ReactNode, useMemo } from 'react';
 
-import { ButtonFunction, ButtonFunctionProps } from '@snack-ui/button';
-import { ChipToggle, ChipToggleProps } from '@snack-ui/chips';
-import { PopoverPrivate } from '@snack-ui/popover-private';
-import { Scroll } from '@snack-ui/scroll';
-import { SkeletonContextProvider, WithSkeleton } from '@snack-ui/skeleton';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { Typography } from '@snack-ui/typography';
+import { ButtonFunction, ButtonFunctionProps } from '@snack-uikit/button';
+import { ChipToggle, ChipToggleProps } from '@snack-uikit/chips';
+import { PopoverPrivate } from '@snack-uikit/popover-private';
+import { Scroll } from '@snack-uikit/scroll';
+import { SkeletonContextProvider, WithSkeleton } from '@snack-uikit/skeleton';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { Typography } from '@snack-uikit/typography';
 
 import { NotificationPanelPopover, NotificationPanelPopoverProps } from '../../helperComponents';
 import { NotificationCardSkeleton } from '../NotificationCard/components';

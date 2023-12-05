@@ -3,16 +3,16 @@ import mergeRefs from 'merge-refs';
 import { FocusEvent, forwardRef, KeyboardEvent, useCallback, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { SearchSVG } from '@snack-ui/icons';
+import { SearchSVG } from '@snack-uikit/icons';
 import {
   InputPrivate,
   InputPrivateProps,
   moveCursorToEnd,
   useButtonNavigation,
   useClearButton,
-} from '@snack-ui/input-private';
-import { Sun } from '@snack-ui/loaders';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+} from '@snack-uikit/input-private';
+import { Sun } from '@snack-uikit/loaders';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { PRIVATE_SEARCH_TEST_IDS, Size } from '../../constants';
 import styles from './styles.module.scss';

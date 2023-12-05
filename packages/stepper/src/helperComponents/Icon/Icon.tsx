@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { useMemo } from 'react';
 
-import { CheckSVG, CrossSVG } from '@snack-ui/icons';
-import { Sun } from '@snack-ui/loaders';
-import { Typography } from '@snack-ui/typography';
+import { CheckSVG, CrossSVG } from '@snack-uikit/icons';
+import { Sun } from '@snack-uikit/loaders';
+import { Typography } from '@snack-uikit/typography';
 
 import { StepState } from '../../constants';
 import styles from './styles.module.scss';

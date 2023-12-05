@@ -1,14 +1,14 @@
 # Avatar
 
 ## Installation
-`npm i @snack-ui/avatar`
+`npm i @snack-uikit/avatar`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```typescript jsx
-import {Avatar} from "@snack-ui/avatar";
+import {Avatar} from "@snack-uikit/avatar";
 
 <Avatar 
   name="Name Surname"

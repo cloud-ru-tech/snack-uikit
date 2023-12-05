@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
-import { Size } from '@snack-ui/input-private';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Size } from '@snack-uikit/input-private';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { ValidationState } from '../../constants';
 import { Footer, FooterProps } from './Footer';

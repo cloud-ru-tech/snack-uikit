@@ -1,10 +1,9 @@
 import { linkTo } from '@storybook/addon-links';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Link } from '@snack-ui/link';
+import { Link } from '@snack-uikit/link';
 
-import { Card, CloudRuFullLogo } from './components';
-import { GitHubLogo } from './components/GitHubLogo';
+import { Card, CloudRuFullLogo, GitHubLogo } from './components';
 import styles from './styles.module.scss';
 
 const meta: Meta = {

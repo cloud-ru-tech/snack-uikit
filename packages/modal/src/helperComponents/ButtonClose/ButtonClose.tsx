@@ -1,4 +1,4 @@
-import { CrossSVG } from '@snack-ui/icons';
+import { CrossSVG } from '@snack-uikit/icons';
 
 import { TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';

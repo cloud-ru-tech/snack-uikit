@@ -1,7 +1,7 @@
 # Tooltip
 
 ## Installation
-`npm i @snack-ui/tooltip`
+`npm i @snack-uikit/tooltip`
 
 [Changelog](./CHANGELOG.md)
 

@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { ChangeEventHandler, forwardRef } from 'react';
 
-import { extractSupportProps } from '@snack-ui/utils';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import { Type } from './constants';
 import styles from './styles.module.scss';

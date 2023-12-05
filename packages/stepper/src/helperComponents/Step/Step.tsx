@@ -1,8 +1,8 @@
 import cn from 'classnames';
 
-import { TruncateString } from '@snack-ui/truncate-string';
-import { Typography } from '@snack-ui/typography';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { Typography } from '@snack-uikit/typography';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { StepState } from '../../constants';
 import { StepViewData } from '../../types';

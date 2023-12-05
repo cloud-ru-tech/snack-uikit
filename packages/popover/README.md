@@ -1,7 +1,7 @@
 # Popover
 
 ## Installation
-`npm i @snack-ui/popover`
+`npm i @snack-uikit/popover`
 
 [Changelog](./CHANGELOG.md)
 

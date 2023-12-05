@@ -1,8 +1,8 @@
 import { Table } from '@tanstack/react-table';
 import { useCallback, useMemo } from 'react';
 
-import { ChipChoice } from '@snack-ui/chips';
-import { Pagination } from '@snack-ui/pagination';
+import { ChipChoice } from '@snack-uikit/chips';
+import { Pagination } from '@snack-uikit/pagination';
 
 import styles from './styles.module.scss';
 

@@ -1,4 +1,4 @@
-import { PromoTag } from '@snack-ui/promo-tag';
+import { PromoTag } from '@snack-uikit/promo-tag';
 
 import { TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';

@@ -1,7 +1,7 @@
 import { forwardRef, KeyboardEventHandler, MouseEventHandler } from 'react';
 
-import { EyeClosedSVG, EyeSVG } from '@snack-ui/icons';
-import { ButtonSize } from '@snack-ui/input-private';
+import { EyeClosedSVG, EyeSVG } from '@snack-uikit/icons';
+import { ButtonSize } from '@snack-uikit/input-private';
 
 import styles from './styles.module.scss';
 

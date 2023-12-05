@@ -1,7 +1,7 @@
 # Pagination
 
 ## Installation
-`npm i @snack-ui/pagination`
+`npm i @snack-uikit/pagination`
 
 ## TODO
 
@@ -12,7 +12,7 @@
 ## Example
 
 ```typescript jsx
-import { Pagination, PaginationSlider } from "@snack-ui/pagination";
+import { Pagination, PaginationSlider } from "@snack-uikit/pagination";
 
 function App() {
   const [page, setPage] = useState(args.page);

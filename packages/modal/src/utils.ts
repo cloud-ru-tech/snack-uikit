@@ -1,4 +1,4 @@
-import { ButtonFilled, ButtonOutline, ButtonSimple } from '@snack-ui/button';
+import { ButtonFilled, ButtonOutline, ButtonSimple } from '@snack-uikit/button';
 
 import { Align, ContentAlign, Size } from './constants';
 import { ModalHeaderImage, ModalHeaderProps } from './helperComponents';

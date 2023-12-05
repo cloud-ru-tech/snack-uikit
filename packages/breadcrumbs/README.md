@@ -1,7 +1,7 @@
 # Breadcrumbs
 
 ## Installation
-`npm i @snack-ui/breadcrumbs`
+`npm i @snack-uikit/breadcrumbs`
 
 [Changelog](./CHANGELOG.md)
 

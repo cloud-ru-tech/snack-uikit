@@ -1,12 +1,12 @@
 import cn from 'classnames';
 import { FocusEvent, KeyboardEventHandler, MouseEventHandler, useEffect, useMemo, useRef, useState } from 'react';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { ChevronRightSVG, FileSVG, FolderOpenSVG, FolderSVG } from '@snack-ui/icons';
-import { Checkbox } from '@snack-ui/toggles';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { Typography } from '@snack-ui/typography';
-import { extractSupportProps } from '@snack-ui/utils';
+import { ButtonFunction } from '@snack-uikit/button';
+import { ChevronRightSVG, FileSVG, FolderOpenSVG, FolderSVG } from '@snack-uikit/icons';
+import { Checkbox } from '@snack-uikit/toggles';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { Typography } from '@snack-uikit/typography';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import { TEST_IDS } from '../../constants';
 import { useTreeContext } from '../../contexts/TreeContext';

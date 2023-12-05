@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { KeyboardEvent, ReactElement, ReactNode, useCallback, useRef } from 'react';
 
-import { Typography } from '@snack-ui/typography';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Typography } from '@snack-uikit/typography';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Size } from '../../constants';
 import { CardContext } from '../../context';

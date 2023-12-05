@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
-import { useToggleGroup } from '@snack-ui/toggles';
-import { extractSupportProps } from '@snack-ui/utils';
+import { useToggleGroup } from '@snack-uikit/toggles';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import { CollapseBlockHeaderContainer, CollapseBlockPrivate } from '../../helperComponents';
 import { CollapseBlockProps } from '../../types';

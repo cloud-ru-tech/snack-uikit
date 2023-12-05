@@ -1,6 +1,6 @@
 import { SortDirection } from '@tanstack/react-table';
 
-import { ArrowDownSVG, ArrowUpSVG } from '@snack-ui/icons';
+import { ArrowDownSVG, ArrowUpSVG } from '@snack-uikit/icons';
 
 export function getSortingIcon(sort?: SortDirection | false) {
   switch (sort) {

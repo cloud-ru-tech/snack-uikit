@@ -1,7 +1,7 @@
 # Promo Tag
 
 ## Installation
-`npm i @snack-ui/promo-tag`
+`npm i @snack-uikit/promo-tag`
 
 [Changelog](./CHANGELOG.md)
 

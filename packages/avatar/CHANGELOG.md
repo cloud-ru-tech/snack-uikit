@@ -6,8 +6,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.5 (2023-11-08)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.3.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
-* [@snack-ui/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/status@0.3.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/utils@2.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -27,8 +27,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.3 (2023-10-25)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
-* [@snack-ui/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/status@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/utils@1.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -37,7 +37,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.2 (2023-10-12)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/status@0.3.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
 
 
 
@@ -46,7 +46,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.3.1 (2023-10-06)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/status@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
 
 
 
@@ -77,7 +77,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.9 (2023-08-17)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.2.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/status@0.2.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
 
 
 
@@ -97,7 +97,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.7 (2023-07-28)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/status@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
 
 
 
@@ -106,8 +106,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.6 (2023-06-23)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
-* [@snack-ui/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/status@0.3.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/utils@2.0.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -116,8 +116,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.5 (2023-06-20)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.2.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
-* [@snack-ui/utils@1.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+* [@snack-uikit/status@0.2.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/utils@1.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 
@@ -148,7 +148,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.2.2 (2023-05-15)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.2.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/status@0.2.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
 
 
 
@@ -179,7 +179,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 0.1.1 (2023-04-07)
 
 ### Only dependencies have been changed
-* [@snack-ui/status@0.1.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/status@0.1.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/status/CHANGELOG.md)
 
 
 

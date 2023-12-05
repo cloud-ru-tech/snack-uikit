@@ -1,4 +1,4 @@
-import { Typography } from '@snack-ui/typography';
+import { Typography } from '@snack-uikit/typography';
 
 import styles from '../../styles.module.scss';
 

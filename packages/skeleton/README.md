@@ -1,7 +1,7 @@
 # Skeleton
 
 ## Installation
-`npm i @snack-ui/skeleton`
+`npm i @snack-uikit/skeleton`
 
 [Changelog](./CHANGELOG.md)
 

@@ -1,14 +1,14 @@
 # Toaster
 
 ## Installation
-`npm i @snack-ui/toaster`
+`npm i @snack-uikit/toaster`
 
 [Changelog](./CHANGELOG.md)
 
 ## Usage
 
 ```typescript
-import { toaster } from '@snack-ui/toaster';
+import { toaster } from '@snack-uikit/toaster';
 
 // create userAction toast
 const userActionId = await toaster.userAction.success({ label });

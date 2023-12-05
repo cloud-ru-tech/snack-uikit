@@ -1,15 +1,15 @@
 # Icon Predefined
 
 ## Installation
-`npm i @snack-ui/icon-predefined`
+`npm i @snack-uikit/icon-predefined`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```tsx
-import { HeartSVG } from '@snack-ui/icons';
-import { IconPredefined } from '@snack-ui/icon-predefined';
+import { HeartSVG } from '@snack-uikit/icons';
+import { IconPredefined } from '@snack-uikit/icon-predefined';
 
 <IconPredefined
     appearance={IconPredefined.appearances.Red}
@@ -23,7 +23,7 @@ import { IconPredefined } from '@snack-ui/icon-predefined';
 ## Props
 
 #### **`icon: JSXElementConstructor`**
-Компонент svg-иконки из пакета `@snack-ui/icons`.
+Компонент svg-иконки из пакета `@snack-uikit/icons`.
 
 #### **`className?: string`**
 css-класс контейнера.

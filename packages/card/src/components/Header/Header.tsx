@@ -1,8 +1,8 @@
 import cn from 'classnames';
 
-import { TruncateString } from '@snack-ui/truncate-string';
-import { Typography } from '@snack-ui/typography';
-import { excludeSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { Typography } from '@snack-uikit/typography';
+import { excludeSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Size, TEST_IDS } from '../../constants';
 import { useCardContext } from '../../context';

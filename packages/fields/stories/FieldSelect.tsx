@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
-import { DaySVG } from '@snack-ui/icons';
+import { DaySVG } from '@snack-uikit/icons';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

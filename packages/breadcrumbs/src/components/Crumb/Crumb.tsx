@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { memo, useContext } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { ElementType, ItemRenderMode } from '../../constants';
 import { BreadcrumbsContext } from '../../context';

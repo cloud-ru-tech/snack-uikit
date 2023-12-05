@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { CSSProperties, RefCallback, useCallback, useMemo, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { AUTOFOCUS, CalendarMode, Size, ViewMode } from '../../constants';
 import { BuildCellPropsFunction, FocusDirection, Range } from '../../types';

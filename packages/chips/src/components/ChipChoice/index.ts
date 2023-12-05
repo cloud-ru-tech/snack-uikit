@@ -1,4 +1,4 @@
-import { Droplist } from '@snack-ui/droplist';
+import { Droplist } from '@snack-uikit/droplist';
 
 import { Size, Variant } from '../../constants';
 import {

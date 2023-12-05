@@ -1,6 +1,6 @@
 import { MouseEventHandler, RefObject, useMemo } from 'react';
 
-import { useEventHandler } from '@snack-ui/utils';
+import { useEventHandler } from '@snack-uikit/utils';
 
 import { BUTTON_SIZE_MAP, Size } from '../constants';
 import { ButtonClearValue } from '../helperComponents';

@@ -1,5 +1,5 @@
-import { ToggleGroup } from '@snack-ui/toggles';
-import { extractSupportProps } from '@snack-ui/utils';
+import { ToggleGroup } from '@snack-uikit/toggles';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import { AccordionProps } from '../../types';
 

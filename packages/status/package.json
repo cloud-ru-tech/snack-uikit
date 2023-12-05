@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/status",
+  "name": "@snack-uikit/status",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Status",
   "version": "0.3.5",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "Индикация статуса (точка или точка с текстом)",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/status",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/status",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/status"
   },
   "author": "Anna Kozlova <apkozlova@cloud.ru>",
@@ -29,7 +32,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2"
   }
 }

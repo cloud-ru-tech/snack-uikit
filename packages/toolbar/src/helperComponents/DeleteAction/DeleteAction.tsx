@@ -1,8 +1,8 @@
 import { KeyboardEvent, useCallback } from 'react';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { TrashSVG } from '@snack-ui/icons';
-import { Checkbox } from '@snack-ui/toggles';
+import { ButtonFunction } from '@snack-uikit/button';
+import { TrashSVG } from '@snack-uikit/icons';
+import { Checkbox } from '@snack-uikit/toggles';
 
 import { TEST_IDS } from '../../constants';
 import { SelectionMode } from './constants';

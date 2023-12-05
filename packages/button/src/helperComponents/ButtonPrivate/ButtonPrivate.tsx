@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { ForwardedRef, forwardRef, MouseEvent } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Appearance, HtmlType, IconPosition, Target } from '../../constants';
 import { CommonButtonProps, CounterButtonProps } from '../../types';

@@ -2,7 +2,7 @@
 
 ## Installation
 
-`npm i @snack-ui/button`
+`npm i @snack-uikit/button`
 
 ## TODO
 
@@ -14,9 +14,9 @@
 ## Example
 
 ```typescript jsx
-import {ButtonFilled, ButtonFunction, ButtonSimple} from "@snack-ui/button";
-import {Counter} from "@snack-ui/counter";
-import {DaySVG} from "@snack-ui/icons";
+import {ButtonFilled, ButtonFunction, ButtonSimple} from "@snack-uikit/button";
+import {Counter} from "@snack-uikit/counter";
+import {DaySVG} from "@snack-uikit/icons";
 
 <ButtonFilled
   label='Navigate'

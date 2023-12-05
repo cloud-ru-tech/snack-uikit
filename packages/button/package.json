@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/button",
+  "name": "@snack-uikit/button",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Button",
   "version": "0.13.6",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "Кнопка в различных вариациях",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/button",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/button",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/button"
   },
   "author": "Anna Kozlova <apkozlova@cloud.ru>",
@@ -29,9 +32,9 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/counter": "0.3.5",
-    "@snack-ui/loaders": "0.3.4",
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/counter": "0.3.5",
+    "@snack-uikit/loaders": "0.3.4",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2"
   }
 }

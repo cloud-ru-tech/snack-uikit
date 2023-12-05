@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { Typography } from '@snack-ui/typography';
+import { Typography } from '@snack-uikit/typography';
 
 import { Palette } from './components/Palette';
 import { RainbowColor, ReferenceColor, TONES } from './constants';

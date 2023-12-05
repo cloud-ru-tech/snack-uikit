@@ -1,7 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { ButtonFilled } from '@snack-ui/button';
-import { SkeletonText } from '@snack-ui/skeleton';
+import { ButtonFilled } from '@snack-uikit/button';
+import { SkeletonText } from '@snack-uikit/skeleton';
 
 import popoverPrivateReadme from '../../popover-private/README.md';
 import componentChangelog from '../CHANGELOG.md';

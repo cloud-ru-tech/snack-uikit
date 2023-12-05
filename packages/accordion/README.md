@@ -1,7 +1,7 @@
 # Accordion
 
 ## Installation
-`npm i @snack-ui/accordion`
+`npm i @snack-uikit/accordion`
 
 [Changelog](./CHANGELOG.md)
 
@@ -9,7 +9,7 @@
 
 ```typescript
 
-  import {AccordionPrimary} from '@snack-ui/accordion'
+  import {AccordionPrimary} from '@snack-uikit/accordion'
 
   function Example() {
   

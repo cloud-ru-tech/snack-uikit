@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/pagination",
+  "name": "@snack-uikit/pagination",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Pagination",
   "version": "0.4.10",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "Навигация по страницам (с цифрами или точками)",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/pagination",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/pagination",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/pagination"
   },
   "author": "Anna Kozlova <apkozlova@cloud.ru>",
@@ -29,8 +32,8 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/button": "0.13.6",
-    "@snack-ui/icons": "0.18.1",
-    "@snack-ui/utils": "2.0.1"
+    "@snack-uikit/button": "0.13.6",
+    "@snack-uikit/icons": "0.18.1",
+    "@snack-uikit/utils": "2.0.1"
   }
 }

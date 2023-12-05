@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/toaster",
+  "name": "@snack-uikit/toaster",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "Toaster",
   "version": "0.3.20",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/toaster",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/toaster",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/toaster"
   },
   "author": "Nikita Ershov <niershov@cloud.ru>",
@@ -29,10 +32,10 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-ui/icons": "0.18.1",
-    "@snack-ui/link": "0.7.0",
-    "@snack-ui/truncate-string": "0.2.16",
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/icons": "0.18.1",
+    "@snack-uikit/link": "0.7.0",
+    "@snack-uikit/truncate-string": "0.2.16",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2",
     "react-toastify": "9.1.3"
   }

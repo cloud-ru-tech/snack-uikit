@@ -9,9 +9,9 @@ import {
   useMemo,
 } from 'react';
 
-import { Droplist } from '@snack-ui/droplist';
-import { InputPrivate, Size, useButtonNavigation, useClearButton } from '@snack-ui/input-private';
-import { extractSupportProps } from '@snack-ui/utils';
+import { Droplist } from '@snack-uikit/droplist';
+import { InputPrivate, Size, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import { ContainerVariant, ValidationState } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';

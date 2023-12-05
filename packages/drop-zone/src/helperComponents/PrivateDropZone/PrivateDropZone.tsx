@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { ChangeEvent, DragEvent, useRef } from 'react';
 
-import { extractSupportProps } from '@snack-ui/utils';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import classNames from './styles.module.scss';
 import { PrivateDropZoneProps, UploadMode } from './types';

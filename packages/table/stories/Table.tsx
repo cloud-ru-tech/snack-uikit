@@ -1,7 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { toaster } from '@snack-ui/toaster';
+import { toaster } from '@snack-uikit/toaster';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

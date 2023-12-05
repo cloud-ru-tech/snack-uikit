@@ -1,5 +1,5 @@
-import { PlaceholderSVG } from '@snack-ui/icons';
-import { toaster } from '@snack-ui/toaster';
+import { PlaceholderSVG } from '@snack-uikit/icons';
+import { toaster } from '@snack-uikit/toaster';
 
 import { ToolbarProps } from '../src';
 import { TEST_ID_TOASTER } from './testIds';

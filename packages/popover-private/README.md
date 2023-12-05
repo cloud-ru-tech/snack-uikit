@@ -1,14 +1,14 @@
 # Popover Private
 
 ## Installation
-`npm i @snack-ui/popover-private`
+`npm i @snack-uikit/popover-private`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```typescript jsx
-import { PopoverPrivate } from "@snack-ui/popover-private";
+import { PopoverPrivate } from "@snack-uikit/popover-private";
 
 function App() {
   return (

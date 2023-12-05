@@ -1,5 +1,5 @@
-import { Calendar } from '@snack-ui/calendar';
-import { Droplist } from '@snack-ui/droplist';
+import { Calendar } from '@snack-uikit/calendar';
+import { Droplist } from '@snack-uikit/droplist';
 
 import { ButtonSize, Size } from '../../constants';
 

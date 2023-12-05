@@ -1,6 +1,6 @@
 import { KeyboardEvent, KeyboardEventHandler, RefObject, useCallback, useMemo, useRef } from 'react';
 
-import { moveCursorToEnd, runAfterRerender } from '@snack-ui/input-private';
+import { moveCursorToEnd, runAfterRerender } from '@snack-uikit/input-private';
 
 import { Option } from '../types';
 

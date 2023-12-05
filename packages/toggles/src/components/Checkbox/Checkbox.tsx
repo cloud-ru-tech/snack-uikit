@@ -2,7 +2,7 @@ import mergeRefs from 'merge-refs';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { CheckSVG, MinusSVG } from '@snack-ui/icons';
+import { CheckSVG, MinusSVG } from '@snack-uikit/icons';
 
 import { Size } from '../../constants';
 import { ToggleProps } from '../../types';

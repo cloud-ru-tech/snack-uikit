@@ -1,5 +1,8 @@
 {
-  "name": "@snack-ui/droplist",
+  "name": "@snack-uikit/droplist",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "droplist",
   "version": "0.10.12",
   "sideEffects": [
@@ -10,10 +13,10 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/droplist",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/droplist",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/droplist"
   },
   "author": "Сергей Хлупин <svhlupin@cloud.ru>",
@@ -30,14 +33,14 @@
   "scripts": {},
   "dependencies": {
     "@floating-ui/react": "0.23.1",
-    "@snack-ui/avatar": "0.3.5",
-    "@snack-ui/icons": "0.18.1",
-    "@snack-ui/popover-private": "0.10.0",
-    "@snack-ui/scroll": "0.3.4",
-    "@snack-ui/tag": "0.4.9",
-    "@snack-ui/toggles": "0.7.0",
-    "@snack-ui/truncate-string": "0.2.16",
-    "@snack-ui/utils": "2.0.1",
+    "@snack-uikit/avatar": "0.3.5",
+    "@snack-uikit/icons": "0.18.1",
+    "@snack-uikit/popover-private": "0.10.0",
+    "@snack-uikit/scroll": "0.3.4",
+    "@snack-uikit/tag": "0.4.9",
+    "@snack-uikit/toggles": "0.7.0",
+    "@snack-uikit/truncate-string": "0.2.16",
+    "@snack-uikit/utils": "2.0.1",
     "classnames": "2.3.2"
   }
 }

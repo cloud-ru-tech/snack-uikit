@@ -1,7 +1,7 @@
 import { MouseEventHandler } from 'react';
 
-import { NotificationCard, NotificationCardProps } from '@snack-ui/notification';
-import { toaster } from '@snack-ui/toaster';
+import { NotificationCard, NotificationCardProps } from '@snack-uikit/notification';
+import { toaster } from '@snack-uikit/toaster';
 
 import { NOTIFICATION_CARD_MOCK, STORY_TEST_IDS } from './constants';
 

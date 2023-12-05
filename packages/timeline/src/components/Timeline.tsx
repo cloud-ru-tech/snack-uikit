@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TrackItem, TrackItemProps } from '../helperComponents/TrackItem';
 import { Position } from '../helperComponents/TrackItem/constants';

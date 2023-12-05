@@ -1,4 +1,4 @@
-import * as Icons from '@snack-ui/icons';
+import * as Icons from '@snack-uikit/icons';
 
 export const ICONS = {
   none: undefined,

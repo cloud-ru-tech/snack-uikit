@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 
-import { ButtonFunction } from '@snack-ui/button';
-import { ChevronDownSVG } from '@snack-ui/icons';
+import { ButtonFunction } from '@snack-uikit/button';
+import { ChevronDownSVG } from '@snack-uikit/icons';
 
 import { TEST_IDS } from '../../testIds';
 import styles from './styles.module.scss';

@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { MouseEventHandler } from 'react';
 
-import { CrossSVG } from '@snack-ui/icons';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { CrossSVG } from '@snack-uikit/icons';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Appearance, Size } from '../../constants';
 import { IconSize } from './constants';

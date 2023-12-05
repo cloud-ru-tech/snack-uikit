@@ -2,7 +2,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
-import { PlaceholderSVG } from '@snack-ui/icons';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
 import popoverPrivateReadme from '../../popover-private/README.md';
 import componentChangelog from '../CHANGELOG.md';

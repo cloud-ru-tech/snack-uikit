@@ -1,7 +1,7 @@
 # Input Private
 
 ## Installation
-`npm i @snack-ui/input-private`
+`npm i @snack-uikit/input-private`
 
 [Changelog](./CHANGELOG.md)
 

@@ -2,7 +2,7 @@
 Компоненты, реализующие переключатели.
 
 ## Installation
-`npm i @snack-ui/toggles`
+`npm i @snack-uikit/toggles`
 
 [Changelog](../../../CHANGELOG.md)
 

@@ -9,7 +9,7 @@ import {
   SortingState,
 } from '@tanstack/react-table';
 
-import { ToolbarProps } from '@snack-ui/toolbar';
+import { ToolbarProps } from '@snack-uikit/toolbar';
 
 import { TableEmptyStateProps } from './components/TableEmptyState';
 import { ColumnAlign, ColumnPinPosition } from './constants';

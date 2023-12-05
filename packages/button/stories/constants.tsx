@@ -1,6 +1,6 @@
-import { ButtonFunction } from '@snack-ui/button';
-import { Counter, CounterProps } from '@snack-ui/counter';
-import * as Icons from '@snack-ui/icons';
+import { ButtonFunction } from '@snack-uikit/button';
+import { Counter, CounterProps } from '@snack-uikit/counter';
+import * as Icons from '@snack-uikit/icons';
 
 export const ICONS = {
   none: undefined,

@@ -1,7 +1,7 @@
 # Notification
 
 ## Installation
-`npm i @snack-ui/notification`
+`npm i @snack-uikit/notification`
 
 [Changelog](./CHANGELOG.md)
 
@@ -11,7 +11,7 @@
 ## Example
 
 ```typescript jsx
-import { NotificationCard, NotificationPanel } from '@snack-ui/notification';
+import { NotificationCard, NotificationPanel } from '@snack-uikit/notification';
 
 const cards = [
   {

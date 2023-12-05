@@ -2,10 +2,10 @@ import mergeRefs from 'merge-refs';
 import { ChangeEvent, forwardRef, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Size, useButtonNavigation, useClearButton } from '@snack-ui/input-private';
-import { Scroll } from '@snack-ui/scroll';
-import { Tooltip } from '@snack-ui/tooltip';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Size, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
+import { Scroll } from '@snack-uikit/scroll';
+import { Tooltip } from '@snack-uikit/tooltip';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { ContainerVariant, ValidationState } from '../../constants';
 import { FieldContainerPrivate, TextArea, TextAreaProps } from '../../helperComponents';

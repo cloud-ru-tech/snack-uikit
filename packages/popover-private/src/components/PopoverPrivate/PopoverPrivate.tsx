@@ -23,7 +23,7 @@ import cn from 'classnames';
 import { ForwardedRef, ReactNode, useCallback, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import {
   DEFAULT_FALLBACK_PLACEMENTS,

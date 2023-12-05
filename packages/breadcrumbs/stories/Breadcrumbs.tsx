@@ -2,8 +2,8 @@ import { action } from '@storybook/addon-actions';
 import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { HeartFilledSVG } from '@snack-ui/icons';
-import { Scroll } from '@snack-ui/scroll';
+import { HeartFilledSVG } from '@snack-uikit/icons';
+import { Scroll } from '@snack-uikit/scroll';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

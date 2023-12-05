@@ -14,12 +14,12 @@ import {
   useRef,
 } from 'react';
 
-import { Avatar, AvatarProps } from '@snack-ui/avatar';
-import { ChevronRightSVG } from '@snack-ui/icons';
-import { Tag } from '@snack-ui/tag';
-import { Checkbox } from '@snack-ui/toggles';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { Avatar, AvatarProps } from '@snack-uikit/avatar';
+import { ChevronRightSVG } from '@snack-uikit/icons';
+import { Tag } from '@snack-uikit/tag';
+import { Checkbox } from '@snack-uikit/toggles';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { DroplistContext } from '../../components/Droplist/DroplistContext';
 import { Size, Variant } from '../../constants';

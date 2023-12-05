@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
-import { Counter } from '@snack-ui/counter';
-import { Sun } from '@snack-ui/loaders';
+import { Counter } from '@snack-uikit/counter';
+import { Sun } from '@snack-uikit/loaders';
 
 import { IconPosition } from '../../constants';
 import { ButtonPrivateProps } from './ButtonPrivate';

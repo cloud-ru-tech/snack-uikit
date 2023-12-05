@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Droplist } from '@snack-ui/droplist';
+import { Droplist } from '@snack-uikit/droplist';
 
 import { Size } from '../../../constants';
 import { ChipChoiceCommonProps, FilterOption } from '../types';

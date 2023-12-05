@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
-import { IconPredefined, IconPredefinedProps } from '@snack-ui/icon-predefined';
-import { QuestionTooltip, QuestionTooltipProps } from '@snack-ui/tooltip';
-import { Typography } from '@snack-ui/typography';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { IconPredefined, IconPredefinedProps } from '@snack-uikit/icon-predefined';
+import { QuestionTooltip, QuestionTooltipProps } from '@snack-uikit/tooltip';
+import { Typography } from '@snack-uikit/typography';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { ContentAlign, TEST_IDS } from '../../constants';
 import { isPictureImage } from '../../utils';
@@ -18,7 +18,7 @@ export type ModalHeaderProps = WithSupportProps<{
   titleTooltip?: QuestionTooltipProps['tip'];
   /** Подзаголовок */
   subtitle?: ReactNode;
-  /** Можно передать иконку из пакета `@snack-ui/icon-predefined` или путь к картинке и атрибут `alt` */
+  /** Можно передать иконку из пакета `@snack-uikit/icon-predefined` или путь к картинке и атрибут `alt` */
   picture?: IconPredefinedProps['icon'] | ModalHeaderImage;
   /** Выравнивание контента */
   align?: ContentAlign;

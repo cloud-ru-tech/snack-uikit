@@ -2,7 +2,7 @@
 
 ## Installation
 
-`npm i @snack-ui/drop-zone`
+`npm i @snack-uikit/drop-zone`
 
 ## TODO
 

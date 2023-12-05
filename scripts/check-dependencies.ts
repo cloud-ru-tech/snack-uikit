@@ -10,7 +10,7 @@ const options = {
   ignoreBinPackage: false,
   skipMissing: false,
   ignorePatterns: ['stories', 'dist', '__tests__', '__e2e__'],
-  ignoreMatches: ['react', 'react-dom', '@sbercloud/figma-tokens', '@snack-uikit/figma-tokens'],
+  ignoreMatches: ['react', 'react-dom', '@snack-uikit/figma-tokens'],
 };
 
 const uikitPackageRegexp = new RegExp(`${globConfig.name}\\/`);

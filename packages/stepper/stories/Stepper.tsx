@@ -1,6 +1,6 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { ButtonOutline } from '@snack-ui/button';
+import { ButtonOutline } from '@snack-uikit/button';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

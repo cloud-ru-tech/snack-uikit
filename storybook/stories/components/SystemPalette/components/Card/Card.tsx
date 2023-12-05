@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { Divider } from '@snack-ui/divider';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { Typography } from '@snack-ui/typography';
+import { Divider } from '@snack-uikit/divider';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { Typography } from '@snack-uikit/typography';
 
 import styles from './styles.module.scss';
 

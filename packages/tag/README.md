@@ -1,7 +1,7 @@
 # Tag
 
 ## Installation
-`npm i @snack-ui/tag`
+`npm i @snack-uikit/tag`
 
 [Changelog](./CHANGELOG.md)
 

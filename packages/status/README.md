@@ -1,14 +1,14 @@
 # Status
 
 ## Installation
-`npm i @snack-ui/status`
+`npm i @snack-uikit/status`
 
 [Changelog](./CHANGELOG.md)
 
 ## Example
 
 ```typescript jsx
-import {Status, StatusIndicator} from "@snack-ui/status";
+import {Status, StatusIndicator} from "@snack-uikit/status";
 
 <Status 
   label="Text after status"

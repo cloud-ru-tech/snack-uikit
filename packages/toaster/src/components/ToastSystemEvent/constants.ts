@@ -1,4 +1,4 @@
-import { OnColor } from '@snack-ui/link';
+import { OnColor } from '@snack-uikit/link';
 
 export enum ToastSystemEventAppearance {
   Neutral = 'neutral',

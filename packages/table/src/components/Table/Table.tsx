@@ -13,12 +13,12 @@ import {
 } from '@tanstack/react-table';
 import { ReactNode, useCallback, useMemo } from 'react';
 
-import { IconPredefined } from '@snack-ui/icon-predefined';
-import { Scroll } from '@snack-ui/scroll';
-import { SkeletonContextProvider } from '@snack-ui/skeleton';
-import { Toolbar, ToolbarProps } from '@snack-ui/toolbar';
-import { TruncateString } from '@snack-ui/truncate-string';
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { IconPredefined } from '@snack-uikit/icon-predefined';
+import { Scroll } from '@snack-uikit/scroll';
+import { SkeletonContextProvider } from '@snack-uikit/skeleton';
+import { Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { ColumnAlign, ColumnPinPosition } from '../../constants';
 import {

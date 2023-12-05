@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { StepState, StepValidationResult } from '../../constants';
 import { Step } from '../../helperComponents';
