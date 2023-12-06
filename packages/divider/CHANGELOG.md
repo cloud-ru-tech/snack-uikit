@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-2458:** changing props to optional ([c174179](https://github.com/cloud-ru-tech/snack-uikit/commit/c174179d63eed481682ae2363714bc6dbb7f22cb))
+
+
+### Features
+
+* **FF-2260:** add divider package ([84521f1](https://github.com/cloud-ru-tech/snack-uikit/commit/84521f1b055dbbdde5f3467e8fa0e5b3b6ff23d1))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 1.2.4 (2023-11-08)
 
 ### Only dependencies have been changed
@@ -32,7 +55,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 1.2.1 (2023-10-12)
 
-**Note:** Version bump only for package @snack-uikit/divider
+### Only dependencies have been changed
+* [@snack-uikit/utils@3.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

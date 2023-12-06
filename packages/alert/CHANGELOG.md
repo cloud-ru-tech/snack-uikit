@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** closeButton storybook, width alertTopButton ([f9d47b6](https://github.com/cloud-ru-tech/snack-uikit/commit/f9d47b6cc277f3d1fbad639c93e2d12fb3bf8fb0))
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-000:** fix styles after ccs rules sort ([33d5727](https://github.com/cloud-ru-tech/snack-uikit/commit/33d5727673cd2a338c1ec08dc10492301b9c8cfe))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-2967:** add forgotten className prop ([099459e](https://github.com/cloud-ru-tech/snack-uikit/commit/099459ee83e61e68869ac754cdea42c6be6963ac))
+
+
+### Features
+
+* **FF-2650:** alert, alert top ([08d64ee](https://github.com/cloud-ru-tech/snack-uikit/commit/08d64ee5059b0b72368771dda04881730f637a7b))
+* **FF-2780:** add toaster ([448f8a5](https://github.com/cloud-ru-tech/snack-uikit/commit/448f8a58089ffd5c93b92292216119ef45b2fc24))
+* **FF-2858:** move link-private into link & destroy link-private ([8927ac3](https://github.com/cloud-ru-tech/snack-uikit/commit/8927ac32bc2c160a5ec93019fd4e0cf7802e03d6))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.5.19 (2023-11-22)
 
 ### Only dependencies have been changed

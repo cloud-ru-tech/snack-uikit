@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** add extractDataProps into SearchPrivate ([748f894](https://github.com/cloud-ru-tech/snack-uikit/commit/748f89498bf8d9fe42eb2556eeaa071853c5a4a5))
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-3327:** fix offset in bad cases (left/top/right placement) ([93d68ba](https://github.com/cloud-ru-tech/snack-uikit/commit/93d68ba403f1b790ca37668fbce3aec88bc3ed1a))
+
+
+### Features
+
+* **FF-3125:** add search ([90c01bb](https://github.com/cloud-ru-tech/snack-uikit/commit/90c01bbdc6f0cc9b4e6b0fa81a038cd8159e63e5))
+* **FF-3194:** handle keypress while focus on option ([40853b6](https://github.com/cloud-ru-tech/snack-uikit/commit/40853b6e7487d0bae2422d81de5e35b3529993f6))
+* **FF-3321:** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://github.com/cloud-ru-tech/snack-uikit/commit/c193b4fcf778d2278bd739affb7c2c4966a417db))
+* **FF-3326:** use useKeyboardNavigation from Droplist package instead of local implementation ([9615d55](https://github.com/cloud-ru-tech/snack-uikit/commit/9615d5589ee6743ad7fc24c95e1fb96a9ab42752))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.4.12 (2023-11-29)
 
 ### Only dependencies have been changed

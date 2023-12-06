@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-3643:** bind emblemIconAppearance into Card.Header; set cursor not-allowed in disabled state ([5bf83dc](https://github.com/cloud-ru-tech/snack-uikit/commit/5bf83dcee120db0fbdd3905cb39b0e6d0656f335))
+
+
+### Features
+
+* **FF-3130:** card ([5e1b586](https://github.com/cloud-ru-tech/snack-uikit/commit/5e1b586bf21ed37be83e143df599f97ad67c4084))
+* **FF-3279:** Card enhancements ([c9f8e33](https://github.com/cloud-ru-tech/snack-uikit/commit/c9f8e339fdb08ae7168cb5fdcea3b9e6d8c5997e))
+* **FF-3321:** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://github.com/cloud-ru-tech/snack-uikit/commit/c193b4fcf778d2278bd739affb7c2c4966a417db))
+* **FF-3326:** use useKeyboardNavigation from Droplist package instead of local implementation ([9615d55](https://github.com/cloud-ru-tech/snack-uikit/commit/9615d5589ee6743ad7fc24c95e1fb96a9ab42752))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.4.8 (2023-11-29)
 
 ### Only dependencies have been changed

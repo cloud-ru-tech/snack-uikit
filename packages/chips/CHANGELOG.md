@@ -3,9 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove icon-before case in xs size from mixin ([b56defb](https://github.com/cloud-ru-tech/snack-uikit/commit/b56defbe0fe785af1dddc019ae87c2fdcee964a9))
+* **FF-2641:** move chips to the new droplist ([5b54f02](https://github.com/cloud-ru-tech/snack-uikit/commit/5b54f02c177ce85bfc0f6785419320f1b13a5650))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-2963:** change strategy to Gte ([0c539d2](https://github.com/cloud-ru-tech/snack-uikit/commit/0c539d2ae0f1e91a2f098f18b08922ecb1479d04))
+* **FF-3026:** replaced loader with sun in chips ([3b2d86d](https://github.com/cloud-ru-tech/snack-uikit/commit/3b2d86d21543b6e1aed172f1b3e55ea0905c9b46))
+* **FF-3327:** fix offset in bad cases (left/top/right placement) ([93d68ba](https://github.com/cloud-ru-tech/snack-uikit/commit/93d68ba403f1b790ca37668fbce3aec88bc3ed1a))
+
+
+### Features
+
+* **FF-2528:** add chips package ([65f6ab9](https://github.com/cloud-ru-tech/snack-uikit/commit/65f6ab9eb805d88a7a435358bb384c503513e5ef))
+* **FF-2640:** add droplist to filter chip ([60d9608](https://github.com/cloud-ru-tech/snack-uikit/commit/60d96087161a40d496089248398ef13cadd511b9))
+* **FF-3309:** add placement prop into FilterChip ([1dbb356](https://github.com/cloud-ru-tech/snack-uikit/commit/1dbb356505583e9925e8af04aa8014b1334b8cef))
+* **FF-3321:** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://github.com/cloud-ru-tech/snack-uikit/commit/c193b4fcf778d2278bd739affb7c2c4966a417db))
+* **FF-3326:** use useKeyboardNavigation from Droplist package instead of local implementation ([9615d55](https://github.com/cloud-ru-tech/snack-uikit/commit/9615d5589ee6743ad7fc24c95e1fb96a9ab42752))
+* **FF-3755:** add chipChoiceRow ([a87afab](https://github.com/cloud-ru-tech/snack-uikit/commit/a87afab118c90625cee26382d6093207857fe3ec))
+* **FF-3755:** add withwidthStrategies prop ([9855be6](https://github.com/cloud-ru-tech/snack-uikit/commit/9855be67d295c24172d7471482e5f0bcf7eac75c))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+* **FF-3712:** chips rename, tokens update, split ChipChoice ([5c2f77e](https://github.com/cloud-ru-tech/snack-uikit/commit/5c2f77e895a0911f29ef066c99b060af6a28af4b))
+
+
+
+
 ## 0.8.4 (2023-12-05)
 
-**Note:** Version bump only for package @snack-uikit/chips
+### Only dependencies have been changed
+* [@snack-uikit/button@0.14.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/calendar@0.5.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-uikit/droplist@0.11.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/icons@0.19.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/loaders@0.4.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-uikit/utils@3.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

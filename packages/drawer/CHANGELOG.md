@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-3206:** fixed background color in Drawer ([cffde71](https://github.com/cloud-ru-tech/snack-uikit/commit/cffde712c786426b9c0f61d7da6223a361f97312))
+
+
+### Features
+
+* **FF-2652:** add Drawer package ([c201507](https://github.com/cloud-ru-tech/snack-uikit/commit/c201507c6203e2baafbf678fcf8d997a0aff5466))
+* **FF-3309:** change cancelButton to ButtonOutline ([9ab0ecf](https://github.com/cloud-ru-tech/snack-uikit/commit/9ab0ecf4ff2ccf7b78097788ef52f5d005fd3e7d))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+* **FF-3409:** update actions buttons typings, fix focus order ([b9edc06](https://github.com/cloud-ru-tech/snack-uikit/commit/b9edc06e4e8db6b8c5dbe39ab4d26b770bf7f820))
+
+
+
+
 ## 0.4.5 (2023-11-16)
 
 ### Only dependencies have been changed

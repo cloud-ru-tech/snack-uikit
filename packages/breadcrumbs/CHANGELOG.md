@@ -3,9 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-2258:** remove non-existent styles ([bdceb9a](https://github.com/cloud-ru-tech/snack-uikit/commit/bdceb9a0d049388d3d33fa9ff20802a2479fdc8a))
+* **FF-2641:** breadcrumbs S typography ([4f60ddc](https://github.com/cloud-ru-tech/snack-uikit/commit/4f60ddc87510bf335a74ffa8c5bf569298bebd0c))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-3472:** focus fix ([77fcaf3](https://github.com/cloud-ru-tech/snack-uikit/commit/77fcaf347cda8bcc088425db561da9ca80a091d9))
+* **FF-3643:** add e into onClick in Items ([112bdb2](https://github.com/cloud-ru-tech/snack-uikit/commit/112bdb25775b082702c119d4d382b3571796ac57))
+
+
+### Features
+
+* **FF-2258:** add breadcrumbs package ([c482513](https://github.com/cloud-ru-tech/snack-uikit/commit/c482513be90aebc346a3fe9653ea4059dcae6770))
+* **FF-2964:** add firstItemIconOnly prop ([addabe8](https://github.com/cloud-ru-tech/snack-uikit/commit/addabe866755ffca70b53abd7a41aebe1f9f1088))
+* **FF-3196:** add cursor pointer to breadcrumbs on onClick ([9393cd7](https://github.com/cloud-ru-tech/snack-uikit/commit/9393cd73f9f79a28fb0d913fd32982efa84e1d4d))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.4.13 (2023-11-23)
 
-**Note:** Version bump only for package @snack-uikit/breadcrumbs
+### Only dependencies have been changed
+* [@snack-uikit/popover@0.5.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/popover/CHANGELOG.md)
+* [@snack-uikit/typography@0.5.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@3.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

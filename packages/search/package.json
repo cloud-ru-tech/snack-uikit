@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Search",
-  "version": "0.4.12",
+  "version": "0.5.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -32,11 +32,11 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/droplist": "0.10.12",
-    "@snack-uikit/icons": "0.18.1",
-    "@snack-uikit/input-private": "1.5.13",
-    "@snack-uikit/loaders": "0.3.4",
-    "@snack-uikit/utils": "2.0.1",
+    "@snack-uikit/droplist": "0.11.0",
+    "@snack-uikit/icons": "0.19.0",
+    "@snack-uikit/input-private": "2.0.0",
+    "@snack-uikit/loaders": "0.4.0",
+    "@snack-uikit/utils": "3.0.0",
     "classnames": "2.3.2",
     "merge-refs": "1.0.0",
     "uncontrollable": "8.0.4"

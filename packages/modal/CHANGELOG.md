@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-2652:** styles update ([68b4a20](https://github.com/cloud-ru-tech/snack-uikit/commit/68b4a207085b1e0c69626519c5764784abc577fb))
+* **FF-2776:** use QuestionTooltip instead of custom title tooltip ([1365fa4](https://github.com/cloud-ru-tech/snack-uikit/commit/1365fa4d9668c55316f4efee15f6fe2a63813ed0))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-2937:** bug when scroll is not initializing properly ([14adaa9](https://github.com/cloud-ru-tech/snack-uikit/commit/14adaa9a77cdc13a713580633148511f3660723f))
+* **FF-3023:** update modal component docs ([f30b760](https://github.com/cloud-ru-tech/snack-uikit/commit/f30b76025df2fc5e2b82374929a34f57de8d216d))
+
+
+### Features
+
+* **FF-2651:** add Modal package ([cbcba1a](https://github.com/cloud-ru-tech/snack-uikit/commit/cbcba1a404ff145eed61ccf680fc2e60c67ba235))
+* **FF-3309:** change cancelButton to ButtonOutline ([9ab0ecf](https://github.com/cloud-ru-tech/snack-uikit/commit/9ab0ecf4ff2ccf7b78097788ef52f5d005fd3e7d))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+* **FF-3409:** update actions buttons typings, fix focus order ([b9edc06](https://github.com/cloud-ru-tech/snack-uikit/commit/b9edc06e4e8db6b8c5dbe39ab4d26b770bf7f820))
+* **FF-3022:** appearance -> mode, fix picture visibility, fix styles, fix story ([c0d6c6a](https://github.com/cloud-ru-tech/snack-uikit/commit/c0d6c6a9e01e05b31901a15b824fc917f5639aab))
+* **FF-2989:** questionTooltip size & tooltip behavior ([61b29c2](https://github.com/cloud-ru-tech/snack-uikit/commit/61b29c2a87074d25f54b3d9eac66ef79003d9897))
+* **FF-2966:** type -> appearance ([cede1e6](https://github.com/cloud-ru-tech/snack-uikit/commit/cede1e668443c398003b1932c29a6dc52e7867a4))
+
+
+
+
 ## 0.7.8 (2023-11-22)
 
 ### Only dependencies have been changed

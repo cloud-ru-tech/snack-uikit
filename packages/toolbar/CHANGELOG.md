@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-3643:** onCheck unnecessary prop ([fda26ff](https://github.com/cloud-ru-tech/snack-uikit/commit/fda26ff00ef7f6807622af66f87333bd74a7a812))
+
+
+### Features
+
+* **FF-2872:** add toolbar ([f87eb38](https://github.com/cloud-ru-tech/snack-uikit/commit/f87eb38e9b54d1eea6a4d9592862486e216bee91))
+* **FF-3309:** add outline prop into Toolbar ([49d4c02](https://github.com/cloud-ru-tech/snack-uikit/commit/49d4c028a41c7927264baa2700617913cacd9db9))
+* **FF-3643:** add selectionMode for hide delete button ([df66297](https://github.com/cloud-ru-tech/snack-uikit/commit/df66297920344ed68f41453f5cd7e6f082a033d6))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.3.7 (2023-11-29)
 
 ### Only dependencies have been changed

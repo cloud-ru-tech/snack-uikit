@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-3026:** replaced loader with sun in stepper ([5310087](https://github.com/cloud-ru-tech/snack-uikit/commit/5310087b0d40ec9bfaf25f64797c98fc1c57427c))
+
+
+### Features
+
+* **FF-2659:** add stepper package ([84da231](https://github.com/cloud-ru-tech/snack-uikit/commit/84da2319642ef7a8a31bb2020d0c914bfd61ea04))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.2.18 (2023-11-16)
 
 ### Only dependencies have been changed
@@ -48,7 +70,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.2.14 (2023-10-28)
 
-**Note:** Version bump only for package @snack-uikit/stepper
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.19.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/loaders@0.4.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-uikit/typography@0.5.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@3.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

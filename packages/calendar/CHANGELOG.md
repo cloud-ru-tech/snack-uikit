@@ -3,9 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+
+
+### Features
+
+* **FF-2262:** add calendar package ([4adc6ec](https://github.com/cloud-ru-tech/snack-uikit/commit/4adc6ec9eb71f32b85d97361846dbedbd556d8bc))
+* **FF-3009:** add ability to disable day/month/year selection, prop showHolidays and colorize holidays ([98d4964](https://github.com/cloud-ru-tech/snack-uikit/commit/98d4964f47cd0b1fef98d5bf9c407297c063765b))
+* **FF-3712:** add size L to calendar ([afb8de7](https://github.com/cloud-ru-tech/snack-uikit/commit/afb8de71ce20d2e38e48bc01124746069d14aed3))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.4.1 (2023-11-29)
 
-**Note:** Version bump only for package @snack-uikit/calendar
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.19.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/utils@3.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

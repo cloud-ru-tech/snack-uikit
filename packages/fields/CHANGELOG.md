@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-2264:** add calendar to field date ([52e0d68](https://github.com/cloud-ru-tech/snack-uikit/commit/52e0d6814df6f4c349ee63eb2d2cddf821908500))
+* **FF-2532:** update droplist usage ([d4d0271](https://github.com/cloud-ru-tech/snack-uikit/commit/d4d0271546af407ce584df6d0b213eef46554962))
+* **FF-2574:** removed (useless scss loop, style duplication), ease up style calc ([629d16f](https://github.com/cloud-ru-tech/snack-uikit/commit/629d16f171a227375f80ae3bbbe1a55229cb153a))
+* **FF-2613:** rename static prop - validationState -> validationStates ([fe3d1f5](https://github.com/cloud-ru-tech/snack-uikit/commit/fe3d1f5b1d9ad237bdc3d86905d3f32c95c58812))
+* **FF-2625:** droplist dep update ([ab6481e](https://github.com/cloud-ru-tech/snack-uikit/commit/ab6481e5ac1dd23dd19f7bcdf26e7e4b9dda4267))
+* **FF-2628:** adjust work with keyboard for buttons ([0aff1c3](https://github.com/cloud-ru-tech/snack-uikit/commit/0aff1c3f657d4b90a416c43642c6bb73945a34a8))
+* **FF-2628:** when clearing not required field, do not focus it; add scroll to field-select; enhance interaction with field-select ([5148f62](https://github.com/cloud-ru-tech/snack-uikit/commit/5148f623c7f91f2ae6714288e8cc3ddd1ba958f8))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-2963:** actions button type, select dropdown, limit counter color ([d53676f](https://github.com/cloud-ru-tech/snack-uikit/commit/d53676f747369025e03631b55f6b29b4e8732014))
+* **FF-3327:** fix offset in bad cases (left/top/right placement) ([93d68ba](https://github.com/cloud-ru-tech/snack-uikit/commit/93d68ba403f1b790ca37668fbce3aec88bc3ed1a))
+* **FF-3327:** fix reserved place with empty label/hint ([9aa69cd](https://github.com/cloud-ru-tech/snack-uikit/commit/9aa69cd29380e013f7ca694d628f6677deed6807))
+* **FF-3467:** improved fields ([fbc0927](https://github.com/cloud-ru-tech/snack-uikit/commit/fbc09275ce2ee920d45b38cb2f322222a8fc68ba))
+* **FF-3643:** add validationStates/sizes into FieldDecorator; fix Select width ([97f2e4a](https://github.com/cloud-ru-tech/snack-uikit/commit/97f2e4ad349b9e211f9686ae21d2eaa1ee2ce716))
+* **LLM-155:** labelTooltipPlacement ([0d8d4fa](https://github.com/cloud-ru-tech/snack-uikit/commit/0d8d4faeac3100439f7787673c330f49b9fc08a5))
+
+
+### Features
+
+* **FF-2264:** add field-date ([f67078c](https://github.com/cloud-ru-tech/snack-uikit/commit/f67078c0fb8e2c886aaf4d67f71703467bd5f397))
+* **FF-2264:** add field-decorator, field-container-private and field-text ([62244b1](https://github.com/cloud-ru-tech/snack-uikit/commit/62244b199100edc36f450dffe8a0801d0c2e4384))
+* **FF-2264:** add field-secure ([680efa1](https://github.com/cloud-ru-tech/snack-uikit/commit/680efa1c296722188bb28a9e0673ad761ea6bbc5))
+* **FF-2264:** add field-select ([0a97a4c](https://github.com/cloud-ru-tech/snack-uikit/commit/0a97a4cfa2e0bf7f1a281fbd62d9f6f55f8ec004))
+* **FF-2264:** add field-textarea ([30cc9be](https://github.com/cloud-ru-tech/snack-uikit/commit/30cc9be4bffc8cf07a08d30cfa51fef6d2f843e9))
+* **FF-2264:** field-select with items ([65c6690](https://github.com/cloud-ru-tech/snack-uikit/commit/65c66903364d8982dd2353d9befdf792225c8b2d))
+* **FF-2622:** FieldDate UX improves ([f32c817](https://github.com/cloud-ru-tech/snack-uikit/commit/f32c8171b26468f6d019cd5c214a82a44a83f314))
+* **FF-2641:** move fields to the new droplist ([62582f4](https://github.com/cloud-ru-tech/snack-uikit/commit/62582f4f441e7d5128d0294085958ec3b51987c6))
+* **FF-2872:** add toolbar ([f87eb38](https://github.com/cloud-ru-tech/snack-uikit/commit/f87eb38e9b54d1eea6a4d9592862486e216bee91))
+* **FF-3128:** use ButtonClearValue, hooks, helpers from input-private instead of internals ([5705edc](https://github.com/cloud-ru-tech/snack-uikit/commit/5705edcf4a5d0d99162dd548360bf6c89f00405b))
+* **FF-3321:** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://github.com/cloud-ru-tech/snack-uikit/commit/c193b4fcf778d2278bd739affb7c2c4966a417db))
+* **FF-3711:** change copy event indication ([9ee3cea](https://github.com/cloud-ru-tech/snack-uikit/commit/9ee3ceaec885b05b2c29ce8494165a57a8d161d5))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+* **FF-2641:** add droplist focus control ([b53b9a8](https://github.com/cloud-ru-tech/snack-uikit/commit/b53b9a8dbc9b8039287a67386f5986df5c5514e7))
+
+
+
+
 ## 0.8.2 (2023-11-29)
 
 ### Only dependencies have been changed

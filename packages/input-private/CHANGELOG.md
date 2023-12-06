@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-1:** add input text and placeholder overflow ([6f76de5](https://github.com/cloud-ru-tech/snack-uikit/commit/6f76de522dbdec6527054642ced94f534bd075bd))
+* **FF-2403:** add missing deps ([42f409d](https://github.com/cloud-ru-tech/snack-uikit/commit/42f409dd767bfe55d81a4042f99a9db59c23a820))
+
+
+### Features
+
+* **FF-2264:** add readonly and onKeyDown property ([b0c6afe](https://github.com/cloud-ru-tech/snack-uikit/commit/b0c6afe1f27255f49e70423c299306f5152bc157))
+* **FF-2403:** add private input ([95c24e7](https://github.com/cloud-ru-tech/snack-uikit/commit/95c24e7db9f8bc3010401e683d06d4dd3394dcbb))
+* **FF-2622:** add onClick and onMouseDown props ([acd5ab3](https://github.com/cloud-ru-tech/snack-uikit/commit/acd5ab37de5890914bc80e51cb9fe7adc5ae8554))
+* **FF-2628:** add tabIndex ([fb30540](https://github.com/cloud-ru-tech/snack-uikit/commit/fb305401d6b91fc54ae8742f10f57560f55db28e))
+* **FF-3128:** migrate ButtonClearValue, hooks, helpers from fields ([f9ef71d](https://github.com/cloud-ru-tech/snack-uikit/commit/f9ef71dd98f5301911f8da2b36dea67d63648deb))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 1.5.13 (2023-11-09)
 
 ### Only dependencies have been changed
@@ -79,7 +107,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 1.5.5 (2023-10-06)
 
-**Note:** Version bump only for package @snack-uikit/input-private
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.19.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/utils@3.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

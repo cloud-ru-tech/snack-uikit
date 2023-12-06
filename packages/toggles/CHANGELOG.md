@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-2257:** switch flag color ([604c756](https://github.com/cloud-ru-tech/snack-uikit/commit/604c75627a8774549c8ee819e7d3799ccc136511))
+* **FF-2257:** up utils ([5dd5d28](https://github.com/cloud-ru-tech/snack-uikit/commit/5dd5d28cdbe14973dcc36759e7db003249930a4b))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-3320:** checkbox icon size fits container ([dd8cf36](https://github.com/cloud-ru-tech/snack-uikit/commit/dd8cf36c56d5c39444d511ead740df87b56849b2))
+* **FF-3327:** fix checked icon color ([c0c6020](https://github.com/cloud-ru-tech/snack-uikit/commit/c0c60201a50375dccd09710053a33543b3789185))
+* **FF-3643:** fix icon size ([0404e17](https://github.com/cloud-ru-tech/snack-uikit/commit/0404e17469dcd857e91da5e2183de19412691744))
+* **FF-3643:** remove useless useEffect from ToggleGroup ([9f53c2e](https://github.com/cloud-ru-tech/snack-uikit/commit/9f53c2ecf7e61d5ea4e8be3cfa6d1e70caeac821))
+* **FF-3755:** change hook typings ([1fd4f9b](https://github.com/cloud-ru-tech/snack-uikit/commit/1fd4f9bd35e2d94128ac1b3749065ea4fbd4ea5c))
+
+
+### Features
+
+* **FF-2257:** add toggle components: Switch, Checkbox, Radio and Favorite ([5a34aca](https://github.com/cloud-ru-tech/snack-uikit/commit/5a34acade3674e020034529b2b2aaddbe4b4f62a))
+* **FF-2344:** add toggle package ([3adfe89](https://github.com/cloud-ru-tech/snack-uikit/commit/3adfe89e3828518a596e41b6810954a8ac61bcf0))
+* **FF-2641:** add checkbox indeterminate property ([35fcabe](https://github.com/cloud-ru-tech/snack-uikit/commit/35fcabec3c120416509cb33e67c891c511e393cb))
+* **FF-3321:** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://github.com/cloud-ru-tech/snack-uikit/commit/c193b4fcf778d2278bd739affb7c2c4966a417db))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+* **FF-3774:** remove useless label from toggles ([5b19694](https://github.com/cloud-ru-tech/snack-uikit/commit/5b1969476432a3201d9f5f7ecb8b172867ab731e))
+* **FF-3643:** add ToggleGroup ([7a398cb](https://github.com/cloud-ru-tech/snack-uikit/commit/7a398cb4e6bbcd760eacdf4839708da7ae1f1761))
+
+
+
+
 # 0.7.0 (2023-11-22)
 
 

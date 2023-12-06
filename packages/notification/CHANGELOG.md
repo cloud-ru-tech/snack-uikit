@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-3409:** add triggerRef; remove useless onClick handler ([0ef74b4](https://github.com/cloud-ru-tech/snack-uikit/commit/0ef74b4dd4dd24893efa0a05e1756576344b8c65))
+* **FF-3712:** chips usage update ([dee75b1](https://github.com/cloud-ru-tech/snack-uikit/commit/dee75b1725afdc1a90d734b55c3d18f4f168664f))
+
+
+### Features
+
+* **FF-2661:** add Notification package ([650001f](https://github.com/cloud-ru-tech/snack-uikit/commit/650001fcd6023fe660b81345d1d4123ca5cc7347))
+* **FF-3326:** use useKeyboardNavigation from Droplist package instead of local implementation ([9615d55](https://github.com/cloud-ru-tech/snack-uikit/commit/9615d5589ee6743ad7fc24c95e1fb96a9ab42752))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+* **FF-3409:** update actions buttons typings, fix focus order ([b9edc06](https://github.com/cloud-ru-tech/snack-uikit/commit/b9edc06e4e8db6b8c5dbe39ab4d26b770bf7f820))
+
+
+
+
 ## 0.3.16 (2023-12-05)
 
 ### Only dependencies have been changed

@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-2255:** new palette migration ([f3bc490](https://github.com/cloud-ru-tech/snack-uikit/commit/f3bc490bb4ddde4353009b55da2d04f87a7d9de9))
+* **FF-2257:** up utils ([5dd5d28](https://github.com/cloud-ru-tech/snack-uikit/commit/5dd5d28cdbe14973dcc36759e7db003249930a4b))
+* **FF-2967:** add forgotten className prop ([099459e](https://github.com/cloud-ru-tech/snack-uikit/commit/099459ee83e61e68869ac754cdea42c6be6963ac))
+* **FF-3712:** counter tokens update ([ad8d943](https://github.com/cloud-ru-tech/snack-uikit/commit/ad8d94351fb0512f284687fb2ac93ab037c40631))
+
+
+### Features
+
+* **FF-1919:** add counter ([059ee74](https://github.com/cloud-ru-tech/snack-uikit/commit/059ee7407f7f3dbf62c8efa0932655add2cede99))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+* **LK-1769:** jest to vitest ([9afff90](https://github.com/cloud-ru-tech/snack-uikit/commit/9afff90db1e60c2255361b396c096c14f923d676))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.3.5 (2023-11-16)
 
 
@@ -76,7 +104,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.2.7 (2023-07-28)
 
-**Note:** Version bump only for package @snack-uikit/counter
+### Only dependencies have been changed
+* [@snack-uikit/utils@3.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

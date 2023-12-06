@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-2259:** increase click area ([a1e7101](https://github.com/cloud-ru-tech/snack-uikit/commit/a1e710187c7374a28a202848983943707fdcad3e))
+* **FF-2259:** type inference in Tabs component ([6275edd](https://github.com/cloud-ru-tech/snack-uikit/commit/6275eddf1ab77caf3a94e27290a11e7b800d15d5))
+* **FF-2267:** update chevron icon ([98fee9e](https://github.com/cloud-ru-tech/snack-uikit/commit/98fee9e64101d0cf655ab055373b347b2ca7d9f1))
+* **FF-2641:** KeyDown handling ([b569117](https://github.com/cloud-ru-tech/snack-uikit/commit/b569117c7a96312c2b26b8b8e206c44211795a66))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-3023:** update docs and export structure ([3da8606](https://github.com/cloud-ru-tech/snack-uikit/commit/3da860623da0bc12030d17406d6b107300f5ae9c))
+* **FF-3711:** add divider into TabBar ([06a9c52](https://github.com/cloud-ru-tech/snack-uikit/commit/06a9c52939363647780b09322b0ba88a3b3748ff))
+
+
+### Features
+
+* **FF-2259:** add tabs package ([6719f6c](https://github.com/cloud-ru-tech/snack-uikit/commit/6719f6c227c227f4b559b920540f9edd3c0148db))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+* **FF-2559:** props id and selectedTab renamed to value ([4a5ba09](https://github.com/cloud-ru-tech/snack-uikit/commit/4a5ba09ca63192f63e5d3779c029b5e75b3a8b96))
+
+
+
+
 ## 0.3.16 (2023-11-21)
 
 

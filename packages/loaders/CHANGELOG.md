@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-2080:** handle unexpected progress values (< 0% and > 100%) ([2abf53a](https://github.com/cloud-ru-tech/snack-uikit/commit/2abf53a9929de5c122de51020ec9968f1c07695f))
+* **FF-2255:** new palette migration ([f3bc490](https://github.com/cloud-ru-tech/snack-uikit/commit/f3bc490bb4ddde4353009b55da2d04f87a7d9de9))
+* **FF-2257:** up utils ([5dd5d28](https://github.com/cloud-ru-tech/snack-uikit/commit/5dd5d28cdbe14973dcc36759e7db003249930a4b))
+* **FF-2967:** add forgotten className prop ([099459e](https://github.com/cloud-ru-tech/snack-uikit/commit/099459ee83e61e68869ac754cdea42c6be6963ac))
+
+
+### Features
+
+* **FF-1839:** added loaders ([f5bf5ca](https://github.com/cloud-ru-tech/snack-uikit/commit/f5bf5ca5c8ff89f596b0e453af403fa67e4f1b23))
+* **FF-1901:** add sun loader ([22b05fb](https://github.com/cloud-ru-tech/snack-uikit/commit/22b05fbe247954b6c062263d0c0958d48cbb3979))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+* **LK-1769:** jest to vitest ([9afff90](https://github.com/cloud-ru-tech/snack-uikit/commit/9afff90db1e60c2255361b396c096c14f923d676))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.3.4 (2023-11-08)
 
 ### Only dependencies have been changed
@@ -65,7 +94,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.2.8 (2023-07-28)
 
-**Note:** Version bump only for package @snack-uikit/loaders
+### Only dependencies have been changed
+* [@snack-uikit/utils@3.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 

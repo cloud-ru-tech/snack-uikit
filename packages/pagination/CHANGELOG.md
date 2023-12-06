@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-000:** fix styles after ccs rules sort ([33d5727](https://github.com/cloud-ru-tech/snack-uikit/commit/33d5727673cd2a338c1ec08dc10492301b9c8cfe))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-2255:** new palette migration ([f3bc490](https://github.com/cloud-ru-tech/snack-uikit/commit/f3bc490bb4ddde4353009b55da2d04f87a7d9de9))
+* **FF-2257:** up utils ([5dd5d28](https://github.com/cloud-ru-tech/snack-uikit/commit/5dd5d28cdbe14973dcc36759e7db003249930a4b))
+* **FF-2267:** update chevron icon ([98fee9e](https://github.com/cloud-ru-tech/snack-uikit/commit/98fee9e64101d0cf655ab055373b347b2ca7d9f1))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-2967:** add forgotten className prop ([099459e](https://github.com/cloud-ru-tech/snack-uikit/commit/099459ee83e61e68869ac754cdea42c6be6963ac))
+
+
+### Features
+
+* **FF-2080:** add pagination ([c568c47](https://github.com/cloud-ru-tech/snack-uikit/commit/c568c47cd8b6fb269981c638c8abb87530f9a9a0))
+* **FF-2080:** add pagination slider ([6d405c0](https://github.com/cloud-ru-tech/snack-uikit/commit/6d405c06fba2067234c22a39239fdba3dff6925b))
+* **FF-3409:** replace ButtonLight to ButtonFunction ([e76a1db](https://github.com/cloud-ru-tech/snack-uikit/commit/e76a1dbf2e2db07a9197c413619e4df6f5976246))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+* **LK-1769:** jest to vitest ([9afff90](https://github.com/cloud-ru-tech/snack-uikit/commit/9afff90db1e60c2255361b396c096c14f923d676))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.4.10 (2023-11-16)
 
 ### Only dependencies have been changed

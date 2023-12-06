@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** fix value ErrorCritical appearance ([50b6ae4](https://github.com/cloud-ru-tech/snack-uikit/commit/50b6ae4fa6eac3d182aa6e046adf43e90d736916))
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-0:** use classname insetad of inline styles for margin ([37ac475](https://github.com/cloud-ru-tech/snack-uikit/commit/37ac475a55d949acea27c93ea2dafce64518ee24))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+
+
+### Features
+
+* **FF-2780:** add toaster ([448f8a5](https://github.com/cloud-ru-tech/snack-uikit/commit/448f8a58089ffd5c93b92292216119ef45b2fc24))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.3.20 (2023-11-22)
 
 ### Only dependencies have been changed

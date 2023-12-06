@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-3460:** change Typoghraphy to corrent ([b61e755](https://github.com/cloud-ru-tech/snack-uikit/commit/b61e755d78317c75c134e7c297c3c7b9fbc7fe5d))
+
+
+### Features
+
+* **FF-2662:** add promo-tag package ([e89ef03](https://github.com/cloud-ru-tech/snack-uikit/commit/e89ef0305172543630d53fb4da4db98151eac9af))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+
+
+
+
 ## 0.2.5 (2023-11-08)
 
 ### Only dependencies have been changed

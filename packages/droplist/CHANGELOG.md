@@ -3,9 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove extractDataProps ([9d676b9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d676b9df214167bfd1b7ce9f1590891ca62f9a3))
+* **FF-0:** move utils to usual deps ([ebe441a](https://github.com/cloud-ru-tech/snack-uikit/commit/ebe441ac398065cbe8523cbedd3df53176b9aea5))
+* **FF-2257:** up utils ([5dd5d28](https://github.com/cloud-ru-tech/snack-uikit/commit/5dd5d28cdbe14973dcc36759e7db003249930a4b))
+* **FF-2777:** using new icons ([7922fca](https://github.com/cloud-ru-tech/snack-uikit/commit/7922fca103293299554fe07d607ca54b3b571e66))
+* **FF-3321:** fix scrollItems; itemsWidth; ([a070888](https://github.com/cloud-ru-tech/snack-uikit/commit/a07088817d28d6536f26b6055541a1f261336973))
+* **FF-3711:** remove grid style from baseItem ([0f0bfa4](https://github.com/cloud-ru-tech/snack-uikit/commit/0f0bfa41bb425d01f7925e1f5ce833592ae72d2c))
+* **FF-3712:** add data-test-id to checkbox ([3fb73f4](https://github.com/cloud-ru-tech/snack-uikit/commit/3fb73f463914b2dd3d77402e62f1f55ee0f79679))
+
+
+### Features
+
+* **FF-2263:** add droplist package ([89e31b7](https://github.com/cloud-ru-tech/snack-uikit/commit/89e31b7e16f4deb860b2b14fa9dfbaa8df0ead96))
+* **FF-2264:** add closeOnEscapeKey property ([3a722e7](https://github.com/cloud-ru-tech/snack-uikit/commit/3a722e702bb36d2c977cfcdb9aa3217bce7240ab))
+* **FF-2264:** add triggerClassName ([027aa02](https://github.com/cloud-ru-tech/snack-uikit/commit/027aa029531b68fbd3297e5bad2c85505f0dead3))
+* **FF-2264:** add triggerClickByKeys property ([9350a92](https://github.com/cloud-ru-tech/snack-uikit/commit/9350a927d6450f8365b79be85d0ca4d079142b6f))
+* **FF-2532:** add droplist items ([8196951](https://github.com/cloud-ru-tech/snack-uikit/commit/8196951edcf2b302918f4e754c889ac7d879d21b))
+* **FF-2628:** add onKeyDown property ([9474ee6](https://github.com/cloud-ru-tech/snack-uikit/commit/9474ee6b3daa8a03b1bcb9f090db0d34a11da930))
+* **FF-3194:** add scrollRef in Droplist ([71c8074](https://github.com/cloud-ru-tech/snack-uikit/commit/71c807487801260b902f273cc756ba038afb57ac))
+* **FF-3321:** set popover offset by --offset ccs-var in triggerClassName ([c193b4f](https://github.com/cloud-ru-tech/snack-uikit/commit/c193b4fcf778d2278bd739affb7c2c4966a417db))
+* **FF-3326:** add useKeyboardNavigation hook ([720c3cc](https://github.com/cloud-ru-tech/snack-uikit/commit/720c3ccfb66bea007edcb846a3903050efb2aff1))
+* **FF-875:** add utils for dependencies graph ([53cd7be](https://github.com/cloud-ru-tech/snack-uikit/commit/53cd7be638f01e573cb52b2417a39f4df4f6089b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-3823:** move to snack-uikit scope ([ac9e30d](https://github.com/cloud-ru-tech/snack-uikit/commit/ac9e30d574d529b2bf4f5184b70c511c981a6032))
+* **FF-2641:** add droplist focus control ([b53b9a8](https://github.com/cloud-ru-tech/snack-uikit/commit/b53b9a8dbc9b8039287a67386f5986df5c5514e7))
+* **FF-2625:** droplist export structure ([50d6efd](https://github.com/cloud-ru-tech/snack-uikit/commit/50d6efde07dcc719ce015cd1d9ee76c35f41d080))
+
+
+
+
 ## 0.10.12 (2023-11-29)
 
-**Note:** Version bump only for package @snack-uikit/droplist
+### Only dependencies have been changed
+* [@snack-uikit/avatar@0.4.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/avatar/CHANGELOG.md)
+* [@snack-uikit/icons@0.19.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/popover-private@0.11.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/popover-private/CHANGELOG.md)
+* [@snack-uikit/scroll@0.4.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/scroll/CHANGELOG.md)
+* [@snack-uikit/tag@0.5.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/toggles@0.8.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.3.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-uikit/utils@3.0.0](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/utils/CHANGELOG.md)
 
 
 
