@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.1.0 (2023-12-06)
+
+
+### Features
+
+* **FF-3646:** add ThemeProvider/useThemeContext ([9a2ae54](https://github.com/cloud-ru-tech/snack-uikit/commit/9a2ae5425b6356bede25c89b3b14e60d9e8e9f75))
+
+
+
+
+
 # 3.0.0 (2023-12-06)
 
 

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Toggles",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,7 +33,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.19.0",
-    "@snack-uikit/utils": "3.0.0",
+    "@snack-uikit/utils": "3.1.0",
     "classnames": "2.3.2",
     "merge-refs": "1.2.1",
     "uncontrollable": "8.0.0"

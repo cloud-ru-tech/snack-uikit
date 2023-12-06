@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.1 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-3646:** fix refresh button render in case without onRefresh callback in props ([d99a0e6](https://github.com/cloud-ru-tech/snack-uikit/commit/d99a0e6ef75d6c0d5c49f0c06259c92584821a04))
+
+
+
+
+
 # 0.7.0 (2023-12-06)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.1 (2023-12-06)
+
+
+### Bug Fixes
+
+* **FF-3646:** back z-index ([4b596c5](https://github.com/cloud-ru-tech/snack-uikit/commit/4b596c596f41402d2b662499998b290f9d746561))
+
+
+
+
+
 # 0.5.0 (2023-12-06)
 
 

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Modal",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -32,15 +32,15 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.14.0",
-    "@snack-uikit/icon-predefined": "0.3.0",
+    "@snack-uikit/button": "0.14.1",
+    "@snack-uikit/icon-predefined": "0.3.1",
     "@snack-uikit/icons": "0.19.0",
-    "@snack-uikit/link": "0.8.0",
-    "@snack-uikit/scroll": "0.4.0",
-    "@snack-uikit/tooltip": "0.9.0",
-    "@snack-uikit/truncate-string": "0.3.0",
-    "@snack-uikit/typography": "0.5.0",
-    "@snack-uikit/utils": "3.0.0",
+    "@snack-uikit/link": "0.8.1",
+    "@snack-uikit/scroll": "0.4.1",
+    "@snack-uikit/tooltip": "0.9.1",
+    "@snack-uikit/truncate-string": "0.3.1",
+    "@snack-uikit/typography": "0.5.1",
+    "@snack-uikit/utils": "3.1.0",
     "classnames": "2.3.2",
     "react-modal": "3.16.1"
   },
