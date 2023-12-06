@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { useThemeContext } from '@snack-ui/utils';
+import { useThemeContext } from '@snack-uikit/utils';
 
 import { THEME_VARS } from './constants';
 

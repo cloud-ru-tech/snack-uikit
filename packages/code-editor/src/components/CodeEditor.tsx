@@ -1,7 +1,7 @@
 import { Editor, EditorProps, useMonaco } from '@monaco-editor/react';
 import { useMemo } from 'react';
 
-import { excludeSupportProps, extractSupportProps, WithSupportProps } from '@snack-ui/utils';
+import { excludeSupportProps, extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { DEFAULT_THEME_OPTIONS, DEFAULT_THEME_VALUES } from './constants';
 import { useCalculatedThemeValues } from './hooks';
