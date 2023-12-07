@@ -88,16 +88,16 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 
     .rowPinnedCells {
       background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a008);
-      border-color: $sys-neutral-decor-default;
+      border-color: $sys-primary-decor-activated;
     }
 
     &:hover, &[data-actions-opened] {
       background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a016);
-      border-color: $sys-neutral-decor-hovered;
+      border-color: $sys-primary-decor-hovered;
 
       .rowPinnedCells {
         background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a016);
-        border-color: $sys-neutral-decor-hovered;
+        border-color: $sys-primary-decor-activated;
       }
     }
   }
