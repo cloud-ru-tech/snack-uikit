@@ -43,11 +43,17 @@ $sizes:  'm', 'l';
     }
   }
 
+  &[data-outline] {
+    @include outline-var($container-focused-s);
+
+    outline-color: $sys-neutral-decor-default;
+    outline-width: $border-width-card-container;
+  }
+
   &:hover,
   &:focus-visible {
     --snack-ui-card-background-color: #{$sys-neutral-background2-level};
   }
-
 
   &:focus-visible {
     @include outline-var($container-focused-l);
@@ -70,12 +76,7 @@ $sizes:  'm', 'l';
     }
   }
 
-  &[data-outline] {
-    @include outline-var($container-focused-s);
 
-    outline-color: $sys-neutral-decor-default;
-    outline-width: $border-width-card-container;
-  }
 
   &[data-pointer] {
     * {
