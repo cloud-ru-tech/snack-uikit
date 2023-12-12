@@ -11,27 +11,27 @@
 import {Typography} from "@snack-uikit/typography";
 
 <Typography 
-  family={Typography.families.Sans}
-  role={Typography.roles.Display}
-  size={Typography.sizes.S}
-  tag={Typography.tags.h1}
+  family='sans'
+  purpose='display'
+  size='s'
+  tag='h1'
   className='some-element'
 >
   Some text
 </Typography>
 ```
 
-Также чтобы не указывать пропсы family, role и size, воспользуйтесь нужным предустановленным вариантом, например:
+Также чтобы не указывать пропсы family, purpose и size, воспользуйтесь нужным предустановленным вариантом, например:
 ```typescript jsx
-<Typography.SansDisplayS tag={Typography.tags.h1} className='some-element'>
+<Typography.SansDisplayS tag='h1' className='some-element'>
   Some text
 </Typography.SansDisplayS>
 ```
 
-Все компоненты вида ```<Typography.{Family}{Role}{Size} /> ``` генерируются автоматически при выполнении команды `npm run build:packages`.
+Все компоненты вида ```<Typography.{Family}{Purpose}{Size} /> ``` генерируются автоматически при выполнении команды `npm run build:packages`.
 
 ## Как добавить новый компонент такого вида?
-1. Добавить новое свойство в один или несколько объектов Family, Role, Size в файле `constants.ts`, который лежит в  `typography/src/components/constants.ts`
+1. Добавить новое свойство в один или несколько объектов FAMILY, PURPOSE, SIZE в файле `constants.ts`, который лежит в  `typography/src/components/constants.ts`
 2. Запустить скрипт compile в package.json пакета `@typography`
     ```json
     "npm run build:typography-components && npm run build:constants && npm run build:index"
@@ -44,10 +44,10 @@ import {Typography} from "@snack-uikit/typography";
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| size* | enum Size: `"l"`, `"m"`, `"s"` | - | Размер |
-| role* | enum Role: `"display"`, `"headline"`, `"title"`, `"label"`, `"body"` | - | Роль |
-| family* | enum Family: `"sans"`, `"light"`, `"link"`, `"mono"`, `"crossed-out"` | - | Шрифт |
-| tag | enum Tag: `"span"`, `"h1"`, `"h2"`, `"h3"`, `"h4"`, `"h5"`, `"h6"`, `"div"`, `"label"`, `"p"` | Typography.tags.span | HTML-тег |
+| size* | enum Size: `"s"`, `"l"`, `"m"` | - | Размер |
+| purpose* | enum Purpose: `"label"`, `"body"`, `"title"`, `"display"`, `"headline"` | - | Роль |
+| family* | enum Family: `"link"`, `"sans"`, `"light"`, `"mono"`, `"crossed-out"` | - | Шрифт |
+| tag | enum Tag: `"span"`, `"h1"`, `"h2"`, `"h3"`, `"h4"`, `"h5"`, `"h6"`, `"div"`, `"label"`, `"p"` | span | HTML-тег |
 | className | `string` | - | CSS-класс |
 | children | `ReactNode` | - | Контент |
 

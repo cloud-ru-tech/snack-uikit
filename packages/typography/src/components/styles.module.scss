@@ -1,7 +1,7 @@
 @import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $families: 'sans', 'light', 'link', 'crossed-out', 'mono';
-$roles: 'display', 'headline', 'title', 'label', 'body';
+$purposes: 'display', 'headline', 'title', 'label', 'body';
 $sizes: 's', 'm', 'l';
 
 .typography {
@@ -11,11 +11,11 @@ $sizes: 's', 'm', 'l';
 
   @each $family in $families {
     &[data-family='#{$family}'] {
-      @each $role in $roles {
-        &[data-role='#{$role}'] {
+      @each $purpose in $purposes {
+        &[data-purpose='#{$purpose}'] {
           @each $size in $sizes {
             &[data-size='#{$size}'] {
-              @include composite-var($theme-variables, $family, $role, $size)
+              @include composite-var($theme-variables, $family, $purpose, $size)
             }
           }
         }

@@ -1,17 +1,18 @@
 // DO NOT EDIT IT MANUALLY
 
+import { FAMILY, PURPOSE, SIZE } from '../../constants';
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
 export function LinkDisplayL({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
-      family={Typography.families.Link}
-      role={Typography.roles.Display}
-      size={Typography.sizes.L}
+      {...rest}
+      family={FAMILY.Link}
+      purpose={PURPOSE.Display}
+      size={SIZE.L}
       tag={tag}
       className={className}
-      {...rest}
     >
       {children}
     </Typography>

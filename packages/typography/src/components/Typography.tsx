@@ -4,14 +4,15 @@ import { createElement, ReactNode } from 'react';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { attachVariants } from '../utils';
-import { Family, Role, Size, Tag } from './contants';
+import { TAG } from './constants';
 import { generatedVariants } from './generatedVariants';
 import styles from './styles.module.scss';
+import { Family, Purpose, Size, Tag } from './types';
 
 export type TypographyProps = WithSupportProps<{
   /**
    * HTML-тег
-   * @default Typography.tags.span
+   * @default span
    */
   tag?: Tag;
   /** CSS-класс */
@@ -21,36 +22,23 @@ export type TypographyProps = WithSupportProps<{
   /** Шрифт */
   family: Family;
   /** Роль */
-  role: Role;
+  purpose: Purpose;
   /** Размер */
   size: Size;
 }>;
 
-function TypographyComponent({
-  tag = TypographyComponent.tags.span,
-  className,
-  children,
-  family,
-  role,
-  size,
-  ...rest
-}: TypographyProps) {
+function TypographyComponent({ tag = TAG.span, className, children, family, purpose, size, ...rest }: TypographyProps) {
   return createElement(
     tag,
     {
       className: cn(styles.typography, className),
       ...extractSupportProps(rest),
       'data-family': family,
-      'data-role': role,
+      'data-purpose': purpose,
       'data-size': size,
     },
     children,
   );
 }
-
-TypographyComponent.families = Family;
-TypographyComponent.roles = Role;
-TypographyComponent.sizes = Size;
-TypographyComponent.tags = Tag;
 
 export const Typography = attachVariants(TypographyComponent, generatedVariants);

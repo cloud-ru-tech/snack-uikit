@@ -1,25 +1,26 @@
 import { promises } from 'fs';
 
-import { Family, Role, Size } from '../src/components/contants';
+import { FAMILY, PURPOSE, SIZE } from '../src/components/constants';
 
 const FOLDER_PATH = 'src/components/generatedVariants/components';
 
-async function generateComponent(family: string, role: string, size: string, folderPath: string) {
-  const componentName = `${family}${role}${size}`;
+async function generateComponent(family: string, purpose: string, size: string, folderPath: string) {
+  const componentName = `${family}${purpose}${size}`;
   const componentContent = `// DO NOT EDIT IT MANUALLY
 
+import { FAMILY, PURPOSE, SIZE } from '../../constants';
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
 export function ${componentName}({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
-      family={Typography.families.${family}}
-      role={Typography.roles.${role}}
-      size={Typography.sizes.${size}}
+      {...rest}
+      family={FAMILY.${family}}
+      purpose={PURPOSE.${purpose}}
+      size={SIZE.${size}}
       tag={tag}
       className={className}
-      {...rest}
     >
       {children}
     </Typography>
@@ -35,10 +36,10 @@ export function ${componentName}({ className, children, tag, ...rest }: Generate
   }
 }
 
-for (const family of Object.keys(Family)) {
-  for (const role of Object.keys(Role)) {
-    for (const size of Object.keys(Size)) {
-      generateComponent(family, role, size, FOLDER_PATH);
+for (const family of Object.keys(FAMILY)) {
+  for (const purpose of Object.keys(PURPOSE)) {
+    for (const size of Object.keys(SIZE)) {
+      generateComponent(family, purpose, size, FOLDER_PATH);
     }
   }
 }

@@ -6,6 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Typography, TypographyProps } from '../src';
+import { FAMILY, PURPOSE, SIZE, TAG } from '../src/components/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -16,9 +17,9 @@ export default meta;
 
 type StoryProps = TypographyProps;
 const Template: StoryFn<StoryProps> = ({ ...args }) => {
-  const families = Object.values(Typography.families);
-  const sizes = Object.values(Typography.sizes);
-  const roles = Object.values(Typography.roles);
+  const families = Object.values(FAMILY);
+  const sizes = Object.values(SIZE);
+  const purposes = Object.values(PURPOSE);
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
   const headerFirstCellClassnames = cn(styles.cell, styles.headerCell, styles.firstCell);
   const firstCellClassnames = cn(styles.cell, styles.firstCell);
@@ -30,7 +31,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
       </div>
       <div className={styles.table}>
         <>
-          <div className={headerCellClassnames}>Role</div>
+          <div className={headerCellClassnames}>Purpose</div>
           <div className={headerCellClassnames}>Size</div>
           {families.map(family => (
             <div key={family} className={headerCellClassnames}>
@@ -39,15 +40,15 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
           ))}
         </>
 
-        {roles.map(role => (
-          <Fragment key={role}>
+        {purposes.map(purpose => (
+          <Fragment key={purpose}>
             {sizes.map((size, index) => (
-              <Fragment key={`${role}_${size}`}>
-                <div className={index === 0 ? headerFirstCellClassnames : headerCellClassnames}>{role}</div>
+              <Fragment key={`${purpose}_${size}`}>
+                <div className={index === 0 ? headerFirstCellClassnames : headerCellClassnames}>{purpose}</div>
                 <div className={index === 0 ? headerFirstCellClassnames : headerCellClassnames}>{size}</div>
                 {families.map(family => (
                   <div key={family} className={index === 0 ? firstCellClassnames : styles.cell}>
-                    <Typography family={family} role={role} size={size}>
+                    <Typography family={family} purpose={purpose} size={size}>
                       {family.replace('-', ' ')}
                     </Typography>
                   </div>
@@ -65,15 +66,15 @@ export const typography: StoryObj<StoryProps> = Template.bind({});
 
 typography.args = {
   children: 'Some text',
-  family: Typography.families.Sans,
-  role: Typography.roles.Display,
-  size: Typography.sizes.S,
-  tag: Typography.tags.span,
+  family: FAMILY.Sans,
+  purpose: PURPOSE.Display,
+  size: SIZE.S,
+  tag: TAG.span,
 };
 
 typography.argTypes = {
   family: { control: { type: 'select' } },
-  role: { control: { type: 'select' } },
+  purpose: { control: { type: 'select' } },
   size: { control: { type: 'select' } },
   tag: { control: { type: 'select' } },
 };

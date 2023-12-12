@@ -1,17 +1,18 @@
 // DO NOT EDIT IT MANUALLY
 
+import { FAMILY, PURPOSE, SIZE } from '../../constants';
 import { Typography } from '../../Typography';
 import { GeneratedTypographyProps } from '../types';
 
 export function LightLabelM({ className, children, tag, ...rest }: GeneratedTypographyProps) {
   return (
     <Typography
-      family={Typography.families.Light}
-      role={Typography.roles.Label}
-      size={Typography.sizes.M}
+      {...rest}
+      family={FAMILY.Light}
+      purpose={PURPOSE.Label}
+      size={SIZE.M}
       tag={tag}
       className={className}
-      {...rest}
     >
       {children}
     </Typography>
