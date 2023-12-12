@@ -1,0 +1,54 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+.control {
+  @include composite-var($carousel-control-container);
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  left: calc($size-carousel-control-wrap-width - $size-carousel-control-container);
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  color: $sys-neutral-text-light;
+
+  background-color: $sys-neutral-background1-level;
+  border-color: transparent;
+  border-style: solid;
+  outline-color: transparent;
+  box-shadow: $box-shadow-elevation-level3;
+
+  &:hover, &:focus-visible {
+    color: $sys-neutral-text-main;
+  }
+
+  &:hover {
+    box-shadow: $box-shadow-elevation-level4;
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    border-color: $sys-available-complementary;
+    outline-color: $sys-available-on-complementary;
+    box-shadow: none;
+  }
+
+  &[data-variant='next'] {
+    right: calc($size-carousel-control-wrap-width - $size-carousel-control-container);
+    left: auto;
+    &:focus-visible {
+      outline-offset: $dimension-025m;
+    }
+
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+}

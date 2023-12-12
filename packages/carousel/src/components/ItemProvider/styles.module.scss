@@ -1,0 +1,42 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
+
+.itemProvider {
+  --gap: #{$dimension-2m};
+
+  @include composite-var($carousel-content-layout);
+
+  overflow: hidden;
+  width: 100%;
+  margin: calc(0px - $space-carousel-content-layout-padding);
+
+  &[data-swipe] {
+    cursor: grab;
+  }
+
+  &[data-swipe][data-pointers] {
+    cursor: grabbing;
+    user-select: none;
+
+    -webkit-user-drag: none;
+  }
+}
+
+.itemTracker {
+  display: flex;
+  gap: var(--gap, $dimension-2m);
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.itemContainer {
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.hiddenItem {
+  pointer-events: none;
+
+  * {
+    pointer-events: none;
+  }
+}
