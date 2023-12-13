@@ -83,7 +83,7 @@ test('syncs selected tab with content', async t => {
 test('prevents disabled tab selection', async t => {
   const tabButton = getTabButton('tab1');
   const content = getTabContent('tab1');
-  const disabledtabButton = getTabButton('tab3');
+  const disabledTabButton = getTabButton('tab3');
   const disabledContent = getTabContent('tab3');
 
   await t
@@ -91,18 +91,18 @@ test('prevents disabled tab selection', async t => {
     .ok()
     .expect(content.exists)
     .ok()
-    .expect(isSelected(disabledtabButton))
+    .expect(isSelected(disabledTabButton))
     .notOk()
     .expect(disabledContent.exists)
     .notOk()
-    .expect(isDisabled(disabledtabButton))
+    .expect(isDisabled(disabledTabButton))
     .ok()
-    .click(disabledtabButton)
+    .click(disabledTabButton)
     .expect(isSelected(tabButton))
     .ok()
     .expect(content.exists)
     .ok()
-    .expect(isSelected(disabledtabButton))
+    .expect(isSelected(disabledTabButton))
     .notOk()
     .expect(disabledContent.exists)
     .notOk();

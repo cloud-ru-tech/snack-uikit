@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useContext, useLayoutEffect, useRef } from 'react';
 
-import { AUTOFOCUS, InRangePosition } from '../../constants';
+import { AUTOFOCUS, IN_RANGE_POSITION } from '../../constants';
 import { Cell } from '../../types';
 import { CalendarContext } from '../CalendarContext';
 import { useKeyboardFocus } from './hooks';
@@ -57,7 +57,7 @@ export function Item({ data, className }: CellProps) {
     'data-size': size,
   };
 
-  const isInRange = inRangePosition !== InRangePosition.Out;
+  const isInRange = inRangePosition !== IN_RANGE_POSITION.Out;
 
   date.toLocaleString(locale, { weekday: 'short' });
 

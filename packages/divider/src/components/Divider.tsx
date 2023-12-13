@@ -2,8 +2,9 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Orientation, Weight } from './constants';
+import { ORIENTATION, WEIGHT } from './constants';
 import styles from './styles.module.scss';
+import { Orientation, Weight } from './types';
 
 export type DividerProps = WithSupportProps<{
   /** Толщина линии */
@@ -17,8 +18,8 @@ export type DividerProps = WithSupportProps<{
 /** Компонент для визуального отделения групп компонентов */
 export function Divider({
   className,
-  orientation = Orientation.Horizontal,
-  weight = Weight.Regular,
+  orientation = ORIENTATION.Horizontal,
+  weight = WEIGHT.Regular,
   ...rest
 }: DividerProps) {
   return (
@@ -32,6 +33,3 @@ export function Divider({
     </div>
   );
 }
-
-Divider.orientations = Orientation;
-Divider.weights = Weight;

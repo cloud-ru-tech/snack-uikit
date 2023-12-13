@@ -28,45 +28,27 @@ export function OtherColors() {
 
   return (
     <>
-      <Typography
-        family={Typography.families.Sans}
-        role={Typography.roles.Body}
-        size={Typography.sizes.S}
-        className={styles.description}
-        tag={Typography.tags.p}
-      >
+      <Typography.SansBodyS className={styles.description} tag='p'>
         {DESCRIPTION[OtherPalette.Opacity]}
-      </Typography>
+      </Typography.SansBodyS>
       <div className={styles.opacityTable}>
         {OPACITY_TONE_GRID.filter(tone => Object.keys(SYSTEM_PALETTE.Opacity).includes(tone)).map(tone => (
           <Card color={SYSTEM_PALETTE.Opacity[tone]} key={tone} tone={tone} palette={OtherPalette.Opacity} />
         ))}
       </div>
 
-      <Typography
-        family={Typography.families.Sans}
-        role={Typography.roles.Body}
-        size={Typography.sizes.S}
-        className={styles.description}
-        tag={Typography.tags.p}
-      >
+      <Typography.SansBodyS className={styles.description} tag='p'>
         {DESCRIPTION[OtherPalette.Available]}
-      </Typography>
+      </Typography.SansBodyS>
       <div className={styles.availableTable}>
         {AVAILABLE_TONE_GRID.filter(tone => Object.keys(SYSTEM_PALETTE.Available).includes(tone)).map(tone => (
           <Card color={SYSTEM_PALETTE.Available[tone]} key={tone} tone={tone} palette={OtherPalette.Available} />
         ))}
       </div>
 
-      <Typography
-        family={Typography.families.Sans}
-        role={Typography.roles.Body}
-        size={Typography.sizes.S}
-        className={styles.description}
-        tag={Typography.tags.p}
-      >
+      <Typography.SansBodyS className={styles.description} tag='p'>
         {DESCRIPTION[OtherPalette.Blackout]}
-      </Typography>
+      </Typography.SansBodyS>
       <div className={styles.blackout}>
         <Card color={SYSTEM_PALETTE.Blackout} palette={OtherPalette.Blackout} />
       </div>

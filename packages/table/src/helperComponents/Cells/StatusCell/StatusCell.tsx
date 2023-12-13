@@ -1,12 +1,15 @@
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 
-import { ColumnPinPosition, TEST_IDS } from '../../../constants';
+import { COLUMN_PIN_POSITION, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';
-import { MIN_STATUS_CELL_SIZE, StatusAppearance } from './constants';
+import { MIN_STATUS_CELL_SIZE, STATUS_APPEARANCE } from './constants';
 import styles from './styles.module.scss';
+import { StatusAppearance } from './types';
 
-export { StatusAppearance };
+export type { StatusAppearance };
+
+export { STATUS_APPEARANCE };
 
 type StatusCellProps = {
   label?: string;
@@ -40,7 +43,7 @@ type StatusColumnDefWithDescription<TData> = BaseStatusColumnDef & {
 export type StatusColumnDefinitionProps<TData> = StatusColumnDef | StatusColumnDefWithDescription<TData>;
 
 function StatusCell({ appearance, label }: StatusCellProps) {
-  const isLoading = appearance === StatusAppearance.Loading;
+  const isLoading = appearance === STATUS_APPEARANCE.Loading;
 
   return (
     <div className={styles.statusCell} data-no-label={!label || undefined}>
@@ -75,7 +78,7 @@ export function getStatusColumnDef<TData>({
 
   return {
     id: 'snack_predefined_statusColumn',
-    pinned: ColumnPinPosition.Left,
+    pinned: COLUMN_PIN_POSITION.Left,
     noBodyCellPadding: true,
     noHeaderCellPadding: !hasDescription,
     noHeaderCellBorderOffset: hasDescription,

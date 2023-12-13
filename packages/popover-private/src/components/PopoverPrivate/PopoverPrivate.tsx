@@ -27,11 +27,11 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import {
   DEFAULT_FALLBACK_PLACEMENTS,
-  Placement,
-  PopoverHeightStrategy,
-  PopoverWidthStrategy,
-  Trigger,
+  PLACEMENT,
+  POPOVER_HEIGHT_STRATEGY,
+  POPOVER_WIDTH_STRATEGY,
 } from '../../constants';
+import { Placement, PopoverHeightStrategy, PopoverWidthStrategy, Trigger } from '../../types';
 import { getArrowOffset, getPopoverRootElement, getPopoverTriggerJSX, getTriggerProps } from '../../utils';
 import { Arrow } from '../Arrow';
 import { useOffset } from './hooks';
@@ -55,7 +55,7 @@ export type PopoverPrivateProps = WithSupportProps<{
   outsideClick?: boolean | OutsideClickHandler;
   /**
    * Положение поповера относительно своего триггера (children).
-   * @default Placement.Top
+   * @default top
    */
   placement: Placement;
   className?: string;
@@ -79,13 +79,13 @@ export type PopoverPrivateProps = WithSupportProps<{
   popoverContent: ReactNode | ReactNode[];
   /**
    * Условие отображения поповера:
-   * <br> - `Click` - открывать по клику
-   * <br> - `Hover` - открывать по ховеру
-   * <br> - `FocusVisible` - открывать по focus-visible
-   * <br> - `Focus` - открывать по фокусу
-   * <br> - `HoverAndFocusVisible` - открывать по ховеру и focus-visible
-   * <br> - `HoverAndFocus` - открывать по ховеру и фокусу
-   * <br> - `ClickAndFocusVisible` - открывать по клику и focus-visible
+   * <br> - `click` - открывать по клику
+   * <br> - `hover` - открывать по ховеру
+   * <br> - `focusVisible` - открывать по focus-visible
+   * <br> - `focus` - открывать по фокусу
+   * <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible
+   * <br> - `hoverAndFocus` - открывать по ховеру и фокусу
+   * <br> - `clickAndFocusVisible` - открывать по клику и focus-visible
    */
   trigger: Trigger;
   /** Задержка открытия по ховеру */
@@ -96,18 +96,18 @@ export type PopoverPrivateProps = WithSupportProps<{
   triggerRef?: ForwardedRef<ReferenceType | HTMLElement | null>;
   /**
    * Стратегия управления шириной контейнера поповера
-   * <br> - `Auto` - соответствует ширине контента,
-   * <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире,
-   * <br> - `Eq` - Equal, строго равен ширине таргета.
-   * @default PopoverWidthStrategy.Auto
+   * <br> - `auto` - соответствует ширине контента,
+   * <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире,
+   * <br> - `eq` - Equal, строго равен ширине таргета.
+   * @default auto
    */
   widthStrategy?: PopoverWidthStrategy;
   /**
    * Стратегия управления высотой контейнера поповера
-   * <br> - `Auto` - соответствует высоте контента,
-   * <br> - `Lte` - Less Than or Equal, равен высоте таргета или меньше ее, если контент в поповере меньше,
-   * <br> - `Eq` - Equal, строго равен высоте таргета.
-   * @default PopoverHeightStrategy.Auto
+   * <br> - `auto` - соответствует высоте контента,
+   * <br> - `lte` - Less Than or Equal, равен высоте таргета или меньше ее, если контент в поповере меньше,
+   * <br> - `eq` - Equal, строго равен высоте таргета.
+   * @default auto
    */
   heightStrategy?: PopoverHeightStrategy;
   /**
@@ -116,7 +116,7 @@ export type PopoverPrivateProps = WithSupportProps<{
    */
   closeOnEscapeKey?: boolean;
   /**
-   * Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `Click`)
+   * Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`)
    * @default true
    */
   triggerClickByKeys?: boolean;
@@ -132,7 +132,7 @@ function PopoverPrivateComponent({
   children,
   open: openProp,
   onOpenChange,
-  placement: placementProp = Placement.Top,
+  placement: placementProp = PLACEMENT.Top,
   hasArrow,
   offset: offsetProp,
   popoverContent,
@@ -141,8 +141,8 @@ function PopoverPrivateComponent({
   hoverDelayOpen,
   hoverDelayClose,
   triggerRef,
-  widthStrategy = PopoverWidthStrategy.Auto,
-  heightStrategy = PopoverHeightStrategy.Auto,
+  widthStrategy = POPOVER_WIDTH_STRATEGY.Auto,
+  heightStrategy = POPOVER_HEIGHT_STRATEGY.Auto,
   closeOnEscapeKey = true,
   triggerClickByKeys = true,
   fallbackPlacements = DEFAULT_FALLBACK_PLACEMENTS,
@@ -178,27 +178,27 @@ function PopoverPrivateComponent({
           if (!floating) return;
 
           switch (heightStrategy) {
-            case PopoverHeightStrategy.Eq:
+            case POPOVER_HEIGHT_STRATEGY.Eq:
               floating.style.height = `${availableHeight}px`;
               break;
-            case PopoverHeightStrategy.Lte:
+            case POPOVER_HEIGHT_STRATEGY.Lte:
               floating.style.maxHeight = `${availableHeight}px`;
               break;
-            case PopoverHeightStrategy.Auto:
+            case POPOVER_HEIGHT_STRATEGY.Auto:
             default:
               break;
           }
 
           switch (widthStrategy) {
-            case PopoverWidthStrategy.Eq:
+            case POPOVER_WIDTH_STRATEGY.Eq:
               floating.style.width = `${rects.reference.width}px`;
               floating.style.minWidth = '0px';
               break;
-            case PopoverWidthStrategy.Gte:
+            case POPOVER_WIDTH_STRATEGY.Gte:
               floating.style.width = `auto`;
               floating.style.minWidth = `${rects.reference.width}px`;
               break;
-            case PopoverWidthStrategy.Auto:
+            case POPOVER_WIDTH_STRATEGY.Auto:
             default:
               floating.style.width = `auto`;
               floating.style.minWidth = 'auto';
@@ -287,8 +287,3 @@ export function PopoverPrivate({ children, ...props }: PopoverPrivateProps) {
 
   return <PopoverPrivateComponent {...props}>{children}</PopoverPrivateComponent>;
 }
-
-PopoverPrivate.placements = Placement;
-PopoverPrivate.triggers = Trigger;
-PopoverPrivate.widthStrategies = PopoverWidthStrategy;
-PopoverPrivate.heightStrategies = PopoverHeightStrategy;

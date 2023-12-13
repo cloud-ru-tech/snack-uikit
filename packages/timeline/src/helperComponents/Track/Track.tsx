@@ -1,8 +1,9 @@
 import { notReachable } from '../../helpers';
 import { TrackDot, TrackDotProps } from '../TrackDot';
 import { TrackLine, TrackLineProps } from '../TrackLine';
-import { Role } from './constants';
+import { ROLE } from './constants';
 import styles from './styles.module.scss';
+import { Role } from './types';
 
 export type TrackProps = {
   role: Role;
@@ -13,7 +14,7 @@ export type TrackProps = {
 
 export function Track({ role, lineStyle, dotVariant = TrackDot.variants.Default, dotAppearance }: TrackProps) {
   switch (role) {
-    case Role.Start:
+    case ROLE.Start:
       return (
         <div
           className={styles.track}
@@ -26,7 +27,7 @@ export function Track({ role, lineStyle, dotVariant = TrackDot.variants.Default,
         </div>
       );
 
-    case Role.Center:
+    case ROLE.Center:
       return (
         <div
           className={styles.track}
@@ -42,7 +43,7 @@ export function Track({ role, lineStyle, dotVariant = TrackDot.variants.Default,
         </div>
       );
 
-    case Role.End:
+    case ROLE.End:
       return (
         <div
           className={styles.track}
@@ -62,7 +63,7 @@ export function Track({ role, lineStyle, dotVariant = TrackDot.variants.Default,
   }
 }
 
-Track.roles = Role;
+Track.roles = ROLE;
 Track.dotVariants = TrackDot.variants;
 Track.dotAppearances = TrackDot.appearances;
 Track.lineStyles = TrackLine.styles;

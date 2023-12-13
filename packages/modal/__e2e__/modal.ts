@@ -1,7 +1,7 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { Mode, TEST_IDS as componentsTestIDs } from '../src/constants';
+import { MODE, TEST_IDS as componentsTestIDs } from '../src/constants';
 
 const TEST_IDS = {
   ...componentsTestIDs,
@@ -85,7 +85,7 @@ test.page(
   await t.expect(Selector(dataTestIdSelector(TEST_IDS.additionalButton)).exists).notOk();
 });
 
-test.page(getPage({ mode: Mode.Regular }))('Closes by click on overlay/close-button for Regular modal', async t => {
+test.page(getPage({ mode: MODE.Regular }))('Closes by click on overlay/close-button for Regular modal', async t => {
   await t
     .click(Selector(dataTestIdSelector(TEST_IDS.overlay)))
     .expect(Selector(dataTestIdSelector(TEST_IDS.main)).exists)
@@ -98,7 +98,7 @@ test.page(getPage({ mode: Mode.Regular }))('Closes by click on overlay/close-but
     .notOk();
 });
 
-test.page(getPage({ mode: Mode.Aggressive }))(
+test.page(getPage({ mode: MODE.Aggressive }))(
   `Shouldn't close by click on overlay for Aggressive modal and close button exists`,
   async t => {
     const closeBtn = Selector(dataTestIdSelector(TEST_IDS.closeButton));
@@ -111,7 +111,7 @@ test.page(getPage({ mode: Mode.Aggressive }))(
   },
 );
 
-test.page(getPage({ mode: Mode.Forced }))(
+test.page(getPage({ mode: MODE.Forced }))(
   `Shouldn't close by click on overlay for Forced modal and close button shouldn't exist`,
   async t => {
     const closeBtn = Selector(dataTestIdSelector(TEST_IDS.closeButton));

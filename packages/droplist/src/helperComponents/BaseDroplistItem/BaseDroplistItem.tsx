@@ -17,12 +17,13 @@ import {
 import { Avatar, AvatarProps } from '@snack-uikit/avatar';
 import { ChevronRightSVG } from '@snack-uikit/icons';
 import { Tag } from '@snack-uikit/tag';
-import { Checkbox } from '@snack-uikit/toggles';
+import { Checkbox, CheckboxProps } from '@snack-uikit/toggles';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { DroplistContext } from '../../components/Droplist/DroplistContext';
-import { Size, Variant } from '../../constants';
+import { SIZE, VARIANT } from '../../constants';
+import { Size, Variant } from '../../types';
 import { getDataTestId } from '../utils';
 import { useListFocus } from './hooks';
 import styles from './styles.module.scss';
@@ -60,17 +61,17 @@ type InnerProps = {
   onPointerDown?: PointerEventHandler<HTMLButtonElement>;
 };
 
-const CHECKBOX_SIZE_MAP = {
-  [Size.S]: Checkbox.sizes.S,
-  [Size.M]: Checkbox.sizes.S,
-  [Size.L]: Checkbox.sizes.M,
+const CHECKBOX_SIZE_MAP: Record<Size, CheckboxProps['size']> = {
+  [SIZE.S]: 's',
+  [SIZE.M]: 's',
+  [SIZE.L]: 'm',
 };
 
-const ForwardedBaseDroplistItem = forwardRef<HTMLButtonElement, BaseDroplistItemProps & InnerProps>(
+export const BaseDroplistItem = forwardRef<HTMLButtonElement, BaseDroplistItemProps & InnerProps>(
   (
     {
       option,
-      size: sizeProp = Size.S,
+      size: sizeProp = SIZE.S,
       variant,
       caption,
       description,
@@ -166,9 +167,9 @@ const ForwardedBaseDroplistItem = forwardRef<HTMLButtonElement, BaseDroplistItem
         data-has-sublist={hasSublist || undefined}
         data-before-content={showBeforeContent}
       >
-        {variant === Variant.Single && <div className={styles.markerContainer} />}
+        {variant === VARIANT.Single && <div className={styles.markerContainer} />}
 
-        {variant === Variant.Multiple && (
+        {variant === VARIANT.Multiple && (
           <div className={styles.beforeContent}>
             <Checkbox
               size={CHECKBOX_SIZE_MAP[size]}
@@ -186,7 +187,7 @@ const ForwardedBaseDroplistItem = forwardRef<HTMLButtonElement, BaseDroplistItem
           <div className={styles.beforeContent}>
             {icon && !avatar && icon}
 
-            {avatar && <Avatar size={Avatar.sizes.Xs} {...avatar} />}
+            {avatar && <Avatar size='xs' {...avatar} />}
           </div>
         )}
 
@@ -221,9 +222,3 @@ const ForwardedBaseDroplistItem = forwardRef<HTMLButtonElement, BaseDroplistItem
     );
   },
 );
-
-export const BaseDroplistItem = ForwardedBaseDroplistItem as typeof ForwardedBaseDroplistItem & {
-  variants: typeof Variant;
-};
-
-BaseDroplistItem.variants = Variant;

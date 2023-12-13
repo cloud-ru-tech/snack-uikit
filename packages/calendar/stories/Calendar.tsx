@@ -7,7 +7,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Calendar, CalendarProps } from '../src';
-import { CalendarMode, Size } from '../src/constants';
+import { CALENDAR_MODE, SIZE } from '../src/constants';
 import { getBuildCellProps } from './helper';
 import styles from './styles.modules.scss';
 
@@ -18,9 +18,9 @@ const meta: Meta = {
 export default meta;
 
 const SCROLL_SIZE = {
-  [Size.S]: styles.scroll_s,
-  [Size.M]: styles.scroll_m,
-  [Size.L]: styles.scroll_l,
+  [SIZE.S]: styles.scroll_s,
+  [SIZE.M]: styles.scroll_m,
+  [SIZE.L]: styles.scroll_l,
 };
 
 type StoryProps = CalendarProps & {
@@ -47,22 +47,22 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
 
   const locale = new Intl.Locale(localeName);
   let value;
-  if (args.mode === CalendarMode.Date) {
+  if (args.mode === CALENDAR_MODE.Date) {
     if (args.dateValue) {
       value = new Date(args.dateValue);
     }
-  } else if (args.mode === CalendarMode.Range) {
+  } else if (args.mode === CALENDAR_MODE.Range) {
     if (args.rangeValueStart && args.rangeValueEnd) {
       value = [new Date(args.rangeValueStart), new Date(args.rangeValueEnd)];
     }
   }
 
   let defaultValue;
-  if (args.mode === CalendarMode.Date) {
+  if (args.mode === CALENDAR_MODE.Date) {
     if (args.dateDefaultValue) {
       defaultValue = new Date(args.dateDefaultValue);
     }
-  } else if (args.mode === CalendarMode.Range) {
+  } else if (args.mode === CALENDAR_MODE.Range) {
     if (args.rangeDefaultValueStart && args.rangeDefaultValueEnd) {
       defaultValue = [new Date(args.rangeDefaultValueStart), new Date(args.rangeDefaultValueEnd)];
     }
@@ -81,7 +81,7 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
 
   return (
     <div className={styles.story}>
-      <Scroll resize={Scroll.resizes.Both} className={SCROLL_SIZE[args.size || Size.M]}>
+      <Scroll resize='both' className={SCROLL_SIZE[args.size || SIZE.M]}>
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}
         <Calendar {...props} buildCellProps={getBuildCellProps(modeBuildCellProps)} />
@@ -98,8 +98,8 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
 export const calendar: StoryObj<StoryProps> = Template.bind({});
 
 calendar.args = {
-  size: Size.M,
-  mode: CalendarMode.Date,
+  size: SIZE.M,
+  mode: CALENDAR_MODE.Date,
   autofocus: false,
   localeName: 'en-US',
   fitToContainer: true,
@@ -135,32 +135,32 @@ calendar.argTypes = {
   dateValue: {
     name: 'value',
     control: { type: 'date' },
-    if: { arg: 'mode', eq: Calendar.modes.Date },
+    if: { arg: 'mode', eq: CALENDAR_MODE.Date },
   },
   dateDefaultValue: {
     name: 'defaultValue',
     control: { type: 'date' },
-    if: { arg: 'mode', eq: Calendar.modes.Date },
+    if: { arg: 'mode', eq: CALENDAR_MODE.Date },
   },
   rangeValueStart: {
     name: 'value start',
     control: { type: 'date' },
-    if: { arg: 'mode', eq: Calendar.modes.Range },
+    if: { arg: 'mode', eq: CALENDAR_MODE.Range },
   },
   rangeValueEnd: {
     name: 'value end',
     control: { type: 'date' },
-    if: { arg: 'mode', eq: Calendar.modes.Range },
+    if: { arg: 'mode', eq: CALENDAR_MODE.Range },
   },
   rangeDefaultValueStart: {
     name: 'defaultValue start',
     control: { type: 'date' },
-    if: { arg: 'mode', eq: Calendar.modes.Range },
+    if: { arg: 'mode', eq: CALENDAR_MODE.Range },
   },
   rangeDefaultValueEnd: {
     name: 'defaultValue end',
     control: { type: 'date' },
-    if: { arg: 'mode', eq: Calendar.modes.Range },
+    if: { arg: 'mode', eq: CALENDAR_MODE.Range },
   },
 };
 

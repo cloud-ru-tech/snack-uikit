@@ -3,7 +3,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { Droplist } from '@snack-uikit/droplist';
 
-import { DEFAULT_EMPTY_VALUE, Size } from '../../../constants';
+import { DEFAULT_EMPTY_VALUE, SIZE } from '../../../constants';
 import { ChipChoiceCommonProps, FilterOption } from '../types';
 import { normalizeValueForSingleChoice } from '../utils';
 import { ChipChoiceCustom } from './ChipChoiceCustom';
@@ -27,7 +27,7 @@ export function ChipChoiceSingle({
   options,
   onChange,
   valueFormatter,
-  size = Size.S,
+  size = SIZE.S,
   'data-test-id': dataTestId,
   ...rest
 }: ChipChoiceSingleProps) {

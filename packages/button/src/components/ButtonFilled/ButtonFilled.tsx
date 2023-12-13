@@ -3,22 +3,22 @@ import { forwardRef } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance, HtmlType, SizeSL, Target } from '../../constants';
+import { APPEARANCE, HTML_TYPE, SIZE_S_L, TARGET } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
-import { CommonButtonProps } from '../../types';
+import { CommonButtonProps, SizeSL } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
 import styles from './styles.module.scss';
 
 export type ButtonFilledProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition' | 'size'> & { size?: SizeSL }>;
 
-const ForwardedButtonFilled = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonFilledProps>(
+export const ButtonFilled = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonFilledProps>(
   (
     {
       className,
-      size = SizeSL.S,
-      target = Target.Blank,
-      type = HtmlType.Button,
-      appearance = Appearance.Primary,
+      size = SIZE_S_L.S,
+      target = TARGET.Blank,
+      type = HTML_TYPE.Button,
+      appearance = APPEARANCE.Primary,
       tabIndex,
       ...rest
     },
@@ -39,15 +39,3 @@ const ForwardedButtonFilled = forwardRef<HTMLButtonElement | HTMLAnchorElement, 
     />
   ),
 );
-
-export const ButtonFilled = ForwardedButtonFilled as typeof ForwardedButtonFilled & {
-  types: typeof HtmlType;
-  sizes: typeof SizeSL;
-  appearances: typeof Appearance;
-  targets: typeof Target;
-};
-
-ButtonFilled.sizes = SizeSL;
-ButtonFilled.types = HtmlType;
-ButtonFilled.appearances = Appearance;
-ButtonFilled.targets = Target;

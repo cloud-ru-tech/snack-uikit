@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { forwardRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Mode, Size } from '../../constants';
+import { MODE, SIZE } from '../../constants';
 import { TogglePrivateProps } from '../../types';
 import { getVisualStateAttributes } from '../../utils';
 import styles from './styles.module.scss';
@@ -17,8 +17,8 @@ export const TogglePrivate = forwardRef<HTMLInputElement, TogglePrivateProps>(fu
     onFocus,
     disabled,
     className,
-    size = Size.M,
-    mode = Mode.Checkbox,
+    size = SIZE.M,
+    mode = MODE.Checkbox,
     'data-test-id': testId,
     ...otherProps
   },

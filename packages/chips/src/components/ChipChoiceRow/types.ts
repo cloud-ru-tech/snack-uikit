@@ -1,25 +1,30 @@
+import { ValueOf } from '@snack-uikit/utils';
+
 import {
   ChipChoiceDateProps,
   ChipChoiceDateRangeProps,
   ChipChoiceMultiProps,
   ChipChoiceSingleProps,
-} from '../ChipChoice/components';
-import { ChipChoiceType } from '../ChipChoice/constants';
+} from '../ChipChoice';
+import { CHIP_CHOICE_TYPE } from '../ChipChoice/constants';
+import { CHIP_CHOICE_ROW_SIZE } from './constants';
+
+export type ChipChoiceRowSize = ValueOf<typeof CHIP_CHOICE_ROW_SIZE>;
 
 type ChipChoiceMultiType = {
-  type: ChipChoiceType.Multi;
+  type: typeof CHIP_CHOICE_TYPE.Multi;
 } & ChipChoiceMultiProps;
 
 type ChipChoiceSingleType = {
-  type: ChipChoiceType.Single;
+  type: typeof CHIP_CHOICE_TYPE.Single;
 } & ChipChoiceSingleProps;
 
 type ChipChoiceDateType = {
-  type: ChipChoiceType.Date;
+  type: typeof CHIP_CHOICE_TYPE.Date;
 } & ChipChoiceDateProps;
 
 type ChipChoiceDateRangeType = {
-  type: ChipChoiceType.DateRange;
+  type: typeof CHIP_CHOICE_TYPE.DateRange;
 } & ChipChoiceDateRangeProps;
 
 export type ChipChoiceProps = {

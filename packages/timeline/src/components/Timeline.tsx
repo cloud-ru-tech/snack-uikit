@@ -3,11 +3,10 @@ import cn from 'classnames';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TrackItem, TrackItemProps } from '../helperComponents/TrackItem';
-import { Position } from '../helperComponents/TrackItem/constants';
-import { notReachable } from '../helpers';
+import { getContentPosition, getRole } from './helpers';
 import styles from './styles.module.scss';
 
-type TimelineItem = Omit<TrackItemProps, 'fullWidth' | 'role'>;
+export type TimelineItem = Omit<TrackItemProps, 'fullWidth' | 'role'>;
 
 export type TimelineProps = WithSupportProps<{
   /** Пункты таймлайна */
@@ -21,43 +20,6 @@ export type TimelineProps = WithSupportProps<{
   /** CSS-класс для элемента с контентом */
   className?: string;
 }>;
-
-const getRole = (index: number, total: number): TrackItemProps['role'] => {
-  if (index < 1) {
-    return TrackItem.roles.Start;
-  }
-
-  if (index < total - 1) {
-    return TrackItem.roles.Center;
-  }
-
-  return TrackItem.roles.End;
-};
-
-const getContentPosition = (
-  contentPosition: Position,
-  index: number,
-  itemPosition?: TrackItemProps['contentPosition'],
-  alternate?: boolean,
-): TrackItemProps['contentPosition'] => {
-  if (itemPosition) {
-    return itemPosition;
-  }
-
-  if (!alternate) {
-    return contentPosition;
-  }
-
-  switch (contentPosition) {
-    case Position.Right:
-      return index % 2 ? TrackItem.contentPositions.Left : TrackItem.contentPositions.Right;
-    case Position.Left:
-      return index % 2 ? TrackItem.contentPositions.Right : TrackItem.contentPositions.Left;
-
-    default:
-      return notReachable(contentPosition);
-  }
-};
 
 export function Timeline({
   items,
@@ -83,8 +45,3 @@ export function Timeline({
     </div>
   );
 }
-
-Timeline.contentPositions = TrackItem.contentPositions;
-Timeline.dotVariants = TrackItem.dotVariants;
-Timeline.dotAppearances = TrackItem.dotAppearances;
-Timeline.lineStyles = TrackItem.lineStyles;

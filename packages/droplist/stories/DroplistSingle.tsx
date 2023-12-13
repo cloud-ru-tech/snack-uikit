@@ -9,6 +9,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Droplist, DroplistProps } from '../src';
 import { DroplistItemSingleProps } from '../src/components/DroplistItem';
+import { SIZE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -87,7 +88,7 @@ export const droplistSingle: StoryObj<StoryProps> = Template.bind({});
 
 droplistSingle.args = {
   useScroll: true,
-  size: Droplist.sizes.S,
+  size: SIZE.S,
 };
 
 droplistSingle.argTypes = {

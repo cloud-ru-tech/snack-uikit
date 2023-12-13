@@ -14,7 +14,7 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | items* | `TimelineItem[]` | - | Пункты таймлайна |
-| contentPosition | enum Position: `"right"`, `"left"` | TrackItem.contentPositions.Right | Положение контента |
+| contentPosition | enum Position: `"right"`, `"left"` | right | Положение контента |
 | alternate | `boolean` | - | Перемешать положение контента |
 | fullWidth | `boolean` | - | Сделать таймлайн во всю ширину |
 | className | `string` | - | CSS-класс для элемента с контентом |

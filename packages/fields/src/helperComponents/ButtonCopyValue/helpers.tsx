@@ -1,5 +1,5 @@
 import { CheckSVG, CopySVG } from '@snack-uikit/icons';
-import { ButtonSize } from '@snack-uikit/input-private';
+import { BUTTON_SIZE, ButtonSize } from '@snack-uikit/input-private';
 
 type GetIconProps = {
   size: ButtonSize;
@@ -8,10 +8,10 @@ type GetIconProps = {
 
 export function getIcon({ size, isChecked }: GetIconProps) {
   switch (size) {
-    case ButtonSize.S: {
+    case BUTTON_SIZE.S: {
       return isChecked ? <CheckSVG size={16} /> : <CopySVG size={16} />;
     }
-    case ButtonSize.M:
+    case BUTTON_SIZE.M:
     default: {
       return isChecked ? <CheckSVG size={24} /> : <CopySVG size={24} />;
     }

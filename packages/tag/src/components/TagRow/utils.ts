@@ -1,4 +1,4 @@
-import { Appearance } from '../../constants';
+import { APPEARANCE } from '../../constants';
 import { TagRowItem, TagRowItemInner } from '../../types';
 
 export const mapTagRowItem = ({ label, color }: TagRowItem): TagRowItemInner => {
@@ -11,6 +11,6 @@ export const mapTagRowItem = ({ label, color }: TagRowItem): TagRowItemInner => 
 
   return {
     label,
-    color: Appearance.Neutral,
+    color: APPEARANCE.Neutral,
   };
 };

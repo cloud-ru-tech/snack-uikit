@@ -2,10 +2,10 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { SelectionMode } from '../../constants';
+import { SELECTION_MODE } from '../../constants';
 import { TreeContextProvider } from '../../contexts/TreeContext';
 import { TreeItem } from '../../helperComponents';
-import { TreeBaseProps, TreeMultiSelect, TreeNodeId, TreeSingleSelect } from '../../types';
+import { SelectionMode, TreeBaseProps, TreeMultiSelect, TreeNodeId, TreeSingleSelect } from '../../types';
 import styles from './styles.module.scss';
 
 export type TreeProps = WithSupportProps<TreeBaseProps>;
@@ -30,9 +30,11 @@ export function Tree({
       <TreeContextProvider
         value={{
           data,
-          selected: selected as typeof SelectionMode extends SelectionMode.Single ? TreeNodeId : TreeNodeId[],
-          selectionMode: selectionMode as typeof selected extends string ? SelectionMode.Single : SelectionMode.Multi,
-          onSelect: onSelect as typeof SelectionMode extends SelectionMode.Single
+          selected: selected as SelectionMode extends typeof SELECTION_MODE.Single ? TreeNodeId : TreeNodeId[],
+          selectionMode: selectionMode as typeof selected extends string
+            ? typeof SELECTION_MODE.Single
+            : typeof SELECTION_MODE.Multi,
+          onSelect: onSelect as SelectionMode extends typeof SELECTION_MODE.Single
             ? TreeSingleSelect['onSelect']
             : TreeMultiSelect['onSelect'],
           expandedNodes,
@@ -51,5 +53,3 @@ export function Tree({
     </div>
   );
 }
-
-Tree.selectionModes = SelectionMode;

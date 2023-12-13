@@ -1,19 +1,19 @@
 import cn from 'classnames';
 
-import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
-import classNames from './styles.module.scss';
+import styles from './styles.module.scss';
 
-enum Size {
-  S = 's',
-  XS = 'xs',
-}
+const SIZE = {
+  S: 's',
+  XS: 'xs',
+} as const;
 
 export type ProgressBarProps = WithSupportProps<{
   /** Процент загрузки от 0 до 100 */
   progress: number;
   /** Размер */
-  size: Size;
+  size: ValueOf<typeof SIZE>;
   /** CSS-класс */
   className?: string;
 }>;
@@ -23,14 +23,12 @@ export function ProgressBar({ progress, size, className, ...rest }: ProgressBarP
   const roundedProgress = Math.max(Math.min(progress, 100), 0);
 
   return (
-    <div className={cn(classNames.progressBarContainer, className)} {...extractSupportProps(rest)} data-size={size}>
+    <div className={cn(styles.progressBarContainer, className)} {...extractSupportProps(rest)} data-size={size}>
       <div
-        className={classNames.progressBarFiller}
+        className={styles.progressBarFiller}
         data-test-id='progress-bar-filler'
         style={{ '--progress': `${roundedProgress}%` }}
       />
     </div>
   );
 }
-
-ProgressBar.sizes = Size;

@@ -4,7 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Checkbox, CheckboxProps } from '../src';
-import { Size } from '../src/constants';
+import { SIZE } from '../src/constants';
 
 const meta: Meta = {
   title: 'Components/Toggles/Checkbox',
@@ -18,7 +18,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => <Checkbox {...args} />;
 export const checkbox: StoryObj<StoryProps> = Template.bind({});
 
 checkbox.args = {
-  size: Size.M,
+  size: SIZE.M,
 };
 
 checkbox.argTypes = {};

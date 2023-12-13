@@ -8,11 +8,11 @@
 ## Example
 
 ```typescript jsx
-import {ProgressBar, ProgressBarPage, Spinner, Sun} from "@snack-uikit/loaders";
+import { ProgressBar, ProgressBarPage, Spinner, Sun } from "@snack-uikit/loaders";
 
 <ProgressBar
   progress={20}
-  size={ProgressBar.sizes.SizeXS}
+  size='xs'
 />
 
 <ProgressBarPage
@@ -23,11 +23,11 @@ import {ProgressBar, ProgressBarPage, Spinner, Sun} from "@snack-uikit/loaders";
 />
 
 <Spinner
-  size={Spinner.sizes.XS}
+  size='xs'
 />
 
 <Sun
-  size={Sun.sizes.L}
+  size='l'
 />
 ```
 
@@ -38,7 +38,7 @@ import {ProgressBar, ProgressBarPage, Spinner, Sun} from "@snack-uikit/loaders";
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| size* | enum Size: `"s"`, `"xs"` | - | Размер |
+| size* | enum ValueOf<{ readonly S: "s"; readonly XS: "xs"; }>: `"s"`, `"xs"` | - | Размер |
 | progress* | `number` | - | Процент загрузки от 0 до 100 |
 | className | `string` | - | CSS-класс |
 ## ProgressBarPage
@@ -56,14 +56,14 @@ import {ProgressBar, ProgressBarPage, Spinner, Sun} from "@snack-uikit/loaders";
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| size | enum LoaderSize: `"xs"`, `"s"`, `"m"`, `"l"` | LoaderSize.S | Размер |
+| size | enum LoaderSize: `"s"`, `"xs"`, `"m"`, `"l"` | s | Размер |
 | className | `string` | - | CSS-класс |
 ## Sun
 Компонент спиннер
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| size | enum LoaderSize: `"xs"`, `"s"`, `"m"`, `"l"` | LoaderSize.S | Размер |
+| size | enum LoaderSize: `"s"`, `"xs"`, `"m"`, `"l"` | s | Размер |
 | className | `string` | - | CSS-класс |
 
 

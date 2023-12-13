@@ -16,12 +16,13 @@ import { WithSupportProps } from '@snack-uikit/utils';
 
 import {
   AUTOSCROLL_ENABLE_LIMIT,
-  AutoscrollTo,
+  AUTOSCROLL_TO,
   BAR_AUTO_HIDE_DELAY_MS,
-  BarHideStrategy,
-  Resize,
-  Size,
+  BAR_HIDE_STRATEGY,
+  RESIZE,
+  SIZE,
 } from '../constants';
+import { AutoscrollTo, BarHideStrategy, Resize, Size } from '../types';
 import styles from './styles.module.scss';
 
 export type ScrollProps = WithSupportProps<
@@ -65,15 +66,15 @@ type PositionsRef = {
   scrolledToBottom: boolean;
 };
 
-const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
+export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
   {
     children,
     className,
     onScroll: onScrollProp,
-    size = Size.M,
-    resize = Resize.None,
+    size = SIZE.M,
+    resize = RESIZE.None,
     clickScrolling = true,
-    barHideStrategy = BarHideStrategy.Leave,
+    barHideStrategy = BAR_HIDE_STRATEGY.Leave,
     autoscrollTo,
     untouchableScrollbars = false,
     ...rest
@@ -116,8 +117,8 @@ const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
     const instance = getOSInstance();
     if (instance && isOverlayScrollbarInited) {
       syncPositions();
-      autoscrollTo === AutoscrollTo.Bottom && instance.scroll({ y: '100%' }, 0);
-      autoscrollTo === AutoscrollTo.Right && instance.scroll({ x: '100%' }, 0);
+      autoscrollTo === AUTOSCROLL_TO.Bottom && instance.scroll({ y: '100%' }, 0);
+      autoscrollTo === AUTOSCROLL_TO.Right && instance.scroll({ x: '100%' }, 0);
     }
     /* здесь умышленно autoscrollTo не входит в депсы хука, потому что его значение интересно только на момент маунта,
     но в дальнейшем не должно триггерить эту функцию */
@@ -144,10 +145,10 @@ const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
 
     const instance = getOSInstance();
     if (instance) {
-      if (lastPositionsRef.current.scrolledToBottom && autoscrollTo === AutoscrollTo.Bottom) {
+      if (lastPositionsRef.current.scrolledToBottom && autoscrollTo === AUTOSCROLL_TO.Bottom) {
         instance.scroll({ y: '100%' }, 0);
       }
-      if (lastPositionsRef.current.scrolledToRight && autoscrollTo === AutoscrollTo.Right) {
+      if (lastPositionsRef.current.scrolledToRight && autoscrollTo === AUTOSCROLL_TO.Right) {
         instance.scroll({ x: '100%' }, 0);
       }
     }
@@ -178,15 +179,3 @@ const ScrollComponent = forwardRef<HTMLElement, ScrollProps>(function Scroll(
     </OverlayScrollbarsComponent>
   );
 });
-
-export const Scroll = ScrollComponent as typeof ScrollComponent & {
-  sizes: typeof Size;
-  barHideStrategies: typeof BarHideStrategy;
-  resizes: typeof Resize;
-  autoscrollTo: typeof AutoscrollTo;
-};
-
-Scroll.sizes = Size;
-Scroll.barHideStrategies = BarHideStrategy;
-Scroll.resizes = Resize;
-Scroll.autoscrollTo = AutoscrollTo;

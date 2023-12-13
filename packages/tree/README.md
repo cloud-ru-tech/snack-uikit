@@ -7,7 +7,7 @@
 
 ## Example
 
-#### selectionMode = Tree.selectionModes.Single
+#### selectionMode = 'single'
 
 ```typescript jsx
 import { Tree } from '@snack-uikit/tree';
@@ -18,10 +18,11 @@ const [selectedNode, setSelected] = useState<TreeNodeId>();
 
 // ...
 
-<Tree data={data} selectionMode={Tree.selectionModes.Single} selected={selectedNode} onSelect={setSelected} />
+<Tree data={data} selectionMode='single' selected={selectedNode} onSelect={setSelected} />
 ```
 
-#### selectionMode = Tree.selectionModes.Multi
+#### selectionMode = 'multi'
+
 ```typescript jsx
 import { Tree } from '@snack-uikit/tree';
 
@@ -31,7 +32,7 @@ const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
 
 // ...
 
-<Tree data={data} selectionMode={Tree.selectionModes.Multi} selected={selectedNodes} onSelect={setSelected} />
+<Tree data={data} selectionMode='multi' selected={selectedNodes} onSelect={setSelected} />
 ```
 
 
@@ -42,7 +43,7 @@ const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | data* | `TreeNodeProps[]` | - | Данные для отрисовки |
-| selectionMode | enum SelectionMode: `"single"`, `"multi"` | - | Режим выбора элементов: <br> - `Single` - одиночный выбор <br> - `Multi` - множественный выбор |
+| selectionMode | "single" \| "multi" | - | Режим выбора элементов: <br> - `Single` - одиночный выбор <br> - `Multi` - множественный выбор |
 | onNodeClick | `OnNodeClick` | - | Обработчик клика по элементу дерева |
 | expandedNodes | `string[]` | - | Состояние для раскрытых элементов |
 | onExpand | `(expandedKeys: string[], nodeId: string) => void` | - | Колбэк при раскрытии/закрытии элементов |

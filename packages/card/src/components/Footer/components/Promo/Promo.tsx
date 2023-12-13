@@ -3,8 +3,8 @@ import cn from 'classnames';
 import { ButtonFilled, ButtonFilledProps } from '@snack-uikit/button';
 import { excludeSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Size } from '../../../../constants';
 import { useCardContext } from '../../../../context';
+import { Size } from '../../../../types';
 import { Dimension, DimensionProps } from '../Dimension';
 import styles from './styles.module.scss';
 
@@ -24,17 +24,8 @@ export function FooterPromo({ volume, button, className, size, ...rest }: Footer
 
   return (
     <div className={cn(styles.promo, className)} {...excludeSupportProps(rest)}>
-      {button && (
-        <ButtonFilled
-          {...button}
-          appearance={ButtonFilled.appearances.Primary}
-          size={ButtonFilled.sizes.M}
-          disabled={disabled}
-        />
-      )}
+      {button && <ButtonFilled {...button} appearance='primary' size='m' disabled={disabled} />}
       {volume && <Dimension {...volume} size={size} />}
     </div>
   );
 }
-
-FooterPromo.sizes = Size;

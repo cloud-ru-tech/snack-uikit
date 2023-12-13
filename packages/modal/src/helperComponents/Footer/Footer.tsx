@@ -3,7 +3,8 @@ import { ReactNode } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Align, TEST_IDS } from '../../constants';
+import { ALIGN, TEST_IDS } from '../../constants';
+import { Align } from '../../types';
 import styles from './styles.module.scss';
 
 export type ModalFooterProps = WithSupportProps<{
@@ -16,7 +17,7 @@ export type ModalFooterProps = WithSupportProps<{
   className?: string;
 }>;
 
-export function ModalFooter({ actions, disclaimer, align = Align.Default, className, ...rest }: ModalFooterProps) {
+export function ModalFooter({ actions, disclaimer, align = ALIGN.Default, className, ...rest }: ModalFooterProps) {
   return (
     <div
       data-align={align}
@@ -34,5 +35,3 @@ export function ModalFooter({ actions, disclaimer, align = Align.Default, classN
     </div>
   );
 }
-
-ModalFooter.aligns = Align;

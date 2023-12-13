@@ -1,7 +1,8 @@
-import { ButtonElevated } from '@snack-uikit/button';
+import { ButtonElevated, ButtonElevatedProps } from '@snack-uikit/button';
 import { ChevronLeftSVG, ChevronRightSVG } from '@snack-uikit/icons';
 
-import { Type } from '../../constants';
+import { TYPE } from '../../constants';
+import { Type } from '../../types';
 import styles from './styles.module.scss';
 
 export type ScrollButtonProps = {
@@ -10,9 +11,9 @@ export type ScrollButtonProps = {
   onClick: () => void;
 };
 
-const MAP_TYPE_TO_ICON_SIZE = {
-  [Type.Primary]: ButtonElevated.sizes.S,
-  [Type.Secondary]: ButtonElevated.sizes.Xs,
+const MAP_TYPE_TO_ICON_SIZE: Record<Type, ButtonElevatedProps['size']> = {
+  [TYPE.Primary]: 's',
+  [TYPE.Secondary]: 'xs',
 };
 
 export function ScrollButton({ type, onClick, direction }: ScrollButtonProps) {

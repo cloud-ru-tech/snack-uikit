@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { Counter } from '@snack-uikit/counter';
 import { Sun } from '@snack-uikit/loaders';
 
-import { IconPosition } from '../../constants';
+import { ICON_POSITION } from '../../constants';
 import { ButtonPrivateProps } from './ButtonPrivate';
 import { Variant } from './constants';
 import styles from './styles.module.scss';
@@ -11,11 +11,11 @@ import styles from './styles.module.scss';
 type GetVariantProps = Pick<ButtonPrivateProps, 'label' | 'icon' | 'iconPosition'>;
 
 export function getVariant({ label, icon, iconPosition }: GetVariantProps) {
-  if (label && icon && iconPosition === IconPosition.After) {
+  if (label && icon && iconPosition === ICON_POSITION.After) {
     return Variant.IconAfter;
   }
 
-  if (label && icon && iconPosition === IconPosition.Before) {
+  if (label && icon && iconPosition === ICON_POSITION.Before) {
     return Variant.IconBefore;
   }
 
@@ -47,7 +47,7 @@ export function getWrappedIcon({ icon, iconClassName, loading, wrappedCounter }:
   if (loading) {
     return (
       <span data-test-id={'loading-icon'} className={iconClassName}>
-        <Sun size={Sun.sizes.S} />
+        <Sun size='s' />
       </span>
     );
   }
@@ -90,7 +90,7 @@ export function getChildren({
   disabled,
   counter,
 }: GetChildrenProps) {
-  const counterForIcon = icon && (iconPosition === IconPosition.After || !label);
+  const counterForIcon = icon && (iconPosition === ICON_POSITION.After || !label);
   const wrappedCounter = getWrappedCounter({ counter, loading, disabled, counterForIcon });
   const wrappedIcon = getWrappedIcon({
     icon,
@@ -105,7 +105,7 @@ export function getChildren({
   });
 
   switch (iconPosition) {
-    case IconPosition.Before: {
+    case ICON_POSITION.Before: {
       return (
         <>
           {wrappedIcon}
@@ -113,7 +113,7 @@ export function getChildren({
         </>
       );
     }
-    case IconPosition.After:
+    case ICON_POSITION.After:
     default: {
       return (
         <>

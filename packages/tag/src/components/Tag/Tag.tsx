@@ -4,8 +4,9 @@ import { MouseEventHandler } from 'react';
 import { CrossSVG } from '@snack-uikit/icons';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance, Size } from '../../constants';
-import { IconSize } from './constants';
+import { APPEARANCE, SIZE } from '../../constants';
+import { Appearance, Size } from '../../types';
+import { ICON_SIZE } from './constants';
 import styles from './styles.module.scss';
 
 export type TagProps = WithSupportProps<{
@@ -23,8 +24,8 @@ export type TagProps = WithSupportProps<{
 
 export function Tag({
   label,
-  size = Size.Xs,
-  appearance = Appearance.Neutral,
+  size = SIZE.Xs,
+  appearance = APPEARANCE.Neutral,
   onDelete,
   className,
   ...rest
@@ -40,16 +41,13 @@ export function Tag({
       <span className={styles.label}>{label}</span>
       {onDelete && (
         <button type='button' className={styles.tagButton} onClick={onDelete} data-test-id='tag-remove-button'>
-          {size === Size.Xs ? (
-            <CrossSVG size={IconSize[size]} className={styles.icon} />
+          {size === SIZE.Xs ? (
+            <CrossSVG size={ICON_SIZE[size]} className={styles.icon} />
           ) : (
-            <CrossSVG size={IconSize[size]} className={styles.icon} />
+            <CrossSVG size={ICON_SIZE[size]} className={styles.icon} />
           )}
         </button>
       )}
     </span>
   );
 }
-
-Tag.sizes = Size;
-Tag.appearances = Appearance;

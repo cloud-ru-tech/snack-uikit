@@ -30,8 +30,8 @@ export type NotificationPanelPopoverProps = WithSupportProps<
 
 export function NotificationPanelPopover({
   content,
-  trigger = PopoverPrivate.triggers.Click,
-  placement = PopoverPrivate.placements.BottomEnd,
+  trigger = 'click',
+  placement = 'bottom-end',
   children,
   contentClassName,
   ...otherProps
@@ -51,7 +51,7 @@ export function NotificationPanelPopover({
       }
       trigger={trigger}
       hasArrow={false}
-      heightStrategy={PopoverPrivate.heightStrategies.Lte}
+      heightStrategy='lte'
       {...otherProps}
     >
       {children}

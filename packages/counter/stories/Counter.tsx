@@ -6,7 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Counter, CounterProps } from '../src';
-import { DEFAULT_PLUS_LIMIT } from '../src/components/constants';
+import { APPEARANCE, DEFAULT_PLUS_LIMIT, SIZE, VARIANT } from '../src/components/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -17,9 +17,9 @@ export default meta;
 
 type StoryProps = CounterProps;
 const Template: StoryFn<StoryProps> = ({ ...args }) => {
-  const sizes = Object.values(Counter.sizes);
-  const appearances = Object.values(Counter.appearances);
-  const variants = Object.values(Counter.variants);
+  const sizes = Object.values(SIZE);
+  const appearances = Object.values(APPEARANCE);
+  const variants = Object.values(VARIANT);
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
 
   return (
@@ -56,8 +56,8 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
             {variants.map(variant => (
               <div key={variant} className={styles.cell}>
                 <Counter
-                  value={variant === Counter.variants.Count ? 9 : 9000}
-                  size={Counter.sizes.S}
+                  value={variant === VARIANT.Count ? 9 : 9000}
+                  size={SIZE.S}
                   variant={variant}
                   appearance={appearance}
                 />
@@ -66,8 +66,8 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
             {variants.map(variant => (
               <div key={variant} className={styles.cell}>
                 <Counter
-                  value={variant === Counter.variants.Count ? 9 : 9000}
-                  size={Counter.sizes.M}
+                  value={variant === VARIANT.Count ? 9 : 9000}
+                  size={SIZE.M}
                   variant={variant}
                   appearance={appearance}
                 />
@@ -84,17 +84,17 @@ export const counter: StoryObj<StoryProps> = Template.bind({});
 
 counter.args = {
   value: 9,
-  appearance: Counter.appearances.Primary,
-  size: Counter.sizes.S,
-  variant: Counter.variants.Count,
+  appearance: APPEARANCE.Primary,
+  size: SIZE.S,
+  variant: VARIANT.Count,
   plusLimit: DEFAULT_PLUS_LIMIT,
 };
 
 counter.argTypes = {
   value: { type: 'number' },
-  appearance: { control: { type: 'select' } },
-  size: { control: { type: 'select' } },
-  variant: { control: { type: 'select' } },
+  appearance: { control: { type: 'radio' } },
+  size: { control: { type: 'radio' } },
+  variant: { control: { type: 'radio' } },
 };
 
 counter.parameters = {

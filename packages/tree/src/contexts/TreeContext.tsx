@@ -1,7 +1,7 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useCallback, useContext, useMemo, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { SelectionMode } from '../constants';
+import { SELECTION_MODE } from '../constants';
 import { findAllExpandedChildNodeIds, lookupTreeForSelectedNodes } from '../helpers';
 import { OnNodeClick, ParentNode, TreeBaseProps, TreeNodeId, TreeNodeProps } from '../types';
 
@@ -51,8 +51,8 @@ export function TreeContextProvider({ children, value }: TreeContextProviderProp
     ...props
   } = value;
 
-  const isMultiSelect = selectionMode === SelectionMode.Multi;
-  const isSingleSelect = selectionMode === SelectionMode.Single;
+  const isMultiSelect = selectionMode === SELECTION_MODE.Multi;
+  const isSingleSelect = selectionMode === SELECTION_MODE.Single;
 
   const [expandedNodes, onExpandHandler] = useUncontrolledProp<TreeNodeId[]>(
     value.expandedNodes,

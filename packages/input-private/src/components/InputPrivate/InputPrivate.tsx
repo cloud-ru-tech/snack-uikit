@@ -3,11 +3,11 @@ import { ChangeEventHandler, forwardRef } from 'react';
 
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { Type } from './constants';
+import { TYPE } from './constants';
 import styles from './styles.module.scss';
 import { InputPrivateProps } from './types';
 
-const ForwardedPrivateInput = forwardRef<HTMLInputElement, InputPrivateProps>(
+export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
   (
     {
       name,
@@ -16,7 +16,7 @@ const ForwardedPrivateInput = forwardRef<HTMLInputElement, InputPrivateProps>(
       placeholder,
       id,
       className,
-      type = Type.Text,
+      type = TYPE.Text,
       disabled = false,
       readonly = false,
       autoComplete = false,
@@ -60,8 +60,3 @@ const ForwardedPrivateInput = forwardRef<HTMLInputElement, InputPrivateProps>(
     );
   },
 );
-export const InputPrivate = ForwardedPrivateInput as typeof ForwardedPrivateInput & {
-  types: typeof Type;
-};
-
-InputPrivate.types = Type;

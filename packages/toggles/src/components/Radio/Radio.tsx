@@ -1,4 +1,4 @@
-import { Mode, Size } from '../../constants';
+import { MODE } from '../../constants';
 import { ToggleProps } from '../../types';
 import { getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
@@ -11,7 +11,7 @@ export function Radio({ inputRef, 'data-test-id': dataTestId, ...restProps }: Ra
     <TogglePrivate
       {...restProps}
       data-test-id={dataTestId}
-      mode={Mode.Radio}
+      mode={MODE.Radio}
       ref={inputRef}
       render={function Radio(visualState) {
         const data = getVisualStateAttributes(visualState);
@@ -26,5 +26,3 @@ export function Radio({ inputRef, 'data-test-id': dataTestId, ...restProps }: Ra
     />
   );
 }
-
-Radio.sizes = Size;

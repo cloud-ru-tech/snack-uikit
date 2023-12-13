@@ -1,17 +1,17 @@
-import { Appearance } from '../../constants';
+import { APPEARANCE } from '../../constants';
 
-export enum Color {
-  InvertNeutral = 'invert-neutral',
-  Primary = 'primary',
-  Red = 'red',
-  Yellow = 'yellow',
-  Green = 'green',
-}
+const COLOR = {
+  InvertNeutral: 'invert-neutral',
+  Primary: 'primary',
+  Red: 'red',
+  Yellow: 'yellow',
+  Green: 'green',
+} as const;
 
 export const APPEARANCE_TO_COLOR_MAP_INVERT = {
-  [Appearance.Neutral]: Color.InvertNeutral,
-  [Appearance.Primary]: Color.Primary,
-  [Appearance.Error]: Color.Red,
-  [Appearance.Warning]: Color.Yellow,
-  [Appearance.Success]: Color.Green,
+  [APPEARANCE.Neutral]: COLOR.InvertNeutral,
+  [APPEARANCE.Primary]: COLOR.Primary,
+  [APPEARANCE.Error]: COLOR.Red,
+  [APPEARANCE.Warning]: COLOR.Yellow,
+  [APPEARANCE.Success]: COLOR.Green,
 } as const;

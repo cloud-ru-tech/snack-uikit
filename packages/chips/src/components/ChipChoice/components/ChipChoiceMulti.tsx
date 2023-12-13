@@ -3,7 +3,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { Droplist } from '@snack-uikit/droplist';
 
-import { Size } from '../../../constants';
+import { SIZE } from '../../../constants';
 import { ChipChoiceCommonProps, FilterOption } from '../types';
 import { defaultMultiValueLabelFormatter, normalizeValueForMultiChoice } from '../utils';
 import { ChipChoiceCustom } from './ChipChoiceCustom';
@@ -27,7 +27,7 @@ export function ChipChoiceMulti({
   options,
   onChange,
   valueFormatter,
-  size = Size.S,
+  size = SIZE.S,
   'data-test-id': dataTestId,
   ...rest
 }: ChipChoiceMultiProps) {

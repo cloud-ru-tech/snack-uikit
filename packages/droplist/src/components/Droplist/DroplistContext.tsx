@@ -1,6 +1,6 @@
 import { createContext, KeyboardEvent, RefCallback } from 'react';
 
-import { Size } from '../../constants';
+import { Size } from '../../types';
 
 type DroplistContextValue = {
   isNested?: boolean;

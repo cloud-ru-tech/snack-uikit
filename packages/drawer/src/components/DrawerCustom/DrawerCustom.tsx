@@ -6,7 +6,7 @@ import { PropsWithChildren, ReactElement } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Mode, Position, Size, SIZE_AS_VALUES } from '../../constants';
+import { MODE, POSITION, SIZE, SIZE_AS_VALUES } from '../../constants';
 import {
   ButtonClose,
   DrawerBody,
@@ -16,6 +16,7 @@ import {
   DrawerHeader,
   DrawerHeaderProps,
 } from '../../helperComponents';
+import { Mode, Position, Size } from '../../types';
 import { motionProps } from './constants';
 import styles from './styles.module.scss';
 
@@ -46,19 +47,19 @@ export type DrawerCustomProps = WithSupportProps<
 
 function DrawerCustomComponent({
   open,
-  mode = Mode.Regular,
-  position = Position.Right,
+  mode = MODE.Regular,
+  position = POSITION.Right,
   onClose,
   rootClassName,
   className,
-  size = Size.S,
+  size = SIZE.S,
   push,
   container,
   children,
   nestedDrawer,
   ...rest
 }: DrawerCustomProps) {
-  const isRegular = mode === Mode.Regular;
+  const isRegular = mode === MODE.Regular;
   const isPredefinedSize = typeof size === 'string' && SIZE_AS_VALUES.includes(size);
 
   return (
@@ -95,17 +96,11 @@ function DrawerCustomComponent({
 
 /** Компонент-конструктор */
 export const DrawerCustom = DrawerCustomComponent as typeof DrawerCustomComponent & {
-  modes: typeof Mode;
-  positions: typeof Position;
-  sizes: typeof Size;
   Header: typeof DrawerHeader;
   Body: typeof DrawerBody;
   Footer: typeof DrawerFooter;
 };
 
-DrawerCustom.modes = Mode;
-DrawerCustom.positions = Position;
-DrawerCustom.sizes = Size;
 DrawerCustom.Header = DrawerHeader;
 DrawerCustom.Body = DrawerBody;
 DrawerCustom.Footer = DrawerFooter;

@@ -21,11 +21,7 @@ export function Card({ href, image, onClick, children, header, small }: CardProp
       <div className={styles.row}>
         {img}
 
-        <Typography
-          family={Typography.families.Sans}
-          role={small ? Typography.roles.Headline : Typography.roles.Display}
-          size={Typography.sizes.S}
-        >
+        <Typography family='sans' purpose={small ? 'headline' : 'display'} size='s'>
           {header}
         </Typography>
       </div>

@@ -82,10 +82,10 @@ export function TreeNodeActions({
         onFocusLeave={handleDroplistFocusLeave}
         firstElementRefCallback={firstElementRefCallback}
         triggerRef={triggerElementRef}
-        placement={Droplist.placements.BottomEnd}
+        placement='bottom-end'
         triggerElement={
           <ButtonFunction
-            size={ButtonFunction.sizes.Xs}
+            size='xs'
             icon={<KebabSVG size={24} />}
             onKeyDown={handleKeyDown}
             onBlur={onBlurActions}

@@ -1,6 +1,9 @@
-import { ButtonFunction } from '@snack-uikit/button';
-import { Counter, CounterProps } from '@snack-uikit/counter';
+import { CounterProps } from '@snack-uikit/counter';
 import * as Icons from '@snack-uikit/icons';
+
+import { APPEARANCE as COUNTER_APPEARANCES, VARIANT as COUNTER_VARIANTS } from '../../counter/src/components/constants';
+import { APPEARANCE, HTML_TYPE, SIZE_S_L } from '../src/constants';
+import { CounterInButtonProps } from '../src/types';
 
 export const ICONS = {
   none: undefined,
@@ -17,14 +20,12 @@ export const BUTTON_ARGS = {
   disabled: false,
   loading: false,
   icon: 'none',
-  iconPosition: ButtonFunction.iconPositions.After,
-  // size: 's',
 };
 
-export const COUNTER_ARGS = {
+export const COUNTER_ARGS: CounterInButtonProps = {
   value: 9,
-  appearance: Counter.appearances.Primary,
-  variant: Counter.variants.Count,
+  appearance: 'primary',
+  variant: 'count',
   plusLimit: 10,
 };
 
@@ -34,6 +35,7 @@ export type StoryCounterProps = {
   counterVariant: CounterProps['variant'];
   counterPlusLimit: CounterProps['plusLimit'];
 };
+
 export const STORY_WITH_COUNTER_ARG_TYPES = {
   counter: {
     name: '[Stories]: Show counter examples',
@@ -52,7 +54,7 @@ export const STORY_WITH_COUNTER_ARG_TYPES = {
   },
   counterAppearance: {
     name: 'counter.appearance',
-    options: Object.values(Counter.appearances),
+    options: Object.values(COUNTER_APPEARANCES),
     if: { arg: 'counter' },
     control: {
       type: 'select',
@@ -60,7 +62,7 @@ export const STORY_WITH_COUNTER_ARG_TYPES = {
   },
   counterVariant: {
     name: 'counter.variant',
-    options: Object.values(Counter.variants),
+    options: Object.values(COUNTER_VARIANTS),
     if: { arg: 'counter' },
     control: {
       type: 'select',
@@ -71,6 +73,46 @@ export const STORY_WITH_COUNTER_ARG_TYPES = {
     if: { arg: 'counter' },
     control: {
       type: 'number',
+    },
+  },
+};
+
+export const COMMON_ARG_TYPES = {
+  type: {
+    options: Object.values(HTML_TYPE),
+    control: {
+      type: 'radio',
+    },
+  },
+  size: {
+    options: Object.values(SIZE_S_L),
+    control: {
+      type: 'radio',
+    },
+  },
+  appearance: {
+    options: Object.values(APPEARANCE),
+    control: {
+      type: 'radio',
+    },
+  },
+  icon: {
+    name: '[Stories]: Show icon examples',
+    options: Object.keys(ICONS),
+    mapping: ICONS,
+    control: {
+      type: 'select',
+    },
+  },
+  testMode: {
+    name: '[Stories]: Show onClick counter',
+    control: {
+      type: 'boolean',
+    },
+  },
+  onClick: {
+    table: {
+      disable: true,
     },
   },
 };

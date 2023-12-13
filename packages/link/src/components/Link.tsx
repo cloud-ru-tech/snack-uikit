@@ -5,8 +5,9 @@ import { ArrowLinksSVG } from '@snack-uikit/icons';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { OnColor, OnSurface, Size, Target } from './constants';
+import { ON_COLOR, ON_SURFACE, SIZE } from './constants';
 import styles from './styles.module.scss';
+import { OnColor, OnSurface, Size } from './types';
 
 export type LinkProps = WithSupportProps<{
   /** Текст ссылки */
@@ -36,13 +37,13 @@ export function Link({
   text = '',
   className,
   href = '#',
-  target = Target.Blank,
+  target = '_blank',
   download,
   onClick,
-  onSurface = OnSurface.Background,
-  size = Size.S,
+  onSurface = ON_SURFACE.Background,
+  size = SIZE.S,
   external,
-  onColor = OnColor.Primary,
+  onColor = ON_COLOR.Primary,
   ...rest
 }: LinkProps) {
   return (
@@ -56,15 +57,10 @@ export function Link({
       data-size={size}
       data-on-surface={onSurface}
       data-color={onColor}
-      rel={target === Target.Blank ? 'noopener noreferrer' : undefined}
+      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
     >
       <TruncateString text={text} maxLines={1} />
       {external && <ArrowLinksSVG data-test-id='link__external-icon' className={styles.icon} />}
     </a>
   );
 }
-
-Link.sizes = Size;
-Link.targets = Target;
-Link.onColors = OnColor;
-Link.onSurfaces = OnSurface;

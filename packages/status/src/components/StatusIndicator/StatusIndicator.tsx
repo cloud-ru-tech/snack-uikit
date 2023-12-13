@@ -2,16 +2,11 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance } from '../../constants';
+import { APPEARANCE } from '../../constants';
+import { Appearance } from '../../types';
+import { SIZE } from './constants';
 import styles from './styles.module.scss';
-
-enum Size {
-  Xxs = 'xxs',
-  Xs = 'xs',
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
+import { Size } from './types';
 
 export type StatusIndicatorProps = WithSupportProps<{
   /** Размер */
@@ -22,8 +17,8 @@ export type StatusIndicatorProps = WithSupportProps<{
 }>;
 
 export function StatusIndicator({
-  size = Size.M,
-  appearance = Appearance.Primary,
+  size = SIZE.M,
+  appearance = APPEARANCE.Primary,
   className,
   ...rest
 }: StatusIndicatorProps) {
@@ -33,6 +28,3 @@ export function StatusIndicator({
     </div>
   );
 }
-
-StatusIndicator.sizes = Size;
-StatusIndicator.appearances = Appearance;

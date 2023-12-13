@@ -5,6 +5,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { TagRow, TagRowProps } from '../src';
+import { SIZE } from '../src/constants';
 import { TagRowItemInner } from '../src/types';
 import styles from './styles.module.scss';
 import { generateFakeTags } from './utils';
@@ -41,13 +42,19 @@ export const tagRow: StoryObj<StoryProps> = Template.bind({});
 tagRow.args = {
   removableMode: false,
   demoTagsAmount: 50,
-  size: TagRow.sizes.Xs,
+  size: SIZE.Xs,
   moreButtonLabel: 'More: ',
   rowLimit: 2,
   fullWidthMode: false,
 };
 
 tagRow.argTypes = {
+  size: {
+    options: Object.values(SIZE),
+    control: {
+      type: 'radio',
+    },
+  },
   removableMode: {
     name: '[Story]: Show remove mode',
     control: {

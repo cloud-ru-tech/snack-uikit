@@ -1,21 +1,21 @@
-import { Tooltip } from '../Tooltip';
+import { TRIGGER as POPOVER_TRIGGER } from '@snack-uikit/popover-private';
 
-export enum Size {
-  S = 's',
-  Xs = 'xs',
-}
+export const SIZE = {
+  S: 's',
+  Xs: 'xs',
+} as const;
 
 export const SIZES_MAP = {
-  [Size.Xs]: 16,
-  [Size.S]: 24,
+  [SIZE.Xs]: 16,
+  [SIZE.S]: 24,
 };
 
-export enum Trigger {
-  Hover = 'hover',
-  Click = 'click',
-}
+export const TRIGGER = {
+  Hover: 'hover',
+  Click: 'click',
+} as const;
 
 export const TRIGGER_MAP = {
-  [Trigger.Hover]: Tooltip.triggers.HoverAndFocusVisible,
-  [Trigger.Click]: Tooltip.triggers.ClickAndFocusVisible,
+  [TRIGGER.Hover]: POPOVER_TRIGGER.HoverAndFocusVisible,
+  [TRIGGER.Click]: POPOVER_TRIGGER.ClickAndFocusVisible,
 };

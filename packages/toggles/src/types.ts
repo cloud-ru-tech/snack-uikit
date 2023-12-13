@@ -1,8 +1,13 @@
 import { FocusEventHandler, MouseEventHandler, ReactNode, RefObject } from 'react';
 
-import { WithSupportProps } from '@snack-uikit/utils';
+import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
-import { Mode, Size } from './constants';
+import { FAVORITE_ICON, MODE, SELECTION_MODE, SIZE } from './constants';
+
+export type Size = ValueOf<typeof SIZE>;
+export type Mode = ValueOf<typeof MODE>;
+export type SelectionMode = ValueOf<typeof SELECTION_MODE>;
+export type FavoriteIcon = ValueOf<typeof FAVORITE_ICON>;
 
 export type InputVisualState = {
   focusVisible: boolean;

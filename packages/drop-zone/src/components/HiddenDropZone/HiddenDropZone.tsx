@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
-import { PrivateDropZone, UploadMode } from '../../helperComponents';
+import { PrivateDropZone } from '../../helperComponents';
 import { useDrag } from '../../hooks/useDrag';
 import { DropZoneProps } from '../DropZone';
 import classNames from './styles.module.scss';
@@ -23,5 +23,3 @@ export function HiddenDropZone(props: HiddenDropZoneProps) {
     </div>
   );
 }
-
-HiddenDropZone.uploadModes = UploadMode;

@@ -1,10 +1,10 @@
-export enum Appearance {
-  Neutral = 'neutral',
-  Error = 'error',
-  ErrorCritical = 'errorCritical',
-  Warning = 'warning',
-  Success = 'success',
-}
+export const APPEARANCE = {
+  Neutral: 'neutral',
+  Error: 'error',
+  ErrorCritical: 'errorCritical',
+  Warning: 'warning',
+  Success: 'success',
+} as const;
 
 export const TEST_IDS = {
   label: 'notification-card__label',

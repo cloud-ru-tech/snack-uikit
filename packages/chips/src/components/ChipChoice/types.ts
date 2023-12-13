@@ -3,8 +3,7 @@ import { MouseEventHandler } from 'react';
 import { DroplistProps, ItemSingleProps } from '@snack-uikit/droplist';
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { Size } from '../../constants';
-import { BaseChipProps } from '../../types';
+import { BaseChipProps, Size } from '../../types';
 
 export type FilterOption = Pick<ItemSingleProps, 'caption' | 'description' | 'tagLabel' | 'icon' | 'avatar'> & {
   label: string;
@@ -23,10 +22,10 @@ export type ChipChoiceCommonProps = WithSupportProps<
     placement?: DroplistProps['placement'];
     /**
      * Стратегия управления шириной контейнера поповера
-     * <br> - `Auto` - соответствует ширине контента,
-     * <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире,
-     * <br> - `Eq` - Equal, строго равен ширине таргета.
-     * @default Gte
+     * <br> - `auto` - соответствует ширине контента,
+     * <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире,
+     * <br> - `eq` - Equal, строго равен ширине таргета.
+     * @default gte
      */
     widthStrategy?: DroplistProps['widthStrategy'];
   }

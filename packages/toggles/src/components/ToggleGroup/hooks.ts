@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import { SelectionMode } from '../../constants';
+import { SELECTION_MODE } from '../../constants';
 import { useToggleGroupContext } from '../../context';
 
 type UseToggleGroupProps = {
@@ -29,6 +29,6 @@ export function useToggleGroup({ value: itemValue }: UseToggleGroupProps) {
   return {
     isChecked,
     handleClick,
-    multipleSelection: selectionMode === SelectionMode.Multiple,
+    multipleSelection: selectionMode === SELECTION_MODE.Multiple,
   };
 }

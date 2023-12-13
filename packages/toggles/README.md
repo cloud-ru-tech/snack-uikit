@@ -42,14 +42,17 @@
 
   // ITEMS -some array with ToggleCardProps
   
-  ...
+  // ...
 
-  <ToggleGroup selectionMode={ToggleGroup.selectionModes.Single} value={value} onChange={setValue}>
-    {ITEMS.map(props => (
-      <ToggleCard key={props.id} {...props} />
-    ))}
-  </ToggleGroup>
-...
+  return (
+    <ToggleGroup selectionMode='single' value={value} onChange={setValue}>
+      {ITEMS.map(props => (
+        <ToggleCard key={props.id} {...props} />
+      ))}
+    </ToggleGroup>
+  );
+
+// ...
 
 return (
   <>
@@ -63,9 +66,6 @@ return (
     )}
   </>
 );
-```
-
-
 ```
 
 
@@ -88,7 +88,7 @@ return (
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек потери фокуса |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек приобретения фокуса |
 | className | `string` | - | CSS-класс |
-| size | enum Size: `"s"`, `"m"` | Size.M | Размер |
+| size | enum Size: `"s"`, `"m"` | m | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 | indeterminate | `boolean` | - | Состояние частичного выбора |
 | indeterminateDefault | `boolean` | - | Состояние частичного выбора по-умолчанию |
@@ -109,7 +109,7 @@ return (
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек потери фокуса |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек приобретения фокуса |
 | className | `string` | - | CSS-класс |
-| size | enum Size: `"s"`, `"m"` | Size.M | Размер |
+| size | enum Size: `"s"`, `"m"` | m | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 | showIcon | `boolean` | - | Показывать ли иконку в переключателе |
 ## Radio
@@ -147,9 +147,9 @@ return (
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек потери фокуса |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек приобретения фокуса |
 | className | `string` | - | CSS-класс |
-| size | enum Size: `"s"`, `"m"` | Size.M | Размер |
+| size | enum Size: `"s"`, `"m"` | m | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
-| icon | enum FavoriteIcon: `"star"`, `"heart"` | FavoriteIcon.Heart | Иконка |
+| icon | enum FavoriteIcon: `"star"`, `"heart"` | heart | Иконка |
 ## ToggleGroup
 ### Props
 | name | type | default value | description |
@@ -158,7 +158,7 @@ return (
 | defaultValue | `string \| string[]` | - | Начальное состояние |
 | value | `string \| string[]` | - | Controlled состояние |
 | onChange | `((value: string) => void) \| ((value: string[]) => void)` | - | Controlled обработчик измения состояния |
-| selectionMode | enum SelectionMode: `"single"`, `"multiple"` | SelectionMode.Single | Режим выбора |
+| selectionMode | "single" \| "multiple" | single | Режим выбора |
 ## useToggleGroup
 ### Props
 | name | type | default value | description |

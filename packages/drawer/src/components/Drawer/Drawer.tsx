@@ -10,8 +10,9 @@ import {
 } from '@snack-uikit/button';
 import { TruncateString } from '@snack-uikit/truncate-string';
 
-import { Mode, NESTED_DRAWER_PUSH_DISTANCE, Position, Size, TEST_IDS } from '../../constants';
+import { NESTED_DRAWER_PUSH_DISTANCE, TEST_IDS } from '../../constants';
 import { DrawerBodyProps, DrawerHeaderProps } from '../../helperComponents';
+import { Size } from '../../types';
 import { DrawerCustom, DrawerCustomProps } from '../DrawerCustom';
 
 export type DrawerProps = Omit<DrawerCustomProps, 'size' | 'children' | 'nestedDrawer' | 'push'> &
@@ -65,20 +66,12 @@ export function Drawer({
           data-test-id={TEST_IDS.footer}
           actions={
             <>
-              {approveButton && (
-                <ButtonFilled {...approveButton} size={ButtonFilled.sizes.M} data-test-id={TEST_IDS.approveButton} />
-              )}
+              {approveButton && <ButtonFilled {...approveButton} size='m' data-test-id={TEST_IDS.approveButton} />}
 
-              {cancelButton && (
-                <ButtonOutline {...cancelButton} size={ButtonOutline.sizes.M} data-test-id={TEST_IDS.cancelButton} />
-              )}
+              {cancelButton && <ButtonOutline {...cancelButton} size='m' data-test-id={TEST_IDS.cancelButton} />}
 
               {additionalButton && (
-                <ButtonSimple
-                  {...additionalButton}
-                  size={ButtonSimple.sizes.M}
-                  data-test-id={TEST_IDS.additionalButton}
-                />
+                <ButtonSimple {...additionalButton} size='m' data-test-id={TEST_IDS.additionalButton} />
               )}
             </>
           }
@@ -89,7 +82,3 @@ export function Drawer({
     </DrawerCustom>
   );
 }
-
-Drawer.modes = Mode;
-Drawer.sizes = Size;
-Drawer.positions = Position;

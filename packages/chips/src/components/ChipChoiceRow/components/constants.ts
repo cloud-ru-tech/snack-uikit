@@ -1,8 +1,9 @@
 import { ChipChoice } from '../../ChipChoice';
+import { CHIP_CHOICE_TYPE } from '../../ChipChoice/constants';
 
 export const MAP_CHIP_TYPE_TO_COMPONENT = {
-  [ChipChoice.types.Single]: ChipChoice.Single,
-  [ChipChoice.types.Multi]: ChipChoice.Multi,
-  [ChipChoice.types.Date]: ChipChoice.Date,
-  [ChipChoice.types.DateRange]: ChipChoice.DateRange,
+  [CHIP_CHOICE_TYPE.Single]: ChipChoice.Single,
+  [CHIP_CHOICE_TYPE.Multi]: ChipChoice.Multi,
+  [CHIP_CHOICE_TYPE.Date]: ChipChoice.Date,
+  [CHIP_CHOICE_TYPE.DateRange]: ChipChoice.DateRange,
 };

@@ -215,7 +215,7 @@ export function TreeNode({
 
       {isExpandable && (
         <ButtonFunction
-          size={ButtonFunction.sizes.Xs}
+          size='xs'
           icon={<ChevronRightSVG />}
           disabled={disabled}
           loading={isLoading}
@@ -246,7 +246,7 @@ export function TreeNode({
         {isMultiSelect && (
           <div className={styles.treeNodeCheckboxWrap}>
             <Checkbox
-              size={Checkbox.sizes.S}
+              size='s'
               disabled={disabled}
               checked={!disabled && isSelected}
               indeterminate={!disabled && !isSelected && nestedNodesSelection?.someSelected}
@@ -262,7 +262,7 @@ export function TreeNode({
           {treeNodeIcon}
         </div>
 
-        <Typography.SansBodyM tag={Typography.tags.div} className={styles.treeNodeTitle}>
+        <Typography.SansBodyM tag='div' className={styles.treeNodeTitle}>
           <TruncateString text={title} data-test-id={TEST_IDS.title} />
         </Typography.SansBodyM>
 

@@ -7,6 +7,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Tree, TreeNodeProps, TreeProps } from '../src';
+import { SELECTION_MODE } from '../src/constants';
 import { TreeNodeId } from '../src/types';
 import { getNested, getNodeActions } from './helpers';
 import styles from './styles.module.scss';
@@ -124,7 +125,7 @@ const Template: StoryFn<StoryProps> = ({ selectionMode, enableNodeActions, ...pr
 
   return (
     <div className={styles.storyWrap}>
-      {selectionMode === Tree.selectionModes.Single ? (
+      {selectionMode === SELECTION_MODE.Single ? (
         <Tree {...commonProps} selectionMode={selectionMode} selected={selectedNodes as TreeNodeId} />
       ) : (
         <Tree {...commonProps} selectionMode={selectionMode} selected={selectedNodes as TreeNodeId[]} />
@@ -137,12 +138,12 @@ export const tree: StoryObj<StoryProps> = Template.bind({});
 
 tree.args = {
   enableNodeActions: true,
-  selectionMode: Tree.selectionModes.Single,
+  selectionMode: SELECTION_MODE.Single,
 };
 
 tree.argTypes = {
   selectionMode: {
-    options: Object.values(Tree.selectionModes),
+    options: Object.values(SELECTION_MODE),
     control: {
       type: 'select',
     },

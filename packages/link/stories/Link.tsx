@@ -6,6 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Link, LinkProps } from '../src';
+import { ON_COLOR, ON_SURFACE, SIZE, TARGET } from '../src/components/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -15,9 +16,9 @@ const meta: Meta = {
 export default meta;
 
 const DEFAULT_TEXT = 'Link text';
-const DEFAULT_SIZE = Link.sizes.S;
-const DEFAULT_SURFACE = Link.onSurfaces.Background;
-const DEFAULT_COLOR = Link.onColors.Primary;
+const DEFAULT_SIZE = SIZE.S;
+const DEFAULT_SURFACE = ON_SURFACE.Background;
+const DEFAULT_COLOR = ON_COLOR.Primary;
 
 type StoryProps = LinkProps;
 
@@ -31,9 +32,9 @@ type TableProps = {
   options: Option[];
 };
 
-const colors = Object.values(Link.onColors);
-const sizes = Object.values(Link.sizes);
-const surfaces = Object.values(Link.onSurfaces);
+const colors = Object.values(ON_COLOR);
+const sizes = Object.values(SIZE);
+const surfaces = Object.values(ON_SURFACE);
 
 function Table({ header, options }: TableProps) {
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
@@ -96,19 +97,19 @@ export const link: StoryObj<StoryProps> = Template.bind({});
 link.args = {
   href: '#',
   text: DEFAULT_TEXT,
-  size: Link.sizes.S,
-  target: Link.targets.Blank,
+  size: SIZE.S,
+  target: '_blank',
   external: false,
-  onColor: Link.onColors.Primary,
-  onSurface: Link.onSurfaces.Background,
+  onColor: ON_COLOR.Primary,
+  onSurface: ON_SURFACE.Background,
 };
 
 link.argTypes = {
-  size: { control: { type: 'select' } },
+  size: { control: { type: 'radio' } },
   target: {
     control: {
       type: 'select',
-      options: Object.values(Link.targets),
+      options: Object.values(TARGET),
     },
   },
   download: {

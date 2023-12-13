@@ -1,4 +1,14 @@
-import { InRangePosition, ViewMode } from './constants';
+import { ValueOf } from '@snack-uikit/utils';
+
+import { CALENDAR_MODE, IN_RANGE_POSITION, SIZE, VIEW_MODE } from './constants';
+
+export type InRangePosition = ValueOf<typeof IN_RANGE_POSITION>;
+
+export type ViewMode = ValueOf<typeof VIEW_MODE>;
+
+export type Size = ValueOf<typeof SIZE>;
+
+export type CalendarMode = ValueOf<typeof CALENDAR_MODE>;
 
 export type Range = [Date, Date];
 

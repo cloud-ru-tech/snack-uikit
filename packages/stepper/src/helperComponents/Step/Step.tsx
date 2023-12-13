@@ -4,7 +4,7 @@ import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { StepState } from '../../constants';
+import { STEP_STATE } from '../../constants';
 import { StepViewData } from '../../types';
 import { getTestIdBuilder } from '../../utils';
 import { Icon } from '../Icon';
@@ -30,20 +30,14 @@ export function Step({ step, className, isLast, 'data-test-id': testId, ...props
         data-state={step.state}
       >
         <Icon {...step} className={styles.icon} />
-        <Typography
-          className={styles.title}
-          tag={Typography.tags.div}
-          family={Typography.families.Sans}
-          role={Typography.roles.Body}
-          size={Typography.sizes.M}
-        >
+        <Typography.SansBodyM className={styles.title} tag='div'>
           <TruncateString text={step.title} />
-        </Typography>
+        </Typography.SansBodyM>
       </button>
       {!isLast && (
         <div
           className={styles.tail}
-          data-completed={step.state === StepState.Completed || undefined}
+          data-completed={step.state === STEP_STATE.Completed || undefined}
           data-test-id={getTailTestId(testId)}
         >
           <div className={styles.tailLine} />

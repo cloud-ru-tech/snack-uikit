@@ -4,8 +4,8 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { AUTOFOCUS, CalendarMode, Size, ViewMode } from '../../constants';
-import { BuildCellPropsFunction, FocusDirection, Range } from '../../types';
+import { AUTOFOCUS, SIZE, VIEW_MODE } from '../../constants';
+import { BuildCellPropsFunction, CalendarMode, FocusDirection, Range, Size, ViewMode } from '../../types';
 import { getEndOfTheDay, getLocale, getTestIdBuilder, sortDates } from '../../utils';
 import { CalendarBody } from '../CalendarBody';
 import { CalendarContext } from '../CalendarContext';
@@ -33,15 +33,15 @@ export type CalendarBaseProps = WithSupportProps<{
 }>;
 
 const CONTAINER_SIZE_MAP = {
-  [Size.S]: styles.calendarSizeS,
-  [Size.M]: styles.calendarSizeM,
-  [Size.L]: styles.calendarSizeL,
+  [SIZE.S]: styles.calendarSizeS,
+  [SIZE.M]: styles.calendarSizeM,
+  [SIZE.L]: styles.calendarSizeL,
 };
 
 export function CalendarBase({
   className,
   mode,
-  size = Size.M,
+  size = SIZE.M,
   autofocus,
   fitToContainer = true,
   value: valueProp,
@@ -57,7 +57,7 @@ export function CalendarBase({
   navigationStartRef,
   ...rest
 }: CalendarBaseProps) {
-  const [viewMode, setViewMode] = useState(ViewMode.Month);
+  const [viewMode, setViewMode] = useState<ViewMode>(VIEW_MODE.Month);
   const [viewShift, setViewShift] = useState<number>(0);
   const [value, setValueState] = useUncontrolledProp<Range | undefined>(valueProp, defaultValue, onChangeValue);
   const today = typeof todayProp === 'number' ? new Date(todayProp) : todayProp;

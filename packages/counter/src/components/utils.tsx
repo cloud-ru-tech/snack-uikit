@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 
-import { DEFAULT_KEY_LIMIT, DEFAULT_KEY_POSTFIX, Variant } from './constants';
+import { DEFAULT_KEY_LIMIT, DEFAULT_KEY_POSTFIX, VARIANT } from './constants';
 import styles from './styles.module.scss';
+import { Variant } from './types';
 
 export function formatValue({
   value,
@@ -12,11 +13,11 @@ export function formatValue({
   variant: Variant;
   plusLimit: number;
 }): ReactNode {
-  if (variant === Variant.Count) {
+  if (variant === VARIANT.Count) {
     return value;
   }
 
-  if (variant === Variant.CountPlus) {
+  if (variant === VARIANT.CountPlus) {
     return value < plusLimit ? (
       value
     ) : (
@@ -27,7 +28,7 @@ export function formatValue({
     );
   }
 
-  if (variant === Variant.CountK) {
+  if (variant === VARIANT.CountK) {
     return value < DEFAULT_KEY_LIMIT ? (
       value
     ) : (

@@ -3,8 +3,8 @@ import { forwardRef, PropsWithChildren } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Size } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
+import { Size } from '../../types';
 import styles from './styles.module.scss';
 
 export type WrapperProps = PropsWithChildren<

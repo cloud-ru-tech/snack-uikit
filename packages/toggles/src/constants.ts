@@ -1,19 +1,19 @@
-export enum Mode {
-  Checkbox = 'checkbox',
-  Radio = 'radio',
-}
+export const MODE = {
+  Checkbox: 'checkbox',
+  Radio: 'radio',
+} as const;
 
-export enum Size {
-  S = 's',
-  M = 'm',
-}
+export const SIZE = {
+  S: 's',
+  M: 'm',
+} as const;
 
-export enum FavoriteIcon {
-  Star = 'star',
-  Heart = 'heart',
-}
+export const FAVORITE_ICON = {
+  Star: 'star',
+  Heart: 'heart',
+} as const;
 
-export enum SelectionMode {
-  Single = 'single',
-  Multiple = 'multiple',
-}
+export const SELECTION_MODE = {
+  Single: 'single',
+  Multiple: 'multiple',
+} as const;

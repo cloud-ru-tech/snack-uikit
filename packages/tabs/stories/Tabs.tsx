@@ -1,11 +1,11 @@
 import { Meta, StoryFn } from '@storybook/react';
 
-import { extractSupportProps } from '../../utils/src';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Tabs, TabsProps } from '../src';
-import { Type } from '../src/constants';
+import { TYPE } from '../src/constants';
+import { Type } from '../src/types';
 import styles from './styles.module.scss';
 
 type StoryType = Omit<TabsProps, 'value'> & {
@@ -43,7 +43,7 @@ const tabsData = [
 const Template: StoryFn<StoryType> = function ({ type, defaultValue, disableDivider, ...args }) {
   return (
     <Tabs {...args} defaultValue={defaultValue}>
-      <Tabs.TabBar {...(type === Type.Secondary ? { disableDivider, type } : { type })} {...extractSupportProps(args)}>
+      <Tabs.TabBar {...(type === TYPE.Secondary ? { disableDivider, type } : { type })} {...args}>
         {tabsData.map(props => (
           <Tabs.Tab key={props.value} {...props} />
         ))}
@@ -61,7 +61,7 @@ export const tabs: StoryFn<StoryType> = Template.bind({});
 const tabIds = Object.values(tabsData).map(({ value }) => value);
 
 tabs.args = {
-  type: Type.Primary,
+  type: TYPE.Primary,
   defaultValue: tabIds[0],
   disableDivider: false,
 };
@@ -69,8 +69,8 @@ tabs.args = {
 tabs.argTypes = {
   type: {
     name: 'type',
-    options: Object.values(Type),
-    defaultValue: Type.Primary,
+    options: Object.values(TYPE),
+    defaultValue: TYPE.Primary,
     control: {
       type: 'radio',
     },
@@ -91,7 +91,7 @@ tabs.argTypes = {
   disableDivider: {
     if: {
       arg: 'type',
-      eq: Type.Secondary,
+      eq: TYPE.Secondary,
     },
   },
 };

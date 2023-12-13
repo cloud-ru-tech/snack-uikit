@@ -1,11 +1,11 @@
 import cn from 'classnames';
 import { MouseEventHandler } from 'react';
 
-import { Sun } from '@snack-uikit/loaders';
+import { Sun, SunProps } from '@snack-uikit/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { CHIP_ASSIST_TEST_IDS, Size, Variant } from '../../constants';
-import { BaseChipProps } from '../../types';
+import { CHIP_ASSIST_TEST_IDS, SIZE, VARIANT } from '../../constants';
+import { BaseChipProps, Size } from '../../types';
 import styles from './styles.module.scss';
 
 export type ChipAssistProps = WithSupportProps<
@@ -20,7 +20,7 @@ export type ChipAssistProps = WithSupportProps<
 /** Чип с лейблом  */
 export function ChipAssist({
   icon,
-  size = ChipAssist.sizes.S,
+  size = SIZE.S,
   label,
   disabled,
   loading,
@@ -29,8 +29,8 @@ export function ChipAssist({
   tabIndex,
   ...rest
 }: ChipAssistProps) {
-  const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
-  const spinnerSize = size === Size.Xs ? Sun.sizes.XS : Sun.sizes.S;
+  const variant = icon && size !== SIZE.Xs ? VARIANT.IconBefore : VARIANT.LabelOnly;
+  const spinnerSize: SunProps['size'] = size === SIZE.Xs ? 'xs' : 's';
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = e => {
     if (disabled || loading) {
@@ -51,7 +51,7 @@ export function ChipAssist({
       onClick={handleClick}
       className={cn(styles.assistChip, className)}
     >
-      {variant === Variant.IconBefore && !loading && (
+      {variant === VARIANT.IconBefore && !loading && (
         <span className={styles.icon} data-test-id={CHIP_ASSIST_TEST_IDS.icon}>
           {icon}
         </span>
@@ -69,5 +69,3 @@ export function ChipAssist({
     </button>
   );
 }
-
-ChipAssist.sizes = Size;

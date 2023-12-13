@@ -1,7 +1,7 @@
 import { getWeekStartByLocale } from 'weekstart';
 
-import { InRangePosition, ViewMode } from './constants';
-import { Range } from './types';
+import { IN_RANGE_POSITION, VIEW_MODE } from './constants';
+import { InRangePosition, Range, ViewMode } from './types';
 
 export const isTheSameDecade = (date1: Date, date2: Date) =>
   Math.floor(date1.getFullYear() / 10) === Math.floor(date2.getFullYear() / 10);
@@ -38,11 +38,11 @@ export const getDecadeShift = (today: Date, targetDate: Date) =>
 
 export const isTheSameItem = (viewMode: ViewMode, date1: Date, date2: Date): boolean => {
   switch (viewMode) {
-    case ViewMode.Month:
+    case VIEW_MODE.Month:
       return isTheSameDate(date1, date2);
-    case ViewMode.Year:
+    case VIEW_MODE.Year:
       return isTheSameMonth(date1, date2);
-    case ViewMode.Decade:
+    case VIEW_MODE.Decade:
       return isTheSameYear(date1, date2);
     default:
       return false;
@@ -53,7 +53,7 @@ export const sortDates = (dates: Date[]): Date[] => [...dates].sort((d1, d2) => 
 
 export const getInRangePosition = (date: Date, viewMode: ViewMode, range?: Range): InRangePosition => {
   if (!range) {
-    return InRangePosition.Out;
+    return IN_RANGE_POSITION.Out;
   }
 
   const [startDate, endDate] = sortDates(range);
@@ -62,20 +62,20 @@ export const getInRangePosition = (date: Date, viewMode: ViewMode, range?: Range
   const isEnd = isTheSameItem(viewMode, date, endDate);
 
   if (isStart && isEnd) {
-    return InRangePosition.StartEnd;
+    return IN_RANGE_POSITION.StartEnd;
   }
 
   if (isStart) {
-    return InRangePosition.Start;
+    return IN_RANGE_POSITION.Start;
   }
 
   if (isEnd) {
-    return InRangePosition.End;
+    return IN_RANGE_POSITION.End;
   }
 
   const [start, end] = range.map(date => date.valueOf()).sort();
 
-  return date.valueOf() >= start && date.valueOf() <= end ? InRangePosition.In : InRangePosition.Out;
+  return date.valueOf() >= start && date.valueOf() <= end ? IN_RANGE_POSITION.In : IN_RANGE_POSITION.Out;
 };
 
 export const getEndOfTheDay = (date: Date) =>

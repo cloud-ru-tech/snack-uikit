@@ -32,31 +32,17 @@ export function DrawerHeader({ title, titleTooltip, subtitle, image, className, 
 
       <div className={styles.headlineLayout}>
         <div className={styles.headline}>
-          <Typography
-            family={Typography.families.Sans}
-            role={Typography.roles.Headline}
-            size={Typography.sizes.S}
-            className={styles.title}
-            data-test-id={TEST_IDS.title}
-          >
+          <Typography.SansHeadlineS className={styles.title} data-test-id={TEST_IDS.title}>
             {title}
-          </Typography>
+          </Typography.SansHeadlineS>
 
-          {titleTooltip && (
-            <QuestionTooltip tip={titleTooltip} size={QuestionTooltip.sizes.S} data-test-id={TEST_IDS.tooltip} />
-          )}
+          {titleTooltip && <QuestionTooltip tip={titleTooltip} size='s' data-test-id={TEST_IDS.tooltip} />}
         </div>
 
         {subtitle && (
-          <Typography
-            family={Typography.families.Sans}
-            role={Typography.roles.Body}
-            size={Typography.sizes.M}
-            className={styles.subtitle}
-            data-test-id={TEST_IDS.subtitle}
-          >
+          <Typography.SansBodyM className={styles.subtitle} data-test-id={TEST_IDS.subtitle}>
             {subtitle}
-          </Typography>
+          </Typography.SansBodyM>
         )}
       </div>
     </div>

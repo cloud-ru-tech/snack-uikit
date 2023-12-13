@@ -18,7 +18,7 @@ export type HeaderProps = {
   size?: Size;
   /**
    * Расположение подсказки лейбла
-   * @default Tooltip.placements.Top
+   * @default top
    */
   labelTooltipPlacement?: TooltipProps['placement'];
 };
@@ -29,7 +29,7 @@ export function Header({
   labelFor,
   size,
   required = false,
-  labelTooltipPlacement = Tooltip.placements.Top,
+  labelTooltipPlacement = 'top',
 }: HeaderProps) {
   return (
     <span className={styles.header} data-size={size}>

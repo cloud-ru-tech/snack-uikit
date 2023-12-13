@@ -33,12 +33,10 @@ export function Emblem(props: EmblemProps) {
   return (
     <IconPredefined
       icon={props.icon}
-      appearance={props.appearance ?? IconPredefined.appearances.Primary}
+      appearance={props.appearance ?? 'primary'}
       decor={props.decor ?? true}
       size={size}
       data-test-id={TEST_IDS.emblemIcon}
     />
   );
 }
-
-Emblem.appearances = IconPredefined.appearances;

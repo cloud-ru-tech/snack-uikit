@@ -4,8 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TAG_ROW_TEST_IDS } from '../../components/TagRow/constants';
-import { Size } from '../../constants';
-import { TagRowItemInner } from '../../types';
+import { Size, TagRowItemInner } from '../../types';
 import { TagList } from '../TagList';
 import { TagMore } from '../TagMore';
 import { useResizeObserver } from './hooks';

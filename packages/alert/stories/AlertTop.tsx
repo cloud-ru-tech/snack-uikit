@@ -5,8 +5,8 @@ import * as Icons from '@snack-uikit/icons';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { AlertTop, AlertTopProps } from '../src/components/AlertTop';
-import { Appearance } from '../src/constants';
+import { AlertTop, AlertTopProps } from '../src';
+import { APPEARANCE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const ICONS = {
@@ -43,7 +43,7 @@ alertTop.args = {
   description: 'Description',
   icon: true,
   link: 'Link text',
-  appearance: Appearance.Success,
+  appearance: APPEARANCE.Success,
   buttonText: 'Button Text',
   buttonIcon: <Icons.PlaceholderSVG />,
   onClose: () => {},

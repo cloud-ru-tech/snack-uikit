@@ -1,7 +1,7 @@
-export enum SelectionMode {
-  Single = 'single',
-  Multi = 'multi',
-}
+export const SELECTION_MODE = {
+  Single: 'single',
+  Multi: 'multi',
+} as const;
 
 export const TRANSITION_TIMING = {
   accordionFolding: 200,

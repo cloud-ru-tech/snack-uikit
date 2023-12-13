@@ -6,6 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Tag, TagProps } from '../src';
+import { APPEARANCE, SIZE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -17,8 +18,8 @@ export default meta;
 type StoryProps = TagProps & { removableMode: boolean };
 
 const Template: StoryFn<StoryProps> = ({ removableMode, ...args }) => {
-  const sizes = Object.values(Tag.sizes);
-  const appearances = Object.values(Tag.appearances);
+  const sizes = Object.values(SIZE);
+  const appearances = Object.values(APPEARANCE);
   const [visible, setVisible] = useState(true);
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
 
@@ -59,6 +60,12 @@ tag.args = {
 };
 
 tag.argTypes = {
+  size: {
+    options: Object.values(SIZE),
+    control: {
+      type: 'radio',
+    },
+  },
   removableMode: {
     name: '[Stories]: Show remove mode',
     control: {

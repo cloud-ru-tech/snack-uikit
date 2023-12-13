@@ -1,4 +1,4 @@
-import { Appearance } from '../src/components/NotificationCard/constants';
+import { APPEARANCE } from '../src/components/NotificationCard/constants';
 
 export const STORY_TEST_IDS = {
   panel: 'notification-panel',
@@ -11,7 +11,7 @@ export const STORY_TEST_IDS = {
 export const NOTIFICATION_CARD_MOCK = {
   id: 'cardId',
   label: ['Category', 'Subcategory'].join('・'),
-  appearance: Appearance.Neutral,
+  appearance: APPEARANCE.Neutral,
   title: 'Title truncate two line',
   content: `Demo content.
 

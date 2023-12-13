@@ -1,6 +1,14 @@
 import { JSXElementConstructor, MouseEventHandler } from 'react';
 
-import { ElementType, ItemRenderMode } from './constants';
+import { ValueOf } from '@snack-uikit/utils';
+
+import { ELEMENT_TYPE, ITEM_RENDER_MODE, SIZE } from './constants';
+
+export type Size = ValueOf<typeof SIZE>;
+
+export type ElementType = ValueOf<typeof ELEMENT_TYPE>;
+
+export type ItemRenderMode = ValueOf<typeof ITEM_RENDER_MODE>;
 
 export type Item = {
   id: string;
@@ -16,10 +24,10 @@ export type InnerItem = Item & {
 };
 
 export type ItemSizeMap = {
-  [ItemRenderMode.ShortLabel]: number;
-  [ItemRenderMode.Collapsed]: number;
-  [ItemRenderMode.Ellipsis]: number;
-  [ItemRenderMode.Full]: number;
+  [ITEM_RENDER_MODE.ShortLabel]: number;
+  [ITEM_RENDER_MODE.Collapsed]: number;
+  [ITEM_RENDER_MODE.Ellipsis]: number;
+  [ITEM_RENDER_MODE.Full]: number;
 };
 
 export type SizeMap = {
@@ -32,15 +40,15 @@ export type SizeMap = {
 
 export type BreadcrumbsConfigChain = Array<
   | {
-      element: ElementType.Collapse;
+      element: typeof ELEMENT_TYPE.Collapse;
       width: number;
     }
   | {
-      element: ElementType.Separator;
+      element: typeof ELEMENT_TYPE.Separator;
       width: number;
     }
   | {
-      element: ElementType.Item;
+      element: typeof ELEMENT_TYPE.Item;
       width: number;
       item: InnerItem;
     }

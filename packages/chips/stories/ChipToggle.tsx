@@ -8,8 +8,8 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ChipToggle, ChipToggleProps } from '../src';
-import { Size, Variant } from '../src/constants';
-import { ICONS } from './constants';
+import { SIZE, VARIANT } from '../src/constants';
+import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -21,7 +21,7 @@ export default meta;
 const STATE_TABLE_HEADERS = ['Default', 'Checked', 'Loading', 'Disabled', 'Checked + Loading'];
 
 const VARIANTS_TABLE_HEADERS = Array(STATE_TABLE_HEADERS.length)
-  .fill(Object.values(Variant))
+  .fill(Object.values(VARIANT))
   .flatMap(v => v);
 
 const noop = () => {};
@@ -75,7 +75,7 @@ const Template: StoryFn<ChipToggleProps> = ({ ...args }: ChipToggleProps) => {
           </div>
         ))}
 
-        {Object.values(Size).map(size => (
+        {Object.values(SIZE).map(size => (
           <Fragment key={size}>
             <div className={headerCellClassnames}>{size}</div>
 
@@ -95,7 +95,7 @@ export const chipToggle: StoryObj<ChipToggleProps> = Template.bind({});
 
 chipToggle.args = {
   label: 'Label text',
-  size: ChipToggle.sizes.S,
+  size: SIZE.S,
   disabled: false,
   loading: false,
   checked: false,
@@ -105,17 +105,7 @@ chipToggle.args = {
   onChange: undefined,
 };
 
-chipToggle.argTypes = {
-  size: { control: { type: 'radio' } },
-  icon: {
-    name: '[Stories]: Show icon examples',
-    options: Object.keys(ICONS),
-    mapping: ICONS,
-    control: {
-      type: 'select',
-    },
-  },
-};
+chipToggle.argTypes = COMMON_ARG_TYPES;
 
 chipToggle.parameters = {
   readme: {

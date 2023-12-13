@@ -9,6 +9,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Breadcrumbs, BreadcrumbsProps } from '../src';
+import { SIZE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -58,7 +59,7 @@ const Template = ({
   return (
     <div>
       <style>{`.${styles.scroll} { width: ${storyContainerWidth}; }`}</style>
-      <Scroll className={styles.scroll} resize={Scroll.resizes.Horizontal}>
+      <Scroll className={styles.scroll} resize='horizontal'>
         <div className={styles.container}>
           <Breadcrumbs {...rest} items={items} />
         </div>
@@ -85,7 +86,7 @@ breadcrumbs.args = {
   storyIcon: false,
   storyOnClick: false,
   storyContainerWidth: '100%',
-  size: Breadcrumbs.sizes.S,
+  size: SIZE.S,
 };
 
 breadcrumbs.argTypes = {
@@ -111,6 +112,12 @@ breadcrumbs.argTypes = {
   },
   storyContainerWidth: {
     name: `[story] container width`,
+  },
+  size: {
+    options: Object.values(SIZE),
+    control: {
+      type: 'radio',
+    },
   },
 };
 

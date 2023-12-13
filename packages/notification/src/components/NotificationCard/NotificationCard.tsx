@@ -8,9 +8,10 @@ import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { NotificationCardFunction } from './components';
-import { Appearance, TEST_IDS } from './constants';
+import { APPEARANCE, TEST_IDS } from './constants';
 import { getIcon } from './helpers';
 import styles from './styles.module.scss';
+import { Appearance } from './types';
 
 export type NotificationCardProps = WithSupportProps<{
   /** Идентификатор уведомления */
@@ -45,7 +46,7 @@ export type NotificationCardProps = WithSupportProps<{
 /** Компонент карточки уведомления */
 export function NotificationCard({
   id,
-  appearance = Appearance.Neutral,
+  appearance = APPEARANCE.Neutral,
   label,
   unread,
   title,
@@ -58,10 +59,10 @@ export function NotificationCard({
   className,
   ...rest
 }: NotificationCardProps) {
-  const { icon, linkOnColor } = useMemo(
+  const { icon, linkOnColor } = useMemo<{ icon: ReturnType<typeof getIcon>; linkOnColor: LinkProps['onColor'] }>(
     () => ({
       icon: getIcon(appearance),
-      linkOnColor: appearance === Appearance.ErrorCritical ? Link.onColors.Red : undefined,
+      linkOnColor: appearance === APPEARANCE.ErrorCritical ? 'red' : undefined,
     }),
     [appearance],
   );
@@ -122,7 +123,7 @@ export function NotificationCard({
       )}
 
       {label && (
-        <Typography.LightLabelS tag={Typography.tags.div} className={styles.notificationCardLabel}>
+        <Typography.LightLabelS tag='div' className={styles.notificationCardLabel}>
           <TruncateString maxLines={1} text={label} data-test-id={TEST_IDS.label} />
         </Typography.LightLabelS>
       )}
@@ -130,17 +131,13 @@ export function NotificationCard({
       <div className={styles.notificationCardTitle}>
         <div className={styles.notificationCardTitleIcon}>{icon}</div>
 
-        <Typography.SansTitleS tag={Typography.tags.div} className={styles.notificationCardTitleText}>
+        <Typography.SansTitleS tag='div' className={styles.notificationCardTitleText}>
           <TruncateString maxLines={2} text={title} data-test-id={TEST_IDS.title} />
         </Typography.SansTitleS>
       </div>
 
       {content && (
-        <Typography.SansBodyS
-          tag={Typography.tags.div}
-          className={styles.notificationCardContent}
-          data-test-id={TEST_IDS.content}
-        >
+        <Typography.SansBodyS tag='div' className={styles.notificationCardContent} data-test-id={TEST_IDS.content}>
           {content}
         </Typography.SansBodyS>
       )}
@@ -152,8 +149,8 @@ export function NotificationCard({
               {...link}
               onClick={handleLinkClick}
               onColor={linkOnColor}
-              onSurface={Link.onSurfaces.Decor}
-              size={Link.sizes.S}
+              onSurface='decor'
+              size='s'
               data-test-id={TEST_IDS.link}
             />
           )}
@@ -168,5 +165,3 @@ export function NotificationCard({
     </div>
   );
 }
-
-NotificationCard.appearances = Appearance;

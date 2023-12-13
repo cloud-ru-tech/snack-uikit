@@ -1,5 +1,5 @@
 import { DrawerCustom, DrawerCustomProps, DrawerProps } from '../src';
-import { Size } from '../src/constants';
+import { Size } from '../src/types';
 
 type CustomDrawerProps = DrawerCustomProps &
   Omit<DrawerCustom.HeaderProps, 'className'> &

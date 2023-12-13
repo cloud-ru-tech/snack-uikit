@@ -12,8 +12,8 @@
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| weight | enum Weight: `"light"`, `"regular"` | Weight.Regular | Толщина линии |
-| orientation | enum Orientation: `"horizontal"`, `"vertical"` | Orientation.Horizontal | Ориентация |
+| weight | enum Weight: `"light"`, `"regular"` | regular | Толщина линии |
+| orientation | enum Orientation: `"horizontal"`, `"vertical"` | horizontal | Ориентация |
 | className | `string` | - | CSS-класс |
 
 

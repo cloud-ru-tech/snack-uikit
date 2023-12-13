@@ -1,20 +1,20 @@
-export enum Size {
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
+export const SIZE = {
+  S: 's',
+  M: 'm',
+  L: 'l',
+} as const;
 
-export const SIZE_AS_VALUES: string[] = Object.values(Size);
+export const SIZE_AS_VALUES: string[] = Object.values(SIZE);
 
-export enum Mode {
-  Regular = 'regular',
-  Soft = 'soft',
-}
+export const MODE = {
+  Regular: 'regular',
+  Soft: 'soft',
+} as const;
 
-export enum Position {
-  Right = 'right',
-  Left = 'left',
-}
+export const POSITION = {
+  Right: 'right',
+  Left: 'left',
+} as const;
 
 export const NESTED_DRAWER_PUSH_DISTANCE = 24;
 

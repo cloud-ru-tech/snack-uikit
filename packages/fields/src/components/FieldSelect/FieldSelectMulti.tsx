@@ -1,11 +1,11 @@
 import { FocusEventHandler, forwardRef, MouseEventHandler, useCallback, useMemo, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { DEFAULT_LOCALE } from './constants';
+import { DEFAULT_LOCALE, SELECTION_MODE } from './constants';
 import { FieldSelectBase } from './FieldSelectBase';
 import { getDisplayedValue } from './helpers';
 import { useList } from './hooks';
-import { FieldSelectMultiProps, Option, SelectionMode } from './types';
+import { FieldSelectMultiProps, Option } from './types';
 
 export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiProps>(
   (
@@ -28,7 +28,7 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
     },
     ref,
   ) => {
-    const selectionMode = SelectionMode.Multi;
+    const selectionMode = SELECTION_MODE.Multi;
     const [value, setValue] = useUncontrolledProp(valueProp, [], onChange);
     const selected = useMemo(() => options.filter(option => value?.includes(option.value)), [options, value]);
     const displayedValue = getDisplayedValue({ selectionMode, selected, getSelectedItemsText });

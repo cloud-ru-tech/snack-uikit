@@ -1,4 +1,4 @@
-export enum Type {
-  Text = 'text',
-  Password = 'password',
-}
+export const TYPE = {
+  Text: 'text',
+  Password: 'password',
+} as const;

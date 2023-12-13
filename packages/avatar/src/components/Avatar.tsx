@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { StatusIndicator, StatusIndicatorProps } from '@snack-uikit/status';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance, Shape, Size } from './constants';
+import { APPEARANCE, SHAPE, SIZE } from './constants';
 import styles from './styles.module.scss';
+import { Appearance, Shape, Size } from './types';
 import { getAbbreviation } from './utils';
 
 export type AvatarProps = WithSupportProps<{
@@ -27,14 +28,14 @@ export type AvatarProps = WithSupportProps<{
   className?: string;
 }>;
 
-const statusIndicatorSizeMap = {
-  [Size.Xxs]: StatusIndicator.sizes.Xxs,
-  [Size.Xs]: StatusIndicator.sizes.Xs,
-  [Size.S]: StatusIndicator.sizes.Xs,
-  [Size.M]: StatusIndicator.sizes.M,
-  [Size.L]: StatusIndicator.sizes.M,
-  [Size.Xl]: StatusIndicator.sizes.L,
-  [Size.Xxl]: StatusIndicator.sizes.L,
+const statusIndicatorSizeMap: Record<Size, StatusIndicatorProps['size']> = {
+  [SIZE.Xxs]: 'xxs',
+  [SIZE.Xs]: 'xs',
+  [SIZE.S]: 'xs',
+  [SIZE.M]: 'm',
+  [SIZE.L]: 'm',
+  [SIZE.Xl]: 'l',
+  [SIZE.Xxl]: 'l',
 };
 
 /**
@@ -43,9 +44,9 @@ const statusIndicatorSizeMap = {
  */
 export function Avatar({
   name,
-  appearance = Avatar.appearances.Red,
-  size = Avatar.sizes.S,
-  shape = Avatar.shapes.Round,
+  appearance = APPEARANCE.Red,
+  size = SIZE.S,
+  shape = SHAPE.Round,
   indicator,
   showTwoSymbols,
   src,
@@ -53,7 +54,7 @@ export function Avatar({
   ...rest
 }: AvatarProps) {
   const [imageError, setImageError] = useState(false);
-  const numberOfSymbols = size !== Size.Xxs && showTwoSymbols ? 2 : 1;
+  const numberOfSymbols = size !== SIZE.Xxs && showTwoSymbols ? 2 : 1;
 
   useEffect(() => {
     setImageError(false);
@@ -80,8 +81,3 @@ export function Avatar({
     </div>
   );
 }
-
-Avatar.sizes = Size;
-Avatar.appearances = Appearance;
-Avatar.shapes = Shape;
-Avatar.indicators = StatusIndicator.appearances;

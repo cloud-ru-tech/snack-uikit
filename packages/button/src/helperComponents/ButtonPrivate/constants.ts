@@ -1,4 +1,4 @@
-import { Appearance } from '../../constants';
+import { APPEARANCE } from '../../constants';
 
 export enum Variant {
   LabelOnly = 'label-only',
@@ -7,15 +7,8 @@ export enum Variant {
   IconAfter = 'icon-after',
 }
 
-export enum PrivateSize {
-  Xs = 'xs',
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
-
 export const APPEARANCE_TO_COLOR_MAP = {
-  [Appearance.Neutral]: 'neutral',
-  [Appearance.Primary]: 'primary',
-  [Appearance.Destructive]: 'red',
+  [APPEARANCE.Neutral]: 'neutral',
+  [APPEARANCE.Primary]: 'primary',
+  [APPEARANCE.Destructive]: 'red',
 };

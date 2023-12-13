@@ -7,7 +7,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { DrawerCustom } from '../src';
-import { Size } from '../src/constants';
+import { SIZE } from '../src/constants';
 import { ARG_TYPES, DEFAULT_ARGS } from './constants';
 import { DrawerCustomStoryProps } from './types';
 
@@ -55,7 +55,7 @@ export const drawerCustom: StoryObj<DrawerCustomStoryProps> = Template.bind({});
 
 drawerCustom.args = {
   ...DEFAULT_ARGS,
-  sizePredefined: Size.S,
+  sizePredefined: SIZE.S,
   sizeCustom: undefined,
 };
 
@@ -66,8 +66,8 @@ drawerCustom.argTypes = {
     control: {
       type: 'radio',
     },
-    options: Object.values(Size),
-    defaultValue: Size.S,
+    options: Object.values(SIZE),
+    defaultValue: SIZE.S,
     if: {
       arg: 'sizeCustom',
       truthy: false,

@@ -4,6 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Spinner, SpinnerProps } from '../src';
+import { LOADER_SIZE } from '../src/components/constants';
 
 const meta: Meta = {
   title: 'Components/Loaders/Spinner',
@@ -17,10 +18,17 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => <Spinner {...args} />;
 export const spinner: StoryObj<StoryProps> = Template.bind({});
 
 spinner.args = {
-  size: Spinner.sizes.S,
+  size: LOADER_SIZE.S,
 };
 
-spinner.argTypes = {};
+spinner.argTypes = {
+  size: {
+    options: Object.values(LOADER_SIZE),
+    control: {
+      type: 'radio',
+    },
+  },
+};
 
 spinner.parameters = {
   readme: {

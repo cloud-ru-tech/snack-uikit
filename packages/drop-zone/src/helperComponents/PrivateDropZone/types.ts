@@ -1,13 +1,12 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
 
-import { WithSupportProps } from '@snack-uikit/utils';
+import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
+
+import { UPLOAD_MODE } from './constants';
 
 export type DragAndDropEventNames = 'onDragLeave' | 'onDragOver' | 'onDrop';
 
-export enum UploadMode {
-  Single = 'Single',
-  Multiple = 'Multiple',
-}
+export type UploadMode = ValueOf<typeof UPLOAD_MODE>;
 
 export type PrivateDropZoneProps = WithSupportProps<{
   isOver: boolean;
@@ -21,7 +20,7 @@ export type PrivateDropZoneProps = WithSupportProps<{
   disabled?: boolean;
   /**
    * Режим
-   * @default UploadMode.Multiple
+   * @default multiple
    */
   mode?: UploadMode;
   /** Режим */

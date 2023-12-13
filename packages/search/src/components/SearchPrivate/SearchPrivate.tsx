@@ -14,7 +14,8 @@ import {
 import { Sun } from '@snack-uikit/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { PRIVATE_SEARCH_TEST_IDS, Size } from '../../constants';
+import { PRIVATE_SEARCH_TEST_IDS, SIZE } from '../../constants';
+import { Size } from '../../types';
 import styles from './styles.module.scss';
 
 export type SearchPrivateProps = WithSupportProps<
@@ -30,9 +31,9 @@ export type SearchPrivateProps = WithSupportProps<
   } & Pick<Partial<InputPrivateProps>, 'value' | 'onChange' | 'placeholder' | 'onFocus' | 'onBlur' | 'onKeyDown'>
 >;
 
-const SearchPrivateComponent = forwardRef<HTMLInputElement, SearchPrivateProps>(function SearchPrivate(
+export const SearchPrivate = forwardRef<HTMLInputElement, SearchPrivateProps>(function SearchPrivate(
   {
-    size = Size.S,
+    size = SIZE.S,
     value: valueProp = '',
     onChange: onChangeProp,
     loading,
@@ -114,7 +115,7 @@ const SearchPrivateComponent = forwardRef<HTMLInputElement, SearchPrivateProps>(
         tabIndex={inputTabIndex}
         ref={mergeRefs(ref, localRef)}
         placeholder={placeholder}
-        type={InputPrivate.types.Text}
+        type='text'
         data-test-id={PRIVATE_SEARCH_TEST_IDS.input}
       />
 
@@ -122,9 +123,3 @@ const SearchPrivateComponent = forwardRef<HTMLInputElement, SearchPrivateProps>(
     </div>
   );
 });
-
-export const SearchPrivate = SearchPrivateComponent as typeof SearchPrivateComponent & {
-  sizes: typeof Size;
-};
-
-SearchPrivate.sizes = Size;

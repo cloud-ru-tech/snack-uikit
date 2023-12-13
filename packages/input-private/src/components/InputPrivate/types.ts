@@ -1,8 +1,10 @@
 import { ChangeEvent, FocusEventHandler, KeyboardEventHandler, MouseEventHandler, RefAttributes } from 'react';
 
-import { WithSupportProps } from '@snack-uikit/utils';
+import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
-import { Type } from './constants';
+import { TYPE } from './constants';
+
+export type Type = ValueOf<typeof TYPE>;
 
 export type InputPrivateProps = RefAttributes<HTMLInputElement> &
   WithSupportProps<{

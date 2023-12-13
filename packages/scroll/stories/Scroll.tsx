@@ -4,7 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Scroll, ScrollProps } from '../src';
-import { BarHideStrategy, Resize, Size } from '../src/constants';
+import { BAR_HIDE_STRATEGY, RESIZE, SIZE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -36,13 +36,25 @@ export const scroll: StoryObj<StoryProps> = Template.bind({});
 
 scroll.args = {
   contentLines: 15,
-  size: Size.M,
-  barHideStrategy: BarHideStrategy.Leave,
-  resize: Resize.None,
+  size: SIZE.M,
+  barHideStrategy: BAR_HIDE_STRATEGY.Leave,
+  resize: RESIZE.None,
   untouchableScrollbars: false,
 };
 
 scroll.argTypes = {
+  barHideStrategy: {
+    options: Object.values(BAR_HIDE_STRATEGY),
+    control: {
+      type: 'radio',
+    },
+  },
+  resize: {
+    options: Object.values(RESIZE),
+    control: {
+      type: 'radio',
+    },
+  },
   contentLines: {
     name: '[Stories]: Content text lines count ',
     control: {

@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { Size } from '../../constants';
+import { SIZE } from '../../constants';
 import { SearchAutocomplete, SearchAutocompleteProps } from '../SearchAutocomplete';
 import { SearchFieldText } from '../SearchFieldText';
 import { SearchPrivateProps } from '../SearchPrivate';
@@ -26,7 +26,7 @@ export type SearchProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
       }
   );
 
-const SearchComponent = forwardRef<HTMLInputElement, SearchProps>(function Search({ size = Size.S, ...props }, ref) {
+export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search({ size = SIZE.S, ...props }, ref) {
   const { value, onChange, onBlur, onFocus, outline, loading, placeholder, onSubmit, className, ...rest } = props;
   const supportProps = extractSupportProps(rest);
 
@@ -67,9 +67,3 @@ const SearchComponent = forwardRef<HTMLInputElement, SearchProps>(function Searc
     />
   );
 });
-
-export const Search = SearchComponent as typeof SearchComponent & {
-  sizes: typeof Size;
-};
-
-Search.sizes = Size;

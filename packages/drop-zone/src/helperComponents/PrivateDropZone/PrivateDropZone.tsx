@@ -3,8 +3,9 @@ import { ChangeEvent, DragEvent, useRef } from 'react';
 
 import { extractSupportProps } from '@snack-uikit/utils';
 
+import { UPLOAD_MODE } from './constants';
 import classNames from './styles.module.scss';
-import { PrivateDropZoneProps, UploadMode } from './types';
+import { PrivateDropZoneProps } from './types';
 
 export function PrivateDropZone({
   disabled = false,
@@ -13,7 +14,7 @@ export function PrivateDropZone({
   onDragLeave,
   onDragOver,
   onDrop,
-  mode = UploadMode.Multiple,
+  mode = UPLOAD_MODE.Multiple,
   description,
   title,
   onFilesUpload,
@@ -39,7 +40,7 @@ export function PrivateDropZone({
 
     const filesArray = Array.from(e.dataTransfer.files);
     onDrop?.(e);
-    onFilesUpload(mode === UploadMode.Single ? [filesArray[0]] : filesArray);
+    onFilesUpload(mode === UPLOAD_MODE.Single ? [filesArray[0]] : filesArray);
   };
 
   return (
@@ -67,7 +68,7 @@ export function PrivateDropZone({
         data-test-id='file-input'
         className={classNames.hidden}
         onChange={handleFileSelect}
-        multiple={mode === UploadMode.Multiple}
+        multiple={mode === UPLOAD_MODE.Multiple}
         ref={hiddenFileInput}
         type='file'
         accept={accept}

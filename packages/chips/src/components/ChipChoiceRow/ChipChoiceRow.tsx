@@ -7,9 +7,9 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CHIP_CHOICE_ROW_IDS } from '../../constants';
 import { ForwardedChipChoice } from './components';
-import { MAP_ROW_SIZE_TO_BUTTON_SIZE, MAP_ROW_SIZE_TO_CHOICE_SIZE, Size } from './constants';
+import { CHIP_CHOICE_ROW_SIZE, MAP_ROW_SIZE_TO_BUTTON_SIZE, MAP_ROW_SIZE_TO_CHOICE_SIZE } from './constants';
 import styles from './styles.module.scss';
-import { ChipChoiceProps, FilterValue, OmitBetter } from './types';
+import { ChipChoiceProps, ChipChoiceRowSize, FilterValue, OmitBetter } from './types';
 
 export type FiltersState = Record<string, unknown>;
 
@@ -22,8 +22,8 @@ export type ChipChoiceRowProps<TState extends FiltersState> = WithSupportProps<{
   onChange?(filters: TState): void;
   /** Массив чипов */
   filters: OmitBetter<ChipChoiceProps, 'onChange' | 'value' | 'size' | 'defaultValue'>[];
-  /** Размер @default Size.S */
-  size?: Size;
+  /** Размер @default 's' */
+  size?: ChipChoiceRowSize;
   /** CSS-класс */
   className?: string;
   /** Скрыть/показать кнопку очиски @default true */
@@ -40,7 +40,7 @@ export function ChipChoiceRow<TState extends FiltersState>({
   className,
   value,
   defaultValue,
-  size = Size.S,
+  size = CHIP_CHOICE_ROW_SIZE.S,
   ...rest
 }: ChipChoiceRowProps<TState>) {
   const [state, setState] = useUncontrolledProp<TState>(value, (defaultValue ?? {}) as TState, newState => {
@@ -88,7 +88,7 @@ export function ChipChoiceRow<TState extends FiltersState>({
           onClick={handleFiltersClear}
           label={clearAllButtonLabel}
           icon={<CrossSVG />}
-          iconPosition={ButtonFunction.iconPositions.Before}
+          iconPosition='before'
           size={MAP_ROW_SIZE_TO_BUTTON_SIZE[size]}
           data-test-id={CHIP_CHOICE_ROW_IDS.clearAllButton}
         />
@@ -96,5 +96,3 @@ export function ChipChoiceRow<TState extends FiltersState>({
     </div>
   );
 }
-
-ChipChoiceRow.sizes = Size;

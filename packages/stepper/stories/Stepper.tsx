@@ -6,7 +6,8 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Stepper, StepperProps, useStepperApi } from '../src';
-import { StepValidationResult } from '../src/constants';
+import { STEP_VALIDATION_RESULT } from '../src/constants';
+import { StepValidationResult } from '../src/types';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -30,14 +31,9 @@ function ControlPanel() {
         <div data-test-id='current-index'>current step index: {currentStepIndex}</div>
       </div>
       <div className={styles.panel}>
-        <ButtonOutline data-test-id='prev' size={ButtonOutline.sizes.S} label='go prev' onClick={() => goPrev()} />
-        <ButtonOutline
-          data-test-id='reset-validation'
-          size={ButtonOutline.sizes.S}
-          label='reset validation'
-          onClick={resetValidation}
-        />
-        <ButtonOutline data-test-id='next' size={ButtonOutline.sizes.S} label='go next' onClick={goNext} />
+        <ButtonOutline data-test-id='prev' size='s' label='go prev' onClick={() => goPrev()} />
+        <ButtonOutline data-test-id='reset-validation' size='s' label='reset validation' onClick={resetValidation} />
+        <ButtonOutline data-test-id='next' size='s' label='go next' onClick={goNext} />
       </div>
     </>
   );
@@ -47,7 +43,7 @@ const Template: StoryFn<StoryProp> = ({ validationTimeout, isValid, ...args }: S
   const validation = () =>
     new Promise<StepValidationResult>(resolve =>
       setTimeout(
-        () => resolve(isValid ? StepValidationResult.Completed : StepValidationResult.Rejected),
+        () => resolve(isValid ? STEP_VALIDATION_RESULT.Completed : STEP_VALIDATION_RESULT.Rejected),
         validationTimeout,
       ),
     );

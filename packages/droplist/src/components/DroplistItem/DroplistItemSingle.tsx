@@ -8,5 +8,5 @@ export const DroplistItemSingle = forwardRef<HTMLButtonElement, DroplistItemSing
   props,
   ref,
 ) {
-  return <DroplistItem variant={DroplistItem.variants.Single} ref={ref} {...props} />;
+  return <DroplistItem variant='single' ref={ref} {...props} />;
 });

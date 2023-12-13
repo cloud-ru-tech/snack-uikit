@@ -47,7 +47,7 @@ export function CollapseBlockHeaderContainer({
           className={styles.button}
           data-expanded={expanded || undefined}
           icon={<ChevronDownSVG />}
-          size={ButtonFunction.sizes.Xs}
+          size='xs'
           data-test-id={TEST_IDS.chevron}
         />
       </div>

@@ -12,8 +12,8 @@ import { HeartSVG } from '@snack-uikit/icons';
 import { IconPredefined } from '@snack-uikit/icon-predefined';
 
 <IconPredefined
-    appearance={IconPredefined.appearances.Red}
-    size={IconPredefined.sizes.L}
+    appearance='red'
+    size='l'
     className='className'
     icon={HeartSVG}
     decor
@@ -28,23 +28,23 @@ import { IconPredefined } from '@snack-uikit/icon-predefined';
 #### **`className?: string`**
 css-класс контейнера.
 
-#### **`appearance?: Appearance`** - *`[Appearance.Primary]`*
+#### **`appearance?: Appearance`** - *`primary`*
 Цвет иконки. Возможные варианты:
-  - `IconPredefined.appearances.Primary`
-  - `IconPredefined.appearances.Neutral`
-  - `IconPredefined.appearances.Red`
-  - `IconPredefined.appearances.Orange`
-  - `IconPredefined.appearances.Yellow`
-  - `IconPredefined.appearances.Green`
-  - `IconPredefined.appearances.Blue`
-  - `IconPredefined.appearances.Violet`
-  - `IconPredefined.appearances.Pink`
+  - `primary`
+  - `neutral`
+  - `red`
+  - `orange`
+  - `yellow`
+  - `green`
+  - `blue`
+  - `violet`
+  - `pink`
 
-#### **`size?: Size`** - *`[Size.S]`*
+#### **`size?: Size`** - *`s`*
 Размер компонента. Возможные варианты:
-  - `IconPredefined.sizes.S`
-  - `IconPredefined.sizes.M`
-  - `IconPredefined.sizes.L`
+  - `s`
+  - `m`
+  - `l`
 
 #### **`decor?: boolean`** - *`[true]`*
 Включает цветную подложку для иконки.
@@ -57,9 +57,9 @@ css-класс контейнера.
 |------|------|---------------|-------------|
 | icon* | `JSXElementConstructor<{ size?: number; className?: string; }>` | - | JSX иконки |
 | className | `string` | - | CSS-класс |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | Appearance.Primary | Внешний вид |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Внешний вид |
 | decor | `boolean` | true | Наличие цветной подложки |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.M | Размер |
+| size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер |
 
 
 [//]: DOCUMENTATION_SECTION_END

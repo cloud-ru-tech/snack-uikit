@@ -33,7 +33,7 @@ export function NotificationPanelSettingsDroplist({ actions, button }: Notificat
       useScroll
       triggerRef={triggerElementRef}
       triggerElement={<ButtonSimple {...button} onKeyDown={handleTriggerKeyDown} />}
-      placement={Droplist.placements.BottomEnd}
+      placement='bottom-end'
       data-test-id={TEST_IDS.settings.droplist}
     >
       {actions.map(action => (

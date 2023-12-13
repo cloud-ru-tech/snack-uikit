@@ -10,7 +10,7 @@ export type PromoBadgeProps = {
 export function PromoBadge({ text }: PromoBadgeProps) {
   return (
     <div className={styles.promoBadge}>
-      <PromoTag appearance={PromoTag.appearances.Primary} text={text} data-test-id={TEST_IDS.promoBadge} />
+      <PromoTag appearance='primary' text={text} data-test-id={TEST_IDS.promoBadge} />
     </div>
   );
 }

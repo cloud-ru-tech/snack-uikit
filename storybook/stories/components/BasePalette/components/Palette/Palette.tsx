@@ -20,14 +20,7 @@ export function Palette({ colors }: PaletteProps) {
 
         return (
           <Fragment key={color}>
-            <Typography
-              family={Typography.families.Sans}
-              role={Typography.roles.Body}
-              size={Typography.sizes.S}
-              className={cn(styles.cell, styles.firstCell)}
-            >
-              {colorName}
-            </Typography>
+            <Typography.SansBodyS className={cn(styles.cell, styles.firstCell)}>{colorName}</Typography.SansBodyS>
             {TONES.map(tone => (
               <Fragment key={tone}>
                 <div
@@ -39,14 +32,7 @@ export function Palette({ colors }: PaletteProps) {
                 />
               </Fragment>
             ))}
-            <Typography
-              family={Typography.families.Sans}
-              role={Typography.roles.Body}
-              size={Typography.sizes.S}
-              className={cn(styles.cell, styles.lastCell)}
-            >
-              {colorName}
-            </Typography>
+            <Typography.SansBodyS className={cn(styles.cell, styles.lastCell)}>{colorName}</Typography.SansBodyS>
           </Fragment>
         );
       })}

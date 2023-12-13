@@ -2,10 +2,12 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment } from 'react';
 
+import { APPEARANCE as STATUS_APPEARANCE } from '../../status/src/constants';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Avatar, AvatarProps } from '../src';
+import { APPEARANCE, SHAPE, SIZE } from '../src/components/constants';
 import { imagesConfig } from './images';
 import styles from './styles.module.scss';
 
@@ -16,9 +18,9 @@ const meta: Meta = {
 export default meta;
 
 const DEFAULT_NAME = 'Will Willow';
-const DEFAULT_SIZE = Avatar.sizes.S;
-const DEFAULT_SHAPE = Avatar.shapes.Round;
-const DEFAULT_APPEARANCE = Avatar.appearances.Red;
+const DEFAULT_SIZE = SIZE.S;
+const DEFAULT_SHAPE = SHAPE.Round;
+const DEFAULT_APPEARANCE = APPEARANCE.Red;
 
 type Option = {
   header: string;
@@ -58,10 +60,10 @@ const Template: StoryFn<StoryProps> = ({
   appearance = DEFAULT_APPEARANCE,
   ...args
 }) => {
-  const shapes = Object.values(Avatar.shapes);
-  const sizes = Object.values(Avatar.sizes);
-  const appearances = Object.values(Avatar.appearances);
-  const indicators = Object.values(Avatar.indicators);
+  const shapes = Object.values(SHAPE);
+  const sizes = Object.values(SIZE);
+  const appearances = Object.values(APPEARANCE);
+  const indicators = Object.values(STATUS_APPEARANCE);
 
   return (
     <div className={styles.pageWrapper}>
@@ -79,10 +81,7 @@ const Template: StoryFn<StoryProps> = ({
         <div className={styles.tableVerticalGroup}>
           <Table
             header='Image'
-            options={[
-              { header: 'Yes', props: { src: imagesConfig[Avatar.shapes.Round][Avatar.appearances.Red] } },
-              { header: 'No' },
-            ]}
+            options={[{ header: 'Yes', props: { src: imagesConfig[SHAPE.Round][APPEARANCE.Red] } }, { header: 'No' }]}
           />
 
           <Table header='Shape' options={shapes.map(shape => ({ header: shape, props: { shape } }))} />
@@ -136,6 +135,12 @@ avatar.argTypes = {
   src: {
     table: {
       disable: true,
+    },
+  },
+  size: {
+    options: Object.values(SIZE),
+    control: {
+      type: 'select',
     },
   },
 };

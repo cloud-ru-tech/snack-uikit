@@ -6,7 +6,7 @@ import { ToggleGroup, ToggleGroupProps } from '@snack-uikit/toggles';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { SelectionMode } from '../src/constants';
+import { SELECTION_MODE } from '../src/constants';
 import { ToggleCard } from './helperComponets';
 import styles from './styles.module.scss';
 
@@ -24,7 +24,7 @@ const ITEMS = [
   { id: '4', label: 'item4' },
 ];
 
-const Template: StoryFn<ToggleGroupProps> = ({ selectionMode = SelectionMode.Single }) => {
+const Template: StoryFn<ToggleGroupProps> = ({ selectionMode = SELECTION_MODE.Single }) => {
   const [value, setValue] = useState<string | string[] | undefined>(undefined);
 
   useEffect(() => {
@@ -47,7 +47,9 @@ const Template: StoryFn<ToggleGroupProps> = ({ selectionMode = SelectionMode.Sin
 export const toggleGroup: StoryObj<ToggleGroupProps> = Template.bind({});
 
 toggleGroup.args = {
-  selectionMode: ToggleGroup.selectionModes.Multiple,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  selectionMode: SELECTION_MODE.Multiple,
 };
 
 toggleGroup.argTypes = {};

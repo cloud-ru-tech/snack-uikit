@@ -29,10 +29,10 @@ export type DropdownProps = WithSupportProps<
 
 export function Dropdown({
   content,
-  trigger = PopoverPrivate.triggers.Click,
-  placement = PopoverPrivate.placements.BottomStart,
+  trigger = 'click',
+  placement = 'bottom-start',
   children,
-  widthStrategy = PopoverPrivate.widthStrategies.Gte,
+  widthStrategy = 'gte',
   triggerClassName,
   ...otherProps
 }: DropdownProps) {
@@ -54,7 +54,3 @@ export function Dropdown({
     </PopoverPrivate>
   );
 }
-
-Dropdown.placements = PopoverPrivate.placements;
-Dropdown.triggers = PopoverPrivate.triggers;
-Dropdown.widthStrategies = PopoverPrivate.widthStrategies;

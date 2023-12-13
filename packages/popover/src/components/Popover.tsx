@@ -27,8 +27,8 @@ export type PopoverProps = WithSupportProps<
 
 export function Popover({
   tip,
-  trigger = PopoverPrivate.triggers.Click,
-  placement = PopoverPrivate.placements.Top,
+  trigger = 'click',
+  placement = 'top',
   disableMaxWidth = false,
   children,
   ...otherProps
@@ -55,6 +55,3 @@ export function Popover({
     </PopoverPrivate>
   );
 }
-
-Popover.placements = PopoverPrivate.placements;
-Popover.triggers = PopoverPrivate.triggers;

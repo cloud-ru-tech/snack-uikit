@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { CheckSVG, CrossSVG } from '@snack-uikit/icons';
 
-import { Size } from '../../constants';
+import { SIZE } from '../../constants';
 import { ToggleProps } from '../../types';
 import { getIconSize, getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
@@ -13,7 +13,7 @@ export type SwitchProps = ToggleProps & {
   showIcon?: boolean;
 };
 
-export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, size = Size.M, ...restProps }: SwitchProps) {
+export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, size = SIZE.M, ...restProps }: SwitchProps) {
   const iconSize = useMemo(() => getIconSize(size), [size]);
 
   return (
@@ -46,5 +46,3 @@ export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, size = 
     />
   );
 }
-
-Switch.sizes = Size;

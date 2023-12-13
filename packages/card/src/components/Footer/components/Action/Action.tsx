@@ -20,20 +20,8 @@ export function FooterAction({ button, secondaryButton, className, ...rest }: Fo
 
   return (
     <div className={cn(styles.action, className)} {...excludeSupportProps(rest)}>
-      <ButtonFilled
-        {...button}
-        appearance={ButtonFilled.appearances.Primary}
-        size={ButtonFilled.sizes.M}
-        disabled={disabled}
-      />
-      {secondaryButton && (
-        <ButtonTonal
-          {...secondaryButton}
-          appearance={ButtonTonal.appearances.Neutral}
-          size={ButtonTonal.sizes.M}
-          disabled={disabled}
-        />
-      )}
+      <ButtonFilled {...button} appearance='primary' size='m' disabled={disabled} />
+      {secondaryButton && <ButtonTonal {...secondaryButton} appearance='neutral' size='m' disabled={disabled} />}
     </div>
   );
 }

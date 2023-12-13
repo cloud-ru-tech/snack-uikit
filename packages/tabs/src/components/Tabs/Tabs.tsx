@@ -1,7 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Type } from '../../constants';
 import { TabsContext } from '../../context';
 import { Tab as TabComponent } from '../Tab';
 import { TabBar as TabBarComponent } from '../TabBar';
@@ -30,8 +29,6 @@ export function Tabs<T extends string = string>({ children, onChange, value, def
     </TabsContext.Provider>
   );
 }
-
-Tabs.types = Type;
 
 export namespace Tabs {
   export const Tab = TabComponent;

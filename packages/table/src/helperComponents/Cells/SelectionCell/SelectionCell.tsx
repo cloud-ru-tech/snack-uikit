@@ -2,7 +2,7 @@ import { MouseEvent } from 'react';
 
 import { Checkbox, Radio } from '@snack-uikit/toggles';
 
-import { ColumnPinPosition, TEST_IDS } from '../../../constants';
+import { COLUMN_PIN_POSITION, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';
 import styles from './styles.module.scss';
 
@@ -22,7 +22,7 @@ function SelectionCell({ isMulti, onChange, ...props }: SelectionCellProps) {
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div onClick={handleCellClick} className={styles.selectionCell} data-test-id={TEST_IDS.rowSelect}>
-      {isMulti ? <Checkbox {...props} size={Checkbox.sizes.S} /> : <Radio {...props} size={Radio.sizes.S} />}
+      {isMulti ? <Checkbox {...props} size='s' /> : <Radio {...props} size='s' />}
     </div>
   );
 }
@@ -30,7 +30,7 @@ function SelectionCell({ isMulti, onChange, ...props }: SelectionCellProps) {
 export function getSelectionCellColumnDef<TData>(): ColumnDefinition<TData> {
   return {
     id: 'selectionCell',
-    pinned: ColumnPinPosition.Left,
+    pinned: COLUMN_PIN_POSITION.Left,
     noBodyCellPadding: true,
     size: 40,
     headerClassName: styles.selectionCellHeader,

@@ -2,20 +2,20 @@ import { useMemo } from 'react';
 
 import { HeartFilledSVG, HeartSVG, StarFilledSVG, StarSVG } from '@snack-uikit/icons';
 
-import { FavoriteIcon, Size } from '../../constants';
-import { ToggleProps } from '../../types';
+import { FAVORITE_ICON, SIZE } from '../../constants';
+import { FavoriteIcon, ToggleProps } from '../../types';
 import { getIconSize, getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
 import styles from './styles.module.scss';
 
 const CHECKED_ICONS = {
-  [FavoriteIcon.Star]: StarFilledSVG,
-  [FavoriteIcon.Heart]: HeartFilledSVG,
+  [FAVORITE_ICON.Star]: StarFilledSVG,
+  [FAVORITE_ICON.Heart]: HeartFilledSVG,
 };
 
 const UNCHECKED_ICONS = {
-  [FavoriteIcon.Star]: StarSVG,
-  [FavoriteIcon.Heart]: HeartSVG,
+  [FAVORITE_ICON.Star]: StarSVG,
+  [FAVORITE_ICON.Heart]: HeartSVG,
 };
 
 export type FavoriteProps = Omit<ToggleProps, 'disabled'> & {
@@ -26,8 +26,8 @@ export type FavoriteProps = Omit<ToggleProps, 'disabled'> & {
 export function Favorite({
   inputRef,
   'data-test-id': dataTestId,
-  size = Size.M,
-  icon = FavoriteIcon.Heart,
+  size = SIZE.M,
+  icon = FAVORITE_ICON.Heart,
   ...restProps
 }: FavoriteProps) {
   const iconSize = useMemo(() => getIconSize(size), [size]);
@@ -50,5 +50,3 @@ export function Favorite({
     />
   );
 }
-
-Favorite.sizes = Size;

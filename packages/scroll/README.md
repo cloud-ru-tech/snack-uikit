@@ -12,12 +12,12 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | className | `string` | - | CSS-класс |
-| size | enum Size: `"s"`, `"m"` | Size.M | Размер скролбаров |
+| size | enum Size: `"s"`, `"m"` | m | Размер скролбаров |
 | clickScrolling | `boolean` | true | Скролить ли по клику в скроллбар. |
 | autoscrollTo | enum AutoscrollTo: `"bottom"`, `"right"` | - | Включает автоскрол при маунте и изменении размера контента: <br> - `bottom` - автоскрол вниз, <br> - `right` - автоскрол вправо, |
-| barHideStrategy | enum BarHideStrategy: `"never"`, `"leave"`, `"scroll"`, `"move"` | BarHideStrategy.Leave | Управление скрытием скролл баров: <br> - `Never` - показывать всегда <br> - `Leave` - скрывать когда курсор покидает компонент <br> - `Scroll` - показывать только когда происходит скроллинг <br> - `Move` - показывать при движении курсора над компонентом |
+| barHideStrategy | enum BarHideStrategy: `"never"`, `"leave"`, `"scroll"`, `"move"` | leave | Управление скрытием скролл баров: <br> - `Never` - показывать всегда <br> - `Leave` - скрывать когда курсор покидает компонент <br> - `Scroll` - показывать только когда происходит скроллинг <br> - `Move` - показывать при движении курсора над компонентом |
 | onScroll | `(event?: Event) => void` | - | Колбек события скрола. |
-| resize | enum Resize: `"none"`, `"horizontal"`, `"vertical"`, `"both"` | Resize.None | Настройка возможности регулировать Scroll-контейнер: <br> - `None` - нельзя изменять размер <br> - `Horizontal` - можно изменять размер только по горизонтали <br> - `Vertical` - можно изменять размер только по вертикали <br> - `Both` - можно изменять размер в обеих координатах |
+| resize | enum Resize: `"none"`, `"horizontal"`, `"vertical"`, `"both"` | none | Настройка возможности регулировать Scroll-контейнер: <br> - `None` - нельзя изменять размер <br> - `Horizontal` - можно изменять размер только по горизонтали <br> - `Vertical` - можно изменять размер только по вертикали <br> - `Both` - можно изменять размер в обеих координатах |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | ref | `Ref<HTMLElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |

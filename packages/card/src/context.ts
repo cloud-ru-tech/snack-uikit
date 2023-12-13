@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 
-import { Size } from './constants';
+import { SIZE } from './constants';
+import { Size } from './types';
 
 type CardContextValue = {
   size: Size;
@@ -8,7 +9,7 @@ type CardContextValue = {
 };
 
 export const CardContext = createContext<CardContextValue>({
-  size: Size.M,
+  size: SIZE.M,
   disabled: false,
 });
 

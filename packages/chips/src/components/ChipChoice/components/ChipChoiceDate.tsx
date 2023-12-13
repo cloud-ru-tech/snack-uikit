@@ -2,7 +2,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar } from '@snack-uikit/calendar';
 
-import { DEFAULT_EMPTY_VALUE, Size } from '../../../constants';
+import { DEFAULT_EMPTY_VALUE, SIZE } from '../../../constants';
 import { CALENDAR_SIZE_MAP } from '../constants';
 import { ChipChoiceCommonProps } from '../types';
 import { ChipChoiceCustom } from './ChipChoiceCustom';
@@ -19,7 +19,7 @@ export type ChipChoiceDateProps = ChipChoiceCommonProps & {
 };
 
 export function ChipChoiceDate({
-  size = Size.S,
+  size = SIZE.S,
   value,
   defaultValue,
   onChange,
@@ -44,7 +44,7 @@ export function ChipChoiceDate({
     >
       {({ closeDroplist }) => (
         <Calendar
-          mode={Calendar.modes.Date}
+          mode='date'
           size={CALENDAR_SIZE_MAP[size]}
           value={selectedValue}
           onChangeValue={value => {

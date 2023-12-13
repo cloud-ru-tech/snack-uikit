@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 
-import { SelectionMode } from './constants';
+import { SELECTION_MODE } from './constants';
+import { SelectionMode } from './types';
 
 type ToggleGroupContextType = {
   value: string | undefined | string[];
@@ -11,7 +12,7 @@ type ToggleGroupContextType = {
 export const ToggleGroupContext = createContext<ToggleGroupContextType>({
   value: undefined,
   onChange: undefined,
-  selectionMode: SelectionMode.Single,
+  selectionMode: SELECTION_MODE.Single,
 });
 
 export const useToggleGroupContext = () => useContext(ToggleGroupContext);

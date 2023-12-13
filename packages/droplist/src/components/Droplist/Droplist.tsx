@@ -17,7 +17,8 @@ import {
 
 import { Scroll } from '@snack-uikit/scroll';
 
-import { SCROLL_APPLYING_ITEMS_COUNT, Size } from '../../constants';
+import { SCROLL_APPLYING_ITEMS_COUNT, SIZE } from '../../constants';
+import { Size } from '../../types';
 import { Dropdown, DropdownProps } from '../Dropdown';
 import { DroplistContext } from './DroplistContext';
 import { useKeyboardNavigation } from './hooks';
@@ -39,7 +40,7 @@ export function Droplist({
   firstElementRefCallback,
   onFocusLeave,
   className,
-  size = Size.S,
+  size = SIZE.S,
   scrollRef,
   useScroll = true,
   open,
@@ -162,13 +163,13 @@ export function Droplist({
       <Scroll
         untouchableScrollbars={true}
         className={cn({
-          [styles.scrollContainerS]: scroll && size === Size.S,
-          [styles.scrollContainerM]: scroll && size === Size.M,
-          [styles.scrollContainerL]: scroll && size === Size.L,
+          [styles.scrollContainerS]: scroll && size === SIZE.S,
+          [styles.scrollContainerM]: scroll && size === SIZE.M,
+          [styles.scrollContainerL]: scroll && size === SIZE.L,
         })}
         ref={resultRef}
-        barHideStrategy={Scroll.barHideStrategies.Never}
-        size={Scroll.sizes.S}
+        barHideStrategy='never'
+        size='s'
       >
         {items}
       </Scroll>
@@ -188,6 +189,4 @@ export function Droplist({
   );
 }
 
-Droplist.placements = Dropdown.placements;
-Droplist.triggers = Dropdown.triggers;
 Droplist.useKeyboardNavigation = useKeyboardNavigation;

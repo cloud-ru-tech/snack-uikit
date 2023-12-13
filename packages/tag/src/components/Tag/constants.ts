@@ -1,6 +1,6 @@
-import { Size } from '../../constants';
+import { SIZE } from '../../constants';
 
-export const IconSize = {
-  [Size.Xs]: 16,
-  [Size.S]: 24,
+export const ICON_SIZE = {
+  [SIZE.Xs]: 16,
+  [SIZE.S]: 24,
 };

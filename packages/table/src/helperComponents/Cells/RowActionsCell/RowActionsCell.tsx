@@ -5,7 +5,7 @@ import { ButtonFunction } from '@snack-uikit/button';
 import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
 import { MoreSVG } from '@snack-uikit/icons';
 
-import { ColumnPinPosition, TEST_IDS } from '../../../constants';
+import { COLUMN_PIN_POSITION, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';
 import { useRowContext } from '../../contexts';
 import styles from './styles.module.scss';
@@ -58,7 +58,7 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
         <Droplist
           open={droplistOpened}
           onOpenChange={setDroplistOpen}
-          placement={Droplist.placements.BottomEnd}
+          placement='bottom-end'
           firstElementRefCallback={firstElementRefCallback}
           onFocusLeave={handleDroplistFocusLeave}
           triggerElement={
@@ -72,7 +72,7 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
             </span>
           }
           triggerClassName={styles.rowActionsCellTrigger}
-          size={Droplist.sizes.S}
+          size='s'
           data-test-id={TEST_IDS.rowActions.droplist}
         >
           {actions.map(item => (
@@ -106,7 +106,7 @@ export function getRowActionsColumnDef<TData>({
 }: RowActionsColumnDefProps<TData>): ColumnDefinition<TData> {
   return {
     id: 'rowActions',
-    pinned: pinned ? ColumnPinPosition.Right : (undefined as never),
+    pinned: pinned ? COLUMN_PIN_POSITION.Right : (undefined as never),
     size: 40,
     meta: {
       skipOnExport: true,

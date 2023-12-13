@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { PRIVATE_SEARCH_TEST_IDS, Size } from '../../constants';
+import { PRIVATE_SEARCH_TEST_IDS, SIZE } from '../../constants';
 import { SearchDecorator } from '../SearchDecorator';
 import { SearchPrivate, SearchPrivateProps } from '../SearchPrivate';
 
@@ -10,7 +10,7 @@ export type SearchTextFieldProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
 };
 
 export const SearchFieldText = forwardRef<HTMLInputElement, SearchTextFieldProps>(function SearchFieldText(
-  { value, onChange, onBlur, onFocus, size = Size.S, outline, loading, placeholder, onSubmit, className, ...rest },
+  { value, onChange, onBlur, onFocus, size = SIZE.S, outline, loading, placeholder, onSubmit, className, ...rest },
   ref,
 ) {
   return (

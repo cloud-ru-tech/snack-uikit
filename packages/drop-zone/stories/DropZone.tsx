@@ -6,6 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { DropZone, DropZoneProps } from '../src';
+import { UPLOAD_MODE } from '../src/helperComponents';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -44,7 +45,7 @@ dropZone.args = {
   title: 'Title',
   description: 'Description',
   disabled: false,
-  mode: DropZone.uploadModes.Multiple,
+  mode: UPLOAD_MODE.Multiple,
 };
 
 dropZone.argTypes = {

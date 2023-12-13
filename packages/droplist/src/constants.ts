@@ -1,12 +1,12 @@
-export enum Size {
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
+export const SIZE = {
+  S: 's',
+  M: 'm',
+  L: 'l',
+} as const;
 
-export enum Variant {
-  Single = 'single',
-  Multiple = 'multiple',
-}
+export const VARIANT = {
+  Single: 'single',
+  Multiple: 'multiple',
+} as const;
 
 export const SCROLL_APPLYING_ITEMS_COUNT = 8;

@@ -49,7 +49,7 @@ const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, ...args 
       return (
         <ButtonFunction
           icon={<PlaceholderSVG />}
-          size={ButtonFunction.sizes.Xs}
+          size='xs'
           data-test-id={TEST_IDS.actions}
           onClick={e => {
             e.stopPropagation();

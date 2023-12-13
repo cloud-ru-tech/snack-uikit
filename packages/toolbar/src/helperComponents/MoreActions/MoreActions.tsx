@@ -32,7 +32,7 @@ export function MoreActions({ moreActions }: MoreActionsProps) {
       open={isOpen}
       data-test-id={TEST_IDS.droplist}
       onOpenChange={setIsOpen}
-      placement={Droplist.placements.BottomEnd}
+      placement='bottom-end'
       onFocusLeave={onFocusLeave}
       firstElementRefCallback={firstElementRefCallback}
       useScroll
@@ -40,12 +40,12 @@ export function MoreActions({ moreActions }: MoreActionsProps) {
       triggerElement={
         <ButtonFunction
           icon={<KebabSVG size={24} />}
-          size={ButtonFunction.sizes.M}
+          size='m'
           onKeyDown={onKeyDown}
           data-test-id={TEST_IDS.moreActionsButton}
         />
       }
-      size={Droplist.sizes.S}
+      size='s'
     >
       {moreActions.map(item => (
         <Droplist.ItemSingle

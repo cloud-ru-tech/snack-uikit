@@ -10,6 +10,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Search, SearchProps } from '../src';
+import { SIZE } from '../src/constants';
 import { TEST_ID_SUBMIT_TOASTER } from './constants';
 import { generateOptions } from './helpers';
 import styles from './styles.module.scss';
@@ -110,7 +111,7 @@ const Template: StoryFn<SearchProps> = ({ autocomplete, ...args }: SearchProps) 
 export const search: StoryObj<SearchProps> = Template.bind({});
 
 search.args = {
-  size: Search.sizes.S,
+  size: SIZE.S,
   placeholder: 'Placeholder',
   autocomplete: true,
   outline: true,

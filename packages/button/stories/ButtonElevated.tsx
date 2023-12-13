@@ -5,7 +5,8 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonElevated, ButtonElevatedProps } from '../src';
-import { ICONS } from './constants';
+import { SIZE } from '../src/components/ButtonElevated/constants';
+import { COMMON_ARG_TYPES, ICONS } from './constants';
 import { ControlledWrapper } from './helperComponents';
 
 const REQUIRED_ICONS = { ...ICONS };
@@ -17,7 +18,8 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = ButtonElevatedProps & { testMode: boolean };
+type StoryProps = ButtonElevatedProps & { testMode: boolean; appearance: undefined };
+
 const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
   const [count, setCount] = useState<number>(0);
 
@@ -51,20 +53,21 @@ buttonElevated.args = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   icon: Object.entries(REQUIRED_ICONS)[0][0],
-  size: ButtonElevated.sizes.S,
+  size: 's',
   testMode: false,
 };
 
 buttonElevated.argTypes = {
-  testMode: {
-    name: '[Stories]: Show onClick counter',
-    control: {
-      type: 'boolean',
-    },
-  },
-  onClick: {
+  ...COMMON_ARG_TYPES,
+  appearance: {
     table: {
       disable: true,
+    },
+  },
+  size: {
+    options: Object.values(SIZE),
+    control: {
+      type: 'radio',
     },
   },
   icon: {

@@ -20,7 +20,7 @@ import { Search, SearchPrivate } from "@snack-uikit/search";
   loading={loading}
   options={options}
   onSubmit={onSubmit}
-  size={Search.sizes.S}
+  size='s'
   autocomplete
 />
 
@@ -29,7 +29,7 @@ import { Search, SearchPrivate } from "@snack-uikit/search";
   onChange={handleSearchChange}
   loading={loading}
   onSubmit={onSubmit}
-  size={SearchPrivate.sizes.S}
+  size='s'
 />
 ```
 
@@ -45,7 +45,7 @@ import { Search, SearchPrivate } from "@snack-uikit/search";
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | className | `string` | - | CSS-класс |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
+| size | enum Size: `"s"`, `"m"`, `"l"` | s | Размер |
 | loading | `boolean` | - | Состояние загрузки |
 | onSubmit | `(value: string) => void` | - | Колбек на подтверждение поиска по строке |
 | outline | `boolean` | - | Внешний бордер |
@@ -57,7 +57,7 @@ import { Search, SearchPrivate } from "@snack-uikit/search";
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
+| size | enum Size: `"s"`, `"m"`, `"l"` | s | Размер |
 | loading | `boolean` | - | Состояние загрузки |
 | onSubmit | `(value: string) => void` | - | Колбек на подтверждение поиска по строке |
 | className | `string` | - | CSS-класс |

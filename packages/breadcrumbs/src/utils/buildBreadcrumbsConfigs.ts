@@ -1,25 +1,29 @@
-import { ElementType, ItemRenderMode } from '../constants';
-import { BreadcrumbsConfig, InnerItem, Item, SizeMap } from '../types';
+import { ELEMENT_TYPE, ITEM_RENDER_MODE } from '../constants';
+import { BreadcrumbsConfig, InnerItem, Item, ItemRenderMode, SizeMap } from '../types';
 
 type Chain = InnerItem[];
 
 const RENDER_MODE_WEIGHT = {
-  [ItemRenderMode.Full]: 0,
-  [ItemRenderMode.ShortLabel]: 1,
-  [ItemRenderMode.Ellipsis]: 100,
-  [ItemRenderMode.Collapsed]: 10000,
+  [ITEM_RENDER_MODE.Full]: 0,
+  [ITEM_RENDER_MODE.ShortLabel]: 1,
+  [ITEM_RENDER_MODE.Ellipsis]: 100,
+  [ITEM_RENDER_MODE.Collapsed]: 10000,
 };
 
-const RENDER_MODE_WITH_WIDTH = [ItemRenderMode.Full, ItemRenderMode.ShortLabel, ItemRenderMode.Ellipsis];
+const RENDER_MODE_WITH_WIDTH = [
+  ITEM_RENDER_MODE.Full,
+  ITEM_RENDER_MODE.ShortLabel,
+  ITEM_RENDER_MODE.Ellipsis,
+] as ItemRenderMode[];
 
 const startsWith =
   (renderMode: ItemRenderMode) =>
   (item: InnerItem, tail: Chain): Chain =>
     [{ ...item, renderMode }, ...tail];
-const startsWithFull = startsWith(ItemRenderMode.Full);
-const startsWithShortLabel = startsWith(ItemRenderMode.ShortLabel);
-const startsWithEllipsis = startsWith(ItemRenderMode.Ellipsis);
-const startsWithCollapsed = startsWith(ItemRenderMode.Collapsed);
+const startsWithFull = startsWith(ITEM_RENDER_MODE.Full);
+const startsWithShortLabel = startsWith(ITEM_RENDER_MODE.ShortLabel);
+const startsWithEllipsis = startsWith(ITEM_RENDER_MODE.Ellipsis);
+const startsWithCollapsed = startsWith(ITEM_RENDER_MODE.Collapsed);
 
 type BuildSubChainOptions = {
   useCollapse: boolean;
@@ -65,12 +69,12 @@ function buildSubChain(
 const collapseAllRest = (lastElementRenderMode: ItemRenderMode, rest: InnerItem[]) =>
   rest.map((element, index, array) => {
     const lastItem = index === array.length - 1;
-    return { ...element, renderMode: lastItem ? lastElementRenderMode : ItemRenderMode.Collapsed };
+    return { ...element, renderMode: lastItem ? lastElementRenderMode : ITEM_RENDER_MODE.Collapsed };
   });
 
 export function buildBreadcrumbsConfigs(items: Item[], sizeMap: SizeMap): BreadcrumbsConfig[] {
   const chains: InnerItem[][] = [];
-  const [first, ...rest] = items.map(item => ({ ...item, renderMode: ItemRenderMode.Full }));
+  const [first, ...rest] = items.map(item => ({ ...item, renderMode: ITEM_RENDER_MODE.Full }));
 
   buildSubChain(rest, { useCollapse: true, useEllipse: true }).forEach(subset => {
     chains.push(startsWithFull(first, subset));
@@ -78,10 +82,10 @@ export function buildBreadcrumbsConfigs(items: Item[], sizeMap: SizeMap): Breadc
   });
 
   /** Первый элемент можно схлопывать/сокращать только когда уже сокращено все что можно */
-  chains.push(startsWithEllipsis(first, collapseAllRest(ItemRenderMode.Full, rest)));
-  chains.push(startsWithEllipsis(first, collapseAllRest(ItemRenderMode.Ellipsis, rest)));
-  chains.push(startsWithCollapsed(first, collapseAllRest(ItemRenderMode.Full, rest)));
-  chains.push(startsWithCollapsed(first, collapseAllRest(ItemRenderMode.Ellipsis, rest)));
+  chains.push(startsWithEllipsis(first, collapseAllRest(ITEM_RENDER_MODE.Full, rest)));
+  chains.push(startsWithEllipsis(first, collapseAllRest(ITEM_RENDER_MODE.Ellipsis, rest)));
+  chains.push(startsWithCollapsed(first, collapseAllRest(ITEM_RENDER_MODE.Full, rest)));
+  chains.push(startsWithCollapsed(first, collapseAllRest(ITEM_RENDER_MODE.Ellipsis, rest)));
 
   return chains.map(chain =>
     chain.reduce<BreadcrumbsConfig>(
@@ -90,23 +94,23 @@ export function buildBreadcrumbsConfigs(items: Item[], sizeMap: SizeMap): Breadc
 
         if (index && RENDER_MODE_WITH_WIDTH.includes(renderMode)) {
           acc.width += sizeMap.separator;
-          acc.chain.push({ element: ElementType.Separator, width: sizeMap.separator });
+          acc.chain.push({ element: ELEMENT_TYPE.Separator, width: sizeMap.separator });
         }
 
-        if (!acc.hasCollapsed && renderMode === ItemRenderMode.Collapsed) {
+        if (!acc.hasCollapsed && renderMode === ITEM_RENDER_MODE.Collapsed) {
           if (index) {
             acc.width += sizeMap.separator;
-            acc.chain.push({ element: ElementType.Separator, width: sizeMap.separator });
+            acc.chain.push({ element: ELEMENT_TYPE.Separator, width: sizeMap.separator });
           }
           acc.hasCollapsed = true;
           acc.width += sizeMap.collapse;
-          acc.chain.push({ element: ElementType.Collapse, width: sizeMap.collapse });
+          acc.chain.push({ element: ELEMENT_TYPE.Collapse, width: sizeMap.collapse });
         }
 
         const width = sizeMap.items[item.id][renderMode];
         acc.weight += RENDER_MODE_WEIGHT[item.renderMode];
         acc.width += width;
-        acc.chain.push({ element: ElementType.Item, item, width });
+        acc.chain.push({ element: ELEMENT_TYPE.Item, item, width });
 
         return acc;
       },

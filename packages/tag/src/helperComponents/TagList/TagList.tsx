@@ -1,8 +1,8 @@
 import { Ref } from 'react';
 
 import { Tag } from '../../components';
-import { Size } from '../../constants';
-import { TagRowItemInner } from '../../types';
+import { SIZE } from '../../constants';
+import { Size, TagRowItemInner } from '../../types';
 
 type SetTagRef = (item: TagRowItemInner, index: number) => Ref<HTMLDivElement>;
 
@@ -25,7 +25,7 @@ function renderTag(size: Size, handleRemoveItem?: (item: TagRowItemInner) => OnD
   };
 }
 
-export function TagList({ items, size = Size.Xs, onItemRemove, setTagRef }: TagListProps) {
+export function TagList({ items, size = SIZE.Xs, onItemRemove, setTagRef }: TagListProps) {
   const handleRemoveItem = onItemRemove ? (item: TagRowItemInner) => () => onItemRemove(item.label) : undefined;
 
   return <>{items.map(renderTag(size, handleRemoveItem, setTagRef))}</>;

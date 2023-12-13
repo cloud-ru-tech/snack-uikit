@@ -24,7 +24,7 @@ export type NotificationPanelBlankProps = WithSupportProps<{
 /** Компонента для "заглушки" вместо карточек в панели */
 export function NotificationPanelBlank({
   icon,
-  iconAppearance = IconPredefined.appearances.Neutral,
+  iconAppearance = 'neutral',
   title,
   description,
   className,
@@ -32,18 +32,11 @@ export function NotificationPanelBlank({
 }: NotificationPanelBlankProps) {
   return (
     <div className={cn(styles.notificationPanelBlank, className)} {...extractSupportProps(rest)}>
-      {icon && (
-        <IconPredefined
-          icon={icon}
-          appearance={iconAppearance}
-          size={IconPredefined.sizes.L}
-          data-test-id={TEST_IDS.blank.icon}
-        />
-      )}
+      {icon && <IconPredefined icon={icon} appearance={iconAppearance} size='l' data-test-id={TEST_IDS.blank.icon} />}
 
       <div className={styles.notificationPanelBlankContent}>
         <Typography.SansTitleS
-          tag={Typography.tags.div}
+          tag='div'
           className={styles.notificationPanelBlankTitle}
           data-test-id={TEST_IDS.blank.title}
         >
@@ -51,7 +44,7 @@ export function NotificationPanelBlank({
         </Typography.SansTitleS>
 
         <Typography.SansBodyM
-          tag={Typography.tags.div}
+          tag='div'
           className={styles.notificationPanelBlankDescription}
           data-test-id={TEST_IDS.blank.description}
         >
@@ -61,5 +54,3 @@ export function NotificationPanelBlank({
     </div>
   );
 }
-
-NotificationPanelBlank.iconAppearances = IconPredefined.appearances;

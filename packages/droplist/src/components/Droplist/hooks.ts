@@ -10,14 +10,18 @@ import {
   useState,
 } from 'react';
 
-enum TriggerType {
-  Button = 'button',
-  Input = 'input',
-}
+import { ValueOf } from '@snack-uikit/utils';
+
+const TRIGGER_TYPE = {
+  Button: 'button',
+  Input: 'input',
+} as const;
+
+type TriggerType = ValueOf<typeof TRIGGER_TYPE>;
 
 const TRIGGER_OPEN_DROPLIST_KEY_KEYS = {
-  [TriggerType.Input]: ['ArrowDown', 'ArrowUp'],
-  [TriggerType.Button]: [
+  [TRIGGER_TYPE.Input]: ['ArrowDown', 'ArrowUp'],
+  [TRIGGER_TYPE.Button]: [
     ' ', // <- Space key
     'Enter',
     'ArrowDown',
@@ -34,7 +38,7 @@ type UseDroplistKeyboardNavigationProps = {
 
 export function useKeyboardNavigation<T extends HTMLElement>({
   setDroplistOpen,
-  triggerType = TriggerType.Button,
+  triggerType = TRIGGER_TYPE.Button,
 }: UseDroplistKeyboardNavigationProps) {
   const [needsFocus, setNeedsFocus] = useState<boolean>(false);
   const triggerElementRef = useRef<T>(null);
@@ -121,5 +125,3 @@ export function useKeyboardNavigation<T extends HTMLElement>({
     handleDroplistItemKeyDown,
   };
 }
-
-useKeyboardNavigation.triggerTypes = TriggerType;

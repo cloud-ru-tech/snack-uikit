@@ -1,9 +1,9 @@
-export enum Orientation {
-  Horizontal = 'horizontal',
-  Vertical = 'vertical',
-}
+export const ORIENTATION = {
+  Horizontal: 'horizontal',
+  Vertical: 'vertical',
+} as const;
 
-export enum Weight {
-  Light = 'light',
-  Regular = 'regular',
-}
+export const WEIGHT = {
+  Light: 'light',
+  Regular: 'regular',
+} as const;

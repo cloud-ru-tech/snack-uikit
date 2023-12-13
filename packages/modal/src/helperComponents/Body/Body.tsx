@@ -4,7 +4,8 @@ import { ReactNode } from 'react';
 import { Scroll } from '@snack-uikit/scroll';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ContentAlign, TEST_IDS } from '../../constants';
+import { CONTENT_ALIGN, TEST_IDS } from '../../constants';
+import { ContentAlign } from '../../types';
 import styles from './styles.module.scss';
 
 export type ModalBodyProps = WithSupportProps<{
@@ -15,10 +16,10 @@ export type ModalBodyProps = WithSupportProps<{
   className?: string;
 }>;
 
-export function ModalBody({ content, align = ContentAlign.Default, className, ...rest }: ModalBodyProps) {
+export function ModalBody({ content, align = CONTENT_ALIGN.Default, className, ...rest }: ModalBodyProps) {
   return (
     <Scroll
-      size={Scroll.sizes.M}
+      size='m'
       className={cn(styles.modalBody, className)}
       {...extractSupportProps(rest)}
       data-align={align}
@@ -28,5 +29,3 @@ export function ModalBody({ content, align = ContentAlign.Default, className, ..
     </Scroll>
   );
 }
-
-ModalBody.aligns = ContentAlign;

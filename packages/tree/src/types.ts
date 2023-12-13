@@ -1,9 +1,11 @@
 import { MouseEvent, MouseEventHandler, ReactNode } from 'react';
 
 import { ItemSingleProps } from '@snack-uikit/droplist';
-import { WithSupportProps } from '@snack-uikit/utils';
+import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
-import { SelectionMode } from './constants';
+import { SELECTION_MODE } from './constants';
+
+export type SelectionMode = ValueOf<typeof SELECTION_MODE>;
 
 export type TreeNodeId = string;
 
@@ -72,7 +74,7 @@ export type TreeCommonProps = {
 };
 
 export type TreeSingleSelect = Omit<TreeCommonProps, 'selected'> & {
-  selectionMode: SelectionMode.Single;
+  selectionMode: 'single';
   /** Состояние для выбраного элемента */
   /** <br> - При <strong>selectionMode</strong>=`Single` - принимает строку */
   selected?: TreeNodeId;
@@ -81,7 +83,7 @@ export type TreeSingleSelect = Omit<TreeCommonProps, 'selected'> & {
 };
 
 export type TreeMultiSelect = Omit<TreeCommonProps, 'selected'> & {
-  selectionMode: SelectionMode.Multi;
+  selectionMode: 'multi';
   /**
    * Состояние для выбраных элементов:
    * <br> - При <strong>selectionMode</strong>=`Multi` - принимает массив строк

@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { ButtonTonal } from '@snack-uikit/button';
 import { ChipToggleProps } from '@snack-uikit/chips';
 import { PlaceholderSVG } from '@snack-uikit/icons';
+import { ValueOf } from '@snack-uikit/utils';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -27,19 +28,21 @@ type StoryProps = Omit<NotificationPanelProps, 'chips' | 'readAllButton' | 'foot
   };
 };
 
-enum ChipFilter {
-  All = 'All',
-  Unread = 'Unread',
-}
+const CHIP_FILTER = {
+  All: 'all',
+  Unread: 'unread',
+} as const;
+
+type ChipFilter = ValueOf<typeof CHIP_FILTER>;
 
 const Template: StoryFn<StoryProps> = ({ amount, readAllButton, chips, footerButton, ...args }: StoryProps) => {
-  const [chipFilter, setChipFilter] = useState<ChipFilter>(ChipFilter.All);
+  const [chipFilter, setChipFilter] = useState<ChipFilter>(CHIP_FILTER.All);
   const [allRead, setAllRead] = useState(false);
 
   const notifications = useMemo(() => generateCards(amount), [amount]);
 
   const cards = useMemo(() => {
-    if (chipFilter === ChipFilter.Unread) {
+    if (chipFilter === CHIP_FILTER.Unread) {
       return notifications.filter(card => card.unread);
     }
 
@@ -99,11 +102,11 @@ notificationPanel.args = {
   ...NOTIFICATION_PANEL_PROPS_MOCK,
   chips: [
     {
-      label: ChipFilter.All,
+      label: CHIP_FILTER.All,
       checked: true,
     },
     {
-      label: ChipFilter.Unread,
+      label: CHIP_FILTER.Unread,
       checked: false,
     },
   ],

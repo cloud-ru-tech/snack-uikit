@@ -17,15 +17,9 @@ const Template: StoryFn = () => (
       <span>
         Библиотека компонентов
         <br />
-        компании{' '}
-        <Link text='Cloud.ru' href='https://cloud.ru/' size={Link.sizes.M} onClick={e => e.stopPropagation()} /> и
+        компании <Link text='Cloud.ru' href='https://cloud.ru/' size='m' onClick={e => e.stopPropagation()} /> и
         сообщества{' '}
-        <Link
-          text='TeamSnack'
-          href='https://t.me/+tN0DDzHaDVc3M2Iy'
-          onClick={e => e.stopPropagation()}
-          size={Link.sizes.M}
-        />
+        <Link text='TeamSnack' href='https://t.me/+tN0DDzHaDVc3M2Iy' onClick={e => e.stopPropagation()} size='m' />
       </span>
 
       <div className={styles.imagesWrapper} style={{ '--image-height': '16px' }}>

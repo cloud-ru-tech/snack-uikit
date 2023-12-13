@@ -5,7 +5,7 @@ import { DroplistItemExpandable, DroplistItemExpandableProps } from './DroplistI
 
 export type DroplistItemProps = DroplistItemExpandableProps;
 
-const DroplistItemComponent = forwardRef<HTMLButtonElement, DroplistItemProps>(function DroplistItem(
+export const DroplistItem = forwardRef<HTMLButtonElement, DroplistItemProps>(function DroplistItem(
   { children, ...props },
   ref,
 ) {
@@ -20,9 +20,3 @@ const DroplistItemComponent = forwardRef<HTMLButtonElement, DroplistItemProps>(f
 
   return <BaseDroplistItem {...props} ref={ref} />;
 });
-
-export const DroplistItem = DroplistItemComponent as typeof DroplistItemComponent & {
-  variants: typeof BaseDroplistItem.variants;
-};
-
-DroplistItem.variants = BaseDroplistItem.variants;

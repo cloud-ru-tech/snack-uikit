@@ -7,25 +7,24 @@
 
 ## Example 
 
-```typescript
+```tsx
+import { AccordionPrimary } from '@snack-uikit/accordion'
 
-  import {AccordionPrimary} from '@snack-uikit/accordion'
+function Example() {
 
-  function Example() {
-  
-  // ...some actions
+// ...some actions
 
-  return (
-    <AccordionPrimary >
-      <AccordionPrimary.CollapseBlock title={title} description={description} actions={actions}>
-        <Content />
-      </AccordionPrimary.CollapseBlock>
+return (
+  <AccordionPrimary >
+    <AccordionPrimary.CollapseBlock title={title} description={description} actions={actions}>
+      <Content />
+    </AccordionPrimary.CollapseBlock>
 
-      <AccordionPrimary.CollapseBlock title={title} description={description} actions={actions}>
-        <Content />
-      </AccordionPrimary.CollapseBlock>
-    </AccordionPrimary>
-  )}
+    <AccordionPrimary.CollapseBlock title={title} description={description} actions={actions}>
+      <Content />
+    </AccordionPrimary.CollapseBlock>
+  </AccordionPrimary>
+)}
 ```
 
 
@@ -41,7 +40,7 @@
 | expandedDefault | `string \| string[]` | - | Начальное состояние |
 | expanded | `string \| string[]` | - | Controlled состояние |
 | onExpandedChange | `((value: string) => void) \| ((value: string[]) => void)` | - | Controlled обработчик измения состояния |
-| selectionMode | enum SelectionMode: `"single"`, `"multiple"` | - | Режим работы аккордиона |
+| selectionMode | "single" \| "multiple" | - | Режим работы аккордиона |
 ## AccordionSecondary
 ### Props
 | name | type | default value | description |
@@ -51,7 +50,7 @@
 | expandedDefault | `string \| string[]` | - | Начальное состояние |
 | expanded | `string \| string[]` | - | Controlled состояние |
 | onExpandedChange | `((value: string) => void) \| ((value: string[]) => void)` | - | Controlled обработчик измения состояния |
-| selectionMode | enum SelectionMode: `"single"`, `"multiple"` | - | Режим работы аккордиона |
+| selectionMode | "single" \| "multiple" | - | Режим работы аккордиона |
 
 
 [//]: DOCUMENTATION_SECTION_END

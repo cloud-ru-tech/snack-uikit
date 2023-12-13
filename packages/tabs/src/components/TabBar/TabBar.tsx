@@ -1,12 +1,12 @@
 import cn from 'classnames';
-import { Children, KeyboardEvent, ReactElement, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { Children, KeyboardEvent, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
 import { Divider } from '@snack-uikit/divider';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Type } from '../../constants';
-import { TabBarContext, TabsContext } from '../../context';
+import { TYPE } from '../../constants';
+import { TabBarContext, useTabsContext } from '../../context';
 import { ScrollButton } from '../ScrollButton';
 import { TabProps } from '../Tab';
 import { useFocusControl, useScrollContainer } from './hooks';
@@ -21,15 +21,15 @@ export type TabBarProps = WithSupportProps<
   } & (
     | {
         /**
-         * Тип панели табов: @default Type.Primary
+         * Тип панели табов: @default primary
          * <br> - `Primary` - когда панель табов является верхнеуровневым элементом страницы, замещающим заголовок.
          * <br> - `Secondary` - когда панель табов расположена на том же уровне что и остальной контент
          */
-        type?: Type.Primary;
+        type?: typeof TYPE.Primary;
         disableDivider?: never;
       }
     | {
-        type: Type.Secondary;
+        type: typeof TYPE.Secondary;
         disableDivider?: boolean;
       }
   )
@@ -40,9 +40,9 @@ type MarkerPosition = {
   width: number;
 };
 
-export function TabBar({ children, className, type = Type.Primary, ...otherProps }: TabBarProps) {
+export function TabBar({ children, className, type = TYPE.Primary, ...otherProps }: TabBarProps) {
   const scrollContainerRef = useRef<HTMLElement>(null);
-  const { selectedTab, setSelectedTab } = useContext(TabsContext);
+  const { selectedTab, setSelectedTab } = useTabsContext();
   const { hasOverflow, scrollLeft, scrollRight } = useScrollContainer(scrollContainerRef);
   const selectedRef = useRef<HTMLButtonElement>();
   const [markerPosition, setMarkerPosition] = useState<MarkerPosition>({ left: 0, width: 0 });
@@ -130,7 +130,7 @@ export function TabBar({ children, className, type = Type.Primary, ...otherProps
       <ScrollContainer className={styles.scrollContainer} innerRef={scrollContainerRef}>
         {!otherProps.disableDivider && (
           <span>
-            <Divider weight={Divider.weights.Regular} className={styles.divider} />
+            <Divider weight='regular' className={styles.divider} />
           </span>
         )}
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}

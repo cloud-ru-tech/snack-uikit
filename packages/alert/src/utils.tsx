@@ -1,17 +1,18 @@
 import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG, InfoFilledSVG } from '@snack-uikit/icons';
 
-import { Appearance } from './constants';
+import { APPEARANCE } from './constants';
+import { Appearance } from './types';
 
 export function getIcon(appearance: Appearance) {
   switch (appearance) {
-    case Appearance.Success:
+    case APPEARANCE.Success:
       return <CheckFilledSVG />;
-    case Appearance.Error:
+    case APPEARANCE.Error:
       return <CrossFilledSVG />;
-    case Appearance.Warning:
+    case APPEARANCE.Warning:
       return <AlarmFilledSVG />;
-    case Appearance.Primary:
-    case Appearance.Neutral:
+    case APPEARANCE.Primary:
+    case APPEARANCE.Neutral:
     default:
       return <InfoFilledSVG />;
   }

@@ -1,8 +1,8 @@
-export enum Size {
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
+export const SIZE = {
+  S: 's',
+  M: 'm',
+  L: 'l',
+} as const;
 
 export const TEST_IDS = {
   main: 'search',

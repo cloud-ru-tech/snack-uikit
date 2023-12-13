@@ -1,41 +1,26 @@
 import { forwardRef } from 'react';
 
-import { Size } from '@snack-uikit/input-private';
-import { Tooltip } from '@snack-uikit/tooltip';
-
-import { ValidationState } from '../../constants';
+import { SELECTION_MODE } from './constants';
 import { FieldSelectMulti } from './FieldSelectMulti';
 import { FieldSelectSingle } from './FieldSelectSingle';
-import { FieldSelectMultiProps, FieldSelectSingleProps, SelectionMode } from './types';
+import { FieldSelectMultiProps, FieldSelectSingleProps } from './types';
 
 export type FieldSelectProps =
   | ({
-      selectionMode?: SelectionMode.Single;
+      selectionMode?: typeof SELECTION_MODE.Single;
     } & FieldSelectSingleProps)
   | ({
-      selectionMode: SelectionMode.Multi;
+      selectionMode: typeof SELECTION_MODE.Multi;
     } & FieldSelectMultiProps);
 
-const ForwardedFieldSelect = forwardRef<HTMLInputElement, FieldSelectProps>(
-  ({ selectionMode = SelectionMode.Single, ...props }, ref) => {
+export const FieldSelect = forwardRef<HTMLInputElement, FieldSelectProps>(
+  ({ selectionMode = SELECTION_MODE.Single, ...props }, ref) => {
     switch (selectionMode) {
-      case SelectionMode.Multi:
+      case SELECTION_MODE.Multi:
         return <FieldSelectMulti {...(props as FieldSelectMultiProps)} ref={ref} />;
-      case SelectionMode.Single:
+      case SELECTION_MODE.Single:
       default:
         return <FieldSelectSingle {...(props as FieldSelectSingleProps)} ref={ref} />;
     }
   },
 );
-
-export const FieldSelect = ForwardedFieldSelect as typeof ForwardedFieldSelect & {
-  sizes: typeof Size;
-  validationStates: typeof ValidationState;
-  selectionModes: typeof SelectionMode;
-  labelTooltipPlacements: typeof Tooltip.placements;
-};
-
-FieldSelect.sizes = Size;
-FieldSelect.validationStates = ValidationState;
-FieldSelect.selectionModes = SelectionMode;
-FieldSelect.labelTooltipPlacements = Tooltip.placements;

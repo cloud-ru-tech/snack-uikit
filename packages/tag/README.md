@@ -12,8 +12,8 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | label* | `string` | - | Текст |
-| size | enum Size: `"xs"`, `"s"` | Size.Xs | Размер |
-| appearance | enum Appearance: `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | Appearance.Neutral | Внешний вид |
+| size | enum Size: `"xs"`, `"s"` | xs | Размер |
+| appearance | enum Appearance: `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | neutral | Внешний вид |
 | onDelete | `MouseEventHandler<HTMLButtonElement>` | - | Коллбэк на удаление |
 | className | `string` | - | CSS-класс |
 ## TagRow
@@ -22,7 +22,7 @@
 |------|------|---------------|-------------|
 | items* | `TagRowItem[]` | - | Массив тэгов |
 | rowLimit | `number` | - | Лимит количества рядов тэгов. При достижении лимита тэги скрываются под кнопкой. Отсутствие лимита или значение равное нулю отобразит весь список |
-| size | enum Size: `"xs"`, `"s"` | Size.Xs | Размер |
+| size | enum Size: `"xs"`, `"s"` | xs | Размер |
 | moreButtonLabel | `string` | - | Текст кнопки, при наведении на которую отображается список скрытых тэгов |
 | className | `string` | - | CSS-класс |
 | onItemRemove | `(item: string) => void` | - | Коллбэк на клик по удалению тэга |

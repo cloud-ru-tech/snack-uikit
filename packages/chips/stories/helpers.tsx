@@ -1,4 +1,4 @@
-import { ChipChoice, ChipChoiceRowProps } from '../src';
+import { ChipChoiceRowProps } from '../src';
 import { STORY_TEST_IDS } from './testIds';
 
 export type Filters = {
@@ -10,7 +10,7 @@ export type Filters = {
 
 export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
   {
-    type: ChipChoice.types.Multi,
+    type: 'multi',
     id: 'vms',
     label: 'Virtual machines',
     options: [
@@ -21,7 +21,7 @@ export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
     'data-test-id': STORY_TEST_IDS.Multi,
   },
   {
-    type: ChipChoice.types.Single,
+    type: 'single',
     id: 'ip',
     label: 'External IP',
     options: [
@@ -31,13 +31,13 @@ export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
     'data-test-id': STORY_TEST_IDS.Single,
   },
   {
-    type: ChipChoice.types.Date,
+    type: 'date',
     id: 'dates',
     label: 'Created at',
     'data-test-id': STORY_TEST_IDS.Date,
   },
   {
-    type: ChipChoice.types.DateRange,
+    type: 'date-range',
     id: 'dateRange',
     label: 'Period',
     'data-test-id': STORY_TEST_IDS.DateRange,

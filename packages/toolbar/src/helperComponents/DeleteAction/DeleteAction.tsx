@@ -5,8 +5,9 @@ import { TrashSVG } from '@snack-uikit/icons';
 import { Checkbox } from '@snack-uikit/toggles';
 
 import { TEST_IDS } from '../../constants';
-import { SelectionMode } from './constants';
+import { SELECTION_MODE } from './constants';
 import styles from './styles.module.scss';
+import { SelectionMode } from './types';
 
 export type DeleteActionProps = {
   /** Колбек смены значения чекбокса*/
@@ -26,7 +27,7 @@ export function DeleteAction({
   onCheck,
   onDelete,
   indeterminate,
-  selectionMode = SelectionMode.Multiple,
+  selectionMode = SELECTION_MODE.Multiple,
 }: DeleteActionProps) {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLDivElement>) => {
@@ -39,7 +40,7 @@ export function DeleteAction({
 
   return (
     <>
-      {selectionMode === SelectionMode.Multiple && (
+      {selectionMode === SELECTION_MODE.Multiple && (
         <div
           className={styles.checkboxWrapper}
           onClick={onCheck}
@@ -49,7 +50,7 @@ export function DeleteAction({
           onKeyDown={handleKeyDown}
           data-test-id={TEST_IDS.checkbox}
         >
-          <Checkbox size={Checkbox.sizes.S} checked={checked} indeterminate={indeterminate} tabIndex={-1} />
+          <Checkbox size='s' checked={checked} indeterminate={indeterminate} tabIndex={-1} />
         </div>
       )}
 
@@ -57,7 +58,7 @@ export function DeleteAction({
         <ButtonFunction
           data-test-id={TEST_IDS.deleteButton}
           icon={<TrashSVG />}
-          size={ButtonFunction.sizes.M}
+          size='m'
           onClick={onDelete}
           disabled={!checked && !indeterminate}
         />

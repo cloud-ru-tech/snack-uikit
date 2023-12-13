@@ -1,4 +1,4 @@
-export enum Variant {
-  Middle = 'Middle',
-  End = 'End',
-}
+export const VARIANT = {
+  Middle: 'middle',
+  End: 'end',
+} as const;

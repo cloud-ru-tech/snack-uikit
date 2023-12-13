@@ -50,7 +50,7 @@ const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, ...args 
         <ButtonFunction
           icon={<PlaceholderSVG />}
           data-test-id={TEST_IDS.actions}
-          size={ButtonFunction.sizes.Xs}
+          size='xs'
           onClick={e => {
             e.stopPropagation();
             toaster.userAction.neutral({ label: 'Actions click' });

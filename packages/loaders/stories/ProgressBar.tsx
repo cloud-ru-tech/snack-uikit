@@ -18,13 +18,18 @@ export const progressBar: StoryObj<StoryProps> = Template.bind({});
 
 progressBar.args = {
   progress: 30,
-  size: ProgressBar.sizes.S,
+  size: 's',
 };
 
 progressBar.argTypes = {
   progress: {
     name: 'Progress value',
     type: 'number',
+  },
+  size: {
+    control: {
+      type: 'radio',
+    },
   },
 };
 

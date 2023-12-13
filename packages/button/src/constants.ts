@@ -1,35 +1,35 @@
-export enum Appearance {
-  Primary = 'primary',
-  Neutral = 'neutral',
-  Destructive = 'destructive',
-}
+export const APPEARANCE = {
+  Primary: 'primary',
+  Neutral: 'neutral',
+  Destructive: 'destructive',
+} as const;
 
-export enum HtmlType {
-  Button = 'button',
-  Submit = 'submit',
-  Reset = 'reset',
-}
+export const HTML_TYPE = {
+  Button: 'button',
+  Submit: 'submit',
+  Reset: 'reset',
+} as const;
 
-export enum Target {
-  Blank = '_blank',
-  Self = '_self',
-  Parent = '_parent',
-  Top = '_top',
-}
+export const TARGET = {
+  Blank: '_blank',
+  Self: '_self',
+  Parent: '_parent',
+  Top: '_top',
+} as const;
 
-export enum SizeXsM {
-  Xs = 'xs',
-  S = 's',
-  M = 'm',
-}
+export const SIZE_XS_M = {
+  Xs: 'xs',
+  S: 's',
+  M: 'm',
+} as const;
 
-export enum SizeSL {
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
+export const SIZE_S_L = {
+  S: 's',
+  M: 'm',
+  L: 'l',
+} as const;
 
-export enum IconPosition {
-  Before = 'before',
-  After = 'after',
-}
+export const ICON_POSITION = {
+  Before: 'before',
+  After: 'after',
+} as const;

@@ -40,8 +40,8 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
 
 export const popover: StoryObj<StoryProps> = Template.bind({});
 popover.args = {
-  trigger: Popover.triggers.Click,
-  placement: Popover.placements.Top,
+  trigger: 'click',
+  placement: 'top',
 };
 popover.argTypes = { tip: { type: 'string' }, outsideClick: { type: 'boolean' } };
 

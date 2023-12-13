@@ -1,7 +1,7 @@
-import { StatusAppearance } from '../src/helperComponents';
+import { STATUS_APPEARANCE } from '../src/helperComponents';
 import { StubData } from './types';
 
-const STATUSES = Object.keys(StatusAppearance);
+const STATUSES = Object.keys(STATUS_APPEARANCE);
 
 function randomIntFromInterval(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1) + min);

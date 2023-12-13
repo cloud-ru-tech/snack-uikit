@@ -15,7 +15,7 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | text* | `string` | - | Текст компонента |
-| appearance | enum Appearance: `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | PromoTag.appearances.Primary | Внешний вид |
+| appearance | enum Appearance: `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Внешний вид |
 | className | `string` | - | CSS-класс |
 
 

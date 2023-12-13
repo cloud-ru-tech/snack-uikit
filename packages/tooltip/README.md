@@ -21,8 +21,8 @@
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
-| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | Tooltip.triggers.HoverAndFocusVisible | Условие отображения поповера: <br> - `Click` - открывать по клику <br> - `Hover` - открывать по ховеру <br> - `FocusVisible` - открывать по focus-visible <br> - `Focus` - открывать по фокусу <br> - `HoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `HoverAndFocus` - открывать по ховеру и фокусу <br> - `ClickAndFocusVisible` - открывать по клику и focus-visible |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Положение поповера относительно своего триггера (children). |
+| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | hoverAndFocusVisible | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
 | children | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
 ## QuestionTooltip
 ### Props
@@ -34,10 +34,10 @@
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Placement.Top | Положение поповера относительно своего триггера (children). |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
 | disableMaxWidth | `boolean` | - | Отключение ограничения ширины тултипа @default false |
-| trigger | enum Trigger: `"hover"`, `"click"` | Trigger.Hover | Условие отображения подсказки |
-| size | enum Size: `"s"`, `"xs"` | Size.Xs | Размер |
+| trigger | enum Trigger: `"click"`, `"hover"` | hover | Условие отображения подсказки |
+| size | enum Size: `"s"`, `"xs"` | xs | Размер |
 | tooltipClassname | `string` | - | CSS-класс контейнера подсказки |
 | triggerDataTestId | `string` | - | data-test-id для триггера |
 

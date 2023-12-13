@@ -51,7 +51,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     size: 140,
     enableSorting: true,
     sortDescFirst: true,
-    pinned: Table.columnPinPositions.Left,
+    pinned: 'left',
   },
   {
     id: '2',
@@ -59,7 +59,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     accessorFn: accessorFn('col2'),
     header: renderHeader,
     size: 200,
-    pinned: Table.columnPinPositions.Left,
+    pinned: 'left',
     enableSorting: true,
   },
   {
@@ -90,7 +90,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     cell: cell => numberFormatter.format(cell.getValue<number>()),
     header: renderHeader,
     size: 150,
-    align: Table.columnAligns.Right,
+    align: 'right',
     enableSorting: true,
   },
   {
@@ -99,8 +99,8 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     header: renderHeader,
     enableSorting: true,
     size: 146,
-    align: Table.columnAligns.Right,
-    pinned: Table.columnPinPositions.Right,
+    align: 'right',
+    pinned: 'right',
     sortingFn: (a, b) => a.original.date - b.original.date,
     accessorFn: row =>
       new Date(row.date).toLocaleDateString('ru-RU', {

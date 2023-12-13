@@ -8,7 +8,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Modal, ModalProps } from '../src';
-import { Size } from '../src/constants';
+import { SIZE } from '../src/constants';
 import { ARG_TYPES, CONTROLLED_MODAL_ID, DEFAULT_ARGS, MODAL_IDS, PICTURE_ARGS } from './constants';
 import styles from './styles.module.scss';
 import { ExtendedStoryProps } from './types';
@@ -26,7 +26,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
   const [storyArgs, setStoryArgs] = useArgs<StoryProps>();
 
   useEffect(() => {
-    if (storyArgs.size !== Modal.sizes.S || storyArgs.showImage) {
+    if (storyArgs.size !== SIZE.S || storyArgs.showImage) {
       setStoryArgs({ showIcon: false });
     }
   }, [setStoryArgs, storyArgs.showImage, storyArgs.size]);
@@ -47,31 +47,20 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
 
   const closeModal = () => setOpen(undefined);
 
-  const alignProp = args.size === Size.M ? alignM : align;
+  const alignProp = args.size === SIZE.M ? alignM : align;
 
   return (
     <>
       <div className={styles.wrapper}>
         Controlled:
-        <ButtonFilled
-          size={ButtonFilled.sizes.M}
-          label='Open modal'
-          onClick={openModal}
-          data-test-id={CONTROLLED_MODAL_ID}
-        />
+        <ButtonFilled size='m' label='Open modal' onClick={openModal} data-test-id={CONTROLLED_MODAL_ID} />
       </div>
 
       <div className={styles.wrapper}>
         <div className={styles.buttons}>
           Examples:
           {Object.values(MODAL_IDS).map(id => (
-            <ButtonFilled
-              key={id}
-              size={ButtonFilled.sizes.M}
-              label={`Open ${id}`}
-              onClick={openModal}
-              data-test-id={`open-${id}`}
-            />
+            <ButtonFilled key={id} size='m' label={`Open ${id}`} onClick={openModal} data-test-id={`open-${id}`} />
           ))}
         </div>
       </div>
@@ -117,7 +106,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
       <Modal
         {...DEFAULT_ARGS}
         content={undefined}
-        mode={Modal.modes.Aggressive}
+        mode='aggressive'
         open={isOpen === MODAL_IDS.aggressive}
         onClose={closeModal}
         approveButton={{ ...DEFAULT_ARGS.approveButton, onClick: closeModal }}
@@ -128,7 +117,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
       <Modal
         {...DEFAULT_ARGS}
         content={undefined}
-        mode={Modal.modes.Forced}
+        mode='forced'
         open={isOpen === MODAL_IDS.forced}
         onClose={closeModal}
         approveButton={{ ...DEFAULT_ARGS.approveButton, onClick: closeModal }}
@@ -139,10 +128,10 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
       <Modal
         title='Удалить элемент?'
         subtitle='После удаления элемента он станет недоступен'
-        mode={Modal.modes.Forced}
+        mode='forced'
         open={isOpen === MODAL_IDS.deleteModal}
         onClose={closeModal}
-        approveButton={{ label: 'Удалить', appearance: ButtonFilled.appearances.Destructive, onClick: closeModal }}
+        approveButton={{ label: 'Удалить', appearance: 'destructive', onClick: closeModal }}
         additionalButton={{ label: 'Отмена', onClick: closeModal }}
       />
     </>
@@ -168,7 +157,7 @@ modal.argTypes = {
     ...ARG_TYPES.showIcon,
     if: {
       arg: 'size',
-      eq: Modal.sizes.S,
+      eq: 's',
     },
   },
 };

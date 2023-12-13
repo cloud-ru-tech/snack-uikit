@@ -7,8 +7,15 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonFunction, ButtonFunctionProps } from '../src';
+import { SIZE_XS_M } from '../src/constants';
 import { CounterInButtonProps } from '../src/types';
-import { BUTTON_ARGS, COUNTER_ARGS, ICONS, STORY_WITH_COUNTER_ARG_TYPES, StoryCounterProps } from './constants';
+import {
+  BUTTON_ARGS,
+  COMMON_ARG_TYPES,
+  COUNTER_ARGS,
+  STORY_WITH_COUNTER_ARG_TYPES,
+  StoryCounterProps,
+} from './constants';
 import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 const meta: Meta = {
@@ -73,18 +80,13 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
         <TableColumn>
           <TableCell>Icon Before</TableCell>
           <TableCell>
-            <ButtonFunction
-              {...BUTTON_ARGS}
-              icon={<PlaceholderSVG />}
-              iconPosition={ButtonFunction.iconPositions.Before}
-              label='Label Text'
-            />
+            <ButtonFunction {...BUTTON_ARGS} icon={<PlaceholderSVG />} iconPosition='before' label='Label Text' />
           </TableCell>
           <TableCell>
             <ButtonFunction
               {...BUTTON_ARGS}
               icon={<PlaceholderSVG />}
-              iconPosition={ButtonFunction.iconPositions.Before}
+              iconPosition='before'
               counter={COUNTER_ARGS}
               label='Label Text'
             />
@@ -94,18 +96,13 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
         <TableColumn>
           <TableCell>Icon After</TableCell>
           <TableCell>
-            <ButtonFunction
-              {...BUTTON_ARGS}
-              icon={<PlaceholderSVG />}
-              iconPosition={ButtonFunction.iconPositions.After}
-              label='Label Text'
-            />
+            <ButtonFunction {...BUTTON_ARGS} icon={<PlaceholderSVG />} iconPosition='after' label='Label Text' />
           </TableCell>
           <TableCell>
             <ButtonFunction
               {...BUTTON_ARGS}
               icon={<PlaceholderSVG />}
-              iconPosition={ButtonFunction.iconPositions.After}
+              iconPosition='after'
               counter={COUNTER_ARGS}
               label='Label Text'
             />
@@ -130,10 +127,10 @@ buttonFunction.args = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   icon: 'none',
-  iconPosition: ButtonFunction.iconPositions.After,
-  type: ButtonFunction.types.Button,
-  appearance: ButtonFunction.appearances.Neutral,
-  size: ButtonFunction.sizes.S,
+  iconPosition: 'after',
+  type: 'button',
+  appearance: 'neutral',
+  size: 's',
   testMode: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -142,29 +139,11 @@ buttonFunction.args = {
 };
 
 buttonFunction.argTypes = {
-  testMode: {
-    name: '[Stories]: Show onClick counter',
-    control: {
-      type: 'boolean',
-    },
-  },
-  onClick: {
-    table: {
-      disable: true,
-    },
-  },
-  icon: {
-    name: '[Stories]: Show icon examples',
-    options: Object.keys(ICONS),
-    mapping: ICONS,
-    control: {
-      type: 'select',
-    },
-  },
-  type: {
+  ...COMMON_ARG_TYPES,
+  size: {
+    options: Object.values(SIZE_XS_M),
     control: {
       type: 'radio',
-      options: ['neutral', 'primary', 'critical'],
     },
   },
   ...STORY_WITH_COUNTER_ARG_TYPES,

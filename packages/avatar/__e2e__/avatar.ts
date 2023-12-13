@@ -1,7 +1,7 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { Size } from '../src/components/constants';
+import { SIZE } from '../src/components/constants';
 
 const TEST_ID = 'avatar';
 const ABBREVIATION_TEST_ID = 'abbreviation';
@@ -75,7 +75,7 @@ test.page(getPage({ showTwoSymbols: true }))('should render with 2 symbols', asy
   await t.expect(abbreviation.length).eql(2);
 });
 
-test.page(getPage({ size: Size.Xxs, showTwoSymbols: true }))(
+test.page(getPage({ size: SIZE.Xxs, showTwoSymbols: true }))(
   'should always render with 1 symbol for size = xxs',
   async t => {
     const avatar = Selector(dataTestIdSelector(TEST_ID));

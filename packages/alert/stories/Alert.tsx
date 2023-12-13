@@ -4,7 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Alert, AlertProps } from '../src';
-import { Appearance } from '../src/constants';
+import { APPEARANCE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -28,7 +28,7 @@ alert.args = {
   description: 'Title description',
   icon: true,
   link: 'Link text',
-  appearance: Appearance.Error,
+  appearance: APPEARANCE.Error,
   showCloseButton: true,
   onClose: () => {},
 };

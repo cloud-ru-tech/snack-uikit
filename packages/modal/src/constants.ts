@@ -1,25 +1,25 @@
-export enum Size {
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
+export const SIZE = {
+  S: 's',
+  M: 'm',
+  L: 'l',
+} as const;
 
-export enum Mode {
-  Regular = 'regular',
-  Aggressive = 'aggressive',
-  Forced = 'forced',
-}
+export const MODE = {
+  Regular: 'regular',
+  Aggressive: 'aggressive',
+  Forced: 'forced',
+} as const;
 
-export enum Align {
-  Default = 'default',
-  Center = 'center',
-  Vertical = 'vertical',
-}
+export const ALIGN = {
+  Default: 'default',
+  Center: 'center',
+  Vertical: 'vertical',
+} as const;
 
-export enum ContentAlign {
-  Default = 'default',
-  Center = 'center',
-}
+export const CONTENT_ALIGN = {
+  Default: 'default',
+  Center: 'center',
+} as const;
 
 export const TEST_IDS = {
   overlay: 'modal__overlay',

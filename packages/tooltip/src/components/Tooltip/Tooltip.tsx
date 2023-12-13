@@ -20,8 +20,8 @@ export type TooltipProps = WithSupportProps<
 
 export function Tooltip({
   tip,
-  trigger = Tooltip.triggers.HoverAndFocusVisible,
-  placement = Tooltip.placements.Top,
+  trigger = 'hoverAndFocusVisible',
+  placement = 'top',
   children,
   disableMaxWidth = false,
   ...otherProps
@@ -48,6 +48,3 @@ export function Tooltip({
     </PopoverPrivate>
   );
 }
-
-Tooltip.placements = PopoverPrivate.placements;
-Tooltip.triggers = PopoverPrivate.triggers;

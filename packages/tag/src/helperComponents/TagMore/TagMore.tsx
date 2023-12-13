@@ -4,8 +4,8 @@ import { PopoverPrivate } from '@snack-uikit/popover-private';
 import { Scroll } from '@snack-uikit/scroll';
 
 import { TAG_ROW_TEST_IDS } from '../../components/TagRow/constants';
-import { Size } from '../../constants';
-import { TagRowItemInner } from '../../types';
+import { SIZE } from '../../constants';
+import { Size, TagRowItemInner } from '../../types';
 import { TagRowSimple } from '../TagRowSimple';
 import styles from './styles.module.scss';
 
@@ -17,20 +17,15 @@ type TagMoreProps = {
   onItemRemove?(item: string): void;
 };
 
-export function TagMore({ items, text = '', size = Size.Xs, buttonRef, onItemRemove }: TagMoreProps) {
+export function TagMore({ items, text = '', size = SIZE.Xs, buttonRef, onItemRemove }: TagMoreProps) {
   return (
     <PopoverPrivate
-      placement={PopoverPrivate.placements.BottomEnd}
-      trigger={PopoverPrivate.triggers.HoverAndFocusVisible}
+      placement='bottom-end'
+      trigger='hoverAndFocusVisible'
       triggerClassName={styles.triggerClassName}
       popoverContent={
         <div className={styles.tagRowDroplistContainer} data-size={size}>
-          <Scroll
-            className={styles.tagRowDroplistScroll}
-            size={Scroll.sizes.S}
-            barHideStrategy={Scroll.barHideStrategies.Move}
-            resize={Scroll.resizes.None}
-          >
+          <Scroll className={styles.tagRowDroplistScroll} size='s' barHideStrategy='move' resize='none'>
             <TagRowSimple
               items={items}
               size={size}

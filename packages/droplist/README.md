@@ -33,7 +33,7 @@
 
 Пример использования: 
 
-```typescript
+```tsx
   const MyComponent = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -89,7 +89,7 @@
 #### **`tagLabel?: string`**
 Текст тэга
 
-#### **`size?: Size`** - **`[Size.S]`**
+#### **`size?: Size`** - **`s`**
 Размер айтема, возможные значения:
 - `sizes.S`
 - `sizes.M`
@@ -137,11 +137,11 @@ CSS-класс контейнера
 #### **`onOpenChange?: (isOpen: boolean) => void`** - *`[undefined]`*
 колбек отображения компонента. Срабатывает при изменении состояния open.
 
-#### **`placement?: Placement`** - *`[Top]`*
+#### **`placement?: Placement`** - *`top`*
 положение дроплиста относительно своего таргета (children).
 Возможные значения: `Left, LeftStart, LeftEnd, Right, RightStart, RightEnd, Top, TopStart, TopEnd, Bottom, BottomStart, BottomEnd`
 
-#### **`trigger?: Trigger`** - *`[Click]`*
+#### **`trigger?: Trigger`** - *`click`*
 триггер открытия/закрытия дроплиста.
 - `Click` - открывать по клику
 - `Hover` - открывать по ховеру
@@ -159,9 +159,9 @@ CSS-класс контейнера
 
 #### **`widthStrategy?: PopoverWidthStrategy`**
 стратегия управления шириной контейнера дроплиста
-- `Auto` - соответствует ширине контента,
-- `Gte` - Great Then or Equal, равен ширине таргета или больше ее, если контент в дроплисте шире,
-- `Eq` - Equal, строго равен ширине таргета.
+- `auto` - соответствует ширине контента,
+- `gte` - Great Then or Equal, равен ширине таргета или больше ее, если контент в дроплисте шире,
+- `eq` - Equal, строго равен ширине таргета.
 
 #### **`className?: string`**
 CSS-класс на контейнере дроплиста.
@@ -176,7 +176,7 @@ CSS-класс на обёртке триггера поповера.
 Закрывается ли поповер по нажатию клавиши Escape
 
 #### **`triggerClickByKeys?: boolean`** - *`[true]`*
-Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `Click`)
+Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`)
 
 ### Droplist
 Повторяет пропсы компонента `dropdown` за исключением
@@ -201,15 +201,15 @@ CSS-класс на обёртке триггера поповера.
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | PopoverWidthStrategy.Auto | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | auto | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | offset | `number` | 0 | Отступ поповера от его триггер-элемента (в пикселях). |
 | closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
-| triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `Click`) |
+| triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | triggerRef | `ForwardedRef<HTMLElement \| ReferenceType>` | - | Ref ссылка на триггер |
-| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `Click` - открывать по клику <br> - `Hover` - открывать по ховеру <br> - `FocusVisible` - открывать по focus-visible <br> - `Focus` - открывать по фокусу <br> - `HoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `HoverAndFocus` - открывать по ховеру и фокусу <br> - `ClickAndFocusVisible` - открывать по клику и focus-visible |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Placement.Top | Положение поповера относительно своего триггера (children). |
+| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
 | firstElementRefCallback | `(instance: HTMLElement) => void` | - |  |
-| onFocusLeave | `(direction: "common" \| "top" \| "bottom" \| "left") => void` | - |  |
+| onFocusLeave | `(direction: "left" \| "top" \| "bottom" \| "common") => void` | - |  |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - |  |
 | scrollRef | `RefObject<HTMLElement>` | - |  |
 | useScroll | `boolean` | - |  |
@@ -225,13 +225,13 @@ CSS-класс на обёртке триггера поповера.
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | PopoverPrivate.widthStrategies.Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | offset | `number` | 0 | Отступ поповера от его триггер-элемента (в пикселях). |
 | closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
-| triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `Click`) |
+| triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | triggerRef | `ForwardedRef<HTMLElement \| ReferenceType>` | - | Ref ссылка на триггер |
-| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | PopoverPrivate.triggers.Click | Условие отображения поповера: <br> - `Click` - открывать по клику <br> - `Hover` - открывать по ховеру <br> - `FocusVisible` - открывать по focus-visible <br> - `Focus` - открывать по фокусу <br> - `HoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `HoverAndFocus` - открывать по ховеру и фокусу <br> - `ClickAndFocusVisible` - открывать по клику и focus-visible |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | PopoverPrivate.placements.BottomStart | Положение поповера относительно своего триггера (children). |
+| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | click | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | bottom-start | Положение поповера относительно своего триггера (children). |
 
 
 [//]: DOCUMENTATION_SECTION_END

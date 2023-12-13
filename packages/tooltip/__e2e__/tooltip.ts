@@ -1,7 +1,7 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { Trigger } from '../../popover-private/src/constants';
+import { TRIGGER } from '../../popover-private/src/constants';
 import {
   scrollWindow,
   verifyClickTrigger,
@@ -44,37 +44,37 @@ test.page(getPage({ open: true }))('Should be open when controlled "open" flag i
 });
 
 // eslint-disable-next-line testcafe-community/missing-expect
-test.page(getPage({ trigger: Trigger.Click }))('Opens by click', async t => {
+test.page(getPage({ trigger: TRIGGER.Click }))('Opens by click', async t => {
   await verifyTooltipBehavior(t, { click: true });
 });
 
 // eslint-disable-next-line testcafe-community/missing-expect
-test.page(getPage({ trigger: Trigger.Hover }))('Opens by hover', async t => {
+test.page(getPage({ trigger: TRIGGER.Hover }))('Opens by hover', async t => {
   await verifyTooltipBehavior(t, { hover: true });
 });
 
 // eslint-disable-next-line testcafe-community/missing-expect
-test.page(getPage({ trigger: Trigger.Focus }))('Opens by focus', async t => {
+test.page(getPage({ trigger: TRIGGER.Focus }))('Opens by focus', async t => {
   await verifyTooltipBehavior(t, { focus: true });
 });
 
 // eslint-disable-next-line testcafe-community/missing-expect
-test.page(getPage({ trigger: Trigger.ClickAndFocusVisible }))('Opens by click & focus', async t => {
+test.page(getPage({ trigger: TRIGGER.ClickAndFocusVisible }))('Opens by click & focus', async t => {
   await verifyTooltipBehavior(t, { click: true, focus: true });
 });
 
 // eslint-disable-next-line testcafe-community/missing-expect
-test.page(getPage({ trigger: Trigger.HoverAndFocus }))('Opens by hover & focus', async t => {
+test.page(getPage({ trigger: TRIGGER.HoverAndFocus }))('Opens by hover & focus', async t => {
   await verifyTooltipBehavior(t, { hover: true, focus: true });
 });
 
 // eslint-disable-next-line testcafe-community/missing-expect
-test.page(getPage({ trigger: Trigger.Focus }))('Opens by strong focus', async t => {
+test.page(getPage({ trigger: TRIGGER.Focus }))('Opens by strong focus', async t => {
   await verifyTooltipBehavior(t, { focus: true, strongFocus: true });
 });
 
 // eslint-disable-next-line testcafe-community/missing-expect
-test.page(getPage({ trigger: Trigger.HoverAndFocus }))('Opens by hover & strong focus', async t => {
+test.page(getPage({ trigger: TRIGGER.HoverAndFocus }))('Opens by hover & strong focus', async t => {
   await verifyTooltipBehavior(t, { hover: true, focus: true, strongFocus: true });
 });
 

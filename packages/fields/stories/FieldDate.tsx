@@ -6,6 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { FieldDate, FieldDateProps } from '../src';
+import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -16,6 +17,7 @@ export default meta;
 
 type StoryProps = Omit<FieldDateProps, 'locale'> & {
   localeName: 'ru-RU' | 'en-US';
+  prefixIcon: undefined;
 };
 
 const Template = ({ size, localeName, ...args }: StoryProps) => {
@@ -56,16 +58,18 @@ fieldDate.args = {
   labelTooltip: 'Tooltip description',
   required: false,
   hint: 'Hint text',
-  size: FieldDate.sizes.S,
-  validationState: FieldDate.validationStates.Default,
+  size: 's',
+  validationState: 'default',
   showCopyButton: true,
   localeName: 'en-US',
 };
 
 fieldDate.argTypes = {
-  localeName: {
-    options: ['ru-RU', 'en-US'],
-    control: { type: 'radio' },
+  ...COMMON_ARG_TYPES,
+  prefixIcon: {
+    table: {
+      disable: true,
+    },
   },
 };
 

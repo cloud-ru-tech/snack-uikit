@@ -4,7 +4,7 @@ import RCModal from 'react-modal';
 
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { Mode, Size } from '../../constants';
+import { MODE, SIZE } from '../../constants';
 import {
   ButtonClose,
   ModalBody,
@@ -15,6 +15,7 @@ import {
   ModalHeaderProps,
   OverlayElement,
 } from '../../helperComponents';
+import { Mode, Size } from '../../types';
 import styles from './styles.module.scss';
 import { getDataTestAttributes } from './utils';
 
@@ -45,8 +46,8 @@ export type ModalCustomProps = WithSupportProps<{
 export function ModalCustom({
   open,
   onClose,
-  size = Size.S,
-  mode = Mode.Regular,
+  size = SIZE.S,
+  mode = MODE.Regular,
   children,
   className,
   ...rest
@@ -56,7 +57,7 @@ export function ModalCustom({
   };
 
   const handleClose = () => {
-    if (mode === Mode.Regular) {
+    if (mode === MODE.Regular) {
       onClose();
     }
   };
@@ -68,11 +69,15 @@ export function ModalCustom({
       onRequestClose={handleClose}
       appElement={document.body}
       overlayElement={(_, content) => (
-        <OverlayElement blur={[Mode.Forced, Mode.Aggressive].includes(mode)} content={content} onClose={handleClose} />
+        <OverlayElement
+          blur={([MODE.Forced, MODE.Aggressive] as Mode[]).includes(mode)}
+          content={content}
+          onClose={handleClose}
+        />
       )}
       className={cn(styles.modal, className)}
     >
-      {mode !== Mode.Forced && (
+      {mode !== MODE.Forced && (
         <div className={styles.headerElements}>
           <ButtonClose onClick={handleCloseButtonClick} />
         </div>
@@ -82,9 +87,6 @@ export function ModalCustom({
     </RCModal>
   );
 }
-
-ModalCustom.modes = Mode;
-ModalCustom.sizes = Size;
 
 export namespace ModalCustom {
   export type HeaderProps = ModalHeaderProps;

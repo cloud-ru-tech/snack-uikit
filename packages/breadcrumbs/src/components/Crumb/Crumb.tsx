@@ -3,9 +3,9 @@ import { memo, useContext } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ElementType, ItemRenderMode } from '../../constants';
+import { ELEMENT_TYPE, ITEM_RENDER_MODE } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
-import { Item } from '../../types';
+import { Item, ItemRenderMode } from '../../types';
 import { getTestId } from '../../utils';
 import { CrumbsTypography } from '../CrumbsTypography';
 import styles from './styles.module.scss';
@@ -33,10 +33,10 @@ export const Crumb = memo(function Crumb({
   const { hidden, size, testId } = useContext(BreadcrumbsContext);
   const isLabelShouldBeEllipse = hidden && labelProp.length > ELLIPSIS_LABEL_LENGTH;
   const label =
-    isLabelShouldBeEllipse && renderMode === ItemRenderMode.Ellipsis ? `${labelProp.substring(0, 4)}...` : labelProp;
+    isLabelShouldBeEllipse && renderMode === ITEM_RENDER_MODE.Ellipsis ? `${labelProp.substring(0, 4)}...` : labelProp;
   const useIconOnly = Boolean(Icon && useIconOnlyProp);
 
-  const minWidth = minWidthProp && renderMode === ItemRenderMode.Ellipsis ? minWidthProp : 'auto';
+  const minWidth = minWidthProp && renderMode === ITEM_RENDER_MODE.Ellipsis ? minWidthProp : 'auto';
 
   const dataAttributes = {
     'data-render-mode': renderMode,
@@ -55,7 +55,7 @@ export const Crumb = memo(function Crumb({
       )}
       {!useIconOnly && (
         <CrumbsTypography size={size} className={styles.label}>
-          {renderMode === ItemRenderMode.ShortLabel ? shortLabel : label}
+          {renderMode === ITEM_RENDER_MODE.ShortLabel ? shortLabel : label}
         </CrumbsTypography>
       )}
     </>
@@ -63,7 +63,7 @@ export const Crumb = memo(function Crumb({
 
   const tabIndex = hidden ? { tabIndex: -1 } : {};
 
-  const title = renderMode === ItemRenderMode.Ellipsis ? label : '';
+  const title = renderMode === ITEM_RENDER_MODE.Ellipsis ? label : '';
 
   let crumb = null;
   if (href) {
@@ -108,7 +108,7 @@ export const Crumb = memo(function Crumb({
       {...dataAttributes}
       data-test-id={getTestId('crumb', testId)}
       className={cn(styles.wrapper, className)}
-      data-element-type={ElementType.Item}
+      data-element-type={ELEMENT_TYPE.Item}
       style={{ minWidth }}
       title={title}
     >

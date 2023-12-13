@@ -8,19 +8,19 @@
 ## Example
 
 ```typescript jsx
-import {Avatar} from "@snack-uikit/avatar";
+import { Avatar } from "@snack-uikit/avatar";
 
-<Avatar 
+<Avatar
   name="Name Surname"
   src="path-to-avatar/image.jpg"
-  size={Avatar.sizes.Xl}
+  size='xl'
 />
 
 <Avatar 
   name="Name Surname"
-  appearance={Avatar.appearances.Pink}
-  indicator={Avatar.indicators.Violet}
-  shape={Avatar.shapes.Square}
+  appearance='pink'
+  indicator='violet'
+  shape='square'
   showTwoSymbols={true}
 />
 ```
@@ -34,10 +34,10 @@ import {Avatar} from "@snack-uikit/avatar";
 |------|------|---------------|-------------|
 | name* | `string` | - | Имя |
 | src | `string` | - | src аттрибут изображеня |
-| appearance | enum Appearance: `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"`, `"neutral"` | Avatar.appearances.Red | Внешний вид |
-| size | enum Size: `"xxs"`, `"xs"`, `"s"`, `"m"`, `"l"`, `"xl"`, `"xxl"` | Avatar.sizes.S | Размер |
-| shape | enum Shape: `"round"`, `"square"` | Avatar.shapes.Round | Форма: круглая или квадратная |
-| indicator | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | - | Индикатор |
+| appearance | enum Appearance: `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"`, `"neutral"` | red | Внешний вид |
+| size | enum Size: `"xxs"`, `"xs"`, `"s"`, `"m"`, `"l"`, `"xl"`, `"xxl"` | s | Размер |
+| shape | enum Shape: `"round"`, `"square"` | round | Форма: круглая или квадратная |
+| indicator | enum Appearance: `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"`, `"neutral"`, `"primary"` | - | Индикатор |
 | showTwoSymbols | `boolean` | - | Отображение двух заглавных символов имени |
 | className | `string` | - | CSS-класс |
 

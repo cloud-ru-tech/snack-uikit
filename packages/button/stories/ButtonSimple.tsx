@@ -7,7 +7,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonSimple, ButtonSimpleProps } from '../src';
-import { BUTTON_ARGS, ICONS, STORY_WITH_COUNTER_ARG_TYPES, StoryCounterProps } from './constants';
+import { BUTTON_ARGS, COMMON_ARG_TYPES, STORY_WITH_COUNTER_ARG_TYPES, StoryCounterProps } from './constants';
 import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 const meta: Meta = {
@@ -83,40 +83,17 @@ buttonSimple.args = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   icon: 'none',
-  type: ButtonSimple.types.Button,
-  appearance: ButtonSimple.appearances.Neutral,
-  size: ButtonSimple.sizes.S,
+  type: 'button',
+  appearance: 'neutral',
+  size: 's',
   testMode: false,
 };
 
 buttonSimple.argTypes = {
-  testMode: {
-    name: '[Stories]: Show onClick counter',
-    control: {
-      type: 'boolean',
-    },
-  },
-  onClick: {
-    table: {
-      disable: true,
-    },
-  },
-  icon: {
-    name: '[Stories]: Show icon examples',
-    options: Object.keys(ICONS),
-    mapping: ICONS,
-    control: {
-      type: 'select',
-    },
-  },
-  type: {
-    control: {
-      type: 'radio',
-      options: ['neutral', 'primary', 'critical'],
-    },
-  },
+  ...COMMON_ARG_TYPES,
   ...STORY_WITH_COUNTER_ARG_TYPES,
 };
+
 buttonSimple.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],

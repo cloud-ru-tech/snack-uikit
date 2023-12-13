@@ -2,10 +2,10 @@ import cn from 'classnames';
 import { KeyboardEventHandler, MouseEventHandler, ReactNode, useCallback, useRef, useState } from 'react';
 
 import { Droplist } from '@snack-uikit/droplist';
-import { Sun } from '@snack-uikit/loaders';
+import { Sun, SunProps } from '@snack-uikit/loaders';
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { CHIP_CHOICE_TEST_IDS, Size, Variant } from '../../../../constants';
+import { CHIP_CHOICE_TEST_IDS, SIZE, VARIANT } from '../../../../constants';
 import { ButtonClearValue } from '../../../../helperComponents';
 import { BUTTON_CLEAR_VALUE_SIZE_MAP, DROPLIST_SIZE_MAP } from '../../constants';
 import { ChipChoiceCommonProps } from '../../types';
@@ -34,7 +34,7 @@ export type ChipChoiceCustomProps = ChipChoiceCommonProps & {
 };
 
 export function ChipChoiceCustom({
-  size = Size.S,
+  size = SIZE.S,
   disabled,
   loading,
   icon,
@@ -44,16 +44,16 @@ export function ChipChoiceCustom({
   onClick,
   className,
   tabIndex = 0,
-  placement = Droplist.placements.BottomStart,
-  widthStrategy = Droplist.widthStrategies.Gte,
+  placement = 'bottom-start',
+  widthStrategy = 'gte',
   onClearButtonClick,
   showClearButton: showClearButtonProp = true,
   children,
   'data-test-id': testId,
   ...rest
 }: ChipChoiceCustomProps) {
-  const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
-  const spinnerSize = size === Size.Xs ? Sun.sizes.XS : Sun.sizes.S;
+  const variant = icon && size !== SIZE.Xs ? VARIANT.IconBefore : VARIANT.LabelOnly;
+  const spinnerSize: SunProps['size'] = size === SIZE.Xs ? 'xs' : 's';
 
   const clearButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -121,7 +121,7 @@ export function ChipChoiceCustom({
 
   return (
     <Droplist
-      trigger={Droplist.triggers.Click}
+      trigger='click'
       open={isDroplistOpened}
       firstElementRefCallback={firstElementRefCallback}
       onOpenChange={onOpenChangeHandler}
@@ -146,7 +146,7 @@ export function ChipChoiceCustom({
           onKeyDown={handleChipKeyDown}
           tabIndex={tabIndex}
         >
-          {variant === Variant.IconBefore && (
+          {variant === VARIANT.IconBefore && (
             <span className={styles.icon} data-test-id={CHIP_CHOICE_TEST_IDS.icon}>
               {icon}
             </span>

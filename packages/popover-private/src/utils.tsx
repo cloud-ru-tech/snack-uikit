@@ -4,7 +4,8 @@ import { cloneElement, CSSProperties, HTMLProps, isValidElement, MutableRefObjec
 import { isForwardRef, isValidElementType } from 'react-is';
 
 import { PopoverPrivateProps } from './components';
-import { Trigger } from './constants';
+import { TRIGGER } from './constants';
+import { Trigger } from './types';
 
 type Params = {
   placement: Placement;
@@ -110,19 +111,19 @@ export const getTriggerProps = (trigger: Trigger): TriggerProps => {
   };
 
   switch (trigger) {
-    case Trigger.Hover:
+    case TRIGGER.Hover:
       return { ...defaultProps, useHoverTrigger: true };
-    case Trigger.Click:
+    case TRIGGER.Click:
       return { ...defaultProps, useClickTrigger: true };
-    case Trigger.FocusVisible:
+    case TRIGGER.FocusVisible:
       return { ...defaultProps, useFocusTrigger: true };
-    case Trigger.Focus:
+    case TRIGGER.Focus:
       return { ...defaultProps, useFocusTrigger: true, keyboardOnly: false };
-    case Trigger.ClickAndFocusVisible:
+    case TRIGGER.ClickAndFocusVisible:
       return { ...defaultProps, useFocusTrigger: true, useClickTrigger: true };
-    case Trigger.HoverAndFocusVisible:
+    case TRIGGER.HoverAndFocusVisible:
       return { ...defaultProps, useFocusTrigger: true, useHoverTrigger: true };
-    case Trigger.HoverAndFocus:
+    case TRIGGER.HoverAndFocus:
       return { ...defaultProps, useFocusTrigger: true, useHoverTrigger: true, keyboardOnly: false };
     default:
       return defaultProps;

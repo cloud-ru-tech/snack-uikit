@@ -6,6 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { TruncateString, TruncateStringProps } from '../src';
+import { VARIANT } from '../src/components/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -16,7 +17,7 @@ export default meta;
 
 function Template({ ...args }: TruncateStringProps) {
   return (
-    <Scroll className={styles.wrapper} resize={Scroll.resizes.Horizontal}>
+    <Scroll className={styles.wrapper} resize='horizontal'>
       <TruncateString {...args} />
     </Scroll>
   );
@@ -28,10 +29,18 @@ truncateString.args = {
   maxLines: 1,
   text: 'какой-то длинный текст который обрезается на самом интересном',
   hideTooltip: false,
-  variant: TruncateString.variants.End,
+  variant: 'end',
 };
 
-truncateString.argTypes = {};
+truncateString.argTypes = {
+  variant: {
+    options: Object.values(VARIANT),
+    mapping: VARIANT,
+    control: {
+      type: 'radio',
+    },
+  },
+};
 
 truncateString.parameters = {
   readme: {

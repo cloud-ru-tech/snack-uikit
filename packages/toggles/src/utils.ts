@@ -1,5 +1,5 @@
-import { Size } from './constants';
-import { DataAttributes } from './types';
+import { SIZE } from './constants';
+import { DataAttributes, Size } from './types';
 
 export function getVisualStateAttributes(state: Record<string, string | boolean>) {
   return Object.entries(state).reduce<DataAttributes>(function (result, [name, value]) {
@@ -10,10 +10,10 @@ export function getVisualStateAttributes(state: Record<string, string | boolean>
 
 export function getIconSize(size?: Size) {
   switch (size) {
-    case Size.S: {
+    case SIZE.S: {
       return 16;
     }
-    case Size.M:
+    case SIZE.M:
     default: {
       return 24;
     }

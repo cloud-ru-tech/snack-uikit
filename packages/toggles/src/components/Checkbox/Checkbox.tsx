@@ -4,7 +4,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { CheckSVG, MinusSVG } from '@snack-uikit/icons';
 
-import { Size } from '../../constants';
+import { SIZE } from '../../constants';
 import { ToggleProps } from '../../types';
 import { getIconSize, getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
@@ -23,7 +23,7 @@ export function Checkbox({
   indeterminateDefault,
   onChange: onChangeProp,
   'data-test-id': dataTestId,
-  size = Size.M,
+  size = SIZE.M,
   ...restProps
 }: CheckboxProps) {
   const localRef = useRef<HTMLInputElement>(null);
@@ -68,5 +68,3 @@ export function Checkbox({
     />
   );
 }
-
-Checkbox.sizes = Size;

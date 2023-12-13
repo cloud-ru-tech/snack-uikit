@@ -3,7 +3,8 @@ import { useMemo } from 'react';
 import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG, InfoFilledSVG } from '@snack-uikit/icons';
 import { Size } from '@snack-uikit/input-private';
 
-import { ValidationState } from '../../constants';
+import { VALIDATION_STATE } from '../../constants';
+import { ValidationState } from '../../types';
 import styles from './styles.module.scss';
 
 export type FooterProps = {
@@ -33,19 +34,19 @@ function getValidationIcon(props: Pick<FooterProps, 'showHintIcon' | 'validation
   let showIcon: boolean;
 
   switch (props.validationState) {
-    case ValidationState.Success:
+    case VALIDATION_STATE.Success:
       Component = CheckFilledSVG;
       showIcon = true;
       break;
-    case ValidationState.Error:
+    case VALIDATION_STATE.Error:
       Component = CrossFilledSVG;
       showIcon = true;
       break;
-    case ValidationState.Warning:
+    case VALIDATION_STATE.Warning:
       Component = AlarmFilledSVG;
       showIcon = true;
       break;
-    case ValidationState.Default:
+    case VALIDATION_STATE.Default:
     default:
       Component = InfoFilledSVG;
       showIcon = false;
@@ -57,7 +58,7 @@ function getValidationIcon(props: Pick<FooterProps, 'showHintIcon' | 'validation
   ) : null;
 }
 
-export function Footer({ length, hint, size, validationState = ValidationState.Default, showHintIcon }: FooterProps) {
+export function Footer({ length, hint, size, validationState = VALIDATION_STATE.Default, showHintIcon }: FooterProps) {
   const isReverseContainer = !hint && length;
   const limitExceeded = length && length.max && length.current > length.max;
 

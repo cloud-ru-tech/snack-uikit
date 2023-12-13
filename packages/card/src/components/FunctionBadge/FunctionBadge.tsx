@@ -43,12 +43,12 @@ export function FunctionBadge({ icon, options }: FunctionBadgeProps) {
         open={isOpen}
         onOpenChange={setIsOpen}
         firstElementRefCallback={firstElementRefCallback}
-        widthStrategy={Droplist.widthStrategies.Gte}
+        widthStrategy='gte'
         useScroll
         onFocusLeave={handleDroplistFocusLeave}
         data-test-id={TEST_IDS.droplist}
         triggerClassName={styles.triggerClassName}
-        placement={Droplist.placements.BottomEnd}
+        placement='bottom-end'
         triggerElement={
           <button
             data-test-id={TEST_IDS.functionBadge}

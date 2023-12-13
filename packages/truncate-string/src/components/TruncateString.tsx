@@ -1,35 +1,30 @@
-import { Tooltip } from '@snack-uikit/tooltip';
-
 import {
   TruncateStringEnd,
   TruncateStringEndProps,
   TruncateStringMiddle,
   TruncateStringMiddleProps,
 } from '../helperComponents';
-import { Variant } from './constants';
+import { VARIANT } from './constants';
 
 export type TruncateStringProps =
   | ({
       /** Вариант обрезания строки: <br> - `End` - с конца */
-      variant?: Variant.End;
+      variant?: typeof VARIANT.End;
     } & TruncateStringEndProps)
   | ({
       /** <br> - `Middle` - по середине */
-      variant: Variant.Middle;
+      variant: typeof VARIANT.Middle;
     } & TruncateStringMiddleProps);
 
-export function TruncateString({ variant = Variant.End, ...props }: TruncateStringProps) {
+export function TruncateString({ variant = VARIANT.End, ...props }: TruncateStringProps) {
   switch (variant) {
-    case Variant.Middle: {
+    case VARIANT.Middle: {
       return <TruncateStringMiddle {...props} />;
     }
 
-    case Variant.End:
+    case VARIANT.End:
     default: {
       return <TruncateStringEnd {...props} />;
     }
   }
 }
-
-TruncateString.placements = Tooltip.placements;
-TruncateString.variants = Variant;

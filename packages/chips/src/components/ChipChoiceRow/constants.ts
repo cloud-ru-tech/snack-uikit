@@ -1,21 +1,21 @@
-import { ButtonFunction } from '@snack-uikit/button';
+import { ButtonFunctionProps } from '@snack-uikit/button';
 
-import { ChipChoice } from '../ChipChoice';
+import { SIZE } from '../../constants';
 
-export enum Size {
-  Xs = 'xs',
-  S = 's',
-  M = 'm',
-}
+export const CHIP_CHOICE_ROW_SIZE = {
+  Xs: 'xs',
+  S: 's',
+  M: 'm',
+} as const;
 
 export const MAP_ROW_SIZE_TO_CHOICE_SIZE = {
-  [Size.Xs]: ChipChoice.sizes.Xs,
-  [Size.S]: ChipChoice.sizes.S,
-  [Size.M]: ChipChoice.sizes.M,
+  [CHIP_CHOICE_ROW_SIZE.Xs]: SIZE.Xs,
+  [CHIP_CHOICE_ROW_SIZE.S]: SIZE.S,
+  [CHIP_CHOICE_ROW_SIZE.M]: SIZE.M,
 };
 
-export const MAP_ROW_SIZE_TO_BUTTON_SIZE = {
-  [Size.Xs]: ButtonFunction.sizes.Xs,
-  [Size.S]: ButtonFunction.sizes.S,
-  [Size.M]: ButtonFunction.sizes.M,
+export const MAP_ROW_SIZE_TO_BUTTON_SIZE: Record<string, ButtonFunctionProps['size']> = {
+  [CHIP_CHOICE_ROW_SIZE.Xs]: 'xs',
+  [CHIP_CHOICE_ROW_SIZE.S]: 's',
+  [CHIP_CHOICE_ROW_SIZE.M]: 'm',
 };

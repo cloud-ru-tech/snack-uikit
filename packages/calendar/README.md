@@ -11,14 +11,14 @@
 import { Calendar } from '@snack-uikit/calendar';
 
 <Calendar
-  mode={Calendar.modes.Date}
+  mode='date'
   onChangeValue={(selectedDate: Date) => {
     // do something
   }}
 />
 
 <Calendar
-  mode={Calendar.modes.Range}
+  mode='range'
   onChangeValue={(selectedRange: [Date, Date]) => {
     // do something
   }}
@@ -31,11 +31,11 @@ import { Calendar } from '@snack-uikit/calendar';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| mode* | enum CalendarMode: `"date"`, `"range"` | - | Режим работы календаря: <br> - `Calendar.modes.Date` - режим выбора даты <br> - `Calendar.modes.Date` - режим выбора периода |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Calendar.sizes.M | Размер |
+| mode* | "date" \| "range" | - | Режим работы календаря: <br> - `date` - режим выбора даты <br> - `range` - режим выбора периода |
+| size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер |
 | today | `number \| Date` | - | Дата сегодняшнего дня |
 | showHolidays | `boolean` | - | Раскрашивает субботу и воскресенье |
-| buildCellProps | `(date: Date, viewMode: ViewMode) => { isDisabled?: boolean; isHoliday?: boolean };` | - | Колбек установки свойств ячейка календаря. Вызывается на построение каждой ячейки. Принимает два параметра: <br> `Date` - дата ячейки <br> `ViewMode`: <br>  - `Calendar.viewMode.Month` отображение месяца, каждая ячейка - 1 день <br>  - `Calendar.viewMode.Year` отображение года, каждая ячейка - 1 месяц <br>  - `Calendar.viewMode.Decade` отображение декады, каждая ячейка - 1 год <br><br> Колбек должен возвращать объект с полями, отвечающими за задизаленность и подкраску ячейки. |
+| buildCellProps | `(date: Date, viewMode: ViewMode) => { isDisabled?: boolean; isHoliday?: boolean };` | - | Колбек установки свойств ячейка календаря. Вызывается на построение каждой ячейки. Принимает два параметра: <br> `Date` - дата ячейки <br> `ViewMode`: <br>  - `month` отображение месяца, каждая ячейка - 1 день <br>  - `year` отображение года, каждая ячейка - 1 месяц <br>  - `decade` отображение декады, каждая ячейка - 1 год <br><br> Колбек должен возвращать объект с полями, отвечающими за задизаленность и подкраску ячейки. |
 | className | `string` | - | CSS-класс контейнера |
 | fitToContainer | `boolean` | true | Отключает предустановленный размер, заставляя компонент подстраиваться к размеру контейнра: (width: 100%, height: 100%). |
 | style | `CSSProperties` | - | Объект со стилями на контейнер. |

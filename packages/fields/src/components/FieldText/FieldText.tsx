@@ -2,11 +2,10 @@ import mergeRefs from 'merge-refs';
 import { forwardRef, ReactElement, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { InputPrivate, InputPrivateProps, Size, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
-import { Tooltip } from '@snack-uikit/tooltip';
+import { InputPrivate, InputPrivateProps, SIZE, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ContainerVariant, ValidationState } from '../../constants';
+import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useCopyButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
@@ -38,7 +37,7 @@ type FieldTextOwnProps = {
 
 export type FieldTextProps = WithSupportProps<FieldTextOwnProps & InputProps & WrapperProps>;
 
-const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
+export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
   (
     {
       id,
@@ -60,8 +59,8 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       required = false,
       hint,
       showHintIcon,
-      size = Size.S,
-      validationState = ValidationState.Default,
+      size = SIZE.S,
+      validationState = VALIDATION_STATE.Default,
       prefixIcon,
       ...rest
     },
@@ -114,7 +113,7 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
           validationState={validationState}
           disabled={disabled}
           readonly={readonly}
-          variant={ContainerVariant.SingleLine}
+          variant={CONTAINER_VARIANT.SingleLine}
           inputRef={localRef}
           prefix={prefixIcon}
           postfix={buttons}
@@ -131,7 +130,7 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
             placeholder={placeholder}
             disabled={disabled}
             readonly={readonly}
-            type={InputPrivate.types.Text}
+            type='text'
             maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
             id={id}
             name={name}
@@ -142,13 +141,3 @@ const ForwardedFieldText = forwardRef<HTMLInputElement, FieldTextProps>(
     );
   },
 );
-
-export const FieldText = ForwardedFieldText as typeof ForwardedFieldText & {
-  sizes: typeof Size;
-  validationStates: typeof ValidationState;
-  labelTooltipPlacements: typeof Tooltip.placements;
-};
-
-FieldText.sizes = Size;
-FieldText.validationStates = ValidationState;
-FieldText.labelTooltipPlacements = Tooltip.placements;

@@ -46,45 +46,23 @@ export function Card({ color, tone = '', palette }: CardProps) {
       }}
     >
       <div className={styles.content}>
-        <Typography
-          family={Typography.families.Sans}
-          role={Typography.roles.Label}
-          size={Typography.sizes.S}
-          className={styles.title}
-        >
-          {toneName}
-        </Typography>
-        <Typography
-          family={Typography.families.Light}
-          role={Typography.roles.Label}
-          size={Typography.sizes.S}
-          className={styles.valueLabel}
-        >
+        <Typography.SansLabelS className={styles.title}>{toneName}</Typography.SansLabelS>
+        <Typography.LightLabelS className={styles.valueLabel}>
           <span>CSS:</span>
           <span className={styles.value}>
             <TruncateString text={cssVar} />
           </span>
-        </Typography>
-        <Typography
-          family={Typography.families.Light}
-          role={Typography.roles.Label}
-          size={Typography.sizes.S}
-          className={styles.valueLabel}
-        >
+        </Typography.LightLabelS>
+        <Typography.LightLabelS className={styles.valueLabel}>
           <span> HEX: </span>
           <span className={styles.value}>{hex}</span>
-        </Typography>
+        </Typography.LightLabelS>
 
         <Divider className={styles.divider} />
 
-        <Typography
-          family={Typography.families.Light}
-          role={Typography.roles.Label}
-          size={Typography.sizes.S}
-          className={styles.description}
-        >
+        <Typography.LightLabelS className={styles.description}>
           <TruncateString text={color?.description ?? (hex || '')} />
-        </Typography>
+        </Typography.LightLabelS>
       </div>
     </div>
   );

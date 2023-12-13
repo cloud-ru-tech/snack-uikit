@@ -8,6 +8,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ModalCustom, ModalCustomProps } from '../src';
+import { ALIGN, CONTENT_ALIGN } from '../src/constants';
 import { ARG_TYPES, DEFAULT_ARGS } from './constants';
 import { ExtendedStoryProps } from './types';
 import { getStoryPicture } from './utils';
@@ -75,8 +76,8 @@ const Template: StoryFn<StoryProps> = ({
           disclaimer={disclaimer}
           actions={
             <>
-              <ButtonFilled label='Custom button' size={ButtonFilled.sizes.S} data-test-id='approve-button' />
-              <ButtonTonal label='Cancel button' size={ButtonTonal.sizes.S} />
+              <ButtonFilled label='Custom button' size='s' data-test-id='approve-button' />
+              <ButtonTonal label='Cancel button' size='s' />
             </>
           }
         />
@@ -90,9 +91,9 @@ export const modalCustom: StoryObj<StoryProps> = Template.bind({});
 modalCustom.args = {
   ...DEFAULT_ARGS,
   disclaimer: 'Custom disclaimer text',
-  headerAlign: ModalCustom.Header.aligns.Default,
-  bodyAlign: ModalCustom.Body.aligns.Default,
-  footerAlign: ModalCustom.Footer.aligns.Default,
+  headerAlign: 'default',
+  bodyAlign: 'default',
+  footerAlign: 'default',
 };
 
 modalCustom.argTypes = {
@@ -101,25 +102,25 @@ modalCustom.argTypes = {
     type: 'string',
   },
   headerAlign: {
-    defaultValue: ModalCustom.Header.aligns.Default,
-    options: Object.keys(ModalCustom.Header.aligns),
-    mapping: ModalCustom.Header.aligns,
+    defaultValue: 'default',
+    options: Object.keys(CONTENT_ALIGN),
+    mapping: CONTENT_ALIGN,
     control: {
       type: 'select',
     },
   },
   bodyAlign: {
-    defaultValue: ModalCustom.Body.aligns.Default,
-    options: Object.keys(ModalCustom.Body.aligns),
-    mapping: ModalCustom.Body.aligns,
+    defaultValue: 'default',
+    options: Object.keys(CONTENT_ALIGN),
+    mapping: CONTENT_ALIGN,
     control: {
       type: 'select',
     },
   },
   footerAlign: {
-    defaultValue: ModalCustom.Footer.aligns.Default,
-    options: Object.keys(ModalCustom.Footer.aligns),
-    mapping: ModalCustom.Footer.aligns,
+    defaultValue: 'default',
+    options: Object.keys(ALIGN),
+    mapping: ALIGN,
     control: {
       type: 'select',
     },

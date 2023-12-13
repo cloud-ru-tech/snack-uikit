@@ -3,7 +3,8 @@ import { JSXElementConstructor } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance, Size } from '../constants';
+import { APPEARANCE, SIZE } from '../constants';
+import { Appearance, Size } from '../types';
 import styles from './styles.module.scss';
 
 export type IconPredefinedProps = WithSupportProps<{
@@ -22,9 +23,9 @@ export type IconPredefinedProps = WithSupportProps<{
 export function IconPredefined({
   className,
   decor = true,
-  size = Size.M,
+  size = SIZE.M,
   icon: IconComponent,
-  appearance = Appearance.Primary,
+  appearance = APPEARANCE.Primary,
   ...rest
 }: IconPredefinedProps) {
   return (
@@ -39,6 +40,3 @@ export function IconPredefined({
     </div>
   );
 }
-
-IconPredefined.appearances = Appearance;
-IconPredefined.sizes = Size;

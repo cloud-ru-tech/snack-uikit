@@ -1,4 +1,4 @@
-import { Avatar } from '../../src';
+import { APPEARANCE, SHAPE } from '../../src/components/constants';
 import ImageCorp01 from './ImageCorp01.jpg';
 import ImageCorp02 from './ImageCorp02.jpg';
 import ImageCorp03 from './ImageCorp03.jpg';
@@ -17,24 +17,24 @@ import ImageUser07 from './ImageUser07.jpg';
 import ImageUser08 from './ImageUser08.jpg';
 
 export const imagesConfig = {
-  [Avatar.shapes.Round]: {
-    [Avatar.appearances.Red]: ImageUser01,
-    [Avatar.appearances.Orange]: ImageUser02,
-    [Avatar.appearances.Yellow]: ImageUser03,
-    [Avatar.appearances.Green]: ImageUser04,
-    [Avatar.appearances.Blue]: ImageUser05,
-    [Avatar.appearances.Violet]: ImageUser06,
-    [Avatar.appearances.Pink]: ImageUser07,
-    [Avatar.appearances.Neutral]: ImageUser08,
+  [SHAPE.Round]: {
+    [APPEARANCE.Red]: ImageUser01,
+    [APPEARANCE.Orange]: ImageUser02,
+    [APPEARANCE.Yellow]: ImageUser03,
+    [APPEARANCE.Green]: ImageUser04,
+    [APPEARANCE.Blue]: ImageUser05,
+    [APPEARANCE.Violet]: ImageUser06,
+    [APPEARANCE.Pink]: ImageUser07,
+    [APPEARANCE.Neutral]: ImageUser08,
   },
-  [Avatar.shapes.Square]: {
-    [Avatar.appearances.Red]: ImageCorp01,
-    [Avatar.appearances.Orange]: ImageCorp02,
-    [Avatar.appearances.Yellow]: ImageCorp03,
-    [Avatar.appearances.Green]: ImageCorp04,
-    [Avatar.appearances.Blue]: ImageCorp05,
-    [Avatar.appearances.Violet]: ImageCorp06,
-    [Avatar.appearances.Pink]: ImageCorp07,
-    [Avatar.appearances.Neutral]: ImageCorp08,
+  [SHAPE.Square]: {
+    [APPEARANCE.Red]: ImageCorp01,
+    [APPEARANCE.Orange]: ImageCorp02,
+    [APPEARANCE.Yellow]: ImageCorp03,
+    [APPEARANCE.Green]: ImageCorp04,
+    [APPEARANCE.Blue]: ImageCorp05,
+    [APPEARANCE.Violet]: ImageCorp06,
+    [APPEARANCE.Pink]: ImageCorp07,
+    [APPEARANCE.Neutral]: ImageCorp08,
   },
 };

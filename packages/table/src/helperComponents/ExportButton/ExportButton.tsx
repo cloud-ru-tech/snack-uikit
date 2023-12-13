@@ -36,10 +36,8 @@ export function ExportButton<TData extends object>({ fileName, data, columnDefin
       open={isOpen}
       onOpenChange={setIsOpen}
       useScroll
-      placement={Droplist.placements.BottomEnd}
-      triggerElement={
-        <ButtonFunction size={ButtonFunction.sizes.M} onKeyDown={handleTriggerKeyDown} icon={<DownloadSVG />} />
-      }
+      placement='bottom-end'
+      triggerElement={<ButtonFunction size='m' onKeyDown={handleTriggerKeyDown} icon={<DownloadSVG />} />}
     >
       {[
         {

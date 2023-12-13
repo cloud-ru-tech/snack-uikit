@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ViewMode } from '../../constants';
+import { VIEW_MODE } from '../../constants';
 import { CalendarContext } from '../CalendarContext';
 import { DecadeView } from '../DecadeView';
 import { MonthView } from '../MonthView';
@@ -10,11 +10,11 @@ export function CalendarBody() {
   const { viewMode } = useContext(CalendarContext);
 
   switch (viewMode) {
-    case ViewMode.Decade:
+    case VIEW_MODE.Decade:
       return <DecadeView />;
-    case ViewMode.Year:
+    case VIEW_MODE.Year:
       return <YearView />;
-    case ViewMode.Month:
+    case VIEW_MODE.Month:
     default:
       return <MonthView />;
   }

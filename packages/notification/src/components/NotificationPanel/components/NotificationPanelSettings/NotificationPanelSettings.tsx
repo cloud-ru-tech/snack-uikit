@@ -18,7 +18,7 @@ export type NotificationPanelSettingsProps = {
 export function NotificationPanelSettings({ actions, button }: NotificationPanelSettingsProps) {
   const buttonProps: ButtonSimpleProps = {
     ...button,
-    size: ButtonSimple.sizes.S,
+    size: 's',
     icon: button.icon || <KebabSVG />,
     'data-test-id': TEST_IDS.settings.droplistTrigger,
   };

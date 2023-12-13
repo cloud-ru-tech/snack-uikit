@@ -30,14 +30,14 @@ export function NotificationCardFunction({ actions, open, setDroplistOpen }: Not
       <Droplist
         open={open}
         onOpenChange={setDroplistOpen}
-        placement={Droplist.placements.BottomEnd}
+        placement='bottom-end'
         firstElementRefCallback={firstElementRefCallback}
         onFocusLeave={handleDroplistFocusLeave}
         triggerRef={triggerElementRef}
         useScroll
         triggerElement={
           <ButtonFunction
-            size={ButtonFunction.sizes.S}
+            size='s'
             icon={<KebabSVG />}
             onKeyDown={handleTriggerKeyDown}
             data-test-id={TEST_IDS.actions.droplistTrigger}

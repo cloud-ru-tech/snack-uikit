@@ -4,6 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Sun, SunProps } from '../src';
+import { LOADER_SIZE } from '../src/components/constants';
 
 const meta: Meta = {
   title: 'Components/Loaders/Sun',
@@ -17,10 +18,17 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => <Sun {...args} />;
 export const sun: StoryObj<StoryProps> = Template.bind({});
 
 sun.args = {
-  size: Sun.sizes.S,
+  size: LOADER_SIZE.S,
 };
 
-sun.argTypes = {};
+sun.argTypes = {
+  size: {
+    options: Object.values(LOADER_SIZE),
+    control: {
+      type: 'radio',
+    },
+  },
+};
 
 sun.parameters = {
   readme: {

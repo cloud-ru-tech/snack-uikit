@@ -2,12 +2,11 @@ import mergeRefs from 'merge-refs';
 import { ChangeEvent, forwardRef, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Size, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
+import { SIZE, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import { Scroll } from '@snack-uikit/scroll';
-import { Tooltip } from '@snack-uikit/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ContainerVariant, ValidationState } from '../../constants';
+import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate, TextArea, TextAreaProps } from '../../helperComponents';
 import { useCopyButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
@@ -44,7 +43,7 @@ type FieldTextAreaOwnProps = {
 
 export type FieldTextAreaProps = WithSupportProps<FieldTextAreaOwnProps & InputProps & WrapperProps>;
 
-const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>(
+export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>(
   (
     {
       id,
@@ -68,8 +67,8 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
       labelTooltipPlacement,
       required = false,
       hint,
-      size = Size.S,
-      validationState = ValidationState.Default,
+      size = SIZE.S,
+      validationState = VALIDATION_STATE.Default,
       ...rest
     },
     ref,
@@ -123,16 +122,16 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
           disabled={disabled}
           readonly={readonly}
           data-resizable={isResizable || undefined}
-          variant={ContainerVariant.MultiLine}
+          variant={CONTAINER_VARIANT.MultiLine}
           style={{ '--max-rows': maxRows }}
           inputRef={localRef}
           postfix={<span className={styles.postfix}>{buttons}</span>}
         >
           <Scroll
             className={styles.scrollContainer}
-            size={Scroll.sizes.S}
-            barHideStrategy={Scroll.barHideStrategies.Never}
-            resize={isResizable ? Scroll.resizes.Vertical : Scroll.resizes.None}
+            size='s'
+            barHideStrategy='never'
+            resize={isResizable ? 'vertical' : 'none'}
             data-test-id='field-textarea__scroll-area'
           >
             <TextArea
@@ -159,13 +158,3 @@ const ForwardedFieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProp
     );
   },
 );
-
-export const FieldTextArea = ForwardedFieldTextArea as typeof ForwardedFieldTextArea & {
-  sizes: typeof Size;
-  validationStates: typeof ValidationState;
-  labelTooltipPlacements: typeof Tooltip.placements;
-};
-
-FieldTextArea.sizes = Size;
-FieldTextArea.validationStates = ValidationState;
-FieldTextArea.labelTooltipPlacements = Tooltip.placements;

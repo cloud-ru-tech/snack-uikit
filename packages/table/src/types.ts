@@ -10,10 +10,15 @@ import {
 } from '@tanstack/react-table';
 
 import { ToolbarProps } from '@snack-uikit/toolbar';
+import { ValueOf } from '@snack-uikit/utils';
 
 import { TableEmptyStateProps } from './components/TableEmptyState';
-import { ColumnAlign, ColumnPinPosition } from './constants';
-import { Except } from './helperComponents/types';
+import { COLUMN_ALIGN, COLUMN_PIN_POSITION } from './constants';
+import { Except } from './helperComponents';
+
+type ColumnAlign = ValueOf<typeof COLUMN_ALIGN>;
+
+type ColumnPinPosition = ValueOf<typeof COLUMN_PIN_POSITION>;
 
 type BaseColumnDefinition<TData> = Except<
   ColumnDef<TData>,
@@ -68,13 +73,13 @@ export type {
   RowClickHandler,
 } from './helperComponents';
 
-export {
-  type PaginationState,
-  type SortingState,
-  type RowSelectionState,
-  type RowSelectionOptions,
-  type TableEmptyStateProps,
-  type ToolbarProps,
-  type HeaderContext,
-  type CellContext,
+export type {
+  PaginationState,
+  SortingState,
+  RowSelectionState,
+  RowSelectionOptions,
+  TableEmptyStateProps,
+  ToolbarProps,
+  HeaderContext,
+  CellContext,
 };

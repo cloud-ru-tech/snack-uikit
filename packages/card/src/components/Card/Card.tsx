@@ -4,11 +4,12 @@ import { KeyboardEvent, ReactElement, ReactNode, useCallback, useRef } from 'rea
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Size } from '../../constants';
+import { SIZE } from '../../constants';
 import { CardContext } from '../../context';
 import { Check, FunctionBadgeWrapper, PromoBadge } from '../../helperComponents';
+import { Size } from '../../types';
 import { HeaderProps } from '../Header';
-import { BODY_TEXT_SIZE_MAP, TRIGGER_CLICK_KEY_CODES } from './constants';
+import { TRIGGER_CLICK_KEY_CODES } from './constants';
 import styles from './styles.module.scss';
 
 export type CardProps = WithSupportProps<{
@@ -46,7 +47,7 @@ export function Card({
   checked,
   outline,
   multipleSelection = false,
-  size = Size.M,
+  size = SIZE.M,
   children,
   header,
   footer,
@@ -98,12 +99,7 @@ export function Card({
             <div className={styles.content} data-size={size}>
               {header || null}
 
-              <Typography
-                family={Typography.families.Sans}
-                size={BODY_TEXT_SIZE_MAP[size]}
-                role={Typography.roles.Body}
-                className={styles.body}
-              >
+              <Typography family='sans' size={size} purpose='body' className={styles.body}>
                 {children}
               </Typography>
             </div>
@@ -117,5 +113,3 @@ export function Card({
     </CardContext.Provider>
   );
 }
-
-Card.sizes = Size;

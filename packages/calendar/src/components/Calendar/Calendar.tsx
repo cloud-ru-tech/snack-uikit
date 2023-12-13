@@ -2,15 +2,15 @@ import { CSSProperties, RefCallback, useCallback } from 'react';
 
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { CalendarMode, Size, ViewMode } from '../../constants';
+import { CALENDAR_MODE } from '../../constants';
 import { CalendarBase } from '../../helperComponents/CalendarBase';
-import { BuildCellPropsFunction, FocusDirection, Range } from '../../types';
+import { BuildCellPropsFunction, FocusDirection, Range, Size } from '../../types';
 import { getNormalizedDefaultValue, getNormalizedValue } from './utils';
 
 type CommonCalendarProps = {
   /**
    * Размер
-   * @default Calendar.sizes.M
+   * @default m
    */
   size?: Size;
   /** Дата сегодняшнего дня */
@@ -21,9 +21,9 @@ type CommonCalendarProps = {
    * Колбек установки свойств ячейка календаря. Вызывается на построение каждой ячейки. Принимает два параметра:
    * <br> `Date` - дата ячейки
    * <br> `ViewMode`:
-   * <br>  - `Calendar.viewMode.Month` отображение месяца, каждая ячейка - 1 день
-   * <br>  - `Calendar.viewMode.Year` отображение года, каждая ячейка - 1 месяц
-   * <br>  - `Calendar.viewMode.Decade` отображение декады, каждая ячейка - 1 год
+   * <br>  - `month` отображение месяца, каждая ячейка - 1 день
+   * <br>  - `year` отображение года, каждая ячейка - 1 месяц
+   * <br>  - `decade` отображение декады, каждая ячейка - 1 год
    * <br><br> Колбек должен возвращать объект с полями, отвечающими за задизаленность и подкраску ячейки.
    * @type (date: Date, viewMode: ViewMode) => { isDisabled?: boolean; isHoliday?: boolean };
    */
@@ -52,8 +52,8 @@ type CommonCalendarProps = {
 };
 
 type DateCalendarProps = CommonCalendarProps & {
-  /** Режим работы календаря: <br> - `Calendar.modes.Date` - режим выбора даты */
-  mode: CalendarMode.Date;
+  /** Режим работы календаря: <br> - `date` - режим выбора даты */
+  mode: typeof CALENDAR_MODE.Date;
   /** Выбранное значение.<br> - в режиме date тип `Date` */
   value?: Date;
   /** Значение по-умолчанию для uncontrolled.<br> - в режиме date тип `Date` */
@@ -63,8 +63,8 @@ type DateCalendarProps = CommonCalendarProps & {
 };
 
 type RangeCalendarProps = CommonCalendarProps & {
-  /** <br> - `Calendar.modes.Date` - режим выбора периода */
-  mode: CalendarMode.Range;
+  /** <br> - `range` - режим выбора периода */
+  mode: typeof CALENDAR_MODE.Range;
   /** <br> - в режиме range тип `Range` (`[Date, Date]`) */
   value?: Range;
   /** <br> - в режиме range тип `Range` (`[Date, Date]`) */
@@ -80,7 +80,7 @@ export function Calendar(props: CalendarProps) {
 
   const changeValueHandler = useCallback(
     (value: Range) => {
-      if (mode === CalendarMode.Date) {
+      if (mode === CALENDAR_MODE.Date) {
         const [date] = value;
         onChangeValue?.(date);
         return;
@@ -102,7 +102,3 @@ export function Calendar(props: CalendarProps) {
     />
   );
 }
-
-Calendar.sizes = Size;
-Calendar.modes = CalendarMode;
-Calendar.viewMode = ViewMode;

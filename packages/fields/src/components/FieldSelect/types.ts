@@ -6,11 +6,6 @@ import { WithSupportProps } from '@snack-uikit/utils';
 
 import { FieldDecoratorProps } from '../FieldDecorator';
 
-export enum SelectionMode {
-  Single = 'single',
-  Multi = 'multi',
-}
-
 export type Option = Pick<ItemSingleProps, 'caption' | 'description' | 'tagLabel' | 'icon' | 'avatar' | 'disabled'> & {
   value: string;
   label: string;

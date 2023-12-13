@@ -16,18 +16,18 @@ import { Calendar, CalendarProps } from '@snack-uikit/calendar';
 import { Dropdown } from '@snack-uikit/droplist';
 import { CalendarSVG } from '@snack-uikit/icons';
 import {
-  IconSize,
+  ICON_SIZE,
   InputPrivate,
   InputPrivateProps,
   runAfterRerender,
+  SIZE,
   Size,
   useButtonNavigation,
   useClearButton,
 } from '@snack-uikit/input-private';
-import { Tooltip } from '@snack-uikit/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ContainerVariant, ValidationState } from '../../constants';
+import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useCopyButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
@@ -68,13 +68,13 @@ type FieldDateOwnProps = {
 
 export type FieldDateProps = WithSupportProps<FieldDateOwnProps & InputProps & WrapperProps>;
 
-const CALENDAR_SIZE_MAP = {
-  [Size.S]: Calendar.sizes.S,
-  [Size.M]: Calendar.sizes.M,
-  [Size.L]: Calendar.sizes.M,
+const CALENDAR_SIZE_MAP: Record<Size, CalendarProps['size']> = {
+  [SIZE.S]: 's',
+  [SIZE.M]: 'm',
+  [SIZE.L]: 'm',
 };
 
-const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
+export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
   (
     {
       id,
@@ -95,8 +95,8 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       required = false,
       hint,
       showHintIcon,
-      size = Size.S,
-      validationState = ValidationState.Default,
+      size = SIZE.S,
+      validationState = VALIDATION_STATE.Default,
       locale = DEFAULT_LOCALE,
       ...rest
     },
@@ -108,7 +108,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const localRef = useRef<HTMLInputElement>(null);
     const clearButtonRef = useRef<HTMLButtonElement>(null);
     const copyButtonRef = useRef<HTMLButtonElement>(null);
-    const calendarIconSize = size === Size.S ? IconSize.Xs : IconSize.S;
+    const calendarIconSize = size === SIZE.S ? ICON_SIZE.Xs : ICON_SIZE.S;
     const showDropList = isOpen && !readonly && !disabled;
     const showAdditionalButton = Boolean(valueProp && !disabled);
     const showClearButton = showAdditionalButton && !readonly;
@@ -257,9 +257,9 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
         {...extractSupportProps(rest)}
       >
         <Dropdown
-          trigger={Dropdown.triggers.Click}
+          trigger='click'
           triggerClassName={styles.triggerClassName}
-          widthStrategy={Dropdown.widthStrategies.Gte}
+          widthStrategy='gte'
           {...(readonly || disabled
             ? { open: false }
             : {
@@ -269,7 +269,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
           content={
             <div className={styles.calendarWrapper} data-size={size}>
               <Calendar
-                mode={Calendar.modes.Date}
+                mode='date'
                 size={CALENDAR_SIZE_MAP[size]}
                 value={valueProp ? parseDate(valueProp) : undefined}
                 onChangeValue={handleSelectDate}
@@ -292,7 +292,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
             validationState={validationState}
             disabled={disabled}
             readonly={readonly}
-            variant={ContainerVariant.SingleLine}
+            variant={CONTAINER_VARIANT.SingleLine}
             focused={showDropList}
             inputRef={localRef}
             postfix={
@@ -316,7 +316,7 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
               disabled={disabled}
               readonly={readonly}
               tabIndex={inputTabIndex}
-              type={InputPrivate.types.Text}
+              type='text'
               id={id}
               name={name}
               data-test-id='field-date__input'
@@ -327,13 +327,3 @@ const ForwardedFieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     );
   },
 );
-
-export const FieldDate = ForwardedFieldDate as typeof ForwardedFieldDate & {
-  sizes: typeof Size;
-  validationStates: typeof ValidationState;
-  labelTooltipPlacements: typeof Tooltip.placements;
-};
-
-FieldDate.sizes = Size;
-FieldDate.validationStates = ValidationState;
-FieldDate.labelTooltipPlacements = Tooltip.placements;

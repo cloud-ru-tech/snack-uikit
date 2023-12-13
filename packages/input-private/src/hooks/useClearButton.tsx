@@ -2,8 +2,9 @@ import { MouseEventHandler, RefObject, useMemo } from 'react';
 
 import { useEventHandler } from '@snack-uikit/utils';
 
-import { BUTTON_SIZE_MAP, Size } from '../constants';
+import { BUTTON_SIZE_MAP } from '../constants';
 import { ButtonClearValue } from '../helperComponents';
+import { Size } from '../types';
 import { ButtonProps } from './types';
 
 type UseClearButtonProps = {

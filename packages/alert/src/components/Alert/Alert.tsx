@@ -5,7 +5,8 @@ import { Link } from '@snack-uikit/link';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance, APPEARANCE_TO_COLOR_MAP } from '../../constants';
+import { APPEARANCE, APPEARANCE_TO_COLOR_MAP } from '../../constants';
+import { Appearance } from '../../types';
 import { getIcon } from '../../utils';
 import styles from './styles.module.scss';
 
@@ -38,7 +39,7 @@ export function Alert({
   link,
   description,
   onClose,
-  appearance = Alert.appearances.Neutral,
+  appearance = APPEARANCE.Neutral,
   className,
   ...rest
 }: AlertProps) {
@@ -66,10 +67,10 @@ export function Alert({
             <Link
               href={href}
               text={link}
-              onSurface={Link.onSurfaces.Decor}
+              onSurface='decor'
               external
               onColor={APPEARANCE_TO_COLOR_MAP[appearance]}
-              size={Link.sizes.M}
+              size='m'
               data-test-id='alert__link'
             />
           </span>
@@ -88,5 +89,3 @@ export function Alert({
     </div>
   );
 }
-
-Alert.appearances = Appearance;

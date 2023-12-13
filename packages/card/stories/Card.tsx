@@ -88,12 +88,7 @@ const Template: StoryFn<StoryProps> = ({
       }
       case ImageMode.Background: {
         return (
-          <Card.Image
-            mode={Card.Image.modes.Background}
-            alt={'alt'}
-            src={imageSrc || IMAGE_MAP[imageMode]}
-            hideFading={!showFading}
-          />
+          <Card.Image mode='background' alt={'alt'} src={imageSrc || IMAGE_MAP[imageMode]} hideFading={!showFading} />
         );
       }
       case ImageMode.None:
@@ -146,7 +141,7 @@ card.args = {
   multipleSelection: true,
   outline: false,
   promoBadge: 'Promo badge',
-  size: Card.sizes.M,
+  size: 'm',
   title: 'Title truncate 1 line',
   metadata: 'Metadata truncate 1 line',
   description: 'Description truncate 2 lines',

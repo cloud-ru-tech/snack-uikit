@@ -9,7 +9,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Droplist, ItemMultipleProps } from '../src';
-import { Size } from '../src/constants';
+import { SIZE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -24,7 +24,7 @@ type StoryProps = ItemMultipleProps;
 
 const Template: StoryFn<StoryProps> = args => {
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
-  const sizes = Object.values(Droplist.sizes);
+  const sizes = Object.values(SIZE);
 
   return (
     <div className={styles.pageWrapper}>
@@ -124,7 +124,7 @@ itemMultiple.args = {
   description: 'Description',
   tagLabel: 'Tag',
   checked: undefined,
-  size: Size.S,
+  size: SIZE.S,
 };
 
 itemMultiple.argTypes = {};

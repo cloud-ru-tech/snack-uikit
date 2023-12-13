@@ -1,19 +1,19 @@
-export enum Appearance {
-  Primary = 'primary',
-  Neutral = 'neutral',
-  Red = 'red',
-}
+export const APPEARANCE = {
+  Primary: 'primary',
+  Neutral: 'neutral',
+  Red: 'red',
+} as const;
 
-export enum Variant {
-  Count = 'count',
-  CountPlus = 'count-plus',
-  CountK = 'count-k',
-}
+export const VARIANT = {
+  Count: 'count',
+  CountPlus: 'count-plus',
+  CountK: 'count-k',
+} as const;
 
-export enum Size {
-  S = 's',
-  M = 'm',
-}
+export const SIZE = {
+  S: 's',
+  M: 'm',
+} as const;
 
 export const DEFAULT_PLUS_LIMIT = 10;
 export const DEFAULT_KEY_LIMIT = 1000;

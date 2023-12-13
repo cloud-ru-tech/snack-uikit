@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { CalendarMode } from '../../constants';
+import { CALENDAR_MODE } from '../../constants';
 import { useGrid } from '../../hooks';
 import { getDateLabel, isTheSameDate, isTheSameMonth } from '../../utils';
 import { CalendarContext } from '../CalendarContext';
@@ -26,7 +26,7 @@ export function MonthView() {
     getItemLabel: getDateLabel,
 
     onSelect(date) {
-      if (mode === CalendarMode.Range) {
+      if (mode === CALENDAR_MODE.Range) {
         preselectedRange ? completePreselect(date) : startPreselect(date);
         return;
       }

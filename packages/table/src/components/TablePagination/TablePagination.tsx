@@ -58,10 +58,10 @@ export function TablePagination<TData>({
         <ChipChoice.Single
           value={String(tablePaginationState.pageSize)}
           onChange={handleRowsVolumeOnChange}
-          placement={ChipChoice.placements.TopEnd}
+          placement='top-end'
           options={options}
           label={optionsLabel}
-          widthStrategy={ChipChoice.widthStrategies.Auto}
+          widthStrategy='auto'
           showClearButton={false}
         />
       )}

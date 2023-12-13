@@ -1,4 +1,4 @@
-import { OnColor } from '@snack-uikit/link';
+import { ON_COLOR } from '@snack-uikit/link';
 
 export enum ToastSystemEventAppearance {
   Neutral = 'neutral',
@@ -9,9 +9,9 @@ export enum ToastSystemEventAppearance {
 }
 
 export const APPEARANCE_TO_ON_COLOR_MAP = {
-  [ToastSystemEventAppearance.Neutral]: OnColor.InvertNeutral,
-  [ToastSystemEventAppearance.Error]: OnColor.InvertNeutral,
-  [ToastSystemEventAppearance.ErrorCritical]: OnColor.Red,
-  [ToastSystemEventAppearance.Warning]: OnColor.InvertNeutral,
-  [ToastSystemEventAppearance.Success]: OnColor.InvertNeutral,
+  [ToastSystemEventAppearance.Neutral]: ON_COLOR.InvertNeutral,
+  [ToastSystemEventAppearance.Error]: ON_COLOR.InvertNeutral,
+  [ToastSystemEventAppearance.ErrorCritical]: ON_COLOR.Red,
+  [ToastSystemEventAppearance.Warning]: ON_COLOR.InvertNeutral,
+  [ToastSystemEventAppearance.Success]: ON_COLOR.InvertNeutral,
 } as const;

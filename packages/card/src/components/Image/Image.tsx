@@ -1,4 +1,4 @@
-import { Mode } from './constants';
+import { MODE } from './constants';
 import styles from './styles.module.scss';
 
 export type ImageProps = {
@@ -7,12 +7,10 @@ export type ImageProps = {
   /** Описание картинки */
   alt: string;
 } /**  Image mode */ & (
-  | { mode?: Mode.Little | Mode.Middle; hideFading?: never }
-  | { mode: Mode.Background; hideFading?: boolean }
+  | { mode?: typeof MODE.Little | typeof MODE.Middle; hideFading?: never }
+  | { mode: typeof MODE.Background; hideFading?: boolean }
 );
 
-export function Image({ src, alt, mode = Mode.Little, hideFading }: ImageProps) {
+export function Image({ src, alt, mode = MODE.Little, hideFading }: ImageProps) {
   return <img src={src} alt={alt} data-mode={mode} className={styles.image} data-fading={!hideFading || undefined} />;
 }
-
-Image.modes = Mode;

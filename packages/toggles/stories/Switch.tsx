@@ -4,7 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Switch as SwitchComponent, SwitchProps } from '../src';
-import { Size } from '../src/constants';
+import { SIZE } from '../src/constants';
 
 const meta: Meta = {
   title: 'Components/Toggles/Switch',
@@ -18,7 +18,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => <SwitchComponent {...args
 export const Switch: StoryObj<StoryProps> = Template.bind({});
 
 Switch.args = {
-  size: Size.M,
+  size: SIZE.M,
 };
 Switch.argTypes = {};
 Switch.parameters = {

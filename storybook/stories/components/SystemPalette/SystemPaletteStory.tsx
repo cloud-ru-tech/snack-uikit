@@ -2,7 +2,7 @@ import { Divider } from '@snack-uikit/divider';
 import { Tabs } from '@snack-uikit/tabs';
 
 import { capitalize } from '../utils';
-import { TABS } from './constants/content';
+import { TABS } from './constants';
 import styles from './styles.module.scss';
 
 export function SystemPaletteStory() {

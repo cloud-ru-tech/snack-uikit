@@ -5,7 +5,8 @@ import { BADGE } from '../../../storybook/constants';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { DropZone, HiddenDropZone, HiddenDropZoneProps } from '../src';
+import { HiddenDropZone, HiddenDropZoneProps } from '../src';
+import { UPLOAD_MODE } from '../src/helperComponents';
 import classNames from './styles.module.scss';
 
 const meta: Meta = {
@@ -54,7 +55,7 @@ hiddenDropZone.args = {
   title: 'Title',
   description: 'Description',
   disabled: false,
-  mode: DropZone.uploadModes.Multiple,
+  mode: UPLOAD_MODE.Multiple,
 };
 
 hiddenDropZone.argTypes = {

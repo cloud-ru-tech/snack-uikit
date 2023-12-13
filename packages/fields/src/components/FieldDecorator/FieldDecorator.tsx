@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
-import { Size } from '@snack-uikit/input-private';
+import { SIZE } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ValidationState } from '../../constants';
+import { VALIDATION_STATE } from '../../constants';
 import { Footer, FooterProps } from './Footer';
 import { Header, HeaderProps } from './Header';
 import styles from './styles.module.scss';
@@ -35,8 +35,8 @@ export function FieldDecorator({
   readonly,
   showHintIcon,
   labelTooltipPlacement,
-  size = Size.S,
-  validationState = ValidationState.Default,
+  size = SIZE.S,
+  validationState = VALIDATION_STATE.Default,
   ...rest
 }: FieldDecoratorProps) {
   const isFieldActive = !disabled && !readonly;
@@ -59,11 +59,8 @@ export function FieldDecorator({
         hint={hint}
         showHintIcon={showHintIcon}
         size={size}
-        validationState={isFieldActive ? validationState : ValidationState.Default}
+        validationState={isFieldActive ? validationState : VALIDATION_STATE.Default}
       />
     </div>
   );
 }
-
-FieldDecorator.validationStates = ValidationState;
-FieldDecorator.sizes = Size;

@@ -1,13 +1,14 @@
 import cn from 'classnames';
 import { Fragment, ReactNode, useState } from 'react';
 
-import { Size, Variant } from '../../src/constants';
+import { SIZE, VARIANT } from '../../src/constants';
+import { Size } from '../../src/types';
 import styles from '../styles.module.scss';
 
 const STATE_TABLE_HEADERS = ['Default', 'Loading', 'Disabled', 'Selected'];
 
 const VARIANTS_TABLE_HEADERS = Array(STATE_TABLE_HEADERS.length)
-  .fill(Object.values(Variant))
+  .fill(Object.values(VARIANT))
   .flatMap(v => v);
 
 type ChipChoiceStoryWrapProps = {
@@ -54,7 +55,7 @@ export function ChipChoiceStoryWrap({ chipControlled, showClickCounter, children
           </div>
         ))}
 
-        {Object.values(Size).map(size => (
+        {Object.values(SIZE).map(size => (
           <Fragment key={size}>
             <div className={headerCellClassnames}>{size}</div>
 

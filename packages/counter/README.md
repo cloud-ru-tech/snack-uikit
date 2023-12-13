@@ -8,17 +8,17 @@
 ## Example
 
 ```typescript jsx
-import {Counter} from "@snack-uikit/counter";
+import { Counter } from "@snack-uikit/counter";
 
 <Counter
   value={42}
-  size={Counter.sizes.M}
+  size='m'
 />
 
 <Counter 
   value={101}
-  appearance={Counter.appearances.Critical}
-  variant={Counter.variants.CountPlus}
+  appearance='critical'
+  variant='count-plus'
   plusLimit={100}
 />
 ```
@@ -31,9 +31,9 @@ import {Counter} from "@snack-uikit/counter";
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | value* | `number` | - | Значение |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | Appearance.Primary | Внешний вид |
-| variant | enum Variant: `"count"`, `"count-plus"`, `"count-k"` | Variant.Count | Вариант |
-| size | enum Size: `"s"`, `"m"` | Size.S | Размер |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"` | primary | Внешний вид |
+| variant | enum Variant: `"count"`, `"count-plus"`, `"count-k"` | count | Вариант |
+| size | enum Size: `"s"`, `"m"` | s | Размер |
 | plusLimit | `number` | 10 | Порог сокращения значения в формат v+. Например `1500` -> `999+` для 1000 |
 | className | `string` | - | CSS-класс |
 

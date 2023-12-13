@@ -1,7 +1,7 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { Mode, TEST_IDS as componentsTestIDs } from '../src/constants';
+import { MODE, TEST_IDS as componentsTestIDs } from '../src/constants';
 
 const TEST_IDS = {
   ...componentsTestIDs,
@@ -100,7 +100,7 @@ test.page(
   await t.expect(Selector(dataTestIdSelector(TEST_IDS.approveButton)).exists).ok();
 });
 
-test.page(getPage({ mode: Mode.Regular }))(
+test.page(getPage({ mode: MODE.Regular }))(
   'Closes by click on overlay/close-button and on Esc press for Regular drawer',
   async t => {
     await t
@@ -122,7 +122,7 @@ test.page(getPage({ mode: Mode.Regular }))(
   },
 );
 
-test.page(getPage({ mode: Mode.Soft }))(
+test.page(getPage({ mode: MODE.Soft }))(
   `Overlay shouldn't exist in "Soft" mode and Esc is not closing modal`,
   async t => {
     const closeBtn = Selector(dataTestIdSelector(TEST_IDS.closeButton));

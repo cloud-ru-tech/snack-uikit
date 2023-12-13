@@ -1,8 +1,8 @@
-import { Typography } from '@snack-uikit/typography';
+import { TypographyProps } from '@snack-uikit/typography';
 
-import { Size } from '../../../../constants';
+import { SIZE } from '../../../../constants';
 
-export const TYPOGRAPHY_SIZE_MAP = {
-  [Size.M]: Typography.sizes.M,
-  [Size.L]: Typography.sizes.L,
+export const TYPOGRAPHY_SIZE_MAP: Record<string, TypographyProps['size']> = {
+  [SIZE.M]: 'm',
+  [SIZE.L]: 'l',
 };

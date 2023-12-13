@@ -8,8 +8,17 @@ import {
 } from 'react';
 
 import { CounterProps } from '@snack-uikit/counter';
+import { ValueOf } from '@snack-uikit/utils';
 
-import { Appearance, IconPosition, SizeSL, SizeXsM } from './constants';
+import { APPEARANCE, ICON_POSITION, SIZE_S_L, SIZE_XS_M } from './constants';
+
+export type Appearance = ValueOf<typeof APPEARANCE>;
+
+export type IconPosition = ValueOf<typeof ICON_POSITION>;
+
+export type SizeSL = ValueOf<typeof SIZE_S_L>;
+
+export type SizeXsM = ValueOf<typeof SIZE_XS_M>;
 
 export type BaseButtonProps = {
   /** CSS-класс */

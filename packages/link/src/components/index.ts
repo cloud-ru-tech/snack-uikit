@@ -1,2 +1,2 @@
 export * from './Link';
-export { OnColor } from './constants';
+export { ON_COLOR } from './constants';

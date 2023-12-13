@@ -3,24 +3,24 @@ import { forwardRef } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance, HtmlType, IconPosition, SizeXsM, Target } from '../../constants';
+import { APPEARANCE, HTML_TYPE, ICON_POSITION, SIZE_XS_M, TARGET } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
-import { CommonButtonProps, CounterButtonProps } from '../../types';
+import { CommonButtonProps, CounterButtonProps, SizeXsM } from '../../types';
 import { extractCommonButtonProps, extractCounterButtonProps } from '../../utils';
 import styles from './styles.module.scss';
 
 export type ButtonFunctionProps = WithSupportProps<Omit<CommonButtonProps, 'size'> & { size?: SizeXsM }> &
   CounterButtonProps;
 
-const ForwardedButtonFunction = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonFunctionProps>(
+export const ButtonFunction = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonFunctionProps>(
   (
     {
       className,
-      iconPosition = IconPosition.After,
-      size = SizeXsM.S,
-      target = Target.Blank,
-      type = HtmlType.Button,
-      appearance = Appearance.Neutral,
+      iconPosition = ICON_POSITION.After,
+      size = SIZE_XS_M.S,
+      target = TARGET.Blank,
+      type = HTML_TYPE.Button,
+      appearance = APPEARANCE.Neutral,
       tabIndex,
       ...rest
     },
@@ -43,17 +43,3 @@ const ForwardedButtonFunction = forwardRef<HTMLButtonElement | HTMLAnchorElement
     />
   ),
 );
-
-export const ButtonFunction = ForwardedButtonFunction as typeof ForwardedButtonFunction & {
-  types: typeof HtmlType;
-  iconPositions: typeof IconPosition;
-  sizes: typeof SizeXsM;
-  appearances: typeof Appearance;
-  targets: typeof Target;
-};
-
-ButtonFunction.iconPositions = IconPosition;
-ButtonFunction.sizes = SizeXsM;
-ButtonFunction.types = HtmlType;
-ButtonFunction.appearances = Appearance;
-ButtonFunction.targets = Target;

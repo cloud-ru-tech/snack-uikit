@@ -1,7 +1,7 @@
-export enum Size {
-  M = 'm',
-  L = 'l',
-}
+export const SIZE = {
+  M: 'm',
+  L: 'l',
+} as const;
 
 export const TEST_IDS = {
   promoBadge: 'card__promo-badge',

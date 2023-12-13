@@ -6,6 +6,8 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Status, StatusProps } from '../src';
+import { SIZE } from '../src/components/Status/constants';
+import { APPEARANCE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -16,8 +18,8 @@ export default meta;
 
 type StoryProps = StatusProps;
 const Template: StoryFn<StoryProps> = ({ ...args }) => {
-  const sizes = Object.values(Status.sizes);
-  const appearances = Object.values(Status.appearances);
+  const sizes = Object.values(SIZE);
+  const appearances = Object.values(APPEARANCE);
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
 
   return (
@@ -68,16 +70,17 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
 export const status: StoryObj<StoryProps> = Template.bind({});
 
 status.args = {
-  size: Status.sizes.S,
-  appearance: Status.appearances.Primary,
+  size: SIZE.S,
+  appearance: APPEARANCE.Primary,
   label: 'Label text',
   hasBackground: false,
 };
 
 status.argTypes = {
   size: {
+    options: Object.values(SIZE),
     control: {
-      type: 'select',
+      type: 'radio',
     },
   },
   appearance: {

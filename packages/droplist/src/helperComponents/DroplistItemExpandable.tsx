@@ -55,8 +55,8 @@ export const DroplistItemExpandable = forwardRef<HTMLButtonElement, DroplistItem
       <Droplist
         size={size}
         className={'inner'}
-        placement={Droplist.placements.RightStart}
-        trigger={Droplist.triggers.Hover}
+        placement='right-start'
+        trigger='hover'
         triggerElement={<BaseDroplistItem {...props} onKeyDown={onKeyDownHandler} open={isOpen} hasSublist={true} />}
         open={isOpen}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

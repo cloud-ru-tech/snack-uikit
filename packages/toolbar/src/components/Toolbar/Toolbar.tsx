@@ -6,7 +6,7 @@ import { SearchPrivate } from '@snack-uikit/search';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TEST_IDS } from '../../constants';
-import { DeleteAction, MoreActions, SelectionMode, Separator } from '../../helperComponents';
+import { DeleteAction, MoreActions, Separator } from '../../helperComponents';
 import { extractDeleteActionProps, extractSearchPrivateProps, isDeleteActionProps } from './helpers';
 import styles from './styles.module.scss';
 import { CheckedToolbarProps, DefaultToolbarProps } from './types';
@@ -27,7 +27,7 @@ export function Toolbar({ className, actions, outline, moreActions, onRefresh, .
         <>
           <ButtonFunction
             icon={<UpdateSVG />}
-            size={ButtonFunction.sizes.M}
+            size='m'
             className={styles.updateButton}
             onClick={onRefresh}
             data-test-id={TEST_IDS.refreshButton}
@@ -39,7 +39,7 @@ export function Toolbar({ className, actions, outline, moreActions, onRefresh, .
       <SearchPrivate
         {...extractSearchPrivateProps(rest)}
         className={styles.search}
-        size={SearchPrivate.sizes.M}
+        size='m'
         data-test-id={TEST_IDS.search}
       />
 
@@ -61,5 +61,3 @@ export function Toolbar({ className, actions, outline, moreActions, onRefresh, .
     </div>
   );
 }
-
-Toolbar.selectionModes = SelectionMode;

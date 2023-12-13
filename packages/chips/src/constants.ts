@@ -1,19 +1,19 @@
-export enum Size {
-  Xs = 'xs',
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
+export const SIZE = {
+  Xs: 'xs',
+  S: 's',
+  M: 'm',
+  L: 'l',
+} as const;
 
-export enum ButtonSize {
-  Xxs = 'xxs',
-  Xs = 'xs',
-}
+export const BUTTON_SIZE = {
+  Xxs: 'xxs',
+  Xs: 'xs',
+} as const;
 
-export enum Variant {
-  LabelOnly = 'label-only',
-  IconBefore = 'icon-before',
-}
+export const VARIANT = {
+  LabelOnly: 'label-only',
+  IconBefore: 'icon-before',
+} as const;
 
 export const CHIP_ASSIST_TEST_IDS = {
   icon: 'chip-assist__icon',

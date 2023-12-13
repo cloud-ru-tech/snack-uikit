@@ -13,14 +13,12 @@ import {
 } from '@tanstack/react-table';
 import { ReactNode, useCallback, useMemo } from 'react';
 
-import { IconPredefined } from '@snack-uikit/icon-predefined';
 import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider } from '@snack-uikit/skeleton';
 import { Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ColumnAlign, ColumnPinPosition } from '../../constants';
 import {
   BodyRow,
   ExportButton,
@@ -30,7 +28,7 @@ import {
   getStatusColumnDef,
   HeaderRow,
   RowClickHandler,
-  StatusAppearance,
+  STATUS_APPEARANCE,
   TableContext,
 } from '../../helperComponents';
 import { ColumnDefinition } from '../../types';
@@ -322,9 +320,7 @@ export function Table<TData extends object>({
               outline={outline}
               loading={search?.loading}
               placeholder={search?.placeholder || 'Search'}
-              selectionMode={
-                rowSelectionProp?.multiRow ? Toolbar.selectionModes.Multiple : Toolbar.selectionModes.Single
-              }
+              selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
               actions={
                 exportFileName ? (
                   <ExportButton fileName={exportFileName} columnDefinitions={columnDefinitions} data={data} />
@@ -338,7 +334,7 @@ export function Table<TData extends object>({
         )}
 
         <div className={styles.scrollWrapper} data-outline={outline || undefined}>
-          <Scroll size={Scroll.sizes.S} className={styles.table}>
+          <Scroll size='s' className={styles.table}>
             <div className={styles.tableContent}>
               <TableContext.Provider value={{ table }}>
                 {loading ? (
@@ -377,9 +373,6 @@ export function Table<TData extends object>({
   );
 }
 
-Table.columnPinPositions = ColumnPinPosition;
-Table.columnAligns = ColumnAlign;
 Table.getStatusColumnDef = getStatusColumnDef;
-Table.statusAppearances = StatusAppearance;
+Table.statusAppearances = STATUS_APPEARANCE;
 Table.getRowActionsColumnDef = getRowActionsColumnDef;
-Table.emptyStateAppearances = IconPredefined.appearances;

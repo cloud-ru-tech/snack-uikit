@@ -1,25 +1,25 @@
-export enum Appearance {
-  Red = 'red',
-  Orange = 'orange',
-  Yellow = 'yellow',
-  Green = 'green',
-  Blue = 'blue',
-  Violet = 'violet',
-  Pink = 'pink',
-  Neutral = 'neutral',
-}
+export const APPEARANCE = {
+  Red: 'red',
+  Orange: 'orange',
+  Yellow: 'yellow',
+  Green: 'green',
+  Blue: 'blue',
+  Violet: 'violet',
+  Pink: 'pink',
+  Neutral: 'neutral',
+} as const;
 
-export enum Size {
-  Xxs = 'xxs',
-  Xs = 'xs',
-  S = 's',
-  M = 'm',
-  L = 'l',
-  Xl = 'xl',
-  Xxl = 'xxl',
-}
+export const SIZE = {
+  Xxs: 'xxs',
+  Xs: 'xs',
+  S: 's',
+  M: 'm',
+  L: 'l',
+  Xl: 'xl',
+  Xxl: 'xxl',
+} as const;
 
-export enum Shape {
-  Round = 'round',
-  Square = 'square',
-}
+export const SHAPE = {
+  Round: 'round',
+  Square: 'square',
+} as const;

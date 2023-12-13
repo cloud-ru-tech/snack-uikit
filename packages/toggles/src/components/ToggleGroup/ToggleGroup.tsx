@@ -1,7 +1,7 @@
 import { ReactNode, useCallback } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { SelectionMode } from '../../constants';
+import { SELECTION_MODE } from '../../constants';
 import { ToggleGroupContext } from '../../context';
 
 export type ToggleGroupProps = {
@@ -16,7 +16,7 @@ export type ToggleGroupProps = {
       /** Controlled обработчик измения состояния */
       onChange?(value: (string | undefined) | string): void;
       /** Режим выбора */
-      selectionMode?: SelectionMode.Single;
+      selectionMode?: typeof SELECTION_MODE.Single;
     }
   | {
       /** Начальное состояние */
@@ -26,7 +26,7 @@ export type ToggleGroupProps = {
       /** Controlled обработчик измения состояния */
       onChange?(value: (string[] | undefined) | string[]): void;
       /** Режим выбора */
-      selectionMode?: SelectionMode.Multiple;
+      selectionMode?: typeof SELECTION_MODE.Multiple;
     }
 );
 
@@ -34,7 +34,7 @@ export function ToggleGroup({
   children,
   value: valueProp,
   onChange: onChangeProp,
-  selectionMode = SelectionMode.Single,
+  selectionMode = SELECTION_MODE.Single,
   defaultValue,
 }: ToggleGroupProps) {
   const [value, setValue] = useUncontrolledProp<string | string[] | undefined>(valueProp, defaultValue, cb => {
@@ -43,7 +43,7 @@ export function ToggleGroup({
 
   const onChange = useCallback(
     (newValue: string) => {
-      if (selectionMode === SelectionMode.Single) {
+      if (selectionMode === SELECTION_MODE.Single) {
         return setValue((oldValue: string | undefined) => {
           if (newValue !== oldValue) {
             return newValue;
@@ -72,5 +72,3 @@ export function ToggleGroup({
     <ToggleGroupContext.Provider value={{ value, onChange, selectionMode }}>{children}</ToggleGroupContext.Provider>
   );
 }
-
-ToggleGroup.selectionModes = SelectionMode;

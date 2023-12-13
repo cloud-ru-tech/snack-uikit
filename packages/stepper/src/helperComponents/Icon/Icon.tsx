@@ -5,7 +5,8 @@ import { CheckSVG, CrossSVG } from '@snack-uikit/icons';
 import { Sun } from '@snack-uikit/loaders';
 import { Typography } from '@snack-uikit/typography';
 
-import { StepState } from '../../constants';
+import { STEP_STATE } from '../../constants';
+import { StepState } from '../../types';
 import styles from './styles.module.scss';
 
 export type IconProps = {
@@ -16,12 +17,12 @@ export type IconProps = {
 
 function getContent(state: StepState, number: number) {
   switch (state) {
-    case StepState.Completed:
+    case STEP_STATE.Completed:
       return <CheckSVG />;
-    case StepState.Rejected:
+    case STEP_STATE.Rejected:
       return <CrossSVG />;
-    case StepState.Loading:
-      return <Sun size={Sun.sizes.S} />;
+    case STEP_STATE.Loading:
+      return <Sun size='s' />;
     default:
       return number;
   }

@@ -2,19 +2,12 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance } from '../../constants';
+import { APPEARANCE } from '../../constants';
+import { Appearance } from '../../types';
 import { StatusIndicator } from '../StatusIndicator';
+import { SIZE, STATUS_INDICATOR_SIZE_MAP } from './constants';
 import styles from './styles.module.scss';
-
-enum Size {
-  Xs = 'xs',
-  S = 's',
-}
-
-const statusIndicatorSizeMap = {
-  [Size.Xs]: StatusIndicator.sizes.Xs,
-  [Size.S]: StatusIndicator.sizes.S,
-};
+import { Size } from './types';
 
 export type StatusProps = WithSupportProps<{
   /** Текст */
@@ -30,8 +23,8 @@ export type StatusProps = WithSupportProps<{
 
 export function Status({
   label,
-  size = Size.Xs,
-  appearance = Appearance.Primary,
+  size = SIZE.Xs,
+  appearance = APPEARANCE.Primary,
   hasBackground,
   className,
   ...rest
@@ -43,11 +36,8 @@ export function Status({
       data-size={size}
       data-has-background={hasBackground || undefined}
     >
-      <StatusIndicator appearance={appearance} size={statusIndicatorSizeMap[size]} />
+      <StatusIndicator appearance={appearance} size={STATUS_INDICATOR_SIZE_MAP[size]} />
       <span className={styles.label}>{label}</span>
     </div>
   );
 }
-
-Status.sizes = Size;
-Status.appearances = Appearance;

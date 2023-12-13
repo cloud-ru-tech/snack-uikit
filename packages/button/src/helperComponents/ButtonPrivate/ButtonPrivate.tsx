@@ -3,7 +3,7 @@ import { ForwardedRef, forwardRef, MouseEvent } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance, HtmlType, IconPosition, Target } from '../../constants';
+import { APPEARANCE, HTML_TYPE, ICON_POSITION, TARGET } from '../../constants';
 import { CommonButtonProps, CounterButtonProps } from '../../types';
 import { APPEARANCE_TO_COLOR_MAP } from './constants';
 import styles from './styles.module.scss';
@@ -26,7 +26,7 @@ export const ButtonPrivate = forwardRef<HTMLButtonElement | HTMLAnchorElement, B
       href,
       icon,
       iconClassName,
-      iconPosition = IconPosition.After,
+      iconPosition = ICON_POSITION.After,
       label,
       labelClassName,
       loading,
@@ -36,9 +36,9 @@ export const ButtonPrivate = forwardRef<HTMLButtonElement | HTMLAnchorElement, B
       onBlur,
       counter,
       size,
-      target = Target.Blank,
-      type = HtmlType.Button,
-      appearance = Appearance.Primary,
+      target = TARGET.Blank,
+      type = HTML_TYPE.Button,
+      appearance = APPEARANCE.Primary,
       tabIndex: tabIndexProp = 0,
       ...rest
     },

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { Popover } from '@snack-uikit/popover';
 
-import { ElementType, ItemRenderMode } from '../../constants';
+import { ELEMENT_TYPE, ITEM_RENDER_MODE } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
 import { BreadcrumbsConfigChain } from '../../types';
 import { getTestId } from '../../utils';
@@ -21,12 +21,12 @@ export function Collapse({ currentConfig, className }: CollapseProps) {
   const { hidden, size, testId } = ctx;
 
   const collapsedItems = currentConfig.map(node => {
-    if (node.element === ElementType.Item && node.item.renderMode === ItemRenderMode.Collapsed) {
+    if (node.element === ELEMENT_TYPE.Item && node.item.renderMode === ITEM_RENDER_MODE.Collapsed) {
       const { id } = node.item;
 
       return (
         <div key={id} className={styles.collapsedRow}>
-          <Crumb item={node.item} renderMode={ItemRenderMode.Full} />
+          <Crumb item={node.item} renderMode={ITEM_RENDER_MODE.Full} />
           <Separator />
         </div>
       );
@@ -41,8 +41,8 @@ export function Collapse({ currentConfig, className }: CollapseProps) {
   );
 
   return (
-    <div className={className} data-test-id={getTestId('collapse', testId)} data-element-type={ElementType.Collapse}>
-      <Popover tip={tip} trigger={Popover.triggers.HoverAndFocusVisible} placement={Popover.placements.Top}>
+    <div className={className} data-test-id={getTestId('collapse', testId)} data-element-type={ELEMENT_TYPE.Collapse}>
+      <Popover tip={tip} trigger='hoverAndFocusVisible' placement='top'>
         <button className={styles.collapse} tabIndex={hidden ? -1 : 0}>
           <CrumbsTypography size={size}>...</CrumbsTypography>
         </button>

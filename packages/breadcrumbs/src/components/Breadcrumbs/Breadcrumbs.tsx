@@ -2,9 +2,9 @@ import { memo, useMemo, useRef } from 'react';
 
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { ElementType, ItemRenderMode, SEPARATOR, Size } from '../../constants';
+import { ELEMENT_TYPE, ITEM_RENDER_MODE, SEPARATOR, SIZE } from '../../constants';
 import { useBreadcrumbsLayout } from '../../hooks';
-import { Item } from '../../types';
+import { Item, Size } from '../../types';
 import { Collapse } from '../Collapse';
 import { Crumb } from '../Crumb';
 import { HiddenChain } from '../HiddenChain';
@@ -23,7 +23,7 @@ export type BreadcrumbsProps = WithSupportProps<{
   separator?: string;
   /**
    * Размер
-   * @default Breadcrumbs.sizes.S
+   * @default s
    */
   size?: Size;
   /**
@@ -41,9 +41,9 @@ export type BreadcrumbsProps = WithSupportProps<{
 /**
  * Компонент хлебных крошек
  */
-const BreadcrumbsComponent = memo(function Breadcrumbs({
+export const Breadcrumbs = memo(function Breadcrumbs({
   items: itemsProps,
-  size = Size.S,
+  size = SIZE.S,
   separator = SEPARATOR,
   className,
   firstItemIconOnly = false,
@@ -78,13 +78,13 @@ const BreadcrumbsComponent = memo(function Breadcrumbs({
           const isLastElement = index === array.length - 1;
 
           switch (block.element) {
-            case ElementType.Separator:
+            case ELEMENT_TYPE.Separator:
               return <Separator key={index} />;
-            case ElementType.Collapse:
+            case ELEMENT_TYPE.Collapse:
               return <Collapse key={index} currentConfig={currentConfig.chain} />;
-            case ElementType.Item:
+            case ELEMENT_TYPE.Item:
               const { renderMode, id } = block.item;
-              if (renderMode !== ItemRenderMode.Collapsed) {
+              if (renderMode !== ITEM_RENDER_MODE.Collapsed) {
                 return (
                   <Crumb
                     useIconOnly={!index && firstItemIconOnly}
@@ -104,9 +104,3 @@ const BreadcrumbsComponent = memo(function Breadcrumbs({
     </>
   );
 });
-
-export const Breadcrumbs = BreadcrumbsComponent as typeof BreadcrumbsComponent & {
-  sizes: typeof Size;
-};
-
-Breadcrumbs.sizes = Size;

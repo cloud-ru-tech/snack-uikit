@@ -2,8 +2,9 @@ import { ReactNode } from 'react';
 
 import { notReachable } from '../../helpers';
 import { Track, TrackProps } from '../Track';
-import { Position } from './constants';
+import { POSITION } from './constants';
 import styles from './styles.module.scss';
+import { Position } from './types';
 
 export type TrackItemProps = {
   content: ReactNode;
@@ -19,7 +20,7 @@ export type TrackItemProps = {
 export function TrackItem({
   content,
   role,
-  contentPosition = Position.Right,
+  contentPosition = POSITION.Right,
   opposite,
   lineStyle,
   dotVariant,
@@ -29,7 +30,7 @@ export function TrackItem({
   const showOppositeBlock = Boolean(opposite || alternateMode);
 
   switch (contentPosition) {
-    case Position.Right:
+    case POSITION.Right:
       return (
         <div className={styles.trackItem} data-test-id={'timeline-track-item'}>
           {showOppositeBlock && (
@@ -42,7 +43,7 @@ export function TrackItem({
         </div>
       );
 
-    case Position.Left:
+    case POSITION.Left:
       return (
         <div className={styles.trackItem} data-test-id={'timeline-track-item'}>
           <div className={styles.content}>{content}</div>
@@ -61,7 +62,7 @@ export function TrackItem({
 }
 
 TrackItem.roles = Track.roles;
-TrackItem.contentPositions = Position;
+TrackItem.contentPositions = POSITION;
 TrackItem.dotVariants = Track.dotVariants;
 TrackItem.dotAppearances = Track.dotAppearances;
 TrackItem.lineStyles = Track.lineStyles;

@@ -8,7 +8,7 @@
 ## Example
 
 ```typescript jsx
-import {Typography} from "@snack-uikit/typography";
+import { Typography } from "@snack-uikit/typography";
 
 <Typography 
   family='sans'

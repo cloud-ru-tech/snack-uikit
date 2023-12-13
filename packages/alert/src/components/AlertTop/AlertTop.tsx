@@ -6,8 +6,9 @@ import { Link } from '@snack-uikit/link';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance, APPEARANCE_TO_COLOR_MAP } from '../../constants';
+import { APPEARANCE, APPEARANCE_TO_COLOR_MAP } from '../../constants';
 import { AlertTopButton } from '../../helperComponents';
+import { Appearance } from '../../types';
 import { getIcon } from '../../utils';
 import { APPEARANCE_TO_COLOR_MAP_INVERT } from './constants';
 import styles from './styles.module.scss';
@@ -47,7 +48,7 @@ export function AlertTop({
   link,
   href,
   onClose,
-  appearance = AlertTop.appearances.Neutral,
+  appearance = APPEARANCE.Neutral,
   buttonText,
   buttonOnClick,
   buttonIcon,
@@ -94,12 +95,12 @@ export function AlertTop({
           {link && (
             <span>
               <Link
-                onSurface={Link.onSurfaces.Accent}
+                onSurface='accent'
                 href={href}
                 text={link}
                 external
                 onColor={APPEARANCE_TO_COLOR_MAP[appearance]}
-                size={Link.sizes.M}
+                size='m'
                 data-test-id='alert-top__link'
               />
             </span>
@@ -130,5 +131,3 @@ export function AlertTop({
     </div>
   );
 }
-
-AlertTop.appearances = Appearance;

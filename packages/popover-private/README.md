@@ -13,9 +13,9 @@ import { PopoverPrivate } from "@snack-uikit/popover-private";
 function App() {
   return (
     <PopoverPrivate
-        placement={PopoverPrivate.placements.Top}
+        placement='top'
         popoverContent='Не нажимать, опасно!'
-        trigger={PopoverPrivate.triggers.Click}
+        trigger='click'
       >
         <button>Button with popover</button>
     </PopoverPrivate>
@@ -29,10 +29,10 @@ function App() {
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| trigger* | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `Click` - открывать по клику <br> - `Hover` - открывать по ховеру <br> - `FocusVisible` - открывать по focus-visible <br> - `Focus` - открывать по фокусу <br> - `HoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `HoverAndFocus` - открывать по ховеру и фокусу <br> - `ClickAndFocusVisible` - открывать по клику и focus-visible |
+| trigger* | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
 | popoverContent* | `ReactNode \| ReactNode[]` | - | Контент поповера |
 | children* | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
-| placement* | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Placement.Top | Положение поповера относительно своего триггера (children). |
+| placement* | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | outsideClick | `boolean \| OutsideClickHandler` | - | Закрывать ли при клике вне поповера |
@@ -45,10 +45,10 @@ function App() {
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
 | triggerRef | `ForwardedRef<ReferenceType \| HTMLElement>` | - | Ref ссылка на триггер |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | PopoverWidthStrategy.Auto | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
-| heightStrategy | enum PopoverHeightStrategy: `"auto"`, `"LessThanOrEqual"`, `"Equal"` | PopoverHeightStrategy.Auto | Стратегия управления высотой контейнера поповера <br> - `Auto` - соответствует высоте контента, <br> - `Lte` - Less Than or Equal, равен высоте таргета или меньше ее, если контент в поповере меньше, <br> - `Eq` - Equal, строго равен высоте таргета. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | auto | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
+| heightStrategy | enum PopoverHeightStrategy: `"auto"`, `"eq"`, `"lte"` | auto | Стратегия управления высотой контейнера поповера <br> - `auto` - соответствует высоте контента, <br> - `lte` - Less Than or Equal, равен высоте таргета или меньше ее, если контент в поповере меньше, <br> - `eq` - Equal, строго равен высоте таргета. |
 | closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
-| triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `Click`) |
+| triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | fallbackPlacements | `Placement[]` | - | Цепочка расположений которая будет применяться к поповеру от первого к последнему если при текущем он не влезает. |
 
 

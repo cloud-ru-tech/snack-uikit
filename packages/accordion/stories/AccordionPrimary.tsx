@@ -5,6 +5,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { AccordionPrimary, AccordionProps, AccordionSecondary } from '../src';
+import { SELECTION_MODE } from '../src/constants';
 import { DEFAULT_PROPS, STORY_TEST_IDS } from './constants';
 import { Content } from './helperComponents';
 import styles from './styles.module.scss';
@@ -71,7 +72,7 @@ const Template: StoryFn<AccordionProps> = ({ selectionMode }: AccordionProps) =>
 export const accordionPrimary: StoryObj<AccordionProps> = Template.bind({});
 
 accordionPrimary.args = {
-  selectionMode: AccordionPrimary.selectionModes.Single,
+  selectionMode: SELECTION_MODE.Single,
 };
 
 accordionPrimary.argTypes = {};

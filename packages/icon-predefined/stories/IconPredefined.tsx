@@ -5,7 +5,8 @@ import * as Icons from '@snack-uikit/icons';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { IconPredefined as IconPredefinedComponent, IconPredefinedProps } from '../src/components/IconPredefined';
+import { IconPredefined as IconPredefinedComponent, IconPredefinedProps } from '../src';
+import { APPEARANCE, SIZE } from '../src/constants';
 import styles from './styles.module.scss';
 
 type StoryProps = Omit<IconPredefinedProps, 'icon'> & {
@@ -29,8 +30,8 @@ export const IconPredefined: StoryObj<StoryProps> = Template.bind({});
 const iconNames = Object.keys(Icons);
 
 IconPredefined.args = {
-  size: IconPredefinedComponent.sizes.M,
-  appearance: IconPredefinedComponent.appearances.Primary,
+  size: SIZE.M,
+  appearance: APPEARANCE.Primary,
   decor: true,
   icon: 'PlaceholderSVG',
 };

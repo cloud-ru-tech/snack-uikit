@@ -14,16 +14,16 @@
 ## Example
 
 ```typescript jsx
-import {ButtonFilled, ButtonFunction, ButtonSimple} from "@snack-uikit/button";
-import {Counter} from "@snack-uikit/counter";
-import {DaySVG} from "@snack-uikit/icons";
+import { ButtonFilled, ButtonFunction, ButtonSimple } from "@snack-uikit/button";
+import { Counter } from "@snack-uikit/counter";
+import { DaySVG } from "@snack-uikit/icons";
 
 <ButtonFilled
   label='Navigate'
   onClick={() => navigate()}
   icon={<DaySVG />}
-  size={ButtonFilled.sizes.M}
-  type={ButtonFilled.types.Critical}
+  size='m'
+  appearance='primary'
   href='https://cloud.ru/'
   target='_blank'
   disabled={true}
@@ -37,7 +37,7 @@ import {DaySVG} from "@snack-uikit/icons";
 
 const CounterProps = { 
   value: 7, 
-  appearance: Counter.appearances.Critical,
+  appearance: 'red',
 }
 
 <ButtonFunction
@@ -54,7 +54,7 @@ const CounterProps = {
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | href | `string` | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | _blank | HTML-аттрибут target |
 | className | `string` | - | CSS-класс |
 | disabled | `boolean` | - | Флаг неактивности компонента |
 | icon | `ReactElement` | - | Иконка |
@@ -64,10 +64,10 @@ const CounterProps = {
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | - | Колбек обработки нажатия клавиши |
 | onFocus | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки фокуса |
 | onBlur | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки блюра |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | Appearance.Primary | Внешний вид кнопки |
-| type | "submit" \| "reset" \| "button" | HtmlType.Button | HTML-аттрибут type |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | primary | Внешний вид кнопки |
+| type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
-| size | enum SizeSL: `"s"`, `"m"`, `"l"` | SizeSL.S |  |
+| size | enum SizeSL: `"s"`, `"m"`, `"l"` | s |  |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## ButtonSimple
@@ -75,7 +75,7 @@ const CounterProps = {
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | href | `string` | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | _blank | HTML-аттрибут target |
 | className | `string` | - | CSS-класс |
 | disabled | `boolean` | - | Флаг неактивности компонента |
 | icon | `ReactElement` | - | Иконка |
@@ -85,10 +85,10 @@ const CounterProps = {
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | - | Колбек обработки нажатия клавиши |
 | onFocus | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки фокуса |
 | onBlur | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки блюра |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | Appearance.Neutral | Внешний вид кнопки |
-| type | "submit" \| "reset" \| "button" | HtmlType.Button | HTML-аттрибут type |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | neutral | Внешний вид кнопки |
+| type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
-| size | enum SizeSL: `"s"`, `"m"`, `"l"` | SizeSL.S |  |
+| size | enum SizeSL: `"s"`, `"m"`, `"l"` | s |  |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## ButtonOutline
@@ -96,7 +96,7 @@ const CounterProps = {
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | href | `string` | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | _blank | HTML-аттрибут target |
 | className | `string` | - | CSS-класс |
 | disabled | `boolean` | - | Флаг неактивности компонента |
 | icon | `ReactElement` | - | Иконка |
@@ -106,10 +106,10 @@ const CounterProps = {
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | - | Колбек обработки нажатия клавиши |
 | onFocus | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки фокуса |
 | onBlur | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки блюра |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | Appearance.Primary | Внешний вид кнопки |
-| type | "submit" \| "reset" \| "button" | HtmlType.Button | HTML-аттрибут type |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | primary | Внешний вид кнопки |
+| type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
-| size | enum SizeSL: `"s"`, `"m"`, `"l"` | SizeSL.S |  |
+| size | enum SizeSL: `"s"`, `"m"`, `"l"` | s |  |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## ButtonTonal
@@ -117,7 +117,7 @@ const CounterProps = {
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | href | `string` | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | _blank | HTML-аттрибут target |
 | className | `string` | - | CSS-класс |
 | disabled | `boolean` | - | Флаг неактивности компонента |
 | icon | `ReactElement` | - | Иконка |
@@ -127,19 +127,19 @@ const CounterProps = {
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | - | Колбек обработки нажатия клавиши |
 | onFocus | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки фокуса |
 | onBlur | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки блюра |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | Appearance.Primary | Внешний вид кнопки |
-| type | "submit" \| "reset" \| "button" | HtmlType.Button | HTML-аттрибут type |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | primary | Внешний вид кнопки |
+| type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
-| size | enum SizeSL: `"s"`, `"m"`, `"l"` | SizeSL.S |  |
+| size | enum SizeSL: `"s"`, `"m"`, `"l"` | s |  |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## ButtonFunction
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| iconPosition | enum IconPosition: `"before"`, `"after"` | IconPosition.After | Позиция иконки |
+| iconPosition | enum IconPosition: `"before"`, `"after"` | after | Позиция иконки |
 | href | `string` | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | _blank | HTML-аттрибут target |
 | className | `string` | - | CSS-класс |
 | disabled | `boolean` | - | Флаг неактивности компонента |
 | icon | `ReactElement` | - | Иконка |
@@ -149,10 +149,10 @@ const CounterProps = {
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | - | Колбек обработки нажатия клавиши |
 | onFocus | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки фокуса |
 | onBlur | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки блюра |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | Appearance.Neutral | Внешний вид кнопки |
-| type | "submit" \| "reset" \| "button" | HtmlType.Button | HTML-аттрибут type |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | neutral | Внешний вид кнопки |
+| type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
-| size | enum SizeXsM: `"xs"`, `"s"`, `"m"` | SizeXsM.S |  |
+| size | enum SizeXsM: `"s"`, `"m"`, `"xs"` | s |  |
 | counter | `CounterInButtonProps` | - | Пропсы каунтера в кнопке |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
@@ -161,7 +161,7 @@ const CounterProps = {
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | href | `string` | - | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | Target.Blank | HTML-аттрибут target |
+| target | `HTMLAttributeAnchorTarget` | _blank | HTML-аттрибут target |
 | className | `string` | - | CSS-класс |
 | disabled | `boolean` | - | Флаг неактивности компонента |
 | icon | `ReactElement` | - | Иконка |
@@ -170,9 +170,9 @@ const CounterProps = {
 | onKeyDown | `KeyboardEventHandler<HTMLElement>` | - | Колбек обработки нажатия клавиши |
 | onFocus | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки фокуса |
 | onBlur | `FocusEventHandler<HTMLButtonElement \| HTMLAnchorElement>` | - | Колбек обработки блюра |
-| type | "submit" \| "reset" \| "button" | HtmlType.Button | HTML-аттрибут type |
+| type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | Size.S | Размер |
+| size | enum Size: `"s"`, `"m"`, `"l"`, `"xs"` | s | Размер |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 

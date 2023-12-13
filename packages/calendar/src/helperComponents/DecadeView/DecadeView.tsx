@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ViewMode } from '../../constants';
+import { VIEW_MODE } from '../../constants';
 import { useGrid } from '../../hooks';
 import { getYearLabel, getYearShift, isTheSameDecade, isTheSameYear } from '../../utils';
 import { CalendarContext } from '../CalendarContext';
@@ -19,7 +19,7 @@ export function DecadeView() {
 
     onSelect(date: Date) {
       setViewShift(getYearShift(referenceDate, date));
-      setViewMode(ViewMode.Year);
+      setViewMode(VIEW_MODE.Year);
     },
 
     onPreselect(date: Date) {

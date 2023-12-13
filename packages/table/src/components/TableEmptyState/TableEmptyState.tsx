@@ -15,7 +15,7 @@ export type TableEmptyStateProps = {
 export function TableEmptyState({ title, description, className, icon, appearance }: TableEmptyStateProps) {
   return (
     <div className={cn(styles.tableEmptyStateWrapper, className)}>
-      <IconPredefined icon={icon} size={IconPredefined.sizes.L} appearance={appearance} />
+      <IconPredefined icon={icon} size='l' appearance={appearance} />
       <div className={styles.textWrapper}>
         <Typography.SansTitleM>{title}</Typography.SansTitleM>
         {description && <Typography.SansBodyM>{description}</Typography.SansBodyM>}

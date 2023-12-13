@@ -3,8 +3,7 @@ import { Ref } from 'react';
 
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { Size } from '../../constants';
-import { TagRowItemInner } from '../../types';
+import { Size, TagRowItemInner } from '../../types';
 import { TagList } from '../TagList';
 import styles from './styles.module.scss';
 

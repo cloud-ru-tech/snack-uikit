@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { QuestionSVG } from '@snack-uikit/icons';
 
 import { Tooltip, TooltipProps } from '../Tooltip';
-import { Size, SIZES_MAP, Trigger, TRIGGER_MAP } from './constants';
+import { SIZE, SIZES_MAP, TRIGGER, TRIGGER_MAP } from './constants';
 import styles from './styles.module.scss';
+import { Size, Trigger } from './types';
 
 export type QuestionTooltipProps = Omit<TooltipProps, 'children' | 'triggerClassName' | 'trigger'> & {
   /** Условие отображения подсказки */
@@ -19,8 +20,8 @@ export type QuestionTooltipProps = Omit<TooltipProps, 'children' | 'triggerClass
 };
 
 export function QuestionTooltip({
-  size = Size.Xs,
-  trigger = Trigger.Hover,
+  size = SIZE.Xs,
+  trigger = TRIGGER.Hover,
   tooltipClassname,
   className,
   triggerDataTestId,
@@ -53,7 +54,3 @@ export function QuestionTooltip({
     </Tooltip>
   );
 }
-
-QuestionTooltip.sizes = Size;
-QuestionTooltip.triggers = Trigger;
-QuestionTooltip.placements = Tooltip.placements;

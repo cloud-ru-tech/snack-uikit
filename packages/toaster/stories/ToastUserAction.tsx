@@ -8,7 +8,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { toaster, ToastUserActionProps } from '../src';
-import { ToastUserAction } from '../src/components/ToastUserAction';
+import { ToastUserAction } from '../src/components';
 import styles from './styles.module.scss';
 
 const meta: Meta = {

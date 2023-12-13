@@ -6,26 +6,7 @@
 [Changelog](./CHANGELOG.md)
 
 ```ts
-export enum Types {
-  Text = 'text',
-  File = 'file',
-  Hidden = 'hidden',
-  Image = 'image',
-  Password = 'password',
-  Color = 'color',
-  Date = 'date',
-  DateTime = 'datetime',
-  DateTimeLocal = 'datetime-local',
-  Email = 'email',
-  Number = 'number',
-  Range = 'range',
-  Search = 'search',
-  Tel = 'tel',
-  Time = 'time',
-  Url = 'url',
-  Month = 'month',
-  Week = 'week',
-}
+export type Type = 'text' | 'password'
 ```
 
 ```ts
@@ -61,7 +42,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | placeholder | `string` | - | Значение плейсхолдера |
 | id | `string` | - | Значение html-атрибута id |
 | className | `string` | - | CSS-класс |
-| type | enum Type: `"text"`, `"password"` | Type.Text | Тип инпута |
+| type | enum Type: `"text"`, `"password"` | text | Тип инпута |
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | autoComplete | `boolean` | - | Включен ли автокомплит для поля |

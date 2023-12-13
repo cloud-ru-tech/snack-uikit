@@ -9,6 +9,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Droplist, DroplistProps } from '../src';
 import { DroplistItemMultipleProps } from '../src/components/DroplistItem';
+import { SIZE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -108,7 +109,7 @@ export const droplistMultiple: StoryObj<StoryProps> = Template.bind({});
 
 droplistMultiple.args = {
   useScroll: true,
-  size: Droplist.sizes.S,
+  size: SIZE.S,
 };
 
 droplistMultiple.argTypes = {

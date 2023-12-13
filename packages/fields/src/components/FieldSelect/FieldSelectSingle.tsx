@@ -3,11 +3,11 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { selectAll } from '@snack-uikit/input-private';
 
-import { DEFAULT_LOCALE, EMPTY_OPTION } from './constants';
+import { DEFAULT_LOCALE, EMPTY_OPTION, SELECTION_MODE } from './constants';
 import { FieldSelectBase } from './FieldSelectBase';
 import { getDisplayedValue } from './helpers';
 import { useList } from './hooks';
-import { FieldSelectSingleProps, Option, SelectionMode } from './types';
+import { FieldSelectSingleProps, Option } from './types';
 
 export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleProps>(
   (
@@ -27,7 +27,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     },
     ref,
   ) => {
-    const selectionMode = SelectionMode.Single;
+    const selectionMode = SELECTION_MODE.Single;
     const [value, setValue] = useUncontrolledProp(valueProp, '', onChange);
     const selected = useMemo(() => options.find(option => option.value === value) ?? EMPTY_OPTION, [options, value]);
     const displayedValue = getDisplayedValue({ selectionMode, selected });

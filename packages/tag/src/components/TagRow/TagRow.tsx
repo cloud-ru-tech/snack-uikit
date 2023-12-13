@@ -1,8 +1,8 @@
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance, Size } from '../../constants';
+import { SIZE } from '../../constants';
 import { TagRowSimple, TagRowTruncated } from '../../helperComponents';
-import { TagRowItem } from '../../types';
+import { Size, TagRowItem } from '../../types';
 import { mapTagRowItem } from './utils';
 
 export type TagRowProps = WithSupportProps<{
@@ -20,7 +20,7 @@ export type TagRowProps = WithSupportProps<{
   onItemRemove?(item: string): void;
 }>;
 
-export function TagRow({ items, rowLimit, size = Size.Xs, ...props }: TagRowProps) {
+export function TagRow({ items, rowLimit, size = SIZE.Xs, ...props }: TagRowProps) {
   const coloredItems = items.map(mapTagRowItem);
 
   if (rowLimit) {
@@ -29,6 +29,3 @@ export function TagRow({ items, rowLimit, size = Size.Xs, ...props }: TagRowProp
 
   return <TagRowSimple items={coloredItems} size={size} {...props} />;
 }
-
-TagRow.sizes = Size;
-TagRow.appearances = Appearance;

@@ -4,6 +4,7 @@ import { ItemSingleProps } from '@snack-uikit/droplist';
 import { toaster } from '@snack-uikit/toaster';
 
 import { Card } from '../src';
+import { MODE as IMAGE_MODE } from '../src/components/Image/constants';
 import { generateOptions } from './helpers';
 import imageBackground from './ImageProdContentBackground.jpg';
 import imageLittle from './ImageProdContentLittle.jpg';
@@ -55,9 +56,9 @@ export const IMAGE_MAP = {
 };
 
 export const IMAGE_MODE_MAP = {
-  [ImageMode.Little]: Card.Image.modes.Little,
-  [ImageMode.Middle]: Card.Image.modes.Middle,
-  [ImageMode.Background]: Card.Image.modes.Background,
+  [ImageMode.Little]: IMAGE_MODE.Little,
+  [ImageMode.Middle]: IMAGE_MODE.Middle,
+  [ImageMode.Background]: IMAGE_MODE.Background,
 };
 
 export const OPTIONS_LENGTH = 3;

@@ -28,12 +28,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
               do not press this button, please do not press this button, please do not press this button, please do not
               press this button, please do not press this button, please
               <br />
-              <Link
-                href='#'
-                text='read why'
-                onSurface={Link.onSurfaces.Background}
-                onColor={Link.onColors.InvertNeutral}
-              />
+              <Link href='#' text='read why' onSurface='background' onColor='invert-neutral' />
             </div>
           )
         }
@@ -47,8 +42,8 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
 
 export const tooltip: StoryObj<StoryProps> = Template.bind({});
 tooltip.args = {
-  trigger: Tooltip.triggers.Hover,
-  placement: Tooltip.placements.Top,
+  trigger: 'hover',
+  placement: 'top',
   disableMaxWidth: false,
 };
 tooltip.argTypes = { tip: { type: 'string' } };

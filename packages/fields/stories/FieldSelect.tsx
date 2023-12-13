@@ -7,7 +7,8 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { FieldSelect, FieldSelectProps } from '../src';
-import { ICONS } from './constants';
+import { SELECTION_MODE } from '../src/components/FieldSelect/constants';
+import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -56,7 +57,7 @@ const getValue = ({
 }): string | string[] => {
   const x = DEFAULT_OPTIONS.find(op => op.label === value)?.value;
 
-  if (selectionMode === FieldSelect.selectionModes.Single) {
+  if (selectionMode === SELECTION_MODE.Single) {
     return x ?? '';
   }
 
@@ -84,7 +85,7 @@ const Template = ({ size, value: valueProp, selectionMode, localeName, showMoreO
       return;
     }
 
-    if (selectionMode === FieldSelect.selectionModes.Single) {
+    if (selectionMode === SELECTION_MODE.Single) {
       setValue('');
     } else {
       setValue([]);
@@ -123,7 +124,7 @@ fieldSelect.args = {
   id: 'select',
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  selectionMode: FieldSelect.selectionModes.Single,
+  selectionMode: SELECTION_MODE.Single,
   value: undefined,
   placeholder: 'Placeholder',
   readonly: false,
@@ -133,8 +134,8 @@ fieldSelect.args = {
   labelTooltip: 'Tooltip description',
   required: false,
   hint: 'Hint text',
-  size: FieldSelect.sizes.S,
-  validationState: FieldSelect.validationStates.Default,
+  size: 's',
+  validationState: 'default',
   options: DEFAULT_OPTIONS,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -154,18 +155,7 @@ fieldSelect.argTypes = {
       type: 'select',
     },
   },
-  prefixIcon: {
-    name: 'prefixIcon',
-    options: Object.keys(ICONS),
-    mapping: ICONS,
-    control: {
-      type: 'select',
-    },
-  },
-  localeName: {
-    options: ['ru-RU', 'en-US'],
-    control: { type: 'radio' },
-  },
+  ...COMMON_ARG_TYPES,
   showMoreOptions: {
     name: '[Stories] add more options to see scroll',
     type: 'boolean',

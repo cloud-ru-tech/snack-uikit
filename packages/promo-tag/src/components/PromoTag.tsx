@@ -3,7 +3,8 @@ import cn from 'classnames';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Appearance } from '../constants';
+import { APPEARANCE } from '../constants';
+import { Appearance } from '../types';
 import styles from './styles.module.scss';
 
 export type PromoTagProps = WithSupportProps<{
@@ -18,12 +19,10 @@ export type PromoTagProps = WithSupportProps<{
 /**
  * Компонент Promo Tag
  */
-export function PromoTag({ appearance = PromoTag.appearances.Primary, className, text, ...props }: PromoTagProps) {
+export function PromoTag({ appearance = APPEARANCE.Primary, className, text, ...props }: PromoTagProps) {
   return (
     <div className={cn(styles.promoTag, className)} {...extractSupportProps(props)} data-appearance={appearance}>
-      <Typography.SansLabelS tag={Typography.tags.span}>{text}</Typography.SansLabelS>
+      <Typography.SansLabelS tag='span'>{text}</Typography.SansLabelS>
     </div>
   );
 }
-
-PromoTag.appearances = Appearance;

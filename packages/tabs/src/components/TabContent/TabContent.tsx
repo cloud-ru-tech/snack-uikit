@@ -1,8 +1,8 @@
-import { PropsWithChildren, useContext } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { TabsContext } from '../../context';
+import { useTabsContext } from '../../context';
 import { getTabContentId } from '../../utils';
 
 export type TabContentProps = WithSupportProps<
@@ -14,7 +14,7 @@ export type TabContentProps = WithSupportProps<
 >;
 
 export function TabContent({ children, value, className, ...rest }: TabContentProps) {
-  const { selectedTab } = useContext(TabsContext);
+  const { selectedTab } = useTabsContext();
 
   if (value !== selectedTab) {
     return null;

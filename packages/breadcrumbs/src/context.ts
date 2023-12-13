@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 
-import { SEPARATOR, Size } from './constants';
+import { SEPARATOR, SIZE } from './constants';
+import { Size } from './types';
 
 type BreadcrumbsContextValue = {
   hidden: boolean;
@@ -11,6 +12,6 @@ type BreadcrumbsContextValue = {
 
 export const BreadcrumbsContext = createContext<BreadcrumbsContextValue>({
   hidden: false,
-  size: Size.S,
+  size: SIZE.S,
   separator: SEPARATOR,
 });

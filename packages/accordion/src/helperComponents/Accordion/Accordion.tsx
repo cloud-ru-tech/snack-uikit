@@ -8,7 +8,7 @@ export function Accordion({
   expanded,
   onExpandedChange,
   expandedDefault,
-  selectionMode = ToggleGroup.selectionModes.Single,
+  selectionMode = 'single',
   className,
   ...rest
 }: AccordionProps) {

@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 import { StepperApi } from '../types';
 
@@ -18,3 +18,5 @@ export const StepperContext = createContext<StepperApi>({
     /* stub */
   },
 });
+
+export const useStepperApi = () => useContext(StepperContext);

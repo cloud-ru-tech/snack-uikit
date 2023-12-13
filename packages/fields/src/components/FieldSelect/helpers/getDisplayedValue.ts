@@ -1,11 +1,12 @@
-import { Option, SelectionMode } from '../types';
+import { SELECTION_MODE } from '../constants';
+import { Option } from '../types';
 
 export const getDisplayedValue = (
   props:
-    | { selectionMode: SelectionMode.Single; selected: Option }
-    | { selectionMode: SelectionMode.Multi; selected: Option[]; getSelectedItemsText(amount: number): string },
+    | { selectionMode: typeof SELECTION_MODE.Single; selected: Option }
+    | { selectionMode: typeof SELECTION_MODE.Multi; selected: Option[]; getSelectedItemsText(amount: number): string },
 ) => {
-  if (props.selectionMode === SelectionMode.Single) {
+  if (props.selectionMode === SELECTION_MODE.Single) {
     return props.selected.label;
   }
 

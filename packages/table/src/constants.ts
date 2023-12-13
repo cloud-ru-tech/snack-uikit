@@ -1,12 +1,12 @@
-export enum ColumnPinPosition {
-  Left = 'left',
-  Right = 'right',
-}
+export const COLUMN_PIN_POSITION = {
+  Left: 'left',
+  Right: 'right',
+} as const;
 
-export enum ColumnAlign {
-  Left = 'left',
-  Right = 'right',
-}
+export const COLUMN_ALIGN = {
+  Left: 'left',
+  Right: 'right',
+} as const;
 
 export const TEST_IDS = {
   headerSortIndicator: 'table__header__sort-indicator',
@@ -25,7 +25,7 @@ export const TEST_IDS = {
   statusLabel: 'table__status-label',
 };
 
-export enum SortFn {
-  DateTime = 'datetime',
-  AlphaNumeric = 'alphanumeric',
-}
+export const SORT_FN = {
+  DateTime: 'datetime',
+  AlphaNumeric: 'alphanumeric',
+} as const;

@@ -35,8 +35,8 @@ export const dropdown: StoryObj<StoryProps> = Template.bind({});
 
 dropdown.args = {
   storySkeletonWidth: 330,
-  placement: Dropdown.placements.BottomStart,
-  widthStrategy: Dropdown.widthStrategies.Gte,
+  placement: 'bottom-start',
+  widthStrategy: 'gte',
 };
 dropdown.argTypes = {
   storySkeletonWidth: {

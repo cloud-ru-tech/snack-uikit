@@ -7,13 +7,12 @@ import {
   InputPrivateProps,
   moveCursorToEnd,
   runAfterRerender,
-  Size,
+  SIZE,
   useButtonNavigation,
 } from '@snack-uikit/input-private';
-import { Tooltip } from '@snack-uikit/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ContainerVariant, ValidationState } from '../../constants';
+import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useCopyButton, useHideButton } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
@@ -49,7 +48,7 @@ type FieldSecureOwnProps = {
 
 export type FieldSecureProps = WithSupportProps<FieldSecureOwnProps & InputProps & WrapperProps>;
 
-const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
+export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
   (
     {
       id,
@@ -73,8 +72,8 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       labelTooltipPlacement,
       required = false,
       hint,
-      size = Size.S,
-      validationState = ValidationState.Default,
+      size = SIZE.S,
+      validationState = VALIDATION_STATE.Default,
       prefixIcon,
       ...rest
     },
@@ -130,7 +129,7 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
           validationState={validationState}
           disabled={disabled}
           readonly={readonly}
-          variant={ContainerVariant.SingleLine}
+          variant={CONTAINER_VARIANT.SingleLine}
           inputRef={localRef}
           prefix={prefixIcon}
           postfix={buttons}
@@ -147,7 +146,7 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
             placeholder={placeholder}
             disabled={disabled}
             readonly={readonly}
-            type={hidden ? InputPrivate.types.Password : InputPrivate.types.Text}
+            type={hidden ? 'password' : 'text'}
             maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
             id={id}
             name={name}
@@ -158,13 +157,3 @@ const ForwardedFieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
     );
   },
 );
-
-export const FieldSecure = ForwardedFieldSecure as typeof ForwardedFieldSecure & {
-  sizes: typeof Size;
-  validationStates: typeof ValidationState;
-  labelTooltipPlacements: typeof Tooltip.placements;
-};
-
-FieldSecure.sizes = Size;
-FieldSecure.validationStates = ValidationState;
-FieldSecure.labelTooltipPlacements = Tooltip.placements;

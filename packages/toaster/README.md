@@ -36,14 +36,6 @@ toaster.systemEvent.dismiss(systemEventId);
 ## Props
 
 ```typescript jsx
-
-enum ToastUserActionAppearance {
-  Neutral = 'neutral',
-  Success = 'success',
-  Error = 'error',
-  Warning = 'warning',
-}
-
 type ToastUserActionLink = {
   text: string;
   href: string;
@@ -53,24 +45,20 @@ type ToastUserActionLink = {
 type ToastUserActionProps = Partial<RtToastContentProps> &
   WithSupportProps<{
     label: string;
-    appearance?: ToastUserActionAppearance;
     link?: ToastUserActionLink;
     className?: string;
   }>;
 
-enum ToastSystemEventAppearance {
-  Neutral = 'neutral',
-  Error = 'error',
-  ErrorCritical = 'errorCritical',
-  Warning = 'warning',
-  Success = 'success',
-}
+type ToastSystemEventLink = {
+  text: string;
+  href: string;
+  onClick?(e: MouseEvent<HTMLAnchorElement>): void;
+};
 
 type ToastSystemEventProps = Partial<RtToastContentProps> &
   WithSupportProps<{
     title: string;
     description?: string;
-    appearance?: ToastSystemEventAppearance;
     link?: ToastSystemEventLink;
     progressBar?: boolean;
     closable?: boolean;

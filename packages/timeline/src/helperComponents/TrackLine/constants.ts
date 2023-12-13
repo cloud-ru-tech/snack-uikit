@@ -1,4 +1,4 @@
-export enum Style {
-  Default = 'solid',
-  Dashed = 'dashed',
-}
+export const STYLE = {
+  Default: 'solid',
+  Dashed: 'dashed',
+} as const;

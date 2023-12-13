@@ -6,7 +6,8 @@ import { QuestionTooltip, QuestionTooltipProps } from '@snack-uikit/tooltip';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ContentAlign, TEST_IDS } from '../../constants';
+import { CONTENT_ALIGN, TEST_IDS } from '../../constants';
+import { ContentAlign } from '../../types';
 import { isPictureImage } from '../../utils';
 import styles from './styles.module.scss';
 import { ModalHeaderImage } from './types';
@@ -29,7 +30,7 @@ export function ModalHeader({
   title,
   titleTooltip,
   subtitle,
-  align = ContentAlign.Default,
+  align = CONTENT_ALIGN.Default,
   picture,
   className,
   ...rest
@@ -41,41 +42,25 @@ export function ModalHeader({
           <img src={picture.src} alt={picture.alt} className={styles.image} data-test-id={TEST_IDS.image} />
         ) : (
           <div className={styles.icon} data-test-id={TEST_IDS.icon}>
-            <IconPredefined icon={picture} size={IconPredefined.sizes.L} />
+            <IconPredefined icon={picture} size='l' />
           </div>
         ))}
 
       <div className={styles.headlineLayout} data-align={align}>
         <div className={styles.headline}>
-          <Typography
-            family={Typography.families.Sans}
-            role={Typography.roles.Headline}
-            size={Typography.sizes.S}
-            className={styles.title}
-            data-test-id={TEST_IDS.title}
-          >
+          <Typography.SansHeadlineS className={styles.title} data-test-id={TEST_IDS.title}>
             {title}
-          </Typography>
+          </Typography.SansHeadlineS>
 
-          {titleTooltip && (
-            <QuestionTooltip tip={titleTooltip} size={QuestionTooltip.sizes.S} data-test-id={TEST_IDS.tooltip} />
-          )}
+          {titleTooltip && <QuestionTooltip tip={titleTooltip} size='s' data-test-id={TEST_IDS.tooltip} />}
         </div>
 
         {subtitle && (
-          <Typography
-            family={Typography.families.Sans}
-            role={Typography.roles.Body}
-            size={Typography.sizes.M}
-            className={styles.subtitle}
-            data-test-id={TEST_IDS.subtitle}
-          >
+          <Typography.SansBodyM className={styles.subtitle} data-test-id={TEST_IDS.subtitle}>
             {subtitle}
-          </Typography>
+          </Typography.SansBodyM>
         )}
       </div>
     </div>
   );
 }
-
-ModalHeader.aligns = ContentAlign;

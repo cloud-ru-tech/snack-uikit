@@ -14,11 +14,11 @@
 import { Link } from '@snack-uikit/link';
 
 <Link
-  onSurface={Link.onSurfaces.Accent}
+  onSurface='accent'
   href='https://cloud.ru/'
   text='Link text'
   external={true}
-  onColor={Link.onSurfaces.Primary}
+  onColor='primary'
 />;
 ```
 
@@ -32,13 +32,13 @@ import { Link } from '@snack-uikit/link';
 | text | `string` | - | Текст ссылки |
 | className | `string` | - | CSS-класс |
 | href | `string` | # | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | Target.Blank | HTML-атрибут target |
+| target | `HTMLAttributeAnchorTarget` | _blank | HTML-атрибут target |
 | download | `string` | - | HTML-атрибут download |
 | onClick | `MouseEventHandler<HTMLAnchorElement>` | - | Колбек обработки клика |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
+| size | enum Size: `"s"`, `"m"`, `"l"` | s | Размер |
 | external | `boolean` | - | Ведет ли ссылка на внешний ресурс (добавляет иконку если true) |
-| onColor | enum OnColor: `"invert-neutral"`, `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | OnColor.Primary | Стилизует ссылку для размещения на цветном фоне |
-| onSurface | enum OnSurface: `"background"`, `"decor"`, `"accent"` | OnSurface.Background | Тип поверхности, на которой размещена ссылка |
+| onColor | enum OnColor: `"invert-neutral"`, `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Стилизует ссылку для размещения на цветном фоне |
+| onSurface | enum OnSurface: `"background"`, `"decor"`, `"accent"` | background | Тип поверхности, на которой размещена ссылка |
 
 
 [//]: DOCUMENTATION_SECTION_END

@@ -19,22 +19,22 @@ type StoryProps = TimelineProps & {
 
 const Opposite = () => <span>Opposite</span>;
 
-const items = [
+const items: TimelineProps['items'] = [
   {
     content: <DemoComponent key='start' title='Start' description='Description' />,
-    dotAppearance: Timeline.dotAppearances.Primary,
+    dotAppearance: 'primary',
   },
   {
     content: <DemoComponent key='center' title='Center' description='Description' />,
-    lineStyle: Timeline.lineStyles.Dashed,
+    lineStyle: 'dashed',
   },
   {
     content: (
       <DemoComponent key='subCenter' title='Sub Center' description='Some very long description compared to others' />
     ),
-    lineStyle: Timeline.lineStyles.Dashed,
-    dotVariant: Timeline.dotVariants.SubEvent,
-    dotAppearance: Timeline.dotAppearances.Red,
+    lineStyle: 'dashed',
+    dotVariant: 'subEvent',
+    dotAppearance: 'red',
   },
   {
     content: <DemoComponent key='end' title='End' description='Description' />,
@@ -67,7 +67,7 @@ timeline.args = {
   alternate: false,
   fullWidth: false,
   showOpposite: false,
-  contentPosition: Timeline.contentPositions.Right,
+  contentPosition: 'right',
 };
 
 timeline.argTypes = {

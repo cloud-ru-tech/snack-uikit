@@ -1,4 +1,8 @@
-import { Type } from './constants';
+import { ValueOf } from '@snack-uikit/utils';
+
+import { TYPE } from './constants';
+
+export type Type = ValueOf<typeof TYPE>;
 
 export type TabsContextValue = {
   selectedTab?: string;

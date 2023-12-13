@@ -9,8 +9,8 @@
 
 ```typescript jsx
 <TruncateString
-  variant={TruncateString.variants.End}
-  placement={TruncateString.placements.Top}
+  variant='end'
+  placement='top'
   hideTooltip={true}
   text={'Текст'}
   maxLines={2}
@@ -24,7 +24,7 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | text* | `string` | - | Текст, который будет обрезаться |
-| variant | enum Variant: `"Middle"`, `"End"` | Variant.End | Вариант обрезания строки: <br> - `End` - с конца <br> - `Middle` - по середине |
+| variant | "middle" \| "end" | end | Вариант обрезания строки: <br> - `End` - с конца <br> - `Middle` - по середине |
 | className | `string` | - | CSS-класс |
 | hideTooltip | `boolean` | - | Скрывать ли тултип с полным текстом |
 | maxLines | `number` | - | Максимальное кол-во строк, до которого может сворачиваться текст. |

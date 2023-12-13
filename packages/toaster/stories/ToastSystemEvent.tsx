@@ -8,7 +8,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { toaster, ToastSystemEventProps } from '../src';
-import { ToastSystemEvent } from '../src/components/ToastSystemEvent';
+import { ToastSystemEvent } from '../src/components';
 import styles from './styles.module.scss';
 
 const meta: Meta = {

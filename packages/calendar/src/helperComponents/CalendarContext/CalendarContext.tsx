@@ -1,7 +1,7 @@
 import { createContext, MutableRefObject, RefCallback } from 'react';
 
-import { CalendarMode, Size, ViewMode } from '../../constants';
-import { BuildCellPropsFunction, FocusDirection, Range } from '../../types';
+import { CALENDAR_MODE, SIZE, VIEW_MODE } from '../../constants';
+import { BuildCellPropsFunction, CalendarMode, FocusDirection, Range, Size, ViewMode } from '../../types';
 import { getLocale } from '../../utils';
 
 export type CalendarContextType = {
@@ -42,12 +42,12 @@ const stub = () => {
 
 export const CalendarContext = createContext<CalendarContextType>({
   locale: getLocale(),
-  size: Size.M,
+  size: SIZE.M,
   today: new Date(),
   viewDate: new Date(),
   referenceDate: new Date(),
-  mode: CalendarMode.Date,
-  viewMode: ViewMode.Month,
+  mode: CALENDAR_MODE.Date,
+  viewMode: VIEW_MODE.Month,
   viewShift: 0,
   setFocus: stub,
   setValue: stub,

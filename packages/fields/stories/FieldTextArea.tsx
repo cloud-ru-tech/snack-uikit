@@ -5,6 +5,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { FieldTextArea, FieldTextAreaProps } from '../src';
+import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -53,13 +54,15 @@ fieldTextArea.args = {
   labelTooltip: 'Tooltip description',
   required: false,
   hint: 'Hint text',
-  size: FieldTextArea.sizes.S,
-  validationState: FieldTextArea.validationStates.Default,
+  size: 's',
+  validationState: 'default',
   showCopyButton: true,
   allowMoreThanMaxLength: true,
 };
 
-fieldTextArea.argTypes = {};
+fieldTextArea.argTypes = {
+  validationState: COMMON_ARG_TYPES.validationState,
+};
 
 fieldTextArea.parameters = {
   readme: {

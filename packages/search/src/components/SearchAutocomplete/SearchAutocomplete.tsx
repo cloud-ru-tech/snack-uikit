@@ -4,7 +4,7 @@ import { forwardRef, KeyboardEvent, useCallback, useRef, useState } from 'react'
 
 import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
 
-import { PRIVATE_SEARCH_TEST_IDS, Size, TEST_IDS } from '../../constants';
+import { PRIVATE_SEARCH_TEST_IDS, SIZE, TEST_IDS } from '../../constants';
 import { SearchDecorator } from '../SearchDecorator';
 import { SearchPrivate, SearchPrivateProps } from '../SearchPrivate';
 import styles from './styles.module.scss';
@@ -22,7 +22,7 @@ export type SearchAutocompleteProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
 
 export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocompleteProps>(function SearchAutocomplete(
   {
-    size = Size.S,
+    size = SIZE.S,
     value,
     onChange,
     placeholder,
@@ -49,14 +49,14 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
     triggerElementRef,
   } = Droplist.useKeyboardNavigation<HTMLInputElement>({
     setDroplistOpen: setIsOpen,
-    triggerType: Droplist.useKeyboardNavigation.triggerTypes.Input,
+    triggerType: 'input',
   });
 
   const handleOptionKeyDown = useCallback(
     (event: KeyboardEvent<HTMLButtonElement>) => {
       event.stopPropagation();
 
-      // ignoring special keys (tab, arrows, backspace and etc.)
+      // ignoring special keys (tab, arrows, backspace, etc.)
       if (event.key.length === 1) {
         triggerElementRef.current?.focus();
         scrollRef.current?.scroll(0, 0);

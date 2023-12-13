@@ -5,6 +5,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ChipChoiceRow, ChipChoiceRowProps } from '../src';
+import { CHIP_CHOICE_ROW_SIZE } from '../src/components/ChipChoiceRow/constants';
 import { Filters, filtersMock } from './helpers';
 import { STORY_TEST_IDS } from './testIds';
 
@@ -34,7 +35,16 @@ chipChoiceRow.args = {
   clearAllButtonLabel: 'Clear all',
   defaultValue: { vms: ['vm-1'] },
 };
-chipChoiceRow.argTypes = {};
+
+chipChoiceRow.argTypes = {
+  size: {
+    options: Object.values(CHIP_CHOICE_ROW_SIZE),
+    control: {
+      type: 'radio',
+    },
+  },
+};
+
 chipChoiceRow.parameters = {
   readme: {
     sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],

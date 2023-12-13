@@ -7,7 +7,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonFilled, ButtonFilledProps } from '../src';
-import { BUTTON_ARGS, ICONS } from './constants';
+import { BUTTON_ARGS, COMMON_ARG_TYPES } from './constants';
 import { ControlledWrapper, TableCell, TableColumn, TableWrapper } from './helperComponents';
 
 const meta: Meta = {
@@ -74,33 +74,13 @@ buttonFilled.args = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   icon: 'none',
-  type: ButtonFilled.types.Button,
-  appearance: ButtonFilled.appearances.Primary,
-  size: ButtonFilled.sizes.S,
+  type: 'button',
+  appearance: 'primary',
+  size: 's',
   testMode: false,
 };
 
-buttonFilled.argTypes = {
-  testMode: {
-    name: '[Stories]: Show onClick counter',
-    control: {
-      type: 'boolean',
-    },
-  },
-  onClick: {
-    table: {
-      disable: true,
-    },
-  },
-  icon: {
-    name: '[Stories]: Show icon examples',
-    options: Object.keys(ICONS),
-    mapping: ICONS,
-    control: {
-      type: 'select',
-    },
-  },
-};
+buttonFilled.argTypes = COMMON_ARG_TYPES;
 
 buttonFilled.parameters = {
   readme: {

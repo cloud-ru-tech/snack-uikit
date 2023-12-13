@@ -6,6 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { NotificationCard, NotificationCardProps } from '../src';
+import { APPEARANCE } from '../src/components/NotificationCard/constants';
 import { NOTIFICATION_CARD_MOCK, STORY_TEST_IDS } from './constants';
 import { handleActionClick } from './helpers';
 import styles from './styles.module.scss';
@@ -53,7 +54,7 @@ const Template: StoryFn<NotificationCardProps> = ({ ...args }: NotificationCardP
         </div>
       ))}
 
-      {Object.values(NotificationCard.appearances).map(appearance => (
+      {Object.values(APPEARANCE).map(appearance => (
         <Fragment key={appearance}>
           <div className={headerCellClassnames}>{appearance}</div>
 
@@ -73,12 +74,12 @@ notificationCard.args = {
 };
 
 notificationCard.argTypes = {
-  /*content: {
-    defaultValue: NOTIFICATION_CARD_MOCK.content,
+  appearance: {
+    options: Object.values(APPEARANCE),
     control: {
-      type: 'text',
+      type: 'radio',
     },
-  },*/
+  },
 };
 
 notificationCard.parameters = {

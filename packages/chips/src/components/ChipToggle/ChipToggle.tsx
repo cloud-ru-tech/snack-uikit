@@ -1,11 +1,11 @@
 import cn from 'classnames';
 import { ChangeEvent, ChangeEventHandler } from 'react';
 
-import { Sun } from '@snack-uikit/loaders';
+import { Sun, SunProps } from '@snack-uikit/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { CHIP_TOGGLE_TEST_IDS, Size, Variant } from '../../constants';
-import { BaseChipProps } from '../../types';
+import { CHIP_TOGGLE_TEST_IDS, SIZE, VARIANT } from '../../constants';
+import { BaseChipProps, Size } from '../../types';
 import styles from './styles.module.scss';
 
 export type ChipToggleProps = WithSupportProps<
@@ -22,7 +22,7 @@ export type ChipToggleProps = WithSupportProps<
 /** Чип с состоянием выбран/не выбран */
 export function ChipToggle({
   icon,
-  size = ChipToggle.sizes.S,
+  size = SIZE.S,
   label,
   checked,
   disabled,
@@ -32,8 +32,8 @@ export function ChipToggle({
   tabIndex = 0,
   ...rest
 }: ChipToggleProps) {
-  const variant = icon && size !== Size.Xs ? Variant.IconBefore : Variant.LabelOnly;
-  const spinnerSize = size === Size.Xs ? Sun.sizes.XS : Sun.sizes.S;
+  const variant = icon && size !== SIZE.Xs ? VARIANT.IconBefore : VARIANT.LabelOnly;
+  const spinnerSize: SunProps['size'] = size === SIZE.Xs ? 'xs' : 's';
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     if (disabled || loading) {
@@ -64,7 +64,7 @@ export function ChipToggle({
       />
 
       <span className={styles.toggleChipContent}>
-        {variant === Variant.IconBefore && !loading && (
+        {variant === VARIANT.IconBefore && !loading && (
           <span className={styles.icon} data-test-id={CHIP_TOGGLE_TEST_IDS.icon}>
             {icon}
           </span>
@@ -83,5 +83,3 @@ export function ChipToggle({
     </label>
   );
 }
-
-ChipToggle.sizes = Size;

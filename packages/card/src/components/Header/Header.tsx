@@ -4,9 +4,10 @@ import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 import { excludeSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Size, TEST_IDS } from '../../constants';
+import { TEST_IDS } from '../../constants';
 import { useCardContext } from '../../context';
 import { Emblem, EmblemProps } from '../../helperComponents';
+import { Size } from '../../types';
 import { DESCRIPTION_SIZE_MAP, TITLE_SIZE_MAP } from './constants';
 import styles from './styles.module.scss';
 
@@ -36,44 +37,27 @@ export function Header({ title, description, metadata, emblem, className, size: 
 
       <div className={styles.contentLayout}>
         <Typography
-          family={Typography.families.Sans}
+          family='sans'
           size={TITLE_SIZE_MAP[size]}
-          role={Typography.roles.Title}
+          purpose='title'
           className={styles.title}
           data-test-id={TEST_IDS.title}
         >
-          <TruncateString variant={TruncateString.variants.End} maxLines={1} text={title} />
+          <TruncateString variant='end' maxLines={1} text={title} />
         </Typography>
 
         {metadata && (
           <Typography.SansBodyS className={styles.metadata}>
-            <TruncateString
-              variant={TruncateString.variants.End}
-              maxLines={1}
-              text={metadata}
-              data-test-id={TEST_IDS.metadata}
-            />
+            <TruncateString variant='end' maxLines={1} text={metadata} data-test-id={TEST_IDS.metadata} />
           </Typography.SansBodyS>
         )}
 
         {description && (
-          <Typography
-            family={Typography.families.Sans}
-            size={DESCRIPTION_SIZE_MAP[size]}
-            role={Typography.roles.Body}
-            className={styles.description}
-          >
-            <TruncateString
-              variant={TruncateString.variants.End}
-              maxLines={2}
-              text={description}
-              data-test-id={TEST_IDS.description}
-            />
+          <Typography family='sans' size={DESCRIPTION_SIZE_MAP[size]} purpose='body' className={styles.description}>
+            <TruncateString variant='end' maxLines={2} text={description} data-test-id={TEST_IDS.description} />
           </Typography>
         )}
       </div>
     </div>
   );
 }
-
-Header.emblemIconAppearances = Emblem.appearances;

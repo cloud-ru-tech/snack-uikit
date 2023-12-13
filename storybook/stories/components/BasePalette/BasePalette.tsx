@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import { Typography } from '@snack-uikit/typography';
 
-import { Palette } from './components/Palette';
+import { Palette } from './components';
 import { RainbowColor, ReferenceColor, TONES } from './constants';
 import styles from './styles.module.scss';
 
@@ -12,53 +12,21 @@ export function BasePalette() {
 
   return (
     <>
-      <Typography
-        family={Typography.families.Sans}
-        role={Typography.roles.Title}
-        size={Typography.sizes.L}
-        tag={Typography.tags.h1}
-        className={styles.title}
-      >
+      <Typography.SansTitleL tag='h1' className={styles.title}>
         Base Palette
-      </Typography>
-      <Typography
-        family={Typography.families.Sans}
-        role={Typography.roles.Body}
-        size={Typography.sizes.S}
-        tag={Typography.tags.p}
-        className={styles.description}
-      >
+      </Typography.SansTitleL>
+      <Typography.SansBodyS tag='p' className={styles.description}>
         Это наборы тонов для каждого цвета, где каждый тон имеет порядковый номер. Базовая палитра не используется
         напрямую в интерфейсах и отсутствует в Figma
-      </Typography>
+      </Typography.SansBodyS>
       <div className={styles.table}>
-        <Typography
-          family={Typography.families.Sans}
-          role={Typography.roles.Label}
-          size={Typography.sizes.S}
-          className={cn(styles.cell, styles.firstCell)}
-        >
-          Tone
-        </Typography>
+        <Typography.SansLabelS className={cn(styles.cell, styles.firstCell)}>Tone</Typography.SansLabelS>
         {TONES.map(tone => (
-          <Typography
-            family={Typography.families.Sans}
-            role={Typography.roles.Label}
-            size={Typography.sizes.S}
-            key={tone}
-            className={styles.cell}
-          >
+          <Typography.SansLabelS key={tone} className={styles.cell}>
             {tone}
-          </Typography>
+          </Typography.SansLabelS>
         ))}
-        <Typography
-          family={Typography.families.Sans}
-          role={Typography.roles.Label}
-          size={Typography.sizes.S}
-          className={cn(styles.cell, styles.lastCell)}
-        >
-          Tone
-        </Typography>
+        <Typography.SansLabelS className={cn(styles.cell, styles.lastCell)}>Tone</Typography.SansLabelS>
       </div>
 
       <div className={styles.offset}>

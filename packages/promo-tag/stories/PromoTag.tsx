@@ -4,7 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { PromoTag, PromoTagProps } from '../src';
-import { Appearance } from '../src/constants';
+import { APPEARANCE } from '../src/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -15,7 +15,7 @@ export default meta;
 
 const storyTable = (
   <table>
-    {Object.values(Appearance).map(appearance => (
+    {Object.values(APPEARANCE).map(appearance => (
       <tr key={appearance}>
         <td>{appearance}:</td>
         <td>
@@ -42,7 +42,7 @@ export const promoTag: StoryObj<PromoTagProps> = Template.bind({});
 
 promoTag.args = {
   text: 'Promo tag',
-  appearance: Appearance.Primary,
+  appearance: APPEARANCE.Primary,
 };
 
 promoTag.argTypes = {};

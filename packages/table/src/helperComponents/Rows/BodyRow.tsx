@@ -1,7 +1,7 @@
 import { Row as TableRow } from '@tanstack/react-table';
 import { MouseEvent, useState } from 'react';
 
-import { ColumnPinPosition, TEST_IDS } from '../../constants';
+import { COLUMN_PIN_POSITION, TEST_IDS } from '../../constants';
 import { BodyCell } from '../Cells';
 import { RowContext } from '../contexts';
 import { useRowCells } from '../hooks';
@@ -54,7 +54,7 @@ export function BodyRow<TData>({ row, onRowClick }: BodyRowProps<TData>) {
         className={styles.bodyRow}
       >
         {pinnedLeft && (
-          <PinnedCells position={ColumnPinPosition.Left}>
+          <PinnedCells position={COLUMN_PIN_POSITION.Left}>
             {pinnedLeft.map(cell => (
               <BodyCell key={cell.id} cell={cell} />
             ))}
@@ -66,7 +66,7 @@ export function BodyRow<TData>({ row, onRowClick }: BodyRowProps<TData>) {
         ))}
 
         {pinnedRight && (
-          <PinnedCells position={ColumnPinPosition.Right}>
+          <PinnedCells position={COLUMN_PIN_POSITION.Right}>
             {pinnedRight.map(cell => (
               <BodyCell key={cell.id} cell={cell} />
             ))}

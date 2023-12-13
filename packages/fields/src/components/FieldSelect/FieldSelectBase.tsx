@@ -10,17 +10,18 @@ import {
 } from 'react';
 
 import { Droplist } from '@snack-uikit/droplist';
-import { InputPrivate, Size, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
+import { InputPrivate, SIZE, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { ContainerVariant, ValidationState } from '../../constants';
+import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useCopyButton } from '../../hooks';
 import { useHandlers } from '../FieldDate/hooks/useHandlers';
 import { FieldDecorator } from '../FieldDecorator';
+import { SELECTION_MODE } from './constants';
 import { getArrowIcon } from './helpers';
 import styles from './styles.module.scss';
-import { ExtendedOption, FieldSelectBaseProps, Option, SelectionMode } from './types';
+import { ExtendedOption, FieldSelectBaseProps, Option } from './types';
 
 type BaseProps = Omit<FieldSelectBaseProps, 'open' | 'onOpenChange' | 'options'> &
   Required<Pick<FieldSelectBaseProps, 'open' | 'onOpenChange'>> & {
@@ -39,17 +40,17 @@ type BaseProps = Omit<FieldSelectBaseProps, 'open' | 'onOpenChange' | 'options'>
     copyButtonRef: RefObject<HTMLButtonElement>;
     onClick?: MouseEventHandler<HTMLElement>;
     onContainerPrivateMouseDown?: MouseEventHandler<HTMLElement>;
-    onDroplistFocusLeave: (direction: string) => void;
+    onDroplistFocusLeave(direction: string): void;
     firstDroplistItemRefCallback: RefCallback<HTMLButtonElement>;
   };
 
 type Props =
   | ({
-      selectionMode: SelectionMode.Single;
+      selectionMode: typeof SELECTION_MODE.Single;
       selected: Option;
     } & BaseProps)
   | ({
-      selectionMode: SelectionMode.Multi;
+      selectionMode: typeof SELECTION_MODE.Multi;
       selected: Option[];
     } & BaseProps);
 
@@ -89,8 +90,8 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
       required = false,
       hint,
       showHintIcon,
-      size = Size.S,
-      validationState = ValidationState.Default,
+      size = SIZE.S,
+      validationState = VALIDATION_STATE.Default,
       prefixIcon,
       locale,
       noDataText = locale?.language === 'ru' ? 'Нет данных' : 'No data',
@@ -101,7 +102,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
     ref,
   ) => {
     const { ArrowIcon, arrowIconSize } = getArrowIcon({ size, open });
-    const Item = selectionMode === SelectionMode.Single ? Droplist.ItemSingle : Droplist.ItemMultiple;
+    const Item = selectionMode === SELECTION_MODE.Single ? Droplist.ItemSingle : Droplist.ItemMultiple;
 
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
     const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy });
@@ -147,10 +148,10 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
         {...extractSupportProps(rest)}
       >
         <Droplist
-          trigger={Droplist.triggers.Click}
+          trigger='click'
           triggerClassName={styles.triggerClassName}
           triggerClickByKeys={!searchable}
-          placement={Droplist.placements.Bottom}
+          placement='bottom'
           onFocusLeave={onFocusLeaveHandler}
           firstElementRefCallback={firstDroplistItemRefCallback}
           data-test-id='field-select__list'
@@ -162,7 +163,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
               validationState={validationState}
               disabled={disabled}
               readonly={readonly}
-              variant={ContainerVariant.SingleLine}
+              variant={CONTAINER_VARIANT.SingleLine}
               focused={open}
               selectable={!searchable}
               inputRef={localRef}
@@ -178,7 +179,7 @@ export const FieldSelectBase = forwardRef<HTMLInputElement, Props>(
               <InputPrivate
                 id={id}
                 name={name}
-                type={InputPrivate.types.Text}
+                type='text'
                 placeholder={placeholder}
                 ref={mergeRefs(ref, localRef)}
                 onFocus={onFocus}

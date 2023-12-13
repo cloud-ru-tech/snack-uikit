@@ -1,7 +1,6 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { IconPosition } from '../src/constants';
 
 type ButtonTestSpec = {
   name: string;
@@ -104,7 +103,7 @@ buttons.forEach(({ name, story, testId, iconBefore }) => {
   });
 
   if (iconBefore) {
-    test.page(getPage({ label: 'label', icon: 'PlaceholderSVG', iconPosition: IconPosition.Before }))(
+    test.page(getPage({ label: 'label', icon: 'PlaceholderSVG', iconPosition: 'before' }))(
       'should have data-variant = "icon-before"',
       async t => {
         const button = Selector(dataTestIdSelector(testId));

@@ -2,7 +2,8 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { LoaderSize } from '../constants';
+import { LOADER_SIZE } from '../constants';
+import { LoaderSize } from '../types';
 import styles from './styles.module.scss';
 
 export type SunProps = WithSupportProps<{
@@ -13,7 +14,7 @@ export type SunProps = WithSupportProps<{
 }>;
 
 /** Компонент спиннер */
-export function Sun({ size = LoaderSize.S, className, ...rest }: SunProps) {
+export function Sun({ size = LOADER_SIZE.S, className, ...rest }: SunProps) {
   return (
     <svg
       viewBox='0 0 24 24'
@@ -35,5 +36,3 @@ export function Sun({ size = LoaderSize.S, className, ...rest }: SunProps) {
     </svg>
   );
 }
-
-Sun.sizes = LoaderSize;

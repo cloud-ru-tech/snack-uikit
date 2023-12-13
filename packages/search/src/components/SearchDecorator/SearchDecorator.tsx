@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { Size } from '../../constants';
+import { SIZE } from '../../constants';
 import { SearchProps } from '../Search';
 import styles from './styles.module.scss';
 
@@ -18,7 +18,7 @@ export type SearchDecoratorProps = WithSupportProps<
 export function SearchDecorator({
   children,
   outline,
-  size = Size.S,
+  size = SIZE.S,
   focused,
   className,
   ...rest
@@ -35,5 +35,3 @@ export function SearchDecorator({
     </div>
   );
 }
-
-SearchDecorator.sizes = Size;

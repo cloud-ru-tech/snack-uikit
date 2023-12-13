@@ -1,7 +1,7 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { Variant } from '../src/components/constants';
+import { VARIANT } from '../src/components/constants';
 
 const TEST_ID = 'progress-bar-test';
 
@@ -23,19 +23,19 @@ test.page(getPage())('Rendered', async t => {
   await t.expect(counter.textContent).eql('9');
 });
 
-test.page(getPage({ value: 10, variant: Variant.CountPlus }))('Rendered with variant = plus', async t => {
+test.page(getPage({ value: 10, variant: VARIANT.CountPlus }))('Rendered with variant = plus', async t => {
   const counter = Selector(dataTestIdSelector(TEST_ID));
   await t.expect(counter.exists).ok();
   await t.expect(counter.textContent).eql('9+');
 });
 
-test.page(getPage({ value: 8500, variant: Variant.CountK }))('Rendered with variant = key', async t => {
+test.page(getPage({ value: 8500, variant: VARIANT.CountK }))('Rendered with variant = key', async t => {
   const counter = Selector(dataTestIdSelector(TEST_ID));
   await t.expect(counter.exists).ok();
   await t.expect(counter.textContent).eql('9K');
 });
 
-test.page(getPage({ value: 150, plusLimit: 100, variant: Variant.CountPlus }))(
+test.page(getPage({ value: 150, plusLimit: 100, variant: VARIANT.CountPlus }))(
   'Should change the plus limit',
   async t => {
     const counter = Selector(dataTestIdSelector(TEST_ID));

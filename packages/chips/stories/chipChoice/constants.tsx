@@ -2,8 +2,9 @@ import { ArgTypes } from '@storybook/types';
 
 import { PlaceholderSVG } from '@snack-uikit/icons';
 
-import { ChipChoice, FilterOption } from '../../src';
-import { ICONS } from '../constants';
+import { FilterOption } from '../../src';
+import { SIZE } from '../../src/constants';
+import { COMMON_ARG_TYPES } from '../constants';
 
 const icon = <PlaceholderSVG size={16} />;
 
@@ -17,7 +18,7 @@ export const FILTER_OPTIONS: FilterOption[] = [
 
 export const CHIP_CHOICE_STORY_ARGS = {
   label: 'Label Text:',
-  size: ChipChoice.sizes.S,
+  size: SIZE.S,
   disabled: false,
   loading: false,
   'data-test-id': 'chip-choice',
@@ -36,15 +37,10 @@ export const CHIP_CHOICE_ARG_TYPES: ArgTypes = {
   defaultValue: { table: { disable: true } },
   onChangeValue: { table: { disable: true } },
   valueFormatter: { table: { disable: true } },
-  size: { control: { type: 'radio' } },
+  ...COMMON_ARG_TYPES,
   icon: {
-    name: '[Stories]: Show icon examples',
-    options: Object.keys(ICONS),
-    mapping: ICONS,
-    if: { arg: 'size', neq: ChipChoice.sizes.Xs },
-    control: {
-      type: 'select',
-    },
+    ...COMMON_ARG_TYPES.icon,
+    if: { arg: 'size', neq: SIZE.Xs },
   },
   customFormatter: {
     name: '[Stories]: Use custom formatter',

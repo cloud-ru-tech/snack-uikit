@@ -1,7 +1,7 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { Variant } from '../src/components/constants';
+import { VARIANT } from '../src/components/constants';
 
 const TRUNCATE_STRING_TEST_ID = 'truncate-string';
 const FULL_TEXT = 'Very long text that should be truncated in the middle';
@@ -13,7 +13,7 @@ fixture('Truncate string').page(
     props: {
       'data-test-id': TRUNCATE_STRING_TEST_ID,
       text: FULL_TEXT,
-      variant: Variant.Middle,
+      variant: VARIANT.Middle,
     },
   }),
 );

@@ -1,12 +1,13 @@
 import cn from 'classnames';
-import { FocusEvent, KeyboardEvent, MouseEvent, useCallback, useContext, useEffect, useRef } from 'react';
+import { FocusEvent, KeyboardEvent, MouseEvent, useCallback, useEffect, useRef } from 'react';
 
-import { Counter } from '@snack-uikit/counter';
-import { Typography } from '@snack-uikit/typography';
+import { Counter, CounterProps } from '@snack-uikit/counter';
+import { Typography, TypographyProps } from '@snack-uikit/typography';
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { Type } from '../../constants';
-import { TabBarContext, TabsContext } from '../../context';
+import { TYPE } from '../../constants';
+import { useTabBarContext, useTabsContext } from '../../context';
+import { Type } from '../../types';
 import { getTabContentId } from '../../utils';
 import styles from './styles.module.scss';
 
@@ -24,31 +25,34 @@ export type TabProps = WithSupportProps<{
   onClick?(event: MouseEvent<HTMLButtonElement>): void;
 }>;
 
-const MAP_TYPE_TO_PROPS = {
-  [Type.Primary]: {
+const MAP_TYPE_TO_PROPS: Record<
+  Type,
+  { typographyProps: Pick<TypographyProps, 'purpose' | 'size'>; counterProps: Pick<CounterProps, 'size'> }
+> = {
+  [TYPE.Primary]: {
     typographyProps: {
-      role: Typography.roles.Title,
-      size: Typography.sizes.M,
+      purpose: 'title',
+      size: 'm',
     },
     counterProps: {
-      size: Counter.sizes.M,
+      size: 'm',
     },
   },
-  [Type.Secondary]: {
+  [TYPE.Secondary]: {
     typographyProps: {
-      role: Typography.roles.Label,
-      size: Typography.sizes.L,
+      purpose: 'label',
+      size: 'l',
     },
     counterProps: {
-      size: Counter.sizes.S,
+      size: 's',
     },
   },
 };
 
 export function Tab({ label, value, disabled = false, className, onClick, counter, ...otherProps }: TabProps) {
   const ref = useRef<HTMLButtonElement>(null);
-  const { onSelect, type, focusedTab, onFocus } = useContext(TabBarContext);
-  const { selectedTab, setSelectedTab } = useContext(TabsContext);
+  const { onSelect, type, focusedTab, onFocus } = useTabBarContext();
+  const { selectedTab, setSelectedTab } = useTabsContext();
   const selected = value === selectedTab;
 
   useEffect(() => {
@@ -114,12 +118,7 @@ export function Tab({ label, value, disabled = false, className, onClick, counte
       onFocus={onFocusHandler}
       onKeyDown={clickByEnterOrSpaceKey}
     >
-      <Typography
-        className={styles.container}
-        tag={Typography.tags.div}
-        family={Typography.families.Sans}
-        {...typographyProps}
-      >
+      <Typography className={styles.container} tag='div' family='sans' {...typographyProps}>
         {label}
         {counter && <Counter value={counter} data-test-id={`tabs__tab-counter-${value}`} {...counterProps} />}
       </Typography>

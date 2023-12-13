@@ -3,10 +3,10 @@ import { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { StepState, StepValidationResult } from '../../constants';
+import { STEP_STATE, STEP_VALIDATION_RESULT } from '../../constants';
 import { Step } from '../../helperComponents';
 import { StepperContext } from '../../StepperContext';
-import { StepData, StepperApi, StepViewData } from '../../types';
+import { StepData, StepperApi, StepState, StepViewData } from '../../types';
 import styles from './styles.module.scss';
 
 export type StepperState = StepperApi & {
@@ -42,8 +42,8 @@ export function Stepper({
   ...props
 }: StepperProps) {
   const isCompletedByDefault = defaultCurrentStepIndex === steps.length - 1;
-  const [currentStepState, setCurrentStepState] = useState(
-    isCompletedByDefault ? StepState.Completed : StepState.Current,
+  const [currentStepState, setCurrentStepState] = useState<StepState>(
+    isCompletedByDefault ? STEP_STATE.Completed : STEP_STATE.Current,
   );
   const [currentStepIndex, setCurrentStepIndexValue] = useState(defaultCurrentStepIndex);
   const [isCompleted, setIsCompleted] = useState(isCompletedByDefault);
@@ -71,31 +71,31 @@ export function Stepper({
 
     const currentStep = steps[currentStepIndex];
 
-    const stepperValidPromise = currentStep.validation?.() ?? Promise.resolve(StepState.Completed);
+    const stepperValidPromise = currentStep.validation?.() ?? Promise.resolve(STEP_STATE.Completed);
 
-    setCurrentStepState(StepState.Loading);
+    setCurrentStepState(STEP_STATE.Loading);
 
     stepperValidPromise
       .then(validationResult => {
         switch (validationResult) {
-          case StepValidationResult.Completed:
+          case STEP_VALIDATION_RESULT.Completed:
             if (currentStepIndex === steps.length - 1) {
               // завершился последний шаг
-              setCurrentStepState(StepState.Completed);
+              setCurrentStepState(STEP_STATE.Completed);
               setIsCompleted(true);
             } else {
               setCurrentStepIndex(currentStepIndex + 1);
-              setCurrentStepState(StepState.Current);
+              setCurrentStepState(STEP_STATE.Current);
             }
             return;
-          case StepValidationResult.Rejected:
-            setCurrentStepState(StepState.Rejected);
+          case STEP_VALIDATION_RESULT.Rejected:
+            setCurrentStepState(STEP_STATE.Rejected);
             return;
           default:
-            setCurrentStepState(StepState.Current);
+            setCurrentStepState(STEP_STATE.Current);
         }
       })
-      .catch(() => setCurrentStepState(StepState.Rejected));
+      .catch(() => setCurrentStepState(STEP_STATE.Rejected));
   }, [currentStepIndex, isCompleted, setCurrentStepIndex, steps]);
 
   const goPrev = useCallback(
@@ -113,7 +113,7 @@ export function Stepper({
       }
 
       setCurrentStepIndex(index);
-      setCurrentStepState(StepState.Current);
+      setCurrentStepState(STEP_STATE.Current);
     },
     [currentStepIndex, isCompleted, setCurrentStepIndex],
   );
@@ -124,7 +124,7 @@ export function Stepper({
         const number = index + 1;
 
         if (index < currentStepIndex) {
-          return { ...step, number, state: StepState.Completed, onClick: () => goPrev(index) };
+          return { ...step, number, state: STEP_STATE.Completed, onClick: () => goPrev(index) };
         }
 
         if (index === currentStepIndex) {
@@ -132,17 +132,17 @@ export function Stepper({
         }
 
         if (index - 1 === currentStepIndex) {
-          return { ...step, number, state: StepState.Waiting, onClick: () => goNext() };
+          return { ...step, number, state: STEP_STATE.Waiting, onClick: () => goNext() };
         }
 
-        return { ...step, number, state: StepState.Waiting };
+        return { ...step, number, state: STEP_STATE.Waiting };
       }),
     [steps, currentStepIndex, goPrev, currentStepState, isCompleted, goNext],
   );
 
   const resetValidation = useCallback(() => {
-    if (currentStepState === StepState.Rejected) {
-      setCurrentStepState(StepState.Current);
+    if (currentStepState === STEP_STATE.Rejected) {
+      setCurrentStepState(STEP_STATE.Current);
     }
   }, [currentStepState]);
 
@@ -163,5 +163,3 @@ export function Stepper({
 
   return <StepperContext.Provider value={stepperApi}>{children({ stepper, ...stepperApi })}</StepperContext.Provider>;
 }
-
-Stepper.validationResults = StepValidationResult;

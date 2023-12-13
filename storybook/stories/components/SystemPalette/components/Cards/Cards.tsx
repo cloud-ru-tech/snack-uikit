@@ -22,15 +22,9 @@ export function Cards({ sysPalette, description }: SystemColorsProps) {
 
   return (
     <>
-      <Typography
-        family={Typography.families.Sans}
-        role={Typography.roles.Body}
-        size={Typography.sizes.S}
-        className={styles.description}
-        tag={Typography.tags.p}
-      >
+      <Typography.SansBodyS className={styles.description} tag='p'>
         {description}
-      </Typography>
+      </Typography.SansBodyS>
       <div className={styles.table}>
         {TONE_GRID.map((tones: string[], index: number) => (
           <div className={styles.row} key={index}>

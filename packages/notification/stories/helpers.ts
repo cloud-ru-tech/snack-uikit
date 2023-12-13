@@ -1,8 +1,9 @@
 import { MouseEventHandler } from 'react';
 
-import { NotificationCard, NotificationCardProps } from '@snack-uikit/notification';
 import { toaster } from '@snack-uikit/toaster';
 
+import { NotificationCardProps } from '../src';
+import { APPEARANCE } from '../src/components/NotificationCard/constants';
 import { NOTIFICATION_CARD_MOCK, STORY_TEST_IDS } from './constants';
 
 export const handleActionClick: MouseEventHandler = e => {
@@ -16,7 +17,7 @@ function randomIntFromInterval(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const notificationAppearances = Object.values(NotificationCard.appearances);
+const notificationAppearances = Object.values(APPEARANCE);
 
 export function generateCards(amount: number) {
   const res: NotificationCardProps[] = [];

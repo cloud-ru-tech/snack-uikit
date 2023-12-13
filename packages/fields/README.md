@@ -38,11 +38,11 @@ const [isOpen, setIsOpen] = useState(false);
   labelTooltip='You can choose any date'
   required={true}
   hint='You have entered wrong date'
-  size={FieldDate.sizes.S}
-  validationState={FieldDate.validationStates.Default}
+  size='s'
+  validationState='default'
 />
 
-...
+// ...
 
 const [value, setValue] = useState('1234');
 const [isHidden, setIsHidden] = useState(false);
@@ -66,12 +66,12 @@ const [isHidden, setIsHidden] = useState(false);
   labelTooltip='You can enter password here'
   required={true}
   hint='You have entered wrong password'
-  size={FieldSecure.sizes.S}
-  validationState={FieldSecure.validationStates.Error}
+  size='s'
+  validationState='error'
   prefixIcon={<PlaceholderSVG/>}
 />
 
-...
+// ...
 
 const [value, setValue] = useState('abc');
 
@@ -92,12 +92,12 @@ const [value, setValue] = useState('abc');
   labelTooltip='You can input any text'
   required={true}
   hint='You have entered wrong answer'
-  size={FieldText.sizes.S}
-  validationState={FieldText.validationStates.Error}
+  size='s'
+  validationState='error'
   prefixIcon={<PlaceholderSVG/>}
 />
 
-...
+// ...
 
 const [value, setValue] = useState('abc');
 
@@ -120,17 +120,17 @@ const [value, setValue] = useState('abc');
   labelTooltip='You can input any text'
   required={true}
   hint='You have entered wrong answer'
-  size={FieldTextArea.sizes.S}
-  validationState={FieldTextArea.validationStates.Error}
+  size='s'
+  validationState='error'
 />
 
-...
+// ...
 
 const [value, setValue] = useState('1234');
 const [isOpen, setIsOpen] = useState(false);
 
 <FieldSelect
-  mode={FieldSelect.selectionModes.Single}
+  mode='single'
   value={value}
   onChange={setValue}
   options={[{value: 'op1', label: 'Option 1'}, {value: 'op2', label: 'Option 2'}]}
@@ -150,8 +150,8 @@ const [isOpen, setIsOpen] = useState(false);
   labelTooltip='You can choose any option'
   required={true}
   hint='You have chosen wrong item'
-  size={FieldSelect.sizes.S}
-  validationState={FieldSelect.validationStates.Error}
+  size='s'
+  validationState='error'
   prefixIcon={<PlaceholderSVG/>}
 />
 ```
@@ -170,11 +170,11 @@ const [isOpen, setIsOpen] = useState(false);
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | labelFor | `string` | - | Аттрибут for |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
+| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
 | length | `{ current: number; max?: number; }` | - | Допустимая длинна текста |
 | hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | ValidationState.Default | Состояние валидации |
+| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
 ## FieldText
 ### Props
@@ -197,10 +197,10 @@ const [isOpen, setIsOpen] = useState(false);
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
+| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | ValidationState.Default | Состояние валидации |
+| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
@@ -226,10 +226,10 @@ const [isOpen, setIsOpen] = useState(false);
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
+| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | ValidationState.Default | Состояние валидации |
+| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLTextAreaElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
@@ -256,10 +256,10 @@ const [isOpen, setIsOpen] = useState(false);
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
+| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | ValidationState.Default | Состояние валидации |
+| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
@@ -283,10 +283,10 @@ const [isOpen, setIsOpen] = useState(false);
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
+| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | ValidationState.Default | Состояние валидации |
+| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
@@ -295,7 +295,7 @@ const [isOpen, setIsOpen] = useState(false);
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | options* | `Option[]` | - | Массив опций выпадающего списка |
-| selectionMode | enum SelectionMode: `"single"`, `"multi"` | SelectionMode.Single |  |
+| selectionMode | "single" \| "multi" | single |  |
 | open | `boolean` | - | Открыт ли выпадающий список |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия выпадающего списка |
 | searchable | `boolean` | - | Можно ли искать опции внутри списка |
@@ -315,7 +315,7 @@ const [isOpen, setIsOpen] = useState(false);
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | Tooltip.placements.Top | Расположение подсказки лейбла |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | - | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |

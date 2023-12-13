@@ -22,8 +22,8 @@
 | children* | `ReactNode` | - | Контент |
 | onClose* | `() => void` | - | Колбек закрытия компонента. |
 | open* | `boolean` | - | Управляет состоянием показан/не показан. |
-| mode | enum Mode: `"regular"`, `"aggressive"`, `"forced"` | Mode.Regular | Режим отображения модального окна: <br> - __`Regular`__ -  есть кнопка закрытия, клик на оверлей и нажатие кнопки `Esc` закрывают модалку <br> - __`Aggressive`__ - есть кнопка закрытия, но выключен клик на оверлей и не работает закрытие по клавише `Esc` <br> - __`Forced`__ - закрыть модальное окно можно только по нажатию на кнопку действия в нижней части |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер модального окна |
+| mode | enum Mode: `"regular"`, `"aggressive"`, `"forced"` | regular | Режим отображения модального окна: <br> - __`Regular`__ -  есть кнопка закрытия, клик на оверлей и нажатие кнопки `Esc` закрывают модалку <br> - __`Aggressive`__ - есть кнопка закрытия, но выключен клик на оверлей и не работает закрытие по клавише `Esc` <br> - __`Forced`__ - закрыть модальное окно можно только по нажатию на кнопку действия в нижней части |
+| size | enum Size: `"s"`, `"m"`, `"l"` | s | Размер модального окна |
 | className | `string` | - | CSS-класс |
 ## ModalCustom.Header
 ### Props
@@ -48,7 +48,7 @@
 |------|------|---------------|-------------|
 | actions* | `ReactNode` | - | Параметр для передачи кнопок |
 | disclaimer | `ReactNode` | - | Параметр для небольшого текста под кнопками |
-| align | enum Align: `"default"`, `"center"`, `"vertical"` | - | Выравнивание контента |
+| align | enum Align: `"vertical"`, `"default"`, `"center"` | - | Выравнивание контента |
 | className | `string` | - | CSS-класс |
 ## Modal
 ### Props
@@ -58,7 +58,7 @@
 | title* | `string` | - | Заголовок модального окна |
 | onClose* | `() => void` | - | Колбек закрытия компонента. |
 | open* | `boolean` | - | Управляет состоянием показан/не показан. |
-| mode | enum Mode: `"regular"`, `"aggressive"`, `"forced"` | Mode.Regular | Режим отображения модального окна: <br> - __`Regular`__ -  есть кнопка закрытия, клик на оверлей и нажатие кнопки `Esc` закрывают модалку <br> - __`Aggressive`__ - есть кнопка закрытия, но выключен клик на оверлей и не работает закрытие по клавише `Esc` <br> - __`Forced`__ - закрыть модальное окно можно только по нажатию на кнопку действия в нижней части |
+| mode | enum Mode: `"regular"`, `"aggressive"`, `"forced"` | regular | Режим отображения модального окна: <br> - __`Regular`__ -  есть кнопка закрытия, клик на оверлей и нажатие кнопки `Esc` закрывают модалку <br> - __`Aggressive`__ - есть кнопка закрытия, но выключен клик на оверлей и не работает закрытие по клавише `Esc` <br> - __`Forced`__ - закрыть модальное окно можно только по нажатию на кнопку действия в нижней части |
 | className | `string` | - | CSS-класс |
 | titleTooltip | `ReactNode` | - | Всплывающая подсказка для заголовка |
 | subtitle | `string` | - | Подзаголовок |
@@ -66,8 +66,8 @@
 | cancelButton | `Omit<ButtonOutlineProps, "data-test-id" \| "size">` | - | Кнопка отмены |
 | additionalButton | `Omit<ButtonSimpleProps, "data-test-id" \| "size">` | - | Вторая кнопка действия |
 | disclaimer | `{ text: string; link?: Pick<LinkProps, "text" \| "href" \| "target">; }` | - | Небольшой текст под кнопками футера с возможностью передать дополнительно ссылку |
-| size | enum Size: `"s"`, `"m"`, `"l"` | Size.S | Размер |
-| align | enum Align: `"default"`, `"center"`, `"vertical"` | Align.Default | Выравнивание, для разных размеров доступны разные значения <br> для `Size.S` - все <br> для `Size.M` - `Align.Default \| Align.Center` <br> для `Size.L` - `Align.Default` |
+| size | "s" \| "m" \| "l" | s | Размер |
+| align | enum Align: `"vertical"`, `"default"`, `"center"` | default | Выравнивание, для разных размеров доступны разные значения <br> для size=`s` - все <br> для size=`m` - align=`default \| center` <br> для size=`l` - align=`default` |
 | picture | `JSXElementConstructor<{ size?: number; className?: string; }> \| ModalHeaderImage` | - | Можно передать иконку из пакета `@snack-uikit/icon-predefined`, или путь к картинке и атрибут `alt` |
 
 

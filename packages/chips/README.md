@@ -18,7 +18,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 <ChipAssist
   label='Label'
   icon={<PlaceholderSVG />}
-  size={ChipAssist.sizes.S}
+  size='s'
   disabled={false}
   loading={false}
   onClick={doSomething}
@@ -29,7 +29,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 <ChipToggle
   label='Label'
   icon={<PlaceholderSVG />}
-  size={ChipToggle.sizes.S}
+  size='s'
   selected={false}
   disabled={false}
   loading={false}
@@ -42,7 +42,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
   label='Label'
   value='value'
   icon={<PlaceholderSVG />}
-  size={ChipChoice.sizes.S}
+  size='s'
   disabled={false}
   loading={false}
   options={[]}
@@ -53,7 +53,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
   label='Label'
   value={['value1', 'value2']}
   onChangeValue={onChange}
-  size={ChipChoice.sizes.M}
+  size='m'
   options={[]}
   valueFormatter={formatter}
 />
@@ -62,7 +62,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
   label='Label'
   value={new Date()}
   onChangeValue={onChange}
-  size={ChipChoice.sizes.M}
+  size='m'
   valueFormatter={formatter}
 />
 
@@ -70,7 +70,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
   label='Label'
   value={[new Date(), new Date()]}
   onChangeValue={onChange}
-  size={ChipChoice.sizes.M}
+  size='m'
   valueFormatter={formatter}
 />
 
@@ -78,7 +78,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
   label='Label'
   value='value'
   valueToRender='Selected'
-  size={ChipChoice.sizes.M}
+  size='m'
 />
 ```
 
@@ -96,7 +96,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | ChipAssist.sizes.S | Размер |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 ## ChipToggle
 Чип с состоянием выбран/не выбран
 ### Props
@@ -110,7 +110,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | ChipToggle.sizes.S | Размер |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 ## ChipChoice.Custom
 ### Props
 | name | type | default value | description |
@@ -125,7 +125,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | valueToRender | `ReactNode` | - | Отображаемое значение |
 | value | `string \| Date \| string[] \| [Date, Date]` | - | Фактическое значение. Используется для отображения кнопки очистки, если свойство <strong>showClearButton=true</strong> |
 | onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
@@ -145,7 +145,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | value | `string` | - | Значение компонента |
 | defaultValue | `string` | - | Значение компонента по умолчанию |
 | onChange | `(value: string) => void` | - | Колбек смены значения |
@@ -165,7 +165,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | value | `string[]` | - | Значение компонента |
 | defaultValue | `string[]` | - | Значение компонента по умолчанию |
 | onChange | `(value: string[]) => void` | - | Колбек смены значения |
@@ -184,7 +184,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | value | `Date` | - | Значение компонента |
 | defaultValue | `Date` | - | Значение компонента по-умолчанию |
 | onChange | `(value: Date) => void` | - | Колбек смены значения |
@@ -203,7 +203,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | showClearButton | `boolean` | - | Отображение кнопки очистки значения @default true |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"GreatThanOrEqual"`, `"Equal"` | Gte | Стратегия управления шириной контейнера поповера <br> - `Auto` - соответствует ширине контента, <br> - `Gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `Eq` - Equal, строго равен ширине таргета. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | value | `Range` | - | Значение компонента |
 | defaultValue | `Range` | - | Значение компонента по умолчанию |
 | onChange | `(value: Range) => void` | - | Колбек смены значения |
@@ -212,11 +212,11 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| filters* | `(Pick<{ id: string; } & { type: ChipChoiceType.Multi; } & { 'data-test-id'?: string; } & AriaAttributes & Partial<BaseChipProps> & { ...; } & { ...; }, "data-test-id" \| ... 9 more ... \| "type"> \| Pick<...> \| Pick<...> \| Pick<...>)[]` | - | Массив чипов |
+| filters* | `(Pick<{ id: string; } & { type: "multi"; } & { 'data-test-id'?: string; } & AriaAttributes & Partial<BaseChipProps> & { size?: Size; onClick?: MouseEventHandler<...>; showClearButton?: boolean; placement?: Placement; widthStrategy?: PopoverWidthStrategy; } & { ...; }, "data-test-id" \| ... 9 more ... \| "type"> \| Pick...` | - | Массив чипов |
 | value | `FiltersState` | - | Состояние фильтров |
 | defaultValue | `Partial<TState>` | - | Начальное состояние фильтров |
 | onChange | `(filters: TState) => void` | - | Колбек изменения состояния фильтров |
-| size | enum Size: `"xs"`, `"s"`, `"m"` | Size.S | Размер @default Size.S |
+| size | enum ChipChoiceRowSize: `"xs"`, `"s"`, `"m"` | s | Размер @default 's' |
 | className | `string` | - | CSS-класс |
 | showClearAllButton | `boolean` | true | Скрыть/показать кнопку очиски @default true |
 | clearAllButtonLabel | `string` | Clear all | Текст кнопки очистки @default 'Clear all' |

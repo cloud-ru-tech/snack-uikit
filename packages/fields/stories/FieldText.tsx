@@ -5,7 +5,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { FieldText, FieldTextProps } from '../src';
-import { ICONS } from './constants';
+import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -14,7 +14,11 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template = ({ size, ...args }: FieldTextProps) => {
+type StoryProps = FieldTextProps & {
+  localeName: undefined;
+};
+
+const Template = ({ size, ...args }: StoryProps) => {
   const [value, setValue] = useState(args.value);
 
   useEffect(() => {
@@ -28,7 +32,7 @@ const Template = ({ size, ...args }: FieldTextProps) => {
   );
 };
 
-export const fieldText: StoryFn<FieldTextProps> = Template.bind({});
+export const fieldText: StoryFn<StoryProps> = Template.bind({});
 
 fieldText.args = {
   id: 'text',
@@ -41,8 +45,8 @@ fieldText.args = {
   labelTooltip: 'Tooltip description',
   required: false,
   hint: 'Hint text',
-  size: FieldText.sizes.S,
-  validationState: FieldText.validationStates.Default,
+  size: 's',
+  validationState: 'default',
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   prefixIcon: 'none',
@@ -51,12 +55,10 @@ fieldText.args = {
 };
 
 fieldText.argTypes = {
-  prefixIcon: {
-    name: 'prefixIcon',
-    options: Object.keys(ICONS),
-    mapping: ICONS,
-    control: {
-      type: 'select',
+  ...COMMON_ARG_TYPES,
+  localeName: {
+    table: {
+      disable: true,
     },
   },
 };

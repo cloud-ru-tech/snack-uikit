@@ -28,7 +28,7 @@ test.page(getPage())('Should be rendered by click', async t => {
 });
 
 [60, 300, 600].forEach(width => {
-  test.page(getPage({ widthStrategy: 'Equal', storySkeletonWidth: width }))(
+  test.page(getPage({ widthStrategy: 'eq', storySkeletonWidth: width }))(
     `Should render with width equals button width when content = ${width}px`,
     async t => {
       await t.click(Selector(BUTTON_SELECTOR));
@@ -40,7 +40,7 @@ test.page(getPage())('Should be rendered by click', async t => {
 });
 
 [60, 300, 600].forEach(width => {
-  test.page(getPage({ widthStrategy: 'GreatThanOrEqual', storySkeletonWidth: width }))(
+  test.page(getPage({ widthStrategy: 'gte', storySkeletonWidth: width }))(
     `Should render with width equals or great button width when content = ${width}px`,
     async t => {
       await t.click(Selector(BUTTON_SELECTOR));

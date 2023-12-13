@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
 import { APPEARANCE_TO_COLOR_MAP_INVERT } from '../../components/AlertTop/constants';
-import { Appearance } from '../../constants';
+import { Appearance } from '../../types';
 import styles from './styles.module.scss';
 
 export type AlertTopButtonProps = {

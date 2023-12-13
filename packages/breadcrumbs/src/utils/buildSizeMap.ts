@@ -1,11 +1,11 @@
-import { ItemRenderMode } from '../constants';
-import { ItemSizeMap, SizeMap } from '../types';
+import { ITEM_RENDER_MODE } from '../constants';
+import { ItemRenderMode, ItemSizeMap, SizeMap } from '../types';
 
 const getEmptyItemSizeMap = (): ItemSizeMap => ({
-  [ItemRenderMode.ShortLabel]: 0,
-  [ItemRenderMode.Collapsed]: 0,
-  [ItemRenderMode.Ellipsis]: 0,
-  [ItemRenderMode.Full]: 0,
+  [ITEM_RENDER_MODE.ShortLabel]: 0,
+  [ITEM_RENDER_MODE.Collapsed]: 0,
+  [ITEM_RENDER_MODE.Ellipsis]: 0,
+  [ITEM_RENDER_MODE.Full]: 0,
 });
 
 const getElementWidth = (element: HTMLElement): number => element.getBoundingClientRect().width;

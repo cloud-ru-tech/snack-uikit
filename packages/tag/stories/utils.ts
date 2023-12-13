@@ -1,7 +1,7 @@
-import { Appearance } from '../src/constants';
+import { APPEARANCE } from '../src/constants';
 import { TagRowItemInner } from '../src/types';
 
-const COLOURS = Object.values(Appearance);
+const COLOURS = Object.values(APPEARANCE);
 
 export const generateFakeTags = (amountToGenerate: number, char: string, charLimit: number): TagRowItemInner[] => {
   let colorIndex = 0;

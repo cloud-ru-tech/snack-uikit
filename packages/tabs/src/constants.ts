@@ -1,4 +1,4 @@
-export enum Type {
-  Primary = 'primary',
-  Secondary = 'secondary',
-}
+export const TYPE = {
+  Primary: 'primary',
+  Secondary: 'secondary',
+} as const;

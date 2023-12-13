@@ -1,7 +1,7 @@
 import { Typography } from '@snack-uikit/typography';
 
-import { Size } from '../../../../constants';
 import { useCardContext } from '../../../../context';
+import { Size } from '../../../../types';
 import { TYPOGRAPHY_SIZE_MAP } from './constants';
 import styles from './styles.module.scss';
 
@@ -24,22 +24,12 @@ export function Dimension({ dimension, currentValue, oldValue, size: sizeProp }:
   return (
     <div className={styles.wrapper}>
       {dimension && (
-        <Typography
-          role={Typography.roles.Title}
-          family={Typography.families.Sans}
-          size={size}
-          className={styles.dimension}
-        >
+        <Typography purpose='title' family='sans' size={size} className={styles.dimension}>
           {dimension}
         </Typography>
       )}
       <div className={styles.valueContainer}>
-        <Typography
-          role={Typography.roles.Title}
-          family={Typography.families.Sans}
-          size={size}
-          className={styles.currentValue}
-        >
+        <Typography purpose='title' family='sans' size={size} className={styles.currentValue}>
           {currentValue}
         </Typography>
 

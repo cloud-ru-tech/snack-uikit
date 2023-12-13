@@ -16,7 +16,7 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 // It can be used to provide information, warnings, errors, or success messages.
 
 <Alert
-  appearance={Alert.appearances.Neutral}
+  appearance='neutral'
   link='Link Text'
   href='https://cloud.ru/'
   icon={true}
@@ -29,7 +29,7 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 // It can have an additional button with customizable text, icon, and click handler.
 
 <AlertTop
-  appearance={AlertTop.appearances.Neutral}
+  appearance='neutral'
   link='Link Text'
   href='https://cloud.ru/'
   closeable={true}
@@ -56,7 +56,7 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 | link | `string` | - | Текст ссылки |
 | href | `string` | - | Ссылка |
 | onClose | `() => void` | - | Колбек закрытия |
-| appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | Alert.appearances.Neutral | Внешний вид |
+| appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | neutral | Внешний вид |
 | className | `string` | - | CSS-класс |
 ## AlertTop
 Компонент для отображения уведомления вверху экрана.
@@ -69,7 +69,7 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 | link | `string` | - | Текст ссылки |
 | href | `string` | - | Ссылка |
 | onClose | `() => void` | - | Колбек закрытия |
-| appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | AlertTop.appearances.Neutral | Внешний вид |
+| appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | neutral | Внешний вид |
 | buttonText | `string` | - | Текст кнопки |
 | buttonOnClick | `() => void` | - | Колбек клика по кнопке |
 | buttonIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка в кнопке |

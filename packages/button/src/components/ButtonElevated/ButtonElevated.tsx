@@ -3,12 +3,13 @@ import { forwardRef } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { HtmlType, Target } from '../../constants';
+import { HTML_TYPE, TARGET } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
 import { CommonButtonProps } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
-import { Size } from './constants';
+import { SIZE } from './constants';
 import styles from './styles.module.scss';
+import { Size } from './types';
 
 export type ButtonElevatedProps = WithSupportProps<
   Omit<CommonButtonProps, 'iconPosition' | 'label' | 'appearance' | 'labelClassName' | 'size'> &
@@ -18,8 +19,8 @@ export type ButtonElevatedProps = WithSupportProps<
     }
 >;
 
-const ForwardedButtonElevated = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonElevatedProps>(
-  ({ className, size = Size.S, target = Target.Blank, type = HtmlType.Button, tabIndex, ...rest }, ref) => (
+export const ButtonElevated = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonElevatedProps>(
+  ({ className, size = SIZE.S, target = TARGET.Blank, type = HTML_TYPE.Button, tabIndex, ...rest }, ref) => (
     <ButtonPrivate
       {...extractSupportProps(rest)}
       {...extractCommonButtonProps(rest)}
@@ -34,13 +35,3 @@ const ForwardedButtonElevated = forwardRef<HTMLButtonElement | HTMLAnchorElement
     />
   ),
 );
-
-export const ButtonElevated = ForwardedButtonElevated as typeof ForwardedButtonElevated & {
-  types: typeof HtmlType;
-  sizes: typeof Size;
-  targets: typeof Target;
-};
-
-ButtonElevated.sizes = Size;
-ButtonElevated.types = HtmlType;
-ButtonElevated.targets = Target;

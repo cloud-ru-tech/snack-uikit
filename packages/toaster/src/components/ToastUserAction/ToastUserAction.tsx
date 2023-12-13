@@ -53,11 +53,11 @@ export function ToastUserAction({
 
       {link && (
         <Link
-          size={Link.sizes.M}
+          size='m'
           text={link.text}
           href={link.href}
           onClick={link.onClick}
-          onColor={Link.onColors.InvertNeutral}
+          onColor='invert-neutral'
           data-test-id={TOAST_USER_ACTION_TEST_IDS.link}
         />
       )}

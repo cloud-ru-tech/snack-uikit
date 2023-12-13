@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
 
-import { ColumnPinPosition, TEST_IDS } from '../../constants';
+import { ValueOf } from '@snack-uikit/utils';
+
+import { COLUMN_PIN_POSITION, TEST_IDS } from '../../constants';
 import styles from './styles.module.scss';
 
 type PinnedCellsProps = {
-  position: ColumnPinPosition;
+  position: ValueOf<typeof COLUMN_PIN_POSITION>;
   children: ReactNode;
 };
 

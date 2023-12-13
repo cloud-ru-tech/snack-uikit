@@ -8,18 +8,18 @@
 ## Example
 
 ```typescript jsx
-import {Status, StatusIndicator} from "@snack-uikit/status";
+import { Status, StatusIndicator } from '@snack-uikit/status';
 
 <Status 
   label="Text after status"
-  appearance={Status.appearances.Pink}
-  size={Status.sizes.Xs}
+  appearance='pink'
+  size='xs'
   hasBackground={true}
 />
 
 <StatusIndicator
-  appearance={Status.appearances.Violet}
-  size={Status.sizes.L}
+  appearance='violet'
+  size='l'
 />
 ```
 
@@ -30,16 +30,16 @@ import {Status, StatusIndicator} from "@snack-uikit/status";
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | label* | `string` | - | Текст |
-| size | enum Size: `"xs"`, `"s"` | Size.Xs | Размер |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | Appearance.Primary | Внешний вид |
+| size | enum Size: `"xs"`, `"s"` | xs | Размер |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Внешний вид |
 | hasBackground | `boolean` | - | Наличие фона |
 | className | `string` | - | CSS-класс |
 ## StatusIndicator
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| size | enum Size: `"xxs"`, `"xs"`, `"s"`, `"m"`, `"l"` | Size.M | Размер |
-| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | Appearance.Primary | Внешний вид |
+| size | enum Size: `"xs"`, `"s"`, `"xxs"`, `"m"`, `"l"` | m | Размер |
+| appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Внешний вид |
 | className | `string` | - | CSS-класс |
 
 

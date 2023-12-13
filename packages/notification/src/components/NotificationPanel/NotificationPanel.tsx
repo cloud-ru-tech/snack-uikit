@@ -2,7 +2,6 @@ import { MouseEventHandler, ReactNode, useMemo } from 'react';
 
 import { ButtonFunction, ButtonFunctionProps } from '@snack-uikit/button';
 import { ChipToggle, ChipToggleProps } from '@snack-uikit/chips';
-import { PopoverPrivate } from '@snack-uikit/popover-private';
 import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider, WithSkeleton } from '@snack-uikit/skeleton';
 import { TruncateString } from '@snack-uikit/truncate-string';
@@ -83,7 +82,7 @@ export function NotificationPanel({
                     {...chip}
                     key={chip.label}
                     data-test-id={`${TEST_IDS.chip}-${chip.label}`}
-                    size={ChipToggle.sizes.Xs}
+                    size='xs'
                     disabled={chip.disabled || loading}
                   />
                 ))}
@@ -99,7 +98,7 @@ export function NotificationPanel({
             </div>
           </div>
 
-          <Scroll size={Scroll.sizes.M} className={styles.notificationPanelBody}>
+          <Scroll size='m' className={styles.notificationPanelBody}>
             {loading ? (
               <SkeletonContextProvider loading={loading || false}>
                 {skeletons.map(skeleton => (
@@ -123,10 +122,6 @@ export function NotificationPanel({
     </NotificationPanelPopover>
   );
 }
-
-NotificationPanel.placements = PopoverPrivate.placements;
-NotificationPanel.triggers = PopoverPrivate.triggers;
-NotificationPanel.widthStrategies = PopoverPrivate.widthStrategies;
 
 export namespace NotificationPanel {
   export const Blank: typeof NotificationPanelBlank = NotificationPanelBlank;

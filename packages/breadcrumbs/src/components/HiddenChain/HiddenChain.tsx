@@ -1,7 +1,6 @@
 import { memo, useEffect, useRef } from 'react';
 
-import { Size } from '../../constants';
-import { BreadcrumbsConfig, Item } from '../../types';
+import { BreadcrumbsConfig, Item, Size } from '../../types';
 import { buildBreadcrumbsConfigs, buildSizeMap } from '../../utils';
 import { Collapse } from '../Collapse';
 import { Separator } from '../Separator';

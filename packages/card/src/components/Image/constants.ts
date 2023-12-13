@@ -1,5 +1,5 @@
-export enum Mode {
-  Little = 'little',
-  Middle = 'middle',
-  Background = 'background',
-}
+export const MODE = {
+  Little: 'little',
+  Middle: 'middle',
+  Background: 'background',
+} as const;

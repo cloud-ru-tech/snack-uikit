@@ -1,8 +1,9 @@
 import { ButtonFilledProps, ButtonOutlineProps, ButtonSimpleProps } from '@snack-uikit/button';
 import { LinkProps } from '@snack-uikit/link';
 
-import { Align, Size } from '../../constants';
+import { ALIGN, SIZE } from '../../constants';
 import { ModalBodyProps, ModalHeaderImage, ModalHeaderProps } from '../../helperComponents';
+import { Align } from '../../types';
 import { ModalCustomProps } from '../ModalCustom';
 
 type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
@@ -29,10 +30,10 @@ type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
 
 export type ModalSProps = BaseModalProps & {
   /** Размер */
-  size?: Size.S;
+  size?: typeof SIZE.S;
   /**
    * Выравнивание, для разных размеров доступны разные значения
-   * <br> для `Size.S` - все
+   * <br> для size=`s` - все
    */
   align?: Align;
   /** Можно передать иконку из пакета `@snack-uikit/icon-predefined`, или путь к картинке и атрибут `alt` */
@@ -40,15 +41,15 @@ export type ModalSProps = BaseModalProps & {
 };
 
 export type ModalMProps = BaseModalProps & {
-  size?: Size.M;
-  /** <br> для `Size.M` - `Align.Default | Align.Center` */
-  align?: Align.Default | Align.Center;
+  size?: typeof SIZE.M;
+  /** <br> для size=`m` - align=`default | center` */
+  align?: typeof ALIGN.Default | typeof ALIGN.Center;
   picture?: ModalHeaderImage;
 };
 
 export type ModalLProps = BaseModalProps & {
-  size?: Size.L;
-  /** <br> для `Size.L` - `Align.Default` */
-  align?: Align.Default;
+  size?: typeof SIZE.L;
+  /** <br> для size=`l` - align=`default` */
+  align?: typeof ALIGN.Default;
   picture?: ModalHeaderImage;
 };

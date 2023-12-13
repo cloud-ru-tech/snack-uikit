@@ -1,17 +1,17 @@
-export enum Appearance {
-  Primary = 'primary',
-  Neutral = 'neutral',
-  Red = 'red',
-  Orange = 'orange',
-  Yellow = 'yellow',
-  Green = 'green',
-  Blue = 'blue',
-  Violet = 'violet',
-  Pink = 'pink',
-}
+export const APPEARANCE = {
+  Primary: 'primary',
+  Neutral: 'neutral',
+  Red: 'red',
+  Orange: 'orange',
+  Yellow: 'yellow',
+  Green: 'green',
+  Blue: 'blue',
+  Violet: 'violet',
+  Pink: 'pink',
+} as const;
 
-export enum Size {
-  S = 's',
-  M = 'm',
-  L = 'l',
-}
+export const SIZE = {
+  S: 's',
+  M: 'm',
+  L: 'l',
+} as const;

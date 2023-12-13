@@ -95,8 +95,8 @@ const Template: StoryFn<StoryProps> = ({
         actions={
           showActions ? (
             <>
-              <ButtonFunction icon={<PlaceholderSVG />} size={ButtonFunction.sizes.M} />
-              <ButtonFunction icon={<PlaceholderSVG />} size={ButtonFunction.sizes.M} />
+              <ButtonFunction icon={<PlaceholderSVG />} size='m' />
+              <ButtonFunction icon={<PlaceholderSVG />} size='m' />
             </>
           ) : undefined
         }
@@ -113,7 +113,7 @@ toolbar.args = {
   placeholder: 'Search',
   loading: false,
   outline: false,
-  selectionMode: Toolbar.selectionModes.Multiple,
+  selectionMode: 'multiple',
   showCheckbox: true,
   checked: false,
   indeterminate: false,

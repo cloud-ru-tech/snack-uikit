@@ -22,7 +22,7 @@
 | title | `string` | - | Заголовок |
 | description | `ReactNode` | - | Описание |
 | disabled | `boolean` | - | Деактивирован ли компонент |
-| mode | enum UploadMode: `"Single"`, `"Multiple"` | UploadMode.Multiple | Режим |
+| mode | enum UploadMode: `"single"`, `"multiple"` | multiple | Режим |
 | accept | `string` | - | Режим |
 | className | `string` | - | CSS-класс |
 ## HiddenDropZone
@@ -34,7 +34,7 @@
 | title | `string` | - | Заголовок |
 | description | `ReactNode` | - | Описание |
 | disabled | `boolean` | - | Деактивирован ли компонент |
-| mode | enum UploadMode: `"Single"`, `"Multiple"` | UploadMode.Multiple | Режим |
+| mode | enum UploadMode: `"single"`, `"multiple"` | multiple | Режим |
 | accept | `string` | - | Режим |
 | className | `string` | - | CSS-класс |
 

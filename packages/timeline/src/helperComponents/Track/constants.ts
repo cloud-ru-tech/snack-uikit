@@ -1,5 +1,5 @@
-export enum Role {
-  Start = 'start',
-  Center = 'center',
-  End = 'end',
-}
+export const ROLE = {
+  Start: 'start',
+  Center: 'center',
+  End: 'end',
+} as const;

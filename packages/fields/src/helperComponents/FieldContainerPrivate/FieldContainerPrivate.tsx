@@ -4,7 +4,8 @@ import { CSSProperties, MouseEventHandler, ReactElement, ReactNode, RefObject } 
 import { Size } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ContainerVariant, ValidationState } from '../../constants';
+import { VALIDATION_STATE } from '../../constants';
+import { ContainerVariant, ValidationState } from '../../types';
 import styles from './styles.module.scss';
 
 export type FieldContainerPrivateProps = WithSupportProps<{
@@ -53,7 +54,7 @@ export function FieldContainerPrivate({
       className={cn(className, styles.container)}
       style={style}
       data-size={size}
-      data-validation={disabled || readonly ? ValidationState.Default : validationState}
+      data-validation={disabled || readonly ? VALIDATION_STATE.Default : validationState}
       data-variant={variant}
       data-disabled={disabled || undefined}
       data-readonly={readonly || undefined}
