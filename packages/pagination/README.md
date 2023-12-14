@@ -37,7 +37,8 @@ function App() {
 | onChange* | `(page: number) => void` | - | Колбек смены значения |
 | page* | `number` | - | Текущая страница |
 | total* | `number` | - | Общее количество страниц |
-| className | `string` | - | CSS-класс |
+| className | `string` | - | CSS класснейм |
+| size | enum Size: `"xs"`, `"s"` | s | Размер |
 ## PaginationSlider
 ### Props
 | name | type | default value | description |
@@ -45,7 +46,7 @@ function App() {
 | onChange* | `(page: number) => void` | - | Колбек смены значения |
 | page* | `number` | - | Текущая страница |
 | total* | `number` | - | Общее количество страниц |
-| className | `string` | - | CSS-класс |
+| className | `string` | - | CSS класснейм |
 
 
 [//]: DOCUMENTATION_SECTION_END

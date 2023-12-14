@@ -4,6 +4,9 @@ import { ButtonFunction } from '@snack-uikit/button';
 import { ChevronLeftSVG, ChevronRightSVG } from '@snack-uikit/icons';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
+import { SIZE } from '../../constants';
+import { PaginationContext } from '../../contexts';
+import { Size } from '../../types';
 import { getPaginationEntries, PaginationEntry, PaginationEntryKind } from '../../utils';
 import { PageMoreButton } from '../PageMoreButton';
 import { PageNumberButton } from '../PageNumberButton';
@@ -16,14 +19,19 @@ export type PaginationProps = WithSupportProps<{
   page: number;
   /** Колбек смены значения */
   onChange(page: number): void;
+  /** CSS класснейм */
   className?: string;
+  /** Размер
+   * @default 's'
+   */
+  size?: Size;
 }>;
 
 const FIRST_PAGE = 1;
 const ARROW_STEP = 1;
 const MAX_LENGTH = 7;
 
-export function Pagination({ total, page, onChange, className, ...rest }: PaginationProps) {
+export function Pagination({ total, page, onChange, className, size = SIZE.S, ...rest }: PaginationProps) {
   const entries = getPaginationEntries({
     firstPage: FIRST_PAGE,
     lastPage: total,
@@ -88,26 +96,30 @@ export function Pagination({ total, page, onChange, className, ...rest }: Pagina
   };
 
   return (
-    <nav className={className} {...extractSupportProps(rest)}>
-      <ul className={styles.pagination}>
-        <li>
-          <ButtonFunction
-            icon={<ChevronLeftSVG />}
-            onClick={handlePreviousPageButtonClick}
-            disabled={page === FIRST_PAGE}
-            data-test-id='page-prev-button'
-          />
-        </li>
-        {entries.map(renderEntry)}
-        <li>
-          <ButtonFunction
-            icon={<ChevronRightSVG />}
-            onClick={handleNextPageButtonClick}
-            disabled={page === total}
-            data-test-id='page-next-button'
-          />
-        </li>
-      </ul>
-    </nav>
+    <PaginationContext.Provider value={{ size }}>
+      <nav className={className} {...extractSupportProps(rest)}>
+        <ul className={styles.pagination}>
+          <li>
+            <ButtonFunction
+              icon={<ChevronLeftSVG />}
+              onClick={handlePreviousPageButtonClick}
+              disabled={page === FIRST_PAGE}
+              data-test-id='page-prev-button'
+              size={size}
+            />
+          </li>
+          {entries.map(renderEntry)}
+          <li>
+            <ButtonFunction
+              icon={<ChevronRightSVG />}
+              onClick={handleNextPageButtonClick}
+              disabled={page === total}
+              data-test-id='page-next-button'
+              size={size}
+            />
+          </li>
+        </ul>
+      </nav>
+    </PaginationContext.Provider>
   );
 }

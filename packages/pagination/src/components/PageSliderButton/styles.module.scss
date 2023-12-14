@@ -30,17 +30,17 @@
     .pageButtonSliderDot {
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-      background-color: $sys-neutral-accent-hovered;
+      background-color: $sys-neutral-decor-hovered;
     }
   }
 
   &:focus-visible {
     .pageButtonSliderDot {
       @include outline-var($container-focused-s);
-      @include composite-var($pagination-page-button-slider-dot-page-default);
+      @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-      background-color: $sys-neutral-accent-hovered;
-      outline-color: $sys-primary-accent-default;
+      background-color: $sys-neutral-decor-hovered;
+      outline-color: $sys-available-complementary;
       outline-offset: $spacing-state-focus-offset;
     }
   }
@@ -49,7 +49,7 @@
     .pageButtonSliderDot {
       @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-      background-color: $sys-primary-accent-pressed;
+      background-color: $sys-neutral-decor-activated;
     }
   }
 
@@ -65,7 +65,7 @@
       .pageButtonSliderDot {
         @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-        background-color: $sys-primary-accent-hovered;
+        background-color: $sys-primary-accent-default;
       }
     }
 
@@ -79,9 +79,9 @@
 
     &:active {
       .pageButtonSliderDot {
-        @include composite-var($pagination-page-button-slider-dot-page-default);
+        @include composite-var($pagination-page-button-slider-dot-page-interactions);
 
-        background-color: $sys-neutral-accent-default;
+        background-color: $sys-primary-accent-hovered;
       }
     }
   }

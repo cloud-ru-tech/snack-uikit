@@ -11,6 +11,7 @@ export type PaginationSliderProps = WithSupportProps<{
   page: number;
   /** Колбек смены значения */
   onChange(page: number): void;
+  /** CSS класснейм */
   className?: string;
 }>;
 

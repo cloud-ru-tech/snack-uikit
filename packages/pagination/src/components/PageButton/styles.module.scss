@@ -1,10 +1,15 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-pagination';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-.pageButton {
-  @include composite-var($pagination-page-button-container);
-  @include composite-var($sans-label-l);
+$sizes: 'xs', 's';
 
+$typography: (
+  'xs': $sans-label-s,
+  's': $sans-label-l,
+);
+
+
+.pageButton {
   cursor: pointer;
 
   display: flex;
@@ -12,7 +17,6 @@
   justify-content: center;
 
   box-sizing: border-box;
-  min-width: $size-pagination-page-button-mininal-width;
   margin: 0;
   padding-top: 0;
   padding-bottom: 0;
@@ -25,6 +29,13 @@
   border: 0 solid transparent;
   outline: 0;
   outline-offset: 0;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($pagination, 'page-button', 'container', $size);
+      @include composite-var(simple-var($typography, $size));
+    }
+  }
 
   &:hover {
     color: $sys-neutral-text-main;
@@ -40,27 +51,27 @@
   }
 
   &:active {
-    color: $sys-primary-on-accent;
-    background-color: $sys-primary-accent-pressed;
+    color: $sys-neutral-text-main;
+    background-color: $sys-neutral-decor-activated;
   }
 
   &[data-activated] {
-    color: $sys-primary-on-accent;
-    background-color: $sys-primary-accent-default;
+    color: $sys-primary-text-support;
+    background-color: $sys-primary-decor-default;
 
     &:hover {
-      color: $sys-primary-on-accent;
-      background-color: $sys-primary-accent-hovered;
+      color: $sys-primary-text-support;
+      background-color: $sys-primary-decor-default;
     }
 
     &:focus-visible {
-      color: $sys-primary-on-accent;
-      background-color: $sys-primary-accent-hovered;
+      color: $sys-primary-text-support;
+      background-color: $sys-primary-decor-hovered;
     }
 
     &:active {
-      color: $sys-primary-on-accent;
-      background-color: $sys-primary-accent-pressed;
+      color: $sys-primary-text-support;
+      background-color: $sys-primary-decor-default;
     }
   }
 }
