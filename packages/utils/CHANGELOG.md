@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.2.0 (2023-12-14)
+
+
+### Features
+
+* **FF-3729:** add utility type ValueOf ([73259c3](https://github.com/cloud-ru-tech/snack-uikit/commit/73259c3d30f6256388be02df3167f381ce95879e))
+
+
+
+
+
 # 3.1.0 (2023-12-06)
 
 

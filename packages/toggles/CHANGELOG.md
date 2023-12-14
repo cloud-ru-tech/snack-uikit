@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2023-12-14)
+
+
+### BREAKING CHANGES
+
+
+* **FF-3729:** replace enum with unions ([910db4a](https://github.com/cloud-ru-tech/snack-uikit/commit/910db4aa8231ccbc58e538e5c5c1f461b1dec275))
+
+
+
+
 ## 0.8.1 (2023-12-06)
 
 ### Only dependencies have been changed
