@@ -15,15 +15,15 @@
 |------|------|---------------|-------------|
 | children* | `ReactElement<any, string \| JSXElementConstructor<any>>[]` | - | Массив айтемов |
 | className | `string` | - | CSS - класснейм |
-| showItems | `number` | 1 | Кол-во отображаемых единовременно айтемов @default 1 |
-| scrollBy | `number` | - | Сдвиг айтемов при смене 1 страницы @default Math.trunc(show) |
-| transition | `number` | 0.4 | Время переключения 1 страницы (в s) @default 0.4 |
-| swipe | `boolean` | true | Переключение страниц свайпом @default true |
-| arrows | `boolean` | true | Использовать стрелки для переключения страниц @default true |
-| pagination | `boolean` | true | Использовать пагинацию для переключения страниц @default true |
-| gap | `string` | - | Расстояние между айтемами @default var(--dimension-2m) |
+| showItems | `number` | 1 | Кол-во отображаемых единовременно айтемов |
+| scrollBy | `number` | Math.trunc(show) | Сдвиг айтемов при смене 1 страницы |
+| transition | `number` | 0.4 | Время переключения 1 страницы (в s) |
+| swipe | `boolean` | true | Переключение страниц свайпом |
+| arrows | `boolean` | true | Использовать стрелки для переключения страниц |
+| pagination | `boolean` | true | Использовать пагинацию для переключения страниц |
+| gap | `string` | var(--dimension-2m) | Расстояние между айтемами |
 | state | `{ page: number; onChange(page: number): void; }` | - | Управление состоянием извне |
-| infiniteScroll | `boolean` | - | Цикличная прокрутка @default false |
+| infiniteScroll | `boolean` | - | Цикличная прокрутка |
 
 
 [//]: DOCUMENTATION_SECTION_END

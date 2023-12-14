@@ -30,8 +30,8 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.19.0",
-    "@snack-uikit/pagination": "0.5.1",
-    "@snack-uikit/utils": "3.1.0",
+    "@snack-uikit/pagination": "0.5.2",
+    "@snack-uikit/utils": "3.2.0",
     "classnames": "2.3.2",
     "uncontrollable": "8.0.4"
   }
