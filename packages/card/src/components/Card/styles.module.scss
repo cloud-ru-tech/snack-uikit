@@ -1,7 +1,7 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-$sizes:  'm', 'l';
+$sizes: 's', 'm', 'l';
 
 .functionBadgeWrapper {
   position: absolute;
@@ -17,12 +17,12 @@ $sizes:  'm', 'l';
 .composition {
   @include composite-var($card-composition-container);
 
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .card {
   @include composite-var($card-container);
-  
+
   position: relative;
 
   overflow: hidden;
@@ -32,7 +32,7 @@ $sizes:  'm', 'l';
   padding: 0;
 
   text-align: left;
-  
+
   background-color: $sys-neutral-background1-level;
   border: 0;
   outline-color: transparent;
@@ -75,8 +75,6 @@ $sizes:  'm', 'l';
       display: block;
     }
   }
-
-
 
   &[data-pointer] {
     * {
@@ -153,13 +151,12 @@ $sizes:  'm', 'l';
     background-color: $sys-neutral-background;
     outline-color: $sys-neutral-decor-default;
     outline-width: $border-width-card-container;
-    
+
     * {
       cursor: not-allowed;
     }
   }
 }
-
 
 .body {
   display: block;
@@ -186,9 +183,7 @@ $sizes:  'm', 'l';
 }
 
 .footer {
-  @include composite-var($card-footer);
-
   position: relative;
   box-sizing: border-box;
+  width: 100%;
 }
-

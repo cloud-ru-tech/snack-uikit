@@ -109,8 +109,11 @@ const Template: StoryFn<StoryProps> = ({
       case FooterMode.CallToAction: {
         return <Card.Footer.CallToAction label='Call to action' icon={<PlaceholderSVG />} />;
       }
-      default: {
+      case FooterMode.Custom: {
         return <div>Custom Footer</div>;
+      }
+      default: {
+        return undefined;
       }
     }
   }, [footerMode]);

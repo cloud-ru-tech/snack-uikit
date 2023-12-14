@@ -99,12 +99,14 @@ export function Card({
             <div className={styles.content} data-size={size}>
               {header || null}
 
-              <Typography family='sans' size={size} purpose='body' className={styles.body}>
-                {children}
-              </Typography>
-            </div>
+              {children && (
+                <Typography family='sans' size={size} purpose='body' className={styles.body}>
+                  {children}
+                </Typography>
+              )}
 
-            {footer && <div className={styles.footer}>{footer}</div>}
+              {footer && <div className={styles.footer}>{footer}</div>}
+            </div>
           </div>
         </div>
 

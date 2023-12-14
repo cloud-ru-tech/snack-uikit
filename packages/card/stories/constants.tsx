@@ -15,6 +15,7 @@ export enum FooterMode {
   Promo = 'promo',
   CallToAction = 'callToAction',
   Custom = 'custom',
+  None = 'none',
 }
 
 export enum ImageMode {

@@ -33,7 +33,7 @@ import { Card, SearchPrivate } from "@snack-uikit/card";
 | outline | `boolean` | - | Управление состоянием наличия обводки |
 | multipleSelection | `boolean` | - | Отображение галочки для режима массового выделения карточек |
 | onClick | `() => void` | - | Колбек на клик по карточке |
-| size | enum Size: `"m"`, `"l"` | - | Размер |
+| size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
 | promoBadge | `string` | - | Текст для PromoBadge |
 | children | `ReactNode` | - | Вложенный контент |
 | header | `ReactElement<HeaderProps, string \| JSXElementConstructor<any>>` | - | Вложенный Header |
