@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.1 (2023-12-14)
+
+
+### Dependencies
+
+* **FF-2840:** up internal deps after bad rebase ([aabc8de](https://github.com/cloud-ru-tech/snack-uikit/commit/aabc8debf8d81fb37d6ecb7580cca9d93142246f))
+
+
+
+
+
 # 0.1.0 (2023-12-14)
 
 

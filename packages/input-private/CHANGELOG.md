@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.1 (2023-12-14)
+
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.19.1](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/blob/master/packages/icons/CHANGELOG.md)
+
+
+
+
+
 # 3.0.0 (2023-12-14)
 
 

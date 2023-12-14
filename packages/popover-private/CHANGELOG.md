@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.1 (2023-12-14)
+
+
+### Bug Fixes
+
+* **FF-3787:** minor fix for prepare to typescript v5 ([15f21d1](https://github.com/cloud-ru-tech/snack-uikit/commit/15f21d17a013d903eb8a3bfea9c7f9248c11f2ca))
+
+
+
+
+
 # 0.12.0 (2023-12-14)
 
 
