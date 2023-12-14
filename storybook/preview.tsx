@@ -13,7 +13,6 @@ const brandInfo: ThemeVars = {
   base: 'light',
   brandTitle: 'Snack UI',
   brandUrl: '/',
-  brandImage: './storybook/assets/CloudRuFullLogo.svg',
   brandTarget: '_self',
 };
 
@@ -39,9 +38,9 @@ const parameters: Parameters = {
   },
   darkMode: {
     // Override the default dark theme
-    dark: { ...themes.dark, ...brandInfo, base: 'dark' },
+    dark: { ...themes.dark, ...brandInfo, brandImage: './storybook/assets/CloudRuFullLogoDark.svg', base: 'dark' },
     // Override the default light theme
-    light: { ...themes.normal, ...brandInfo, base: 'light' },
+    light: { ...themes.normal, ...brandInfo, brandImage: './storybook/assets/CloudRuFullLogo.svg', base: 'light' },
   },
 };
 
