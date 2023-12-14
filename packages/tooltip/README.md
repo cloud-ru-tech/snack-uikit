@@ -35,7 +35,7 @@
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
-| disableMaxWidth | `boolean` | - | Отключение ограничения ширины тултипа @default false |
+| disableMaxWidth | `boolean` | false | Отключение ограничения ширины тултипа |
 | trigger | enum Trigger: `"click"`, `"hover"` | hover | Условие отображения подсказки |
 | size | enum Size: `"s"`, `"xs"` | xs | Размер |
 | tooltipClassname | `string` | - | CSS-класс контейнера подсказки |

@@ -212,11 +212,11 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| filters* | `(Pick<{ id: string; } & { type: "multi"; } & { 'data-test-id'?: string; } & AriaAttributes & Partial<BaseChipProps> & { size?: Size; onClick?: MouseEventHandler<...>; showClearButton?: boolean; placement?: Placement; widthStrategy?: PopoverWidthStrategy; } & { ...; }, "data-test-id" \| ... 9 more ... \| "type"> \| Pick...` | - | Массив чипов |
+| filters* | `OmitBetter<ChipChoiceProps, "size" \| "onChange" \| "value" \| "defaultValue">[]` | - | Массив чипов |
 | value | `FiltersState` | - | Состояние фильтров |
 | defaultValue | `Partial<TState>` | - | Начальное состояние фильтров |
 | onChange | `(filters: TState) => void` | - | Колбек изменения состояния фильтров |
-| size | enum ChipChoiceRowSize: `"xs"`, `"s"`, `"m"` | s | Размер @default 's' |
+| size | enum ChipChoiceRowSize: `"xs"`, `"s"`, `"m"` | s | Размер |
 | className | `string` | - | CSS-класс |
 | showClearAllButton | `boolean` | true | Скрыть/показать кнопку очиски |
 | clearAllButtonLabel | `string` | Clear all | Текст кнопки очистки |

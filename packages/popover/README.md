@@ -15,7 +15,7 @@
 |------|------|---------------|-------------|
 | children* | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
 | tip* | `ReactNode` | - | Контент поповера |
-| disableMaxWidth | `boolean` | - | Отключение ограничения ширины поповера @default false |
+| disableMaxWidth | `boolean` | - | Отключение ограничения ширины поповера |
 | trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | click | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
 | className | `string` | - | CSS-класс |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |

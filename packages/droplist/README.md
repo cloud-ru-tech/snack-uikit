@@ -208,7 +208,7 @@ CSS-класс на обёртке триггера поповера.
 | triggerRef | `ForwardedRef<HTMLElement \| ReferenceType>` | - | Ref ссылка на триггер |
 | trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
-| firstElementRefCallback | `(instance: HTMLElement) => void` | - |  |
+| firstElementRefCallback | `RefCallback<HTMLElement>` | - |  |
 | onFocusLeave | `(direction: "left" \| "top" \| "bottom" \| "common") => void` | - |  |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - |  |
 | scrollRef | `RefObject<HTMLElement>` | - |  |

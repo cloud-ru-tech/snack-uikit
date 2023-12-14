@@ -24,7 +24,7 @@ Toolbar
 | onDelete | `() => void` | - | Колбек удаления |
 | checked | `boolean` | - | Значения чекбокса |
 | indeterminate | `boolean` | - | Состояние частичного выбора |
-| selectionMode | enum SelectionMode: `"single"`, `"multiple"` | SelectionMode.Multiple | Режим выбора |
+| selectionMode | enum SelectionMode: `"single"`, `"multiple"` | 'multiple' | Режим выбора |
 | onRefresh | `() => void` | - | Колбек обновления |
 | actions | `ReactNode` | - | Дополнительный слот |
 | moreActions | `Pick<DroplistItemSingleProps, "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon" \| "onClick">[]` | - | Элементы выпадающего списка кнопки с действиями |

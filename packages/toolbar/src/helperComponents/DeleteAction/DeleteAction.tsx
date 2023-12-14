@@ -18,7 +18,7 @@ export type DeleteActionProps = {
   checked?: boolean;
   /** Состояние частичного выбора */
   indeterminate?: boolean;
-  /** Режим выбора @default SelectionMode.Multiple*/
+  /** Режим выбора @default 'multiple'*/
   selectionMode?: SelectionMode;
 };
 
