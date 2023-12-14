@@ -42,8 +42,8 @@ const getExportName = basename => {
 };
 
 const iconWrapper = filePaths => {
-  const componentName = capitalizeFirstLetter(getDirName(filePaths[filePaths.length - 1]));
-  const exportEntries = filePaths.map(filePath => {
+  const componentName = capitalizeFirstLetter(getDirName(filePaths[filePaths.length - 1].path));
+  const exportEntries = filePaths.map(({ path: filePath }) => {
     const basename = path.basename(filePath, path.extname(filePath));
     const exportName = getExportName(basename);
     return `import { default as ${`${exportName}`} } from './${basename}';`;

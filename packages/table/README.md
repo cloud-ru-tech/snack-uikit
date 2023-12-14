@@ -133,7 +133,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| mapStatusToAppearance* | `(value: string \| number) => StatusAppearance` | - | Маппинг значений статуса на цвета |
+| mapStatusToAppearance* | `(value: string \| number) => ValueOf<{ readonly Primary: "primary"; readonly Neutral: "neutral"; readonly Red: "red"; readonly Orange: "orange"; readonly Yellow: "yellow"; readonly Green: "green"; readonly Blue: "blue"; readonly Violet: "violet"; readonly Pink: "pink"; readonly Loading: "loading"; }>` | - | Маппинг значений статуса на цвета |
 | accessorKey* | `string` | - | Имя ключа соответствующее полю в data |
 | enableSorting | `boolean` | - | Включение/выключение сортировки |
 | renderDescription | `(cellValue: string) => string` | - | Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса |

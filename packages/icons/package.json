@@ -39,7 +39,6 @@
     "compile": "npm run validate:icons && npm run build:interface-icons && npm run create-export-index-file"
   },
   "devDependencies": {
-    "@svgr/cli": "7.0.0",
-    "oslllo-svg-fixer": "2.2.0"
+    "@svgr/cli": "8.1.0"
   }
 }

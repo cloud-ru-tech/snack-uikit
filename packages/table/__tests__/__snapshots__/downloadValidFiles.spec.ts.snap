@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`downloadValidFiles > download XLSX files with elements in the correct order 1`] = `
+[
+  {
+    "SheetNames": [
+      "Sheet1",
+    ],
+    "Sheets": {
+      "Sheet1": {
+        "!ref": "A1:E3",
+        "A1": {
+          "t": "s",
+          "v": "col1",
+          "w": "col1",
+        },
+        "A2": {
+          "t": "n",
+          "v": 0,
+        },
+        "A3": {
+          "t": "n",
+          "v": 1,
+        },
+        "B1": {
+          "t": "s",
+          "v": "col2",
+          "w": "col2",
+        },
+        "B2": {
+          "t": "n",
+          "v": 0,
+        },
+        "B3": {
+          "t": "n",
+          "v": 1,
+        },
+        "C1": {
+          "t": "s",
+          "v": "col3",
+          "w": "col3",
+        },
+        "C2": {
+          "t": "n",
+          "v": 0,
+        },
+        "C3": {
+          "t": "n",
+          "v": 1,
+        },
+        "D1": {
+          "t": "s",
+          "v": "col4",
+          "w": "col4",
+        },
+        "D2": {
+          "t": "n",
+          "v": 0,
+        },
+        "D3": {
+          "t": "n",
+          "v": 1,
+        },
+        "E1": {
+          "t": "s",
+          "v": "date",
+          "w": "date",
+        },
+        "E2": {
+          "t": "n",
+          "v": 1337919743656,
+        },
+        "E3": {
+          "t": "n",
+          "v": 1285032902056,
+        },
+      },
+    },
+  },
+  "TestTable.xlsx",
+]
+`;

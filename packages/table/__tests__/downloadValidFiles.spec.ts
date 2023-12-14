@@ -1,6 +1,11 @@
-import * as fs from 'fs';
+import { vi } from 'vitest';
 
-import { utils as xlsxUtils } from 'xlsx';
+vi.mock('xlsx', async () => ({
+  ...(await vi.importActual<object>('xlsx')),
+  writeFileXLSX: vi.fn(),
+}));
+
+import { utils as xlsxUtils, writeFileXLSX } from 'xlsx';
 
 import { ColumnDefinition } from '../src';
 import { exportToXLSX } from '../src/exportTable';
@@ -15,6 +20,10 @@ type StubData = {
 };
 
 describe('downloadValidFiles', () => {
+  afterAll(() => {
+    vi.clearAllMocks();
+  });
+
   const columnDefinitions: ColumnDefinition<StubData>[] = [
     { id: '1', accessorKey: 'col1', size: 140, enableSorting: true, sortDescFirst: true },
     { id: '2', accessorKey: 'col2', size: 140, enableSorting: true },
@@ -51,7 +60,10 @@ describe('downloadValidFiles', () => {
 
     expect(result).toEqual(expectedResult);
 
-    // delete created file
-    fs.unlinkSync(`${process.cwd()}/${fileName}.xlsx`);
+    expect(writeFileXLSX).toBeCalledTimes(1);
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(writeFileXLSX.mock.calls[0]).toMatchSnapshot();
   });
 });
