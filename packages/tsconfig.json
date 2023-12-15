@@ -65,13 +65,13 @@
       "path": "./tabs"
     },
     {
-      "path": "./breadcrumbs"
-    },
-    {
       "path": "./tag"
     },
     {
       "path": "./droplist"
+    },
+    {
+      "path": "./breadcrumbs"
     },
     {
       "path": "./calendar"

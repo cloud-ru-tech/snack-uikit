@@ -12,7 +12,7 @@ export type CrumbsTypographyProps = PropsWithChildren<{
 
 export function CrumbsTypography({ size, children, className }: CrumbsTypographyProps) {
   return (
-    <Typography className={className} size={size === SIZE.S ? 'l' : 'm'} tag='div' family='sans' purpose='body'>
+    <Typography className={className} size={size === SIZE.S ? 'm' : 's'} tag='div' family='sans' purpose='body'>
       {children}
     </Typography>
   );

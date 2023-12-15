@@ -1,14 +1,12 @@
-import { useContext } from 'react';
+import { MouseEvent, useContext, useState } from 'react';
 
-import { Popover } from '@snack-uikit/popover';
+import { Droplist } from '@snack-uikit/droplist';
 
 import { ELEMENT_TYPE, ITEM_RENDER_MODE } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
-import { BreadcrumbsConfigChain } from '../../types';
+import { BreadcrumbsConfigChain, InnerItem } from '../../types';
 import { getTestId } from '../../utils';
-import { Crumb } from '../Crumb';
 import { CrumbsTypography } from '../CrumbsTypography';
-import { Separator } from '../Separator';
 import styles from './styles.module.scss';
 
 export type CollapseProps = {
@@ -20,33 +18,59 @@ export function Collapse({ currentConfig, className }: CollapseProps) {
   const ctx = useContext(BreadcrumbsContext);
   const { hidden, size, testId } = ctx;
 
-  const collapsedItems = currentConfig.map(node => {
-    if (node.element === ELEMENT_TYPE.Item && node.item.renderMode === ITEM_RENDER_MODE.Collapsed) {
-      const { id } = node.item;
+  const [open, setDroplistOpen] = useState<boolean>(false);
 
-      return (
-        <div key={id} className={styles.collapsedRow}>
-          <Crumb item={node.item} renderMode={ITEM_RENDER_MODE.Full} />
-          <Separator />
-        </div>
-      );
-    }
-    return null;
+  const {
+    handleTriggerKeyDown,
+    handleDroplistItemKeyDown,
+    handleDroplistItemClick,
+    firstElementRefCallback,
+    triggerElementRef,
+    handleDroplistFocusLeave,
+  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({
+    setDroplistOpen,
   });
 
-  const tip = (
-    <BreadcrumbsContext.Provider value={{ ...ctx, testId: `${testId}-collapsed` }}>
-      {collapsedItems}
-    </BreadcrumbsContext.Provider>
-  );
+  const collapsedItems = currentConfig
+    .filter(node => node.element === ELEMENT_TYPE.Item && node.item.renderMode === ITEM_RENDER_MODE.Collapsed)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    .map((node: { element: typeof ELEMENT_TYPE.Item; width: number; item: InnerItem }) => {
+      const { id, label, onClick } = node.item;
+
+      return (
+        <Droplist.ItemSingle
+          option={label}
+          key={id}
+          onKeyDown={handleDroplistItemKeyDown}
+          onClick={(e: MouseEvent) => {
+            handleDroplistItemClick(e, onClick);
+          }}
+        />
+      );
+    });
 
   return (
     <div className={className} data-test-id={getTestId('collapse', testId)} data-element-type={ELEMENT_TYPE.Collapse}>
-      <Popover tip={tip} trigger='hoverAndFocusVisible' placement='top'>
-        <button className={styles.collapse} tabIndex={hidden ? -1 : 0}>
-          <CrumbsTypography size={size}>...</CrumbsTypography>
-        </button>
-      </Popover>
+      <BreadcrumbsContext.Provider value={{ ...ctx, testId: `${testId}-collapsed` }}>
+        <Droplist
+          trigger='hoverAndFocusVisible'
+          size='s'
+          open={open}
+          onOpenChange={setDroplistOpen}
+          firstElementRefCallback={firstElementRefCallback}
+          onFocusLeave={handleDroplistFocusLeave}
+          useScroll
+          triggerRef={triggerElementRef}
+          triggerElement={
+            <button className={styles.collapse} tabIndex={hidden ? -1 : 0} onKeyDown={handleTriggerKeyDown}>
+              <CrumbsTypography size={size}>...</CrumbsTypography>
+            </button>
+          }
+        >
+          {collapsedItems}
+        </Droplist>
+      </BreadcrumbsContext.Provider>
     </div>
   );
 }

@@ -50,7 +50,7 @@ export const Crumb = memo(function Crumb({
     <>
       {Icon && (
         <div className={styles.icon}>
-          <Icon size={24} />
+          <Icon size={16} />
         </div>
       )}
       {!useIconOnly && (

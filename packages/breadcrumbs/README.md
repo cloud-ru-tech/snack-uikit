@@ -19,6 +19,7 @@
 | size | enum Size: `"xs"`, `"s"` | s | Размер |
 | firstItemIconOnly | `boolean` | false | Использовать иконку без лейбла в первом айтеме |
 | inactiveLastItem | `boolean` | false | Делает некликабельным последний элемент, даже если для него переданы `href` или `onClick` |
+| lastEmpty | `boolean` | - |  |
 
 
 [//]: DOCUMENTATION_SECTION_END

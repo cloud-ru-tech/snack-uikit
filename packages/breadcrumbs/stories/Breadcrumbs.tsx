@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { HeartFilledSVG } from '@snack-uikit/icons';
+import { HomeSVG } from '@snack-uikit/icons';
 import { Scroll } from '@snack-uikit/scroll';
 
 import componentChangelog from '../CHANGELOG.md';
@@ -53,7 +53,7 @@ const Template = ({
   }));
 
   if (storyIcon) {
-    items[0].icon = HeartFilledSVG;
+    items[0].icon = HomeSVG;
   }
 
   return (
@@ -85,6 +85,7 @@ breadcrumbs.args = {
   storyUrl: false,
   storyIcon: false,
   storyOnClick: false,
+  lastEmpty: false,
   storyContainerWidth: '100%',
   size: SIZE.S,
 };
