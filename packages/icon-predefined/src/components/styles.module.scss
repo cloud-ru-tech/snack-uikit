@@ -32,6 +32,10 @@ $sizes: (
 }
 
 .icon {
+  &, svg {
+    fill: currentColor;
+  }
+
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
       color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
