@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2023-12-15)
+
+
+### Bug Fixes
+
+* **FF-0000:** change wrong scope ([8416f94](https://github.com/cloud-ru-tech/snack-uikit/commit/8416f94a0860cf088ffafad529595715ea291611))
+
+
+### Dependencies
+
+* **FF-2840:** up internal deps after bad rebase ([aabc8de](https://github.com/cloud-ru-tech/snack-uikit/commit/aabc8debf8d81fb37d6ecb7580cca9d93142246f))
+
+
+### Features
+
+* **FF-3829:** add carousel ([546b37a](https://github.com/cloud-ru-tech/snack-uikit/commit/546b37a3cfe07b4bbdbd7a009a1ffc51a69f4a44))
+
+
+
+
+
 ## 0.1.1 (2023-12-14)
 
 
