@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2023-12-15)
+
+
+### Bug Fixes
+
+* **FF-0001:** wrong publishCongig to public ([463bb6d](https://github.com/cloud-ru-tech/snack-uikit/commit/463bb6d2729b8e78bbc76346d9bc32b8b42f3468))
+
+
+
+
+
 # 0.2.0 (2023-12-15)
 
 
