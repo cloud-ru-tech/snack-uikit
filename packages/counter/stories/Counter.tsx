@@ -60,6 +60,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
                   size={SIZE.S}
                   variant={variant}
                   appearance={appearance}
+                  color={args.color}
                 />
               </div>
             ))}
@@ -70,6 +71,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => {
                   size={SIZE.M}
                   variant={variant}
                   appearance={appearance}
+                  color={args.color}
                 />
               </div>
             ))}
@@ -88,6 +90,7 @@ counter.args = {
   size: SIZE.S,
   variant: VARIANT.Count,
   plusLimit: DEFAULT_PLUS_LIMIT,
+  color: 'accent',
 };
 
 counter.argTypes = {

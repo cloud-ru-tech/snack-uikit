@@ -15,6 +15,11 @@ export const SIZE = {
   M: 'm',
 } as const;
 
+export const COLOR = {
+  Accent: 'accent',
+  Decor: 'decor',
+} as const;
+
 export const DEFAULT_PLUS_LIMIT = 10;
 export const DEFAULT_KEY_LIMIT = 1000;
 export const DEFAULT_KEY_POSTFIX = 'K';

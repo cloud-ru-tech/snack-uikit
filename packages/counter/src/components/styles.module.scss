@@ -3,6 +3,7 @@
 $appearances: 'primary', 'neutral', 'red';
 $sizes: 's', 'm';
 $variants: 'count', 'count-plus', 'count-k';
+$colors: 'accent', 'decor';
 
 $value-typography: (
   s: $sans-label-s,
@@ -16,6 +17,14 @@ $key-typography: (
   s: $sans-label-s,
   m: $sans-label-l
 );
+$text-color: (
+  accent: 'on-accent',
+  decor: 'text-main'
+);
+$bg-color: (
+  accent: 'accent-default',
+  decor: 'decor-default'
+);
 
 .counter {
   display: inline-flex;
@@ -27,11 +36,18 @@ $key-typography: (
 
   border: 0 solid transparent;
 
-  @each $appearance in $appearances {
-    &[data-appearance='#{$appearance}'] {
-      color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
-      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
-      border-color: $sys-neutral-background1-level;
+  @each $color in $colors {
+    @each $appearance in $appearances {
+      &[data-color='#{$color}'] {
+        &[data-appearance='#{$appearance}'] {
+          $text: simple-var($text-color, $color);
+          $background: simple-var($bg-color, $color);
+
+          color: simple-var($theme-variables, 'sys', $appearance, $text);
+          background-color: simple-var($theme-variables, 'sys', $appearance, $background);
+          border-color: $sys-neutral-background1-level;
+        }
+      }
     }
   }
 

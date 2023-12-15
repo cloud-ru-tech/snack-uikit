@@ -2,9 +2,9 @@ import cn from 'classnames';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { APPEARANCE, DEFAULT_PLUS_LIMIT, SIZE, VARIANT } from './constants';
+import { APPEARANCE, COLOR, DEFAULT_PLUS_LIMIT, SIZE, VARIANT } from './constants';
 import classNames from './styles.module.scss';
-import { Appearance, Size, Variant } from './types';
+import { Appearance, Color, Size, Variant } from './types';
 import { formatValue } from './utils';
 
 export type CounterProps = WithSupportProps<{
@@ -20,6 +20,8 @@ export type CounterProps = WithSupportProps<{
   plusLimit?: number;
   /** CSS-класс */
   className?: string;
+  /** Семантический цвет */
+  color?: Color;
 }>;
 
 /** Компонент счетчик */
@@ -29,6 +31,7 @@ export function Counter({
   variant = VARIANT.Count,
   size = SIZE.S,
   plusLimit = DEFAULT_PLUS_LIMIT,
+  color = COLOR.Accent,
   className,
   ...rest
 }: CounterProps) {
@@ -41,6 +44,7 @@ export function Counter({
       data-size={size}
       data-variant={variant}
       data-appearance={appearance}
+      data-color={color}
     >
       {formattedValue}
     </div>

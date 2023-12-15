@@ -36,6 +36,7 @@ import { Counter } from "@snack-uikit/counter";
 | size | enum Size: `"s"`, `"m"` | s | Размер |
 | plusLimit | `number` | 10 | Порог сокращения значения в формат v+. Например `1500` -> `999+` для 1000 |
 | className | `string` | - | CSS-класс |
+| color | enum Color: `"accent"`, `"decor"` | accent | Семантический цвет |
 
 
 [//]: DOCUMENTATION_SECTION_END
