@@ -19,6 +19,9 @@ export const Switch: StoryObj<StoryProps> = Template.bind({});
 
 Switch.args = {
   size: SIZE.M,
+  showIcon: false,
+  loading: false,
+  disabled: false,
 };
 Switch.argTypes = {};
 Switch.parameters = {

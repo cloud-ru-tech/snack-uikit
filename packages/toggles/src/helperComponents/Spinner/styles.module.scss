@@ -1,0 +1,19 @@
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+
+.spinner {
+  pointer-events: none;
+  width: $dimension-2m;
+  height: $dimension-2m;
+  animation: spin 1s ease-in-out infinite;
+
+  & > path {
+    stroke: currentColor;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

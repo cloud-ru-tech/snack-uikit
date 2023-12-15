@@ -19,15 +19,6 @@ $icon-sizes: (
   flex-shrink: 0;
   align-items: center;
 
-  @each $size in $sizes {
-    &[data-size='#{$size}'] {
-      svg {
-        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-      }
-    }
-  }
-
   &[data-disabled=true] {
     cursor: not-allowed;
     color: $sys-neutral-text-disabled;

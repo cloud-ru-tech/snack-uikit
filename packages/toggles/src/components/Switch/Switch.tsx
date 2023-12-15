@@ -1,21 +1,26 @@
-import { useMemo } from 'react';
-
 import { CheckSVG, CrossSVG } from '@snack-uikit/icons';
 
 import { SIZE } from '../../constants';
+import { Spinner } from '../../helperComponents';
 import { ToggleProps } from '../../types';
-import { getIconSize, getVisualStateAttributes } from '../../utils';
+import { getVisualStateAttributes } from '../../utils';
 import { TogglePrivate } from '../TogglePrivate';
 import styles from './styles.module.scss';
 
 export type SwitchProps = ToggleProps & {
   /** Показывать ли иконку в переключателе */
   showIcon?: boolean;
+  loading?: boolean;
 };
 
-export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, size = SIZE.M, ...restProps }: SwitchProps) {
-  const iconSize = useMemo(() => getIconSize(size), [size]);
-
+export function Switch({
+  inputRef,
+  'data-test-id': dataTestId,
+  showIcon,
+  loading,
+  size = SIZE.M,
+  ...restProps
+}: SwitchProps) {
   return (
     <TogglePrivate
       {...restProps}
@@ -29,13 +34,13 @@ export function Switch({ inputRef, 'data-test-id': dataTestId, showIcon, size = 
             <div className={styles.box} {...data} />
             <div className={styles.containerFlag} {...data}>
               <div className={styles.flag} {...data} />
-              {showIcon && (
+              {(showIcon || loading) && (
                 <>
                   <div className={styles.flag_icon_off} {...data}>
-                    <CrossSVG size={iconSize} />
+                    {loading ? <Spinner /> : <CrossSVG size={16} />}
                   </div>
                   <div className={styles.flag_icon_on} {...data}>
-                    <CheckSVG size={iconSize} />
+                    {loading ? <Spinner /> : <CheckSVG size={16} />}
                   </div>
                 </>
               )}

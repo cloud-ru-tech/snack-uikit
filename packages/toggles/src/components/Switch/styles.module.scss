@@ -11,7 +11,7 @@ $switchAnimationDuration: .1s;
 
 .box {
   position: relative;
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'accent-default');
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-activated');
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
@@ -82,7 +82,7 @@ $switchAnimationDuration: .1s;
 
   display: flex;
 
-  color: simple-var($theme-variables, 'sys', 'neutral', 'accent-default');
+  color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
 
   fill: transparent;
 
@@ -100,7 +100,7 @@ $switchAnimationDuration: .1s;
   }
 
   &[data-disabled=true] {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+    color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
   }
 
 }

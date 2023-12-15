@@ -112,6 +112,7 @@ return (
 | size | enum Size: `"s"`, `"m"` | m | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 | showIcon | `boolean` | - | Показывать ли иконку в переключателе |
+| loading | `boolean` | - |  |
 ## Radio
 ### Props
 | name | type | default value | description |
