@@ -55,13 +55,7 @@ $typography: (
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
       &:focus-visible {
-        @if $appearance == 'neutral' {
-          outline-color: $sys-available-complementary;
-        }
-
- @else {
-          outline-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
-        }
+        outline-color: $sys-available-complementary;
       }
     }
   }
