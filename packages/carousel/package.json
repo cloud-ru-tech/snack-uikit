@@ -1,6 +1,9 @@
 {
   "name": "@snack-uikit/carousel",
   "title": "Carousel",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.2.0",
   "sideEffects": [
     "*.css",
