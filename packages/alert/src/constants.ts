@@ -1,4 +1,4 @@
-import { ON_COLOR } from '@snack-uikit/link';
+import { APPEARANCE as LINK_APPEARANCE } from '@snack-uikit/link';
 
 export const APPEARANCE = {
   Neutral: 'neutral',
@@ -9,9 +9,9 @@ export const APPEARANCE = {
 } as const;
 
 export const APPEARANCE_TO_COLOR_MAP = {
-  [APPEARANCE.Neutral]: ON_COLOR.Neutral,
-  [APPEARANCE.Primary]: ON_COLOR.Primary,
-  [APPEARANCE.Error]: ON_COLOR.Red,
-  [APPEARANCE.Warning]: ON_COLOR.Yellow,
-  [APPEARANCE.Success]: ON_COLOR.Green,
+  [APPEARANCE.Neutral]: LINK_APPEARANCE.Neutral,
+  [APPEARANCE.Primary]: LINK_APPEARANCE.Primary,
+  [APPEARANCE.Error]: LINK_APPEARANCE.Red,
+  [APPEARANCE.Warning]: LINK_APPEARANCE.Yellow,
+  [APPEARANCE.Success]: LINK_APPEARANCE.Green,
 } as const;

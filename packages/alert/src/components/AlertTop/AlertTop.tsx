@@ -95,11 +95,11 @@ export function AlertTop({
           {link && (
             <span>
               <Link
-                onSurface='accent'
+                textMode='on-accent'
                 href={href}
                 text={link}
                 external
-                onColor={APPEARANCE_TO_COLOR_MAP[appearance]}
+                appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
                 size='m'
                 data-test-id='alert-top__link'
               />

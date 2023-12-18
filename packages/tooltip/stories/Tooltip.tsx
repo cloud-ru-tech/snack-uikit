@@ -28,7 +28,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
               do not press this button, please do not press this button, please do not press this button, please do not
               press this button, please do not press this button, please
               <br />
-              <Link href='#' text='read why' onSurface='background' onColor='invert-neutral' />
+              <Link href='#' text='read why' textMode='accent' appearance='invert-neutral' />
             </div>
           )
         }

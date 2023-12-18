@@ -27,7 +27,7 @@ export type NotificationCardProps = WithSupportProps<{
   /** Контент уведомления */
   content: ReactNode;
   /** Ссылка */
-  link?: Omit<LinkProps, 'size' | 'onColor' | 'onSurface' | 'data-test-id'>;
+  link?: Omit<LinkProps, 'size' | 'appearance' | 'textMode' | 'data-test-id'>;
   /** Дата уведомления */
   date: string;
   /** Колбэк клика по карточке */
@@ -59,7 +59,7 @@ export function NotificationCard({
   className,
   ...rest
 }: NotificationCardProps) {
-  const { icon, linkOnColor } = useMemo<{ icon: ReturnType<typeof getIcon>; linkOnColor: LinkProps['onColor'] }>(
+  const { icon, linkOnColor } = useMemo<{ icon: ReturnType<typeof getIcon>; linkOnColor: LinkProps['appearance'] }>(
     () => ({
       icon: getIcon(appearance),
       linkOnColor: appearance === APPEARANCE.ErrorCritical ? 'red' : undefined,
@@ -148,8 +148,8 @@ export function NotificationCard({
             <Link
               {...link}
               onClick={handleLinkClick}
-              onColor={linkOnColor}
-              onSurface='decor'
+              appearance={linkOnColor}
+              textMode='default'
               size='s'
               data-test-id={TEST_IDS.link}
             />

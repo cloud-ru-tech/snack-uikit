@@ -79,9 +79,9 @@ export function ToastSystemEvent({
             href={link.href}
             size='m'
             onClick={link.onClick}
-            onColor={APPEARANCE_TO_ON_COLOR_MAP[appearance]}
+            appearance={APPEARANCE_TO_ON_COLOR_MAP[appearance]}
             data-test-id={TOAST_SYSTEM_EVENT_TEST_IDS.link}
-            onSurface={appearance === ToastSystemEventAppearance.ErrorCritical ? 'accent' : 'background'}
+            textMode={appearance === ToastSystemEventAppearance.ErrorCritical ? 'on-accent' : 'accent'}
           />
         )}
       </div>

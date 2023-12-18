@@ -67,9 +67,9 @@ export function Alert({
             <Link
               href={href}
               text={link}
-              onSurface='decor'
+              textMode='default'
               external
-              onColor={APPEARANCE_TO_COLOR_MAP[appearance]}
+              appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
               size='m'
               data-test-id='alert__link'
             />

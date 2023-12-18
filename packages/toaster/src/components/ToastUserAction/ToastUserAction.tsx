@@ -57,7 +57,7 @@ export function ToastUserAction({
           text={link.text}
           href={link.href}
           onClick={link.onClick}
-          onColor='invert-neutral'
+          appearance='invert-neutral'
           data-test-id={TOAST_USER_ACTION_TEST_IDS.link}
         />
       )}

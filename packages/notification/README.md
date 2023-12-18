@@ -88,7 +88,7 @@ const cards = [
 | appearance | enum Appearance: `"neutral"`, `"error"`, `"errorCritical"`, `"warning"`, `"success"` | neutral | Тип уведомления |
 | label | `string` | - | Лейбл перед заголовком |
 | unread | `boolean` | - | Управление состоянием прочитано/не прочитано |
-| link | `Omit<LinkProps, "data-test-id" \| "size" \| "onColor" \| "onSurface">` | - | Ссылка |
+| link | `Omit<LinkProps, "data-test-id" \| "appearance" \| "size" \| "textMode">` | - | Ссылка |
 | onClick | `MouseEventHandler<HTMLDivElement>` | - | Колбэк клика по карточке |
 | onVisible | `(cardId: string) => void` | - | Колбэк при попадании карточки в область видимости на 80% |
 | actions | `Pick<DroplistItemSingleProps, "onClick" \| "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon">[]` | - | Дополнительные действия у карточки |
