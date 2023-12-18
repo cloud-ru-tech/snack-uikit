@@ -6,7 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Link, LinkProps } from '../src';
-import { ON_COLOR, ON_SURFACE, SIZE, TARGET } from '../src/components/constants';
+import { APPEARANCE, SIZE, TARGET, TEXT_MODE } from '../src/components/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -17,8 +17,8 @@ export default meta;
 
 const DEFAULT_TEXT = 'Link text';
 const DEFAULT_SIZE = SIZE.S;
-const DEFAULT_SURFACE = ON_SURFACE.Background;
-const DEFAULT_COLOR = ON_COLOR.Primary;
+const DEFAULT_SURFACE = TEXT_MODE.Default;
+const DEFAULT_COLOR = APPEARANCE.Primary;
 
 type StoryProps = LinkProps;
 
@@ -32,9 +32,9 @@ type TableProps = {
   options: Option[];
 };
 
-const colors = Object.values(ON_COLOR);
+const colors = Object.values(APPEARANCE);
 const sizes = Object.values(SIZE);
-const surfaces = Object.values(ON_SURFACE);
+const surfaces = Object.values(TEXT_MODE);
 
 function Table({ header, options }: TableProps) {
   const headerCellClassnames = cn(styles.cell, styles.headerCell);
@@ -49,8 +49,8 @@ function Table({ header, options }: TableProps) {
           <div className={headerCellClassnames}>{option.header}</div>
           <div
             className={styles.cell}
-            data-appearance={option.props?.onColor}
-            data-on-surface={option.props?.onSurface}
+            data-appearance={option.props?.appearance}
+            data-text-mode={option.props?.textMode}
           >
             <Link {...option.props} />
           </div>
@@ -62,30 +62,30 @@ function Table({ header, options }: TableProps) {
 
 const Template: StoryFn<StoryProps> = ({ ...args }) => (
   <>
-    <div className={styles.wrapper} data-appearance={args.onColor} data-on-surface={args.onSurface}>
+    <div className={styles.wrapper} data-appearance={args.appearance} data-on-surface={args.textMode}>
       <Link {...args} />
     </div>
 
     <div>
       <Table
-        header='onColor'
+        header='Appearance'
         options={colors.map(color => ({
           header: color,
-          props: { onColor: color, text: DEFAULT_TEXT, onSurface: DEFAULT_SURFACE, size: DEFAULT_SIZE },
+          props: { appearance: color, text: DEFAULT_TEXT, textMode: DEFAULT_SURFACE, size: DEFAULT_SIZE },
         }))}
       />
       <Table
-        header='onSurface'
+        header='Text Mode'
         options={surfaces.map(surface => ({
           header: surface,
-          props: { onColor: DEFAULT_COLOR, text: DEFAULT_TEXT, onSurface: surface },
+          props: { appearance: DEFAULT_COLOR, text: DEFAULT_TEXT, textMode: surface },
         }))}
       />
       <Table
-        header='size'
+        header='Size'
         options={sizes.map(size => ({
           header: size,
-          props: { onColor: DEFAULT_COLOR, text: DEFAULT_TEXT, size: size, onSurface: DEFAULT_SURFACE },
+          props: { appearance: DEFAULT_COLOR, text: DEFAULT_TEXT, size: size, textMode: DEFAULT_SURFACE },
         }))}
       />
     </div>
@@ -95,13 +95,13 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
 export const link: StoryObj<StoryProps> = Template.bind({});
 
 link.args = {
+  textMode: TEXT_MODE.Default,
   href: '#',
   text: DEFAULT_TEXT,
   size: SIZE.S,
   target: '_blank',
   external: false,
-  onColor: ON_COLOR.Primary,
-  onSurface: ON_SURFACE.Background,
+  appearance: APPEARANCE.Primary,
 };
 
 link.argTypes = {

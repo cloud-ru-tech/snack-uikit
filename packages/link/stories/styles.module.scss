@@ -3,11 +3,11 @@
 @import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $appearance: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
-$on-surfaces: 'background', 'decor', 'accent';
+$text-modes: 'accent', 'default', 'on-accent';
 $link-surface: (
-  'background': 'background',
-  'decor': 'decor-default',
-  'accent': 'accent-default',
+  'accent': 'background',
+  'default': 'decor-default',
+  'on-accent': 'accent-default',
 );
 
 .wrapper {
@@ -26,11 +26,11 @@ $link-surface: (
   border: 1px solid $sys-neutral-decor-default;
   border-radius: $dimension-050m;
 
-  @each $on-surface in $on-surfaces {
-    &[data-on-surface='#{$on-surface}'] {
+  @each $text-mode in $text-modes {
+    &[data-text-mode='#{$text-mode}'] {
       @each $appearance in $appearance {
         &[data-appearance='#{$appearance}'] {
-          background-color: simple-var($theme-variables, 'sys', $appearance, map.get($link-surface, $on-surface));
+          background-color: simple-var($theme-variables, 'sys', $appearance, map.get($link-surface, $text-mode));
         }
       }
     }  
@@ -59,11 +59,11 @@ $border-width: 0.5px;
 
   border: $border-width solid $sys-neutral-decor-disabled;
 
-  @each $on-surface in $on-surfaces {
-    &[data-on-surface='#{$on-surface}'] {
+  @each $text-mode in $text-modes {
+    &[data-text-mode='#{$text-mode}'] {
       @each $appearance in $appearance {
         &[data-appearance='#{$appearance}'] {
-          background-color: simple-var($theme-variables, 'sys', $appearance, map.get($link-surface, $on-surface));
+          background-color: simple-var($theme-variables, 'sys', $appearance, map.get($link-surface, $text-mode));
         }
       }
     }  

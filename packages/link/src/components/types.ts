@@ -1,9 +1,9 @@
 import { ValueOf } from '@snack-uikit/utils';
 
-import { ON_COLOR, ON_SURFACE, SIZE } from './constants';
+import { APPEARANCE, SIZE, TEXT_MODE } from './constants';
 
-export type OnColor = ValueOf<typeof ON_COLOR>;
+export type Appearance = ValueOf<typeof APPEARANCE>;
 
 export type Size = ValueOf<typeof SIZE>;
 
-export type OnSurface = ValueOf<typeof ON_SURFACE>;
+export type TextMode = ValueOf<typeof TEXT_MODE>;

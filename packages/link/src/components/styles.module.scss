@@ -2,8 +2,8 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
-$colors: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
-$on-surfaces: 'background', 'decor', 'accent';
+$appearances: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
+$text-modes: 'default', 'accent', 'on-accent';
 $icon-sizes: (
   's': $icon-xs,
   'm': $icon-s,
@@ -22,65 +22,83 @@ $icon-sizes: (
   text-decoration: none;
   text-decoration-skip-ink: none;
 
-  @each $on-surface in $on-surfaces {
-    &[data-on-surface='#{$on-surface}'] {
-      @each $color in $colors {
-        &[data-color='#{$color}'] {
-          @if $on-surface == 'accent' {
-            color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+  @each $appearance in $appearances {
+    &[data-appearance='#{$appearance}'] {
+      &[data-text-mode='default'] {
+        color: simple-var($theme-variables, 'sys', $appearance, 'text-support');
 
-            &:hover {
-              color: simple-var($theme-variables, 'sys', $color, 'on-accent');
-              opacity: $opacity-a080;
-            }
-            &:focus-visible {
-              @include outline-var($container-focused-s);
+        &:hover {
+          color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+        }
 
-              opacity: $opacity-a080;
-              outline-color: $sys-available-on-complementary;
-            }
+        &:focus-visible {
+          @include outline-var($container-focused-s);
+
+          color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+          outline-color: $sys-available-complementary;
+        }
+      }
+
+      &[data-text-mode='accent'] {
+        color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+
+        &:hover {
+          color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+        }
+
+        &:focus-visible {
+          @include outline-var($container-focused-s);
+
+          color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+
+          @if $appearance == 'invert-neutral' {
+            outline-color: $sys-available-on-complementary;
           }
 
-          @else {
-            color: simple-var($theme-variables, 'sys', $color, 'accent-default');
-            
-            &:hover {
-              color: simple-var($theme-variables, 'sys', $color, 'text-main');
-            }
-            &:focus-visible {
-              @include outline-var($container-focused-s);
-
-              color: simple-var($theme-variables, 'sys', $color, 'text-main');
-
-              @if $color == 'invert-neutral' {
-                outline-color: $sys-available-on-complementary;
-              }
-
-              @else {
-                outline-color: $sys-available-complementary;
-              }
-            }
-          }
-
-          @each $size in $sizes {
-            &[data-size='#{$size}'] {
-              @if $on-surface == 'decor' {
-                @include composite-var($theme-variables, 'sans', 'body', $size);
-              }
-
-              @else {
-                @include composite-var($theme-variables, 'link', 'body', $size);
-              }
-
-              @include composite-var($link, 'container', $size);
-
-              svg {
-                width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-                height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-              }
-            }
+ @else {
+            outline-color: $sys-available-complementary;
           }
         }
+      }
+
+      &[data-text-mode='on-accent'] {
+        color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
+
+        &:hover {
+          color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
+          opacity: $opacity-a080;
+        }
+
+        &:focus-visible {
+          @include outline-var($container-focused-s);
+
+          color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
+          opacity: $opacity-a080;
+          outline-color: $sys-available-on-complementary;
+        }
+      }
+    }
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @each $text-mode in $text-modes {
+        &[data-text-mode='#{$text-mode}'] {
+          @if $text-mode == 'default' {
+            @include composite-var($theme-variables, 'sans', 'body', $size);
+          }
+
+ @else {
+            @include composite-var($theme-variables, 'link', 'body', $size);
+          }
+        }
+      }
+
+      @include composite-var($link, 'container', $size);
+
+      svg {
+        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
       }
     }
   }

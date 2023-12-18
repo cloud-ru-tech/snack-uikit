@@ -5,9 +5,9 @@ import { ArrowLinksSVG } from '@snack-uikit/icons';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { ON_COLOR, ON_SURFACE, SIZE } from './constants';
+import { APPEARANCE, SIZE, TEXT_MODE } from './constants';
 import styles from './styles.module.scss';
-import { OnColor, OnSurface, Size } from './types';
+import { Appearance, Size, TextMode } from './types';
 
 export type LinkProps = WithSupportProps<{
   /** Текст ссылки */
@@ -22,14 +22,20 @@ export type LinkProps = WithSupportProps<{
   download?: string;
   /** Колбек обработки клика */
   onClick?: MouseEventHandler<HTMLAnchorElement>;
-  /** Размер */
+  /** Размер
+   * @default 's'
+   */
   size?: Size;
   /** Ведет ли ссылка на внешний ресурс (добавляет иконку если true) */
   external?: boolean;
-  /** Стилизует ссылку для размещения на цветном фоне */
-  onColor?: OnColor;
-  /** Тип поверхности, на которой размещена ссылка */
-  onSurface?: OnSurface;
+  /** Стилизует ссылку для размещения на цветном фоне
+   * @default 'primary'
+   */
+  appearance?: Appearance;
+  /** Тип поверхности, на которой размещена ссылка
+   * @default 'default'
+   */
+  textMode?: TextMode;
 }>;
 
 /** Компонент ссылка */
@@ -40,10 +46,10 @@ export function Link({
   target = '_blank',
   download,
   onClick,
-  onSurface = ON_SURFACE.Background,
+  textMode = TEXT_MODE.Default,
   size = SIZE.S,
   external,
-  onColor = ON_COLOR.Primary,
+  appearance = APPEARANCE.Primary,
   ...rest
 }: LinkProps) {
   return (
@@ -55,8 +61,8 @@ export function Link({
       onClick={onClick}
       {...extractSupportProps(rest)}
       data-size={size}
-      data-on-surface={onSurface}
-      data-color={onColor}
+      data-text-mode={textMode}
+      data-appearance={appearance}
       rel={target === '_blank' ? 'noopener noreferrer' : undefined}
     >
       <TruncateString text={text} maxLines={1} />

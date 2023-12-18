@@ -1,4 +1,4 @@
-export const ON_COLOR = {
+export const APPEARANCE = {
   InvertNeutral: 'invert-neutral',
   Neutral: 'neutral',
   Primary: 'primary',
@@ -24,8 +24,8 @@ export const TARGET = {
   Top: '_top',
 } as const;
 
-export const ON_SURFACE = {
-  Background: 'background',
-  Decor: 'decor',
+export const TEXT_MODE = {
+  Default: 'default',
   Accent: 'accent',
+  OnAccent: 'on-accent',
 } as const;
