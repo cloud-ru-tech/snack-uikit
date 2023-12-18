@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.2 (2023-12-18)
+
+
+### Dependencies
+
+* **FF-3874:** update deps ([2a5e15e](https://github.com/cloud-ru-tech/snack-uikit/commit/2a5e15e27473df717ceccef6d92824bf0e79cd26))
+
+
+
+
+
 ## 0.8.1 (2023-12-14)
 
 ### Only dependencies have been changed
