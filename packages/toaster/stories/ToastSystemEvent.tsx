@@ -9,6 +9,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { toaster, ToastSystemEventProps } from '../src';
 import { ToastSystemEvent } from '../src/components';
+import { TOAST_SYSTEM_EVENT_APPEARANCE } from '../src/components/ToastSystemEvent/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -19,10 +20,23 @@ export default meta;
 
 const headerCellClassnames = cn(styles.cell, styles.headerCell);
 
-const appearances = Object.values(ToastSystemEvent.appearances);
+const appearances = Object.values(TOAST_SYSTEM_EVENT_APPEARANCE);
 
-function Template({ ...args }: ToastSystemEventProps) {
-  const { appearance = ToastSystemEvent.appearances.Neutral, ...rest } = args;
+const DEFAULT_ACTION = [
+  {
+    label: 'Primary',
+    onClick: () => {},
+  },
+  {
+    label: 'Secondary',
+    onClick: () => {},
+  },
+];
+
+type StoryProps = ToastSystemEventProps & { showAction: boolean };
+
+function Template({ ...args }: StoryProps) {
+  const { appearance = 'neutral', showAction, ...rest } = args;
 
   return (
     <>
@@ -30,7 +44,13 @@ function Template({ ...args }: ToastSystemEventProps) {
         <ButtonFilled
           label={'Open toast controlled'}
           data-test-id='toast-trigger'
-          onClick={() => toaster.systemEvent[appearance](rest)}
+          onClick={() => toaster.systemEvent[appearance]({ action: showAction ? DEFAULT_ACTION : undefined, ...rest })}
+        />
+
+        <ButtonFilled
+          label={'Dismiss Toasters'}
+          data-test-id='toast-trigger'
+          onClick={() => toaster.systemEvent.dismiss()}
         />
       </div>
 
@@ -42,7 +62,13 @@ function Template({ ...args }: ToastSystemEventProps) {
             <div className={headerCellClassnames}>{appearance}</div>
 
             <div className={cn(styles.cell, styles.toastContainer)}>
-              <ToastSystemEvent {...rest} appearance={appearance} className={styles.systemEvent} data-test-id='' />
+              <ToastSystemEvent
+                {...rest}
+                appearance={appearance}
+                className={styles.systemEvent}
+                data-test-id=''
+                action={showAction ? DEFAULT_ACTION : undefined}
+              />
             </div>
           </Fragment>
         ))}
@@ -51,12 +77,12 @@ function Template({ ...args }: ToastSystemEventProps) {
   );
 }
 
-export const toastSystemEvent: StoryFn<ToastSystemEventProps> = Template.bind({});
+export const toastSystemEvent: StoryFn<StoryProps> = Template.bind({});
 
 toastSystemEvent.args = {
-  appearance: ToastSystemEvent.appearances.Neutral,
-  title: 'Title',
-  description: 'Description',
+  appearance: 'neutral',
+  title: 'Title truncate two line',
+  description: 'Description truncate four line',
   progressBar: true,
   closable: true,
   link: {
@@ -64,6 +90,13 @@ toastSystemEvent.args = {
     href: '#',
   },
   onCloseClick: undefined,
+  showAction: true,
+};
+
+toastSystemEvent.argTypes = {
+  showAction: {
+    name: '[story] show action buttons',
+  },
 };
 
 toastSystemEvent.parameters = {

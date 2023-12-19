@@ -1,11 +1,11 @@
-export enum ToastUserActionAppearance {
-  Neutral = 'neutral',
-  Success = 'success',
-  Error = 'error',
-  Warning = 'warning',
-}
+export const TOAST_USER_ACTION_APPEARANCE = {
+  Neutral: 'neutral',
+  Success: 'success',
+  Error: 'error',
+  Warning: 'warning',
+} as const;
 
-export enum Variant {
-  WithIcon = 'with-icon',
-  LabelOnly = 'label-only',
-}
+export const VARIANT = {
+  WithIcon: 'with-icon',
+  LabelOnly: 'label-only',
+} as const;

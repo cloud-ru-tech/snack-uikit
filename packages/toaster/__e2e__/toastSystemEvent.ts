@@ -7,6 +7,8 @@ const TEST_ID = TOAST_SYSTEM_EVENT_TEST_IDS.main;
 const TOAST_TRIGGER = 'toast-trigger';
 const TEST_TITLE = 'Test title';
 const TEST_DESCRIPTION = 'Test description';
+const TEST_PRIMARY_BUTTON = 'Primary';
+const TEST_SECONDARY_BUTTON = 'Secondary';
 
 const getPageUrl = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
@@ -118,4 +120,16 @@ test.page(getPageUrl())(`Should disappear all toasts`, async t => {
   await t.click(toastSystemEventButtonCloseColumn);
   const toastSystemEvent = Selector(dataTestIdSelector(TEST_ID));
   await t.expect(toastSystemEvent.exists).notOk();
+});
+
+test.page(getPageUrl({ showAction: true }))(`Should render with action buttons`, async t => {
+  const toastTrigger = Selector(dataTestIdSelector(TOAST_TRIGGER));
+  await t.click(toastTrigger);
+
+  const toastSystemEventButtonAction = Selector(
+    `${dataTestIdSelector(TEST_ID)} ${dataTestIdSelector(TOAST_SYSTEM_EVENT_TEST_IDS.buttonAction)}`,
+  );
+
+  await t.expect(toastSystemEventButtonAction.nth(0).innerText).eql(TEST_SECONDARY_BUTTON);
+  await t.expect(toastSystemEventButtonAction.nth(1).innerText).eql(TEST_PRIMARY_BUTTON);
 });

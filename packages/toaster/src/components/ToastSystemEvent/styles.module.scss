@@ -30,7 +30,7 @@
 }
 
 .buttonClose {
-  @include composite-var($toaster-system-event-toast-button-close);
+  @include composite-var($toaster-system-event-toast-button-button-close);
 
   cursor: pointer;
 
@@ -70,8 +70,8 @@
   }
 }
 
-.content {
-  @include composite-var($toaster-system-event-toast-content);
+.contentLayout {
+  @include composite-var($toaster-system-event-toast-content-layout);
 
   display: flex;
   flex: 1;
@@ -111,6 +111,23 @@
   animation-play-state: active;
 }
 
+.body {
+  @include composite-var($toaster-system-event-toast-body);
+
+  display: flex;
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+.footer {
+  @include composite-var($toaster-system-event-toast-footer);
+
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
 .container {
   @include composite-var($toaster-system-event-toast-container);
 
@@ -120,6 +137,7 @@
 
   overflow: hidden;
   display: flex;
+  flex-direction: column;
 
   box-sizing: border-box;
 
@@ -191,4 +209,11 @@
       $sys-green-accent-default
     );
   }
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $sys-invert-neutral-text-main;
 }

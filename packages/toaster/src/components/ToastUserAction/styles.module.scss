@@ -20,15 +20,9 @@
   color: $sys-invert-neutral-text-main;
 }
 
-.content {
-  @include composite-var($toaster-user-action-toast-content);
-
-  display: flex;
-  align-items: center
-}
-
-
 .container {
+  @include composite-var($toaster-user-action-toast-container);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,14 +30,6 @@
   box-sizing: border-box;
 
   background-color: $sys-invert-neutral-background;
-
-  &[data-variant='label-only'] {
-    @include composite-var($toaster-user-action-toast-container-label-only);
-  }
-
-  &[data-variant='with-icon'] {
-    @include composite-var($toaster-user-action-toast-container-with-icon);
-  }
 
   &[data-appearance='error'] {
     .icon {
@@ -64,3 +50,16 @@
   }
 }
 
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $sys-invert-neutral-text-main
+}
+
+.contentLayout {
+  @include composite-var($toaster-user-action-toast-content-layout);
+
+  display: flex;
+  align-items: center
+}

@@ -58,3 +58,15 @@ test.page(getPageUrl({ label: TEST_LABEL }))(`Should render with label '${TEST_L
 
   await t.expect(toastUserActionLabel.innerText).eql(TEST_LABEL);
 });
+
+test.page(getPageUrl({ loading: true }))(`Should render with loader`, async t => {
+  const toastTrigger = Selector(dataTestIdSelector(TOAST_TRIGGER));
+
+  await t.click(toastTrigger);
+
+  const toastUserActionLoader = Selector(
+    `${dataTestIdSelector(TEST_ID)} ${dataTestIdSelector(TOAST_USER_ACTION_TEST_IDS.loader)}`,
+  );
+
+  await t.expect(toastUserActionLoader.exists).ok();
+});

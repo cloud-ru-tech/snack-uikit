@@ -1,0 +1,50 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+.buttonAction {
+  @include composite-var($toaster-system-event-toast-button-button-action);
+  @include composite-var($sans-body-m);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  margin: 0;
+
+  color: $sys-invert-neutral-text-main;
+
+  background-color: $sys-invert-neutral-decor-default;
+  border: none;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $sys-invert-neutral-decor-hovered;
+  }
+
+  &:active {
+    background-color: $sys-invert-neutral-decor-activated;
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    outline-color: $sys-available-on-complementary;
+    outline-offset: $spacing-state-focus-offset;
+  }
+
+  &[data-critical] {
+    background-color: $sys-opacity-enabled;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $sys-opacity-hovered;
+    }
+
+    &:active {
+      background-color: $sys-opacity-activated;
+    }
+  }
+}

@@ -1,16 +1,17 @@
 import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG } from '@snack-uikit/icons';
 
-import { ToastUserActionAppearance } from './constants';
+import { TOAST_SYSTEM_EVENT_APPEARANCE } from '../ToastSystemEvent/constants';
+import { ToastUserActionAppearance } from './types';
 
 export function getIcon(appearance: ToastUserActionAppearance) {
   switch (appearance) {
-    case ToastUserActionAppearance.Success:
+    case TOAST_SYSTEM_EVENT_APPEARANCE.Success:
       return <CheckFilledSVG />;
-    case ToastUserActionAppearance.Error:
+    case TOAST_SYSTEM_EVENT_APPEARANCE.Error:
       return <CrossFilledSVG />;
-    case ToastUserActionAppearance.Warning:
+    case TOAST_SYSTEM_EVENT_APPEARANCE.Warning:
       return <AlarmFilledSVG />;
-    case ToastUserActionAppearance.Neutral:
+    case TOAST_SYSTEM_EVENT_APPEARANCE.Neutral:
     default:
       return null;
   }

@@ -9,6 +9,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { toaster, ToastUserActionProps } from '../src';
 import { ToastUserAction } from '../src/components';
+import { TOAST_USER_ACTION_APPEARANCE } from '../src/components/ToastUserAction/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -19,10 +20,10 @@ export default meta;
 
 const headerCellClassnames = cn(styles.cell, styles.headerCell);
 
-const appearances = Object.values(ToastUserAction.appearances);
+const appearances = Object.values(TOAST_USER_ACTION_APPEARANCE);
 
 function Template({ ...args }: ToastUserActionProps) {
-  const { appearance = ToastUserAction.appearances.Neutral, ...rest } = args;
+  const { appearance = 'neutral', ...rest } = args;
 
   return (
     <>
@@ -31,6 +32,12 @@ function Template({ ...args }: ToastUserActionProps) {
           label={'Open toast controlled'}
           data-test-id='toast-trigger'
           onClick={() => toaster.userAction[appearance](rest)}
+        />
+
+        <ButtonFilled
+          label={'Dismiss Toasters'}
+          data-test-id='toast-trigger'
+          onClick={() => toaster.userAction.dismiss()}
         />
       </div>
 
@@ -48,14 +55,24 @@ function Template({ ...args }: ToastUserActionProps) {
             <div className={headerCellClassnames}>{appearance}</div>
 
             <div className={cn(styles.cell)}>
-              <ToastUserAction {...rest} appearance={appearance} data-test-id='' link={undefined} />
+              <ToastUserAction {...rest} appearance={appearance} data-test-id='' link={undefined} loading={false} />
             </div>
 
             <div className={cn(styles.cell)}>
-              <ToastUserAction {...rest} appearance={appearance} data-test-id='' />
+              <ToastUserAction {...rest} appearance={appearance} data-test-id='' loading={false} />
             </div>
           </Fragment>
         ))}
+
+        <div className={headerCellClassnames}>Loading</div>
+
+        <div className={cn(styles.cell)}>
+          <ToastUserAction {...rest} data-test-id='' link={undefined} loading={true} />
+        </div>
+
+        <div className={cn(styles.cell)}>
+          <ToastUserAction {...rest} data-test-id='' loading={true} />
+        </div>
       </div>
     </>
   );
@@ -64,7 +81,8 @@ function Template({ ...args }: ToastUserActionProps) {
 export const toastUserAction: StoryFn<ToastUserActionProps> = Template.bind({});
 
 toastUserAction.args = {
-  appearance: ToastUserAction.appearances.Neutral,
+  appearance: 'neutral',
+  loading: false,
   label: 'Label',
   link: {
     text: 'Link text',

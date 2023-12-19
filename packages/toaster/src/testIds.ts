@@ -6,6 +6,7 @@ export const TOAST_SYSTEM_EVENT_TEST_IDS = {
   title: `${TOAST_SYSTEM_EVENT_TEST_ID}__title`,
   description: `${TOAST_SYSTEM_EVENT_TEST_ID}__description`,
   buttonClose: `${TOAST_SYSTEM_EVENT_TEST_ID}__button-close`,
+  buttonAction: `${TOAST_SYSTEM_EVENT_TEST_ID}__button-action`,
   link: `${TOAST_SYSTEM_EVENT_TEST_ID}__link`,
   progressbar: `${TOAST_SYSTEM_EVENT_TEST_ID}__progressbar`,
   buttonCloseColumn: `${TOAST_SYSTEM_EVENT_TEST_ID}button-close-column`,
@@ -17,5 +18,6 @@ export const TOAST_USER_ACTION_TEST_IDS = {
   main: TOAST_USER_ACTION_TEST_ID,
   label: `${TOAST_USER_ACTION_TEST_ID}__label`,
   icon: `${TOAST_USER_ACTION_TEST_ID}__icon`,
+  loader: `${TOAST_USER_ACTION_TEST_ID}__loader`,
   link: `${TOAST_USER_ACTION_TEST_ID}__link`,
 };
