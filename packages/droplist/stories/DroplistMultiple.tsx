@@ -44,7 +44,7 @@ const Template: StoryFn<StoryProps> = args => {
   });
 
   const handleClickForSublist = (sublistOptions: string[]) => {
-    const setOptions = new Set(selected);
+    const setOptions = new Set(SUBLIST_OPTIONS);
     const isIncluded = sublistOptions.every(el => selected.includes(el));
     if (isIncluded) {
       setSelected(state => state.filter(op => !setOptions.has(op)));
