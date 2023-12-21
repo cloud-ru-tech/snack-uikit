@@ -1,4 +1,5 @@
-import { APPEARANCE as LINK_APPEARANCE } from '@snack-uikit/link';
+import { LinkProps } from '@snack-uikit/link';
+import { ValueOf } from '@snack-uikit/utils';
 
 export const APPEARANCE = {
   Neutral: 'neutral',
@@ -8,10 +9,10 @@ export const APPEARANCE = {
   Success: 'success',
 } as const;
 
-export const APPEARANCE_TO_COLOR_MAP = {
-  [APPEARANCE.Neutral]: LINK_APPEARANCE.Neutral,
-  [APPEARANCE.Primary]: LINK_APPEARANCE.Primary,
-  [APPEARANCE.Error]: LINK_APPEARANCE.Red,
-  [APPEARANCE.Warning]: LINK_APPEARANCE.Yellow,
-  [APPEARANCE.Success]: LINK_APPEARANCE.Green,
+export const APPEARANCE_TO_COLOR_MAP: Record<ValueOf<typeof APPEARANCE>, LinkProps['appearance']> = {
+  [APPEARANCE.Neutral]: 'neutral',
+  [APPEARANCE.Primary]: 'primary',
+  [APPEARANCE.Error]: 'red',
+  [APPEARANCE.Warning]: 'yellow',
+  [APPEARANCE.Success]: 'green',
 } as const;

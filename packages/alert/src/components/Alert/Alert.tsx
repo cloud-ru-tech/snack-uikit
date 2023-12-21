@@ -6,6 +6,7 @@ import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { APPEARANCE, APPEARANCE_TO_COLOR_MAP } from '../../constants';
+import { AlertButton, AlertButtonProps } from '../../helperComponents';
 import { Appearance } from '../../types';
 import { getIcon } from '../../utils';
 import styles from './styles.module.scss';
@@ -27,6 +28,8 @@ export type AlertProps = WithSupportProps<{
   appearance?: Appearance;
   /** CSS-класс */
   className?: string;
+  /** Свойства, описывающие кнопки в футере алерта */
+  action?: Pick<AlertButtonProps, 'label' | 'onClick' | 'icon'>[];
 }>;
 
 /**
@@ -41,6 +44,7 @@ export function Alert({
   onClose,
   appearance = APPEARANCE.Neutral,
   className,
+  action,
   ...rest
 }: AlertProps) {
   return (
@@ -49,42 +53,52 @@ export function Alert({
       {...extractSupportProps(rest)}
       data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
     >
-      {icon && (
-        <div className={styles.icon} data-color={APPEARANCE_TO_COLOR_MAP[appearance]} data-test-id='alert__icon'>
-          {getIcon(appearance)}
-        </div>
-      )}
-      <div className={styles.content}>
-        <div className={styles.textlayout}>
+      <div className={styles.body}>
+        {icon && (
+          <div className={styles.icon} data-color={APPEARANCE_TO_COLOR_MAP[appearance]} data-test-id='alert__icon'>
+            {getIcon(appearance)}
+          </div>
+        )}
+
+        <div className={styles.contentLayout}>
           {title && <TruncateString text={title} maxLines={1} className={styles.title} data-test-id='alert__title' />}
           <span data-test-id='alert__description' className={styles.description}>
             {description}
           </span>
+
+          {link && (
+            <span>
+              <Link
+                href={href}
+                text={link}
+                textMode='default'
+                external
+                appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
+                size='m'
+                data-test-id='alert__link'
+              />
+            </span>
+          )}
         </div>
 
-        {link && (
-          <span>
-            <Link
-              href={href}
-              text={link}
-              textMode='default'
-              external
-              appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
-              size='m'
-              data-test-id='alert__link'
-            />
-          </span>
+        {onClose && (
+          <button
+            onClick={onClose}
+            className={styles.closeButton}
+            data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
+            data-test-id='alert__close-button'
+          >
+            <CrossSVG />
+          </button>
         )}
       </div>
-      {onClose && (
-        <button
-          onClick={onClose}
-          className={styles.closeButton}
-          data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
-          data-test-id='alert__close-button'
-        >
-          <CrossSVG />
-        </button>
+
+      {Array.isArray(action) && action.length > 0 && (
+        <div className={styles.footer}>
+          {action.map(buttonProps => (
+            <AlertButton key={buttonProps.label} {...buttonProps} appearance={appearance} />
+          ))}
+        </div>
       )}
     </div>
   );

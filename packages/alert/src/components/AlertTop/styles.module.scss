@@ -24,6 +24,10 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 }
 
 .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   @each $color in $colors {
     &[data-color='#{$color}'] {
       @if $color == 'invert-neutral'{
@@ -127,7 +131,7 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
         color: simple-var($theme-variables, 'sys', $color, 'on-accent');
       }
       
-      opacity: $opacity-a080;
+      background-color: inherit;
 
       &:hover {
         opacity: unset;
@@ -143,7 +147,6 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
       }
 
       &:active {
-        opacity: $opacity-a080;
         background-color: $sys-opacity-activated;
       } 
     }

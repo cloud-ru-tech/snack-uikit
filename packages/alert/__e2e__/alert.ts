@@ -9,6 +9,7 @@ const TEST_IDS = {
   description: 'alert__description',
   link: 'alert__link',
   icon: 'alert__icon',
+  actionButton: 'alert__action-button',
 };
 const getPageUrl = (props: Record<string, unknown> = {}) =>
   getTestcafeUrl({
@@ -80,4 +81,11 @@ test.page(getPageUrl({ icon: false }))(`Icon is not displayed when icon prop is 
   const icon = Selector(dataTestIdSelector(TEST_IDS.icon));
 
   await t.expect(icon.exists).notOk();
+});
+
+test.page(getPageUrl({ showActionButtons: true }))(`Action buttons are displayed`, async t => {
+  const actionButton = Selector(dataTestIdSelector(TEST_IDS.actionButton));
+
+  await t.expect(actionButton.nth(0).innerText).eql('Secondary');
+  await t.expect(actionButton.nth(1).innerText).eql('Primary');
 });

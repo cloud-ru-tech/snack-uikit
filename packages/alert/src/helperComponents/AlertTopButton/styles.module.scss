@@ -18,8 +18,7 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
   white-space: nowrap;
 
-  opacity: $opacity-a080;
-  background: none;
+  background: $sys-opacity-enabled;
   border: 0;
 
   svg {
@@ -34,12 +33,10 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
   &:focus-visible {
     @include outline-var($container-focused-s);
 
-    opacity: unset;
     background-color: $sys-opacity-hovered;
     outline-color: $sys-available-on-complementary;
   }
   &:active {
-    opacity: $opacity-a080;
     background-color: $sys-opacity-activated;
   }
 

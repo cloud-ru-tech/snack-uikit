@@ -1,0 +1,49 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+$colors: 'neutral', 'primary', 'red', 'yellow', 'green';
+
+.alertButton {
+  @include composite-var($alert-button-button-action);
+  @include composite-var($sans-label-l);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  margin: 0;
+
+  white-space: nowrap;
+
+  background: none;
+  border: 0;
+
+  svg {
+    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    outline-color: $sys-available-complementary;
+    outline-offset: $spacing-state-focus-offset;
+  }
+
+  @each $color in $colors {
+    &[data-color='#{$color}'] {
+      color: simple-var($theme-variables, 'sys', $color, 'text-support');
+
+      &:hover,
+      &:focus-visible {
+        color: simple-var($theme-variables, 'sys', $color, 'text-light');
+      }
+
+      &:active {
+        color: simple-var($theme-variables, 'sys', $color, 'text-main');
+      }
+    }
+  }
+}

@@ -58,6 +58,7 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 | onClose | `() => void` | - | Колбек закрытия |
 | appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | neutral | Внешний вид |
 | className | `string` | - | CSS-класс |
+| action | `Pick<AlertButtonProps, "icon" \| "label" \| "onClick">[]` | - | Свойства, описывающие кнопки в футере алерта |
 ## AlertTop
 Компонент для отображения уведомления вверху экрана.
 ### Props

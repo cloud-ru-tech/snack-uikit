@@ -13,11 +13,15 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = AlertProps & { showCloseButton?: boolean };
+type StoryProps = AlertProps & { showCloseButton?: boolean; showActionButtons?: boolean };
 
 const Template: StoryFn<StoryProps> = ({ ...args }: StoryProps) => (
   <div className={styles.wrapper}>
-    <Alert {...args} onClose={args.showCloseButton ? args.onClose : undefined} />
+    <Alert
+      {...args}
+      onClose={args.showCloseButton ? args.onClose : undefined}
+      action={args.showActionButtons ? args.action : undefined}
+    />
   </div>
 );
 
@@ -30,12 +34,20 @@ alert.args = {
   link: 'Link text',
   appearance: APPEARANCE.Error,
   showCloseButton: true,
+  showActionButtons: true,
   onClose: () => {},
+  action: [
+    { label: 'Primary', onClick: () => {} },
+    { label: 'Secondary', onClick: () => {} },
+  ],
 };
 
 alert.argTypes = {
   showCloseButton: {
     name: '[Stories]: showCloseButton',
+  },
+  showActionButtons: {
+    name: '[Stories]: showActionButtons',
   },
   onClose: {
     table: {
