@@ -9,8 +9,6 @@
 }
 
 .tail {
-  @include composite-var($stepper-step-track-container);
-
   display: flex;
   flex-grow: 1;
   flex-shrink: 1;
@@ -25,23 +23,35 @@
 
 .title {
   overflow: hidden;
+  color: $sys-neutral-text-main;
+}
+
+.description {
+  overflow: hidden;
+  color: $sys-neutral-text-light;
 }
 
 .step {
+  @include composite-var($stepper-step-container);
+
   display: flex;
   flex: 1;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
   min-width: 0;
-
-  &:last-child {
-    max-width: max-content;
-  }
 }
 
-.content {
-  @include composite-var($stepper-step-container-content);
+.track {
+  @include composite-var($stepper-step-track);
+
+  display: flex;
+  width: 100%;
+}
+
+.statusContainer {
+  @include composite-var($stepper-step-status-container);
 
   overflow: hidden;
   display: flex;
@@ -73,4 +83,10 @@
 
 .icon {
   flex-shrink: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

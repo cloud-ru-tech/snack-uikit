@@ -8,6 +8,7 @@ export type StepValidationResult = ValueOf<typeof STEP_VALIDATION_RESULT>;
 
 export type StepData = {
   title: string;
+  description?: string;
   validation?(): Promise<StepValidationResult>;
 };
 

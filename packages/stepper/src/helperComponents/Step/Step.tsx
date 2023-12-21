@@ -13,28 +13,25 @@ import styles from './styles.module.scss';
 export type StepProps = WithSupportProps<{
   step: StepViewData;
   className?: string;
-  isLast: boolean;
 }>;
 
 const getTailTestId = getTestIdBuilder('_element-tail');
 const getStepTestId = getTestIdBuilder('_element-step');
 
-export function Step({ step, className, isLast, 'data-test-id': testId, ...props }: StepProps) {
+export function Step({ step, className, 'data-test-id': testId, ...props }: StepProps) {
   return (
     <div className={cn(styles.step, className)} data-state={step.state} {...extractSupportProps(props)}>
-      <button
-        className={styles.content}
-        onClick={step.onClick}
-        disabled={!step.onClick}
-        data-test-id={getStepTestId(testId)}
-        data-state={step.state}
-      >
-        <Icon {...step} className={styles.icon} />
-        <Typography.SansBodyM className={styles.title} tag='div'>
-          <TruncateString text={step.title} />
-        </Typography.SansBodyM>
-      </button>
-      {!isLast && (
+      <div className={styles.track}>
+        <button
+          className={styles.statusContainer}
+          onClick={step.onClick}
+          disabled={!step.onClick}
+          data-test-id={getStepTestId(testId)}
+          data-state={step.state}
+        >
+          <Icon {...step} className={styles.icon} />
+        </button>
+
         <div
           className={styles.tail}
           data-completed={step.state === STEP_STATE.Completed || undefined}
@@ -42,7 +39,19 @@ export function Step({ step, className, isLast, 'data-test-id': testId, ...props
         >
           <div className={styles.tailLine} />
         </div>
-      )}
+      </div>
+
+      <div className={styles.content}>
+        <Typography.SansBodyM className={styles.title} tag='div'>
+          <TruncateString text={step.title} />
+        </Typography.SansBodyM>
+
+        {step.description && (
+          <Typography.SansBodyS className={styles.description} tag='div'>
+            <TruncateString text={step.description} maxLines={2} />
+          </Typography.SansBodyS>
+        )}
+      </div>
     </div>
   );
 }

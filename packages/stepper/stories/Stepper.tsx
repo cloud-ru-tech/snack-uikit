@@ -75,18 +75,23 @@ stepper.args = {
   steps: [
     {
       title: 'First step',
+      description: 'First step long description two lines truncated',
     },
     {
       title: 'Second step',
+      description: 'Second step long description two lines truncated',
     },
     {
       title: 'Third step',
+      description: 'Third step long description two lines truncated',
     },
     {
-      title: 'Fours step',
+      title: 'Fourth step',
+      description: 'Fourth step long description two lines truncated',
     },
     {
       title: 'Fifth step',
+      description: 'Fifth step long description two lines truncated',
     },
   ],
   isValid: true,

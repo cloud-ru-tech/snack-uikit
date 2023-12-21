@@ -148,13 +148,8 @@ export function Stepper({
 
   const stepper = (
     <div className={cn(styles.stepper, className)} {...extractSupportProps(props)}>
-      {stepsView.map((step, index, all) => (
-        <Step
-          key={step.title + index}
-          step={step}
-          isLast={all.length - 1 === index}
-          data-test-id={props['data-test-id']}
-        />
+      {stepsView.map((step, index) => (
+        <Step key={step.title + index} step={step} data-test-id={props['data-test-id']} />
       ))}
     </div>
   );
