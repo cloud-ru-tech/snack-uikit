@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.3 (2023-12-22)
+
+
+### Bug Fixes
+
+* **FF-0000:** table vendor deps ([6ef48af](https://github.com/cloud-ru-tech/snack-uikit/commit/6ef48afd4cbd260a4948209bcf6d721e14221b52))
+
+
+
+
+
 ## 0.8.2 (2023-12-18)
 
 
