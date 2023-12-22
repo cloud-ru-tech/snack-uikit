@@ -26,11 +26,15 @@
   "files": [
     "dist",
     "src",
+    "vendor",
     "./CHANGELOG.md",
     "./LICENSE"
   ],
   "license": "Apache-2.0",
   "scripts": {},
+  "devDependencies": {
+    "xlsx": "file:vendor/xlsx-0.20.1.tgz"
+  },
   "dependencies": {
     "@snack-uikit/button": "0.15.0",
     "@snack-uikit/chips": "0.10.2",
@@ -48,7 +52,6 @@
     "@tanstack/match-sorter-utils": "8.8.4",
     "@tanstack/react-table": "8.10.7",
     "classnames": "2.3.2",
-    "uncontrollable": "8.0.0",
-    "xlsx": "file:vendor/xlsx-0.20.1.tgz"
+    "uncontrollable": "8.0.0"
   }
 }
