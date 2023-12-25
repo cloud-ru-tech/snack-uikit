@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Table",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,7 +36,6 @@
     "xlsx"
   ],
   "dependencies": {
-    "xlsx": "file:vendor/xlsx-0.20.1.tgz",
     "@snack-uikit/button": "0.15.0",
     "@snack-uikit/chips": "0.10.2",
     "@snack-uikit/droplist": "0.12.2",
@@ -53,6 +52,7 @@
     "@tanstack/match-sorter-utils": "8.8.4",
     "@tanstack/react-table": "8.10.7",
     "classnames": "2.3.2",
-    "uncontrollable": "8.0.0"
+    "uncontrollable": "8.0.0",
+    "xlsx": "file:vendor/xlsx-0.20.1.tgz"
   }
 }

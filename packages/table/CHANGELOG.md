@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.4 (2023-12-25)
+
+
+### Bug Fixes
+
+* **FF-0000:** table bundeled dep ([e4b5566](https://github.com/cloud-ru-tech/snack-uikit/commit/e4b5566237573de52c88eaf56a018d51edc6f6c2))
+
+
+
+
+
 ## 0.8.3 (2023-12-22)
 
 
