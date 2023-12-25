@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.5 (2023-12-25)
+
+
+### Bug Fixes
+
+* **FF-4014:** fix infinite width without limits & export some types ([4dc82d3](https://github.com/cloud-ru-tech/snack-uikit/commit/4dc82d334f1cbb0b604d31687e60cfe338c4e679))
+
+
+
+
+
 ## 0.8.4 (2023-12-25)
 
 
