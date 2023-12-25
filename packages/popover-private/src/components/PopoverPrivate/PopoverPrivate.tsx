@@ -263,7 +263,7 @@ function PopoverPrivateComponent({
   return (
     <FloatingNode id={nodeId}>
       {getPopoverTriggerJSX({
-        validElementWrapperClassName: cn(styles.ref, triggerClassName),
+        validElementWrapperClassName: cn(triggerClassName),
         getReferenceProps,
         children,
         setReference,
