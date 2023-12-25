@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.2 (2023-12-25)
+
+
+### Bug Fixes
+
+* **FF-4007:** remove ref classname ([b5dc010](https://github.com/cloud-ru-tech/snack-uikit/commit/b5dc0107b785d693908d913f19eed07ef59b98aa))
+
+
+
+
+
 ## 0.12.1 (2023-12-14)
 
 
