@@ -11,6 +11,7 @@ import {
   SortingState,
   useReactTable,
 } from '@tanstack/react-table';
+import cn from 'classnames';
 import { ReactNode, useCallback, useMemo } from 'react';
 
 import { Scroll } from '@snack-uikit/scroll';
@@ -303,7 +304,7 @@ export function Table<TData extends object>({
     <>
       <div
         style={{ '--page-size': !suppressPagination ? tablePagination?.pageSize : pageSize }}
-        className={className}
+        className={cn(styles.wrapper, className)}
         {...extractSupportProps(rest)}
       >
         {!suppressToolbar && (

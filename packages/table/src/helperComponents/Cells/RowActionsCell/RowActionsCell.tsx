@@ -1,5 +1,5 @@
 import { CellContext, Row } from '@tanstack/react-table';
-import { MouseEvent } from 'react';
+import { MouseEvent, useMemo } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
 import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
@@ -21,6 +21,7 @@ export type RowActionProps<TData> = Pick<
   'option' | 'disabled' | 'icon' | 'description' | 'caption' | 'tagLabel'
 > & {
   id?: string;
+  hidden?: boolean;
   onClick(row: RowActionInfo<TData>, e: MouseEvent<HTMLButtonElement>): void;
 };
 
@@ -51,10 +52,12 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
     e.stopPropagation();
   };
 
+  const visibleActions: RowActionProps<TData>[] = useMemo(() => actions.filter(item => !item?.hidden), [actions]);
+
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div onClick={stopPropagationClick} className={styles.rowActionsCellWrap} data-open={droplistOpened || undefined}>
-      {!disabled && Boolean(actions.length) && (
+      {!disabled && Boolean(visibleActions.length) && (
         <Droplist
           open={droplistOpened}
           onOpenChange={setDroplistOpen}

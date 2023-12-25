@@ -71,6 +71,7 @@ export type {
   StatusColumnDefinitionProps,
   RowInfo,
   RowClickHandler,
+  ActionsGenerator,
 } from './helperComponents';
 
 export type {
