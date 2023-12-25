@@ -86,5 +86,5 @@ $valueTypography: (
 }
 
 .triggerClassName {
-  --offset: #{calc($border-state-focus-s-border-width + $space-drop-list-drop-offset)};
+  --offset: #{$space-drop-list-drop-offset};
 }
