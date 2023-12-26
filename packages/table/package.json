@@ -26,15 +26,11 @@
   "files": [
     "dist",
     "src",
-    "vendor",
     "./CHANGELOG.md",
     "./LICENSE"
   ],
   "license": "Apache-2.0",
   "scripts": {},
-  "bundledDependencies": [
-    "xlsx"
-  ],
   "dependencies": {
     "@snack-uikit/button": "0.15.0",
     "@snack-uikit/chips": "0.10.3",
@@ -53,6 +49,6 @@
     "@tanstack/react-table": "8.10.7",
     "classnames": "2.3.2",
     "uncontrollable": "8.0.0",
-    "xlsx": "file:vendor/xlsx-0.20.1.tgz"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
   }
 }
