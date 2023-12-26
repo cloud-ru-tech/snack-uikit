@@ -57,7 +57,7 @@ export function TruncateStringMiddle({ text, className, hideTooltip, placement, 
   return (
     <span className={cn(styles.wrapper, className)} {...extractSupportProps(rest)}>
       {showTooltip && !hideTooltip ? (
-        <Tooltip tip={text} placement={placement} hoverDelayOpen={500}>
+        <Tooltip tip={text} placement={placement} hoverDelayOpen={500} triggerClassName={styles.textContainer}>
           {textElement}
         </Tooltip>
       ) : (

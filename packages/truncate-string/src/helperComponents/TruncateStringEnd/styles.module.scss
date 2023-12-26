@@ -1,14 +1,18 @@
 .text1Line {
   overflow: hidden;
   display: block;
+
+  max-width: 100%;
+
   text-overflow: ellipsis;
-  white-space: nowrap
+  white-space: nowrap;
 }
 
 .text2AndMoreLines {
   overflow: hidden;
   display: -webkit-box;
 
+  max-width: 100%;
   margin: 0;
 
   text-overflow: ellipsis;
