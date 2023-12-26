@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.7 (2023-12-26)
+
+
+### Bug Fixes
+
+* **FF-0:** table xlsx dep ([039504a](https://github.com/cloud-ru-tech/snack-uikit/commit/039504aa7a5b4b0793d6b6cb1ce676905eba704b))
+
+
+
+
+
 ## 0.8.6 (2023-12-25)
 
 ### Only dependencies have been changed
