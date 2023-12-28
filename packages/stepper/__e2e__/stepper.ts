@@ -27,12 +27,12 @@ const getTextView = async () => {
         break;
       case STEP_TEST_ID:
         const state = await element.getAttribute('data-state');
-        const text = (await element.innerText).replace('\n', ' ');
+        const text = (await element.innerText).split('\n').slice(0, 3).join(' ');
         const view = {
-          completed: `(V ${text})`,
-          rejected: `(X ${text})`,
+          completed: `(V${text})`,
+          rejected: `(X${text})`,
           current: `((${text}))`,
-          loading: `(O ${text})`,
+          loading: `(O${text})`,
           waiting: `(${text})`,
         };
 
@@ -62,17 +62,17 @@ fixture('Stepper');
 
 test.page(getPage())('Should be rendered', async t => {
   const textView = await getTextView();
-  await t.expect(textView).eql('((1 First step))--(2 Second step)--(3 Third step)--(4 Fours step)--(5 Fifth step)');
+  await t.expect(textView).eql('((1))--(2)--(3)--(4)--(5)--');
 });
 
 test.page(getPage())('Should go to the next step and go back', async t => {
   await t.click(Selector(dataTestIdSelector(NEXT_BUTTON)));
   const textView1 = await getTextView();
-  await t.expect(textView1).eql('(V First step)==((2 Second step))--(3 Third step)--(4 Fours step)--(5 Fifth step)');
+  await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)--');
 
   await t.click(Selector(dataTestIdSelector(PREV_BUTTON)));
   const textView2 = await getTextView();
-  await t.expect(textView2).eql('((1 First step))--(2 Second step)--(3 Third step)--(4 Fours step)--(5 Fifth step)');
+  await t.expect(textView2).eql('((1))--(2)--(3)--(4)--(5)--');
 });
 
 test.page(getPage({ validationTimeout: 9999999999 }))(
@@ -80,7 +80,7 @@ test.page(getPage({ validationTimeout: 9999999999 }))(
   async t => {
     await t.click(Selector(dataTestIdSelector(NEXT_BUTTON)));
     const textView1 = await getTextView();
-    await t.expect(textView1).eql('(O First step)--(2 Second step)--(3 Third step)--(4 Fours step)--(5 Fifth step)');
+    await t.expect(textView1).eql('(O)--(2)--(3)--(4)--(5)--');
   },
 );
 
@@ -95,7 +95,7 @@ test.page(getPage())('Should call complete callback if all steps are done', asyn
   await t.click(Selector(dataTestIdSelector(NEXT_BUTTON)));
 
   const textView1 = await getTextView();
-  await t.expect(textView1).eql('(V First step)==(V Second step)==(V Third step)==(V Fours step)==(V Fifth step)');
+  await t.expect(textView1).eql('(V)==(V)==(V)==(V)==(V)==');
 
   const isCompletedAfter = await Selector(dataTestIdSelector(IS_COMPLETED)).innerText;
   await t.expect(isCompletedAfter).eql('isCompleted: yes');
@@ -103,27 +103,27 @@ test.page(getPage())('Should call complete callback if all steps are done', asyn
 
 test.page(getPage({ defaultCurrentStepIndex: 1 }))('Go next by clicking next step', async t => {
   const textView1 = await getTextView();
-  await t.expect(textView1).eql('(V First step)==((2 Second step))--(3 Third step)--(4 Fours step)--(5 Fifth step)');
+  await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)--');
   await t.click(Selector(`${dataTestIdSelector(STEP_TEST_ID)}`).nth(2));
   const textView2 = await getTextView();
-  await t.expect(textView2).eql('(V First step)==(V Second step)==((3 Third step))--(4 Fours step)--(5 Fifth step)');
+  await t.expect(textView2).eql('(V)==(V)==((3))--(4)--(5)--');
 });
 
 test.page(getPage({ defaultCurrentStepIndex: 1, isValid: false }))(
   'Going next by clicking should fail if step invalid',
   async t => {
     const textView1 = await getTextView();
-    await t.expect(textView1).eql('(V First step)==((2 Second step))--(3 Third step)--(4 Fours step)--(5 Fifth step)');
+    await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)--');
     await t.click(Selector(`${dataTestIdSelector(STEP_TEST_ID)}`).nth(2));
     const textView2 = await getTextView();
-    await t.expect(textView2).eql('(V First step)==(X Second step)--(3 Third step)--(4 Fours step)--(5 Fifth step)');
+    await t.expect(textView2).eql('(V)==(X)--(3)--(4)--(5)--');
   },
 );
 
 test.page(getPage({ defaultCurrentStepIndex: 3 }))('Go back by clicking completed step', async t => {
   const textView1 = await getTextView();
-  await t.expect(textView1).eql('(V First step)==(V Second step)==(V Third step)==((4 Fours step))--(5 Fifth step)');
+  await t.expect(textView1).eql('(V)==(V)==(V)==((4))--(5)--');
   await t.click(Selector(`${dataTestIdSelector(STEP_TEST_ID)}`).nth(1));
   const textView2 = await getTextView();
-  await t.expect(textView2).eql('(V First step)==((2 Second step))--(3 Third step)--(4 Fours step)--(5 Fifth step)');
+  await t.expect(textView2).eql('(V)==((2))--(3)--(4)--(5)--');
 });

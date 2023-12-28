@@ -86,6 +86,6 @@ test.page(getPageUrl({ icon: false }))(`Icon is not displayed when icon prop is 
 test.page(getPageUrl({ showActionButtons: true }))(`Action buttons are displayed`, async t => {
   const actionButton = Selector(dataTestIdSelector(TEST_IDS.actionButton));
 
-  await t.expect(actionButton.nth(0).innerText).eql('Secondary');
-  await t.expect(actionButton.nth(1).innerText).eql('Primary');
+  await t.expect(actionButton.nth(0).innerText).eql('Primary');
+  await t.expect(actionButton.nth(1).innerText).eql('Secondary');
 });

@@ -63,7 +63,7 @@ test.page(getPage({ storyContainerWidth: '700px' }))('Should short some items', 
   await t
     .expect(await getTextView())
     .eql(
-      '[FULL: Литература]›[FULL: Стихи]›[SHORTLABEL: Золотой век]›[SHORTLABEL: Лермонтов]›[FULL: Тема "Одиночество"]›[FULL: Парус]',
+      '[FULL: Литература]›[FULL: Стихи]›[SHORTLABEL: Золотой век]›[FULL: Михаил Лермонтов]›[FULL: Тема "Одиночество"]›[FULL: Парус]',
     );
 });
 

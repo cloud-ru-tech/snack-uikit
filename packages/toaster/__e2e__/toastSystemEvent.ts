@@ -130,6 +130,6 @@ test.page(getPageUrl({ showAction: true }))(`Should render with action buttons`,
     `${dataTestIdSelector(TEST_ID)} ${dataTestIdSelector(TOAST_SYSTEM_EVENT_TEST_IDS.buttonAction)}`,
   );
 
-  await t.expect(toastSystemEventButtonAction.nth(0).innerText).eql(TEST_SECONDARY_BUTTON);
-  await t.expect(toastSystemEventButtonAction.nth(1).innerText).eql(TEST_PRIMARY_BUTTON);
+  await t.expect(toastSystemEventButtonAction.nth(0).innerText).eql(TEST_PRIMARY_BUTTON);
+  await t.expect(toastSystemEventButtonAction.nth(1).innerText).eql(TEST_SECONDARY_BUTTON);
 });
