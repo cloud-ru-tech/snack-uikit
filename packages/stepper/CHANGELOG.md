@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2023-12-28)
+
+
+### Features
+
+* **FF-3960:** add step description, change step layout ([bbda81d](https://github.com/cloud-ru-tech/snack-uikit/commit/bbda81d731bcde8a00577ec63d089d120808a90a))
+
+
+
+
+
 ## 0.4.3 (2023-12-25)
 
 ### Only dependencies have been changed

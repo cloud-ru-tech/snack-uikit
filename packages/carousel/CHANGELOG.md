@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.3 (2023-12-28)
+
+### Only dependencies have been changed
+* [@snack-uikit/pagination@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/pagination/CHANGELOG.md)
+
+
+
+
+
 ## 0.2.2 (2023-12-18)
 
 ### Only dependencies have been changed

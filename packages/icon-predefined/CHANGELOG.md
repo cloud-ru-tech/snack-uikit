@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.1 (2023-12-28)
+
+
+### Bug Fixes
+
+* **FF-3960:** force current color on svg ([e87bc53](https://github.com/cloud-ru-tech/snack-uikit/commit/e87bc5312c36f36b001cf47f3ca74027fc4624a5))
+
+
+
+
+
 # 0.4.0 (2023-12-14)
 
 

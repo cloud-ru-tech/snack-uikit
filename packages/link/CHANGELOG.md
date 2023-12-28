@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2023-12-28)
+
+
+### BREAKING CHANGES
+
+
+* **FF-3960:** rename props onSurface (background, decor, accent) -> textMode (accent, default, on-accent); onColor -> appearance ([5190b9b](https://github.com/cloud-ru-tech/snack-uikit/commit/5190b9bc9fb174f5edef8c93c2c510b4574d50d4))
+
+
+
+
 ## 0.9.3 (2023-12-25)
 
 ### Only dependencies have been changed

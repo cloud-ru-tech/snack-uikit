@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-12-28)
+
+
+### Features
+
+* **FF-3960:** add size Xs ([e1f3116](https://github.com/cloud-ru-tech/snack-uikit/commit/e1f3116715c0e541721d33a372c44446dc77e026))
+
+
+
+
+
 ## 0.5.4 (2023-12-18)
 
 ### Only dependencies have been changed

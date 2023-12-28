@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.15.1 (2023-12-28)
+
+
+### Bug Fixes
+
+* **FF-3960:** single color for focused state ([c791470](https://github.com/cloud-ru-tech/snack-uikit/commit/c79147027e3218c358a896ece913876f7922dcf1))
+
+
+
+
+
 # 0.15.0 (2023-12-14)
 
 

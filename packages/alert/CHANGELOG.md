@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2023-12-28)
+
+
+### Bug Fixes
+
+* **FF-3960:** support link props renaming ([990b35e](https://github.com/cloud-ru-tech/snack-uikit/commit/990b35e6f0ea091c499b337e721add2f1606a251))
+
+
+### Features
+
+* **FF-3960:** update inner structure, add action buttons ([0de436c](https://github.com/cloud-ru-tech/snack-uikit/commit/0de436c7128a9d6753645ed80c8c45201586d952))
+
+
+
+
+
 ## 0.7.3 (2023-12-25)
 
 ### Only dependencies have been changed

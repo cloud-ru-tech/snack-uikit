@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.3 (2023-12-28)
+
+
+### Bug Fixes
+
+* **FF-3960:** add loading state, update colors ([c7678cd](https://github.com/cloud-ru-tech/snack-uikit/commit/c7678cd99cbf2e30618b80d2991b328d234069e4))
+
+
+
+
+
 ## 0.9.2 (2023-12-18)
 
 ### Only dependencies have been changed

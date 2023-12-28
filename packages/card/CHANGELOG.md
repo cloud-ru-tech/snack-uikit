@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2023-12-28)
+
+
+### Features
+
+* **FF-3960:** add S size ([1ef77b1](https://github.com/cloud-ru-tech/snack-uikit/commit/1ef77b133d182e2601372ad9e6304080d95516ac))
+
+
+
+
+
 ## 0.6.4 (2023-12-25)
 
 ### Only dependencies have been changed
@@ -37,7 +48,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.6.1 (2023-12-14)
 
-**Note:** Version bump only for package @snack-uikit/card
+### Only dependencies have been changed
+* [@snack-uikit/button@0.15.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/droplist@0.12.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+* [@snack-uikit/icon-predefined@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icon-predefined/CHANGELOG.md)
+* [@snack-uikit/promo-tag@0.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/promo-tag/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.4.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-uikit/typography@0.6.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
 
 
 

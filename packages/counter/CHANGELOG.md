@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2023-12-28)
+
+
+### Features
+
+* **FF-3960:** add new prop color ([3adaa4c](https://github.com/cloud-ru-tech/snack-uikit/commit/3adaa4c7cc3018607a50446caec2fb62dd680fd3))
+
+
+
+
+
 # 0.5.0 (2023-12-14)
 
 

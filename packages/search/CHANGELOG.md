@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.4 (2023-12-28)
+
+### Only dependencies have been changed
+* [@snack-uikit/droplist@0.12.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/droplist/CHANGELOG.md)
+
+
+
+
+
 ## 0.6.3 (2023-12-25)
 
 ### Only dependencies have been changed

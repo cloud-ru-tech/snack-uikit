@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.4 (2023-12-28)
+
+
+### Bug Fixes
+
+* **FF-3960:** fix max width & middle case ([c4a798b](https://github.com/cloud-ru-tech/snack-uikit/commit/c4a798bd04839fb0404e41fac8fdc4653fdeef8d))
+
+
+
+
+
 ## 0.4.3 (2023-12-25)
 
 ### Only dependencies have been changed
