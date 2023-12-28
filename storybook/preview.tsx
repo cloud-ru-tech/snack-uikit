@@ -17,7 +17,7 @@ const brandInfo: Partial<ThemeVars> = {
 };
 
 const parameters: Parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: { handlers: [] },
   options: {
     storySort: {
       order: ['Welcome', 'Documentation', 'Components'],
