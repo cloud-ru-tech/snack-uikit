@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.9 (2023-12-29)
+
+
+### Bug Fixes
+
+* **FF-3960:** change child components size ([2ce2369](https://github.com/cloud-ru-tech/snack-uikit/commit/2ce2369d6f8c05f8688d61f8c53df4956196b52c))
+
+
+
+
+
 ## 0.8.8 (2023-12-28)
 
 ### Only dependencies have been changed

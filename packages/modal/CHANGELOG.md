@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.5 (2023-12-29)
+
+
+### Bug Fixes
+
+* **FF-3960:** fix modal width ([e331e87](https://github.com/cloud-ru-tech/snack-uikit/commit/e331e87b592a37af5c9fa3389565f3c64633851c))
+
+
+
+
+
 ## 0.9.4 (2023-12-28)
 
 ### Only dependencies have been changed
