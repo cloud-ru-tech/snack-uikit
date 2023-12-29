@@ -50,6 +50,7 @@ const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
 | onDataLoad | `(node: TreeNodeProps) => Promise<unknown>` | - | Колбэк для асинхронной загрузки данных при раскрытии дерева |
 | parentActions | `(node: TreeNodeProps) => DroplistItemSingleProps[]` | - | Дополнительные действия для элемента-родителя |
 | nodeActions | `(node: TreeNodeProps) => DroplistItemSingleProps[]` | - | Дополнительные действия для элемента-потомка |
+| showIcons | `boolean` | true | Флаг отвечающий за отображение иконок у элементов дерева |
 | showLines | `boolean` | true | Флаг отвечающий за отображение линий вложенности |
 | className | `string` | - | CSS-класс |
 | selected | `string \| string[]` | - | Состояние для выбраных элементов: <br> - При <strong>selectionMode</strong>=`Multi` - принимает массив строк <br> - При <strong>selectionMode</strong>=`Single` - принимает строку |

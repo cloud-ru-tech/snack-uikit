@@ -58,6 +58,7 @@ export function TreeNode({
     setFocusIndex,
     focusableNodeIds,
     showLines,
+    showIcons,
   } = useTreeContext();
 
   const [isDroplistOpen, setDroplistOpen] = useState(false);
@@ -86,12 +87,14 @@ export function TreeNode({
   }, [isFocused]);
 
   const treeNodeIcon = useMemo(() => {
+    if (!showIcons) return undefined;
+
     if (isExpandable) {
       return isExpanded ? expandedIcon : collapsedIcon;
     }
 
     return icon;
-  }, [isExpandable, icon, isExpanded, expandedIcon, collapsedIcon]);
+  }, [showIcons, isExpandable, icon, isExpanded, expandedIcon, collapsedIcon]);
 
   const handleClick: TreeNodeProps['onClick'] = e => {
     onNodeClick(
@@ -258,9 +261,11 @@ export function TreeNode({
           </div>
         )}
 
-        <div className={styles.treeNodeIcon} data-test-id={TEST_IDS.icon}>
-          {treeNodeIcon}
-        </div>
+        {treeNodeIcon && (
+          <div className={styles.treeNodeIcon} data-test-id={TEST_IDS.icon}>
+            {treeNodeIcon}
+          </div>
+        )}
 
         <Typography.SansBodyM tag='div' className={styles.treeNodeTitle}>
           <TruncateString text={title} data-test-id={TEST_IDS.title} />

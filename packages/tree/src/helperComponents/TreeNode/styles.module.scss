@@ -53,8 +53,6 @@
   box-sizing: border-box;
   width: 100%;
 
-  border-radius: $radius-tree-item-content-layout;
-
   &::before {
     pointer-events: none;
     content: '';

@@ -68,6 +68,11 @@ export type TreeCommonProps = {
   parentActions?(node: TreeNodeProps): ItemSingleProps[];
   /** Дополнительные действия для элемента-потомка */
   nodeActions?(node: TreeNodeProps): ItemSingleProps[];
+  /**
+   * Флаг отвечающий за отображение иконок у элементов дерева
+   * @default true
+   */
+  showIcons?: boolean;
   /** Флаг отвечающий за отображение линий вложенности */
   showLines?: boolean;
   className?: string;

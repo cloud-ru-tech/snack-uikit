@@ -22,6 +22,7 @@ export function Tree({
   parentActions,
   onDataLoad,
   showLines = true,
+  showIcons = true,
   className,
   ...rest
 }: TreeProps) {
@@ -44,6 +45,7 @@ export function Tree({
           parentActions,
           onDataLoad,
           showLines,
+          showIcons,
         }}
       >
         {data.map((node, index) => (
