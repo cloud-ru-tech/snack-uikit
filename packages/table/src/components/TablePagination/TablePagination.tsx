@@ -50,6 +50,7 @@ export function TablePagination<TData>({
           total={table.getPageCount()}
           page={tablePaginationState.pageIndex + 1}
           onChange={handlePaginationOnChange}
+          size='xs'
           className={styles.pagination}
         />
       )}
@@ -63,6 +64,7 @@ export function TablePagination<TData>({
           label={optionsLabel}
           widthStrategy='auto'
           showClearButton={false}
+          size='xs'
         />
       )}
     </div>

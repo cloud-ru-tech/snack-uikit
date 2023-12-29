@@ -75,7 +75,7 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
             </span>
           }
           triggerClassName={styles.rowActionsCellTrigger}
-          size='s'
+          size='m'
           data-test-id={TEST_IDS.rowActions.droplist}
         >
           {actions.map(item => (
