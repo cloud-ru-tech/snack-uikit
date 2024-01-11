@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import { ButtonFunction } from '@snack-uikit/button';
 import { UpdateSVG } from '@snack-uikit/icons';
-import { SearchPrivate } from '@snack-uikit/search';
+import { SearchPrivate } from '@snack-uikit/search-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TEST_IDS } from '../../constants';
