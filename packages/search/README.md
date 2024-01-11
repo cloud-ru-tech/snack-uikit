@@ -24,13 +24,6 @@ import { Search, SearchPrivate } from "@snack-uikit/search";
   autocomplete
 />
 
-<SearchPrivate
-  value={value}
-  onChange={handleSearchChange}
-  loading={loading}
-  onSubmit={onSubmit}
-  size='s'
-/>
 ```
 
 [//]: DOCUMENTATION_SECTION_START
@@ -51,22 +44,6 @@ import { Search, SearchPrivate } from "@snack-uikit/search";
 | outline | `boolean` | - | Внешний бордер |
 | options | `Pick<DroplistItemSingleProps, "option" \| "caption" \| "description" \| "tagLabel" \| "icon" \| "avatar">[]` | - | Элементы выпадающие в Droplist в режиме Autocomplete.  На нажатие 'Space', 'Enter' или клике по элементу будет вызываться onSubmit. В режиме FieldText options отсутсвуют |
 | autocomplete | `boolean` | - | Работа в режиме Autocomplete в значении true  Работа в режиме FieldText в значении false \| undefined |
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
-| key | `Key` | - |  |
-## SearchPrivate
-### Props
-| name | type | default value | description |
-|------|------|---------------|-------------|
-| size | enum Size: `"s"`, `"m"`, `"l"` | s | Размер |
-| loading | `boolean` | - | Состояние загрузки |
-| onSubmit | `(value: string) => void` | - | Колбек на подтверждение поиска по строке |
-| className | `string` | - | CSS-класс |
-| value | `string` | - | Значение input |
-| onChange | `(value: string, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
-| placeholder | `string` | - | Значение плейсхолдера |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 

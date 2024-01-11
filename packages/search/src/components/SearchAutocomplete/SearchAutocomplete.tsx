@@ -3,10 +3,10 @@ import mergeRefs from 'merge-refs';
 import { forwardRef, KeyboardEvent, useCallback, useRef, useState } from 'react';
 
 import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
+import { SearchPrivate, SearchPrivateProps } from '@snack-uikit/search-private';
 
 import { PRIVATE_SEARCH_TEST_IDS, SIZE, TEST_IDS } from '../../constants';
 import { SearchDecorator } from '../SearchDecorator';
-import { SearchPrivate, SearchPrivateProps } from '../SearchPrivate';
 import styles from './styles.module.scss';
 
 export type SearchAutocompleteProps = Omit<SearchPrivateProps, 'onKeyDown'> & {

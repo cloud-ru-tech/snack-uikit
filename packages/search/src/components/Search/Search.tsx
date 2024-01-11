@@ -1,11 +1,11 @@
 import { forwardRef } from 'react';
 
+import { SearchPrivateProps } from '@snack-uikit/search-private';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { SIZE } from '../../constants';
 import { SearchAutocomplete, SearchAutocompleteProps } from '../SearchAutocomplete';
 import { SearchFieldText } from '../SearchFieldText';
-import { SearchPrivateProps } from '../SearchPrivate';
 
 export type SearchProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
   /** Внешний бордер */

@@ -33,13 +33,10 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/droplist": "0.12.4",
-    "@snack-uikit/icons": "0.19.2",
-    "@snack-uikit/input-private": "3.0.2",
-    "@snack-uikit/loaders": "0.5.0",
+    "@snack-uikit/search-private": "0.0.0",
     "@snack-uikit/utils": "3.2.0",
     "classnames": "2.3.2",
-    "merge-refs": "1.0.0",
-    "uncontrollable": "8.0.4"
+    "merge-refs": "1.0.0"
   },
   "devDependencies": {
     "@types/merge-refs": "1.0.0"
