@@ -37,6 +37,9 @@ export const packageJson = ({
 }) => {
   const config = {
     name: `@${globConfig.name}/${packageName}`,
+    publishConfig: {
+      access: 'public',
+    },
     title: `${packageTitle}`,
     version: '0.0.0',
     sideEffects: ['*.css', '*.woff', '*.woff2'],

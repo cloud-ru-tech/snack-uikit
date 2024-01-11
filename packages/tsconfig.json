@@ -59,6 +59,9 @@
       "path": "./input-private"
     },
     {
+      "path": "./search-private"
+    },
+    {
       "path": "./scroll"
     },
     {
@@ -136,12 +139,7 @@
   ],
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "es2017",
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["es2017", "dom", "dom.iterable", "esnext"],
     "module": "ES2015",
     "strict": true,
     "jsx": "react-jsx",

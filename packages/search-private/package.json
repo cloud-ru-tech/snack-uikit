@@ -1,0 +1,45 @@
+{
+  "name": "@snack-uikit/search-private",
+  "publishConfig": {
+    "access": "public"
+  },
+  "title": "Search Private",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/search-private",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
+    "directory": "packages/search-private"
+  },
+  "author": "Nikita Ershov <niershov@cloud.ru>",
+  "contributors": [
+    "Nikita Ershov <niershov@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-uikit/icons": "0.19.2",
+    "@snack-uikit/input-private": "3.0.2",
+    "@snack-uikit/loaders": "0.5.0",
+    "@snack-uikit/utils": "3.2.0",
+    "classnames": "2.5.1",
+    "merge-refs": "1.2.2",
+    "uncontrollable": "8.0.4"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}
