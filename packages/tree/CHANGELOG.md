@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2024-01-11)
+
+
+### Features
+
+* **FF-4018:** add showIcons prop to disable tree node icon ([eecda7f](https://github.com/cloud-ru-tech/snack-uikit/commit/eecda7f35fc98efeea2770098acfe7241b44b57a))
+
+
+
+
+
 ## 0.3.4 (2023-12-28)
 
 ### Only dependencies have been changed
