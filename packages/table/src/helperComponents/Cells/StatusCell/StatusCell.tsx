@@ -29,6 +29,7 @@ type StatusColumnDef = BaseStatusColumnDef & {
   renderDescription?: never;
   size?: never;
   header?: never;
+  enableResizing?: never;
 };
 
 type StatusColumnDefWithDescription<TData> = BaseStatusColumnDef & {
@@ -38,6 +39,8 @@ type StatusColumnDefWithDescription<TData> = BaseStatusColumnDef & {
   size: number;
   /** Заголовок колонки */
   header?: ColumnDefinition<TData>['header'];
+  /** Включение/выключение ресайза колонки */
+  enableResizing?: boolean;
 };
 
 export type StatusColumnDefinitionProps<TData> = StatusColumnDef | StatusColumnDefWithDescription<TData>;
@@ -73,6 +76,7 @@ export function getStatusColumnDef<TData>({
   renderDescription,
   size,
   enableSorting,
+  enableResizing,
 }: StatusColumnDefinitionProps<TData>): ColumnDefinition<TData> {
   const hasDescription = Boolean(renderDescription);
 
@@ -90,6 +94,7 @@ export function getStatusColumnDef<TData>({
     accessorKey,
     enableSorting,
     header: hasDescription ? header : undefined,
+    enableResizing: enableResizing ?? hasDescription,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     accessorFn: (row: any) =>
       renderDescription && Object.hasOwn(row as object, accessorKey)

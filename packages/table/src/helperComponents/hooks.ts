@@ -2,7 +2,6 @@ import { Cell, Header, HeaderGroup, Row } from '@tanstack/react-table';
 import { useMemo } from 'react';
 
 import { useTableContext } from './contexts';
-import { getColumnId } from './helpers';
 
 function hasHeaders<TData>(groups: HeaderGroup<TData>[]) {
   return groups.some(group => group.headers.length);
@@ -61,24 +60,20 @@ export function useRowCells<TData>(row: Row<TData>) {
 }
 
 export function useCellSizes<TData>(element: Cell<TData, unknown> | Header<TData, unknown>) {
-  return useMemo(() => {
-    const column = element.column;
+  const column = element.column;
 
-    if (column.getIsPinned()) {
-      return {
-        width: column.getSize(),
-      };
-    }
+  const minWidth = column.columnDef.minSize;
+  const maxWidth = column.columnDef.maxSize;
+  const width = `var(--table-column-${column.id}-size)`;
+  const flexShrink = `var(--table-column-${column.id}-flex)`;
 
-    const originalColumnDef = element
-      .getContext()
-      .table._getColumnDefs()
-      .find(col => getColumnId(col) === column.id);
-
-    return {
-      minWidth: originalColumnDef?.size || originalColumnDef?.minSize || column.columnDef.minSize,
-      width: originalColumnDef?.size,
-      maxWidth: originalColumnDef?.maxSize || column.columnDef.maxSize,
-    };
-  }, [element]);
+  return useMemo(
+    () => ({
+      minWidth,
+      width,
+      maxWidth,
+      flexShrink,
+    }),
+    [flexShrink, maxWidth, minWidth, width],
+  );
 }

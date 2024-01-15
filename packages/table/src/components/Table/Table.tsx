@@ -243,6 +243,8 @@ export function Table<TData extends object>({
 
     defaultColumn: {
       enableSorting: false,
+      enableResizing: false,
+      minSize: 40,
     },
 
     globalFilterFn: fuzzyFilter,
@@ -254,6 +256,8 @@ export function Table<TData extends object>({
 
     enableFilters: true,
     getFilteredRowModel: getFilteredRowModel(),
+
+    enableColumnResizing: true,
 
     enableSorting: true,
     manualSorting: false,
@@ -296,6 +300,36 @@ export function Table<TData extends object>({
     }
   }, [loading, rowSelectionProp?.multiRow, table]);
 
+  const columnSizeVars = useMemo(() => {
+    const originalColumnDefs = table._getColumnDefs();
+    const headers = table.getFlatHeaders();
+    const colSizes: { [key: string]: string } = {};
+
+    for (let i = 0; i < headers.length; i++) {
+      const header = headers[i];
+      const originalColDef = originalColumnDefs.find(col => getColumnId(header) === col.id);
+      const originalColumnDefSize = originalColDef?.size;
+      const initSize = originalColumnDefSize ? `${originalColumnDefSize}px` : '100%';
+
+      let size = initSize;
+
+      if (header.column.getCanResize()) {
+        const currentSize = header.getSize();
+        const colDefSize = header.column.columnDef.size;
+
+        size = currentSize === colDefSize ? initSize : `${currentSize}px`;
+      }
+
+      colSizes[`--table-column-${header.id}-size`] = size;
+      colSizes[`--table-column-${header.id}-flex`] = size === '100%' ? 'unset' : '0';
+    }
+
+    return colSizes;
+    /* effect must be called only on columnSizingInfo.isResizingColumn changes
+      to reduce unnecessary recalculations */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [table.getState().columnSizingInfo.isResizingColumn]);
+
   const tableRows = table.getRowModel().rows;
   const loadingTableRows = loadingTable.getRowModel().rows;
   const tablePagination = table.getState().pagination;
@@ -336,7 +370,7 @@ export function Table<TData extends object>({
 
         <div className={styles.scrollWrapper} data-outline={outline || undefined}>
           <Scroll size='s' className={styles.table}>
-            <div className={styles.tableContent}>
+            <div className={styles.tableContent} style={columnSizeVars}>
               <TableContext.Provider value={{ table }}>
                 {loading ? (
                   <SkeletonContextProvider loading>

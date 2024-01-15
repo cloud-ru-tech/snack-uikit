@@ -6,11 +6,7 @@
 [Changelog](./CHANGELOG.md)
 
 ## TODO:
-  - resize columns
-  - export data
-  - loading state
   - multiple row selection with Shift key pressed
-  - try to make the table independent of height
 
 
 ## Примечание
@@ -139,6 +135,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | renderDescription | `(cellValue: string) => string` | - | Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса |
 | size | `number` | - | Размер ячейки |
 | header | `ColumnDefTemplate<HeaderContext<TData, unknown>> & (string \| ((ctx: HeaderContext<TData, unknown>) => string))` | - | Заголовок колонки |
+| enableResizing | `boolean` | - | Включение/выключение ресайза колонки |
 ## Table.getRowActionsColumnDef
 Вспомогательная функция для создания ячейки с дополнительными действиями у строки
 ### Props

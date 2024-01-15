@@ -34,6 +34,7 @@ export function getSelectionCellColumnDef<TData>(): ColumnDefinition<TData> {
     noBodyCellPadding: true,
     size: 40,
     headerClassName: styles.selectionCellHeader,
+    enableResizing: false,
     cell: ({ row, table }) => {
       const disabled = !row.getCanSelect();
 

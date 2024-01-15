@@ -9,7 +9,7 @@ export function HeaderRow() {
   const { leftPinned, unpinned, rightPinned } = useHeaderGroups();
 
   return (
-    <Row className={styles.tableHeader} data-test-id={TEST_IDS.headerRow} role='rowheader'>
+    <Row className={styles.tableHeader} data-test-id={TEST_IDS.headerRow}>
       {leftPinned && (
         <PinnedCells position={COLUMN_PIN_POSITION.Left}>
           {leftPinned.map(headerGroup =>

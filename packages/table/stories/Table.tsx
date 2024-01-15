@@ -50,6 +50,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     header: renderHeader,
     size: 140,
     enableSorting: true,
+    enableResizing: true,
     sortDescFirst: true,
     pinned: 'left',
   },
@@ -59,8 +60,11 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     accessorFn: accessorFn('col2'),
     header: renderHeader,
     size: 200,
+    minSize: 150,
+    maxSize: 300,
     pinned: 'left',
     enableSorting: true,
+    enableResizing: true,
   },
   {
     id: '3',
@@ -69,6 +73,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     header: renderHeader,
     minSize: 110,
     sortDescFirst: true,
+    enableResizing: true,
   },
   {
     id: '4',
@@ -76,6 +81,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     accessorFn: accessorFn('col4'),
     header: renderHeader,
     enableSorting: true,
+    enableResizing: true,
   },
   {
     id: '5',
@@ -83,6 +89,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     header: renderHeader,
     accessorFn: accessorFn('col5'),
     enableSorting: true,
+    enableResizing: true,
   },
   {
     id: '6',
@@ -92,12 +99,14 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     size: 150,
     align: 'right',
     enableSorting: true,
+    enableResizing: false,
   },
   {
     id: '7',
     accessorKey: 'date',
     header: renderHeader,
     enableSorting: true,
+    enableResizing: true,
     size: 146,
     align: 'right',
     pinned: 'right',
@@ -149,6 +158,7 @@ const Template: StoryFn<StoryProps> = ({
               header: 'Status',
               size: 100,
               renderDescription: (value: string) => value,
+              enableResizing: true,
             }
           : {};
 

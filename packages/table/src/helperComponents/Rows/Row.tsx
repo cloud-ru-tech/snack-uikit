@@ -8,12 +8,12 @@ type RowProps = {
   children: ReactNode;
   onClick?(e: MouseEvent<HTMLDivElement>): void;
   className?: string;
-  role?: 'rowheader' | 'row';
 } & DataAttributes;
 
-export function Row({ onClick, role = 'row', children, className, ...attributes }: RowProps) {
+export function Row({ onClick, children, className, ...attributes }: RowProps) {
   return (
-    <div onClick={onClick} className={cn(styles.tableRow, className)} role={role} {...attributes}>
+    // eslint-disable-next-line jsx-a11y/interactive-supports-focus
+    <div onClick={onClick} className={cn(styles.tableRow, className)} role='row' {...attributes}>
       {children}
     </div>
   );

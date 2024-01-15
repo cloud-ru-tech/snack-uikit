@@ -46,7 +46,7 @@
     "@snack-uikit/typography": "0.6.1",
     "@snack-uikit/utils": "3.2.0",
     "@tanstack/match-sorter-utils": "8.8.4",
-    "@tanstack/react-table": "8.10.7",
+    "@tanstack/react-table": "8.11.6",
     "classnames": "2.3.2",
     "uncontrollable": "8.0.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"

@@ -1,6 +1,39 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
+.tableHeaderResizeHandle {
+  cursor: ew-resize;
+
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  transform: translateX(50%);
+
+  width: $dimension-1m;
+  height: 100%;
+
+  opacity: 0;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: $border-width-table;
+    height: 100%;
+
+    background-color: $sys-neutral-decor-hovered;
+  }
+
+  &[data-resizing] {
+    opacity: 0;
+  }
+}
+
 .tableHeaderCell {
   @include composite-var($table-head-column);
 
@@ -8,6 +41,7 @@
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   box-sizing: border-box;
   width: 100%;
@@ -24,9 +58,15 @@
     transform: translateX(-50%);
 
     width: calc(100% - $space-table-head-separator-padding * 2);
-    height: 1px;
+    height: $border-width-table;
 
     background-color: $sys-neutral-decor-default;
+  }
+
+  &:hover {
+    .tableHeaderResizeHandle:not([data-resizing]) {
+      opacity: 1;
+    }
   }
 
   &[data-sortable] {
@@ -48,6 +88,19 @@
       width: 100%;
     }
   }
+
+  &[data-resizing] {
+    user-select: none;
+  }
+}
+
+.tableHeaderCellMain {
+  overflow: auto;
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .tableHeaderCellName {
@@ -62,7 +115,7 @@
   color: simple-var($sys-neutral-text-light);
 }
 
-.tableHeaderSortIcon {
+.tableHeaderIcon {
   display: flex;
   box-sizing: border-box;
   color: simple-var($sys-neutral-text-light);
@@ -70,5 +123,31 @@
   svg {
     width: simple-var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
     height: simple-var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.tableHeaderResizeIndicator {
+  cursor: col-resize;
+
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+
+  width: 1px;
+  height: 100%;
+
+  background-color: $sys-neutral-decor-activated;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+
+    width: calc(100% + $dimension-4m);
+    height: 100%;
   }
 }

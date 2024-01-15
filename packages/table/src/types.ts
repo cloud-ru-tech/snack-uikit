@@ -25,7 +25,6 @@ type BaseColumnDefinition<TData> = Except<
   | 'footer'
   | 'enablePinning'
   | 'enableGrouping'
-  | 'enableResizing'
   | 'enableColumnFilter'
   | 'filterFn'
   | 'enableGlobalFilter'

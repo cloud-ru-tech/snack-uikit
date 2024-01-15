@@ -116,6 +116,7 @@ export function getRowActionsColumnDef<TData>({
     },
     noBodyCellPadding: true,
     cellClassName: styles.rowActionsCell,
+    enableResizing: false,
     cell: cell => <RowActionsCell row={cell.row} actions={actionsGenerator(cell)} />,
   };
 }
