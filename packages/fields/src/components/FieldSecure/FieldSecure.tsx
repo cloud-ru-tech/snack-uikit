@@ -38,7 +38,7 @@ type FieldSecureOwnProps = {
   hidden?: boolean;
   /** Колбек смены маскирования */
   onHiddenChange?(value: boolean): void;
-  /** Отображать ли кнопку копирования */
+  /** Отображение кнопки копирования */
   showCopyButton?: boolean;
   /** Можно ли вводить больше разрешённого кол-ва символов */
   allowMoreThanMaxLength?: boolean;

@@ -57,6 +57,7 @@ fieldTextArea.args = {
   size: 's',
   validationState: 'default',
   showCopyButton: true,
+  showClearButton: true,
   allowMoreThanMaxLength: true,
 };
 

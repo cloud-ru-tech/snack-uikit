@@ -60,8 +60,13 @@ type FieldDateOwnProps = {
   onOpenChange?(value: boolean): void;
   /** Колбек смены значения */
   onChange?(value: string): void;
-  /** Отображать ли кнопку копирования */
+  /** Отображение кнопки копирования */
   showCopyButton?: boolean;
+  /**
+   * Отображение кнопки Очистки поля
+   * @default true
+   */
+  showClearButton?: boolean;
   /** Текущая локаль календаря */
   locale?: Intl.Locale;
 };
@@ -83,6 +88,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       disabled = false,
       readonly = false,
       showCopyButton: showCopyButtonProp = true,
+      showClearButton: showClearButtonProp = true,
       open,
       onOpenChange,
       onChange,
@@ -111,7 +117,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const calendarIconSize = size === SIZE.S ? ICON_SIZE.Xs : ICON_SIZE.S;
     const showDropList = isOpen && !readonly && !disabled;
     const showAdditionalButton = Boolean(valueProp && !disabled);
-    const showClearButton = showAdditionalButton && !readonly;
+    const showClearButton = showClearButtonProp && showAdditionalButton && !readonly;
     const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
 
     const checkForLeavingFocus = useCallback(

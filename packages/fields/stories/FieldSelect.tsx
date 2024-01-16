@@ -141,6 +141,7 @@ fieldSelect.args = {
   // @ts-ignore
   prefixIcon: 'none',
   showCopyButton: true,
+  showClearButton: true,
   showMoreOptions: false,
   localeName: 'en-US',
 };

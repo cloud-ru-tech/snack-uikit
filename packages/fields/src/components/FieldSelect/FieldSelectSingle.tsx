@@ -23,6 +23,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       open,
       onOpenChange,
       showCopyButton: showCopyButtonProp = true,
+      showClearButton: showClearButtonProp = true,
       ...rest
     },
     ref,
@@ -60,6 +61,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       options,
       isChecked,
       showCopyButton: showCopyButtonProp,
+      showClearButton: showClearButtonProp,
       showAdditionalButton,
     });
 

@@ -27,8 +27,13 @@ type WrapperProps = Pick<
 >;
 
 type FieldTextOwnProps = {
-  /** Показывать ли кнопку Копировать для поля (актуально только для `readonly = true`)  */
+  /** Отображение кнопки Копировать для поля (актуально только для `readonly = true`) */
   showCopyButton?: boolean;
+  /**
+   * Отображение кнопки очистки поля
+   * @default true
+   */
+  showClearButton?: boolean;
   /** Можно ли вводить больше разрешённого кол-ва символов */
   allowMoreThanMaxLength?: boolean;
   /** Иконка-префикс для поля */
@@ -48,6 +53,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       disabled = false,
       readonly = false,
       showCopyButton: showCopyButtonProp = true,
+      showClearButton: showClearButtonProp = true,
       allowMoreThanMaxLength = false,
       onChange: onChangeProp,
       onFocus,
@@ -71,7 +77,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
     const clearButtonRef = useRef<HTMLButtonElement>(null);
     const copyButtonRef = useRef<HTMLButtonElement>(null);
     const showAdditionalButton = Boolean(value && !disabled);
-    const showClearButton = showAdditionalButton && !readonly;
+    const showClearButton = showClearButtonProp && showAdditionalButton && !readonly;
     const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
 
     const onClear = () => {

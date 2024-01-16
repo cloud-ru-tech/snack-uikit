@@ -12,6 +12,7 @@ type UseListProps = Pick<
 > & {
   searchable: NonNullable<FieldSelectProps['searchable']>;
   showAdditionalButton: boolean;
+  showClearButton: boolean;
   inputValue: string;
   setInputValue(value: string): void;
   isChecked(option: Option): boolean;
@@ -25,6 +26,7 @@ export function useList({
   searchable,
   showAdditionalButton,
   showCopyButton: showCopyButtonProp,
+  showClearButton: showClearButtonProp,
   inputValue,
   setInputValue,
   options,
@@ -36,7 +38,7 @@ export function useList({
   const copyButtonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
   const showDropList = isOpen && !readonly && !disabled;
-  const showClearButton = !readonly && (showAdditionalButton || inputValue.length > 0);
+  const showClearButton = showClearButtonProp && !readonly && (showAdditionalButton || inputValue.length > 0);
   const showCopyButton = Boolean(showAdditionalButton && showCopyButtonProp && readonly);
 
   const { extendedOptions, onInputKeyDown, onButtonKeyDown, onDroplistFocusLeave, firstDroplistItemRefCallback } =

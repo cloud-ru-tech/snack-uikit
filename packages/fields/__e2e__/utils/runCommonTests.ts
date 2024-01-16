@@ -244,6 +244,13 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
 
   // clear button
   if (options.hasClearButton) {
+    test.page(visit({ showClearButton: false }))('Should render without clear button', async t => {
+      const wrapper = Selector(dataTestIdSelector(testId));
+      const clearButton = getButtonClearValue(wrapper);
+
+      await t.expect(clearButton.exists).notOk('Clear button should not be rendered');
+    });
+
     // mouse
     test.page(visit({ value }))('Should clear value by clicking the button', async t => {
       const wrapper = Selector(dataTestIdSelector(testId));

@@ -180,7 +180,8 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| showCopyButton | `boolean` | - | Показывать ли кнопку Копировать для поля (актуально только для `readonly = true`) |
+| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
+| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | allowMoreThanMaxLength | `boolean` | - | Можно ли вводить больше разрешённого кол-ва символов |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
 | value | `string` | - | Значение input |
@@ -211,7 +212,8 @@ const [isOpen, setIsOpen] = useState(false);
 | maxRows | `number` | - | Максимальное кол-во строк, до которого размер поля может быть увеличен |
 | resizable | `boolean` | - | Может ли ли пользователь изменять размеры поля (если св-во не включено, поле автоматически меняет свой размер) |
 | onChange | `(value: string, e?: ChangeEvent<HTMLTextAreaElement>) => void` | - | Колбек смены значения |
-| showCopyButton | `boolean` | - | Показывать ли кнопку Копировать для поля (актуально только для `readonly = true`) |
+| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
+| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | allowMoreThanMaxLength | `boolean` | true | Можно ли вводить больше разрешённого кол-ва символов |
 | value | `string` | - | HTML-аттрибут value |
 | disabled | `boolean` | - | Является ли поле деактивированным |
@@ -239,7 +241,7 @@ const [isOpen, setIsOpen] = useState(false);
 |------|------|---------------|-------------|
 | hidden | `boolean` | - | Замаскированно ли значение поля |
 | onHiddenChange | `(value: boolean) => void` | - | Колбек смены маскирования |
-| showCopyButton | `boolean` | - | Отображать ли кнопку копирования |
+| showCopyButton | `boolean` | - | Отображение кнопки копирования |
 | allowMoreThanMaxLength | `boolean` | - | Можно ли вводить больше разрешённого кол-ва символов |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
 | value | `string` | - | Значение input |
@@ -271,7 +273,8 @@ const [isOpen, setIsOpen] = useState(false);
 | open | `boolean` | - | Открыт date-picker |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
 | onChange | `(value: string) => void` | - | Колбек смены значения |
-| showCopyButton | `boolean` | - | Отображать ли кнопку копирования |
+| showCopyButton | `boolean` | - | Отображение кнопки копирования |
+| showClearButton | `boolean` | true | Отображение кнопки Очистки поля |
 | locale | `Locale` | new Intl.Locale('ru-RU') | Текущая локаль календаря |
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
@@ -299,7 +302,8 @@ const [isOpen, setIsOpen] = useState(false);
 | open | `boolean` | - | Открыт ли выпадающий список |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия выпадающего списка |
 | searchable | `boolean` | - | Можно ли искать опции внутри списка |
-| showCopyButton | `boolean` | - | Показывать ли кнопку Копировать для поля (актуально только для readonly = true) |
+| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
+| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
 | noDataText | `string` | - | Текст отсутствия доступных значений |
 | locale | `Locale` | - | Текущая локаль |

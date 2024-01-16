@@ -42,8 +42,13 @@ type FieldSelectOwnProps = {
   onOpenChange?(value: boolean): void;
   /** Можно ли искать опции внутри списка */
   searchable?: boolean;
-  /** Показывать ли кнопку Копировать для поля (актуально только для readonly = true) */
+  /** Отображение кнопки Копировать для поля (актуально только для `readonly = true`) */
   showCopyButton?: boolean;
+  /**
+   * Отображение кнопки очистки поля
+   * @default true
+   */
+  showClearButton?: boolean;
   /** Иконка-префикс для поля */
   prefixIcon?: ReactElement;
   /** Текст отсутствия доступных значений */

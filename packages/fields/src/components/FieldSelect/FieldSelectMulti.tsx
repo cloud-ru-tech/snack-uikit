@@ -22,6 +22,7 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
       locale = DEFAULT_LOCALE,
       getSelectedItemsText = number => (locale?.language === 'ru' ? `Выбрано: ${number}` : `Selected: ${number}`),
       showCopyButton: showCopyButtonProp = true,
+      showClearButton: showClearButtonProp = true,
       onFocus,
       onBlur,
       ...rest
@@ -70,6 +71,7 @@ export const FieldSelectMulti = forwardRef<HTMLInputElement, FieldSelectMultiPro
       isChecked,
       showAdditionalButton,
       showCopyButton: showCopyButtonProp,
+      showClearButton: showClearButtonProp,
     });
 
     const handleOpenChange = (isOpen: boolean) => {

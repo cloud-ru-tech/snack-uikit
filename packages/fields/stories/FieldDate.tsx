@@ -61,6 +61,7 @@ fieldDate.args = {
   size: 's',
   validationState: 'default',
   showCopyButton: true,
+  showClearButton: true,
   localeName: 'en-US',
 };
 

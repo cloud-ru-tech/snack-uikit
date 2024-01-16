@@ -35,8 +35,13 @@ type FieldTextAreaOwnProps = {
   resizable?: boolean;
   /** Колбек смены значения */
   onChange?(value: string, e?: ChangeEvent<HTMLTextAreaElement>): void;
-  /** Показывать ли кнопку Копировать для поля (актуально только для `readonly = true`) */
+  /** Отображение кнопки Копировать для поля (актуально только для `readonly = true`) */
   showCopyButton?: boolean;
+  /**
+   * Отображение кнопки очистки поля
+   * @default true
+   */
+  showClearButton?: boolean;
   /** Можно ли вводить больше разрешённого кол-ва символов */
   allowMoreThanMaxLength?: boolean;
 };
@@ -56,6 +61,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       resizable = false,
       readonly = false,
       showCopyButton: showCopyButtonProp = true,
+      showClearButton: showClearButtonProp = true,
       allowMoreThanMaxLength = true,
       showHintIcon,
       onChange: onChangeProp,
@@ -79,7 +85,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
     const isResizable = !readonly && !disabled && resizable;
     const [value, onChange] = useUncontrolledProp(valueProp, '', onChangeProp);
     const showCopyButton = showCopyButtonProp && Boolean(value) && !disabled && readonly;
-    const showClearButton = Boolean(value) && !disabled && !readonly;
+    const showClearButton = showClearButtonProp && Boolean(value) && !disabled && !readonly;
 
     const onClear = () => {
       onChange('');

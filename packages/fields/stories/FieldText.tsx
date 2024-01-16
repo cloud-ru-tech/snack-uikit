@@ -51,6 +51,7 @@ fieldText.args = {
   // @ts-ignore
   prefixIcon: 'none',
   showCopyButton: true,
+  showClearButton: true,
   allowMoreThanMaxLength: false,
 };
 
