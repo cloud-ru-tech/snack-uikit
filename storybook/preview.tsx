@@ -17,7 +17,7 @@ const brandInfo: Partial<ThemeVars> = {
 };
 
 const parameters: Parameters = {
-  actions: { handlers: [] },
+  actions: { handlers: [], disable: true },
   options: {
     storySort: {
       order: ['Welcome', 'Documentation', 'Components'],
