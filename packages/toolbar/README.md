@@ -13,11 +13,7 @@ Toolbar
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| onChange* | `(value: string) => void` | - | Колбек смены значения |
-| value* | `string` | - | Значение строки поиска |
-| onSubmit | `(value: string) => void` | - | Колбек на подтверждение поиска по строке |
-| placeholder | `string` | - | Плейсхолдер |
-| loading | `boolean` | - | Состояние загрузки |
+| search | `{ value: string; onChange(value: string): void; onSubmit?(value: string): void; placeholder?: string; loading?: boolean; }` | - | Параметры отвечают за строку поиска <br> <strong>value</strong>: Значение строки поиска <br> <strong>onChange</strong>: Колбэк смены значения <br> <strong>onSubmit</strong>: Колбэк на подтверждение поиска по строке <strong>placeholder</strong>: Плейсхолдер <br> <strong>loading</strong>: Состояние загрузки <br> |
 | className | `string` | - | Класснейм |
 | outline | `boolean` | - | Внешний бордер |
 | onCheck | `() => void` | - | Колбек смены значения чекбокса |
@@ -26,7 +22,8 @@ Toolbar
 | indeterminate | `boolean` | - | Состояние частичного выбора |
 | selectionMode | enum SelectionMode: `"single"`, `"multiple"` | 'multiple' | Режим выбора |
 | onRefresh | `() => void` | - | Колбек обновления |
-| actions | `ReactNode` | - | Дополнительный слот |
+| before | `ReactNode` | - | Дополнительный слот в начале Тулбара |
+| after | `ReactNode` | - | Дополнительный слот в конце тулбара |
 | moreActions | `Pick<DroplistItemSingleProps, "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon" \| "onClick">[]` | - | Элементы выпадающего списка кнопки с действиями |
 
 

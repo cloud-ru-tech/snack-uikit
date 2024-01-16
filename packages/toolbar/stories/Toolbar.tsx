@@ -1,5 +1,6 @@
+import { useArgs } from '@storybook/client-api';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
 import { PlaceholderSVG } from '@snack-uikit/icons';
@@ -11,7 +12,6 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Toolbar, ToolbarProps } from '../src';
 import { OPTIONS } from './constants';
-import { extractToolbarArgs } from './helpers';
 import styles from './styles.module.scss';
 import { TEST_ID_TOASTER } from './testIds';
 
@@ -23,9 +23,11 @@ const meta: Meta = {
 export default meta;
 
 type StoryProps = ToolbarProps & {
+  showSearch: boolean;
   showOnRefresh: boolean;
   showOnDelete: boolean;
-  showActions: boolean;
+  showBeforeActions: boolean;
+  showAfterActions: boolean;
   showCheckbox: boolean;
   showMoreActions: boolean;
 };
@@ -34,32 +36,31 @@ const Template: StoryFn<StoryProps> = ({
   showCheckbox,
   showOnRefresh,
   showOnDelete,
-  showActions,
+  showBeforeActions,
+  showAfterActions,
+  showSearch,
   showMoreActions,
-  checked: checkedProp,
-  indeterminate: indeterminateProp,
-  value: valueProp,
+  outline,
+  selectionMode,
   ...args
 }: StoryProps) => {
-  const [value, setValue] = useState<string>(valueProp || '');
-  const [checked, setChecked] = useState<boolean>(checkedProp || false);
-  const [indeterminate, setIndeterminate] = useState<boolean>(indeterminateProp || false);
+  const [{ search, checked, indeterminate }, updateArgs] = useArgs<StoryProps>();
+
+  const onSearchChange = (value: string) => {
+    updateArgs({ search: { ...search, value, onChange() {} } });
+  };
+
+  const toggleChecked = () => {
+    updateArgs({ checked: !checked });
+  };
 
   useEffect(() => {
-    setChecked(checkedProp || false);
-  }, [checkedProp]);
+    const setIndeterminate = (value: boolean) => {
+      updateArgs({ indeterminate: value });
+    };
 
-  useEffect(() => {
-    setValue(valueProp);
-  }, [valueProp]);
-
-  useEffect(() => {
-    setIndeterminate(indeterminateProp || false);
-  }, [indeterminateProp]);
-
-  useEffect(() => {
     checked && setIndeterminate(false);
-  }, [checked]);
+  }, [checked, updateArgs]);
 
   const onSubmit = () => {
     toaster.userAction.success({ label: 'Submit action', 'data-test-id': TEST_ID_TOASTER.submit });
@@ -73,33 +74,42 @@ const Template: StoryFn<StoryProps> = ({
     toaster.userAction.neutral({ label: 'Refresh action', 'data-test-id': TEST_ID_TOASTER.refresh });
   };
 
+  const actions = (
+    <>
+      <ButtonFunction icon={<PlaceholderSVG />} size='m' />
+      <ButtonFunction icon={<PlaceholderSVG />} size='m' />
+    </>
+  );
+
   return (
     <div className={styles.wrapper}>
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <Toolbar
         {...extractSupportProps(args)}
-        {...extractToolbarArgs(args)}
+        outline={outline}
+        selectionMode={selectionMode}
         {...(showCheckbox
           ? {
               checked,
-              onCheck: () => setChecked(v => !v),
+              onCheck: toggleChecked,
               onDelete: showOnDelete ? onDelete : undefined,
               indeterminate,
             }
           : { checked: undefined, onCheck: undefined, onDelete: undefined })}
-        value={value}
-        onChange={setValue}
-        onRefresh={showOnRefresh ? onRefresh : undefined}
-        onSubmit={onSubmit}
-        actions={
-          showActions ? (
-            <>
-              <ButtonFunction icon={<PlaceholderSVG />} size='m' />
-              <ButtonFunction icon={<PlaceholderSVG />} size='m' />
-            </>
-          ) : undefined
+        search={
+          showSearch && search
+            ? {
+                ...search,
+                value: search.value,
+                onChange: onSearchChange,
+                onSubmit,
+              }
+            : undefined
         }
+        onRefresh={showOnRefresh ? onRefresh : undefined}
+        after={showAfterActions ? actions : undefined}
+        before={showBeforeActions ? actions : undefined}
         moreActions={showMoreActions ? OPTIONS : undefined}
       />
     </div>
@@ -109,9 +119,12 @@ const Template: StoryFn<StoryProps> = ({
 export const toolbar: StoryObj<StoryProps> = Template.bind({});
 
 toolbar.args = {
-  value: '',
-  placeholder: 'Search',
-  loading: false,
+  search: {
+    value: '',
+    placeholder: 'Search',
+    loading: false,
+    onChange() {},
+  },
   outline: false,
   selectionMode: 'multiple',
   showCheckbox: true,
@@ -120,8 +133,10 @@ toolbar.args = {
   showOnDelete: true,
   showMoreActions: true,
   moreActions: OPTIONS,
+  showSearch: true,
   showOnRefresh: true,
-  showActions: true,
+  showBeforeActions: false,
+  showAfterActions: true,
   'data-test-id': 'toolbar',
 };
 
@@ -166,8 +181,16 @@ toolbar.argTypes = {
     name: '[Story]: Apply onRefresh callback',
     type: 'boolean',
   },
-  showActions: {
-    name: '[Story]: Show additional Actions (ReactNode)',
+  showSearch: {
+    name: '[Story]: Apply search props',
+    type: 'boolean',
+  },
+  showAfterActions: {
+    name: '[Story]: Show custom ReactNode "after" (on the right side)',
+    type: 'boolean',
+  },
+  showBeforeActions: {
+    name: '[Story]: Show ReactNode "before" (on the left side)',
     type: 'boolean',
   },
   showMoreActions: {
@@ -181,9 +204,15 @@ toolbar.argTypes = {
       eq: true,
     },
   },
-  actions: {
+  after: {
     if: {
-      arg: 'showActions',
+      arg: 'showAfterActions',
+      eq: true,
+    },
+  },
+  before: {
+    if: {
+      arg: 'showBeforeActions',
       eq: true,
     },
   },

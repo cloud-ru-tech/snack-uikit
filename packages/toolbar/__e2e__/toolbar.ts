@@ -30,18 +30,27 @@ function getSelectors() {
     deleteToaster: Selector(dataTestIdSelector(TEST_ID_TOASTER.delete)),
     refreshToaster: Selector(dataTestIdSelector(TEST_ID_TOASTER.refresh)),
     optionToaster: Selector(dataTestIdSelector(TEST_ID_TOASTER.option)),
-    actions: Selector(dataTestIdSelector(TEST_IDS.actions)),
+    after: Selector(dataTestIdSelector(TEST_IDS.after)),
+    before: Selector(dataTestIdSelector(TEST_IDS.before)),
   };
 }
 
 test.page(
-  getPage({ showCheckbox: true, showOnDelete: true, showOnRefresh: true, showActions: true, showMoreActions: true }),
+  getPage({
+    showCheckbox: true,
+    showOnDelete: true,
+    showOnRefresh: true,
+    showAfterActions: true,
+    showBeforeActions: true,
+    showMoreActions: true,
+  }),
 )(`Should render all items`, async t => {
-  const { search, checkbox, moreActionsButton, actions, refreshButton, deleteButton } = getSelectors();
+  const { search, checkbox, moreActionsButton, before, after, refreshButton, deleteButton } = getSelectors();
 
   await t.expect(search.exists).ok('Search should be render');
   await t.expect(checkbox.exists).ok('Checkbox should be render when checked & onCheck applied');
-  await t.expect(actions.exists).ok('Actions should be render when actions applied');
+  await t.expect(after.exists).ok('After search should be rendered when applied');
+  await t.expect(before.exists).ok('Before search should be rendered when not applied');
   await t.expect(moreActionsButton.exists).ok('MoreActionsButton should be render when moreActions applied');
   await t.expect(refreshButton.exists).ok('RefreshButton should be render when onRefresh callback applied');
   await t.expect(deleteButton.exists).ok('DeleteButton should be render when onDelete callback applied');
@@ -52,15 +61,39 @@ test.page(
     showCheckbox: false,
     showOnDelete: false,
     showOnRefresh: false,
-    showActions: false,
+    showAfterActions: false,
+    showBeforeActions: false,
     showMoreActions: false,
   }),
 )(`Should render only search`, async t => {
-  const { search, checkbox, moreActionsButton, actions, refreshButton, deleteButton } = getSelectors();
+  const { search, checkbox, moreActionsButton, before, after, refreshButton, deleteButton } = getSelectors();
 
   await t.expect(search.exists).ok('Search should be render');
   await t.expect(checkbox.exists).notOk('Checkbox should not be render when checked & onCheck not applied');
-  await t.expect(actions.exists).notOk('Actions should be not render when actions not applied');
+  await t.expect(after.exists).notOk('Actions should be not render when actions not applied');
+  await t.expect(before.exists).notOk('Actions should be not render when actions not applied');
+  await t.expect(moreActionsButton.exists).notOk('MoreActionsButton should not be render when moreActions not applied');
+  await t.expect(refreshButton.exists).notOk('RefreshButton should not be render when onRefresh callback not applied');
+  await t.expect(deleteButton.exists).notOk('DeleteButton should not be render when onDelete callback not applied');
+});
+
+test.page(
+  getPage({
+    showCheckbox: false,
+    showOnDelete: false,
+    showOnRefresh: false,
+    showSearch: false,
+    showAfterActions: false,
+    showBeforeActions: false,
+    showMoreActions: false,
+  }),
+)(`Should render without search`, async t => {
+  const { search, checkbox, moreActionsButton, before, after, refreshButton, deleteButton } = getSelectors();
+
+  await t.expect(search.exists).notOk('Search should not be render');
+  await t.expect(checkbox.exists).notOk('Checkbox should not be render when checked & onCheck not applied');
+  await t.expect(after.exists).notOk('Actions should be not render when actions not applied');
+  await t.expect(before.exists).notOk('Actions should be not render when actions not applied');
   await t.expect(moreActionsButton.exists).notOk('MoreActionsButton should not be render when moreActions not applied');
   await t.expect(refreshButton.exists).notOk('RefreshButton should not be render when onRefresh callback not applied');
   await t.expect(deleteButton.exists).notOk('DeleteButton should not be render when onDelete callback not applied');
@@ -72,7 +105,7 @@ test.page(
     showCheckbox: true,
     showOnDelete: true,
     showOnRefresh: true,
-    showActions: true,
+    showAfterActions: true,
     showMoreActions: true,
   }),
 )(`Should control by keyboard`, async t => {

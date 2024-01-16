@@ -8,8 +8,10 @@ import { NeverOrUndefined, RequireAtLeastOne } from './typesUtils';
 type OptionalProps = {
   /** Колбек обновления */
   onRefresh?(): void;
-  /** Дополнительный слот */
-  actions?: ReactNode;
+  /** Дополнительный слот в начале Тулбара */
+  before?: ReactNode;
+  /** Дополнительный слот в конце тулбара */
+  after?: ReactNode;
   /** Элементы выпадающего списка кнопки с действиями */
   moreActions?: Pick<
     ItemSingleProps,
@@ -18,16 +20,20 @@ type OptionalProps = {
 };
 
 export type CommonToolbarProps = {
-  /** Значение строки поиска */
-  value: string;
-  /** Колбек смены значения */
-  onChange(value: string): void;
-  /** Колбек на подтверждение поиска по строке */
-  onSubmit?(value: string): void;
-  /** Плейсхолдер */
-  placeholder?: string;
-  /** Состояние загрузки */
-  loading?: boolean;
+  /** Параметры отвечают за строку поиска <br>
+   * <strong>value</strong>: Значение строки поиска <br>
+   * <strong>onChange</strong>: Колбэк смены значения <br>
+   * <strong>onSubmit</strong>: Колбэк на подтверждение поиска по строке
+   * <strong>placeholder</strong>: Плейсхолдер <br>
+   * <strong>loading</strong>: Состояние загрузки <br>
+   *  */
+  search?: {
+    value: string;
+    onChange(value: string): void;
+    onSubmit?(value: string): void;
+    placeholder?: string;
+    loading?: boolean;
+  };
   /** Класснейм */
   className?: string;
   /** Внешний бордер */

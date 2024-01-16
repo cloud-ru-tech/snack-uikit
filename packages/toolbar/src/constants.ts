@@ -7,5 +7,6 @@ export const TEST_IDS = {
   moreActionsButton: 'toolbar__more-actions-button',
   droplist: 'toolbar__droplist',
   option: 'toolbar__droplist-option',
-  actions: 'toolbar__actions',
+  before: 'toolbar__before',
+  after: 'toolbar__after',
 };

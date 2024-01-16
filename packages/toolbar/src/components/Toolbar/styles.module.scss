@@ -9,9 +9,14 @@
   @include composite-var($toolbar-container);
 
   position: relative;
+
   display: flex;
+  justify-content: space-between;
+
   box-sizing: border-box;
+
   background-color: $sys-neutral-background1-level;
+
   &[data-outline] {
     &::before {
       @include composite-var($toolbar-container-outline);
@@ -59,8 +64,17 @@
   }
 }
 
-
-.actions {
+.flexRow {
   display: flex;
   flex-shrink: 0;
+  box-sizing: border-box;
+
+  &[data-align-right] {
+    margin-left: auto;
+  }
+}
+
+.actions {
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
