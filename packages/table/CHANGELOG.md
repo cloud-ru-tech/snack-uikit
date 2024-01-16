@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2024-01-16)
+
+
+### Features
+
+* **FF-4093:** table columns resizing ([8cae511](https://github.com/cloud-ru-tech/snack-uikit/commit/8cae5116f73f079ce3087099253390f2e79034fe))
+
+
+
+
+
 ## 0.8.9 (2023-12-29)
 
 
