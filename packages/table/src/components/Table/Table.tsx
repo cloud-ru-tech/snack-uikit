@@ -136,6 +136,9 @@ export type TableProps<TData extends object> = WithSupportProps<{
 
   /** Отключение тулбара */
   suppressToolbar?: boolean;
+  /** Дополнительный слот в `Toolbar` перед строкой поиска */
+  toolbarBefore?: ReactNode;
+
   /** Отключение пагинации */
   suppressPagination?: boolean;
 }>;
@@ -170,6 +173,8 @@ export function Table<TData extends object>({
   noResultsState = DEFAULT_NO_RESULTS_TABLE_STATE,
 
   suppressToolbar = false,
+  toolbarBefore,
+
   suppressPagination = false,
 
   ...rest
@@ -344,8 +349,12 @@ export function Table<TData extends object>({
         {!suppressToolbar && (
           <div className={styles.header}>
             <Toolbar
-              value={globalFilter}
-              onChange={onGlobalFilterChange}
+              search={{
+                value: globalFilter,
+                onChange: onGlobalFilterChange,
+                loading: search?.loading,
+                placeholder: search?.placeholder || 'Search',
+              }}
               checked={table.getIsAllPageRowsSelected()}
               indeterminate={table.getIsSomePageRowsSelected()}
               className={styles.toolbar}
@@ -353,10 +362,9 @@ export function Table<TData extends object>({
               onDelete={enableSelection && onDelete ? handleOnDelete : undefined}
               onCheck={enableSelection ? handleOnCheck : undefined}
               outline={outline}
-              loading={search?.loading}
-              placeholder={search?.placeholder || 'Search'}
               selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
-              actions={
+              before={toolbarBefore}
+              after={
                 exportFileName ? (
                   <ExportButton fileName={exportFileName} columnDefinitions={columnDefinitions} data={data} />
                 ) : undefined

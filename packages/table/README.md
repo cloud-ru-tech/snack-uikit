@@ -123,6 +123,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | noDataState | `TableEmptyStateProps` | {   icon: CrossSVG,   appearance: 'red',   title: 'Data collection error',   description: 'Try refreshing the page', } as const | Экран при отстутствии данных |
 | noResultsState | `TableEmptyStateProps` | {   icon: SearchSVG,   appearance: 'neutral',   title: 'Not found',   description: 'Try entering another query', } as const | Экран при отстутствии результатов поиска |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
+| toolbarBefore | `ReactNode` | - | Дополнительный слот в `Toolbar` перед строкой поиска |
 | suppressPagination | `boolean` | - | Отключение пагинации |
 ## Table.getStatusColumnDef
 Вспомогательная функция для создания ячейки со статусом
