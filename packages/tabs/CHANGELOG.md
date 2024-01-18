@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2024-01-18)
+
+
+### Features
+
+* **FF-4094:** add after slot ([9b46fdd](https://github.com/cloud-ru-tech/snack-uikit/commit/9b46fdd704b0541a64d2bb308de61cb0560b7440))
+
+
+
+
+
 ## 0.5.3 (2023-12-28)
 
 ### Only dependencies have been changed
