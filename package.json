@@ -40,7 +40,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@cloud-ru/eslint-config": "1.1.1",
+    "@cloud-ru/eslint-config": "1.1.2",
     "@cloud-ru/ft-config-babel": "1.1.0",
     "@cloud-ru/ft-config-commit-message": "1.1.0",
     "@cloud-ru/ft-config-husky": "1.1.0",
