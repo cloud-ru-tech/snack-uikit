@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { Children, KeyboardEvent, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import { Children, KeyboardEvent, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
 import { Divider } from '@snack-uikit/divider';
@@ -14,8 +14,11 @@ import styles from './styles.module.scss';
 
 export type TabBarProps = WithSupportProps<
   {
-    /** Контент */
+    /** Контент (элементы Tabs.Tab) */
     children: ReactElement<TabProps>[];
+
+    /** Дополнительный слот для кастомного контента справа от табов */
+    after?: ReactNode;
 
     className?: string;
   } & (
@@ -40,7 +43,7 @@ type MarkerPosition = {
   width: number;
 };
 
-export function TabBar({ children, className, type = TYPE.Primary, ...otherProps }: TabBarProps) {
+export function TabBar({ children, className, type = TYPE.Primary, after, ...otherProps }: TabBarProps) {
   const scrollContainerRef = useRef<HTMLElement>(null);
   const { selectedTab, setSelectedTab } = useTabsContext();
   const { hasOverflow, scrollLeft, scrollRight } = useScrollContainer(scrollContainerRef);
@@ -127,24 +130,25 @@ export function TabBar({ children, className, type = TYPE.Primary, ...otherProps
 
   return (
     <div className={cn(styles.tabBar, className)} role='tablist' {...extractSupportProps(otherProps)}>
-      <ScrollContainer className={styles.scrollContainer} innerRef={scrollContainerRef}>
-        {!otherProps.disableDivider && (
-          <span>
-            <Divider weight='regular' className={styles.divider} />
-          </span>
-        )}
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-        <div className={styles.tabsRow} data-type={type} onKeyDown={handleKeyDown}>
-          <TabBarContext.Provider value={{ onSelect: onSelectHandler, type, focusedTab, onFocus: onFocusHandler }}>
-            {children}
-          </TabBarContext.Provider>
+      <div className={styles.tabBarMain} data-test-id='tabs__bar-wrap'>
+        <ScrollContainer className={styles.scrollContainer} innerRef={scrollContainerRef}>
+          {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+          <div className={styles.tabsRow} data-type={type} onKeyDown={handleKeyDown}>
+            <TabBarContext.Provider value={{ onSelect: onSelectHandler, type, focusedTab, onFocus: onFocusHandler }}>
+              {children}
+            </TabBarContext.Provider>
 
-          <div className={styles.marker} style={markerPosition} data-type={type} />
-        </div>
-      </ScrollContainer>
+            <div className={styles.marker} style={markerPosition} data-type={type} />
+          </div>
+        </ScrollContainer>
 
-      {hasOverflow.left && <ScrollButton direction='left' onClick={scrollLeft} type={type} />}
-      {hasOverflow.right && <ScrollButton direction='right' onClick={scrollRight} type={type} />}
+        {hasOverflow.left && <ScrollButton direction='left' onClick={scrollLeft} type={type} />}
+        {hasOverflow.right && <ScrollButton direction='right' onClick={scrollRight} type={type} />}
+      </div>
+
+      {after && <div data-test-id='tabs__bar__after'>{after}</div>}
+
+      {!otherProps.disableDivider && <Divider weight='regular' className={styles.divider} />}
     </div>
   );
 }

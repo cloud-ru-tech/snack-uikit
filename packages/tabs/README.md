@@ -51,7 +51,8 @@ const [value, setValue] = useState('tab1');
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| children* | `ReactElement<TabProps, string \| JSXElementConstructor<any>>[]` | - | Контент |
+| children* | `ReactElement<TabProps, string \| JSXElementConstructor<any>>[]` | - | Контент (элементы Tabs.Tab) |
+| after | `ReactNode` | - | Дополнительный слот для кастомного контента справа от табов |
 | className | `string` | - | CSS-класс |
 | type | "primary" \| "secondary" | "primary" <br> - `Primary` - когда панель табов является верхнеуровневым элементом страницы, замещающим заголовок. <br> - `Secondary` - когда панель табов расположена на том же уровне что и остальной контент | Тип панели табов: |
 | disableDivider | `boolean` | - |  |

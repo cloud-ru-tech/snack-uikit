@@ -2,6 +2,10 @@ import { ClientFunction, fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 
+function getUrl(props: Record<string, unknown> = {}) {
+  return getTestcafeUrl({ name: 'tabs', props: { 'data-test-id': 'tabs', ...props } });
+}
+
 function isInViewport(selector: Selector) {
   const run = ClientFunction(
     () => {
@@ -29,6 +33,14 @@ function getWrapper() {
   return Selector(dataTestIdSelector('tabs'));
 }
 
+function getTabsBarAfter() {
+  return getWrapper().find(dataTestIdSelector('tabs__bar__after'));
+}
+
+function getTabsBarWrap() {
+  return Selector(dataTestIdSelector('tabs__bar-wrap'));
+}
+
 function getTabButton(id: string) {
   return Selector(dataTestIdSelector(`tabs__tab-${id}`));
 }
@@ -53,7 +65,7 @@ function isDisabled(selector: Selector) {
   return selector.withAttribute('data-disabled', 'true').exists;
 }
 
-fixture('Tabs').page(getTestcafeUrl({ name: 'tabs', props: { 'data-test-id': 'tabs' } }));
+fixture('Tabs').page(getUrl());
 
 test('renders correctly', async t => {
   await t.expect(getWrapper().exists).ok();
@@ -62,6 +74,7 @@ test('renders correctly', async t => {
   await t.expect(getTabCounter('tab1').exists).ok();
   await t.expect(getScrollButton('right').exists).ok();
   await t.expect(getScrollButton('left').exists).notOk();
+  await t.expect(getTabsBarAfter().exists).notOk('Custom content should not be rendered in "after" by default');
 });
 
 test('syncs selected tab with content', async t => {
@@ -174,7 +187,7 @@ test('move tabs on mouse scroll', async t => {
   await t.expect(isInViewport(tabButton1)).ok();
   await t.expect(isInViewport(tabButton15)).notOk();
 
-  await t.hover(tabButton8).scroll(getWrapper().find('div'), 700, 0);
+  await t.hover(tabButton8).scroll(getTabsBarWrap().find('div'), 700, 0);
 
   await t.expect(isInViewport(tabButton1)).notOk();
   await t.expect(isInViewport(tabButton15)).ok();
@@ -199,7 +212,7 @@ test('move tabs by arrows', async t => {
   const tabButton8 = getTabButton('tab8');
   const tabButton16 = getTabButton('tab16');
 
-  await t.hover(tabButton8).scroll(getWrapper().find('div'), 200, 0);
+  await t.hover(tabButton8).scroll(getTabsBarWrap().find('div'), 200, 0);
 
   await t.expect(isInViewport(tabButton1)).notOk('1. tabButton1 should be hidden');
   await t.expect(isInViewport(tabButton16)).notOk('2. tabButton16 should be hidden');
@@ -213,4 +226,8 @@ test('move tabs by arrows', async t => {
 
   await t.expect(isInViewport(tabButton1)).ok('5. tabButton1 should be visible');
   await t.expect(isInViewport(tabButton16)).notOk('6. tabButton16 should be hidden');
+});
+
+test.page(getUrl({ showAfter: true }))('Should render custom content in "after"', async t => {
+  await t.expect(getTabsBarAfter().exists).ok('No custom content rendered in "after"');
 });

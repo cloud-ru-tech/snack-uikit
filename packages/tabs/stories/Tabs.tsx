@@ -1,5 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 
+import { ButtonFilled } from '@snack-uikit/button';
+
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
@@ -11,6 +13,7 @@ import styles from './styles.module.scss';
 type StoryType = Omit<TabsProps, 'value'> & {
   defaultValue?: string;
   disableDivider?: boolean;
+  showAfter?: boolean;
   type: Type;
   'data-test-id'?: string;
 };
@@ -40,10 +43,14 @@ const tabsData = [
   { value: 'tab16', label: 'Tab 16' },
 ];
 
-const Template: StoryFn<StoryType> = function ({ type, defaultValue, disableDivider, ...args }) {
+const Template: StoryFn<StoryType> = function ({ type, defaultValue, disableDivider, showAfter, ...args }) {
   return (
     <Tabs {...args} defaultValue={defaultValue}>
-      <Tabs.TabBar {...(type === TYPE.Secondary ? { disableDivider, type } : { type })} {...args}>
+      <Tabs.TabBar
+        {...(type === TYPE.Secondary ? { disableDivider, type } : { type })}
+        after={showAfter && <ButtonFilled label='custom btn' />}
+        {...args}
+      >
         {tabsData.map(props => (
           <Tabs.Tab key={props.value} {...props} />
         ))}
@@ -64,6 +71,7 @@ tabs.args = {
   type: TYPE.Primary,
   defaultValue: tabIds[0],
   disableDivider: false,
+  showAfter: false,
 };
 
 tabs.argTypes = {
@@ -93,6 +101,9 @@ tabs.argTypes = {
       arg: 'type',
       eq: TYPE.Secondary,
     },
+  },
+  showAfter: {
+    name: '[Stories]: show custom content after tabs bar',
   },
 };
 

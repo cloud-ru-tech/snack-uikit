@@ -4,7 +4,18 @@ $types: 'primary', 'secondary';
 
 .tabBar {
   position: relative;
+
+  display: flex;
+  gap: $dimension-050m; // TODO: replace with token from tabs
+  align-items: center;
+
   box-sizing: border-box;
+}
+
+.tabBarMain {
+  position: relative;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .scrollContainer {
@@ -22,9 +33,11 @@ $types: 'primary', 'secondary';
   width: fit-content;
 
   white-space: nowrap;
+
   &[data-type=primary] {
     @include composite-var($tabs-primary);
   }
+
   &[data-type=secondary] {
     @include composite-var($tabs-secondary);
   }
