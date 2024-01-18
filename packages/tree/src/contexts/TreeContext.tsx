@@ -12,6 +12,7 @@ type TreeContextProps = Omit<TreeBaseProps, 'onSelect' | 'onExpand' | 'onNodeCli
   onNodeClick: OnNodeClick;
   isMultiSelect: boolean;
   isSingleSelect: boolean;
+  isSelectable: boolean;
   focusedNodeId?: TreeNodeId;
   setFocusPosition(id: TreeNodeId): void;
   resetFocusPosition(): void;
@@ -39,6 +40,7 @@ export const TreeContext = createContext<TreeContextProps>({
   focusableNodeIds: [],
   isMultiSelect: false,
   isSingleSelect: false,
+  isSelectable: false,
 });
 
 export function TreeContextProvider({ children, value }: TreeContextProviderProps) {
@@ -53,6 +55,7 @@ export function TreeContextProvider({ children, value }: TreeContextProviderProp
 
   const isMultiSelect = selectionMode === SELECTION_MODE.Multi;
   const isSingleSelect = selectionMode === SELECTION_MODE.Single;
+  const isSelectable = Boolean(selectionMode);
 
   const [expandedNodes, onExpandHandler] = useUncontrolledProp<TreeNodeId[]>(
     value.expandedNodes,
@@ -75,7 +78,7 @@ export function TreeContextProvider({ children, value }: TreeContextProviderProp
 
   const onSelect = useCallback<TreeContextProps['onSelect']>(
     (node, parentNode) => {
-      if (node.disabled) return;
+      if (!isSelectable || node.disabled) return;
 
       if (isSingleSelect) {
         onSelectHandler(node.id, node);
@@ -88,7 +91,7 @@ export function TreeContextProvider({ children, value }: TreeContextProviderProp
         onSelectHandler(updatedSelectedNodes, node);
       }
     },
-    [isSingleSelect, onSelectHandler, selectedNodes],
+    [isSingleSelect, onSelectHandler, selectedNodes, isSelectable],
   );
 
   const focusableNodeIds = useMemo(() => {
@@ -146,6 +149,7 @@ export function TreeContextProvider({ children, value }: TreeContextProviderProp
         selected: selectedNodes,
         isSingleSelect,
         isMultiSelect,
+        isSelectable,
         expandedNodes,
         onExpand,
         onSelect,

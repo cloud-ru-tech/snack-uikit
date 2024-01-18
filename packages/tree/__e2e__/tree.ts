@@ -321,3 +321,16 @@ test.page(getPage())('Disabled element works as expected', async t => {
   await t.pressKey('esc');
   await t.expect(disabledElement.item.focused).eql(false, 'Item should not be focused after press "esc"');
 });
+
+test.page(getPage({ selectionMode: '!undefined' }))('selectionMode=undefined is not selecting anything', async t => {
+  const firstElement = selectors.getNode(0);
+
+  await t.expect(firstElement.node.exists).ok('No nodes found');
+  await t.expect(firstElement.checkbox.exists).notOk('Checkbox found in disabled selectionMode');
+
+  await t.expect(firstElement.selectedAttribute).eql(null);
+
+  await t.click(firstElement.item);
+
+  await t.expect(firstElement.selectedAttribute).eql(null);
+});

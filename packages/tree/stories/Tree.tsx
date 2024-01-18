@@ -117,21 +117,32 @@ const Template: StoryFn<StoryProps> = ({ selectionMode, enableNodeActions, ...pr
 
   const commonProps = {
     ...props,
+    onSelect: undefined,
+    selected: undefined,
     data,
-    onSelect: setSelected,
     ...(enableNodeActions ? { nodeActions: getNodeActions(), parentActions: getNodeActions(true) } : {}),
     onDataLoad,
   };
 
-  return (
-    <div className={styles.storyWrap}>
-      {selectionMode === SELECTION_MODE.Single ? (
-        <Tree {...commonProps} selectionMode={selectionMode} selected={selectedNodes as TreeNodeId} />
-      ) : (
-        <Tree {...commonProps} selectionMode={selectionMode} selected={selectedNodes as TreeNodeId[]} />
-      )}
-    </div>
-  );
+  const selectableProps = {
+    ...commonProps,
+    selected: selectedNodes,
+    onSelect: setSelected,
+  };
+
+  const switchRender = () => {
+    switch (selectionMode) {
+      case SELECTION_MODE.Single:
+        return <Tree {...selectableProps} selectionMode={selectionMode} selected={selectedNodes as TreeNodeId} />;
+      case SELECTION_MODE.Multi:
+        return <Tree {...selectableProps} selectionMode={selectionMode} selected={selectedNodes as TreeNodeId[]} />;
+      case undefined:
+      default:
+        return <Tree {...commonProps} />;
+    }
+  };
+
+  return <div className={styles.storyWrap}>{switchRender()}</div>;
 };
 
 export const tree = Template.bind({});
@@ -143,7 +154,7 @@ tree.args = {
 
 tree.argTypes = {
   selectionMode: {
-    options: Object.values(SELECTION_MODE),
+    options: [undefined, ...Object.values(SELECTION_MODE)],
     control: {
       type: 'select',
     },

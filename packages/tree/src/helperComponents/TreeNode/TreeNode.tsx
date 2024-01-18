@@ -46,6 +46,7 @@ export function TreeNode({
 }: TreeNodeComponentProps) {
   const {
     isMultiSelect,
+    isSelectable,
     onNodeClick,
     selected,
     expandedNodes,
@@ -233,7 +234,7 @@ export function TreeNode({
       <div
         role='treeitem'
         aria-expanded={isExpanded}
-        aria-selected={isSelected}
+        aria-selected={isSelectable ? isSelected : undefined}
         aria-disabled={disabled}
         data-multiselect={isMultiSelect || undefined}
         data-droplist-active={isDroplistOpen || isDroplistTriggerFocused || undefined}

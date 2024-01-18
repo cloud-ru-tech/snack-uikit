@@ -43,7 +43,6 @@ const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | data* | `TreeNodeProps[]` | - | Данные для отрисовки |
-| selectionMode | "single" \| "multi" | - | Режим выбора элементов: <br> - `Single` - одиночный выбор <br> - `Multi` - множественный выбор |
 | onNodeClick | `OnNodeClick` | - | Обработчик клика по элементу дерева |
 | expandedNodes | `string[]` | - | Состояние для раскрытых элементов |
 | onExpand | `(expandedKeys: string[], nodeId: string) => void` | - | Колбэк при раскрытии/закрытии элементов |
@@ -53,6 +52,7 @@ const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
 | showIcons | `boolean` | true | Флаг отвечающий за отображение иконок у элементов дерева |
 | showLines | `boolean` | true | Флаг отвечающий за отображение линий вложенности |
 | className | `string` | - | CSS-класс |
+| selectionMode | "single" \| "multi" | - | Режим выбора элементов: <br> - `Single` - одиночный выбор <br> - `Multi` - множественный выбор <br> - `undefined` - без выбора |
 | selected | `string \| string[]` | - | Состояние для выбраных элементов: <br> - При <strong>selectionMode</strong>=`Multi` - принимает массив строк <br> - При <strong>selectionMode</strong>=`Single` - принимает строку |
 | onSelect | `((selectedKeys: string[], node: TreeNodeProps) => void) \| ((selectedKey: string, node: TreeNodeProps) => void)` | - | Колбэк при изменении выбраных элементов: <br> - При <strong>selectionMode</strong>=`Multi` - возвращает массив строк <br> - При <strong>selectionMode</strong>=`Single` - возвращает строку |
 

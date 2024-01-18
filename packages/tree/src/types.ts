@@ -52,6 +52,7 @@ export type TreeCommonProps = {
    * Режим выбора элементов:
    * <br> - `Single` - одиночный выбор
    * <br> - `Multi` - множественный выбор
+   * <br> - `undefined` - без выбора
    */
   selectionMode?: SelectionMode;
   /** Обработчик клика по элементу дерева */
@@ -78,6 +79,12 @@ export type TreeCommonProps = {
   className?: string;
 };
 
+export type TreeView = Omit<TreeCommonProps, 'selected' | 'selectionMode'> & {
+  selectionMode?: never;
+  selected?: never;
+  onSelect?: never;
+};
+
 export type TreeSingleSelect = Omit<TreeCommonProps, 'selected'> & {
   selectionMode: 'single';
   /** Состояние для выбраного элемента */
@@ -101,4 +108,4 @@ export type TreeMultiSelect = Omit<TreeCommonProps, 'selected'> & {
   onSelect?(selectedKeys: TreeNodeId[], node: TreeNodeProps): void;
 };
 
-export type TreeBaseProps = TreeMultiSelect | TreeSingleSelect;
+export type TreeBaseProps = TreeView | TreeMultiSelect | TreeSingleSelect;
