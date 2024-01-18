@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2024-01-18)
+
+
+### Features
+
+* **FF-4126:** selectionMode is optional, and tree may be unselectable ([1540e26](https://github.com/cloud-ru-tech/snack-uikit/commit/1540e266b9351a92f1619c399a904fd6bd25518f))
+
+
+
+
+
 # 0.4.0 (2024-01-11)
 
 
