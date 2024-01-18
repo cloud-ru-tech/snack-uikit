@@ -5,10 +5,10 @@ $sizes: 's', 'm', 'l';
 
 .decorator {
   display: flex;
-  flex: 1 0 auto;
   align-items: center;
 
   box-sizing: border-box;
+  width: 100%;
 
   background-color: $sys-neutral-background1-level;
   border-color: transparent;

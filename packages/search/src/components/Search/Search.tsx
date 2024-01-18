@@ -7,7 +7,7 @@ import { SIZE } from '../../constants';
 import { SearchAutocomplete, SearchAutocompleteProps } from '../SearchAutocomplete';
 import { SearchFieldText } from '../SearchFieldText';
 
-export type SearchProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
+export type SearchProps = Omit<SearchPrivateProps, 'onKeyDown' | 'tabIndex'> & {
   /** Внешний бордер */
   outline?: boolean;
 } & (
