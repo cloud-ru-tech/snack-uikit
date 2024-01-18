@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-01-18)
+
+
+### Features
+
+* **FF-4096:** add showClearButton prop ([1e619be](https://github.com/cloud-ru-tech/snack-uikit/commit/1e619befffcc5b50f44cda18edac5b6be2dff60d))
+
+
+
+
+
 ## 0.10.4 (2023-12-28)
 
 ### Only dependencies have been changed

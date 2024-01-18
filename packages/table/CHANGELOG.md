@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2024-01-18)
+
+
+### Features
+
+* **FF-4102:** update toolbar usage, add 'toolbarBeforeSearch' prop ([6acf0ba](https://github.com/cloud-ru-tech/snack-uikit/commit/6acf0ba5bfb1afaaa485857f3058b65a92f6c75c))
+
+
+
+
+
 # 0.9.0 (2024-01-16)
 
 

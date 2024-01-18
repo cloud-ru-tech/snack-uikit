@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2024-01-18)
+
+
+### BREAKING CHANGES
+
+
+* **FF-4102:** rename prop 'actions' to 'after', add 'before' prop, composed some props to 'search' ([8178570](https://github.com/cloud-ru-tech/snack-uikit/commit/81785709769bde31e7d11db1af9db6b87568b148))
+
+
+
+
 ## 0.5.4 (2023-12-28)
 
 ### Only dependencies have been changed
