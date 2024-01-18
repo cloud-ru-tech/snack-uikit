@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.1 (2024-01-18)
+
+
+### Dependencies
+
+* **FF-4075:** change search package to private ([94c9414](https://github.com/cloud-ru-tech/snack-uikit/commit/94c94144a291db75bf1264b678f04068c9b3b069))
+
+
+
+
+
 # 0.6.0 (2024-01-18)
 
 

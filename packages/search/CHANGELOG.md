@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-01-18)
+
+
+### BREAKING CHANGES
+
+
+* **FF-4075:** remove local search-private ([9ffc681](https://github.com/cloud-ru-tech/snack-uikit/commit/9ffc68147b5e0dbeb93a00fa7d9b24749ab697e6))
+
+
+
+
 ## 0.6.4 (2023-12-28)
 
 ### Only dependencies have been changed

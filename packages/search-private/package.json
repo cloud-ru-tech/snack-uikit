@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Search Private",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -39,7 +39,5 @@
     "classnames": "2.5.1",
     "merge-refs": "1.2.2",
     "uncontrollable": "8.0.4"
-  },
-  "devDependencies": {},
-  "peerDependencies": {}
+  }
 }
