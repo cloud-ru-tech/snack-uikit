@@ -21,6 +21,10 @@ $hint-icon-container: (
 .decorator {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+
+  width: 100%;
+  min-width: 0;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
