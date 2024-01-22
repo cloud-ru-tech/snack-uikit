@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.1 (2024-01-22)
+
+
+### Bug Fixes
+
+* **FF-4103:** make fields fit parent container ([4312de4](https://github.com/cloud-ru-tech/snack-uikit/commit/4312de4eefb07eed5daf6806274422f61a8063ab))
+
+
+
+
+
 # 0.11.0 (2024-01-18)
 
 

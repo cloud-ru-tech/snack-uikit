@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.1 (2024-01-22)
+
+
+### Bug Fixes
+
+* **FF-4103:** cross doesn't extend search field anymore on smaller sizes ([b837abf](https://github.com/cloud-ru-tech/snack-uikit/commit/b837abfb1ef76505f1a69f51f4bf9af19bac5445))
+* **FF-4103:** make search fit parent container ([c86a9ae](https://github.com/cloud-ru-tech/snack-uikit/commit/c86a9aebadb77e83ac9fc601f4a9f9628e3db44b))
+
+
+
+
+
 # 0.7.0 (2024-01-18)
 
 
