@@ -14,3 +14,9 @@ export const DESCRIPTION_SIZE_MAP: Record<Size, TypographyProps['size']> = {
   [SIZE.M]: 'm',
   [SIZE.L]: 'l',
 };
+
+export const TRUNCATE_DEFAULTS = {
+  title: 1,
+  description: 2,
+  metadata: 1,
+};

@@ -57,6 +57,7 @@ const Template: StoryFn<StoryProps> = ({
   pictureSrc,
   showFading,
   disabled,
+  truncate,
   ...args
 }: StoryProps) => {
   const [checked, setChecked] = useState<boolean>(checkedProp || false);
@@ -126,7 +127,15 @@ const Template: StoryFn<StoryProps> = ({
         checked={checked}
         onClick={clickable ? () => setChecked(prevChecked => !prevChecked) : undefined}
         image={image}
-        header={<Card.Header title={title} description={description} metadata={metadata} emblem={emblem} />}
+        header={
+          <Card.Header
+            title={title}
+            description={description}
+            metadata={metadata}
+            truncate={truncate}
+            emblem={emblem}
+          />
+        }
         footer={footer}
         functionBadge={<Card.FunctionBadge icon={<KebabSVG />} options={OPTIONS} />}
       >
@@ -157,6 +166,11 @@ card.args = {
   imageSrc: '',
   pictureSrc: '',
   showFading: true,
+  truncate: {
+    title: 1,
+    description: 2,
+    metadata: 1,
+  },
 };
 
 card.argTypes = {
