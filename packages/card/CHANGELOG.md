@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2024-01-22)
+
+
+### Features
+
+* **FF-4133:** add truncate props to Card.Header ([e2f86c1](https://github.com/cloud-ru-tech/snack-uikit/commit/e2f86c170d1e419edc0bc88fc1776616d08b366d))
+
+
+
+
+
 # 0.7.0 (2023-12-28)
 
 
