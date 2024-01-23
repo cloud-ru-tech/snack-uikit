@@ -67,7 +67,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
   },
   Table.getRowActionsColumnDef({
     pinned: true,
-    actions: [
+    actionsGenerator: () => [
       {
         option: 'Действие с иконкой',
         icon: <PlaceholderSVG />,
