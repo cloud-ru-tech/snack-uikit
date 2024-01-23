@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.20.0 (2024-01-23)
+
+
+### Features
+
+* **FF-4133:** add arrowLeft and arrowRight icons ([86d9c14](https://github.com/cloud-ru-tech/snack-uikit/commit/86d9c1488685409f3bda2df63793c201b38acbb4))
+
+
+
+
+
 ## 0.19.2 (2023-12-18)
 
 
