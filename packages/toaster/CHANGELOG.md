@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2024-01-24)
+
+
+### Features
+
+* **FF-4182:** add onClose callback prop ([6046778](https://github.com/cloud-ru-tech/snack-uikit/commit/60467789d5e6bc940e3f7cf902df7da69b0a0e0b))
+
+
+
+
+
 ## 0.5.5 (2024-01-23)
 
 ### Only dependencies have been changed
