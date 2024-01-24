@@ -23,6 +23,8 @@ export type DropdownProps = WithSupportProps<
     | 'closeOnEscapeKey'
     | 'triggerClickByKeys'
     | 'triggerRef'
+    | 'outsideClick'
+    | 'fallbackPlacements'
   > &
     Partial<Pick<PopoverPrivateProps, 'trigger' | 'placement'>>
 >;
