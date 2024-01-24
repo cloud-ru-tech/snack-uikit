@@ -8,7 +8,7 @@ export type PromisedId = Promise<ToasterId>;
 export type ToastOptions = {
   id?: ToasterId;
   autoClose?: RtToastOptions['autoClose'];
-  onClose?: RtToastOptions['onClose'];
+  onClose?(id?: ToasterId): void;
 };
 
 export enum ToasterType {

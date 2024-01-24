@@ -18,6 +18,7 @@ import {
 } from './constants';
 import {
   OpenToast,
+  SystemEventOptions,
   Toaster,
   ToasterId,
   ToasterPropsMap,
@@ -73,6 +74,9 @@ function getToastOptions<T extends keyof ToasterPropsMap>({
 }): RtToastOptions {
   return {
     toastId: toastOptions?.id,
+    onClose: ((data: { id: ToasterId }) => {
+      toasterProps?.onClose?.(data?.id);
+    }) as RtToastOptions['onClose'],
     autoClose: toasterProps?.loading ? false : AUTO_CLOSE_TIME[type],
     containerId: containerId || `${TOASTER_CONTAINER_PREFIX}${type}`,
   };
@@ -211,35 +215,35 @@ const userAction = {
 };
 
 const systemEvent = {
-  success(options: ToastSystemEventProps) {
+  success(options: SystemEventOptions) {
     return openToast({
       type: ToasterType.SystemEvent,
       toasterProps: { ...options, appearance: 'success' },
     });
   },
 
-  neutral(options: ToastSystemEventProps) {
+  neutral(options: SystemEventOptions) {
     return openToast({
       type: ToasterType.SystemEvent,
       toasterProps: { ...options, appearance: 'neutral' },
     });
   },
 
-  warning(options: ToastSystemEventProps) {
+  warning(options: SystemEventOptions) {
     return openToast({
       type: ToasterType.SystemEvent,
       toasterProps: { ...options, appearance: 'warning' },
     });
   },
 
-  error(options: ToastSystemEventProps) {
+  error(options: SystemEventOptions) {
     return openToast({
       type: ToasterType.SystemEvent,
       toasterProps: { ...options, appearance: 'error' },
     });
   },
 
-  errorCritical(options: ToastSystemEventProps) {
+  errorCritical(options: SystemEventOptions) {
     return openToast({
       type: ToasterType.SystemEvent,
       toasterProps: { ...options, appearance: 'errorCritical' },
@@ -247,35 +251,35 @@ const systemEvent = {
   },
 
   update: {
-    success(id: ToasterId, options: ToastSystemEventProps) {
+    success(id: ToasterId, options: SystemEventOptions) {
       return updateToast(id, {
         type: ToasterType.SystemEvent,
         toasterProps: { ...options, appearance: 'success' },
       });
     },
 
-    neutral(id: ToasterId, options: ToastSystemEventProps) {
+    neutral(id: ToasterId, options: SystemEventOptions) {
       return updateToast(id, {
         type: ToasterType.SystemEvent,
         toasterProps: { ...options, appearance: 'neutral' },
       });
     },
 
-    warning(id: ToasterId, options: ToastSystemEventProps) {
+    warning(id: ToasterId, options: SystemEventOptions) {
       return updateToast(id, {
         type: ToasterType.SystemEvent,
         toasterProps: { ...options, appearance: 'warning' },
       });
     },
 
-    error(id: ToasterId, options: ToastSystemEventProps) {
+    error(id: ToasterId, options: SystemEventOptions) {
       return updateToast(id, {
         type: ToasterType.SystemEvent,
         toasterProps: { ...options, appearance: 'error' },
       });
     },
 
-    errorCritical(id: ToasterId, options: ToastSystemEventProps) {
+    errorCritical(id: ToasterId, options: SystemEventOptions) {
       return updateToast(id, {
         type: ToasterType.SystemEvent,
         toasterProps: { ...options, appearance: 'errorCritical' },

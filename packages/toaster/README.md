@@ -11,10 +11,10 @@
 import { toaster } from '@snack-uikit/toaster';
 
 // create userAction toast
-const userActionId = await toaster.userAction.success({ label });
+const userActionId = await toaster.userAction.success({ label, id });
 
 // create systemEvent toast
-const systemEventId = await toaster.systemEvent.success({ title, description });
+const systemEventId = await toaster.systemEvent.success({ title, description, id });
 
 // update userAction toast
 toaster.userAction.update.error(userActionId, { label: 'new text' });
@@ -47,6 +47,7 @@ type ToastUserActionProps = Partial<RtToastContentProps> &
     label: string;
     link?: ToastUserActionLink;
     className?: string;
+    onClose(id?: string | number): void;
   }>;
 
 type ToastSystemEventLink = {
@@ -64,6 +65,7 @@ type ToastSystemEventProps = Partial<RtToastContentProps> &
     closable?: boolean;
     className?: string;
     onCloseClick?(e: MouseEvent<HTMLButtonElement>, close?: () => void): void;
+    onClose(id?: string | number): void;
   }>;
 ```
 
