@@ -1,0 +1,64 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-infoBlock';
+
+$sizes: 's', 'm', 'l';
+
+.contentLayout {
+  display: flex;
+  flex-direction: column;
+}
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.infoBlock {
+  display: flex;
+  box-sizing: border-box;
+
+  &[data-align='vertical'] {
+    flex-direction: column;
+    align-items: center;
+
+    .textWrap {
+      align-items: center;
+    }
+
+    .footer {
+      text-align: center;
+    }
+  }
+
+  &[data-align='horizontal'] {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($info-block, $size, 'container');
+
+      .contentLayout {
+        @include composite-var($info-block, $size, 'content-layout');
+      }
+
+      .textWrap {
+        @include composite-var($info-block, $size, 'text-wrap');
+      }
+    }
+  }
+}
+
+.title {
+  color: $sys-neutral-text-main;
+}
+
+.description {
+  color: $sys-neutral-text-support;
+}
