@@ -3,7 +3,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import * as Icons from '../src';
+import * as Icons from '../src/components';
 import classnames from './styles.module.scss';
 
 type StoryProps = {

@@ -34,8 +34,9 @@
     "validate:icons": "ts-node ../../scripts/validateIcons.ts",
     "create-export-index-file": "ts-node ../../scripts/create-export-index-file.ts",
     "build:icons": "cross-var rimraf src/components/$npm_config_directory && cross-var svgr -d src/components/$npm_config_directory svgs-fixed/$npm_config_directory --config-file templates/.svgrrc.js",
+    "build:icons-with-context": "cross-var rimraf src/components-with-context/$npm_config_directory && cross-var svgr -d src/components-with-context/$npm_config_directory svgs-fixed/$npm_config_directory --config-file templates/context.svgrrc.js && cross-var rimraf src/components-with-context/$npm_config_directory/*/[!i]*.tsx",
     "fix:icons": "cross-var rimraf svgs-fixed/$npm_config_directory && ts-node ../../scripts/fix-icons.ts",
-    "build:interface-icons": "npm run fix:icons --directory=interface-icons && npm run build:icons --directory=interface-icons",
+    "build:interface-icons": "npm run fix:icons --directory=interface-icons && npm run build:icons --directory=interface-icons && npm run build:icons-with-context --directory=interface-icons",
     "compile": "npm run validate:icons && npm run build:interface-icons && npm run create-export-index-file"
   },
   "devDependencies": {

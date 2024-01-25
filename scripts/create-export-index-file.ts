@@ -15,12 +15,20 @@ function createExportIndexFile(folderPath: string, outputFile: string) {
   fs.writeFileSync(outputFile, exports);
 }
 
-const folderPath = 'src/components/interface-icons';
-const outputFile = 'src/components/interface-icons/index.tsx';
+const folders = ['components', 'components-with-context'];
+const collections = ['interface-icons'];
 
 try {
-  createExportIndexFile(folderPath, outputFile);
-  console.log('Export icons file created.');
+  for (const folder of folders) {
+    for (const collection of collections) {
+      const folderPath = `src/${folder}/${collection}`;
+      const outputFile = `src/${folder}/${collection}/index.tsx`;
+
+      createExportIndexFile(folderPath, outputFile);
+    }
+  }
+
+  console.log('Export icons files created.');
 } catch (err) {
   console.log('Error: ', err);
 }
