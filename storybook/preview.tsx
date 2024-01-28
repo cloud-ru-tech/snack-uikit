@@ -1,10 +1,12 @@
 import './styles.module.scss';
 
+import { Preview } from '@storybook/react';
 import { themes, ThemeVars } from '@storybook/theming';
-import { DecoratorFunction, GlobalTypes, Parameters } from '@storybook/types';
+import { GlobalTypes, Parameters } from '@storybook/types';
 import { withDesign } from 'storybook-addon-designs';
 
 import { PARAM_COLOR_MAP_KEY, PARAM_KEY } from '@cloud-ru/ft-storybook-brand-addon';
+import { Sprite, SpriteSVG } from '@snack-uikit/icons';
 
 import { themes as additionalThemes } from '../themes.config';
 import { BADGE, Brand, DEFAULT_BRAND_COLORS_MAP, DEFAULT_BRAND_MAP } from './constants';
@@ -76,7 +78,15 @@ const globalTypes: GlobalTypes = {
   }, {}),
 };
 
-const decorators: DecoratorFunction[] = [withDesign];
+const decorators: Preview['decorators'] = [
+  Story => (
+    <>
+      <Sprite content={SpriteSVG as unknown as string} />
+      {Story()}
+    </>
+  ),
+  withDesign,
+];
 
 const preview = {
   decorators,

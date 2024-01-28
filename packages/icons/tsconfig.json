@@ -5,5 +5,11 @@
     "outDir": "./dist"
   },
   "include": ["./src", "../../types"],
-  "exclude": ["./dist"]
+  "exclude": ["./dist"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    },
+    "files": true
+  }
 }

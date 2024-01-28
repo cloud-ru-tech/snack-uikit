@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import fs from 'fs';
 
 const capitalizeFirstLetter = (str: string) => str.replace(str[0], str[0].toUpperCase());
@@ -15,7 +17,7 @@ function createExportIndexFile(folderPath: string, outputFile: string) {
   fs.writeFileSync(outputFile, exports);
 }
 
-const folders = ['components', 'components-with-context'];
+const folders = ['components'];
 const collections = ['interface-icons'];
 
 try {
@@ -28,7 +30,9 @@ try {
     }
   }
 
+  // eslint-disable-next-line no-console
   console.log('Export icons files created.');
 } catch (err) {
+  // eslint-disable-next-line no-console
   console.log('Error: ', err);
 }

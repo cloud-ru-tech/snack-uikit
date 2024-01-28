@@ -105,6 +105,19 @@ const mainConfig = {
       }),
     );
 
+    const SVG_SPRITE_EXPRESSION = /\.symbol.svg$/;
+
+    const fileLoaderRule = config.module.rules.find(rule => rule.test && rule.test.toString().includes('svg'));
+
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = SVG_SPRITE_EXPRESSION;
+    }
+
+    config.module.rules.push({
+      test: SVG_SPRITE_EXPRESSION,
+      use: 'svg-inline-loader',
+    });
+
     return config;
   },
 };

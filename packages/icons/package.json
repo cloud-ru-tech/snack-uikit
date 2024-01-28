@@ -6,6 +6,7 @@
   "title": "Icons",
   "version": "0.20.0",
   "sideEffects": [
+    "*.svg",
     "*.css",
     "*.woff",
     "*.woff2"
@@ -31,15 +32,21 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "validate:icons": "ts-node ../../scripts/validateIcons.ts",
-    "create-export-index-file": "ts-node ../../scripts/create-export-index-file.ts",
+    "create-sprite": "ts-node scripts/createSprite.ts",
+    "validate:icons": "ts-node scripts/validateIcons.ts",
+    "create-export-index-file": "ts-node scripts/createExportIndexFile.ts",
     "build:icons": "cross-var rimraf src/components/$npm_config_directory && cross-var svgr -d src/components/$npm_config_directory svgs-fixed/$npm_config_directory --config-file templates/.svgrrc.js",
-    "build:icons-with-context": "cross-var rimraf src/components-with-context/$npm_config_directory && cross-var svgr -d src/components-with-context/$npm_config_directory svgs-fixed/$npm_config_directory --config-file templates/context.svgrrc.js && cross-var rimraf src/components-with-context/$npm_config_directory/*/[!i]*.tsx",
-    "fix:icons": "cross-var rimraf svgs-fixed/$npm_config_directory && ts-node ../../scripts/fix-icons.ts",
-    "build:interface-icons": "npm run fix:icons --directory=interface-icons && npm run build:icons --directory=interface-icons && npm run build:icons-with-context --directory=interface-icons",
-    "compile": "npm run validate:icons && npm run build:interface-icons && npm run create-export-index-file"
+    "fix:icons": "cross-var rimraf svgs-fixed/$npm_config_directory && ts-node scripts/fixIcons.ts",
+    "build:interface-icons": "npm run fix:icons --directory=interface-icons && npm run build:icons --directory=interface-icons",
+    "compile": "npm run validate:icons && npm run build:interface-icons && npm run create-export-index-file && npm run create-sprite"
   },
   "devDependencies": {
-    "@svgr/cli": "8.1.0"
+    "@svgr/cli": "8.1.0",
+    "@svgr/plugin-jsx": "8.1.0",
+    "@types/svg-sprite": "0.0.38",
+    "fast-xml-parser": "4.2.5",
+    "oslllo-svg-fixer": "3.0.0",
+    "svg-sprite": "2.0.2",
+    "svgo": "3.1.0"
   }
 }

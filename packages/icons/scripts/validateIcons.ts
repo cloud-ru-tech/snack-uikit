@@ -3,8 +3,8 @@ import path from 'path';
 
 import { XMLParser } from 'fast-xml-parser';
 
-import { validateIconSize, validateIconUniqueness, Validator } from './icon-validators';
-const SVGS_FOLDER = path.join(__dirname, '../packages/icons/svgs/interface-icons');
+import { validateIconSize, validateIconUniqueness, Validator } from './iconValidators';
+const SVGS_FOLDER = path.join(__dirname, '../svgs/interface-icons');
 const OPTIONS = {
   ignoreAttributes: false,
   attributeNamePrefix: '@_',
@@ -37,5 +37,6 @@ const validators: Validator[] = [validateIconSize, validateIconUniqueness];
     });
   });
 
+  // eslint-disable-next-line no-console
   console.log('All icons are valid.');
 })();

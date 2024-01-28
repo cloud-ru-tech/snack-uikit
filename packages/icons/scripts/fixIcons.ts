@@ -1,5 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import fs from 'fs';
 import SVGFixer, { FixerOptions } from 'oslllo-svg-fixer';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import path from 'path';
 
 const SOURCE_PATH = 'svgs/interface-icons';
@@ -12,6 +16,7 @@ const FIXER_OPTION: FixerOptions = {
 const fixIcons = async (source: string, destination: string) => {
   try {
     const report = await new SVGFixer(source, destination, FIXER_OPTION).fix();
+    // eslint-disable-next-line no-console
     console.log(report.location.original.source, '- в работе');
   } catch (error) {
     console.error('Произошла ошибка:', error);

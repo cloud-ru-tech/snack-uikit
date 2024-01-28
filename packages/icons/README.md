@@ -3,6 +3,50 @@
 ## Installation
 `npm i @snack-uikit/icons`
 
+## Как подключить иконки в проект
+
+1. Подключите `svg-inline-loader` в конфигурацию webpack-a:
+
+```typescript
+import { SVG_SPRITE_WEBPACK_REG_EXP } from '@snack-uikit/icons';
+
+export default {
+  module: {
+    rules: [
+      { 
+        test: /\.symbol.svg$/, 
+        use: 'svg-inline-loader' 
+      },
+    ],
+  }, 
+  ...
+};
+```
+
+2. Подключите спрайт с иконками в проект
+
+```typescript jsx
+import { Sprite, SpriteSVG } from '@snack-uikit/icons';
+
+function App () {
+  return (
+    <>
+       <Sprite content={SpriteSVG} />
+    </>
+  );
+}
+```
+
+3. Используйте иконки как обычные реакт-компоненты:
+
+```typescript jsx
+import { ChevronLeftSVG }  from '@snack-uikit/icons';
+
+function MyComponent ()  {
+  return <div><ChevronLeftSVG /></div>
+}
+```
+
 ## Как добавить новую иконку
 
 1. Добавьте новый svg-файл в соответсвующую коллекцию иконок в папке svgs (это может быть новый размер иконки). Далее все нужные файлы сгенерятся автоматически во время релиза пакета. 

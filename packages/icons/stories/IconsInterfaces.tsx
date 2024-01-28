@@ -3,11 +3,14 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
+import { Sprite } from '../src';
 import * as Icons from '../src/components';
+import CustomSpriteSVG from './sprites/customSprite.symbol.svg';
 import classnames from './styles.module.scss';
 
 type StoryProps = {
   size?: number | string;
+  applySprite?: boolean;
 };
 
 const meta: Meta = {
@@ -15,8 +18,10 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template: StoryFn<StoryProps> = ({ size }) => (
+const Template: StoryFn<StoryProps> = ({ size, applySprite }) => (
   <div className={classnames.wrapper}>
+    {applySprite && <Sprite content={CustomSpriteSVG as unknown as string} />}
+
     {Object.keys(Icons).map(name => {
       const Icon = Icons[name];
       return (
@@ -33,9 +38,14 @@ export const interfaces: StoryObj<StoryProps> = Template.bind({});
 
 interfaces.args = {
   size: 24,
+  applySprite: false,
 };
 
 interfaces.argTypes = {
+  applySprite: {
+    name: '[Story]: Apply custom sprite',
+    type: 'boolean',
+  },
   size: {
     type: 'number',
   },
