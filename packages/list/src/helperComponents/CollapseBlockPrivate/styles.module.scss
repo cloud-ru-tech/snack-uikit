@@ -1,0 +1,51 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+$duration: 300ms;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: gap $duration;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &[aria-expanded='false'] {
+    gap: 0;
+  }
+}
+
+.contentWrapper {
+  box-sizing: border-box;
+  width: 100%;
+
+  &[aria-hidden='false'] {
+    > div[data-content] {
+      display: block;
+    }
+  }
+}
+
+.content {
+  position: relative;
+  display: none;
+  box-sizing: border-box;
+  width: 100%;
+
+  &::before {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: $opacity-a004;
+    background-color: $sys-neutral-accent-default;
+  }
+}

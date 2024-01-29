@@ -1,0 +1,13 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+.searchItem {
+  width: 100%;
+
+  &:focus-within,
+  &:focus-visible {
+    @include outline-inside-var($container-focused-s);
+
+    max-width: 100%;
+    outline-color: $sys-primary-decor-activated;
+  }
+}

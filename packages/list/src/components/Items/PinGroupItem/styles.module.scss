@@ -1,0 +1,38 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+.pinTopItem {
+  @include composite-var($drop-list-content-pin-top);
+
+  display: flex;
+  flex-direction: column;
+
+  border-color: $sys-neutral-decor-default;
+  border-style: solid;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+
+  li,
+  ul {
+    list-style-type: none;
+  }
+}
+
+.pinBottomItem {
+  @include composite-var($drop-list-content-pin-bottom);
+
+  display: flex;
+  flex-direction: column;
+
+  border-color: $sys-neutral-decor-default;
+  border-style: solid;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+
+  li,
+  ul {
+    list-style-type: none;
+  }
+}

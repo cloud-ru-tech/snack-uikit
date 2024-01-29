@@ -1,0 +1,78 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm', 'l';
+
+.listItem {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: max-content;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+
+  color: $sys-neutral-text-main;
+  text-align: start;
+
+  appearance: unset;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($drop-list, 'item', $size, 'container');
+    }
+  }
+
+  &::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: transparent;
+  }
+
+  &[data-open],
+  &[data-focused],
+  &:hover,
+  &:focus-visible {
+    &::after {
+      opacity: $opacity-a008;
+      background-color: $sys-neutral-accent-default;
+    }
+  }
+
+  &[data-focused],
+  &:focus-visible {
+    @include outline-inside-var($container-focused-s);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: transparent;
+    outline: none;
+
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      cursor: not-allowed;
+      background-color: transparent;
+    }
+  }
+}

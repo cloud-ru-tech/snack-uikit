@@ -1,0 +1,190 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm', 'l';
+
+$typography: (
+  's': (
+    'label': $sans-body-s,
+    'caption': $sans-body-s,
+    'description': $sans-body-s,
+    'separator': $light-label-m,
+  ),
+  'm': (
+    'label': $sans-body-m,
+    'caption': $sans-body-s,
+    'description': $sans-body-s,
+    'separator': $light-label-l,
+  ),
+  'l': (
+    'label': $sans-body-l,
+    'caption': $sans-body-m,
+    'description': $sans-body-m,
+    'separator': $light-label-l,
+  ),
+);
+
+.headline {
+  display: flex;
+  align-items: center;
+}
+
+.option {
+  overflow: hidden;
+  flex: 1;
+  color: $sys-neutral-text-main;
+}
+
+.caption {
+  overflow: hidden;
+  color: $sys-neutral-text-light;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  color: $sys-neutral-text-support;
+}
+
+.checkbox {
+  display: inline-flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: $dimension-3m;
+  height: $dimension-3m;
+}
+
+.beforeContent {
+  display: inline-flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: $icon-s;
+  height: $icon-s;
+
+  color: $sys-neutral-text-light;
+
+  svg {
+    width: 100% !important; /* stylelint-disable-line declaration-no-important */
+    height: 100% !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.expandableIcon {
+  display: flex;
+  align-items: center;
+  color: $sys-neutral-text-light;
+  fill: currentColor;
+}
+
+.markerContainer {
+  @include composite-var($drop-list, 'item', 'marker-container');
+
+  pointer-events: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  box-sizing: border-box;
+  height: 100%;
+
+  &:before {
+    @include composite-var($drop-list, 'item', 'marker');
+
+    content: '';
+    display: block;
+    height: 100%;
+  }
+}
+
+.content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  box-sizing: border-box;
+}
+
+.droplistItem {
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      padding-left: calc(
+        var(--level, 0) * $dimension-050m + simple-var($drop-list, 'item', $size, 'container', 'padding-left')
+      );
+
+      .headline {
+        @include composite-var($drop-list, 'item', $size, 'headline');
+      }
+
+      .option {
+        @include composite-var($typography, $size, 'label');
+      }
+
+      .caption {
+        @include composite-var($typography, $size, 'caption');
+      }
+
+      .description {
+        @include composite-var($typography, $size, 'description');
+      }
+    }
+  }
+
+  &:disabled {
+    .option,
+    .description,
+    .caption,
+    .expandableIcon {
+      color: $sys-neutral-text-disabled;
+    }
+
+    & .beforeContent {
+      opacity: $opacity-a064;
+    }
+  }
+
+  &[data-has-checked],
+  &[data-checked] {
+    &[data-variant='single'] {
+      &::after {
+        opacity: $opacity-a008;
+        background-color: $sys-primary-accent-default;
+      }
+      &:hover {
+        &::after {
+          opacity: $opacity-a016;
+          background-color: $sys-primary-accent-default;
+        }
+      }
+    }
+
+    .markerContainer:before {
+      background-color: $sys-primary-accent-default;
+    }
+
+    &:focus-visible {
+      &[data-variant='single'] {
+        background-color: $sys-primary-background;
+        outline-color: $sys-primary-accent-default;
+      }
+    }
+
+    &:disabled {
+      &[data-variant='single'] {
+        background-color: $sys-neutral-background1-level;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      .markerContainer:before {
+        background-color: $sys-neutral-text-disabled;
+      }
+    }
+  }
+}

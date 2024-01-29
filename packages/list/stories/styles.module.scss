@@ -1,0 +1,19 @@
+.btn {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+  align-items: flex-start;
+
+  padding: 16px 0;
+}
+
+.listContainer {
+  flex-grow: 0;
+  width: 200px;
+}

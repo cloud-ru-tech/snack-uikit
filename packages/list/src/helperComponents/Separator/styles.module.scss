@@ -1,0 +1,63 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm', 'l';
+
+$typography-primary: (
+  's': $sans-label-m,
+  'm': $sans-label-l,
+  'l': $sans-title-m,
+);
+
+$typography-secondary: (
+  's': $light-label-m,
+  'm': $light-label-l,
+  'l': $light-title-m,
+);
+
+.separatorWithLabel {
+  display: flex;
+  gap: $dimension-1m;
+  align-items: flex-end;
+  box-sizing: border-box;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($drop-list, 'item', $size, 'container-separator-subheader');
+
+      .label {
+        &[data-mode='primary'] {
+          @include composite-var(simple-var($typography-primary, $size));
+        }
+        &[data-mode='secondary'] {
+          @include composite-var(simple-var($typography-secondary, $size));
+        }
+      }
+    }
+  }
+}
+
+.separatorWithoutLabel {
+  display: flex;
+  align-items: flex-end;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($drop-list, 'item', $size, 'container-separator');
+    }
+  }
+
+  box-sizing: border-box;
+}
+
+.label {
+  flex-shrink: 0;
+
+  &[data-mode='primary'] {
+    color: $sys-neutral-text-main;
+  }
+
+  &[data-mode='secondary'] {
+    color: $sys-neutral-text-light;
+  }
+}

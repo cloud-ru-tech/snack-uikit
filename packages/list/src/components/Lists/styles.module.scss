@@ -1,0 +1,73 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+.listContainer {
+  margin: 0;
+  padding: 0;
+
+  &:focus-visible {
+    border: none;
+    outline: none;
+
+    &[data-active] {
+      @include outline-inside-var($container-focused-s);
+
+      outline-color: $sys-available-complementary;
+
+      * {
+        cursor: inherit;
+      }
+    }
+  }
+
+  li,
+  ul {
+    list-style-type: none;
+  }
+}
+
+.wrapper {
+  position: relative;
+
+  overflow: hidden;
+  display: block;
+
+  box-sizing: border-box;
+  padding: $dimension-025m;
+
+  &:has(.listContainer:focus-visible) {
+    @include outline-inside-var($container-focused-s);
+
+    outline-color: $sys-available-complementary;
+  }
+  li,
+  ul {
+    list-style-type: none;
+  }
+}
+
+.scrollContainerS {
+  height: auto;
+  max-height: calc($dimension-1m * 32); // 256px
+}
+
+.scrollContainerM {
+  height: auto;
+  max-height: calc($dimension-1m * 40); // 320px
+}
+
+.scrollContainerL {
+  height: auto;
+  max-height: calc($dimension-1m * 48); // 384px
+}
+
+.infoBlock {
+  @include composite-var($sans-body-s);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: $dimension-1m;
+
+  color: $sys-neutral-text-support;
+}

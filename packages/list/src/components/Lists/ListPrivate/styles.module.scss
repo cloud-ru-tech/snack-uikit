@@ -1,0 +1,48 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm', 'l';
+
+$loader-height: (
+  's': $dimension-3m,
+  'm': $dimension-4m,
+  'l': $dimension-5m,
+);
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      height: simple-var($loader-height, $size);
+
+      &[data-no-items] {
+        height: calc(3 * simple-var($loader-height, $size));
+      }
+    }
+  }
+
+  &:focus-visible {
+    @include outline-inside-var($container-focused-s);
+
+    outline-color: $sys-available-complementary;
+  }
+}
+
+.scrollStub {
+  height: calc($dimension-025m / 2);
+  margin-top: calc($dimension-025m / -2);
+  background: transparent;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: $dimension-050m;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: $dimension-050m;
+}
