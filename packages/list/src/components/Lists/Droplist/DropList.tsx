@@ -56,9 +56,8 @@ export function Droplist({
   }, [footerRefs, memorizedItems, openCollapsedItems, searchItem]);
 
   const slicedItems = useMemo(
-    () => getSlicedItems(items, hasSearch, pinTop?.length || 0, pinBottom?.length || 0, footerRefs.length),
-
-    [items, hasSearch, pinTop?.length, pinBottom?.length, footerRefs.length],
+    () => getSlicedItems({ items, hasSearch, pinTop, pinBottom, footerRefs }),
+    [items, hasSearch, pinTop, pinBottom, footerRefs],
   );
 
   const triggerElemRef = useRef<HTMLElement>(null);

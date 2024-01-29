@@ -15,13 +15,17 @@ export type SelectionSingleProps = {
   setValue?(value: any): void;
   /** Режим выбора */
   selection: 'single';
+  /** Режим выбора single */
+  isSelectionSingle: true;
+  /** Режим выбора multi */
+  isSelectionMultiple: false;
 };
 
 export type SelectionMultipleProps = {
   /** Начальное состояние */
   defaultValue?: SelectionSingleValueType[];
   /** Controlled состояние */
-  value?: SelectionSingleValueType[] | undefined;
+  value?: SelectionSingleValueType[];
   /** Controlled обработчик измения состояния */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange?(value: any): void;
@@ -29,6 +33,10 @@ export type SelectionMultipleProps = {
   setValue?(value: any): void;
   /** Режим выбора */
   selection: 'multiple';
+  /** Режим выбора single */
+  isSelectionSingle: false;
+  /** Режим выбора multi */
+  isSelectionMultiple: true;
 };
 
 type SelectionNoneProps = {
@@ -37,6 +45,8 @@ type SelectionNoneProps = {
   onChange?: undefined;
   setValue?: undefined;
   defaultValue?: undefined;
+  isSelectionSingle?: undefined;
+  isSelectionMultiple?: undefined;
 };
 
 export type SelectionProviderProps = SelectionSingleProps | SelectionMultipleProps | SelectionNoneProps;
@@ -89,7 +99,9 @@ function SelectionSingleProvider({
   );
 
   return (
-    <SelectionContext.Provider value={{ value, onChange, selection: 'single', setValue }}>
+    <SelectionContext.Provider
+      value={{ value, onChange, selection: 'single', isSelectionSingle: true, isSelectionMultiple: false, setValue }}
+    >
       {children}
     </SelectionContext.Provider>
   );
@@ -99,7 +111,6 @@ function SelectionMultipleProvider({
   value: valueProp,
   defaultValue,
   onChange: onChangeProp,
-
   children,
 }: SelectionMultipleProps & Child) {
   const [value, setValue] = useUncontrolledProp<SelectionSingleValueType[]>(valueProp, defaultValue, cb => {
@@ -123,7 +134,9 @@ function SelectionMultipleProvider({
   );
 
   return (
-    <SelectionContext.Provider value={{ value, onChange, selection: 'multiple', setValue }}>
+    <SelectionContext.Provider
+      value={{ value, onChange, selection: 'multiple', isSelectionSingle: false, isSelectionMultiple: true, setValue }}
+    >
       {children}
     </SelectionContext.Provider>
   );

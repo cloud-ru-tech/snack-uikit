@@ -35,10 +35,9 @@
 | noData | `string` | - |  |
 | noResults | `string` | - |  |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - |  |
-| defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
 | value | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Controlled состояние |
+| defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
 | onChange | `((value: any) => void) \| ((value: any) => void)` | - | Controlled обработчик измения состояния |
-| setValue | `((value: any) => void) \| ((value: any) => void)` | - |  |
 | selection | "single" \| "multiple" | - | Режим выбора |
 | size | "s" \| "m" \| "l" | - |  |
 | marker | `boolean` | - |  |
@@ -58,10 +57,9 @@
 | noData | `string` | - |  |
 | noResults | `string` | - |  |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - |  |
-| defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
 | value | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Controlled состояние |
+| defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
 | onChange | `((value: any) => void) \| ((value: any) => void)` | - | Controlled обработчик измения состояния |
-| setValue | `((value: any) => void) \| ((value: any) => void)` | - |  |
 | selection | "single" \| "multiple" | - | Режим выбора |
 | size | "s" \| "m" \| "l" | - |  |
 | marker | `boolean` | - |  |

@@ -1,63 +1,38 @@
-import { KeyboardEvent, useEffect, useMemo } from 'react';
+import { KeyboardEvent, MouseEvent } from 'react';
 
 import { ChevronDownSVG, ChevronUpSVG } from '@snack-uikit/icons';
 import { useToggleGroup } from '@snack-uikit/toggles';
 
 import { CollapseBlockPrivate } from '../../../helperComponents';
-import { extractChildIds } from '../../../utils';
-import { CollapseContext, useCollapseContext, useParentListContext, useSelectionContext } from '../../Lists/contexts';
+import { CollapseContext, useCollapseContext, useParentListContext } from '../../Lists/contexts';
 import { BaseItem } from '../BaseItem';
-import { useRenderItems } from '../hooks';
+import { useGroupItemSelection, useRenderItems } from '../hooks';
 import { AccordionItemProps } from '../types';
 
-export function AccordionItem({ items: itemsProp, ...option }: AccordionItemProps) {
+export function AccordionItem({ items: itemsProp, id, disabled, ...option }: AccordionItemProps) {
   const { level = 1 } = useCollapseContext();
   const { toggleOpenCollapsedItems } = useParentListContext();
-  const { value, selection, setValue } = useSelectionContext();
+  const { isIndeterminate, checked, handleOnSelect } = useGroupItemSelection({ items: itemsProp, id, disabled });
 
-  const childIds = useMemo(() => extractChildIds({ items: itemsProp }), [itemsProp]);
-
-  const isIndeterminate =
-    selection === 'multiple' ? childIds.some(childId => value?.includes(childId)) : childIds.includes(value ?? '');
-  const checked = selection === 'multiple' ? childIds.every(childId => value?.includes(childId)) : undefined;
-
-  const { isChecked: open, handleClick: handleChange } = useToggleGroup({ value: String(option.id) });
-
-  useEffect(() => {
-    if (selection === 'multiple') {
-      if (checked && !value?.includes(option.id)) {
-        setValue?.((value: Array<number | string>) => (value ?? []).concat([option.id ?? '']));
-      }
-    }
-  }, [checked, option.disabled, option.id, selection, setValue, value]);
+  const { isChecked: open, handleClick: handleChange } = useToggleGroup({ value: String(id) });
 
   const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === 'ArrowRight') {
       handleChange();
-      toggleOpenCollapsedItems?.(option.id ?? '');
+      toggleOpenCollapsedItems?.(id ?? '');
 
       e.preventDefault();
       e.stopPropagation();
     }
   };
 
-  const handleOnselect = () => {
-    if (checked) {
-      setValue?.((value: Array<string | number>) =>
-        value.filter(itemId => itemId !== option.id && !childIds.includes(itemId)),
-      );
-      return;
-    }
-
-    if (isIndeterminate) {
-      setValue?.((value: Array<string | number>) => Array.from(new Set([...value, ...childIds, option.id])));
-      return;
-    }
-
-    setValue?.((value: Array<string | number>) => (value ?? []).concat([...childIds, option.id ?? '']));
-  };
-
   const itemsJSX = useRenderItems(itemsProp);
+
+  const handleItemClick = (e: MouseEvent<HTMLButtonElement>) => {
+    handleChange();
+    toggleOpenCollapsedItems?.(id ?? '');
+    option.onClick?.(e);
+  };
 
   return (
     <li style={{ listStyleType: 'none' }}>
@@ -65,20 +40,18 @@ export function AccordionItem({ items: itemsProp, ...option }: AccordionItemProp
         header={
           <BaseItem
             {...option}
+            id={id}
+            disabled={disabled}
             expandIcon={open ? <ChevronUpSVG /> : <ChevronDownSVG />}
-            onClick={e => {
-              handleChange();
-              toggleOpenCollapsedItems?.(option.id ?? '');
-              option.onClick?.(e);
-            }}
+            onClick={handleItemClick}
             isParentNode
             onKeyDown={handleKeyDown}
             indeterminate={isIndeterminate && !checked}
-            onSelect={!option.disabled ? handleOnselect : undefined}
+            onSelect={!disabled ? handleOnSelect : undefined}
           />
         }
         expanded={open}
-        data-test-id={`list__accordion-item-${option.id}`}
+        data-test-id={`list__accordion-item-${id}`}
       >
         <CollapseContext.Provider value={{ level: level + 1 }}>{itemsJSX}</CollapseContext.Provider>
       </CollapseBlockPrivate>

@@ -1,12 +1,13 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { Dropdown, DropdownProps } from '@snack-uikit/dropdown';
 import { ChevronRightSVG } from '@snack-uikit/icons';
 
-import { extractChildIds, withCollapsedItems } from '../../../utils';
-import { ParentListContext, useParentListContext, useSelectionContext } from '../../Lists/contexts';
+import { withCollapsedItems } from '../../../utils';
+import { ParentListContext, useParentListContext } from '../../Lists/contexts';
 import { ListPrivate } from '../../Lists/ListPrivate';
 import { BaseItem } from '../BaseItem';
+import { useGroupItemSelection } from '../hooks';
 import { NextListItemProps } from '../types';
 import { useKeyboardNavigation } from './hooks';
 
@@ -26,6 +27,7 @@ export function NextListItem({
   search,
   scroll,
   scrollRef,
+  disabled,
   ...option
 }: NextListItemProps) {
   const listRef = useRef<HTMLUListElement>(null);
@@ -54,21 +56,7 @@ export function NextListItem({
     resetActiveFocusIndex,
   } = useKeyboardNavigation({ ids, expandedIds, itemRefs, id });
 
-  const { value, selection, setValue } = useSelectionContext();
-
-  const childIds = useMemo(() => extractChildIds({ items: itemsProp }), [itemsProp]);
-
-  const isIndeterminate =
-    selection === 'multiple' ? childIds.some(childId => value?.includes(childId)) : childIds.includes(value ?? '');
-  const checked = selection === 'multiple' ? childIds.every(childId => value?.includes(childId)) : undefined;
-
-  useEffect(() => {
-    if (selection === 'multiple') {
-      if (checked && !value?.includes(id)) {
-        setValue?.((value: Array<number | string>) => value.concat([id ?? '']));
-      }
-    }
-  }, [checked, id, selection, setValue, value]);
+  const { isIndeterminate, checked, handleOnSelect } = useGroupItemSelection({ items: itemsProp, id, disabled });
 
   const handleOpenChange = useCallback(
     (open: boolean) => {
@@ -123,32 +111,19 @@ export function NextListItem({
           </ParentListContext.Provider>
         }
         trigger='hover'
-        open={(open || parentIds[parentOpenNestedIndex] === id) && !option.disabled}
+        open={(open || parentIds[parentOpenNestedIndex] === id) && !disabled}
         onOpenChange={handleOpenChange}
         placement={placement}
       >
         <BaseItem
           {...option}
+          disabled={disabled}
           open={open}
           expandIcon={<ChevronRightSVG />}
           id={id}
           isParentNode
           indeterminate={isIndeterminate && !checked}
-          onSelect={() => {
-            if (checked) {
-              setValue?.((value: Array<string | number>) =>
-                value.filter(itemId => itemId !== id && !childIds.includes(itemId)),
-              );
-              return;
-            }
-
-            if (isIndeterminate) {
-              setValue?.((value: Array<string | number>) => Array.from(new Set([...value, ...childIds, id])));
-              return;
-            }
-
-            setValue?.((value: Array<string | number>) => (value ?? []).concat([...childIds, id ?? '']));
-          }}
+          onSelect={handleOnSelect}
         />
       </Dropdown>
     </li>

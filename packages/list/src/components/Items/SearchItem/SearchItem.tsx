@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { FocusEvent, RefObject } from 'react';
+import { FocusEvent, KeyboardEvent, RefObject } from 'react';
 
 import { SearchPrivate } from '@snack-uikit/search-private';
 
@@ -16,6 +16,23 @@ export function SearchItem({ search }: SearchItemProps) {
   const { parentItemRefs, parentSetActiveFocusIndex } = useParentListContext();
   const { size } = useListContext();
 
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+      e.preventDefault();
+    }
+
+    if (['ArrowRight'].includes(e.key)) {
+      e.stopPropagation();
+    }
+  };
+
+  const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
+    if (e.target === parentItemRefs[0].current) {
+      parentSetActiveFocusIndex?.(0);
+    }
+    e.stopPropagation();
+  };
+
   if (!Boolean(search)) {
     return null;
   }
@@ -25,21 +42,8 @@ export function SearchItem({ search }: SearchItemProps) {
       <SearchPrivate
         size={size}
         tabIndex={-1}
-        onKeyDown={e => {
-          if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
-            e.preventDefault();
-          }
-
-          if (['ArrowRight'].includes(e.key)) {
-            e.stopPropagation();
-          }
-        }}
-        onFocus={(e: FocusEvent<HTMLInputElement>) => {
-          if (e.target === parentItemRefs[0].current) {
-            parentSetActiveFocusIndex?.(0);
-          }
-          e.stopPropagation();
-        }}
+        onKeyDown={handleKeyDown}
+        onFocus={handleFocus}
         {...search}
         ref={parentItemRefs[0] as RefObject<HTMLInputElement>}
       />

@@ -20,7 +20,7 @@ export type ListProps = WithSupportProps<
     noData?: string;
     noResults?: string;
     footerActiveElementsRefs?: RefObject<HTMLElement>[];
-  } & SelectionProviderProps &
+  } & Pick<SelectionProviderProps, 'value' | 'defaultValue' | 'onChange' | 'selection'> &
     ListContextType &
     ScrollProps
 >;
@@ -33,10 +33,7 @@ export type DroplistProps = {
   trigger?: DropdownProps['trigger'];
   placement?: DropdownProps['placement'];
   widthStrategy?: DropdownProps['widthStrategy'];
-} & ListProps &
-  SelectionProviderProps &
-  ListContextType &
-  ScrollProps;
+} & ListProps;
 
 export type ListPrivateProps = ListProps & {
   nested?: boolean;

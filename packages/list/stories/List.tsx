@@ -152,8 +152,6 @@ const Template: StoryFn<StoryProps> = ({
       <div className={styles.wrapper}>
         <div className={styles.listContainer}>
           Customizable List
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-          {/* @ts-expect-error */}
           <List
             size={args.size}
             marker={args.marker}
@@ -190,15 +188,15 @@ export const list = Template.bind({});
 
 list.args = {
   selection: 'single',
-  showPinTopItems: false,
-  showPinBottomItems: false,
-  showSearch: false,
+  showPinTopItems: true,
+  showPinBottomItems: true,
+  showSearch: true,
   showEmptyList: false,
   noData: 'No data',
   noResults: 'No results',
-  showFooter: false,
+  showFooter: true,
   showSwitch: false,
-  showGroups: false,
+  showGroups: true,
   marker: true,
   loading: false,
   scroll: true,

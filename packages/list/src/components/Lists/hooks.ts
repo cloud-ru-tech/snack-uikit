@@ -23,7 +23,7 @@ export function useKeyboardNavigation<T extends HTMLElement>({
       case 'ArrowDown': {
         setActiveFocusIndex(activeIndex => Math.min(activeIndex + 1, ids.length - 1));
 
-        // go to loader from last item
+        // TODO: go to loader from last item
         // if (activeFocusIndex === ids.length - 2) {
         //   return;
         // }

@@ -1,11 +1,13 @@
-import { createRef, RefObject, useMemo } from 'react';
+import { createRef, RefObject, useEffect, useMemo } from 'react';
 
+import { extractChildIds } from '../../utils';
+import { useSelectionContext } from '../Lists/contexts';
 import { AccordionItem } from './AccordionItem';
 import { BaseItem } from './BaseItem';
 import { GroupItem } from './GroupItem';
 import { NextListItem } from './NextListItem';
 import { ItemProps } from './types';
-import { isAccordionItemProps, isGroupItemProps, isNextListItemProps } from './utils';
+import { addItemsIds, isAccordionItemProps, isGroupItemProps, isNextListItemProps } from './utils';
 
 export function useRenderItems(items: ItemProps[]) {
   return useMemo(
@@ -29,28 +31,7 @@ export function useRenderItems(items: ItemProps[]) {
   );
 }
 
-export function addItemsIds(itemsProp: ItemProps[], prefix?: string | number): ItemProps[] {
-  return itemsProp.map((item, idx) => {
-    const itemId = item.id ?? (prefix !== undefined ? [prefix, idx].join('-') : String(idx));
-
-    if (isGroupItemProps(item)) {
-      return { ...item, id: itemId, items: addItemsIds(item.items, itemId) };
-    }
-
-    if (isAccordionItemProps(item) || isNextListItemProps(item)) {
-      return {
-        ...item,
-        id: itemId,
-        items: addItemsIds(item.items, itemId),
-        itemRef: item.itemRef || createRef<HTMLButtonElement>(),
-      };
-    }
-
-    return { ...item, id: itemId, itemRef: item.itemRef || createRef<HTMLButtonElement>() };
-  });
-}
-
-export type UseItemsWithIdsProps = {
+type UseItemsWithIdsProps = {
   search?: boolean;
   footerActiveElementsRefs?: RefObject<HTMLElement>[];
 };
@@ -72,4 +53,49 @@ export function useItemsWithIds({ search, footerActiveElementsRefs }: UseItemsWi
 
     [footerActiveElementsRefs, search],
   );
+}
+
+type UseGroupItemSelectionProps = {
+  items: ItemProps[];
+  id?: string | number;
+  disabled?: boolean;
+};
+
+export function useGroupItemSelection({ id, items, disabled }: UseGroupItemSelectionProps) {
+  const { value, setValue, isSelectionMultiple } = useSelectionContext();
+  const childIds = useMemo(() => extractChildIds({ items }), [items]);
+
+  const isIndeterminate = isSelectionMultiple
+    ? childIds.some(childId => value?.includes(childId))
+    : childIds.includes(value ?? '');
+  const checked = isSelectionMultiple ? childIds.every(childId => value?.includes(childId)) : undefined;
+
+  useEffect(() => {
+    if (isSelectionMultiple) {
+      if (checked && !value?.includes(id)) {
+        setValue?.((value: Array<number | string>) => (value ?? []).concat([id ?? '']));
+      }
+      if (!checked && value?.includes(id)) {
+        setValue?.((value: Array<number | string>) => (value ?? []).filter(itemId => itemId !== id));
+      }
+    }
+  }, [checked, disabled, id, isSelectionMultiple, setValue, value]);
+
+  const handleOnSelect = () => {
+    if (checked) {
+      setValue?.((value: Array<string | number>) =>
+        (value ?? []).filter(itemId => itemId !== id && !childIds.includes(itemId)),
+      );
+      return;
+    }
+
+    if (isIndeterminate) {
+      setValue?.((value: Array<string | number>) => Array.from(new Set([...(value ?? []), ...childIds, id])));
+      return;
+    }
+
+    setValue?.((value: Array<string | number>) => (value ?? []).concat([...childIds, id ?? '']));
+  };
+
+  return { checked, isIndeterminate, handleOnSelect };
 }

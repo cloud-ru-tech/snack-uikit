@@ -12,7 +12,7 @@ export type CollapseBlockPrivateProps = WithSupportProps<{
   className?: string;
 }>;
 
-// TODO: Add animation. Solution like as Accordion/Tree don't working with Scroll =(
+// TODO: Add animation. Solution like in Accordion/Tree does not work with Scroll =(
 export function CollapseBlockPrivate({ children, expanded, className, header, ...rest }: CollapseBlockPrivateProps) {
   return (
     <div
