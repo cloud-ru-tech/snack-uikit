@@ -91,7 +91,7 @@ const cards = [
 | link | `Omit<LinkProps, "data-test-id" \| "appearance" \| "size" \| "textMode">` | - | Ссылка |
 | onClick | `MouseEventHandler<HTMLDivElement>` | - | Колбэк клика по карточке |
 | onVisible | `(cardId: string) => void` | - | Колбэк при попадании карточки в область видимости на 80% |
-| actions | `Pick<DroplistItemSingleProps, "onClick" \| "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon">[]` | - | Дополнительные действия у карточки |
+| actions | `Action[]` | - | Дополнительные действия у карточки |
 | className | `string` | - | CSS-класс |
 ## NotificationPanel
 Компонент панели для уведомлений

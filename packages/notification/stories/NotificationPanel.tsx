@@ -116,11 +116,11 @@ notificationPanel.args = {
     },
     actions: [
       {
-        option: 'setting 1',
+        content: { option: 'setting 1' },
         onClick: handleActionClick,
       },
       {
-        option: 'setting 2',
+        content: { option: 'setting 2' },
         onClick: handleActionClick,
       },
     ],

@@ -186,17 +186,17 @@ const Template: StoryFn<StoryProps> = ({
           actionsGenerator: () => [
             {
               id: 'action-1',
-              option: 'action 1',
+              content: { option: 'action 1' },
               onClick: handleRowActionClick,
             },
             {
               id: 'action-2',
-              option: 'action 2',
+              content: { option: 'action 2' },
               onClick: handleRowActionClick,
             },
             {
               id: 'action-3',
-              option: 'action 3',
+              content: { option: 'action 3' },
               onClick: handleRowActionClick,
             },
           ],

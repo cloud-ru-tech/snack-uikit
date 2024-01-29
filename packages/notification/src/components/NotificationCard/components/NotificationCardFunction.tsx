@@ -1,59 +1,42 @@
 import { Dispatch, SetStateAction } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
-import { Droplist, DroplistProps } from '@snack-uikit/droplist';
 import { KebabSVG } from '@snack-uikit/icons';
+import { Droplist } from '@snack-uikit/list';
+import { Tag } from '@snack-uikit/tag';
 
 import { TEST_IDS } from '../constants';
 import { NotificationCardProps } from '../NotificationCard';
 import styles from '../styles.module.scss';
 
-export type NotificationCardFunctionProps = Required<Pick<NotificationCardProps, 'actions'>> &
-  Required<Pick<DroplistProps, 'open'>> & {
-    setDroplistOpen: Dispatch<SetStateAction<boolean>>;
-  };
+export type NotificationCardFunctionProps = Required<Pick<NotificationCardProps, 'actions'>> & {
+  open: boolean;
+  setDroplistOpen: Dispatch<SetStateAction<boolean>>;
+};
 
 export function NotificationCardFunction({ actions, open, setDroplistOpen }: NotificationCardFunctionProps) {
-  const {
-    firstElementRefCallback,
-    triggerElementRef,
-    handleDroplistFocusLeave,
-    handleTriggerKeyDown,
-    handleDroplistItemKeyDown,
-    handleDroplistItemClick,
-  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({
-    setDroplistOpen,
-  });
-
   return (
     <div className={styles.notificationCardFunction} data-test-id={TEST_IDS.actions.wrapper}>
       <Droplist
+        trigger='clickAndFocusVisible'
         open={open}
         onOpenChange={setDroplistOpen}
         placement='bottom-end'
-        firstElementRefCallback={firstElementRefCallback}
-        onFocusLeave={handleDroplistFocusLeave}
-        triggerRef={triggerElementRef}
-        useScroll
-        triggerElement={
-          <ButtonFunction
-            size='s'
-            icon={<KebabSVG />}
-            onKeyDown={handleTriggerKeyDown}
-            data-test-id={TEST_IDS.actions.droplistTrigger}
-          />
-        }
+        scroll
         data-test-id={TEST_IDS.actions.droplist}
+        items={actions.map(({ onClick, disabled, content, tagLabel, icon }) => ({
+          onClick: e => {
+            setDroplistOpen(false);
+            onClick?.(e);
+          },
+          disabled,
+          content,
+          beforeContent: icon,
+          afterContent: tagLabel ? <Tag label={tagLabel} /> : undefined,
+          'data-test-id': TEST_IDS.actions.droplistAction,
+        }))}
       >
-        {actions.map(action => (
-          <Droplist.ItemSingle
-            {...action}
-            key={action.option}
-            onClick={e => handleDroplistItemClick(e, action.onClick)}
-            data-test-id={TEST_IDS.actions.droplistAction}
-            onKeyDown={handleDroplistItemKeyDown}
-          />
-        ))}
+        <ButtonFunction size='s' icon={<KebabSVG />} data-test-id={TEST_IDS.actions.droplistTrigger} />
       </Droplist>
     </div>
   );

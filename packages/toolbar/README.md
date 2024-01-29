@@ -24,7 +24,7 @@ Toolbar
 | onRefresh | `() => void` | - | Колбек обновления |
 | before | `ReactNode` | - | Дополнительный слот в начале Тулбара |
 | after | `ReactNode` | - | Дополнительный слот в конце тулбара |
-| moreActions | `Pick<DroplistItemSingleProps, "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon" \| "onClick">[]` | - | Элементы выпадающего списка кнопки с действиями |
+| moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 
 
 [//]: DOCUMENTATION_SECTION_END

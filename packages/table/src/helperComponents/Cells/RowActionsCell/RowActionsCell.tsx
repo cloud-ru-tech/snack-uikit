@@ -1,9 +1,10 @@
 import { CellContext, Row } from '@tanstack/react-table';
-import { MouseEvent, useMemo } from 'react';
+import { MouseEvent, ReactElement, useMemo, useRef } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
-import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
 import { MoreSVG } from '@snack-uikit/icons';
+import { BaseItemProps, Droplist } from '@snack-uikit/list';
+import { Tag } from '@snack-uikit/tag';
 
 import { COLUMN_PIN_POSITION, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';
@@ -16,10 +17,9 @@ export type RowActionInfo<TData> = {
   itemId?: string;
 };
 
-export type RowActionProps<TData> = Pick<
-  ItemSingleProps,
-  'option' | 'disabled' | 'icon' | 'description' | 'caption' | 'tagLabel'
-> & {
+export type RowActionProps<TData> = Pick<BaseItemProps, 'content' | 'disabled'> & {
+  icon?: ReactElement;
+  tagLabel?: string;
   id?: string;
   hidden?: boolean;
   onClick(row: RowActionInfo<TData>, e: MouseEvent<HTMLButtonElement>): void;
@@ -32,15 +32,7 @@ type RowActionsCellProps<TData> = {
 
 function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
   const { droplistOpened, setDroplistOpen } = useRowContext();
-
-  const {
-    triggerElementRef,
-    handleDroplistFocusLeave,
-    handleDroplistItemKeyDown,
-    handleTriggerKeyDown,
-    handleDroplistItemClick,
-    firstElementRefCallback,
-  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({ setDroplistOpen });
+  const triggerRef = useRef(null);
 
   const handleItemClick = (item: RowActionProps<TData>) => (e: MouseEvent<HTMLButtonElement>) => {
     item.onClick({ rowId: row.id, itemId: item.id, data: row.original }, e);
@@ -59,34 +51,33 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
     <div onClick={stopPropagationClick} className={styles.rowActionsCellWrap} data-open={droplistOpened || undefined}>
       {!disabled && Boolean(visibleActions.length) && (
         <Droplist
+          trigger='clickAndFocusVisible'
           open={droplistOpened}
           onOpenChange={setDroplistOpen}
           placement='bottom-end'
-          firstElementRefCallback={firstElementRefCallback}
-          onFocusLeave={handleDroplistFocusLeave}
-          triggerElement={
-            <span>
-              <ButtonFunction
-                icon={<MoreSVG size={24} />}
-                data-test-id={TEST_IDS.rowActions.droplistTrigger}
-                onKeyDown={handleTriggerKeyDown}
-                ref={triggerElementRef}
-              />
-            </span>
-          }
-          triggerClassName={styles.rowActionsCellTrigger}
           size='m'
           data-test-id={TEST_IDS.rowActions.droplist}
+          triggerElemRef={triggerRef}
+          items={actions.map(item => ({
+            id: item.id,
+            onClick: e => {
+              handleItemClick(item)(e);
+              setDroplistOpen(false);
+            },
+            disabled: item.disabled,
+            content: item.content,
+            beforeContent: item.icon,
+            afterContent: item.tagLabel ? <Tag label={item.tagLabel} /> : undefined,
+            'data-test-id': TEST_IDS.rowActions.option,
+          }))}
         >
-          {actions.map(item => (
-            <Droplist.ItemSingle
-              {...item}
-              key={`${row.id}-${item.id || item.option}`}
-              onClick={e => handleDroplistItemClick(e, handleItemClick(item))}
-              data-test-id={TEST_IDS.rowActions.option}
-              onKeyDown={handleDroplistItemKeyDown}
+          <span className={styles.rowActionsCellTrigger}>
+            <ButtonFunction
+              icon={<MoreSVG size={24} />}
+              data-test-id={TEST_IDS.rowActions.droplistTrigger}
+              ref={triggerRef}
             />
-          ))}
+          </span>
         </Droplist>
       )}
     </div>

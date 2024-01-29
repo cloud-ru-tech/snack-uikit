@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 
-import { ItemSingleProps } from '@snack-uikit/droplist';
+import { BaseItemProps } from '@snack-uikit/list';
 import { toaster } from '@snack-uikit/toaster';
 
 import { Card } from '../src';
@@ -64,7 +64,7 @@ export const IMAGE_MODE_MAP = {
 
 export const OPTIONS_LENGTH = 3;
 
-export const OPTIONS: ItemSingleProps[] = generateOptions(OPTIONS_LENGTH);
+export const OPTIONS: BaseItemProps[] = generateOptions(OPTIONS_LENGTH);
 
 import * as Icons from '@snack-uikit/icons';
 

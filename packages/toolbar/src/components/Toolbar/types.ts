@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
 
-import { ItemSingleProps } from '@snack-uikit/droplist';
-
-import { DeleteActionProps } from '../../helperComponents';
+import { DeleteActionProps, MoreActionsProps } from '../../helperComponents';
 import { NeverOrUndefined, RequireAtLeastOne } from './typesUtils';
 
 type OptionalProps = {
@@ -13,10 +11,7 @@ type OptionalProps = {
   /** Дополнительный слот в конце тулбара */
   after?: ReactNode;
   /** Элементы выпадающего списка кнопки с действиями */
-  moreActions?: Pick<
-    ItemSingleProps,
-    'tagLabel' | 'onClick' | 'option' | 'icon' | 'disabled' | 'description' | 'caption'
-  >[];
+  moreActions?: MoreActionsProps['moreActions'];
 };
 
 export type CommonToolbarProps = {

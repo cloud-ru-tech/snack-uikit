@@ -23,10 +23,10 @@ For replacement, use Property: ◆ProdContent. Replace this element with your lo
   date: 'DD.MM.YYYY HH:MM',
   actions: [
     {
-      option: 'action 1',
+      content: { option: 'action 1' },
     },
     {
-      option: 'action 2',
+      content: { option: 'action 2' },
     },
   ],
 };

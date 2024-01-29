@@ -1,36 +1,34 @@
-import { MouseEvent, ReactNode, useCallback, useContext, useLayoutEffect, useState } from 'react';
+import { MouseEvent, ReactElement, ReactNode, useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
 
-import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
 import { KebabSVG } from '@snack-uikit/icons';
+import { BaseItemProps, Droplist } from '@snack-uikit/list';
+import { Tag } from '@snack-uikit/tag';
 
 import { TEST_IDS } from '../../constants';
 import { FunctionBadgeContext } from '../../context';
 import styles from './styles.module.scss';
 
+type Option = {
+  tagLabel?: string;
+  icon?: ReactElement;
+} & Pick<BaseItemProps, 'onClick' | 'content' | 'disabled'>;
+
 export type FunctionBadgeProps = {
   /** Иконка */
   icon?: ReactNode;
   /** Вложенные опции */
-  options: Pick<ItemSingleProps, 'tagLabel' | 'onClick' | 'option' | 'icon' | 'disabled' | 'description' | 'caption'>[];
+  options: Option[];
 };
 
 export function FunctionBadge({ icon, options }: FunctionBadgeProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const buttonRef = useRef(null);
 
   const { setVisible } = useContext(FunctionBadgeContext);
 
   useLayoutEffect(() => {
     setVisible && setVisible(isOpen);
   }, [isOpen, setVisible]);
-
-  const {
-    firstElementRefCallback,
-    triggerElementRef,
-    handleDroplistFocusLeave,
-    handleDroplistItemClick,
-    handleTriggerKeyDown,
-    handleDroplistItemKeyDown,
-  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({ setDroplistOpen: setIsOpen });
 
   const onClick = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -40,39 +38,28 @@ export function FunctionBadge({ icon, options }: FunctionBadgeProps) {
   return (
     <span className={styles.wrapper}>
       <Droplist
+        trigger='clickAndFocusVisible'
         open={isOpen}
         onOpenChange={setIsOpen}
-        firstElementRefCallback={firstElementRefCallback}
         widthStrategy='gte'
-        useScroll
-        onFocusLeave={handleDroplistFocusLeave}
+        scroll
         data-test-id={TEST_IDS.droplist}
-        triggerClassName={styles.triggerClassName}
         placement='bottom-end'
-        triggerElement={
-          <button
-            data-test-id={TEST_IDS.functionBadge}
-            className={styles.button}
-            onKeyDown={handleTriggerKeyDown}
-            onClick={onClick}
-            ref={triggerElementRef}
-          >
-            {icon || <KebabSVG />}
-          </button>
-        }
+        triggerElemRef={buttonRef}
+        items={options.map(({ icon, tagLabel, onClick, ...item }) => ({
+          ...item,
+          beforeContent: icon,
+          afterContent: tagLabel ? <Tag label={tagLabel} /> : undefined,
+          onClick: e => {
+            e.stopPropagation();
+            setIsOpen(false);
+            onClick?.(e);
+          },
+        }))}
       >
-        {options.map(item => (
-          <Droplist.ItemSingle
-            {...item}
-            key={item.option}
-            className={styles.item}
-            data-test-id={TEST_IDS.option}
-            onClick={e => {
-              handleDroplistItemClick(e, item.onClick);
-            }}
-            onKeyDown={handleDroplistItemKeyDown}
-          />
-        ))}
+        <button data-test-id={TEST_IDS.functionBadge} className={styles.button} onClick={onClick} ref={buttonRef}>
+          {icon || <KebabSVG />}
+        </button>
       </Droplist>
     </span>
   );

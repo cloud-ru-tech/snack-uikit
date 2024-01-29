@@ -104,20 +104,11 @@ test.page(
   await t.pressKey('tab').pressKey('tab');
   await t.expect(functionBadge.focused).ok(`Card.FunctionBadge should be focused`);
 
-  await t.pressKey('enter').expect(droplist.exists).ok(`Droplist options should be rendered`);
+  await t.expect(droplist.exists).ok(`Droplist options should be rendered`);
 
   await t.pressKey('down').expect(functionBadge.focused).notOk(`Card.FunctionBadge should't be focused`);
 
-  await t.pressKey('up');
-  await t.expect(functionBadge.focused).ok(`Card.FunctionBadge should be focused`);
-  await t.expect(droplist.exists).notOk(`Droplist options shouldn't be rendered`);
-
-  await t
-    .pressKey('down')
-    .pressKey('down')
-    .pressKey('enter')
-    .expect(toast.exists)
-    .ok('Toast should be render after option click');
+  await t.pressKey('down').pressKey('enter').expect(toast.exists).ok('Toast should be render after option click');
 });
 
 test.page(

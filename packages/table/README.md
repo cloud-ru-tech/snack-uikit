@@ -119,7 +119,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
 | columnFilters | `ReactNode` | - | Фильтры |
 | exportFileName | `string` | - | Название файла при экспорте CSV/XLSX |
-| moreActions | `Pick<DroplistItemSingleProps, "option" \| "caption" \| "description" \| "tagLabel" \| "disabled" \| "icon" \| "onClick">[]` | - | Элементы выпадающего списка кнопки с действиями |
+| moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | noDataState | `TableEmptyStateProps` | {   icon: CrossSVG,   appearance: 'red',   title: 'Data collection error',   description: 'Try refreshing the page', } as const | Экран при отстутствии данных |
 | noResultsState | `TableEmptyStateProps` | {   icon: SearchSVG,   appearance: 'neutral',   title: 'Not found',   description: 'Try entering another query', } as const | Экран при отстутствии результатов поиска |
 | suppressToolbar | `boolean` | - | Отключение тулбара |

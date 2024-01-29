@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
-import { Droplist } from '@snack-uikit/droplist';
 import { DownloadSVG } from '@snack-uikit/icons';
+import { Droplist } from '@snack-uikit/list';
 
 import { exportToCSV, exportToXLSX } from '../../exportTable';
 import { ColumnDefinition } from '../../types';
@@ -19,50 +19,31 @@ type ExportButtonProps<TData extends object> = {
 export function ExportButton<TData extends object>({ fileName, data, columnDefinitions }: ExportButtonProps<TData>) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const {
-    firstElementRefCallback,
-    handleDroplistFocusLeave,
-    handleTriggerKeyDown,
-    handleDroplistItemKeyDown,
-    handleDroplistItemClick,
-    triggerElementRef,
-  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({ setDroplistOpen: setIsOpen });
-
   return (
     <Droplist
-      firstElementRefCallback={firstElementRefCallback}
-      triggerRef={triggerElementRef}
-      onFocusLeave={handleDroplistFocusLeave}
+      trigger='clickAndFocusVisible'
       open={isOpen}
       onOpenChange={setIsOpen}
-      useScroll
+      scroll
       placement='bottom-end'
-      triggerElement={<ButtonFunction size='m' onKeyDown={handleTriggerKeyDown} icon={<DownloadSVG />} />}
-    >
-      {[
+      items={[
         {
-          option: 'Export to CSV',
+          content: { option: 'Export to CSV' },
           onClick: () => {
             exportToCSV<TData>({ fileName, columnDefinitions, data });
+            setIsOpen(false);
           },
         },
         {
-          option: 'Export to XLSX',
+          content: { option: 'Export to XLSX' },
           onClick: () => {
             exportToXLSX<TData>({ fileName, columnDefinitions, data });
+            setIsOpen(false);
           },
         },
-      ].map(({ option, onClick }) => (
-        <Droplist.ItemSingle
-          option={option}
-          onKeyDown={handleDroplistItemKeyDown}
-          key={option}
-          onClick={e => {
-            handleDroplistItemClick(e);
-            onClick?.();
-          }}
-        />
-      ))}
+      ]}
+    >
+      <ButtonFunction size='m' icon={<DownloadSVG />} />
     </Droplist>
   );
 }

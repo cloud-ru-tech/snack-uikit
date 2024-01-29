@@ -33,7 +33,8 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.15.1",
-    "@snack-uikit/droplist": "0.12.5",
+    "@snack-uikit/list": "0.0.0",
+    "@snack-uikit/tag": "0.6.4",
     "@snack-uikit/icon-predefined": "0.4.1",
     "@snack-uikit/icons": "0.20.0",
     "@snack-uikit/promo-tag": "0.4.1",

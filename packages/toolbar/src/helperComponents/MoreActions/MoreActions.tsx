@@ -1,66 +1,47 @@
-import { useRef, useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
-import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
 import { KebabSVG } from '@snack-uikit/icons';
+import { BaseItemProps, Droplist } from '@snack-uikit/list';
+import { Tag } from '@snack-uikit/tag';
 
 import { TEST_IDS } from '../../constants';
-import { useHandlers } from './hooks';
-import styles from './styles.module.scss';
+
+type Action = {
+  tagLabel?: string;
+  icon?: ReactNode;
+} & Pick<BaseItemProps, 'content' | 'disabled' | 'onClick'>;
 
 export type MoreActionsProps = {
-  moreActions: Pick<
-    ItemSingleProps,
-    'tagLabel' | 'onClick' | 'option' | 'icon' | 'disabled' | 'description' | 'caption'
-  >[];
+  moreActions: Action[];
 };
 
 export function MoreActions({ moreActions }: MoreActionsProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [needsFocus, setNeedsFocus] = useState<boolean>(false);
-  const triggerRef = useRef<HTMLButtonElement>(null);
-
-  const { onKeyDown, onFocusLeave, firstElementRefCallback } = useHandlers({
-    triggerRef,
-    setIsOpen,
-    needsFocus,
-    setNeedsFocus,
-  });
 
   return (
     <Droplist
+      trigger='clickAndFocusVisible'
       open={isOpen}
       data-test-id={TEST_IDS.droplist}
       onOpenChange={setIsOpen}
       placement='bottom-end'
-      onFocusLeave={onFocusLeave}
-      firstElementRefCallback={firstElementRefCallback}
-      useScroll
-      triggerRef={triggerRef}
-      triggerElement={
-        <ButtonFunction
-          icon={<KebabSVG size={24} />}
-          size='m'
-          onKeyDown={onKeyDown}
-          data-test-id={TEST_IDS.moreActionsButton}
-        />
-      }
+      scroll
       size='s'
+      items={moreActions.map(item => ({
+        onClick: e => {
+          item.onClick?.(e);
+          setIsOpen(false);
+          e.stopPropagation();
+        },
+        disabled: item.disabled,
+        content: item.content,
+        beforeContent: item.icon,
+        afterContent: item.tagLabel ? <Tag label={item.tagLabel} /> : undefined,
+        'data-test-id': TEST_IDS.option,
+      }))}
     >
-      {moreActions.map(item => (
-        <Droplist.ItemSingle
-          {...item}
-          key={item.option}
-          className={styles.item}
-          onClick={e => {
-            item.onClick?.(e);
-            setIsOpen(false);
-            setNeedsFocus(false);
-            e.stopPropagation();
-          }}
-          data-test-id={TEST_IDS.option}
-        />
-      ))}
+      <ButtonFunction icon={<KebabSVG size={24} />} size='m' data-test-id={TEST_IDS.moreActionsButton} />
     </Droplist>
   );
 }

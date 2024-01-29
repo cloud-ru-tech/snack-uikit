@@ -1,8 +1,8 @@
 import cn from 'classnames';
-import { MouseEventHandler, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { MouseEventHandler, ReactElement, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
-import { ItemSingleProps } from '@snack-uikit/droplist';
 import { Link, LinkProps } from '@snack-uikit/link';
+import { BaseItemProps } from '@snack-uikit/list';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
@@ -12,6 +12,11 @@ import { APPEARANCE, TEST_IDS } from './constants';
 import { getIcon } from './helpers';
 import styles from './styles.module.scss';
 import { Appearance } from './types';
+
+type Action = {
+  icon?: ReactElement;
+  tagLabel?: string;
+} & Pick<BaseItemProps, 'content' | 'onClick' | 'disabled'>;
 
 export type NotificationCardProps = WithSupportProps<{
   /** Идентификатор уведомления */
@@ -35,10 +40,7 @@ export type NotificationCardProps = WithSupportProps<{
   /** Колбэк при попадании карточки в область видимости на 80% */
   onVisible?(cardId: string): void;
   /** Дополнительные действия у карточки */
-  actions?: Pick<
-    ItemSingleProps,
-    'option' | 'onClick' | 'disabled' | 'icon' | 'description' | 'caption' | 'tagLabel'
-  >[];
+  actions?: Action[];
   /** CSS-класс */
   className?: string;
 }>;

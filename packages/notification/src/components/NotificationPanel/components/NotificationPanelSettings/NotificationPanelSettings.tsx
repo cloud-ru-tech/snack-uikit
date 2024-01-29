@@ -1,16 +1,12 @@
 import { ButtonSimple, ButtonSimpleProps } from '@snack-uikit/button';
-import { ItemSingleProps } from '@snack-uikit/droplist';
 import { KebabSVG } from '@snack-uikit/icons';
 
 import { TEST_IDS } from '../../constants';
-import { NotificationPanelSettingsDroplist } from './NotificationPanelSettingsDroplist';
+import { Action, NotificationPanelSettingsDroplist } from './NotificationPanelSettingsDroplist';
 
 export type NotificationPanelSettingsProps = {
   /** Дополнительные действия панели */
-  actions?: Pick<
-    ItemSingleProps,
-    'option' | 'onClick' | 'disabled' | 'icon' | 'description' | 'caption' | 'tagLabel'
-  >[];
+  actions?: Action[];
   /** Кнопка дополнительного действия панели */
   button: Omit<ButtonSimpleProps, 'label' | 'type' | 'size' | 'data-test-id'>;
 };

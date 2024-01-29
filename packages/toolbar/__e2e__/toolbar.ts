@@ -25,7 +25,7 @@ function getSelectors() {
     refreshButton: Selector(dataTestIdSelector(TEST_IDS.refreshButton)),
     moreActionsButton: Selector(dataTestIdSelector(TEST_IDS.moreActionsButton)),
     droplist: Selector(dataTestIdSelector(TEST_IDS.droplist)),
-    option: Selector(dataTestIdSelector(TEST_IDS.option)),
+    option: Selector(dataTestIdSelector(TEST_IDS.option)).find('button'),
     submitToaster: Selector(dataTestIdSelector(TEST_ID_TOASTER.submit)),
     deleteToaster: Selector(dataTestIdSelector(TEST_ID_TOASTER.delete)),
     refreshToaster: Selector(dataTestIdSelector(TEST_ID_TOASTER.refresh)),
