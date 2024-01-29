@@ -71,6 +71,9 @@
       "path": "./tag"
     },
     {
+      "path": "./dropdown"
+    },
+    {
       "path": "./droplist"
     },
     {

@@ -1,0 +1,34 @@
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+.button {
+  width: 300px;
+  max-width: 100%;
+}
+
+.skeleton {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0 1em;
+}
+
+.pageWrapper {
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
+  height: 160px;
+  padding: 0 24px;
+
+  background-color: $sys-neutral-background2-level;
+  border: 1px solid $sys-neutral-decor-default;
+  border-radius: $dimension-050m;
+}

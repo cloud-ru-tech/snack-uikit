@@ -1,0 +1,39 @@
+{
+  "name": "@snack-uikit/dropdown",
+  "publishConfig": {
+    "access": "public"
+  },
+  "title": "dropdown",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/dropdown",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
+    "directory": "packages/dropdown"
+  },
+  "author": "Nikita Ershov <niershov@cloud.ru>",
+  "contributors": [
+    "Nikita Ershov <niershov@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-uikit/popover-private": "0.12.2",
+    "@snack-uikit/utils": "3.2.0",
+    "classnames": "2.3.2"
+  }
+}
