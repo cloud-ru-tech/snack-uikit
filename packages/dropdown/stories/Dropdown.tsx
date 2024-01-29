@@ -25,7 +25,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
         {...args}
         content={<SkeletonText width={args.storySkeletonWidth} className={styles.skeleton} loading lines={7} />}
       >
-        <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-droplist' />
+        <ButtonFilled className={styles.button} label='Reference button' data-test-id='button-with-dropdown' />
       </Dropdown>
     </div>
   </div>

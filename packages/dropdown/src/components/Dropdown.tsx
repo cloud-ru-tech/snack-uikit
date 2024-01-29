@@ -45,7 +45,7 @@ export function Dropdown({
   return (
     <PopoverPrivate
       placement={placement}
-      popoverContent={<div className={styles.droplistContainer}>{content}</div>}
+      popoverContent={<div className={styles.dropdownContainer}>{content}</div>}
       trigger={trigger}
       hasArrow={false}
       widthStrategy={widthStrategy}

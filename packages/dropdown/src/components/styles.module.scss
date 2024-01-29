@@ -1,6 +1,6 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
 
-.droplistContainer {
+.dropdownContainer {
   @include composite-var($drop-list-container);
 
   overflow: hidden;
