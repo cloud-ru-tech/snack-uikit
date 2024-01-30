@@ -57,7 +57,7 @@ function buildSubChain(
   }
 
   if (useCollapse) {
-    buildSubChain(rest, { useCollapse: true, useEllipse: true }).forEach(variant => {
+    buildSubChain(rest, { useCollapse: true, useEllipse: false }).forEach(variant => {
       result.push(startsWithCollapsed(current, variant));
     });
   }
