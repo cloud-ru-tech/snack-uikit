@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2024-01-30)
+
+
+### Features
+
+* **FF-4075:** add outsideClick and fallbackPlacements props ([8b2a221](https://github.com/cloud-ru-tech/snack-uikit/commit/8b2a221f42186791b6491cc18be9601d0331c097))
+
+
+
+
+
 ## 0.12.5 (2024-01-23)
 
 ### Only dependencies have been changed

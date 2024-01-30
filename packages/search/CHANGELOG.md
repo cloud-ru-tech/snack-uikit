@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.3 (2024-01-30)
+
+
+### Bug Fixes
+
+* **FF-4075:** remove blur on submit ([dc0d147](https://github.com/cloud-ru-tech/snack-uikit/commit/dc0d14733b825a1c3f7a31770a6c469eea810a3b))
+
+
+
+
+
 ## 0.7.2 (2024-01-23)
 
 ### Only dependencies have been changed

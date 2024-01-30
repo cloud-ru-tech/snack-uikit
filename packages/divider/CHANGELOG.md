@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.1 (2024-01-30)
+
+
+### Bug Fixes
+
+* **FF-4075:** make divider fit flex container ([883a32c](https://github.com/cloud-ru-tech/snack-uikit/commit/883a32c1595e01141bfba2ed4d0621c1ffdd2b71))
+
+
+
+
+
 # 3.0.0 (2023-12-14)
 
 
