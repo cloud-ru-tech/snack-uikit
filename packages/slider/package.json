@@ -1,0 +1,41 @@
+{
+  "name": "@snack-uikit/slider",
+  "publishConfig": {
+    "access": "public"
+  },
+  "title": "Slider",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://cloud-ru-tech.github.io/snack-uikit/packages/slider",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit/tree/master",
+    "directory": "packages/slider"
+  },
+  "author": "Nikita Ershov <niershov@cloud.ru>",
+  "contributors": [
+    "Nikita Ershov <niershov@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-uikit/tooltip": "0.10.4",
+    "classnames": "2.5.1",
+    "rc-slider": "10.5.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}

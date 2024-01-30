@@ -1,0 +1,16 @@
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+.wrapper {
+  resize: horizontal;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  width: 500px;
+  padding: 64px;
+
+  background: $sys-neutral-background1-level;
+}

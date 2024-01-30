@@ -144,6 +144,9 @@
     },
     {
       "path": "./info-block"
+    },
+    {
+      "path": "./slider"
     }
   ],
   "compilerOptions": {
