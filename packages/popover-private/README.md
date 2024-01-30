@@ -50,6 +50,7 @@ function App() {
 | closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
 | triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | fallbackPlacements | `Placement[]` | - | Цепочка расположений которая будет применяться к поповеру от первого к последнему если при текущем он не влезает. |
+| disableSpanWrapper | `boolean` | - | Отключает для `isValidElement` внешнюю обертку триггера <br> Пригодится для элементов с `position: absolute` |
 
 
 [//]: DOCUMENTATION_SECTION_END

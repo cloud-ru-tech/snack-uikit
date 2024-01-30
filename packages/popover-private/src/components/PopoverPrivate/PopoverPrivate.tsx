@@ -124,6 +124,12 @@ export type PopoverPrivateProps = WithSupportProps<{
    * Цепочка расположений которая будет применяться к поповеру от первого к последнему если при текущем он не влезает.
    */
   fallbackPlacements?: Placement[];
+  /**
+   * Отключает для `isValidElement` внешнюю обертку триггера
+   * <br>
+   * Пригодится для элементов с `position: absolute`
+   */
+  disableSpanWrapper?: boolean;
 }>;
 
 function PopoverPrivateComponent({
@@ -148,6 +154,7 @@ function PopoverPrivateComponent({
   fallbackPlacements = DEFAULT_FALLBACK_PLACEMENTS,
   arrowContainerClassName,
   arrowElementClassName,
+  disableSpanWrapper = false,
   ...rest
 }: PopoverPrivateProps) {
   const arrowRef = useRef<HTMLDivElement | null>(null);
@@ -267,6 +274,7 @@ function PopoverPrivateComponent({
         getReferenceProps,
         children,
         setReference,
+        disableSpanWrapper,
       })}
       {portal}
     </FloatingNode>

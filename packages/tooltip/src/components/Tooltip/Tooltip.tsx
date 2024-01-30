@@ -13,7 +13,14 @@ export type TooltipProps = WithSupportProps<
     disableMaxWidth?: boolean;
   } & Pick<
     PopoverPrivateProps,
-    'className' | 'triggerClassName' | 'open' | 'onOpenChange' | 'hoverDelayOpen' | 'hoverDelayClose'
+    | 'className'
+    | 'triggerClassName'
+    | 'open'
+    | 'onOpenChange'
+    | 'hoverDelayOpen'
+    | 'hoverDelayClose'
+    | 'triggerRef'
+    | 'disableSpanWrapper'
   > &
     Partial<Pick<PopoverPrivateProps, 'trigger' | 'placement' | 'children'>>
 >;

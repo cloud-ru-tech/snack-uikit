@@ -58,6 +58,7 @@ type GetPopoverContentProps = {
   getReferenceProps: ReturnType<typeof useInteractions>['getReferenceProps'];
   validElementWrapperClassName: string;
   setReference: (node: ReferenceType | null) => void;
+  disableSpanWrapper?: boolean;
 };
 
 export const getPopoverTriggerJSX = ({
@@ -65,9 +66,10 @@ export const getPopoverTriggerJSX = ({
   getReferenceProps,
   setReference,
   validElementWrapperClassName,
+  disableSpanWrapper,
 }: GetPopoverContentProps): ReactNode => {
   if (isValidElement(children)) {
-    if (isForwardRef(children) || isValidElementType(children)) {
+    if (isForwardRef(children) || isValidElementType(children) || disableSpanWrapper) {
       return cloneElement(children, {
         ...getReferenceProps({
           ...(children.props as HTMLProps<HTMLElement>),
