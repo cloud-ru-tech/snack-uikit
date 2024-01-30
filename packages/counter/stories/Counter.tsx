@@ -108,6 +108,6 @@ counter.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/6nTzKikd14uwVp3CJ6kNRS/Counter?t=bjoKDMpxpD433EAk-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=7%3A4148&mode=design',
   },
 };

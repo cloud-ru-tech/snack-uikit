@@ -44,6 +44,6 @@ paginationSlider.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/rFD4G7kFc2ylGYDkK8IeIX/Pagination?node-id=0-1&t=gmshbzdhCVJTradL-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A17288&mode=design',
   },
 };

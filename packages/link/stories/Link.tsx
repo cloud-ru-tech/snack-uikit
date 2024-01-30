@@ -125,6 +125,6 @@ link.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/RLJd0LDs7HqOVJIRxD6zUq/Link?t=R0iG5gNrqucXW2DE-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=2%3A9&mode=design',
   },
 };

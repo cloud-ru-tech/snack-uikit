@@ -83,6 +83,6 @@ tagRow.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/nuEhS6AUZLLN72JKDEGEaQ/branch/58fjHoQvR8teRoqcGFhVAj/Tag?type=design&node-id=937-10252&mode=design&t=yQRcex74NvM0rG0U-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A24551&mode=design',
   },
 };

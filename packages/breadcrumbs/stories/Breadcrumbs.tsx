@@ -130,6 +130,6 @@ breadcrumbs.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/gydu9jSAAS8vxjjJwOzvOH/Breadcrumbs?type=design&node-id=0-1&t=FCM75u3B9NYodjkI-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A30976&mode=design',
   },
 };

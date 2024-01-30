@@ -80,6 +80,6 @@ statusIndicator.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/IAjEuR29VlrI97WHCWnkDo/Status?t=uqvEEDS0RN7FPnu7-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A21940&mode=design',
   },
 };

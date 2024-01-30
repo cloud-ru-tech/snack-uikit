@@ -82,6 +82,6 @@ alertTop.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/8mbpi9hYDOy2X9FDpPhDQc/branch/oimvvgUx1eicoGjmfyjybX/Alert?type=design&node-id=0-1&mode=design&t=Wwhe2MGPdFgkS7vM-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A182904&mode=design',
   },
 };

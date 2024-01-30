@@ -122,6 +122,6 @@ stepper.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/qPN8ou7BfyFzo9L0SFouHC/Stepper?type=design&node-id=0%3A1&mode=design&t=RCvihmv7i8kvJVxQ-1',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A33355&mode=design',
   },
 };

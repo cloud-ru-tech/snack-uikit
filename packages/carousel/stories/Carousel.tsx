@@ -79,6 +79,6 @@ carousel.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/W87xpxoE1tf8sWmZTjZjby/Carousel?type=design&node-id=0%3A1&mode=design&t=KtAUVyXWkKi2NUVC-1',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=44%3A7537&mode=design',
   },
 };

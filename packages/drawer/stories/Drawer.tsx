@@ -104,6 +104,6 @@ drawer.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/4Oy49etaqzbxq4RpP0xd4L/Drawer?type=design&node-id=602%3A2643&mode=design&t=VDrGS2hKxLdxVSFP-1',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A208969&mode=drawer',
   },
 };

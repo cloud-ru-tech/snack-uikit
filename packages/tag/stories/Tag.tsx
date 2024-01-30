@@ -82,6 +82,6 @@ tag.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/nuEhS6AUZLLN72JKDEGEaQ/Tag?type=design&t=xlAVX4yP4FyM5D01-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A24551&mode=design',
   },
 };

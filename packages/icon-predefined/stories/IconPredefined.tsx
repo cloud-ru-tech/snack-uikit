@@ -51,6 +51,6 @@ IconPredefined.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/1ezTuk3XBJ07dLcx3ZuAqZ/IconPredefined?type=design&mode=design&t=gRHZaE015Lzps23j-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A20598&mode=design',
   },
 };

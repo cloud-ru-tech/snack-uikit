@@ -90,6 +90,6 @@ notificationCard.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/xfZEon4b7eNvK0FNK2KS4k/Notification-Panel?type=design&node-id=0%3A1&mode=design&t=5jLkyXnKAhmXfd60-1',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A209668&mode=design',
   },
 };

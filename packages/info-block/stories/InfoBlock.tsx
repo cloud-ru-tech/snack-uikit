@@ -108,6 +108,6 @@ infoBlock.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?type=design&node-id=591%3A52&mode=design&t=rchDMek35rq828M9-1',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?type=design&node-id=591%3A52&mode=design',
   },
 };

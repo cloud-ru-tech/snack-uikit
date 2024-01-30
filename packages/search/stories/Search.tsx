@@ -137,6 +137,6 @@ search.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/bKK1f3ogGhlxPZ0lSHvkSj/branch/N94sWfCyD1DqRnJ7tf3FSa/Search?type=design',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A143287&mode=design',
   },
 };

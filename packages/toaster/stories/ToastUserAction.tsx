@@ -98,6 +98,6 @@ toastUserAction.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/VtbRcli4C9QbbiTqWsPIxr/branch/AwoYxH9F6HZG414pgPXXdD/Toaster',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A197658&mode=design',
   },
 };

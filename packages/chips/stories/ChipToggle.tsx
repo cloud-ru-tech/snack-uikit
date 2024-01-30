@@ -115,6 +115,6 @@ chipToggle.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/yoQDw4aDFiTQ1uWnxQtTmB/Chips?type=design&node-id=0%3A1&t=708nqQDclQju8nB3-1',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A152239&mode=design',
   },
 };

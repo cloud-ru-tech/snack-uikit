@@ -226,6 +226,6 @@ toolbar.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/jXwdPVLYopxUCx5LOe1PQY/branch/JapbLcKnQw4h6ghzCPRTMD/Toolbar',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A224846&mode=design',
   },
 };

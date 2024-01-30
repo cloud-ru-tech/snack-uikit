@@ -173,6 +173,6 @@ calendar.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/ClltOilUQ4IIOWR3H8TJkX/Calendar?type=design&mode=design&t=9JpP5LPQw4Kw6SWM-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A27244&mode=design',
   },
 };

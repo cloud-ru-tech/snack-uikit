@@ -270,6 +270,6 @@ card.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/KM8oGbd6TljNpkvXirk9vs/branch/aYKNUllfgg1uHAByifBN2V/Cards',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A214604&mode=design',
   },
 };

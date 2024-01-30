@@ -153,6 +153,6 @@ avatar.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/bCKjhXIy5N4WrrcEo7poZC/Avatar?node-id=3-2&t=8ldgzdsyQIEdBbUg-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A21136&mode=design',
   },
 };

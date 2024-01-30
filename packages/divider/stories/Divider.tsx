@@ -32,6 +32,6 @@ divider.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/v1m2fDDXlFIjPK5HsVbZc6/branch/x9YwdGhViFwLivG2M0KiL6/Divider?type=design&node-id=0%3A1&t=mFTel4PuLVQETU1z-1',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=11%3A7167&mode=design',
   },
 };

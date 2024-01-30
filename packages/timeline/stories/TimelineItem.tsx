@@ -66,6 +66,6 @@ timelineItem.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/Fm6tDikhsAChOCjObxYQ9t/branch/SMFc2k6khLQ95eE18EshO1/Timeline',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A30522&mode=design',
   },
 };

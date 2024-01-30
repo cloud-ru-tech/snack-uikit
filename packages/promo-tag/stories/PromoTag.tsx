@@ -55,6 +55,6 @@ promoTag.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/7lmt6ziBuiCBRcBZZUuTXv/Promo-Tag?type=design&node-id=0-1&mode=design&t=MlDYfY2nVmlZW9QG-0',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A27190&mode=design',
   },
 };

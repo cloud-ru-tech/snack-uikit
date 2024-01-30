@@ -53,7 +53,7 @@ popover.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/hu0fp2FpkK1tVf8YSwCqmT/Popover',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=2%3A10&mode=design',
   },
   a11y: {
     element: `.${styles.story}`,

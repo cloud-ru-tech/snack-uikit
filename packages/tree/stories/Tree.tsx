@@ -172,6 +172,6 @@ tree.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/pvwpIeTJJP4rwm5mfW7gqK/Tree?type=design&node-id=0%3A1&mode=design&t=iz6bZWkPvWmi31BG-1',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A34043&mode=design',
   },
 };
