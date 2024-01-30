@@ -1,5 +1,8 @@
 {
   "name": "@snack-uikit/list",
+  "publishConfig": {
+    "access": "public"
+  },
   "title": "List",
   "version": "0.1.0",
   "sideEffects": [
