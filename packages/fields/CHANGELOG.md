@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.5 (2024-01-31)
+
+
+### Bug Fixes
+
+* **FF-4189:** remove unnecessary scroll for m and l sizes ([1ae96b1](https://github.com/cloud-ru-tech/snack-uikit/commit/1ae96b16371602be493563259efce9807dfe6b4d))
+
+
+
+
+
 ## 0.11.4 (2024-01-31)
 
 ### Only dependencies have been changed
