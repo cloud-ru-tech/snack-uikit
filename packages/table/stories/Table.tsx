@@ -1,6 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import { TagRow, TagRowProps } from '@snack-uikit/tag';
 import { toaster } from '@snack-uikit/toaster';
 
 import componentChangelog from '../CHANGELOG.md';
@@ -41,6 +42,15 @@ type StoryProps = Omit<Props, 'rowSelection' | 'sort'> & {
 const renderHeader = (ctx: HeaderContext<StubData, unknown>) => `Table column №${ctx.column.id}`;
 const accessorFn = (key: keyof StubData) => (row: StubData) =>
   `Cell ${Math.trunc(Number(row[key]) / 5) + 1}.${(Number(row[key]) % 5) + 1}`;
+
+const tags: TagRowProps['items'] = [
+  { label: 'tag1xxx', appearance: 'red' },
+  { label: 'tag2x', appearance: 'yellow' },
+  { label: 'tag3xxxxx', appearance: 'orange' },
+  { label: 'tag4xx', appearance: 'green' },
+  { label: 'tag5xxx', appearance: 'blue' },
+  { label: 'tag6x', appearance: 'pink' },
+];
 
 const columnDefinitions: ColumnDefinition<StubData>[] = [
   {
@@ -103,6 +113,13 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
   },
   {
     id: '7',
+    accessorKey: 'col7',
+    cell: () => <TagRow items={tags} rowLimit={1} />,
+    header: renderHeader,
+    size: 230,
+  },
+  {
+    id: '8',
     accessorKey: 'date',
     header: renderHeader,
     enableSorting: true,
