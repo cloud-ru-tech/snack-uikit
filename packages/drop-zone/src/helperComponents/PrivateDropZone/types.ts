@@ -23,7 +23,7 @@ export type PrivateDropZoneProps = WithSupportProps<{
    * @default multiple
    */
   mode?: UploadMode;
-  /** Режим */
+  /** Показывает пользователю в открывшемся диалоговом окне файлы типов, которые вы указываете в значении атрибута */
   accept?: string;
   /** CSS-класс */
   className?: string;

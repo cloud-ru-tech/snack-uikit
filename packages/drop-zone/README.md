@@ -23,7 +23,7 @@
 | description | `ReactNode` | - | Описание |
 | disabled | `boolean` | - | Деактивирован ли компонент |
 | mode | enum UploadMode: `"single"`, `"multiple"` | multiple | Режим |
-| accept | `string` | - | Режим |
+| accept | `string` | - | Показывает пользователю в открывшемся диалоговом окне файлы типов, которые вы указываете в значении атрибута |
 | className | `string` | - | CSS-класс |
 ## HiddenDropZone
 Компонент - скрытая дропзона
@@ -35,8 +35,15 @@
 | description | `ReactNode` | - | Описание |
 | disabled | `boolean` | - | Деактивирован ли компонент |
 | mode | enum UploadMode: `"single"`, `"multiple"` | multiple | Режим |
-| accept | `string` | - | Режим |
+| accept | `string` | - | Показывает пользователю в открывшемся диалоговом окне файлы типов, которые вы указываете в значении атрибута |
 | className | `string` | - | CSS-класс |
+## FileUpload
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| onFilesUpload* | `(files: File[]) => void` | - | Колбек загрузки файла |
+| mode | enum UploadMode: `"single"`, `"multiple"` | multiple | Режим |
+| accept | `string` | - | Показывает пользователю в открывшемся диалоговом окне файлы типов, которые вы указываете в значении атрибута |
 
 
 [//]: DOCUMENTATION_SECTION_END
