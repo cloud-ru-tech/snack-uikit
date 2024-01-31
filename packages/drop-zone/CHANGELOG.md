@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-01-31)
+
+
+### Features
+
+* **FF-4200:** add file uploader ([6090ac5](https://github.com/cloud-ru-tech/snack-uikit/commit/6090ac546ba449aedff71763d1b0a736926718e6))
+
+
+
+
+
 # 0.6.0 (2023-12-14)
 
 
