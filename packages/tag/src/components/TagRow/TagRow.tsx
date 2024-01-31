@@ -1,3 +1,5 @@
+import { memo, useMemo } from 'react';
+
 import { WithSupportProps } from '@snack-uikit/utils';
 
 import { SIZE } from '../../constants';
@@ -20,8 +22,8 @@ export type TagRowProps = WithSupportProps<{
   onItemRemove?(item: string): void;
 }>;
 
-export function TagRow({ items, rowLimit, size = SIZE.Xs, ...props }: TagRowProps) {
-  const coloredItems = items.map(mapTagRowItem);
+function TagRowInner({ items, rowLimit, size = SIZE.Xs, ...props }: TagRowProps) {
+  const coloredItems = useMemo(() => items.map(mapTagRowItem), [items]);
 
   if (rowLimit) {
     return <TagRowTruncated items={coloredItems} rowLimit={rowLimit} size={size} {...props} />;
@@ -29,3 +31,5 @@ export function TagRow({ items, rowLimit, size = SIZE.Xs, ...props }: TagRowProp
 
   return <TagRowSimple items={coloredItems} size={size} {...props} />;
 }
+
+export const TagRow = memo(TagRowInner);

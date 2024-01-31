@@ -1,6 +1,5 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tag';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
 
 $sizes: 'xs', 's';
 
@@ -40,11 +39,6 @@ $label-typography: (
 }
 
 .tagRowDroplistContainer {
-  @include composite-var($drop-list-container);
-
-  background-color: $sys-neutral-background2-level;
-  box-shadow: $box-shadow-elevation-level4;
-
   @each $size in $sizes {
     &[data-size=#{$size}] {
       @include composite-var($tag-list, $size);

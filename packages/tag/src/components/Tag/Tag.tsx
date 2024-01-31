@@ -51,3 +51,5 @@ export function Tag({
     </span>
   );
 }
+
+export { APPEARANCE };

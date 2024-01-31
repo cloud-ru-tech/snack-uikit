@@ -1,6 +1,6 @@
 import { Ref } from 'react';
 
-import { PopoverPrivate } from '@snack-uikit/popover-private';
+import { Dropdown } from '@snack-uikit/dropdown';
 import { Scroll } from '@snack-uikit/scroll';
 
 import { TAG_ROW_TEST_IDS } from '../../components/TagRow/constants';
@@ -19,11 +19,11 @@ type TagMoreProps = {
 
 export function TagMore({ items, text = '', size = SIZE.Xs, buttonRef, onItemRemove }: TagMoreProps) {
   return (
-    <PopoverPrivate
+    <Dropdown
       placement='bottom-end'
       trigger='hoverAndFocusVisible'
       triggerClassName={styles.triggerClassName}
-      popoverContent={
+      content={
         <div className={styles.tagRowDroplistContainer} data-size={size}>
           <Scroll className={styles.tagRowDroplistScroll} size='s' barHideStrategy='move' resize='none'>
             <TagRowSimple
@@ -35,7 +35,6 @@ export function TagMore({ items, text = '', size = SIZE.Xs, buttonRef, onItemRem
           </Scroll>
         </div>
       }
-      hasArrow={false}
     >
       <button
         type='button'
@@ -44,6 +43,6 @@ export function TagMore({ items, text = '', size = SIZE.Xs, buttonRef, onItemRem
         data-size={size}
         data-test-id={TAG_ROW_TEST_IDS.moreButton}
       >{`${text}${items.length}`}</button>
-    </PopoverPrivate>
+    </Dropdown>
   );
 }

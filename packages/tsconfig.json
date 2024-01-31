@@ -68,10 +68,10 @@
       "path": "./tabs"
     },
     {
-      "path": "./tag"
+      "path": "./dropdown"
     },
     {
-      "path": "./dropdown"
+      "path": "./tag"
     },
     {
       "path": "./droplist"

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
@@ -20,7 +20,7 @@ type TagRowTruncatedProps = WithSupportProps<{
   onItemRemove?(item: string): void;
 }>;
 
-export function TagRowTruncated({
+function TagRowTruncatedInner({
   items,
   rowLimit,
   size,
@@ -124,3 +124,5 @@ export function TagRowTruncated({
     </div>
   );
 }
+
+export const TagRowTruncated = memo(TagRowTruncatedInner);
