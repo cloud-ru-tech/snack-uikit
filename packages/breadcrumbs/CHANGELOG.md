@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.2 (2024-01-31)
+
+
+### Bug Fixes
+
+* **FF-4053:** forbid to truncate items when have a collapsed list ([5ecc687](https://github.com/cloud-ru-tech/snack-uikit/commit/5ecc68718ed23b395aeb22cefd59d0bee9a62e99))
+
+
+
+
+
 ## 0.8.1 (2024-01-30)
 
 ### Only dependencies have been changed

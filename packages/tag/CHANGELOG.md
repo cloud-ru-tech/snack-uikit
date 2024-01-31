@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-01-31)
+
+
+### Bug Fixes
+
+* **FF-4016:** fix usages of TagRow inside Table, remove local Dropdown ([b33d8e5](https://github.com/cloud-ru-tech/snack-uikit/commit/b33d8e5f7fb74d1e5a14a00c8ee428383b1dac0b))
+
+
+### BREAKING CHANGES
+
+
+* **FF-4016:** rename color to appearance inside TagRow items ([e1bbffb](https://github.com/cloud-ru-tech/snack-uikit/commit/e1bbffbfe6bd4a60cfc3a78170e1bdc030312866))
+
+
+
+
 ## 0.6.4 (2024-01-23)
 
 ### Only dependencies have been changed

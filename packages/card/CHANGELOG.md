@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.2 (2024-01-31)
+
+
+### Bug Fixes
+
+* **FF-4183:** use div instead of span for typography wrapper ([6e92e7c](https://github.com/cloud-ru-tech/snack-uikit/commit/6e92e7c433ca985f3b8b74eac2acdbea3cea29ab))
+
+
+
+
+
 ## 0.9.1 (2024-01-30)
 
 ### Only dependencies have been changed

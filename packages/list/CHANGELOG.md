@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.2 (2024-01-31)
+
+
+### Bug Fixes
+
+* **FF-4198:** reset active focus index when clicking the item with mouse ([638e6f0](https://github.com/cloud-ru-tech/snack-uikit/commit/638e6f0069ec7f444b39d62d91d6e845e13aee9f))
+
+
+
+
+
 ## 0.1.1 (2024-01-30)
 
 
