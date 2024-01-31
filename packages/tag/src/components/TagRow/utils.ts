@@ -1,16 +1,13 @@
 import { APPEARANCE } from '../../constants';
 import { TagRowItem, TagRowItemInner } from '../../types';
 
-export const mapTagRowItem = ({ label, color }: TagRowItem): TagRowItemInner => {
-  if (color) {
-    return {
-      label,
-      color,
-    };
+export const mapTagRowItem = ({ label, appearance }: TagRowItem): TagRowItemInner => {
+  if (appearance) {
+    return { label, appearance };
   }
 
   return {
     label,
-    color: APPEARANCE.Neutral,
+    appearance: APPEARANCE.Neutral,
   };
 };

@@ -1,7 +1,7 @@
 import { APPEARANCE } from '../src/constants';
 import { TagRowItemInner } from '../src/types';
 
-const COLOURS = Object.values(APPEARANCE);
+const APPEARANCES = Object.values(APPEARANCE);
 
 export const generateFakeTags = (amountToGenerate: number, char: string, charLimit: number): TagRowItemInner[] => {
   let colorIndex = 0;
@@ -13,15 +13,12 @@ export const generateFakeTags = (amountToGenerate: number, char: string, charLim
     const index = tags.length + 1;
     const label = `tag${index}`.padEnd(charsAmount + `tag${index}`.length, char);
 
-    tags.push({
-      label,
-      color: COLOURS[colorIndex],
-    });
+    tags.push({ label, appearance: APPEARANCES[colorIndex] });
 
     colorIndex++;
     charsAmount++;
 
-    if (colorIndex > COLOURS.length) {
+    if (colorIndex > APPEARANCES.length) {
       colorIndex = 0;
     }
 

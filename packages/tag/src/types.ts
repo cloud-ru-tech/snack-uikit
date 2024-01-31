@@ -8,10 +8,10 @@ export type Size = ValueOf<typeof SIZE>;
 
 export type TagRowItem = {
   label: string;
-  color?: Appearance;
+  appearance?: Appearance;
 };
 
 export type TagRowItemInner = {
   label: string;
-  color: Appearance;
+  appearance: Appearance;
 };
