@@ -1,4 +1,5 @@
-import { forwardRef, useMemo, useRef, useState } from 'react';
+import mergeRefs from 'merge-refs';
+import { FocusEvent, forwardRef, KeyboardEvent, useMemo, useRef, useState } from 'react';
 
 import { HiddenTabButton } from '../../../helperComponents';
 import { extractItemIds, extractItemRefs, withCollapsedItems } from '../../../utils';
@@ -10,7 +11,10 @@ import styles from '../styles.module.scss';
 import { ListProps } from '../types';
 
 export const List = forwardRef<HTMLElement, ListProps>(
-  ({ items: itemsProp, search, pinBottom, pinTop, footerActiveElementsRefs, ...props }) => {
+  (
+    { items: itemsProp, search, pinBottom, pinTop, footerActiveElementsRefs, onKeyDown, tabIndex = 0, ...props },
+    ref,
+  ) => {
     const hasSearch = useMemo(() => Boolean(search), [search]);
 
     const memorizedItems = useMemo(
@@ -68,6 +72,20 @@ export const List = forwardRef<HTMLElement, ListProps>(
 
     const isActive = listRef.current === document.activeElement && activeFocusIndex === -1 && openNestedIndex === -1;
 
+    const mergedHandlerKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
+      onKeyDown?.(e);
+      handleListKeyDown?.(e);
+    };
+
+    const handleOnFocus = (e: FocusEvent<HTMLElement>) => {
+      if (
+        e.relatedTarget === null ||
+        (e.relatedTarget && itemRefs.every(({ current }) => current !== e.relatedTarget))
+      ) {
+        resetActiveFocusIndex();
+      }
+    };
+
     return (
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -96,22 +114,15 @@ export const List = forwardRef<HTMLElement, ListProps>(
             <ListPrivate
               {...props}
               {...slicedItems}
-              ref={listRef}
-              onFocus={e => {
-                if (
-                  e.relatedTarget === null ||
-                  (e.relatedTarget && itemRefs.every(({ current }) => current !== e.relatedTarget))
-                ) {
-                  resetActiveFocusIndex();
-                }
-              }}
-              onKeyDown={handleListKeyDown}
-              tabIndex={0}
+              ref={mergeRefs(ref, listRef)}
+              onFocus={handleOnFocus}
+              onKeyDown={mergedHandlerKeyDown}
+              tabIndex={tabIndex}
               search={search}
               nested={false}
             />
 
-            <HiddenTabButton ref={btnRef} listRef={listRef} />
+            <HiddenTabButton ref={btnRef} listRef={listRef} tabIndex={tabIndex} />
           </div>
         </ParentListContext.Provider>
       </SelectionProvider>

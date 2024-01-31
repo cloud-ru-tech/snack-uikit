@@ -134,6 +134,10 @@ $typography: (
     }
   }
 
+  &[data-non-pointer] {
+    cursor: inherit;
+  }
+
   &:disabled {
     .option,
     .description,

@@ -29,6 +29,8 @@ export type ListProps = WithSupportProps<
     noData?: string;
     /** Текст для состояния "Отсутсвие результата" при поиске */
     noResults?: string;
+    tabIndex?: number;
+    onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
   } & Pick<SelectionProviderProps, 'value' | 'defaultValue' | 'onChange' | 'selection'> &
     ListContextType &
     ScrollProps
@@ -40,7 +42,7 @@ export type DroplistProps = {
   /** Триггер для дроплиста */
   children?: ReactNode;
 } & Pick<DropdownProps, 'trigger' | 'placement' | 'widthStrategy' | 'open' | 'onOpenChange'> &
-  ListProps;
+  Omit<ListProps, 'tabIndex' | 'onKeyDown'>;
 
 export type ListPrivateProps = ListProps & {
   nested?: boolean;

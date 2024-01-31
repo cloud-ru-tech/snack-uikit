@@ -32,30 +32,32 @@ export type BaseItemProps = WithSupportProps<{
   disabled?: boolean;
 
   itemRef?: RefObject<HTMLButtonElement>;
+  className?: string;
+
+  inactive?: boolean;
+  switch?: boolean;
 }>;
 
-export type SwitchProps = {
-  switch?: boolean;
-};
+type BaseItemsWithoutNonGroupProps = Omit<BaseItemProps, 'switch' | 'inactive'>;
 
 // eslint-disable-next-line no-use-before-define
-export type ItemProps = (BaseItemProps & SwitchProps) | AccordionItemProps | NextListItemProps | GroupItemProps;
+export type ItemProps = BaseItemProps | AccordionItemProps | NextListItemProps | GroupItemProps;
 
-export type AccordionItemProps = BaseItemProps & {
+export type AccordionItemProps = BaseItemsWithoutNonGroupProps & {
   items: ItemProps[];
   // TODO: add later
   // mode?: 'single' | 'multiple';
   type: 'collapse';
 };
 
-export type NextListItemProps = BaseItemProps & {
+export type NextListItemProps = BaseItemsWithoutNonGroupProps & {
   items: ItemProps[];
   type: 'next-list';
   placement?: 'right-start' | 'left-start' | 'left' | 'right' | 'left-end' | 'right-end';
   search?: SearchState;
 } & ScrollProps;
 
-export type GroupItemProps = SeparatorProps & {
+export type GroupItemProps = Omit<SeparatorProps, 'size'> & {
   items: ItemProps[];
   id?: string | number;
 };

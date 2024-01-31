@@ -4,9 +4,10 @@ import styles from './styles.module.scss';
 
 type HiddenTabButtonProps = {
   listRef: RefObject<HTMLElement>;
+  tabIndex?: number;
 };
 
-export const HiddenTabButton = forwardRef<HTMLButtonElement, HiddenTabButtonProps>(({ listRef }, ref) => {
+export const HiddenTabButton = forwardRef<HTMLButtonElement, HiddenTabButtonProps>(({ listRef, tabIndex }, ref) => {
   const handleFocus = useCallback(
     (e: FocusEvent<HTMLButtonElement>) => {
       if (e.relatedTarget !== listRef.current) {
@@ -23,5 +24,14 @@ export const HiddenTabButton = forwardRef<HTMLButtonElement, HiddenTabButtonProp
     e.stopPropagation();
   }, []);
 
-  return <button aria-hidden ref={ref} onKeyDown={handleKeyDown} onFocus={handleFocus} className={styles.hiddenBtn} />;
+  return (
+    <button
+      aria-hidden
+      ref={ref}
+      onKeyDown={handleKeyDown}
+      onFocus={handleFocus}
+      className={styles.hiddenBtn}
+      tabIndex={tabIndex}
+    />
+  );
 });

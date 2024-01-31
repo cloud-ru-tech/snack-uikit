@@ -8,10 +8,9 @@ import {
   GroupItemProps,
   ItemProps,
   NextListItemProps,
-  SwitchProps,
 } from '../src/components/Items';
 
-export const BASE_OPTIONS: (BaseItemProps & SwitchProps)[] = [
+export const BASE_OPTIONS: BaseItemProps[] = [
   {
     content: { option: 'Content' },
     beforeContent: <PlaceholderSVG />,
@@ -29,7 +28,7 @@ export const LONG_LIST_OPTIONS = Array.from({ length: 10 }).fill({
   content: { option: 'Content' },
   beforeContent: <PlaceholderSVG />,
   afterContent: <Counter value={10} />,
-}) as (BaseItemProps & SwitchProps)[];
+}) as BaseItemProps[];
 
 export const GROUP_OPTIONS: GroupItemProps[] = [
   { divider: true, items: BASE_OPTIONS, label: 'Group 1', mode: 'primary' },

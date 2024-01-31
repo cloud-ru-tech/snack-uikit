@@ -20,7 +20,10 @@ export function withCollapsedItems({ items, openCollapsedItems }: WithCollapsedI
   let expandedIds: Array<string | number> = [];
 
   items.forEach(item => {
-    if ((isBaseItemProps(item) || isNextListItemProps(item) || isAccordionItemProps(item)) && !item.disabled) {
+    if (
+      ((isBaseItemProps(item) && !item.inactive) || isNextListItemProps(item) || isAccordionItemProps(item)) &&
+      !item.disabled
+    ) {
       newItems = newItems.concat([item]);
       ids = ids.concat([item.id ?? '']);
 
@@ -88,7 +91,13 @@ export function extractItemIds(items: ItemProps[]): Array<string | number> {
 
 export function extractChildIds({ items }: { items: ItemProps[] }): Array<string | number> {
   return items
-    .filter(item => isAccordionItemProps(item) || isNextListItemProps(item) || isGroupItemProps(item) || !item.disabled)
+    .filter(
+      item =>
+        isAccordionItemProps(item) ||
+        isNextListItemProps(item) ||
+        isGroupItemProps(item) ||
+        (isBaseItemProps(item) && !item.disabled && !item.inactive),
+    )
     .reduce(
       (prev: Array<string | number>, item: ItemProps) => {
         if (isAccordionItemProps(item) || isNextListItemProps(item)) {

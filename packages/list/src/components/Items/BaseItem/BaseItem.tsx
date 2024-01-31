@@ -7,13 +7,12 @@ import { extractSupportProps } from '@snack-uikit/utils';
 
 import { useCollapseContext, useListContext, useParentListContext, useSelectionContext } from '../../Lists/contexts';
 import commonStyles from '../styles.module.scss';
-import { BaseItemPrivateProps, BaseItemProps, SwitchProps } from '../types';
+import { BaseItemPrivateProps, BaseItemProps } from '../types';
 import { CHECKBOX_SIZE_MAP } from './constants';
 import styles from './styles.module.scss';
 
 type AllBaseItemProps = BaseItemProps &
-  BaseItemPrivateProps &
-  SwitchProps & { indeterminate?: boolean; onSelect?(): void; isParentNode?: boolean };
+  BaseItemPrivateProps & { indeterminate?: boolean; onSelect?(): void; isParentNode?: boolean };
 
 export function BaseItem({
   beforeContent,
@@ -31,6 +30,8 @@ export function BaseItem({
   indeterminate,
   onSelect,
   isParentNode,
+  className,
+  inactive,
   ...rest
 }: AllBaseItemProps) {
   const { option, caption, description } = content || {};
@@ -47,10 +48,12 @@ export function BaseItem({
   };
 
   const handleItemClick = (e: MouseEvent<HTMLButtonElement>) => {
-    parentResetActiveFocusIndex?.();
+    if (!inactive) {
+      parentResetActiveFocusIndex?.();
 
-    if (!isParentNode) {
-      handleChange();
+      if (!isParentNode) {
+        handleChange();
+      }
     }
 
     onClick?.(e);
@@ -96,10 +99,12 @@ export function BaseItem({
     <li role={'menuitem'} data-test-id={props['data-test-id'] || 'list__base-item_' + id}>
       <button
         ref={itemRef}
-        className={cn(commonStyles.listItem, styles.droplistItem)}
+        className={cn(commonStyles.listItem, styles.droplistItem, className)}
         data-size={size}
         onClick={handleItemClick}
         tabIndex={-1}
+        data-non-pointer={inactive && !onClick}
+        data-inactive={inactive || undefined}
         data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
         data-variant={selection || undefined}
         data-open={open || undefined}
@@ -108,10 +113,10 @@ export function BaseItem({
         onFocus={handleItemFocus}
         style={{ '--level': level }}
       >
-        {!switchProp && isSelectionSingle && marker && !isParentNode && (
+        {!switchProp && isSelectionSingle && marker && !isParentNode && !inactive && (
           <div className={styles.markerContainer} data-test-id='list__base-item-marker' />
         )}
-        {!switchProp && isSelectionMultiple && (
+        {!switchProp && isSelectionMultiple && !inactive && (
           <div className={styles.checkbox}>
             <Checkbox
               size={CHECKBOX_SIZE_MAP[size ?? 's']}
@@ -145,7 +150,9 @@ export function BaseItem({
 
         {afterContent}
 
-        {switchProp && <Switch disabled={disabled} checked={isChecked} data-test-id='list__base-item-switch' />}
+        {switchProp && !inactive && (
+          <Switch disabled={disabled} checked={isChecked} data-test-id='list__base-item-switch' />
+        )}
         {!switchProp && expandIcon && <span className={styles.expandableIcon}>{expandIcon}</span>}
       </button>
     </li>
