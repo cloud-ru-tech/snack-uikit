@@ -6,11 +6,15 @@ $padding-right: (
   'm': $fields-buttons-m,
   'l': $fields-buttons-m,
 );
+$scroll-bar-heights: (
+  's': $dimension-050m,
+  'm': calc($dimension-025m + $dimension-050m),
+  'l': $dimension-1m,
+);
 
 .container {
   --max-rows: 1000;
   --min-rows: 3;
-  --horizontal-scroll-bar-height: 4px;
 
   .scrollContainer {
     min-height: calc(var(--min-rows) * var(--row-height) + var(--horizontal-scroll-bar-height));
@@ -24,6 +28,7 @@ $padding-right: (
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       --row-height: #{simple-var($theme-variables, 'sans', 'body', $size, 'line-height')};
+      --horizontal-scroll-bar-height: #{simple-var($scroll-bar-heights, $size)};
 
       .textarea {
         overflow: hidden;
