@@ -20,52 +20,53 @@
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| items* | `ItemProps[]` | - |  |
-| triggerElemRef | `RefObject<HTMLElement>` | - |  |
-| open | `boolean` | - |  |
-| onOpenChange | `(open: boolean) => void` | - |  |
-| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - |  |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - |  |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | - |  |
-| pinTop | `ItemProps[]` | - |  |
-| pinBottom | `ItemProps[]` | - |  |
-| footer | `ReactNode` | - |  |
-| search | `SearchState` | - |  |
-| loading | `boolean` | - |  |
-| noData | `string` | - |  |
-| noResults | `string` | - |  |
-| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - |  |
+| items* | `ItemProps[]` | - | Основные элементы списка |
+| triggerElemRef | `RefObject<HTMLElement>` | - | Ссылка на элемент-триггер для дроплиста |
+| children | `ReactNode` | - | Триггер для дроплиста |
+| open | `boolean` | - | Управляет состоянием показан/не показан. |
+| onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | auto | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
+| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
+| pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
+| pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
+| footer | `ReactNode` | - | Кастомизируемый элемент, помещаемый внизу списка |
+| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на костомные элементы, помещенные в специальную секцию внизу списка |
+| search | `SearchState` | - | Настройки поисковой строки |
+| loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
+| noData | `string` | - | Текст для состояния "Отсутсвие данных" |
+| noResults | `string` | - | Текст для состояния "Отсутсвие результата" при поиске |
 | value | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Controlled состояние |
 | defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
 | onChange | `((value: any) => void) \| ((value: any) => void)` | - | Controlled обработчик измения состояния |
 | selection | "single" \| "multiple" | - | Режим выбора |
-| size | "s" \| "m" \| "l" | - |  |
-| marker | `boolean` | - |  |
-| scroll | `boolean` | - |  |
-| scrollRef | `RefObject<HTMLElement>` | - |  |
-| scrollContainerRef | `RefObject<HTMLElement>` | - |  |
+| size | "s" \| "m" \| "l" | - | Размер списка |
+| marker | `boolean` | - | Отображать ли маркер у выбранного жлемента списка |
+| scroll | `boolean` | - | Включить ли скролл для основной части списка |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 ## List
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| items* | `ItemProps[]` | - |  |
-| pinTop | `ItemProps[]` | - |  |
-| pinBottom | `ItemProps[]` | - |  |
-| footer | `ReactNode` | - |  |
-| search | `SearchState` | - |  |
-| loading | `boolean` | - |  |
-| noData | `string` | - |  |
-| noResults | `string` | - |  |
-| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - |  |
+| items* | `ItemProps[]` | - | Основные элементы списка |
+| pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
+| pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
+| footer | `ReactNode` | - | Кастомизируемый элемент, помещаемый внизу списка |
+| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на костомные элементы, помещенные в специальную секцию внизу списка |
+| search | `SearchState` | - | Настройки поисковой строки |
+| loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
+| noData | `string` | - | Текст для состояния "Отсутсвие данных" |
+| noResults | `string` | - | Текст для состояния "Отсутсвие результата" при поиске |
 | value | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Controlled состояние |
 | defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
 | onChange | `((value: any) => void) \| ((value: any) => void)` | - | Controlled обработчик измения состояния |
 | selection | "single" \| "multiple" | - | Режим выбора |
-| size | "s" \| "m" \| "l" | - |  |
-| marker | `boolean` | - |  |
-| scroll | `boolean` | - |  |
-| scrollRef | `RefObject<HTMLElement>` | - |  |
-| scrollContainerRef | `RefObject<HTMLElement>` | - |  |
+| size | "s" \| "m" \| "l" | - | Размер списка |
+| marker | `boolean` | - | Отображать ли маркер у выбранного жлемента списка |
+| scroll | `boolean` | - | Включить ли скролл для основной части списка |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | ref | `Ref<HTMLElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 

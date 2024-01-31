@@ -5,7 +5,7 @@ import { Checkbox, Switch } from '@snack-uikit/toggles';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { useCollapseContext, useListContext, useSelectionContext } from '../../Lists/contexts';
+import { useCollapseContext, useListContext, useParentListContext, useSelectionContext } from '../../Lists/contexts';
 import commonStyles from '../styles.module.scss';
 import { BaseItemPrivateProps, BaseItemProps, SwitchProps } from '../types';
 import { CHECKBOX_SIZE_MAP } from './constants';
@@ -35,6 +35,7 @@ export function BaseItem({
 }: AllBaseItemProps) {
   const { option, caption, description } = content || {};
 
+  const { parentResetActiveFocusIndex } = useParentListContext();
   const { size, marker } = useListContext();
   const { level = 0 } = useCollapseContext();
   const { value, onChange, selection, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
@@ -46,6 +47,8 @@ export function BaseItem({
   };
 
   const handleItemClick = (e: MouseEvent<HTMLButtonElement>) => {
+    parentResetActiveFocusIndex?.();
+
     if (!isParentNode) {
       handleChange();
     }

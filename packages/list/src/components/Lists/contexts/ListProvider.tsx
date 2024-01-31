@@ -1,9 +1,11 @@
 import { createContext, ReactNode, useContext } from 'react';
 
 export type ListContextType = {
+  /** Размер списка */
   size?: 's' | 'm' | 'l';
   // TODO
   // collapse?: 'single' | 'multiple';
+  /** Отображать ли маркер у выбранного жлемента списка */
   marker?: boolean;
 };
 
