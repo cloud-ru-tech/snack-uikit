@@ -100,7 +100,7 @@ export function Card({
               {header || null}
 
               {children && (
-                <Typography family='sans' size={size} purpose='body' className={styles.body}>
+                <Typography family='sans' size={size} purpose='body' className={styles.body} tag='div'>
                   {children}
                 </Typography>
               )}
