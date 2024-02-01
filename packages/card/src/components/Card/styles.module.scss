@@ -18,6 +18,12 @@ $sizes: 's', 'm', 'l';
   @include composite-var($card-composition-container);
 
   box-sizing: border-box;
+  height: 100%;
+}
+
+.contentWrapper {
+  position: relative;
+  height: 100%;
 }
 
 .card {
@@ -105,21 +111,17 @@ $sizes: 's', 'm', 'l';
         box-shadow: none;
       }
 
-      .contentWrapper {
-        position: relative;
+      .contentWrapper::before {
+        content: '';
 
-        &::before {
-          content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
 
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-
-          opacity: $opacity-a008;
-          background-color: $sys-primary-accent-default;
-        }
+        opacity: $opacity-a008;
+        background-color: $sys-primary-accent-default;
       }
 
       .check {
@@ -160,6 +162,7 @@ $sizes: 's', 'm', 'l';
 
 .body {
   display: block;
+  width: 100%;
   color: $sys-neutral-text-support;
   text-align: initial;
 }
