@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-02-01)
+
+
+### Bug Fixes
+
+* **FF-4070:** add fallback prop; add controlled QuestionTooltip behavior ([f1e3cee](https://github.com/cloud-ru-tech/snack-uikit/commit/f1e3cee274c37c7fa2a9b703bfc173182b38b4e6))
+
+
+### Features
+
+* **FF-4070:** add disableSpanWrapper prop ([2163668](https://github.com/cloud-ru-tech/snack-uikit/commit/2163668cbf626e37e608dedb472dbeeccc7ee702))
+
+
+
+
+
 ## 0.10.4 (2024-01-23)
 
 

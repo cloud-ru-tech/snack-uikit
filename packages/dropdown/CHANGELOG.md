@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2024-02-01)
+
+
+### Features
+
+* **FF-4070:** add disableSpanWrapper prop ([2163668](https://github.com/cloud-ru-tech/snack-uikit/commit/2163668cbf626e37e608dedb472dbeeccc7ee702))
+
+
+
+
+
 # 0.1.0 (2024-01-30)
 
 

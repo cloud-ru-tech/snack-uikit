@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2024-02-01)
+
+
+### Bug Fixes
+
+* **FF-4070:** remove some falback placements ([e229c10](https://github.com/cloud-ru-tech/snack-uikit/commit/e229c10ba0ed5c311cd0233302a993254ea8a956))
+
+
+### Features
+
+* **FF-4070:** add disableSpanWrapper prop ([2163668](https://github.com/cloud-ru-tech/snack-uikit/commit/2163668cbf626e37e608dedb472dbeeccc7ee702))
+
+
+
+
+
 ## 0.12.2 (2023-12-25)
 
 

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "droplist",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -35,11 +35,11 @@
     "@floating-ui/react": "0.23.1",
     "@snack-uikit/avatar": "0.5.0",
     "@snack-uikit/icons": "0.20.0",
-    "@snack-uikit/popover-private": "0.12.2",
+    "@snack-uikit/popover-private": "0.13.0",
     "@snack-uikit/scroll": "0.5.0",
-    "@snack-uikit/tag": "0.7.0",
+    "@snack-uikit/tag": "0.7.1",
     "@snack-uikit/toggles": "0.9.4",
-    "@snack-uikit/truncate-string": "0.4.5",
+    "@snack-uikit/truncate-string": "0.4.6",
     "@snack-uikit/utils": "3.2.0",
     "classnames": "2.3.2"
   }
