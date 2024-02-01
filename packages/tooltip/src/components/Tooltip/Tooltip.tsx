@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { PopoverPrivate, PopoverPrivateProps } from '@snack-uikit/popover-private';
 import { WithSupportProps } from '@snack-uikit/utils';
 
+import { DEFAULT_FALLBACK_PLACEMENTS } from './constants';
 import styles from './styles.module.scss';
 
 export type TooltipProps = WithSupportProps<
@@ -21,6 +22,7 @@ export type TooltipProps = WithSupportProps<
     | 'hoverDelayClose'
     | 'triggerRef'
     | 'disableSpanWrapper'
+    | 'fallbackPlacements'
   > &
     Partial<Pick<PopoverPrivateProps, 'trigger' | 'placement' | 'children'>>
 >;
@@ -49,6 +51,7 @@ export function Tooltip({
       arrowContainerClassName={styles.tooltipArrowContainer}
       arrowElementClassName={styles.tooltipArrowElement}
       hasArrow
+      fallbackPlacements={DEFAULT_FALLBACK_PLACEMENTS}
       {...otherProps}
     >
       {children}

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useState } from 'react';
+import { useUncontrolledProp } from 'uncontrollable';
 
 import { QuestionSVG } from '@snack-uikit/icons';
 
@@ -25,16 +25,17 @@ export function QuestionTooltip({
   tooltipClassname,
   className,
   triggerDataTestId,
+  open,
+  onOpenChange,
   ...rest
 }: QuestionTooltipProps) {
-  const [tooltipOpened, setTooltipOpened] = useState(false);
-
+  const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
   return (
     <Tooltip
       {...rest}
       className={tooltipClassname}
-      open={tooltipOpened}
-      onOpenChange={setTooltipOpened}
+      open={isOpen}
+      onOpenChange={setIsOpen}
       trigger={TRIGGER_MAP[trigger]}
     >
       {({ getReferenceProps, ref }) => (
@@ -42,7 +43,7 @@ export function QuestionTooltip({
           {...getReferenceProps()}
           ref={ref}
           data-size={size}
-          data-opened={tooltipOpened}
+          data-opened={isOpen}
           data-trigger={trigger}
           className={cn(styles.questionTooltip, className)}
           role='button'
