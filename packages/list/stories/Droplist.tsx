@@ -17,17 +17,24 @@ const meta: Meta = {
 };
 export default meta;
 
+const STORY_SELECTION_MODE = {
+  single: 'single',
+  multiple: 'multiple',
+  none: 'none',
+};
+
 type StoryProps = DroplistProps & {
   showFooter?: boolean;
   showSearch?: boolean;
+  selectionMode: 'single' | 'multiple' | 'none';
 };
 
-const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, ...args }) => {
+const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, selectionMode, ...args }) => {
   const [value, setValue] = useState<string | string[]>();
 
   useEffect(() => {
-    setValue(args.selection === 'single' ? undefined : []);
-  }, [args.selection]);
+    setValue(selectionMode === 'single' ? undefined : []);
+  }, [selectionMode]);
 
   const [search, setSearch] = useState<string>();
 
@@ -36,9 +43,10 @@ const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, ...args }) => {
   return (
     <>
       <div className={styles.wrapper}>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
         <Droplist
-          key={args.selection}
-          selection={args.selection}
+          className={styles.test}
           trigger={args.trigger}
           placement={args.placement}
           size={args.size}
@@ -46,8 +54,9 @@ const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, ...args }) => {
           marker={args.marker}
           scroll={args.scroll}
           items={DROPLIST_OPTIONS}
-          value={value}
-          onChange={setValue}
+          {...(selectionMode !== 'none'
+            ? { selection: { value, onChange: setValue, mode: selectionMode } }
+            : { selection: undefined })}
           data-test-id={args['data-test-id']}
           search={
             showSearch
@@ -75,7 +84,7 @@ const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, ...args }) => {
         </Droplist>
       </div>
 
-      {Boolean(args.selection === 'single' ? value : value && value.length > 0) && (
+      {selectionMode !== 'none' && Boolean(selectionMode === 'single' ? value : value && value.length > 0) && (
         <div>Value: {JSON.stringify(value, null, 2)}</div>
       )}
     </>
@@ -85,7 +94,6 @@ const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, ...args }) => {
 export const droplist = Template.bind({});
 
 droplist.args = {
-  selection: 'single',
   trigger: 'click',
   placement: 'bottom-start',
   widthStrategy: 'gte',
@@ -95,6 +103,7 @@ droplist.args = {
   loading: false,
   showFooter: true,
   showSearch: false,
+  selectionMode: 'single',
 };
 
 droplist.argTypes = {
@@ -107,10 +116,16 @@ droplist.argTypes = {
   pinTop: { table: { disable: true } },
   pinBottom: { table: { disable: true } },
   footer: { table: { disable: true } },
-  value: { table: { disable: true } },
-  defaultValue: { table: { disable: true } },
+  selection: { table: { disable: true } },
+  selectionMode: {
+    name: '[Story]: selection Mode',
+    options: Object.keys(STORY_SELECTION_MODE),
+    mapping: STORY_SELECTION_MODE,
+    control: {
+      type: 'select',
+    },
+  },
   search: { table: { disable: true } },
-  onChange: { table: { disable: true } },
   scrollRef: { table: { disable: true } },
   scrollContainerRef: { table: { disable: true } },
   noData: { table: { disable: true } },

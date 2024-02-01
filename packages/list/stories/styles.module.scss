@@ -5,15 +5,20 @@
 }
 
 .wrapper {
+  resize: both;
+
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   gap: 64px;
   align-items: flex-start;
 
+  width: 200px;
+  height: 350px;
   padding: 16px 0;
 }
 
 .listContainer {
-  flex-grow: 0;
-  width: 200px;
+  width: 100%;
+  height: 100%;
 }

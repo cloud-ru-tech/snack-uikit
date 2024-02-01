@@ -46,3 +46,7 @@ $loader-height: (
   box-sizing: border-box;
   padding: $dimension-050m;
 }
+
+.content {
+  flex-grow: 1;
+}

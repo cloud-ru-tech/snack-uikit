@@ -17,24 +17,46 @@ export type BaseItemPrivateProps = {
 };
 
 export type BaseItemProps = WithSupportProps<{
+  /**
+   * Слот до основного контента
+   * @type ReactElement
+   */
   beforeContent?: ReactNode;
+  /**
+   * Слот после основного контента
+   * @type ReactElement
+   */
   afterContent?: ReactNode;
-
+  /** Основной контент айтема */
   content: ItemContentProps;
 
+  /** Колбек обработки клика */
   onClick?(e: MouseEvent<HTMLButtonElement>): void;
+  /** Колбек обработки нажатия клавиши */
   onKeyDown?(e: KeyboardEvent<HTMLButtonElement>): void;
+  /** Колбек обработки фокуса */
   onFocus?(e: FocusEvent<HTMLButtonElement>): void;
+  /** Колбек обработки блюра */
   onBlur?(e: FocusEvent<HTMLButtonElement>): void;
 
+  /** Уникальный идентификатор */
   id?: string | number;
 
+  /** Флаг неактивности элемента */
   disabled?: boolean;
 
   itemRef?: RefObject<HTMLButtonElement>;
   className?: string;
 
+  /**
+   * Флаг отображения отключения реакции на любое css состояние (hover/focus и тд)
+   * <br>
+   * Так же элемент пропадает из навигации с клавиатуры, и не может быть выбран (selection)
+   */
   inactive?: boolean;
+  /**
+   * Флаг отображения состояния выбранного элемента через switch
+   */
   switch?: boolean;
 }>;
 
@@ -45,8 +67,6 @@ export type ItemProps = BaseItemProps | AccordionItemProps | NextListItemProps |
 
 export type AccordionItemProps = BaseItemsWithoutNonGroupProps & {
   items: ItemProps[];
-  // TODO: add later
-  // mode?: 'single' | 'multiple';
   type: 'collapse';
 };
 

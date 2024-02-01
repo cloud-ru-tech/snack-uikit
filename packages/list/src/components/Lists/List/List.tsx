@@ -1,5 +1,7 @@
+import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { FocusEvent, forwardRef, KeyboardEvent, useMemo, useRef, useState } from 'react';
+import { FocusEvent, forwardRef, KeyboardEvent, useMemo, useRef } from 'react';
+import { useUncontrolledProp } from 'uncontrollable';
 
 import { HiddenTabButton } from '../../../helperComponents';
 import { extractItemIds, extractItemRefs, withCollapsedItems } from '../../../utils';
@@ -12,7 +14,18 @@ import { ListProps } from '../types';
 
 export const List = forwardRef<HTMLElement, ListProps>(
   (
-    { items: itemsProp, search, pinBottom, pinTop, footerActiveElementsRefs, onKeyDown, tabIndex = 0, ...props },
+    {
+      items: itemsProp,
+      search,
+      pinBottom,
+      pinTop,
+      footerActiveElementsRefs,
+      onKeyDown,
+      tabIndex = 0,
+      className,
+      collapse = {},
+      ...props
+    },
     ref,
   ) => {
     const hasSearch = useMemo(() => Boolean(search), [search]);
@@ -22,7 +35,15 @@ export const List = forwardRef<HTMLElement, ListProps>(
       [itemsProp, pinBottom, pinTop],
     );
 
-    const [openCollapsedItems, setOpenCollapsedItems] = useState<Array<number | string>>([]);
+    const [openCollapsedItems, setOpenCollapsedItems] = useUncontrolledProp<Array<number | string>>(
+      collapse.value,
+      collapse.defaultValue ?? [],
+      collapse.onChange
+        ? cb => {
+            collapse.onChange?.(cb(collapse.value));
+          }
+        : undefined,
+    );
 
     const { search: searchItem, footerRefs } = useItemsWithIds({
       search: hasSearch,
@@ -105,12 +126,12 @@ export const List = forwardRef<HTMLElement, ListProps>(
             parentResetActiveFocusIndex: resetActiveFocusIndex,
             openCollapsedItems,
             toggleOpenCollapsedItems: id =>
-              setOpenCollapsedItems(items =>
-                items.includes(id) ? items.filter(item => item !== id) : items.concat([id]),
+              setOpenCollapsedItems((items: Array<string | number> | undefined = []) =>
+                items.includes(id) ? items.filter(item => item !== id) : items?.concat([id]),
               ),
           }}
         >
-          <div className={styles.wrapper} data-active={isActive || undefined}>
+          <div className={cn(styles.wrapper, className)} data-active={isActive || undefined}>
             <ListPrivate
               {...props}
               {...slicedItems}

@@ -18,7 +18,6 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
       items,
       pinTop,
       pinBottom,
-      collapse = 'multiple',
       onKeyDown,
       onBlur,
       onFocus,
@@ -35,6 +34,8 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
       noResults = 'No results',
       size = 's',
       marker,
+      limitedScrollHeight,
+      className,
       ...props
     },
     ref,
@@ -63,7 +64,7 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
 
     const content = useMemo(
       () => (
-        <>
+        <div className={styles.content}>
           {itemsJSX}
           {loadingJSX}
           {hasNoItems && !search?.value && !loading && (
@@ -76,14 +77,14 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
               {noResults}
             </div>
           )}
-        </>
+        </div>
       ),
       [hasNoItems, itemsJSX, loading, loadingJSX, noData, noResults, search?.value],
     );
 
     const listJSX = (
       <ul
-        className={commonStyles.listContainer}
+        className={cn(commonStyles.listContainer, className)}
         ref={ref as ForwardedRef<HTMLUListElement>}
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
@@ -93,7 +94,7 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
         role='menu'
         {...extractSupportProps(props)}
       >
-        <ToggleGroup selectionMode={collapse}>
+        <ToggleGroup selectionMode={'multiple'}>
           {(Number(pinTop?.length) > 0 || search) && (
             <PinTopGroupItem>
               {search && <SearchItem search={search} />}
@@ -105,12 +106,12 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
           {scroll ? (
             <Scroll
               className={cn({
-                [commonStyles.scrollContainerS]: scroll && size === 's',
-                [commonStyles.scrollContainerM]: scroll && size === 'm',
-                [commonStyles.scrollContainerL]: scroll && size === 'l',
+                [commonStyles.scrollContainerS]: scroll && limitedScrollHeight && size === 's',
+                [commonStyles.scrollContainerM]: scroll && limitedScrollHeight && size === 'm',
+                [commonStyles.scrollContainerL]: scroll && limitedScrollHeight && size === 'l',
               })}
-              barHideStrategy='never'
-              size='s'
+              barHideStrategy='leave'
+              size={size === 's' ? 's' : 'm'}
               ref={scrollContainerRef}
             >
               {content}

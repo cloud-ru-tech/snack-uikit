@@ -5,7 +5,13 @@ import { WithSupportProps } from '@snack-uikit/utils';
 
 import { ScrollProps, SearchState } from '../../types';
 import { ItemProps } from '../Items';
-import { ListContextType, SelectionProviderProps } from './contexts';
+import { ListContextType, SelectionState } from './contexts';
+
+type CollapseState = {
+  value?: (string | number)[];
+  onChange?(value: (string | number)[]): void;
+  defaultValue?: (string | number)[];
+};
 
 export type ListProps = WithSupportProps<
   {
@@ -15,12 +21,13 @@ export type ListProps = WithSupportProps<
     pinTop?: ItemProps[];
     /** Элементы списка, закрепленные снизу */
     pinBottom?: ItemProps[];
-    /** Кастомизируемый элемент, помещаемый внизу списка */
+    /**
+     * Кастомизируемый элемент в конце списка
+     * @type ReactElement
+     */
     footer?: ReactNode;
-    /** Список ссылок на костомные элементы, помещенные в специальную секцию внизу списка  */
+    /** Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка  */
     footerActiveElementsRefs?: RefObject<HTMLElement>[];
-    // TODO: add later
-    // collapse?: 'single' | 'multiple';
     /** Настройки поисковой строки */
     search?: SearchState;
     /** Флаг, отвещающий за состояние загрузки списка */
@@ -29,9 +36,14 @@ export type ListProps = WithSupportProps<
     noData?: string;
     /** Текст для состояния "Отсутсвие результата" при поиске */
     noResults?: string;
+    /** Tab Index */
     tabIndex?: number;
+    /** Настройки раскрытия элементов */
+    collapse?: CollapseState;
+    /** CSS-класс */
+    className?: string;
     onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
-  } & Pick<SelectionProviderProps, 'value' | 'defaultValue' | 'onChange' | 'selection'> &
+  } & SelectionState &
     ListContextType &
     ScrollProps
 >;
@@ -51,6 +63,5 @@ export type ListPrivateProps = ListProps & {
   onFocus?(e: FocusEvent<HTMLElement>): void;
   onBlur?(e: FocusEvent<HTMLElement>): void;
   onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
-  // TODO: remove later
-  collapse?: 'single' | 'multiple';
+  limitedScrollHeight?: boolean;
 };

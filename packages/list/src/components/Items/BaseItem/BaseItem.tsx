@@ -35,11 +35,12 @@ export function BaseItem({
   ...rest
 }: AllBaseItemProps) {
   const { option, caption, description } = content || {};
+  const interactive = !inactive;
 
   const { parentResetActiveFocusIndex } = useParentListContext();
   const { size, marker } = useListContext();
   const { level = 0 } = useCollapseContext();
-  const { value, onChange, selection, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
+  const { value, onChange, mode, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
 
   const isChecked = isSelectionSingle ? value === id : value?.includes(id);
 
@@ -48,7 +49,7 @@ export function BaseItem({
   };
 
   const handleItemClick = (e: MouseEvent<HTMLButtonElement>) => {
-    if (!inactive) {
+    if (interactive) {
       parentResetActiveFocusIndex?.();
 
       if (!isParentNode) {
@@ -106,17 +107,17 @@ export function BaseItem({
         data-non-pointer={inactive && !onClick}
         data-inactive={inactive || undefined}
         data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
-        data-variant={selection || undefined}
+        data-variant={mode || undefined}
         data-open={open || undefined}
         disabled={disabled}
         onKeyDown={handleItemKeyDown}
         onFocus={handleItemFocus}
         style={{ '--level': level }}
       >
-        {!switchProp && isSelectionSingle && marker && !isParentNode && !inactive && (
+        {!switchProp && isSelectionSingle && marker && !isParentNode && interactive && (
           <div className={styles.markerContainer} data-test-id='list__base-item-marker' />
         )}
-        {!switchProp && isSelectionMultiple && !inactive && (
+        {!switchProp && isSelectionMultiple && interactive && (
           <div className={styles.checkbox}>
             <Checkbox
               size={CHECKBOX_SIZE_MAP[size ?? 's']}
@@ -150,7 +151,7 @@ export function BaseItem({
 
         {afterContent}
 
-        {switchProp && !inactive && (
+        {switchProp && interactive && (
           <Switch disabled={disabled} checked={isChecked} data-test-id='list__base-item-switch' />
         )}
         {!switchProp && expandIcon && <span className={styles.expandableIcon}>{expandIcon}</span>}

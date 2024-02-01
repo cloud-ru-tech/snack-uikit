@@ -3,7 +3,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 type SelectionSingleValueType = string | number | undefined;
 
-export type SelectionSingleProps = {
+type SelectionSingleState = {
   /** Начальное состояние */
   defaultValue?: SelectionSingleValueType;
   /** Controlled состояние */
@@ -11,17 +11,20 @@ export type SelectionSingleProps = {
   /** Controlled обработчик измения состояния */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange?(value: any): void;
+  /** Режим выбора */
+  mode: 'single';
+};
+
+export type SelectionSingleProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue?(value: any): void;
-  /** Режим выбора */
-  selection: 'single';
   /** Режим выбора single */
   isSelectionSingle: true;
   /** Режим выбора multi */
   isSelectionMultiple: false;
-};
+} & SelectionSingleState;
 
-export type SelectionMultipleProps = {
+type SelectionMultipleState = {
   /** Начальное состояние */
   defaultValue?: SelectionSingleValueType[];
   /** Controlled состояние */
@@ -29,18 +32,21 @@ export type SelectionMultipleProps = {
   /** Controlled обработчик измения состояния */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange?(value: any): void;
+  /** Режим выбора */
+  mode: 'multiple';
+};
+
+export type SelectionMultipleProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue?(value: any): void;
-  /** Режим выбора */
-  selection: 'multiple';
   /** Режим выбора single */
   isSelectionSingle: false;
   /** Режим выбора multi */
   isSelectionMultiple: true;
-};
+} & SelectionMultipleState;
 
 type SelectionNoneProps = {
-  selection?: undefined;
+  mode?: undefined;
   value?: undefined;
   onChange?: undefined;
   setValue?: undefined;
@@ -49,27 +55,29 @@ type SelectionNoneProps = {
   isSelectionMultiple?: undefined;
 };
 
-export type SelectionProviderProps = SelectionSingleProps | SelectionMultipleProps | SelectionNoneProps;
+type SelectionProviderProps = SelectionSingleProps | SelectionMultipleProps | SelectionNoneProps;
 
 type SelectionContextType =
   | Omit<SelectionNoneProps, 'defaultValue'>
   | Omit<SelectionSingleProps, 'defaultValue'>
   | Omit<SelectionMultipleProps, 'defaultValue'>;
 
+export type SelectionState = { selection?: SelectionSingleState | SelectionMultipleState };
+
 export const SelectionContext = createContext<SelectionContextType>({
   value: undefined,
   onChange: undefined,
-  selection: undefined,
+  mode: undefined,
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isSelectionMultipleProps(props: any): props is SelectionMultipleProps {
-  return 'selection' in props && props['selection'] === 'multiple';
+  return 'mode' in props && props['mode'] === 'multiple';
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isSelectionSingleProps(props: any): props is SelectionSingleProps {
-  return 'selection' in props && props['selection'] === 'single';
+  return 'mode' in props && props['mode'] === 'single';
 }
 
 type Child = {
@@ -100,7 +108,14 @@ function SelectionSingleProvider({
 
   return (
     <SelectionContext.Provider
-      value={{ value, onChange, selection: 'single', isSelectionSingle: true, isSelectionMultiple: false, setValue }}
+      value={{
+        value,
+        onChange,
+        mode: 'single',
+        isSelectionSingle: true,
+        isSelectionMultiple: false,
+        setValue,
+      }}
     >
       {children}
     </SelectionContext.Provider>
@@ -135,37 +150,36 @@ function SelectionMultipleProvider({
 
   return (
     <SelectionContext.Provider
-      value={{ value, onChange, selection: 'multiple', isSelectionSingle: false, isSelectionMultiple: true, setValue }}
+      value={{
+        value,
+        onChange,
+        mode: 'multiple',
+        isSelectionSingle: false,
+        isSelectionMultiple: true,
+        setValue,
+      }}
     >
       {children}
     </SelectionContext.Provider>
   );
 }
 
-export function SelectionProvider(props: SelectionProviderProps & Child) {
+export function SelectionProvider({ children, ...props }: SelectionProviderProps & Child) {
   if (isSelectionSingleProps(props)) {
-    return <SelectionSingleProvider {...props} />;
+    return <SelectionSingleProvider {...props}>{children}</SelectionSingleProvider>;
   }
 
   if (isSelectionMultipleProps(props)) {
-    return <SelectionMultipleProvider {...props} />;
+    return <SelectionMultipleProvider {...props}>{children}</SelectionMultipleProvider>;
   }
 
-  return <SelectionContext.Provider value={{}}>{props.children}</SelectionContext.Provider>;
+  return <SelectionContext.Provider value={{}}>{children}</SelectionContext.Provider>;
 }
 
 export const useSelectionContext = () => useContext(SelectionContext);
 
-export function extractSelectionProps<T extends SelectionProviderProps>({
-  selection,
-  value,
-  defaultValue,
-  onChange,
-}: T) {
+export function extractSelectionProps<T extends SelectionState>({ selection }: T) {
   return {
-    selection,
-    value,
-    defaultValue,
-    onChange,
+    ...(selection ?? {}),
   } as SelectionProviderProps;
 }

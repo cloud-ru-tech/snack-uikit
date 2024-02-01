@@ -28,18 +28,17 @@
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | auto | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
-| value | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Controlled состояние |
-| defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
-| onChange | `((value: any) => void) \| ((value: any) => void)` | - | Controlled обработчик измения состояния |
-| selection | "single" \| "multiple" | - | Режим выбора |
+| className | `string` | - | CSS-класс |
 | pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
 | pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
-| footer | `ReactNode` | - | Кастомизируемый элемент, помещаемый внизу списка |
-| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на костомные элементы, помещенные в специальную секцию внизу списка |
+| footer | `ReactElement` | - | Кастомизируемый элемент в конце списка |
+| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
 | search | `SearchState` | - | Настройки поисковой строки |
 | loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
 | noData | `string` | - | Текст для состояния "Отсутсвие данных" |
 | noResults | `string` | - | Текст для состояния "Отсутсвие результата" при поиске |
+| collapse | `CollapseState` | {} | Настройки раскрытия элементов |
+| selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | size | "s" \| "m" \| "l" | - | Размер списка |
 | marker | `boolean` | - | Отображать ли маркер у выбранного жлемента списка |
 | scroll | `boolean` | - | Включить ли скролл для основной части списка |
@@ -52,18 +51,17 @@
 | items* | `ItemProps[]` | - | Основные элементы списка |
 | pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
 | pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
-| footer | `ReactNode` | - | Кастомизируемый элемент, помещаемый внизу списка |
-| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на костомные элементы, помещенные в специальную секцию внизу списка |
+| footer | `ReactElement` | - | Кастомизируемый элемент в конце списка |
+| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
 | search | `SearchState` | - | Настройки поисковой строки |
 | loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
 | noData | `string` | - | Текст для состояния "Отсутсвие данных" |
 | noResults | `string` | - | Текст для состояния "Отсутсвие результата" при поиске |
-| tabIndex | `number` | - |  |
+| tabIndex | `number` | - | Tab Index |
+| collapse | `CollapseState` | {} | Настройки раскрытия элементов |
+| className | `string` | - | CSS-класс |
 | onKeyDown | `(e: KeyboardEvent<HTMLElement>) => void` | - |  |
-| value | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Controlled состояние |
-| defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
-| onChange | `((value: any) => void) \| ((value: any) => void)` | - | Controlled обработчик измения состояния |
-| selection | "single" \| "multiple" | - | Режим выбора |
+| selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | size | "s" \| "m" \| "l" | - | Размер списка |
 | marker | `boolean` | - | Отображать ли маркер у выбранного жлемента списка |
 | scroll | `boolean` | - | Включить ли скролл для основной части списка |

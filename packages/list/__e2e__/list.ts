@@ -92,39 +92,38 @@ test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, marker: true }))('Should show mar
   await t.expect(Selector(dataTestIdSelector(BASE_ITEM_MARKER_TEST_ID)).exists).ok('markers are missing');
 });
 
-test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, selection: 'single', showPinTopItems: true, showPinBottomItems: true }))(
-  'Should select in single mode',
-  async t => {
-    async function verifyItemSelected(id: number) {
-      await t.expect(getBaseItem(id).getAttribute('data-checked')).eql('true', `item"${id}" is not checked`);
-    }
+test.page(
+  getPage({ ...DEFAULT_EMPTY_SETTINGS, selectionMode: 'single', showPinTopItems: true, showPinBottomItems: true }),
+)('Should select in single mode', async t => {
+  async function verifyItemSelected(id: number) {
+    await t.expect(getBaseItem(id).getAttribute('data-checked')).eql('true', `item"${id}" is not checked`);
+  }
 
-    async function verifyItemNotSelected(id: number) {
-      await t.expect(getBaseItem(id).hasAttribute('data-checked')).notOk(`item"${id}" shouldn't be checked`);
-    }
+  async function verifyItemNotSelected(id: number) {
+    await t.expect(getBaseItem(id).hasAttribute('data-checked')).notOk(`item"${id}" shouldn't be checked`);
+  }
 
-    await t.click(getBaseItem(1));
+  await t.click(getBaseItem(1));
 
-    await verifyItemSelected(1);
+  await verifyItemSelected(1);
 
-    await t.click(getBaseItem(3));
+  await t.click(getBaseItem(3));
 
-    await verifyItemNotSelected(1);
-    await verifyItemSelected(3);
+  await verifyItemNotSelected(1);
+  await verifyItemSelected(3);
 
-    await t.click(getBaseItem(5));
+  await t.click(getBaseItem(5));
 
-    await verifyItemNotSelected(3);
-    await verifyItemSelected(5);
+  await verifyItemNotSelected(3);
+  await verifyItemSelected(5);
 
-    await t.click(getBaseItem(5));
+  await t.click(getBaseItem(5));
 
-    await verifyItemNotSelected(5);
-  },
-);
+  await verifyItemNotSelected(5);
+});
 
 test.page(
-  getPage({ ...DEFAULT_EMPTY_SETTINGS, selection: 'multiple', showPinTopItems: true, showPinBottomItems: true }),
+  getPage({ ...DEFAULT_EMPTY_SETTINGS, selectionMode: 'multiple', showPinTopItems: true, showPinBottomItems: true }),
 )('Should select in multiple mode', async t => {
   async function verifyItemSelected(id: number) {
     await t.expect(getBaseItem(id).getAttribute('data-checked')).eql('true', `item"${id}" is not checked`);
@@ -260,44 +259,43 @@ test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, showAsyncList: true }))('Should w
 
 // keyboard navigation
 // TODO: space not working in Firefox
-test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, selection: 'single', showPinTopItems: true, showPinBottomItems: true }))(
-  'Should select in single mode from keyboard',
-  async t => {
-    async function verifyItemSelected(id: number) {
-      await t.expect(getBaseItem(id).getAttribute('data-checked')).eql('true', `item "${id}" is not checked`);
-    }
+test.page(
+  getPage({ ...DEFAULT_EMPTY_SETTINGS, selectionMode: 'single', showPinTopItems: true, showPinBottomItems: true }),
+)('Should select in single mode from keyboard', async t => {
+  async function verifyItemSelected(id: number) {
+    await t.expect(getBaseItem(id).getAttribute('data-checked')).eql('true', `item "${id}" is not checked`);
+  }
 
-    async function verifyItemNotSelected(id: number) {
-      await t.expect(getBaseItem(id).hasAttribute('data-checked')).notOk(`item "${id}" shouldn't be checked`);
-    }
+  async function verifyItemNotSelected(id: number) {
+    await t.expect(getBaseItem(id).hasAttribute('data-checked')).notOk(`item "${id}" shouldn't be checked`);
+  }
 
-    // select item 1
-    await t.pressKey('tab').pressKey('down').pressKey('down').pressKey('enter');
+  // select item 1
+  await t.pressKey('tab').pressKey('down').pressKey('down').pressKey('enter');
 
-    await verifyItemSelected(1);
+  await verifyItemSelected(1);
 
-    // select item 3
-    await t.pressKey('down').pressKey('down').pressKey('enter');
+  // select item 3
+  await t.pressKey('down').pressKey('down').pressKey('enter');
 
-    await verifyItemNotSelected(1);
-    await verifyItemSelected(3);
+  await verifyItemNotSelected(1);
+  await verifyItemSelected(3);
 
-    // select item 5
-    await t.pressKey('down').pressKey('down').pressKey('enter');
+  // select item 5
+  await t.pressKey('down').pressKey('down').pressKey('enter');
 
-    await verifyItemNotSelected(3);
-    await verifyItemSelected(5);
+  await verifyItemNotSelected(3);
+  await verifyItemSelected(5);
 
-    // deselect item 5
-    await t.pressKey('enter');
+  // deselect item 5
+  await t.pressKey('enter');
 
-    await verifyItemNotSelected(5);
-  },
-);
+  await verifyItemNotSelected(5);
+});
 
 // TODO: space not working in Firefox
 test.page(
-  getPage({ ...DEFAULT_EMPTY_SETTINGS, selection: 'multiple', showPinTopItems: true, showPinBottomItems: true }),
+  getPage({ ...DEFAULT_EMPTY_SETTINGS, selectionMode: 'multiple', showPinTopItems: true, showPinBottomItems: true }),
 )('Should select in multiple mode from keyboard', async t => {
   async function verifyItemSelected(id: number) {
     await t.expect(getBaseItem(id).getAttribute('data-checked')).eql('true', `item "${id}" is not checked`);

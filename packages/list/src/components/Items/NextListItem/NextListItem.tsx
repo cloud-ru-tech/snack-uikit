@@ -107,6 +107,7 @@ export function NextListItem({
               search={search}
               scroll={scroll}
               scrollRef={scrollRef}
+              limitedScrollHeight
             />
           </ParentListContext.Provider>
         }

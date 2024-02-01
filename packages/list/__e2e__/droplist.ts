@@ -32,7 +32,7 @@ test.page(getPage())('Should render', async t => {
   await t.expect(Selector(dataTestIdSelector(TEST_ID)).exists).ok('droplist is missing');
 });
 
-test.page(getPage({ selection: 'single', marker: true }))(
+test.page(getPage({ selectionMode: 'single', marker: true }))(
   'Should not have marker on parent nodes & switch nodes',
   async t => {
     async function verifyMarkerPresent(id: string) {
@@ -61,7 +61,7 @@ test.page(getPage({ selection: 'single', marker: true }))(
   },
 );
 
-test.page(getPage({ selection: 'single' }))('Should select items in single mode', async t => {
+test.page(getPage({ selectionMode: 'single' }))('Should select items in single mode', async t => {
   async function verifyItemSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {
     if (hasSwitch) {
       await t.expect(getBaseItemSwitch(id).getAttribute('data-checked')).eql('true', `item"${id}" is not checked`);
@@ -112,7 +112,7 @@ test.page(getPage({ selection: 'single' }))('Should select items in single mode'
   await verifyItemNotSelected({ id: '3-0-0' });
 });
 
-test.page(getPage({ selection: 'multiple' }))('Should select next list items in multiple mode', async t => {
+test.page(getPage({ selectionMode: 'multiple' }))('Should select next list items in multiple mode', async t => {
   async function verifyItemSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {
     if (hasSwitch) {
       await t.expect(getBaseItemSwitch(id).getAttribute('data-checked')).eql('true', `item "${id}" is not checked`);
@@ -180,7 +180,7 @@ test.page(getPage({ selection: 'multiple' }))('Should select next list items in 
   }
 });
 
-test.page(getPage({ selection: 'multiple' }))('Should select accordion items in multiple mode', async t => {
+test.page(getPage({ selectionMode: 'multiple' }))('Should select accordion items in multiple mode', async t => {
   async function verifyItemSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {
     if (hasSwitch) {
       await t.expect(getBaseItemSwitch(id).getAttribute('data-checked')).eql('true', `item "${id}" is not checked`);
@@ -264,7 +264,7 @@ test.page(getPage({ selection: 'multiple' }))('Should select accordion items in 
 
 // keyboard navigation
 // TODO: space not working in Firefox
-test.page(getPage({ selection: 'single' }))('Should select items in single mode with keyboard', async t => {
+test.page(getPage({ selectionMode: 'single' }))('Should select items in single mode with keyboard', async t => {
   async function verifyItemSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {
     if (hasSwitch) {
       await t.expect(getBaseItemSwitch(id).getAttribute('data-checked')).eql('true', `item"${id}" is not checked`);
@@ -323,7 +323,7 @@ test.page(getPage({ selection: 'single' }))('Should select items in single mode 
 });
 
 // TODO: space not working in Firefox
-test.page(getPage({ selection: 'multiple' }))(
+test.page(getPage({ selectionMode: 'multiple' }))(
   'Should select next list items in multiple mode with keyboard',
   async t => {
     async function verifyItemSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {
@@ -398,7 +398,7 @@ test.page(getPage({ selection: 'multiple' }))(
 );
 
 // TODO: space not working in Firefox
-test.page(getPage({ selection: 'multiple' }))(
+test.page(getPage({ selectionMode: 'multiple' }))(
   'Should select accordion items in multiple mode with keyboard',
   async t => {
     async function verifyItemSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {

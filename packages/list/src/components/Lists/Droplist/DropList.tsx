@@ -1,4 +1,4 @@
-import { cloneElement, isValidElement, KeyboardEvent, useCallback, useMemo, useRef, useState } from 'react';
+import { cloneElement, isValidElement, KeyboardEvent, useCallback, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Dropdown } from '@snack-uikit/dropdown';
@@ -23,6 +23,7 @@ export function Droplist({
   triggerElemRef: triggerElemRefProp,
   open: openProp,
   onOpenChange,
+  collapse = {},
   ...props
 }: DroplistProps) {
   const hasSearch = useMemo(() => Boolean(search), [search]);
@@ -32,8 +33,15 @@ export function Droplist({
     [itemsProp, pinBottom, pinTop],
   );
 
-  const [openCollapsedItems, setOpenCollapsedItems] = useState<Array<number | string>>([]);
-
+  const [openCollapsedItems, setOpenCollapsedItems] = useUncontrolledProp<Array<number | string>>(
+    collapse.value,
+    collapse.defaultValue ?? [],
+    collapse.onChange
+      ? cb => {
+          collapse.onChange?.(cb(collapse.value));
+        }
+      : undefined,
+  );
   const { search: searchItem, footerRefs } = useItemsWithIds({
     search: hasSearch,
     footerActiveElementsRefs,
@@ -131,8 +139,8 @@ export function Droplist({
           parentResetNestedIndex: resetNestedIndex,
           parentResetActiveFocusIndex: resetActiveFocusIndex,
           toggleOpenCollapsedItems: id =>
-            setOpenCollapsedItems(items =>
-              items.includes(id) ? items.filter(item => item !== id) : items.concat([id]),
+            setOpenCollapsedItems((items: Array<string | number> | undefined = []) =>
+              items.includes(id) ? items.filter(item => item !== id) : items?.concat([id]),
             ),
         }}
       >
@@ -143,6 +151,7 @@ export function Droplist({
               tabIndex={0}
               ref={listRef}
               search={search}
+              limitedScrollHeight
               {...slicedItems}
               {...props}
             />

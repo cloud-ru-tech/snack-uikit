@@ -1,6 +1,10 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .listContainer {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
   margin: 0;
   padding: 0;
 
@@ -32,6 +36,7 @@
   display: block;
 
   box-sizing: border-box;
+  height: 100%;
   padding: $dimension-025m;
 
   &:has(.listContainer:focus-visible) {

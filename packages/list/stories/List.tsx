@@ -17,6 +17,12 @@ const meta: Meta = {
 };
 export default meta;
 
+const STORY_SELECTION_MODE = {
+  single: 'single',
+  multiple: 'multiple',
+  none: 'none',
+};
+
 type StoryProps = ListProps & {
   showSearch?: boolean;
   showPinTopItems?: boolean;
@@ -27,6 +33,7 @@ type StoryProps = ListProps & {
   showEmptyList?: boolean;
   showCollapsedList?: boolean;
   showAsyncList?: boolean;
+  selectionMode: 'single' | 'multiple' | 'none';
 };
 
 const Template: StoryFn<StoryProps> = ({
@@ -39,13 +46,16 @@ const Template: StoryFn<StoryProps> = ({
   showGroups,
   showCollapsedList,
   showAsyncList,
+  selectionMode,
   ...args
 }) => {
   const [value, setValue] = useState<string | string[]>();
 
+  const [collapse, setCollapseValue] = useState<Array<string | number>>();
+
   useEffect(() => {
-    setValue(args.selection === 'single' ? undefined : []);
-  }, [args.selection]);
+    setValue(selectionMode === 'single' ? undefined : []);
+  }, [selectionMode]);
 
   const [search, setSearch] = useState<string>();
 
@@ -141,7 +151,7 @@ const Template: StoryFn<StoryProps> = ({
       <div className={styles.wrapper}>
         <div className={styles.listContainer}>
           Collapsed List
-          <List items={EXPAND_OPTIONS} size={args.size} data-test-id={args['data-test-id']} />
+          <List items={EXPAND_OPTIONS} size={args.size} data-test-id={args['data-test-id']} scroll />
         </div>
       </div>
     );
@@ -152,19 +162,25 @@ const Template: StoryFn<StoryProps> = ({
       <div className={styles.wrapper}>
         <div className={styles.listContainer}>
           Customizable List
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-ignore */}
           <List
             size={args.size}
             marker={args.marker}
             scroll={args.scroll}
-            selection={args.selection}
             loading={args.loading}
             pinTop={showPinTopItems ? baseItemsWithSwitch : undefined}
             pinBottom={showPinBottomItems ? baseItemsWithSwitch : undefined}
             search={showSearch ? { value: search, onChange: setSearch, placeholder: 'Placeholder' } : undefined}
             items={showGroups ? groupItemsWithSwitch : baseItemsWithSwitch}
-            value={value}
-            onChange={setValue}
+            {...(selectionMode !== 'none'
+              ? { selection: { value, onChange: setValue, mode: selectionMode } }
+              : { selection: undefined })}
             footerActiveElementsRefs={showFooter ? [footerActiveItemRefs] : undefined}
+            collapse={{
+              value: collapse,
+              onChange: setCollapseValue,
+            }}
             footer={
               showFooter ? (
                 <ButtonOutline
@@ -187,7 +203,6 @@ const Template: StoryFn<StoryProps> = ({
 export const list = Template.bind({});
 
 list.args = {
-  selection: 'single',
   showPinTopItems: true,
   showPinBottomItems: true,
   showSearch: true,
@@ -203,6 +218,7 @@ list.args = {
   size: 's',
   showCollapsedList: false,
   showAsyncList: false,
+  selectionMode: 'single',
 };
 
 list.argTypes = {
@@ -222,9 +238,15 @@ list.argTypes = {
   search: { table: { disable: true } },
   scrollRef: { table: { disable: true } },
   scrollContainerRef: { table: { disable: true } },
-  value: { table: { disable: true } },
-  defaultValue: { table: { disable: true } },
-  onChange: { table: { disable: true } },
+  selection: { table: { disable: true } },
+  selectionMode: {
+    name: '[Story]: selection Mode',
+    options: Object.keys(STORY_SELECTION_MODE),
+    mapping: STORY_SELECTION_MODE,
+    control: {
+      type: 'select',
+    },
+  },
 };
 
 list.parameters = {
