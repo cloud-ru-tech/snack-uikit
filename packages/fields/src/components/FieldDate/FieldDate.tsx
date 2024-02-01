@@ -69,7 +69,7 @@ type FieldDateOwnProps = {
   showClearButton?: boolean;
   /** Текущая локаль календаря */
   locale?: Intl.Locale;
-};
+} & Pick<CalendarProps, 'buildCellProps'>;
 
 export type FieldDateProps = WithSupportProps<FieldDateOwnProps & InputProps & WrapperProps>;
 
@@ -104,6 +104,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
       locale = DEFAULT_LOCALE,
+      buildCellProps,
       ...rest
     },
     ref,
@@ -279,6 +280,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
                 size={CALENDAR_SIZE_MAP[size]}
                 value={valueProp ? parseDate(valueProp) : undefined}
                 onChangeValue={handleSelectDate}
+                buildCellProps={buildCellProps}
                 navigationStartRef={element => {
                   if (pickerAutofocus) {
                     element?.focus();

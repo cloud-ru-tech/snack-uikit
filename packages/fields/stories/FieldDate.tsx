@@ -2,10 +2,11 @@ import { action } from '@storybook/addon-actions';
 import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useState } from 'react';
 
+import { getBuildCellProps } from '../../calendar/stories/helper';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { FieldDate, FieldDateProps } from '../src';
+import { FieldDate, FieldDateProps, parseDate } from '../src';
 import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
@@ -18,9 +19,10 @@ export default meta;
 type StoryProps = Omit<FieldDateProps, 'locale'> & {
   localeName: 'ru-RU' | 'en-US';
   prefixIcon: undefined;
+  modeBuildCellProps: 'for-tests' | 'disable-past' | 'none';
 };
 
-const Template = ({ size, localeName, ...args }: StoryProps) => {
+const Template = ({ size, localeName, modeBuildCellProps, ...args }: StoryProps) => {
   const locale = new Intl.Locale(localeName);
 
   const argsNormalizedValue = args.value?.replaceAll('-', '.');
@@ -31,12 +33,19 @@ const Template = ({ size, localeName, ...args }: StoryProps) => {
     setValue(argsNormalizedValue);
   }, [argsNormalizedValue]);
 
+  const buildCellProps = getBuildCellProps(modeBuildCellProps) || undefined;
+  const validationState = buildCellProps?.(parseDate(value), 'month')?.isDisabled ? 'error' : undefined;
+  const hint = validationState === 'error' ? 'Дата не может быть выбрана' : args.hint;
+
   return (
     <div className={styles.wrapper} data-size={size}>
       <FieldDate
         {...args}
         size={size}
         value={value}
+        buildCellProps={buildCellProps}
+        validationState={modeBuildCellProps === 'none' ? args.validationState : validationState}
+        hint={modeBuildCellProps === 'none' ? args.hint : hint}
         onChange={value => {
           action('onChange')(value);
           setValue(value);
@@ -63,6 +72,7 @@ fieldDate.args = {
   showCopyButton: true,
   showClearButton: true,
   localeName: 'en-US',
+  modeBuildCellProps: 'none',
 };
 
 fieldDate.argTypes = {
@@ -71,6 +81,11 @@ fieldDate.argTypes = {
     table: {
       disable: true,
     },
+  },
+  modeBuildCellProps: {
+    name: '[story] select buildCellProps operating mode',
+    options: ['for-tests', 'disable-past', 'none'],
+    control: { type: 'radio' },
   },
 };
 

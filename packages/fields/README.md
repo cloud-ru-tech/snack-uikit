@@ -265,6 +265,10 @@ const [isOpen, setIsOpen] = useState(false);
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
+## parseDate
+`helper` 
+
+Преобразует строковое значение поля FieldDate в тип Date
 ## FieldDate
 ### Props
 | name | type | default value | description |
@@ -276,6 +280,7 @@ const [isOpen, setIsOpen] = useState(false);
 | showCopyButton | `boolean` | - | Отображение кнопки копирования |
 | showClearButton | `boolean` | true | Отображение кнопки Очистки поля |
 | locale | `Locale` | new Intl.Locale('ru-RU') | Текущая локаль календаря |
+| buildCellProps | `(date: Date, viewMode: ViewMode) => { isDisabled?: boolean; isHoliday?: boolean };` | - | Колбек установки свойств ячеек календаря. Вызывается на построение каждой ячейки. Принимает два параметра: <br> `Date` - дата ячейки <br> `ViewMode`: <br>  - `month` отображение месяца, каждая ячейка - 1 день <br>  - `year` отображение года, каждая ячейка - 1 месяц <br>  - `decade` отображение декады, каждая ячейка - 1 год <br><br> Колбек должен возвращать объект с полями, отвечающими за отключение и подкраску ячейки. |
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | id | `string` | - | Значение html-атрибута id |

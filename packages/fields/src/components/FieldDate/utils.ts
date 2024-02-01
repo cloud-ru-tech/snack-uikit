@@ -38,6 +38,11 @@ export function getPrevSlotKey(slotKey: string | null) {
   }
 }
 
+/**
+ * Преобразует строковое значение поля FieldDate в тип Date
+ * @function  helper
+ */
+
 export function parseDate(date: string) {
   const values = date.split('.');
   return new Date(Number(values[2]), Number(values[1]) - 1, Number(values[0]));
