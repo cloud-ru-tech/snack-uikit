@@ -38,17 +38,4 @@ export const POPOVER_HEIGHT_STRATEGY = {
   Eq: 'eq',
 } as const;
 
-export const DEFAULT_FALLBACK_PLACEMENTS = [
-  PLACEMENT.Top,
-  PLACEMENT.TopStart,
-  PLACEMENT.TopEnd,
-  PLACEMENT.RightStart,
-  PLACEMENT.Right,
-  PLACEMENT.RightEnd,
-  PLACEMENT.Bottom,
-  PLACEMENT.BottomEnd,
-  PLACEMENT.BottomStart,
-  PLACEMENT.LeftEnd,
-  PLACEMENT.Left,
-  PLACEMENT.LeftStart,
-];
+export const DEFAULT_FALLBACK_PLACEMENTS = [PLACEMENT.Top, PLACEMENT.Right, PLACEMENT.Bottom, PLACEMENT.Left];
