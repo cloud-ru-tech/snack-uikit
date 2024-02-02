@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.4 (2024-02-02)
+
+
+### Bug Fixes
+
+* **FF-4183:** make card inner parts stretch ([1f1aa8f](https://github.com/cloud-ru-tech/snack-uikit/commit/1f1aa8f94f7725185d3c18bca83742c84245762a))
+
+
+
+
+
 ## 0.9.3 (2024-02-01)
 
 ### Only dependencies have been changed
