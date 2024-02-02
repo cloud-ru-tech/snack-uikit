@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2024-02-02)
+
+
+### Features
+
+* **FF-4075:** add ref, onKeyDown props into list; add className, inactive props into items ([3ee860c](https://github.com/cloud-ru-tech/snack-uikit/commit/3ee860c5257be999ecf3a77d261d74240e7713f2))
+
+
+### BREAKING CHANGES
+
+
+* **FF-4075:** hide all selection props into 1 prop; add collapse contolled state; list fill container ([e1f8e66](https://github.com/cloud-ru-tech/snack-uikit/commit/e1f8e663a43a1261916513237f3b96b6c1146a67))
+
+
+
+
 ## 0.1.3 (2024-02-01)
 
 ### Only dependencies have been changed
