@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2024-02-02)
+
+
+### Features
+
+* **FF-4150:** add ability to disable specific dates ([0bcd8da](https://github.com/cloud-ru-tech/snack-uikit/commit/0bcd8da03cfce91996cd61b2b6f065af6597e89b))
+
+
+
+
+
 ## 0.11.6 (2024-02-01)
 
 ### Only dependencies have been changed

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Fields",
-  "version": "0.11.6",
+  "version": "0.12.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -32,7 +32,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/calendar": "0.6.3",
+    "@snack-uikit/calendar": "0.6.4",
     "@snack-uikit/droplist": "0.13.2",
     "@snack-uikit/icons": "0.20.0",
     "@snack-uikit/input-private": "3.0.3",
