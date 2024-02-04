@@ -5,7 +5,7 @@ import { useParentListContext } from '../../Lists/contexts';
 type UseKeyboardNavigationProps = {
   ids: Array<number | string>;
   expandedIds: Array<number | string>;
-  itemRefs?: RefObject<HTMLButtonElement>[];
+  itemRefs?: RefObject<HTMLElement>[];
   id?: string | number;
 };
 
@@ -17,7 +17,7 @@ export function useKeyboardNavigation({ ids, expandedIds, itemRefs, id }: UseKey
   const [openNestedIndex, setOpenNestedIndex] = useState<number>(-1);
   const [open, setOpen] = useState<boolean>(false);
 
-  const handleListKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
+  const handleListKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     switch (e.key) {
       case 'ArrowDown': {
         setActiveFocusIndex(activeIndex => Math.min(activeIndex + 1, ids.length - 1));

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { FocusEvent, KeyboardEvent, MouseEvent } from 'react';
+import { FocusEvent, KeyboardEvent, MouseEvent, RefObject } from 'react';
 
 import { Checkbox, Switch } from '@snack-uikit/toggles';
 import { TruncateString } from '@snack-uikit/truncate-string';
@@ -32,6 +32,7 @@ export function BaseItem({
   isParentNode,
   className,
   inactive,
+  itemWrapRender,
   ...rest
 }: AllBaseItemProps) {
   const { option, caption, description } = content || {};
@@ -48,7 +49,7 @@ export function BaseItem({
     onChange?.(id ?? '');
   };
 
-  const handleItemClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleItemClick = (e: MouseEvent<HTMLElement>) => {
     if (interactive) {
       parentResetActiveFocusIndex?.();
 
@@ -60,7 +61,7 @@ export function BaseItem({
     onClick?.(e);
   };
 
-  const handleItemKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+  const handleItemKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     onKeyDown?.(e);
 
     if (e.code === 'Space' || e.key === 'Enter') {
@@ -70,14 +71,14 @@ export function BaseItem({
 
       !isParentNode && handleChange();
       // TODO: should pass an event here?
-      !isParentNode && onClick?.(e as unknown as MouseEvent<HTMLButtonElement>);
+      !isParentNode && onClick?.(e as unknown as MouseEvent<HTMLElement>);
 
       e.stopPropagation();
       e.preventDefault();
     }
   };
 
-  const handleItemFocus = (e: FocusEvent<HTMLButtonElement>) => {
+  const handleItemFocus = (e: FocusEvent<HTMLElement>) => {
     onFocus?.(e);
     e.stopPropagation();
   };
@@ -96,66 +97,72 @@ export function BaseItem({
 
   const props = extractSupportProps(rest);
 
-  return (
-    <li role={'menuitem'} data-test-id={props['data-test-id'] || 'list__base-item_' + id}>
-      <button
-        ref={itemRef}
-        className={cn(commonStyles.listItem, styles.droplistItem, className)}
-        data-size={size}
-        onClick={handleItemClick}
-        tabIndex={-1}
-        data-non-pointer={inactive && !onClick}
-        data-inactive={inactive || undefined}
-        data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
-        data-variant={mode || undefined}
-        data-open={open || undefined}
-        disabled={disabled}
-        onKeyDown={handleItemKeyDown}
-        onFocus={handleItemFocus}
-        style={{ '--level': level }}
-      >
-        {!switchProp && isSelectionSingle && marker && !isParentNode && interactive && (
-          <div className={styles.markerContainer} data-test-id='list__base-item-marker' />
-        )}
-        {!switchProp && isSelectionMultiple && interactive && (
-          <div className={styles.checkbox}>
-            <Checkbox
-              size={CHECKBOX_SIZE_MAP[size ?? 's']}
-              disabled={disabled}
-              tabIndex={-1}
-              onChange={handleCheckboxChange}
-              checked={isChecked}
-              data-test-id='list__base-item-checkbox'
-              onClick={handleCheckboxClick}
-              indeterminate={indeterminate}
-            />
-          </div>
-        )}
+  const item = (
+    <li
+      role={'menuitem'}
+      data-test-id={props['data-test-id'] || 'list__base-item_' + id}
+      ref={itemRef as unknown as RefObject<HTMLLIElement>}
+      className={cn(commonStyles.listItem, styles.droplistItem, className)}
+      data-size={size}
+      onClick={handleItemClick}
+      tabIndex={-1}
+      data-non-pointer={inactive && !onClick}
+      data-inactive={inactive || undefined}
+      data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
+      data-variant={mode || undefined}
+      data-open={open || undefined}
+      aria-disabled={disabled || undefined}
+      onKeyDown={handleItemKeyDown}
+      onFocus={handleItemFocus}
+      style={{ '--level': level }}
+    >
+      {!switchProp && isSelectionSingle && marker && !isParentNode && interactive && (
+        <div className={styles.markerContainer} data-test-id='list__base-item-marker' />
+      )}
+      {!switchProp && isSelectionMultiple && interactive && (
+        <div className={styles.checkbox}>
+          <Checkbox
+            size={CHECKBOX_SIZE_MAP[size ?? 's']}
+            disabled={disabled}
+            tabIndex={-1}
+            onChange={handleCheckboxChange}
+            checked={isChecked}
+            data-test-id='list__base-item-checkbox'
+            onClick={handleCheckboxClick}
+            indeterminate={indeterminate}
+          />
+        </div>
+      )}
 
-        {beforeContent && <div className={styles.beforeContent}>{beforeContent}</div>}
+      {beforeContent && <div className={styles.beforeContent}>{beforeContent}</div>}
 
-        <div className={styles.content}>
-          <div className={styles.headline}>
-            <span className={styles.option}>
-              <TruncateString text={option} maxLines={1} />
-            </span>
-            {caption && <span className={styles.caption}>{caption}</span>}
-          </div>
-
-          {description && (
-            <div className={styles.description}>
-              <TruncateString text={description} maxLines={2} />
-            </div>
-          )}
+      <div className={styles.content}>
+        <div className={styles.headline}>
+          <span className={styles.option}>
+            <TruncateString text={option} maxLines={1} />
+          </span>
+          {caption && <span className={styles.caption}>{caption}</span>}
         </div>
 
-        {afterContent}
-
-        {switchProp && interactive && (
-          <Switch disabled={disabled} checked={isChecked} data-test-id='list__base-item-switch' />
+        {description && (
+          <div className={styles.description}>
+            <TruncateString text={description} maxLines={2} />
+          </div>
         )}
-        {!switchProp && expandIcon && <span className={styles.expandableIcon}>{expandIcon}</span>}
-      </button>
+      </div>
+
+      {afterContent}
+
+      {switchProp && interactive && (
+        <Switch disabled={disabled} checked={isChecked} data-test-id='list__base-item-switch' />
+      )}
+      {!switchProp && expandIcon && <span className={styles.expandableIcon}>{expandIcon}</span>}
     </li>
   );
+
+  if (!itemWrapRender) {
+    return item;
+  }
+
+  return itemWrapRender(item);
 }

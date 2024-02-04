@@ -16,7 +16,7 @@ export function AccordionItem({ items: itemsProp, id, disabled, ...option }: Acc
 
   const { isChecked: open, handleClick: handleChange } = useToggleGroup({ value: String(id) });
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     if (e.key === 'ArrowRight') {
       handleChange();
       toggleOpenCollapsedItems?.(id ?? '');
@@ -28,33 +28,31 @@ export function AccordionItem({ items: itemsProp, id, disabled, ...option }: Acc
 
   const itemsJSX = useRenderItems(itemsProp);
 
-  const handleItemClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleItemClick = (e: MouseEvent<HTMLElement>) => {
     handleChange();
     toggleOpenCollapsedItems?.(id ?? '');
     option.onClick?.(e);
   };
 
   return (
-    <li style={{ listStyleType: 'none' }}>
-      <CollapseBlockPrivate
-        header={
-          <BaseItem
-            {...option}
-            id={id}
-            disabled={disabled}
-            expandIcon={open ? <ChevronUpSVG /> : <ChevronDownSVG />}
-            onClick={handleItemClick}
-            isParentNode
-            onKeyDown={handleKeyDown}
-            indeterminate={isIndeterminate && !checked}
-            onSelect={!disabled ? handleOnSelect : undefined}
-          />
-        }
-        expanded={open}
-        data-test-id={`list__accordion-item-${id}`}
-      >
-        <CollapseContext.Provider value={{ level: level + 1 }}>{itemsJSX}</CollapseContext.Provider>
-      </CollapseBlockPrivate>
-    </li>
+    <CollapseBlockPrivate
+      header={
+        <BaseItem
+          {...option}
+          id={id}
+          disabled={disabled}
+          expandIcon={open ? <ChevronUpSVG /> : <ChevronDownSVG />}
+          onClick={handleItemClick}
+          isParentNode
+          onKeyDown={handleKeyDown}
+          indeterminate={isIndeterminate && !checked}
+          onSelect={!disabled ? handleOnSelect : undefined}
+        />
+      }
+      expanded={open}
+      data-test-id={`list__accordion-item-${id}`}
+    >
+      <CollapseContext.Provider value={{ level: level + 1 }}>{itemsJSX}</CollapseContext.Provider>
+    </CollapseBlockPrivate>
   );
 }

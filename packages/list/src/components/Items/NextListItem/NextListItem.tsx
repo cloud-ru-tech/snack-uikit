@@ -78,55 +78,53 @@ export function NextListItem({
   }, [parentResetActiveFocusIndex, parentResetNestedIndex]);
 
   return (
-    <li style={{ listStyleType: 'none' }}>
-      <Dropdown
-        outsideClick={handleOutsideClick}
-        fallbackPlacements={FALLBACK_PLACEMENTS}
-        content={
-          <ParentListContext.Provider
-            value={{
-              parentIds: ids,
-              parentActiveFocusIndex: activeFocusIndex,
-              parentExpandedIds: expandedIds,
-              parentItemRefs: itemRefs,
-              parentOpenNestedIndex: openNestedIndex,
-              triggerRef,
-              parentRef: listRef,
-              parentResetNestedIndex: resetNestedIndex,
-              parentResetActiveFocusIndex: resetActiveFocusIndex,
-              toggleOpenCollapsedItems: id =>
-                setOpenCollapsedItems(items =>
-                  items.includes(id) ? items.filter(item => item !== id) : items.concat([id]),
-                ),
-            }}
-          >
-            <ListPrivate
-              onKeyDown={handleListKeyDown}
-              items={items}
-              nested
-              search={search}
-              scroll={scroll}
-              scrollRef={scrollRef}
-              limitedScrollHeight
-            />
-          </ParentListContext.Provider>
-        }
-        trigger='hover'
-        open={(open || parentIds[parentOpenNestedIndex] === id) && !disabled}
-        onOpenChange={handleOpenChange}
-        placement={placement}
-      >
-        <BaseItem
-          {...option}
-          disabled={disabled}
-          open={open}
-          expandIcon={<ChevronRightSVG />}
-          id={id}
-          isParentNode
-          indeterminate={isIndeterminate && !checked}
-          onSelect={handleOnSelect}
-        />
-      </Dropdown>
-    </li>
+    <Dropdown
+      outsideClick={handleOutsideClick}
+      fallbackPlacements={FALLBACK_PLACEMENTS}
+      content={
+        <ParentListContext.Provider
+          value={{
+            parentIds: ids,
+            parentActiveFocusIndex: activeFocusIndex,
+            parentExpandedIds: expandedIds,
+            parentItemRefs: itemRefs,
+            parentOpenNestedIndex: openNestedIndex,
+            triggerRef,
+            parentRef: listRef,
+            parentResetNestedIndex: resetNestedIndex,
+            parentResetActiveFocusIndex: resetActiveFocusIndex,
+            toggleOpenCollapsedItems: id =>
+              setOpenCollapsedItems(items =>
+                items.includes(id) ? items.filter(item => item !== id) : items.concat([id]),
+              ),
+          }}
+        >
+          <ListPrivate
+            onKeyDown={handleListKeyDown}
+            items={items}
+            nested
+            search={search}
+            scroll={scroll}
+            scrollRef={scrollRef}
+            limitedScrollHeight
+          />
+        </ParentListContext.Provider>
+      }
+      trigger='hover'
+      open={(open || parentIds[parentOpenNestedIndex] === id) && !disabled}
+      onOpenChange={handleOpenChange}
+      placement={placement}
+    >
+      <BaseItem
+        {...option}
+        disabled={disabled}
+        open={open}
+        expandIcon={<ChevronRightSVG />}
+        id={id}
+        isParentNode
+        indeterminate={isIndeterminate && !checked}
+        onSelect={handleOnSelect}
+      />
+    </Dropdown>
   );
 }

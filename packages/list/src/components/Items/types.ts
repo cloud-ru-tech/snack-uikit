@@ -31,13 +31,13 @@ export type BaseItemProps = WithSupportProps<{
   content: ItemContentProps;
 
   /** Колбек обработки клика */
-  onClick?(e: MouseEvent<HTMLButtonElement>): void;
+  onClick?(e: MouseEvent<HTMLElement>): void;
   /** Колбек обработки нажатия клавиши */
-  onKeyDown?(e: KeyboardEvent<HTMLButtonElement>): void;
+  onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
   /** Колбек обработки фокуса */
-  onFocus?(e: FocusEvent<HTMLButtonElement>): void;
+  onFocus?(e: FocusEvent<HTMLElement>): void;
   /** Колбек обработки блюра */
-  onBlur?(e: FocusEvent<HTMLButtonElement>): void;
+  onBlur?(e: FocusEvent<HTMLElement>): void;
 
   /** Уникальный идентификатор */
   id?: string | number;
@@ -45,7 +45,7 @@ export type BaseItemProps = WithSupportProps<{
   /** Флаг неактивности элемента */
   disabled?: boolean;
 
-  itemRef?: RefObject<HTMLButtonElement>;
+  itemRef?: RefObject<HTMLElement>;
   className?: string;
 
   /**
@@ -58,6 +58,8 @@ export type BaseItemProps = WithSupportProps<{
    * Флаг отображения состояния выбранного элемента через switch
    */
   switch?: boolean;
+
+  itemWrapRender?(item: ReactNode): ReactNode;
 }>;
 
 type BaseItemsWithoutNonGroupProps = Omit<BaseItemProps, 'switch' | 'inactive'>;

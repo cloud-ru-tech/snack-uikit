@@ -5,7 +5,7 @@ export type UseKeyboardNavigationProps<T extends HTMLElement> = {
   expandedIds: Array<number | string>;
   parentRef?: RefObject<T>;
   btnRef?: RefObject<HTMLButtonElement>;
-  itemRefs?: RefObject<HTMLButtonElement>[];
+  itemRefs?: RefObject<HTMLElement>[];
 };
 
 export function useKeyboardNavigation<T extends HTMLElement>({

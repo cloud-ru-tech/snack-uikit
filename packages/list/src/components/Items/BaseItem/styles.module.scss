@@ -138,6 +138,7 @@ $typography: (
     cursor: inherit;
   }
 
+  &[aria-disabled],
   &:disabled {
     .option,
     .description,

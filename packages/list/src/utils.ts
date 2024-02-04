@@ -14,7 +14,7 @@ type WithCollapsedItemsProps = {
 };
 
 export function withCollapsedItems({ items, openCollapsedItems }: WithCollapsedItemsProps) {
-  let itemRefs: RefObject<HTMLButtonElement>[] = [];
+  let itemRefs: RefObject<HTMLElement>[] = [];
   let newItems: ItemProps[] = [];
   let ids: Array<string | number> = [];
   let expandedIds: Array<string | number> = [];
@@ -68,13 +68,13 @@ export function withCollapsedItems({ items, openCollapsedItems }: WithCollapsedI
   return { items, itemRefs, ids, expandedIds };
 }
 
-export function extractItemRefs(items: ItemProps[]): RefObject<HTMLButtonElement>[] {
-  return items.reduce((prev: RefObject<HTMLButtonElement>[], item: ItemProps) => {
+export function extractItemRefs(items: ItemProps[]): RefObject<HTMLElement>[] {
+  return items.reduce((prev: RefObject<HTMLElement>[], item: ItemProps) => {
     if (isGroupItemProps(item)) {
       return prev.concat(extractItemRefs(item.items));
     }
     return item.itemRef ? prev.concat([item.itemRef]) : prev;
-  }, [] as RefObject<HTMLButtonElement>[]);
+  }, [] as RefObject<HTMLElement>[]);
 }
 
 export function extractItemIds(items: ItemProps[]): Array<string | number> {

@@ -60,10 +60,10 @@ export function addItemsIds(itemsProp: ItemProps[], prefix?: string | number): I
         ...item,
         id: itemId,
         items: addItemsIds(item.items, itemId),
-        itemRef: item.itemRef || createRef<HTMLButtonElement>(),
+        itemRef: item.itemRef || createRef<HTMLElement>(),
       };
     }
 
-    return { ...item, id: itemId, itemRef: item.itemRef || createRef<HTMLButtonElement>() };
+    return { ...item, id: itemId, itemRef: item.itemRef || createRef<HTMLElement>() };
   });
 }

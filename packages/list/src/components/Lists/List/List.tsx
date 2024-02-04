@@ -71,7 +71,7 @@ export const List = forwardRef<HTMLElement, ListProps>(
       [items, hasSearch, pinTop, pinBottom, footerRefs],
     );
 
-    const listRef = useRef<HTMLUListElement>(null);
+    const listRef = useRef<HTMLElement>(null);
     const btnRef = useRef<HTMLButtonElement>(null);
 
     const { triggerRef } = useParentListContext();
@@ -93,7 +93,7 @@ export const List = forwardRef<HTMLElement, ListProps>(
 
     const isActive = listRef.current === document.activeElement && activeFocusIndex === -1 && openNestedIndex === -1;
 
-    const mergedHandlerKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
+    const mergedHandlerKeyDown = (e: KeyboardEvent<HTMLElement>) => {
       onKeyDown?.(e);
       handleListKeyDown?.(e);
     };

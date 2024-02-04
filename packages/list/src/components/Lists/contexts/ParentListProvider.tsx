@@ -7,7 +7,7 @@ export type ParentListContextType = {
 
   parentIds: Array<string | number>;
   parentExpandedIds: Array<string | number>;
-  parentItemRefs: Array<RefObject<HTMLButtonElement>>;
+  parentItemRefs: Array<RefObject<HTMLElement>>;
 
   parentOpenNestedIndex: number;
   parentResetNestedIndex?(): void;
