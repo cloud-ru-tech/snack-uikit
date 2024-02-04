@@ -71,6 +71,8 @@ export type {
   RowInfo,
   RowClickHandler,
   ActionsGenerator,
+  CopyCellProps,
+  MapStatusToAppearanceFnType,
 } from './helperComponents';
 
 export type {

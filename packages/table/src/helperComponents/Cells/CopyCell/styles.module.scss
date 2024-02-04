@@ -1,0 +1,21 @@
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+.copyCell {
+  cursor: pointer;
+
+  display: flex;
+  gap: $dimension-050m;
+  align-items: center;
+
+  min-width: 0;
+  max-width: 100%;
+  .copyButton {
+    display: none;
+  }
+
+  &:hover {
+    .copyButton {
+      display: inline-flex;
+    }
+  }
+}

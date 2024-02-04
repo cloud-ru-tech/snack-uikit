@@ -16,11 +16,13 @@ type StatusCellProps = {
   appearance: StatusAppearance;
 };
 
+export type MapStatusToAppearanceFnType = (value: string | number) => StatusAppearance;
+
 type BaseStatusColumnDef = {
   /** Имя ключа соответствующее полю в data */
   accessorKey: string;
   /** Маппинг значений статуса на цвета */
-  mapStatusToAppearance(value: string | number): StatusAppearance;
+  mapStatusToAppearance: MapStatusToAppearanceFnType;
   /** Включение/выключение сортировки */
   enableSorting?: boolean;
 };

@@ -29,3 +29,5 @@ export const SORT_FN = {
   DateTime: 'datetime',
   AlphaNumeric: 'alphanumeric',
 } as const;
+
+export const DEFAULT_PAGE_SIZE = 10;

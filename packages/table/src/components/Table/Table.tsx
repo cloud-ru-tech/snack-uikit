@@ -21,6 +21,7 @@ import { Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
+import { DEFAULT_PAGE_SIZE } from '../../constants';
 import {
   BodyRow,
   ExportButton,
@@ -82,6 +83,7 @@ export type TableProps<TData extends object> = WithSupportProps<{
     placeholder?: string;
     loading?: boolean;
     onChange?(value: string): void;
+    disableDefaultSearch?: boolean;
   };
 
   /** Максимальное кол-во строк на страницу @default 10 */
@@ -161,7 +163,7 @@ export function Table<TData extends object>({
   onRefresh,
   onDelete,
 
-  pageSize = 10,
+  pageSize = DEFAULT_PAGE_SIZE,
   pageCount,
   loading = false,
   outline = false,
@@ -252,6 +254,10 @@ export function Table<TData extends object>({
       minSize: 40,
     },
 
+    manualSorting: Boolean(pageCount),
+    manualPagination: pageCount !== undefined,
+    manualFiltering: Boolean(pageCount),
+
     globalFilterFn: fuzzyFilter,
     onGlobalFilterChange,
 
@@ -265,11 +271,12 @@ export function Table<TData extends object>({
     enableColumnResizing: true,
 
     enableSorting: true,
-    manualSorting: false,
-    enableMultiSort: false,
-    manualPagination: pageCount !== undefined,
+
+    enableMultiSort: true,
+
     onSortingChange,
     getSortedRowModel: getSortedRowModel(),
+
     onPaginationChange,
     getPaginationRowModel: getPaginationRowModel(),
 
@@ -342,10 +349,18 @@ export function Table<TData extends object>({
   const [locales] = useLocale('Table');
   const emptyStates = useTableEmptyState({ noDataState, noResultsState });
 
+  const cssPageSize = useMemo(() => {
+    const tempPageSize = !suppressPagination ? tablePagination?.pageSize : pageSize;
+
+    return !tableRows.length ? Math.min(Math.max(tempPageSize, 5), DEFAULT_PAGE_SIZE) : tempPageSize;
+  }, [pageSize, suppressPagination, tablePagination?.pageSize, tableRows.length]);
+
   return (
     <>
       <div
-        style={{ '--page-size': !suppressPagination ? tablePagination?.pageSize : pageSize }}
+        style={{
+          '--page-size': cssPageSize,
+        }}
         className={cn(styles.wrapper, className)}
         {...extractSupportProps(rest)}
       >

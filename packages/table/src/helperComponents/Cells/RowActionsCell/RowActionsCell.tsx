@@ -22,7 +22,7 @@ export type RowActionProps<TData> = Pick<BaseItemProps, 'content' | 'disabled'> 
   tagLabel?: string;
   id?: string;
   hidden?: boolean;
-  onClick(row: RowActionInfo<TData>, e: MouseEvent<HTMLButtonElement>): void;
+  onClick(row: RowActionInfo<TData>, e: MouseEvent<HTMLElement>): void;
 };
 
 type RowActionsCellProps<TData> = {
@@ -34,7 +34,7 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
   const { droplistOpened, setDroplistOpen } = useRowContext();
   const triggerRef = useRef(null);
 
-  const handleItemClick = (item: RowActionProps<TData>) => (e: MouseEvent<HTMLButtonElement>) => {
+  const handleItemClick = (item: RowActionProps<TData>) => (e: MouseEvent<HTMLElement>) => {
     item.onClick({ rowId: row.id, itemId: item.id, data: row.original }, e);
   };
 
