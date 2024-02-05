@@ -19,6 +19,7 @@ export const ButtonSimple = forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
       target = TARGET.Blank,
       type = HTML_TYPE.Button,
       appearance = APPEARANCE.Neutral,
+      fullWidth = false,
       tabIndex,
       ...rest
     },
@@ -31,6 +32,7 @@ export const ButtonSimple = forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
       iconClassName={styles.icon}
       labelClassName={styles.label}
       size={size}
+      fullWidth={fullWidth}
       target={target}
       type={type}
       appearance={appearance}

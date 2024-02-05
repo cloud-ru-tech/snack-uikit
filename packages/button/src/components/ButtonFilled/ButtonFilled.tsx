@@ -20,6 +20,7 @@ export const ButtonFilled = forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
       type = HTML_TYPE.Button,
       appearance = APPEARANCE.Primary,
       tabIndex,
+      fullWidth = false,
       ...rest
     },
     ref,
@@ -31,6 +32,7 @@ export const ButtonFilled = forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
       iconClassName={styles.icon}
       labelClassName={styles.label}
       size={size}
+      fullWidth={fullWidth}
       target={target}
       type={type}
       appearance={appearance}

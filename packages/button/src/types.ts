@@ -52,6 +52,8 @@ export type BaseButtonProps = {
   type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
   /** HTML-аттрибут tab-index */
   tabIndex?: number;
+  /** Сделать кнопку во всю ширину */
+  fullWidth?: boolean;
 };
 
 export type AnchorButtonProps = {

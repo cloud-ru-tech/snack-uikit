@@ -131,6 +131,7 @@ buttonFunction.args = {
   type: 'button',
   appearance: 'neutral',
   size: 's',
+  fullWidth: false,
   testMode: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

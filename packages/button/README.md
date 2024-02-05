@@ -67,6 +67,7 @@ const CounterProps = {
 | appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | primary | Внешний вид кнопки |
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
+| fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
 | size | enum SizeSL: `"s"`, `"m"`, `"l"` | s |  |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
@@ -88,6 +89,7 @@ const CounterProps = {
 | appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | neutral | Внешний вид кнопки |
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
+| fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
 | size | enum SizeSL: `"s"`, `"m"`, `"l"` | s |  |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
@@ -109,6 +111,7 @@ const CounterProps = {
 | appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | primary | Внешний вид кнопки |
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
+| fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
 | size | enum SizeSL: `"s"`, `"m"`, `"l"` | s |  |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
@@ -130,6 +133,7 @@ const CounterProps = {
 | appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | primary | Внешний вид кнопки |
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
+| fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
 | size | enum SizeSL: `"s"`, `"m"`, `"l"` | s |  |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
@@ -152,6 +156,7 @@ const CounterProps = {
 | appearance | enum Appearance: `"primary"`, `"neutral"`, `"destructive"` | neutral | Внешний вид кнопки |
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
+| fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
 | size | enum SizeXsM: `"s"`, `"m"`, `"xs"` | s |  |
 | counter | `CounterInButtonProps` | - | Пропсы каунтера в кнопке |
 | ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |

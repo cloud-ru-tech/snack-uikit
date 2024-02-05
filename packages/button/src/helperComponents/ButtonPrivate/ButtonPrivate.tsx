@@ -15,6 +15,7 @@ export type ButtonPrivateProps = WithSupportProps<
       iconClassName: string;
       labelClassName: string;
       size?: string;
+      fullWidth?: boolean;
     }
 >;
 
@@ -40,6 +41,7 @@ export const ButtonPrivate = forwardRef<HTMLButtonElement | HTMLAnchorElement, B
       type = HTML_TYPE.Button,
       appearance = APPEARANCE.Primary,
       tabIndex: tabIndexProp = 0,
+      fullWidth,
       ...rest
     },
     ref,
@@ -75,6 +77,7 @@ export const ButtonPrivate = forwardRef<HTMLButtonElement | HTMLAnchorElement, B
       'aria-disabled': disabled || undefined,
       'data-loading': loading || undefined,
       'data-size': size,
+      'data-full-width': fullWidth || undefined,
       'data-appearance': APPEARANCE_TO_COLOR_MAP[appearance],
       'data-variant': variant,
       onClick: handleClick,

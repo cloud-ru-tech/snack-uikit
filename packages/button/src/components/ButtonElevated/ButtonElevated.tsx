@@ -12,7 +12,7 @@ import styles from './styles.module.scss';
 import { Size } from './types';
 
 export type ButtonElevatedProps = WithSupportProps<
-  Omit<CommonButtonProps, 'iconPosition' | 'label' | 'appearance' | 'labelClassName' | 'size'> &
+  Omit<CommonButtonProps, 'iconPosition' | 'label' | 'appearance' | 'labelClassName' | 'size' | 'fullWidth'> &
     Required<Pick<CommonButtonProps, 'icon'>> & {
       /** Размер */
       size?: Size;

@@ -35,12 +35,14 @@
 }
 
 .controlledWrapper {
+  resize: horizontal;
+
+  overflow: auto;
   display: flex;
   gap: 8px;
   align-items: center;
-  justify-content: center;
 
-  width: max-content;
+  width: 400px;
   height: 64px;
   margin-bottom: 16px;
   padding: 0 24px;

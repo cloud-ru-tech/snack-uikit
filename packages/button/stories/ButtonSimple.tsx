@@ -86,6 +86,7 @@ buttonSimple.args = {
   type: 'button',
   appearance: 'neutral',
   size: 's',
+  fullWidth: false,
   testMode: false,
 };
 

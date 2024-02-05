@@ -77,6 +77,7 @@ buttonFilled.args = {
   type: 'button',
   appearance: 'primary',
   size: 's',
+  fullWidth: false,
   testMode: false,
 };
 
