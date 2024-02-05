@@ -5,6 +5,9 @@
       "path": "./utils"
     },
     {
+      "path": "./locale"
+    },
+    {
       "path": "./popover-private"
     },
     {

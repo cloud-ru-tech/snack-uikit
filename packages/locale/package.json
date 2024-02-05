@@ -1,0 +1,41 @@
+{
+  "name": "@snack-uikit/locale",
+  "publishConfig": {
+    "access": "public"
+  },
+  "title": "Locale",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://cloud-ru-tech.github.io/snack-uikit/packages/locale",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit/tree/master",
+    "directory": "packages/locale"
+  },
+  "author": "Белов Алексей <anbelov@cloud.ru>",
+  "contributors": [
+    "Белов Алексей <anbelov@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "lodash.merge": "4.6.2"
+  },
+  "devDependencies": {
+    "@types/lodash.merge": "4.6.9"
+  },
+  "peerDependencies": {}
+}

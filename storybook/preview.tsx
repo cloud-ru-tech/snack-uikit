@@ -7,6 +7,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { PARAM_COLOR_MAP_KEY, PARAM_KEY } from '@cloud-ru/ft-storybook-brand-addon';
 import { Sprite, SpriteSVG } from '@snack-uikit/icons';
+import { LocaleProvider } from '@snack-uikit/locale';
 
 import { themes as additionalThemes } from '../themes.config';
 import { BADGE, Brand, DEFAULT_BRAND_COLORS_MAP, DEFAULT_BRAND_MAP } from './constants';
@@ -82,13 +83,16 @@ const decorators: Preview['decorators'] = [
   Story => (
     <>
       <Sprite content={SpriteSVG as unknown as string} />
-      {Story()}
+
+      <LocaleProvider lang='en_US'>
+        {Story()}
+      </LocaleProvider>
     </>
   ),
   withDesign,
 ];
 
-const preview = {
+const preview: Preview = {
   decorators,
   parameters,
   globalTypes,
