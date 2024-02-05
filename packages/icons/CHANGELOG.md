@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.20.1 (2024-02-05)
+
+
+### Bug Fixes
+
+* **FF-3802:** use svg sprite for icons ([09dbca4](https://github.com/cloud-ru-tech/snack-uikit/commit/09dbca42999ca8870171e2bbda39c019f030b2cb))
+
+
+
+
+
 # 0.20.0 (2024-01-23)
 
 
