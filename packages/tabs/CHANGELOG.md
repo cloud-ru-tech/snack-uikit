@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.3 (2024-02-05)
+
+
+### Bug Fixes
+
+* **FF-00:** arrow is shown by mistake for secondary tabs ([5430505](https://github.com/cloud-ru-tech/snack-uikit/commit/5430505f8b76db26f039f9bd53f4b8c37ff66e3b))
+
+
+
+
+
 ## 0.6.2 (2024-01-30)
 
 ### Only dependencies have been changed

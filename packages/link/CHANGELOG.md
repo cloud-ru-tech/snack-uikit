@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-02-05)
+
+
+### Features
+
+* **FF-00:** add insideText property ([1771cf4](https://github.com/cloud-ru-tech/snack-uikit/commit/1771cf4a186e478bc559ee465a049de6b968e208))
+
+
+
+
+
 ## 0.10.2 (2024-02-01)
 
 ### Only dependencies have been changed

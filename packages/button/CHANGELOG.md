@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.16.0 (2024-02-05)
+
+
+### Features
+
+* **FF-00:** add fullWidth property ([6bb8821](https://github.com/cloud-ru-tech/snack-uikit/commit/6bb8821b8a3b9150466b7027a8bd05b88d96c390))
+
+
+
+
+
 ## 0.15.1 (2023-12-28)
 
 
