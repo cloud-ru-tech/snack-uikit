@@ -27,6 +27,7 @@ $types: 'primary', 'secondary';
 .tabsRow {
   position: relative;
 
+  overflow: hidden;
   display: flex;
   flex-direction: row;
 
