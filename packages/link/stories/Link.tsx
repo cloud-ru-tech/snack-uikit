@@ -60,10 +60,16 @@ function Table({ header, options }: TableProps) {
   );
 }
 
-const Template: StoryFn<StoryProps> = ({ ...args }) => (
+const Template: StoryFn<StoryProps> = ({ insideText, ...args }) => (
   <>
     <div className={styles.wrapper} data-appearance={args.appearance} data-on-surface={args.textMode}>
-      <Link {...args} />
+      {insideText ? (
+        <span>
+          Some text some text <Link {...args} insideText={true} /> some text some text
+        </span>
+      ) : (
+        <Link {...args} />
+      )}
     </div>
 
     <div>
@@ -102,6 +108,7 @@ link.args = {
   target: '_blank',
   external: false,
   appearance: APPEARANCE.Primary,
+  insideText: false,
 };
 
 link.argTypes = {

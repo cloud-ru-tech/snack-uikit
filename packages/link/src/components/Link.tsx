@@ -36,6 +36,8 @@ export type LinkProps = WithSupportProps<{
    * @default 'default'
    */
   textMode?: TextMode;
+  /** Находится ли ссылка внутри текста (и можно ли её переносить) */
+  insideText?: boolean;
 }>;
 
 /** Компонент ссылка */
@@ -50,6 +52,7 @@ export function Link({
   size = SIZE.S,
   external,
   appearance = APPEARANCE.Primary,
+  insideText = false,
   ...rest
 }: LinkProps) {
   return (
@@ -63,9 +66,11 @@ export function Link({
       data-size={size}
       data-text-mode={textMode}
       data-appearance={appearance}
+      data-inside-text={insideText || undefined}
       rel={target === '_blank' ? 'noopener noreferrer' : undefined}
     >
-      <TruncateString text={text} maxLines={1} />
+      {insideText ? text : <TruncateString text={text} maxLines={1} />}
+
       {external && <ArrowLinksSVG data-test-id='link__external-icon' className={styles.icon} />}
     </a>
   );

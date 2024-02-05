@@ -39,6 +39,7 @@ import { Link } from '@snack-uikit/link';
 | external | `boolean` | - | Ведет ли ссылка на внешний ресурс (добавляет иконку если true) |
 | appearance | enum Appearance: `"invert-neutral"`, `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Стилизует ссылку для размещения на цветном фоне |
 | textMode | enum TextMode: `"default"`, `"accent"`, `"on-accent"` | default | Тип поверхности, на которой размещена ссылка |
+| insideText | `boolean` | - | Находится ли ссылка внутри текста (и можно ли её переносить) |
 
 
 [//]: DOCUMENTATION_SECTION_END

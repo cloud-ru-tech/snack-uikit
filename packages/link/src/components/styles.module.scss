@@ -22,6 +22,10 @@ $icon-sizes: (
   text-decoration: none;
   text-decoration-skip-ink: none;
 
+  &[data-inside-text] {
+    display: inline;
+  }
+
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
       &[data-text-mode='default'] {
