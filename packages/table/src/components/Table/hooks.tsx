@@ -2,9 +2,11 @@ import { ColumnPinningState, getCoreRowModel, useReactTable } from '@tanstack/re
 import { useCallback, useMemo } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
+import { CrossSVG, SearchSVG } from '@snack-uikit/icons';
+import { useLocale } from '@snack-uikit/locale';
 import { SkeletonText } from '@snack-uikit/skeleton';
 
-import { ColumnDefinition } from '../../types';
+import { ColumnDefinition, TableEmptyStateProps } from '../../types';
 import styles from './styles.module.scss';
 
 export function useStateControl<TState>(
@@ -65,4 +67,33 @@ export function useLoadingTable<TData>({ pageSize, columnDefinitions, columnPinn
   });
 
   return { loadingTable };
+}
+
+export function useTableEmptyState({
+  noDataState: noDataStateProp,
+  noResultsState: noResultsStateProp,
+}: {
+  noDataState?: TableEmptyStateProps;
+  noResultsState?: TableEmptyStateProps;
+}) {
+  const [locales] = useLocale('Table');
+
+  return useMemo(() => {
+    const noDataState: TableEmptyStateProps = noDataStateProp ?? {
+      icon: CrossSVG,
+      appearance: 'red',
+      ...locales.noData,
+    };
+
+    const noResultsState: TableEmptyStateProps = noResultsStateProp ?? {
+      icon: SearchSVG,
+      appearance: 'neutral',
+      ...locales.noResults,
+    };
+
+    return {
+      noDataState,
+      noResultsState,
+    };
+  }, [locales.noData, locales.noResults, noDataStateProp, noResultsStateProp]);
 }

@@ -2,6 +2,7 @@ import { Table } from '@tanstack/react-table';
 import { useCallback, useMemo } from 'react';
 
 import { ChipChoice } from '@snack-uikit/chips';
+import { useLocale } from '@snack-uikit/locale';
 import { Pagination } from '@snack-uikit/pagination';
 
 import styles from './styles.module.scss';
@@ -16,8 +17,11 @@ export type TablePaginationProps<TData> = {
 export function TablePagination<TData>({
   table,
   options: optionsProp,
-  optionsLabel = 'Rows volume: ',
+  optionsLabel: optionsLabelProp,
 }: TablePaginationProps<TData>) {
+  const [locales] = useLocale('Table');
+  const optionsLabel = optionsLabelProp ?? locales.rowsOptionsLabel;
+
   const handlePaginationOnChange = useCallback(
     (pageIndex: number) => {
       table.setPageIndex(pageIndex - 1);

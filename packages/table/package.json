@@ -37,6 +37,7 @@
     "@snack-uikit/icon-predefined": "0.4.1",
     "@snack-uikit/icons": "0.20.1",
     "@snack-uikit/list": "0.2.1",
+    "@snack-uikit/locale": "0.0.0",
     "@snack-uikit/pagination": "0.6.3",
     "@snack-uikit/scroll": "0.5.0",
     "@snack-uikit/skeleton": "0.3.2",

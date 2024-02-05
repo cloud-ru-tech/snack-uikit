@@ -14,6 +14,7 @@ import {
 import cn from 'classnames';
 import { ReactNode, useCallback, useMemo } from 'react';
 
+import { useLocale } from '@snack-uikit/locale';
 import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider } from '@snack-uikit/skeleton';
 import { Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
@@ -36,8 +37,7 @@ import { ColumnDefinition } from '../../types';
 import { fuzzyFilter } from '../../utils';
 import { TableEmptyState, TableEmptyStateProps } from '../TableEmptyState';
 import { TablePagination } from '../TablePagination';
-import { DEFAULT_NO_DATA_TABLE_STATE, DEFAULT_NO_RESULTS_TABLE_STATE } from './constants';
-import { useLoadingTable, useStateControl } from './hooks';
+import { useLoadingTable, useStateControl, useTableEmptyState } from './hooks';
 import styles from './styles.module.scss';
 
 export type TableProps<TData extends object> = WithSupportProps<{
@@ -169,8 +169,8 @@ export function Table<TData extends object>({
   moreActions,
   exportFileName,
 
-  noDataState = DEFAULT_NO_DATA_TABLE_STATE,
-  noResultsState = DEFAULT_NO_RESULTS_TABLE_STATE,
+  noDataState,
+  noResultsState,
 
   suppressToolbar = false,
   toolbarBefore,
@@ -339,6 +339,9 @@ export function Table<TData extends object>({
   const loadingTableRows = loadingTable.getRowModel().rows;
   const tablePagination = table.getState().pagination;
 
+  const [locales] = useLocale('Table');
+  const emptyStates = useTableEmptyState({ noDataState, noResultsState });
+
   return (
     <>
       <div
@@ -353,7 +356,7 @@ export function Table<TData extends object>({
                 value: globalFilter,
                 onChange: onGlobalFilterChange,
                 loading: search?.loading,
-                placeholder: search?.placeholder || 'Search',
+                placeholder: search?.placeholder || locales.searchPlaceholder,
               }}
               checked={table.getIsAllPageRowsSelected()}
               indeterminate={table.getIsSomePageRowsSelected()}
@@ -394,8 +397,8 @@ export function Table<TData extends object>({
                       <BodyRow key={row.id} row={row} onRowClick={onRowClick} />
                     ))}
 
-                    {!tableRows.length && globalFilter && <TableEmptyState {...noResultsState} />}
-                    {!tableRows.length && !globalFilter && <TableEmptyState {...noDataState} />}
+                    {!tableRows.length && globalFilter && <TableEmptyState {...emptyStates.noResultsState} />}
+                    {!tableRows.length && !globalFilter && <TableEmptyState {...emptyStates.noDataState} />}
                   </>
                 )}
               </TableContext.Provider>

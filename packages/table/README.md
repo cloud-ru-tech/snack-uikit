@@ -120,8 +120,8 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | columnFilters | `ReactNode` | - | Фильтры |
 | exportFileName | `string` | - | Название файла при экспорте CSV/XLSX |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
-| noDataState | `TableEmptyStateProps` | {   icon: CrossSVG,   appearance: 'red',   title: 'Data collection error',   description: 'Try refreshing the page', } as const | Экран при отстутствии данных |
-| noResultsState | `TableEmptyStateProps` | {   icon: SearchSVG,   appearance: 'neutral',   title: 'Not found',   description: 'Try entering another query', } as const | Экран при отстутствии результатов поиска |
+| noDataState | `TableEmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `TableEmptyStateProps` | - | Экран при отстутствии результатов поиска |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
 | toolbarBefore | `ReactNode` | - | Дополнительный слот в `Toolbar` перед строкой поиска |
 | suppressPagination | `boolean` | - | Отключение пагинации |
