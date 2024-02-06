@@ -4,13 +4,15 @@ import { createContext, ReactNode, useMemo } from 'react';
 import { LOCALES } from '../../locales';
 import { LocaleLang, OverrideLocales } from '../../types';
 
+export const DEFAULT_LANG = 'en_GB';
+
 export type LocaleContextType = {
   lang: LocaleLang;
   locales: OverrideLocales;
 };
 
 export const LocaleContext = createContext<LocaleContextType>({
-  lang: 'en_US',
+  lang: DEFAULT_LANG,
   locales: LOCALES,
 });
 
@@ -20,7 +22,7 @@ export type LocaleProviderProps = {
   children: ReactNode;
 };
 
-export function LocaleProvider({ lang = 'en_US', locales: localesProp, children }: LocaleProviderProps) {
+export function LocaleProvider({ lang: langProp = DEFAULT_LANG, locales: localesProp, children }: LocaleProviderProps) {
   const locales = useMemo(() => {
     if (localesProp) {
       return merge({}, LOCALES, localesProp);
@@ -28,6 +30,8 @@ export function LocaleProvider({ lang = 'en_US', locales: localesProp, children 
 
     return LOCALES;
   }, [localesProp]);
+
+  const lang = useMemo(() => langProp.replace('-', '_') as LocaleLang, [langProp]);
 
   return <LocaleContext.Provider value={{ lang, locales }}>{children}</LocaleContext.Provider>;
 }

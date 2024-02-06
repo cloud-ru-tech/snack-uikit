@@ -1,7 +1,7 @@
-import { en_US } from './en_US';
+import { en_GB } from './en_GB';
 import { ru_RU } from './ru_RU';
 
 export const LOCALES = {
-  en_US,
+  en_GB,
   ru_RU,
 } as const;

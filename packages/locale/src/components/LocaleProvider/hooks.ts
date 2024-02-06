@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react';
 
 import { KnownLocaleLang, LocaleDictionary, LocaleLang } from '../../types';
-import { LocaleContext, LocaleContextType } from './LocaleProvider';
+import { DEFAULT_LANG, LocaleContext, LocaleContextType } from './LocaleProvider';
 
 type LocaleComponentName = keyof LocaleDictionary;
 
@@ -18,7 +18,15 @@ export function useLocale<C extends LocaleComponentName = LocaleComponentName>(c
   const { locales: ctxLocales, lang } = useContext<LocaleContextType>(LocaleContext);
 
   const locales = useMemo(() => {
-    const localesObj = ctxLocales[lang as KnownLocaleLang] || {};
+    let localesObj = ctxLocales[lang as KnownLocaleLang];
+
+    if (!localesObj) {
+      console.warn(
+        `Snack-uikit: localization for lang ${lang} was not found. Make sure you are using correct lang or passed proper locales to LocaleProvider. For now default language (${DEFAULT_LANG}) will be used`,
+      );
+
+      localesObj = ctxLocales[DEFAULT_LANG] as LocaleDictionary;
+    }
 
     if (!componentName) {
       return localesObj as LocaleDictionary;

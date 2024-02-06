@@ -7,7 +7,7 @@
 
 You need to wrap your app into `<LocaleProvider>` to make translations work.
 
-If you don't do it then **default** (en_US) translations will be applied if applicable.
+If you don't do it then **default** (en_GB) translations will be applied if applicable.
 
 Also you can pass custom translations or replace/modify existing.
 
@@ -22,7 +22,7 @@ But when passing a custom language, you will have to specify all translations.
 import { LocaleProvider, OverrideLocales } from '@snack-uikit/locale';
 
 const customTraslations: OverrideLocales = {
-  en_US: {
+  en_GB: {
     Table: {
       searchPlaceholder: 'custom',
     },
@@ -35,7 +35,7 @@ const customTraslations: OverrideLocales = {
   },
 };
 
-const lang = 'en_US'; // or 'ru_RU' or 'custom_LANG'
+const lang = 'en_GB'; // or 'ru_RU' or 'custom_LANG'
 
   // ...
   <LocaleProvider lang={lang} locales={customTranslations}>
@@ -53,7 +53,7 @@ const lang = 'en_US'; // or 'ru_RU' or 'custom_LANG'
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| lang | ``${string}_${string}`` | en_US |  |
+| lang* | `string` | - |  |
 | locales | `OverrideLocales` | - |  |
 ## useLocale
 `helper` 

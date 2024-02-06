@@ -84,9 +84,7 @@ const decorators: Preview['decorators'] = [
     <>
       <Sprite content={SpriteSVG as unknown as string} />
 
-      <LocaleProvider lang='en_US'>
-        {Story()}
-      </LocaleProvider>
+      <LocaleProvider lang='en_GB'>{Story()}</LocaleProvider>
     </>
   ),
   withDesign,

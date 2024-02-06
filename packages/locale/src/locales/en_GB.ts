@@ -1,4 +1,4 @@
-export const en_US = {
+export const en_GB = {
   Table: {
     searchPlaceholder: 'Search',
     noData: {
