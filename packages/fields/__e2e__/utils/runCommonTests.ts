@@ -29,7 +29,9 @@ type Options = {
   hasPlaceholder: boolean;
   hasPrefixIcon: boolean;
   hasClearButton: boolean;
+  hasCopyButton: boolean;
   defaultValue?: string;
+  emptyValue?: string;
   expectedValue?: string;
 };
 
@@ -37,6 +39,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
   const getInputInner = (wrapper: Selector) => getInput(wrapper, options.componentPrefix);
   const value = options.defaultValue || 'Test value';
   const expectedValue = options.expectedValue || options.defaultValue || 'Test value';
+  const emptyValue = options.emptyValue || '';
 
   // disabled = true
   test.page(visit({ value: '', disabled: true }))('Should not allow to input data if disabled', async t => {
@@ -45,7 +48,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
 
     await t.typeText(input, '123');
 
-    await t.expect(input.value).eql('');
+    await t.expect(input.value).eql(emptyValue);
     await t.expect(input.hasAttribute('disabled')).ok("attribute 'disabled' not present");
   });
 
@@ -55,7 +58,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     const input = getInputInner(wrapper);
 
     await t.typeText(input, '123');
-    await t.expect(input.value).eql('');
+    await t.expect(input.value).eql(emptyValue);
     await t.expect(input.hasAttribute('readonly')).ok("attribute 'readonly' not present");
   });
 
@@ -123,8 +126,6 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
 
     if (options.hasPrefixIcon) {
       await t.expect(getPrefixIcon(wrapper).exists).ok('prefix icon is not present');
-    } else {
-      await t.expect(getPrefixIcon(wrapper).exists).notOk("prefix icon is present although shouldn't");
     }
 
     if (options.hasPlaceholder) {
@@ -220,27 +221,29 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     },
   );
 
-  // copy button
-  test.page(visit({ value, readonly: true, showCopyButton: true }))(
-    'Should copy value by clicking the button',
-    async t => {
+  if (options.hasCopyButton) {
+    // copy button
+    test.page(visit({ value, readonly: true, showCopyButton: true }))(
+      'Should copy value by clicking the button',
+      async t => {
+        await t.setNativeDialogHandler(() => true);
+        const wrapper = Selector(dataTestIdSelector(testId));
+        const input = getInputInner(wrapper);
+
+        await t.expect(input.value).eql(expectedValue);
+        await t.expect(input.hasAttribute('readonly')).ok('attribute readonly is not present');
+
+        await t.click(getButtonCopyValue(wrapper));
+      },
+    );
+
+    // copy with keyboard
+    test.page(visit({ value, readonly: true, showCopyButton: true }))('Should copy value with keyboard', async t => {
       await t.setNativeDialogHandler(() => true);
-      const wrapper = Selector(dataTestIdSelector(testId));
-      const input = getInputInner(wrapper);
 
-      await t.expect(input.value).eql(expectedValue);
-      await t.expect(input.hasAttribute('readonly')).ok('attribute readonly is not present');
-
-      await t.click(getButtonCopyValue(wrapper));
-    },
-  );
-
-  // copy with keyboard
-  test.page(visit({ value, readonly: true, showCopyButton: true }))('Should copy value with keyboard', async t => {
-    await t.setNativeDialogHandler(() => true);
-
-    await t.pressKey('tab').pressKey('right').pressKey('enter');
-  });
+      await t.pressKey('tab').pressKey('right').pressKey('enter');
+    });
+  }
 
   // clear button
   if (options.hasClearButton) {

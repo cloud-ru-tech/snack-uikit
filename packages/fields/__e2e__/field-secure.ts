@@ -25,6 +25,7 @@ runCommonTests(props => visit(props), TEST_ID, {
   hasPlaceholder: true,
   hasPrefixIcon: true,
   hasClearButton: false,
+  hasCopyButton: true,
 });
 
 // hide button

@@ -30,6 +30,7 @@ runCommonTests(props => visit(props), TEST_ID, {
   hasPlaceholder: false,
   hasPrefixIcon: false,
   hasClearButton: true,
+  hasCopyButton: true,
   defaultValue: '10-10-2010',
   expectedValue: '10.10.2010',
 });

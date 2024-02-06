@@ -29,6 +29,7 @@ runCommonTests(props => visit(props), TEST_ID, {
   hasPlaceholder: true,
   hasPrefixIcon: false,
   hasClearButton: true,
+  hasCopyButton: true,
 });
 
 // maxRows

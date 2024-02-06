@@ -191,7 +191,7 @@ const [isOpen, setIsOpen] = useState(false);
 | id | `string` | - | Значение html-атрибута id |
 | name | `string` | - | Значение html-атрибута name |
 | placeholder | `string` | - | Значение плейсхолдера |
-| maxLength | `number` | - |  |
+| maxLength | `number` | - | Максимальная длина вводимого значения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | className | `string` | - | CSS-класс |
@@ -251,7 +251,7 @@ const [isOpen, setIsOpen] = useState(false);
 | id | `string` | - | Значение html-атрибута id |
 | name | `string` | - | Значение html-атрибута name |
 | placeholder | `string` | - | Значение плейсхолдера |
-| maxLength | `number` | - |  |
+| maxLength | `number` | - | Максимальная длина вводимого значения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | className | `string` | - | CSS-класс |
@@ -333,6 +333,33 @@ const [isOpen, setIsOpen] = useState(false);
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 | getSelectedItemsText | `(amount: number) => string` | - | Колбек формирования текста |
+## FieldStepper
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| value | `number` | - | Значение поля |
+| onChange | `(value: number, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
+| step | `number` | 1 | Шаг поля |
+| allowMoreThanLimits | `boolean` | true | Можно ли вводить c клавиатуры числа, выходящие за пределы min/max |
+| disabled | `boolean` | - | Является ли поле деактивированным |
+| readonly | `boolean` | - | Является ли поле доступным только для чтения |
+| id | `string` | - | Значение html-атрибута id |
+| name | `string` | - | Значение html-атрибута name |
+| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
+| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| min | `number` | - | Минимальное значение поля |
+| max | `number` | - | Максимальное значение поля |
+| className | `string` | - | CSS-класс |
+| label | `string` | - | Лейбл |
+| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| required | `boolean` | - | Является ли поле обязательным |
+| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
+| hint | `string` | - | Подсказка внизу |
+| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
+| showHintIcon | `boolean` | - | Отображать иконку подсказки |
+| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| key | `Key` | - |  |
 
 
 [//]: DOCUMENTATION_SECTION_END

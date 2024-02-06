@@ -4,3 +4,4 @@ export * from './FieldTextArea';
 export * from './FieldSecure';
 export * from './FieldDate';
 export * from './FieldSelect';
+export * from './FieldStepper';

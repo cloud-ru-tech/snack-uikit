@@ -1,0 +1,13 @@
+.stepper {
+  text-align: center;
+}
+
+.button {
+  & * {
+    cursor: pointer;
+  }
+
+  &[data-disabled] * {
+    cursor: not-allowed;
+  }
+}
