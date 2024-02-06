@@ -42,11 +42,13 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | placeholder | `string` | - | Значение плейсхолдера |
 | id | `string` | - | Значение html-атрибута id |
 | className | `string` | - | CSS-класс |
-| type | enum Type: `"text"`, `"password"` | text | Тип инпута |
+| type | enum Type: `"number"`, `"text"`, `"password"` | text | Тип инпута |
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | autoComplete | `boolean` | - | Включен ли автокомплит для поля |
-| maxLength | `number` | - |  |
+| maxLength | `number` | - | Максимальная длина вводимого значения |
+| min | `number` | - | Минимальное значение поля |
+| max | `number` | - | Максимальное значение поля |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |

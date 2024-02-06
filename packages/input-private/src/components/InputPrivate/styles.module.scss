@@ -30,4 +30,14 @@
   &[disabled] {
     color: simple-var($sys-neutral-text-disabled);
   }
+
+  &[type=number] {
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button, {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+  }
 }

@@ -21,6 +21,8 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
       readonly = false,
       autoComplete = false,
       maxLength,
+      min,
+      max,
       onFocus,
       onBlur,
       onKeyDown,
@@ -55,6 +57,9 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
         tabIndex={tabIndex}
         onClick={onClick}
         onMouseDown={onMouseDown}
+        min={min}
+        max={max}
+        title=''
         {...extractSupportProps(rest)}
       />
     );

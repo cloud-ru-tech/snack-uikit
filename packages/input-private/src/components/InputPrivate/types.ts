@@ -37,8 +37,12 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
      * @default false
      */
     autoComplete?: boolean;
-    /**  */
+    /** Максимальная длина вводимого значения */
     maxLength?: number;
+    /** Минимальное значение поля */
+    min?: number;
+    /** Максимальное значение поля */
+    max?: number;
     /**
      * Значение атрибута tab-index
      * @default 0
