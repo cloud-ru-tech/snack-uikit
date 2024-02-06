@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Locale",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,6 +36,5 @@
   },
   "devDependencies": {
     "@types/lodash.merge": "4.6.9"
-  },
-  "peerDependencies": {}
+  }
 }

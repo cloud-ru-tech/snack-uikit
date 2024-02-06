@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-02-06)
+
+
+### Features
+
+* **FF-4166:** add locale usage in calendar ([03ff7a6](https://github.com/cloud-ru-tech/snack-uikit/commit/03ff7a6983fef794665828434e1faa8b61bd102d))
+
+
+
+
+
 ## 0.6.5 (2024-02-05)
 
 ### Only dependencies have been changed
@@ -14,7 +25,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.6.4 (2024-02-02)
 
-**Note:** Version bump only for package @snack-uikit/calendar
+### Only dependencies have been changed
+* [@snack-uikit/locale@0.1.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/locale/CHANGELOG.md)
 
 
 

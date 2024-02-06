@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2024-02-06)
+
+
+### Features
+
+* **FF-4166:** add table locales ([d59b6c0](https://github.com/cloud-ru-tech/snack-uikit/commit/d59b6c08ef6811ad65fa0718266025afc62b4434))
+
+
+
+
+
 ## 0.11.7 (2024-02-05)
 
 ### Only dependencies have been changed

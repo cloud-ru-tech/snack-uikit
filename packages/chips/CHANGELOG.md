@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-02-06)
+
+
+### Features
+
+* **FF-4166:** add translation to Chips ([23c0a8d](https://github.com/cloud-ru-tech/snack-uikit/commit/23c0a8d720809d6812530fc438db3d9282b4698f))
+
+
+
+
+
 ## 0.10.11 (2024-02-05)
 
 ### Only dependencies have been changed
