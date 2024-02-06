@@ -8,8 +8,6 @@
 1. Подключите `svg-inline-loader` в конфигурацию webpack-a:
 
 ```typescript
-import { SVG_SPRITE_WEBPACK_REG_EXP } from '@snack-uikit/icons';
-
 export default {
   module: {
     rules: [
