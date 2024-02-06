@@ -1,5 +1,7 @@
 import { getWeekStartByLocale } from 'weekstart';
 
+import { LocaleLang } from '@snack-uikit/locale';
+
 import { IN_RANGE_POSITION, VIEW_MODE } from './constants';
 import { InRangePosition, Range, ViewMode } from './types';
 
@@ -81,9 +83,10 @@ export const getInRangePosition = (date: Date, viewMode: ViewMode, range?: Range
 export const getEndOfTheDay = (date: Date) =>
   new Date(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).valueOf() - 1);
 
-export const getTestIdBuilder = (testId?: string) => (prefix: string) => testId ? `${prefix}-${testId}` : undefined;
+export const getTestIdBuilder = (testId?: string) => (prefix: string) => (testId ? `${prefix}-${testId}` : undefined);
 
-export const getLocale = (localeProp?: Intl.Locale) => localeProp || new Intl.Locale(navigator?.language || 'ru-RU');
+export const getLocale = ({ localeProp, ctxLocale }: { localeProp?: Intl.Locale; ctxLocale?: LocaleLang } = {}) =>
+  localeProp || new Intl.Locale(ctxLocale ? ctxLocale.replace('_', '-') : navigator?.language ?? 'ru-RU');
 
 export const getStartOfWeek = (locale: Intl.Locale) => getWeekStartByLocale(locale.language);
 

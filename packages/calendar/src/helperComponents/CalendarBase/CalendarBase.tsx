@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { CSSProperties, RefCallback, useCallback, useMemo, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
+import { useLocale } from '@snack-uikit/locale';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { AUTOFOCUS, SIZE, VIEW_MODE } from '../../constants';
@@ -98,7 +99,9 @@ export function CalendarBase({
 
   const getTestId = useMemo(() => getTestIdBuilder(testId), [testId]);
 
-  const locale = useMemo(() => getLocale(localeProp), [localeProp]);
+  const [, ctxLocale] = useLocale();
+
+  const locale = useMemo(() => getLocale({ localeProp, ctxLocale }), [ctxLocale, localeProp]);
 
   const firstNotDisableCell = useRef<[number, number]>([0, 0]);
 
