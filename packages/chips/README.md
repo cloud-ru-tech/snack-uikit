@@ -219,7 +219,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | size | enum ChipChoiceRowSize: `"xs"`, `"s"`, `"m"` | s | Размер |
 | className | `string` | - | CSS-класс |
 | showClearAllButton | `boolean` | true | Скрыть/показать кнопку очиски |
-| clearAllButtonLabel | `string` | Clear all | Текст кнопки очистки |
+| clearAllButtonLabel | `string` | 'Clear all' | Текст кнопки очистки |
 
 
 [//]: DOCUMENTATION_SECTION_END

@@ -11,4 +11,7 @@ export const en_US = {
     },
     rowsOptionsLabel: 'Rows volume: ',
   },
+  Chips: {
+    clearAllButton: 'Clear all',
+  },
 };

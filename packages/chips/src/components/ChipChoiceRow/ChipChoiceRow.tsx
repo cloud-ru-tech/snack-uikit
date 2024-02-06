@@ -3,6 +3,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { ButtonFunction } from '@snack-uikit/button';
 import { CrossSVG } from '@snack-uikit/icons';
+import { useLocale } from '@snack-uikit/locale';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CHIP_CHOICE_ROW_IDS } from '../../constants';
@@ -36,13 +37,17 @@ export function ChipChoiceRow<TState extends FiltersState>({
   filters,
   onChange,
   showClearAllButton = true,
-  clearAllButtonLabel = 'Clear all',
+  clearAllButtonLabel: clearAllButtonLabelProp,
   className,
   value,
   defaultValue,
   size = CHIP_CHOICE_ROW_SIZE.S,
   ...rest
 }: ChipChoiceRowProps<TState>) {
+  const [locales] = useLocale('Chips');
+
+  const clearAllButtonLabel = clearAllButtonLabelProp ?? locales.clearAllButton;
+
   const [state, setState] = useUncontrolledProp<TState>(value, (defaultValue ?? {}) as TState, newState => {
     const result = typeof newState === 'function' ? newState(state) : newState;
     onChange?.(result);

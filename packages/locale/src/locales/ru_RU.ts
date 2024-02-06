@@ -11,4 +11,7 @@ export const ru_RU = {
     },
     rowsOptionsLabel: 'Кол-во строк: ',
   },
+  Chips: {
+    clearAllButton: 'Удалить все',
+  },
 };
