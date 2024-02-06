@@ -9,10 +9,3 @@
 
   height: calc((var(--page-size, 10) * $size-table-line-height) + $size-table-line-height);
 }
-
-.textWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}

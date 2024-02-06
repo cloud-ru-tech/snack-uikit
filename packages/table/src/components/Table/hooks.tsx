@@ -80,14 +80,12 @@ export function useTableEmptyState({
 
   return useMemo(() => {
     const noDataState: TableEmptyStateProps = noDataStateProp ?? {
-      icon: CrossSVG,
-      appearance: 'red',
+      icon: { icon: CrossSVG, appearance: 'red', decor: true },
       ...locales.noData,
     };
 
     const noResultsState: TableEmptyStateProps = noResultsStateProp ?? {
-      icon: SearchSVG,
-      appearance: 'neutral',
+      icon: { icon: SearchSVG, appearance: 'neutral', decor: true },
       ...locales.noResults,
     };
 

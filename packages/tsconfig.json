@@ -71,6 +71,12 @@
       "path": "./tabs"
     },
     {
+      "path": "./icon-predefined"
+    },
+    {
+      "path": "./info-block"
+    },
+    {
       "path": "./dropdown"
     },
     {
@@ -91,9 +97,7 @@
     {
       "path": "./chips"
     },
-    {
-      "path": "./icon-predefined"
-    },
+
     {
       "path": "./fields"
     },
@@ -146,20 +150,12 @@
       "path": "./carousel"
     },
     {
-      "path": "./info-block"
-    },
-    {
       "path": "./slider"
     }
   ],
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "es2017",
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["es2017", "dom", "dom.iterable", "esnext"],
     "module": "ES2015",
     "strict": true,
     "jsx": "react-jsx",

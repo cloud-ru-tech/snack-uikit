@@ -1,9 +1,9 @@
-import debounce from 'lodash.debounce';
 import { useCallback, useMemo, useState } from 'react';
 
 import { PaginationState } from '../../types';
 import { Table, TableProps } from '../Table';
-import { DEFAULT_PAGINATION_LIMIT, SEARCH_DELAY } from './constants';
+import { DEFAULT_PAGINATION_LIMIT } from './constants';
+import { onSearchDebounced } from './utils';
 
 export type ServerTableProps<TData extends object> = Omit<
   TableProps<TData>,
@@ -67,21 +67,13 @@ export function ServerTable<TData extends object>({
 }: ServerTableProps<TData>) {
   const [tempSearch, setTempSearch] = useState(search.initialValue || '');
 
-  const onSearchDebounced = useMemo(
-    () =>
-      debounce((newValue: string, onChange: (newValue: string) => void) => {
-        onChange(newValue);
-      }, SEARCH_DELAY),
-    [],
-  );
-
   const handleSearch = useCallback(
     (newValue: string) => {
       setTempSearch(newValue);
-      onSearchDebounced(newValue.trim(), search.onChange);
+      onSearchDebounced()(newValue.trim(), search.onChange);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [limit, onSearchDebounced],
+
+    [search.onChange],
   );
 
   const handlePageChange = useCallback(
@@ -101,7 +93,6 @@ export function ServerTable<TData extends object>({
         onChange: handleSearch,
         loading: search.loading,
         placeholder: search.placeholder,
-        disableDefaultSearch: true,
       }}
       columnFilters={columnFilters}
       pageCount={pageCount}

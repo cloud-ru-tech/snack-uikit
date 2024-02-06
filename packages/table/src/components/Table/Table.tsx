@@ -83,7 +83,6 @@ export type TableProps<TData extends object> = WithSupportProps<{
     placeholder?: string;
     loading?: boolean;
     onChange?(value: string): void;
-    disableDefaultSearch?: boolean;
   };
 
   /** Максимальное кол-во строк на страницу @default 10 */
@@ -125,6 +124,8 @@ export type TableProps<TData extends object> = WithSupportProps<{
   /** Фильтры */
   columnFilters?: ReactNode;
 
+  dataFiltered?: boolean;
+
   /** Название файла при экспорте CSV/XLSX */
   exportFileName?: string;
 
@@ -154,6 +155,7 @@ export function Table<TData extends object>({
   search,
   sorting: sortingProp,
   columnFilters: columnFiltersProp,
+  dataFiltered,
 
   pagination: paginationProp,
 
@@ -412,8 +414,12 @@ export function Table<TData extends object>({
                       <BodyRow key={row.id} row={row} onRowClick={onRowClick} />
                     ))}
 
-                    {!tableRows.length && globalFilter && <TableEmptyState {...emptyStates.noResultsState} />}
-                    {!tableRows.length && !globalFilter && <TableEmptyState {...emptyStates.noDataState} />}
+                    {!tableRows.length && (globalFilter || dataFiltered) && (
+                      <TableEmptyState {...emptyStates.noResultsState} />
+                    )}
+                    {!tableRows.length && !globalFilter && !dataFiltered && (
+                      <TableEmptyState {...emptyStates.noDataState} />
+                    )}
                   </>
                 )}
               </TableContext.Provider>

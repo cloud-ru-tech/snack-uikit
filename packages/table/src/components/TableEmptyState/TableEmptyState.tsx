@@ -1,25 +1,23 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
 
-import { IconPredefined, IconPredefinedProps } from '@snack-uikit/icon-predefined';
-import { Typography } from '@snack-uikit/typography';
+import { IconPredefinedProps } from '@snack-uikit/icon-predefined';
+import { InfoBlock } from '@snack-uikit/info-block';
 
 import styles from './styles.module.scss';
 
 export type TableEmptyStateProps = {
-  title: string;
-  description?: ReactNode;
+  title?: string;
+  description: string;
+  icon?: Pick<IconPredefinedProps, 'icon' | 'decor' | 'appearance'>;
+  footer?: ReactNode;
   className?: string;
-} & Pick<IconPredefinedProps, 'icon' | 'appearance'>;
+};
 
-export function TableEmptyState({ title, description, className, icon, appearance }: TableEmptyStateProps) {
+export function TableEmptyState({ className, ...props }: TableEmptyStateProps) {
   return (
     <div className={cn(styles.tableEmptyStateWrapper, className)}>
-      <IconPredefined icon={icon} size='l' appearance={appearance} />
-      <div className={styles.textWrapper}>
-        <Typography.SansTitleM>{title}</Typography.SansTitleM>
-        {description && <Typography.SansBodyM>{description}</Typography.SansBodyM>}
-      </div>
+      <InfoBlock {...props} size='m' align='vertical' />
     </div>
   );
 }
