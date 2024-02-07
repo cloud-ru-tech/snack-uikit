@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2024-02-07)
+
+
+### Bug Fixes
+
+* **FF-4187:** change local no data to InfoBlock ([542cf0d](https://github.com/cloud-ru-tech/snack-uikit/commit/542cf0de8fed7f4ab5e2bca3afff1318b30a6043))
+
+
+### Features
+
+* **FF-4241:** add ServerTable; add CopyCell ([2cf16c1](https://github.com/cloud-ru-tech/snack-uikit/commit/2cf16c15e72a93f20d40c1bc54d7708c1a273079))
+
+
+
+
+
 ## 0.12.1 (2024-02-07)
 
 ### Only dependencies have been changed

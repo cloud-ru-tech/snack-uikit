@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2024-02-07)
+
+
+### Features
+
+* **FF-4241:** add itemWrapRender ([4efb798](https://github.com/cloud-ru-tech/snack-uikit/commit/4efb79897b8ef129e89bf62a9332b93d79648bbf))
+
+
+
+
+
 ## 0.2.1 (2024-02-05)
 
 ### Only dependencies have been changed
