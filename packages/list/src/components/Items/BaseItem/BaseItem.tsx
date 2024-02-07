@@ -39,7 +39,7 @@ export function BaseItem({
   const interactive = !inactive;
 
   const { parentResetActiveFocusIndex } = useParentListContext();
-  const { size, marker } = useListContext();
+  const { size, marker, parent } = useListContext();
   const { level = 0 } = useCollapseContext();
   const { value, onChange, mode, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
 
@@ -112,6 +112,7 @@ export function BaseItem({
       data-variant={mode || undefined}
       data-open={open || undefined}
       aria-disabled={disabled || undefined}
+      data-parent={parent || 'list'}
       onKeyDown={handleItemKeyDown}
       onFocus={handleItemFocus}
       style={{ '--level': level }}

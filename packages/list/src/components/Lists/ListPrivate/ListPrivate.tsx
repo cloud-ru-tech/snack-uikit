@@ -36,6 +36,7 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
       marker,
       limitedScrollHeight,
       className,
+      parent = 'list',
       ...props
     },
     ref,
@@ -122,20 +123,16 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
             <>{content}</>
           )}
 
-          {(Number(pinBottom?.length) > 0 || footer) && (
-            <PinBottomGroupItem>
-              {Number(pinBottom?.length) > 0 && itemsPinBottomJSX}
+          {Number(pinBottom?.length) > 0 && <PinBottomGroupItem>{itemsPinBottomJSX}</PinBottomGroupItem>}
 
-              {footer && <div className={styles.footer}>{footer}</div>}
-            </PinBottomGroupItem>
-          )}
+          {footer && <div className={styles.footer}>{footer}</div>}
         </ToggleGroup>
       </ul>
     );
 
     if (!nested) {
       return (
-        <ListContextProvider size={size} marker={marker}>
+        <ListContextProvider size={size} marker={marker} parent={parent}>
           {listJSX}
         </ListContextProvider>
       );

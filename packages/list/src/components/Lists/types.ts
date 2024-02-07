@@ -5,7 +5,7 @@ import { WithSupportProps } from '@snack-uikit/utils';
 
 import { ScrollProps, SearchState } from '../../types';
 import { ItemProps } from '../Items';
-import { ListContextType, SelectionState } from './contexts';
+import { ListContextPrivateType, ListContextType, SelectionState } from './contexts';
 
 type CollapseState = {
   value?: (string | number)[];
@@ -56,12 +56,13 @@ export type DroplistProps = {
 } & Pick<DropdownProps, 'trigger' | 'placement' | 'widthStrategy' | 'open' | 'onOpenChange'> &
   Omit<ListProps, 'tabIndex' | 'onKeyDown'>;
 
-export type ListPrivateProps = ListProps & {
-  nested?: boolean;
-  active?: boolean;
-  tabIndex?: number;
-  onFocus?(e: FocusEvent<HTMLElement>): void;
-  onBlur?(e: FocusEvent<HTMLElement>): void;
-  onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
-  limitedScrollHeight?: boolean;
-};
+export type ListPrivateProps = ListProps &
+  ListContextPrivateType & {
+    nested?: boolean;
+    active?: boolean;
+    tabIndex?: number;
+    onFocus?(e: FocusEvent<HTMLElement>): void;
+    onBlur?(e: FocusEvent<HTMLElement>): void;
+    onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
+    limitedScrollHeight?: boolean;
+  };

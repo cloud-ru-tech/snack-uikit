@@ -141,6 +141,7 @@ export const List = forwardRef<HTMLElement, ListProps>(
               tabIndex={tabIndex}
               search={search}
               nested={false}
+              parent='list'
             />
 
             <HiddenTabButton ref={btnRef} listRef={listRef} tabIndex={tabIndex} />

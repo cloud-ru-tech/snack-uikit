@@ -104,6 +104,7 @@ $typography: (
 }
 
 .content {
+  overflow: hidden;
   flex-grow: 1;
   flex-shrink: 1;
   box-sizing: border-box;
@@ -132,6 +133,14 @@ $typography: (
         @include composite-var($typography, $size, 'description');
       }
     }
+  }
+
+  &[data-parent='list'] {
+    width: 100%;
+  }
+
+  &[data-parent='droplist'] {
+    width: max-content;
   }
 
   &[data-non-pointer] {

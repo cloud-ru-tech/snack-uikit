@@ -147,13 +147,14 @@ export function Droplist({
         <Dropdown
           content={
             <ListPrivate
+              {...slicedItems}
+              {...props}
               onKeyDown={handleListKeyDown}
               tabIndex={0}
               ref={listRef}
               search={search}
               limitedScrollHeight
-              {...slicedItems}
-              {...props}
+              parent='droplist'
             />
           }
           trigger={trigger}

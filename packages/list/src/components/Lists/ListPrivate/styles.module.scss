@@ -39,10 +39,6 @@ $loader-height: (
 .footer {
   display: flex;
   flex-direction: column;
-  gap: $dimension-050m;
-  align-items: center;
-  justify-content: center;
-
   box-sizing: border-box;
   padding: $dimension-050m;
 }
