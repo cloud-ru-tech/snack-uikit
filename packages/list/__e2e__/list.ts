@@ -22,7 +22,7 @@ const DEFAULT_EMPTY_SETTINGS = {
 };
 
 const getAccordionItem = (id: string | number) => Selector(dataTestIdSelector(`list__accordion-item-${id}`));
-const getBaseItem = (id: string | number) => Selector(dataTestIdSelector(`list__base-item_${id}`)).find('button');
+const getBaseItem = (id: string | number) => Selector(dataTestIdSelector(`list__base-item_${id}`));
 const getBaseItemCheckbox = (id: string | number) =>
   getBaseItem(id).find(dataTestIdSelector('list__base-item-checkbox'));
 

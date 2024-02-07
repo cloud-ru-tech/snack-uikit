@@ -8,7 +8,7 @@ const NEXT_LIST_ITEMS = ['0-0', '0-1', '1-0', '1-1', '2-0', '2-1', '3-0', '3-1',
   id => 'first-nested-' + id,
 );
 
-const getBaseItem = (id: string) => Selector(dataTestIdSelector(`list__base-item_${id}`)).find('button');
+const getBaseItem = (id: string) => Selector(dataTestIdSelector(`list__base-item_${id}`));
 const getBaseItemCheckbox = (id: string) => getBaseItem(id).find(dataTestIdSelector('list__base-item-checkbox'));
 const getBaseItemSwitch = (id: string) => getBaseItem(id).find(dataTestIdSelector('list__base-item-switch'));
 const getBaseItemMarker = (id: string) => getBaseItem(id).find(dataTestIdSelector('list__base-item-marker'));
