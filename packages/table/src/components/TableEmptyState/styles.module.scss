@@ -3,9 +3,9 @@
 .tableEmptyStateWrapper {
   display: flex;
   flex-direction: column;
-  gap: $dimension-3m;
   align-items: center;
   justify-content: center;
 
   height: calc((var(--page-size, 10) * $size-table-line-height) + $size-table-line-height);
+  padding: $dimension-3m;
 }
