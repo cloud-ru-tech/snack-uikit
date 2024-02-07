@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.1 (2024-02-07)
+
+
+### Bug Fixes
+
+* **FF-4166:** fallback locales for wrong lang, change typings, transform lang prop to correct format ([d581233](https://github.com/cloud-ru-tech/snack-uikit/commit/d581233bf551e7582f78b412187bd8cabcb72adb))
+
+
+
+
+
 # 0.1.0 (2024-02-06)
 
 

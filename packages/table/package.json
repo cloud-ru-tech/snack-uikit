@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Table",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,11 +33,11 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.16.0",
-    "@snack-uikit/chips": "0.11.0",
+    "@snack-uikit/chips": "0.11.1",
     "@snack-uikit/icon-predefined": "0.4.1",
     "@snack-uikit/icons": "0.20.1",
     "@snack-uikit/list": "0.2.1",
-    "@snack-uikit/locale": "0.1.0",
+    "@snack-uikit/locale": "0.1.1",
     "@snack-uikit/pagination": "0.6.3",
     "@snack-uikit/scroll": "0.5.0",
     "@snack-uikit/skeleton": "0.3.2",
