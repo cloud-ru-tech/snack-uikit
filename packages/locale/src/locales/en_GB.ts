@@ -14,4 +14,10 @@ export const en_GB = {
   Chips: {
     clearAllButton: 'Clear all',
   },
+  Fields: {
+    limitTooltip: {
+      max: 'Value should be less or equal ',
+      min: 'Value should be greater or equal ',
+    },
+  },
 };

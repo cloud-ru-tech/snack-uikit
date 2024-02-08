@@ -14,4 +14,10 @@ export const ru_RU = {
   Chips: {
     clearAllButton: 'Удалить все',
   },
+  Fields: {
+    limitTooltip: {
+      max: 'Значение должно быть меньше либо равно ',
+      min: 'Значение должно быть больше либо равно ',
+    },
+  },
 };
