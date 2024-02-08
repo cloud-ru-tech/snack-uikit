@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2024-02-08)
+
+
+### Features
+
+* **FF-4211:** add field-stepper ([168e84e](https://github.com/cloud-ru-tech/snack-uikit/commit/168e84ec225c960c441cc73b85ceb53fc68b0234))
+
+
+
+
+
 ## 0.12.3 (2024-02-07)
 
 ### Only dependencies have been changed

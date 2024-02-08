@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2024-02-08)
+
+
+### Features
+
+* **FF-4211:** add fields locales ([e1311d7](https://github.com/cloud-ru-tech/snack-uikit/commit/e1311d783215016d105f290362ca779f8e5c777f))
+
+
+
+
+
 ## 0.1.1 (2024-02-07)
 
 

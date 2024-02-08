@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.1.0 (2024-02-08)
+
+
+### Features
+
+* **FF-4211:** add min/max properties, add type number ([7f78157](https://github.com/cloud-ru-tech/snack-uikit/commit/7f78157e10afa4276fd3a389fda7879862748b22))
+
+
+
+
+
 ## 3.0.4 (2024-02-05)
 
 ### Only dependencies have been changed
