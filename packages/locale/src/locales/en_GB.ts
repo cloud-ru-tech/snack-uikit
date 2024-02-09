@@ -2,14 +2,18 @@ export const en_GB = {
   Table: {
     searchPlaceholder: 'Search',
     noData: {
-      title: 'Data collection error',
-      description: 'Try refreshing the page',
+      title: 'No data',
     },
     noResults: {
       title: 'Nothing found',
       description: 'Try entering another query',
     },
+    errorData: {
+      title: 'Error loading data',
+      description: 'Try refreshing the page',
+    },
     rowsOptionsLabel: 'Rows volume: ',
+    export: 'Export to ',
   },
   Chips: {
     clearAllButton: 'Clear all',

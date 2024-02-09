@@ -2,14 +2,18 @@ export const ru_RU = {
   Table: {
     searchPlaceholder: 'Поиск',
     noData: {
-      title: 'Данные не найдены',
-      description: 'Попробуйте перезагрузить страницу',
+      title: 'Нет данных',
     },
     noResults: {
       title: 'Не найдено',
       description: 'Попробуйте изменить параметры фильтрации',
     },
+    errorData: {
+      title: 'Ошибка загрузки данных',
+      description: 'Попробуйте обновить страницу',
+    },
     rowsOptionsLabel: 'Кол-во строк: ',
+    export: 'Экспортировать в ',
   },
   Chips: {
     clearAllButton: 'Удалить все',
