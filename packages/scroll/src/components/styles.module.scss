@@ -16,7 +16,8 @@ $scrollbar-slider-active-zone: 12px;
  * Темизация overlay-scrollbars использует селекторы из этого шаблона
  * https://kingsora.github.io/OverlayScrollbars/v1/#!documentation/styling
  */
-:global { /* stylelint-disable-line */
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global {
   .#{$theme-name} .os-scrollbar {
     padding: 0;
   }
@@ -35,40 +36,43 @@ $scrollbar-slider-active-zone: 12px;
 
   @each $size in $sizes {
     @each $orientation in $orientations {
-      .#{$theme-name}[data-size=#{$size}] > .os-scrollbar-#{$orientation} {
+      .#{$theme-name}[data-size='#{$size}'] > .os-scrollbar-#{$orientation} {
         @include composite-var($scroll, 'container', $orientation, $size);
-        
+
         pointer-events: none;
         overflow: hidden;
       }
-      .#{$theme-name}[data-size=#{$size}] > .os-scrollbar-#{$orientation} > .os-scrollbar-track > .os-scrollbar-handle {
+      .#{$theme-name}[data-size='#{$size}']
+        > .os-scrollbar-#{$orientation}
+        > .os-scrollbar-track
+        > .os-scrollbar-handle {
         @include composite-var($scroll, 'slider', $orientation, $size);
       }
     }
 
-    .#{$theme-name}[data-size=#{$size}].os-host-resize-disabled > .os-scrollbar-horizontal {
+    .#{$theme-name}[data-size='#{$size}'].os-host-resize-disabled > .os-scrollbar-horizontal {
       right: simple-var($theme-variables, 'size', 'scroll', 'track', $size);
     }
 
-    .#{$theme-name}[data-size=#{$size}].os-host-resize-disabled.os-host-rtl > .os-scrollbar-horizontal {
+    .#{$theme-name}[data-size='#{$size}'].os-host-resize-disabled.os-host-rtl > .os-scrollbar-horizontal {
       right: 0;
       left: simple-var($theme-variables, 'size', 'scroll', 'track', $size);
     }
 
-    .#{$theme-name}[data-size=#{$size}].os-host-resize-disabled > .os-scrollbar-vertical {
+    .#{$theme-name}[data-size='#{$size}'].os-host-resize-disabled > .os-scrollbar-vertical {
       bottom: simple-var($theme-variables, 'size', 'scroll', 'track', $size);
     }
 
-    .#{$theme-name}[data-size=#{$size}] > .os-scrollbar-horizontal {
+    .#{$theme-name}[data-size='#{$size}'] > .os-scrollbar-horizontal {
       right: simple-var($theme-variables, 'size', 'scroll', 'button-resize');
     }
 
-    .#{$theme-name}[data-size=#{$size}].os-host-rtl > .os-scrollbar-horizontal {
+    .#{$theme-name}[data-size='#{$size}'].os-host-rtl > .os-scrollbar-horizontal {
       right: 0;
       left: simple-var($theme-variables, 'size', 'scroll', 'button-resize');
     }
 
-    .#{$theme-name}[data-size=#{$size}] > .os-scrollbar-vertical {
+    .#{$theme-name}[data-size='#{$size}'] > .os-scrollbar-vertical {
       bottom: simple-var($theme-variables, 'size', 'scroll', 'button-resize');
     }
   }
@@ -77,7 +81,7 @@ $scrollbar-slider-active-zone: 12px;
     .#{$theme-name} > .os-scrollbar-#{$orientation} > .os-scrollbar-track > .os-scrollbar-handle {
       opacity: simple-var($theme-variables, 'opacity', 'a032');
       background-color: simple-var($theme-variables, 'sys', 'neutral', 'accent-default');
-      
+
       &.active,
       &:hover {
         opacity: simple-var($theme-variables, 'opacity', 'a064');
@@ -89,7 +93,7 @@ $scrollbar-slider-active-zone: 12px;
   .#{$theme-name} > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle {
     left: 50%;
     translate: -50%;
-    
+
     &::before {
       right: -$scrollbar-slider-active-zone;
       left: -$scrollbar-slider-active-zone;
@@ -108,19 +112,17 @@ $scrollbar-slider-active-zone: 12px;
 
   .#{$theme-name} > .os-scrollbar-corner {
     --bg-icon-mask: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iYmxhY2siIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTMuNTMwMyAzLjQ2OTY3QzEzLjgyMzIgMy43NjI1NiAxMy44MjMyIDQuMjM3NDQgMTMuNTMwMyA0LjUzMDMzTDQuNTMwMzMgMTMuNTMwM0M0LjIzNzQ0IDEzLjgyMzIgMy43NjI1NiAxMy44MjMyIDMuNDY5NjcgMTMuNTMwM0MzLjE3Njc4IDEzLjIzNzQgMy4xNzY3OCAxMi43NjI2IDMuNDY5NjcgMTIuNDY5N0wxMi40Njk3IDMuNDY5NjdDMTIuNzYyNiAzLjE3Njc4IDEzLjIzNzQgMy4xNzY3OCAxMy41MzAzIDMuNDY5NjdaTTEzLjUzMDMgNy40Njk2N0MxMy44MjMyIDcuNzYyNTYgMTMuODIzMiA4LjIzNzQ0IDEzLjUzMDMgOC41MzAzM0w4LjUzMDMzIDEzLjUzMDNDOC4yMzc0NCAxMy44MjMyIDcuNzYyNTYgMTMuODIzMiA3LjQ2OTY3IDEzLjUzMDNDNy4xNzY3OCAxMy4yMzc0IDcuMTc2NzggMTIuNzYyNiA3LjQ2OTY3IDEyLjQ2OTdMMTIuNDY5NyA3LjQ2OTY3QzEyLjc2MjYgNy4xNzY3OCAxMy4yMzc0IDcuMTc2NzggMTMuNTMwMyA3LjQ2OTY3Wk0xMy41MzAzIDEyLjUzMDNDMTMuODIzMiAxMi4yMzc0IDEzLjgyMzIgMTEuNzYyNiAxMy41MzAzIDExLjQ2OTdDMTMuMjM3NCAxMS4xNzY4IDEyLjc2MjYgMTEuMTc2OCAxMi40Njk3IDExLjQ2OTdMMTEuNDY5NyAxMi40Njk3QzExLjE3NjggMTIuNzYyNiAxMS4xNzY4IDEzLjIzNzQgMTEuNDY5NyAxMy41MzAzQzExLjc2MjYgMTMuODIzMiAxMi4yMzc0IDEzLjgyMzIgMTIuNTMwMyAxMy41MzAzTDEzLjUzMDMgMTIuNTMwM1oiIGZpbGw9ImJsYWNrIi8+Cjwvc3ZnPgo=);
-    
 
     @include composite-var($scroll, 'button-resize', 'container', 'single');
-    
+
     z-index: 0;
 
-    
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
     background-image: unset;
 
     -webkit-mask-image: var(--bg-icon-mask);
     mask-image: var(--bg-icon-mask);
-    
+
     &:hover {
       background-color: $sys-neutral-text-support;
     }
