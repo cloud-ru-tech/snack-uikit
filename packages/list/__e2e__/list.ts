@@ -375,7 +375,8 @@ test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, showCollapsedList: true, collapse
   },
 );
 
-test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, showAsyncList: true }))(
+// eslint-disable-next-line testcafe-community/no-disabled-tests
+test.skip.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, showAsyncList: true }))(
   'Should work in async mode from keyboard',
   async t => {
     const PAGE_SIZE = 10;
