@@ -9,6 +9,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import {
   ColumnDefinition,
+  CopyCell,
   HeaderContext,
   RowActionInfo,
   RowClickHandler,
@@ -98,6 +99,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     accessorKey: 'col5',
     header: renderHeader,
     accessorFn: accessorFn('col5'),
+    cell: ctx => <CopyCell value={ctx.getValue<string>()} />,
     enableSorting: true,
     enableResizing: true,
   },
