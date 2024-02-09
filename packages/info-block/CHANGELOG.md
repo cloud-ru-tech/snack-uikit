@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.2 (2024-02-09)
+
+
+### Bug Fixes
+
+* **FF-0000:** InfoBlock vertival align footer ([b3a3ea9](https://github.com/cloud-ru-tech/snack-uikit/commit/b3a3ea9df4c29f5e98dfe111ee34b2564eec0aeb))
+* **FF-4242:** fix align text in vertical ([843da7c](https://github.com/cloud-ru-tech/snack-uikit/commit/843da7c7c8269132f12d45de074fbdf41c83db24))
+
+
+
+
+
 ## 0.1.1 (2024-02-05)
 
 ### Only dependencies have been changed

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.14.0 (2024-02-09)
+
+
+### Bug Fixes
+
+* **FF-0000:** add box-sizing to empty state ([8557d32](https://github.com/cloud-ru-tech/snack-uikit/commit/8557d32b57ee0d21c3f9aba6681502012405c22d))
+
+
+### Features
+
+* **FF-4242:** add table errorDataState ([3e9a33f](https://github.com/cloud-ru-tech/snack-uikit/commit/3e9a33fa83845adf36970d018e0e7e65f59b41ac))
+* **FF-4242:** copy cell processes click event full width ([da55c4c](https://github.com/cloud-ru-tech/snack-uikit/commit/da55c4c2aca3d406a34fa2806344dc68cf83b5cb))
+
+
+
+
+
 ## 0.13.3 (2024-02-09)
 
 

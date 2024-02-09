@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.5 (2024-02-09)
+
+### Only dependencies have been changed
+* [@snack-uikit/calendar@0.7.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-uikit/locale@0.3.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/locale/CHANGELOG.md)
+
+
+
+
+
 ## 0.11.4 (2024-02-09)
 
 ### Only dependencies have been changed

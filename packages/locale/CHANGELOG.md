@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2024-02-09)
+
+
+### Features
+
+* **FF-4242:** add table errorData/export translations ([38f7e6c](https://github.com/cloud-ru-tech/snack-uikit/commit/38f7e6c8e94a366396e7632f98f4f0cf6e1e147f))
+
+
+
+
+
 ## 0.2.1 (2024-02-09)
 
 
