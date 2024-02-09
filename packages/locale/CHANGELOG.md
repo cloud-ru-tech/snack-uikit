@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2024-02-09)
+
+
+### Bug Fixes
+
+* **FF-4166:** typings for OverrideLocales ([042d349](https://github.com/cloud-ru-tech/snack-uikit/commit/042d3499d24e291cc6b2bd06d69971c105c73d51))
+
+
+
+
+
 # 0.2.0 (2024-02-08)
 
 
