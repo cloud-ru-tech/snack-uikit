@@ -14,7 +14,7 @@ export type InfoBlockProps = WithSupportProps<{
   /** Заголовок */
   title?: string;
   /** Подзаголовок */
-  description: string;
+  description?: string;
   /** Иконка */
   icon?: Pick<IconPredefinedProps, 'icon' | 'decor' | 'appearance'>;
   /** Размер */
@@ -62,15 +62,17 @@ export function InfoBlock({
             </Typography>
           )}
 
-          <Typography
-            family='sans'
-            purpose='body'
-            size={size}
-            className={styles.description}
-            data-test-id={TEST_IDS.description}
-          >
-            {description}
-          </Typography>
+          {description && (
+            <Typography
+              family='sans'
+              purpose='body'
+              size={size}
+              className={styles.description}
+              data-test-id={TEST_IDS.description}
+            >
+              {description}
+            </Typography>
+          )}
         </div>
 
         {footer && (

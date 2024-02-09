@@ -13,8 +13,8 @@
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| description* | `string` | - | Подзаголовок |
 | title | `string` | - | Заголовок |
+| description | `string` | - | Подзаголовок |
 | icon | `Pick<IconPredefinedProps, "icon" \| "decor" \| "appearance">` | - | Иконка |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
 | align | enum Align: `"horizontal"`, `"vertical"` | - | Расположение элементов |

@@ -18,6 +18,14 @@ $sizes: 's', 'm', 'l';
   width: 100%;
 }
 
+.title {
+  color: $sys-neutral-text-main;
+}
+
+.description {
+  color: $sys-neutral-text-support;
+}
+
 .infoBlock {
   display: flex;
   box-sizing: border-box;
@@ -36,6 +44,11 @@ $sizes: 's', 'm', 'l';
 
     .footer {
       width: auto;
+      text-align: center;
+    }
+
+    .description,
+    .title {
       text-align: center;
     }
   }
@@ -58,12 +71,4 @@ $sizes: 's', 'm', 'l';
       }
     }
   }
-}
-
-.title {
-  color: $sys-neutral-text-main;
-}
-
-.description {
-  color: $sys-neutral-text-support;
 }
