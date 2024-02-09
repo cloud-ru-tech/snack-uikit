@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.1 (2024-02-09)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove empty global css block ([70e2d22](https://github.com/cloud-ru-tech/snack-uikit/commit/70e2d227df169e6611061b259f686801fedb576a))
+
+
+
+
+
 # 0.5.0 (2023-12-14)
 
 

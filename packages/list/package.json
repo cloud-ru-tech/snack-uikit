@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "List",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,7 +36,7 @@
     "@snack-uikit/dropdown": "0.2.0",
     "@snack-uikit/icons": "0.20.1",
     "@snack-uikit/loaders": "0.5.0",
-    "@snack-uikit/scroll": "0.5.0",
+    "@snack-uikit/scroll": "0.5.1",
     "@snack-uikit/search-private": "0.1.4",
     "@snack-uikit/toggles": "0.9.5",
     "@snack-uikit/truncate-string": "0.4.7",
