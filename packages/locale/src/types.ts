@@ -7,4 +7,4 @@ export type LocaleLang = KnownLocaleLang | string;
 
 export type LocaleDictionary = typeof LOCALES.en_GB;
 
-export type OverrideLocales = PartialDeep<Record<KnownLocaleLang, LocaleDictionary>> | Record<string, LocaleDictionary>;
+export type OverrideLocales = PartialDeep<Record<KnownLocaleLang, LocaleDictionary>> & Record<string, LocaleDictionary>;
