@@ -36,9 +36,9 @@ import {
 } from '../../helperComponents';
 import { ColumnDefinition } from '../../types';
 import { fuzzyFilter } from '../../utils';
-import { TableEmptyState, TableEmptyStateProps } from '../TableEmptyState';
+import { EmptyStateProps, TableEmptyState } from '../TableEmptyState';
 import { TablePagination } from '../TablePagination';
-import { useLoadingTable, useStateControl, useTableEmptyState } from './hooks';
+import { useEmptyState, useLoadingTable, useStateControl } from './hooks';
 import styles from './styles.module.scss';
 
 export type TableProps<TData extends object> = WithSupportProps<{
@@ -125,6 +125,7 @@ export type TableProps<TData extends object> = WithSupportProps<{
   columnFilters?: ReactNode;
 
   dataFiltered?: boolean;
+  dataError?: boolean;
 
   /** Название файла при экспорте CSV/XLSX */
   exportFileName?: string;
@@ -133,9 +134,11 @@ export type TableProps<TData extends object> = WithSupportProps<{
   moreActions?: ToolbarProps['moreActions'];
 
   /** Экран при отстутствии данных */
-  noDataState?: TableEmptyStateProps;
-  /** Экран при отстутствии результатов поиска */
-  noResultsState?: TableEmptyStateProps;
+  noDataState?: EmptyStateProps;
+  /** Экран при отстутствии результатов поиска или фильтров */
+  noResultsState?: EmptyStateProps;
+  /** Экран при ошибке запроса */
+  errorDataState?: EmptyStateProps;
 
   /** Отключение тулбара */
   suppressToolbar?: boolean;
@@ -155,7 +158,6 @@ export function Table<TData extends object>({
   search,
   sorting: sortingProp,
   columnFilters: columnFiltersProp,
-  dataFiltered,
 
   pagination: paginationProp,
 
@@ -173,8 +175,12 @@ export function Table<TData extends object>({
   moreActions,
   exportFileName,
 
+  dataFiltered,
+  dataError,
+
   noDataState,
   noResultsState,
+  errorDataState,
 
   suppressToolbar = false,
   toolbarBefore,
@@ -349,7 +355,7 @@ export function Table<TData extends object>({
   const tablePagination = table.getState().pagination;
 
   const [locales] = useLocale('Table');
-  const emptyStates = useTableEmptyState({ noDataState, noResultsState });
+  const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
 
   const cssPageSize = useMemo(() => {
     const tempPageSize = !suppressPagination ? tablePagination?.pageSize : pageSize;
@@ -414,12 +420,12 @@ export function Table<TData extends object>({
                       <BodyRow key={row.id} row={row} onRowClick={onRowClick} />
                     ))}
 
-                    {!tableRows.length && (globalFilter || dataFiltered) && (
-                      <TableEmptyState {...emptyStates.noResultsState} />
-                    )}
-                    {!tableRows.length && !globalFilter && !dataFiltered && (
-                      <TableEmptyState {...emptyStates.noDataState} />
-                    )}
+                    <TableEmptyState
+                      emptyStates={emptyStates}
+                      dataError={dataError}
+                      dataFiltered={dataFiltered || Boolean(globalFilter)}
+                      tableRowsLength={tableRows.length}
+                    />
                   </>
                 )}
               </TableContext.Provider>

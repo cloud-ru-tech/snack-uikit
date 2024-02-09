@@ -12,7 +12,7 @@ import {
 import { ToolbarProps } from '@snack-uikit/toolbar';
 import { ValueOf } from '@snack-uikit/utils';
 
-import { TableEmptyStateProps } from './components/TableEmptyState';
+import { EmptyStateProps } from './components/TableEmptyState';
 import { COLUMN_ALIGN, COLUMN_PIN_POSITION } from './constants';
 import { Except } from './helperComponents';
 
@@ -80,7 +80,7 @@ export type {
   SortingState,
   RowSelectionState,
   RowSelectionOptions,
-  TableEmptyStateProps,
+  EmptyStateProps,
   ToolbarProps,
   HeaderContext,
   CellContext,

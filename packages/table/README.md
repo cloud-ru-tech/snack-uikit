@@ -125,10 +125,12 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
 | columnFilters | `ReactNode` | - | Фильтры |
 | dataFiltered | `boolean` | - |  |
+| dataError | `boolean` | - |  |
 | exportFileName | `string` | - | Название файла при экспорте CSV/XLSX |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
-| noDataState | `TableEmptyStateProps` | - | Экран при отстутствии данных |
-| noResultsState | `TableEmptyStateProps` | - | Экран при отстутствии результатов поиска |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
 | toolbarBefore | `ReactNode` | - | Дополнительный слот в `Toolbar` перед строкой поиска |
 | suppressPagination | `boolean` | - | Отключение пагинации |
@@ -168,10 +170,12 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
 | columnFilters | `ReactNode` | - | Фильтры |
 | dataFiltered | `boolean` | - |  |
+| dataError | `boolean` | - |  |
 | exportFileName | `string` | - | Название файла при экспорте CSV/XLSX |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
-| noDataState | `TableEmptyStateProps` | - | Экран при отстутствии данных |
-| noResultsState | `TableEmptyStateProps` | - | Экран при отстутствии результатов поиска |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
 | toolbarBefore | `ReactNode` | - | Дополнительный слот в `Toolbar` перед строкой поиска |
 | suppressPagination | `boolean` | - | Отключение пагинации |

@@ -6,7 +6,7 @@ import { CrossSVG, SearchSVG } from '@snack-uikit/icons';
 import { useLocale } from '@snack-uikit/locale';
 import { SkeletonText } from '@snack-uikit/skeleton';
 
-import { ColumnDefinition, TableEmptyStateProps } from '../../types';
+import { ColumnDefinition, EmptyStateProps } from '../../types';
 import styles from './styles.module.scss';
 
 export function useStateControl<TState>(
@@ -69,29 +69,40 @@ export function useLoadingTable<TData>({ pageSize, columnDefinitions, columnPinn
   return { loadingTable };
 }
 
-export function useTableEmptyState({
+export function useEmptyState({
   noDataState: noDataStateProp,
   noResultsState: noResultsStateProp,
+  errorDataState: errorDataStateProp,
 }: {
-  noDataState?: TableEmptyStateProps;
-  noResultsState?: TableEmptyStateProps;
+  noDataState?: EmptyStateProps;
+  noResultsState?: EmptyStateProps;
+  errorDataState?: EmptyStateProps;
 }) {
   const [locales] = useLocale('Table');
 
   return useMemo(() => {
-    const noDataState: TableEmptyStateProps = noDataStateProp ?? {
-      icon: { icon: CrossSVG, appearance: 'red', decor: true },
+    const noDataState: EmptyStateProps = {
+      icon: { icon: SearchSVG, appearance: 'neutral', decor: true },
       ...locales.noData,
+      ...noDataStateProp,
     };
 
-    const noResultsState: TableEmptyStateProps = noResultsStateProp ?? {
+    const noResultsState: EmptyStateProps = {
       icon: { icon: SearchSVG, appearance: 'neutral', decor: true },
       ...locales.noResults,
+      ...noResultsStateProp,
+    };
+
+    const errorDataState: EmptyStateProps = {
+      icon: { icon: CrossSVG, appearance: 'red', decor: true },
+      ...locales.errorData,
+      ...errorDataStateProp,
     };
 
     return {
       noDataState,
       noResultsState,
+      errorDataState,
     };
-  }, [locales.noData, locales.noResults, noDataStateProp, noResultsStateProp]);
+  }, [errorDataStateProp, locales.errorData, locales.noData, locales.noResults, noDataStateProp, noResultsStateProp]);
 }

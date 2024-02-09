@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ButtonFunction } from '@snack-uikit/button';
 import { DownloadSVG } from '@snack-uikit/icons';
 import { Droplist } from '@snack-uikit/list';
+import { useLocale } from '@snack-uikit/locale';
 
 import { exportToCSV, exportToXLSX } from '../../exportTable';
 import { ColumnDefinition } from '../../types';
@@ -18,6 +19,7 @@ type ExportButtonProps<TData extends object> = {
 
 export function ExportButton<TData extends object>({ fileName, data, columnDefinitions }: ExportButtonProps<TData>) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [locales] = useLocale('Table');
 
   return (
     <Droplist
@@ -28,14 +30,14 @@ export function ExportButton<TData extends object>({ fileName, data, columnDefin
       placement='bottom-end'
       items={[
         {
-          content: { option: 'Export to CSV' },
+          content: { option: locales.export + 'CSV' },
           onClick: () => {
             exportToCSV<TData>({ fileName, columnDefinitions, data });
             setIsOpen(false);
           },
         },
         {
-          content: { option: 'Export to XLSX' },
+          content: { option: locales.export + 'XLSX' },
           onClick: () => {
             exportToXLSX<TData>({ fileName, columnDefinitions, data });
             setIsOpen(false);
