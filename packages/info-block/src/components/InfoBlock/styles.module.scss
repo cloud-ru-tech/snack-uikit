@@ -26,11 +26,16 @@ $sizes: 's', 'm', 'l';
     flex-direction: column;
     align-items: center;
 
+    .contentLayout {
+      align-items: center;
+    }
+
     .textWrap {
       align-items: center;
     }
 
     .footer {
+      width: auto;
       text-align: center;
     }
   }
