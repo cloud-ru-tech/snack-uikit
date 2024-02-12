@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.5 (2024-02-12)
+
+
+### Bug Fixes
+
+* **FF-4205:** update locale usage ([bd4095b](https://github.com/cloud-ru-tech/snack-uikit/commit/bd4095bc875c2efc95a0549a366d5b40dd424741))
+
+
+
+
+
 ## 0.7.4 (2024-02-09)
 
 ### Only dependencies have been changed

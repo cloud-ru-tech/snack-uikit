@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.1 (2024-02-12)
+
+
+### Bug Fixes
+
+* **FF-4205:** table default cell for columnDefs ([84cfc41](https://github.com/cloud-ru-tech/snack-uikit/commit/84cfc41d43a605500ec3ef1757e5fb4515d40457))
+* **FF-4205:** update locale usage ([bd4095b](https://github.com/cloud-ru-tech/snack-uikit/commit/bd4095bc875c2efc95a0549a366d5b40dd424741))
+
+
+
+
+
 # 0.14.0 (2024-02-09)
 
 

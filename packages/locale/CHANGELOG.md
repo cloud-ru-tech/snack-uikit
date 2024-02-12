@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2024-02-12)
+
+
+### Bug Fixes
+
+* **FF-4205:** add typing to ru locale to match texts ([fd4a435](https://github.com/cloud-ru-tech/snack-uikit/commit/fd4a43532bb8a349d8e1f765285491ae65c00882))
+
+
+### Features
+
+* **FF-4205:** changed api of useLocale hook ([5c19647](https://github.com/cloud-ru-tech/snack-uikit/commit/5c19647f21d072e92c48c4b9588ed9df86c0ae86))
+
+
+
+
+
 # 0.3.0 (2024-02-09)
 
 
