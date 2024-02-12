@@ -1,4 +1,6 @@
-export const ru_RU = {
+import { en_GB } from './en_GB';
+
+export const ru_RU: typeof en_GB = {
   Table: {
     searchPlaceholder: 'Поиск',
     noData: {
