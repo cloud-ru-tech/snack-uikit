@@ -50,6 +50,8 @@ export function BaseItem({
   };
 
   const handleItemClick = (e: MouseEvent<HTMLElement>) => {
+    if (disabled) return;
+
     if (interactive) {
       parentResetActiveFocusIndex?.();
 
