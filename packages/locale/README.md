@@ -54,7 +54,7 @@ const lang = 'en_GB'; // or 'ru_RU' or 'custom_LANG'
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | lang* | `string` | - |  |
-| locales | `OverrideLocales` | - |  |
+| locales | `PartialObjectDeep<Record<string, { firstLevelTrans: string; Table: { searchPlaceholder: string; noData: { title: string; }; noResults: { title: string; description: string; }; errorData: { title: string; description: string; }; rowsOptionsLabel: string; export: string; }; Chips: { ...; }; Fields: { ...; }; }>>` | - |  |
 ## useLocale
 `helper` 
 

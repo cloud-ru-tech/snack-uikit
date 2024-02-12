@@ -1,39 +1,62 @@
-import { useContext, useMemo } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 
-import { KnownLocaleLang, LocaleDictionary, LocaleLang } from '../../types';
-import { DEFAULT_LANG, LocaleContext, LocaleContextType } from './LocaleProvider';
+import { DottedTranslationKey, LocaleDictionary, LocaleLang } from '../../types';
+import { LocaleContext, LocaleContextType } from './LocaleProvider';
+
+type ValueOf<T> = T[keyof T];
 
 type LocaleComponentName = keyof LocaleDictionary;
+
+type GetLocaleText<T extends keyof LocaleDictionary | undefined = undefined> = (key: DottedTranslationKey<T>) => string;
 
 /**
  * Inner hook to use translations
  * @function helper
  */
-export function useLocale(): [LocaleDictionary, LocaleLang];
+export function useLocale(): { t: GetLocaleText; lang: LocaleLang };
 export function useLocale<C extends LocaleComponentName = LocaleComponentName>(
   componentName: C,
-): [LocaleDictionary[C], LocaleLang];
+): { t: GetLocaleText<C>; lang: LocaleLang };
 
 export function useLocale<C extends LocaleComponentName = LocaleComponentName>(componentName?: C) {
-  const { locales: ctxLocales, lang } = useContext<LocaleContextType>(LocaleContext);
+  const { localesByLang, lang } = useContext<LocaleContextType>(LocaleContext);
 
   const locales = useMemo(() => {
-    let localesObj = ctxLocales[lang as KnownLocaleLang];
-
-    if (!localesObj) {
-      console.warn(
-        `Snack-uikit: localization for lang ${lang} was not found. Make sure you are using correct lang or passed proper locales to LocaleProvider. For now default language (${DEFAULT_LANG}) will be used`,
-      );
-
-      localesObj = ctxLocales[DEFAULT_LANG] as LocaleDictionary;
-    }
-
     if (!componentName) {
-      return localesObj as LocaleDictionary;
+      return localesByLang;
     }
 
-    return (localesObj[componentName] || {}) as LocaleDictionary[C];
-  }, [componentName, lang, ctxLocales]);
+    return (localesByLang[componentName] || {}) as LocaleDictionary[C];
+  }, [componentName, localesByLang]);
 
-  return [locales, lang];
+  const getLocaleText: GetLocaleText<C> = useCallback(
+    key => {
+      let translation = '';
+
+      const complexKey = key.split('.');
+
+      if (complexKey.length === 1) {
+        translation = locales[key as keyof typeof locales] as unknown as string;
+      } else {
+        translation = complexKey.reduce<LocaleDictionary | ValueOf<LocaleDictionary> | string>(
+          (acc, cur) => acc[cur as keyof typeof acc],
+          locales,
+        ) as string;
+      }
+
+      if (!translation?.length) {
+        console.warn(`Snack-uikit: the '${key}' key is not found in the current locale '${lang}'.`);
+
+        return key;
+      }
+
+      return translation;
+    },
+    [lang, locales],
+  );
+
+  return {
+    t: getLocaleText,
+    lang,
+  };
 }
