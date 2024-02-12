@@ -58,18 +58,20 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
           size='m'
           data-test-id={TEST_IDS.rowActions.droplist}
           triggerElemRef={triggerRef}
-          items={actions.map(item => ({
-            id: item.id,
-            onClick: e => {
-              handleItemClick(item)(e);
-              setDroplistOpen(false);
-            },
-            disabled: item.disabled,
-            content: item.content,
-            beforeContent: item.icon,
-            afterContent: item.tagLabel ? <Tag label={item.tagLabel} /> : undefined,
-            'data-test-id': TEST_IDS.rowActions.option,
-          }))}
+          items={actions
+            .filter(item => !item?.hidden)
+            .map(item => ({
+              id: item.id,
+              onClick: e => {
+                handleItemClick(item)(e);
+                setDroplistOpen(false);
+              },
+              disabled: item.disabled,
+              content: item.content,
+              beforeContent: item.icon,
+              afterContent: item.tagLabel ? <Tag label={item.tagLabel} /> : undefined,
+              'data-test-id': TEST_IDS.rowActions.option,
+            }))}
         >
           <span className={styles.rowActionsCellTrigger}>
             <ButtonFunction
