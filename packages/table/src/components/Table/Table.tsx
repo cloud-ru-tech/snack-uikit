@@ -212,14 +212,7 @@ export function Table<TData extends object>({
   const enableSelection = Boolean(rowSelectionProp?.enable);
 
   const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
-    let cols: ColumnDefinition<TData>[] = columnDefinitions.map(column =>
-      column.cell
-        ? column
-        : {
-            ...column,
-            cell: (cell: CellContext<TData, unknown>) => <TruncateString text={String(cell.getValue())} maxLines={1} />,
-          },
-    );
+    let cols: ColumnDefinition<TData>[] = columnDefinitions;
 
     if (enableSelection) {
       cols = [getSelectionCellColumnDef(), ...cols];
@@ -260,6 +253,7 @@ export function Table<TData extends object>({
       enableSorting: false,
       enableResizing: false,
       minSize: 40,
+      cell: (cell: CellContext<TData, unknown>) => <TruncateString text={String(cell.getValue())} maxLines={1} />,
     },
 
     manualSorting: Boolean(pageCount),
