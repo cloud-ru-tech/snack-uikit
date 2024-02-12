@@ -44,9 +44,9 @@ export function ChipChoiceRow<TState extends FiltersState>({
   size = CHIP_CHOICE_ROW_SIZE.S,
   ...rest
 }: ChipChoiceRowProps<TState>) {
-  const [locales] = useLocale('Chips');
+  const { t } = useLocale('Chips');
 
-  const clearAllButtonLabel = clearAllButtonLabelProp ?? locales.clearAllButton;
+  const clearAllButtonLabel = clearAllButtonLabelProp ?? t('clearAllButton');
 
   const [state, setState] = useUncontrolledProp<TState>(value, (defaultValue ?? {}) as TState, newState => {
     const result = typeof newState === 'function' ? newState(state) : newState;

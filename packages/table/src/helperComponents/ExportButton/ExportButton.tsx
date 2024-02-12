@@ -19,7 +19,7 @@ type ExportButtonProps<TData extends object> = {
 
 export function ExportButton<TData extends object>({ fileName, data, columnDefinitions }: ExportButtonProps<TData>) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [locales] = useLocale('Table');
+  const { t } = useLocale('Table');
 
   return (
     <Droplist
@@ -30,14 +30,14 @@ export function ExportButton<TData extends object>({ fileName, data, columnDefin
       placement='bottom-end'
       items={[
         {
-          content: { option: locales.export + 'CSV' },
+          content: { option: t('export') + 'CSV' },
           onClick: () => {
             exportToCSV<TData>({ fileName, columnDefinitions, data });
             setIsOpen(false);
           },
         },
         {
-          content: { option: locales.export + 'XLSX' },
+          content: { option: t('export') + 'XLSX' },
           onClick: () => {
             exportToXLSX<TData>({ fileName, columnDefinitions, data });
             setIsOpen(false);

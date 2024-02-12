@@ -99,9 +99,9 @@ export function CalendarBase({
 
   const getTestId = useMemo(() => getTestIdBuilder(testId), [testId]);
 
-  const [, ctxLocale] = useLocale();
+  const { lang: ctxLang } = useLocale();
 
-  const locale = useMemo(() => getLocale({ localeProp, ctxLocale }), [ctxLocale, localeProp]);
+  const locale = useMemo(() => getLocale({ localeProp, ctxLang }), [ctxLang, localeProp]);
 
   const firstNotDisableCell = useRef<[number, number]>([0, 0]);
 

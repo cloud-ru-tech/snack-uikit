@@ -37,7 +37,6 @@
     "@snack-uikit/droplist": "0.13.4",
     "@snack-uikit/icons": "0.20.1",
     "@snack-uikit/input-private": "3.1.0",
-    "@snack-uikit/locale": "0.3.0",
     "@snack-uikit/scroll": "0.5.1",
     "@snack-uikit/tooltip": "0.11.1",
     "@snack-uikit/truncate-string": "0.4.7",
@@ -50,5 +49,8 @@
   },
   "devDependencies": {
     "@types/merge-refs": "1.0.0"
+  },
+  "peerDependencies": {
+    "@snack-uikit/locale": "*"
   }
 }

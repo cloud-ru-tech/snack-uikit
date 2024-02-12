@@ -78,24 +78,26 @@ export function useEmptyState({
   noResultsState?: EmptyStateProps;
   errorDataState?: EmptyStateProps;
 }) {
-  const [locales] = useLocale('Table');
+  const { t } = useLocale('Table');
 
   return useMemo(() => {
     const noDataState: EmptyStateProps = {
       icon: { icon: SearchSVG, appearance: 'neutral', decor: true },
-      ...locales.noData,
+      title: t('noData.title'),
       ...noDataStateProp,
     };
 
     const noResultsState: EmptyStateProps = {
       icon: { icon: SearchSVG, appearance: 'neutral', decor: true },
-      ...locales.noResults,
+      title: t('noResults.title'),
+      description: t('noResults.description'),
       ...noResultsStateProp,
     };
 
     const errorDataState: EmptyStateProps = {
       icon: { icon: CrossSVG, appearance: 'red', decor: true },
-      ...locales.errorData,
+      title: t('errorData.title'),
+      description: t('errorData.description'),
       ...errorDataStateProp,
     };
 
@@ -104,5 +106,5 @@ export function useEmptyState({
       noResultsState,
       errorDataState,
     };
-  }, [errorDataStateProp, locales.errorData, locales.noData, locales.noResults, noDataStateProp, noResultsStateProp]);
+  }, [errorDataStateProp, noDataStateProp, noResultsStateProp, t]);
 }

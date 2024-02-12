@@ -19,8 +19,8 @@ export function TablePagination<TData>({
   options: optionsProp,
   optionsLabel: optionsLabelProp,
 }: TablePaginationProps<TData>) {
-  const [locales] = useLocale('Table');
-  const optionsLabel = optionsLabelProp ?? locales.rowsOptionsLabel;
+  const { t } = useLocale('Table');
+  const optionsLabel = optionsLabelProp ?? t('rowsOptionsLabel');
 
   const handlePaginationOnChange = useCallback(
     (pageIndex: number) => {

@@ -37,9 +37,11 @@
     "@snack-uikit/droplist": "0.13.4",
     "@snack-uikit/icons": "0.20.1",
     "@snack-uikit/loaders": "0.5.0",
-    "@snack-uikit/locale": "0.3.0",
     "@snack-uikit/utils": "3.2.0",
     "classnames": "2.3.2",
     "uncontrollable": "8.0.2"
+  },
+  "peerDependencies": {
+    "@snack-uikit/locale": "*"
   }
 }

@@ -33,10 +33,12 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.20.1",
-    "@snack-uikit/locale": "0.3.0",
     "@snack-uikit/utils": "3.2.0",
     "classnames": "2.3.2",
     "uncontrollable": "8.0.2",
     "weekstart": "2.0.0"
+  },
+  "peerDependencies": {
+    "@snack-uikit/locale": "*"
   }
 }

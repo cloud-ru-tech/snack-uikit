@@ -348,7 +348,7 @@ export function Table<TData extends object>({
   const loadingTableRows = loadingTable.getRowModel().rows;
   const tablePagination = table.getState().pagination;
 
-  const [locales] = useLocale('Table');
+  const { t } = useLocale('Table');
   const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
 
   const cssPageSize = useMemo(() => {
@@ -373,7 +373,7 @@ export function Table<TData extends object>({
                 value: globalFilter,
                 onChange: onGlobalFilterChange,
                 loading: search?.loading,
-                placeholder: search?.placeholder || locales.searchPlaceholder,
+                placeholder: search?.placeholder || t('searchPlaceholder'),
               }}
               checked={table.getIsAllPageRowsSelected()}
               indeterminate={table.getIsSomePageRowsSelected()}

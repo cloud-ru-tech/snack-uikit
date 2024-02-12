@@ -84,7 +84,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     },
     ref,
   ) => {
-    const [locales] = useLocale('Fields');
+    const { t } = useLocale('Fields');
     const [value, setValue] = useUncontrolledProp(valueProp, 0, onChangeProp);
     const [tooltipOpen, setTooltipOpen] = useState(false);
     const [tooltip, setTooltip] = useState('');
@@ -115,12 +115,12 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     const handleInputBlur = (event: FocusEvent<HTMLInputElement>) => {
       if (!allowMoreThanLimits) {
         if (max !== undefined && value > max) {
-          setTooltip(`${locales.limitTooltip.max}${max}`);
+          setTooltip(`${t('limitTooltip.max')}${max}`);
           adjustValue(max);
         }
 
         if (min !== undefined && value < min) {
-          setTooltip(`${locales.limitTooltip.min}${min}`);
+          setTooltip(`${t('limitTooltip.min')}${min}`);
           adjustValue(min);
         }
       }

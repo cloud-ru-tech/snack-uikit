@@ -85,8 +85,8 @@ export const getEndOfTheDay = (date: Date) =>
 
 export const getTestIdBuilder = (testId?: string) => (prefix: string) => (testId ? `${prefix}-${testId}` : undefined);
 
-export const getLocale = ({ localeProp, ctxLocale }: { localeProp?: Intl.Locale; ctxLocale?: LocaleLang } = {}) =>
-  localeProp || new Intl.Locale(ctxLocale ? ctxLocale.replace('_', '-') : navigator?.language ?? 'ru-RU');
+export const getLocale = ({ localeProp, ctxLang }: { localeProp?: Intl.Locale; ctxLang?: LocaleLang } = {}) =>
+  localeProp || new Intl.Locale(ctxLang ? ctxLang.replace('_', '-') : navigator?.language ?? 'ru-RU');
 
 export const getStartOfWeek = (locale: Intl.Locale) => getWeekStartByLocale(locale.language);
 
