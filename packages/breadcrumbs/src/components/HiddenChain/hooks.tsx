@@ -29,7 +29,8 @@ const getItemModesRenderer = (firstItemIconOnly: boolean) => (item: Item, index:
   return modes.map(([mode, labelProp]) => {
     const label = item[labelProp];
 
-    if (!label) {
+    // full mode не может отсутствовать, даже если там нет значения
+    if (!label && mode !== ITEM_RENDER_MODE.Full) {
       return null;
     }
 
