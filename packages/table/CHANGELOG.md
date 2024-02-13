@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.2 (2024-02-13)
+
+
+### Bug Fixes
+
+* **FF-0000:** table actions ([da9a808](https://github.com/cloud-ru-tech/snack-uikit/commit/da9a8086bd09f7eee6cabee46a5b1bed932732ab))
+
+
+
+
+
 ## 0.14.1 (2024-02-12)
 
 

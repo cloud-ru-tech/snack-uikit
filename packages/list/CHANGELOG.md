@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.3 (2024-02-13)
+
+
+### Bug Fixes
+
+* **FF-0000:** disable click for disabled item ([6484398](https://github.com/cloud-ru-tech/snack-uikit/commit/6484398b9054f14040febc9d971286dadc9c5145))
+
+
+
+
+
 ## 0.3.2 (2024-02-09)
 
 ### Only dependencies have been changed
