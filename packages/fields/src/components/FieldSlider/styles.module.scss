@@ -1,0 +1,29 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+$sizes: 's', 'm', 'l';
+
+.sliderWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: -13px;
+
+  .slider {
+    flex: 1;
+
+    @each $size in $sizes {
+      &[data-size='#{$size}'] {
+        @include composite-var($fields, 'slider-wrap', $size);
+
+        height: inherit;
+      }
+    }
+  }
+}
+
+.fieldContainer {
+  svg {
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+  }
+}

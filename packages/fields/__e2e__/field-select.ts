@@ -46,6 +46,7 @@ runCommonTests(props => visit(props), TEST_ID, {
   hasPrefixIcon: true,
   hasClearButton: true,
   hasCopyButton: true,
+  hasValidationStates: true,
   defaultValue: 'Option 1',
 });
 

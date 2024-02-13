@@ -30,6 +30,7 @@ type Options = {
   hasPrefixIcon: boolean;
   hasClearButton: boolean;
   hasCopyButton: boolean;
+  hasValidationStates: boolean;
   defaultValue?: string;
   emptyValue?: string;
   expectedValue?: string;
@@ -302,50 +303,52 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     });
   }
 
-  // validation state
-  [
-    { validationState: 'default' },
-    { validationState: 'error' },
-    { validationState: 'warning' },
-    { validationState: 'success' },
-    { validationState: 'error', readonly: true, expectedValidationState: 'default' },
-    { validationState: 'error', disabled: true, expectedValidationState: 'default' },
-  ].forEach(({ validationState, disabled, readonly, expectedValidationState = validationState }) => {
-    test.page(visit({ hint: 'Hint', validationState, disabled, readonly, showHintIcon: true, maxLength: 20 }))(
-      `Renders correctly in validationState="${validationState}"${readonly ? ', readonly="true"' : ''}${
-        disabled ? ', disabled="true"' : ''
-      }`,
-      async t => {
-        const wrapper = Selector(dataTestIdSelector(testId));
-        const getValidation = (item: Selector) => item.getAttribute('data-validation');
+  if (options.hasValidationStates) {
+    // validation state
+    [
+      { validationState: 'default' },
+      { validationState: 'error' },
+      { validationState: 'warning' },
+      { validationState: 'success' },
+      { validationState: 'error', readonly: true, expectedValidationState: 'default' },
+      { validationState: 'error', disabled: true, expectedValidationState: 'default' },
+    ].forEach(({ validationState, disabled, readonly, expectedValidationState = validationState }) => {
+      test.page(visit({ hint: 'Hint', validationState, disabled, readonly, showHintIcon: true, maxLength: 20 }))(
+        `Renders correctly in validationState="${validationState}"${readonly ? ', readonly="true"' : ''}${
+          disabled ? ', disabled="true"' : ''
+        }`,
+        async t => {
+          const wrapper = Selector(dataTestIdSelector(testId));
+          const getValidation = (item: Selector) => item.getAttribute('data-validation');
 
-        await t.expect(getValidation(getContainerPrivate(wrapper))).eql(expectedValidationState);
-        await t.expect(getValidation(getHint(wrapper))).eql(expectedValidationState);
+          await t.expect(getValidation(getContainerPrivate(wrapper))).eql(expectedValidationState);
+          await t.expect(getValidation(getHint(wrapper))).eql(expectedValidationState);
 
-        if (options.hasCounter && !readonly && !disabled) {
-          await t.expect(getValidation(getCounterCurrentValue(wrapper))).eql(expectedValidationState);
-          await t.expect(getValidation(getCounterLimitValue(wrapper))).eql(expectedValidationState);
-        } else {
-          await t.expect(getCounterCurrentValue(wrapper).exists).notOk('counter current value is present');
-          await t.expect(getCounterLimitValue(wrapper).exists).notOk('counter limit value is present');
-        }
+          if (options.hasCounter && !readonly && !disabled) {
+            await t.expect(getValidation(getCounterCurrentValue(wrapper))).eql(expectedValidationState);
+            await t.expect(getValidation(getCounterLimitValue(wrapper))).eql(expectedValidationState);
+          } else {
+            await t.expect(getCounterCurrentValue(wrapper).exists).notOk('counter current value is present');
+            await t.expect(getCounterLimitValue(wrapper).exists).notOk('counter limit value is present');
+          }
 
-        switch (expectedValidationState) {
-          case 'error':
-            await t.expect(getHintErrorIcon(wrapper).exists).ok('hint error icon is not present');
-            break;
-          case 'warning':
-            await t.expect(getHintWarningIcon(wrapper).exists).ok('hint warning icon is not present');
-            break;
-          case 'success':
-            await t.expect(getHintSuccessIcon(wrapper).exists).ok('hint success icon is not present');
-            break;
-          case 'default':
-          default:
-            await t.expect(getHintDefaultIcon(wrapper).exists).ok('hint default icon is not present');
-            break;
-        }
-      },
-    );
-  });
+          switch (expectedValidationState) {
+            case 'error':
+              await t.expect(getHintErrorIcon(wrapper).exists).ok('hint error icon is not present');
+              break;
+            case 'warning':
+              await t.expect(getHintWarningIcon(wrapper).exists).ok('hint warning icon is not present');
+              break;
+            case 'success':
+              await t.expect(getHintSuccessIcon(wrapper).exists).ok('hint success icon is not present');
+              break;
+            case 'default':
+            default:
+              await t.expect(getHintDefaultIcon(wrapper).exists).ok('hint default icon is not present');
+              break;
+          }
+        },
+      );
+    });
+  }
 };

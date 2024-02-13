@@ -360,6 +360,37 @@ const [isOpen, setIsOpen] = useState(false);
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
+## FieldSlider
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| postfixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-постфикс для поля |
+| showScaleBar | `boolean` | true | Отображение линейки |
+| textInputFormatter | `TextInputFormatter` | - | Функция для форматирования значений в текстовом поле |
+| disabled | `boolean` | - | Является ли поле деактивированным |
+| readonly | `boolean` | - | Является ли поле доступным только для чтения |
+| id | `string` | - | Значение html-атрибута id |
+| name | `string` | - | Значение html-атрибута name |
+| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
+| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| value | `number \| number[]` | - |  |
+| onChange | `(value: number \| number[]) => void` | - |  |
+| range | `boolean` | - |  |
+| tipFormatter | `(value: string \| number) => ReactNode` | - |  |
+| step | `number` | - |  |
+| min | `number` | - |  |
+| max | `number` | - |  |
+| marks | `Record<string \| number, ReactNode \| MarkObj>` | - |  |
+| className | `string` | - | CSS-класс |
+| label | `string` | - | Лейбл |
+| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| required | `boolean` | - | Является ли поле обязательным |
+| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
+| hint | `string` | - | Подсказка внизу |
+| showHintIcon | `boolean` | - | Отображать иконку подсказки |
+| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| key | `Key` | - |  |
 
 
 [//]: DOCUMENTATION_SECTION_END

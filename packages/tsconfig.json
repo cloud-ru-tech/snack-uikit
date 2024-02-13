@@ -97,7 +97,9 @@
     {
       "path": "./chips"
     },
-
+    {
+      "path": "./slider"
+    },
     {
       "path": "./fields"
     },
@@ -148,9 +150,6 @@
     },
     {
       "path": "./carousel"
-    },
-    {
-      "path": "./slider"
     }
   ],
   "compilerOptions": {
