@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.10 (2024-02-13)
+
+
+### Bug Fixes
+
+* **FF-0000:** empty label value ([053a8c8](https://github.com/cloud-ru-tech/snack-uikit/commit/053a8c80241b37a69edc2dae9424b1f960abdd56))
+
+
+
+
+
 ## 0.8.9 (2024-02-13)
 
 ### Only dependencies have been changed
