@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.4 (2024-02-14)
+
+
+### Bug Fixes
+
+* **FF-0000:** optional props ([efa7f9c](https://github.com/cloud-ru-tech/snack-uikit/commit/efa7f9cb22ffc26a27ee1eb8ccbdf4b0facea628))
+
+
+
+
+
 ## 0.5.3 (2024-02-05)
 
 ### Only dependencies have been changed
