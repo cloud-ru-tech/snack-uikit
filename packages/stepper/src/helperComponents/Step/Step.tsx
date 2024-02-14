@@ -11,6 +11,7 @@ import { Icon } from '../Icon';
 import styles from './styles.module.scss';
 
 export type StepProps = WithSupportProps<{
+  hideTailLine?: boolean;
   step: StepViewData;
   className?: string;
 }>;
@@ -18,7 +19,7 @@ export type StepProps = WithSupportProps<{
 const getTailTestId = getTestIdBuilder('_element-tail');
 const getStepTestId = getTestIdBuilder('_element-step');
 
-export function Step({ step, className, 'data-test-id': testId, ...props }: StepProps) {
+export function Step({ step, className, 'data-test-id': testId, hideTailLine, ...props }: StepProps) {
   return (
     <div className={cn(styles.step, className)} data-state={step.state} {...extractSupportProps(props)}>
       <div className={styles.track}>
@@ -32,13 +33,15 @@ export function Step({ step, className, 'data-test-id': testId, ...props }: Step
           <Icon {...step} className={styles.icon} />
         </button>
 
-        <div
-          className={styles.tail}
-          data-completed={step.state === STEP_STATE.Completed || undefined}
-          data-test-id={getTailTestId(testId)}
-        >
-          <div className={styles.tailLine} />
-        </div>
+        {!hideTailLine && (
+          <div
+            className={styles.tail}
+            data-completed={step.state === STEP_STATE.Completed || undefined}
+            data-test-id={getTailTestId(testId)}
+          >
+            <div className={styles.tailLine} />
+          </div>
+        )}
       </div>
 
       <div className={styles.content}>

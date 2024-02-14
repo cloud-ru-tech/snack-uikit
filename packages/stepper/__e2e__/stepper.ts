@@ -62,17 +62,17 @@ fixture('Stepper');
 
 test.page(getPage())('Should be rendered', async t => {
   const textView = await getTextView();
-  await t.expect(textView).eql('((1))--(2)--(3)--(4)--(5)--');
+  await t.expect(textView).eql('((1))--(2)--(3)--(4)--(5)');
 });
 
 test.page(getPage())('Should go to the next step and go back', async t => {
   await t.click(Selector(dataTestIdSelector(NEXT_BUTTON)));
   const textView1 = await getTextView();
-  await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)--');
+  await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)');
 
   await t.click(Selector(dataTestIdSelector(PREV_BUTTON)));
   const textView2 = await getTextView();
-  await t.expect(textView2).eql('((1))--(2)--(3)--(4)--(5)--');
+  await t.expect(textView2).eql('((1))--(2)--(3)--(4)--(5)');
 });
 
 test.page(getPage({ validationTimeout: 9999999999 }))(
@@ -80,7 +80,7 @@ test.page(getPage({ validationTimeout: 9999999999 }))(
   async t => {
     await t.click(Selector(dataTestIdSelector(NEXT_BUTTON)));
     const textView1 = await getTextView();
-    await t.expect(textView1).eql('(O)--(2)--(3)--(4)--(5)--');
+    await t.expect(textView1).eql('(O)--(2)--(3)--(4)--(5)');
   },
 );
 
@@ -95,7 +95,7 @@ test.page(getPage())('Should call complete callback if all steps are done', asyn
   await t.click(Selector(dataTestIdSelector(NEXT_BUTTON)));
 
   const textView1 = await getTextView();
-  await t.expect(textView1).eql('(V)==(V)==(V)==(V)==(V)==');
+  await t.expect(textView1).eql('(V)==(V)==(V)==(V)==(V)');
 
   const isCompletedAfter = await Selector(dataTestIdSelector(IS_COMPLETED)).innerText;
   await t.expect(isCompletedAfter).eql('isCompleted: yes');
@@ -103,27 +103,27 @@ test.page(getPage())('Should call complete callback if all steps are done', asyn
 
 test.page(getPage({ defaultCurrentStepIndex: 1 }))('Go next by clicking next step', async t => {
   const textView1 = await getTextView();
-  await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)--');
+  await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)');
   await t.click(Selector(`${dataTestIdSelector(STEP_TEST_ID)}`).nth(2));
   const textView2 = await getTextView();
-  await t.expect(textView2).eql('(V)==(V)==((3))--(4)--(5)--');
+  await t.expect(textView2).eql('(V)==(V)==((3))--(4)--(5)');
 });
 
 test.page(getPage({ defaultCurrentStepIndex: 1, isValid: false }))(
   'Going next by clicking should fail if step invalid',
   async t => {
     const textView1 = await getTextView();
-    await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)--');
+    await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)');
     await t.click(Selector(`${dataTestIdSelector(STEP_TEST_ID)}`).nth(2));
     const textView2 = await getTextView();
-    await t.expect(textView2).eql('(V)==(X)--(3)--(4)--(5)--');
+    await t.expect(textView2).eql('(V)==(X)--(3)--(4)--(5)');
   },
 );
 
 test.page(getPage({ defaultCurrentStepIndex: 3 }))('Go back by clicking completed step', async t => {
   const textView1 = await getTextView();
-  await t.expect(textView1).eql('(V)==(V)==(V)==((4))--(5)--');
+  await t.expect(textView1).eql('(V)==(V)==(V)==((4))--(5)');
   await t.click(Selector(`${dataTestIdSelector(STEP_TEST_ID)}`).nth(1));
   const textView2 = await getTextView();
-  await t.expect(textView2).eql('(V)==((2))--(3)--(4)--(5)--');
+  await t.expect(textView2).eql('(V)==((2))--(3)--(4)--(5)');
 });

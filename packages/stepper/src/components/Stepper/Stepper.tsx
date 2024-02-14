@@ -27,9 +27,9 @@ export type StepperProps = WithSupportProps<{
    */
   children: (params: StepperState) => ReactElement;
   /** Колбек смены текущего степа */
-  onChangeCurrentStep: (newValue: number, prevValue: number) => void;
+  onChangeCurrentStep?: (newValue: number, prevValue: number) => void;
   /** Колбек изменения завершенности */
-  onCompleteChange: (isCompleted: boolean) => void;
+  onCompleteChange?: (isCompleted: boolean) => void;
 }>;
 
 export function Stepper({
@@ -149,7 +149,12 @@ export function Stepper({
   const stepper = (
     <div className={cn(styles.stepper, className)} {...extractSupportProps(props)}>
       {stepsView.map((step, index) => (
-        <Step key={step.title + index} step={step} data-test-id={props['data-test-id']} />
+        <Step
+          key={step.title + index}
+          step={step}
+          data-test-id={props['data-test-id']}
+          hideTailLine={index === steps.length - 1}
+        />
       ))}
     </div>
   );
