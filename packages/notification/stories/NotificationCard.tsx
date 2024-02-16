@@ -35,11 +35,26 @@ function Cards(props: Pick<NotificationCardProps, 'appearance'>) {
 
 const headerCellClassnames = cn(styles.cell, styles.headerCell);
 
-const Template: StoryFn<NotificationCardProps> = ({ ...args }: NotificationCardProps) => (
+type StoryProps = NotificationCardProps & {
+  showButtons: boolean;
+};
+
+const Template: StoryFn<StoryProps> = ({ showButtons, ...args }: StoryProps) => (
   <div className={styles.pageWrapper}>
     <div className={styles.controlledWrapper}>
       Controlled:
-      <NotificationCard {...args} className={styles.controlledCard} />
+      <NotificationCard
+        {...args}
+        {...(showButtons ? ({
+          primaryButton: {
+            label: 'Primary Button',
+          },
+          secondaryButton: {
+            label: 'Secondary Button'
+          },
+        }) : {})}
+        className={styles.controlledCard}
+      />
     </div>
 
     <div className={styles.table}>
@@ -65,12 +80,13 @@ const Template: StoryFn<NotificationCardProps> = ({ ...args }: NotificationCardP
   </div>
 );
 
-export const notificationCard: StoryObj<NotificationCardProps> = Template.bind({});
+export const notificationCard: StoryObj<StoryProps> = Template.bind({});
 
 notificationCard.args = {
   ...NOTIFICATION_CARD_MOCK,
   actions: NOTIFICATION_CARD_MOCK.actions.map(action => ({ ...action, onClick: handleActionClick })),
   'data-test-id': STORY_TEST_IDS.card,
+  showButtons: true,
 };
 
 notificationCard.argTypes = {
@@ -80,6 +96,11 @@ notificationCard.argTypes = {
       type: 'radio',
     },
   },
+  showButtons: {
+    name: '[Stories]: Show action buttons',
+  },
+  primaryButton: { table: { disable: true } },
+  secondaryButton: { table: { disable: true } },
 };
 
 notificationCard.parameters = {

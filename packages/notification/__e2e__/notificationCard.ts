@@ -26,7 +26,7 @@ function getPage(props?: Record<string, unknown>) {
 fixture('NotificationCard');
 
 test.page(getPage(NOTIFICATION_CARD_MOCK))('Renders correctly with passed props and full functionality', async t => {
-  const { card, title, label, content, date, link, actions } = SELECTORS.getCard();
+  const { card, title, label, content, date, link, actions, primaryButton, secondaryButton } = SELECTORS.getCard();
 
   await t.expect(card.exists).ok('NotificationCard is not rendered');
 
@@ -73,6 +73,9 @@ test.page(getPage(NOTIFICATION_CARD_MOCK))('Renders correctly with passed props 
   await t
     .expect(Selector(dataTestIdSelector(STORY_TEST_IDS.toaster)).exists)
     .ok('Toaster is not opened after click on action');
+
+  await t.expect(primaryButton.exists).ok('Primary button should exist');
+  await t.expect(secondaryButton.exists).ok('Secondary button should exist');
 });
 
 test.page(
@@ -81,9 +84,10 @@ test.page(
     label: '!undefined',
     link: '!undefined',
     actions: '!undefined',
+    showButtons: false,
   }),
 )('Renders only with Title, Content and Date', async t => {
-  const { title, label, link, actions } = SELECTORS.getCard();
+  const { title, label, link, actions, primaryButton, secondaryButton } = SELECTORS.getCard();
 
   const titleErrors = getErrorMessages('title');
   await t.expect(title.exists).ok(titleErrors.exists);
@@ -94,4 +98,7 @@ test.page(
   await t.expect(link.exists).notOk(getErrorMessages('link').notExists);
 
   await t.expect(actions.wrapper.exists).notOk(getErrorMessages('card function').notExists);
+
+  await t.expect(primaryButton.exists).notOk(getErrorMessages('Primary button').notExists);
+  await t.expect(secondaryButton.exists).notOk(getErrorMessages('Secondary button').notExists);
 });

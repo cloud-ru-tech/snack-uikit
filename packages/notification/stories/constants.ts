@@ -2,7 +2,6 @@ import { APPEARANCE } from '../src/components/NotificationCard/constants';
 
 export const STORY_TEST_IDS = {
   panel: 'notification-panel',
-  panelTrigger: 'panel-trigger',
   card: 'notification-card',
   toaster: 'toaster',
   blank: 'panel-blank',

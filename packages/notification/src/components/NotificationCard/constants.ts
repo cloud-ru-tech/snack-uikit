@@ -18,4 +18,6 @@ export const TEST_IDS = {
     droplistTrigger: 'notification-card__droplist-trigger',
     droplistAction: 'notification-card__droplist-action',
   },
+  primaryButton: 'notification-card__primary-button',
+  secondaryButton: 'notification-card__secondary-button',
 };

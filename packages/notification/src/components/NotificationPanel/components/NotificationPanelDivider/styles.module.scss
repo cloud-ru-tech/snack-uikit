@@ -1,0 +1,14 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
+
+.notificationPanelDivider {
+  @include composite-var($notification-panel-readed-divider);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $sys-neutral-text-light;
+
+  border-bottom-color: $sys-neutral-decor-default;
+  border-bottom-style: solid;
+}

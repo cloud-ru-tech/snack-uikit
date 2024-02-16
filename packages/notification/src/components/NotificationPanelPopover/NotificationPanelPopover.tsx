@@ -1,14 +1,15 @@
 import cn from 'classnames';
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 
 import { PopoverPrivate, PopoverPrivateProps } from '@snack-uikit/popover-private';
 import { WithSupportProps } from '@snack-uikit/utils';
 
+import { NotificationPanel, NotificationPanelProps } from '../NotificationPanel';
 import styles from './styles.module.scss';
 
 export type NotificationPanelPopoverProps = WithSupportProps<
   {
-    content: ReactNode;
+    content: ReactElement<NotificationPanelProps, typeof NotificationPanel>;
     /** CSS-класс для элемента содержащего контент */
     contentClassName?: string;
   } & Pick<
@@ -28,6 +29,7 @@ export type NotificationPanelPopoverProps = WithSupportProps<
     Partial<Pick<PopoverPrivateProps, 'trigger' | 'placement'>>
 >;
 
+/** Компонент-обёртка для NotificationPanel для использования как выпадающий элемент */
 export function NotificationPanelPopover({
   content,
   trigger = 'click',

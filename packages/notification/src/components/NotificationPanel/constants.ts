@@ -8,10 +8,5 @@ export const TEST_IDS = {
   },
   readAll: 'notification-panel__readAll',
   footerButton: 'notification-panel__footerButton',
-  blank: {
-    icon: 'notification-panel__blank__icon',
-    title: 'notification-panel__blank__title',
-    description: 'notification-panel__blank__description',
-  },
   skeleton: 'notification-panel__skeleton',
 };

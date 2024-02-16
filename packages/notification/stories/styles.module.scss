@@ -2,10 +2,19 @@
 
 $border-width: 0.5px;
 
+
 .pageWrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  &[data-resizable] {
+    resize: both;
+    overflow: hidden;
+
+    width: 350px;
+    height: 700px;
+  }
 }
 
 .controlledWrapper {

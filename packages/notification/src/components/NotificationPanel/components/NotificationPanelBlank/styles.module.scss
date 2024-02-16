@@ -2,31 +2,5 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .notificationPanelBlank {
-  @include composite-var($notification-panel-blank-container);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.notificationPanelBlankContent {
-  @include composite-var($notification-panel-blank-text);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  box-sizing: border-box;
-
-  text-align: center;
-}
-
-.notificationPanelBlankTitle {
-  color: $sys-neutral-text-main;
-}
-
-.notificationPanelBlankDescription {
-  color: $sys-neutral-text-support;
-  white-space: pre-line;
+  @include composite-var($notification-panel-body-info-container);
 }

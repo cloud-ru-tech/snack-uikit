@@ -91,6 +91,8 @@ const cards = [
 | link | `Omit<LinkProps, "data-test-id" \| "appearance" \| "size" \| "textMode">` | - | Ссылка |
 | onClick | `MouseEventHandler<HTMLDivElement>` | - | Колбэк клика по карточке |
 | onVisible | `(cardId: string) => void` | - | Колбэк при попадании карточки в область видимости на 80% |
+| primaryButton | `Omit<ButtonTonalProps, "data-test-id" \| "appearance" \| "size">` | - | Кнопка главного действия у карточки |
+| secondaryButton | `Omit<ButtonSimpleProps, "data-test-id" \| "appearance" \| "size">` | - | Кнопка второстепенного действия у карточки |
 | actions | `Action[]` | - | Дополнительные действия у карточки |
 | className | `string` | - | CSS-класс |
 ## NotificationPanel
@@ -98,15 +100,39 @@ const cards = [
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| triggerElement* | `ReactNode \| ChildrenFunction` | - | Элемент для открытия панели |
 | title* | `string` | - | Заголовок панели |
 | settings | `NotificationPanelSettingsProps` | - | Кнопка настроек и выпадающий список |
 | chips | `Omit<ChipToggleProps, "data-test-id" \| "size">[]` | - | Чипы для фильтрации |
 | readAllButton | `Omit<ButtonFunctionProps, "data-test-id"> & { onClick: MouseEventHandler<HTMLElement>; }` | - | Кнопка в "шапке" панели |
 | footerButton | `{ label: string; onClick: MouseEventHandler<HTMLButtonElement>; }` | - | Кнопка внизу панели |
+| className | `string` | - | CSS-класс |
 | loading | `boolean` | - | Состояние загрузки |
 | content | `ReactNode` | - | Контент для отрисовки (e.g NotificationCard \| NotificationPanel.Blank) |
 | skeletonsAmount | `number` | 2 | Количество скелетонов карточек для отображения при загрузке |
+| scrollEndRef | `RefObject<HTMLDivElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+## NotificationPanel.Blank
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| title | `string` | - | Заголовок |
+| className | `string` | - | CSS-класс |
+| icon | `Pick<IconPredefinedProps, "appearance" \| "icon" \| "decor">` | - | Иконка |
+| description | `string` | - | Подзаголовок |
+## NotificationPanel.Divider
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| text* | `string` | - | Текст разделителя |
+| className | `string` | - | CSS-класс |
+## NotificationPanelPopover
+Компонент-обёртка для NotificationPanel для использования как выпадающий элемент
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| children* | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
+| content* | `ReactElement<NotificationPanelProps, typeof NotificationPanel>` | - |  |
+| contentClassName | `string` | - | CSS-класс для элемента содержащего контент |
 | className | `string` | - | CSS-класс |
 | triggerClassName | `string` | - | CSS-класс триггера |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |
@@ -117,18 +143,8 @@ const cards = [
 | closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
 | triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | triggerRef | `ForwardedRef<HTMLElement \| ReferenceType>` | - | Ref ссылка на триггер |
-| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
-| contentClassName | `string` | - | CSS-класс для элемента содержащего контент |
-## NotificationPanel.Blank
-### Props
-| name | type | default value | description |
-|------|------|---------------|-------------|
-| title* | `ReactNode` | - | Заголовок |
-| description | `ReactNode` | - | Описание |
-| icon | `JSXElementConstructor<{ size?: number; className?: string; }>` | - | Иконка |
-| iconAppearance | enum Appearance: `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | - | Цвет обводки для иконки |
-| className | `string` | - | CSS-класс |
+| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | click | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | bottom-end | Положение поповера относительно своего триггера (children). |
 
 
 [//]: DOCUMENTATION_SECTION_END

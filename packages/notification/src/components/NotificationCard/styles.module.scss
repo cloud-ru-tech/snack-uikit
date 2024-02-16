@@ -170,3 +170,9 @@
   color: $sys-neutral-text-light;
   text-align: right;
 }
+
+.notificationCardButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

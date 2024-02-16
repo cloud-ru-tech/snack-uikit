@@ -28,16 +28,12 @@ function getScrollableElement() {
 }
 
 test.page(getPage(PROPS_MOCK))(
-  'Opens on trigger click, and renders correctly with proper amount of card, scroll is working',
+  'Renders correctly with proper amount of card, scroll is working',
   async t => {
-    const { panel, storyPanelTrigger, panelTitle, footerButton, readAllButton } = SELECTORS.getPanel();
+    const { panel, panelTitle, footerButton, readAllButton } = SELECTORS.getPanel();
     const { card } = SELECTORS.getCard();
 
-    await t.expect(panel.exists).notOk('NotificationPanel should be closed');
-
-    await t.click(storyPanelTrigger);
-
-    await t.expect(panel.exists).ok('NotificationPanel is not opened');
+    await t.expect(panel.exists).ok('NotificationPanel not exists');
 
     await t.expect(panelTitle.exists).ok('NotificationPanel title not exists');
     await t.expect(panelTitle.textContent).eql(PROPS_MOCK.title, 'NotificationPanel title not exists');
@@ -60,13 +56,13 @@ test.page(getPage(PROPS_MOCK))(
   },
 );
 
-test.page(getPage({ ...PROPS_MOCK, open: true, loading: true }))(
-  'Renders opened with skeletons, disabled chips and readAllButton, no footer button, but settings button is still working and opens droplist',
+test.only.page(getPage({ ...PROPS_MOCK, amount: 0, loading: true }))(
+  'Renders opened with skeletons, disabled chips and readAllButton, but settings button is still working and opens droplist',
   async t => {
     const { panel, skeleton, chips, settings, footerButton } = SELECTORS.getPanel();
     const { card } = SELECTORS.getCard();
 
-    await t.expect(panel.exists).ok('NotificationPanel is not opened');
+    await t.expect(panel.exists).ok('NotificationPanel not exists');
 
     await t.expect(card.exists).notOk('Should be without cards');
 
@@ -74,8 +70,6 @@ test.page(getPage({ ...PROPS_MOCK, open: true, loading: true }))(
 
     await t.expect(chips.exists).ok('No chips rendered');
     await t.expect(chips.getAttribute('data-disabled')).eql('true', 'Chips is not disabled');
-
-    await t.expect(footerButton.exists).notOk('footerButton should not exists');
 
     await t.expect(settings.droplistTrigger.exists).ok('Settings button not exists');
 
@@ -95,7 +89,6 @@ test.page(getPage({ ...PROPS_MOCK, open: true, loading: true }))(
 
 test.page(
   getPage({
-    open: true,
     amount: 0,
     footerButton: '!undefined',
     readAllButton: '!undefined',

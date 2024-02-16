@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { MouseEventHandler, ReactElement, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
+import { ButtonSimple, ButtonSimpleProps, ButtonTonal, ButtonTonalProps } from '@snack-uikit/button';
 import { Link, LinkProps } from '@snack-uikit/link';
 import { BaseItemProps } from '@snack-uikit/list';
 import { TruncateString } from '@snack-uikit/truncate-string';
@@ -39,6 +40,10 @@ export type NotificationCardProps = WithSupportProps<{
   onClick?: MouseEventHandler<HTMLDivElement>;
   /** Колбэк при попадании карточки в область видимости на 80% */
   onVisible?(cardId: string): void;
+  /** Кнопка главного действия у карточки */
+  primaryButton?: Omit<ButtonTonalProps, 'size' | 'appearance' | 'data-test-id'>;
+  /** Кнопка второстепенного действия у карточки */
+  secondaryButton?: Omit<ButtonSimpleProps, 'size' | 'appearance' | 'data-test-id'>;
   /** Дополнительные действия у карточки */
   actions?: Action[];
   /** CSS-класс */
@@ -56,15 +61,22 @@ export function NotificationCard({
   link,
   date,
   onClick,
+  primaryButton,
+  secondaryButton,
   actions,
   onVisible,
   className,
   ...rest
 }: NotificationCardProps) {
-  const { icon, linkOnColor } = useMemo<{ icon: ReturnType<typeof getIcon>; linkOnColor: LinkProps['appearance'] }>(
+  const { icon, linkOnColor, buttonAppearance } = useMemo<{
+    icon: ReturnType<typeof getIcon>;
+    linkOnColor: LinkProps['appearance'];
+    buttonAppearance: ButtonTonalProps['appearance'];
+  }>(
     () => ({
       icon: getIcon(appearance),
       linkOnColor: appearance === APPEARANCE.ErrorCritical ? 'red' : undefined,
+      buttonAppearance: appearance === APPEARANCE.ErrorCritical ? 'destructive' : 'primary',
     }),
     [appearance],
   );
@@ -142,6 +154,28 @@ export function NotificationCard({
         <Typography.SansBodyS tag='div' className={styles.notificationCardContent} data-test-id={TEST_IDS.content}>
           {content}
         </Typography.SansBodyS>
+      )}
+
+      {(primaryButton || secondaryButton) && (
+        <div className={styles.notificationCardButtons}>
+          {secondaryButton && (
+            <ButtonSimple
+              {...secondaryButton}
+              appearance={buttonAppearance}
+              size='s'
+              data-test-id={TEST_IDS.primaryButton}
+            />
+          )}
+
+          {primaryButton && (
+            <ButtonTonal
+              {...primaryButton}
+              appearance={buttonAppearance}
+              size='s'
+              data-test-id={TEST_IDS.secondaryButton}
+            />
+          )}
+        </div>
       )}
 
       {showFooter && (

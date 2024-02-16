@@ -22,13 +22,14 @@ export const SELECTORS = {
         droplistTrigger: card.find(dataTestIdSelector(CARD_TEST_IDS.actions.droplistTrigger)),
         droplistAction: Selector(dataTestIdSelector(CARD_TEST_IDS.actions.droplistAction)),
       },
+      primaryButton: card.find(dataTestIdSelector(CARD_TEST_IDS.primaryButton)),
+      secondaryButton: card.find(dataTestIdSelector(CARD_TEST_IDS.secondaryButton)),
     };
   },
   getPanel: () => {
     const panel = Selector(dataTestIdSelector(STORY_TEST_IDS.panel));
 
     return {
-      storyPanelTrigger: Selector(dataTestIdSelector(STORY_TEST_IDS.panelTrigger)),
       panel,
       panelTitle: panel.find(dataTestIdSelector(PANEL_TEST_IDS.title)),
       settings: {
