@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.14.0 (2024-02-16)
+
+
+### Features
+
+* **FF-4218:** Field slider ([7a853bf](https://github.com/cloud-ru-tech/snack-uikit/commit/7a853bf8807ae595b2a8a635d754825305c07d6a))
+
+
+
+
+
 ## 0.13.4 (2024-02-12)
 
 
