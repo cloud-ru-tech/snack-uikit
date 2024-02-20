@@ -8,7 +8,7 @@ import { toaster } from '@snack-uikit/toaster';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { AccordionPrimary, CollapseBlockProps } from '../src';
+import { AccordionPrimary, CollapseBlockPrimaryProps } from '../src';
 import { CollapseBlockHeaderProps } from '../src/helperComponents';
 import { TEST_IDS } from '../src/testIds';
 import { COLLAPSE_BLOCK_STORY_SETTINGS } from './constants';
@@ -22,7 +22,7 @@ const meta: Meta = {
 
 export default meta;
 
-type StoryProps = CollapseBlockProps & {
+type StoryProps = CollapseBlockPrimaryProps & {
   showTip: boolean;
   showActions: boolean;
   expanded: boolean;
@@ -31,7 +31,7 @@ type StoryProps = CollapseBlockProps & {
   metadata?: string;
 } & CollapseBlockHeaderProps;
 
-const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, outline, ...args }: StoryProps) => {
   const [expanded, setExpanded] = useState<string>();
 
   useEffect(() => {
@@ -67,6 +67,7 @@ const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, ...args 
           id={id}
           actions={actions}
           data-test-id={args['data-test-id']}
+          outline={outline}
           header={customHeader ? <CustomHeader {...args} /> : <AccordionPrimary.CollapseBlockHeader {...args} />}
         >
           <Content />
@@ -78,7 +79,7 @@ const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, ...args 
 
 export const collapseBlockPrimary: StoryObj<StoryProps> = Template.bind({});
 
-collapseBlockPrimary.args = COLLAPSE_BLOCK_STORY_SETTINGS.args;
+collapseBlockPrimary.args = { ...COLLAPSE_BLOCK_STORY_SETTINGS.args, outline: false };
 
 collapseBlockPrimary.argTypes = COLLAPSE_BLOCK_STORY_SETTINGS.argTypes as Partial<ArgTypes<StoryProps>>;
 

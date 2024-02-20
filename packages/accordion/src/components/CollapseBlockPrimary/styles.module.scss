@@ -1,14 +1,33 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
 
-.container {
-  @include composite-var($collapse-block-container-primary);
-
+.containerBase {
   max-width: 100%;
   background-color: $sys-neutral-background1-level;
 
   &:focus-within,
-  &:hover{
+  &:hover {
     background-color: $sys-neutral-background2-level;
+  }
+}
+
+.container {
+  @include composite-var($collapse-block-container-primary);
+
+  &:focus-within,
+  &:hover {
     box-shadow: $box-shadow-elevation-level2;
+  }
+}
+
+.containerOutline {
+  @include composite-var($collapse-block-container-primary-outline);
+
+  border-width: 0;
+  outline-color: $sys-neutral-decor-default;
+  outline-style: solid;
+  outline-width: $border-width-accordion-collapse-block-primary;
+  &:focus-within,
+  &:hover {
+    outline-color: $sys-neutral-decor-hovered;
   }
 }

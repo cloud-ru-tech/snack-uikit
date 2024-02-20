@@ -4,7 +4,7 @@ import { WithSupportProps } from '@snack-uikit/utils';
 
 import { SELECTION_MODE } from './constants';
 
-export type CollapseBlockProps = WithSupportProps<{
+export type CollapseBlockSecondaryProps = WithSupportProps<{
   /** Уникальный id блока */
   id: string;
   /** Заголовок */
@@ -16,6 +16,13 @@ export type CollapseBlockProps = WithSupportProps<{
   /** CSS-класс */
   className?: string;
 }>;
+
+export type CollapseBlockPrimaryProps = CollapseBlockSecondaryProps & {
+  /** Внешний бордер  */
+  outline?: boolean;
+};
+
+export type CollapseBlockProps = CollapseBlockPrimaryProps | CollapseBlockSecondaryProps;
 
 export type AccordionProps = WithSupportProps<{
   /** Вложенный контент */

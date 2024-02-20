@@ -8,7 +8,7 @@ import { toaster } from '@snack-uikit/toaster';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { AccordionSecondary, CollapseBlockProps } from '../src';
+import { AccordionSecondary, CollapseBlockSecondaryProps } from '../src';
 import { CollapseBlockHeaderProps } from '../src/helperComponents';
 import { TEST_IDS } from '../src/testIds';
 import { COLLAPSE_BLOCK_STORY_SETTINGS } from './constants';
@@ -22,7 +22,7 @@ const meta: Meta = {
 
 export default meta;
 
-type StoryProps = CollapseBlockProps & {
+type StoryProps = CollapseBlockSecondaryProps & {
   showTip: boolean;
   showActions: boolean;
   expanded: boolean;
