@@ -100,6 +100,12 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
   overflow: hidden;
 }
 
+.actions {
+  display: flex;
+  gap: $dimension-2m;
+  align-items: center;
+}
+
 .closeButton {
   @include composite-var($alert-top-button-button-close);
 
@@ -151,10 +157,4 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
       } 
     }
   }
-}
-
-.actions {
-  display: flex;
-  gap: $dimension-2m;
-  align-items: center;
 }

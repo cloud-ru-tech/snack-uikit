@@ -1,7 +1,6 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tooltip';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-
 .tooltipContainer {
   @include composite-var($tooltip-container);
 

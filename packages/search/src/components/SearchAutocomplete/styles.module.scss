@@ -1,12 +1,5 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-search';
 
-.triggerClassName {
-  --offset: #{$space-drop-list-drop-offset};
-
-  display: flex;
-  flex-grow: 1;
-}
-
 .wrap {
   display: flex;
   flex-grow: 1;
@@ -14,3 +7,9 @@
   min-width: 0;
 }
 
+.triggerClassName {
+  --offset: #{$space-drop-list-drop-offset};
+
+  display: flex;
+  flex-grow: 1;
+}

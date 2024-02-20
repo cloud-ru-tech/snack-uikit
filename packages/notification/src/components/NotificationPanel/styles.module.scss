@@ -29,6 +29,12 @@
     border-radius: inherit;
   }
 }
+.notificationPanelChips {
+  @include composite-var($notification-panel-header-chips);
+
+  display: flex;
+  align-items: center;
+}
 
 .notificationPanelHeaderFunctions {
   display: flex;
@@ -36,12 +42,6 @@
   justify-content: space-between;
 }
 
-.notificationPanelChips {
-  @include composite-var($notification-panel-header-chips);
-
-  display: flex;
-  align-items: center;
-}
 
 .notificationPanelHeadline {
   @include composite-var($notification-panel-header-headline);

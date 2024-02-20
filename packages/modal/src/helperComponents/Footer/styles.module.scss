@@ -22,20 +22,20 @@
   display: flex;
   flex-direction: column;
 
-  &[data-align='center'] {
-    align-items: center;
-
-    .footerDisclaimer {
-      align-items: center;
-    }
-  }
-
   &[data-align='vertical'] {
     align-items: center;
 
     .footerActions {
       width: 100%;
     }
+
+    .footerDisclaimer {
+      align-items: center;
+    }
+  }
+
+  &[data-align='center'] {
+    align-items: center;
 
     .footerDisclaimer {
       align-items: center;

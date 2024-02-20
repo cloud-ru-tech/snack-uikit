@@ -1,8 +1,6 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tabs';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-$types: 'primary', 'secondary';
-
 @mixin increasedClickArea($gap) {
   &::after {
     content: ' ';
@@ -14,6 +12,8 @@ $types: 'primary', 'secondary';
     left: calc(#{$gap} / -2);
   }
 }
+
+$types: 'primary', 'secondary';
 
 .tab {
   cursor: pointer;

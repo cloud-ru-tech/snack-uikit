@@ -45,8 +45,8 @@ export function Popover({
           {tip}
         </div>
       }
-      arrowContainerClassName={styles.popoverArrowContainer}
       arrowElementClassName={styles.popoverArrowElement}
+      arrowContainerClassName={styles.popoverArrowContainer}
       trigger={trigger}
       hasArrow
       {...otherProps}

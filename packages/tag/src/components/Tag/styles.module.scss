@@ -2,12 +2,10 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 'xs', 's';
-
 $label-typography: (
   'xs': $sans-label-s,
   's': $sans-label-m
 );
-
 $appearances: (
   'neutral': (
     'container': $sys-neutral-decor-default,

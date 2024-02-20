@@ -13,6 +13,12 @@
   }
 }
 
+.popoverArrowElement {
+  @include composite-var($popover-pointer-arrow);
+
+  fill: currentColor;
+}
+
 .popoverArrowContainer {
   @include composite-var($popover-popover-pointer);
 
@@ -24,10 +30,4 @@
   padding-bottom: 0;
 
   color: $sys-neutral-background2-level;
-}
-
-.popoverArrowElement {
-  @include composite-var($popover-pointer-arrow);
-
-  fill: currentColor;
 }

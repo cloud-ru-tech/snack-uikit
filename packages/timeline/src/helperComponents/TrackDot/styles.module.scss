@@ -3,15 +3,6 @@
 
 $appearances: 'primary', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
 
-.trackDotContainer {
-  @include composite-var($timeline-track-dot-container);
-
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-}
-
 .trackDot {
   flex-shrink: 0;
   box-sizing: border-box;
@@ -43,3 +34,13 @@ $appearances: 'primary', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', '
     }
   }
 }
+
+.trackDotContainer {
+  @include composite-var($timeline-track-dot-container);
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+

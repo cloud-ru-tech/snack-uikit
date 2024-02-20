@@ -1,6 +1,10 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropZone';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
+.hidden {
+  display: none;
+}
+
 .container {
   @include composite-var($drop-zone-container-single);
   @include composite-var($drop-zone-content-layout-single);
@@ -78,8 +82,4 @@
       color: $sys-neutral-text-disabled;
     }
   }
-}
-
-.hidden {
-  display: none;
 }

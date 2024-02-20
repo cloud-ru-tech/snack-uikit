@@ -26,17 +26,6 @@
   }
 }
 
-@mixin icon-size {
-  .icon {
-    display: inline-flex;
-
-    svg {
-      width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-      height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    }
-  }
-}
-
 @mixin chip-anatomy-styles($chip-theme, $sizes, $typography, $contentClassName: null) {
   @include icon-size;
 
@@ -65,6 +54,17 @@
         @include composite-var($chip-theme, 'container', $size);
 
       }
+    }
+  }
+}
+
+@mixin icon-size {
+  .icon {
+    display: inline-flex;
+
+    svg {
+      width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+      height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 }

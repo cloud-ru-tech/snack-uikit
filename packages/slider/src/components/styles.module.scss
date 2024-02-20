@@ -3,11 +3,11 @@
 
 $theme-name: osThemeSnack;
 
+$height: $size-slider-handle;
+
 $height-with-marks: calc(
   $size-slider-handle + $size-slider-scale-bar-step-height + $space-slider-scale-bar-step-gap + $sans-body-s-line-height
 );
-
-$height: $size-slider-handle;
 
 /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 :global {

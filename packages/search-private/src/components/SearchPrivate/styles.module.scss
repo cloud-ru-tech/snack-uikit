@@ -27,6 +27,12 @@ $sizes: 's', 'm', 'l';
   }
 }
 
+.postfix {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: $space-fields-postfix-gap;
+}
+
 .prefix {
   display: inline-flex;
   flex-shrink: 0;
@@ -34,10 +40,4 @@ $sizes: 's', 'm', 'l';
   justify-content: center;
 
   color: $sys-neutral-text-light;
-}
-
-.postfix {
-  display: inline-flex;
-  flex-shrink: 0;
-  gap: $space-fields-postfix-gap;
 }

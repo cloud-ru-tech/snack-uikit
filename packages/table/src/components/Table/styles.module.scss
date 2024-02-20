@@ -27,16 +27,17 @@
   }
 }
 
-.tableContent {
-  min-width: max-content;
-}
-
 .header {
   @include composite-var($table-header);
 
   display: flex;
   flex-direction: column;
 }
+
+.tableContent {
+  min-width: max-content;
+}
+
 
 .toolbar {
   flex: 1 0 auto;

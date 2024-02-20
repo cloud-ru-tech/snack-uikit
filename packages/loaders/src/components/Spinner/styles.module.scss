@@ -7,12 +7,12 @@ $sizes: 'xs', 's', 'm', 'l';
   stroke: currentColor;
   animation: spin 1s ease-in-out infinite;
 
-  & > mask {
-    mask-type: alpha;
-  }
-
   & > g > path {
     fill: currentColor;
+  }
+
+  & > mask {
+    mask-type: alpha;
   }
 
   @each $size in $sizes {

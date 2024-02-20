@@ -81,12 +81,13 @@
   }
 }
 
-.icon {
-  flex-shrink: 0;
-}
-
 .content {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
+.icon {
+  flex-shrink: 0;
+}
+

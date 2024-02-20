@@ -10,10 +10,6 @@
   box-sizing: border-box;
 }
 
-.label {
-  color: $sys-primary-accent-default;
-}
-
 .icon {
   display: flex;
   align-items: center;
@@ -24,4 +20,8 @@
     width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
     height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
+}
+
+.label {
+  color: $sys-primary-accent-default;
 }

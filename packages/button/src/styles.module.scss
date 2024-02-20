@@ -1,13 +1,14 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-@mixin label-color($color) {
-  .label {
+
+@mixin icon-fill($color) {
+  .icon {
     color: $color;
   }
 }
 
-@mixin icon-fill($color) {
-  .icon {
+@mixin label-color($color) {
+  .label {
     color: $color;
   }
 }

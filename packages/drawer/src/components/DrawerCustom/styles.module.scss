@@ -1,7 +1,7 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-drawer';
 
-$sizes: ('s', 'm', 'l');
 $modes: ('regular', 'soft');
+$sizes: ('s', 'm', 'l');
 $drawer-background-color: (
   'regular': $sys-neutral-background1-level,
   'soft': $sys-neutral-background2-level,

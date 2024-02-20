@@ -2,10 +2,6 @@
   position: relative;
 }
 
-.skeletonTextRow {
-  display: inline;
-}
-
 .skeletonTextLine {
   display: inline-block;
 
@@ -14,6 +10,10 @@
   margin-bottom: 0;
 
   vertical-align: middle;
+}
+
+.skeletonTextRow {
+  display: inline;
 }
 
 .skeletonTextRow + .skeletonTextRow:last-child {

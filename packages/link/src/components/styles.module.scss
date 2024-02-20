@@ -2,8 +2,8 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
-$appearances: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
 $text-modes: 'default', 'accent', 'on-accent';
+$appearances: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
 $icon-sizes: (
   's': $icon-xs,
   'm': $icon-s,

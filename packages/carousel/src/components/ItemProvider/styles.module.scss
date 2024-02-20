@@ -21,16 +21,16 @@
   }
 }
 
+.itemContainer {
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
 .itemTracker {
   display: flex;
   gap: var(--gap, $dimension-2m);
   box-sizing: border-box;
   height: 100%;
-}
-
-.itemContainer {
-  flex-shrink: 0;
-  box-sizing: border-box;
 }
 
 .hiddenItem {
