@@ -127,7 +127,7 @@ export function Card({
           </div>
         </div>
 
-        {!disabled && checked && multipleSelection && <Check className={styles.check} />}
+        {checked && multipleSelection && <Check className={styles.check} />}
       </div>
     </CardContext.Provider>
   );

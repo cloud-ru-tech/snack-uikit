@@ -156,6 +156,11 @@ $sizes: 's', 'm', 'l';
     outline-color: $sys-neutral-decor-default;
     outline-width: $border-width-card-container;
 
+    .check {
+      color: $sys-neutral-on-accent;
+      background-color: $sys-neutral-text-disabled;
+    }
+
     * {
       cursor: not-allowed;
     }
