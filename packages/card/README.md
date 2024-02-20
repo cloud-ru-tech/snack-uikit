@@ -32,7 +32,7 @@ import { Card, SearchPrivate } from "@snack-uikit/card";
 | checked | `boolean` | - | Управление состоянием выбран/не выбран |
 | outline | `boolean` | - | Управление состоянием наличия обводки |
 | multipleSelection | `boolean` | - | Отображение галочки для режима массового выделения карточек |
-| onClick | `() => void` | - | Колбек на клик по карточке |
+| onClick | `(e: MouseEvent<HTMLDivElement \| HTMLAnchorElement, MouseEvent>) => void` | - | Колбек на клик по карточке |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
 | promoBadge | `string` | - | Текст для PromoBadge |
 | children | `ReactNode` | - | Вложенный контент |
@@ -41,6 +41,7 @@ import { Card, SearchPrivate } from "@snack-uikit/card";
 | image | `ReactNode` | - | Вложенный Image |
 | functionBadge | `ReactNode` | - | Вложенный FunctionBadge |
 | className | `string` | - | CSS-класс для элемента с контентом |
+| href | `string` | - | Ссылка карточки |
 
 
 [//]: DOCUMENTATION_SECTION_END

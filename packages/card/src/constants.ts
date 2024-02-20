@@ -15,4 +15,5 @@ export const TEST_IDS = {
   title: 'card__header__title',
   description: 'card__header__description',
   metadata: 'card__header__metadata',
+  anchor: 'card__anchor',
 };

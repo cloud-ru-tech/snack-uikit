@@ -27,6 +27,7 @@ function getSelectors() {
     toast: Selector(dataTestIdSelector(STORY_TEST_IDS.toaster)),
     droplist: Selector(dataTestIdSelector(TEST_IDS.droplist)),
     option: Selector(dataTestIdSelector(TEST_IDS.option)),
+    anchor: Selector(dataTestIdSelector(TEST_IDS.anchor)),
   };
 }
 
@@ -38,6 +39,7 @@ const MOCK_DATA = {
   metadata: 'Metadata',
   metadataLong: 'Metadata Metadata Metadata Metadata Metadata Metadata Metadata Metadata Metadata Metadata',
   promoBadge: 'PromoBadge',
+  href: 'cloud-ru',
 };
 
 test.page(
@@ -143,4 +145,29 @@ test.page(
   await t.click(card).expect(check.exists).notOk(`Card.Check shouldn't render after card is checked`);
 
   await t.click(card).expect(check.exists).notOk(`Card.Check shouldn't render after card is unchecked`);
+});
+
+test.page(
+  getPage({
+    title: MOCK_DATA.title,
+    metadata: MOCK_DATA.metadata,
+    description: MOCK_DATA.description,
+    href: MOCK_DATA.href,
+  }),
+)(`Card should use anchor element if href prop was passed`, async t => {
+  const { anchor } = getSelectors();
+
+  await t.expect(anchor.exists).ok(`Card.Check anchor should render`);
+});
+
+test.page(
+  getPage({
+    title: MOCK_DATA.title,
+    metadata: MOCK_DATA.metadata,
+    description: MOCK_DATA.description,
+  }),
+)(`Card should not use anchor element if href prop was not passed`, async t => {
+  const { anchor } = getSelectors();
+
+  await t.expect(anchor.exists).notOk(`Card.Check anchor shouldn't render`);
 });

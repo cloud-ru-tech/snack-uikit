@@ -1,10 +1,10 @@
 import cn from 'classnames';
-import { KeyboardEvent, ReactElement, ReactNode, useCallback, useRef } from 'react';
+import { KeyboardEvent, MouseEvent, ReactElement, ReactNode, useCallback, useRef } from 'react';
 
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { SIZE } from '../../constants';
+import { SIZE, TEST_IDS } from '../../constants';
 import { CardContext } from '../../context';
 import { Check, FunctionBadgeWrapper, PromoBadge } from '../../helperComponents';
 import { Size } from '../../types';
@@ -22,7 +22,7 @@ export type CardProps = WithSupportProps<{
   /** Отображение галочки для режима массового выделения карточек */
   multipleSelection?: boolean;
   /** Колбек на клик по карточке */
-  onClick?(): void;
+  onClick?(e: MouseEvent<HTMLDivElement | HTMLAnchorElement>): void;
   /** Размер */
   size?: Size;
   /** Текст для PromoBadge */
@@ -39,6 +39,8 @@ export type CardProps = WithSupportProps<{
   functionBadge?: ReactNode;
   /** CSS-класс для элемента с контентом */
   className?: string;
+  /** Ссылка карточки */
+  href?: string;
 }>;
 
 export function Card({
@@ -55,28 +57,32 @@ export function Card({
   promoBadge,
   image,
   className,
+  href,
   ...rest
 }: CardProps) {
-  const localRef = useRef<HTMLDivElement>(null);
+  const localDivRef = useRef<HTMLDivElement>(null);
+  const localAnchorRef = useRef<HTMLAnchorElement>(null);
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent<HTMLDivElement>) => {
-      if (e.target === localRef.current) {
+      if (e.target === localDivRef.current) {
         if (TRIGGER_CLICK_KEY_CODES.includes(e.code)) {
-          onClick?.();
+          href ? localAnchorRef.current?.click() : localDivRef.current?.click();
         }
       }
     },
-    [onClick],
+    [href],
   );
+
+  const supportProps = extractSupportProps(rest);
 
   return (
     <CardContext.Provider value={{ size, disabled }}>
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
       <div
-        ref={localRef}
+        ref={localDivRef}
         className={cn(styles.card, className)}
-        {...extractSupportProps(rest)}
+        {...supportProps}
         onClick={onClick}
         data-disabled={disabled || undefined}
         data-checked={checked || undefined}
@@ -91,6 +97,17 @@ export function Card({
         {promoBadge && <PromoBadge text={promoBadge} />}
 
         <div className={styles.composition} tabIndex={-1}>
+          {href && (
+            <a
+              ref={localAnchorRef}
+              data-test-id={TEST_IDS.anchor}
+              tabIndex={-1}
+              href={href}
+              className={styles.anchor}
+              aria-label={supportProps['aria-label'] as string}
+            />
+          )}
+
           {!disabled && functionBadge && (
             <FunctionBadgeWrapper className={styles.functionBadgeWrapper}>{functionBadge}</FunctionBadgeWrapper>
           )}
