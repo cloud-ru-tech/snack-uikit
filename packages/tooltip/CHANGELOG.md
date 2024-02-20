@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2024-02-20)
+
+
+### Bug Fixes
+
+* **FF-4297:** apply system-layer tokens ([7c8fd4b](https://github.com/cloud-ru-tech/snack-uikit/commit/7c8fd4b5334360b2fc31da92973b6835ffa287af))
+
+
+### Features
+
+* **FF-4218:** Field slider ([7a853bf](https://github.com/cloud-ru-tech/snack-uikit/commit/7a853bf8807ae595b2a8a635d754825305c07d6a))
+
+
+
+
+
 ## 0.11.1 (2024-02-05)
 
 ### Only dependencies have been changed
