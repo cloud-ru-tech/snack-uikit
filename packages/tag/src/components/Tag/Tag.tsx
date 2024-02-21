@@ -20,6 +20,8 @@ export type TagProps = WithSupportProps<{
   onDelete?: MouseEventHandler<HTMLButtonElement>;
   /** CSS-класс */
   className?: string;
+  /** tabIndex кнопки удаления */
+  tabIndex?: number;
 }>;
 
 export function Tag({
@@ -28,6 +30,7 @@ export function Tag({
   appearance = APPEARANCE.Neutral,
   onDelete,
   className,
+  tabIndex,
   ...rest
 }: TagProps) {
   return (
@@ -40,7 +43,13 @@ export function Tag({
     >
       <span className={styles.label}>{label}</span>
       {onDelete && (
-        <button type='button' className={styles.tagButton} onClick={onDelete} data-test-id='tag-remove-button'>
+        <button
+          type='button'
+          className={styles.tagButton}
+          onClick={onDelete}
+          data-test-id='tag-remove-button'
+          tabIndex={tabIndex}
+        >
           {size === SIZE.Xs ? (
             <CrossSVG size={ICON_SIZE[size]} className={styles.icon} />
           ) : (

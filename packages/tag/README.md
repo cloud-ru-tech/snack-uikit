@@ -16,6 +16,7 @@
 | appearance | enum Appearance: `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | neutral | Внешний вид |
 | onDelete | `MouseEventHandler<HTMLButtonElement>` | - | Коллбэк на удаление |
 | className | `string` | - | CSS-класс |
+| tabIndex | `number` | - | tabIndex кнопки удаления |
 ## TagRow
 ### Props
 | name | type | default value | description |
