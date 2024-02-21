@@ -15,6 +15,17 @@ export const en_GB = {
     rowsOptionsLabel: 'Rows volume: ',
     export: 'Export to ',
   },
+  List: {
+    noData: {
+      description: 'No data',
+    },
+    noResults: {
+      description: 'Nothing found',
+    },
+    errorData: {
+      description: 'Error loading data',
+    },
+  },
   Chips: {
     clearAllButton: 'Clear all',
   },

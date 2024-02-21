@@ -20,6 +20,17 @@ export const ru_RU: typeof en_GB = {
   Chips: {
     clearAllButton: 'Удалить все',
   },
+  List: {
+    noData: {
+      description: 'Нет данных',
+    },
+    noResults: {
+      description: 'Не найдено',
+    },
+    errorData: {
+      description: 'Ошибка загрузки данных',
+    },
+  },
   Fields: {
     limitTooltip: {
       max: 'Значение должно быть меньше либо равно ',
