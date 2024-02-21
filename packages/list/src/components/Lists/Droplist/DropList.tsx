@@ -1,4 +1,4 @@
-import { cloneElement, isValidElement, KeyboardEvent, useCallback, useMemo, useRef } from 'react';
+import { cloneElement, isValidElement, KeyboardEvent, ReactNode, useCallback, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Dropdown } from '@snack-uikit/dropdown';
@@ -83,11 +83,9 @@ export function Droplist({
   const [open, setOpen] = useUncontrolledProp<boolean>(openProp, false, onOpenChange);
 
   const handleOpenChange = (open: boolean) => {
-    if (!open) {
-      resetNestedIndex();
-      resetActiveFocusIndex();
-      setOpenCollapsedItems([]);
-    }
+    resetNestedIndex();
+    resetActiveFocusIndex();
+    setOpenCollapsedItems([]);
 
     setOpen(open);
   };
@@ -109,7 +107,7 @@ export function Droplist({
     [setActiveFocusIndex, setOpen],
   );
 
-  const triggerElem = useMemo(() => {
+  const triggerElem: ReactNode = useMemo(() => {
     if (isValidElement(children)) {
       const props = typeof children.props === 'object' ? children.props : {};
 
@@ -120,6 +118,11 @@ export function Droplist({
         },
       });
     }
+
+    if (typeof children === 'function') {
+      return children({ onKeyDown });
+    }
+
     return children;
   }, [onKeyDown, children]);
 

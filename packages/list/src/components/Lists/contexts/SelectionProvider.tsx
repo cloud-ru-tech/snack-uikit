@@ -1,9 +1,9 @@
 import { createContext, ReactNode, useCallback, useContext } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-type SelectionSingleValueType = string | number | undefined;
+export type SelectionSingleValueType = string | number | undefined;
 
-type SelectionSingleState = {
+export type SelectionSingleState = {
   /** Начальное состояние */
   defaultValue?: SelectionSingleValueType;
   /** Controlled состояние */
@@ -24,7 +24,7 @@ export type SelectionSingleProps = {
   isSelectionMultiple: false;
 } & SelectionSingleState;
 
-type SelectionMultipleState = {
+export type SelectionMultipleState = {
   /** Начальное состояние */
   defaultValue?: SelectionSingleValueType[];
   /** Controlled состояние */
@@ -128,12 +128,10 @@ function SelectionMultipleProvider({
   onChange: onChangeProp,
   children,
 }: SelectionMultipleProps & Child) {
-  const [value, setValue] = useUncontrolledProp<SelectionSingleValueType[]>(valueProp, defaultValue, cb => {
-    onChangeProp?.(cb(value));
-  });
+  const [value, setValue] = useUncontrolledProp<SelectionSingleValueType[]>(valueProp, defaultValue, onChangeProp);
 
   const onChange = useCallback(
-    (newValue: SelectionSingleValueType) =>
+    (newValue: SelectionSingleValueType) => {
       setValue((oldValues: SelectionSingleValueType[]) => {
         if (Array.isArray(oldValues)) {
           if (oldValues.includes(newValue)) {
@@ -143,8 +141,13 @@ function SelectionMultipleProvider({
           return oldValues.concat(newValue);
         }
 
+        if (oldValues === undefined) {
+          return Array.isArray(newValue) ? newValue : [newValue];
+        }
+
         return undefined;
-      }),
+      });
+    },
     [setValue],
   );
 
