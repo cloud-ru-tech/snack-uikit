@@ -4,6 +4,9 @@ $orientations: 'vertical', 'horizontal';
 $sizes: 's', 'm';
 
 .scroll {
+  position: relative;
+  z-index: 0;
+
   box-sizing: border-box;
   width: 100%;
   height: 100%;
