@@ -58,6 +58,7 @@ $hint-icon-container: (
 
 .footer {
   display: flex;
+  gap: $dimension-050m;
   justify-content: space-between;
   box-sizing: border-box;
 
