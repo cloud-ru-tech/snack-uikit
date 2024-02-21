@@ -165,10 +165,7 @@ const Template: StoryFn<StoryProps> = ({
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
           <List
-            size={args.size}
-            marker={args.marker}
-            scroll={args.scroll}
-            loading={args.loading}
+            {...args}
             pinTop={showPinTopItems ? baseItemsWithSwitch : undefined}
             pinBottom={showPinBottomItems ? baseItemsWithSwitch : undefined}
             search={showSearch ? { value: search, onChange: setSearch, placeholder: 'Placeholder' } : undefined}
@@ -192,7 +189,6 @@ const Template: StoryFn<StoryProps> = ({
                 />
               ) : undefined
             }
-            data-test-id={args['data-test-id']}
           />
         </div>
       </div>
@@ -207,8 +203,6 @@ list.args = {
   showPinBottomItems: true,
   showSearch: true,
   showEmptyList: false,
-  noData: 'No data',
-  noResults: 'No results',
   showFooter: true,
   showSwitch: false,
   showGroups: true,

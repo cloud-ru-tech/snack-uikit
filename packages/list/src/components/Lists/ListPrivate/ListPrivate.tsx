@@ -6,6 +6,7 @@ import { Scroll } from '@snack-uikit/scroll';
 import { ToggleGroup } from '@snack-uikit/toggles';
 import { extractSupportProps } from '@snack-uikit/utils';
 
+import { ListEmptyState, useEmptyState } from '../../../helperComponents';
 import { PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from '../../Items';
 import { ListContextProvider } from '../contexts';
 import commonStyles from '../styles.module.scss';
@@ -30,13 +31,16 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
       scrollContainerRef,
       footer,
       loading,
-      noData = 'No data',
-      noResults = 'No results',
       size = 's',
       marker,
       limitedScrollHeight,
       className,
       parent = 'list',
+      noDataState,
+      noResultsState,
+      errorDataState,
+      dataError,
+      dataFiltered,
       ...props
     },
     ref,
@@ -44,7 +48,10 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
     const itemsJSX = useRenderItems(items);
     const itemsPinTopJSX = useRenderItems(pinTop ?? []);
     const itemsPinBottomJSX = useRenderItems(pinBottom ?? []);
-    const hasNoItems = items.length + (pinTop?.length ?? 0) + (pinBottom?.length ?? 0) === 0;
+
+    const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
+
+    const hasNoItems = items.length === 0;
 
     const loadingJSX = useMemo(
       () =>
@@ -68,19 +75,17 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
         <div className={styles.content}>
           {itemsJSX}
           {loadingJSX}
-          {hasNoItems && !search?.value && !loading && (
-            <div className={commonStyles.infoBlock} data-test-id='list__no-data'>
-              {noData}
-            </div>
-          )}
-          {hasNoItems && search?.value && !loading && (
-            <div className={commonStyles.infoBlock} data-test-id='list__no-results'>
-              {noResults}
-            </div>
-          )}
+
+          <ListEmptyState
+            loading={loading}
+            dataError={dataError}
+            emptyStates={emptyStates}
+            itemsLength={items.length}
+            dataFiltered={dataFiltered}
+          />
         </div>
       ),
-      [hasNoItems, itemsJSX, loading, loadingJSX, noData, noResults, search?.value],
+      [dataError, dataFiltered, emptyStates, items.length, itemsJSX, loading, loadingJSX],
     );
 
     const listJSX = (
@@ -111,7 +116,7 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
                 [commonStyles.scrollContainerM]: scroll && limitedScrollHeight && size === 'm',
                 [commonStyles.scrollContainerL]: scroll && limitedScrollHeight && size === 'l',
               })}
-              barHideStrategy='leave'
+              barHideStrategy='never'
               size={size === 's' ? 's' : 'm'}
               ref={scrollContainerRef}
             >

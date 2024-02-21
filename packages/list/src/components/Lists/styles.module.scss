@@ -64,15 +64,3 @@
   height: auto;
   max-height: calc($dimension-1m * 48); // 384px
 }
-
-.infoBlock {
-  @include composite-var($sans-body-s);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: $dimension-1m;
-
-  color: $sys-neutral-text-support;
-}

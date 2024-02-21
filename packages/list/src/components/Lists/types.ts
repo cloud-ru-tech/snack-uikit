@@ -3,6 +3,7 @@ import { FocusEvent, KeyboardEvent, ReactNode, RefObject } from 'react';
 import { DropdownProps } from '@snack-uikit/dropdown';
 import { WithSupportProps } from '@snack-uikit/utils';
 
+import { EmptyStateProps } from '../../helperComponents';
 import { ScrollProps, SearchState } from '../../types';
 import { ItemProps } from '../Items';
 import { ListContextPrivateType, ListContextType, SelectionState } from './contexts';
@@ -11,6 +12,18 @@ type CollapseState = {
   value?: (string | number)[];
   onChange?(value: (string | number)[]): void;
   defaultValue?: (string | number)[];
+};
+
+export type EmptyState = {
+  dataFiltered?: boolean;
+  dataError?: boolean;
+
+  /** Экран при отстутствии данных */
+  noDataState?: EmptyStateProps;
+  /** Экран при отстутствии результатов поиска или фильтров */
+  noResultsState?: EmptyStateProps;
+  /** Экран при ошибке запроса */
+  errorDataState?: EmptyStateProps;
 };
 
 export type ListProps = WithSupportProps<
@@ -23,19 +36,14 @@ export type ListProps = WithSupportProps<
     pinBottom?: ItemProps[];
     /**
      * Кастомизируемый элемент в конце списка
-     * @type ReactElement
+     * @type ReactNode;
      */
     footer?: ReactNode;
     /** Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка  */
     footerActiveElementsRefs?: RefObject<HTMLElement>[];
     /** Настройки поисковой строки */
     search?: SearchState;
-    /** Флаг, отвещающий за состояние загрузки списка */
-    loading?: boolean;
-    /** Текст для состояния "Отсутсвие данных" */
-    noData?: string;
-    /** Текст для состояния "Отсутсвие результата" при поиске */
-    noResults?: string;
+
     /** Tab Index */
     tabIndex?: number;
     /** Настройки раскрытия элементов */
@@ -43,16 +51,25 @@ export type ListProps = WithSupportProps<
     /** CSS-класс */
     className?: string;
     onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
+
+    /** Флаг, отвещающий за состояние загрузки списка */
+    loading?: boolean;
   } & SelectionState &
     ListContextType &
-    ScrollProps
+    ScrollProps &
+    EmptyState
 >;
 
 export type DroplistProps = {
   /** Ссылка на элемент-триггер для дроплиста */
   triggerElemRef?: RefObject<HTMLElement>;
-  /** Триггер для дроплиста */
-  children?: ReactNode;
+
+  /** Триггер для дроплиста
+   * @type ReactNode | ({onKeyDown}) => ReactNode
+   *
+   * Рендер функция принимает аргументы `onKeyDown` - хендлер ввода, для поддержки управления с клавиатуры
+   */
+  children: ReactNode | ((params: { onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void }) => ReactNode);
 } & Pick<DropdownProps, 'trigger' | 'placement' | 'widthStrategy' | 'open' | 'onOpenChange'> &
   Omit<ListProps, 'tabIndex' | 'onKeyDown'>;
 

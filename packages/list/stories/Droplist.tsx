@@ -128,8 +128,6 @@ droplist.argTypes = {
   search: { table: { disable: true } },
   scrollRef: { table: { disable: true } },
   scrollContainerRef: { table: { disable: true } },
-  noData: { table: { disable: true } },
-  noResults: { table: { disable: true } },
 };
 
 droplist.parameters = {

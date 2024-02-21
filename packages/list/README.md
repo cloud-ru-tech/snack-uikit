@@ -21,8 +21,8 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | items* | `ItemProps[]` | - | Основные элементы списка |
+| children* | `ReactNode \| ({onKeyDown}) => ReactNode * Рендер функция принимает аргументы `onKeyDown` - хендлер ввода, для поддержки управления с клавиатуры` | - | Триггер для дроплиста |
 | triggerElemRef | `RefObject<HTMLElement>` | - | Ссылка на элемент-триггер для дроплиста |
-| children | `ReactNode` | - | Триггер для дроплиста |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | auto | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
@@ -31,19 +31,22 @@
 | className | `string` | - | CSS-класс |
 | pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
 | pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
-| footer | `ReactElement` | - | Кастомизируемый элемент в конце списка |
+| footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
 | search | `SearchState` | - | Настройки поисковой строки |
-| loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
-| noData | `string` | - | Текст для состояния "Отсутсвие данных" |
-| noResults | `string` | - | Текст для состояния "Отсутсвие результата" при поиске |
 | collapse | `CollapseState` | {} | Настройки раскрытия элементов |
+| loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | size | "s" \| "m" \| "l" | - | Размер списка |
 | marker | `boolean` | - | Отображать ли маркер у выбранного жлемента списка |
 | scroll | `boolean` | - | Включить ли скролл для основной части списка |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| dataFiltered | `boolean` | - |  |
+| dataError | `boolean` | - |  |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 ## List
 ### Props
 | name | type | default value | description |
@@ -51,22 +54,25 @@
 | items* | `ItemProps[]` | - | Основные элементы списка |
 | pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
 | pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
-| footer | `ReactElement` | - | Кастомизируемый элемент в конце списка |
+| footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
 | search | `SearchState` | - | Настройки поисковой строки |
-| loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
-| noData | `string` | - | Текст для состояния "Отсутсвие данных" |
-| noResults | `string` | - | Текст для состояния "Отсутсвие результата" при поиске |
 | tabIndex | `number` | - | Tab Index |
 | collapse | `CollapseState` | {} | Настройки раскрытия элементов |
 | className | `string` | - | CSS-класс |
 | onKeyDown | `(e: KeyboardEvent<HTMLElement>) => void` | - |  |
+| loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | size | "s" \| "m" \| "l" | - | Размер списка |
 | marker | `boolean` | - | Отображать ли маркер у выбранного жлемента списка |
 | scroll | `boolean` | - | Включить ли скролл для основной части списка |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| dataFiltered | `boolean` | - |  |
+| dataError | `boolean` | - |  |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | ref | `Ref<HTMLElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 

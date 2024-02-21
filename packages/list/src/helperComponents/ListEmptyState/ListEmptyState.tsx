@@ -24,8 +24,12 @@ export function ListEmptyState({ dataError, dataFiltered, itemsLength, emptyStat
   return (
     <div className={styles.listEmptyStateWrapper}>
       {dataError && <InfoBlock {...emptyStates.errorDataState} size='s' align='vertical' />}
-      {!dataError && dataFiltered && <InfoBlock {...emptyStates.noResultsState} size='s' align='vertical' />}
-      {!dataError && !dataFiltered && <InfoBlock {...emptyStates.noDataState} size='s' align='vertical' />}
+      {!dataError && dataFiltered && (
+        <InfoBlock {...emptyStates.noResultsState} size='s' align='vertical' data-test-id='list__no-results' />
+      )}
+      {!dataError && !dataFiltered && (
+        <InfoBlock {...emptyStates.noDataState} size='s' align='vertical' data-test-id='list__no-data' />
+      )}
     </div>
   );
 }
