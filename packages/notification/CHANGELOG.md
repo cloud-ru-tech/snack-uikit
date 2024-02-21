@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-02-21)
+
+
+### Features
+
+* **FF-4309:** remove popover and trigger from NotificationPanel, add buttons to NotificationCard, add Divider ([99d9114](https://github.com/cloud-ru-tech/snack-uikit/commit/99d9114943e2ef1b98bb8ff02b165b5cd4465432))
+
+
+
+
+
 ## 0.6.17 (2024-02-20)
 
 
