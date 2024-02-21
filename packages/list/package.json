@@ -35,6 +35,8 @@
     "@snack-uikit/divider": "3.0.1",
     "@snack-uikit/dropdown": "0.2.0",
     "@snack-uikit/icons": "0.20.1",
+    "@snack-uikit/info-block": "0.2.0",
+    "@snack-uikit/locale": "0.4.0",
     "@snack-uikit/loaders": "0.5.1",
     "@snack-uikit/scroll": "0.5.2",
     "@snack-uikit/search-private": "0.1.5",

@@ -1,0 +1,11 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+.listEmptyStateWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: $dimension-1m;
+}
