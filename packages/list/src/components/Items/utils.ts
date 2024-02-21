@@ -49,14 +49,16 @@ export function getSlicedItems({
 
 export function addItemsIds(itemsProp: ItemProps[], prefix?: string | number): ItemProps[] {
   return itemsProp.map((item, idx) => {
-    const itemId = item.id ?? (prefix !== undefined ? [prefix, idx].join('-') : String(idx));
+    const autoId = prefix !== undefined ? [prefix, idx].join('-') : String(idx);
+    const itemId = item.id ?? autoId;
 
     if (isGroupItemProps(item)) {
-      return { ...item, id: itemId, items: addItemsIds(item.items, itemId) };
+      return { key: autoId, ...item, id: itemId, items: addItemsIds(item.items, itemId) };
     }
 
     if (isAccordionItemProps(item) || isNextListItemProps(item)) {
       return {
+        key: autoId,
         ...item,
         id: itemId,
         items: addItemsIds(item.items, itemId),
@@ -64,6 +66,6 @@ export function addItemsIds(itemsProp: ItemProps[], prefix?: string | number): I
       };
     }
 
-    return { ...item, id: itemId, itemRef: item.itemRef || createRef<HTMLElement>() };
+    return { key: autoId, ...item, id: itemId, itemRef: item.itemRef || createRef<HTMLElement>() };
   });
 }

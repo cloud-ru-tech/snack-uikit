@@ -12,20 +12,20 @@ import { addItemsIds, isAccordionItemProps, isGroupItemProps, isNextListItemProp
 export function useRenderItems(items: ItemProps[]) {
   return useMemo(
     () =>
-      items.map((item, idx) => {
+      items.map(item => {
         if (isGroupItemProps(item)) {
-          return <GroupItem {...item} key={item.id} />;
+          return <GroupItem {...item} key={item.label} />;
         }
 
         if (isAccordionItemProps(item)) {
-          return <AccordionItem {...item} key={idx} />;
+          return <AccordionItem {...item} key={item.key} />;
         }
 
         if (isNextListItemProps(item)) {
-          return <NextListItem {...item} key={item.id} />;
+          return <NextListItem {...item} key={item.key} />;
         }
 
-        return <BaseItem {...item} key={item.id} />;
+        return <BaseItem {...item} key={item.key} />;
       }),
     [items],
   );

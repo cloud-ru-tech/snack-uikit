@@ -59,6 +59,8 @@ export type BaseItemProps = WithSupportProps<{
    */
   switch?: boolean;
 
+  key?: string | number;
+
   itemWrapRender?(item: ReactNode): ReactNode;
 }>;
 
