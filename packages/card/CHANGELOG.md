@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.2 (2024-02-21)
+
+
+### Bug Fixes
+
+* **FF-4147:** display check in disabled state ([d12507c](https://github.com/cloud-ru-tech/snack-uikit/commit/d12507c6e775b43d399eb5ff9366e8db083f0ca9))
+
+
+
+
+
 ## 0.10.1 (2024-02-20)
 
 

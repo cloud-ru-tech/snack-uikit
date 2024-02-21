@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2024-02-21)
+
+
+### Features
+
+* **FF-4296:** add outline prop into CollapseBlockPrimary ([91c7e82](https://github.com/cloud-ru-tech/snack-uikit/commit/91c7e82064ed123e51075478ad2718f00d3f50cf))
+
+
+
+
+
 ## 0.5.9 (2024-02-20)
 
 ### Only dependencies have been changed
