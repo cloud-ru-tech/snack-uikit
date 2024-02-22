@@ -6,52 +6,48 @@ $containerVariant: 'single-line-container';
 $icons-sizes: (
   's': $icon-xs,
   'm': $icon-s,
-  'l': $icon-s
+  'l': $icon-s,
 );
+
+$base-min-width: 4px;
 
 .triggerClassName {
   --offset: #{$space-drop-list-drop-offset};
-  
+
   width: 100%;
 }
 
-
-.scrollContainerS {
-  max-height: 256px;
-}
-
-.scrollContainerM {
-  max-height: 320px;
-}
-
-.scrollContainerL {
-  max-height: 384px;
-}
-
-.displayValue {
-  pointer-events: none;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  overflow: hidden;
+.contentWrapper {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
-  box-sizing: border-box;
-  height: 100%;
+.tagContainer {
+  /* stylelint-disable-next-line declaration-no-important */
+  height: auto !important;
 
-  background-color: inherit;
-  border: none;
-  outline: none;
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($fields, 'select-multiple', $size);
+
+      .contentWrapper {
+        gap: simple-var($fields, 'select-multiple', $size, 'gap');
+      }
+    }
+  }
 }
 
 .container {
+  position: relative;
   flex: 1 1 0;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
+      .inputPlug {
+        @include composite-var($theme-variables, 'sans', 'body', $size);
+      }
+
       .arrowIcon {
         width: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
         height: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
@@ -62,7 +58,11 @@ $icons-sizes: (
         .displayValue {
           $button-width: simple-var($icons-sizes, $size);
           $postfix-width: calc(var(#{$space-fields-postfix-gap}) + $button-width * 2);
-          $margin-right: calc(#{simple-var($fields, $containerVariant, $size, 'padding-right')} + #{simple-var($fields, $containerVariant, $size, 'gap')} + #{$postfix-width});
+          $margin-right: calc(
+            #{simple-var($fields, $containerVariant, $size, 'padding-right')} +
+              #{simple-var($fields, $containerVariant, $size, 'gap')} +
+              #{$postfix-width}
+          );
 
           width: calc(100% - $margin-right);
           margin-right: $margin-right;
@@ -73,15 +73,55 @@ $icons-sizes: (
     }
   }
 
-  &:hover, &:focus-within, &[data-focused] {
+  &:hover,
+  &:focus-within,
+  &[data-focused] {
     .arrowIcon {
       color: $sys-neutral-text-support;
     }
   }
 
-  &[data-disabled], &[data-readonly] {
+  &[data-disabled],
+  &[data-readonly] {
     .arrowIcon {
       color: $sys-neutral-text-disabled;
     }
   }
+}
+
+.inputPlug {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  overflow: hidden;
+
+  width: fit-content;
+  max-width: 100%;
+  height: 0;
+}
+
+.inputWrapper {
+  position: relative;
+
+  display: inline-flex;
+  flex: 1;
+
+  min-width: $base-min-width;
+
+  color: transparent;
+
+  &[data-searchable='false'] {
+    width: 0;
+    min-width: 0;
+    max-width: 0;
+  }
+}
+
+.postfix {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: $space-fields-postfix-gap;
 }

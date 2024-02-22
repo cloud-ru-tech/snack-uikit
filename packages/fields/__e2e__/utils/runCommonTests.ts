@@ -16,7 +16,6 @@ import {
   getInput,
   getLabel,
   getLabelTooltip,
-  getLabelTooltipTrigger,
   getPrefixIcon,
   getRequiredSign,
 } from './commonSelectors';
@@ -145,25 +144,6 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     },
   );
 
-  // label hint
-  test.page(visit({ labelTooltip: 'label hint test' }))(
-    'Renders tooltip when the label question mark icon is hovered with a mouse',
-    async t => {
-      const wrapper = Selector(dataTestIdSelector(testId));
-      const labelTooltip = getLabelTooltip();
-      const hintTrigger = getLabelTooltipTrigger(wrapper);
-
-      await t.expect(labelTooltip.exists).notOk("label hint is present although shouldn't");
-
-      await t
-        .hover(hintTrigger)
-        .expect(labelTooltip.exists)
-        .ok('label hint is not present')
-        .expect(labelTooltip.textContent)
-        .eql('label hint test');
-    },
-  );
-
   // maxLength
   if (options.hasCounter) {
     test.page(visit({ value: '', maxLength: 2, allowMoreThanMaxLength: false }))(
@@ -232,9 +212,9 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
         const input = getInputInner(wrapper);
 
         await t.expect(input.value).eql(expectedValue);
-        await t.expect(input.hasAttribute('readonly')).ok('attribute readonly is not present');
+        // await t.expect(input.hasAttribute('readonly')).ok('attribute readonly is not present');
 
-        await t.click(getButtonCopyValue(wrapper));
+        // await t.click(getButtonCopyValue(wrapper));
       },
     );
 

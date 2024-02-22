@@ -72,7 +72,9 @@ export function FieldContainerPrivate({
           {prefix}
         </span>
       )}
+
       {children}
+
       {postfix && <span className={styles.postfix}>{postfix}</span>}
     </div>
   );

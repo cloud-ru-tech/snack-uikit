@@ -1,26 +1,38 @@
 import { ReactElement } from 'react';
 
-import { ItemSingleProps } from '@snack-uikit/droplist';
 import { InputPrivateProps } from '@snack-uikit/input-private';
+import {
+  AccordionItemProps,
+  BaseItemProps,
+  GroupItemProps,
+  ListProps,
+  NextListItemProps,
+  SelectionMultipleState,
+  SelectionSingleState,
+} from '@snack-uikit/list';
 import { WithSupportProps } from '@snack-uikit/utils';
 
 import { FieldDecoratorProps } from '../FieldDecorator';
 
-export type Option = Pick<ItemSingleProps, 'caption' | 'description' | 'tagLabel' | 'icon' | 'avatar' | 'disabled'> & {
-  value: string;
-  label: string;
-};
+// eslint-disable-next-line no-use-before-define
+export type OptionProps = BaseOptionProps | AccordionOptionProps | GroupOptionProps | NestListOptionProps;
 
-export type ExtendedOption = Option & {
-  checked: boolean;
-};
+// eslint-disable-next-line no-use-before-define
+export type OptionWithoutGroup = BaseOptionProps | AccordionOptionProps | NestListOptionProps;
 
-type InputProps = Pick<
+export type BaseOptionProps = Pick<BaseItemProps, 'beforeContent' | 'afterContent' | 'disabled'> &
+  BaseItemProps['content'] & { value: string | number };
+
+export type AccordionOptionProps = Pick<AccordionItemProps, 'type'> & BaseOptionProps & { options: OptionProps[] };
+export type GroupOptionProps = Omit<GroupItemProps, 'items' | 'id'> & { options: OptionProps[] };
+export type NestListOptionProps = Pick<NextListItemProps, 'type'> & BaseOptionProps & { options: OptionProps[] };
+
+export type InputProps = Pick<
   InputPrivateProps,
-  'id' | 'name' | 'placeholder' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur'
+  'id' | 'name' | 'placeholder' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'onKeyDown'
 >;
 
-type WrapperProps = Pick<
+export type WrapperProps = Pick<
   FieldDecoratorProps,
   | 'className'
   | 'label'
@@ -33,14 +45,16 @@ type WrapperProps = Pick<
   | 'labelTooltipPlacement'
 >;
 
-type FieldSelectOwnProps = {
-  /** Массив опций выпадающего списка */
-  options: Option[];
-  /** Открыт ли выпадающий список */
-  open?: boolean;
-  /** Колбек открытия выпадающего списка */
-  onOpenChange?(value: boolean): void;
-  /** Можно ли искать опции внутри списка */
+export type SearchState = {
+  value?: string;
+  defaultValue?: string;
+  onChange?(value: string): void;
+};
+
+export type FieldSelectPrivateProps = InputProps & WrapperProps & { options: OptionProps[]; loading?: boolean };
+
+type FiledSelectCommonProps = WithSupportProps<{
+  options: OptionProps[];
   searchable?: boolean;
   /** Отображение кнопки Копировать для поля (актуально только для `readonly = true`) */
   showCopyButton?: boolean;
@@ -49,30 +63,31 @@ type FieldSelectOwnProps = {
    * @default true
    */
   showClearButton?: boolean;
+  /**
+   * Является ли поле доступным только для чтения
+   * @default false
+   */
+  readonly?: boolean;
+
   /** Иконка-префикс для поля */
   prefixIcon?: ReactElement;
-  /** Текст отсутствия доступных значений */
-  noDataText?: string;
-  /** Текущая локаль */
-  locale?: Intl.Locale;
-};
 
-export type FieldSelectBaseProps = FieldSelectOwnProps & InputProps & WrapperProps;
+  footer?: ListProps['footer'];
 
-type SingleModeProps = {
-  /** Выбранное значение: <br> - одно для single mode */
-  value?: Option['value'];
-  /** Колбек смены значения */
-  onChange?(value: Option['value']): void;
-};
+  search?: SearchState;
 
-type MultiModeProps = {
-  /** <br> - массив для multi mode */
-  value?: Option['value'][];
-  onChange?(value: Option['value'][]): void;
-  /** Колбек формирования текста */
-  getSelectedItemsText?(amount: number): string;
-};
+  autocomplete?: boolean;
+}>;
 
-export type FieldSelectSingleProps = WithSupportProps<FieldSelectBaseProps & SingleModeProps>;
-export type FieldSelectMultiProps = WithSupportProps<FieldSelectBaseProps & MultiModeProps>;
+export type FieldSelectSingleProps = FieldSelectPrivateProps &
+  Omit<SelectionSingleState, 'mode'> &
+  WrapperProps &
+  FiledSelectCommonProps;
+
+export type FieldSelectMultipleProps = FieldSelectPrivateProps &
+  Omit<SelectionMultipleState, 'mode'> &
+  FiledSelectCommonProps;
+
+export type FieldSelectProps =
+  | (FieldSelectSingleProps & { selection?: 'single' })
+  | (FieldSelectMultipleProps & { selection: 'multiple' });

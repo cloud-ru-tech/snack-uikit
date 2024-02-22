@@ -21,7 +21,11 @@ $variants: 'single-line-container', 'multi-line-container';
     &[data-size='#{$size}'] {
       @include composite-var($fields, 'container', $size);
 
-      &, input, select, textarea, span {
+      &,
+      input,
+      select,
+      textarea,
+      span {
         @include composite-var($theme-variables, 'sans', 'body', $size);
 
         cursor: text;
@@ -35,7 +39,7 @@ $variants: 'single-line-container', 'multi-line-container';
     }
   }
 
-  &[data-validation="default"] {
+  &[data-validation='default'] {
     background-color: simple-var($sys-neutral-background1-level);
     border-color: simple-var($sys-neutral-decor-default);
 
@@ -54,7 +58,7 @@ $variants: 'single-line-container', 'multi-line-container';
     }
   }
 
-  &[data-validation="error"] {
+  &[data-validation='error'] {
     background-color: simple-var($sys-red-background1-level);
     border-color: simple-var($sys-red-decor-default);
 
@@ -73,7 +77,7 @@ $variants: 'single-line-container', 'multi-line-container';
     }
   }
 
-  &[data-validation="warning"] {
+  &[data-validation='warning'] {
     background-color: simple-var($sys-yellow-background1-level);
     border-color: simple-var($sys-yellow-decor-default);
 
@@ -92,7 +96,7 @@ $variants: 'single-line-container', 'multi-line-container';
     }
   }
 
-  &[data-validation="success"] {
+  &[data-validation='success'] {
     background-color: simple-var($sys-green-background1-level);
     border-color: simple-var($sys-green-decor-default);
 
@@ -112,22 +116,32 @@ $variants: 'single-line-container', 'multi-line-container';
   }
 
   &[data-selectable] {
-    &, input, select, textarea, span {
+    &,
+    input,
+    select,
+    textarea,
+    span {
       cursor: pointer;
     }
   }
 
   &[data-readonly] {
-    &, input, select, textarea, span {
+    &,
+    input,
+    select,
+    textarea,
+    span {
       cursor: default;
     }
 
-    &, &:hover {
+    &,
+    &:hover {
       background-color: simple-var($sys-neutral-decor-disabled);
       border-color: simple-var($sys-neutral-decor-disabled);
     }
 
-    &:focus-within, &[data-focused] {
+    &:focus-within,
+    &[data-focused] {
       @include outline-var($container-focused-m);
 
       background-color: simple-var($sys-neutral-decor-disabled);
@@ -137,11 +151,18 @@ $variants: 'single-line-container', 'multi-line-container';
   }
 
   &[data-disabled] {
-    &, input, select, textarea, span {
+    &,
+    input,
+    select,
+    textarea,
+    span {
       cursor: not-allowed;
     }
 
-    &, &:focus-within, &[data-focused], &:hover {
+    &,
+    &:focus-within,
+    &[data-focused],
+    &:hover {
       background-color: simple-var($sys-neutral-background);
       border-color: simple-var($sys-neutral-decor-disabled);
       outline: none;

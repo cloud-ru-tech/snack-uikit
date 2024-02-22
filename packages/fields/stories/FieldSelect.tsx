@@ -1,13 +1,15 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 
+import { Avatar } from '@snack-uikit/avatar';
 import { DaySVG } from '@snack-uikit/icons';
+import { SelectionSingleValueType } from '@snack-uikit/list';
+import { Tag } from '@snack-uikit/tag';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { FieldSelect, FieldSelectProps } from '../src';
-import { SELECTION_MODE } from '../src/components/FieldSelect/constants';
+import { BaseOptionProps, FieldSelect, FieldSelectProps, OptionProps } from '../src/components';
 import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
@@ -17,103 +19,89 @@ const meta: Meta = {
 };
 export default meta;
 
-const DEFAULT_OPTIONS: FieldSelectProps['options'] = [
-  { value: 'op1', label: 'Option 1' },
-  { value: 'op2', label: 'Option 2', description: 'Description' },
-  { value: 'op3', label: 'Option 3', caption: 'Caption' },
-  { value: 'op4', label: 'Option 4', tagLabel: 'Tag Label' },
-  { value: 'op5', label: 'Option 5', disabled: true },
-  { value: 'op11', label: 'Option 11', icon: <DaySVG /> },
-  { value: 'op12', label: 'Option 12', avatar: { name: 'Will Wheaton' } },
+const DEFAULT_OPTIONS: OptionProps[] = [
+  {
+    label: 'Group',
+    options: [
+      { value: 'op1', option: 'Option 1' },
+      { value: 'op2', option: 'Option 2', description: 'Description' },
+      { value: 'op3', option: 'Option 3', caption: 'Caption' },
+      { value: 'op4', option: 'Option 4', afterContent: <Tag label='Tag Label' /> },
+    ],
+  },
+  { value: 'op5', option: 'Option 5', disabled: true },
+  { value: 'op11', option: 'Option 11', beforeContent: <DaySVG /> },
+  { value: 'op12', option: 'Option 12', beforeContent: <Avatar name='Will Wheaton' size='xs' /> },
 ];
 
-const MORE_OPTIONS: FieldSelectProps['options'] = [
-  { value: 'op13', label: 'Option 13' },
-  { value: 'op14', label: 'Option 14' },
-  { value: 'op15', label: 'Option 15' },
-  { value: 'op16', label: 'Option 16' },
-  { value: 'op17', label: 'Option 17' },
-  { value: 'op18', label: 'Option 18' },
-  { value: 'op19', label: 'Option 19' },
-  { value: 'op20', label: 'Option 20' },
-  { value: 'op21', label: 'Option 21' },
-  { value: 'op22', label: 'Option 22' },
-  { value: 'op23', label: 'Option 23' },
-  { value: 'op24', label: 'Option 24' },
-  { value: 'op25', label: 'Option 25' },
-  { value: 'op26', label: 'Option 26' },
-  { value: 'op27', label: 'Option 27' },
-  { value: 'op28', label: 'Option 28' },
-  { value: 'op29', label: 'Option 29' },
-  { value: 'op30', label: 'Option 30' },
+const MORE_OPTIONS: BaseOptionProps[] = [
+  { value: 'op13', option: 'Option 13' },
+  { value: 'op14', option: 'Option 14' },
+  { value: 'op15', option: 'Option 15' },
+  { value: 'op16', option: 'Option 16' },
+  { value: 'op17', option: 'Option 17' },
+  { value: 'op18', option: 'Option 18' },
+  { value: 'op19', option: 'Option 19' },
+  { value: 'op20', option: 'Option 20' },
+  { value: 'op21', option: 'Option 21' },
+  { value: 'op22', option: 'Option 22' },
+  { value: 'op23', option: 'Option 23' },
+  { value: 'op24', option: 'Option 24' },
+  { value: 'op25', option: 'Option 25' },
+  { value: 'op26', option: 'Option 26' },
+  { value: 'op27', option: 'Option 27' },
+  { value: 'op28', option: 'Option 28' },
+  { value: 'op29', option: 'Option 29' },
+  { value: 'op30', option: 'Option 30' },
 ];
-
-const getValue = ({
-  value,
-  selectionMode,
-}: {
-  value?: string;
-  selectionMode: FieldSelectProps['selectionMode'];
-}): string | string[] => {
-  const x = DEFAULT_OPTIONS.find(op => op.label === value)?.value;
-
-  if (selectionMode === SELECTION_MODE.Single) {
-    return x ?? '';
-  }
-
-  return x ? [x] : [];
-};
 
 type StoryProps = FieldSelectProps & {
-  value?: string;
   localeName: string;
   showMoreOptions: boolean;
 };
 
-const Template = ({ size, value: valueProp, selectionMode, localeName, showMoreOptions, ...args }: StoryProps) => {
-  const locale = new Intl.Locale(localeName);
+const Template = ({ selection, showMoreOptions, value, size, ...args }: StoryProps) => {
+  const [singleValue, setSingleValue] = useState<SelectionSingleValueType>();
 
-  const [value, setValue] = useState<string | string[]>(getValue({ value: valueProp, selectionMode }));
-  const firstRender = useRef(true);
+  const [multipleValue, setMultipleValue] = useState<SelectionSingleValueType[]>();
 
-  useEffect(() => {
-    setValue(getValue({ value: valueProp, selectionMode }));
-  }, [selectionMode, valueProp]);
+  const options: OptionProps[] = showMoreOptions ? [...MORE_OPTIONS, ...DEFAULT_OPTIONS] : DEFAULT_OPTIONS;
 
   useLayoutEffect(() => {
-    if (firstRender.current) {
-      return;
+    if (selection === 'single') {
+      setSingleValue(value);
     }
 
-    if (selectionMode === SELECTION_MODE.Single) {
-      setValue('');
-    } else {
-      setValue([]);
+    if (selection === 'multiple') {
+      setMultipleValue(String(value).split(','));
     }
-  }, [selectionMode]);
-
-  useEffect(() => {
-    firstRender.current = false;
-  }, []);
-
-  const options = useMemo(
-    () => (showMoreOptions ? [...args.options, ...MORE_OPTIONS] : args.options),
-    [args.options, showMoreOptions],
-  );
+  }, [selection, value]);
 
   return (
-    <div className={styles.wrapper} data-size={size}>
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
-      <FieldSelect
-        {...args}
-        selectionMode={selectionMode}
-        size={size}
-        value={value}
-        onChange={setValue}
-        locale={locale}
-        options={options}
-      />
+    <div className={styles.wrapper} data-size={size || 's'}>
+      {selection === 'single' && (
+        <FieldSelect
+          {...args}
+          defaultValue={undefined}
+          value={singleValue}
+          onChange={setSingleValue}
+          selection='single'
+          options={options}
+          size={size}
+        />
+      )}
+
+      {selection === 'multiple' && (
+        <FieldSelect
+          {...args}
+          defaultValue={undefined}
+          value={multipleValue}
+          onChange={setMultipleValue}
+          selection='multiple'
+          options={options}
+          size={size}
+        />
+      )}
     </div>
   );
 };
@@ -121,45 +109,36 @@ const Template = ({ size, value: valueProp, selectionMode, localeName, showMoreO
 export const fieldSelect: StoryFn<StoryProps> = Template.bind({});
 
 fieldSelect.args = {
-  id: 'select',
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  selectionMode: SELECTION_MODE.Single,
-  value: undefined,
-  placeholder: 'Placeholder',
-  readonly: false,
-  disabled: false,
-  searchable: true,
+  id: 'newSelect',
   label: 'Label text',
   labelTooltip: 'Tooltip description',
+  placeholder: 'Placeholder',
   required: false,
   hint: 'Hint text',
   size: 's',
+  selection: 'single',
+  searchable: true,
+  readonly: false,
   validationState: 'default',
-  options: DEFAULT_OPTIONS,
+  value: undefined,
+  disabled: false,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   prefixIcon: 'none',
   showCopyButton: true,
   showClearButton: true,
   showMoreOptions: false,
-  localeName: 'en-US',
 };
 
 fieldSelect.argTypes = {
-  value: {
-    name: 'value',
-    defaultValue: '',
-    type: 'string',
-    options: DEFAULT_OPTIONS.map(option => option.label),
-    control: {
-      type: 'select',
-    },
-  },
-  ...COMMON_ARG_TYPES,
+  validationState: COMMON_ARG_TYPES.validationState,
+  prefixIcon: COMMON_ARG_TYPES.prefixIcon,
   showMoreOptions: {
     name: '[Stories] add more options to see scroll',
     type: 'boolean',
+  },
+  value: {
+    type: 'string',
   },
 };
 
@@ -171,6 +150,6 @@ fieldSelect.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=402%3A202402&mode=design',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.2.0?type=design&node-id=41%3A42842&mode=design&t=5X9aSWl1aTk8vRqQ-1',
   },
 };

@@ -41,7 +41,12 @@ export function Header({
           </label>
           {required && <span data-test-id='field-decorator__required-sign'>*</span>}
           {labelTooltip && (
-            <Tooltip tip={labelTooltip} placement={labelTooltipPlacement} data-test-id='field-decorator__label-tooltip'>
+            <Tooltip
+              tip={labelTooltip}
+              placement={labelTooltipPlacement}
+              data-test-id='field-decorator__label-tooltip'
+              triggerClassName={styles.labelTooltipTrigger}
+            >
               <QuestionSVG size={16} className={styles.icon} data-test-id='field-decorator__label-tooltip-trigger' />
             </Tooltip>
           )}

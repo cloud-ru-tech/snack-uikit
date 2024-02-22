@@ -302,23 +302,15 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| options* | `Option[]` | - | Массив опций выпадающего списка |
-| selectionMode | "single" \| "multi" | single |  |
-| open | `boolean` | - | Открыт ли выпадающий список |
-| onOpenChange | `(value: boolean) => void` | - | Колбек открытия выпадающего списка |
-| searchable | `boolean` | - | Можно ли искать опции внутри списка |
-| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
-| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
-| prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
-| noDataText | `string` | - | Текст отсутствия доступных значений |
-| locale | `Locale` | - | Текущая локаль |
+| options* | `OptionProps[]` | - |  |
 | disabled | `boolean` | false | Является ли поле деактивированным |
-| readonly | `boolean` | false | Является ли поле доступным только для чтения |
+| readonly | `boolean` | false false | Является ли поле доступным только для чтения |
 | id | `string` | - | Значение html-атрибута id |
 | name | `string` | - | Значение html-атрибута name |
 | placeholder | `string` | - | Значение плейсхолдера |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
@@ -328,11 +320,20 @@ const [isOpen, setIsOpen] = useState(false);
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | - | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
-| value | `string \| string[]` | - | Выбранное значение: <br> - одно для single mode <br> - массив для multi mode |
-| onChange | `((value: string) => void) \| ((value: string[]) => void)` | - | Колбек смены значения |
+| loading | `boolean` | - |  |
+| value | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Controlled состояние |
+| onChange | `((value: any) => void) \| ((value: any) => void)` | - | Controlled обработчик измения состояния |
+| defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
+| searchable | `boolean` | - |  |
+| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
+| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
+| prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
+| footer | `ReactNode` | - |  |
+| search | `SearchState` | - |  |
+| autocomplete | `boolean` | - |  |
+| selection | "single" \| "multiple" | - |  |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
-| getSelectedItemsText | `(amount: number) => string` | - | Колбек формирования текста |
 ## FieldStepper
 ### Props
 | name | type | default value | description |
