@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2024-02-22)
+
+
+### Features
+
+* **FF-4325:** add tooltip for footer buttons ([5e88828](https://github.com/cloud-ru-tech/snack-uikit/commit/5e88828bdd4b9b655b7759c9b1045630362e82f5))
+
+
+
+
+
 ## 0.1.3 (2024-02-20)
 
 ### Only dependencies have been changed

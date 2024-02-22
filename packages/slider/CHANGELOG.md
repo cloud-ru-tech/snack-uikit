@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.3 (2024-02-22)
+
+
+### Bug Fixes
+
+* **FF-4325:** fix z-index issue for toggle ([f1a1893](https://github.com/cloud-ru-tech/snack-uikit/commit/f1a189322ede924791c263bc9ecbb75393218c31))
+
+
+
+
+
 ## 0.1.2 (2024-02-20)
 
 

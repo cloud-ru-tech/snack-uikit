@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Drawer",
-  "version": "0.6.10",
+  "version": "0.6.11",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@snack-uikit/button": "0.16.1",
     "@snack-uikit/icons": "0.20.1",
-    "@snack-uikit/scroll": "0.5.1",
+    "@snack-uikit/scroll": "0.5.2",
     "@snack-uikit/tooltip": "0.12.0",
     "@snack-uikit/truncate-string": "0.4.8",
     "@snack-uikit/typography": "0.6.1",

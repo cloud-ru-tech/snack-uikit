@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.2 (2024-02-22)
+
+
+### Bug Fixes
+
+* **FF-4325:** fix z-index issue for scrollbar ([04048ad](https://github.com/cloud-ru-tech/snack-uikit/commit/04048ad1c05ff85e5fc9479d5cca96be471aaefe))
+
+
+
+
+
 ## 0.5.1 (2024-02-09)
 
 

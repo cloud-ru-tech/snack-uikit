@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.2 (2024-02-22)
+
+
+### Bug Fixes
+
+* **FF-4325:** fix gap for decorator hint ([db23dcd](https://github.com/cloud-ru-tech/snack-uikit/commit/db23dcd8ef4fc0838912c36de40be1ae172fb914))
+
+
+
+
+
 ## 0.14.1 (2024-02-20)
 
 
