@@ -57,8 +57,9 @@ $hint-icon-container: (
 }
 
 .footer {
+  @include composite-var($fields-hint-container);
+
   display: flex;
-  gap: $dimension-050m;
   justify-content: space-between;
   box-sizing: border-box;
 

@@ -62,7 +62,23 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
       onChangeProp,
     );
 
-    const selectedOption = useMemo(() => extractSelectedMultipleOptions(options, value), [options, value]);
+    const selectedOption = useMemo(() => {
+      const notSortSelectedOption = extractSelectedMultipleOptions(options, value);
+
+      if (notSortSelectedOption) {
+        return notSortSelectedOption.sort((a, b) => {
+          if (b.disabled && !a.disabled) {
+            return 1;
+          }
+
+          if (a.disabled && !b.disabled) {
+            return -1;
+          }
+
+          return 0;
+        });
+      }
+    }, [options, value]);
 
     const { inputValue, onInputValueChange, prevInputValue } = useSearchInput({
       ...search,
@@ -98,7 +114,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     const handleItemDelete = useHandleDeleteItem(setValue);
     const handleOnKeyDown = (onKeyDown?: KeyboardEventHandler<HTMLElement>) => (e: KeyboardEvent<HTMLInputElement>) => {
       if (e.code === 'Backspace' && inputValue === '') {
-        if (selectedOption?.length) {
+        if (selectedOption?.length && !selectedOption.slice(-1)[0].disabled) {
           handleItemDelete(selectedOption.pop())();
         }
       }
