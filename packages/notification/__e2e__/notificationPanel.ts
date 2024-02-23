@@ -27,39 +27,36 @@ function getScrollableElement() {
   return Selector(dataTestIdSelector(STORY_TEST_IDS.panel)).find('.os-viewport');
 }
 
-test.page(getPage(PROPS_MOCK))(
-  'Renders correctly with proper amount of card, scroll is working',
-  async t => {
-    const { panel, panelTitle, footerButton, readAllButton } = SELECTORS.getPanel();
-    const { card } = SELECTORS.getCard();
+test.page(getPage(PROPS_MOCK))('Renders correctly with proper amount of card, scroll is working', async t => {
+  const { panel, panelTitle, footerButton, readAllButton } = SELECTORS.getPanel();
+  const { card } = SELECTORS.getCard();
 
-    await t.expect(panel.exists).ok('NotificationPanel not exists');
+  await t.expect(panel.exists).ok('NotificationPanel not exists');
 
-    await t.expect(panelTitle.exists).ok('NotificationPanel title not exists');
-    await t.expect(panelTitle.textContent).eql(PROPS_MOCK.title, 'NotificationPanel title not exists');
+  await t.expect(panelTitle.exists).ok('NotificationPanel title not exists');
+  await t.expect(panelTitle.textContent).eql(PROPS_MOCK.title, 'NotificationPanel title not exists');
 
-    await t.expect(footerButton.exists).ok('footerButton not exists');
-    await t.expect(footerButton.textContent).eql(PROPS_MOCK.footerButton.label, 'footerButton not exists');
+  await t.expect(footerButton.exists).ok('footerButton not exists');
+  await t.expect(footerButton.textContent).eql(PROPS_MOCK.footerButton.label, 'footerButton not exists');
 
-    await t.expect(readAllButton.exists).ok('readAllButton not exists');
-    await t.expect(readAllButton.textContent).eql(PROPS_MOCK.readAllButton.label, 'readAllButton not exists');
+  await t.expect(readAllButton.exists).ok('readAllButton not exists');
+  await t.expect(readAllButton.textContent).eql(PROPS_MOCK.readAllButton.label, 'readAllButton not exists');
 
-    await t.expect(card.count).eql(PROPS_MOCK.amount);
+  await t.expect(card.count).eql(PROPS_MOCK.amount);
 
-    const content = getScrollableElement();
+  const content = getScrollableElement();
 
-    await t.expect(content.scrollTop).eql(0, 'Scroll should be in 0 position');
+  await t.expect(content.scrollTop).eql(0, 'Scroll should be in 0 position');
 
-    await t.scroll(content, 'bottom');
+  await t.scroll(content, 'bottom');
 
-    await t.expect(content.scrollTop).notEql(0);
-  },
-);
+  await t.expect(content.scrollTop).notEql(0);
+});
 
-test.only.page(getPage({ ...PROPS_MOCK, amount: 0, loading: true }))(
+test.page(getPage({ ...PROPS_MOCK, amount: 0, loading: true }))(
   'Renders opened with skeletons, disabled chips and readAllButton, but settings button is still working and opens droplist',
   async t => {
-    const { panel, skeleton, chips, settings, footerButton } = SELECTORS.getPanel();
+    const { panel, skeleton, chips, settings } = SELECTORS.getPanel();
     const { card } = SELECTORS.getCard();
 
     await t.expect(panel.exists).ok('NotificationPanel not exists');
