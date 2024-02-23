@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2024-02-23)
+
+
+### Features
+
+* **FF-4221:** add tabIndex prop ([e087f40](https://github.com/cloud-ru-tech/snack-uikit/commit/e087f401caefb2731e9e7fa6a03e4599d337cfb1))
+
+
+
+
+
 ## 0.7.5 (2024-02-22)
 
 ### Only dependencies have been changed

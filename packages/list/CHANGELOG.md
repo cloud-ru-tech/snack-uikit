@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2024-02-23)
+
+
+### Bug Fixes
+
+* **FF-4221:** fix keygen for items ([1d542c0](https://github.com/cloud-ru-tech/snack-uikit/commit/1d542c055c3a8a89b875bdb1e3cb4c1fcacd0a5a))
+* **FF-4221:** fix selection/clean with disabled items; remove useless toggle-group ([d630d3c](https://github.com/cloud-ru-tech/snack-uikit/commit/d630d3c01c818c74eb30d6ec92c577476e847cb2))
+* **FF-4221:** fix some select bugs; add some type exports ([e5435f1](https://github.com/cloud-ru-tech/snack-uikit/commit/e5435f18fb766456ae74452d529e797e9df36f20))
+
+
+### Features
+
+* **FF-4221:** add ListEmptyState with translations ([83b3758](https://github.com/cloud-ru-tech/snack-uikit/commit/83b375876ff9a9b0ac294a67199a8b4d4ccbe799))
+
+
+### BREAKING CHANGES
+
+
+* **FF-4221:** remove noData/noResults props; instead added: noDataState,noResultsState,errorDataState, dataError, dataFiltered; replace local "info-block" ([5b18ea2](https://github.com/cloud-ru-tech/snack-uikit/commit/5b18ea209ca33b7773f356e52c3ab3d95da1cfe1))
+
+
+
+
 ## 0.3.5 (2024-02-22)
 
 ### Only dependencies have been changed

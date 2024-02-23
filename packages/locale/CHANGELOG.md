@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2024-02-23)
+
+
+### Features
+
+* **FF-4218:** Field slider ([7a853bf](https://github.com/cloud-ru-tech/snack-uikit/commit/7a853bf8807ae595b2a8a635d754825305c07d6a))
+* **FF-4221:** add translations for List ([dcb7b70](https://github.com/cloud-ru-tech/snack-uikit/commit/dcb7b70851e274bd948a01c103e3464037d27e27))
+
+
+
+
+
 # 0.4.0 (2024-02-12)
 
 

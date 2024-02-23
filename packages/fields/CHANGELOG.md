@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2024-02-23)
+
+
+### Bug Fixes
+
+* **FF-4221:** fix remove disabled & checked items by backspace ([4f0b945](https://github.com/cloud-ru-tech/snack-uikit/commit/4f0b945f4b1878923e5231298474393d6ad412d5))
+
+
+### BREAKING CHANGES
+
+
+* **FF-4221:** replace list package; FieldMultiple select as TagSelect ([10333e9](https://github.com/cloud-ru-tech/snack-uikit/commit/10333e9ca00cb445f7617148ee82c2acfea678e6))
+
+
+
+
 ## 0.14.2 (2024-02-22)
 
 
