@@ -113,6 +113,7 @@ export function BaseItem({
       data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
       data-variant={mode || undefined}
       data-open={open || undefined}
+      data-disabled={disabled || undefined}
       aria-disabled={disabled || undefined}
       data-parent={parent || 'list'}
       onKeyDown={handleItemKeyDown}

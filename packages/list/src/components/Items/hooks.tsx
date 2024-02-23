@@ -1,6 +1,6 @@
 import { createRef, RefObject, useEffect, useMemo } from 'react';
 
-import { extractChildIds } from '../../utils';
+import { extractAllChildIds, extractChildIds } from '../../utils';
 import { useSelectionContext } from '../Lists/contexts';
 import { AccordionItem } from './AccordionItem';
 import { BaseItem } from './BaseItem';
@@ -63,12 +63,15 @@ type UseGroupItemSelectionProps = {
 
 export function useGroupItemSelection({ id, items, disabled }: UseGroupItemSelectionProps) {
   const { value, setValue, isSelectionMultiple } = useSelectionContext();
-  const childIds = useMemo(() => extractChildIds({ items }), [items]);
+  const { childIds, allChildIds } = useMemo(
+    () => ({ childIds: extractChildIds({ items }), allChildIds: extractAllChildIds({ items }) }),
+    [items],
+  );
 
   const isIndeterminate = isSelectionMultiple
-    ? childIds.some(childId => value?.includes(childId))
-    : childIds.includes(value ?? '');
-  const checked = isSelectionMultiple ? childIds.every(childId => value?.includes(childId)) : undefined;
+    ? allChildIds.some(childId => value?.includes(childId))
+    : allChildIds.includes(value ?? '');
+  const checked = isSelectionMultiple ? allChildIds.every(childId => value?.includes(childId)) : undefined;
 
   useEffect(() => {
     if (isSelectionMultiple) {

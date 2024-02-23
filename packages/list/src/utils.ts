@@ -113,3 +113,28 @@ export function extractChildIds({ items }: { items: ItemProps[] }): Array<string
       [] as Array<string | number>,
     );
 }
+
+export function extractAllChildIds({ items }: { items: ItemProps[] }): Array<string | number> {
+  return items
+    .filter(
+      item =>
+        isAccordionItemProps(item) ||
+        isNextListItemProps(item) ||
+        isGroupItemProps(item) ||
+        (isBaseItemProps(item) && !item.inactive),
+    )
+    .reduce(
+      (prev: Array<string | number>, item: ItemProps) => {
+        if (isAccordionItemProps(item) || isNextListItemProps(item)) {
+          return prev.concat([item.id ?? '']).concat(extractAllChildIds({ items: item.items }));
+        }
+
+        if (isGroupItemProps(item)) {
+          return prev.concat(extractAllChildIds({ items: item.items }));
+        }
+
+        return item.id && !isGroupItemProps(item) ? prev.concat([item.id]) : prev;
+      },
+      [] as Array<string | number>,
+    );
+}

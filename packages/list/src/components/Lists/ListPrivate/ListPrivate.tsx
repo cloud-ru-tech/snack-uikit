@@ -3,7 +3,6 @@ import { ForwardedRef, forwardRef, RefObject, useMemo } from 'react';
 
 import { Spinner } from '@snack-uikit/loaders';
 import { Scroll } from '@snack-uikit/scroll';
-import { ToggleGroup } from '@snack-uikit/toggles';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { ListEmptyState, useEmptyState } from '../../../helperComponents';
@@ -32,7 +31,7 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
       footer,
       loading,
       size = 's',
-      marker,
+      marker = true,
       limitedScrollHeight,
       className,
       parent = 'list',
@@ -81,11 +80,11 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
             dataError={dataError}
             emptyStates={emptyStates}
             itemsLength={items.length}
-            dataFiltered={dataFiltered}
+            dataFiltered={dataFiltered ?? Boolean(search?.value)}
           />
         </div>
       ),
-      [dataError, dataFiltered, emptyStates, items.length, itemsJSX, loading, loadingJSX],
+      [dataError, dataFiltered, emptyStates, items.length, itemsJSX, loading, loadingJSX, search?.value],
     );
 
     const listJSX = (
@@ -100,38 +99,36 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
         role='menu'
         {...extractSupportProps(props)}
       >
-        <ToggleGroup selectionMode={'multiple'}>
-          {(Number(pinTop?.length) > 0 || search) && (
-            <PinTopGroupItem>
-              {search && <SearchItem search={search} />}
+        {(Number(pinTop?.length) > 0 || search) && (
+          <PinTopGroupItem>
+            {search && <SearchItem search={search} />}
 
-              {Number(pinTop?.length) > 0 && itemsPinTopJSX}
-            </PinTopGroupItem>
-          )}
+            {Number(pinTop?.length) > 0 && itemsPinTopJSX}
+          </PinTopGroupItem>
+        )}
 
-          {scroll ? (
-            <Scroll
-              className={cn({
-                [commonStyles.scrollContainerS]: scroll && limitedScrollHeight && size === 's',
-                [commonStyles.scrollContainerM]: scroll && limitedScrollHeight && size === 'm',
-                [commonStyles.scrollContainerL]: scroll && limitedScrollHeight && size === 'l',
-              })}
-              barHideStrategy='never'
-              size={size === 's' ? 's' : 'm'}
-              ref={scrollContainerRef}
-            >
-              {content}
+        {scroll ? (
+          <Scroll
+            className={cn({
+              [commonStyles.scrollContainerS]: scroll && limitedScrollHeight && size === 's',
+              [commonStyles.scrollContainerM]: scroll && limitedScrollHeight && size === 'm',
+              [commonStyles.scrollContainerL]: scroll && limitedScrollHeight && size === 'l',
+            })}
+            barHideStrategy='never'
+            size={size === 's' ? 's' : 'm'}
+            ref={scrollContainerRef}
+          >
+            {content}
 
-              <div className={styles.scrollStub} ref={scrollRef as RefObject<HTMLDivElement>} />
-            </Scroll>
-          ) : (
-            <>{content}</>
-          )}
+            <div className={styles.scrollStub} ref={scrollRef as RefObject<HTMLDivElement>} />
+          </Scroll>
+        ) : (
+          <>{content}</>
+        )}
 
-          {Number(pinBottom?.length) > 0 && <PinBottomGroupItem>{itemsPinBottomJSX}</PinBottomGroupItem>}
+        {Number(pinBottom?.length) > 0 && <PinBottomGroupItem>{itemsPinBottomJSX}</PinBottomGroupItem>}
 
-          {footer && <div className={styles.footer}>{footer}</div>}
-        </ToggleGroup>
+        {footer && <div className={styles.footer}>{footer}</div>}
       </ul>
     );
 

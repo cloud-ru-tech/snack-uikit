@@ -38,11 +38,7 @@ export const List = forwardRef<HTMLElement, ListProps>(
     const [openCollapsedItems, setOpenCollapsedItems] = useUncontrolledProp<Array<number | string>>(
       collapse.value,
       collapse.defaultValue ?? [],
-      collapse.onChange
-        ? cb => {
-            collapse.onChange?.(cb(collapse.value));
-          }
-        : undefined,
+      collapse.onChange,
     );
 
     const { search: searchItem, footerRefs } = useItemsWithIds({

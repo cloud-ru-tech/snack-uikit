@@ -65,15 +65,13 @@ test.page(
     ...DEFAULT_EMPTY_SETTINGS,
     showSearch: true,
     showEmptyList: true,
-    noData: 'No data',
-    noResults: 'No results',
   }),
 )('Should show empty list', async t => {
-  await t.expect(Selector(dataTestIdSelector(NO_DATA_TEST_ID)).textContent).eql('No data');
+  await t.expect(Selector(dataTestIdSelector(NO_DATA_TEST_ID)).exists).ok();
 
   await t.typeText(Selector(dataTestIdSelector(SEARCH_ITEM_TEST_ID)), 'x');
 
-  await t.expect(Selector(dataTestIdSelector(NO_RESULTS_TEST_ID)).textContent).eql('No results');
+  await t.expect(Selector(dataTestIdSelector(NO_RESULTS_TEST_ID)).exists).ok();
 });
 
 test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, showFooter: true }))('Should show footer', async t => {

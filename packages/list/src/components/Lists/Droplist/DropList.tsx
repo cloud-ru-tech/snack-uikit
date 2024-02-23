@@ -36,12 +36,9 @@ export function Droplist({
   const [openCollapsedItems, setOpenCollapsedItems] = useUncontrolledProp<Array<number | string>>(
     collapse.value,
     collapse.defaultValue ?? [],
-    collapse.onChange
-      ? cb => {
-          collapse.onChange?.(cb(collapse.value));
-        }
-      : undefined,
+    collapse.onChange,
   );
+
   const { search: searchItem, footerRefs } = useItemsWithIds({
     search: hasSearch,
     footerActiveElementsRefs,
@@ -141,6 +138,7 @@ export function Droplist({
           parentRef: listRef,
           parentResetNestedIndex: resetNestedIndex,
           parentResetActiveFocusIndex: resetActiveFocusIndex,
+          openCollapsedItems,
           toggleOpenCollapsedItems: id =>
             setOpenCollapsedItems((items: Array<string | number> | undefined = []) =>
               items.includes(id) ? items.filter(item => item !== id) : items?.concat([id]),

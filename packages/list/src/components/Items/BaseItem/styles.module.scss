@@ -147,7 +147,7 @@ $typography: (
   }
 
   &[aria-disabled],
-  &:disabled {
+  &[data-disabled] {
     .option,
     .description,
     .caption,
@@ -155,7 +155,7 @@ $typography: (
       color: $sys-neutral-text-disabled;
     }
 
-    & .beforeContent {
+    .beforeContent {
       opacity: $opacity-a064;
     }
   }
@@ -181,15 +181,12 @@ $typography: (
 
     &:focus-visible {
       &[data-variant='single'] {
-        background-color: $sys-primary-background;
         outline-color: $sys-primary-accent-default;
       }
     }
 
-    &:disabled {
+    &[data-disabled] {
       &[data-variant='single'] {
-        background-color: $sys-neutral-background1-level;
-
         &::before {
           display: none;
         }

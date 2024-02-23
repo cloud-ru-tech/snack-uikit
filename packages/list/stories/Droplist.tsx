@@ -46,7 +46,7 @@ const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, selectionMode, 
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}
         <Droplist
-          className={styles.test}
+          className={styles.droplistContainer}
           trigger={args.trigger}
           placement={args.placement}
           size={args.size}
