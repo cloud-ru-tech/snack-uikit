@@ -3,14 +3,19 @@
 
 .tooltipContainer {
   @include composite-var($tooltip-container);
+  @include composite-var($sans-body-s);
 
   overflow: hidden;
+
   box-sizing: border-box;
-  color: simple-var($theme-variables, 'sys', 'invert-neutral', 'text-main');
-  background-color: simple-var($theme-variables, 'sys', 'invert-neutral', 'background');
+
+  color: $sys-invert-neutral-text-main;
+  word-wrap: break-word;
+
+  background-color: $sys-invert-neutral-background;
 
   &[data-disable-max-width='true'] {
-    max-width: none;
+    max-width: calc(100vw - $dimension-2m);
   }
 }
 

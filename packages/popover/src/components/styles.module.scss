@@ -2,14 +2,19 @@
 
 .popoverContainer {
   @include composite-var($popover-container);
+  @include composite-var($sans-body-s);
 
   overflow: hidden;
+
   box-sizing: border-box;
+
+  word-wrap: break-word;
+
   background-color: $sys-neutral-background2-level;
   box-shadow: $box-shadow-elevation-level3;
 
   &[data-disable-max-width='true'] {
-    max-width: none;
+    max-width: calc(100vw - $dimension-2m);
   }
 }
 
