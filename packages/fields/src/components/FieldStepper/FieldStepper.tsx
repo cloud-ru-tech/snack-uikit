@@ -39,6 +39,7 @@ type WrapperProps = Pick<
   | 'size'
   | 'validationState'
   | 'labelTooltipPlacement'
+  | 'error'
 >;
 
 type FieldStepperOwnProps = {
@@ -80,6 +81,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
       showHintIcon,
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
+      error,
       ...rest
     },
     ref,
@@ -200,6 +202,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
         showHintIcon={showHintIcon}
         size={size}
         validationState={validationState}
+        error={error}
         {...extractSupportProps(rest)}
       >
         <Tooltip

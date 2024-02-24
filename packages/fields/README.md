@@ -166,6 +166,7 @@ const [isOpen, setIsOpen] = useState(false);
 | className | `string` | - | CSS-класс |
 | disabled | `boolean` | - | Деактивирован ли элемент Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только на чтение Доступно ли поле только на чтение |
+| error | `string` | - |  |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
 | labelFor | `string` | - | Аттрибут for |
@@ -174,7 +175,7 @@ const [isOpen, setIsOpen] = useState(false);
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
 | length | `{ current: number; max?: number; }` | - | Допустимая длинна текста |
 | hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
+| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | - | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
 ## FieldText
 ### Props
@@ -194,6 +195,7 @@ const [isOpen, setIsOpen] = useState(false);
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
@@ -224,6 +226,7 @@ const [isOpen, setIsOpen] = useState(false);
 | maxLength | `number` | - | Максимальное кол-во символов |
 | onFocus | `FocusEventHandler<HTMLTextAreaElement>` | - | Колбек получения фокуса |
 | onBlur | `FocusEventHandler<HTMLTextAreaElement>` | - | Колбек потери фокуса |
+| error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
@@ -254,6 +257,7 @@ const [isOpen, setIsOpen] = useState(false);
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
@@ -287,6 +291,7 @@ const [isOpen, setIsOpen] = useState(false);
 | name | `string` | - | Значение html-атрибута name |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
@@ -311,6 +316,7 @@ const [isOpen, setIsOpen] = useState(false);
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |
+| error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |
@@ -350,6 +356,7 @@ const [isOpen, setIsOpen] = useState(false);
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | min | `number` | - | Минимальное значение поля |
 | max | `number` | - | Максимальное значение поля |
+| error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `string` | - | Всплывающая подсказка лейбла |

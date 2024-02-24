@@ -26,6 +26,7 @@ type WrapperProps = Pick<
   | 'validationState'
   | 'showHintIcon'
   | 'labelTooltipPlacement'
+  | 'error'
 >;
 
 type FieldTextAreaOwnProps = {
@@ -73,6 +74,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       labelTooltipPlacement,
       required = false,
       hint,
+      error,
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
       ...rest
@@ -118,6 +120,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
         readonly={readonly}
         showHintIcon={showHintIcon}
         size={size}
+        error={error}
         validationState={validationState}
         {...extractSupportProps(rest)}
       >

@@ -31,6 +31,7 @@ type WrapperProps = Pick<
   | 'validationState'
   | 'showHintIcon'
   | 'labelTooltipPlacement'
+  | 'error'
 >;
 
 type FieldSecureOwnProps = {
@@ -75,6 +76,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
       prefixIcon,
+      error,
       ...rest
     },
     ref,
@@ -121,6 +123,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
         readonly={readonly}
         showHintIcon={showHintIcon}
         size={size}
+        error={error}
         validationState={validationState}
         {...extractSupportProps(rest)}
       >

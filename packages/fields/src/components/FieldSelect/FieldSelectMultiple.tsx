@@ -46,6 +46,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
       search,
       autocomplete = false,
       prefixIcon,
+      error,
       ...rest
     },
     ref,
@@ -152,6 +153,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     return (
       <FieldDecorator
         {...extractSupportProps(rest)}
+        error={error}
         required={required}
         readonly={readonly}
         label={label}

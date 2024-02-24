@@ -24,6 +24,7 @@ type WrapperProps = Pick<
   | 'size'
   | 'validationState'
   | 'labelTooltipPlacement'
+  | 'error'
 >;
 
 type FieldTextOwnProps = {
@@ -68,6 +69,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
       prefixIcon,
+      error,
       ...rest
     },
     ref,
@@ -112,6 +114,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
         showHintIcon={showHintIcon}
         size={size}
         validationState={validationState}
+        error={error}
         {...extractSupportProps(rest)}
       >
         <FieldContainerPrivate

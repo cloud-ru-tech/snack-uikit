@@ -43,6 +43,7 @@ export type WrapperProps = Pick<
   | 'size'
   | 'validationState'
   | 'labelTooltipPlacement'
+  | 'error'
 >;
 
 export type SearchState = {

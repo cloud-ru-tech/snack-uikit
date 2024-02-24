@@ -42,6 +42,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       search,
       autocomplete = false,
       prefixIcon,
+      error,
       ...rest
     },
     ref,
@@ -123,6 +124,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     return (
       <FieldDecorator
         {...extractSupportProps(rest)}
+        error={error}
         required={required}
         readonly={readonly}
         label={label}

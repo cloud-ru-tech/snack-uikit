@@ -51,6 +51,7 @@ type WrapperProps = Pick<
   | 'size'
   | 'validationState'
   | 'labelTooltipPlacement'
+  | 'error'
 >;
 
 type FieldDateOwnProps = {
@@ -105,6 +106,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       validationState = VALIDATION_STATE.Default,
       locale = DEFAULT_LOCALE,
       buildCellProps,
+      error,
       ...rest
     },
     ref,
@@ -260,6 +262,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
         readonly={readonly}
         showHintIcon={showHintIcon}
         size={size}
+        error={error}
         validationState={validationState}
         {...extractSupportProps(rest)}
       >

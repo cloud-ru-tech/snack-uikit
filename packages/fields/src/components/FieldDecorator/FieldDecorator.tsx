@@ -18,6 +18,8 @@ export type FieldDecoratorProps = WithSupportProps<
     disabled?: boolean;
     /** Является ли поле доступным только на чтение */
     readonly?: boolean;
+
+    error?: string;
   } & HeaderProps &
     FooterProps
 >;
@@ -36,10 +38,12 @@ export function FieldDecorator({
   showHintIcon,
   labelTooltipPlacement,
   size = SIZE.S,
-  validationState = VALIDATION_STATE.Default,
+  error,
+  validationState: validationStateProp = VALIDATION_STATE.Default,
   ...rest
 }: FieldDecoratorProps) {
   const isFieldActive = !disabled && !readonly;
+  const validationState = error ? VALIDATION_STATE.Error : validationStateProp;
 
   return (
     <div className={cn(styles.decorator, className)} {...extractSupportProps(rest)} data-size={size}>
@@ -56,7 +60,7 @@ export function FieldDecorator({
       {children}
       <Footer
         length={isFieldActive ? length : undefined}
-        hint={hint}
+        hint={error || hint}
         showHintIcon={showHintIcon}
         size={size}
         validationState={isFieldActive ? validationState : VALIDATION_STATE.Default}
