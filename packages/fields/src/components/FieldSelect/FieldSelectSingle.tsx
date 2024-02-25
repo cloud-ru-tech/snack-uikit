@@ -1,12 +1,12 @@
 import mergeRefs from 'merge-refs';
 import { forwardRef, KeyboardEvent, KeyboardEventHandler, useEffect, useMemo, useRef, useState } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { Droplist, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
+import { useValueControl } from '../../hooks';
 import { FieldDecorator } from '../FieldDecorator';
 import { useButtons, useHandleOnKeyDown, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
@@ -49,7 +49,11 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
   ) => {
     const localRef = useRef<HTMLInputElement>(null);
     const [open, setOpen] = useState<boolean>(false);
-    const [value, setValue] = useUncontrolledProp<string | number | undefined>(valueProp, defaultValue, onChangeProp);
+    const [value, setValue] = useValueControl<SelectionSingleValueType>({
+      value: valueProp,
+      defaultValue,
+      onChange: onChangeProp,
+    });
 
     const items = useMemo(() => transformOptionsToItems(options), [options]);
     const selectedOption = useMemo(() => extractSelectedOptions(options, value), [options, value]);

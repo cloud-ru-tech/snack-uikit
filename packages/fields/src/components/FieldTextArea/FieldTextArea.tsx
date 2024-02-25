@@ -1,6 +1,5 @@
 import mergeRefs from 'merge-refs';
 import { ChangeEvent, forwardRef, useMemo, useRef } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
 import { SIZE, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import { Scroll } from '@snack-uikit/scroll';
@@ -8,7 +7,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate, TextArea, TextAreaProps } from '../../helperComponents';
-import { useCopyButton } from '../../hooks';
+import { useCopyButton, useValueControl } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
 
@@ -85,7 +84,12 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
     const clearButtonRef = useRef<HTMLButtonElement>(null);
     const copyButtonRef = useRef<HTMLButtonElement>(null);
     const isResizable = !readonly && !disabled && resizable;
-    const [value, onChange] = useUncontrolledProp(valueProp, '', onChangeProp);
+
+    const [value = '', onChange] = useValueControl<string>({
+      value: valueProp,
+      defaultValue: '',
+      onChange: onChangeProp,
+    });
     const showCopyButton = showCopyButtonProp && Boolean(value) && !disabled && readonly;
     const showClearButton = showClearButtonProp && Boolean(value) && !disabled && !readonly;
 

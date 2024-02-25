@@ -1,13 +1,12 @@
 import mergeRefs from 'merge-refs';
 import { forwardRef, ReactElement, useMemo, useRef } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
 import { InputPrivate, InputPrivateProps, SIZE, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
-import { useCopyButton } from '../../hooks';
+import { useCopyButton, useValueControl } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
@@ -74,7 +73,11 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
     },
     ref,
   ) => {
-    const [value, onChange] = useUncontrolledProp(valueProp, '', onChangeProp);
+    const [value = '', onChange] = useValueControl<string>({
+      value: valueProp,
+      defaultValue: '',
+      onChange: onChangeProp,
+    });
     const localRef = useRef<HTMLInputElement>(null);
     const clearButtonRef = useRef<HTMLButtonElement>(null);
     const copyButtonRef = useRef<HTMLButtonElement>(null);

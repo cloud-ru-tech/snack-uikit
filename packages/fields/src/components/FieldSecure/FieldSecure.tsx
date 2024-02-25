@@ -1,6 +1,5 @@
 import mergeRefs from 'merge-refs';
 import { forwardRef, ReactElement, useMemo, useRef } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
 import {
   InputPrivate,
@@ -14,7 +13,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
-import { useCopyButton, useHideButton } from '../../hooks';
+import { useCopyButton, useHideButton, useValueControl } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
@@ -84,8 +83,16 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
     const localRef = useRef<HTMLInputElement>(null);
     const copyButtonRef = useRef<HTMLButtonElement>(null);
     const hideButtonRef = useRef<HTMLButtonElement>(null);
-    const [value, onChange] = useUncontrolledProp(valueProp, '', onChangeProp);
-    const [hidden, setHidden] = useUncontrolledProp(hiddenProp, true, onHiddenChange);
+    const [value = '', onChange] = useValueControl<string>({
+      value: valueProp,
+      defaultValue: '',
+      onChange: onChangeProp,
+    });
+    const [hidden = true, setHidden] = useValueControl<boolean>({
+      value: hiddenProp,
+      defaultValue: true,
+      onChange: onHiddenChange,
+    });
     const showCopyButton = showCopyButtonProp && Boolean(value) && readonly && !disabled;
     const showHideButton = !(readonly && !value);
 

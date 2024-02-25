@@ -9,7 +9,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
 import { ButtonFunction } from '@snack-uikit/button';
 import { MinusSVG, PlusSVG } from '@snack-uikit/icons';
@@ -20,6 +19,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
+import { useValueControl } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
 
@@ -87,7 +87,11 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     ref,
   ) => {
     const { t } = useLocale('Fields');
-    const [value, setValue] = useUncontrolledProp(valueProp, 0, onChangeProp);
+    const [value = 0, setValue] = useValueControl<number>({
+      value: valueProp,
+      defaultValue: 0,
+      onChange: onChangeProp,
+    });
     const [tooltipOpen, setTooltipOpen] = useState(false);
     const [tooltip, setTooltip] = useState('');
     const timerRef = useRef<ReturnType<typeof setTimeout>>();

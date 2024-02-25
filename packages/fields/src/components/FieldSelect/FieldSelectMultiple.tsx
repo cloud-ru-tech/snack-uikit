@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
 import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useMemo, useRef, useState } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { Droplist, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
@@ -9,6 +8,7 @@ import { Tag } from '@snack-uikit/tag';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
+import { useValueControl } from '../../hooks';
 import { FieldDecorator } from '../FieldDecorator';
 import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
@@ -57,11 +57,11 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
 
     const [open, setOpen] = useState<boolean>(false);
     const items = useMemo(() => transformOptionsToItems(options), [options]);
-    const [value, setValue] = useUncontrolledProp<SelectionSingleValueType[] | undefined>(
-      valueProp,
+    const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
+      value: valueProp,
       defaultValue,
-      onChangeProp,
-    );
+      onChange: onChangeProp,
+    });
 
     const selectedOption = useMemo(() => {
       const notSortSelectedOption = extractSelectedMultipleOptions(options, value);

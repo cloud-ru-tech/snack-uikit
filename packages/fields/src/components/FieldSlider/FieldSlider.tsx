@@ -1,6 +1,5 @@
 import mergeRefs from 'merge-refs';
 import { FocusEvent, forwardRef, KeyboardEvent, ReactElement, useEffect, useRef, useState } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
 import { InputPrivate, InputPrivateProps, SIZE } from '@snack-uikit/input-private';
 import { Slider, SliderProps as SliderComponentProps } from '@snack-uikit/slider';
@@ -8,6 +7,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
+import { useValueControl } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import { generateAllowedValues, getClosestMark, getTextFieldValue } from './helpers';
 import styles from './styles.module.scss';
@@ -81,7 +81,12 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
     },
     ref,
   ) => {
-    const [value, onChange] = useUncontrolledProp(valueProp, getDefaultValue(range, min, max, valueProp), onChangeProp);
+    const [value = getDefaultValue(range, min, max, valueProp), onChange] = useValueControl<number | number[]>({
+      value: valueProp,
+      defaultValue: getDefaultValue(range, min, max, valueProp),
+      onChange: onChangeProp,
+    });
+
     const [textFieldInputValue, setTextFieldInputValue] = useState<string>(
       getTextFieldValue(value, textInputFormatter),
     );
