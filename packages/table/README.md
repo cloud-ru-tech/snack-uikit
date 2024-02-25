@@ -133,7 +133,13 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
 | toolbarBefore | `ReactNode` | - | Дополнительный слот в `Toolbar` перед строкой поиска |
+| toolbarAfter | `ReactNode` | - | Дополнительный слот в `Toolbar` после строки поиска |
 | suppressPagination | `boolean` | - | Отключение пагинации |
+| manualSorting | `boolean` | - |  |
+| manualPagination | `boolean` | - |  |
+| manualFiltering | `boolean` | - |  |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 ## Table.getStatusColumnDef
 Вспомогательная функция для создания ячейки со статусом
 ### Props
@@ -157,7 +163,6 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| search* | `{ initialValue?: string; state: string; placeholder?: string; loading?: boolean; onChange(value: string): void; }` | 'Search...'<br> <strong>loading</strong>: Состояние загрузки в строке поиска <br> <strong>onChange</strong>: Колбэк на изменение данных в строке поиска | Параметры отвечают за глобальный поиск в таблице <br> <strong>initialState</strong>: Начальное состояние строки поиска <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>placeholder</strong>: Placeholder строки поиска |
 | onChangePage* | `(offset: number, limit: number) => void` | - |  |
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
 | loading | `boolean` | - | Состояние загрузки |
@@ -178,11 +183,18 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
 | toolbarBefore | `ReactNode` | - | Дополнительный слот в `Toolbar` перед строкой поиска |
+| toolbarAfter | `ReactNode` | - | Дополнительный слот в `Toolbar` после строки поиска |
 | suppressPagination | `boolean` | - | Отключение пагинации |
+| manualSorting | `boolean` | true |  |
+| manualPagination | `boolean` | true |  |
+| manualFiltering | `boolean` | true |  |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | items | `TData[]` | - | Данные для отрисовки |
 | total | `number` | 10 | Общее кол-во строк |
 | limit | `number` | 10 | Кол-во строк на страницу |
 | offset | `number` | - | Смещение |
+| search | `{ initialValue?: string; state: string; placeholder?: string; loading?: boolean; onChange(value: string): void; }` | 'Search...'<br> <strong>loading</strong>: Состояние загрузки в строке поиска <br> <strong>onChange</strong>: Колбэк на изменение данных в строке поиска | Параметры отвечают за глобальный поиск в таблице <br> <strong>initialState</strong>: Начальное состояние строки поиска <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>placeholder</strong>: Placeholder строки поиска |
 | pagination | `{ options?: number[]; optionsLabel?: string; }` | 'Rows volume' <br> | Параметры отвечают за пагинацию в таблице <br> <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу<br> <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу |
 ## ServerTable.getRowActionsColumnDef
 Вспомогательная функция для создания ячейки с дополнительными действиями у строки

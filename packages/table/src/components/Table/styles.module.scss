@@ -8,11 +8,14 @@
 
   /* stylelint-disable-next-line declaration-no-important */
   overflow: hidden !important;
+  display: flex;
 
   box-sizing: border-box;
   width: 100%;
   height: auto;
-  max-height: calc((var(--page-size, 10) * $size-table-line-height) + $size-table-line-height + $border-width-table * 2);
+  max-height: calc(
+    (var(--page-size, 10) * $size-table-line-height) + $size-table-line-height + $border-width-table * 2
+  );
 
   background-color: $sys-neutral-background1-level;
   border-color: $sys-neutral-background1-level;
@@ -38,7 +41,6 @@
   min-width: max-content;
 }
 
-
 .toolbar {
   flex: 1 0 auto;
 }
@@ -57,4 +59,10 @@
 
 .wrapper {
   max-width: 100%;
+}
+
+.scrollStub {
+  height: calc($dimension-025m / 2);
+  margin-top: calc($dimension-025m / -2);
+  background: transparent;
 }

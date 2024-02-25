@@ -12,9 +12,9 @@ import {
 import { ToolbarProps } from '@snack-uikit/toolbar';
 import { ValueOf } from '@snack-uikit/utils';
 
-import { EmptyStateProps } from './components/TableEmptyState';
 import { COLUMN_ALIGN, COLUMN_PIN_POSITION } from './constants';
 import { Except } from './helperComponents';
+import { EmptyStateProps } from './helperComponents/TableEmptyState';
 
 type ColumnAlign = ValueOf<typeof COLUMN_ALIGN>;
 
