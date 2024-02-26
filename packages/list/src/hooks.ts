@@ -1,29 +1,8 @@
 import FuzzySearch from 'fuzzy-search';
 import { useCallback } from 'react';
 
-import { isGroupItemProps, ItemProps } from './components/Items';
-
-function flattenItems(items: ItemProps[]): ItemProps[] {
-  const flattenedItems: ItemProps[] = [];
-
-  function flatten(item: ItemProps) {
-    if (!isGroupItemProps(item)) {
-      flattenedItems.push(item);
-    }
-
-    if ('items' in item) {
-      for (const nestedItem of item.items) {
-        flatten(nestedItem);
-      }
-    }
-  }
-
-  for (const item of items) {
-    flatten(item);
-  }
-
-  return flattenedItems;
-}
+import { ItemProps } from './components/Items';
+import { flattenItems } from './utils';
 
 const DEFAULT_MIN_SEARCH_INPUT_LENGTH = 2;
 

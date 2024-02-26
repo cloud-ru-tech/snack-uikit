@@ -1,11 +1,14 @@
 import { RefObject } from 'react';
 
 import {
+  AccordionItemProps,
+  BaseItemProps,
   isAccordionItemProps,
   isBaseItemProps,
   isGroupItemProps,
   isNextListItemProps,
   ItemProps,
+  NextListItemProps,
 } from './components/Items';
 
 type WithCollapsedItemsProps = {
@@ -137,4 +140,26 @@ export function extractAllChildIds({ items }: { items: ItemProps[] }): Array<str
       },
       [] as Array<string | number>,
     );
+}
+
+export function flattenItems(items: ItemProps[]): (BaseItemProps | AccordionItemProps | NextListItemProps)[] {
+  const flattenedItems: (BaseItemProps | AccordionItemProps | NextListItemProps)[] = [];
+
+  function flatten(item: ItemProps) {
+    if (!isGroupItemProps(item)) {
+      flattenedItems.push(item);
+    }
+
+    if ('items' in item) {
+      for (const nestedItem of item.items) {
+        flatten(nestedItem);
+      }
+    }
+  }
+
+  for (const item of items) {
+    flatten(item);
+  }
+
+  return flattenedItems;
 }
