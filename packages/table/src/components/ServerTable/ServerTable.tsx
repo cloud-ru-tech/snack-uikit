@@ -31,7 +31,7 @@ export function ServerTable<TData extends object>({
   const handleSearch = useCallback(
     (newValue: string) => {
       setTempSearch(newValue);
-      onSearchDebounced()(newValue.trim(), setSearch);
+      onSearchDebounced(newValue.trim(), setSearch);
     },
 
     [setSearch],

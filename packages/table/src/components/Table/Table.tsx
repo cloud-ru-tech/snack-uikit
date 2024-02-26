@@ -1,3 +1,15 @@
+import {
+  CellContext,
+  ColumnPinningState,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  PaginationState,
+  RowSelectionState,
+  SortingState,
+  useReactTable,
+} from '@tanstack/react-table';
 import cn from 'classnames';
 import { RefObject, useCallback, useEffect, useMemo } from 'react';
 
@@ -5,6 +17,7 @@ import { useLocale } from '@snack-uikit/locale';
 import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider } from '@snack-uikit/skeleton';
 import { Toolbar } from '@snack-uikit/toolbar';
+import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { DEFAULT_PAGE_SIZE } from '../../constants';
@@ -13,6 +26,7 @@ import {
   ExportButton,
   getColumnId,
   getRowActionsColumnDef,
+  getSelectionCellColumnDef,
   getStatusColumnDef,
   HeaderRow,
   STATUS_APPEARANCE,
@@ -21,19 +35,22 @@ import {
   TablePagination,
   useEmptyState,
 } from '../../helperComponents';
+import { ColumnDefinition } from '../../types';
+import { fuzzyFilter } from '../../utils';
 import { TableProps } from '../types';
-import { useLoadingTable, useTable } from './hooks';
+import { useLoadingTable } from './hooks';
+import { useStateControl } from './hooks/useStateControl';
 import styles from './styles.module.scss';
 
 /** Компонент таблицы */
 export function Table<TData extends object>({
   data,
   columnDefinitions,
-  rowSelection,
+  rowSelection: rowSelectionProp,
   search,
-  sorting,
+  sorting: sortingProp,
   columnFilters,
-  pagination,
+  pagination: paginationProp,
   className,
   onRowClick,
   onRefresh,
@@ -61,17 +78,84 @@ export function Table<TData extends object>({
 
   ...rest
 }: TableProps<TData>) {
-  const { table, tableColumns, columnPinning } = useTable<TData>({
+  const { state: globalFilter, onStateChange: onGlobalFilterChange } = useStateControl<string>(search, '');
+  const { state: rowSelection, onStateChange: onRowSelectionChange } = useStateControl<RowSelectionState>(
+    rowSelectionProp,
+    {},
+  );
+  const defaultPaginationState = useMemo(
+    () => ({
+      pageIndex: 0,
+      pageSize,
+    }),
+    [pageSize],
+  );
+
+  const { state: sorting, onStateChange: onSortingChange } = useStateControl<SortingState>(sortingProp, []);
+  const { state: pagination, onStateChange: onPaginationChange } = useStateControl<PaginationState>(
+    paginationProp,
+    defaultPaginationState,
+  );
+  const enableSelection = Boolean(rowSelectionProp?.enable);
+
+  const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
+    let cols: ColumnDefinition<TData>[] = columnDefinitions;
+    if (enableSelection) {
+      cols = [getSelectionCellColumnDef(), ...cols];
+    }
+    return cols;
+  }, [columnDefinitions, enableSelection]);
+  const columnPinning = useMemo(() => {
+    const pinningState: Required<ColumnPinningState> = { left: [], right: [] };
+    for (const col of tableColumns) {
+      const id = getColumnId(col);
+      if (col.pinned && id) {
+        pinningState[col.pinned]?.push(id);
+      }
+    }
+    return pinningState;
+  }, [tableColumns]);
+
+  const table = useReactTable<TData>({
     data,
-    sorting,
-    manualFiltering,
-    manualPagination,
-    manualSorting,
-    columnDefinitions,
-    rowSelection,
-    pagination,
+    columns: tableColumns,
+    state: {
+      columnPinning,
+      globalFilter,
+      rowSelection,
+      sorting,
+      pagination,
+    },
     pageCount,
-    pageSize,
+    defaultColumn: {
+      enableSorting: false,
+      enableResizing: false,
+      minSize: 40,
+      cell: (cell: CellContext<TData, unknown>) => <TruncateString text={String(cell.getValue())} maxLines={1} />,
+    },
+
+    manualSorting,
+    manualPagination,
+    manualFiltering,
+
+    globalFilterFn: fuzzyFilter,
+    onGlobalFilterChange,
+
+    onRowSelectionChange,
+    enableRowSelection: rowSelectionProp?.enable,
+    enableMultiRowSelection: rowSelectionProp?.multiRow,
+    enableFilters: true,
+    getFilteredRowModel: getFilteredRowModel(),
+    enableColumnResizing: true,
+    enableSorting: true,
+    enableMultiSort: true,
+    onSortingChange,
+    getSortedRowModel: getSortedRowModel(),
+    onPaginationChange,
+    getPaginationRowModel: getPaginationRowModel(),
+    getCoreRowModel: getCoreRowModel(),
+
+    columnResizeMode: 'onEnd',
   });
 
   const { loadingTable } = useLoadingTable({ pageSize, columnDefinitions: tableColumns, columnPinning });
@@ -92,7 +176,7 @@ export function Table<TData extends object>({
   }, [loading, onDelete, table]);
 
   const handleOnCheck = useCallback(() => {
-    if (!loading && rowSelection?.multiRow) {
+    if (!loading && rowSelectionProp?.multiRow) {
       table.toggleAllPageRowsSelected();
       return;
     }
@@ -101,7 +185,7 @@ export function Table<TData extends object>({
       table.resetRowSelection();
       return;
     }
-  }, [loading, rowSelection?.multiRow, table]);
+  }, [loading, rowSelectionProp?.multiRow, table]);
 
   useEffect(() => {}, []);
 
@@ -148,14 +232,11 @@ export function Table<TData extends object>({
     return !tableRows.length ? Math.min(Math.max(tempPageSize, 5), DEFAULT_PAGE_SIZE) : tempPageSize;
   }, [pageSize, suppressPagination, tablePagination?.pageSize, tableRows.length]);
 
-  const enableSelection = Boolean(rowSelection?.enable);
-
   return (
     <>
       <div
         style={{
           '--page-size': cssPageSize,
-          // width: table.getTotalSize(),
         }}
         className={cn(styles.wrapper, className)}
         {...extractSupportProps(rest)}
@@ -164,8 +245,8 @@ export function Table<TData extends object>({
           <div className={styles.header}>
             <Toolbar
               search={{
-                value: table.getState().globalFilter,
-                onChange: table.setGlobalFilter,
+                value: globalFilter,
+                onChange: onGlobalFilterChange,
                 loading: search?.loading,
                 placeholder: search?.placeholder || t('searchPlaceholder'),
               }}
@@ -176,15 +257,17 @@ export function Table<TData extends object>({
               onDelete={enableSelection && onDelete ? handleOnDelete : undefined}
               onCheck={enableSelection ? handleOnCheck : undefined}
               outline={outline}
-              selectionMode={rowSelection?.multiRow ? 'multiple' : 'single'}
+              selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
               before={toolbarBefore}
               after={
-                <>
-                  {toolbarAfter}
-                  {exportFileName ? (
-                    <ExportButton fileName={exportFileName} columnDefinitions={columnDefinitions} data={data} />
-                  ) : undefined}
-                </>
+                toolbarAfter || exportFileName ? (
+                  <>
+                    {toolbarAfter}
+                    {exportFileName && (
+                      <ExportButton fileName={exportFileName} columnDefinitions={columnDefinitions} data={data} />
+                    )}
+                  </>
+                ) : undefined
               }
               moreActions={moreActions}
             />
@@ -228,8 +311,8 @@ export function Table<TData extends object>({
         {!suppressPagination && (
           <TablePagination
             table={table}
-            options={pagination?.options}
-            optionsLabel={pagination?.optionsLabel}
+            options={paginationProp?.options}
+            optionsLabel={paginationProp?.optionsLabel}
             pageCount={pageCount}
           />
         )}
