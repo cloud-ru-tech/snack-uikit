@@ -2,10 +2,11 @@ import { useMemo } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Droplist } from '@snack-uikit/droplist';
+import { useLocale } from '@snack-uikit/locale';
 
-import { DEFAULT_EMPTY_VALUE, SIZE } from '../../../constants';
+import { SIZE } from '../../../constants';
 import { ChipChoiceCommonProps, FilterOption } from '../types';
-import { normalizeValueForSingleChoice } from '../utils';
+import { defaultSingleValueFormatter, normalizeValueForSingleChoice } from '../utils';
 import { ChipChoiceCustom } from './ChipChoiceCustom';
 
 export type ChipChoiceSingleProps = ChipChoiceCommonProps & {
@@ -37,9 +38,13 @@ export function ChipChoiceSingle({
     onChange,
   );
 
+  const { t } = useLocale('Chips');
+
   const selectedOption = useMemo(() => options.find(({ value }) => value === selectedValue), [options, selectedValue]);
 
-  const valueToRender = valueFormatter ? valueFormatter(selectedOption) : selectedOption?.label || DEFAULT_EMPTY_VALUE;
+  const valueToRender = valueFormatter
+    ? valueFormatter(selectedOption)
+    : defaultSingleValueFormatter({ value: selectedOption, allLabel: t('allLabel') });
 
   const clearValue = () => setSelectedValue(undefined);
 

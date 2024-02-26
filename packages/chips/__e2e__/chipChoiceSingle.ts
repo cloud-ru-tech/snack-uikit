@@ -1,6 +1,5 @@
 import { fixture, test } from 'testcafe';
 
-import { DEFAULT_EMPTY_VALUE } from '../src/constants';
 import { chipChoiceCommonTests, createChipGetPage, getComponent, VALUES_LABELS } from './utils/chipChoice';
 
 fixture('ChipChoice.Single');
@@ -20,7 +19,7 @@ test.page(getPage({ defaultValue: VALUES_LABELS[1].value }))(
 
     await t.click(clearButton);
 
-    await t.expect(value.innerText).eql(DEFAULT_EMPTY_VALUE);
+    await t.expect(value.innerText).eql('All');
   },
 );
 

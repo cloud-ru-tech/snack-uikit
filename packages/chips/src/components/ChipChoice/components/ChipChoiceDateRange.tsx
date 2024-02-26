@@ -1,6 +1,7 @@
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar } from '@snack-uikit/calendar';
+import { useLocale } from '@snack-uikit/locale';
 
 import { DEFAULT_EMPTY_VALUE, SIZE } from '../../../constants';
 import { CALENDAR_SIZE_MAP } from '../constants';
@@ -20,8 +21,13 @@ export type ChipChoiceDateRangeProps = ChipChoiceCommonProps & {
   valueFormatter?(value?: Range): string;
 };
 
-function defaultRangeFormatter(value?: Range) {
-  if (!value || !value.length) return DEFAULT_EMPTY_VALUE;
+type DefaultRangeFormatterProps = {
+  value?: Range;
+  allLabel?: string;
+};
+
+function defaultRangeFormatter({ value, allLabel }: DefaultRangeFormatterProps) {
+  if (!value || !value.length) return allLabel;
 
   const [from, to] = value;
 
@@ -38,7 +44,11 @@ export function ChipChoiceDateRange({
 }: ChipChoiceDateRangeProps) {
   const [selectedValue, setSelectedValue] = useUncontrolledProp<Range>(value, defaultValue, onChange);
 
-  const valueToRender = valueFormatter ? valueFormatter(selectedValue) : defaultRangeFormatter(selectedValue);
+  const { t } = useLocale('Chips');
+
+  const valueToRender = valueFormatter
+    ? valueFormatter(selectedValue)
+    : defaultRangeFormatter({ value: selectedValue, allLabel: t('allLabel') });
 
   const clearValue = () => setSelectedValue(undefined);
 

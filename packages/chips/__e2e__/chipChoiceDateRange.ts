@@ -26,7 +26,7 @@ test.page(getPage({ useDefaultValue: true }))(
 
     await t.click(clearButton);
 
-    await t.expect(value.innerText).eql(DEFAULT_EMPTY_VALUE);
+    await t.expect(value.innerText).eql('All');
   },
 );
 

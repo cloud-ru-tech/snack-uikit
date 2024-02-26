@@ -17,7 +17,7 @@ export const FILTER_OPTIONS: FilterOption[] = [
 ];
 
 export const CHIP_CHOICE_STORY_ARGS = {
-  label: 'Label Text:',
+  label: 'Label Text',
   size: SIZE.S,
   disabled: false,
   loading: false,

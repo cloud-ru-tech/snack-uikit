@@ -155,7 +155,7 @@ export function ChipChoiceCustom({
           <span className={styles.labelLayout}>
             {label && (
               <span className={styles.label} data-test-id={CHIP_CHOICE_TEST_IDS.label}>
-                {label}
+                {label + ': '}
               </span>
             )}
 
