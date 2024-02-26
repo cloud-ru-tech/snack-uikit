@@ -1,7 +1,7 @@
 import { Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../../testcafe/utils';
-import { CHIP_CHOICE_TEST_IDS, DEFAULT_EMPTY_VALUE } from '../../src/constants';
+import { CHIP_CHOICE_TEST_IDS } from '../../src/constants';
 import { validateClicks, validateNoIconForSizeXs } from './commonTests';
 
 type ChipType = 'single' | 'multi' | 'date' | 'date-range';
@@ -58,7 +58,7 @@ export function chipChoiceCommonTests(getPage: ReturnType<typeof createChipGetPa
       const { value, clearButton } = getComponent();
 
       await t.expect(value.exists).ok();
-      await t.expect(value.textContent).notEql(DEFAULT_EMPTY_VALUE);
+      await t.expect(value.textContent).notEql('All');
       await t.expect(clearButton.exists).notOk();
     },
   );
@@ -71,7 +71,7 @@ export function chipChoiceCommonTests(getPage: ReturnType<typeof createChipGetPa
       await t.expect(label.exists).ok();
       await t.expect(value.exists).ok();
 
-      await t.expect(value.innerText).eql(DEFAULT_EMPTY_VALUE);
+      await t.expect(value.innerText).eql('All');
     });
   }
 
