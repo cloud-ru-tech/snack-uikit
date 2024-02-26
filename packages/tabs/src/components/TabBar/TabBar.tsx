@@ -130,6 +130,7 @@ export function TabBar({ children, className, type = TYPE.Primary, after, ...oth
 
   return (
     <div className={cn(styles.tabBar, className)} role='tablist' {...extractSupportProps(otherProps)}>
+      {!otherProps.disableDivider && <Divider weight='regular' className={styles.divider} />}
       <div className={styles.tabBarMain} data-test-id='tabs__bar-wrap'>
         <ScrollContainer className={styles.scrollContainer} innerRef={scrollContainerRef}>
           {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
@@ -147,8 +148,6 @@ export function TabBar({ children, className, type = TYPE.Primary, after, ...oth
       </div>
 
       {after && <div data-test-id='tabs__bar__after'>{after}</div>}
-
-      {!otherProps.disableDivider && <Divider weight='regular' className={styles.divider} />}
     </div>
   );
 }
