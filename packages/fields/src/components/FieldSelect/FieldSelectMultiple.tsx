@@ -3,17 +3,18 @@ import mergeRefs from 'merge-refs';
 import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useMemo, useRef, useState } from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
-import { Droplist, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
+import { BaseItemProps, Droplist, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
 import { Tag } from '@snack-uikit/tag';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';
 import { FieldDecorator } from '../FieldDecorator';
+import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
 import { FieldSelectMultipleProps } from './types';
-import { extractSelectedMultipleOptions, getArrowIcon, transformOptionsToItems } from './utils';
+import { extractListProps, findSelectedOptions, getArrowIcon, transformOptionsToItems } from './utils';
 
 const BASE_MIN_WIDTH = 4;
 
@@ -28,24 +29,16 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
       value: valueProp,
       defaultValue,
       onChange: onChangeProp,
-      loading,
       disabled = false,
       readonly = false,
       searchable = true,
       showClearButton = true,
       onKeyDown: onInputKeyDownProp,
-      label,
-      labelTooltip,
-      labelTooltipPlacement,
-      required = false,
-      hint,
-      showHintIcon,
       validationState = 'default',
-      footer,
       search,
       autocomplete = false,
       prefixIcon,
-      error,
+      removeByBackspace = false,
       ...rest
     },
     ref,
@@ -63,26 +56,30 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     });
 
     const selectedOption = useMemo(() => {
-      const notSortSelectedOption = extractSelectedMultipleOptions(options, value);
+      if (value) {
+        const notSortSelectedOption = findSelectedOptions(items, value);
 
-      if (notSortSelectedOption) {
-        return notSortSelectedOption.sort((a, b) => {
-          if (b.disabled && !a.disabled) {
-            return 1;
-          }
+        if (notSortSelectedOption) {
+          return notSortSelectedOption.sort((a, b) => {
+            if (b.disabled && !a.disabled) {
+              return 1;
+            }
 
-          if (a.disabled && !b.disabled) {
-            return -1;
-          }
+            if (a.disabled && !b.disabled) {
+              return -1;
+            }
 
-          return 0;
-        });
+            return 0;
+          });
+        }
       }
-    }, [options, value]);
+
+      return undefined;
+    }, [items, value]);
 
     const { inputValue, onInputValueChange, prevInputValue } = useSearchInput({
       ...search,
-      defaultValue: String(selectedOption ?? ''),
+      defaultValue: '',
     });
 
     const onClear = () => {
@@ -98,7 +95,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     const { buttons, inputKeyDownNavigationHandler, buttonsRefs } = useButtons({
       readonly,
       size,
-      showClearButton: showClearButton && Boolean(value),
+      showClearButton: showClearButton && !disabled && !readonly && Boolean(value),
       showCopyButton: false,
       inputRef: localRef,
       onClear,
@@ -112,9 +109,9 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
 
     const handleItemDelete = useHandleDeleteItem(setValue);
     const handleOnKeyDown = (onKeyDown?: KeyboardEventHandler<HTMLElement>) => (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.code === 'Backspace' && inputValue === '') {
+      if (removeByBackspace && e.code === 'Backspace' && inputValue === '') {
         if (selectedOption?.length && !selectedOption.slice(-1)[0].disabled) {
-          handleItemDelete(selectedOption.pop())();
+          handleItemDelete(selectedOption.pop() as BaseItemProps)();
         }
       }
 
@@ -146,33 +143,21 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     };
 
     const fuzzySearch = useFuzzySearch(items);
-    const result = autocomplete ? items : fuzzySearch(prevInputValue.current !== inputValue ? inputValue : '');
+    const result =
+      autocomplete || !searchable || prevInputValue.current !== inputValue ? items : fuzzySearch(inputValue);
 
     return (
       <FieldDecorator
         {...extractSupportProps(rest)}
-        error={error}
-        required={required}
-        readonly={readonly}
-        label={label}
-        labelTooltip={labelTooltip}
-        labelTooltipPlacement={labelTooltipPlacement}
+        {...extractFieldDecoratorProps(rest)}
         labelFor={id}
-        hint={hint}
-        disabled={disabled}
-        showHintIcon={showHintIcon}
         size={size}
         validationState={validationState}
       >
         <Droplist
-          trigger='clickAndFocusVisible'
-          placement='bottom'
-          data-test-id='field-select__list'
+          {...extractListProps(rest)}
           items={result}
           triggerElemRef={localRef}
-          scroll
-          marker
-          footer={footer}
           selection={{
             mode: 'multiple',
             value: value,
@@ -181,7 +166,6 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
           size={size}
           open={!disabled && !readonly && open}
           onOpenChange={handleOpenChange}
-          loading={loading}
         >
           {({ onKeyDown }) => (
             <FieldContainerPrivate
@@ -202,9 +186,9 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
                       <Tag
                         size={size === 'l' ? 's' : 'xs'}
                         tabIndex={-1}
-                        label={String(option.option)}
-                        key={option.value}
-                        onDelete={!option.disabled && !disabled ? handleItemDelete(option) : undefined}
+                        label={String(option.content.option)}
+                        key={option.id}
+                        onDelete={!option.disabled && !disabled && !readonly ? handleItemDelete(option) : undefined}
                       />
                     ))}
 

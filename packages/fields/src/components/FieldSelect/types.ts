@@ -78,17 +78,25 @@ type FiledSelectCommonProps = WithSupportProps<{
   search?: SearchState;
 
   autocomplete?: boolean;
-}>;
+}> &
+  Pick<
+    ListProps,
+    'dataError' | 'noDataState' | 'noResultsState' | 'errorDataState' | 'pinTop' | 'pinBottom' | 'dataFiltered'
+  >;
 
 export type FieldSelectSingleProps = FieldSelectPrivateProps &
   Omit<SelectionSingleState, 'mode'> &
   WrapperProps &
   FiledSelectCommonProps;
 
-export type FieldSelectMultipleProps = FieldSelectPrivateProps &
-  Omit<SelectionMultipleState, 'mode'> &
+export type FieldSelectMultipleProps = FieldSelectPrivateProps & { removeByBackspace?: boolean } & Omit<
+    SelectionMultipleState,
+    'mode'
+  > &
   Omit<FiledSelectCommonProps, 'showCopyButton'>;
 
 export type FieldSelectProps =
   | (FieldSelectSingleProps & { selection?: 'single' })
   | (FieldSelectMultipleProps & { selection: 'multiple' });
+
+export type ItemWithId = BaseItemProps | AccordionItemProps | NextListItemProps;

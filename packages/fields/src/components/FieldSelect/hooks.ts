@@ -2,12 +2,16 @@ import { KeyboardEvent, KeyboardEventHandler, RefObject, useCallback, useMemo, u
 import { Handler, useUncontrolledProp } from 'uncontrollable';
 
 import { useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
-import { SelectionSingleValueType } from '@snack-uikit/list';
-import { extractChildIds } from '@snack-uikit/list/dist/utils';
+import {
+  extractChildIds,
+  isAccordionItemProps,
+  isNextListItemProps,
+  SelectionSingleValueType,
+} from '@snack-uikit/list';
 
 import { useCopyButton } from '../../hooks';
-import { OptionProps, SearchState } from './types';
-import { isAccordionOptionProps, isBaseOptionProps, isNextListOptionProps, transformOptionsToItems } from './utils';
+import { ItemWithId, SearchState } from './types';
+import { isBaseOptionProps } from './utils';
 
 type UseHandleOnKeyDownProps = {
   inputKeyDownNavigationHandler: KeyboardEventHandler<HTMLInputElement>;
@@ -104,20 +108,20 @@ export function useSearchInput({ value, onChange, defaultValue }: SearchState) {
 
 export function useHandleDeleteItem(setValue: Handler) {
   return useCallback(
-    (option?: OptionProps) => () => {
-      if (!option) {
+    (item?: ItemWithId) => () => {
+      if (!item) {
         return;
       }
 
-      if (isAccordionOptionProps(option) || isNextListOptionProps(option)) {
-        const removeIds = extractChildIds({ items: transformOptionsToItems(option.options) }).concat(option.value);
+      if (isAccordionItemProps(item) || isNextListItemProps(item)) {
+        const removeIds = extractChildIds({ items: item.items }).concat(item.id ?? '');
 
         setValue((value: SelectionSingleValueType[]) => value?.filter(v => !removeIds.includes(v ?? '')));
         return;
       }
 
-      if (isBaseOptionProps(option)) {
-        setValue((value: SelectionSingleValueType[]) => value?.filter(v => v !== option.value));
+      if (isBaseOptionProps(item)) {
+        setValue((value: SelectionSingleValueType[]) => value?.filter(v => v !== item.id));
       }
     },
     [setValue],

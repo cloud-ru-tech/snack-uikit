@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
+import debounce from 'lodash.debounce';
 import React, { useLayoutEffect, useState } from 'react';
 
 import { Avatar } from '@snack-uikit/avatar';
@@ -60,12 +61,16 @@ type StoryProps = FieldSelectProps & {
   showMoreOptions: boolean;
 };
 
+export const onSearchDebounced = debounce((newValue: string, onChange: (newValue: string) => void) => {
+  onChange(newValue);
+}, 500);
+
 const Template = ({ selection, showMoreOptions, value, size, ...args }: StoryProps) => {
   const [singleValue, setSingleValue] = useState<SelectionSingleValueType>();
 
   const [multipleValue, setMultipleValue] = useState<SelectionSingleValueType[]>();
 
-  const options: OptionProps[] = showMoreOptions ? [...MORE_OPTIONS, ...DEFAULT_OPTIONS] : DEFAULT_OPTIONS;
+  const options: OptionProps[] = showMoreOptions ? [...DEFAULT_OPTIONS, ...MORE_OPTIONS] : DEFAULT_OPTIONS;
 
   useLayoutEffect(() => {
     if (selection === 'single') {

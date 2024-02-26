@@ -337,9 +337,17 @@ const [isOpen, setIsOpen] = useState(false);
 | footer | `ReactNode` | - |  |
 | search | `SearchState` | - |  |
 | autocomplete | `boolean` | - |  |
+| dataError | `boolean` | - |  |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
+| pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
+| pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
+| dataFiltered | `boolean` | - |  |
 | selection | "single" \| "multiple" | - |  |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
+| removeByBackspace | `boolean` | - |  |
 ## FieldStepper
 ### Props
 | name | type | default value | description |

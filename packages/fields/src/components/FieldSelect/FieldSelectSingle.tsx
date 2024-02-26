@@ -1,5 +1,14 @@
 import mergeRefs from 'merge-refs';
-import { forwardRef, KeyboardEvent, KeyboardEventHandler, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  FocusEvent,
+  forwardRef,
+  KeyboardEvent,
+  KeyboardEventHandler,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { Droplist, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
@@ -8,10 +17,11 @@ import { extractSupportProps } from '@snack-uikit/utils';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';
 import { FieldDecorator } from '../FieldDecorator';
+import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleOnKeyDown, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
 import { FieldSelectSingleProps } from './types';
-import { extractSelectedOptions, getArrowIcon, transformOptionsToItems } from './utils';
+import { extractListProps, findSelectedOption, getArrowIcon, transformOptionsToItems } from './utils';
 
 export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleProps>(
   (
@@ -24,25 +34,17 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       value: valueProp,
       defaultValue,
       onChange: onChangeProp,
-      loading,
       disabled = false,
       readonly = false,
       searchable = true,
       showCopyButton = true,
       showClearButton = true,
       onKeyDown: onInputKeyDownProp,
-      label,
-      labelTooltip,
-      labelTooltipPlacement,
       required = false,
-      hint,
-      showHintIcon,
       validationState = 'default',
-      footer,
       search,
       autocomplete = false,
       prefixIcon,
-      error,
       ...rest
     },
     ref,
@@ -56,22 +58,24 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     });
 
     const items = useMemo(() => transformOptionsToItems(options), [options]);
-    const selectedOption = useMemo(() => extractSelectedOptions(options, value), [options, value]);
+    const selectedOption = useMemo(() => findSelectedOption(items, value), [items, value]);
 
     const { inputValue, onInputValueChange, prevInputValue } = useSearchInput({
       ...search,
-      defaultValue: String(selectedOption ?? ''),
+      defaultValue: selectedOption?.content.option ?? '',
     });
 
     useEffect(() => {
-      !open && onInputValueChange(String(selectedOption?.option ?? ''));
-    }, [onInputValueChange, open, selectedOption]);
+      selectedOption?.content.option && onInputValueChange(selectedOption.content.option);
+    }, [onInputValueChange, selectedOption?.content.option]);
 
-    useEffect(() => {
-      onInputValueChange(String(selectedOption?.option ?? ''));
+    const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+      if (!open && selectedOption?.content.option !== inputValue) {
+        onInputValueChange(selectedOption?.content.option ?? '');
+      }
 
-      prevInputValue.current = String(selectedOption?.option ?? '');
-    }, [prevInputValue, onInputValueChange, selectedOption]);
+      rest?.onBlur?.(e);
+    };
 
     const onClear = () => {
       setValue('');
@@ -86,11 +90,11 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     const { buttons, inputKeyDownNavigationHandler, buttonsRefs } = useButtons({
       readonly,
       size,
-      showClearButton: showClearButton && Boolean(value),
+      showClearButton: showClearButton && !disabled && !readonly && Boolean(value),
       showCopyButton,
       inputRef: localRef,
       onClear,
-      valueToCopy: String(selectedOption?.option ?? ''),
+      valueToCopy: selectedOption?.content.option ?? '',
     });
 
     const commonHandleOnKeyDown = useHandleOnKeyDown({
@@ -109,6 +113,9 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
     const handleSelectionChange = (newValue?: SelectionSingleValueType) => {
       setValue(newValue);
+      const selected = findSelectedOption(items, newValue)?.content.option;
+      onInputValueChange(selected);
+      prevInputValue.current = selected ?? '';
       localRef.current?.focus();
 
       if (newValue) {
@@ -123,33 +130,22 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     };
 
     const fuzzySearch = useFuzzySearch(items);
-    const result = autocomplete ? items : fuzzySearch(prevInputValue.current !== inputValue ? inputValue : '');
+    const result =
+      autocomplete || !searchable || prevInputValue.current === inputValue ? items : fuzzySearch(inputValue);
 
     return (
       <FieldDecorator
         {...extractSupportProps(rest)}
-        error={error}
+        {...extractFieldDecoratorProps(rest)}
         required={required}
         readonly={readonly}
-        label={label}
-        labelTooltip={labelTooltip}
-        labelTooltipPlacement={labelTooltipPlacement}
         labelFor={id}
-        hint={hint}
         disabled={disabled}
-        showHintIcon={showHintIcon}
         size={size}
-        validationState={validationState}
       >
         <Droplist
-          trigger='clickAndFocusVisible'
-          placement='bottom'
-          data-test-id='field-select__list'
+          {...extractListProps(rest)}
           items={result}
-          triggerElemRef={localRef}
-          scroll
-          marker
-          footer={footer}
           selection={{
             mode: 'single',
             value: value,
@@ -158,7 +154,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
           size={size}
           open={open}
           onOpenChange={handleOpenChange}
-          loading={loading}
+          triggerElemRef={localRef}
         >
           {({ onKeyDown }) => (
             <FieldContainerPrivate
@@ -184,6 +180,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
                 readonly={!searchable || readonly}
                 data-test-id='field-select__input'
                 onKeyDown={handleOnKeyDown(onKeyDown)}
+                onBlur={handleBlur}
               />
 
               <div className={styles.postfix}>
