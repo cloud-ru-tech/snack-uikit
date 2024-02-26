@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.16.0 (2024-02-26)
+
+
+### Bug Fixes
+
+* **FF-4324:** fix remove tags in readonly; remove showCopyButton in multiple ([f46e6ec](https://github.com/cloud-ru-tech/snack-uikit/commit/f46e6ecab9551221cec807e4770c91e62ab86c9c))
+* **FF-4324:** fix uncontrolledProp calls ([778a0ef](https://github.com/cloud-ru-tech/snack-uikit/commit/778a0ef673574a0f75f960f371ad58f4c4f3a2eb))
+
+
+### Features
+
+* **FF-4324:** add error prop ([d46d4f9](https://github.com/cloud-ru-tech/snack-uikit/commit/d46d4f957792278d2036b0a1428a4fd9578d4189))
+
+
+
+
+
 # 0.15.0 (2024-02-23)
 
 

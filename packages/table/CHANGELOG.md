@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.6 (2024-02-26)
+
+
+### Bug Fixes
+
+* **FF-4334:** add props for manual sort, pagination, filter; add scroll ref props ([06c57b0](https://github.com/cloud-ru-tech/snack-uikit/commit/06c57b0320f75d5e81ae1bbac0b3157cded96a5d))
+
+
+
+
+
 ## 0.14.5 (2024-02-23)
 
 ### Only dependencies have been changed

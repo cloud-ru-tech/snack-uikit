@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2024-02-26)
+
+
+### BREAKING CHANGES
+
+
+* **FF-4324:** change default label formattes ([ecccf01](https://github.com/cloud-ru-tech/snack-uikit/commit/ecccf01237bc58ed68e84bb2522fb4fcfd6a33e9))
+
+
+
+
 ## 0.11.9 (2024-02-23)
 
 ### Only dependencies have been changed

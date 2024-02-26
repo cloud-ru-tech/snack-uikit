@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.6 (2024-02-26)
+
+
+### Bug Fixes
+
+* **FF-4324:** fix bug divider overlapped marker ([4b1a5bf](https://github.com/cloud-ru-tech/snack-uikit/commit/4b1a5bfd89f745bc35f7e25a00607bdf53603642))
+
+
+
+
+
 ## 0.6.5 (2024-02-20)
 
 

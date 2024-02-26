@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2024-02-26)
+
+
+### Features
+
+* **FF-4324:** add translations Chips allLabel ([d2c296e](https://github.com/cloud-ru-tech/snack-uikit/commit/d2c296e0bdcc677ea50b11ed920720ab27d83760))
+
+
+
+
+
 # 0.5.0 (2024-02-23)
 
 

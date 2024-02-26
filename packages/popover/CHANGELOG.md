@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.5 (2024-02-26)
+
+
+### Bug Fixes
+
+* **FF-4334:** add word-break; add default typography ([4cd39df](https://github.com/cloud-ru-tech/snack-uikit/commit/4cd39df3c9cda942680bf98b80c4e4544dfa9186))
+
+
+
+
+
 ## 0.6.4 (2024-02-20)
 
 

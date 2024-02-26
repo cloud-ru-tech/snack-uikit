@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2024-02-26)
+
+
+### Features
+
+* **FF-4324:** change in InfoBlock description type to ReactNode ([b12b06a](https://github.com/cloud-ru-tech/snack-uikit/commit/b12b06ad9b47809afb41ef5c4689884ddd8a684a))
+
+
+
+
+
 # 0.2.0 (2024-02-22)
 
 
