@@ -32,7 +32,6 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
       disabled = false,
       readonly = false,
       searchable = true,
-      showCopyButton = true,
       showClearButton = true,
       onKeyDown: onInputKeyDownProp,
       label,
@@ -100,10 +99,9 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
       readonly,
       size,
       showClearButton: showClearButton && Boolean(value),
-      showCopyButton,
+      showCopyButton: false,
       inputRef: localRef,
       onClear,
-      valueToCopy: String(selectedOption?.map(option => option.option).join(', ') ?? ''),
     });
 
     const commonHandleOnKeyDown = useHandleOnKeyDown({
@@ -206,7 +204,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
                         tabIndex={-1}
                         label={String(option.option)}
                         key={option.value}
-                        onDelete={!option.disabled ? handleItemDelete(option) : undefined}
+                        onDelete={!option.disabled && !disabled ? handleItemDelete(option) : undefined}
                       />
                     ))}
 

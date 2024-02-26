@@ -87,7 +87,7 @@ export type FieldSelectSingleProps = FieldSelectPrivateProps &
 
 export type FieldSelectMultipleProps = FieldSelectPrivateProps &
   Omit<SelectionMultipleState, 'mode'> &
-  FiledSelectCommonProps;
+  Omit<FiledSelectCommonProps, 'showCopyButton'>;
 
 export type FieldSelectProps =
   | (FieldSelectSingleProps & { selection?: 'single' })
