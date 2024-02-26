@@ -79,6 +79,9 @@ infoBlock.argTypes = {
   showIcon: {
     name: '[Stories]: Show icon',
   },
+  description: {
+    type: 'string',
+  },
   chosenIcon: {
     name: '[Stories]: Choose icon',
     options: Object.keys(ICONS),

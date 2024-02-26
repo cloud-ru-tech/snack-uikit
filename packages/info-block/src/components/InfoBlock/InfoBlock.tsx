@@ -14,7 +14,7 @@ export type InfoBlockProps = WithSupportProps<{
   /** Заголовок */
   title?: string;
   /** Подзаголовок */
-  description?: string;
+  description?: ReactNode;
   /** Иконка */
   icon?: Pick<IconPredefinedProps, 'icon' | 'decor' | 'appearance'>;
   /** Размер */

@@ -14,11 +14,11 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | title | `string` | - | Заголовок |
-| description | `string` | - | Подзаголовок |
+| description | `ReactNode` | - | Подзаголовок |
 | icon | `Pick<IconPredefinedProps, "icon" \| "decor" \| "appearance">` | - | Иконка |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
 | align | enum Align: `"horizontal"`, `"vertical"` | - | Расположение элементов |
-| footer | `ReactElement<FooterProps, ({ primaryButton, secondaryButton, className }: FooterProps) => Element> \| ReactNode` | - | Вложенный Footer |
+| footer | `ReactNode \| ReactElement<FooterProps, ({ primaryButton, secondaryButton, className }: FooterProps) => Element>` | - | Вложенный Footer |
 | className | `string` | - | CSS-класс |
 
 
