@@ -28,6 +28,7 @@ export const en_GB = {
   },
   Chips: {
     clearAllButton: 'Clear all',
+    allLabel: 'All',
   },
   Fields: {
     limitTooltip: {
