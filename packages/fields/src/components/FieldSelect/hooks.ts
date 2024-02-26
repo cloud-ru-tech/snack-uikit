@@ -1,5 +1,5 @@
 import { KeyboardEvent, KeyboardEventHandler, RefObject, useCallback, useMemo, useRef } from 'react';
-import { Handler, useUncontrolledProp } from 'uncontrollable';
+import { Handler } from 'uncontrollable';
 
 import { useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import {
@@ -9,7 +9,7 @@ import {
   SelectionSingleValueType,
 } from '@snack-uikit/list';
 
-import { useCopyButton } from '../../hooks';
+import { useCopyButton, useValueControl } from '../../hooks';
 import { ItemWithId, SearchState } from './types';
 import { isBaseOptionProps } from './utils';
 
@@ -99,7 +99,7 @@ export function useButtons({
 }
 
 export function useSearchInput({ value, onChange, defaultValue }: SearchState) {
-  const [inputValue, onInputValueChange] = useUncontrolledProp<string>(value, defaultValue ?? '', onChange);
+  const [inputValue = '', onInputValueChange] = useValueControl<string>({ value, onChange, defaultValue });
 
   const prevInputValue = useRef<string>(inputValue);
 

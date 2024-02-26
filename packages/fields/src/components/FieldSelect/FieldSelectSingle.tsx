@@ -1,17 +1,8 @@
 import mergeRefs from 'merge-refs';
-import {
-  FocusEvent,
-  forwardRef,
-  KeyboardEvent,
-  KeyboardEventHandler,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useEffect, useMemo, useRef } from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
-import { Droplist, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
+import { Droplist, ItemProps, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
@@ -45,12 +36,15 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       search,
       autocomplete = false,
       prefixIcon,
+      addOptionByEnter = false,
+      open: openProp,
+      onOpenChange,
       ...rest
     },
     ref,
   ) => {
     const localRef = useRef<HTMLInputElement>(null);
-    const [open, setOpen] = useState<boolean>(false);
+    const [open = false, setOpen] = useValueControl<boolean>({ value: openProp, onChange: onOpenChange });
     const [value, setValue] = useValueControl<SelectionSingleValueType>({
       value: valueProp,
       defaultValue,
@@ -58,20 +52,30 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     });
 
     const items = useMemo(() => transformOptionsToItems(options), [options]);
-    const selectedOption = useMemo(() => findSelectedOption(items, value), [items, value]);
+    const { selected, itemsWithPlaceholder } = useMemo(() => {
+      const [fonded, placeholder] = findSelectedOption(items, value);
+
+      return {
+        selected: fonded ?? placeholder,
+        itemsWithPlaceholder: ((placeholder ? [placeholder] : []) as ItemProps[]).concat(items),
+      };
+    }, [items, value]);
 
     const { inputValue, onInputValueChange, prevInputValue } = useSearchInput({
       ...search,
-      defaultValue: selectedOption?.content.option ?? '',
+      defaultValue: selected?.content.option ?? '',
     });
 
     useEffect(() => {
-      selectedOption?.content.option && onInputValueChange(selectedOption.content.option);
-    }, [onInputValueChange, selectedOption?.content.option]);
+      if (selected?.content.option && prevInputValue.current !== selected?.content.option) {
+        onInputValueChange(selected.content.option);
+        prevInputValue.current = selected?.content.option;
+      }
+    }, [onInputValueChange, selected?.content.option, prevInputValue]);
 
     const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-      if (!open && selectedOption?.content.option !== inputValue) {
-        onInputValueChange(selectedOption?.content.option ?? '');
+      if (!open && selected?.content.option !== inputValue) {
+        onInputValueChange(selected?.content.option ?? '');
       }
 
       rest?.onBlur?.(e);
@@ -94,7 +98,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       showCopyButton,
       inputRef: localRef,
       onClear,
-      valueToCopy: selectedOption?.content.option ?? '',
+      valueToCopy: selected?.content.option ?? '',
     });
 
     const commonHandleOnKeyDown = useHandleOnKeyDown({
@@ -108,14 +112,20 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
         setOpen(true);
       }
 
+      if (e.code === 'Enter') {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+
+      if (addOptionByEnter && e.code === 'Enter' && inputValue !== '') {
+        setValue(inputValue);
+      }
+
       commonHandleOnKeyDown(onKeyDown)(e);
     };
 
     const handleSelectionChange = (newValue?: SelectionSingleValueType) => {
       setValue(newValue);
-      const selected = findSelectedOption(items, newValue)?.content.option;
-      onInputValueChange(selected);
-      prevInputValue.current = selected ?? '';
       localRef.current?.focus();
 
       if (newValue) {
@@ -126,17 +136,25 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     const handleOpenChange = (open: boolean) => {
       if (!readonly && !disabled && !buttonsRefs.includes(document.activeElement)) {
         setOpen(open);
+
+        if (!open) {
+          onInputValueChange(selected?.content.option ?? '');
+          prevInputValue.current = selected?.content.option ?? '';
+        }
       }
     };
 
-    const fuzzySearch = useFuzzySearch(items);
+    const fuzzySearch = useFuzzySearch(itemsWithPlaceholder);
     const result =
-      autocomplete || !searchable || prevInputValue.current === inputValue ? items : fuzzySearch(inputValue);
+      autocomplete || !searchable || prevInputValue.current === inputValue
+        ? itemsWithPlaceholder
+        : fuzzySearch(inputValue);
 
     return (
       <FieldDecorator
         {...extractSupportProps(rest)}
         {...extractFieldDecoratorProps(rest)}
+        validationState={validationState}
         required={required}
         readonly={readonly}
         labelFor={id}

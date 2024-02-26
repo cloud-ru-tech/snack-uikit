@@ -78,6 +78,11 @@ type FiledSelectCommonProps = WithSupportProps<{
   search?: SearchState;
 
   autocomplete?: boolean;
+
+  addOptionByEnter?: boolean;
+
+  open?: boolean;
+  onOpenChange?(open: boolean): void;
 }> &
   Pick<
     ListProps,

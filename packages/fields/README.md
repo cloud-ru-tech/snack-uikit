@@ -337,6 +337,9 @@ const [isOpen, setIsOpen] = useState(false);
 | footer | `ReactNode` | - |  |
 | search | `SearchState` | - |  |
 | autocomplete | `boolean` | - |  |
+| addOptionByEnter | `boolean` | - |  |
+| open | `boolean` | - |  |
+| onOpenChange | `(open: boolean) => void` | - |  |
 | dataError | `boolean` | - |  |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |

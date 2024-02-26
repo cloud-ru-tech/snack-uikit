@@ -1,5 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react';
-import debounce from 'lodash.debounce';
 import React, { useLayoutEffect, useState } from 'react';
 
 import { Avatar } from '@snack-uikit/avatar';
@@ -34,7 +33,7 @@ const DEFAULT_OPTIONS: OptionProps[] = [
   { value: 'op11', option: 'Option 11', beforeContent: <DaySVG /> },
   { value: 'op12', option: 'Option 12', beforeContent: <Avatar name='Will Wheaton' size='xs' /> },
 ];
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MORE_OPTIONS: BaseOptionProps[] = [
   { value: 'op13', option: 'Option 13' },
   { value: 'op14', option: 'Option 14' },
@@ -61,14 +60,10 @@ type StoryProps = FieldSelectProps & {
   showMoreOptions: boolean;
 };
 
-export const onSearchDebounced = debounce((newValue: string, onChange: (newValue: string) => void) => {
-  onChange(newValue);
-}, 500);
-
 const Template = ({ selection, showMoreOptions, value, size, ...args }: StoryProps) => {
   const [singleValue, setSingleValue] = useState<SelectionSingleValueType>();
 
-  const [multipleValue, setMultipleValue] = useState<SelectionSingleValueType[]>();
+  const [multipleValue, setMultipleValue] = useState<SelectionSingleValueType[]>([]);
 
   const options: OptionProps[] = showMoreOptions ? [...DEFAULT_OPTIONS, ...MORE_OPTIONS] : DEFAULT_OPTIONS;
 
@@ -78,7 +73,7 @@ const Template = ({ selection, showMoreOptions, value, size, ...args }: StoryPro
     }
 
     if (selection === 'multiple') {
-      setMultipleValue(String(value).split(','));
+      setMultipleValue(value ? String(value).split(',') : []);
     }
   }, [selection, value]);
 

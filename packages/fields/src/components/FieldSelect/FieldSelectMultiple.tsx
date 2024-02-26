@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useMemo, useRef, useState } from 'react';
+import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useMemo, useRef } from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
-import { BaseItemProps, Droplist, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
+import { BaseItemProps, Droplist, ItemProps, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
 import { Tag } from '@snack-uikit/tag';
 import { extractSupportProps } from '@snack-uikit/utils';
 
@@ -13,7 +13,7 @@ import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
-import { FieldSelectMultipleProps } from './types';
+import { FieldSelectMultipleProps, ItemWithId } from './types';
 import { extractListProps, findSelectedOptions, getArrowIcon, transformOptionsToItems } from './utils';
 
 const BASE_MIN_WIDTH = 4;
@@ -39,6 +39,9 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
       autocomplete = false,
       prefixIcon,
       removeByBackspace = false,
+      addOptionByEnter = false,
+      open: openProp,
+      onOpenChange,
       ...rest
     },
     ref,
@@ -47,7 +50,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     const inputPlugRef = useRef<HTMLSpanElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
-    const [open, setOpen] = useState<boolean>(false);
+    const [open = false, setOpen] = useValueControl<boolean>({ value: openProp, onChange: onOpenChange });
     const items = useMemo(() => transformOptionsToItems(options), [options]);
     const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
       value: valueProp,
@@ -55,12 +58,14 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
       onChange: onChangeProp,
     });
 
-    const selectedOption = useMemo(() => {
-      if (value) {
-        const notSortSelectedOption = findSelectedOptions(items, value);
+    const { selected, itemsWithPlaceholder, disabledSelected } = useMemo(() => {
+      const [notSortSelectedOption, placeholder] = findSelectedOptions(items, value);
 
-        if (notSortSelectedOption) {
-          return notSortSelectedOption.sort((a, b) => {
+      const selectedWithPlaceholder =
+        notSortSelectedOption || placeholder ? (placeholder ?? []).concat(notSortSelectedOption ?? []) : undefined;
+
+      const selected = selectedWithPlaceholder
+        ? selectedWithPlaceholder.sort((a, b) => {
             if (b.disabled && !a.disabled) {
               return 1;
             }
@@ -70,11 +75,18 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
             }
 
             return 0;
-          });
-        }
-      }
+          })
+        : undefined;
 
-      return undefined;
+      const placeholderItems: ItemProps[] = placeholder ? placeholder : [];
+
+      const disabledSelected = selected?.filter((item: ItemWithId) => item.disabled);
+
+      return {
+        selected,
+        disabledSelected,
+        itemsWithPlaceholder: placeholderItems.concat(items),
+      };
     }, [items, value]);
 
     const { inputValue, onInputValueChange, prevInputValue } = useSearchInput({
@@ -83,7 +95,9 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     });
 
     const onClear = () => {
-      setValue(undefined);
+      const disabledValues = disabledSelected?.map(item => item.id);
+
+      setValue(disabledValues);
       onInputValueChange('');
 
       localRef.current?.focus();
@@ -95,7 +109,8 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     const { buttons, inputKeyDownNavigationHandler, buttonsRefs } = useButtons({
       readonly,
       size,
-      showClearButton: showClearButton && !disabled && !readonly && Boolean(value),
+      showClearButton:
+        showClearButton && !disabled && !readonly && (value?.length ?? 0) > (disabledSelected?.length ?? 0),
       showCopyButton: false,
       inputRef: localRef,
       onClear,
@@ -110,9 +125,20 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     const handleItemDelete = useHandleDeleteItem(setValue);
     const handleOnKeyDown = (onKeyDown?: KeyboardEventHandler<HTMLElement>) => (e: KeyboardEvent<HTMLInputElement>) => {
       if (removeByBackspace && e.code === 'Backspace' && inputValue === '') {
-        if (selectedOption?.length && !selectedOption.slice(-1)[0].disabled) {
-          handleItemDelete(selectedOption.pop() as BaseItemProps)();
+        if (selected?.length && !selected.slice(-1)[0].disabled) {
+          handleItemDelete(selected.pop() as BaseItemProps)();
         }
+      }
+
+      if (e.code === 'Enter') {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+
+      if (addOptionByEnter && e.code === 'Enter' && inputValue !== '') {
+        setValue((value: SelectionSingleValueType[]) => (value ?? []).concat(inputValue));
+        onInputValueChange('');
+        prevInputValue.current = '';
       }
 
       if (!open && prevInputValue.current !== inputValue) {
@@ -125,11 +151,19 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     const handleOpenChange = (open: boolean) => {
       if (!readonly && !disabled && !buttonsRefs.includes(document.activeElement)) {
         setOpen(open);
+
         if (!open) {
-          prevInputValue.current = inputValue;
-        }
-        if (open) {
+          onInputValueChange('');
           prevInputValue.current = '';
+          if (inputPlugRef.current) {
+            inputPlugRef.current.style.width = BASE_MIN_WIDTH + 'px';
+          }
+        }
+
+        if (open) {
+          if (inputPlugRef.current) {
+            inputPlugRef.current.style.width = 'unset';
+          }
         }
       }
     };
@@ -142,9 +176,11 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
       rest?.onBlur?.(e);
     };
 
-    const fuzzySearch = useFuzzySearch(items);
+    const fuzzySearch = useFuzzySearch(itemsWithPlaceholder);
     const result =
-      autocomplete || !searchable || prevInputValue.current !== inputValue ? items : fuzzySearch(inputValue);
+      autocomplete || !searchable || prevInputValue.current === inputValue
+        ? itemsWithPlaceholder
+        : fuzzySearch(inputValue);
 
     return (
       <FieldDecorator
@@ -163,6 +199,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
             value: value,
             onChange: setValue,
           }}
+          dataFiltered={rest.dataFiltered ?? Boolean(inputValue.length)}
           size={size}
           open={!disabled && !readonly && open}
           onOpenChange={handleOpenChange}
@@ -181,8 +218,8 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
             >
               <>
                 <div className={styles.contentWrapper} ref={contentRef}>
-                  {selectedOption &&
-                    selectedOption.map(option => (
+                  {selected &&
+                    selected.map(option => (
                       <Tag
                         size={size === 'l' ? 's' : 'xs'}
                         tabIndex={-1}
@@ -208,7 +245,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
                       name={name}
                       type='text'
                       disabled={disabled}
-                      placeholder={!selectedOption ? placeholder : undefined}
+                      placeholder={!selected || !selected.length ? placeholder : undefined}
                       ref={mergeRefs(ref, localRef)}
                       onChange={searchable ? onInputValueChange : undefined}
                       value={searchable ? inputValue : ''}
