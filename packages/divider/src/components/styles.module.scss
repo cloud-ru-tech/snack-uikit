@@ -1,44 +1,40 @@
 @import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
-$weights: (
-  'light': 0.5,
-  'regular': 1,
-);
+$containerSize: 1px;
 
-.root {
-  flex-grow: 1;
+@mixin commonStyles() {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 
-  .divider {
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    margin: 0;
+  background-color: $sys-neutral-decor-default;
+  border: none;
+}
 
-    background-color: $sys-neutral-decor-default;
-    border: none;
+.horizontal {
+  @include commonStyles();
+
+  width: 100%;
+
+  &[data-weight='regular'] {
+    height: $containerSize;
   }
 
-  @each $weightAlias, $size in $weights {
-    $containerSize: 1px;
+  &[data-weight='light'] {
+    height: calc($containerSize / 2);
+  }
+}
 
-    &[data-orientation='horizontal'][data-weight='#{$weightAlias}'] {
-      width: 100%;
-      height: $containerSize;
+.vertical {
+  @include commonStyles();
 
-      .divider {
-        transform: scaleY($size);
-      }
-    }
+  height: 100%;
 
-    &[data-orientation='vertical'][data-weight='#{$weightAlias}'] {
-      width: $containerSize;
-      height: 100%;
+  &[data-weight='regular'] {
+    width: $containerSize;
+  }
 
-      .divider {
-        transform: scaleX($size);
-      }
-    }
+  &[data-weight='light'] {
+    width: calc($containerSize / 2);
   }
 }

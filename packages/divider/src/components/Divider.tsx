@@ -22,14 +22,14 @@ export function Divider({
   weight = WEIGHT.Regular,
   ...rest
 }: DividerProps) {
-  return (
-    <div
-      {...extractSupportProps(rest)}
-      className={cn(className, styles.root)}
-      data-weight={weight}
-      data-orientation={orientation}
-    >
-      <hr className={cn(styles.divider)} />
-    </div>
+  const commonProps = {
+    ...extractSupportProps(rest),
+    'data-weight': weight,
+  };
+
+  return orientation === ORIENTATION.Horizontal ? (
+    <hr className={cn(styles.horizontal, className)} {...commonProps} />
+  ) : (
+    <div className={cn(styles.vertical, className)} {...commonProps} />
   );
 }
