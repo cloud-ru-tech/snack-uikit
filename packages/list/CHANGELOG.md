@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2024-02-27)
+
+
+### Bug Fixes
+
+* **FF-4324:** fix onChange selection value in controlled ([0be6178](https://github.com/cloud-ru-tech/snack-uikit/commit/0be6178e51dc24ff4c367a420d61065d00d695fd))
+
+
+### Features
+
+* **FF-4324:** add some exports ([7a62446](https://github.com/cloud-ru-tech/snack-uikit/commit/7a6244690288d279bbd4746280029f8f5ecda0b0))
+
+
+
+
+
 # 0.5.0 (2024-02-27)
 
 

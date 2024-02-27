@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.2 (2024-02-27)
+
+
+### Bug Fixes
+
+* **FF-4324:** fix styles ([ece1c3e](https://github.com/cloud-ru-tech/snack-uikit/commit/ece1c3e931fda07583c9f7b537bffd8f3cea14d6))
+
+
+
+
+
 ## 3.0.1 (2024-01-30)
 
 

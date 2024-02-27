@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.8 (2024-02-27)
+
+
+### Bug Fixes
+
+* **FF-3424:** fix table global search ([b5ebe5b](https://github.com/cloud-ru-tech/snack-uikit/commit/b5ebe5b227fbfaefdd1ce1dda858794f1ca546da))
+
+
+
+
+
 ## 0.14.7 (2024-02-27)
 
 ### Only dependencies have been changed

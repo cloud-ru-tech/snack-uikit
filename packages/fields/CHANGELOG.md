@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2024-02-27)
+
+
+### Bug Fixes
+
+* **FF-4324:** fix infinite response in actocomplete mode ([ad19e0c](https://github.com/cloud-ru-tech/snack-uikit/commit/ad19e0cb6e91b4dda12bc34a3f55fe823f508602))
+* **FF-4324:** fix value dec value as value === max ([a8bb974](https://github.com/cloud-ru-tech/snack-uikit/commit/a8bb9747f31864ea616fef6b9e2166047faceae7))
+
+
+### Features
+
+* **FF-4323:** add not found items from value ([a924867](https://github.com/cloud-ru-tech/snack-uikit/commit/a92486740ce4de274ff7331fd9dbf67a9f1a39da))
+* **FF-4324:** add appearance to tags view in muliple select ([1ce6b81](https://github.com/cloud-ru-tech/snack-uikit/commit/1ce6b817714bf6fb35e394338ab0083fa92ca44f))
+
+
+
+
+
 ## 0.16.1 (2024-02-27)
 
 ### Only dependencies have been changed
