@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2024-02-27)
+
+
+### Features
+
+* **FF-4237:** add onmousedown handling ([1d9347a](https://github.com/cloud-ru-tech/snack-uikit/commit/1d9347a73c24b439d09bde236ebee84cb3843cf4))
+
+
+
+
+
 ## 0.4.1 (2024-02-26)
 
 ### Only dependencies have been changed
