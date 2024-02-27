@@ -32,6 +32,8 @@ export type BaseItemProps = WithSupportProps<{
 
   /** Колбек обработки клика */
   onClick?(e: MouseEvent<HTMLElement>): void;
+  /** Колбек обработки нажатия кнопки мыши */
+  onMouseDown?(e: MouseEvent<HTMLElement>): void;
   /** Колбек обработки нажатия клавиши */
   onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
   /** Колбек обработки фокуса */

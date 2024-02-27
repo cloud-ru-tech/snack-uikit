@@ -19,6 +19,7 @@ export function BaseItem({
   afterContent,
   content,
   onClick,
+  onMouseDown,
   id,
   expandIcon,
   disabled,
@@ -107,6 +108,7 @@ export function BaseItem({
       className={cn(commonStyles.listItem, styles.droplistItem, className)}
       data-size={size}
       onClick={handleItemClick}
+      onMouseDown={onMouseDown}
       tabIndex={-1}
       data-non-pointer={inactive && !onClick}
       data-inactive={inactive || undefined}
