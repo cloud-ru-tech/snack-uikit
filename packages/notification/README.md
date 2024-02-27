@@ -118,7 +118,7 @@ const cards = [
 | title | `string` | - | Заголовок |
 | className | `string` | - | CSS-класс |
 | icon | `Pick<IconPredefinedProps, "appearance" \| "icon" \| "decor">` | - | Иконка |
-| description | `string` | - | Подзаголовок |
+| description | `ReactNode` | - | Подзаголовок |
 ## NotificationPanel.Divider
 ### Props
 | name | type | default value | description |

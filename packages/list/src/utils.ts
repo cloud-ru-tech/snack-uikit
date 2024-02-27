@@ -80,6 +80,11 @@ export function extractItemRefs(items: ItemProps[]): RefObject<HTMLElement>[] {
   }, [] as RefObject<HTMLElement>[]);
 }
 
+/**
+ * Функция возвращает массив id дочерних items
+ * @function  extractItemIds
+ */
+
 export function extractItemIds(items: ItemProps[]): Array<string | number> {
   return items.reduce(
     (prev: Array<string | number>, item: ItemProps) => {
@@ -141,6 +146,11 @@ export function extractAllChildIds({ items }: { items: ItemProps[] }): Array<str
       [] as Array<string | number>,
     );
 }
+
+/**
+ *  Функция разворачивает массив айтемов в плоский список
+ *  @function  flattenItems
+ */
 
 export function flattenItems(items: ItemProps[]): (BaseItemProps | AccordionItemProps | NextListItemProps)[] {
   const flattenedItems: (BaseItemProps | AccordionItemProps | NextListItemProps)[] = [];

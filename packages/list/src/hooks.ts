@@ -6,6 +6,9 @@ import { flattenItems } from './utils';
 
 const DEFAULT_MIN_SEARCH_INPUT_LENGTH = 2;
 
+/**
+ * Нечеткий поиск среди айтемов по полям 'content.option', 'content.caption', 'content.description', 'label'
+ */
 export function useFuzzySearch(items: ItemProps[], minSearchInputLength?: number) {
   return useCallback(
     (search: string) => {
