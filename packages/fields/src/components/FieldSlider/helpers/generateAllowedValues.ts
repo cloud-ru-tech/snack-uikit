@@ -3,7 +3,7 @@ export const generateAllowedValues = (min: number, max: number, step: number): n
 
   let current = min;
 
-  while (current < max) {
+  while (current <= max) {
     values.push(current);
     current += step;
   }
