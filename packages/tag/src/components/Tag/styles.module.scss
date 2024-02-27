@@ -4,7 +4,7 @@
 $sizes: 'xs', 's';
 $label-typography: (
   'xs': $sans-label-s,
-  's': $sans-label-m
+  's': $sans-label-m,
 );
 $appearances: (
   'neutral': (
@@ -124,10 +124,10 @@ $appearances: (
   }
 
   @each $size in $sizes {
-    &[data-size=#{$size}] {
+    &[data-size='#{$size}'] {
       @include composite-var($tag, 'container', $size, 'label-only');
 
-      &[data-removable="true"] {
+      &[data-removable='true'] {
         @include composite-var($tag, 'container', $size, 'button-after');
       }
 
@@ -142,12 +142,8 @@ $appearances: (
   }
 
   @each $appearanceKey, $appearance in $appearances {
-    &[data-appearance=#{$appearanceKey}] {
+    &[data-appearance='#{$appearanceKey}'] {
       background-color: simple-var($appearance, 'container');
-
-      &[data-removable="false"] {
-        background-color: simple-var($appearance, 'container-disabled');
-      }
 
       .label {
         color: simple-var($appearance, 'label');
@@ -156,11 +152,14 @@ $appearances: (
       .tagButton {
         color: simple-var($appearance, 'icon');
 
-        &:focus, &:hover, &:active {
+        &:focus,
+        &:hover,
+        &:active {
           color: simple-var($appearance, 'icon-active');
         }
 
-        &:focus, &:hover {
+        &:focus,
+        &:hover {
           background-color: simple-var($appearance, 'button-hovered');
         }
 
