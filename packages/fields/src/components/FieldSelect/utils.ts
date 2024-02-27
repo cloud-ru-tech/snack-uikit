@@ -1,6 +1,7 @@
 import { ChevronDownSVG, ChevronUpSVG } from '@snack-uikit/icons';
 import { ICON_SIZE, SIZE, Size } from '@snack-uikit/input-private';
 import { DroplistProps, flattenItems, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
+import { TagProps } from '@snack-uikit/tag';
 
 import {
   AccordionOptionProps,
@@ -32,6 +33,34 @@ export function isNextListOptionProps(option: any): option is NestListOptionProp
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isGroupOptionProps(option: any): option is GroupOptionProps {
   return 'options' in option && option['type'] === undefined;
+}
+
+export function mapOptionToAppearance(
+  options: OptionProps[],
+): Record<string | number, TagProps['appearance'] | undefined> {
+  let mapOption2Appearance: Record<string | number, TagProps['appearance'] | undefined> = {};
+
+  options.forEach(option => {
+    if (isAccordionOptionProps(option) || isNextListOptionProps(option)) {
+      const { options, value, appearance } = option;
+
+      mapOption2Appearance = { ...mapOption2Appearance, [value]: appearance, ...mapOptionToAppearance(options) };
+    }
+
+    if (isGroupOptionProps(option)) {
+      const { options } = option;
+
+      mapOption2Appearance = { ...mapOption2Appearance, ...mapOptionToAppearance(options) };
+    }
+
+    const { value, appearance } = option as BaseOptionProps;
+
+    if (value !== undefined) {
+      mapOption2Appearance = { ...mapOption2Appearance, [value]: appearance };
+    }
+  });
+
+  return mapOption2Appearance;
 }
 
 export function transformOptionsToItems(options: OptionProps[]): ItemProps[] {

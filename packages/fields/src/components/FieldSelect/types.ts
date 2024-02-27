@@ -10,6 +10,7 @@ import {
   SelectionMultipleState,
   SelectionSingleState,
 } from '@snack-uikit/list';
+import { TagProps } from '@snack-uikit/tag';
 import { WithSupportProps } from '@snack-uikit/utils';
 
 import { FieldDecoratorProps } from '../FieldDecorator';
@@ -21,7 +22,7 @@ export type OptionProps = BaseOptionProps | AccordionOptionProps | GroupOptionPr
 export type OptionWithoutGroup = BaseOptionProps | AccordionOptionProps | NestListOptionProps;
 
 export type BaseOptionProps = Pick<BaseItemProps, 'beforeContent' | 'afterContent' | 'disabled'> &
-  BaseItemProps['content'] & { value: string | number };
+  BaseItemProps['content'] & { value: string | number } & Pick<TagProps, 'appearance'>;
 
 export type AccordionOptionProps = Pick<AccordionItemProps, 'type'> & BaseOptionProps & { options: OptionProps[] };
 export type GroupOptionProps = Omit<GroupItemProps, 'items' | 'id'> & { options: OptionProps[] };

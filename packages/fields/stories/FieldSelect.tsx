@@ -23,13 +23,24 @@ const DEFAULT_OPTIONS: OptionProps[] = [
   {
     label: 'Group',
     options: [
-      { value: 'op1', option: 'Option 1' },
+      { value: 'op1', option: 'Option 1', caption: 'Green Tag', appearance: 'green' },
       { value: 'op2', option: 'Option 2', description: 'Description' },
       { value: 'op3', option: 'Option 3', caption: 'Caption' },
-      { value: 'op4', option: 'Option 4', afterContent: <Tag label='Tag Label' /> },
+      {
+        value: 'op4',
+        option: 'Option 4',
+        afterContent: <Tag label='Red Label' appearance='red' size='xs' />,
+        appearance: 'red',
+      },
     ],
   },
-  { value: 'op5', option: 'Option 5', disabled: true },
+  {
+    value: 'op5',
+    option: 'Option 5',
+    disabled: true,
+    appearance: 'yellow',
+    afterContent: <Tag label='Yellow Label' appearance='yellow' size='xs' />,
+  },
   { value: 'op11', option: 'Option 11', beforeContent: <DaySVG /> },
   { value: 'op12', option: 'Option 12', beforeContent: <Avatar name='Will Wheaton' size='xs' /> },
 ];

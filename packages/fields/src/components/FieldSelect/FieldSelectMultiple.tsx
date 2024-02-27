@@ -14,7 +14,13 @@ import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
 import { FieldSelectMultipleProps, ItemWithId } from './types';
-import { extractListProps, findSelectedOptions, getArrowIcon, transformOptionsToItems } from './utils';
+import {
+  extractListProps,
+  findSelectedOptions,
+  getArrowIcon,
+  mapOptionToAppearance,
+  transformOptionsToItems,
+} from './utils';
 
 const BASE_MIN_WIDTH = 4;
 
@@ -52,6 +58,8 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
 
     const [open = false, setOpen] = useValueControl<boolean>({ value: openProp, onChange: onOpenChange });
     const items = useMemo(() => transformOptionsToItems(options), [options]);
+    const mapItemsToTagAppearance = useMemo(() => mapOptionToAppearance(options), [options]);
+
     const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
       value: valueProp,
       defaultValue,
@@ -225,6 +233,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
                         tabIndex={-1}
                         label={String(option.content.option)}
                         key={option.id}
+                        appearance={option.id ? mapItemsToTagAppearance[option?.id] : 'neutral'}
                         onDelete={!option.disabled && !disabled && !readonly ? handleItemDelete(option) : undefined}
                       />
                     ))}
