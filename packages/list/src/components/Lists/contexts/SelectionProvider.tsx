@@ -90,8 +90,10 @@ function SelectionSingleProvider({
   onChange: onChangeProp,
   children,
 }: SelectionSingleProps & Child) {
-  const [value, setValue] = useUncontrolledProp<SelectionSingleValueType>(valueProp, defaultValue, cb => {
-    onChangeProp?.(cb(value));
+  const [value, setValue] = useUncontrolledProp<SelectionSingleValueType>(valueProp, defaultValue, newValue => {
+    const result = typeof newValue === 'function' ? newValue(value) : newValue;
+
+    onChangeProp?.(result);
   });
 
   const onChange = useCallback(
@@ -128,7 +130,11 @@ function SelectionMultipleProvider({
   onChange: onChangeProp,
   children,
 }: SelectionMultipleProps & Child) {
-  const [value, setValue] = useUncontrolledProp<SelectionSingleValueType[]>(valueProp, defaultValue, onChangeProp);
+  const [value, setValue] = useUncontrolledProp<SelectionSingleValueType[]>(valueProp, defaultValue, newValue => {
+    const result = typeof newValue === 'function' ? newValue(value) : newValue;
+
+    onChangeProp?.(result);
+  });
 
   const onChange = useCallback(
     (newValue: SelectionSingleValueType) => {
