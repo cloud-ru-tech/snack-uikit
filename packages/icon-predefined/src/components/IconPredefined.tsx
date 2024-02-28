@@ -18,6 +18,8 @@ export type IconPredefinedProps = WithSupportProps<{
   icon: JSXElementConstructor<{ size?: number; className?: string }>;
   /** Размер */
   size?: Size;
+  /** Форма: круглая или квадратная */
+  shape?: 'round' | 'square';
 }>;
 
 export function IconPredefined({
@@ -26,6 +28,7 @@ export function IconPredefined({
   size = SIZE.M,
   icon: IconComponent,
   appearance = APPEARANCE.Primary,
+  shape = 'round',
   ...rest
 }: IconPredefinedProps) {
   return (
@@ -35,6 +38,7 @@ export function IconPredefined({
       data-size={size}
       data-decor={decor || undefined}
       data-appearance={appearance}
+      data-shape={shape}
     >
       <IconComponent data-size={size} data-appearance={appearance} className={styles.icon} />
     </div>

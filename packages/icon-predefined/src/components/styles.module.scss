@@ -27,13 +27,20 @@ $sizes: (
 
   @each $size, $sideLength in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($icon-predefined, 'decor', $size);
+      &[data-shape='round'] {
+        @include composite-var($icon-predefined, 'decor-round', $size);
+      }
+
+      &[data-shape='square'] {
+        @include composite-var($icon-predefined, 'decor-square', $size);
+      }
     }
   }
 }
 
 .icon {
-  &, svg {
+  &,
+  svg {
     fill: currentColor;
   }
 

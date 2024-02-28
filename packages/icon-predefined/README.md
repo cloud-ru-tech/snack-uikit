@@ -60,6 +60,7 @@ css-класс контейнера.
 | appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Внешний вид |
 | decor | `boolean` | true | Наличие цветной подложки |
 | size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер |
+| shape | "round" \| "square" | round | Форма: круглая или квадратная |
 
 
 [//]: DOCUMENTATION_SECTION_END
