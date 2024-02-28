@@ -28,7 +28,7 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = CardProps &
+type StoryProps = Omit<CardProps, 'promoBadge'> &
   Omit<Card.HeaderProps, 'emblem'> &
   Card.ImageProps & {
     footerMode: FooterMode;
@@ -40,6 +40,7 @@ type StoryProps = CardProps &
     icon: IconPredefinedProps['icon'];
     clickable: boolean;
     showFading: boolean;
+    promoBadge?: string;
   };
 
 const Template: StoryFn<StoryProps> = ({
@@ -58,6 +59,7 @@ const Template: StoryFn<StoryProps> = ({
   showFading,
   disabled,
   truncate,
+  promoBadge,
   ...args
 }: StoryProps) => {
   const [checked, setChecked] = useState<boolean>(checkedProp || false);
@@ -125,6 +127,7 @@ const Template: StoryFn<StoryProps> = ({
         {...args}
         disabled={disabled}
         checked={checked}
+        promoBadge={promoBadge ? { text: promoBadge } : undefined}
         onClick={clickable ? () => setChecked(prevChecked => !prevChecked) : undefined}
         image={image}
         header={
@@ -259,6 +262,9 @@ card.argTypes = {
   },
   showFading: {
     name: '[Story]: Card Image Background ShowFading',
+  },
+  promoBadge: {
+    type: 'string',
   },
 };
 

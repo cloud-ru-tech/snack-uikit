@@ -34,7 +34,7 @@ import { Card, SearchPrivate } from "@snack-uikit/card";
 | multipleSelection | `boolean` | - | Отображение галочки для режима массового выделения карточек |
 | onClick | `(e: MouseEvent<HTMLDivElement \| HTMLAnchorElement, MouseEvent>) => void` | - | Колбек на клик по карточке |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
-| promoBadge | `string` | - | Текст для PromoBadge |
+| promoBadge | `string \| Pick<PromoTagProps, "text" \| "appearance">` | - | PromoBadge |
 | children | `ReactNode` | - | Вложенный контент |
 | header | `ReactElement<HeaderProps, string \| JSXElementConstructor<any>>` | - | Вложенный Header |
 | footer | `ReactNode` | - | Вложенный Footer |

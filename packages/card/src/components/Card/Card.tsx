@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { KeyboardEvent, MouseEvent, ReactElement, ReactNode, useCallback, useRef } from 'react';
 
+import { PromoTagProps } from '@snack-uikit/promo-tag';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
@@ -25,8 +26,8 @@ export type CardProps = WithSupportProps<{
   onClick?(e: MouseEvent<HTMLDivElement | HTMLAnchorElement>): void;
   /** Размер */
   size?: Size;
-  /** Текст для PromoBadge */
-  promoBadge?: string;
+  /** PromoBadge */
+  promoBadge?: Pick<PromoTagProps, 'text' | 'appearance'> | string;
   /** Вложенный контент  */
   children?: ReactNode;
   /** Вложенный Header */
@@ -124,7 +125,7 @@ export function Card({
             </div>
           </div>
 
-          {promoBadge && <PromoBadge text={promoBadge} />}
+          {promoBadge && <PromoBadge {...(typeof promoBadge === 'string' ? { text: promoBadge } : promoBadge)} />}
         </div>
 
         {checked && multipleSelection && <Check className={styles.check} />}
