@@ -94,8 +94,6 @@ export function Card({
       >
         {image}
 
-        {promoBadge && <PromoBadge text={promoBadge} />}
-
         <div className={styles.composition} tabIndex={-1}>
           {href && (
             <a
@@ -125,6 +123,8 @@ export function Card({
               {footer && <div className={styles.footer}>{footer}</div>}
             </div>
           </div>
+
+          {promoBadge && <PromoBadge text={promoBadge} />}
         </div>
 
         {checked && multipleSelection && <Check className={styles.check} />}
