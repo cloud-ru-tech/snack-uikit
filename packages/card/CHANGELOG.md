@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-02-28)
+
+
+### Bug Fixes
+
+* **FF-0000:** fix badge overlaps title ([b0594c2](https://github.com/cloud-ru-tech/snack-uikit/commit/b0594c26f49cb741ec95b0e018c82214aa4aff51))
+
+
+### Features
+
+* **FF-011:** add into prop type promoBadge {text,appearance?} ([dcb3b7b](https://github.com/cloud-ru-tech/snack-uikit/commit/dcb3b7b31d7c3904f3401094b63838c08308506f))
+
+
+
+
+
 ## 0.10.7 (2024-02-27)
 
 ### Only dependencies have been changed
