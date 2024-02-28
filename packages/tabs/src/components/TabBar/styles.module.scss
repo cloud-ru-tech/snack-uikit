@@ -3,12 +3,11 @@
 $types: 'primary', 'secondary';
 
 .tabBar {
+  @include composite-var($tabs-container);
+
   position: relative;
-
   display: flex;
-  gap: $dimension-050m; // TODO: replace with token from tabs
   align-items: center;
-
   box-sizing: border-box;
 }
 
@@ -35,11 +34,11 @@ $types: 'primary', 'secondary';
 
   white-space: nowrap;
 
-  &[data-type=primary] {
+  &[data-type='primary'] {
     @include composite-var($tabs-primary);
   }
 
-  &[data-type=secondary] {
+  &[data-type='secondary'] {
     @include composite-var($tabs-secondary);
   }
 }
@@ -48,7 +47,9 @@ $types: 'primary', 'secondary';
   position: absolute;
   bottom: 0;
   background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
-  transition: left 0.1s ease, width 0.1s ease;
+  transition:
+    left 0.1s ease,
+    width 0.1s ease;
 
   @each $type in $types {
     &[data-type='#{$type}'] {
