@@ -17,6 +17,8 @@ export type QuestionTooltipProps = Omit<TooltipProps, 'children' | 'triggerClass
   tooltipClassname?: string;
   /** data-test-id для триггера */
   triggerDataTestId?: string;
+
+  tabIndex?: number;
 };
 
 export function QuestionTooltip({
@@ -27,6 +29,7 @@ export function QuestionTooltip({
   triggerDataTestId,
   open,
   onOpenChange,
+  tabIndex = 0,
   ...rest
 }: QuestionTooltipProps) {
   const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
@@ -47,7 +50,7 @@ export function QuestionTooltip({
           data-trigger={trigger}
           className={cn(styles.questionTooltip, className)}
           role='button'
-          tabIndex={0}
+          tabIndex={tabIndex}
         >
           <QuestionSVG size={SIZES_MAP[size]} data-test-id={triggerDataTestId} />
         </span>

@@ -46,6 +46,7 @@
 | size | enum Size: `"s"`, `"xs"` | xs | Размер |
 | tooltipClassname | `string` | - | CSS-класс контейнера подсказки |
 | triggerDataTestId | `string` | - | data-test-id для триггера |
+| tabIndex | `number` | - |  |
 
 
 [//]: DOCUMENTATION_SECTION_END
