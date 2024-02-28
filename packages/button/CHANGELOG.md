@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2024-02-28)
+
+
+### Features
+
+* **FF-4147:** all buttons has xs/s/m/l size ([4abf5aa](https://github.com/cloud-ru-tech/snack-uikit/commit/4abf5aa1fab0538f84f2eedd60a7f9b54848442e))
+
+
+
+
+
 ## 0.16.1 (2024-02-20)
 
 

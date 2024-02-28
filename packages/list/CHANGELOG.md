@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.1 (2024-02-28)
+
+### Only dependencies have been changed
+* [@snack-uikit/info-block@0.3.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/info-block/CHANGELOG.md)
+
+
+
+
+
 # 0.6.0 (2024-02-27)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2024-02-28)
+
+
+### Features
+
+* **FF-4147:** add shape prop into IconPredefined ([ed019ff](https://github.com/cloud-ru-tech/snack-uikit/commit/ed019fff271dd04196a7bb5f824c65256de0d714))
+
+
+
+
+
 ## 0.4.2 (2024-02-20)
 
 
