@@ -29,7 +29,7 @@ export function Droplist({
   const hasSearch = useMemo(() => Boolean(search), [search]);
 
   const memorizedItems = useMemo(
-    () => addItemsIds((pinBottom ?? []).concat(itemsProp).concat(pinTop ?? [])),
+    () => addItemsIds((pinTop ?? []).concat(itemsProp).concat(pinBottom ?? [])),
     [itemsProp, pinBottom, pinTop],
   );
 
