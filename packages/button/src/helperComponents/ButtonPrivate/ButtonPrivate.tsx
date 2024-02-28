@@ -10,11 +10,10 @@ import styles from './styles.module.scss';
 import { getChildren, getVariant } from './utils';
 
 export type ButtonPrivateProps = WithSupportProps<
-  Omit<CommonButtonProps, 'size'> &
+  CommonButtonProps &
     CounterButtonProps & {
       iconClassName: string;
       labelClassName: string;
-      size?: string;
       fullWidth?: boolean;
     }
 >;

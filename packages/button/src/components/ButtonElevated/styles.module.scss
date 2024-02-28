@@ -5,31 +5,25 @@
 $sizes: 'xs', 's', 'm', 'l';
 $variants: 'icon-only';
 $typography: ();
-$icon-sizes: (
-  'xs': $icon-xs,
-  's': $icon-s,
-  'm': $icon-s,
-  'l': $icon-s,
-);
 
 @mixin button-colors-styles {
   @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-support'));
 
   background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-  box-shadow: simple-var($theme-variables, 'box-shadow','elevation', 'level2');
+  box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
 
   &:hover {
     @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-main'));
 
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-    box-shadow: simple-var($theme-variables, 'box-shadow','elevation', 'level3');
+    box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level3');
   }
 
   &:focus-visible {
     @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-main'));
 
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-    box-shadow: simple-var($theme-variables, 'box-shadow','elevation', 'level3');
+    box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level3');
   }
 
   &:active {
@@ -64,7 +58,7 @@ $icon-sizes: (
 }
 
 .button {
-  @include button-anatomy-styles($button-elevated, $sizes, $variants, $typography, $icon-sizes, false);
+  @include button-anatomy-styles($button-elevated, $sizes, $variants, $typography, false);
   @include loading-label-only($button-elevated);
   @include button-colors-styles;
   @include button-outline-colors-styles;

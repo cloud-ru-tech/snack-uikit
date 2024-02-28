@@ -10,15 +10,13 @@ import {
 import { CounterProps } from '@snack-uikit/counter';
 import { ValueOf } from '@snack-uikit/utils';
 
-import { APPEARANCE, ICON_POSITION, SIZE_S_L, SIZE_XS_M } from './constants';
+import { APPEARANCE, ICON_POSITION, SIZE } from './constants';
 
 export type Appearance = ValueOf<typeof APPEARANCE>;
 
 export type IconPosition = ValueOf<typeof ICON_POSITION>;
 
-export type SizeSL = ValueOf<typeof SIZE_S_L>;
-
-export type SizeXsM = ValueOf<typeof SIZE_XS_M>;
+export type Size = ValueOf<typeof SIZE>;
 
 export type BaseButtonProps = {
   /** CSS-класс */
@@ -45,7 +43,7 @@ export type BaseButtonProps = {
   /** Колбек обработки блюра */
   onBlur?: FocusEventHandler<HTMLAnchorElement | HTMLButtonElement>;
   /** Размер */
-  size?: SizeXsM | SizeSL;
+  size?: Size;
   /** Внешний вид кнопки */
   appearance?: Appearance;
   /** HTML-аттрибут type */

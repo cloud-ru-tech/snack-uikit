@@ -2,7 +2,7 @@ import { CounterProps } from '@snack-uikit/counter';
 import * as Icons from '@snack-uikit/icons';
 
 import { APPEARANCE as COUNTER_APPEARANCES, VARIANT as COUNTER_VARIANTS } from '../../counter/src/components/constants';
-import { APPEARANCE, HTML_TYPE, SIZE_S_L } from '../src/constants';
+import { APPEARANCE, HTML_TYPE, SIZE } from '../src/constants';
 import { CounterInButtonProps } from '../src/types';
 
 export const ICONS = {
@@ -85,7 +85,7 @@ export const COMMON_ARG_TYPES = {
     },
   },
   size: {
-    options: Object.values(SIZE_S_L),
+    options: Object.values(SIZE),
     control: {
       type: 'radio',
     },

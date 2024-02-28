@@ -1,6 +1,5 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-
 @mixin icon-fill($color) {
   .icon {
     color: $color;
@@ -18,20 +17,32 @@
     display: inline-flex;
 
     svg {
-      width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-      height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+      height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 }
 
-@mixin button-anatomy-styles($button-theme, $sizes, $variants, $typography, $icon-sizes, $hasLabel: true) {
+@mixin button-anatomy-styles($button-theme, $sizes, $variants, $typography, $hasLabel: true) {
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include icon-size($icon-sizes, $size);
-
       @if $hasLabel == true {
         .label {
           @include composite-var($typography, $size);
+        }
+      }
+
+      .icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: $icon-s;
+        height: $icon-s;
+
+        svg {
+          max-width: $icon-s;
+          max-height: $icon-s;
         }
       }
 

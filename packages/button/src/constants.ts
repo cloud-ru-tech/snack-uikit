@@ -17,13 +17,8 @@ export const TARGET = {
   Top: '_top',
 } as const;
 
-export const SIZE_XS_M = {
+export const SIZE = {
   Xs: 'xs',
-  S: 's',
-  M: 'm',
-} as const;
-
-export const SIZE_S_L = {
   S: 's',
   M: 'm',
   L: 'l',

@@ -3,19 +3,19 @@ import { forwardRef } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { APPEARANCE, HTML_TYPE, SIZE_S_L, TARGET } from '../../constants';
+import { APPEARANCE, HTML_TYPE, SIZE, TARGET } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
-import { CommonButtonProps, SizeSL } from '../../types';
+import { CommonButtonProps } from '../../types';
 import { extractCommonButtonProps } from '../../utils';
 import styles from './styles.module.scss';
 
-export type ButtonTonalProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition' | 'size'> & { size?: SizeSL }>;
+export type ButtonTonalProps = WithSupportProps<Omit<CommonButtonProps, 'iconPosition'>>;
 
 export const ButtonTonal = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonTonalProps>(
   (
     {
       className,
-      size = SIZE_S_L.S,
+      size = SIZE.S,
       target = TARGET.Blank,
       type = HTML_TYPE.Button,
       appearance = APPEARANCE.Primary,

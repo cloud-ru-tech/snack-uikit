@@ -3,23 +3,19 @@
 @import '../../styles.module';
 
 $appearances: 'primary', 'neutral', 'red';
-$sizes: 'xs', 's', 'm',;
+$sizes: 'xs', 's', 'm', 'l';
 $variants: 'label-only', 'icon-only', 'icon-after', 'icon-before';
-$icon-sizes: (
-  'xs': $icon-s,
-  's': $icon-s,
-  'm': $icon-s,
-);
 $typography: (
   'xs': $sans-label-s,
   's': $sans-label-m,
-  'm': $sans-label-l
+  'm': $sans-label-l,
+  'l': $sans-label-l,
 );
 
 @mixin button-colors-styles {
   @include label-color($sys-neutral-text-light);
   @include icon-fill($sys-neutral-text-light);
-  
+
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
       &:hover {
@@ -62,7 +58,7 @@ $typography: (
 }
 
 .button {
-  @include button-anatomy-styles($button-function, $sizes, $variants, $typography, $icon-sizes);
+  @include button-anatomy-styles($button-function, $sizes, $variants, $typography);
   @include loading-label-only($button-function);
   @include button-colors-styles;
   @include button-outline-colors-styles;

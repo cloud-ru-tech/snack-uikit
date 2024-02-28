@@ -3,21 +3,20 @@ import { forwardRef } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { APPEARANCE, HTML_TYPE, ICON_POSITION, SIZE_XS_M, TARGET } from '../../constants';
+import { APPEARANCE, HTML_TYPE, ICON_POSITION, SIZE, TARGET } from '../../constants';
 import { ButtonPrivate } from '../../helperComponents';
-import { CommonButtonProps, CounterButtonProps, SizeXsM } from '../../types';
+import { CommonButtonProps, CounterButtonProps } from '../../types';
 import { extractCommonButtonProps, extractCounterButtonProps } from '../../utils';
 import styles from './styles.module.scss';
 
-export type ButtonFunctionProps = WithSupportProps<Omit<CommonButtonProps, 'size'> & { size?: SizeXsM }> &
-  CounterButtonProps;
+export type ButtonFunctionProps = WithSupportProps<CommonButtonProps> & CounterButtonProps;
 
 export const ButtonFunction = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonFunctionProps>(
   (
     {
       className,
       iconPosition = ICON_POSITION.After,
-      size = SIZE_XS_M.S,
+      size = SIZE.S,
       target = TARGET.Blank,
       type = HTML_TYPE.Button,
       appearance = APPEARANCE.Neutral,

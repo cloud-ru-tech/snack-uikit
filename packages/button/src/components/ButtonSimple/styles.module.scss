@@ -3,17 +3,13 @@
 @import '../../styles.module';
 
 $appearances: 'primary', 'neutral', 'red';
-$sizes: 's', 'm', 'l';
+$sizes: 'xs', 's', 'm', 'l';
 $variants: 'label-only', 'icon-only', 'icon-after', 'icon-before';
-$icon-sizes: (
-  's': $icon-s,
-  'm': $icon-s,
-  'l': $icon-s,
-);
 $typography: (
+  'xs': $sans-label-s,
   's': $sans-label-m,
   'm': $sans-label-l,
-  'l': $sans-label-l
+  'l': $sans-label-l,
 );
 
 @mixin button-colors-styles {
@@ -62,7 +58,7 @@ $typography: (
 }
 
 .button {
-  @include button-anatomy-styles($button-simple, $sizes, $variants, $typography, $icon-sizes);
+  @include button-anatomy-styles($button-simple, $sizes, $variants, $typography);
   @include loading-label-only($button-simple);
   @include button-colors-styles;
   @include button-outline-colors-styles;

@@ -7,7 +7,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ButtonFunction, ButtonFunctionProps } from '../src';
-import { SIZE_XS_M } from '../src/constants';
+import { SIZE } from '../src/constants';
 import { CounterInButtonProps } from '../src/types';
 import {
   BUTTON_ARGS,
@@ -142,7 +142,7 @@ buttonFunction.args = {
 buttonFunction.argTypes = {
   ...COMMON_ARG_TYPES,
   size: {
-    options: Object.values(SIZE_XS_M),
+    options: Object.values(SIZE),
     control: {
       type: 'radio',
     },
