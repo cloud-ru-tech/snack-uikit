@@ -6,7 +6,35 @@
 $sizes: 's', 'm', 'l';
 $variants: 'single-line-container', 'multi-line-container';
 
+@mixin validationState($state, $rainbowColor, $bgDefault) {
+  &[data-validation='#{$state}'] {
+    background-color: simple-var($theme-variables, 'sys', $bgDefault, 'background1-level');
+    border-color: simple-var($theme-variables, 'sys', $bgDefault, 'decor-default');
+
+    &:hover {
+      background-color: $sys-neutral-background2-level;
+      border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-hovered');
+    }
+
+    &:not([data-readonly]) {
+      &:focus-within,
+      &[data-focused] {
+        @include outline-var($container-focused-m);
+
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'accent-default');
+        outline-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-activated');
+      }
+    }
+  }
+}
+
 .container {
+  @include validationState('default', 'primary', 'neutral');
+  @include validationState('error', 'red', 'red');
+  @include validationState('warning', 'yellow', 'yellow');
+  @include validationState('success', 'green', 'green');
+
   position: relative;
 
   display: flex;
@@ -36,82 +64,6 @@ $variants: 'single-line-container', 'multi-line-container';
           @include composite-var($fields, $variant, $size);
         }
       }
-    }
-  }
-
-  &[data-validation='default'] {
-    background-color: simple-var($sys-neutral-background1-level);
-    border-color: simple-var($sys-neutral-decor-default);
-
-    &:hover {
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-primary-decor-hovered);
-    }
-
-    &:focus-within,
-    &[data-focused] {
-      @include outline-var($container-focused-m);
-
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-primary-accent-default);
-      outline-color: simple-var($sys-primary-decor-activated);
-    }
-  }
-
-  &[data-validation='error'] {
-    background-color: simple-var($sys-red-background1-level);
-    border-color: simple-var($sys-red-decor-default);
-
-    &:hover {
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-red-decor-hovered);
-    }
-
-    &:focus-within,
-    &[data-focused] {
-      @include outline-var($container-focused-m);
-
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-red-accent-default);
-      outline-color: simple-var($sys-red-decor-activated);
-    }
-  }
-
-  &[data-validation='warning'] {
-    background-color: simple-var($sys-yellow-background1-level);
-    border-color: simple-var($sys-yellow-decor-default);
-
-    &:hover {
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-yellow-decor-hovered);
-    }
-
-    &:focus-within,
-    &[data-focused] {
-      @include outline-var($container-focused-m);
-
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-yellow-accent-default);
-      outline-color: simple-var($sys-yellow-decor-activated);
-    }
-  }
-
-  &[data-validation='success'] {
-    background-color: simple-var($sys-green-background1-level);
-    border-color: simple-var($sys-green-decor-default);
-
-    &:hover {
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-green-decor-hovered);
-    }
-
-    &:focus-within,
-    &[data-focused] {
-      @include outline-var($container-focused-m);
-
-      background-color: simple-var($sys-neutral-background2-level);
-      border-color: simple-var($sys-green-accent-default);
-      outline-color: simple-var($sys-green-decor-activated);
     }
   }
 
@@ -146,7 +98,7 @@ $variants: 'single-line-container', 'multi-line-container';
 
       background-color: simple-var($sys-neutral-decor-disabled);
       border-color: simple-var($sys-neutral-decor-disabled);
-      outline-color: simple-var($sys-primary-decor-activated);
+      outline: none;
     }
   }
 
