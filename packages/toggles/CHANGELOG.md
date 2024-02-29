@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.7 (2024-02-29)
+
+
+### Bug Fixes
+
+* **FF-0000:** fix switch icon lolor in disabled&checked state ([077fb82](https://github.com/cloud-ru-tech/snack-uikit/commit/077fb829f164793dc61dc7e4da99403602517a2c))
+
+
+
+
+
 ## 0.9.6 (2024-02-20)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.3 (2024-02-29)
+
+
+### Bug Fixes
+
+* **FF-0000:** remove outline from FieldContainer in readonly state ([5852924](https://github.com/cloud-ru-tech/snack-uikit/commit/5852924c50551584685ee14c8693f2b4cee9e2cd))
+
+
+
+
+
 ## 0.17.2 (2024-02-29)
 
 ### Only dependencies have been changed
