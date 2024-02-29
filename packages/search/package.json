@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Search",
-  "version": "0.7.13",
+  "version": "0.7.14",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -32,7 +32,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/droplist": "0.13.9",
+    "@snack-uikit/droplist": "0.13.10",
     "@snack-uikit/search-private": "0.1.5",
     "@snack-uikit/utils": "3.2.0",
     "classnames": "2.3.2",

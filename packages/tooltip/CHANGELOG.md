@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2024-02-29)
+
+
+### Features
+
+* **PDS-15:** add tabIndex prop ([6672a81](https://github.com/cloud-ru-tech/snack-uikit/commit/6672a810d7e2b441ca46264a3412f053b25174c8))
+
+
+
+
+
 ## 0.12.1 (2024-02-26)
 
 

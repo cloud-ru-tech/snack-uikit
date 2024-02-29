@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-02-29)
+
+
+### BREAKING CHANGES
+
+
+* **PDS-15:** swap pinTop/pinBottom in Droplist ([3a7a09c](https://github.com/cloud-ru-tech/snack-uikit/commit/3a7a09c3ae48da1b0e98b40376e19d49532e6808))
+
+
+
+
 ## 0.6.1 (2024-02-28)
 
 ### Only dependencies have been changed

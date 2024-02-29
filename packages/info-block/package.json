@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Info Block",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@snack-uikit/button": "0.17.0",
     "@snack-uikit/icon-predefined": "0.5.0",
-    "@snack-uikit/tooltip": "0.12.1",
+    "@snack-uikit/tooltip": "0.13.0",
     "@snack-uikit/typography": "0.6.1",
     "@snack-uikit/utils": "3.2.0",
     "classnames": "2.3.2"
