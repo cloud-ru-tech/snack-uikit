@@ -142,6 +142,6 @@ fieldSlider.parameters = {
   design: {
     name: 'Figma',
     type: 'figma',
-    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/branch/OgnQ7fdxCBpz7yFjHRPZtH/Snack-UI-Kit-1.1.0?node-id=402%3A202402',
+    url: 'https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-2.0.0?type=design&node-id=41%3A38747&mode=design&t=8dDi5X6Lfgs6Cxji-1',
   },
 };

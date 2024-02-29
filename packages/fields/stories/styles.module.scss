@@ -1,4 +1,4 @@
-@import "@snack-uikit/figma-tokens/build/scss/styles-theme-variables";
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
   resize: horizontal;
@@ -21,4 +21,14 @@
   &[data-size='l'] {
     width: 304px;
   }
+}
+
+.decoratorStory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100px;
+
+  background-color: $sys-neutral-background2-level;
 }
