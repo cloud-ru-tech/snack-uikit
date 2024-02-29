@@ -3,7 +3,7 @@
 @import '../styles.module';
 
 $sizes: 's', 'm';
-$switchAnimationDuration: .1s;
+$switchAnimationDuration: 0.1s;
 
 .container {
   @include container('switch');
@@ -19,20 +19,20 @@ $switchAnimationDuration: .1s;
     }
   }
 
-  &[data-hover=true] {
+  &[data-hover='true'] {
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
   }
 
-  &[data-disabled=true] {
+  &[data-disabled='true'] {
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
   }
 
-  &[data-checked=true] {
+  &[data-checked='true'] {
     background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
-    &[data-hover=true] {
+    &[data-hover='true'] {
       background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
     }
-    &[data-disabled=true] {
+    &[data-disabled='true'] {
       background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
     }
   }
@@ -53,7 +53,7 @@ $switchAnimationDuration: .1s;
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       @include composite-var($toggles, $size, 'switch', 'container-flag');
-      &[data-checked=true] {
+      &[data-checked='true'] {
         left: calc(100% - #{simple-var($toggles, $size, 'switch', 'container-flag', 'width')});
       }
     }
@@ -69,7 +69,7 @@ $switchAnimationDuration: .1s;
     }
   }
 
-  &[data-disabled=true] {
+  &[data-disabled='true'] {
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
   }
 }
@@ -87,29 +87,32 @@ $switchAnimationDuration: .1s;
   fill: transparent;
 
   transition: opacity $switchAnimationDuration linear;
-  
-  &[data-hover=true] {
+
+  &[data-hover='true'] {
     color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
   }
 
-  &[data-checked=true] {
+  &[data-checked='true'] {
     color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
-    &[data-hover=true] {
+    &[data-hover='true'] {
       color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
     }
   }
 
-  &[data-disabled=true] {
+  &[data-disabled='true'] {
     color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
-  }
 
+    &[data-hover='true'] {
+      color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
+    }
+  }
 }
 
 .flag_icon_off {
   @include flagIcon();
 
   opacity: 1;
-  &[data-checked=true] {
+  &[data-checked='true'] {
     opacity: 0;
   }
 }
@@ -118,7 +121,7 @@ $switchAnimationDuration: .1s;
   @include flagIcon();
 
   opacity: 0;
-  &[data-checked=true] {
+  &[data-checked='true'] {
     opacity: 1;
   }
 }
