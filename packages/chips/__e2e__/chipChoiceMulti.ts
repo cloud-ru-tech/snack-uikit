@@ -8,7 +8,7 @@ fixture('ChipChoice.Multi');
 
 test.page(getPage({ label: LABEL_TEXT }))(`should have 0 selected options by default`, async t => {
   const { chip, value, label } = getComponent();
-  await t.expect(value.innerText).eql('0/5');
+  await t.expect(value.innerText).eql('All');
   await t.expect(label.innerText).eql(LABEL_TEXT);
 
   await t.click(chip);
@@ -30,7 +30,7 @@ test.page(getPage({ label: LABEL_TEXT }))(
     await t.expect(label.innerText).eql(LABEL_TEXT);
 
     await t.click(clearButton);
-    await t.expect(value.innerText).eql('0/5', 'Default value not matched');
+    await t.expect(value.innerText).eql('All', 'Default value not matched');
   },
 );
 

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Droplist } from '@snack-uikit/droplist';
+import { useLocale } from '@snack-uikit/locale';
 
 import { SIZE } from '../../../constants';
 import { ChipChoiceCommonProps, FilterOption } from '../types';
@@ -42,9 +43,11 @@ export function ChipChoiceMulti({
     [options, selectedValue],
   );
 
+  const { t } = useLocale('Chips');
+
   const valueToRender = valueFormatter
     ? valueFormatter(selectedOptions)
-    : defaultMultiValueLabelFormatter(selectedOptions, options.length);
+    : defaultMultiValueLabelFormatter({ value: selectedOptions, total: options.length, allLabel: t('allLabel') });
 
   const clearValue = () => setSelectedValue([]);
 

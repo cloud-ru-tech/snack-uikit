@@ -16,8 +16,27 @@ export const normalizeValueForSingleChoice = (options: FilterOption[], value?: s
   return options.find(option => value === option.value)?.value;
 };
 
-export const defaultMultiValueLabelFormatter = (value: FilterOption[], total: number): string =>
-  `${value.length.toString()}/${total}`;
+export type ChipChoiceMultipleValueFormatterProps = {
+  value: FilterOption[];
+  total: number;
+  allLabel: string;
+};
+
+export const defaultMultiValueLabelFormatter = ({
+  value,
+  total,
+  allLabel,
+}: ChipChoiceMultipleValueFormatterProps): string => {
+  if (value.length === 0 || value.length === total) {
+    return allLabel;
+  }
+
+  if (value.length === 1) {
+    return value[0].label;
+  }
+
+  return `${value.length.toString()}/${total}`;
+};
 
 export type ChipChoiceSingleValueFormatterProps = {
   value?: FilterOption;
