@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.5 (2024-03-01)
+
+
+### Bug Fixes
+
+* **FF-0001:** fix default value multiple formatter ([3ab00c2](https://github.com/cloud-ru-tech/snack-uikit/commit/3ab00c2ed0ed2977fb4b8c69e8234d053214cbf5))
+
+
+
+
+
 ## 0.12.4 (2024-02-29)
 
 ### Only dependencies have been changed

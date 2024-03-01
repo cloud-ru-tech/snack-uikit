@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.6 (2024-03-01)
+
+
+### Bug Fixes
+
+* **FF-0001:** fix rewrite styles ([eafbd22](https://github.com/cloud-ru-tech/snack-uikit/commit/eafbd22bcd4fb72d11089bb0c810e03442420f6c))
+
+
+
+
+
 ## 0.1.5 (2024-02-29)
 
 ### Only dependencies have been changed
