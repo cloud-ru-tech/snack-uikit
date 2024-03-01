@@ -21,129 +21,163 @@ $height-with-marks: calc(
     width: 100%;
     height: $height;
     padding: calc(($size-slider-handle - $size-slider-track-line) / 2) 0;
-  }
 
-  .#{$theme-name}.rc-slider.withMarks {
-    height: $height-with-marks;
-  }
+    .rc-slider * {
+      box-sizing: border-box;
+    }
+    .rc-slider-rail {
+      @include composite-var($slider-track-line);
 
-  .rc-slider * {
-    box-sizing: border-box;
-  }
-  .rc-slider-rail {
-    @include composite-var($slider-track-line);
+      position: absolute;
+      width: 100%;
+      background-color: $sys-neutral-decor-default;
+    }
+    .rc-slider-track,
+    .rc-slider-tracks {
+      @include composite-var($slider-track-line);
 
-    position: absolute;
-    width: 100%;
-    background-color: $sys-neutral-decor-default;
-  }
-  .rc-slider-track,
-  .rc-slider-tracks {
-    @include composite-var($slider-track-line);
+      position: absolute;
+      display: block;
+      background-color: $sys-primary-accent-default;
+    }
+    .rc-slider-track-draggable {
+      box-sizing: content-box;
+      background-clip: content-box;
+    }
+    .rc-slider-handle {
+      @include composite-var($slider-handle);
 
-    position: absolute;
-    display: block;
-    background-color: $sys-primary-accent-default;
-  }
-  .rc-slider-track-draggable {
-    box-sizing: content-box;
-    background-clip: content-box;
-  }
-  .rc-slider-handle {
-    @include composite-var($slider-handle);
+      touch-action: pan-x;
+      cursor: -webkit-grab;
+      cursor: grab;
 
-    touch-action: pan-x;
-    cursor: -webkit-grab;
-    cursor: grab;
+      position: absolute;
+      z-index: 1;
 
-    position: absolute;
-    z-index: 1;
+      margin-top: calc(0px - ($size-slider-handle - $size-slider-track-line) / 2);
 
-    margin-top: calc(0px - ($size-slider-handle - $size-slider-track-line) / 2);
+      opacity: 1;
+      background-color: $sys-primary-accent-default;
+      border: none;
+      box-shadow: none;
 
-    background-color: $sys-primary-accent-default;
+      &:hover {
+        background-color: $sys-primary-accent-hovered;
+      }
 
-    &:hover {
-      background-color: $sys-primary-accent-hovered;
+      &:focus-visible {
+        @include outline-var($container-focused-s);
+
+        background-color: $sys-primary-accent-hovered;
+        outline-color: $sys-primary-accent-default;
+        outline-offset: $spacing-state-focus-offset;
+      }
+
+      &:active {
+        cursor: -webkit-grabbing;
+        cursor: grabbing;
+        background-color: $sys-primary-accent-hovered;
+      }
     }
 
-    &:focus-visible {
+    .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
       @include outline-var($container-focused-s);
 
       background-color: $sys-primary-accent-hovered;
       outline-color: $sys-primary-accent-default;
       outline-offset: $spacing-state-focus-offset;
+      box-shadow: none;
     }
 
-    &:active {
-      cursor: -webkit-grabbing;
-      cursor: grabbing;
-      background-color: $sys-primary-accent-hovered;
+    .rc-slider-mark {
+      position: absolute;
+      top: calc($size-slider-handle + $size-slider-scale-bar-step-height + $space-slider-scale-bar-step-gap);
+      left: 0;
+      width: 100%;
     }
-  }
+    .rc-slider-mark-text {
+      @include composite-var($sans-body-s);
 
-  .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
-    @include outline-var($container-focused-s);
-
-    background-color: $sys-primary-accent-hovered;
-    outline-color: $sys-primary-accent-default;
-    outline-offset: $spacing-state-focus-offset;
-  }
-
-  .rc-slider-mark {
-    position: absolute;
-    top: calc($size-slider-handle + $size-slider-scale-bar-step-height + $space-slider-scale-bar-step-gap);
-    left: 0;
-    width: 100%;
-  }
-  .rc-slider-mark-text {
-    @include composite-var($sans-body-s);
-
-    cursor: pointer;
-
-    position: absolute;
-
-    display: inline-block;
-
-    color: $sys-neutral-text-support;
-    text-align: center;
-    vertical-align: middle;
-
-    &::before {
-      @include composite-var($slider-scale-bar-step-line);
-
-      content: '';
+      cursor: pointer;
 
       position: absolute;
-      top: calc(0px - ($size-slider-scale-bar-step-height + $space-slider-scale-bar-step-gap));
-      left: 50%;
-      transform: translateX(-50%);
 
-      width: $size-slider-track-line;
+      display: inline-block;
 
-      background-color: $sys-neutral-decor-default;
+      color: $sys-neutral-text-support;
+      text-align: center;
+      vertical-align: middle;
+
+      &::before {
+        @include composite-var($slider-scale-bar-step-line);
+
+        content: '';
+
+        position: absolute;
+        top: calc(0px - ($size-slider-scale-bar-step-height + $space-slider-scale-bar-step-gap));
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: $size-slider-track-line;
+
+        background-color: $sys-neutral-decor-default;
+      }
+    }
+
+    .rc-slider-mark-text:nth-child(1) {
+      /* stylelint-disable-next-line declaration-no-important */
+      transform: none !important;
+
+      &::before {
+        left: 0;
+        transform: none;
+      }
+    }
+
+    .rc-slider-mark-text:last-child {
+      /* stylelint-disable-next-line declaration-no-important */
+      transform: translateX(-100%) !important;
+
+      &::before {
+        right: 0;
+        left: auto;
+        transform: none;
+      }
+    }
+    .rc-slider-mark-text-active {
+      color: $sys-neutral-text-support;
+    }
+
+    .rc-slider-step {
+      position: absolute;
+      width: 100%;
+      height: calc($size-slider-track-line * 2);
+      background: transparent;
+    }
+    .rc-slider-disabled {
+      background-color: transparent;
+
+      .rc-slider-track,
+      .rc-slider-handle {
+        background-color: $sys-neutral-text-disabled;
+      }
+
+      .rc-slider-mark-text,
+      .rc-slider-dot,
+      .rc-slider-track,
+      .rc-slider-handle {
+        /* stylelint-disable-next-line declaration-no-important */
+        cursor: not-allowed !important;
+      }
+    }
+
+    .rc-slider-dot {
+      display: none;
     }
   }
 
-  .rc-slider-mark-text:nth-child(1) {
-    /* stylelint-disable-next-line declaration-no-important */
-    transform: none !important;
-
-    &::before {
-      left: 0;
-      transform: none;
-    }
-  }
-
-  .rc-slider-mark-text:last-child {
-    /* stylelint-disable-next-line declaration-no-important */
-    transform: translateX(-100%) !important;
-
-    &::before {
-      right: 0;
-      left: auto;
-      transform: none;
-    }
+  .#{$theme-name}.rc-slider.withMarks {
+    height: $height-with-marks;
   }
 
   .#{$theme-name}.rc-slider.reverse {
@@ -167,17 +201,6 @@ $height-with-marks: calc(
         transform: none;
       }
     }
-  }
-
-  .rc-slider-mark-text-active {
-    color: $sys-neutral-text-support;
-  }
-
-  .rc-slider-step {
-    position: absolute;
-    width: 100%;
-    height: calc($size-slider-track-line * 2);
-    background: transparent;
   }
 
   // SAVE these styles for future features
@@ -224,23 +247,6 @@ $height-with-marks: calc(
   //   border-color: #ccc;
   //   box-shadow: none;
   // }
-
-  .rc-slider-disabled {
-    background-color: transparent;
-
-    .rc-slider-track,
-    .rc-slider-handle {
-      background-color: $sys-neutral-text-disabled;
-    }
-
-    .rc-slider-mark-text,
-    .rc-slider-dot,
-    .rc-slider-track,
-    .rc-slider-handle {
-      /* stylelint-disable-next-line declaration-no-important */
-      cursor: not-allowed !important;
-    }
-  }
 }
 
 .tipWrapper {
