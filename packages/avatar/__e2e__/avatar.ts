@@ -13,6 +13,9 @@ const nameAndSurnameAbbr = 'JS';
 const nameOnly = 'John';
 const nameOnlyAbbr = 'JO';
 
+const decimalName = '129309';
+const decimalAbbr = '12';
+
 const getPage = (props: Record<string, unknown> & { showImage?: boolean; customSrc?: string } = {}) =>
   getTestcafeUrl({
     name: 'avatar',
@@ -99,5 +102,15 @@ test.page(getPage({ name: nameAndSurname, showTwoSymbols: true }))(
     const abbreviation = avatar.find(dataTestIdSelector(ABBREVIATION_TEST_ID));
 
     await t.expect(abbreviation.textContent).eql(nameAndSurnameAbbr);
+  },
+);
+
+test.page(getPage({ name: decimalName, showTwoSymbols: true }))(
+  `should render first two decimals from ${decimalName}`,
+  async t => {
+    const avatar = Selector(dataTestIdSelector(TEST_ID));
+    const abbreviation = avatar.find(dataTestIdSelector(ABBREVIATION_TEST_ID));
+
+    await t.expect(abbreviation.textContent).eql(decimalAbbr);
   },
 );

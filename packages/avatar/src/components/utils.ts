@@ -1,7 +1,7 @@
 const SPACE = ' ';
 
 export const getAbbreviation = (str: string, abbreviationLength: 1 | 2): string => {
-  const trimStr = str.replace(/[^a-zа-яё\s]/gi, '').trim() ?? str.replace(/[^\d]/gi, '');
+  const trimStr = str.replace(/[^a-zа-яё\d\s]/gi, '').trim();
 
   if (!trimStr || trimStr.length < abbreviationLength) {
     return trimStr.toUpperCase();
