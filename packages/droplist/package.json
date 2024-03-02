@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "droplist",
-  "version": "0.13.11",
+  "version": "0.13.12",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,7 +33,7 @@
   "scripts": {},
   "dependencies": {
     "@floating-ui/react": "0.23.1",
-    "@snack-uikit/avatar": "0.5.1",
+    "@snack-uikit/avatar": "0.6.0",
     "@snack-uikit/icons": "0.20.1",
     "@snack-uikit/popover-private": "0.13.0",
     "@snack-uikit/scroll": "0.5.2",

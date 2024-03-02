@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2024-03-02)
+
+
+### Features
+
+* **FF-4448:** avatar accept decimals ([8800f1d](https://github.com/cloud-ru-tech/snack-uikit/commit/8800f1d760231c19bec6a76eac641e4cc1d890d7))
+
+
+
+
+
 ## 0.5.1 (2024-02-20)
 
 ### Only dependencies have been changed

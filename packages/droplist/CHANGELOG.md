@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.12 (2024-03-02)
+
+### Only dependencies have been changed
+* [@snack-uikit/avatar@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/avatar/CHANGELOG.md)
+
+
+
+
+
 ## 0.13.11 (2024-02-29)
 
 ### Only dependencies have been changed
