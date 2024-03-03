@@ -8,7 +8,7 @@ export type PromoBadgeProps = Pick<PromoTagProps, 'text' | 'appearance'>;
 export function PromoBadge({ text, appearance = 'primary' }: PromoBadgeProps) {
   return (
     <div className={styles.promoBadge}>
-      <PromoTag appearance={appearance} text={text} data-test-id={TEST_IDS.promoBadge} />
+      <PromoTag appearance={appearance} text={text} data-test-id={TEST_IDS.promoBadge} className={styles.promoTag} />
     </div>
   );
 }
