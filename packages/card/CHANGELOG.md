@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.4 (2024-03-03)
+
+
+### Bug Fixes
+
+* **FF-4401:** add class to promo tag ([ca5560a](https://github.com/cloud-ru-tech/snack-uikit/commit/ca5560a4c9232d8dbf9e3b196a3d876a2c7e229a))
+
+
+
+
+
 ## 0.11.3 (2024-02-29)
 
 ### Only dependencies have been changed
