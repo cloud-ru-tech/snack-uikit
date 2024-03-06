@@ -8,7 +8,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Droplist, DroplistProps } from '../src/components';
-import { DROPLIST_OPTIONS } from './contants';
+import { DROPLIST_OPTIONS } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {

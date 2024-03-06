@@ -2,13 +2,7 @@ import { Avatar } from '@snack-uikit/avatar';
 import { Counter } from '@snack-uikit/counter';
 import { PlaceholderSVG } from '@snack-uikit/icons';
 
-import {
-  AccordionItemProps,
-  BaseItemProps,
-  GroupItemProps,
-  ItemProps,
-  NextListItemProps,
-} from '../src/components/Items';
+import { AccordionItemProps, BaseItemProps, GroupItemProps, ItemProps, NextListItemProps } from '../src';
 
 export const BASE_OPTIONS: BaseItemProps[] = [
   {

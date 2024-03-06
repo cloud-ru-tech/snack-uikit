@@ -8,7 +8,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { List, ListProps } from '../src/components';
-import { BASE_OPTIONS, EXPAND_OPTIONS, GROUP_OPTIONS, LONG_LIST_OPTIONS } from './contants';
+import { BASE_OPTIONS, EXPAND_OPTIONS, GROUP_OPTIONS, LONG_LIST_OPTIONS } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
