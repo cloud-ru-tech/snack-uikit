@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.2 (2024-03-07)
+
+
+### Bug Fixes
+
+* **FF-4473:** droplist item width ([99f5f25](https://github.com/cloud-ru-tech/snack-uikit/commit/99f5f251ac176ae3c6c9d2c9b78c31890aea0317))
+
+
+
+
+
 ## 0.7.1 (2024-02-29)
 
 ### Only dependencies have been changed
