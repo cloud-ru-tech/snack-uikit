@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2024-03-11)
+
+
+### Features
+
+* **FF-4491:** add truncate prop to droplist items, add test-ids to caption and description ([c321e1b](https://github.com/cloud-ru-tech/snack-uikit/commit/c321e1bb199fc7997a0cfb8467f98b0acd7f8b6a))
+
+
+
+
+
 ## 0.7.2 (2024-03-07)
 
 
