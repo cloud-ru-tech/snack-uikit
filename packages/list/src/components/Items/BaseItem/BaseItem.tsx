@@ -36,7 +36,7 @@ export function BaseItem({
   itemWrapRender,
   ...rest
 }: AllBaseItemProps) {
-  const { option, caption, description } = content || {};
+  const { option, caption, description, truncate: contentTruncate } = content || {};
   const interactive = !inactive;
 
   const { parentResetActiveFocusIndex } = useParentListContext();
@@ -145,14 +145,22 @@ export function BaseItem({
       <div className={styles.content}>
         <div className={styles.headline}>
           <span className={styles.option}>
-            <TruncateString text={option} maxLines={1} />
+            <TruncateString
+              text={option}
+              maxLines={contentTruncate?.option ?? 1}
+              data-test-id='list__base-item-option'
+            />
           </span>
           {caption && <span className={styles.caption}>{caption}</span>}
         </div>
 
         {description && (
           <div className={styles.description}>
-            <TruncateString text={description} maxLines={2} />
+            <TruncateString
+              text={description}
+              maxLines={contentTruncate?.description ?? 2}
+              data-test-id='list__base-item-description'
+            />
           </div>
         )}
       </div>

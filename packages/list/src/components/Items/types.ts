@@ -9,6 +9,10 @@ export type ItemContentProps = {
   option: string;
   caption?: string;
   description?: string;
+  truncate?: {
+    option?: number;
+    description?: number;
+  };
 };
 
 export type BaseItemPrivateProps = {
