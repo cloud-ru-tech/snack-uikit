@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.8 (2024-03-12)
+
+
+### Bug Fixes
+
+* **FF-4497:** minus button is no longer clickable if value grater than min ([8446173](https://github.com/cloud-ru-tech/snack-uikit/commit/8446173bed6224d307821807e86b737bbb0b409a))
+
+
+
+
+
 ## 0.17.7 (2024-03-11)
 
 ### Only dependencies have been changed
