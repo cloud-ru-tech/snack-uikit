@@ -62,10 +62,14 @@ export function ModalCustom({
     }
   };
 
+  if (!open) {
+    return null;
+  }
+
   return (
     <RCModal
       data={{ ...getDataTestAttributes(rest), size }}
-      isOpen={open}
+      isOpen
       onRequestClose={handleClose}
       appElement={document.body}
       overlayElement={(_, content) => (
