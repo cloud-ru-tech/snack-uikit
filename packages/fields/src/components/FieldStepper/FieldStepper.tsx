@@ -98,8 +98,8 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     const inputRef = useRef<HTMLInputElement>(null);
     const minusButtonRef = useRef<HTMLButtonElement>(null);
     const plusButtonRef = useRef<HTMLButtonElement>(null);
-    const isMinusButtonDisabled = value === min || readonly || disabled;
-    const isPlusButtonDisabled = value === max || readonly || disabled;
+    const isMinusButtonDisabled = (typeof min === 'number' && value <= min) || readonly || disabled;
+    const isPlusButtonDisabled = (typeof max === 'number' && value >= max) || readonly || disabled;
 
     const adjustValue = (value: number) => {
       setValue(value);
