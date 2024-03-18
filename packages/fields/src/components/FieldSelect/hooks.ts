@@ -1,4 +1,4 @@
-import { KeyboardEvent, KeyboardEventHandler, RefObject, useCallback, useMemo, useRef } from 'react';
+import { KeyboardEvent, KeyboardEventHandler, MouseEvent, RefObject, useCallback, useMemo, useRef } from 'react';
 import { Handler } from 'uncontrollable';
 
 import { useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
@@ -108,7 +108,9 @@ export function useSearchInput({ value, onChange, defaultValue }: SearchState) {
 
 export function useHandleDeleteItem(setValue: Handler) {
   return useCallback(
-    (item?: ItemWithId) => () => {
+    (item?: ItemWithId) => (e?: MouseEvent<HTMLButtonElement>) => {
+      e?.stopPropagation();
+
       if (!item) {
         return;
       }
