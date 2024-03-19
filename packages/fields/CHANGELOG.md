@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.9 (2024-03-19)
+
+
+### Bug Fixes
+
+* **FF-0000:** tag deletion cross click handling ([eed7b9b](https://github.com/cloud-ru-tech/snack-uikit/commit/eed7b9b9afab3b77a60ecca3d742d02cdc8c81f3))
+
+
+
+
+
 ## 0.17.8 (2024-03-12)
 
 
