@@ -25,8 +25,18 @@ export const LONG_LIST_OPTIONS = Array.from({ length: 10 }).fill({
 }) as BaseItemProps[];
 
 export const GROUP_OPTIONS: GroupItemProps[] = [
-  { divider: true, items: BASE_OPTIONS, label: 'Group 1', mode: 'primary' },
-  { divider: false, items: BASE_OPTIONS, label: 'Group 2', mode: 'secondary' },
+  {
+    divider: true,
+    items: BASE_OPTIONS,
+    label: 'Long long long long long long long veryyyyyyyy long group name',
+    mode: 'primary',
+  },
+  {
+    divider: false,
+    items: BASE_OPTIONS,
+    label: 'Long_long_long_long_unbroken_group_label',
+    mode: 'secondary',
+  },
   { divider: false, items: BASE_OPTIONS, label: 'Group 3', mode: 'primary' },
   { divider: false, items: BASE_OPTIONS, label: 'Group 4', mode: 'secondary' },
   { divider: false, items: BASE_OPTIONS, label: 'Group 5', mode: 'primary' },

@@ -16,10 +16,14 @@ $typography-secondary: (
 );
 
 .separatorWithLabel {
+  overflow: hidden;
   display: flex;
   gap: $dimension-1m;
   align-items: flex-end;
+
   box-sizing: border-box;
+  width: 100%;
+  min-width: 100%;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
@@ -51,7 +55,8 @@ $typography-secondary: (
 }
 
 .label {
-  flex-shrink: 0;
+  overflow: hidden;
+  flex-shrink: 1;
 
   &[data-mode='primary'] {
     color: $sys-neutral-text-main;
@@ -60,4 +65,10 @@ $typography-secondary: (
   &[data-mode='secondary'] {
     color: $sys-neutral-text-light;
   }
+}
+
+hr.divider {
+  flex: 1;
+  width: auto;
+  min-width: 0;
 }

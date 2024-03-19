@@ -1,4 +1,5 @@
 import { Divider } from '@snack-uikit/divider';
+import { TruncateString } from '@snack-uikit/truncate-string';
 
 import styles from './styles.module.scss';
 
@@ -14,9 +15,10 @@ export function Separator({ label, divider, mode = 'secondary', size = 's' }: Se
     return (
       <div className={styles.separatorWithLabel} data-size={size}>
         <span className={styles.label} data-mode={mode}>
-          {label}
+          <TruncateString text={label} maxLines={1} />
         </span>
-        {divider && <Divider weight={mode === 'primary' ? 'regular' : 'light'} />}
+
+        {divider && <Divider weight={mode === 'primary' ? 'regular' : 'light'} className={styles.divider} />}
       </div>
     );
   }
