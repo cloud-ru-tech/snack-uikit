@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { CrossSVG } from '@snack-uikit/icons';
-import { Link } from '@snack-uikit/link';
+import { Link, LinkProps } from '@snack-uikit/link';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
@@ -18,18 +18,19 @@ export type AlertProps = WithSupportProps<{
   title?: string;
   /** Описание */
   description: string;
-  /** Текст ссылки */
-  link?: string;
-  /** Ссылка */
-  href?: string;
+  /** Cсылка */
+  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href'>;
   /** Колбек закрытия */
   onClose?: () => void;
   /** Внешний вид */
   appearance?: Appearance;
   /** CSS-класс */
   className?: string;
-  /** Свойства, описывающие кнопки в футере алерта */
-  action?: Pick<AlertButtonProps, 'label' | 'onClick' | 'icon'>[];
+  /** Кнопки в футере алерта */
+  actions?: {
+    primary: Omit<AlertButtonProps, 'appearance'>;
+    secondary?: Omit<AlertButtonProps, 'appearance'>;
+  };
 }>;
 
 /**
@@ -38,13 +39,12 @@ export type AlertProps = WithSupportProps<{
 export function Alert({
   icon = true,
   title,
-  href,
   link,
   description,
   onClose,
   appearance = APPEARANCE.Neutral,
   className,
-  action,
+  actions,
   ...rest
 }: AlertProps) {
   return (
@@ -62,6 +62,7 @@ export function Alert({
 
         <div className={styles.contentLayout}>
           {title && <TruncateString text={title} maxLines={1} className={styles.title} data-test-id='alert__title' />}
+
           <span data-test-id='alert__description' className={styles.description}>
             {description}
           </span>
@@ -69,8 +70,7 @@ export function Alert({
           {link && (
             <span>
               <Link
-                href={href}
-                text={link}
+                {...link}
                 textMode='default'
                 external
                 appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
@@ -82,22 +82,24 @@ export function Alert({
         </div>
 
         {onClose && (
-          <button
+          <AlertButton
             onClick={onClose}
-            className={styles.closeButton}
-            data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
-            data-test-id='alert__close-button'
-          >
-            <CrossSVG />
-          </button>
+            appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
+            icon={<CrossSVG />}
+            variant='simple'
+            dataTestId='alert__close-button'
+          />
         )}
       </div>
 
-      {Array.isArray(action) && action.length > 0 && (
+      {actions && (
         <div className={styles.footer}>
-          {action.map(buttonProps => (
-            <AlertButton key={buttonProps.label} {...buttonProps} appearance={appearance} />
-          ))}
+          {actions.primary && (
+            <AlertButton {...actions.primary} appearance={APPEARANCE_TO_COLOR_MAP[appearance]} variant='simple' />
+          )}
+          {actions?.secondary && (
+            <AlertButton {...actions.secondary} appearance={APPEARANCE_TO_COLOR_MAP[appearance]} variant='simple' />
+          )}
         </div>
       )}
     </div>

@@ -1,13 +1,12 @@
 import cn from 'classnames';
-import { ReactElement } from 'react';
 
 import { CrossSVG } from '@snack-uikit/icons';
-import { Link } from '@snack-uikit/link';
+import { Link, LinkProps } from '@snack-uikit/link';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { APPEARANCE, APPEARANCE_TO_COLOR_MAP } from '../../constants';
-import { AlertTopButton } from '../../helperComponents';
+import { AlertButton, AlertButtonProps } from '../../helperComponents';
 import { Appearance } from '../../types';
 import { getIcon } from '../../utils';
 import { APPEARANCE_TO_COLOR_MAP_INVERT } from './constants';
@@ -20,20 +19,14 @@ export type AlertTopProps = WithSupportProps<{
   title?: string;
   /** Описание */
   description: string;
-  /** Текст ссылки */
-  link?: string;
-  /** Ссылка */
-  href?: string;
+  /** Cсылка */
+  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href'>;
+  /** Кнопка дополнительного действия */
+  action?: AlertButtonProps;
   /** Колбек закрытия */
   onClose?: () => void;
   /** Внешний вид */
   appearance?: Appearance;
-  /** Текст кнопки */
-  buttonText?: string;
-  /** Колбек клика по кнопке */
-  buttonOnClick?: () => void;
-  /** Иконка в кнопке */
-  buttonIcon?: ReactElement;
   /** CSS-класс */
   className?: string;
 }>;
@@ -46,12 +39,9 @@ export function AlertTop({
   title,
   description,
   link,
-  href,
   onClose,
   appearance = APPEARANCE.Neutral,
-  buttonText,
-  buttonOnClick,
-  buttonIcon,
+  action,
   className,
   ...rest
 }: AlertTopProps) {
@@ -92,12 +82,12 @@ export function AlertTop({
               {description}
             </span>
           </div>
+
           {link && (
             <span>
               <Link
+                {...link}
                 textMode='on-accent'
-                href={href}
-                text={link}
                 external
                 appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
                 size='m'
@@ -108,24 +98,16 @@ export function AlertTop({
         </div>
       </div>
       <div className={styles.actions}>
-        {buttonText && (
-          <AlertTopButton
-            buttonIcon={buttonIcon}
-            buttonOnClick={buttonOnClick}
-            buttonText={buttonText}
-            appearance={appearance}
-          />
-        )}
+        {action && <AlertButton {...action} appearance={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]} variant='tonal' />}
 
         {onClose && (
-          <button
+          <AlertButton
             onClick={onClose}
-            className={styles.closeButton}
-            data-color={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]}
-            data-test-id='alert-top__close-button'
-          >
-            <CrossSVG />
-          </button>
+            appearance={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]}
+            icon={<CrossSVG />}
+            variant='tonal'
+            dataTestId='alert-top__close-button'
+          />
         )}
       </div>
     </div>

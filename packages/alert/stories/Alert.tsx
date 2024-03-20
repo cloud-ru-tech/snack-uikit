@@ -1,5 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
+import { PlaceholderSVG } from '@snack-uikit/icons';
+
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
@@ -13,14 +15,25 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = AlertProps & { showCloseButton?: boolean; showActionButtons?: boolean };
+type StoryProps = AlertProps & { showCloseButton?: boolean; showActionButtons?: boolean; link: string };
 
-const Template: StoryFn<StoryProps> = ({ ...args }: StoryProps) => (
+const Template: StoryFn<StoryProps> = ({ link, showCloseButton, showActionButtons, ...args }: StoryProps) => (
   <div className={styles.wrapper}>
     <Alert
       {...args}
-      onClose={args.showCloseButton ? args.onClose : undefined}
-      action={args.showActionButtons ? args.action : undefined}
+      link={
+        link
+          ? {
+              text: link,
+              href: '#',
+              onClick: e => {
+                e.preventDefault();
+              },
+            }
+          : undefined
+      }
+      onClose={showCloseButton ? args.onClose : undefined}
+      actions={showActionButtons ? args.actions : undefined}
     />
   </div>
 );
@@ -36,10 +49,10 @@ alert.args = {
   showCloseButton: true,
   showActionButtons: true,
   onClose: () => {},
-  action: [
-    { label: 'Primary', onClick: () => {} },
-    { label: 'Secondary', onClick: () => {} },
-  ],
+  actions: {
+    primary: { text: 'Primary', onClick: () => {}, icon: <PlaceholderSVG /> },
+    secondary: { text: 'Secondary', onClick: () => {}, icon: <PlaceholderSVG /> },
+  },
 };
 
 alert.argTypes = {
@@ -48,6 +61,9 @@ alert.argTypes = {
   },
   showActionButtons: {
     name: '[Stories]: showActionButtons',
+  },
+  link: {
+    type: 'string',
   },
   onClose: {
     table: {

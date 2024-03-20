@@ -19,7 +19,7 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
       background-color: simple-var($theme-variables, 'sys', $color, 'background');
       border-color: simple-var($theme-variables, 'sys', $color, 'decor-default');
     }
-   }
+  }
 }
 
 .body {
@@ -27,7 +27,7 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
 
   display: flex;
   box-sizing: border-box;
-  width: 100%
+  width: 100%;
 }
 
 .icon {
@@ -37,9 +37,12 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
     }
   }
 
+  width: $icon-s;
+  height: $icon-s;
+
   svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    max-width: $icon-s;
+    max-height: $icon-s;
   }
 }
 
@@ -63,50 +66,6 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
 
   color: $sys-neutral-text-support;
   word-wrap: break-word;
-}
-
-.closeButton {
-  @include composite-var($alert-button-button-close);
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-sizing: border-box;
-  margin: 0;
-  margin-left: auto;
-  padding: 0;
-
-  background: none;
-  border: none;
-
-  svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-  }
-
-  @each $color in $colors {
-    &[data-color='#{$color}'] {
-      color: simple-var($theme-variables, 'sys', $color, 'text-support');
-
-      &:hover {
-        color: simple-var($theme-variables, 'sys', $color, 'text-light');
-      }
-
-      &:focus-visible {
-        @include outline-var($container-focused-s);
-
-        color: simple-var($theme-variables, 'sys', $color, 'text-light');
-        outline-color: $sys-available-complementary;
-      }
-
-      &:active {
-        color: simple-var($theme-variables, 'sys', $color, 'text-main');
-      }
-    }
-  }
 }
 
 .footer {

@@ -59,11 +59,11 @@ test.page(getPageUrl({ description: '' }))(`Description = ''`, async t => {
   await t.expect(description.exists).ok();
 });
 
-test.page(getPageUrl({ link: 'Link Text' }))(`Link is displayed with correct text and href`, async t => {
+test.page(getPageUrl({ link: 'Link text' }))(`Link is displayed with correct text and href`, async t => {
   const link = Selector(dataTestIdSelector(TEST_IDS.link));
 
   await t.expect(link.exists).ok();
-  await t.expect(link.innerText).eql('Link Text');
+  await t.expect(link.innerText).eql('Link text');
 });
 
 test.page(getPageUrl({ link: '' }))(`Link is not displayed when link prop is empty`, async t => {

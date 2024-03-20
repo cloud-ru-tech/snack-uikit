@@ -28,11 +28,25 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = AlertTopProps & { showCloseButton?: boolean };
+type StoryProps = AlertTopProps & { showCloseButton?: boolean; link: string };
 
-const Template: StoryFn<StoryProps> = ({ ...args }: StoryProps) => (
+const Template: StoryFn<StoryProps> = ({ link, showCloseButton, ...args }: StoryProps) => (
   <div className={styles.wrapper}>
-    <AlertTop {...args} onClose={args.showCloseButton ? args.onClose : undefined} />
+    <AlertTop
+      {...args}
+      link={
+        link
+          ? {
+              text: link,
+              href: '#',
+              onClick: e => {
+                e.preventDefault();
+              },
+            }
+          : undefined
+      }
+      onClose={showCloseButton ? args.onClose : undefined}
+    />
   </div>
 );
 
@@ -44,8 +58,11 @@ alertTop.args = {
   icon: true,
   link: 'Link text',
   appearance: APPEARANCE.Success,
-  buttonText: 'Button Text',
-  buttonIcon: <Icons.PlaceholderSVG />,
+  action: {
+    text: 'Button Text',
+    icon: <Icons.PlaceholderSVG />,
+    onClick: () => {},
+  },
   onClose: () => {},
   showCloseButton: true,
 };
@@ -59,18 +76,8 @@ alertTop.argTypes = {
       disable: true,
     },
   },
-  buttonOnClick: {
-    table: {
-      disable: true,
-    },
-  },
-  buttonIcon: {
-    name: '[Stories]: Show icon examples',
-    options: Object.keys(REQUIRED_ICONS),
-    mapping: ICONS,
-    control: {
-      type: 'select',
-    },
+  link: {
+    type: 'string',
   },
 };
 

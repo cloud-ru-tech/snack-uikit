@@ -1,0 +1,110 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert-alertTop';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+$simpleAppearances: 'neutral', 'primary', 'red', 'yellow', 'green';
+$tonalAppearances: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
+
+.alertButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  background: none;
+  border: 0;
+
+  .text {
+    @include composite-var($sans-label-l);
+  }
+
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: $icon-s;
+    height: $icon-s;
+
+    svg {
+      max-width: $icon-s;
+      max-height: $icon-s;
+    }
+  }
+}
+
+.alertButton[data-variant='simple'] {
+  @include composite-var($alert-button-button-action);
+
+  &[data-icon-only] {
+    @include composite-var($alert-button-button-close);
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    outline-color: $sys-available-complementary;
+    outline-offset: $spacing-state-focus-offset;
+  }
+
+  @each $appearance in $simpleAppearances {
+    &[data-appearance='#{$appearance}'] {
+      color: simple-var($theme-variables, 'sys', $appearance, 'text-support');
+
+      &:hover,
+      &:focus-visible {
+        color: simple-var($theme-variables, 'sys', $appearance, 'text-light');
+      }
+
+      &:active {
+        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+      }
+    }
+  }
+}
+
+.alertButton[data-variant='tonal'] {
+  @include composite-var($alert-top-button-button-action);
+
+  background: $sys-opacity-enabled;
+
+  &[data-icon-only] {
+    @include composite-var($alert-top-button-button-close);
+
+    background: none;
+  }
+
+  &:hover {
+    opacity: unset;
+    background-color: $sys-opacity-hovered;
+  }
+
+  &:focus-visible {
+    @include outline-var($container-focused-s);
+
+    background-color: $sys-opacity-hovered;
+    outline-color: $sys-available-on-complementary;
+  }
+  &:active {
+    background-color: $sys-opacity-activated;
+  }
+
+  @each $appearance in $tonalAppearances {
+    &[data-appearance='#{$appearance}'] {
+      @if $appearance == 'invert-neutral' {
+        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+      }
+
+ @else {
+        color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
+      }
+    }
+  }
+}

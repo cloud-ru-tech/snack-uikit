@@ -17,9 +17,10 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 
 <Alert
   appearance='neutral'
-  link='Link Text'
-  href='https://cloud.ru/'
-  icon={true}
+  link={{
+    text: 'Link text',
+    href: 'https://cloud.ru/',
+  }}
   title='Title'
   description='Title description'
   onClose={() => console.log('alert')}
@@ -30,15 +31,18 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 
 <AlertTop
   appearance='neutral'
-  link='Link Text'
-  href='https://cloud.ru/'
-  closeable={true}
-  icon={true}
+  link={{
+    text: 'Link text',
+    href: 'https://cloud.ru/',
+  }}
+  closeable
   title='Title'
   description='Title description'
-  buttonText='Button Text'
-  buttonOnClick={() => console.log('Button Clicked')}
-  buttonIcon={<InfoFilledSVG />}
+  action={{
+    text: 'Button Text',
+    icon: <PlaceholderSVG />,
+    onClick: () => {},
+  }}
   onClose={() => console.log('alert top')}
 />;
 ```
@@ -53,12 +57,11 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 | description* | `string` | - | Описание |
 | icon | `boolean` | true | Отображать иконку |
 | title | `string` | - | Заголовок |
-| link | `string` | - | Текст ссылки |
-| href | `string` | - | Ссылка |
+| link | `Pick<LinkProps, "text" \| "target" \| "onClick" \| "href">` | - | Cсылка |
 | onClose | `() => void` | - | Колбек закрытия |
 | appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | neutral | Внешний вид |
 | className | `string` | - | CSS-класс |
-| action | `Pick<AlertButtonProps, "icon" \| "label" \| "onClick">[]` | - | Свойства, описывающие кнопки в футере алерта |
+| actions | `{ primary: Omit<AlertButtonProps, "appearance">; secondary?: Omit<AlertButtonProps, "appearance">; }` | - | Кнопки в футере алерта |
 ## AlertTop
 Компонент для отображения уведомления вверху экрана.
 ### Props
@@ -67,13 +70,10 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 | description* | `string` | - | Описание |
 | icon | `boolean` | true | Отображать иконку |
 | title | `string` | - | Заголовок |
-| link | `string` | - | Текст ссылки |
-| href | `string` | - | Ссылка |
+| link | `Pick<LinkProps, "text" \| "target" \| "onClick" \| "href">` | - | Cсылка |
+| action | `AlertButtonProps` | - | Кнопка дополнительного действия |
 | onClose | `() => void` | - | Колбек закрытия |
 | appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | neutral | Внешний вид |
-| buttonText | `string` | - | Текст кнопки |
-| buttonOnClick | `() => void` | - | Колбек клика по кнопке |
-| buttonIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка в кнопке |
 | className | `string` | - | CSS-класс |
 
 

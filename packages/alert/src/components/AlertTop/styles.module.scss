@@ -12,11 +12,11 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
-      @if $color == 'invert-neutral'{
-        background-color:$sys-invert-neutral-background;
+      @if $color == 'invert-neutral' {
+        background-color: $sys-invert-neutral-background;
       }
 
-      @else {
+ @else {
         background-color: simple-var($theme-variables, 'sys', $color, 'accent-default');
       }
     }
@@ -30,11 +30,11 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
-      @if $color == 'invert-neutral'{
-        color:$sys-invert-neutral-text-main;
+      @if $color == 'invert-neutral' {
+        color: $sys-invert-neutral-text-main;
       }
 
-      @else {
+ @else {
         color: simple-var($theme-variables, 'sys', $color, 'on-accent');
       }
     }
@@ -51,11 +51,11 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
-      @if $color == 'invert-neutral'{
-        color:$sys-invert-neutral-text-main;
+      @if $color == 'invert-neutral' {
+        color: $sys-invert-neutral-text-main;
       }
 
-      @else {
+ @else {
         color: simple-var($theme-variables, 'sys', $color, 'on-accent');
       }
     }
@@ -69,11 +69,11 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
-      @if $color == 'invert-neutral'{
-        color:$sys-invert-neutral-text-main;
+      @if $color == 'invert-neutral' {
+        color: $sys-invert-neutral-text-main;
       }
 
-      @else {
+ @else {
         color: simple-var($theme-variables, 'sys', $color, 'on-accent');
       }
     }
@@ -85,15 +85,14 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
   gap: $dimension-2m;
   align-items: center;
   min-width: 0;
-}   
-
+}
 
 .contentLayout {
   @include composite-var($alert-top-container-content-layout);
 
   display: flex;
   flex-direction: column;
-  min-width: 0; 
+  min-width: 0;
 }
 
 .textLayout {
@@ -104,57 +103,4 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
   display: flex;
   gap: $dimension-2m;
   align-items: center;
-}
-
-.closeButton {
-  @include composite-var($alert-top-button-button-close);
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-
-  background: none;
-  border: none;
-
-  svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-  }
-
-  @each $color in $colors {
-    &[data-color='#{$color}'] {
-      @if $color == 'invert-neutral'{
-        color: $sys-invert-neutral-text-main;
-      }
-
-      @else {
-        color: simple-var($theme-variables, 'sys', $color, 'on-accent');
-      }
-      
-      background-color: inherit;
-
-      &:hover {
-        opacity: unset;
-        background-color: $sys-opacity-hovered;
-      }
-
-      &:focus-visible {
-        @include outline-var($container-focused-s);
-
-        opacity: unset;
-        background-color: $sys-opacity-hovered;
-        outline-color: $sys-available-on-complementary;
-      }
-
-      &:active {
-        background-color: $sys-opacity-activated;
-      } 
-    }
-  }
 }
