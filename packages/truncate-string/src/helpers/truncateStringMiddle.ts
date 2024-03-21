@@ -1,6 +1,10 @@
 import { isEllipsisActive } from './isEllipsisActive';
 
 const CONFIG = [
+  { potentialDelimiterWidth: 0.5, leftHalfDelta: 0, rightHalfDelta: 0 },
+  { potentialDelimiterWidth: 1, leftHalfDelta: 0, rightHalfDelta: 0 },
+  { potentialDelimiterWidth: 1, leftHalfDelta: 0.5, rightHalfDelta: 0 },
+  { potentialDelimiterWidth: 1, leftHalfDelta: 0, rightHalfDelta: 0.5 },
   { potentialDelimiterWidth: 2, leftHalfDelta: 0, rightHalfDelta: 0 },
   { potentialDelimiterWidth: 2, leftHalfDelta: 1, rightHalfDelta: 0 },
   { potentialDelimiterWidth: 2, leftHalfDelta: 0, rightHalfDelta: 1 },

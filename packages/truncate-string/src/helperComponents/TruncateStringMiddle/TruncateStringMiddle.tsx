@@ -1,8 +1,9 @@
 import cn from 'classnames';
+import trottle from 'lodash.throttle';
 import { useEffect, useRef, useState } from 'react';
 
 import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';
-import { extractSupportProps, useDebounce, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { isEllipsisActive, truncateStringMiddle } from '../../helpers';
 import styles from './styles.module.scss';
@@ -20,19 +21,19 @@ export function TruncateStringMiddle({ text, className, hideTooltip, placement, 
   const textElementRef = useRef<HTMLElement>(null);
   const truncatedTextElementRef = useRef<HTMLElement>(null);
 
-  const toggleTruncateString = useDebounce(() => {
-    setTruncatedString(
-      truncateStringMiddle({
-        text,
-        element: textElementRef.current,
-        truncatedElement: truncatedTextElementRef.current,
-      }),
-    );
-    setShowTooltip(isEllipsisActive(textElementRef.current));
-  }, 50);
-
   useEffect(() => {
-    const observer = new ResizeObserver(toggleTruncateString);
+    const setTruncate = trottle(() => {
+      setTruncatedString(
+        truncateStringMiddle({
+          element: textElementRef.current,
+          truncatedElement: truncatedTextElementRef.current,
+          text,
+        }),
+      );
+      setShowTooltip(isEllipsisActive(textElementRef.current));
+    }, 50);
+
+    const observer = new ResizeObserver(setTruncate);
 
     if (textElementRef.current) {
       observer.observe(textElementRef.current);
@@ -41,7 +42,7 @@ export function TruncateStringMiddle({ text, className, hideTooltip, placement, 
     return () => {
       observer.disconnect();
     };
-  }, [showTooltip, text, hideTooltip, toggleTruncateString]);
+  }, [showTooltip, text, hideTooltip]);
 
   const textElement = (
     <>
