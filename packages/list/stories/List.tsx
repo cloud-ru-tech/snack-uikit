@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { ButtonFilled, ButtonOutline } from '@snack-uikit/button';
 import { PlusSVG } from '@snack-uikit/icons';
+import { TruncateStringProps } from '@snack-uikit/truncate-string';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -29,6 +30,7 @@ type StoryProps = ListProps & {
   showPinBottomItems?: boolean;
   showFooter?: boolean;
   showSwitch?: boolean;
+  truncateVariant?: TruncateStringProps['variant'];
   showGroups?: boolean;
   showEmptyList?: boolean;
   showCollapsedList?: boolean;
@@ -47,6 +49,7 @@ const Template: StoryFn<StoryProps> = ({
   showCollapsedList,
   showAsyncList,
   selectionMode,
+  truncateVariant,
   ...args
 }) => {
   const [value, setValue] = useState<string | string[]>();
@@ -63,14 +66,28 @@ const Template: StoryFn<StoryProps> = ({
     () =>
       GROUP_OPTIONS.map(group => ({
         ...group,
-        items: group.items.map(item => ({ ...item, switch: showSwitch })),
+        truncate: { variant: truncateVariant },
+        items: group.items.map(item => ({
+          ...item,
+          switch: showSwitch,
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          content: { ...item.content, truncate: { variant: truncateVariant } },
+        })),
       })),
-    [showSwitch],
+    [showSwitch, truncateVariant],
   );
 
   const baseItemsWithSwitch = useMemo(
-    () => (showEmptyList ? [] : BASE_OPTIONS).map(item => ({ ...item, switch: showSwitch })),
-    [showEmptyList, showSwitch],
+    () =>
+      (showEmptyList ? [] : BASE_OPTIONS).map(item => ({
+        ...item,
+        switch: showSwitch,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        content: { ...item.content, truncate: { variant: truncateVariant } },
+      })),
+    [showEmptyList, showSwitch, truncateVariant],
   );
 
   const [items, setItems] = useState(LONG_LIST_OPTIONS);
@@ -206,6 +223,7 @@ list.args = {
   showFooter: true,
   showSwitch: false,
   showGroups: true,
+  truncateVariant: 'end',
   marker: true,
   loading: false,
   scroll: true,
@@ -225,6 +243,11 @@ list.argTypes = {
   showGroups: { name: '[Stories]: Show group items', control: { type: 'boolean' } },
   showCollapsedList: { name: '[Stories]: Show collapsed list', control: { type: 'boolean' } },
   showAsyncList: { name: '[Stories]: Show async list', control: { type: 'boolean' } },
+  truncateVariant: {
+    name: '[Stories]: Truncate variant',
+    control: { type: 'radio' },
+    options: ['end', 'middle'],
+  },
   items: { table: { disable: true } },
   pinTop: { table: { disable: true } },
   pinBottom: { table: { disable: true } },

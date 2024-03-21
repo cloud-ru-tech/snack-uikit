@@ -1,5 +1,6 @@
 import { FocusEvent, KeyboardEvent, MouseEvent, ReactNode, RefObject } from 'react';
 
+import { TruncateStringProps } from '@snack-uikit/truncate-string';
 import { WithSupportProps } from '@snack-uikit/utils';
 
 import { SeparatorProps } from '../../helperComponents';
@@ -12,6 +13,7 @@ export type ItemContentProps = {
   truncate?: {
     option?: number;
     description?: number;
+    variant?: TruncateStringProps['variant'];
   };
 };
 

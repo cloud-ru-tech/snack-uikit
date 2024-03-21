@@ -12,7 +12,7 @@ export const BASE_OPTIONS: BaseItemProps[] = [
     switch: true,
   },
   {
-    content: { option: 'Content' },
+    content: { option: 'Long Long Long Long Long Content' },
     beforeContent: <PlaceholderSVG />,
     switch: true,
   },

@@ -146,6 +146,7 @@ export function BaseItem({
         <div className={styles.headline}>
           <span className={styles.option}>
             <TruncateString
+              variant={contentTruncate?.variant}
               text={option}
               maxLines={contentTruncate?.option ?? 1}
               data-test-id='list__base-item-option'
