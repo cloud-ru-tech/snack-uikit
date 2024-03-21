@@ -57,14 +57,26 @@ export type FieldStepperProps = WithSupportProps<FieldStepperOwnProps & InputPro
 
 const TOOLTIP_TIMEOUT = 2000;
 
+const getDefaultValue = (min: number, max: number) => {
+  if (min > 0) {
+    return min;
+  }
+
+  if (max < 0) {
+    return max;
+  }
+
+  return 0;
+};
+
 export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
   (
     {
       id,
       name,
       value: valueProp,
-      min,
-      max,
+      min = Number.NEGATIVE_INFINITY,
+      max = Number.POSITIVE_INFINITY,
       step = 1,
       disabled = false,
       readonly = false,
@@ -89,7 +101,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     const { t } = useLocale('Fields');
     const [value = 0, setValue] = useValueControl<number>({
       value: valueProp,
-      defaultValue: 0,
+      defaultValue: getDefaultValue(min, max),
       onChange: onChangeProp,
     });
     const [tooltipOpen, setTooltipOpen] = useState(false);
@@ -161,13 +173,13 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     const handleMinusButtonClick = (e: MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      setValue(min !== undefined ? Math.max(min, value - step) : value - step);
+      setValue(Math.min(Math.max(min, value - step), max));
     };
 
     const handlePlusButtonClick = (e: MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      setValue(max !== undefined ? Math.min(max, value + step) : value + step);
+      setValue(Math.max(Math.min(max, value + step), min));
     };
 
     const handleMinusButtonKeyDown: KeyboardEventHandler<HTMLInputElement> = event => {

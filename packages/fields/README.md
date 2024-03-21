@@ -365,8 +365,8 @@ const [isOpen, setIsOpen] = useState(false);
 | name | `string` | - | Значение html-атрибута name |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| min | `number` | - | Минимальное значение поля |
-| max | `number` | - | Максимальное значение поля |
+| min | `number` | Number.NEGATIVE_INFINITY | Минимальное значение поля |
+| max | `number` | Number.POSITIVE_INFINITY | Максимальное значение поля |
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
