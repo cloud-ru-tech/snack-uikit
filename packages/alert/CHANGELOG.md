@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2024-03-22)
+
+
+### BREAKING CHANGES
+
+
+* **FF-4556:** link/action(ex button) props was union; add link onClick ([314aab0](https://github.com/cloud-ru-tech/snack-uikit/commit/314aab0db20d73957fa58e09f1a604469a734d40))
+
+
+
+
 ## 0.8.7 (2024-02-29)
 
 ### Only dependencies have been changed
