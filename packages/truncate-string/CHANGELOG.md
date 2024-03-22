@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.11 (2024-03-22)
+
+
+### Bug Fixes
+
+* **FF-4618:** make truncate-middle more smooth ([2cbdc5d](https://github.com/cloud-ru-tech/snack-uikit/commit/2cbdc5d98a2ff443d1372a2e3e6a00d8a8bc47fb))
+
+
+
+
+
 ## 0.4.10 (2024-02-29)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2024-03-22)
+
+
+### Features
+
+* **FF-4618:** add truncate variant property to item ([069cb15](https://github.com/cloud-ru-tech/snack-uikit/commit/069cb151f722f7c460c45deb092f30ccd98a12c0))
+
+
+
+
+
 ## 0.8.1 (2024-03-19)
 
 

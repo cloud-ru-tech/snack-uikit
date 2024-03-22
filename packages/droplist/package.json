@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "droplist",
-  "version": "0.13.12",
+  "version": "0.13.13",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -39,7 +39,7 @@
     "@snack-uikit/scroll": "0.5.2",
     "@snack-uikit/tag": "0.8.1",
     "@snack-uikit/toggles": "0.9.7",
-    "@snack-uikit/truncate-string": "0.4.10",
+    "@snack-uikit/truncate-string": "0.4.11",
     "@snack-uikit/utils": "3.2.0",
     "classnames": "2.3.2"
   }
