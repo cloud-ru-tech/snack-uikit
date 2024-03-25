@@ -1,24 +1,29 @@
-import { ToasterContainer, ToasterContainerProps } from './components';
+import { ToasterContainerProps } from './components';
 import { ToasterType } from './types';
 
+export const TOASTER_TYPE = {
+  SystemEvent: 'system-event',
+  UserAction: 'user-action',
+} as const;
+
 export const TOASTER_CONTAINER_DEFAULT_PROPS: Record<ToasterType, ToasterContainerProps> = {
-  [ToasterType.SystemEvent]: {
+  [TOASTER_TYPE.SystemEvent]: {
     limit: 5,
-    position: ToasterContainer.position.BOTTOM_RIGHT,
+    position: 'bottom-right',
     displayCloseAllButton: true,
-    type: ToasterType.SystemEvent,
+    type: TOASTER_TYPE.SystemEvent,
   },
-  [ToasterType.UserAction]: {
+  [TOASTER_TYPE.UserAction]: {
     limit: 2,
-    position: ToasterContainer.position.BOTTOM_CENTER,
+    position: 'bottom-center',
     displayCloseAllButton: false,
-    type: ToasterType.UserAction,
+    type: TOASTER_TYPE.UserAction,
   },
 };
 
 export const AUTO_CLOSE_TIME = {
-  [ToasterType.SystemEvent]: 5000,
-  [ToasterType.UserAction]: 2000,
+  [TOASTER_TYPE.SystemEvent]: 5000,
+  [TOASTER_TYPE.UserAction]: 2000,
 };
 
 export const TOASTER_ROOT_ID = 'toaster-root';

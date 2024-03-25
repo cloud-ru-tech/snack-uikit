@@ -1,6 +1,9 @@
 import { Id, ToastOptions as RtToastOptions } from 'react-toastify';
 
+import { ValueOf } from '@snack-uikit/utils';
+
 import { ToasterContainerProps, ToastSystemEventProps, ToastUserActionProps } from './components';
+import { TOASTER_TYPE } from './constants';
 
 export type ToasterId = Id;
 export type PromisedId = Promise<ToasterId>;
@@ -11,14 +14,11 @@ export type ToastOptions = {
   onClose?(id?: ToasterId): void;
 };
 
-export enum ToasterType {
-  SystemEvent = 'system-event',
-  UserAction = 'user-action',
-}
+export type ToasterType = ValueOf<typeof TOASTER_TYPE>;
 
 export type ToasterPropsMap = {
-  [ToasterType.UserAction]: ToastUserActionProps;
-  [ToasterType.SystemEvent]: ToastSystemEventProps;
+  [TOASTER_TYPE.UserAction]: ToastUserActionProps;
+  [TOASTER_TYPE.SystemEvent]: ToastSystemEventProps;
 };
 
 type OpenNotificationProps<T extends keyof ToasterPropsMap> = {

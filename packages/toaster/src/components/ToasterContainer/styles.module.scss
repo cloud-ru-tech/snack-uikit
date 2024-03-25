@@ -42,29 +42,13 @@
   }
 }
 
-.container-system-event {
-  @include composite-var($toaster-system-event-toaster-container);
-
-  display: flex;
-  flex-direction: column;
-}
-
-.container-user-action {
-  @include composite-var($toaster-user-action-toaster-container);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: fit-content;
-}
-
 .bottom-right {
   right: 0;
   bottom: 0;
 }
 
 .bottom-center {
-  bottom: 0
+  bottom: 0;
 }
 
 .toaster {
@@ -78,4 +62,122 @@
 
 .containerWithCloseAllButton {
   margin-bottom: calc($size-toaster-button-close-column + $space-toaster-system-event-gap);
+}
+
+$theme-name: osThemeSnack;
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global {
+  .#{$theme-name}.Toastify__toast-container {
+    position: fixed;
+    box-sizing: border-box;
+    padding: 0;
+
+    .Toastify__toast {
+      --y: 0;
+
+      touch-action: none;
+      cursor: default;
+
+      position: relative;
+      z-index: 0;
+
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+
+      box-sizing: border-box;
+      min-height: unset;
+      margin: 0;
+      padding: 0;
+
+      background-color: transparent;
+      border-radius: unset;
+      box-shadow: none;
+    }
+
+    .Toastify__toast-body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .#{container-user-action} {
+      @include composite-var($toaster-user-action-toaster-container);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: fit-content;
+    }
+
+    .Toastify--animate {
+      animation-duration: 0.5s;
+      animation-fill-mode: both;
+    }
+
+    .Toastify__close-button {
+      cursor: pointer;
+      padding: 0;
+      border: none;
+      outline: none;
+    }
+
+    .Toastify__toast-container {
+      margin: 0;
+      padding: 0;
+    }
+
+    .Toastify__progress-bar {
+      background: transparent;
+    }
+
+    .Toastify__progress-bar--animated {
+      animation: osSnackTheme__toast__trackProgress linear 1 forwards;
+    }
+
+    .Toastify__bounce-enter--bottom-right {
+      animation-name: osSnackTheme__toast__bounceInRight;
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .Toastify__bounce-enter--bottom-center {
+      animation-name: osSnackTheme__toast__bounceInUp;
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .Toastify__bounce-exit--bottom-right {
+      animation-name: osSnackTheme__toast__bounceOutRight;
+    }
+
+    .Toastify__bounce-exit--bottom-center {
+      animation-name: osSnackTheme__toast__bounceOutDown;
+    }
+  }
+
+  .#{$theme-name}.Toastify__toast-container.osThemeSnack__toast-container__system-event {
+    @include composite-var($toaster-system-event-toaster-container);
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .#{$theme-name}.Toastify__toast-container.osThemeSnack__toast-container__user-action {
+    @include composite-var($toaster-user-action-toaster-container);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+  }
+
+  .#{$theme-name}.Toastify__toast-container--bottom-right {
+    right: 0;
+    bottom: 0;
+  }
+
+  .#{$theme-name}.Toastify__toast-container--bottom-center {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

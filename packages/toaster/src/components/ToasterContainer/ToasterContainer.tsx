@@ -1,4 +1,4 @@
-import 'react-toastify/dist/ReactToastify.css';
+import './style.css';
 
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
@@ -10,7 +10,7 @@ import {
   ToastPosition,
 } from 'react-toastify';
 
-import { TOASTER_CONTAINER_PREFIX } from '../../constants';
+import { TOASTER_CONTAINER_PREFIX, TOASTER_TYPE } from '../../constants';
 import { TOAST_SYSTEM_EVENT_TEST_IDS } from '../../testIds';
 import { ToasterType } from '../../types';
 import styles from './styles.module.scss';
@@ -24,11 +24,11 @@ export type ToasterContainerProps = {
 };
 
 export function ToasterContainer({
-  position = toast.POSITION.BOTTOM_RIGHT,
+  position = 'bottom-right',
   limit = 5,
   containerId,
   displayCloseAllButton,
-  type = ToasterType.SystemEvent,
+  type = TOASTER_TYPE.SystemEvent,
 }: ToasterContainerProps) {
   const [notificationCounter, setNotificationCounter] = useState(0);
   const [isCloseAllButtonHidden, setIsCloseAllButtonHidden] = useState(false);
@@ -39,7 +39,7 @@ export function ToasterContainer({
 
   useEffect(() => {
     const unsubscribe = toast.onChange(({ status, containerId }: ToastItem) => {
-      if (containerId === `${TOASTER_CONTAINER_PREFIX}${ToasterType.SystemEvent}`) {
+      if (containerId === `${TOASTER_CONTAINER_PREFIX}${TOASTER_TYPE.SystemEvent}`) {
         if (status === 'added') {
           setIsCloseAllButtonHidden(false);
           setNotificationCounter(prev => prev + 1);
@@ -63,15 +63,16 @@ export function ToasterContainer({
         autoClose={false}
         closeButton={false}
         draggable={false}
-        className={cn(styles[`container-${type}`], styles[position], {
+        className={cn('osThemeSnack', styles[position], {
           [styles.containerWithCloseAllButton]: hasCloseAllButton,
+          'osThemeSnack__toast-container__system-event': type === TOASTER_TYPE.SystemEvent,
+          'osThemeSnack__toast-container__user-action': type === TOASTER_TYPE.UserAction,
         })}
         toastClassName={styles.toaster}
         bodyClassName={styles.toaster}
         position={position}
         limit={limit}
         containerId={containerId}
-        enableMultiContainer={Boolean(containerId)}
       />
 
       {hasCloseAllButton && (
@@ -89,5 +90,3 @@ export function ToasterContainer({
     </>
   );
 }
-
-ToasterContainer.position = toast.POSITION;

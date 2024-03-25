@@ -7,10 +7,10 @@ import { Link } from '@snack-uikit/link';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { AUTO_CLOSE_TIME } from '../../constants';
+import { AUTO_CLOSE_TIME, TOASTER_TYPE } from '../../constants';
 import { ButtonAction, ButtonActionProps } from '../../helperComponents/ButtonAction';
 import { TOAST_SYSTEM_EVENT_TEST_IDS } from '../../testIds';
-import { ToasterId, ToasterType } from '../../types';
+import { ToasterId } from '../../types';
 import { APPEARANCE_TO_ON_COLOR_MAP } from './constants';
 import styles from './styles.module.scss';
 import { ToastSystemEventAppearance } from './types';
@@ -113,7 +113,7 @@ export function ToastSystemEvent({
           aria-label='progressbar'
           data-test-id={TOAST_SYSTEM_EVENT_TEST_IDS.progressbar}
           className={styles.progress}
-          style={{ animationDuration: `${AUTO_CLOSE_TIME[ToasterType.SystemEvent]}ms` }}
+          style={{ animationDuration: `${AUTO_CLOSE_TIME[TOASTER_TYPE.SystemEvent]}ms` }}
         />
       )}
 
