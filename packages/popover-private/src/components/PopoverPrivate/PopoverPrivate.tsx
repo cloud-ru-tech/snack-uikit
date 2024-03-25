@@ -5,6 +5,7 @@ import {
   FloatingNode,
   FloatingPortal,
   FloatingTree,
+  hide,
   offset,
   ReferenceType,
   safePolygon,
@@ -212,6 +213,7 @@ function PopoverPrivateComponent({
           }
         },
       }),
+      hide(),
     ],
   });
 
@@ -247,7 +249,9 @@ function PopoverPrivateComponent({
     <FloatingPortal root={getPopoverRootElement()}>
       <div
         {...extractSupportProps(rest)}
-        className={cn(styles.floating, className)}
+        className={cn(styles.floating, className, {
+          [styles.floatingHidden]: Boolean(middlewareData.hide?.referenceHidden),
+        })}
         ref={refs.setFloating}
         style={floatingStyles}
         {...getFloatingProps()}
