@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.1 (2024-03-26)
+
+
+### Bug Fixes
+
+* **FF-4618:** hide popover when trigger is out of view ([cccf410](https://github.com/cloud-ru-tech/snack-uikit/commit/cccf410b2a0caa3834d49fac335895547f1d3992))
+
+
+
+
+
 # 0.13.0 (2024-02-01)
 
 

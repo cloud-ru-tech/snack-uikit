@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.6 (2024-03-26)
+
+### Only dependencies have been changed
+* [@snack-uikit/popover-private@0.13.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover-private/CHANGELOG.md)
+
+
+
+
+
 ## 0.6.5 (2024-02-26)
 
 
