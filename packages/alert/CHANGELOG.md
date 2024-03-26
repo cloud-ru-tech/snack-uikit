@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2024-03-26)
+
+
+### Features
+
+* **PDS-40:** add title truncate prop; add link appearance prop; make description as ReactNode prop ([01d2890](https://github.com/cloud-ru-tech/snack-uikit/commit/01d2890b5c9dbb63799087cb333401d1ef6e0b79))
+
+
+
+
+
 ## 0.9.2 (2024-03-26)
 
 ### Only dependencies have been changed
