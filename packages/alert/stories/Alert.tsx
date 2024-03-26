@@ -65,6 +65,9 @@ alert.argTypes = {
   link: {
     type: 'string',
   },
+  description: {
+    type: 'string',
+  },
   onClose: {
     table: {
       disable: true,

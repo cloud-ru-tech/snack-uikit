@@ -76,6 +76,9 @@ alertTop.argTypes = {
       disable: true,
     },
   },
+  description: {
+    type: 'string',
+  },
   link: {
     type: 'string',
   },

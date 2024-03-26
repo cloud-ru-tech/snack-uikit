@@ -54,10 +54,11 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| description* | `string` | - | Описание |
+| description* | `ReactNode` | - | Описание |
 | icon | `boolean` | true | Отображать иконку |
 | title | `string` | - | Заголовок |
-| link | `Pick<LinkProps, "text" \| "target" \| "onClick" \| "href">` | - | Cсылка |
+| truncate | `{ title?: number; }` | '{ <br>title: 1 }' | Максимальное кол-во строк <br> - `title` - в заголовке |
+| link | `Pick<LinkProps, "text" \| "target" \| "onClick" \| "href" \| "appearance">` | - | Cсылка |
 | onClose | `() => void` | - | Колбек закрытия |
 | appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | neutral | Внешний вид |
 | className | `string` | - | CSS-класс |
@@ -67,10 +68,11 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| description* | `string` | - | Описание |
+| description* | `ReactNode` | - | Описание |
 | icon | `boolean` | true | Отображать иконку |
 | title | `string` | - | Заголовок |
-| link | `Pick<LinkProps, "text" \| "target" \| "onClick" \| "href">` | - | Cсылка |
+| truncate | `{ title?: number; }` | '{ <br>title: 1 }' | Максимальное кол-во строк <br> - `title` - в заголовке |
+| link | `Pick<LinkProps, "text" \| "target" \| "onClick" \| "href" \| "appearance">` | - | Cсылка |
 | action | `AlertButtonProps` | - | Кнопка дополнительного действия |
 | onClose | `() => void` | - | Колбек закрытия |
 | appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | neutral | Внешний вид |

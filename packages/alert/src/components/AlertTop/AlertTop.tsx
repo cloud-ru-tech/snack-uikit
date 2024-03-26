@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { ReactNode } from 'react';
 
 import { CrossSVG } from '@snack-uikit/icons';
 import { Link, LinkProps } from '@snack-uikit/link';
@@ -17,10 +18,18 @@ export type AlertTopProps = WithSupportProps<{
   icon?: boolean;
   /** Заголовок */
   title?: string;
+  /**
+   *  Максимальное кол-во строк
+   * <br> - `title` - в заголовке
+   * @default '{ <br>title: 1 }'
+   */
+  truncate?: {
+    title?: number;
+  };
   /** Описание */
-  description: string;
+  description: ReactNode;
   /** Cсылка */
-  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href'>;
+  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href' | 'appearance'>;
   /** Кнопка дополнительного действия */
   action?: AlertButtonProps;
   /** Колбек закрытия */
@@ -40,6 +49,7 @@ export function AlertTop({
   description,
   link,
   onClose,
+  truncate,
   appearance = APPEARANCE.Neutral,
   action,
   className,
@@ -70,7 +80,7 @@ export function AlertTop({
                 data-color={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]}
                 data-test-id='alert-top__title'
               >
-                <TruncateString text={title} maxLines={1} />
+                <TruncateString text={title} maxLines={truncate?.title ?? 1} />
               </div>
             )}
 
@@ -86,10 +96,10 @@ export function AlertTop({
           {link && (
             <span>
               <Link
+                appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
                 {...link}
                 textMode='on-accent'
                 external
-                appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
                 size='m'
                 data-test-id='alert-top__link'
               />

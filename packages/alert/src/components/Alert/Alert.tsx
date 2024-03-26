@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { ReactNode } from 'react';
 
 import { CrossSVG } from '@snack-uikit/icons';
 import { Link, LinkProps } from '@snack-uikit/link';
@@ -16,10 +17,18 @@ export type AlertProps = WithSupportProps<{
   icon?: boolean;
   /** Заголовок */
   title?: string;
+  /**
+   *  Максимальное кол-во строк
+   * <br> - `title` - в заголовке
+   * @default '{ <br>title: 1 }'
+   */
+  truncate?: {
+    title?: number;
+  };
   /** Описание */
-  description: string;
+  description: ReactNode;
   /** Cсылка */
-  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href'>;
+  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href' | 'appearance'>;
   /** Колбек закрытия */
   onClose?: () => void;
   /** Внешний вид */
@@ -39,6 +48,7 @@ export type AlertProps = WithSupportProps<{
 export function Alert({
   icon = true,
   title,
+  truncate,
   link,
   description,
   onClose,
@@ -61,7 +71,14 @@ export function Alert({
         )}
 
         <div className={styles.contentLayout}>
-          {title && <TruncateString text={title} maxLines={1} className={styles.title} data-test-id='alert__title' />}
+          {title && (
+            <TruncateString
+              text={title}
+              maxLines={truncate?.title ?? 1}
+              className={styles.title}
+              data-test-id='alert__title'
+            />
+          )}
 
           <span data-test-id='alert__description' className={styles.description}>
             {description}
@@ -70,10 +87,10 @@ export function Alert({
           {link && (
             <span>
               <Link
+                appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
                 {...link}
                 textMode='default'
                 external
-                appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
                 size='m'
                 data-test-id='alert__link'
               />
