@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.9 (2024-03-27)
+
+
+### Bug Fixes
+
+* **FF-4585:** add some types/helpers export; fix style overrides; ([a549b8f](https://github.com/cloud-ru-tech/snack-uikit/commit/a549b8f94d1ca4145585779218ef002987ace938))
+
+
+
+
+
 ## 0.6.8 (2024-03-26)
 
 ### Only dependencies have been changed
