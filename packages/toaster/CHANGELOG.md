@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.10 (2024-03-28)
+
+
+### Bug Fixes
+
+* **FF-4585:** fix mobile view ([002a53a](https://github.com/cloud-ru-tech/snack-uikit/commit/002a53acb92dc7c54cf9262e805179714374c4d1))
+
+
+
+
+
 ## 0.6.9 (2024-03-27)
 
 
