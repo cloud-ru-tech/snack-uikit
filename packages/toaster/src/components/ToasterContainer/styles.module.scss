@@ -64,6 +64,12 @@
   margin-bottom: calc($size-toaster-button-close-column + $space-toaster-system-event-gap);
 }
 
+@media only screen and (max-width: 480px) {
+  .buttonCloseColumnWrapper {
+    max-width: calc(100vw - 2 * $space-toaster-toast-system-event-container-padding);
+  }
+}
+
 $theme-name: osThemeSnack;
 
 /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
@@ -159,6 +165,7 @@ $theme-name: osThemeSnack;
 
     display: flex;
     flex-direction: column;
+    max-width: calc(100vw - 2 * $space-toaster-toast-system-event-container-padding);
   }
 
   .#{$theme-name}.Toastify__toast-container.osThemeSnack__toast-container__user-action {
@@ -179,5 +186,18 @@ $theme-name: osThemeSnack;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  @media only screen and (max-width: 480px) {
+    .#{$theme-name}.Toastify__toast-container--bottom-right {
+      right: 0;
+      bottom: 0;
+    }
+
+    .#{$theme-name}.Toastify__toast-container--bottom-center {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 }
