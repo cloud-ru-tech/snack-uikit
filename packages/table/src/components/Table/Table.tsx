@@ -75,6 +75,7 @@ export function Table<TData extends object>({
   manualFiltering = false,
   scrollRef,
   scrollContainerRef,
+  getRowId,
 
   ...rest
 }: TableProps<TData>) {
@@ -141,6 +142,7 @@ export function Table<TData extends object>({
     globalFilterFn: fuzzyFilter,
     onGlobalFilterChange,
 
+    getRowId,
     onRowSelectionChange,
     enableRowSelection: rowSelectionProp?.enable,
     enableMultiRowSelection: rowSelectionProp?.multiRow,

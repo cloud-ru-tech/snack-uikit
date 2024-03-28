@@ -138,6 +138,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | manualSorting | `boolean` | - |  |
 | manualPagination | `boolean` | - |  |
 | manualFiltering | `boolean` | - |  |
+| getRowId | `(originalRow: TData, index: number, parent?: Row<TData>) => string` | - | Дополнительная функция используется для получения уникального идентификатора для любой заданной строки |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 ## Table.getStatusColumnDef
@@ -188,6 +189,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | manualSorting | `boolean` | true |  |
 | manualPagination | `boolean` | true |  |
 | manualFiltering | `boolean` | true |  |
+| getRowId | `(originalRow: TData, index: number, parent?: Row<TData>) => string` | - | Дополнительная функция используется для получения уникального идентификатора для любой заданной строки |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | items | `TData[]` | - | Данные для отрисовки |

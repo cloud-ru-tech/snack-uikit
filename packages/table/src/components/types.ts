@@ -1,4 +1,4 @@
-import { PaginationState, RowSelectionOptions, RowSelectionState, SortingState } from '@tanstack/react-table';
+import { PaginationState, Row, RowSelectionOptions, RowSelectionState, SortingState } from '@tanstack/react-table';
 import { ReactNode, RefObject } from 'react';
 
 import { ToolbarProps } from '@snack-uikit/toolbar';
@@ -121,6 +121,9 @@ export type TableProps<TData extends object> = WithSupportProps<{
   manualSorting?: boolean;
   manualPagination?: boolean;
   manualFiltering?: boolean;
+
+  /** Дополнительная функция используется для получения уникального идентификатора для любой заданной строки */
+  getRowId?: (originalRow: TData, index: number, parent?: Row<TData>) => string;
 
   /** Ссылка на элемент, обозначающий самый конец прокручиваемого списка */
   scrollRef?: RefObject<HTMLElement>;
