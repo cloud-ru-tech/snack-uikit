@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2024-03-28)
+
+
+### Features
+
+* **PDS-0000:** add getRowId prop into table ([3e1a0a7](https://github.com/cloud-ru-tech/snack-uikit/commit/3e1a0a72fe6b54b24275cf553779063b01c62149))
+
+
+
+
+
 ## 0.14.18 (2024-03-26)
 
 ### Only dependencies have been changed
