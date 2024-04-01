@@ -99,11 +99,24 @@ export function useButtons({
 }
 
 export function useSearchInput({ value, onChange, defaultValue }: SearchState) {
-  const [inputValue = '', onInputValueChange] = useValueControl<string>({ value, onChange, defaultValue });
+  const [inputValue = '', setInputValue] = useValueControl<string>({ value, onChange, defaultValue });
 
   const prevInputValue = useRef<string>(inputValue);
 
-  return { inputValue, onInputValueChange, prevInputValue };
+  const updateInputValue = useCallback(
+    (selectedItem?: ItemWithId) => {
+      const newInputValue = selectedItem?.content.option ?? '';
+
+      if (inputValue !== newInputValue || prevInputValue.current !== newInputValue) {
+        setInputValue(newInputValue);
+
+        prevInputValue.current = newInputValue;
+      }
+    },
+    [inputValue, setInputValue],
+  );
+
+  return { inputValue, setInputValue, prevInputValue, onInputValueChange: setInputValue, updateInputValue };
 }
 
 export function useHandleDeleteItem(setValue: Handler) {

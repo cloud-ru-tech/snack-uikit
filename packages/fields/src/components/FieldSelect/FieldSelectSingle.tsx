@@ -1,5 +1,16 @@
+import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useEffect, useMemo, useRef } from 'react';
+import {
+  FocusEvent,
+  forwardRef,
+  KeyboardEvent,
+  KeyboardEventHandler,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { Droplist, ItemProps, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
@@ -11,8 +22,8 @@ import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleOnKeyDown, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
-import { FieldSelectSingleProps } from './types';
-import { extractListProps, findSelectedOption, getArrowIcon, transformOptionsToItems } from './utils';
+import { FieldSelectSingleProps, ItemWithId } from './types';
+import { extractListProps, getArrowIcon, updateItems } from './utils';
 
 export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleProps>(
   (
@@ -51,61 +62,79 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       onChange: onChangeProp,
     });
 
-    const items = useMemo(() => transformOptionsToItems(options), [options]);
-    const { selected, itemsWithPlaceholder } = useMemo(() => {
-      const [fonded, placeholder] = findSelectedOption(items, value);
+    const [{ selectedItem, items = [] }, setItems] = useState<{
+      selectedItem?: ItemWithId;
+      items: ItemProps[];
+    }>(() => updateItems({ options, value, currentItems: [], selectedItem: undefined }));
 
-      return {
-        selected: fonded ?? placeholder,
-        itemsWithPlaceholder: ((placeholder ? [placeholder] : []) as ItemProps[]).concat(items),
-      };
-    }, [items, value]);
-
-    const { inputValue, onInputValueChange, prevInputValue } = useSearchInput({
+    const { inputValue, setInputValue, prevInputValue, updateInputValue } = useSearchInput({
       ...search,
-      defaultValue: selected?.content.option ?? '',
+      defaultValue: selectedItem?.content.option ?? '',
     });
 
+    const prevSelectedItem = useRef<ItemWithId | undefined>(selectedItem);
+
+    useLayoutEffect(() => {
+      setItems(({ selectedItem }) => updateItems({ options, value, selectedItem }));
+    }, [options, value]);
+
     useEffect(() => {
-      if (selected?.content.option && prevInputValue.current !== selected?.content.option) {
-        onInputValueChange(selected.content.option);
-        prevInputValue.current = selected?.content.option;
-      }
-    }, [onInputValueChange, selected?.content.option, prevInputValue]);
-
-    const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-      if (!open && selected?.content.option !== inputValue) {
-        onInputValueChange(selected?.content.option ?? '');
+      if (
+        prevSelectedItem.current &&
+        prevSelectedItem.current.id === selectedItem?.id &&
+        prevSelectedItem.current.content.option === selectedItem?.content.option
+      ) {
+        return;
       }
 
-      rest?.onBlur?.(e);
-    };
+      prevSelectedItem.current = selectedItem;
+      updateInputValue(selectedItem);
 
-    const onClear = () => {
-      setValue('');
-      onInputValueChange('');
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedItem, prevSelectedItem]);
 
+    const onClear = useCallback(() => {
+      setValue(undefined);
       localRef.current?.focus();
-      setOpen(true);
-    };
+    }, [setValue]);
 
     const { ArrowIcon, arrowIconSize } = getArrowIcon({ size, open });
 
     const { buttons, inputKeyDownNavigationHandler, buttonsRefs } = useButtons({
       readonly,
       size,
-      showClearButton: showClearButton && !disabled && !readonly && Boolean(value),
+      showClearButton: showClearButton && !disabled && !readonly && value !== undefined,
       showCopyButton,
       inputRef: localRef,
       onClear,
-      valueToCopy: selected?.content.option ?? '',
+      valueToCopy: selectedItem?.content.option ?? '',
     });
+
+    const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+      if (!open && !buttonsRefs.filter(Boolean).includes(e.relatedTarget)) {
+        updateInputValue(selectedItem);
+
+        rest?.onBlur?.(e);
+      }
+    };
 
     const commonHandleOnKeyDown = useHandleOnKeyDown({
       inputKeyDownNavigationHandler,
       onInputKeyDownProp,
       setOpen,
     });
+
+    const handleSelectionChange = useCallback(
+      (newValue?: SelectionSingleValueType) => {
+        if (newValue !== undefined) {
+          localRef.current?.focus();
+
+          setOpen(false);
+          setValue(newValue);
+        }
+      },
+      [setOpen, setValue],
+    );
 
     const handleOnKeyDown = (onKeyDown?: KeyboardEventHandler<HTMLElement>) => (e: KeyboardEvent<HTMLInputElement>) => {
       if (!open && prevInputValue.current !== inputValue) {
@@ -118,19 +147,10 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       }
 
       if (addOptionByEnter && e.code === 'Enter' && inputValue !== '') {
-        setValue(inputValue);
+        handleSelectionChange(inputValue);
       }
 
       commonHandleOnKeyDown(onKeyDown)(e);
-    };
-
-    const handleSelectionChange = (newValue?: SelectionSingleValueType) => {
-      setValue(newValue);
-      localRef.current?.focus();
-
-      if (newValue) {
-        setOpen(false);
-      }
     };
 
     const handleOpenChange = (open: boolean) => {
@@ -138,17 +158,14 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
         setOpen(open);
 
         if (!open) {
-          onInputValueChange(selected?.content.option ?? '');
-          prevInputValue.current = selected?.content.option ?? '';
+          updateInputValue(selectedItem);
         }
       }
     };
 
-    const fuzzySearch = useFuzzySearch(itemsWithPlaceholder);
+    const fuzzySearch = useFuzzySearch(items);
     const result =
-      autocomplete || !searchable || prevInputValue.current === inputValue
-        ? itemsWithPlaceholder
-        : fuzzySearch(inputValue);
+      autocomplete || !searchable || selectedItem?.content.option === inputValue ? items : fuzzySearch(inputValue);
 
     return (
       <FieldDecorator
@@ -193,12 +210,15 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
                 disabled={disabled}
                 placeholder={placeholder}
                 ref={mergeRefs(ref, localRef)}
-                onChange={searchable ? onInputValueChange : undefined}
-                value={inputValue}
-                readonly={!searchable || readonly}
+                onChange={searchable ? setInputValue : undefined}
+                value={searchable ? inputValue : selectedItem?.content.option ?? ''}
+                readonly={readonly}
                 data-test-id='field-select__input'
                 onKeyDown={handleOnKeyDown(onKeyDown)}
                 onBlur={handleBlur}
+                className={cn({
+                  [styles.readonlyCursor]: !searchable,
+                })}
               />
 
               <div className={styles.postfix}>

@@ -105,4 +105,7 @@ export type FieldSelectProps =
   | (FieldSelectSingleProps & { selection?: 'single' })
   | (FieldSelectMultipleProps & { selection: 'multiple' });
 
-export type ItemWithId = BaseItemProps | AccordionItemProps | NextListItemProps;
+export type ItemWithId = (BaseItemProps | AccordionItemProps | NextListItemProps) & {
+  placeholder?: boolean;
+  appearance?: TagProps['appearance'];
+};

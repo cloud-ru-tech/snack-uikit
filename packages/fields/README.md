@@ -1,11 +1,13 @@
 # Fields
 
 ## Todo
+
 - сделать режим выбора периода в FieldDate.
 - сделать маску ввода серого цвета в FieldDate
 - сбрасывать состояние tabIndex-ов при потере фокуса c кнопок
 
 ## Installation
+
 `npm i @snack-uikit/fields`
 
 [Changelog](./CHANGELOG.md)
@@ -40,7 +42,7 @@ const [isOpen, setIsOpen] = useState(false);
   hint='You have entered wrong date'
   size='s'
   validationState='default'
-/>
+/>;
 
 // ...
 
@@ -68,8 +70,8 @@ const [isHidden, setIsHidden] = useState(false);
   hint='You have entered wrong password'
   size='s'
   validationState='error'
-  prefixIcon={<PlaceholderSVG/>}
-/>
+  prefixIcon={<PlaceholderSVG />}
+/>;
 
 // ...
 
@@ -94,8 +96,8 @@ const [value, setValue] = useState('abc');
   hint='You have entered wrong answer'
   size='s'
   validationState='error'
-  prefixIcon={<PlaceholderSVG/>}
-/>
+  prefixIcon={<PlaceholderSVG />}
+/>;
 
 // ...
 
@@ -122,7 +124,7 @@ const [value, setValue] = useState('abc');
   hint='You have entered wrong answer'
   size='s'
   validationState='error'
-/>
+/>;
 
 // ...
 
@@ -133,7 +135,10 @@ const [isOpen, setIsOpen] = useState(false);
   mode='single'
   value={value}
   onChange={setValue}
-  options={[{value: 'op1', label: 'Option 1'}, {value: 'op2', label: 'Option 2'}]}
+  options={[
+    { value: 'op1', option: 'Option 1' },
+    { value: 'op2', option: 'Option 2' },
+  ]}
   open={isHidden}
   onOpenChange={setIsOpen}
   id='field-1'
@@ -152,8 +157,8 @@ const [isOpen, setIsOpen] = useState(false);
   hint='You have chosen wrong item'
   size='s'
   validationState='error'
-  prefixIcon={<PlaceholderSVG/>}
-/>
+  prefixIcon={<PlaceholderSVG />}
+/>;
 ```
 
 [//]: DOCUMENTATION_SECTION_START

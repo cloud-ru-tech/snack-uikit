@@ -19,11 +19,13 @@ $variants: 'single-line-container', 'multi-line-container';
     &:not([data-readonly]) {
       &:focus-within,
       &[data-focused] {
-        @include outline-var($container-focused-m);
+        &:not([data-disabled]) {
+          @include outline-var($container-focused-m);
 
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'accent-default');
-        outline-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-activated');
+          background-color: simple-var($sys-neutral-background2-level);
+          border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'accent-default');
+          outline-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-activated');
+        }
       }
     }
   }
@@ -55,8 +57,6 @@ $variants: 'single-line-container', 'multi-line-container';
       textarea,
       span {
         @include composite-var($theme-variables, 'sans', 'body', $size);
-
-        cursor: text;
       }
 
       @each $variant in $variants {

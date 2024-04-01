@@ -125,3 +125,8 @@ $base-min-width: 4px;
   flex-shrink: 0;
   gap: $space-fields-postfix-gap;
 }
+
+input.readonlyCursor {
+  cursor: pointer;
+  caret-color: transparent;
+}
