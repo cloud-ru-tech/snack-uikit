@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.14 (2024-04-02)
+
+
+### Bug Fixes
+
+* **PDS-49:** fix readme example; fix viewed value after reset; fix useless onBlur calls; fix view selected nullable option; fix nonsearhcable cursor view, input value color; ([0f6cadf](https://github.com/cloud-ru-tech/snack-uikit/commit/0f6cadf36398b13f6e79e11a4f5920889a8c472d))
+
+
+
+
+
 ## 0.17.13 (2024-03-26)
 
 ### Only dependencies have been changed

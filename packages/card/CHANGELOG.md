@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.10 (2024-04-02)
+
+
+### Bug Fixes
+
+* **FF-0000:** fix Card.Header title in M size ([17b722e](https://github.com/cloud-ru-tech/snack-uikit/commit/17b722ea85c8be13fc46113e6266e010c7ea5a61))
+
+
+
+
+
 ## 0.11.9 (2024-03-26)
 
 ### Only dependencies have been changed
