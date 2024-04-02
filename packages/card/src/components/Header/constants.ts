@@ -5,7 +5,7 @@ import { Size } from '../../types';
 
 export const TITLE_SIZE_MAP: Record<Size, TypographyProps['size']> = {
   [SIZE.S]: 's',
-  [SIZE.M]: 's',
+  [SIZE.M]: 'm',
   [SIZE.L]: 'l',
 };
 
