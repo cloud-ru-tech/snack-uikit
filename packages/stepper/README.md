@@ -10,27 +10,28 @@
 #### Использование
 
 Компонент принимает массив шагов. В проп children принимает render-колбек, в который отдает сам компонент, методы управления и поля состояния.
-При вызове метода `goNext` вызывается валидация текущего шага. Функция валидации должна вернуть результат валидации в Promise. При успешной валдиции компонент переходит на следующий шаг, а при ошибке остается на текущем.
+При вызове метода `goNext` вызывается валидация текущего шага. Функция валидации принимает индекс текущего шага и должна вернуть результат валидации в Promise<boolean>. При успешной валдиции компонент переходит на следующий шаг, а при ошибке остается на текущем.
 При вызове метода `goPrev` компонент переходит на предыдущий шаг.
 
 
 ```tsx
 const steps = [
-  { title: 'Step #1', validation: validation1 },
-  { title: 'Step #2', validation: validation2 },
-  { title: 'Step #3', validation: validation3 },
-  { title: 'Step #4', validation: validation4 },
+  { title: 'Step #1' },
+  { title: 'Step #2' },
+  { title: 'Step #3' },
+  { title: 'Step #4' },
 ];
 
 // ...
 
 return (
-  <Stepper steps={steps}>
+  <Stepper steps={steps} validator={validatorFunction}>
     {({
         stepper, // JSX элемент компонента
         isCompleted, // состояние завершенности всей цепочки
         goNext, // функция перехода к след. шагу
         goPrev, // функция перехода к предыдущему шагу
+        setValidator, // функция установки валидатора
       }) => (
       <>
         {stepper}
@@ -48,9 +49,10 @@ return (
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| children* | `({stepper, ...api}) => ReactElement` | - | Render function. Принимает аргументы: `stepper` - JSX-элемент степпера, `goNext` - перейти на след. шаг, `goPrev` - перейти на пред. шаг, `resetValidation` - сбросить состояние валидации для текущего шага, `isCompleted` - окончен ли процесс, `currentStepIndex` - индекс текущего шага, `stepCount` - кол-во шагов. |
+| children* | `({stepper, ...api}) => ReactElement` | - | Render function. Принимает аргументы: `stepper` - JSX-элемент степпера, `goNext(stepIndex?: number)` - перейти на след. шаг, `goPrev(stepIndex?: number)` - перейти на пред. шаг, `resetValidation` - сбросить состояние валидации для текущего шага, `setValidator` переопределяет функцию-валидатор, которая принимает в параметры индекс текущего шага и индекс нового, `isCompleted` - окончен ли процесс, `currentStepIndex` - индекс текущего шага, `stepCount` - кол-во шагов. |
 | steps* | `StepData[]` | - | Массив шагов |
 | defaultCurrentStepIndex | `number` | - | Индекс текущего шага по-дефолту |
+| validator | `StepsValidator` | - | Валидатор шагов. Выполняется при смене шага. Принимает первым аргументом индекс текущего, вторым - индекс нового шага. |
 | className | `string` | - | CSS-класс |
 | onChangeCurrentStep | `(newValue: number, prevValue: number) => void` | - | Колбек смены текущего степа |
 | onCompleteChange | `(isCompleted: boolean) => void` | - | Колбек изменения завершенности |

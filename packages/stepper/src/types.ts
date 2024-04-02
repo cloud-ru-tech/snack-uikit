@@ -1,15 +1,16 @@
+import { JSX } from 'react';
+
 import { ValueOf } from '@snack-uikit/utils';
 
-import { STEP_STATE, STEP_VALIDATION_RESULT } from './constants';
+import { STEP_STATE } from './constants';
 
 export type StepState = ValueOf<typeof STEP_STATE>;
 
-export type StepValidationResult = ValueOf<typeof STEP_VALIDATION_RESULT>;
+export type StepsValidator = (prevStepIndex: number, newStepIndex: number) => Promise<boolean>;
 
 export type StepData = {
   title: string;
   description?: string;
-  validation?(): Promise<StepValidationResult>;
 };
 
 export type StepViewData = StepData & {
@@ -19,9 +20,11 @@ export type StepViewData = StepData & {
 };
 
 export type StepperApi = {
-  goNext(): void;
-  goPrev(): void;
+  stepper: JSX.Element;
+  goNext(stepIndex?: number): void;
+  goPrev(stepIndex?: number): void;
   resetValidation(): void;
+  setValidator(validator: StepsValidator): void;
   isCompleted: boolean;
   currentStepIndex: number;
   stepCount: number;

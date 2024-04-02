@@ -6,8 +6,6 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Stepper, StepperProps, useStepperApi } from '../src';
-import { STEP_VALIDATION_RESULT } from '../src/constants';
-import { StepValidationResult } from '../src/types';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -33,28 +31,17 @@ function ControlPanel() {
       <div className={styles.panel}>
         <ButtonOutline data-test-id='prev' size='s' label='go prev' onClick={() => goPrev()} />
         <ButtonOutline data-test-id='reset-validation' size='s' label='reset validation' onClick={resetValidation} />
-        <ButtonOutline data-test-id='next' size='s' label='go next' onClick={goNext} />
+        <ButtonOutline data-test-id='next' size='s' label='go next' onClick={() => goNext()} />
       </div>
     </>
   );
 }
 
 const Template: StoryFn<StoryProp> = ({ validationTimeout, isValid, ...args }: StoryProp) => {
-  const validation = () =>
-    new Promise<StepValidationResult>(resolve =>
-      setTimeout(
-        () => resolve(isValid ? STEP_VALIDATION_RESULT.Completed : STEP_VALIDATION_RESULT.Rejected),
-        validationTimeout,
-      ),
-    );
-
-  args.steps = args.steps.map(step => ({
-    ...step,
-    validation,
-  }));
+  const validator = () => new Promise<boolean>(resolve => setTimeout(() => resolve(isValid), validationTimeout));
 
   return (
-    <Stepper {...args}>
+    <Stepper {...args} validator={validator}>
       {({
         stepper,
         /* You can also get api of stepper here */

@@ -3,10 +3,10 @@ import { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { STEP_STATE, STEP_VALIDATION_RESULT } from '../../constants';
+import { STEP_STATE } from '../../constants';
 import { Step } from '../../helperComponents';
 import { StepperContext } from '../../StepperContext';
-import { StepData, StepperApi, StepState, StepViewData } from '../../types';
+import { StepData, StepperApi, StepState, StepsValidator, StepViewData } from '../../types';
 import styles from './styles.module.scss';
 
 export type StepperState = StepperApi & {
@@ -18,11 +18,13 @@ export type StepperProps = WithSupportProps<{
   steps: StepData[];
   /** Индекс текущего шага по-дефолту */
   defaultCurrentStepIndex: number;
+  /** Валидатор шагов. Выполняется при смене шага. Принимает первым аргументом индекс текущего, вторым - индекс нового шага.  */
+  validator?: StepsValidator;
   /** CSS-класс */
   className?: string;
   /**
    * Render function. Принимает аргументы: `stepper` - JSX-элемент степпера,
-   * `goNext` - перейти на след. шаг, `goPrev` - перейти на пред. шаг, `resetValidation` - сбросить состояние валидации для текущего шага, `isCompleted` - окончен ли процесс, `currentStepIndex` - индекс текущего шага, `stepCount` - кол-во шагов.
+   * `goNext(stepIndex?: number)` - перейти на след. шаг, `goPrev(stepIndex?: number)` - перейти на пред. шаг, `resetValidation` - сбросить состояние валидации для текущего шага, `setValidator` переопределяет функцию-валидатор, которая принимает в параметры индекс текущего шага и индекс нового, `isCompleted` - окончен ли процесс, `currentStepIndex` - индекс текущего шага, `stepCount` - кол-во шагов.
    * @type ({stepper, ...api}) => ReactElement
    */
   children: (params: StepperState) => ReactElement;
@@ -32,6 +34,8 @@ export type StepperProps = WithSupportProps<{
   onCompleteChange?: (isCompleted: boolean) => void;
 }>;
 
+const DEFAULT_VALIDATOR = async () => true;
+
 export function Stepper({
   children,
   steps,
@@ -39,6 +43,7 @@ export function Stepper({
   onChangeCurrentStep,
   onCompleteChange,
   defaultCurrentStepIndex = 0,
+  validator: validatorProp = DEFAULT_VALIDATOR,
   ...props
 }: StepperProps) {
   const isCompletedByDefault = defaultCurrentStepIndex === steps.length - 1;
@@ -47,6 +52,7 @@ export function Stepper({
   );
   const [currentStepIndex, setCurrentStepIndexValue] = useState(defaultCurrentStepIndex);
   const [isCompleted, setIsCompleted] = useState(isCompletedByDefault);
+  const [stepsValidator, setStepsValidator] = useState<{ value: StepsValidator }>();
 
   useEffect(() => {
     onCompleteChange?.(isCompleted);
@@ -64,39 +70,38 @@ export function Stepper({
     [onChangeCurrentStep],
   );
 
-  const goNext = useCallback(() => {
-    if (currentStepIndex >= steps.length || isCompleted) {
-      return;
-    }
+  const goNext = useCallback(
+    (newStepIndexUnsafety: number = currentStepIndex + 1) => {
+      if (currentStepIndex >= steps.length || isCompleted || newStepIndexUnsafety <= currentStepIndex) {
+        return;
+      }
 
-    const currentStep = steps[currentStepIndex];
+      const newStepIndex = Math.min(steps.length - 1, newStepIndexUnsafety);
 
-    const stepperValidPromise = currentStep.validation?.() ?? Promise.resolve(STEP_STATE.Completed);
+      setCurrentStepState(STEP_STATE.Loading);
 
-    setCurrentStepState(STEP_STATE.Loading);
+      const validator = stepsValidator?.value || validatorProp;
 
-    stepperValidPromise
-      .then(validationResult => {
-        switch (validationResult) {
-          case STEP_VALIDATION_RESULT.Completed:
-            if (currentStepIndex === steps.length - 1) {
-              // завершился последний шаг
-              setCurrentStepState(STEP_STATE.Completed);
-              setIsCompleted(true);
-            } else {
-              setCurrentStepIndex(currentStepIndex + 1);
-              setCurrentStepState(STEP_STATE.Current);
-            }
-            return;
-          case STEP_VALIDATION_RESULT.Rejected:
+      validator(currentStepIndex, newStepIndex)
+        .catch(() => false)
+        .then(isValid => {
+          if (!isValid) {
             setCurrentStepState(STEP_STATE.Rejected);
             return;
-          default:
+          }
+
+          if (currentStepIndex === steps.length - 1) {
+            // завершился последний шаг
+            setCurrentStepState(STEP_STATE.Completed);
+            setIsCompleted(true);
+          } else {
+            setCurrentStepIndex(newStepIndex);
             setCurrentStepState(STEP_STATE.Current);
-        }
-      })
-      .catch(() => setCurrentStepState(STEP_STATE.Rejected));
-  }, [currentStepIndex, isCompleted, setCurrentStepIndex, steps]);
+          }
+        });
+    },
+    [currentStepIndex, isCompleted, setCurrentStepIndex, steps.length, stepsValidator?.value, validatorProp],
+  );
 
   const goPrev = useCallback(
     (index: number = currentStepIndex - 1) => {
@@ -146,6 +151,10 @@ export function Stepper({
     }
   }, [currentStepState]);
 
+  const setValidator = useCallback((validator: StepsValidator) => {
+    setStepsValidator({ value: validator });
+  }, []);
+
   const stepper = (
     <div className={cn(styles.stepper, className)} {...extractSupportProps(props)}>
       {stepsView.map((step, index) => (
@@ -159,7 +168,16 @@ export function Stepper({
     </div>
   );
 
-  const stepperApi = { goNext, goPrev, currentStepIndex, isCompleted, resetValidation, stepCount: steps.length };
+  const stepperApi = {
+    goNext,
+    goPrev,
+    currentStepIndex,
+    isCompleted,
+    resetValidation,
+    stepCount: steps.length,
+    stepper,
+    setValidator,
+  };
 
-  return <StepperContext.Provider value={stepperApi}>{children({ stepper, ...stepperApi })}</StepperContext.Provider>;
+  return <StepperContext.Provider value={stepperApi}>{children(stepperApi)}</StepperContext.Provider>;
 }
