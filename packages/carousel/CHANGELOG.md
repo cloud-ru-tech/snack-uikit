@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.9 (2024-04-03)
+
+
+### Bug Fixes
+
+* **PDS-92:** remove ref for items ([5ef87bb](https://github.com/cloud-ru-tech/snack-uikit/commit/5ef87bb473bcf9525bc9f7022436668666a8dc2a))
+
+
+
+
+
 ## 0.2.8 (2024-02-28)
 
 ### Only dependencies have been changed
