@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ReactElement, useCallback, useEffect, useMemo, useRef } from 'react';
+import { ReactElement, useCallback, useMemo } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { PaginationSlider } from '@snack-uikit/pagination';
@@ -39,7 +39,7 @@ export type CarouselProps = WithSupportProps<{
 }>;
 
 export function Carousel({
-  children,
+  children: items,
   showItems = 1,
   scrollBy: scrollByProp,
   transition = 0.4,
@@ -52,14 +52,6 @@ export function Carousel({
   infiniteScroll = false,
   ...rest
 }: CarouselProps) {
-  const initialItems = children;
-  const itemsRef = useRef(children);
-
-  useEffect(() => {
-    itemsRef.current = initialItems;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialItems.length]);
-
   const scrollBy = useMemo(() => scrollByProp ?? Math.trunc(showItems), [showItems, scrollByProp]);
 
   const [page, setPage] = useUncontrolledProp<number>(state?.page, state?.page ?? 0, newPage => {
@@ -68,8 +60,8 @@ export function Carousel({
   });
 
   const total = useMemo(
-    () => Math.trunc(initialItems.length / scrollBy) + (initialItems.length % scrollBy ? 1 : 0),
-    [initialItems.length, scrollBy],
+    () => Math.trunc(items.length / scrollBy) + (items.length % scrollBy ? 1 : 0),
+    [items.length, scrollBy],
   );
 
   const onLeftArrowClick = useCallback(() => {
@@ -100,7 +92,7 @@ export function Carousel({
           scrollBy={scrollBy}
           swipe={swipe}
           transition={transition}
-          items={itemsRef.current}
+          items={items}
           slideCallback={slideCallback}
           page={page}
           gap={gap}
