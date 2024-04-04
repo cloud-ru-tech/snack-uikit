@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2024-04-04)
+
+
+### BREAKING CHANGES
+
+
+* **FF-4649:** add stepper jsx and validation function to stepperApi object ([47df0d2](https://github.com/cloud-ru-tech/snack-uikit/commit/47df0d2e02370d05e604f64d01441ec09e74a794))
+
+
+
+
 ## 0.5.9 (2024-03-26)
 
 ### Only dependencies have been changed
