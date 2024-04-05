@@ -9,4 +9,5 @@ export type {
   AccordionOptionProps,
   NestListOptionProps,
   GroupOptionProps,
+  SelectedOptionFormatter,
 } from './types';

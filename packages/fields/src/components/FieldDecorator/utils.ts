@@ -13,6 +13,7 @@ export function extractFieldDecoratorProps<T extends Partial<FieldDecoratorProps
   showHintIcon,
   size,
   validationState,
+  className,
 }: T) {
   return {
     error,
@@ -27,5 +28,6 @@ export function extractFieldDecoratorProps<T extends Partial<FieldDecoratorProps
     showHintIcon,
     size,
     validationState,
+    className,
   };
 }

@@ -13,10 +13,12 @@ import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
-import { FieldSelectMultipleProps, ItemWithId } from './types';
+import { FieldSelectMultipleProps, ItemWithId, SelectedOptionFormatter } from './types';
 import { extractListProps, getArrowIcon, updateMultipleItems } from './utils';
 
 const BASE_MIN_WIDTH = 4;
+
+const defaultSelectedOptionFormatter: SelectedOptionFormatter = item => item?.content.option || '';
 
 export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMultipleProps>(
   (
@@ -42,6 +44,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
       addOptionByEnter = false,
       open: openProp,
       onOpenChange,
+      selectedOptionFormatter = defaultSelectedOptionFormatter,
       ...rest
     },
     ref,
@@ -66,6 +69,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     const { inputValue, setInputValue, prevInputValue, updateInputValue } = useSearchInput({
       ...search,
       defaultValue: '',
+      selectedOptionFormatter,
     });
 
     useLayoutEffect(() => {
@@ -196,7 +200,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
                       <Tag
                         size={size === 'l' ? 's' : 'xs'}
                         tabIndex={-1}
-                        label={String(option.content.option)}
+                        label={selectedOptionFormatter(option)}
                         key={option.id}
                         appearance={option.appearance ?? 'neutral'}
                         onDelete={!option.disabled && !disabled && !readonly ? handleItemDelete(option) : undefined}

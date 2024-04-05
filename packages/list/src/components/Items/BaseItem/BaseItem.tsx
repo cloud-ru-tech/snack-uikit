@@ -50,7 +50,7 @@ export function BaseItem({
     onChange?.(id ?? '');
   };
 
-  const handleItemClick = (e: MouseEvent<HTMLElement>) => {
+  const handleItemMouseDown = (e: MouseEvent<HTMLElement>) => {
     if (disabled) return;
 
     if (interactive) {
@@ -61,7 +61,7 @@ export function BaseItem({
       }
     }
 
-    onClick?.(e);
+    onMouseDown?.(e);
   };
 
   const handleItemKeyDown = (e: KeyboardEvent<HTMLElement>) => {
@@ -102,13 +102,14 @@ export function BaseItem({
 
   const item = (
     <li
+      data-type='outside'
       role={'menuitem'}
       data-test-id={props['data-test-id'] || 'list__base-item_' + id}
       ref={itemRef as unknown as RefObject<HTMLLIElement>}
       className={cn(commonStyles.listItem, styles.droplistItem, className)}
       data-size={size}
-      onClick={handleItemClick}
-      onMouseDown={onMouseDown}
+      onClick={onClick}
+      onMouseDown={handleItemMouseDown}
       tabIndex={-1}
       data-non-pointer={inactive && !onClick}
       data-inactive={inactive || undefined}

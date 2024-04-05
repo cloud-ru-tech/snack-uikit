@@ -87,6 +87,8 @@ export type NextListItemProps = BaseItemsWithoutNonGroupProps & {
   type: 'next-list';
   placement?: 'right-start' | 'left-start' | 'left' | 'right' | 'left-end' | 'right-end';
   search?: SearchState;
+  onSublistOpenChanged?(open: boolean, id?: string | number): void;
+  loading?: boolean;
 } & ScrollProps;
 
 export type GroupItemProps = Omit<SeparatorProps, 'size'> & {

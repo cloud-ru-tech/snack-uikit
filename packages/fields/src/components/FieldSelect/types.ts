@@ -26,7 +26,8 @@ export type BaseOptionProps = Pick<BaseItemProps, 'beforeContent' | 'afterConten
 
 export type AccordionOptionProps = Pick<AccordionItemProps, 'type'> & BaseOptionProps & { options: OptionProps[] };
 export type GroupOptionProps = Omit<GroupItemProps, 'items' | 'id'> & { options: OptionProps[] };
-export type NestListOptionProps = Pick<NextListItemProps, 'type'> & BaseOptionProps & { options: OptionProps[] };
+export type NestListOptionProps = Pick<NextListItemProps, 'type' | 'onSublistOpenChanged' | 'id'> &
+  BaseOptionProps & { options: OptionProps[] };
 
 export type InputProps = Pick<
   InputPrivateProps,
@@ -47,10 +48,18 @@ export type WrapperProps = Pick<
   | 'error'
 >;
 
+export type ItemWithId = (BaseItemProps | AccordionItemProps | NextListItemProps) & {
+  placeholder?: boolean;
+  appearance?: TagProps['appearance'];
+};
+
+export type SelectedOptionFormatter = (item?: ItemWithId) => string;
+
 export type SearchState = {
   value?: string;
   defaultValue?: string;
   onChange?(value: string): void;
+  selectedOptionFormatter: SelectedOptionFormatter;
 };
 
 export type FieldSelectPrivateProps = InputProps & WrapperProps & { options: OptionProps[]; loading?: boolean };
@@ -83,7 +92,10 @@ type FiledSelectCommonProps = WithSupportProps<{
   addOptionByEnter?: boolean;
 
   open?: boolean;
+
   onOpenChange?(open: boolean): void;
+
+  selectedOptionFormatter?: SelectedOptionFormatter;
 }> &
   Pick<
     ListProps,
@@ -104,8 +116,3 @@ export type FieldSelectMultipleProps = FieldSelectPrivateProps & { removeByBacks
 export type FieldSelectProps =
   | (FieldSelectSingleProps & { selection?: 'single' })
   | (FieldSelectMultipleProps & { selection: 'multiple' });
-
-export type ItemWithId = (BaseItemProps | AccordionItemProps | NextListItemProps) & {
-  placeholder?: boolean;
-  appearance?: TagProps['appearance'];
-};

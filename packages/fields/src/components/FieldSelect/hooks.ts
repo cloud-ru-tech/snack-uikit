@@ -98,14 +98,14 @@ export function useButtons({
   return { buttons, inputKeyDownNavigationHandler, buttonsRefs };
 }
 
-export function useSearchInput({ value, onChange, defaultValue }: SearchState) {
+export function useSearchInput({ value, onChange, defaultValue, selectedOptionFormatter }: SearchState) {
   const [inputValue = '', setInputValue] = useValueControl<string>({ value, onChange, defaultValue });
 
   const prevInputValue = useRef<string>(inputValue);
 
   const updateInputValue = useCallback(
     (selectedItem?: ItemWithId) => {
-      const newInputValue = selectedItem?.content.option ?? '';
+      const newInputValue = selectedOptionFormatter(selectedItem);
 
       if (inputValue !== newInputValue || prevInputValue.current !== newInputValue) {
         setInputValue(newInputValue);
@@ -113,7 +113,7 @@ export function useSearchInput({ value, onChange, defaultValue }: SearchState) {
         prevInputValue.current = newInputValue;
       }
     },
-    [inputValue, setInputValue],
+    [inputValue, selectedOptionFormatter, setInputValue],
   );
 
   return { inputValue, setInputValue, prevInputValue, onInputValueChange: setInputValue, updateInputValue };

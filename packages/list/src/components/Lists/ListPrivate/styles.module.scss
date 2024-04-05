@@ -18,7 +18,10 @@ $loader-height: (
       height: simple-var($loader-height, $size);
 
       &[data-no-items] {
-        height: calc(3 * simple-var($loader-height, $size));
+        $no-items-loading-height: calc(3 * simple-var($loader-height, $size));
+
+        min-width: calc(2 * $no-items-loading-height);
+        height: $no-items-loading-height;
       }
     }
   }

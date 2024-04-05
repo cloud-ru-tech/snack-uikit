@@ -345,6 +345,7 @@ const [isOpen, setIsOpen] = useState(false);
 | addOptionByEnter | `boolean` | - |  |
 | open | `boolean` | - |  |
 | onOpenChange | `(open: boolean) => void` | - |  |
+| selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | dataError | `boolean` | - |  |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |

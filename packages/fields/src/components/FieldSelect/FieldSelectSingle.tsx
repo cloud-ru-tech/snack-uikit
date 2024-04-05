@@ -22,8 +22,10 @@ import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleOnKeyDown, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
-import { FieldSelectSingleProps, ItemWithId } from './types';
+import { FieldSelectSingleProps, ItemWithId, SelectedOptionFormatter } from './types';
 import { extractListProps, getArrowIcon, updateItems } from './utils';
+
+const defaultSelectedOptionFormatter: SelectedOptionFormatter = item => item?.content.option || '';
 
 export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleProps>(
   (
@@ -50,6 +52,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       addOptionByEnter = false,
       open: openProp,
       onOpenChange,
+      selectedOptionFormatter = defaultSelectedOptionFormatter,
       ...rest
     },
     ref,
@@ -70,6 +73,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     const { inputValue, setInputValue, prevInputValue, updateInputValue } = useSearchInput({
       ...search,
       defaultValue: selectedItem?.content.option ?? '',
+      selectedOptionFormatter,
     });
 
     const prevSelectedItem = useRef<ItemWithId | undefined>(selectedItem);
@@ -107,7 +111,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       showCopyButton,
       inputRef: localRef,
       onClear,
-      valueToCopy: selectedItem?.content.option ?? '',
+      valueToCopy: selectedOptionFormatter(selectedItem),
     });
 
     const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
@@ -165,7 +169,9 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
     const fuzzySearch = useFuzzySearch(items);
     const result =
-      autocomplete || !searchable || selectedItem?.content.option === inputValue ? items : fuzzySearch(inputValue);
+      autocomplete || !searchable || selectedOptionFormatter(selectedItem) === inputValue
+        ? items
+        : fuzzySearch(inputValue);
 
     return (
       <FieldDecorator
@@ -211,7 +217,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
                 placeholder={placeholder}
                 ref={mergeRefs(ref, localRef)}
                 onChange={searchable ? setInputValue : undefined}
-                value={searchable ? inputValue : selectedItem?.content.option ?? ''}
+                value={searchable ? inputValue : selectedOptionFormatter(selectedItem)}
                 readonly={readonly}
                 data-test-id='field-select__input'
                 onKeyDown={handleOnKeyDown(onKeyDown)}

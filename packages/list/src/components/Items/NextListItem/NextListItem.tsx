@@ -28,6 +28,8 @@ export function NextListItem({
   scroll,
   scrollRef,
   disabled,
+  onSublistOpenChanged,
+  loading = false,
   ...option
 }: NextListItemProps) {
   const listRef = useRef<HTMLUListElement>(null);
@@ -65,9 +67,10 @@ export function NextListItem({
         resetNestedIndex();
         setOpenCollapsedItems([]);
       }
+      onSublistOpenChanged?.(open, id);
       setOpen(open);
     },
-    [resetActiveFocusIndex, resetNestedIndex, setOpen],
+    [id, onSublistOpenChanged, resetActiveFocusIndex, resetNestedIndex, setOpen],
   );
 
   const handleOutsideClick = useCallback(() => {
@@ -107,6 +110,7 @@ export function NextListItem({
             scroll={scroll}
             scrollRef={scrollRef}
             limitedScrollHeight
+            loading={loading}
           />
         </ParentListContext.Provider>
       }
@@ -114,6 +118,7 @@ export function NextListItem({
       open={(open || parentIds[parentOpenNestedIndex] === id) && !disabled}
       onOpenChange={handleOpenChange}
       placement={placement}
+      widthStrategy='auto'
     >
       <BaseItem
         {...option}
