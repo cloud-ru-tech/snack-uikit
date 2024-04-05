@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2024-04-05)
+
+
+### Features
+
+* **PDS-0000:** add shape prop into emblem in Card.Header ([4d58dff](https://github.com/cloud-ru-tech/snack-uikit/commit/4d58dffcf4d880b69bc8b43811f33551db7b92f9))
+
+
+
+
+
 ## 0.11.10 (2024-04-02)
 
 
