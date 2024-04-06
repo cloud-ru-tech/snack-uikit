@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
 import { FocusEvent, forwardRef, KeyboardEvent, useCallback, useMemo, useRef } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
 import { SearchSVG } from '@snack-uikit/icons';
 import {
@@ -12,7 +11,8 @@ import {
   useClearButton,
 } from '@snack-uikit/input-private';
 import { Sun } from '@snack-uikit/loaders';
-import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { useLocale } from '@snack-uikit/locale';
+import { extractSupportProps, useValueControl, WithSupportProps } from '@snack-uikit/utils';
 
 import { PRIVATE_SEARCH_TEST_IDS, SIZE } from '../../constants';
 import { Size } from '../../types';
@@ -49,10 +49,16 @@ export const SearchPrivate = forwardRef<HTMLInputElement, SearchPrivateProps>(fu
   },
   ref,
 ) {
-  const [value, onValueChange] = useUncontrolledProp(valueProp, '', onChangeProp);
+  const [value = '', onValueChange] = useValueControl<string>({
+    value: valueProp,
+    defaultValue: '',
+    onChange: onChangeProp,
+  });
 
   const localRef = useRef<HTMLInputElement>(null);
   const clearButtonRef = useRef<HTMLButtonElement>(null);
+
+  const { t } = useLocale('SearchPrivate');
 
   const showClearButton = Boolean(value);
 
@@ -83,8 +89,6 @@ export const SearchPrivate = forwardRef<HTMLInputElement, SearchPrivateProps>(fu
 
       if (e.key === 'Enter' && localRef.current?.value) {
         onSubmit && onSubmit(localRef.current.value);
-        // TODO: think about remove blur behavior
-        // localRef.current?.blur();
       }
     },
     [onInputKeyDown, onKeyDown, onSubmit],
@@ -116,7 +120,7 @@ export const SearchPrivate = forwardRef<HTMLInputElement, SearchPrivateProps>(fu
         onBlur={onBlur}
         tabIndex={tabIndex ?? inputTabIndex}
         ref={mergeRefs(ref, localRef)}
-        placeholder={placeholder}
+        placeholder={placeholder ?? t('placeholder')}
         type='text'
         data-test-id={PRIVATE_SEARCH_TEST_IDS.input}
       />

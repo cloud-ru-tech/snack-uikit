@@ -37,7 +37,9 @@
     "@snack-uikit/loaders": "0.5.1",
     "@snack-uikit/utils": "3.2.0",
     "classnames": "2.5.1",
-    "merge-refs": "1.2.2",
-    "uncontrollable": "8.0.4"
+    "merge-refs": "1.2.2"
+  },
+  "peerDependencies": {
+    "@snack-uikit/locale": "*"
   }
 }
