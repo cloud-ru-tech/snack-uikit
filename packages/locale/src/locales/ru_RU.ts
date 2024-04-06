@@ -14,7 +14,7 @@ export const ru_RU: typeof en_GB = {
       title: 'Ошибка загрузки данных',
       description: 'Попробуйте обновить страницу',
     },
-    rowsOptionsLabel: 'Кол-во строк: ',
+    rowsOptionsLabel: 'Кол-во строк',
     export: 'Экспортировать в ',
   },
   Chips: {
@@ -31,11 +31,18 @@ export const ru_RU: typeof en_GB = {
     errorData: {
       description: 'Ошибка загрузки данных',
     },
+    groupSelectButton: {
+      reset: 'Сбросить все',
+      select: 'Выбрать все',
+    },
   },
   Fields: {
     limitTooltip: {
       max: 'Значение должно быть меньше либо равно ',
       min: 'Значение должно быть больше либо равно ',
     },
+  },
+  SearchPrivate: {
+    placeholder: 'Поиск',
   },
 };

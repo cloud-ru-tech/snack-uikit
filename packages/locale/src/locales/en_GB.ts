@@ -12,7 +12,7 @@ export const en_GB = {
       title: 'Error loading data',
       description: 'Try refreshing the page',
     },
-    rowsOptionsLabel: 'Rows volume: ',
+    rowsOptionsLabel: 'Rows volume',
     export: 'Export to ',
   },
   List: {
@@ -25,6 +25,10 @@ export const en_GB = {
     errorData: {
       description: 'Error loading data',
     },
+    groupSelectButton: {
+      reset: 'Reset all',
+      select: 'Select all',
+    },
   },
   Chips: {
     clearAllButton: 'Clear all',
@@ -35,5 +39,8 @@ export const en_GB = {
       max: 'Value should be less or equal ',
       min: 'Value should be greater or equal ',
     },
+  },
+  SearchPrivate: {
+    placeholder: 'Search',
   },
 };
