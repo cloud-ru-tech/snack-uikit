@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.18.0 (2024-04-08)
+
+
+### Features
+
+* **FF-4649:** improve api ([4932e19](https://github.com/cloud-ru-tech/snack-uikit/commit/4932e192c9c2a1f324b7baeb9d7759e4fcc64c90))
+
+
+
+
+
 ## 0.17.14 (2024-04-02)
 
 

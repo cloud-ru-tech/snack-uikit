@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Fields",
-  "version": "0.17.14",
+  "version": "0.18.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,7 +37,7 @@
     "@snack-uikit/droplist": "0.13.14",
     "@snack-uikit/icons": "0.20.1",
     "@snack-uikit/input-private": "3.1.1",
-    "@snack-uikit/list": "0.9.1",
+    "@snack-uikit/list": "0.10.0",
     "@snack-uikit/scroll": "0.5.2",
     "@snack-uikit/slider": "0.1.7",
     "@snack-uikit/tag": "0.8.2",
