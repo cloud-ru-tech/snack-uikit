@@ -48,6 +48,7 @@ export function FunctionBadge({ icon, options }: FunctionBadgeProps) {
         triggerElemRef={buttonRef}
         items={options.map(({ icon, tagLabel, onClick, ...item }) => ({
           ...item,
+          className: styles.item,
           beforeContent: icon,
           afterContent: tagLabel ? <Tag label={tagLabel} /> : undefined,
           onClick: e => {
