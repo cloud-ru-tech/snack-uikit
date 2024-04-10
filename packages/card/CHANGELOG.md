@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.2 (2024-04-10)
+
+
+### Bug Fixes
+
+* **FF-4652:** fix item truncation ([38356da](https://github.com/cloud-ru-tech/snack-uikit/commit/38356da9decf02236cf4171de1690f60950e97ea))
+
+
+
+
+
 ## 0.12.1 (2024-04-08)
 
 ### Only dependencies have been changed
