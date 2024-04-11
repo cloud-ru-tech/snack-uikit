@@ -1,3 +1,4 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonFunction';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
@@ -15,8 +16,15 @@ $typography-secondary: (
   'l': $light-title-m,
 );
 
+$button-size: (
+  's': 'xs',
+  'm': 's',
+  'l': 'm',
+);
+
+$containerSize: 1px;
+
 .separatorWithLabel {
-  overflow: hidden;
   display: flex;
   gap: $dimension-1m;
   align-items: flex-end;
@@ -71,4 +79,36 @@ hr.divider {
   flex: 1;
   width: auto;
   min-width: 0;
+}
+
+.selectButton {
+  display: flex;
+  justify-content: flex-end;
+
+  &[data-weight='primary'] {
+    --divider-height: #{$containerSize};
+  }
+
+  &[data-weight='secondary'] {
+    --divider-height: #{calc($containerSize / 2)};
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      transform: translateY(
+        calc(
+          (
+              simple-var(
+                  $button-function,
+                  'container',
+                  simple-var($button-size, $size),
+                  'label-only',
+                  'height'
+                ) - simple-var($theme-variables, 'sans', 'label', $size, 'line-height')
+            ) /
+            2 - var(--divider-height, 0)
+        )
+      );
+    }
+  }
 }

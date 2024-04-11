@@ -1,71 +1,212 @@
 import { createRef } from 'react';
 
-import { AccordionItemProps, BaseItemProps, GroupItemProps, ItemProps, NextListItemProps } from './types';
+import { ItemContentProps } from '../../helperComponents';
+import {
+  AccordionItem,
+  AnyType,
+  BaseItem,
+  FlattenItem,
+  FocusFlattenItem,
+  GroupItem,
+  GroupSelectItem,
+  Item,
+  ItemId,
+  NextListItem,
+} from './types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isBaseItemProps(item: any): item is BaseItemProps {
-  return 'content' in item;
+export function isBaseItem<ReturnType = BaseItem>(item: AnyType): item is ReturnType {
+  return item && !('items' in item);
+}
+export function isAccordionItem<ReturnType = AccordionItem>(item: AnyType): item is ReturnType {
+  return item && 'items' in item && item['type'] === 'collapse';
+}
+export function isNextListItem<ReturnType = NextListItem>(item: AnyType): item is ReturnType {
+  return item && 'items' in item && item['type'] === 'next-list';
+}
+export function isGroupItem<ReturnType = GroupItem>(item: AnyType): item is ReturnType {
+  return item && 'items' in item && item['type'] === 'group';
+}
+export function isGroupSelectItem<ReturnType = GroupSelectItem>(item: AnyType): item is ReturnType {
+  return item && 'items' in item && item['type'] === 'group-select';
+}
+export function isContentItem(item: AnyType): item is ItemContentProps {
+  return typeof item === 'object' && item['option'] !== undefined;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isAccordionItemProps(item: any): item is AccordionItemProps {
-  return 'items' in item && item['type'] === 'collapse';
-}
+export const isBaseItemProps = isBaseItem;
+export const isAccordionItemProps = isAccordionItem;
+export const isNextListItemProps = isNextListItem;
+export const isGroupItemProps = isGroupItem;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isNextListItemProps(item: any): item is NextListItemProps {
-  return 'items' in item && item['type'] === 'next-list';
-}
+type FlattenProps = {
+  item: Item;
+  idx: number;
+  prefix?: ItemId;
+  parentId?: ItemId;
+};
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isGroupItemProps(item: any): item is GroupItemProps {
-  return 'items' in item && item['type'] === undefined;
-}
+type KindFlattenItemsProps = {
+  items: Item[];
+  prefix?: ItemId;
+  parentId?: ItemId;
+};
 
-export function getSlicedItems({
-  items,
-  hasSearch,
-  pinTop,
-  pinBottom,
-  footerRefs,
-}: {
-  items: ItemProps[];
-  hasSearch: boolean;
-  footerRefs: ItemProps[];
-  pinTop?: ItemProps[];
-  pinBottom?: ItemProps[];
-}) {
-  const searchShift = hasSearch ? 1 : 0;
-  const pinTopNumber = pinTop?.length ?? 0;
-  const pinBottomNumber = pinBottom?.length ?? 0;
-  const footerElementsNumber = footerRefs?.length ?? 0;
+export function kindFlattenItems({ items, prefix, parentId }: KindFlattenItemsProps) {
+  const flattenItems: Record<string, FlattenItem> = {};
+  const focusFlattenItems: Record<string, FocusFlattenItem> = {};
+
+  function flatten({ item, idx, prefix, parentId = '~main' }: FlattenProps): {
+    id: ItemId;
+    children: ItemId[];
+    focusChildren: ItemId[];
+    autoId: ItemId;
+  } {
+    const autoId = prefix !== undefined ? [prefix, idx].join('-') : String(idx);
+    const itemId = (!isGroupItem(item) ? item.id : undefined) ?? autoId;
+
+    if (isBaseItem(item)) {
+      flattenItems[itemId] = {
+        ...item,
+        items: [],
+        allChildIds: [],
+        id: itemId,
+      };
+
+      focusFlattenItems[autoId] = {
+        key: autoId,
+        originalId: itemId,
+        id: autoId,
+        disabled: item.disabled,
+        parentId,
+        items: [],
+        allChildIds: [],
+        itemRef: item.itemRef || createRef<HTMLElement>(),
+      };
+
+      return { id: itemId, children: [itemId], autoId, focusChildren: [autoId] };
+    }
+
+    let allChildIds: ItemId[] = [];
+    let allFocusChildIds: ItemId[] = [];
+    const closeChildIds: ItemId[] = [];
+    const autoChildIds: ItemId[] = [];
+
+    const { items, ...rest } = item;
+    const childActiveParent = isGroupItem(item) ? parentId ?? '~main' : autoId;
+
+    for (let idx = 0; idx < items.length; idx++) {
+      const { id, children, autoId, focusChildren } = flatten({
+        item: items[idx],
+        idx,
+        prefix: itemId,
+        parentId: childActiveParent,
+      });
+
+      autoChildIds.push(autoId);
+      closeChildIds.push(id);
+      allChildIds = allChildIds.concat(children);
+      allFocusChildIds = allFocusChildIds.concat(focusChildren);
+    }
+
+    const children = [...new Set(allChildIds.concat(closeChildIds))];
+    const focusChildren = [...new Set(allFocusChildIds.concat(autoChildIds))];
+
+    flattenItems[itemId] = {
+      ...rest,
+      id: itemId,
+      items: [],
+      allChildIds: children,
+    };
+
+    focusFlattenItems[autoId] = {
+      key: autoId,
+      originalId: itemId,
+      id: autoId,
+      parentId,
+      items: autoChildIds,
+      allChildIds: focusChildren,
+      disabled: (item.type === 'collapse' || item.type === 'next-list') && item.disabled,
+      type: item.type,
+      itemRef: (!isGroupItem(item) ? item.itemRef : undefined) ?? createRef<HTMLElement>(),
+    };
+
+    return { id: itemId, children, autoId, focusChildren };
+  }
+
+  const closeChildIds: ItemId[] = [];
+  const autoChildIds: ItemId[] = [];
+  let allChildIds: ItemId[] = [];
+
+  for (let idx = 0; idx < items.length; idx++) {
+    const { id, children, autoId } = flatten({ item: items[idx], idx, prefix, parentId });
+
+    autoChildIds.push(autoId);
+    closeChildIds.push(id);
+    allChildIds.push(id);
+    allChildIds = allChildIds.concat(children);
+  }
+
+  const children = [...new Set(allChildIds)];
 
   return {
-    pinTop: items.slice(searchShift, pinTopNumber + searchShift),
-    items: items.slice(pinTopNumber + searchShift, items.length - pinBottomNumber - footerElementsNumber),
-    pinBottom: items.slice(items.length - pinBottomNumber - footerElementsNumber, items.length - footerElementsNumber),
+    focusCloseChildIds: autoChildIds,
+    allChildIds: children,
+    flattenItems,
+    focusFlattenItems,
   };
 }
 
-export function addItemsIds(itemsProp: ItemProps[], prefix?: string | number): ItemProps[] {
-  return itemsProp.map((item, idx) => {
-    const autoId = prefix !== undefined ? [prefix, idx].join('-') : String(idx);
-    const itemId = item.id ?? autoId;
+type ExtractActiveItemsProps = {
+  focusFlattenItems: Record<string, FocusFlattenItem>;
+  focusCloseChildIds: ItemId[];
+  openCollapseItems: ItemId[];
+};
 
-    if (isGroupItemProps(item)) {
-      return { key: autoId, ...item, id: itemId, items: addItemsIds(item.items, itemId) };
-    }
+type ExtractActiveItemsReturnType = {
+  ids: ItemId[];
+  expandedIds: ItemId[];
+};
 
-    if (isAccordionItemProps(item) || isNextListItemProps(item)) {
-      return {
-        key: autoId,
-        ...item,
-        id: itemId,
-        items: addItemsIds(item.items, itemId),
-        itemRef: item.itemRef || createRef<HTMLElement>(),
-      };
-    }
+export function extractActiveItems({
+  focusFlattenItems,
+  focusCloseChildIds,
+  openCollapseItems,
+}: ExtractActiveItemsProps): ExtractActiveItemsReturnType {
+  const ids: ItemId[] = [];
+  const expandedIds: ItemId[] = [];
 
-    return { key: autoId, ...item, id: itemId, itemRef: item.itemRef || createRef<HTMLElement>() };
-  });
+  function internalFn(focusCloseChildIds: ItemId[]) {
+    focusCloseChildIds.forEach(id => {
+      const child = focusFlattenItems[id];
+
+      if (child.type === 'group') {
+        internalFn(child.items);
+        return;
+      }
+
+      if (!child.disabled) {
+        ids.push(child.id);
+
+        if (child.type === 'group-select') {
+          internalFn(child.items);
+          return;
+        }
+
+        if (child.type) {
+          expandedIds.push(id);
+
+          if (openCollapseItems.includes(child.originalId)) {
+            internalFn(child.items);
+          }
+        }
+      }
+    });
+  }
+
+  internalFn(focusCloseChildIds);
+
+  return {
+    ids,
+    expandedIds,
+  };
 }

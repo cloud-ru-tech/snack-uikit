@@ -1,4 +1,6 @@
 export * from './components';
-export { useFuzzySearch } from './hooks';
+
 export type { SearchState } from './types';
-export { extractChildIds, flattenItems } from './utils';
+export { kindFlattenItems } from './components/Items';
+
+export * from './helperComponents/ItemContent';

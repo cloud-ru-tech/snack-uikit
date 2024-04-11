@@ -13,23 +13,37 @@ export type ListEmptyState = {
   loading?: boolean;
   dataError?: boolean;
   dataFiltered?: boolean;
-  itemsLength: number;
+  hasNoItems: boolean;
 };
 
-export function ListEmptyState({ dataError, dataFiltered, itemsLength, emptyStates, loading }: ListEmptyState) {
-  if (itemsLength || loading) {
+export function ListEmptyState({ dataError, dataFiltered, hasNoItems, emptyStates, loading }: ListEmptyState) {
+  if (loading) {
     return null;
   }
 
-  return (
-    <div className={styles.listEmptyStateWrapper}>
-      {dataError && <InfoBlock {...emptyStates.errorDataState} size='s' align='vertical' />}
-      {!dataError && dataFiltered && (
+  if (dataError) {
+    return (
+      <div className={styles.listEmptyStateWrapper}>
+        <InfoBlock {...emptyStates.errorDataState} size='s' align='vertical' />
+      </div>
+    );
+  }
+
+  if (dataFiltered && hasNoItems) {
+    return (
+      <div className={styles.listEmptyStateWrapper}>
         <InfoBlock {...emptyStates.noResultsState} size='s' align='vertical' data-test-id='list__no-results' />
-      )}
-      {!dataError && !dataFiltered && (
+      </div>
+    );
+  }
+
+  if (!dataFiltered && hasNoItems) {
+    return (
+      <div className={styles.listEmptyStateWrapper}>
         <InfoBlock {...emptyStates.noDataState} size='s' align='vertical' data-test-id='list__no-data' />
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
+
+  return null;
 }

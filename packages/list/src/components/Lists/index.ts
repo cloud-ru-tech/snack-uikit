@@ -7,7 +7,7 @@ export type {
   SelectionMultipleState,
   SelectionSingleProps,
   SelectionMultipleProps,
-  isSelectionSingleProps,
-  isSelectionMultipleProps,
   SelectionSingleValueType,
 } from './contexts';
+
+export { useSelectionContext, useCollapseContext, isSelectionSingleProps, isSelectionMultipleProps } from './contexts';

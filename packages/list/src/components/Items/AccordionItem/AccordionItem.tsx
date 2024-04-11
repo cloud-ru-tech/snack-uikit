@@ -1,33 +1,36 @@
-import { KeyboardEvent, MouseEvent } from 'react';
+import { MouseEvent, useCallback } from 'react';
 
 import { ChevronDownSVG, ChevronUpSVG } from '@snack-uikit/icons';
 
 import { CollapseBlockPrivate } from '../../../helperComponents';
-import { CollapseContext, useCollapseContext, useParentListContext } from '../../Lists/contexts';
+import { CollapseLevelContext, useCollapseContext, useCollapseLevelContext } from '../../Lists/contexts';
 import { BaseItem } from '../BaseItem';
 import { useGroupItemSelection, useRenderItems } from '../hooks';
-import { AccordionItemProps } from '../types';
+import { CommonFlattenProps, FlattenAccordionItem } from '../types';
 
-export function AccordionItem({ items: itemsProp, id, disabled, ...option }: AccordionItemProps) {
-  const { level = 1 } = useCollapseContext();
-  const { toggleOpenCollapsedItems, openCollapsedItems } = useParentListContext();
-  const { isIndeterminate, checked, handleOnSelect } = useGroupItemSelection({ items: itemsProp, id, disabled });
+type AccordionItemProps = Omit<FlattenAccordionItem, 'type>'> & CommonFlattenProps;
 
-  const isOpen = Boolean(openCollapsedItems?.includes(id ?? ''));
+export function AccordionItem({ id, disabled, allChildIds, items, ...option }: AccordionItemProps) {
+  const { level = 1 } = useCollapseLevelContext();
+  const { openCollapseItems = [], toggleOpenCollapseItem } = useCollapseContext();
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLElement>) => {
-    if (e.key === 'ArrowRight') {
-      toggleOpenCollapsedItems?.(id ?? '');
+  const { indeterminate, checked, handleOnSelect } = useGroupItemSelection({
+    items,
+    id,
+    disabled,
+    allChildIds,
+  });
 
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  };
+  const isOpen = Boolean(openCollapseItems.includes(id ?? ''));
 
-  const itemsJSX = useRenderItems(itemsProp);
+  const handleKeyDown = useCallback(() => {
+    toggleOpenCollapseItem?.(id ?? '');
+  }, [id, toggleOpenCollapseItem]);
+
+  const itemsJSX = useRenderItems(items);
 
   const handleItemClick = (e: MouseEvent<HTMLElement>) => {
-    toggleOpenCollapsedItems?.(id ?? '');
+    toggleOpenCollapseItem?.(id ?? '');
     option.onClick?.(e);
   };
 
@@ -41,15 +44,16 @@ export function AccordionItem({ items: itemsProp, id, disabled, ...option }: Acc
           expandIcon={isOpen ? <ChevronUpSVG /> : <ChevronDownSVG />}
           onClick={handleItemClick}
           isParentNode
-          onKeyDown={handleKeyDown}
-          indeterminate={isIndeterminate && !checked}
+          onOpenNestedList={handleKeyDown}
+          checked={checked}
+          indeterminate={indeterminate}
           onSelect={!disabled ? handleOnSelect : undefined}
         />
       }
       expanded={isOpen}
       data-test-id={`list__accordion-item-${id}`}
     >
-      <CollapseContext.Provider value={{ level: level + 1 }}>{itemsJSX}</CollapseContext.Provider>
+      <CollapseLevelContext.Provider value={{ level: level + 1 }}>{itemsJSX}</CollapseLevelContext.Provider>
     </CollapseBlockPrivate>
   );
 }

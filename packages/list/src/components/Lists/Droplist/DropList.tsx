@@ -1,20 +1,24 @@
+import cn from 'classnames';
+import mergeRefs from 'merge-refs';
 import { cloneElement, isValidElement, KeyboardEvent, ReactNode, useCallback, useMemo, useRef } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
-import { Dropdown } from '@snack-uikit/dropdown';
+import { Dropdown, DropdownProps } from '@snack-uikit/dropdown';
+import { useValueControl } from '@snack-uikit/utils';
 
-import { extractItemIds, extractItemRefs, withCollapsedItems } from '../../../utils';
-import { addItemsIds, getSlicedItems, useItemsWithIds } from '../../Items';
-import { extractSelectionProps, ParentListContext, SelectionProvider } from '../contexts';
-import { useKeyboardNavigation } from '../hooks';
+import { extractActiveItems, ItemId, kindFlattenItems, useCreateBaseItems } from '../../Items';
+import { CollapseContext, FocusListContext, NewListContextProvider, SelectionProvider } from '../contexts';
+import { useNewKeyboardNavigation } from '../hooks';
 import { ListPrivate } from '../ListPrivate';
+import styles from '../styles.module.scss';
 import { DroplistProps } from '../types';
+
+const DEFAULT_FALLBACK_PLACEMENTS: DropdownProps['fallbackPlacements'] = ['top', 'right', 'bottom', 'left'];
 
 export function Droplist({
   items: itemsProp,
   search,
-  pinBottom,
-  pinTop,
+  pinBottom: pinBottomProp = [],
+  pinTop: pinTopProp = [],
   footerActiveElementsRefs,
   children,
   trigger,
@@ -24,65 +28,98 @@ export function Droplist({
   open: openProp,
   onOpenChange,
   collapse = {},
+  triggerClassName,
+  selection,
+  contentRender,
+  size = 's',
+  marker = true,
+  className,
   ...props
 }: DroplistProps) {
   const hasSearch = useMemo(() => Boolean(search), [search]);
 
-  const memorizedItems = useMemo(
-    () => addItemsIds((pinTop ?? []).concat(itemsProp).concat(pinBottom ?? [])),
-    [itemsProp, pinBottom, pinTop],
+  const [openCollapseItems = [], setOpenCollapsedItems] = useValueControl<ItemId[] | undefined>(collapse);
+  const toggleOpenCollapseItem = useCallback(
+    (id: ItemId) =>
+      setOpenCollapsedItems((items: ItemId[]) =>
+        items?.includes(id) ? items.filter(item => item !== id) : (items ?? []).concat([id]),
+      ),
+    [setOpenCollapsedItems],
   );
 
-  const [openCollapsedItems, setOpenCollapsedItems] = useUncontrolledProp<Array<number | string>>(
-    collapse.value,
-    collapse.defaultValue ?? [],
-    collapse.onChange,
-  );
-
-  const { search: searchItem, footerRefs } = useItemsWithIds({
-    search: hasSearch,
-    footerActiveElementsRefs,
+  const [open = false, setOpen] = useValueControl<boolean>({
+    value: openProp,
+    defaultValue: false,
+    onChange: onOpenChange,
   });
 
-  const { items, itemRefs, ids, expandedIds } = useMemo(() => {
-    const res = withCollapsedItems({
-      items: memorizedItems,
-      openCollapsedItems,
+  const { searchItem, footerItems } = useCreateBaseItems({ footerActiveElementsRefs });
+  /**
+   * Объект с пропсами всех вложенных айтемов; ключ id
+   */
+  const { flattenItems, focusFlattenItems, ...memorizedItems } = useMemo(() => {
+    const pinTop = kindFlattenItems({ items: pinTopProp, prefix: '~pinTop', parentId: '~main' });
+    const items = kindFlattenItems({ items: itemsProp, prefix: '~main', parentId: '~main' });
+    const pinBottom = kindFlattenItems({ items: pinBottomProp, prefix: '~pinBottom', parentId: '~main' });
+
+    const flattenItems = { ...pinTop.flattenItems, ...pinBottom.flattenItems, ...items.flattenItems };
+    const focusFlattenItems = {
+      ...pinTop.focusFlattenItems,
+      ...pinBottom.focusFlattenItems,
+      ...items.focusFlattenItems,
+    };
+
+    [...footerItems, searchItem].forEach(item => {
+      flattenItems[item.id] = item;
+      focusFlattenItems[item.id] = { ...item, originalId: item.id, items: [], key: item.id, allChildIds: [] };
     });
 
-    const items = searchItem.concat(res.items).concat(footerRefs);
+    return { items, pinTop, pinBottom, flattenItems, focusFlattenItems };
+  }, [itemsProp, pinTopProp, pinBottomProp, searchItem, footerItems]);
+
+  const { ids, expandedIds } = useMemo(() => {
+    const { pinTop, items, pinBottom } = memorizedItems;
+
+    let ids: ItemId[] = [];
+    let expandedIds: ItemId[] = [];
+
+    if (hasSearch) {
+      ids.push(searchItem.id);
+    }
+
+    [pinTop, items, pinBottom].forEach(({ focusFlattenItems, focusCloseChildIds }) => {
+      const activeItems = extractActiveItems({ focusFlattenItems, focusCloseChildIds, openCollapseItems });
+
+      ids = ids.concat(activeItems.ids);
+      expandedIds = expandedIds.concat(activeItems.expandedIds);
+    });
+
+    footerItems.forEach(footerItem => {
+      ids.push(footerItem.id);
+    });
 
     return {
-      items,
-      ids: extractItemIds(searchItem).concat(res.ids).concat(extractItemIds(footerRefs)),
-      itemRefs: extractItemRefs(searchItem).concat(res.itemRefs).concat(extractItemRefs(footerRefs)),
-      expandedIds: res.expandedIds,
+      ids,
+      expandedIds,
     };
-  }, [footerRefs, memorizedItems, openCollapsedItems, searchItem]);
-
-  const slicedItems = useMemo(
-    () => getSlicedItems({ items, hasSearch, pinTop, pinBottom, footerRefs }),
-    [items, hasSearch, pinTop, pinBottom, footerRefs],
-  );
+  }, [footerItems, hasSearch, memorizedItems, openCollapseItems, searchItem.id]);
 
   const triggerElemRef = useRef<HTMLElement>(null);
-  const listRef = useRef<HTMLUListElement>(null);
+  const listRef = useRef<HTMLElement>(null);
 
-  const {
-    activeFocusIndex,
-    setActiveFocusIndex,
-    openNestedIndex,
-    handleListKeyDown,
-    resetNestedIndex,
-    resetActiveFocusIndex,
-  } = useKeyboardNavigation({ ids, expandedIds, parentRef: triggerElemRefProp ?? triggerElemRef, itemRefs });
+  const { handleListKeyDownFactory, resetActiveItemId, activeItemId, forceUpdateActiveItemId } =
+    useNewKeyboardNavigation({
+      mainRef: triggerElemRef,
+      focusFlattenItems,
+    });
 
-  const [open, setOpen] = useUncontrolledProp<boolean>(openProp, false, onOpenChange);
+  const handleListKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLElement>) => handleListKeyDownFactory(ids, expandedIds)(e),
+    [handleListKeyDownFactory, ids, expandedIds],
+  );
 
   const handleOpenChange = (open: boolean) => {
-    resetNestedIndex();
-    resetActiveFocusIndex();
-    setOpenCollapsedItems([]);
+    resetActiveItemId();
 
     setOpen(open);
   };
@@ -94,14 +131,18 @@ export function Droplist({
         setOpen(true);
 
         setTimeout(() => {
+          resetActiveItemId();
           listRef.current?.focus();
-          setActiveFocusIndex(0);
         }, 0);
+      }
+
+      if (e.key === 'ArrowUp') {
+        setOpen(false);
       }
 
       cb?.(e);
     },
-    [setActiveFocusIndex, setOpen],
+    [resetActiveItemId, setOpen],
   );
 
   const triggerElem: ReactNode = useMemo(() => {
@@ -124,54 +165,65 @@ export function Droplist({
   }, [onKeyDown, children]);
 
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    <SelectionProvider {...extractSelectionProps(props)}>
-      <ParentListContext.Provider
-        value={{
-          parentIds: ids,
-          parentActiveFocusIndex: activeFocusIndex,
-          parentExpandedIds: expandedIds,
-          parentItemRefs: itemRefs,
-          parentOpenNestedIndex: openNestedIndex,
-          triggerRef: triggerElemRefProp ?? triggerElemRef,
-          parentRef: listRef,
-          parentResetNestedIndex: resetNestedIndex,
-          parentResetActiveFocusIndex: resetActiveFocusIndex,
-          openCollapsedItems,
-          toggleOpenCollapsedItems: id =>
-            setOpenCollapsedItems((items: Array<string | number> | undefined = []) =>
-              items.includes(id) ? items.filter(item => item !== id) : items?.concat([id]),
-            ),
-        }}
-      >
-        <Dropdown
-          content={
-            <ListPrivate
-              {...slicedItems}
-              {...props}
-              onKeyDown={handleListKeyDown}
-              tabIndex={0}
-              ref={listRef}
-              search={search}
-              limitedScrollHeight
-              parent='droplist'
-            />
-          }
-          trigger={trigger}
-          placement={placement}
-          widthStrategy={widthStrategy}
-          {...(triggerElemRefProp
-            ? {}
-            : {
-                triggerRef: triggerElemRef,
-              })}
-          open={open}
-          onOpenChange={handleOpenChange}
+    <NewListContextProvider
+      flattenItems={flattenItems}
+      focusFlattenItems={focusFlattenItems}
+      contentRender={contentRender}
+      size={size}
+      marker={marker}
+    >
+      <SelectionProvider {...selection}>
+        <CollapseContext.Provider
+          value={{
+            openCollapseItems,
+            toggleOpenCollapseItem,
+          }}
         >
-          {triggerElem}
-        </Dropdown>
-      </ParentListContext.Provider>
-    </SelectionProvider>
+          <FocusListContext.Provider
+            value={{
+              activeItemId,
+              handleListKeyDownFactory,
+              forceUpdateActiveItemId,
+            }}
+          >
+            <Dropdown
+              content={
+                <div className={cn(styles.wrapper, className)}>
+                  <ListPrivate
+                    {...props}
+                    items={memorizedItems.items.focusCloseChildIds}
+                    pinTop={memorizedItems.pinTop.focusCloseChildIds}
+                    pinBottom={memorizedItems.pinBottom.focusCloseChildIds}
+                    onKeyDown={handleListKeyDown}
+                    searchItem={searchItem}
+                    tabIndex={0}
+                    ref={listRef}
+                    search={search}
+                    onFocus={e => {
+                      e.stopPropagation();
+
+                      forceUpdateActiveItemId?.(ids[0]);
+                    }}
+                    limitedScrollHeight
+                  />
+                </div>
+              }
+              triggerClassName={triggerClassName}
+              fallbackPlacements={DEFAULT_FALLBACK_PLACEMENTS}
+              trigger={trigger}
+              placement={placement}
+              widthStrategy={widthStrategy}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-expect-error
+              triggerRef={triggerElemRefProp ? mergeRefs(triggerElemRef, triggerElemRefProp) : triggerElemRef}
+              open={open}
+              onOpenChange={handleOpenChange}
+            >
+              {triggerElem}
+            </Dropdown>
+          </FocusListContext.Provider>
+        </CollapseContext.Provider>
+      </SelectionProvider>
+    </NewListContextProvider>
   );
 }

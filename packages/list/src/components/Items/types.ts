@@ -3,26 +3,17 @@ import { FocusEvent, KeyboardEvent, MouseEvent, ReactNode, RefObject } from 'rea
 import { TruncateStringProps } from '@snack-uikit/truncate-string';
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { SeparatorProps } from '../../helperComponents';
-import { ScrollProps, SearchState } from '../../types';
+import { ItemContentProps } from '../../helperComponents';
+import { ScrollProps } from '../../types';
 
-export type ItemContentProps = {
-  option: string;
-  caption?: string;
-  description?: string;
-  truncate?: {
-    option?: number;
-    description?: number;
-    variant?: TruncateStringProps['variant'];
-  };
-};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type AnyType = any;
 
-export type BaseItemPrivateProps = {
-  expandIcon?: ReactNode;
-  open?: boolean;
-};
+export type ItemId = string | number;
 
-export type BaseItemProps = WithSupportProps<{
+type ItemContent = ItemContentProps;
+
+export type BaseItem = WithSupportProps<{
   /**
    * Слот до основного контента
    * @type ReactElement
@@ -33,9 +24,10 @@ export type BaseItemProps = WithSupportProps<{
    * @type ReactElement
    */
   afterContent?: ReactNode;
-  /** Основной контент айтема */
-  content: ItemContentProps;
-
+  /**
+   * Основной контент айтема
+   */
+  content?: ItemContent | ReactNode;
   /** Колбек обработки клика */
   onClick?(e: MouseEvent<HTMLElement>): void;
   /** Колбек обработки нажатия кнопки мыши */
@@ -46,16 +38,14 @@ export type BaseItemProps = WithSupportProps<{
   onFocus?(e: FocusEvent<HTMLElement>): void;
   /** Колбек обработки блюра */
   onBlur?(e: FocusEvent<HTMLElement>): void;
-
   /** Уникальный идентификатор */
-  id?: string | number;
-
+  id?: ItemId;
   /** Флаг неактивности элемента */
   disabled?: boolean;
 
   itemRef?: RefObject<HTMLElement>;
-  className?: string;
 
+  className?: string;
   /**
    * Флаг отображения отключения реакции на любое css состояние (hover/focus и тд)
    * <br>
@@ -67,31 +57,90 @@ export type BaseItemProps = WithSupportProps<{
    */
   switch?: boolean;
 
-  key?: string | number;
-
   itemWrapRender?(item: ReactNode): ReactNode;
 }>;
 
-type BaseItemsWithoutNonGroupProps = Omit<BaseItemProps, 'switch' | 'inactive'>;
+type BaseItemWithoutNonGroup = Omit<BaseItem, 'switch' | 'inactive'>;
 
 // eslint-disable-next-line no-use-before-define
-export type ItemProps = BaseItemProps | AccordionItemProps | NextListItemProps | GroupItemProps;
+export type Item = BaseItem | AccordionItem | NextListItem | GroupItem | GroupSelectItem;
 
-export type AccordionItemProps = BaseItemsWithoutNonGroupProps & {
-  items: ItemProps[];
+export type AccordionItem = BaseItemWithoutNonGroup & {
+  items: Item[];
   type: 'collapse';
 };
 
-export type NextListItemProps = BaseItemsWithoutNonGroupProps & {
-  items: ItemProps[];
-  type: 'next-list';
-  placement?: 'right-start' | 'left-start' | 'left' | 'right' | 'left-end' | 'right-end';
-  search?: SearchState;
-  onSublistOpenChanged?(open: boolean, id?: string | number): void;
-  loading?: boolean;
-} & ScrollProps;
+export type NextListItem = BaseItemWithoutNonGroup &
+  ScrollProps & {
+    items: Item[];
+    type: 'next-list';
 
-export type GroupItemProps = Omit<SeparatorProps, 'size'> & {
-  items: ItemProps[];
-  id?: string | number;
+    onSublistOpenChanged?(open: boolean, id?: ItemId): void;
+
+    loading?: boolean;
+    dataError?: boolean;
+    dataFiltered?: boolean;
+
+    placement?: 'right-start' | 'left-start' | 'left' | 'right' | 'left-end' | 'right-end';
+  };
+
+type CommonGroupItem = {
+  label?: string;
+  truncate?: {
+    variant?: TruncateStringProps['variant'];
+  };
+  mode?: 'primary' | 'secondary';
+  divider?: boolean;
 };
+
+export type GroupItem = CommonGroupItem & {
+  items: Item[];
+  type: 'group';
+};
+
+export type GroupSelectItem = CommonGroupItem & {
+  items: Item[];
+  type: 'group-select';
+
+  id?: ItemId;
+  itemRef?: RefObject<HTMLElement>;
+};
+
+type RequiredFields<T, K extends keyof T> = Required<Pick<T, K>> & Omit<T, K>;
+export type Flatten<T, K extends keyof T> = RequiredFields<T, K>;
+
+export type CommonFlattenProps = {
+  items: ItemId[];
+  allChildIds: ItemId[];
+};
+
+export type FlattenBaseItem = Flatten<BaseItem, 'id'>;
+export type FlattenNextListItem = Flatten<Omit<NextListItem, 'items'>, 'id'>;
+export type FlattenGroupListItem = Omit<GroupItem, 'items'> & { id: ItemId };
+export type FlattenGroupSelectListItem = Flatten<Omit<GroupSelectItem, 'items'>, 'id'>;
+export type FlattenAccordionItem = Flatten<Omit<AccordionItem, 'items'>, 'id'>;
+
+export type FlattenItem =
+  | FlattenBaseItem
+  | ((FlattenNextListItem | FlattenGroupListItem | FlattenAccordionItem | FlattenGroupSelectListItem) &
+      CommonFlattenProps);
+
+export type FocusFlattenItem = {
+  key: ItemId;
+  id: ItemId;
+
+  originalId: ItemId;
+  parentId?: ItemId;
+
+  itemRef?: RefObject<HTMLElement>;
+  type?: 'next-list' | 'collapse' | 'group' | 'group-select';
+
+  disabled?: boolean;
+} & CommonFlattenProps;
+
+export type ItemProps = Item;
+export type BaseItemProps = BaseItem;
+export type GroupItemProps = GroupItem;
+export type NextListItemProps = NextListItem;
+export type AccordionItemProps = AccordionItem;
+export type GroupSelectItemProps = GroupSelectItem;

@@ -1,104 +1,124 @@
-import { createRef, RefObject, useEffect, useMemo } from 'react';
+import { createRef, RefObject, useMemo } from 'react';
 
-import { extractAllChildIds, extractChildIds } from '../../utils';
-import { useSelectionContext } from '../Lists/contexts';
+import { useNewListContext, useSelectionContext } from '../Lists/contexts';
 import { AccordionItem } from './AccordionItem';
 import { BaseItem } from './BaseItem';
 import { GroupItem } from './GroupItem';
+import { GroupSelectItem } from './GroupSelectItem';
 import { NextListItem } from './NextListItem';
-import { ItemProps } from './types';
-import { addItemsIds, isAccordionItemProps, isGroupItemProps, isNextListItemProps } from './utils';
+import {
+  Flatten,
+  FlattenAccordionItem,
+  FlattenBaseItem,
+  FlattenGroupSelectListItem,
+  FlattenNextListItem,
+  ItemId,
+} from './types';
+import { isAccordionItem, isGroupItem, isGroupSelectItem, isNextListItem } from './utils';
 
-export function useRenderItems(items: ItemProps[]) {
-  return useMemo(
-    () =>
-      items.map(item => {
-        if (isGroupItemProps(item)) {
-          return <GroupItem {...item} key={item.label} />;
-        }
+export function useRenderItems(focusCloseChildIds?: ItemId[]) {
+  const { focusFlattenItems, flattenItems } = useNewListContext();
+  const { isSelectionSingle } = useSelectionContext();
 
-        if (isAccordionItemProps(item)) {
-          return <AccordionItem {...item} key={item.key} />;
-        }
+  return useMemo(() => {
+    if (!focusCloseChildIds) {
+      return [null];
+    }
 
-        if (isNextListItemProps(item)) {
-          return <NextListItem {...item} key={item.key} />;
-        }
+    return focusCloseChildIds.map(id => {
+      const { itemRef, key, originalId, items } = focusFlattenItems[id];
 
-        return <BaseItem {...item} key={item.key} />;
-      }),
-    [items],
-  );
+      const flattenItem = flattenItems[originalId];
+
+      if (
+        isGroupItem(flattenItem) ||
+        (isSelectionSingle && isGroupSelectItem<FlattenGroupSelectListItem>(flattenItem))
+      ) {
+        return <GroupItem {...flattenItem} items={items} key={key} />;
+      }
+      if (isGroupSelectItem<FlattenGroupSelectListItem>(flattenItem)) {
+        return <GroupSelectItem {...flattenItem} items={items} itemRef={itemRef} key={key} />;
+      }
+      if (isAccordionItem<FlattenAccordionItem>(flattenItem)) {
+        return <AccordionItem {...flattenItem} items={items} itemRef={itemRef} key={key} />;
+      }
+      if (isNextListItem<FlattenNextListItem>(flattenItem)) {
+        return <NextListItem {...flattenItem} focusId={id} items={items} itemRef={itemRef} key={key} />;
+      }
+
+      return <BaseItem {...flattenItem} itemRef={itemRef} key={key} />;
+    });
+  }, [flattenItems, focusCloseChildIds, focusFlattenItems, isSelectionSingle]);
 }
 
-type UseItemsWithIdsProps = {
+type UseCreateBaseItemsProps = {
   search?: boolean;
   footerActiveElementsRefs?: RefObject<HTMLElement>[];
 };
 
-export function useItemsWithIds({ search, footerActiveElementsRefs }: UseItemsWithIdsProps) {
+export function useCreateBaseItems({ footerActiveElementsRefs }: UseCreateBaseItemsProps): {
+  searchItem: Flatten<FlattenBaseItem, 'itemRef'>;
+  footerItems: Flatten<FlattenBaseItem, 'itemRef'>[];
+} {
   return useMemo(
     () => ({
-      search: addItemsIds(
-        search ? ([{ itemRef: createRef<HTMLInputElement>() }] as unknown as ItemProps[]) : [],
-        'search',
-      ),
-      footerRefs: addItemsIds(
-        footerActiveElementsRefs
-          ? (footerActiveElementsRefs?.map(ref => ({ itemRef: ref })) as unknown as ItemProps[])
-          : [],
-        'footer',
-      ),
+      searchItem: {
+        itemRef: createRef<HTMLInputElement>(),
+        id: '~search',
+        parentId: '~main',
+        items: [],
+        allChildIds: [],
+      },
+      footerItems:
+        footerActiveElementsRefs?.map((itemRef, idx) => ({
+          id: `~footer__${idx}`,
+          itemRef,
+          parentId: '~main',
+          items: [],
+          allChildIds: [],
+        })) ?? [],
     }),
-
-    [footerActiveElementsRefs, search],
+    [footerActiveElementsRefs],
   );
 }
 
 type UseGroupItemSelectionProps = {
-  items: ItemProps[];
-  id?: string | number;
+  allChildIds: ItemId[];
+  items: ItemId[];
+  id: ItemId;
   disabled?: boolean;
 };
 
-export function useGroupItemSelection({ id, items, disabled }: UseGroupItemSelectionProps) {
+export function useGroupItemSelection({ id, allChildIds }: UseGroupItemSelectionProps) {
   const { value, setValue, isSelectionMultiple } = useSelectionContext();
-  const { childIds, allChildIds } = useMemo(
-    () => ({ childIds: extractChildIds({ items }), allChildIds: extractAllChildIds({ items }) }),
-    [items],
+  const { flattenItems } = useNewListContext();
+
+  const baseChildIds = useMemo(
+    () =>
+      allChildIds.filter(itemId => {
+        const item = flattenItems[itemId];
+
+        return item && !('type' in item);
+      }),
+    [allChildIds, flattenItems],
   );
 
-  const isIndeterminate = isSelectionMultiple
-    ? allChildIds.some(childId => value?.includes(childId))
-    : allChildIds.includes(value ?? '');
-  const checked = isSelectionMultiple ? allChildIds.every(childId => value?.includes(childId)) : undefined;
+  const checked = isSelectionMultiple
+    ? value && Boolean(value.length) && baseChildIds.every(childId => value?.includes(childId))
+    : undefined;
 
-  useEffect(() => {
-    if (isSelectionMultiple) {
-      if (checked && !value?.includes(id)) {
-        setValue?.((value: Array<number | string>) => (value ?? []).concat([id ?? '']));
-      }
-      if (!checked && value?.includes(id)) {
-        setValue?.((value: Array<number | string>) => (value ?? []).filter(itemId => itemId !== id));
-      }
-    }
-  }, [checked, disabled, id, isSelectionMultiple, setValue, value]);
+  const indeterminate = isSelectionMultiple
+    ? !checked && baseChildIds.some(childId => value?.includes(childId))
+    : baseChildIds.includes(value ?? '');
 
   const handleOnSelect = () => {
     if (checked) {
-      setValue?.((value: Array<string | number>) =>
-        (value ?? []).filter(itemId => itemId !== id && !childIds.includes(itemId)),
-      );
+      setValue?.((value: ItemId[]) => (value ?? []).filter(itemId => itemId !== id && !baseChildIds.includes(itemId)));
       return;
     }
 
-    if (isIndeterminate) {
-      setValue?.((value: Array<string | number>) => Array.from(new Set([...(value ?? []), ...childIds, id])));
-      return;
-    }
-
-    setValue?.((value: Array<string | number>) => (value ?? []).concat([...childIds, id ?? '']));
+    setValue?.((value: ItemId[]) => Array.from(new Set([...(value ?? []), ...baseChildIds])));
   };
 
-  return { checked, isIndeterminate, handleOnSelect };
+  return { checked, indeterminate, handleOnSelect };
 }

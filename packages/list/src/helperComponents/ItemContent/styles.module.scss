@@ -1,0 +1,78 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 's', 'm', 'l';
+$typography: (
+  's': (
+    'label': $sans-body-s,
+    'caption': $sans-body-s,
+    'description': $sans-body-s,
+    'separator': $light-label-m,
+  ),
+  'm': (
+    'label': $sans-body-m,
+    'caption': $sans-body-s,
+    'description': $sans-body-s,
+    'separator': $light-label-l,
+  ),
+  'l': (
+    'label': $sans-body-l,
+    'caption': $sans-body-m,
+    'description': $sans-body-m,
+    'separator': $light-label-l,
+  ),
+);
+
+.headline {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  overflow: hidden;
+  flex: 1;
+  color: $sys-neutral-text-main;
+}
+
+.caption {
+  overflow: hidden;
+  color: $sys-neutral-text-light;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  color: $sys-neutral-text-support;
+}
+
+.content {
+  overflow: hidden;
+  flex-grow: 1;
+  flex-shrink: 1;
+  box-sizing: border-box;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      .headline {
+        @include composite-var($drop-list, 'item', $size, 'headline');
+      }
+      .label {
+        @include composite-var($typography, $size, 'label');
+      }
+      .caption {
+        @include composite-var($typography, $size, 'caption');
+      }
+      .description {
+        @include composite-var($typography, $size, 'description');
+      }
+    }
+  }
+
+  &[data-disabled] {
+    .label,
+    .description,
+    .caption {
+      color: $sys-neutral-text-disabled;
+    }
+  }
+}

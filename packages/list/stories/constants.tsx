@@ -3,6 +3,7 @@ import { Counter } from '@snack-uikit/counter';
 import { PlaceholderSVG } from '@snack-uikit/icons';
 
 import { AccordionItemProps, BaseItemProps, GroupItemProps, ItemProps, NextListItemProps } from '../src';
+import { GroupItem, GroupSelectItem } from '../src/components/Items';
 
 export const BASE_OPTIONS: BaseItemProps[] = [
   {
@@ -24,23 +25,25 @@ export const LONG_LIST_OPTIONS = Array.from({ length: 10 }).fill({
   afterContent: <Counter value={10} />,
 }) as BaseItemProps[];
 
-export const GROUP_OPTIONS: GroupItemProps[] = [
+export const GROUP_OPTIONS: (GroupItem | GroupSelectItem)[] = [
   {
     divider: true,
     items: BASE_OPTIONS,
     label: 'Long long long long long long long veryyyyyyyy long group name',
     mode: 'primary',
+    type: 'group-select',
   },
   {
     divider: false,
     items: BASE_OPTIONS,
     label: 'Long_long_long_long_unbroken_group_label',
     mode: 'secondary',
+    type: 'group',
   },
-  { divider: false, items: BASE_OPTIONS, label: 'Group 3', mode: 'primary' },
-  { divider: false, items: BASE_OPTIONS, label: 'Group 4', mode: 'secondary' },
-  { divider: false, items: BASE_OPTIONS, label: 'Group 5', mode: 'primary' },
-  { divider: true, items: BASE_OPTIONS },
+  { divider: false, items: BASE_OPTIONS, label: 'Group 3', mode: 'primary', type: 'group' },
+  { divider: false, items: BASE_OPTIONS, label: 'Group 4', mode: 'secondary', type: 'group' },
+  { divider: false, items: BASE_OPTIONS, label: 'Group 5', mode: 'primary', type: 'group' },
+  { divider: true, items: BASE_OPTIONS, type: 'group' },
 ];
 
 export const EXPAND_OPTIONS: ItemProps[] = [

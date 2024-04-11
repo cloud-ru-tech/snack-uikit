@@ -42,7 +42,7 @@ const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, selectionMode, 
 
   return (
     <>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} style={{ padding: 4 }}>
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}
         <Droplist

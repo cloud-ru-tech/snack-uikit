@@ -1,23 +1,26 @@
 import { createContext, ReactNode, useCallback, useContext } from 'react';
-import { useUncontrolledProp } from 'uncontrollable';
 
-export type SelectionSingleValueType = string | number | undefined;
+import { useValueControl } from '@snack-uikit/utils';
+
+import { AnyType, ItemId } from '../../Items';
+
+export type OnChangeHandler<T = AnyType> = (value: T) => void;
+
+export type SelectionSingleValueType = ItemId;
 
 export type SelectionSingleState = {
   /** Начальное состояние */
-  defaultValue?: SelectionSingleValueType;
+  defaultValue?: ItemId;
   /** Controlled состояние */
-  value?: SelectionSingleValueType;
+  value?: ItemId;
   /** Controlled обработчик измения состояния */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onChange?(value: any): void;
+  onChange?: OnChangeHandler;
   /** Режим выбора */
   mode: 'single';
 };
 
 export type SelectionSingleProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setValue?(value: any): void;
+  setValue?(value: AnyType): void;
   /** Режим выбора single */
   isSelectionSingle: true;
   /** Режим выбора multi */
@@ -26,19 +29,17 @@ export type SelectionSingleProps = {
 
 export type SelectionMultipleState = {
   /** Начальное состояние */
-  defaultValue?: SelectionSingleValueType[];
+  defaultValue?: ItemId[];
   /** Controlled состояние */
-  value?: SelectionSingleValueType[];
+  value?: ItemId[];
   /** Controlled обработчик измения состояния */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onChange?(value: any): void;
+  onChange?: OnChangeHandler;
   /** Режим выбора */
   mode: 'multiple';
 };
 
 export type SelectionMultipleProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setValue?(value: any): void;
+  setValue?(value: AnyType): void;
   /** Режим выбора single */
   isSelectionSingle: false;
   /** Режим выбора multi */
@@ -46,7 +47,7 @@ export type SelectionMultipleProps = {
 } & SelectionMultipleState;
 
 type SelectionNoneProps = {
-  mode?: undefined;
+  mode?: 'none';
   value?: undefined;
   onChange?: undefined;
   setValue?: undefined;
@@ -55,14 +56,14 @@ type SelectionNoneProps = {
   isSelectionMultiple?: undefined;
 };
 
-type SelectionProviderProps = SelectionSingleProps | SelectionMultipleProps | SelectionNoneProps;
-
 type SelectionContextType =
   | Omit<SelectionNoneProps, 'defaultValue'>
   | Omit<SelectionSingleProps, 'defaultValue'>
   | Omit<SelectionMultipleProps, 'defaultValue'>;
 
-export type SelectionState = { selection?: SelectionSingleState | SelectionMultipleState };
+export type SelectionState = {
+  selection?: SelectionSingleState | SelectionMultipleState;
+};
 
 export const SelectionContext = createContext<SelectionContextType>({
   value: undefined,
@@ -70,13 +71,10 @@ export const SelectionContext = createContext<SelectionContextType>({
   mode: undefined,
 });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isSelectionMultipleProps(props: any): props is SelectionMultipleProps {
+export function isSelectionMultipleProps(props: AnyType): props is SelectionMultipleProps {
   return 'mode' in props && props['mode'] === 'multiple';
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isSelectionSingleProps(props: any): props is SelectionSingleProps {
+export function isSelectionSingleProps(props: AnyType): props is SelectionSingleProps {
   return 'mode' in props && props['mode'] === 'single';
 }
 
@@ -84,20 +82,32 @@ type Child = {
   children: ReactNode;
 };
 
+function SelectionNoneProvider({ children }: SelectionNoneProps & Child) {
+  return (
+    <SelectionContext.Provider
+      value={{
+        mode: 'none',
+      }}
+    >
+      {children}
+    </SelectionContext.Provider>
+  );
+}
+
 function SelectionSingleProvider({
   value: valueProp,
   defaultValue,
   onChange: onChangeProp,
   children,
 }: SelectionSingleProps & Child) {
-  const [value, setValue] = useUncontrolledProp<SelectionSingleValueType>(valueProp, defaultValue, newValue => {
-    const result = typeof newValue === 'function' ? newValue(value) : newValue;
-
-    onChangeProp?.(result);
+  const [value, setValue] = useValueControl<ItemId | undefined>({
+    value: valueProp,
+    defaultValue,
+    onChange: onChangeProp,
   });
 
   const onChange = useCallback(
-    (newValue: SelectionSingleValueType) =>
+    (newValue: SelectionSingleValueType | undefined) =>
       setValue((oldValue: SelectionSingleValueType) => {
         if (newValue !== oldValue) {
           return newValue;
@@ -130,10 +140,10 @@ function SelectionMultipleProvider({
   onChange: onChangeProp,
   children,
 }: SelectionMultipleProps & Child) {
-  const [value, setValue] = useUncontrolledProp<SelectionSingleValueType[]>(valueProp, defaultValue, newValue => {
-    const result = typeof newValue === 'function' ? newValue(value) : newValue;
-
-    onChangeProp?.(result);
+  const [value, setValue] = useValueControl<ItemId[] | undefined>({
+    value: valueProp,
+    defaultValue,
+    onChange: onChangeProp,
   });
 
   const onChange = useCallback(
@@ -173,6 +183,17 @@ function SelectionMultipleProvider({
   );
 }
 
+type SelectionProviderProps = {
+  /** Начальное состояние */
+  defaultValue?: AnyType;
+  /** Controlled состояние */
+  value?: AnyType;
+  /** Controlled обработчик измения состояния */
+  onChange?: OnChangeHandler;
+  /** Режим выбора */
+  mode?: 'multiple' | 'single' | 'none';
+};
+
 export function SelectionProvider({ children, ...props }: SelectionProviderProps & Child) {
   if (isSelectionSingleProps(props)) {
     return <SelectionSingleProvider {...props}>{children}</SelectionSingleProvider>;
@@ -182,13 +203,9 @@ export function SelectionProvider({ children, ...props }: SelectionProviderProps
     return <SelectionMultipleProvider {...props}>{children}</SelectionMultipleProvider>;
   }
 
-  return <SelectionContext.Provider value={{}}>{children}</SelectionContext.Provider>;
+  return <SelectionNoneProvider>{children}</SelectionNoneProvider>;
 }
 
-export const useSelectionContext = () => useContext(SelectionContext);
-
-export function extractSelectionProps<T extends SelectionState>({ selection }: T) {
-  return {
-    ...(selection ?? {}),
-  } as SelectionProviderProps;
+export function useSelectionContext() {
+  return useContext(SelectionContext);
 }

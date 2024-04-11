@@ -5,19 +5,12 @@ import { WithSupportProps } from '@snack-uikit/utils';
 
 import { EmptyStateProps } from '../../helperComponents';
 import { ScrollProps, SearchState } from '../../types';
-import { ItemProps } from '../Items';
-import { ListContextPrivateType, ListContextType, SelectionState } from './contexts';
-
-type CollapseState = {
-  value?: (string | number)[];
-  onChange?(value: (string | number)[]): void;
-  defaultValue?: (string | number)[];
-};
+import { FlattenBaseItem, Item, ItemId } from '../Items';
+import { CollapseState, PublicListContextType, SelectionState } from './contexts';
 
 export type EmptyState = {
   dataFiltered?: boolean;
   dataError?: boolean;
-
   /** Экран при отстутствии данных */
   noDataState?: EmptyStateProps;
   /** Экран при отстутствии результатов поиска или фильтров */
@@ -29,11 +22,11 @@ export type EmptyState = {
 export type ListProps = WithSupportProps<
   {
     /** Основные элементы списка */
-    items: ItemProps[];
+    items: Item[];
     /** Элементы списка, закрепленные сверху */
-    pinTop?: ItemProps[];
+    pinTop?: Item[];
     /** Элементы списка, закрепленные снизу */
-    pinBottom?: ItemProps[];
+    pinBottom?: Item[];
     /**
      * Кастомизируемый элемент в конце списка
      * @type ReactNode;
@@ -55,7 +48,7 @@ export type ListProps = WithSupportProps<
     /** Флаг, отвещающий за состояние загрузки списка */
     loading?: boolean;
   } & SelectionState &
-    ListContextType &
+    PublicListContextType &
     ScrollProps &
     EmptyState
 >;
@@ -70,16 +63,19 @@ export type DroplistProps = {
    * Рендер функция принимает аргументы `onKeyDown` - хендлер ввода, для поддержки управления с клавиатуры
    */
   children: ReactNode | ((params: { onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void }) => ReactNode);
-} & Pick<DropdownProps, 'trigger' | 'placement' | 'widthStrategy' | 'open' | 'onOpenChange'> &
+} & Pick<DropdownProps, 'trigger' | 'placement' | 'widthStrategy' | 'open' | 'onOpenChange' | 'triggerClassName'> &
   Omit<ListProps, 'tabIndex' | 'onKeyDown'>;
 
-export type ListPrivateProps = ListProps &
-  ListContextPrivateType & {
-    nested?: boolean;
-    active?: boolean;
-    tabIndex?: number;
-    onFocus?(e: FocusEvent<HTMLElement>): void;
-    onBlur?(e: FocusEvent<HTMLElement>): void;
-    onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
-    limitedScrollHeight?: boolean;
-  };
+export type ListPrivateProps = Omit<ListProps, 'pinTop' | 'pinBottom' | 'items'> & {
+  nested?: boolean;
+  active?: boolean;
+  tabIndex?: number;
+  onFocus?(e: FocusEvent<HTMLElement>): void;
+  onBlur?(e: FocusEvent<HTMLElement>): void;
+  onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
+  limitedScrollHeight?: boolean;
+  searchItem?: FlattenBaseItem;
+  pinTop?: ItemId[];
+  items: ItemId[];
+  pinBottom?: ItemId[];
+};

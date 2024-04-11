@@ -7,12 +7,12 @@ import { extractSupportProps } from '@snack-uikit/utils';
 
 import { ListEmptyState, useEmptyState } from '../../../helperComponents';
 import { PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from '../../Items';
-import { ListContextProvider } from '../contexts';
+import { useNewListContext } from '../contexts';
 import commonStyles from '../styles.module.scss';
 import { ListPrivateProps } from '../types';
 import styles from './styles.module.scss';
 
-export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
+export const ListPrivate = forwardRef(
   (
     {
       items,
@@ -26,30 +26,29 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
       scroll,
       nested,
       search,
+      searchItem,
       scrollRef,
       scrollContainerRef,
       footer,
       loading,
-      size = 's',
-      marker = true,
       limitedScrollHeight,
       className,
-      parent = 'list',
       noDataState,
       noResultsState,
       errorDataState,
       dataError,
       dataFiltered,
       ...props
-    },
-    ref,
+    }: ListPrivateProps,
+    ref: ForwardedRef<HTMLElement>,
   ) => {
+    const { size = 's' } = useNewListContext();
+
     const itemsJSX = useRenderItems(items);
-    const itemsPinTopJSX = useRenderItems(pinTop ?? []);
-    const itemsPinBottomJSX = useRenderItems(pinBottom ?? []);
+    const itemsPinTopJSX = useRenderItems(pinTop);
+    const itemsPinBottomJSX = useRenderItems(pinBottom);
 
     const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
-
     const hasNoItems = items.length === 0;
 
     const loadingJSX = useMemo(
@@ -79,12 +78,12 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
             loading={loading}
             dataError={dataError}
             emptyStates={emptyStates}
-            itemsLength={items.length}
+            hasNoItems={hasNoItems}
             dataFiltered={dataFiltered ?? Boolean(search?.value)}
           />
         </div>
       ),
-      [dataError, dataFiltered, emptyStates, items.length, itemsJSX, loading, loadingJSX, search?.value],
+      [dataError, dataFiltered, emptyStates, hasNoItems, itemsJSX, loading, loadingJSX, search?.value],
     );
 
     const listJSX = (
@@ -93,7 +92,7 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
         ref={ref as ForwardedRef<HTMLUListElement>}
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
-        onFocus={!nested ? onFocus : undefined}
+        onFocus={onFocus}
         onBlur={onBlur}
         data-active={active || undefined}
         role='menu'
@@ -101,7 +100,7 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
       >
         {(Number(pinTop?.length) > 0 || search) && (
           <PinTopGroupItem>
-            {search && <SearchItem search={search} />}
+            {search && <SearchItem search={search} {...searchItem} />}
 
             {Number(pinTop?.length) > 0 && itemsPinTopJSX}
           </PinTopGroupItem>
@@ -128,16 +127,16 @@ export const ListPrivate = forwardRef<HTMLElement, ListPrivateProps>(
 
         {Number(pinBottom?.length) > 0 && <PinBottomGroupItem>{itemsPinBottomJSX}</PinBottomGroupItem>}
 
-        {footer && <div className={styles.footer}>{footer}</div>}
+        {footer && (
+          <div className={styles.footer} onFocus={e => e.stopPropagation()}>
+            {footer}
+          </div>
+        )}
       </ul>
     );
 
     if (!nested) {
-      return (
-        <ListContextProvider size={size} marker={marker} parent={parent}>
-          {listJSX}
-        </ListContextProvider>
-      );
+      return listJSX;
     }
 
     return (

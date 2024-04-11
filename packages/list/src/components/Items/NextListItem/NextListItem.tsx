@@ -1,122 +1,116 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { Dropdown, DropdownProps } from '@snack-uikit/dropdown';
+import { Dropdown } from '@snack-uikit/dropdown';
 import { ChevronRightSVG } from '@snack-uikit/icons';
 
-import { withCollapsedItems } from '../../../utils';
-import { ParentListContext, useParentListContext } from '../../Lists/contexts';
+import { useCollapseContext, useFocusListContext, useNewListContext } from '../../Lists/contexts';
 import { ListPrivate } from '../../Lists/ListPrivate';
 import { BaseItem } from '../BaseItem';
 import { useGroupItemSelection } from '../hooks';
-import { NextListItemProps } from '../types';
-import { useKeyboardNavigation } from './hooks';
+import { CommonFlattenProps, FlattenNextListItem, ItemId } from '../types';
+import { extractActiveItems, isNextListItem } from '../utils';
+import { FALLBACK_PLACEMENTS } from './constants';
 
-const FALLBACK_PLACEMENTS: DropdownProps['fallbackPlacements'] = [
-  'right',
-  'right-start',
-  'right-end',
-  'left',
-  'left-start',
-  'left-end',
-];
+type NextListItemProps = Omit<FlattenNextListItem, 'type'> & CommonFlattenProps & { focusId?: ItemId };
 
 export function NextListItem({
-  items: itemsProp,
+  items,
   placement = 'right-start',
   id,
-  search,
   scroll,
   scrollRef,
   disabled,
   onSublistOpenChanged,
+  allChildIds,
   loading = false,
+  focusId = id,
   ...option
 }: NextListItemProps) {
-  const listRef = useRef<HTMLUListElement>(null);
+  const { flattenItems, focusFlattenItems } = useNewListContext();
+  const { openCollapseItems = [] } = useCollapseContext();
 
-  const [openCollapsedItems, setOpenCollapsedItems] = useState<Array<number | string>>([]);
+  const item = flattenItems[id];
 
-  const { items, itemRefs, ids, expandedIds } = useMemo(
-    () =>
-      withCollapsedItems({
-        items: itemsProp,
-        openCollapsedItems,
-      }),
-    [itemsProp, openCollapsedItems],
-  );
+  const { ids, expandedIds } = useMemo(() => {
+    const { ids, expandedIds } = extractActiveItems({
+      focusCloseChildIds: items,
+      focusFlattenItems,
+      openCollapseItems,
+    });
 
-  const { parentOpenNestedIndex, parentIds, triggerRef, parentResetNestedIndex, parentResetActiveFocusIndex } =
-    useParentListContext();
+    return { ids, expandedIds: expandedIds.concat([id]) };
+  }, [focusFlattenItems, id, items, openCollapseItems]);
 
-  const {
-    open,
-    setOpen,
-    handleListKeyDown,
-    activeFocusIndex,
-    openNestedIndex,
-    resetNestedIndex,
-    resetActiveFocusIndex,
-  } = useKeyboardNavigation({ ids, expandedIds, itemRefs, id });
+  const { handleListKeyDownFactory, activeItemId, forceUpdateActiveItemId } = useFocusListContext();
 
-  const { isIndeterminate, checked, handleOnSelect } = useGroupItemSelection({ items: itemsProp, id, disabled });
+  const [open, setOpen] = useState<boolean>();
 
-  const handleOpenChange = useCallback(
-    (open: boolean) => {
-      if (!open) {
-        resetActiveFocusIndex();
-        resetNestedIndex();
-        setOpenCollapsedItems([]);
+  const handleListKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLElement>) => {
+      handleListKeyDownFactory(ids, expandedIds)(e);
+
+      if (e.key === 'ArrowLeft') {
+        forceUpdateActiveItemId?.(focusId);
+        setOpen(false);
+        e.stopPropagation();
+
+        return;
       }
-      onSublistOpenChanged?.(open, id);
-      setOpen(open);
     },
-    [id, onSublistOpenChanged, resetActiveFocusIndex, resetNestedIndex, setOpen],
+    [handleListKeyDownFactory, ids, expandedIds, forceUpdateActiveItemId, focusId],
   );
+
+  const { indeterminate, checked, handleOnSelect } = useGroupItemSelection({
+    items: isNextListItem<FlattenNextListItem>(item) ? item.items : [],
+    id,
+    disabled,
+    allChildIds,
+  });
 
   const handleOutsideClick = useCallback(() => {
-    parentResetNestedIndex?.();
-    parentResetActiveFocusIndex?.();
-
+    forceUpdateActiveItemId?.('~drop-focus');
+    setOpen(false);
     return true;
-  }, [parentResetActiveFocusIndex, parentResetNestedIndex]);
+  }, [forceUpdateActiveItemId]);
+
+  const isOpen = useMemo(
+    () => Boolean(!disabled && activeItemId && focusFlattenItems[focusId].allChildIds.includes(activeItemId)),
+    [activeItemId, disabled, focusFlattenItems, focusId],
+  );
+
+  useEffect(() => {
+    setOpen(open => open && isOpen);
+  }, [id, isOpen]);
+
+  const listRef = useRef<HTMLElement>(null);
 
   return (
     <Dropdown
       outsideClick={handleOutsideClick}
       fallbackPlacements={FALLBACK_PLACEMENTS}
       content={
-        <ParentListContext.Provider
-          value={{
-            parentIds: ids,
-            parentActiveFocusIndex: activeFocusIndex,
-            parentExpandedIds: expandedIds,
-            parentItemRefs: itemRefs,
-            parentOpenNestedIndex: openNestedIndex,
-            triggerRef,
-            parentRef: listRef,
-            parentResetNestedIndex: resetNestedIndex,
-            parentResetActiveFocusIndex: resetActiveFocusIndex,
-            toggleOpenCollapsedItems: id =>
-              setOpenCollapsedItems(items =>
-                items.includes(id) ? items.filter(item => item !== id) : items.concat([id]),
-              ),
+        <ListPrivate
+          onKeyDown={handleListKeyDown}
+          items={items}
+          nested
+          scroll={scroll}
+          tabIndex={0}
+          ref={listRef}
+          onFocus={e => {
+            e.stopPropagation();
+            forceUpdateActiveItemId?.(ids[0]);
           }}
-        >
-          <ListPrivate
-            onKeyDown={handleListKeyDown}
-            items={items}
-            nested
-            search={search}
-            scroll={scroll}
-            scrollRef={scrollRef}
-            limitedScrollHeight
-            loading={loading}
-          />
-        </ParentListContext.Provider>
+          scrollRef={scrollRef}
+          limitedScrollHeight
+          loading={loading}
+        />
       }
       trigger='hover'
-      open={(open || parentIds[parentOpenNestedIndex] === id) && !disabled}
-      onOpenChange={handleOpenChange}
+      open={isOpen || open}
+      onOpenChange={value => {
+        setOpen(value);
+        onSublistOpenChanged?.(value, id);
+      }}
       placement={placement}
       widthStrategy='auto'
     >
@@ -127,7 +121,14 @@ export function NextListItem({
         expandIcon={<ChevronRightSVG />}
         id={id}
         isParentNode
-        indeterminate={isIndeterminate && !checked}
+        indeterminate={indeterminate}
+        checked={checked}
+        onOpenNestedList={() => {
+          setOpen(true);
+          setTimeout(() => {
+            listRef.current?.focus();
+          }, 0);
+        }}
         onSelect={handleOnSelect}
       />
     </Dropdown>

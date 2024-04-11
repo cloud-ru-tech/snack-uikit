@@ -2,9 +2,9 @@ import { RefObject } from 'react';
 
 export type SearchState = {
   placeholder?: string;
+  loading?: boolean;
   value?: string;
   onChange(value: string): void;
-  loading?: boolean;
 };
 
 export type ScrollProps = {

@@ -209,6 +209,8 @@ const Template: StoryFn<StoryProps> = ({
           />
         </div>
       </div>
+
+      <>{JSON.stringify(value)}</>
     </>
   );
 };

@@ -2,48 +2,6 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
-$typography: (
-  's': (
-    'label': $sans-body-s,
-    'caption': $sans-body-s,
-    'description': $sans-body-s,
-    'separator': $light-label-m,
-  ),
-  'm': (
-    'label': $sans-body-m,
-    'caption': $sans-body-s,
-    'description': $sans-body-s,
-    'separator': $light-label-l,
-  ),
-  'l': (
-    'label': $sans-body-l,
-    'caption': $sans-body-m,
-    'description': $sans-body-m,
-    'separator': $light-label-l,
-  ),
-);
-
-.headline {
-  display: flex;
-  align-items: center;
-}
-
-.option {
-  overflow: hidden;
-  flex: 1;
-  color: $sys-neutral-text-main;
-}
-
-.caption {
-  overflow: hidden;
-  color: $sys-neutral-text-light;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.description {
-  color: $sys-neutral-text-support;
-}
 
 .checkbox {
   display: inline-flex;
@@ -69,8 +27,8 @@ $typography: (
   color: $sys-neutral-text-light;
 
   svg {
-    width: 100% !important; /* stylelint-disable-line declaration-no-important */
-    height: 100% !important; /* stylelint-disable-line declaration-no-important */
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 
@@ -102,13 +60,6 @@ $typography: (
   }
 }
 
-.content {
-  overflow: hidden;
-  flex-grow: 1;
-  flex-shrink: 1;
-  box-sizing: border-box;
-}
-
 .droplistItem {
   width: 100%;
 
@@ -117,22 +68,6 @@ $typography: (
       padding-left: calc(
         var(--level, 0) * $dimension-050m + simple-var($drop-list, 'item', $size, 'container', 'padding-left')
       );
-
-      .headline {
-        @include composite-var($drop-list, 'item', $size, 'headline');
-      }
-
-      .option {
-        @include composite-var($typography, $size, 'label');
-      }
-
-      .caption {
-        @include composite-var($typography, $size, 'caption');
-      }
-
-      .description {
-        @include composite-var($typography, $size, 'description');
-      }
     }
   }
 
@@ -142,9 +77,6 @@ $typography: (
 
   &[aria-disabled],
   &[data-disabled] {
-    .option,
-    .description,
-    .caption,
     .expandableIcon {
       color: $sys-neutral-text-disabled;
     }
@@ -191,4 +123,10 @@ $typography: (
       }
     }
   }
+}
+
+.content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  box-sizing: border-box;
 }
