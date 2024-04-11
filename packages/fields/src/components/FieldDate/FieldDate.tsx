@@ -13,7 +13,7 @@ import {
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar, CalendarProps } from '@snack-uikit/calendar';
-import { Dropdown } from '@snack-uikit/droplist';
+import { Dropdown } from '@snack-uikit/dropdown';
 import { CalendarSVG } from '@snack-uikit/icons';
 import {
   ICON_SIZE,

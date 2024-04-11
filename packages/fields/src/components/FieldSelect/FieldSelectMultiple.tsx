@@ -3,7 +3,7 @@ import mergeRefs from 'merge-refs';
 import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useLayoutEffect, useRef, useState } from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
-import { BaseItemProps, Droplist, ItemProps, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
+import { BaseItemProps, Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
 import { Tag } from '@snack-uikit/tag';
 import { extractSupportProps } from '@snack-uikit/utils';
 
@@ -12,13 +12,17 @@ import { useValueControl } from '../../hooks';
 import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearchInput } from './hooks';
+import { useFuzzySearch } from './legacy';
 import styles from './styles.module.scss';
 import { FieldSelectMultipleProps, ItemWithId, SelectedOptionFormatter } from './types';
 import { extractListProps, getArrowIcon, updateMultipleItems } from './utils';
 
 const BASE_MIN_WIDTH = 4;
 
-const defaultSelectedOptionFormatter: SelectedOptionFormatter = item => item?.content.option || '';
+const defaultSelectedOptionFormatter: SelectedOptionFormatter = item =>
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  item?.content.option || '';
 
 export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMultipleProps>(
   (

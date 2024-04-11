@@ -1,6 +1,7 @@
-import { flattenItems, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
+import { ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
 import { TagProps } from '@snack-uikit/tag';
 
+import { flattenItems } from '../legacy';
 import { BaseOptionProps, ItemWithId, OptionProps } from '../types';
 import { isAccordionOptionProps, isGroupOptionProps, isNextListOptionProps } from './typeGuards';
 

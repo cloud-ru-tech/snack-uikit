@@ -1,5 +1,6 @@
-import { flattenItems, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
+import { ItemId, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
 
+import { flattenItems } from '../legacy';
 import { ItemWithId, OptionProps } from '../types';
 import { transformOptionsToItems } from './options';
 
@@ -13,7 +14,7 @@ export function updateItems({
   selectedItem,
 }: {
   options: OptionProps[];
-  value: SelectionSingleValueType;
+  value?: ItemId;
   selectedItem?: ItemWithId;
   currentItems?: ItemProps[];
 }) {
@@ -67,14 +68,23 @@ export function updateMultipleItems({
     };
   }
 
+  const foundedValue: (number | string)[] = [];
+
   let newItems: ItemProps[] = originalItems;
   let newSelectedItems = selectedItems;
 
   const flattenOriginalItems = flattenItems(originalItems);
 
-  const foundItems: ItemWithId[] = flattenOriginalItems.filter(item => value.includes(item.id));
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const foundItems: ItemWithId[] = flattenOriginalItems.filter((item: any) => {
+    if (value.includes(item.id) && !foundedValue.includes(item.id)) {
+      foundedValue.push(item.id);
+      return true;
+    }
+  });
   const nonFoundValues: SelectionSingleValueType[] = value.filter(
-    value => !flattenOriginalItems.find(item => item.id === value),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value => !flattenOriginalItems.find((item: any) => item.id === value),
   );
 
   if (nonFoundValues.length) {

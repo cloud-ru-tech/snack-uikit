@@ -3,13 +3,14 @@ import { Handler } from 'uncontrollable';
 
 import { useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import {
-  extractChildIds,
+  // extractChildIds,
   isAccordionItemProps,
   isNextListItemProps,
   SelectionSingleValueType,
 } from '@snack-uikit/list';
 
 import { useCopyButton, useValueControl } from '../../hooks';
+import { extractChildIds } from './legacy';
 import { ItemWithId, SearchState, SelectedOptionFormatter } from './types';
 import { isBaseOptionProps } from './utils';
 
@@ -141,7 +142,15 @@ export function useHandleDeleteItem(setValue: Handler) {
       }
 
       if (isBaseOptionProps(item)) {
-        setValue((value: SelectionSingleValueType[]) => value?.filter(v => v !== item.id));
+        setValue(
+          (value: SelectionSingleValueType[]) =>
+            value?.filter(
+              v =>
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
+                v !== item.id,
+            ),
+        );
       }
     },
     [setValue],

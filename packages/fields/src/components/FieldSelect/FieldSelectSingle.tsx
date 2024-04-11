@@ -13,7 +13,7 @@ import {
 } from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
-import { Droplist, ItemProps, SelectionSingleValueType, useFuzzySearch } from '@snack-uikit/list';
+import { Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
@@ -21,11 +21,15 @@ import { useValueControl } from '../../hooks';
 import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleOnKeyDown, useSearchInput } from './hooks';
+import { useFuzzySearch } from './legacy';
 import styles from './styles.module.scss';
 import { FieldSelectSingleProps, ItemWithId, SelectedOptionFormatter } from './types';
 import { extractListProps, getArrowIcon, updateItems } from './utils';
 
-const defaultSelectedOptionFormatter: SelectedOptionFormatter = item => item?.content.option || '';
+const defaultSelectedOptionFormatter: SelectedOptionFormatter = item =>
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  item?.content.option || '';
 
 export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleProps>(
   (
@@ -72,6 +76,8 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
     const { inputValue, setInputValue, prevInputValue, updateInputValue } = useSearchInput({
       ...search,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       defaultValue: selectedItem?.content.option ?? '',
       selectedOptionFormatter,
     });
@@ -86,6 +92,8 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
       if (
         prevSelectedItem.current &&
         prevSelectedItem.current.id === selectedItem?.id &&
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         prevSelectedItem.current.content.option === selectedItem?.content.option
       ) {
         return;

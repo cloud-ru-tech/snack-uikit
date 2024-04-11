@@ -24,7 +24,7 @@ export function isNextListOptionProps(option: any): option is NestListOptionProp
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isGroupOptionProps(option: any): option is GroupOptionProps {
-  return 'options' in option && option['type'] === undefined;
+  return 'options' in option && option['type'] === 'group';
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

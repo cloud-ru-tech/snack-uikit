@@ -312,6 +312,8 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| pinBottom* | `OptionProps[]` | - |  |
+| pinTop* | `OptionProps[]` | - |  |
 | options* | `OptionProps[]` | - |  |
 | disabled | `boolean` | false | Является ли поле деактивированным |
 | readonly | `boolean` | false false | Является ли поле доступным только для чтения |
@@ -332,9 +334,9 @@ const [isOpen, setIsOpen] = useState(false);
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | - | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | loading | `boolean` | - |  |
-| value | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Controlled состояние |
-| onChange | `((value: any) => void) \| ((value: any) => void)` | - | Controlled обработчик измения состояния |
-| defaultValue | `SelectionSingleValueType \| SelectionSingleValueType[]` | - | Начальное состояние |
+| value | `ItemId \| ItemId[]` | - | Controlled состояние |
+| onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
+| defaultValue | `ItemId \| ItemId[]` | - | Начальное состояние |
 | searchable | `boolean` | - |  |
 | showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
@@ -347,8 +349,6 @@ const [isOpen, setIsOpen] = useState(false);
 | open | `boolean` | - |  |
 | onOpenChange | `(open: boolean) => void` | - |  |
 | selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
-| pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
-| pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |

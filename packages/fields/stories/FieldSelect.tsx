@@ -22,6 +22,7 @@ export default meta;
 const DEFAULT_OPTIONS: OptionProps[] = [
   {
     label: 'Group',
+    type: 'group',
     options: [
       { value: 'op1', option: 'Option 1', caption: 'Green Tag', appearance: 'green' },
       { value: 'op2', option: 'Option 2', description: 'Description' },
