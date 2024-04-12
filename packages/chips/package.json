@@ -34,12 +34,18 @@
   "dependencies": {
     "@snack-uikit/button": "0.17.0",
     "@snack-uikit/calendar": "0.7.6",
-    "@snack-uikit/droplist": "0.13.15",
+    "@snack-uikit/dropdown": "0.2.1",
     "@snack-uikit/icons": "0.20.1",
     "@snack-uikit/loaders": "0.5.1",
+    "@snack-uikit/list": "0.11.0",
     "@snack-uikit/utils": "3.2.0",
     "classnames": "2.3.2",
-    "uncontrollable": "8.0.2"
+    "merge-refs": "1.2.2",
+    "uncontrollable": "8.0.2",
+    "fuzzy-search": "3.2.1"
+  },
+  "devDependencies": {
+    "@types/fuzzy-search": "2.1.5"
   },
   "peerDependencies": {
     "@snack-uikit/locale": "*"

@@ -18,7 +18,8 @@ $valueTypography: (
   'l': $sans-label-l,
 );
 
-.label, .value {
+.label,
+.value {
   display: inline-flex;
   align-items: center;
 }
@@ -30,7 +31,8 @@ $valueTypography: (
   background-color: $sys-neutral-background1-level;
   border-color: $sys-neutral-decor-default;
 
-  .label, .value {
+  .label,
+  .value {
     color: $sys-neutral-text-support;
   }
 
@@ -46,7 +48,9 @@ $valueTypography: (
     }
   }
 
-  &:hover, &:active, &:focus-visible {
+  &:hover,
+  &:active,
+  &:focus-visible {
     background-color: $sys-neutral-background2-level;
     border-color: $sys-neutral-decor-hovered;
 
@@ -68,7 +72,8 @@ $valueTypography: (
     background-color: $sys-neutral-background;
     border-color: $sys-neutral-decor-disabled;
 
-    .label, .value {
+    .label,
+    .value {
       color: $sys-neutral-text-light;
     }
   }
@@ -79,7 +84,8 @@ $valueTypography: (
     background-color: $sys-neutral-background;
     border-color: $sys-neutral-decor-activated;
 
-    .label, .value {
+    .label,
+    .value {
       color: $sys-neutral-text-support;
     }
   }

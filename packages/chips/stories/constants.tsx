@@ -7,7 +7,7 @@ export const ICONS = {
   ...Object.fromEntries(
     Object.keys(Icons).map(key => {
       const Icon = Icons[key];
-      return [key, <Icon key={key} />];
+      return [key, <Icon key={key} size={24} />];
     }),
   ),
 };

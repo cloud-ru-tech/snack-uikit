@@ -1,13 +1,71 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
-import { DroplistProps, ItemSingleProps } from '@snack-uikit/droplist';
+import { DropdownProps } from '@snack-uikit/dropdown';
+import {
+  BaseItemProps,
+  DroplistProps,
+  GroupItemProps,
+  GroupSelectItemProps,
+  ItemContentProps,
+  ItemId,
+  NextListItemProps,
+  SelectionMultipleState,
+  SelectionSingleState,
+} from '@snack-uikit/list';
 import { WithSupportProps } from '@snack-uikit/utils';
 
 import { BaseChipProps, Size } from '../../types';
 
-export type FilterOption = Pick<ItemSingleProps, 'caption' | 'description' | 'tagLabel' | 'icon' | 'avatar'> & {
-  label: string;
-  value: string;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type AnyType = any;
+
+export type ContentRenderProps = Omit<ItemContentProps, 'option' | 'disabled'>;
+
+export type FilterOption<T extends ContentRenderProps = ContentRenderProps> =
+  // eslint-disable-next-line no-use-before-define
+  | BaseOption<T>
+  // eslint-disable-next-line no-use-before-define
+  | AccordionOption<T>
+  // eslint-disable-next-line no-use-before-define
+  | GroupOption<T>
+  // eslint-disable-next-line no-use-before-define
+  | GroupSelectOption<T>
+  // eslint-disable-next-line no-use-before-define
+  | NestListOption<T>;
+
+export type BaseOption<T extends ContentRenderProps = ContentRenderProps> = Omit<BaseItemProps, 'content' | 'id'> & {
+  value: ItemId;
+  label: ItemId;
+  contentRenderProps?: T;
+};
+
+export type AccordionOption<T extends ContentRenderProps = ContentRenderProps> = Omit<
+  BaseOption<T>,
+  'switch' | 'inactive' | 'value'
+> & {
+  id?: ItemId;
+  type: 'collapse';
+  options: FilterOption<T>[];
+};
+
+export type GroupOption<T extends ContentRenderProps = ContentRenderProps> = Omit<GroupItemProps, 'items'> & {
+  options: FilterOption<T>[];
+};
+
+export type GroupSelectOption<T extends ContentRenderProps = ContentRenderProps> = Omit<
+  GroupSelectItemProps,
+  'items'
+> & {
+  options: FilterOption<T>[];
+};
+
+export type NestListOption<T extends ContentRenderProps = ContentRenderProps> = Omit<
+  NextListItemProps,
+  'items' | 'content'
+> & {
+  label: ItemId;
+  contentRenderProps?: T;
+  options: FilterOption<T>[];
 };
 
 export type ChipChoiceCommonProps = WithSupportProps<
@@ -19,7 +77,7 @@ export type ChipChoiceCommonProps = WithSupportProps<
     /** Отображение кнопки очистки значения @default true*/
     showClearButton?: boolean;
     /** Расположение выпадающего меню */
-    placement?: DroplistProps['placement'];
+    placement?: DropdownProps['placement'];
     /**
      * Стратегия управления шириной контейнера поповера
      * <br> - `auto` - соответствует ширине контента,
@@ -27,6 +85,46 @@ export type ChipChoiceCommonProps = WithSupportProps<
      * <br> - `eq` - Equal, строго равен ширине таргета.
      * @default gte
      */
-    widthStrategy?: DroplistProps['widthStrategy'];
+    widthStrategy?: DropdownProps['widthStrategy'];
+    dropDownClassName?: string;
   }
 >;
+
+export type ChipChoiceSelectCommonProps<T extends ContentRenderProps = ContentRenderProps> = ChipChoiceCommonProps & {
+  options: FilterOption<T>[];
+
+  contentRender?(option: { label: ItemId; value?: ItemId; contentRenderProps?: T }): ReactNode;
+  filterFn?(option: { label: ItemId; value?: ItemId; contentRenderProps?: T }): boolean;
+
+  searchable?: boolean;
+} & Pick<
+    DroplistProps,
+    | 'selection'
+    | 'scrollRef'
+    | 'scrollContainerRef'
+    | 'noDataState'
+    | 'footer'
+    | 'footerActiveElementsRefs'
+    | 'dataError'
+    | 'errorDataState'
+    | 'dataFiltered'
+    | 'noResultsState'
+    | 'loading'
+  >;
+
+export type ChipChoiceSingleProps<T extends ContentRenderProps = ContentRenderProps> = ChipChoiceSelectCommonProps<T> &
+  Omit<SelectionSingleState, 'mode'> & {
+    /** Массив опций */
+    options: FilterOption<T>[];
+    /** Колбек формирующий отображение выбранного значения. Принимает выбранное значение. По умолчанию для отображения используется FilterOption.label */
+    valueRender?(option?: BaseOption<T>): ReactNode;
+  };
+
+export type ChipChoiceMultipleProps<T extends ContentRenderProps = ContentRenderProps> =
+  ChipChoiceSelectCommonProps<T> &
+    Omit<SelectionMultipleState, 'mode'> & {
+      /** Массив опций */
+      options: FilterOption<T>[];
+      /** Колбек формирующий отображение выбранного значения. Принимает выбранное значение. По умолчанию для отображения используется FilterOption.label */
+      valueRender?(option?: BaseOption<T>[]): ReactNode;
+    };

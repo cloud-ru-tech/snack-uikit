@@ -1,4 +1,5 @@
 import { ChipChoiceRowProps } from '../src';
+import { CustomContentRenderProps } from '../src/components/ChipChoice/components';
 import { STORY_TEST_IDS } from './testIds';
 
 export type Filters = {
@@ -6,11 +7,12 @@ export type Filters = {
   ip: string;
   tags: string[];
   dates: Date[];
+  test: string;
 };
 
 export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
   {
-    type: 'multi',
+    type: 'multiple',
     id: 'vms',
     label: 'Virtual machines',
     options: [
@@ -41,5 +43,18 @@ export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
     id: 'dateRange',
     label: 'Period',
     'data-test-id': STORY_TEST_IDS.DateRange,
+  },
+  {
+    type: 'custom',
+    id: 'test',
+    label: 'Custom',
+    'data-test-id': 'custom',
+    valueRender: (value: string) => value ?? 'all',
+    content: ({ closeDroplist, value, onChange }: CustomContentRenderProps<string>) => (
+      <div>
+        <input placeholder='Placeholder' value={value} onChange={e => onChange?.(e.target.value)} />
+        <button onClick={closeDroplist}>Close</button>
+      </div>
+    ),
   },
 ];

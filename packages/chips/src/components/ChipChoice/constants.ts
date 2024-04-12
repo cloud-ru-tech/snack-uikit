@@ -1,5 +1,5 @@
 import { CalendarProps } from '@snack-uikit/calendar';
-import { DroplistProps } from '@snack-uikit/droplist';
+import { DroplistProps } from '@snack-uikit/list';
 
 import { BUTTON_SIZE, SIZE } from '../../constants';
 import { Size } from '../../types';
@@ -26,8 +26,9 @@ export const DROPLIST_SIZE_MAP: Record<Size, DroplistProps['size']> = {
 };
 
 export const CHIP_CHOICE_TYPE = {
-  Multi: 'multi',
+  Multiple: 'multiple',
   Date: 'date',
   DateRange: 'date-range',
   Single: 'single',
+  Custom: 'custom',
 } as const;

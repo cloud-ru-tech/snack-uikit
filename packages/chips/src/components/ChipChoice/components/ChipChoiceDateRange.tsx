@@ -1,12 +1,15 @@
+import { ReactNode, useCallback, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar } from '@snack-uikit/calendar';
+import { Dropdown } from '@snack-uikit/dropdown';
 import { useLocale } from '@snack-uikit/locale';
 
 import { DEFAULT_EMPTY_VALUE, SIZE } from '../../../constants';
 import { CALENDAR_SIZE_MAP } from '../constants';
+import { useHandleOnKeyDown } from '../hooks';
 import { ChipChoiceCommonProps } from '../types';
-import { ChipChoiceCustom } from './ChipChoiceCustom';
+import { ChipChoiceBase } from './ChipChoiceBase';
 
 type Range = [Date, Date];
 
@@ -18,7 +21,7 @@ export type ChipChoiceDateRangeProps = ChipChoiceCommonProps & {
   /** Колбек смены значения */
   onChange?(value: Range): void;
   /** Колбек формирующий строковое представление выбранного значения. Принимает массив выбранных значений */
-  valueFormatter?(value?: Range): string;
+  valueRender?(value?: Range): ReactNode;
 };
 
 type DefaultRangeFormatterProps = {
@@ -39,41 +42,60 @@ export function ChipChoiceDateRange({
   value,
   defaultValue,
   onChange,
-  valueFormatter,
+  valueRender,
   ...rest
 }: ChipChoiceDateRangeProps) {
   const [selectedValue, setSelectedValue] = useUncontrolledProp<Range>(value, defaultValue, onChange);
 
   const { t } = useLocale('Chips');
 
-  const valueToRender = valueFormatter
-    ? valueFormatter(selectedValue)
+  const valueToRender = valueRender
+    ? valueRender(selectedValue)
     : defaultRangeFormatter({ value: selectedValue, allLabel: t('allLabel') });
 
   const clearValue = () => setSelectedValue(undefined);
 
+  const localRef = useRef<HTMLDivElement>(null);
+
+  const [open, setOpen] = useState<boolean>(false);
+
+  const closeDroplist = useCallback(() => {
+    setOpen(false);
+    setTimeout(() => localRef.current?.focus(), 0);
+  }, []);
+
+  const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
+
   return (
-    <ChipChoiceCustom
-      value={selectedValue}
-      valueToRender={valueToRender}
-      onClearButtonClick={clearValue}
-      size={size}
-      {...rest}
-    >
-      {({ closeDroplist }) => (
+    <Dropdown
+      content={
         <Calendar
           mode='range'
           size={CALENDAR_SIZE_MAP[size]}
           value={selectedValue}
-          onChangeValue={range => {
-            setSelectedValue(range);
+          onChangeValue={value => {
+            setSelectedValue(value);
             closeDroplist();
           }}
           // bug with focus
           // navigationStartRef={element => element?.focus()}
           onFocusLeave={closeDroplist}
         />
-      )}
-    </ChipChoiceCustom>
+      }
+      outsideClick
+      triggerRef={localRef}
+      open={open}
+      onOpenChange={setOpen}
+    >
+      <ChipChoiceBase
+        {...rest}
+        ref={localRef}
+        onClearButtonClick={clearValue}
+        value={selectedValue}
+        valueToRender={valueToRender}
+        size={size}
+        onKeyDown={handleOnKeyDown()}
+      />
+    </Dropdown>
   );
 }

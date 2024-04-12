@@ -1,19 +1,66 @@
 import { ArgTypes } from '@storybook/types';
 
 import { PlaceholderSVG } from '@snack-uikit/icons';
+import { Tag } from '@snack-uikit/tag';
 
 import { FilterOption } from '../../src';
 import { SIZE } from '../../src/constants';
 import { COMMON_ARG_TYPES } from '../constants';
 
-const icon = <PlaceholderSVG size={16} />;
+const icon = <PlaceholderSVG />;
 
 export const FILTER_OPTIONS: FilterOption[] = [
-  { icon, value: 'value1', label: 'Option 1', caption: 'one', tagLabel: '+1' },
-  { icon, value: 'value2', label: 'Option 2', caption: 'two', tagLabel: '+2' },
-  { icon, value: 'value3', label: 'Option 3', caption: 'three', tagLabel: '+3' },
-  { icon, value: 'value4', label: 'Option 4', caption: 'four', tagLabel: '+4' },
-  { icon, value: 'value5', label: 'Option 5', caption: 'five', tagLabel: '+5' },
+  {
+    beforeContent: icon,
+    value: 'value1',
+    label: 'Option 1',
+    afterContent: <Tag label='Tag' appearance='red' />,
+  },
+  {
+    label: 'Group Select',
+    type: 'group-select',
+    divider: true,
+    options: [
+      { beforeContent: icon, value: 'value2', label: 'Option 2', contentRenderProps: { caption: 'two' } },
+      { beforeContent: icon, value: 'value3', label: 'Option 3', contentRenderProps: { caption: 'three' } },
+    ],
+  },
+  {
+    type: 'group',
+    divider: true,
+    options: [],
+  },
+  {
+    type: 'next-list',
+    label: 'Next List Group',
+    options: [
+      { beforeContent: icon, value: 'value4', label: 'Option 4', contentRenderProps: { description: 'three' } },
+      { beforeContent: icon, value: 'value5', label: 'Option 5', contentRenderProps: { description: 'four' } },
+    ],
+  },
+  {
+    type: 'group',
+    divider: true,
+    options: [],
+  },
+  {
+    type: 'collapse',
+    label: 'Collapse Group',
+    options: [
+      { beforeContent: icon, value: 'value6', label: 'Option 6' },
+      { beforeContent: icon, value: 'value7', label: 'Option 7' },
+    ],
+  },
+  {
+    label: 'Group',
+    type: 'group',
+    divider: true,
+    mode: 'primary',
+    options: [
+      { beforeContent: icon, value: 'value8', label: 'Option 8' },
+      { beforeContent: icon, value: 'value9', label: 'Option 9' },
+    ],
+  },
 ];
 
 export const CHIP_CHOICE_STORY_ARGS = {
@@ -21,6 +68,7 @@ export const CHIP_CHOICE_STORY_ARGS = {
   size: SIZE.S,
   disabled: false,
   loading: false,
+  searchable: true,
   'data-test-id': 'chip-choice',
   tabIndex: undefined,
   className: undefined,

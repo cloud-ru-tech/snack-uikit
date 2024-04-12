@@ -5,26 +5,20 @@ import {
   ChipChoiceDateProps,
   ChipChoiceDateRange,
   ChipChoiceDateRangeProps,
-  ChipChoiceMulti,
-  ChipChoiceMultiProps,
+  ChipChoiceMultiple,
   ChipChoiceSingle,
-  ChipChoiceSingleProps,
+  CustomContentRenderProps,
 } from './components';
 
-export type { FilterOption } from './types';
-
-export type {
-  ChipChoiceCustomProps,
-  ChipChoiceMultiProps,
-  ChipChoiceSingleProps,
-  ChipChoiceDateProps,
-  ChipChoiceDateRangeProps,
-};
+export type { FilterOption, ChipChoiceMultipleProps, ChipChoiceSingleProps } from './types';
+export type { ChipChoiceCustomProps, ChipChoiceDateProps, ChipChoiceDateRangeProps, CustomContentRenderProps };
 
 export namespace ChipChoice {
   export const Custom = ChipChoiceCustom;
   export const Single = ChipChoiceSingle;
-  export const Multi = ChipChoiceMulti;
+  export const Multiple = ChipChoiceMultiple;
   export const Date = ChipChoiceDate;
   export const DateRange = ChipChoiceDateRange;
 }
+
+export { isAccordionOption, isBaseOption, isGroupOption, isGroupSelectOption, isNextListOption } from './utils';

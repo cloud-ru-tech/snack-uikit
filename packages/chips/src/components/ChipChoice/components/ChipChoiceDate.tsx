@@ -1,12 +1,15 @@
-import { useUncontrolledProp } from 'uncontrollable';
+import { ReactNode, useCallback, useRef, useState } from 'react';
 
 import { Calendar } from '@snack-uikit/calendar';
+import { Dropdown } from '@snack-uikit/dropdown';
 import { useLocale } from '@snack-uikit/locale';
+import { useValueControl } from '@snack-uikit/utils';
 
 import { SIZE } from '../../../constants';
 import { CALENDAR_SIZE_MAP } from '../constants';
+import { useHandleOnKeyDown } from '../hooks';
 import { ChipChoiceCommonProps } from '../types';
-import { ChipChoiceCustom } from './ChipChoiceCustom';
+import { ChipChoiceBase } from './ChipChoiceBase';
 
 export type ChipChoiceDateProps = ChipChoiceCommonProps & {
   /** Значение компонента */
@@ -16,7 +19,7 @@ export type ChipChoiceDateProps = ChipChoiceCommonProps & {
   /** Колбек смены значения */
   onChange?(value: Date): void;
   /** Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение */
-  valueFormatter?(value?: Date): string;
+  valueRender?(value?: Date): ReactNode;
 };
 
 export function ChipChoiceDate({
@@ -24,28 +27,32 @@ export function ChipChoiceDate({
   value,
   defaultValue,
   onChange,
-  valueFormatter,
+  valueRender,
   ...rest
 }: ChipChoiceDateProps) {
-  const [selectedValue, setSelectedValue] = useUncontrolledProp<Date>(value, defaultValue, onChange);
+  const [selectedValue, setSelectedValue] = useValueControl<Date>({ value, defaultValue, onChange });
+
+  const localRef = useRef<HTMLDivElement>(null);
+
+  const [open, setOpen] = useState<boolean>(false);
+  const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
+
+  const closeDroplist = useCallback(() => {
+    setOpen(false);
+    setTimeout(() => localRef.current?.focus(), 0);
+  }, []);
 
   const { t } = useLocale('Chips');
 
-  const valueToRender = valueFormatter
-    ? valueFormatter(selectedValue)
+  const valueToRender = valueRender
+    ? valueRender(selectedValue)
     : (selectedValue && new Date(selectedValue).toLocaleDateString()) || t('allLabel');
 
   const clearValue = () => setSelectedValue(undefined);
 
   return (
-    <ChipChoiceCustom
-      onClearButtonClick={clearValue}
-      value={selectedValue}
-      valueToRender={valueToRender}
-      size={size}
-      {...rest}
-    >
-      {({ closeDroplist }) => (
+    <Dropdown
+      content={
         <Calendar
           mode='date'
           size={CALENDAR_SIZE_MAP[size]}
@@ -57,7 +64,21 @@ export function ChipChoiceDate({
           navigationStartRef={element => element?.focus()}
           onFocusLeave={closeDroplist}
         />
-      )}
-    </ChipChoiceCustom>
+      }
+      outsideClick
+      triggerRef={localRef}
+      open={open}
+      onOpenChange={setOpen}
+    >
+      <ChipChoiceBase
+        {...rest}
+        ref={localRef}
+        onClearButtonClick={clearValue}
+        value={selectedValue}
+        valueToRender={valueToRender}
+        size={size}
+        onKeyDown={handleOnKeyDown()}
+      />
+    </Dropdown>
   );
 }

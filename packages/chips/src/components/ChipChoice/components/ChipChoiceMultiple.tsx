@@ -1,28 +1,38 @@
+import cn from 'classnames';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { Droplist, SelectionSingleValueType } from '@snack-uikit/list';
-import { ItemId } from '@snack-uikit/list/dist/components/Items';
 import { useLocale } from '@snack-uikit/locale';
 import { useValueControl } from '@snack-uikit/utils';
 
-import { CHIP_CHOICE_TEST_IDS, SIZE } from '../../../constants';
+import { SIZE } from '../../../constants';
 import { DROPLIST_SIZE_MAP } from '../constants';
 import { useFuzzySearch, useHandleOnKeyDown } from '../hooks';
-import { ChipChoiceSingleProps, ContentRenderProps } from '../types';
+import styles from '../styles.module.scss';
+import { ChipChoiceMultipleProps, ContentRenderProps } from '../types';
 import { FlattenOption, kindFlattenOptions } from '../utils';
 import { transformOptionsToItems } from '../utils/options';
 import { ChipChoiceBase } from './ChipChoiceBase';
 
-export type ChipChoiceSingleValueFormatterProps = {
-  label?: ItemId;
-  allLabel?: string;
+export type ChipChoiceMultipleValueFormatterProps<T extends ContentRenderProps = ContentRenderProps> = {
+  value: FlattenOption<T>[];
+  total: number;
+  allLabel: string;
 };
 
-export function defaultSingleValueFormatter({ label, allLabel }: ChipChoiceSingleValueFormatterProps) {
-  return label ?? allLabel;
-}
+const defaultMultiValueLabelFormatter = ({ value, total, allLabel }: ChipChoiceMultipleValueFormatterProps): ItemId => {
+  if (value.length === 0 || value.length === total) {
+    return allLabel;
+  }
 
-export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderProps>({
+  if (value.length === 1) {
+    return value[0].label;
+  }
+
+  return `${value.length.toString()}/${total}`;
+};
+
+export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderProps>({
   value: valueProp,
   defaultValue,
   options,
@@ -32,10 +42,9 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
   label,
   searchable,
   contentRender,
-  dropDownClassName,
   ...rest
-}: ChipChoiceSingleProps<T>) {
-  const [value, setValue] = useValueControl<SelectionSingleValueType>({
+}: ChipChoiceMultipleProps<T>) {
+  const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
     value: valueProp,
     defaultValue,
     onChange: onChangeProp,
@@ -47,6 +56,8 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
     return flattenOptions;
   }, [options]);
 
+  const [searchValue = '', setSearchValue] = useState<string>('');
+
   const { t } = useLocale('Chips');
 
   const [open, setOpen] = useState<boolean>(false);
@@ -54,16 +65,18 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
 
   const flatMapOptions = useMemo(() => Object.values(flattenOptions), [flattenOptions]);
 
-  const selectedOption = useMemo(
-    () => (value ? flattenOptions[value] : ({} as FlattenOption<T>)),
+  const selectedOptions = useMemo(
+    () => (value && value.length ? value.map(id => flattenOptions[id]) : ([] as FlattenOption<T>[])),
     [flattenOptions, value],
   );
 
-  const [searchValue, setSearchValue] = useState<string>('');
-
   const valueToRender = valueRender
-    ? valueRender(selectedOption)
-    : defaultSingleValueFormatter({ label: selectedOption?.label, allLabel: t('allLabel') });
+    ? valueRender(selectedOptions)
+    : defaultMultiValueLabelFormatter({
+        value: selectedOptions ?? [],
+        total: Object.keys(flattenOptions).length,
+        allLabel: t('allLabel'),
+      });
 
   const fuzzySearch = useFuzzySearch(options, flatMapOptions);
 
@@ -73,20 +86,17 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
   );
   const items = useMemo(() => transformOptionsToItems<T>(result, contentRender), [contentRender, result]);
 
-  const clearValue = () => setValue(undefined);
+  const clearValue = () => setValue([]);
   const chipRef = useRef<HTMLDivElement>(null);
 
   const handleSelectionChange = useCallback(
     (newValue?: SelectionSingleValueType) => {
       if (newValue !== undefined) {
-        chipRef.current?.focus();
-
-        setOpen(false);
         setValue(newValue);
         setSearchValue('');
       }
     },
-    [setSearchValue, setValue],
+    [setValue],
   );
 
   useEffect(() => {
@@ -102,14 +112,12 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
       selection={{
         value,
         onChange: handleSelectionChange,
-        mode: 'single',
+        mode: 'multiple',
       }}
-      data-test-id={CHIP_CHOICE_TEST_IDS.droplist}
-      size={DROPLIST_SIZE_MAP[size]}
-      trigger='click'
+      trigger='clickAndFocusVisible'
       placement='bottom-start'
-      className={dropDownClassName}
       widthStrategy='gte'
+      size={DROPLIST_SIZE_MAP[size]}
       open={open}
       triggerElemRef={chipRef}
       onOpenChange={open => {
@@ -119,6 +127,8 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
         setOpen(open);
       }}
       scroll
+      triggerClassName={styles.triggerClassName}
+      className={cn(styles.triggerClassName, styles.wrapper)}
       search={
         searchable
           ? {

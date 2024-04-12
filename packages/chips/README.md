@@ -89,137 +89,55 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| onClick* | `MouseEventHandler<HTMLButtonElement>` | - | Колбек обработки клика |
-| label* | `string` | - | Лейбл |
-| disabled | `boolean` | - | Деактивирован ли компонент |
-| loading | `boolean` | - | Состояние загрузки |
-| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
-| className | `string` | - | CSS-класс |
-| tabIndex | `number` | - | HTML tab index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 ## ChipToggle
 Чип с состоянием выбран/не выбран
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| onChange* | `(checked: boolean, e: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
-| checked* | `boolean` | - | Отмечен ли компонент |
-| label* | `string` | - | Лейбл |
-| disabled | `boolean` | - | Деактивирован ли компонент |
-| loading | `boolean` | - | Состояние загрузки |
-| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
-| className | `string` | - | CSS-класс |
-| tabIndex | `number` | - | HTML tab index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 ## ChipChoice.Custom
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| label | `string` | - | Лейбл |
-| disabled | `boolean` | - | Деактивирован ли компонент |
-| loading | `boolean` | - | Состояние загрузки |
-| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
-| className | `string` | - | CSS-класс |
-| tabIndex | `number` | - | HTML tab index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
-| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
-| valueToRender | `ReactNode` | - | Отображаемое значение |
-| value | `string \| Date \| string[] \| [Date, Date]` | - | Фактическое значение. Используется для отображения кнопки очистки, если свойство <strong>showClearButton=true</strong> |
-| onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
-| children | `ReactNode \| ((props: { handleDroplistItemKeyDown: (e: KeyboardEvent<Element>, cb?: KeyboardEventHandler) => void; closeDroplist(): void; }) => ReactNode)` | - | Контент выпадающего меню <br> <br> Принимает <strong>ReactNode</strong> <br> Или функцию с аргументами: <br> <strong>handleDroplistItemKeyDown</strong>: Обработчик нажатия клавиши на элемент выпадающего меню <br> <strong>closeDroplist</strong>: Метод для закрытия выпадающего меню |
 ## ChipChoice.Single
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| options* | `FilterOption[]` | - | Массив опций |
-| label | `string` | - | Лейбл |
-| disabled | `boolean` | - | Деактивирован ли компонент |
-| loading | `boolean` | - | Состояние загрузки |
-| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
-| className | `string` | - | CSS-класс |
-| tabIndex | `number` | - | HTML tab index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
-| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
-| value | `string` | - | Значение компонента |
-| defaultValue | `string` | - | Значение компонента по умолчанию |
-| onChange | `(value: string) => void` | - | Колбек смены значения |
-| valueFormatter | `(option?: FilterOption) => string` | - | Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение. По умолчанию для отображения используется FilterOption.label |
-## ChipChoice.Multi
+## ChipChoice.Multiple
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| options* | `FilterOption[]` | - | Массив опций |
-| label | `string` | - | Лейбл |
-| disabled | `boolean` | - | Деактивирован ли компонент |
-| loading | `boolean` | - | Состояние загрузки |
-| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
-| className | `string` | - | CSS-класс |
-| tabIndex | `number` | - | HTML tab index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
-| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
-| value | `string[]` | - | Значение компонента |
-| defaultValue | `string[]` | - | Значение компонента по умолчанию |
-| onChange | `(value: string[]) => void` | - | Колбек смены значения |
-| valueFormatter | `(options: FilterOption[]) => string` | - | Колбек формирующий строковое представление выбранного значения. Принимает массив выбранных значений. По умолчанию для отображения используется кол-во выбранных значений. |
 ## ChipChoice.Date
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| label | `string` | - | Лейбл |
-| disabled | `boolean` | - | Деактивирован ли компонент |
-| loading | `boolean` | - | Состояние загрузки |
-| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
-| className | `string` | - | CSS-класс |
-| tabIndex | `number` | - | HTML tab index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
-| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
-| value | `Date` | - | Значение компонента |
-| defaultValue | `Date` | - | Значение компонента по-умолчанию |
-| onChange | `(value: Date) => void` | - | Колбек смены значения |
-| valueFormatter | `(value?: Date) => string` | - | Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение |
 ## ChipChoice.DateRange
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| label | `string` | - | Лейбл |
-| disabled | `boolean` | - | Деактивирован ли компонент |
-| loading | `boolean` | - | Состояние загрузки |
-| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
-| className | `string` | - | CSS-класс |
-| tabIndex | `number` | - | HTML tab index |
-| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
-| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
-| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
-| value | `Range` | - | Значение компонента |
-| defaultValue | `Range` | - | Значение компонента по умолчанию |
-| onChange | `(value: Range) => void` | - | Колбек смены значения |
-| valueFormatter | `(value?: Range) => string` | - | Колбек формирующий строковое представление выбранного значения. Принимает массив выбранных значений |
+## isAccordionOption
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+## isBaseOption
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+## isGroupOption
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+## isGroupSelectOption
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+## isNextListOption
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
 ## ChipChoiceRow
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| filters* | `OmitBetter<ChipChoiceProps, "size" \| "onChange" \| "value" \| "defaultValue">[]` | - | Массив чипов |
-| value | `FiltersState` | - | Состояние фильтров |
-| defaultValue | `Partial<TState>` | - | Начальное состояние фильтров |
-| onChange | `(filters: TState) => void` | - | Колбек изменения состояния фильтров |
-| size | enum ChipChoiceRowSize: `"xs"`, `"s"`, `"m"` | s | Размер |
-| className | `string` | - | CSS-класс |
-| showClearAllButton | `boolean` | true | Скрыть/показать кнопку очиски |
-| clearAllButtonLabel | `string` | 'Clear all' | Текст кнопки очистки |
 
 
 [//]: DOCUMENTATION_SECTION_END
