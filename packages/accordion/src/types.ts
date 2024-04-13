@@ -20,6 +20,8 @@ export type CollapseBlockSecondaryProps = WithSupportProps<{
 export type CollapseBlockPrimaryProps = CollapseBlockSecondaryProps & {
   /** Внешний бордер  */
   outline?: boolean;
+  /** Форма: круглая или квадратная */
+  shape?: 'round' | 'square';
 };
 
 export type CollapseBlockProps = CollapseBlockPrimaryProps | CollapseBlockSecondaryProps;

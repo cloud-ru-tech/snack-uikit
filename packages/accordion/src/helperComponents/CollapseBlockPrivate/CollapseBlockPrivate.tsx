@@ -11,14 +11,24 @@ export type CollapseBlockPrivateProps = WithSupportProps<{
   header: ReactNode;
   expanded: boolean;
   className?: string;
+  shape?: 'round' | 'square';
 }>;
 
-export function CollapseBlockPrivate({ children, expanded, className, header, ...rest }: CollapseBlockPrivateProps) {
+export function CollapseBlockPrivate({
+  children,
+  expanded,
+  className,
+  header,
+  shape,
+  ...rest
+}: CollapseBlockPrivateProps) {
   return (
     <div
       className={cn(styles.accordion, className)}
       // eslint-disable-next-line jsx-a11y/aria-role
       role='accordion'
+      data-shape={shape}
+      // data-outline={outline || undefined}
       aria-expanded={expanded}
       {...extractSupportProps(rest)}
     >

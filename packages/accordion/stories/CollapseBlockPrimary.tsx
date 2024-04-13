@@ -31,7 +31,7 @@ type StoryProps = CollapseBlockPrimaryProps & {
   metadata?: string;
 } & CollapseBlockHeaderProps;
 
-const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, outline, ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, shape, outline, ...args }: StoryProps) => {
   const [expanded, setExpanded] = useState<string>();
 
   useEffect(() => {
@@ -68,6 +68,7 @@ const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, outline,
           actions={actions}
           data-test-id={args['data-test-id']}
           outline={outline}
+          shape={shape}
           header={customHeader ? <CustomHeader {...args} /> : <AccordionPrimary.CollapseBlockHeader {...args} />}
         >
           <Content />
@@ -79,7 +80,7 @@ const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, outline,
 
 export const collapseBlockPrimary: StoryObj<StoryProps> = Template.bind({});
 
-collapseBlockPrimary.args = { ...COLLAPSE_BLOCK_STORY_SETTINGS.args, outline: false };
+collapseBlockPrimary.args = { ...COLLAPSE_BLOCK_STORY_SETTINGS.args, outline: false, shape: 'round' };
 
 collapseBlockPrimary.argTypes = COLLAPSE_BLOCK_STORY_SETTINGS.argTypes as Partial<ArgTypes<StoryProps>>;
 

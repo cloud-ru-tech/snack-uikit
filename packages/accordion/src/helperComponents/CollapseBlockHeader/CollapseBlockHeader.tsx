@@ -22,7 +22,7 @@ export function CollapseBlockHeader({ title, description, tip }: CollapseBlockHe
           <TruncateString text={title} maxLines={1} />
         </Typography.SansTitleM>
 
-        {tip && <QuestionTooltip size='s' tip={tip} triggerDataTestId={TEST_IDS.tooltip} />}
+        {tip && <QuestionTooltip size='s' tip={tip} triggerDataTestId={TEST_IDS.tooltip} tabIndex={-1} />}
       </div>
 
       {description && (

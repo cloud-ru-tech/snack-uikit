@@ -14,6 +14,7 @@ export function CollapseBlockPrimary({
   actions,
   className,
   outline,
+  shape = 'round',
   ...rest
 }: CollapseBlockPrimaryProps) {
   const { isChecked: isExpanded, handleClick: handleExpandedChange } = useToggleGroup({ value: id });
@@ -25,6 +26,7 @@ export function CollapseBlockPrimary({
         { [styles.container]: !outline, [styles.containerOutline]: outline },
         className,
       )}
+      shape={shape}
       header={
         <CollapseBlockHeaderContainer expanded={isExpanded} toggleExpanded={handleExpandedChange} actions={actions}>
           {header}

@@ -8,6 +8,14 @@
   &:hover {
     background-color: $sys-neutral-background2-level;
   }
+
+  &[data-shape='round'] {
+    @include composite-var($collapse-block, 'container', 'shape-round');
+  }
+
+  &[data-shape='square'] {
+    @include composite-var($collapse-block, 'container', 'shape-square');
+  }
 }
 
 .container {
@@ -20,12 +28,13 @@
 }
 
 .containerOutline {
-  @include composite-var($collapse-block-container-primary-outline);
+  @include composite-var($collapse-block-container-primary);
 
   border-width: 0;
   outline-color: $sys-neutral-decor-default;
   outline-style: solid;
   outline-width: $border-width-accordion-collapse-block-primary;
+
   &:focus-within,
   &:hover {
     outline-color: $sys-neutral-decor-hovered;
