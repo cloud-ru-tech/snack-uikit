@@ -66,7 +66,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   const flatMapOptions = useMemo(() => Object.values(flattenOptions), [flattenOptions]);
 
   const selectedOptions = useMemo(
-    () => (value && value.length ? value.map(id => flattenOptions[id]) : ([] as FlattenOption<T>[])),
+    () => (value && value.length ? value.map(id => flattenOptions[id]).filter(Boolean) : ([] as FlattenOption<T>[])),
     [flattenOptions, value],
   );
 
