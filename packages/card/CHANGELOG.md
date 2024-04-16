@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.3 (2024-04-16)
+
+
+### Bug Fixes
+
+* **FF-4652:** make action item style more specific (to solve style order issue) ([28b7629](https://github.com/cloud-ru-tech/snack-uikit/commit/28b76292d57adf691d231548e65dfbdf8770fbbb))
+
+
+
+
+
 ## 0.12.2 (2024-04-10)
 
 
