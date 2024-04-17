@@ -17,7 +17,7 @@ export type RowActionInfo<TData> = {
   itemId?: string;
 };
 
-export type RowActionProps<TData> = Pick<BaseItemProps, 'content' | 'disabled'> & {
+export type RowActionProps<TData> = Pick<BaseItemProps, 'content' | 'disabled' | 'data-test-id'> & {
   icon?: ReactElement;
   tagLabel?: string;
   id?: string;
@@ -70,7 +70,7 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
               content: item.content,
               beforeContent: item.icon,
               afterContent: item.tagLabel ? <Tag label={item.tagLabel} /> : undefined,
-              'data-test-id': TEST_IDS.rowActions.option,
+              'data-test-id': item['data-test-id'] || TEST_IDS.rowActions.option,
             }))}
         >
           <span className={styles.rowActionsCellTrigger}>

@@ -207,6 +207,7 @@ const Template: StoryFn<StoryProps> = ({
               id: 'action-1',
               content: { option: 'action 1' },
               onClick: handleRowActionClick,
+              'data-test-id': 'test-custom',
             },
             {
               id: 'action-2',
