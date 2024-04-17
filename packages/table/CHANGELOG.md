@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.16.0 (2024-04-17)
+
+
+### Features
+
+* **PDS-134:** add data-test-id prop to rowActions item ([c5d5bb2](https://github.com/cloud-ru-tech/snack-uikit/commit/c5d5bb2747ace1bb016cf7b468aab307ce68f888))
+
+
+
+
+
 ## 0.15.1 (2024-04-08)
 
 ### Only dependencies have been changed
