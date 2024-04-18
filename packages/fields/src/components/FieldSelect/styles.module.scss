@@ -18,8 +18,12 @@ $base-min-width: 4px;
 }
 
 .contentWrapper {
+  position: relative;
+
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
+
   width: 100%;
 }
 
@@ -59,9 +63,7 @@ $base-min-width: 4px;
           $button-width: simple-var($icons-sizes, $size);
           $postfix-width: calc(var(#{$space-fields-postfix-gap}) + $button-width * 2);
           $margin-right: calc(
-            #{simple-var($fields, $containerVariant, $size, 'padding-right')} +
-              #{simple-var($fields, $containerVariant, $size, 'gap')} +
-              #{$postfix-width}
+            #{simple-var($fields, $containerVariant, $size, 'padding-right')} + #{simple-var($fields, $containerVariant, $size, 'gap')} + #{$postfix-width}
           );
 
           width: calc(100% - $margin-right);
