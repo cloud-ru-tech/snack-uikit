@@ -70,6 +70,7 @@ function TagRowTruncatedInner({
 
     let currentRowWidth = 0;
     let currentRowCount = 1;
+    let currentRowVisibleTagAmount = 0;
 
     tagsMapRef.current.forEach((tagElement, tagRowItem) => {
       const tagWidth = tagElement?.offsetWidth || 0;
@@ -83,22 +84,26 @@ function TagRowTruncatedInner({
       if (currentRowCount === rowLimit) {
         if (sumRowWidth + moreButtonWidth > maxWidth) {
           currentRowCount++;
+          currentRowVisibleTagAmount = 0;
           newHiddenTags.push(tagRowItem);
           return;
         }
 
         currentRowWidth = sumRowWidth;
         newVisibleTags.push(tagRowItem);
+        currentRowVisibleTagAmount++;
         return;
       }
 
       if (sumRowWidth > maxWidth) {
-        currentRowWidth = tagWidth + gapWidth;
+        currentRowWidth = currentRowVisibleTagAmount ? tagWidth + gapWidth : 0;
         currentRowCount++;
+        currentRowVisibleTagAmount = 0;
         newVisibleTags.push(tagRowItem);
         return;
       }
 
+      currentRowVisibleTagAmount++;
       currentRowWidth = sumRowWidth;
       newVisibleTags.push(tagRowItem);
     });

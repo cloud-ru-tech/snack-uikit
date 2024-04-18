@@ -94,6 +94,7 @@ $appearances: (
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
+  max-width: 100%;
 
   .tagButton {
     cursor: pointer;
@@ -146,7 +147,10 @@ $appearances: (
       background-color: simple-var($appearance, 'container');
 
       .label {
+        overflow: hidden;
         color: simple-var($appearance, 'label');
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .tagButton {

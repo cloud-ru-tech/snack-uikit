@@ -3,6 +3,7 @@ import { Ref } from 'react';
 import { Tag } from '../../components';
 import { SIZE } from '../../constants';
 import { Size, TagRowItemInner } from '../../types';
+import styles from './styles.module.scss';
 
 type SetTagRef = (item: TagRowItemInner, index: number) => Ref<HTMLDivElement>;
 
@@ -18,7 +19,7 @@ type OnDeleteHandler = () => void;
 function renderTag(size: Size, handleRemoveItem?: (item: TagRowItemInner) => OnDeleteHandler, setRef?: SetTagRef) {
   return function TagRowItem(item: TagRowItemInner, index: number) {
     return (
-      <div key={item.label} ref={setRef?.(item, index)}>
+      <div key={item.label} ref={setRef?.(item, index)} className={styles.tagWrapper}>
         <Tag label={item.label} appearance={item.appearance} size={size} onDelete={handleRemoveItem?.(item)} />
       </div>
     );

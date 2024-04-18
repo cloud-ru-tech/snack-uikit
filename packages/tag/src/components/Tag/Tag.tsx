@@ -41,7 +41,9 @@ export function Tag({
       data-appearance={appearance}
       data-removable={Boolean(onDelete)}
     >
-      <span className={styles.label}>{label}</span>
+      <span title={label} className={styles.label}>
+        {label}
+      </span>
       {onDelete && (
         <button
           type='button'
