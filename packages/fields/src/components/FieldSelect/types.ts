@@ -4,8 +4,8 @@ import { InputPrivateProps } from '@snack-uikit/input-private';
 import {
   AccordionItemProps,
   BaseItemProps,
+  DroplistProps,
   GroupItemProps,
-  ListProps,
   NextListItemProps,
   SelectionMultipleState,
   SelectionSingleState,
@@ -82,7 +82,9 @@ type FiledSelectCommonProps = WithSupportProps<{
   /** Иконка-префикс для поля */
   prefixIcon?: ReactElement;
 
-  footer?: ListProps['footer'];
+  footer?: DroplistProps['footer'];
+
+  widthStrategy?: DroplistProps['widthStrategy'];
 
   search?: SearchState;
 
@@ -97,7 +99,7 @@ type FiledSelectCommonProps = WithSupportProps<{
   selectedOptionFormatter?: SelectedOptionFormatter;
 }> &
   Pick<
-    ListProps,
+    DroplistProps,
     'dataError' | 'noDataState' | 'noResultsState' | 'errorDataState' | 'pinTop' | 'pinBottom' | 'dataFiltered'
   >;
 

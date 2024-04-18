@@ -340,19 +340,20 @@ const [isOpen, setIsOpen] = useState(false);
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
 | footer | `ReactNode` | - |  |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | - |  |
 | search | `SearchState` | - |  |
 | autocomplete | `boolean` | - |  |
 | addOptionByEnter | `boolean` | - |  |
 | open | `boolean` | - |  |
 | onOpenChange | `(open: boolean) => void` | - |  |
 | selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
+| pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
+| pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
+| dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
-| pinTop | `ItemProps[]` | - | Элементы списка, закрепленные сверху |
-| pinBottom | `ItemProps[]` | - | Элементы списка, закрепленные снизу |
-| dataFiltered | `boolean` | - |  |
 | selection | "single" \| "multiple" | - |  |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
