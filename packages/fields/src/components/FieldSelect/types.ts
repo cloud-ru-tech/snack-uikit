@@ -59,7 +59,6 @@ export type SearchState = {
   value?: string;
   defaultValue?: string;
   onChange?(value: string): void;
-  selectedOptionFormatter: SelectedOptionFormatter;
 };
 
 export type FieldSelectPrivateProps = InputProps & WrapperProps & { options: OptionProps[]; loading?: boolean };

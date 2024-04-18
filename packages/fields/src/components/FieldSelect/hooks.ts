@@ -10,7 +10,7 @@ import {
 } from '@snack-uikit/list';
 
 import { useCopyButton, useValueControl } from '../../hooks';
-import { ItemWithId, SearchState } from './types';
+import { ItemWithId, SearchState, SelectedOptionFormatter } from './types';
 import { isBaseOptionProps } from './utils';
 
 type UseHandleOnKeyDownProps = {
@@ -98,7 +98,12 @@ export function useButtons({
   return { buttons, inputKeyDownNavigationHandler, buttonsRefs };
 }
 
-export function useSearchInput({ value, onChange, defaultValue, selectedOptionFormatter }: SearchState) {
+export function useSearchInput({
+  value,
+  onChange,
+  defaultValue,
+  selectedOptionFormatter,
+}: SearchState & { selectedOptionFormatter: SelectedOptionFormatter }) {
   const [inputValue = '', setInputValue] = useValueControl<string>({ value, onChange, defaultValue });
 
   const prevInputValue = useRef<string>(inputValue);
