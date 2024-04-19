@@ -35,6 +35,8 @@ $sizes: 's', 'm', 'l';
   z-index: 0;
 
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   box-sizing: border-box;
   margin: 0;
@@ -82,6 +84,24 @@ $sizes: 's', 'm', 'l';
   &:focus-within {
     .functionBadgeWrapper {
       display: block;
+    }
+  }
+
+  &[data-disabled] {
+    @include outline-var($container-focused-s);
+
+    cursor: not-allowed;
+    background-color: $sys-neutral-background;
+    outline-color: $sys-neutral-decor-default;
+    outline-width: $border-width-card-container;
+
+    .check {
+      color: $sys-neutral-on-accent;
+      background-color: $sys-neutral-text-disabled;
+    }
+
+    * {
+      cursor: not-allowed;
     }
   }
 
@@ -148,24 +168,6 @@ $sizes: 's', 'm', 'l';
       box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
     }
   }
-
-  &[data-disabled] {
-    @include outline-var($container-focused-s);
-
-    cursor: not-allowed;
-    background-color: $sys-neutral-background;
-    outline-color: $sys-neutral-decor-default;
-    outline-width: $border-width-card-container;
-
-    .check { /* stylelint-disable-line no-descending-specificity */
-      color: $sys-neutral-on-accent;
-      background-color: $sys-neutral-text-disabled;
-    }
-
-    * {
-      cursor: not-allowed;
-    }
-  }
 }
 
 .anchor {
@@ -181,7 +183,11 @@ $sizes: 's', 'm', 'l';
 
 .body {
   display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+
   width: 100%;
+
   color: $sys-neutral-text-support;
   text-align: initial;
 }
@@ -196,6 +202,7 @@ $sizes: 's', 'm', 'l';
 
   box-sizing: border-box;
   max-width: 100%;
+  height: 100%;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
