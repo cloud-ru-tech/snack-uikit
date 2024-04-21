@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { Droplist, SelectionSingleValueType } from '@snack-uikit/list';
-import { ItemId } from '@snack-uikit/list/dist/components/Items';
+import { Droplist, ItemId, SelectionSingleValueType } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 import { useValueControl } from '@snack-uikit/utils';
 

@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { Droplist, SelectionSingleValueType } from '@snack-uikit/list';
+import { Droplist, ItemId, SelectionSingleValueType } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 import { useValueControl } from '@snack-uikit/utils';
 
@@ -143,6 +143,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
         ref={chipRef}
         onClearButtonClick={clearValue}
         value={value}
+        showClearButton={!value || (Array.isArray(value) && value.length === 0)}
         valueToRender={valueToRender}
         label={label}
         loading={rest.loading}

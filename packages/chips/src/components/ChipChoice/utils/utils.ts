@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { ItemId } from '@snack-uikit/list/dist/components/Items';
+import { ItemId } from '@snack-uikit/list';
 
 import { ContentRenderProps, FilterOption } from '../types';
 import { isBaseOption } from './typeGuards';

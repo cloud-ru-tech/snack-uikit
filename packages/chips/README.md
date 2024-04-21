@@ -1,6 +1,7 @@
 # Chips
 
 ## Installation
+
 `npm i @snack-uikit/chips`
 
 [Changelog](./CHANGELOG.md)
@@ -141,4 +142,3 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 
 
 [//]: DOCUMENTATION_SECTION_END
-

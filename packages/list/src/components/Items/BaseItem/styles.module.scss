@@ -59,7 +59,6 @@ $sizes: 's', 'm', 'l';
     height: 100%;
   }
 }
-
 .droplistItem {
   width: 100%;
 
@@ -68,14 +67,19 @@ $sizes: 's', 'm', 'l';
       padding-left: calc(
         var(--level, 0) * $dimension-050m + simple-var($drop-list, 'item', $size, 'container', 'padding-left')
       );
+
+      .headline {
+        @include composite-var($drop-list, 'item', $size, 'headline');
+      }
     }
   }
 
   &[data-non-pointer] {
     cursor: inherit;
   }
+}
 
-  &[aria-disabled],
+.innerWrapper {
   &[data-disabled] {
     .expandableIcon {
       color: $sys-neutral-text-disabled;
@@ -84,17 +88,22 @@ $sizes: 's', 'm', 'l';
     .beforeContent {
       opacity: $opacity-a064;
     }
+
+    .droplistItem {
+      cursor: not-allowed;
+    }
   }
 
   &[data-has-checked],
   &[data-checked] {
     &[data-variant='single'] {
-      &::after {
+      &::before {
         opacity: $opacity-a008;
         background-color: $sys-primary-accent-default;
       }
+
       &:hover {
-        &::after {
+        &::before {
           opacity: $opacity-a016;
           background-color: $sys-primary-accent-default;
         }
@@ -105,19 +114,13 @@ $sizes: 's', 'm', 'l';
       background-color: $sys-primary-accent-default;
     }
 
-    &:focus-visible {
+    .droplistItem:focus-visible {
       &[data-variant='single'] {
         outline-color: $sys-primary-accent-default;
       }
     }
 
     &[data-disabled] {
-      &[data-variant='single'] {
-        &::before {
-          display: none;
-        }
-      }
-
       .markerContainer:before {
         background-color: $sys-neutral-text-disabled;
       }
@@ -126,6 +129,7 @@ $sizes: 's', 'm', 'l';
 }
 
 .content {
+  overflow: hidden;
   flex-grow: 1;
   flex-shrink: 1;
   box-sizing: border-box;

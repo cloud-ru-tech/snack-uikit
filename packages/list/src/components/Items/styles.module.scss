@@ -3,6 +3,56 @@
 
 $sizes: 's', 'm', 'l';
 
+.itemWrapper {
+  position: relative;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+
+  &::before,
+  &::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: transparent;
+  }
+
+  &[data-disabled],
+  &:disabled {
+    cursor: not-allowed;
+    background-color: transparent;
+    outline: none;
+
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      cursor: not-allowed;
+      background-color: transparent;
+    }
+  }
+
+  &:not([data-inactive], [data-disabled]) {
+    &[data-open],
+    &[data-focused],
+    &:hover,
+    &:focus-visible {
+      &::before {
+        opacity: $opacity-a008;
+        background-color: $sys-neutral-accent-default;
+      }
+    }
+  }
+}
+
 .listItem {
   cursor: pointer;
 
@@ -32,46 +82,7 @@ $sizes: 's', 'm', 'l';
     }
   }
 
-  &::after {
-    pointer-events: none;
-    content: '';
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: transparent;
-  }
-  &[data-disabled],
-  &:disabled {
-    cursor: not-allowed;
-    background-color: transparent;
-    outline: none;
-
-    &::before {
-      display: none;
-    }
-
-    &::after {
-      cursor: not-allowed;
-      background-color: transparent;
-    }
-  }
-
   &:not([data-inactive], [data-disabled]) {
-    &[data-open],
-    &[data-focused],
-    &:hover,
-    &:focus-visible {
-      &::after {
-        opacity: $opacity-a008;
-        background-color: $sys-neutral-accent-default;
-      }
-    }
-
     &[data-focused],
     &:focus-visible {
       @include outline-inside-var($container-focused-s);
