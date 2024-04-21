@@ -12,5 +12,13 @@ export function extractDeleteActionProps({
 }
 
 export function isDeleteActionProps(props: Partial<ToolbarProps>): props is CheckedToolbarProps {
-  return 'checked' in props && props.checked !== undefined && 'onCheck' in props && props.onCheck !== undefined;
+  return (
+    ('onDelete' in props && props.onDelete !== undefined) ||
+    ('checked' in props &&
+      props.checked !== undefined &&
+      'onCheck' in props &&
+      props.onCheck !== undefined &&
+      'selectionMode' in props &&
+      props.selectionMode === 'multiple')
+  );
 }
