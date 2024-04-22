@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2024-04-22)
+
+
+### Features
+
+* **FF-4649:** long text tags handling ([4fa20e0](https://github.com/cloud-ru-tech/snack-uikit/commit/4fa20e00aaf57483d34ab7fdbca5f6b333025c7e))
+
+
+
+
+
 ## 0.8.2 (2024-03-26)
 
 ### Only dependencies have been changed

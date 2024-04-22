@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.6 (2024-04-22)
+
+
+### Bug Fixes
+
+* **FF-4649:** align card's footer to bottom ([7a49233](https://github.com/cloud-ru-tech/snack-uikit/commit/7a49233680334b2d5fe8a329e63fa6ded60b19ea))
+
+
+
+
+
 ## 0.12.5 (2024-04-22)
 
 ### Only dependencies have been changed

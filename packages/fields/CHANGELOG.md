@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.18.3 (2024-04-22)
+
+
+### Bug Fixes
+
+* **FF-4649:** container width of multiselect ([ca5702d](https://github.com/cloud-ru-tech/snack-uikit/commit/ca5702dbb4ae2574b5b312c926663cc67bbe694c))
+* **FF-4649:** pass props footer and widthStrategy for Droplist ([c4a78cb](https://github.com/cloud-ru-tech/snack-uikit/commit/c4a78cbaddd6b8e6718b7a10614e56b5d618332e))
+
+
+
+
+
 ## 0.18.2 (2024-04-22)
 
 ### Only dependencies have been changed
