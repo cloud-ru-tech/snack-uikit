@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-04-22)
+
+
+### Features
+
+* **PDS-65:** remove list wrapper padding ([c318c87](https://github.com/cloud-ru-tech/snack-uikit/commit/c318c87076d321c3a86849c753f2a68f32e22b77))
+
+
+
+
+
 # 0.10.0 (2024-04-08)
 
 
