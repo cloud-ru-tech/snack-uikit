@@ -1,5 +1,15 @@
 import mergeRefs from 'merge-refs';
-import { FocusEvent, forwardRef, KeyboardEvent, ReactElement, useEffect, useRef, useState } from 'react';
+import {
+  FocusEvent,
+  forwardRef,
+  KeyboardEvent,
+  ReactElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { InputPrivate, InputPrivateProps, SIZE } from '@snack-uikit/input-private';
 import { Slider, SliderProps as SliderComponentProps } from '@snack-uikit/slider';
@@ -9,7 +19,7 @@ import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
-import { generateAllowedValues, getClosestMark, getTextFieldValue } from './helpers';
+import { generateAllowedValues, getClosestMark, getTextFieldValue, isMarkObject } from './helpers';
 import styles from './styles.module.scss';
 import { TextInputFormatter } from './types';
 
@@ -81,6 +91,24 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
     },
     ref,
   ) => {
+    const getMarkValue = useCallback(
+      (key: keyof SliderProps['marks']) => {
+        const mark = marks[key];
+
+        if (isMarkObject(mark)) {
+          return mark.label;
+        }
+
+        return mark;
+      },
+      [marks],
+    );
+
+    const hasMarksEqualToValues = useMemo(
+      () => Object.keys(marks).every(key => key === getMarkValue(key)),
+      [getMarkValue, marks],
+    );
+
     const [value = getDefaultValue(range, min, max, valueProp), onChange] = useValueControl<number | number[]>({
       value: valueProp,
       defaultValue: getDefaultValue(range, min, max, valueProp),
@@ -93,54 +121,100 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
     const localRef = useRef<HTMLInputElement>(null);
 
     const onTextFieldChange = (textFieldValue: string) => {
-      const numValue = Number(textFieldValue);
-      if (Number.isNaN(numValue)) {
+      const numValue = parseInt(textFieldValue);
+
+      if (textFieldValue && Number.isNaN(numValue)) {
         return;
       }
 
       setTextFieldInputValue(textFieldValue);
     };
 
-    const handleTextValueChange = () => {
-      const textFieldNumValue = Number(textFieldInputValue);
-      if (Number.isNaN(textFieldNumValue)) {
+    const handleNonEqualMarksSliderChange = (textFieldNumValue: number) => {
+      const handleChange = (key: string | number) => {
+        setTextFieldInputValue(String(getMarkValue(key)));
+        onChange(Number(key));
+      };
+
+      const allowedValues = Object.keys(marks).map(key => ({
+        key,
+        value: parseInt(String(getMarkValue(key))),
+      }));
+      const suitableEntry = allowedValues.find(entry => entry.value === textFieldNumValue);
+
+      if (suitableEntry) {
+        handleChange(suitableEntry.key);
         return;
       }
 
+      const actualMin = parseInt(String(getMarkValue(min)));
+      const actualMax = parseInt(String(getMarkValue(max)));
+
+      if (textFieldNumValue < actualMin) {
+        handleChange(min);
+        return;
+      }
+
+      if (textFieldNumValue > actualMax) {
+        handleChange(max);
+        return;
+      }
+
+      const { mark } = getClosestMark(textFieldNumValue, allowedValues, mark => mark.value);
+      handleChange(mark.key);
+    };
+
+    const handleEqualMarksSliderChange = (textFieldNumValue: number) => {
+      const handleChange = (value: number) => {
+        setTextFieldInputValue(String(value));
+        onChange(value);
+      };
+
       if (textFieldNumValue < min) {
-        setTextFieldInputValue(String(min));
-        onChange(min);
+        handleChange(min);
         return;
       }
 
       if (textFieldNumValue > max) {
-        setTextFieldInputValue(String(max));
-        onChange(max);
+        handleChange(max);
         return;
       }
 
       if (step === null) {
         const allowedValues = Object.keys(marks).map(Number);
         if (allowedValues.includes(textFieldNumValue)) {
-          onChange(textFieldNumValue);
+          setTextFieldInputValue(String(textFieldNumValue));
+          handleChange(textFieldNumValue);
           return;
         }
 
-        const { mark } = getClosestMark(textFieldNumValue, allowedValues);
-        setTextFieldInputValue(String(mark));
-        onChange(mark);
+        const { mark } = getClosestMark(textFieldNumValue, allowedValues, mark => mark);
+        handleChange(mark);
         return;
       }
 
       const allowedValues = generateAllowedValues(min, max, step);
       if (allowedValues.includes(textFieldNumValue)) {
-        onChange(textFieldNumValue);
+        handleChange(textFieldNumValue);
         return;
       }
 
-      const { mark } = getClosestMark(textFieldNumValue, allowedValues);
-      setTextFieldInputValue(String(mark));
-      onChange(mark);
+      const { mark } = getClosestMark(textFieldNumValue, allowedValues, mark => mark);
+      handleChange(mark);
+    };
+
+    const handleTextValueChange = () => {
+      const textFieldNumValue = parseInt(textFieldInputValue);
+
+      if (Number.isNaN(textFieldNumValue)) {
+        return;
+      }
+
+      if (hasMarksEqualToValues) {
+        handleEqualMarksSliderChange(textFieldNumValue);
+      } else {
+        handleNonEqualMarksSliderChange(textFieldNumValue);
+      }
     };
 
     const onTextFieldBlur = (e: FocusEvent<HTMLInputElement, Element>) => {

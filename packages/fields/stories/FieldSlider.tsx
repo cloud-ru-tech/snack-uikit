@@ -20,7 +20,7 @@ type StoryProps = FieldSliderProps & {
   moveByMarks: boolean;
 };
 
-const NON_LINEAR_MARKS = { 10: '512mb', 20: '2gb', 30: '4gb', 50: '8gb' };
+const NON_LINEAR_MARKS = { 10: '1gb', 20: '2gb', 30: '4gb', 50: '16gb' };
 const LINEAR_MARKS = { 10: '10', 20: '20', 30: '30', 40: '40', 50: '50' };
 
 const STORY_MARKS = {

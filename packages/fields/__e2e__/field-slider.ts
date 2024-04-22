@@ -73,7 +73,7 @@ test.page(visit({ value: 20 }))('Should not accept letters', async t => {
   const wrapper = Selector(dataTestIdSelector(TEST_ID));
   const input = getInputInner(wrapper);
 
-  await t.click(input).pressKey('a');
+  await t.click(input).pressKey('a').pressKey('Enter');
 
   await t.expect(input.value).eql('20');
 });
@@ -221,7 +221,7 @@ test.page(visit({ value: 10, storyMarks: 'non-linear' }))('Should support non-li
   const input = getInputInner(wrapper);
   const sliderHandle = selectors.getSliderHandle(getSliderSingleModeHandle(wrapper));
 
-  await t.expect(input.value).eql('512mb');
+  await t.expect(input.value).eql('1gb');
   await t.expect(sliderHandle.value).eql('10');
 
   await t.drag(sliderHandle.handle, 50, 0);
@@ -233,8 +233,16 @@ test.page(visit({ value: 10, storyMarks: 'non-linear' }))('Should support non-li
   await t.expect(sliderHandle.value).eql('30');
 
   await t.drag(sliderHandle.handle, 200, 0);
-  await t.expect(input.value).eql('8gb');
+  await t.expect(input.value).eql('16gb');
   await t.expect(sliderHandle.value).eql('50');
+
+  await t.click(input).pressKey('ctrl+a').pressKey('4').pressKey('Enter');
+  await t.expect(input.value).eql('4gb');
+  await t.expect(sliderHandle.value).eql('30');
+
+  await t.click(input).pressKey('ctrl+a').pressKey('7').pressKey('Enter');
+  await t.expect(input.value).eql('4gb');
+  await t.expect(sliderHandle.value).eql('30');
 });
 
 test.page(visit({ value: [10, 30], step: 1, range: true, moveByMarks: false }))(
