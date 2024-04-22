@@ -37,7 +37,6 @@
 
   box-sizing: border-box;
   height: 100%;
-  padding: $dimension-025m;
 
   &:has(.listContainer:focus-visible) {
     @include outline-inside-var($container-focused-s);
