@@ -129,7 +129,6 @@ export function BaseItem({
       data-inactive={inactive || undefined}
       data-disabled={disabled || undefined}
       data-variant={mode || undefined}
-      data-test-id={props['data-test-id'] || 'list__base-item_' + id}
       data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
     >
       <li

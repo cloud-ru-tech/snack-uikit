@@ -18,7 +18,7 @@ import { isAccordionItem, isGroupItem, isGroupSelectItem, isNextListItem } from 
 
 export function useRenderItems(focusCloseChildIds?: ItemId[]) {
   const { focusFlattenItems, flattenItems } = useNewListContext();
-  const { isSelectionSingle } = useSelectionContext();
+  const { isSelectionMultiple } = useSelectionContext();
 
   return useMemo(() => {
     if (!focusCloseChildIds) {
@@ -32,7 +32,7 @@ export function useRenderItems(focusCloseChildIds?: ItemId[]) {
 
       if (
         isGroupItem(flattenItem) ||
-        (isSelectionSingle && isGroupSelectItem<FlattenGroupSelectListItem>(flattenItem))
+        (!isSelectionMultiple && isGroupSelectItem<FlattenGroupSelectListItem>(flattenItem))
       ) {
         return <GroupItem {...flattenItem} items={items} key={key} />;
       }
@@ -48,7 +48,7 @@ export function useRenderItems(focusCloseChildIds?: ItemId[]) {
 
       return <BaseItem {...flattenItem} itemRef={itemRef} key={key} />;
     });
-  }, [flattenItems, focusCloseChildIds, focusFlattenItems, isSelectionSingle]);
+  }, [flattenItems, focusCloseChildIds, focusFlattenItems, isSelectionMultiple]);
 }
 
 type UseCreateBaseItemsProps = {

@@ -3,7 +3,7 @@ import { KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from
 import { Dropdown } from '@snack-uikit/dropdown';
 import { ChevronRightSVG } from '@snack-uikit/icons';
 
-import { useCollapseContext, useFocusListContext, useNewListContext } from '../../Lists/contexts';
+import { useCollapseContext, useFocusListContext, useNewListContext, useSelectionContext } from '../../Lists/contexts';
 import { ListPrivate } from '../../Lists/ListPrivate';
 import { BaseItem } from '../BaseItem';
 import { useGroupItemSelection } from '../hooks';
@@ -27,6 +27,7 @@ export function NextListItem({
   ...option
 }: NextListItemProps) {
   const { flattenItems, focusFlattenItems } = useNewListContext();
+  const { isSelectionMultiple } = useSelectionContext();
   const { openCollapseItems = [] } = useCollapseContext();
 
   const item = flattenItems[id];
@@ -36,10 +37,11 @@ export function NextListItem({
       focusCloseChildIds: items,
       focusFlattenItems,
       openCollapseItems,
+      isSelectionMultiple,
     });
 
     return { ids, expandedIds: expandedIds.concat([id]) };
-  }, [focusFlattenItems, id, items, openCollapseItems]);
+  }, [focusFlattenItems, id, isSelectionMultiple, items, openCollapseItems]);
 
   const { handleListKeyDownFactory, activeItemId, forceUpdateActiveItemId } = useFocusListContext();
 

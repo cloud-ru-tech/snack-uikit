@@ -160,6 +160,7 @@ type ExtractActiveItemsProps = {
   focusFlattenItems: Record<string, FocusFlattenItem>;
   focusCloseChildIds: ItemId[];
   openCollapseItems: ItemId[];
+  isSelectionMultiple?: boolean;
 };
 
 type ExtractActiveItemsReturnType = {
@@ -171,6 +172,7 @@ export function extractActiveItems({
   focusFlattenItems,
   focusCloseChildIds,
   openCollapseItems,
+  isSelectionMultiple,
 }: ExtractActiveItemsProps): ExtractActiveItemsReturnType {
   const ids: ItemId[] = [];
   const expandedIds: ItemId[] = [];
@@ -185,12 +187,16 @@ export function extractActiveItems({
       }
 
       if (!child.disabled) {
-        ids.push(child.id);
-
         if (child.type === 'group-select') {
+          if (isSelectionMultiple) {
+            ids.push(child.id);
+          }
+
           internalFn(child.items);
           return;
         }
+
+        ids.push(child.id);
 
         if (child.type) {
           expandedIds.push(id);

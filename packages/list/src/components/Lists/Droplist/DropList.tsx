@@ -88,7 +88,12 @@ export function Droplist({
     }
 
     [pinTop, items, pinBottom].forEach(({ focusFlattenItems, focusCloseChildIds }) => {
-      const activeItems = extractActiveItems({ focusFlattenItems, focusCloseChildIds, openCollapseItems });
+      const activeItems = extractActiveItems({
+        focusFlattenItems,
+        focusCloseChildIds,
+        openCollapseItems,
+        isSelectionMultiple: selection?.mode === 'multiple',
+      });
 
       ids = ids.concat(activeItems.ids);
       expandedIds = expandedIds.concat(activeItems.expandedIds);
@@ -102,7 +107,7 @@ export function Droplist({
       ids,
       expandedIds,
     };
-  }, [footerItems, hasSearch, memorizedItems, openCollapseItems, searchItem.id]);
+  }, [footerItems, hasSearch, memorizedItems, openCollapseItems, searchItem.id, selection?.mode]);
 
   const triggerElemRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLElement>(null);

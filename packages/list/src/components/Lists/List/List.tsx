@@ -79,7 +79,12 @@ export const List = forwardRef(
       }
 
       [pinTop, items, pinBottom].forEach(({ focusFlattenItems, focusCloseChildIds }) => {
-        const activeItems = extractActiveItems({ focusFlattenItems, focusCloseChildIds, openCollapseItems });
+        const activeItems = extractActiveItems({
+          focusFlattenItems,
+          focusCloseChildIds,
+          openCollapseItems,
+          isSelectionMultiple: selection?.mode === 'multiple',
+        });
 
         ids = ids.concat(activeItems.ids);
         expandedIds = expandedIds.concat(activeItems.expandedIds);
@@ -93,7 +98,7 @@ export const List = forwardRef(
         ids,
         expandedIds,
       };
-    }, [footerItems, hasSearch, memorizedItems, openCollapseItems, searchItem.id]);
+    }, [footerItems, hasSearch, memorizedItems, openCollapseItems, searchItem.id, selection?.mode]);
 
     const listRef = useRef<HTMLElement>(null);
     const btnRef = useRef<HTMLButtonElement>(null);
