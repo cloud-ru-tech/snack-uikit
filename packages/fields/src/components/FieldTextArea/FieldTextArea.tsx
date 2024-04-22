@@ -8,6 +8,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate, TextArea, TextAreaProps } from '../../helperComponents';
 import { useCopyButton, useValueControl } from '../../hooks';
+import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
 
@@ -93,6 +94,8 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
     const showCopyButton = showCopyButtonProp && Boolean(value) && !disabled && readonly;
     const showClearButton = showClearButtonProp && Boolean(value) && !disabled && !readonly;
 
+    const fieldValidationState = getValidationState({ validationState, error });
+
     const onClear = () => {
       onChange('');
 
@@ -125,13 +128,13 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
         showHintIcon={showHintIcon}
         size={size}
         error={error}
-        validationState={validationState}
+        validationState={fieldValidationState}
         {...extractSupportProps(rest)}
       >
         <FieldContainerPrivate
           className={styles.container}
           size={size}
-          validationState={validationState}
+          validationState={fieldValidationState}
           disabled={disabled}
           readonly={readonly}
           data-resizable={isResizable || undefined}

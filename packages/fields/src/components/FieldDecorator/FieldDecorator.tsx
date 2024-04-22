@@ -5,6 +5,7 @@ import { SIZE } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { VALIDATION_STATE } from '../../constants';
+import { getValidationState } from '../../utils/getValidationState';
 import { Footer, FooterProps } from './Footer';
 import { Header, HeaderProps } from './Header';
 import styles from './styles.module.scss';
@@ -39,11 +40,11 @@ export function FieldDecorator({
   labelTooltipPlacement,
   size = SIZE.S,
   error,
-  validationState: validationStateProp = VALIDATION_STATE.Default,
+  validationState = VALIDATION_STATE.Default,
   ...rest
 }: FieldDecoratorProps) {
   const isFieldActive = !disabled && !readonly;
-  const validationState = error ? VALIDATION_STATE.Error : validationStateProp;
+  const fieldValidationState = getValidationState({ validationState, error });
 
   return (
     <div className={cn(styles.decorator, className)} {...extractSupportProps(rest)} data-size={size}>
@@ -63,7 +64,7 @@ export function FieldDecorator({
         hint={error || hint}
         showHintIcon={showHintIcon}
         size={size}
-        validationState={isFieldActive ? validationState : VALIDATION_STATE.Default}
+        validationState={isFieldActive ? fieldValidationState : VALIDATION_STATE.Default}
       />
     </div>
   );

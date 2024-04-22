@@ -30,6 +30,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useCopyButton } from '../../hooks';
+import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import { DEFAULT_LOCALE, SlotKey } from './constants';
 import { useDateField } from './hooks';
@@ -122,6 +123,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const showAdditionalButton = Boolean(valueProp && !disabled);
     const showClearButton = showClearButtonProp && showAdditionalButton && !readonly;
     const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
+    const fieldValidationState = getValidationState({ validationState, error });
 
     const checkForLeavingFocus = useCallback(
       <T extends HTMLInputElement | HTMLButtonElement>(event: KeyboardEvent<T>) => {
@@ -263,7 +265,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
         showHintIcon={showHintIcon}
         size={size}
         error={error}
-        validationState={validationState}
+        validationState={fieldValidationState}
         {...extractSupportProps(rest)}
       >
         <Dropdown
@@ -300,7 +302,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
           <FieldContainerPrivate
             className={styles.container}
             size={size}
-            validationState={validationState}
+            validationState={fieldValidationState}
             disabled={disabled}
             readonly={readonly}
             variant={CONTAINER_VARIANT.SingleLine}

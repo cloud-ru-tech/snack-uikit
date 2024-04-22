@@ -14,6 +14,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useCopyButton, useHideButton, useValueControl } from '../../hooks';
+import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
@@ -96,6 +97,8 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
     const showCopyButton = showCopyButtonProp && Boolean(value) && readonly && !disabled;
     const showHideButton = !(readonly && !value);
 
+    const fieldValidationState = getValidationState({ validationState, error });
+
     const toggleHidden = () => {
       setHidden(!hidden);
 
@@ -131,12 +134,12 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
         showHintIcon={showHintIcon}
         size={size}
         error={error}
-        validationState={validationState}
+        validationState={fieldValidationState}
         {...extractSupportProps(rest)}
       >
         <FieldContainerPrivate
           size={size}
-          validationState={validationState}
+          validationState={fieldValidationState}
           disabled={disabled}
           readonly={readonly}
           variant={CONTAINER_VARIANT.SingleLine}

@@ -20,6 +20,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';
+import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
 
@@ -112,6 +113,8 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     const plusButtonRef = useRef<HTMLButtonElement>(null);
     const isMinusButtonDisabled = (typeof min === 'number' && value <= min) || readonly || disabled;
     const isPlusButtonDisabled = (typeof max === 'number' && value >= max) || readonly || disabled;
+
+    const fieldValidationState = getValidationState({ validationState, error });
 
     const adjustValue = (value: number) => {
       setValue(value);
@@ -217,7 +220,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
         readonly={readonly}
         showHintIcon={showHintIcon}
         size={size}
-        validationState={validationState}
+        validationState={fieldValidationState}
         error={error}
         {...extractSupportProps(rest)}
       >
@@ -228,7 +231,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
         >
           <FieldContainerPrivate
             size={size}
-            validationState={validationState}
+            validationState={fieldValidationState}
             disabled={disabled}
             readonly={readonly}
             variant={CONTAINER_VARIANT.SingleLine}

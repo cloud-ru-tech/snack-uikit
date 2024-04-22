@@ -9,6 +9,7 @@ import { extractSupportProps } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';
+import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearchInput } from './hooks';
@@ -164,13 +165,15 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     const result =
       autocomplete || !searchable || prevInputValue.current === inputValue ? items : fuzzySearch(inputValue);
 
+    const fieldValidationState = getValidationState({ validationState, error: rest.error });
+
     return (
       <FieldDecorator
         {...extractSupportProps(rest)}
         {...extractFieldDecoratorProps(rest)}
         labelFor={id}
         size={size}
-        validationState={validationState}
+        validationState={fieldValidationState}
       >
         <Droplist
           {...extractListProps(rest)}
@@ -192,7 +195,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
           {({ onKeyDown }) => (
             <FieldContainerPrivate
               className={cn(styles.container, styles.tagContainer)}
-              validationState={validationState}
+              validationState={fieldValidationState}
               disabled={disabled}
               readonly={readonly}
               focused={open}

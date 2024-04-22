@@ -18,6 +18,7 @@ import { extractSupportProps } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';
+import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
 import { useButtons, useHandleOnKeyDown, useSearchInput } from './hooks';
@@ -184,11 +185,13 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
         ? items
         : fuzzySearch(inputValue);
 
+    const fieldValidationState = getValidationState({ validationState, error: rest.error });
+
     return (
       <FieldDecorator
         {...extractSupportProps(rest)}
         {...extractFieldDecoratorProps(rest)}
-        validationState={validationState}
+        validationState={fieldValidationState}
         required={required}
         readonly={readonly}
         labelFor={id}
@@ -211,7 +214,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
           {({ onKeyDown }) => (
             <FieldContainerPrivate
               className={styles.container}
-              validationState={validationState}
+              validationState={fieldValidationState}
               disabled={disabled}
               readonly={readonly}
               focused={open}
