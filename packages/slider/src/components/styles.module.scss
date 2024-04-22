@@ -154,7 +154,8 @@ $height-with-marks: calc(
       height: calc($size-slider-track-line * 2);
       background: transparent;
     }
-    .rc-slider-disabled {
+
+    &.rc-slider-disabled {
       background-color: transparent;
 
       .rc-slider-track,
