@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2024-04-23)
+
+
+### Features
+
+* **PDS-59:** add default placeholder; use useValueControl instead of useUncontrolledProp ([e0d19c8](https://github.com/cloud-ru-tech/snack-uikit/commit/e0d19c809275c1d2bd53c5c06bf50ef667a9b895))
+
+
+
+
+
 ## 0.1.5 (2024-02-20)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.19.0 (2024-04-23)
+
+
+### Bug Fixes
+
+* **PDS-59:** upd tests ([df72712](https://github.com/cloud-ru-tech/snack-uikit/commit/df7271268ac1621316dbb98b274e3d6602515b23))
+
+
+### BREAKING CHANGES
+
+
+* **PDS-59:** upd typings accordance with list; fix focus control ([827ff9f](https://github.com/cloud-ru-tech/snack-uikit/commit/827ff9f03ca5bae4664bc69664e4b8d812191103))
+
+
+
+
 ## 0.18.3 (2024-04-22)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2024-04-23)
+
+
+### Bug Fixes
+
+* **FF-01:** fix pseudo background ([ee468df](https://github.com/cloud-ru-tech/snack-uikit/commit/ee468df9494a81c7948fb20a647a87bdd0b1e980))
+* **PDS-59:** multi-value formatter ([f606ef2](https://github.com/cloud-ru-tech/snack-uikit/commit/f606ef2d3866dfc0f2630302732825cb9e5fb83c))
+* **PDS-59:** upd tests ([df72712](https://github.com/cloud-ru-tech/snack-uikit/commit/df7271268ac1621316dbb98b274e3d6602515b23))
+
+
+### BREAKING CHANGES
+
+
+* **PDS-59:** change droplist -> list package ([f63f48a](https://github.com/cloud-ru-tech/snack-uikit/commit/f63f48a394470243a7410933d5e97aaa50317154))
+
+
+
+
 ## 0.12.9 (2024-04-22)
 
 ### Only dependencies have been changed

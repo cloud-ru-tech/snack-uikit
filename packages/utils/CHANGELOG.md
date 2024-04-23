@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.3.0 (2024-04-23)
+
+
+### Features
+
+* **PDS-59:** add useValueControl hook for uncontrollable props ([596017a](https://github.com/cloud-ru-tech/snack-uikit/commit/596017a2fdd990bfb83637f6c4286b35e145e8bc))
+
+
+
+
+
 # 3.2.0 (2023-12-14)
 
 

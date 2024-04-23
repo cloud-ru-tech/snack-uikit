@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.1.2 (2024-04-23)
+
+
+### Bug Fixes
+
+* **PDS-59:** upd tests ([df72712](https://github.com/cloud-ru-tech/snack-uikit/commit/df7271268ac1621316dbb98b274e3d6602515b23))
+
+
+
+
+
 ## 3.1.1 (2024-02-20)
 
 

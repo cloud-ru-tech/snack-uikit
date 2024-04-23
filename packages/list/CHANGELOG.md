@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.1 (2024-04-23)
+
+
+### Bug Fixes
+
+* **FF-01:** fix pseudo background ([ee468df](https://github.com/cloud-ru-tech/snack-uikit/commit/ee468df9494a81c7948fb20a647a87bdd0b1e980))
+* **PDS-59:** fix group selection item in single mode ([069b191](https://github.com/cloud-ru-tech/snack-uikit/commit/069b1913a6fafc3f6ce64e779c5c43de1df7e977))
+* **PDS-59:** upd tests ([df72712](https://github.com/cloud-ru-tech/snack-uikit/commit/df7271268ac1621316dbb98b274e3d6602515b23))
+
+
+
+
+
 # 0.11.0 (2024-04-22)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-04-23)
+
+
+### Features
+
+* **PDS-45:** add shape prop ([a7e1ec2](https://github.com/cloud-ru-tech/snack-uikit/commit/a7e1ec27ad3e679d493ba14bc6f2159c6a5e6b55))
+
+
+
+
+
 ## 0.6.6 (2024-03-26)
 
 ### Only dependencies have been changed

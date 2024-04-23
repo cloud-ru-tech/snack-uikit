@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Input Private",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,7 +33,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.20.1",
-    "@snack-uikit/utils": "3.2.0",
+    "@snack-uikit/utils": "3.3.0",
     "classnames": "2.3.2"
   }
 }

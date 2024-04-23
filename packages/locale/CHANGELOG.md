@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-04-23)
+
+
+### Features
+
+* **PDS-59:** add SearchPrivate placeholder locale; add GroupSelectItem select button locale; upd table row volume ([c30c879](https://github.com/cloud-ru-tech/snack-uikit/commit/c30c879096e4da6db8ab079673139e7886287edc))
+
+
+
+
+
 # 0.6.0 (2024-02-26)
 
 
