@@ -4,7 +4,16 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ChipChoice, ChipChoiceMultipleProps } from '../src';
-import { CHIP_CHOICE_ARG_TYPES, CHIP_CHOICE_STORY_ARGS, FILTER_OPTIONS } from './chipChoice/constants';
+import { ChipChoiceMultiple } from '../src/components/ChipChoice/components';
+import { ChipChoiceStoryWrap } from './chipChoice/ChipChoiceStoryWrap';
+import {
+  BASE_OPTIONS,
+  CHIP_CHOICE_ARG_TYPES,
+  CHIP_CHOICE_STORY_ARGS,
+  ChipChoiceCustomStoryProps,
+  FILTER_OPTIONS,
+} from './chipChoice/constants';
+import styles from './styles.module.scss';
 
 const meta: Meta = {
   title: 'Components/Chips/ChipChoice',
@@ -12,13 +21,24 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = ChipChoiceMultipleProps;
+type StoryProps = ChipChoiceMultipleProps & ChipChoiceCustomStoryProps;
 
-const Template: StoryFn<StoryProps> = ({ ...args }: StoryProps) => (
-  <div style={{ display: 'flex', gap: 8 }}>
-    <ChipChoice.Multiple {...args} options={FILTER_OPTIONS} />
-  </div>
+const Template: StoryFn<StoryProps> = ({ useDefaultValue, useBaseOptions, showClickCounter, ...args }: StoryProps) => (
+  <ChipChoiceStoryWrap
+    showClickCounter={showClickCounter}
+    chipControlled={({ increaseCounter }) => (
+      <ChipChoiceMultiple
+        {...args}
+        defaultValue={useDefaultValue ? [BASE_OPTIONS[0].value] : undefined}
+        options={useBaseOptions ? BASE_OPTIONS : FILTER_OPTIONS}
+        onClick={increaseCounter}
+        label={CHIP_CHOICE_STORY_ARGS.label}
+        dropDownClassName={styles.droplist}
+      />
+    )}
+  />
 );
+
 export const chipChoiceMulti: StoryObj<StoryProps> = Template.bind({});
 
 chipChoiceMulti.args = {

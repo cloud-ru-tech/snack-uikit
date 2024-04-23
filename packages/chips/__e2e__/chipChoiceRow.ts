@@ -50,7 +50,7 @@ test.page(getPageUrl({ showClearAllButton: false }))(
 
 test.page(getPageUrl({ defaultValue: undefined }))('Should change state after interaction with chips', async t => {
   const { row, single, state } = getComponent();
-  const optionSingle = Selector(dataTestIdSelector(`${STORY_TEST_IDS.Single}__option`));
+  const optionSingle = Selector(dataTestIdSelector(`list__base-item_true`));
   const initialState = await state.innerText;
 
   await t.expect(row.exists).ok();

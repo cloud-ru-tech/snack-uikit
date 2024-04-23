@@ -28,5 +28,5 @@ export function runAfterRerender(callback: () => void) {
  * @function  helper
  */
 export function isCursorInTheEnd(input: HTMLInputElement | HTMLTextAreaElement | null) {
-  return input?.selectionStart === input?.value.length;
+  return input?.selectionStart === input?.value?.length;
 }

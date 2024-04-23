@@ -8,7 +8,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Droplist, DroplistProps } from '../src/components';
-import { DROPLIST_OPTIONS } from './constants';
+import { DROPLIST_OPTIONS, withDataTestId } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -53,7 +53,7 @@ const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, selectionMode, 
           loading={args.loading}
           marker={args.marker}
           scroll={args.scroll}
-          items={DROPLIST_OPTIONS}
+          items={withDataTestId(DROPLIST_OPTIONS)}
           {...(selectionMode !== 'none'
             ? { selection: { value, onChange: setValue, mode: selectionMode } }
             : { selection: undefined })}

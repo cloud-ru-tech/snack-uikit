@@ -167,111 +167,22 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| children* | `ReactNode` | - | Контент |
-| className | `string` | - | CSS-класс |
-| disabled | `boolean` | - | Деактивирован ли элемент Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только на чтение Доступно ли поле только на чтение |
-| error | `string` | - |  |
-| label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
-| labelFor | `string` | - | Аттрибут for |
-| required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
-| length | `{ current: number; max?: number; }` | - | Допустимая длинна текста |
-| hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | - | Состояние валидации |
-| showHintIcon | `boolean` | - | Отображать иконку подсказки |
 ## FieldText
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
-| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
-| allowMoreThanMaxLength | `boolean` | - | Можно ли вводить больше разрешённого кол-ва символов |
-| prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
-| value | `string` | - | Значение input |
-| onChange | `(value: string, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
-| disabled | `boolean` | - | Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| placeholder | `string` | - | Значение плейсхолдера |
-| maxLength | `number` | - | Максимальная длина вводимого значения |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| error | `string` | - |  |
-| className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
-| required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
-| hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
-| showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## FieldTextArea
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| maxRows | `number` | - | Максимальное кол-во строк, до которого размер поля может быть увеличен |
-| resizable | `boolean` | - | Может ли ли пользователь изменять размеры поля (если св-во не включено, поле автоматически меняет свой размер) |
-| onChange | `(value: string, e?: ChangeEvent<HTMLTextAreaElement>) => void` | - | Колбек смены значения |
-| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
-| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
-| allowMoreThanMaxLength | `boolean` | true | Можно ли вводить больше разрешённого кол-ва символов |
-| value | `string` | - | HTML-аттрибут value |
-| disabled | `boolean` | - | Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только на чтение |
-| id | `string` | - | HTML-аттрибут id |
-| name | `string` | - | HTML-аттрибут name |
-| placeholder | `string` | - | Плейсхолдер |
-| maxLength | `number` | - | Максимальное кол-во символов |
-| onFocus | `FocusEventHandler<HTMLTextAreaElement>` | - | Колбек получения фокуса |
-| onBlur | `FocusEventHandler<HTMLTextAreaElement>` | - | Колбек потери фокуса |
-| error | `string` | - |  |
-| className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
-| required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
-| hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
-| showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLTextAreaElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## FieldSecure
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| hidden | `boolean` | - | Замаскированно ли значение поля |
-| onHiddenChange | `(value: boolean) => void` | - | Колбек смены маскирования |
-| showCopyButton | `boolean` | - | Отображение кнопки копирования |
-| allowMoreThanMaxLength | `boolean` | - | Можно ли вводить больше разрешённого кол-ва символов |
-| prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
-| value | `string` | - | Значение input |
-| onChange | `(value: string, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
-| disabled | `boolean` | - | Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| placeholder | `string` | - | Значение плейсхолдера |
-| maxLength | `number` | - | Максимальная длина вводимого значения |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| error | `string` | - |  |
-| className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
-| required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
-| hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
-| showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## parseDate
@@ -282,139 +193,24 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| value* | `string` | - | Значение input |
-| open | `boolean` | - | Открыт date-picker |
-| onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
-| onChange | `(value: string) => void` | - | Колбек смены значения |
-| showCopyButton | `boolean` | - | Отображение кнопки копирования |
-| showClearButton | `boolean` | true | Отображение кнопки Очистки поля |
-| locale | `Locale` | new Intl.Locale('ru-RU') | Текущая локаль календаря |
-| buildCellProps | `(date: Date, viewMode: ViewMode) => { isDisabled?: boolean; isHoliday?: boolean };` | - | Колбек установки свойств ячеек календаря. Вызывается на построение каждой ячейки. Принимает два параметра: <br> `Date` - дата ячейки <br> `ViewMode`: <br>  - `month` отображение месяца, каждая ячейка - 1 день <br>  - `year` отображение года, каждая ячейка - 1 месяц <br>  - `decade` отображение декады, каждая ячейка - 1 год <br><br> Колбек должен возвращать объект с полями, отвечающими за отключение и подкраску ячейки. |
-| disabled | `boolean` | - | Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| error | `string` | - |  |
-| className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
-| required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
-| hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
-| showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## FieldSelect
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| pinBottom* | `OptionProps[]` | - |  |
-| pinTop* | `OptionProps[]` | - |  |
-| options* | `OptionProps[]` | - |  |
-| disabled | `boolean` | false | Является ли поле деактивированным |
-| readonly | `boolean` | false false | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| placeholder | `string` | - | Значение плейсхолдера |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |
-| error | `string` | - |  |
-| className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
-| required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
-| hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | - | Состояние валидации |
-| showHintIcon | `boolean` | - | Отображать иконку подсказки |
-| loading | `boolean` | - |  |
-| value | `ItemId \| ItemId[]` | - | Controlled состояние |
-| onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
-| defaultValue | `ItemId \| ItemId[]` | - | Начальное состояние |
-| searchable | `boolean` | - |  |
-| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
-| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
-| prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
-| footer | `ReactNode` | - |  |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | - |  |
-| search | `SearchState` | - |  |
-| autocomplete | `boolean` | - |  |
-| addOptionByEnter | `boolean` | - |  |
-| open | `boolean` | - |  |
-| onOpenChange | `(open: boolean) => void` | - |  |
-| selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
-| dataFiltered | `boolean` | - |  |
-| dataError | `boolean` | - |  |
-| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
-| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
-| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
-| selection | "single" \| "multiple" | - |  |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
-| removeByBackspace | `boolean` | - |  |
 ## FieldStepper
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| value | `number` | - | Значение поля |
-| onChange | `(value: number, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
-| step | `number` | 1 | Шаг поля |
-| allowMoreThanLimits | `boolean` | true | Можно ли вводить c клавиатуры числа, выходящие за пределы min/max |
-| disabled | `boolean` | - | Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| min | `number` | Number.NEGATIVE_INFINITY | Минимальное значение поля |
-| max | `number` | Number.POSITIVE_INFINITY | Максимальное значение поля |
-| error | `string` | - |  |
-| className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
-| required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
-| hint | `string` | - | Подсказка внизу |
-| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
-| showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## FieldSlider
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| postfixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-постфикс для поля |
-| showScaleBar | `boolean` | true | Отображение линейки |
-| textInputFormatter | `TextInputFormatter` | - | Функция для форматирования значений в текстовом поле |
-| disabled | `boolean` | - | Является ли поле деактивированным |
-| readonly | `boolean` | - | Является ли поле доступным только для чтения |
-| id | `string` | - | Значение html-атрибута id |
-| name | `string` | - | Значение html-атрибута name |
-| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
-| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| value | `number \| number[]` | - |  |
-| onChange | `(value: number \| number[]) => void` | - |  |
-| range | `boolean` | - |  |
-| tipFormatter | `(value: string \| number) => ReactNode` | - |  |
-| step | `number` | - |  |
-| min | `number` | - |  |
-| max | `number` | - |  |
-| marks | `Record<string \| number, ReactNode \| MarkObj>` | - |  |
-| className | `string` | - | CSS-класс |
-| label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
-| required | `boolean` | - | Является ли поле обязательным |
-| size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
-| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
-| hint | `string` | - | Подсказка внизу |
-| showHintIcon | `boolean` | - | Отображать иконку подсказки |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 

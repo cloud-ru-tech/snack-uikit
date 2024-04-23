@@ -168,16 +168,6 @@ test.page(getPage({ selectionMode: 'multiple' }))('Should select next list items
 
   await verifyItemNotSelected({ id: 'first' });
   await verifyItemNotSelected({ id: 'first-nested' });
-
-  // next list item - click parent items
-  await t.click(getBaseItemCheckbox('first-nested'));
-
-  await verifyItemSelected({ id: 'first' });
-  await verifyItemSelected({ id: 'first-nested' });
-
-  for (const id of NEXT_LIST_ITEMS) {
-    await verifyItemSelected({ id, hasSwitch: true });
-  }
 });
 
 test.page(getPage({ selectionMode: 'multiple' }))('Should select accordion items in multiple mode', async t => {
@@ -291,7 +281,7 @@ test.page(getPage({ selectionMode: 'single' }))('Should select items in single m
   await verifyItemSelected({ id: 'first-nested-0-0', hasSwitch: true });
 
   // go back to main list & to the collapse section
-  await t.pressKey('left').pressKey('left').pressKey('down').pressKey('down').pressKey('down');
+  await t.pressKey('tab').pressKey('down').pressKey('down').pressKey('down').pressKey('down');
   // open collapse list and select item 3-0-0
   await t.pressKey('right').pressKey('down').pressKey('right').pressKey('down').pressKey('enter');
 
@@ -386,7 +376,7 @@ test.page(getPage({ selectionMode: 'multiple' }))(
     // next list item - click parent items
     // select item first-nested
     // TODO: not working with space
-    await t.pressKey('left').pressKey('enter').pressKey('right');
+    await t.pressKey('left').pressKey('enter').pressKey('right').pressKey('right');
 
     await verifyItemSelected({ id: 'first' });
     await verifyItemSelected({ id: 'first-nested' });

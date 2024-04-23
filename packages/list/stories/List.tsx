@@ -9,7 +9,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { List, ListProps } from '../src/components';
-import { BASE_OPTIONS, EXPAND_OPTIONS, GROUP_OPTIONS, LONG_LIST_OPTIONS } from './constants';
+import { BASE_OPTIONS, EXPAND_OPTIONS, GROUP_OPTIONS, LONG_LIST_OPTIONS, withDataTestId } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -139,7 +139,7 @@ const Template: StoryFn<StoryProps> = ({
           Async List
           <List
             size={args.size}
-            items={items}
+            items={withDataTestId(items)}
             scroll
             loading={hasMore && loading}
             scrollRef={scrollRef}
@@ -168,7 +168,7 @@ const Template: StoryFn<StoryProps> = ({
       <div className={styles.wrapper}>
         <div className={styles.listContainer}>
           Collapsed List
-          <List items={EXPAND_OPTIONS} size={args.size} data-test-id={args['data-test-id']} scroll />
+          <List items={withDataTestId(EXPAND_OPTIONS)} size={args.size} data-test-id={args['data-test-id']} scroll />
         </div>
       </div>
     );
@@ -183,10 +183,23 @@ const Template: StoryFn<StoryProps> = ({
           {/* @ts-ignore */}
           <List
             {...args}
-            pinTop={showPinTopItems ? baseItemsWithSwitch : undefined}
-            pinBottom={showPinBottomItems ? baseItemsWithSwitch : undefined}
+            pinTop={showPinTopItems ? withDataTestId(baseItemsWithSwitch) : undefined}
+            pinBottom={
+              showPinBottomItems
+                ? withDataTestId(
+                    baseItemsWithSwitch,
+                    '',
+                    (showPinTopItems ? baseItemsWithSwitch.length : 0) +
+                      (showGroups ? groupItemsWithSwitch : baseItemsWithSwitch).length,
+                  )
+                : undefined
+            }
             search={showSearch ? { value: search, onChange: setSearch, placeholder: 'Placeholder' } : undefined}
-            items={showGroups ? groupItemsWithSwitch : baseItemsWithSwitch}
+            items={withDataTestId(
+              showGroups ? groupItemsWithSwitch : baseItemsWithSwitch,
+              '',
+              showPinBottomItems ? baseItemsWithSwitch.length : 0,
+            )}
             {...(selectionMode !== 'none'
               ? { selection: { value, onChange: setValue, mode: selectionMode } }
               : { selection: undefined })}

@@ -3,7 +3,37 @@ import { Counter } from '@snack-uikit/counter';
 import { PlaceholderSVG } from '@snack-uikit/icons';
 
 import { AccordionItemProps, BaseItemProps, GroupItemProps, ItemProps, NextListItemProps } from '../src';
-import { GroupItem, GroupSelectItem } from '../src/components/Items';
+import { GroupItem, GroupSelectItem, isAccordionItem, isBaseItem, isGroupItem } from '../src/components/Items';
+
+export function withDataTestId(items: ItemProps[], prefix?: string, shift?: number): ItemProps[] {
+  return items.map((item, idx) => {
+    const testId = String(
+      (!isGroupItem(item) && item?.id) ||
+        (prefix ? prefix + '-' + Number(idx + (shift ?? 0)) : Number(idx + (shift ?? 0))),
+    );
+
+    if (isAccordionItem(item)) {
+      return {
+        ...item,
+        items: withDataTestId(item.items, testId),
+        id: testId,
+      };
+    }
+
+    if (!isBaseItem(item)) {
+      return {
+        ...item,
+        items: withDataTestId(item.items, testId),
+        id: testId,
+      };
+    }
+
+    return {
+      ...item,
+      id: testId,
+    };
+  });
+}
 
 export const BASE_OPTIONS: BaseItemProps[] = [
   {
@@ -31,7 +61,7 @@ export const GROUP_OPTIONS: (GroupItem | GroupSelectItem)[] = [
     items: BASE_OPTIONS,
     label: 'Long long long long long long long veryyyyyyyy long group name',
     mode: 'primary',
-    type: 'group-select',
+    type: 'group',
   },
   {
     divider: false,

@@ -28,14 +28,19 @@ export const createChipGetPage =
       props: {
         'data-test-id': BASE_TEST_ID,
         ...props,
+        useBaseOptions: true,
         showClickCounter: true,
+        searchable: false,
       },
     });
 
 export function getComponent() {
   const chip = Selector(dataTestIdSelector(BASE_TEST_ID));
   const droplist = Selector(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.droplist));
-  const option = droplist.find(dataTestIdSelector(`${BASE_TEST_ID}__option`));
+  const getOption = (value: string | number) => droplist.find(dataTestIdSelector(`list__base-item_${value}`));
+
+  const getOptionCheckbox = (value: string | number) =>
+    getOption(value).find(dataTestIdSelector(`checkbox-${BASE_TEST_ID}__option`));
 
   return {
     chip,
@@ -46,8 +51,8 @@ export function getComponent() {
     spinner: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.spinner)).find('svg'),
     clearButton: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.clearButton)),
     droplist,
-    option,
-    optionCheckbox: option.find(dataTestIdSelector(`checkbox-${BASE_TEST_ID}__option`)),
+    getOption,
+    getOptionCheckbox,
   };
 }
 
@@ -118,6 +123,7 @@ export function chipChoiceCommonTests(getPage: ReturnType<typeof createChipGetPa
 
     await t.pressKey('Up');
     await t.expect(chip.focused).ok('Chip should be focused after "Up" key press');
+    await t.pressKey('Up');
     await t.expect(droplist.exists).notOk('Droplist should be closed after "Up" key press');
 
     await t.pressKey('Right');

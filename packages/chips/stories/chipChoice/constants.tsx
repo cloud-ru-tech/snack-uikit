@@ -4,6 +4,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 import { Tag } from '@snack-uikit/tag';
 
 import { FilterOption } from '../../src';
+import { BaseOption } from '../../src/components/ChipChoice/types';
 import { SIZE } from '../../src/constants';
 import { COMMON_ARG_TYPES } from '../constants';
 
@@ -63,6 +64,14 @@ export const FILTER_OPTIONS: FilterOption[] = [
   },
 ];
 
+export const BASE_OPTIONS: BaseOption[] = [
+  { value: 'value1', label: 'Option 1' },
+  { value: 'value2', label: 'Option 2' },
+  { value: 'value3', label: 'Option 3' },
+  { value: 'value4', label: 'Option 4' },
+  { value: 'value5', label: 'Option 5' },
+];
+
 export const CHIP_CHOICE_STORY_ARGS = {
   label: 'Label Text',
   size: SIZE.S,
@@ -76,6 +85,7 @@ export const CHIP_CHOICE_STORY_ARGS = {
   showClickCounter: false,
   customFormatter: false,
   useDefaultValue: true,
+  useBaseOptions: false,
 };
 
 export const CHIP_CHOICE_ARG_TYPES: ArgTypes = {
@@ -102,10 +112,14 @@ export const CHIP_CHOICE_ARG_TYPES: ArgTypes = {
   useDefaultValue: {
     name: '[Stories]: Init component with default value',
   },
+  useBaseOptions: {
+    name: '[Stories]: BaseOptions',
+  },
 };
 
 export type ChipChoiceCustomStoryProps = {
   showClickCounter?: boolean;
   customFormatter: boolean;
   useDefaultValue: boolean;
+  useBaseOptions: boolean;
 };

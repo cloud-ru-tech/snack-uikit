@@ -1,14 +1,12 @@
-import cn from 'classnames';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { Droplist, ItemId, SelectionSingleValueType } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 import { useValueControl } from '@snack-uikit/utils';
 
-import { SIZE } from '../../../constants';
+import { CHIP_CHOICE_TEST_IDS, SIZE } from '../../../constants';
 import { DROPLIST_SIZE_MAP } from '../constants';
 import { useFuzzySearch, useHandleOnKeyDown } from '../hooks';
-import styles from '../styles.module.scss';
 import { ChipChoiceMultipleProps, ContentRenderProps } from '../types';
 import { FlattenOption, kindFlattenOptions } from '../utils';
 import { transformOptionsToItems } from '../utils/options';
@@ -42,6 +40,8 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   label,
   searchable,
   contentRender,
+  dropDownClassName,
+  showClearButton,
   ...rest
 }: ChipChoiceMultipleProps<T>) {
   const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
@@ -118,6 +118,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
       placement='bottom-start'
       widthStrategy='gte'
       size={DROPLIST_SIZE_MAP[size]}
+      data-test-id={CHIP_CHOICE_TEST_IDS.droplist}
       open={open}
       triggerElemRef={chipRef}
       onOpenChange={open => {
@@ -127,8 +128,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
         setOpen(open);
       }}
       scroll
-      triggerClassName={styles.triggerClassName}
-      className={cn(styles.triggerClassName, styles.wrapper)}
+      className={dropDownClassName}
       search={
         searchable
           ? {
@@ -143,7 +143,9 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
         ref={chipRef}
         onClearButtonClick={clearValue}
         value={value}
-        showClearButton={!value || (Array.isArray(value) && value.length === 0)}
+        showClearButton={
+          showClearButton && !(Array.isArray(value) && [0, Object.keys(flattenOptions).length].includes(value.length))
+        }
         valueToRender={valueToRender}
         label={label}
         loading={rest.loading}

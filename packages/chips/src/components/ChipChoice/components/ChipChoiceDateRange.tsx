@@ -5,7 +5,7 @@ import { Calendar } from '@snack-uikit/calendar';
 import { Dropdown } from '@snack-uikit/dropdown';
 import { useLocale } from '@snack-uikit/locale';
 
-import { DEFAULT_EMPTY_VALUE, SIZE } from '../../../constants';
+import { CHIP_CHOICE_TEST_IDS, DEFAULT_EMPTY_VALUE, SIZE } from '../../../constants';
 import { CALENDAR_SIZE_MAP } from '../constants';
 import { useHandleOnKeyDown } from '../hooks';
 import { ChipChoiceCommonProps } from '../types';
@@ -43,6 +43,7 @@ export function ChipChoiceDateRange({
   defaultValue,
   onChange,
   valueRender,
+  dropDownClassName,
   ...rest
 }: ChipChoiceDateRangeProps) {
   const [selectedValue, setSelectedValue] = useUncontrolledProp<Range>(value, defaultValue, onChange);
@@ -85,7 +86,9 @@ export function ChipChoiceDateRange({
       outsideClick
       triggerRef={localRef}
       open={open}
+      data-test-id={CHIP_CHOICE_TEST_IDS.droplist}
       onOpenChange={setOpen}
+      className={dropDownClassName}
     >
       <ChipChoiceBase
         {...rest}

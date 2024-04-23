@@ -76,8 +76,8 @@ test.page(visit({ value: 'op1', searchable: true }))(
 
     await t.pressKey('tab');
 
-    await t.pressKey('o');
-    await t.expect(input.value).eql('o');
+    await t.pressKey('o').pressKey('o');
+    await t.expect(input.value).eql('oo');
     await t.expect(list.exists).ok('list is not present after input');
 
     await t.pressKey('esc');

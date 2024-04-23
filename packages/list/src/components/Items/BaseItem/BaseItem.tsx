@@ -81,7 +81,7 @@ export function BaseItem({
   const handleItemKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     onKeyDown?.(e);
 
-    if (e.code === 'ArrowRight') {
+    if (e.key === 'ArrowRight') {
       onOpenNestedList?.(e);
 
       e.preventDefault();
@@ -135,6 +135,7 @@ export function BaseItem({
         data-type='outside'
         role={'menuitem'}
         data-test-id={props['data-test-id'] || 'list__base-item_' + id}
+        data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
         ref={itemRef as unknown as RefObject<HTMLLIElement>}
         className={cn(commonStyles.listItem, styles.droplistItem)}
         data-size={size}

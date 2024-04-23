@@ -4,6 +4,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { ChipChoice, ChipChoiceDateRangeProps } from '../src';
+import { ChipChoiceStoryWrap } from './chipChoice/ChipChoiceStoryWrap';
 import { CHIP_CHOICE_ARG_TYPES, CHIP_CHOICE_STORY_ARGS, ChipChoiceCustomStoryProps } from './chipChoice/constants';
 
 const meta: Meta = {
@@ -14,7 +15,7 @@ export default meta;
 
 type StoryProps = ChipChoiceDateRangeProps & ChipChoiceCustomStoryProps;
 
-const Template: StoryFn<StoryProps> = ({ useDefaultValue, ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, ...args }: StoryProps) => {
   const formatter = args.customFormatter
     ? (value?: [Date, Date]): string => {
         if (!value || !value.length) return 'all dates';
@@ -24,11 +25,17 @@ const Template: StoryFn<StoryProps> = ({ useDefaultValue, ...args }: StoryProps)
     : undefined;
 
   return (
-    <ChipChoice.DateRange
-      {...args}
-      defaultValue={useDefaultValue ? [new Date(2022, 10, 15), new Date(2023, 10, 15)] : undefined}
-      // onClick={increaseCounter}
-      valueRender={formatter}
+    <ChipChoiceStoryWrap
+      showClickCounter={showClickCounter}
+      chipControlled={({ increaseCounter }) => (
+        <ChipChoice.DateRange
+          {...args}
+          defaultValue={useDefaultValue ? [new Date(2022, 10, 15), new Date(2023, 10, 15)] : undefined}
+          onClick={increaseCounter}
+          label={CHIP_CHOICE_STORY_ARGS.label}
+          valueRender={formatter}
+        />
+      )}
     />
   );
 };

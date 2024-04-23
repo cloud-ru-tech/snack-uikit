@@ -83,6 +83,10 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     const onClear = () => {
       setValue(selectedItems?.filter(item => item.disabled).map(item => item.id));
       localRef.current?.focus();
+
+      if (rest.required) {
+        setOpen(true);
+      }
     };
 
     const { ArrowIcon, arrowIconSize } = getArrowIcon({ size, open });
