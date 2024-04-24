@@ -20,11 +20,6 @@ export function SearchItem({ search, itemRef }: SearchItemProps) {
     if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
       e.preventDefault();
     }
-
-    if (['ArrowRight'].includes(e.key)) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
   };
 
   const handleFocus = (e: FocusEvent<HTMLInputElement>) => {

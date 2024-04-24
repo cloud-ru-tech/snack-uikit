@@ -92,10 +92,10 @@ export function useNewKeyboardNavigation<T extends HTMLElement>({
             setActiveItemId(newItemId);
 
             setTimeout(() => newItem.itemRef?.current?.focus(), 0);
-          }
 
-          e.stopPropagation();
-          e.preventDefault();
+            e.stopPropagation();
+            e.preventDefault();
+          }
 
           return;
         }

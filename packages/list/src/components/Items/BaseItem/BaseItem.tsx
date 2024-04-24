@@ -81,8 +81,8 @@ export function BaseItem({
   const handleItemKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     onKeyDown?.(e);
 
-    if (e.key === 'ArrowRight') {
-      onOpenNestedList?.(e);
+    if (e.key === 'ArrowRight' && onOpenNestedList) {
+      onOpenNestedList(e);
 
       e.preventDefault();
       e.stopPropagation();
