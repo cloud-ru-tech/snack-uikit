@@ -78,6 +78,7 @@ export function ToasterContainer({
       {hasCloseAllButton && (
         <div className={cn(styles.buttonCloseColumnWrapper, styles[position])}>
           <button
+            type='button'
             className={styles.buttonCloseColumn}
             onClick={closeAll}
             data-test-id={TOAST_SYSTEM_EVENT_TEST_IDS.buttonCloseColumn}

@@ -10,6 +10,7 @@ export type PageSliderButtonProps = WithSupportProps<{
 export function PageSliderButton({ activated, onClick, ...rest }: PageSliderButtonProps) {
   return (
     <button
+      type='button'
       className={styles.pageButtonSlider}
       onClick={onClick}
       {...extractSupportProps(rest)}

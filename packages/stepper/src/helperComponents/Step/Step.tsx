@@ -24,6 +24,7 @@ export function Step({ step, className, 'data-test-id': testId, hideTailLine, ..
     <div className={cn(styles.step, className)} data-state={step.state} {...extractSupportProps(props)}>
       <div className={styles.track}>
         <button
+          type='button'
           className={styles.statusContainer}
           onClick={step.onClick}
           disabled={!step.onClick}

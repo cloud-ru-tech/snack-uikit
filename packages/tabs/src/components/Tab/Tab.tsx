@@ -102,6 +102,7 @@ export function Tab({ label, value, disabled = false, className, onClick, counte
 
   return (
     <button
+      type='button'
       role='tab'
       data-test-id={`tabs__tab-${value}`}
       {...otherProps}

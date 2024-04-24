@@ -58,7 +58,13 @@ export function FunctionBadge({ icon, options }: FunctionBadgeProps) {
           },
         }))}
       >
-        <button data-test-id={TEST_IDS.functionBadge} className={styles.button} onClick={onClick} ref={buttonRef}>
+        <button
+          type='button'
+          data-test-id={TEST_IDS.functionBadge}
+          className={styles.button}
+          onClick={onClick}
+          ref={buttonRef}
+        >
           {icon || <KebabSVG />}
         </button>
       </Droplist>

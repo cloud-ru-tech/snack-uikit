@@ -70,6 +70,7 @@ export function Item({ data, className }: CellProps) {
   return (
     <div className={cn(className, styles.item)} {...attributes}>
       <button
+        type='button'
         aria-disabled={isDisabled}
         className={styles.button}
         onClick={() => handleSelect(date)}

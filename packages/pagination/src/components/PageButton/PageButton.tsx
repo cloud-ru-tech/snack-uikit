@@ -17,6 +17,7 @@ export function PageButton({ label, activated, onClick, setButtonRef, ...rest }:
 
   return (
     <button
+      type='button'
       className={styles.pageButton}
       onClick={onClick}
       ref={setButtonRef}

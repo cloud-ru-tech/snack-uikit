@@ -42,6 +42,7 @@ export function ChipAssist({
 
   return (
     <button
+      type='button'
       {...extractSupportProps(rest)}
       tabIndex={tabIndex}
       data-size={size}

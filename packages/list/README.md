@@ -12,7 +12,7 @@
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| items* | `any[]` | - |  |
+| items* | `Item[]` | - |  |
 | prefix | `ItemId` | - |  |
 | parentId | `ItemId` | - |  |
 ## isAccordionItem
@@ -55,24 +55,74 @@
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| triggerClassName* | `DropdownProps` | - |  |
-| onOpenChange* | `DropdownProps` | - |  |
-| open* | `DropdownProps` | - |  |
-| widthStrategy* | `DropdownProps` | - |  |
-| placement* | `DropdownProps` | - |  |
-| trigger* | `DropdownProps` | - |  |
+| items* | `Item[]` | - | Основные элементы списка |
 | children* | `ReactNode \| ({onKeyDown}) => ReactNode * Рендер функция принимает аргументы `onKeyDown` - хендлер ввода, для поддержки управления с клавиатуры` | - | Триггер для дроплиста |
 | triggerElemRef | `RefObject<HTMLElement>` | - | Ссылка на элемент-триггер для дроплиста |
+| triggerClassName | `string` | - | CSS-класс триггера |
+| open | `boolean` | - | Управляет состоянием показан/не показан. |
+| onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | auto | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
+| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
+| className | `string` | - | CSS-класс |
+| pinTop | `Item[]` | - | Элементы списка, закрепленные сверху |
+| pinBottom | `Item[]` | - | Элементы списка, закрепленные снизу |
+| footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
+| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
+| search | `SearchState` | - | Настройки поисковой строки |
+| collapse | `CollapseState` | {} | Настройки раскрытия элементов |
+| loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
+| selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
+| size | "s" \| "m" \| "l" | s | Размер списка |
+| marker | `boolean` | true | Отображать ли маркер у выбранного жлемента списка |
+| contentRender | `(props: ContentRenderProps) => ReactNode` | - | Рендер функция основного контента айтема |
+| scroll | `boolean` | - | Включить ли скролл для основной части списка |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| dataFiltered | `boolean` | - |  |
+| dataError | `boolean` | - |  |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 ## List
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| items* | `Item[]` | - | Основные элементы списка |
+| pinTop | `Item[]` | - | Элементы списка, закрепленные сверху |
+| pinBottom | `Item[]` | - | Элементы списка, закрепленные снизу |
+| footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
+| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
+| search | `SearchState` | - | Настройки поисковой строки |
+| tabIndex | `number` | - | Tab Index |
+| collapse | `CollapseState` | {} | Настройки раскрытия элементов |
+| className | `string` | - | CSS-класс |
+| onKeyDown | `(e: KeyboardEvent<HTMLElement>) => void` | - |  |
+| loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
+| selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
+| size | "s" \| "m" \| "l" | s | Размер списка |
+| marker | `boolean` | true | Отображать ли маркер у выбранного жлемента списка |
+| contentRender | `(props: ContentRenderProps) => ReactNode` | - | Рендер функция основного контента айтема |
+| scroll | `boolean` | - | Включить ли скролл для основной части списка |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| dataFiltered | `boolean` | - |  |
+| dataError | `boolean` | - |  |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | ref | `Ref<HTMLElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 ## ItemContent
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| option* | `string \| number` | - |  |
+| caption | `string` | - |  |
+| description | `string` | - |  |
+| truncate | `{ option?: number; description?: number; variant?: "end" \| "middle"; }` | - |  |
+| disabled | `boolean` | - |  |
+| className | `string` | - | CSS-класс |
 
 
 [//]: DOCUMENTATION_SECTION_END

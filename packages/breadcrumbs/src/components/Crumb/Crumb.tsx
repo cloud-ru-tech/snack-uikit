@@ -83,6 +83,7 @@ export const Crumb = memo(function Crumb({
   } else if (onClick) {
     crumb = (
       <button
+        type='button'
         title={title}
         onClick={onClick}
         className={styles.crumb}

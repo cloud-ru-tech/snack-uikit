@@ -34,7 +34,7 @@ export function Collapse({ currentConfig, className }: CollapseProps) {
     <div className={className} data-test-id={getTestId('collapse', testId)} data-element-type={ELEMENT_TYPE.Collapse}>
       <BreadcrumbsContext.Provider value={{ ...ctx, testId: `${testId}-collapsed` }}>
         <Droplist trigger='hoverAndFocusVisible' size='s' scroll triggerElemRef={buttonRef} items={collapsedItems}>
-          <button ref={buttonRef} className={styles.collapse} tabIndex={hidden ? -1 : 0}>
+          <button type='button' ref={buttonRef} className={styles.collapse} tabIndex={hidden ? -1 : 0}>
             <CrumbsTypography size={size}>...</CrumbsTypography>
           </button>
         </Droplist>

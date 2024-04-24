@@ -10,6 +10,7 @@ type ButtonCloseProps = {
 export function ButtonClose({ onClick }: ButtonCloseProps) {
   return (
     <button
+      type='button'
       className={styles.buttonClose}
       onClick={onClick}
       aria-label='close modal'

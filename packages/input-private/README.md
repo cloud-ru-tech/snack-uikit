@@ -36,8 +36,27 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| name | `string` | - | Значение html-атрибута name |
+| value | `string` | - | Значение input |
+| onChange | `(value: string, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
+| placeholder | `string` | - | Значение плейсхолдера |
+| id | `string` | - | Значение html-атрибута id |
+| className | `string` | - | CSS-класс |
+| type | enum Type: `"number"`, `"text"`, `"password"` | text | Тип инпута |
+| disabled | `boolean` | - | Является ли поле деактивированным |
+| readonly | `boolean` | - | Является ли поле доступным только для чтения |
+| autoComplete | `boolean` | - | Включен ли автокомплит для поля |
+| maxLength | `number` | - | Максимальная длина вводимого значения |
+| min | `number` | - | Минимальное значение поля |
+| max | `number` | - | Максимальное значение поля |
+| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
+| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |
+| tabIndex | `number` | - | Значение атрибута tab-index |
+| onClick | `MouseEventHandler<HTMLInputElement>` | - | Колбек обработки клика |
+| onMouseDown | `MouseEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия кнопки мыши |
 | key | `Key` | - |  |
+| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 ## useButtonNavigation
 `hook` 
 

@@ -69,6 +69,7 @@ export function Button({
 
   return (
     <button
+      type='button'
       tabIndex={tabIndex}
       className={styles.button}
       onClick={onClick}

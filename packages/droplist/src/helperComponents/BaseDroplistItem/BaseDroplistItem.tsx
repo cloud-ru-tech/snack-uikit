@@ -142,6 +142,7 @@ export const BaseDroplistItem = forwardRef<HTMLButtonElement, BaseDroplistItemPr
 
     return (
       <button
+        type='button'
         className={cn(styles.droplistItem, className)}
         {...extractSupportProps(rest)}
         onPointerDown={onPointerDown}

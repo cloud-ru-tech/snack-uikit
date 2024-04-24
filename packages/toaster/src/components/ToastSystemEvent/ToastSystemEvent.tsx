@@ -95,6 +95,7 @@ export function ToastSystemEvent({
 
         {closable && (
           <button
+            type='button'
             className={styles.buttonClose}
             onClick={handleCloseClick}
             data-test-id={TOAST_SYSTEM_EVENT_TEST_IDS.buttonClose}

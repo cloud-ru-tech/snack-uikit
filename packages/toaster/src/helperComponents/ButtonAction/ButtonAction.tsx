@@ -12,6 +12,7 @@ export type ButtonActionProps = {
 export function ButtonAction({ label, onClick, critical }: ButtonActionProps) {
   return (
     <button
+      type='button'
       className={styles.buttonAction}
       onClick={onClick}
       data-test-id={TOAST_SYSTEM_EVENT_TEST_IDS.buttonAction}

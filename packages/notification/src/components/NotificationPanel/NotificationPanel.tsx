@@ -116,7 +116,12 @@ export function NotificationPanel({
       </Scroll>
 
       {footerButton && (
-        <button onClick={footerButton.onClick} className={styles.notificationPanelFooterButton} data-test-id={TEST_IDS.footerButton}>
+        <button
+          type='button'
+          onClick={footerButton.onClick}
+          className={styles.notificationPanelFooterButton}
+          data-test-id={TEST_IDS.footerButton}
+        >
           <Typography.SansLabelS>{footerButton.label}</Typography.SansLabelS>
         </button>
       )}

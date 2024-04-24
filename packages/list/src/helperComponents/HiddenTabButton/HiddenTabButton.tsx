@@ -26,6 +26,7 @@ export const HiddenTabButton = forwardRef<HTMLButtonElement, HiddenTabButtonProp
 
   return (
     <button
+      type='button'
       aria-hidden
       ref={ref}
       onKeyDown={handleKeyDown}

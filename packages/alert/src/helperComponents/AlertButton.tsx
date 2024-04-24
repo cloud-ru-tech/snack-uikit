@@ -31,6 +31,7 @@ export function AlertButton({
 }: PrivateAlertButtonProps) {
   return (
     <button
+      type='button'
       onClick={onClick}
       className={styles.alertButton}
       data-variant={variant}

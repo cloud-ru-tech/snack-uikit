@@ -90,31 +90,156 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| onClick* | `MouseEventHandler<HTMLButtonElement>` | - | Колбек обработки клика |
+| label* | `string` | - | Лейбл |
+| disabled | `boolean` | - | Деактивирован ли компонент |
+| loading | `boolean` | - | Состояние загрузки |
+| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
+| className | `string` | - | CSS-класс |
+| tabIndex | `number` | - | HTML tab index |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 ## ChipToggle
 Чип с состоянием выбран/не выбран
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| onChange* | `(checked: boolean, e: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
+| checked* | `boolean` | - | Отмечен ли компонент |
+| label* | `string` | - | Лейбл |
+| disabled | `boolean` | - | Деактивирован ли компонент |
+| loading | `boolean` | - | Состояние загрузки |
+| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
+| className | `string` | - | CSS-класс |
+| tabIndex | `number` | - | HTML tab index |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 ## ChipChoice.Custom
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| label | `string` | - | Лейбл |
+| disabled | `boolean` | - | Деактивирован ли компонент |
+| loading | `boolean` | - | Состояние загрузки |
+| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
+| className | `string` | - | CSS-класс |
+| tabIndex | `number` | - | HTML tab index |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
+| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
+| dropDownClassName | `string` | - |  |
+| valueRender | `(value: any) => ReactNode` | - | Отображаемое значение |
+| value | `any` | - | Фактическое значение. Используется для отображения кнопки очистки, если свойство <strong>showClearButton=true</strong> |
+| onChange | `(value: any) => void` | - |  |
+| content | `(props: CustomContentRenderProps<any>) => ReactNode` | - | Контент выпадающего меню <br> <br> Принимает <strong>ReactNode</strong> <br> Или функцию с аргументами: <br> <strong>handleDroplistItemKeyDown</strong>: Обработчик нажатия клавиши на элемент выпадающего меню <br> <strong>closeDroplist</strong>: Метод для закрытия выпадающего меню |
 ## ChipChoice.Single
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| options* | `FilterOption<T>[]` | - | Массив опций |
+| label | `string` | - | Лейбл |
+| disabled | `boolean` | - | Деактивирован ли компонент |
+| loading | `boolean` | - | Состояние загрузки Флаг, отвещающий за состояние загрузки списка |
+| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
+| className | `string` | - | CSS-класс |
+| tabIndex | `number` | - | HTML tab index |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
+| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
+| dropDownClassName | `string` | - |  |
+| contentRender | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => ReactNode` | - |  |
+| filterFn | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => boolean` | - |  |
+| searchable | `boolean` | - |  |
+| footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
+| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
+| selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| dataFiltered | `boolean` | - |  |
+| dataError | `boolean` | - |  |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
+| onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
+| value | `ItemId` | - | Controlled состояние |
+| defaultValue | `ItemId` | - | Начальное состояние |
+| valueRender | `(option?: BaseOption<T>) => ReactNode` | - | Колбек формирующий отображение выбранного значения. Принимает выбранное значение. По умолчанию для отображения используется FilterOption.label |
 ## ChipChoice.Multiple
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| options* | `FilterOption<T>[]` | - | Массив опций |
+| label | `string` | - | Лейбл |
+| disabled | `boolean` | - | Деактивирован ли компонент |
+| loading | `boolean` | - | Состояние загрузки Флаг, отвещающий за состояние загрузки списка |
+| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
+| className | `string` | - | CSS-класс |
+| tabIndex | `number` | - | HTML tab index |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
+| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
+| dropDownClassName | `string` | - |  |
+| contentRender | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => ReactNode` | - |  |
+| filterFn | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => boolean` | - |  |
+| searchable | `boolean` | - |  |
+| footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
+| footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
+| selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| dataFiltered | `boolean` | - |  |
+| dataError | `boolean` | - |  |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
+| onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
+| value | `ItemId[]` | - | Controlled состояние |
+| defaultValue | `ItemId[]` | - | Начальное состояние |
+| valueRender | `(option?: BaseOption<T>[]) => ReactNode` | - | Колбек формирующий отображение выбранного значения. Принимает выбранное значение. По умолчанию для отображения используется FilterOption.label |
 ## ChipChoice.Date
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| label | `string` | - | Лейбл |
+| disabled | `boolean` | - | Деактивирован ли компонент |
+| loading | `boolean` | - | Состояние загрузки |
+| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
+| className | `string` | - | CSS-класс |
+| tabIndex | `number` | - | HTML tab index |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
+| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
+| dropDownClassName | `string` | - |  |
+| value | `Date` | - | Значение компонента |
+| defaultValue | `Date` | - | Значение компонента по-умолчанию |
+| onChange | `(value: Date) => void` | - | Колбек смены значения |
+| valueRender | `(value?: Date) => ReactNode` | - | Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение |
 ## ChipChoice.DateRange
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| label | `string` | - | Лейбл |
+| disabled | `boolean` | - | Деактивирован ли компонент |
+| loading | `boolean` | - | Состояние загрузки |
+| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
+| className | `string` | - | CSS-класс |
+| tabIndex | `number` | - | HTML tab index |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
+| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
+| dropDownClassName | `string` | - |  |
+| value | `Range` | - | Значение компонента |
+| defaultValue | `Range` | - | Значение компонента по умолчанию |
+| onChange | `(value: Range) => void` | - | Колбек смены значения |
+| valueRender | `(value?: Range) => ReactNode` | - | Колбек формирующий строковое представление выбранного значения. Принимает массив выбранных значений |
 ## isAccordionOption
 ### Props
 | name | type | default value | description |
@@ -139,6 +264,14 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| filters* | `OmitBetter<ChipChoiceProps, "size" \| "onChange" \| "value" \| "defaultValue">[]` | - | Массив чипов |
+| value | `FiltersState` | - | Состояние фильтров |
+| defaultValue | `Partial<TState>` | - | Начальное состояние фильтров |
+| onChange | `(filters: TState) => void` | - | Колбек изменения состояния фильтров |
+| size | enum ChipChoiceRowSize: `"xs"`, `"s"`, `"m"` | s | Размер |
+| className | `string` | - | CSS-класс |
+| showClearAllButton | `boolean` | true | Скрыть/показать кнопку очиски |
+| clearAllButtonLabel | `string` | 'Clear all' | Текст кнопки очистки |
 
 
 [//]: DOCUMENTATION_SECTION_END
