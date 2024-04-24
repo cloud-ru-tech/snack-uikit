@@ -83,8 +83,8 @@ export type FieldSelectPrivateProps = InputProps & WrapperProps & { options: Opt
 type FiledSelectCommonProps = WithSupportProps<{
   options: OptionProps[];
 
-  pinTop: OptionProps[];
-  pinBottom: OptionProps[];
+  pinTop?: OptionProps[];
+  pinBottom?: OptionProps[];
 
   searchable?: boolean;
   /** Отображение кнопки Копировать для поля (актуально только для `readonly = true`) */
