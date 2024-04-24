@@ -10,7 +10,7 @@ import {
   CustomContentRenderProps,
 } from './components';
 
-export type { FilterOption, ChipChoiceMultipleProps, ChipChoiceSingleProps } from './types';
+export type { FilterOption, ChipChoiceMultipleProps, ChipChoiceSingleProps, ContentRenderProps } from './types';
 export type { ChipChoiceCustomProps, ChipChoiceDateProps, ChipChoiceDateRangeProps, CustomContentRenderProps };
 
 export namespace ChipChoice {
