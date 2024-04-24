@@ -28,20 +28,6 @@ import { Card, SearchPrivate } from "@snack-uikit/card";
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| disabled | `boolean` | - | Управление состоянием интерактивности |
-| checked | `boolean` | - | Управление состоянием выбран/не выбран |
-| outline | `boolean` | - | Управление состоянием наличия обводки |
-| multipleSelection | `boolean` | - | Отображение галочки для режима массового выделения карточек |
-| onClick | `(e: MouseEvent<HTMLDivElement \| HTMLAnchorElement, MouseEvent>) => void` | - | Колбек на клик по карточке |
-| size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
-| promoBadge | `string \| Pick<PromoTagProps, "text" \| "appearance">` | - | PromoBadge |
-| children | `ReactNode` | - | Вложенный контент |
-| header | `ReactElement<HeaderProps, string \| JSXElementConstructor<any>>` | - | Вложенный Header |
-| footer | `ReactNode` | - | Вложенный Footer |
-| image | `ReactNode` | - | Вложенный Image |
-| functionBadge | `ReactNode` | - | Вложенный FunctionBadge |
-| className | `string` | - | CSS-класс для элемента с контентом |
-| href | `string` | - | Ссылка карточки |
 
 
 [//]: DOCUMENTATION_SECTION_END

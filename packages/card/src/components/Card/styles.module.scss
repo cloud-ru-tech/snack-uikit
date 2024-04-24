@@ -168,6 +168,12 @@ $sizes: 's', 'm', 'l';
       box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
     }
   }
+
+  &[data-pointer][data-disabled] {
+    * {
+      cursor: not-allowed;
+    }
+  }
 }
 
 .anchor {
