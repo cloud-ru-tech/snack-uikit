@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.29 (2024-04-24)
+
+
+### Bug Fixes
+
+* **FF-00:** remove unnecessary divider in toolbar in single selection mode ([9ba5f4d](https://github.com/cloud-ru-tech/snack-uikit/commit/9ba5f4dc8259b14b3ac2b59a60c4366f63ad93ce))
+
+
+
+
+
 ## 0.7.28 (2024-04-23)
 
 ### Only dependencies have been changed

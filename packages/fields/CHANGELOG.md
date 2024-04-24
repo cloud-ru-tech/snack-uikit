@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.19.1 (2024-04-24)
+
+
+### Bug Fixes
+
+* **FF-0011:** validationState reacts on error prop ([d4a6cb5](https://github.com/cloud-ru-tech/snack-uikit/commit/d4a6cb517662520476f6b690c0a24b37311eb369))
+* **FF-00:** fix input behavior for field-slider non-linear marks ([67fda28](https://github.com/cloud-ru-tech/snack-uikit/commit/67fda2853485bd69039351d71dbe9db5d14e163f))
+
+
+
+
+
 # 0.19.0 (2024-04-23)
 
 

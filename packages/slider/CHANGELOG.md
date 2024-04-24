@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.9 (2024-04-24)
+
+
+### Bug Fixes
+
+* **FF-00:** fix disabled state ([57e329e](https://github.com/cloud-ru-tech/snack-uikit/commit/57e329e2acc9b092df6026e96011f17b86349e9b))
+
+
+
+
+
 ## 0.1.8 (2024-04-23)
 
 ### Only dependencies have been changed
