@@ -16,9 +16,10 @@ export default meta;
 
 type StoryProps = FieldSecureProps & {
   localeName: undefined;
+  showAsyncValueExample: boolean;
 };
 
-const Template = ({ size, ...args }: StoryProps) => {
+const Template = ({ size, showAsyncValueExample, ...args }: StoryProps) => {
   const [value, setValue] = useState(args.value);
 
   useEffect(() => {
@@ -27,7 +28,22 @@ const Template = ({ size, ...args }: StoryProps) => {
 
   return (
     <div className={styles.wrapper} data-size={size}>
-      <FieldSecure {...args} size={size} value={value} onChange={setValue} />
+      <FieldSecure
+        {...args}
+        size={size}
+        value={value}
+        onChange={setValue}
+        asyncValueGetter={
+          showAsyncValueExample
+            ? () =>
+                new Promise(resolve => {
+                  setTimeout(() => {
+                    resolve('async value');
+                  }, 2000);
+                })
+            : undefined
+        }
+      />
     </div>
   );
 };
@@ -52,6 +68,7 @@ fieldSecure.args = {
   prefixIcon: 'none',
   showCopyButton: true,
   allowMoreThanMaxLength: false,
+  showAsyncValueExample: false,
 };
 
 fieldSecure.argTypes = {
@@ -59,6 +76,12 @@ fieldSecure.argTypes = {
   localeName: {
     table: {
       disable: true,
+    },
+  },
+  showAsyncValueExample: {
+    name: '[Story]: Example with async value',
+    control: {
+      type: 'boolean',
     },
   },
 };
