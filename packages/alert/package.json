@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Alert",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "sideEffects": [
     "*.css",
     "*.woff",

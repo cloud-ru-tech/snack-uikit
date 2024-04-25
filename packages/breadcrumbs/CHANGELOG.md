@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.28 (2024-04-25)
+
+
+### Bug Fixes
+
+* **PDS-0000:** set default button type as button ([4ec64de](https://github.com/cloud-ru-tech/snack-uikit/commit/4ec64de508826df4a1e82fd8c75448d9919e563f))
+
+
+
+
+
 ## 0.8.27 (2024-04-23)
 
 ### Only dependencies have been changed

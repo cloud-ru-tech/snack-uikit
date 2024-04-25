@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.2 (2024-04-25)
+
+
+### Bug Fixes
+
+* **PDS-0000:** fix arrowRight key event handle ([50b911f](https://github.com/cloud-ru-tech/snack-uikit/commit/50b911fde10d9f7eff1a46728329f47070645b8f))
+* **PDS-0000:** set default button type as button ([4ec64de](https://github.com/cloud-ru-tech/snack-uikit/commit/4ec64de508826df4a1e82fd8c75448d9919e563f))
+
+
+
+
+
 ## 0.11.1 (2024-04-23)
 
 
