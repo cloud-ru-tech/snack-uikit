@@ -19,15 +19,17 @@ export type ChipChoiceMultipleValueFormatterProps<T extends ContentRenderProps =
 };
 
 const defaultMultiValueLabelFormatter = ({ value, total, allLabel }: ChipChoiceMultipleValueFormatterProps): ItemId => {
-  if (value.length === 0 || value.length === total) {
+  const len = value.length;
+
+  if ([0, total].includes(len) && total !== len) {
     return allLabel;
   }
 
-  if (value.length === 1) {
+  if (len === 1) {
     return value[0].label;
   }
 
-  return `${value.length.toString()}/${total}`;
+  return `${len.toString()}/${total}`;
 };
 
 export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderProps>({
@@ -41,7 +43,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   searchable,
   contentRender,
   dropDownClassName,
-  showClearButton,
+  showClearButton = true,
   ...rest
 }: ChipChoiceMultipleProps<T>) {
   const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
@@ -143,9 +145,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
         ref={chipRef}
         onClearButtonClick={clearValue}
         value={value}
-        showClearButton={
-          showClearButton && !(Array.isArray(value) && [0, Object.keys(flattenOptions).length].includes(value.length))
-        }
+        showClearButton={showClearButton && !(Array.isArray(value) && [0].includes(value.length))}
         valueToRender={valueToRender}
         label={label}
         loading={rest.loading}
