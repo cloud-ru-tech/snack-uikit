@@ -11,6 +11,7 @@ export const DEFAULT_THEME_VALUES = {
     { foreground: '#3280e8', token: 'keyword' },
   ],
   colors: {
+    'editor.background': '#00000000',
     'editor.foreground': '#333333',
     'editor.selectionBackground': '#decdfb',
     'editor.lineHighlightBackground': '#decdfb',
@@ -19,16 +20,17 @@ export const DEFAULT_THEME_VALUES = {
     'scrollbarSlider.background': '#75757552',
     'scrollbarSlider.hoverBackground': '#7575757B',
     'scrollbarSlider.activeBackground': '#757575A4',
-    "editorLineNumber.foreground": "#333333",
-    "editorLineNumber.activeForeground": "#898989"
+    'editorLineNumber.foreground': '#333333',
+    'editorLineNumber.activeForeground': '#898989',
   },
 };
 
 export const DEFAULT_THEME_OPTIONS = {
-  body: {
+  mono: {
     s: {
       fontWeight: '400',
-      fontSize: 14,
+      fontSize: 12,
+      fontFamily: 'SB Sans Text Mono',
     },
   },
 };
@@ -67,7 +69,32 @@ export const THEME_VARS = {
       s: {
         'font-weight': '--mono-body-s-font-weight',
         'font-size': '--mono-body-s-font-size',
+        'font-family': '--mono-body-s-font-family',
       },
     },
+  },
+};
+
+export const CODE_EDITOR_OPTIONS = {
+  minimap: {
+    enabled: false,
+  },
+  padding: {
+    top: 4,
+    bottom: 4,
+  },
+  tabSize: 4,
+  scrollBeyondLastLine: false,
+  fixedOverflowWidgets: true,
+  lineDecorationsWidth: 4,
+  lineNumbersMinChars: 2,
+  scrollbar: {
+    verticalScrollbarSize: 8,
+    horizontalScrollbarSize: 8,
+    useShadows: false,
+  },
+  contextmenu: false,
+  guides: {
+    indentation: false,
   },
 };

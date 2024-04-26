@@ -1,9 +1,11 @@
 import { Editor, EditorProps, useMonaco } from '@monaco-editor/react';
+import cn from 'classnames';
 import { useMemo } from 'react';
 
-import { excludeSupportProps, extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { Spinner } from '@snack-uikit/loaders';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { DEFAULT_THEME_OPTIONS, DEFAULT_THEME_VALUES } from './constants';
+import { CODE_EDITOR_OPTIONS, DEFAULT_THEME_OPTIONS, DEFAULT_THEME_VALUES } from './constants';
 import { useCalculatedThemeValues } from './hooks';
 import styles from './styles.module.scss';
 import { isDark } from './utils';
@@ -13,10 +15,20 @@ export type CodeEditorProps = WithSupportProps<{
    * <br> По дефолту берется значение из useTheme внутри
    */
   themeClassName?: string;
+  /** Включение/отключение псевдобекграунда*/
+  hasBackground?: boolean;
 }> &
-  Omit<EditorProps, 'theme'>;
+  EditorProps;
 
-export function CodeEditor({ themeClassName, className, options, ...props }: CodeEditorProps) {
+export function CodeEditor({
+  themeClassName,
+  className,
+  theme,
+  options,
+  loading,
+  hasBackground = true,
+  ...props
+}: CodeEditorProps) {
   const monaco = useMonaco();
 
   const themeValues = useCalculatedThemeValues(themeClassName);
@@ -56,6 +68,7 @@ export function CodeEditor({ themeClassName, className, options, ...props }: Cod
               },
             ],
             colors: {
+              'editor.background': '#00000000',
               'editor.foreground': themeValues.sys.neutral.textMain,
               'editor.selectionBackground': themeValues.sys.primary.decorHovered,
               'editor.lineHighlightBackground': themeValues.sys.neutral.decorDefault + '3F',
@@ -64,8 +77,8 @@ export function CodeEditor({ themeClassName, className, options, ...props }: Cod
               'scrollbarSlider.background': themeValues.sys.neutral.accentDefault + '52',
               'scrollbarSlider.hoverBackground': themeValues.sys.neutral.accentDefault + '7B',
               'scrollbarSlider.activeBackground': themeValues.sys.neutral.accentDefault + 'A4',
-              "editorLineNumber.foreground": themeValues.sys.neutral.textLight,
-              "editorLineNumber.activeForeground": themeValues.sys.neutral.textMain
+              'editorLineNumber.foreground': themeValues.sys.neutral.textLight,
+              'editorLineNumber.activeForeground': themeValues.sys.neutral.textMain,
             },
           }
         : DEFAULT_THEME_VALUES),
@@ -81,24 +94,29 @@ export function CodeEditor({ themeClassName, className, options, ...props }: Cod
   monaco?.editor.defineTheme('snackDark', { ...themeDataWithoutBase, base: 'vs-dark' });
   monaco?.editor.defineTheme('snack', { ...themeDataWithoutBase, base: 'vs' });
 
+  const mergedOptions = useMemo(
+    () => ({
+      ...CODE_EDITOR_OPTIONS,
+      ...(themeValues?.mono
+        ? {
+            fontSize: Number.parseFloat(themeValues.mono.body.s['font-size']),
+            fontWeight: themeValues.mono.body.s['font-weight'],
+            fontFamily: themeValues.mono.body.s['font-family'],
+          }
+        : DEFAULT_THEME_OPTIONS.mono.s),
+      ...options,
+    }),
+    [options, themeValues?.mono],
+  );
+
   return (
     <div className={className} {...extractSupportProps(props)}>
       <Editor
-        theme={dark ? 'snackDark' : 'snack'}
-        className={styles.editor}
-        options={{
-          minimap: {
-            enabled: false,
-          },
-          ...(themeValues?.mono
-            ? {
-                fontSize: Number.parseFloat(themeValues.mono.body.s['font-size']),
-                fontWeight: themeValues.mono.body.s['font-weight'],
-              }
-            : DEFAULT_THEME_OPTIONS),
-          ...options,
-        }}
-        {...excludeSupportProps(props)}
+        {...props}
+        theme={theme ?? dark ? 'snackDark' : 'snack'}
+        className={cn({ [styles.editor]: hasBackground })}
+        loading={loading ?? <Spinner />}
+        options={mergedOptions}
       />
     </div>
   );

@@ -2,6 +2,8 @@ import { EditorProps } from '@monaco-editor/react';
 import { Meta, StoryContext, StoryFn, StoryObj } from '@storybook/react';
 import { useDarkMode } from 'storybook-dark-mode';
 
+import { Typography } from '@snack-uikit/typography';
+
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
@@ -19,9 +21,14 @@ export default meta;
 type StoryProps = {
   themeClassName: string;
   'data-test-id': string;
-} & Omit<EditorProps, 'theme'>;
+  hideLineNumbers: boolean;
+  hasBackground: boolean;
+} & EditorProps;
 
-const Template: StoryFn<StoryProps> = (args: CodeEditorProps, { globals }: StoryContext) => {
+const Template: StoryFn<StoryProps> = (
+  { hideLineNumbers, ...args }: CodeEditorProps & { hideLineNumbers: boolean },
+  { globals }: StoryContext,
+) => {
   const isDark = useDarkMode();
 
   const themeMode = isDark ? 'dark' : 'light';
@@ -30,9 +37,16 @@ const Template: StoryFn<StoryProps> = (args: CodeEditorProps, { globals }: Story
   const themeClassName = Object.keys(globals).includes(brand) ? globals[brand][themeMode] : `${themeMode}_${brand}`;
 
   return (
-    <div className={styles.wrapper}>
-      <CodeEditor {...args} themeClassName={themeClassName} />
-    </div>
+    <>
+      <div className={styles.wrapper}>
+        <CodeEditor
+          {...args}
+          themeClassName={themeClassName}
+          options={hideLineNumbers ? { lineNumbers: 'off', folding: false } : { lineNumbers: 'on', folding: true }}
+        />
+      </div>
+      <Typography.MonoBodyS />
+    </>
   );
 };
 
@@ -43,9 +57,16 @@ codeEditor.args = {
   height: '500px',
   language: 'typescript',
   value: CODE,
+  hasBackground: true,
+  hideLineNumbers: false,
+  'data-test-id': 'code-editor',
 };
 
-codeEditor.argTypes = {};
+codeEditor.argTypes = {
+  hideLineNumbers: {
+    name: '[Stories]: hide line numbers',
+  },
+};
 
 codeEditor.parameters = {
   readme: {

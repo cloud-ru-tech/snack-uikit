@@ -13,12 +13,14 @@
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | themeClassName | `string` | - | Класснейм подключенной темы (из хука useThemeConfig() или ThemeProvider) <br> По дефолту берется значение из useTheme внутри |
+| hasBackground | `boolean` | true | Включение/отключение псевдобекграунда |
 | defaultValue | `string` | - | Default value of the current model |
 | defaultLanguage | `string` | - | Default language of the current model |
 | defaultPath | `string` | - | Default path of the current model Will be passed as the third argument to `.createModel` method `monaco.editor.createModel(..., ..., monaco.Uri.parse(defaultPath))` |
 | value | `string` | - | Value of the current model |
 | language | `string` | - | Language of the current model |
 | path | `string` | - | Path of the current model Will be passed as the third argument to `.createModel` method `monaco.editor.createModel(..., ..., monaco.Uri.parse(defaultPath))` |
+| theme | `string` | "light" | The theme for the monaco Available options "vs-dark" \| "light" Define new themes by `monaco.editor.defineTheme` |
 | line | `number` | - | The line to jump on it |
 | loading | `ReactNode` | "Loading..." | The loading screen before the editor will be mounted |
 | options | `IStandaloneEditorConstructionOptions` | - | IStandaloneEditorConstructionOptions |
