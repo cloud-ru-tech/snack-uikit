@@ -156,6 +156,9 @@ const userAction = {
     return openToast({
       type: TOASTER_TYPE.UserAction,
       toasterProps: { ...options, appearance: 'success' },
+      toastOptions: {
+        id: options.id,
+      },
     });
   },
 
@@ -163,6 +166,9 @@ const userAction = {
     return openToast({
       type: TOASTER_TYPE.UserAction,
       toasterProps: { ...options, appearance: 'neutral' },
+      toastOptions: {
+        id: options.id,
+      },
     });
   },
 
@@ -170,6 +176,9 @@ const userAction = {
     return openToast({
       type: TOASTER_TYPE.UserAction,
       toasterProps: { ...options, appearance: 'error' },
+      toastOptions: {
+        id: options.id,
+      },
     });
   },
 
@@ -177,6 +186,9 @@ const userAction = {
     return openToast({
       type: TOASTER_TYPE.UserAction,
       toasterProps: { ...options, appearance: 'warning' },
+      toastOptions: {
+        id: options.id,
+      },
     });
   },
 
@@ -220,6 +232,9 @@ const systemEvent = {
     return openToast({
       type: TOASTER_TYPE.SystemEvent,
       toasterProps: { ...options, appearance: 'success' },
+      toastOptions: {
+        id: options.id,
+      },
     });
   },
 
@@ -227,6 +242,9 @@ const systemEvent = {
     return openToast({
       type: TOASTER_TYPE.SystemEvent,
       toasterProps: { ...options, appearance: 'neutral' },
+      toastOptions: {
+        id: options.id,
+      },
     });
   },
 
@@ -234,6 +252,9 @@ const systemEvent = {
     return openToast({
       type: TOASTER_TYPE.SystemEvent,
       toasterProps: { ...options, appearance: 'warning' },
+      toastOptions: {
+        id: options.id,
+      },
     });
   },
 
@@ -241,6 +262,9 @@ const systemEvent = {
     return openToast({
       type: TOASTER_TYPE.SystemEvent,
       toasterProps: { ...options, appearance: 'error' },
+      toastOptions: {
+        id: options.id,
+      },
     });
   },
 
@@ -248,6 +272,9 @@ const systemEvent = {
     return openToast({
       type: TOASTER_TYPE.SystemEvent,
       toasterProps: { ...options, appearance: 'errorCritical' },
+      toastOptions: {
+        id: options.id,
+      },
     });
   },
 
