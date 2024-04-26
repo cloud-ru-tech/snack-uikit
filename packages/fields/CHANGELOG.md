@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.20.0 (2024-04-26)
+
+
+### Bug Fixes
+
+* **FF-4714:** remove nonexistent classname ([e45ee61](https://github.com/cloud-ru-tech/snack-uikit/commit/e45ee611a4c0ed5038dc4d7e0058c7719232d747))
+
+
+### Features
+
+* **FF-4714:** add asyncValueGetter property ([2267477](https://github.com/cloud-ru-tech/snack-uikit/commit/22674774d3845c3cc77369b153afb3c9e13e5e0d))
+
+
+
+
+
 ## 0.19.2 (2024-04-25)
 
 
