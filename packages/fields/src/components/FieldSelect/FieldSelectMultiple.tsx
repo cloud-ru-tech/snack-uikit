@@ -242,7 +242,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
                       data-test-id='field-select__input'
                       onKeyDown={handleOnKeyDown(onKeyDown)}
                       onBlur={handleBlur}
-                      className={cn(styles.input, {
+                      className={cn({
                         [styles.readonlyCursor]: !searchable,
                       })}
                     />

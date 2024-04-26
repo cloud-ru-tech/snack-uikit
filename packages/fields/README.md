@@ -313,8 +313,52 @@ const [isOpen, setIsOpen] = useState(false);
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| options* | `OptionProps[]` | - |  |
+| disabled | `boolean` | false | Является ли поле деактивированным |
+| readonly | `boolean` | false false | Является ли поле доступным только для чтения |
+| id | `string` | - | Значение html-атрибута id |
+| name | `string` | - | Значение html-атрибута name |
+| placeholder | `string` | - | Значение плейсхолдера |
+| onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
+| onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |
+| error | `string` | - |  |
+| className | `string` | - | CSS-класс |
+| label | `string` | - | Лейбл |
+| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| required | `boolean` | - | Является ли поле обязательным |
+| size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
+| hint | `string` | - | Подсказка внизу |
+| validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | - | Состояние валидации |
+| showHintIcon | `boolean` | - | Отображать иконку подсказки |
+| loading | `boolean` | - |  |
+| value | `ItemId \| ItemId[]` | - | Controlled состояние |
+| onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
+| defaultValue | `ItemId \| ItemId[]` | - | Начальное состояние |
+| pinTop | `OptionProps[]` | - |  |
+| pinBottom | `OptionProps[]` | - |  |
+| searchable | `boolean` | - |  |
+| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
+| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
+| prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
+| footer | `ReactNode` | - |  |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | - |  |
+| search | `SearchState` | - |  |
+| autocomplete | `boolean` | - |  |
+| addOptionByEnter | `boolean` | - |  |
+| open | `boolean` | - |  |
+| onOpenChange | `(open: boolean) => void` | - |  |
+| selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
+| dataFiltered | `boolean` | - |  |
+| dataError | `boolean` | - |  |
+| noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
+| noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
+| errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
+| selection | "single" \| "multiple" | - |  |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
+| removeByBackspace | `boolean` | - |  |
 ## FieldStepper
 ### Props
 | name | type | default value | description |
