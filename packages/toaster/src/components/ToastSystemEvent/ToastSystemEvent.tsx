@@ -10,7 +10,6 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 import { AUTO_CLOSE_TIME, TOASTER_TYPE } from '../../constants';
 import { ButtonAction, ButtonActionProps } from '../../helperComponents/ButtonAction';
 import { TOAST_SYSTEM_EVENT_TEST_IDS } from '../../testIds';
-import { ToasterId } from '../../types';
 import { APPEARANCE_TO_ON_COLOR_MAP } from './constants';
 import styles from './styles.module.scss';
 import { ToastSystemEventAppearance } from './types';
@@ -32,7 +31,6 @@ export type ToastSystemEventProps = Partial<RtToastContentProps> &
     closable?: boolean;
     className?: string;
     onCloseClick?(e: MouseEvent<HTMLButtonElement>, close?: () => void): void;
-    onClose?(id?: ToasterId): void;
     action?: ButtonActionProps[];
     loading?: never;
   }>;

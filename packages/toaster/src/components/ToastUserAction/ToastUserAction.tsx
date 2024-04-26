@@ -7,7 +7,6 @@ import { Sun } from '@snack-uikit/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { TOAST_USER_ACTION_TEST_IDS } from '../../testIds';
-import { ToasterId } from '../../types';
 import styles from './styles.module.scss';
 import { ToastUserActionAppearance } from './types';
 import { getIcon } from './utils';
@@ -25,7 +24,6 @@ export type ToastUserActionProps = Partial<RtToastContentProps> &
     link?: ToastUserActionLink;
     className?: string;
     loading?: boolean;
-    onClose?(id?: ToasterId): void;
   }>;
 
 export function ToastUserAction({

@@ -76,7 +76,7 @@ function getToastOptions<T extends keyof ToasterPropsMap>({
   return {
     toastId: toastOptions?.id,
     onClose: ((data: { id: ToasterId }) => {
-      toasterProps?.onClose?.(data?.id);
+      toastOptions?.onClose?.(data?.id);
     }) as RtToastOptions['onClose'],
     autoClose: toasterProps?.loading ? false : AUTO_CLOSE_TIME[type],
     containerId: containerId || `${TOASTER_CONTAINER_PREFIX}${type}`,
@@ -158,6 +158,7 @@ const userAction = {
       toasterProps: { ...options, appearance: 'success' },
       toastOptions: {
         id: options.id,
+        onClose: options.onClose,
       },
     });
   },
@@ -168,6 +169,7 @@ const userAction = {
       toasterProps: { ...options, appearance: 'neutral' },
       toastOptions: {
         id: options.id,
+        onClose: options.onClose,
       },
     });
   },
@@ -178,6 +180,7 @@ const userAction = {
       toasterProps: { ...options, appearance: 'error' },
       toastOptions: {
         id: options.id,
+        onClose: options.onClose,
       },
     });
   },
@@ -188,6 +191,7 @@ const userAction = {
       toasterProps: { ...options, appearance: 'warning' },
       toastOptions: {
         id: options.id,
+        onClose: options.onClose,
       },
     });
   },
@@ -234,6 +238,7 @@ const systemEvent = {
       toasterProps: { ...options, appearance: 'success' },
       toastOptions: {
         id: options.id,
+        onClose: options.onClose,
       },
     });
   },
@@ -244,6 +249,7 @@ const systemEvent = {
       toasterProps: { ...options, appearance: 'neutral' },
       toastOptions: {
         id: options.id,
+        onClose: options.onClose,
       },
     });
   },
@@ -254,6 +260,7 @@ const systemEvent = {
       toasterProps: { ...options, appearance: 'warning' },
       toastOptions: {
         id: options.id,
+        onClose: options.onClose,
       },
     });
   },
@@ -264,6 +271,7 @@ const systemEvent = {
       toasterProps: { ...options, appearance: 'error' },
       toastOptions: {
         id: options.id,
+        onClose: options.onClose,
       },
     });
   },
@@ -274,6 +282,7 @@ const systemEvent = {
       toasterProps: { ...options, appearance: 'errorCritical' },
       toastOptions: {
         id: options.id,
+        onClose: options.onClose,
       },
     });
   },

@@ -47,8 +47,8 @@ export type UpdateToast = <T extends keyof ToasterPropsMap>(
   },
 ) => void;
 
-export type UserActionOptions = Omit<ToastUserActionProps, 'appearance'> & Pick<ToastOptions, 'id'>;
-export type SystemEventOptions = Omit<ToastSystemEventProps, 'appearance'> & Pick<ToastOptions, 'id'>;
+export type UserActionOptions = Omit<ToastUserActionProps, 'appearance'> & Pick<ToastOptions, 'id' | 'onClose'>;
+export type SystemEventOptions = Omit<ToastSystemEventProps, 'appearance'> & Pick<ToastOptions, 'id' | 'onClose'>;
 
 export type Toaster = {
   userAction: {
