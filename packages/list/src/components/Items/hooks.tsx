@@ -103,8 +103,22 @@ export function useGroupItemSelection({ id, allChildIds }: UseGroupItemSelection
     [allChildIds, flattenItems],
   );
 
+  const enableChildIds = useMemo(
+    () =>
+      baseChildIds.filter(itemId => {
+        const item = flattenItems[itemId];
+
+        return item && !('type' in item) && !item.disabled;
+      }),
+    [baseChildIds, flattenItems],
+  );
+
   const checked = isSelectionMultiple
     ? value && Boolean(value.length) && baseChildIds.every(childId => value?.includes(childId))
+    : undefined;
+
+  const allEnabledChecked = isSelectionMultiple
+    ? value && Boolean(value.length) && enableChildIds.every(childId => value?.includes(childId))
     : undefined;
 
   const indeterminate = isSelectionMultiple
@@ -112,12 +126,14 @@ export function useGroupItemSelection({ id, allChildIds }: UseGroupItemSelection
     : baseChildIds.includes(value ?? '');
 
   const handleOnSelect = () => {
-    if (checked) {
-      setValue?.((value: ItemId[]) => (value ?? []).filter(itemId => itemId !== id && !baseChildIds.includes(itemId)));
+    if (checked || allEnabledChecked) {
+      setValue?.((value: ItemId[]) =>
+        (value ?? []).filter(itemId => itemId !== id && !enableChildIds.includes(itemId)),
+      );
       return;
     }
 
-    setValue?.((value: ItemId[]) => Array.from(new Set([...(value ?? []), ...baseChildIds])));
+    setValue?.((value: ItemId[]) => Array.from(new Set([...(value ?? []), ...enableChildIds])));
   };
 
   return { checked, indeterminate, handleOnSelect };
