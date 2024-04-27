@@ -117,6 +117,12 @@ export function BaseItem({
     }
   };
 
+  const handleItemClick = (e: MouseEvent<HTMLElement>) => {
+    if (!disabled) {
+      onClick?.(e);
+    }
+  };
+
   const handleCheckboxClick = (e: MouseEvent) => {
     e.stopPropagation();
   };
@@ -139,7 +145,7 @@ export function BaseItem({
         ref={itemRef as unknown as RefObject<HTMLLIElement>}
         className={cn(commonStyles.listItem, styles.droplistItem)}
         data-size={size}
-        onClick={onClick}
+        onClick={handleItemClick}
         onMouseDown={handleItemMouseDown}
         tabIndex={-1}
         data-non-pointer={inactive && !onClick}
