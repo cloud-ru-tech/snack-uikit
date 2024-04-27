@@ -15,9 +15,10 @@ export function transformOptionsToItems<T extends ContentRenderProps = ContentRe
 
       return {
         ...rest,
+        disabled,
         id,
         content: contentRender ? (
-          contentRender({ label, contentRenderProps })
+          contentRender({ label, contentRenderProps, disabled })
         ) : (
           <ItemContent option={label} {...contentRenderProps} disabled={disabled} />
         ),
@@ -47,9 +48,10 @@ export function transformOptionsToItems<T extends ContentRenderProps = ContentRe
 
     return {
       ...rest,
+      disabled,
       id: value,
       content: contentRender ? (
-        contentRender({ label, contentRenderProps })
+        contentRender({ label, contentRenderProps, disabled, value })
       ) : (
         <ItemContent option={label} {...contentRenderProps} disabled={disabled} />
       ),

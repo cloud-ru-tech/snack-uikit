@@ -22,7 +22,13 @@ export const FILTER_OPTIONS: FilterOption[] = [
     type: 'group-select',
     divider: true,
     options: [
-      { beforeContent: icon, value: 'value2', label: 'Option 2', contentRenderProps: { caption: 'two' } },
+      {
+        beforeContent: icon,
+        value: 'value2',
+        label: 'Option 2',
+        contentRenderProps: { caption: 'two' },
+        disabled: true,
+      },
       { beforeContent: icon, value: 'value3', label: 'Option 3', contentRenderProps: { caption: 'three' } },
     ],
   },
@@ -35,7 +41,13 @@ export const FILTER_OPTIONS: FilterOption[] = [
     type: 'next-list',
     label: 'Next List Group',
     options: [
-      { beforeContent: icon, value: 'value4', label: 'Option 4', contentRenderProps: { description: 'three' } },
+      {
+        beforeContent: icon,
+        value: 'value4',
+        label: 'Option 4',
+        contentRenderProps: { description: 'three' },
+        disabled: true,
+      },
       { beforeContent: icon, value: 'value5', label: 'Option 5', contentRenderProps: { description: 'four' } },
     ],
   },
