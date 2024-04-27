@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2024-04-27)
+
+
+### Features
+
+* **PDS-62:** upd default theme; add theme prop ([522efca](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/522efcad7a40cf9dccfef8c5192580c6d2c4b1ee))
+
+
+
+
+
 ## 0.1.2 (2024-04-23)
 
 ### Only dependencies have been changed
