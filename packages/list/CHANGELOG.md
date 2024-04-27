@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.4 (2024-04-27)
+
+
+### Bug Fixes
+
+* **PDS-00:** fix disabled items selection by group ([9ab4c61](https://github.com/cloud-ru-tech/snack-uikit/commit/9ab4c615e4b6c09278414765af8c675aaeac0aff))
+
+
+
+
+
 ## 0.11.3 (2024-04-27)
 
 

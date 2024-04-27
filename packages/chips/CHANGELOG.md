@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.3 (2024-04-27)
+
+
+### Bug Fixes
+
+* **PDS-0000:** fix disabled item click event ([3e438ca](https://github.com/cloud-ru-tech/snack-uikit/commit/3e438caafcd2906e22ac0ebd22faba7fe5d9deb8))
+
+
+
+
+
 ## 0.13.2 (2024-04-27)
 
 ### Only dependencies have been changed
