@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.13 (2024-04-27)
+
+
+### Bug Fixes
+
+* **FF-4851:** add missing toastOptions ([e1b6b2b](https://github.com/cloud-ru-tech/snack-uikit/commit/e1b6b2bd8c49da4fc36c80f4b65a65dd0c4258de))
+* **FF-4851:** add missing toastOptions, fix typings ([cd70ebb](https://github.com/cloud-ru-tech/snack-uikit/commit/cd70ebb4d3fd2d8ec46fa3917ee079e7a5190273))
+
+
+
+
+
 ## 0.6.12 (2024-04-25)
 
 
