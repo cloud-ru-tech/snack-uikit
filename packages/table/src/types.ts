@@ -64,8 +64,6 @@ type PinnedColumnDefinition<TData> = BaseColumnDefinition<TData> & {
 export type ColumnDefinition<TData> = NormalColumnDefinition<TData> | PinnedColumnDefinition<TData>;
 
 export type {
-  RowActionInfo,
-  RowActionProps,
   RowActionsColumnDefProps,
   StatusColumnDefinitionProps,
   RowInfo,

@@ -26,7 +26,7 @@ type BodyRowProps<TData> = {
 export function BodyRow<TData>({ row, onRowClick }: BodyRowProps<TData>) {
   const { pinnedLeft, pinnedRight, unpinned } = useRowCells(row);
 
-  const [droplistOpened, setDroplistOpen] = useState(false);
+  const [dropListOpened, setDropListOpen] = useState(false);
 
   const disabled = !row.getCanSelect();
 
@@ -42,13 +42,13 @@ export function BodyRow<TData>({ row, onRowClick }: BodyRowProps<TData>) {
   };
 
   return (
-    <RowContext.Provider value={{ droplistOpened, setDroplistOpen }}>
+    <RowContext.Provider value={{ dropListOpened, setDropListOpen }}>
       <Row
         onClick={handleRowClick}
         data-clickable={Boolean(onRowClick) || undefined}
         data-disabled={disabled || undefined}
         data-selected={row.getIsSelected() || undefined}
-        data-actions-opened={droplistOpened || undefined}
+        data-actions-opened={dropListOpened || undefined}
         data-test-id={TEST_IDS.bodyRow}
         data-row-id={row.id}
         className={styles.bodyRow}

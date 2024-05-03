@@ -11,7 +11,6 @@ import {
   ColumnDefinition,
   CopyCell,
   HeaderContext,
-  RowActionInfo,
   RowClickHandler,
   RowSelectionState,
   Table,
@@ -175,8 +174,6 @@ const Template: StoryFn<StoryProps> = ({
         statusColumnViewMode === StoryStatusColumnViewMode.Full
           ? {
               header: 'Status',
-              size: 100,
-              renderDescription: (value: string) => value,
               enableResizing: true,
             }
           : {};
@@ -185,6 +182,8 @@ const Template: StoryFn<StoryProps> = ({
         Table.getStatusColumnDef<StubData>({
           accessorKey: 'status',
           mapStatusToAppearance: value => Table.statusAppearances[value],
+          size: 100,
+          renderDescription: (value: string) => value,
           ...statusColDefProps,
         }),
         ...colDefs,
@@ -192,9 +191,9 @@ const Template: StoryFn<StoryProps> = ({
     }
 
     if (showActionsColumn) {
-      const handleRowActionClick = (row: RowActionInfo<StubData>) => {
+      const handleRowActionClick = ({ rowId, itemId }: { rowId: string; itemId: string }) => {
         toaster.userAction.success({
-          label: `${row.rowId} ${row.itemId}`,
+          label: `${rowId} ${itemId}`,
           'data-test-id': STORY_TEST_IDS.toaster,
         });
       };
@@ -202,22 +201,34 @@ const Template: StoryFn<StoryProps> = ({
       colDefs.push(
         Table.getRowActionsColumnDef({
           pinned: true,
-          actionsGenerator: () => [
+          actionsGenerator: cell => [
             {
               id: 'action-1',
               content: { option: 'action 1' },
-              onClick: handleRowActionClick,
+              onClick: () => handleRowActionClick({ rowId: cell.row.id, itemId: 'action-1' }),
               'data-test-id': 'test-custom',
             },
             {
               id: 'action-2',
               content: { option: 'action 2' },
-              onClick: handleRowActionClick,
+              onClick: () => handleRowActionClick({ rowId: cell.row.id, itemId: 'action-2' }),
             },
             {
               id: 'action-3',
               content: { option: 'action 3' },
-              onClick: handleRowActionClick,
+              onClick: () => handleRowActionClick({ rowId: cell.row.id, itemId: 'action-3' }),
+            },
+            {
+              id: 'group-1',
+              type: 'group',
+              items: [
+                {
+                  id: 'action-4',
+                  content: { option: 'action 4' },
+                  onClick: () => handleRowActionClick({ rowId: cell.row.id, itemId: 'action-4' }),
+                },
+              ],
+              divider: true,
             },
           ],
         }),

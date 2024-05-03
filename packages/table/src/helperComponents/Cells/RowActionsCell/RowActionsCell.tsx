@@ -1,42 +1,36 @@
 import { CellContext, Row } from '@tanstack/react-table';
-import { MouseEvent, ReactElement, useMemo, useRef } from 'react';
+import { MouseEvent, MouseEventHandler, useCallback, useMemo } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
 import { MoreSVG } from '@snack-uikit/icons';
-import { BaseItemProps, Droplist } from '@snack-uikit/list';
-import { Tag } from '@snack-uikit/tag';
+import { Droplist, DroplistProps, isBaseItemProps, ItemProps } from '@snack-uikit/list';
 
 import { COLUMN_PIN_POSITION, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';
 import { useRowContext } from '../../contexts';
 import styles from './styles.module.scss';
 
-export type RowActionInfo<TData> = {
-  rowId: string;
-  data: TData;
-  itemId?: string;
-};
-
-export type RowActionProps<TData> = Pick<BaseItemProps, 'content' | 'disabled' | 'data-test-id'> & {
-  icon?: ReactElement;
-  tagLabel?: string;
-  id?: string;
-  hidden?: boolean;
-  onClick(row: RowActionInfo<TData>, e: MouseEvent<HTMLElement>): void;
-};
-
 type RowActionsCellProps<TData> = {
-  actions: RowActionProps<TData>[];
+  actions: DroplistProps['items'];
   row: Row<TData>;
 };
 
 function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
-  const { droplistOpened, setDroplistOpen } = useRowContext();
-  const triggerRef = useRef(null);
+  const { dropListOpened, setDropListOpen } = useRowContext();
 
-  const handleItemClick = (item: RowActionProps<TData>) => (e: MouseEvent<HTMLElement>) => {
-    item.onClick({ rowId: row.id, itemId: item.id, data: row.original }, e);
-  };
+  const patchItem = useCallback((item: ItemProps, cb: MouseEventHandler): ItemProps => {
+    if (isBaseItemProps(item)) {
+      return {
+        ...item,
+        onClick(e) {
+          item.onClick?.(e);
+          cb(e);
+        },
+      };
+    }
+
+    return { ...item, items: item.items.map(i => patchItem(i, cb)) };
+  }, []);
 
   const disabled = !row.getCanSelect();
 
@@ -44,49 +38,32 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
     e.stopPropagation();
   };
 
-  const visibleActions: RowActionProps<TData>[] = useMemo(() => actions.filter(item => !item?.hidden), [actions]);
+  const patchedItems = useMemo(
+    () => actions.map(item => patchItem(item, () => setDropListOpen(false))),
+    [actions, patchItem, setDropListOpen],
+  );
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div onClick={stopPropagationClick} className={styles.rowActionsCellWrap} data-open={droplistOpened || undefined}>
-      {!disabled && Boolean(visibleActions.length) && (
+    <div onClick={stopPropagationClick} className={styles.rowActionsCellWrap} data-open={dropListOpened || undefined}>
+      {!disabled && Boolean(actions.length) && (
         <Droplist
           trigger='clickAndFocusVisible'
-          open={droplistOpened}
-          onOpenChange={setDroplistOpen}
+          open={dropListOpened}
+          onOpenChange={setDropListOpen}
           placement='bottom-end'
           size='m'
           data-test-id={TEST_IDS.rowActions.droplist}
-          triggerElemRef={triggerRef}
-          items={actions
-            .filter(item => !item?.hidden)
-            .map(item => ({
-              id: item.id,
-              onClick: e => {
-                handleItemClick(item)(e);
-                setDroplistOpen(false);
-              },
-              disabled: item.disabled,
-              content: item.content,
-              beforeContent: item.icon,
-              afterContent: item.tagLabel ? <Tag label={item.tagLabel} /> : undefined,
-              'data-test-id': item['data-test-id'] || TEST_IDS.rowActions.option,
-            }))}
+          items={patchedItems}
         >
-          <span className={styles.rowActionsCellTrigger}>
-            <ButtonFunction
-              icon={<MoreSVG size={24} />}
-              data-test-id={TEST_IDS.rowActions.droplistTrigger}
-              ref={triggerRef}
-            />
-          </span>
+          <ButtonFunction icon={<MoreSVG size={24} />} data-test-id={TEST_IDS.rowActions.droplistTrigger} />
         </Droplist>
       )}
     </div>
   );
 }
 
-export type ActionsGenerator<TData> = (cell: CellContext<TData, unknown>) => RowActionProps<TData>[];
+export type ActionsGenerator<TData> = (cell: CellContext<TData, unknown>) => DroplistProps['items'];
 
 export type RowActionsColumnDefProps<TData> = {
   /** Действия для строки */

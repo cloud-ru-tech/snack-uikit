@@ -19,7 +19,7 @@ export const TEST_IDS = {
   rowActions: {
     droplistTrigger: 'table__body-row__droplistTrigger',
     droplist: 'table__body-row__actions-droplist',
-    option: 'table__body-row__action-option',
+    option: 'list__base-item-option',
   },
   statusIndicator: 'table__status-indicator',
   statusLabel: 'table__status-label',

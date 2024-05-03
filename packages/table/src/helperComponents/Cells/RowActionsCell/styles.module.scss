@@ -24,24 +24,15 @@
 }
 
 .rowActionsCellWrap {
+  --offset: 0px;
+  cursor: pointer;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-}
-
-.rowActionsCellTrigger {
-  --offset: 0px;
 
   @include composite-var($table-cells-action);
-  
-
-  cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
 }

@@ -2,13 +2,13 @@ import { Table } from '@tanstack/react-table';
 import { createContext, Dispatch, SetStateAction, useContext } from 'react';
 
 type RowContext = {
-  droplistOpened: boolean;
-  setDroplistOpen: Dispatch<SetStateAction<boolean>>;
+  dropListOpened: boolean;
+  setDropListOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 export const RowContext = createContext<RowContext>({
-  droplistOpened: false,
-  setDroplistOpen() {},
+  dropListOpened: false,
+  setDropListOpen() {},
 });
 
 export const useRowContext = () => useContext(RowContext);
