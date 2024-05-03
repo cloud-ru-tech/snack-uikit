@@ -291,6 +291,7 @@ table.args = {
   disableSomeRows: false,
   onRowClick: () => {},
   enableOnRowClick: false,
+  enableFuzzySearch: false,
   'data-test-id': STORY_TEST_IDS.table,
 };
 

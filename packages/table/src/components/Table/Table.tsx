@@ -76,7 +76,7 @@ export function Table<TData extends object>({
   scrollRef,
   scrollContainerRef,
   getRowId,
-
+  enableFuzzySearch,
   ...rest
 }: TableProps<TData>) {
   const { state: globalFilter, onStateChange: onGlobalFilterChange } = useStateControl<string>(search, '');
@@ -139,7 +139,7 @@ export function Table<TData extends object>({
     manualPagination,
     manualFiltering,
 
-    globalFilterFn: fuzzyFilter,
+    globalFilterFn: enableFuzzySearch ? fuzzyFilter : undefined,
     onGlobalFilterChange,
 
     getRowId,

@@ -52,6 +52,9 @@ export type TableProps<TData extends object> = WithSupportProps<{
     onChange?(value: string): void;
   };
 
+  /** Включить нечеткий поиск  */
+  enableFuzzySearch?: boolean;
+
   /** Максимальное кол-во строк на страницу @default 10 */
   pageSize?: number;
 
