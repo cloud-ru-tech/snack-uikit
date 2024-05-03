@@ -94,9 +94,11 @@ export function kindFlattenItems({ items, prefix, parentId }: KindFlattenItemsPr
     const { items, ...rest } = item;
     const childActiveParent = isGroupItem(item) ? parentId ?? '~main' : autoId;
 
-    for (let idx = 0; idx < items.length; idx++) {
+    const filteredItems = items.filter(item => !item.hidden);
+
+    for (let idx = 0; idx < filteredItems.length; idx++) {
       const { id, children, autoId, focusChildren } = flatten({
-        item: items[idx],
+        item: filteredItems[idx],
         idx,
         prefix: itemId,
         parentId: childActiveParent,
@@ -137,8 +139,10 @@ export function kindFlattenItems({ items, prefix, parentId }: KindFlattenItemsPr
   const autoChildIds: ItemId[] = [];
   let allChildIds: ItemId[] = [];
 
-  for (let idx = 0; idx < items.length; idx++) {
-    const { id, children, autoId } = flatten({ item: items[idx], idx, prefix, parentId });
+  const filteredItems = items.filter(item => !item.hidden);
+
+  for (let idx = 0; idx < filteredItems.length; idx++) {
+    const { id, children, autoId } = flatten({ item: filteredItems[idx], idx, prefix, parentId });
 
     autoChildIds.push(autoId);
     closeChildIds.push(id);

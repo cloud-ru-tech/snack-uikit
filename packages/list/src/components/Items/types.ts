@@ -42,6 +42,8 @@ export type BaseItem = WithSupportProps<{
   id?: ItemId;
   /** Флаг неактивности элемента */
   disabled?: boolean;
+  /** Флаг присутствия элемента */
+  hidden?: boolean;
 
   itemRef?: RefObject<HTMLElement>;
 
@@ -90,6 +92,7 @@ type CommonGroupItem = {
     variant?: TruncateStringProps['variant'];
   };
   mode?: 'primary' | 'secondary';
+  hidden?: boolean;
   divider?: boolean;
 };
 
