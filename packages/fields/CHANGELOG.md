@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.20.3 (2024-05-03)
+
+
+### Bug Fixes
+
+* **PDS-135:** change cursor to pointer for question sign in decorator ([7babd2a](https://github.com/cloud-ru-tech/snack-uikit/commit/7babd2a7848f6245231be774e8be9834aae860b6))
+
+
+
+
+
 ## 0.20.2 (2024-04-27)
 
 ### Only dependencies have been changed
