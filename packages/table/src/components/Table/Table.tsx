@@ -99,6 +99,12 @@ export function Table<TData extends object>({
   );
   const enableSelection = Boolean(rowSelectionProp?.enable);
 
+  useEffect(() => {
+    if (pagination.pageIndex >= data.length / pagination.pageSize) {
+      onPaginationChange({ ...pagination, pageIndex: 0 });
+    }
+  }, [data.length, onPaginationChange, pagination]);
+
   const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
     let cols: ColumnDefinition<TData>[] = columnDefinitions;
     if (enableSelection) {
@@ -154,9 +160,9 @@ export function Table<TData extends object>({
     onSortingChange,
     getSortedRowModel: getSortedRowModel(),
     onPaginationChange,
+    autoResetPageIndex: false,
     getPaginationRowModel: getPaginationRowModel(),
     getCoreRowModel: getCoreRowModel(),
-
     columnResizeMode: 'onEnd',
   });
 
