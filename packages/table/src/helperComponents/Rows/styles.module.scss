@@ -61,6 +61,7 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 
   &[data-position='right'] {
     right: 0;
+    margin-left: auto;
 
     &::after {
       left: 0;
