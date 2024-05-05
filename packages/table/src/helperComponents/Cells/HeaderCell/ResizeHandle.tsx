@@ -1,6 +1,6 @@
 import { Header } from '@tanstack/react-table';
 import cn from 'classnames';
-import { RefObject } from 'react';
+import { MouseEventHandler, RefObject } from 'react';
 
 import styles from './styles.module.scss';
 
@@ -37,24 +37,34 @@ function getResizeIndicatorOffset<TData>({ header, cellRef }: ResizeHandleProps<
 export function ResizeHandle<TData>({ header, cellRef }: ResizeHandleProps<TData>) {
   const isResizing = header.column.getIsResizing();
   const resizeHandler = header.getResizeHandler();
+  const handleMouseDown: MouseEventHandler = event => {
+    if (event.detail === 2) {
+      header.column.resetSize();
+      return;
+    }
+
+    resizeHandler(event);
+  };
 
   const offset = isResizing ? getResizeIndicatorOffset({ header, cellRef }) : 0;
 
   return (
     <>
-      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
       <div
+        role='button'
+        tabIndex={0}
         className={cn(styles.tableHeaderIcon, styles.tableHeaderResizeHandle)}
         data-resizing={isResizing || undefined}
-        onMouseDown={resizeHandler}
+        onMouseDown={handleMouseDown}
         onTouchStart={resizeHandler}
       />
 
       {isResizing && (
         <div
+          data-test-id='table__header-cell-resize-handle-moving-part'
           className={styles.tableHeaderResizeIndicator}
           style={{
-            transform: `translateX(${offset}px)`,
+            '--offset': `${offset}px`,
           }}
         />
       )}

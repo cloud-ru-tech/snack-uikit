@@ -11,7 +11,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import cn from 'classnames';
-import { RefObject, useCallback, useEffect, useMemo } from 'react';
+import { RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
 
 import { useLocale } from '@snack-uikit/locale';
 import { Scroll } from '@snack-uikit/scroll';
@@ -112,6 +112,7 @@ export function Table<TData extends object>({
     }
     return cols;
   }, [columnDefinitions, enableSelection]);
+
   const columnPinning = useMemo(() => {
     const pinningState: Required<ColumnPinningState> = { left: [], right: [] };
     for (const col of tableColumns) {
@@ -195,18 +196,41 @@ export function Table<TData extends object>({
     }
   }, [loading, rowSelectionProp?.multiRow, table]);
 
-  useEffect(() => {}, []);
+  const columnSizeVarsRef = useRef<Record<string, string>>();
+  const columnSizesSnapshot = table
+    .getAllColumns()
+    .map(column => column.getSize())
+    .join('_');
 
   const columnSizeVars = useMemo(() => {
+    const sizeKey = (id: string) => `--table-column-${id}-size`;
+    const flexKey = (id: string) => `--table-column-${id}-flex`;
+
+    const getCurrentlyConfiguredHeaderWidth = (id: string) => {
+      const cell = document.querySelector<HTMLDivElement>(`[data-header-id="${id}"]`);
+      const resizeHandler = cell?.querySelector<HTMLDivElement>(
+        '[data-test-id="table__header-cell-resize-handle-moving-part"]',
+      );
+
+      if (cell && resizeHandler) {
+        const { width } = cell.getBoundingClientRect();
+        const offset = parseInt(resizeHandler.style.getPropertyValue('--offset'));
+        return width + offset;
+      }
+
+      return 0;
+    };
+
     const originalColumnDefs = table._getColumnDefs();
     const headers = table.getFlatHeaders();
-    const colSizes: { [key: string]: string } = {};
+    const colSizes: Record<string, string> = {};
 
     for (let i = 0; i < headers.length; i++) {
       const header = headers[i];
       const originalColDef = originalColumnDefs.find(col => getColumnId(header) === col.id);
       const originalColumnDefSize = originalColDef?.size;
       const initSize = originalColumnDefSize ? `${originalColumnDefSize}px` : '100%';
+      const prevSize = columnSizeVarsRef.current?.[sizeKey(header.id)];
 
       let size = initSize;
 
@@ -215,17 +239,32 @@ export function Table<TData extends object>({
         const colDefSize = header.column.columnDef.size;
 
         size = currentSize === colDefSize ? initSize : `${currentSize}px`;
+
+        if (prevSize === '100%' && currentSize !== colDefSize) {
+          const realSize = getCurrentlyConfiguredHeaderWidth(header.id);
+          table.setColumnSizing(old => ({ ...old, [header.id]: realSize }));
+
+          size = `${realSize}px`;
+        }
       }
 
-      colSizes[`--table-column-${header.id}-size`] = size;
-      colSizes[`--table-column-${header.id}-flex`] = size === '100%' ? 'unset' : '0';
+      colSizes[sizeKey(header.id)] = size;
+      colSizes[flexKey(header.id)] = size === '100%' ? 'unset' : '0';
     }
 
     return colSizes;
-    /* effect must be called only on columnSizingInfo.isResizingColumn changes
-      to reduce unnecessary recalculations */
+    /*
+      effect must be called only on columnSizingInfo.isResizingColumn changes
+      to reduce unnecessary recalculations
+
+      columnSizesSnapshot will trigger re-render after double-click size reset
+    */
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [table.getState().columnSizingInfo.isResizingColumn]);
+  }, [table.getState().columnSizingInfo.isResizingColumn, columnSizesSnapshot]);
+
+  useEffect(() => {
+    columnSizeVarsRef.current = columnSizeVars;
+  }, [columnSizeVars]);
 
   const tableRows = table.getRowModel().rows;
   const loadingTableRows = loadingTable.getRowModel().rows;

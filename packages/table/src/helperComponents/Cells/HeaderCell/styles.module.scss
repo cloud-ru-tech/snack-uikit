@@ -133,6 +133,7 @@
   z-index: 2;
   top: 0;
   right: 0;
+  transform: translateX(var(--offset));
 
   width: 1px;
   height: 100%;

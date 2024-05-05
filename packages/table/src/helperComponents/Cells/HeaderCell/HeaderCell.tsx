@@ -46,6 +46,7 @@ export function HeaderCell<TData>({ header, className }: HeaderCellProps<TData>)
       data-no-padding={columnDef.noHeaderCellPadding || undefined}
       data-no-offset={columnDef.noHeaderCellBorderOffset || undefined}
       data-test-id={TEST_IDS.headerCell}
+      data-header-id={header.id}
       data-resizing={isResizing || undefined}
       role='columnheader'
       className={cn(styles.tableHeaderCell, className, columnDef.headerClassName)}
