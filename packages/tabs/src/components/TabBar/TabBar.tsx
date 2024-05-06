@@ -81,7 +81,7 @@ export function TabBar({ children, className, type = TYPE.Primary, after, ...oth
     return () => {
       resizeObserver.disconnect();
     };
-  }, [type, updateMarkPosition]);
+  }, [children, type, updateMarkPosition]);
 
   const scrollContainerToElement = useCallback((element: HTMLElement) => {
     const container = scrollContainerRef.current;
