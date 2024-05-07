@@ -92,6 +92,10 @@
   &[data-resizing] {
     user-select: none;
   }
+
+  &[data-align='right'] {
+    justify-content: flex-end;
+  }
 }
 
 .tableHeaderCellMain {

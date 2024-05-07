@@ -108,6 +108,7 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
     cell: cell => numberFormatter.format(cell.getValue<number>()),
     header: renderHeader,
     size: 150,
+    headerAlign: 'right',
     align: 'right',
     enableSorting: true,
     enableResizing: false,

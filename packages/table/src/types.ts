@@ -33,6 +33,8 @@ type BaseColumnDefinition<TData> = Except<
 > & {
   /** Заголовок колонки */
   header?: string | ((ctx: HeaderContext<TData, unknown>) => string);
+  /** Позиционирование заголовка колонки */
+  headerAlign?: ColumnAlign;
   /** Позиционирование контента ячейки в теле таблицы */
   align?: ColumnAlign;
   /** Отключить паддинг у ячейки в теле таблицы */
