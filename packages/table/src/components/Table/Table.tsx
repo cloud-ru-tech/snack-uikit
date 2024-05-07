@@ -197,6 +197,7 @@ export function Table<TData extends object>({
   }, [loading, rowSelectionProp?.multiRow, table]);
 
   const columnSizeVarsRef = useRef<Record<string, string>>();
+  const headers = table.getFlatHeaders();
   const columnSizesSnapshot = table
     .getAllColumns()
     .map(column => column.getSize())
@@ -222,7 +223,6 @@ export function Table<TData extends object>({
     };
 
     const originalColumnDefs = table._getColumnDefs();
-    const headers = table.getFlatHeaders();
     const colSizes: Record<string, string> = {};
 
     for (let i = 0; i < headers.length; i++) {
@@ -257,10 +257,12 @@ export function Table<TData extends object>({
       effect must be called only on columnSizingInfo.isResizingColumn changes
       to reduce unnecessary recalculations
 
+      headers ids can also change, so they also should present here
+
       columnSizesSnapshot will trigger re-render after double-click size reset
     */
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [table.getState().columnSizingInfo.isResizingColumn, columnSizesSnapshot]);
+  }, [table.getState().columnSizingInfo.isResizingColumn, headers, columnSizesSnapshot]);
 
   useEffect(() => {
     columnSizeVarsRef.current = columnSizeVars;
