@@ -10,11 +10,14 @@
   width: 100%;
   min-width: 0;
   max-width: 100%;
+
   .copyButton {
     display: none;
   }
 
   &:hover {
+    margin-right: calc(0px - calc($dimension-4m + $dimension-050m));
+
     .copyButton {
       display: inline-flex;
     }
