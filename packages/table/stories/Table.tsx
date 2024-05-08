@@ -175,6 +175,8 @@ const Template: StoryFn<StoryProps> = ({
         statusColumnViewMode === StoryStatusColumnViewMode.Full
           ? {
               header: 'Status',
+              size: 100,
+              renderDescription: (value: string) => value,
               enableResizing: true,
             }
           : {};
@@ -183,8 +185,6 @@ const Template: StoryFn<StoryProps> = ({
         Table.getStatusColumnDef<StubData>({
           accessorKey: 'status',
           mapStatusToAppearance: value => Table.statusAppearances[value],
-          size: 100,
-          renderDescription: (value: string) => value,
           ...statusColDefProps,
         }),
         ...colDefs,
