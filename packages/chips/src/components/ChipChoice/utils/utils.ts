@@ -10,6 +10,7 @@ export type FlattenOption<T extends ContentRenderProps = ContentRenderProps> = {
   label: ItemId;
   contentRenderProps?: T;
   disabled?: boolean;
+  hidden?: boolean;
   afterContent?: ReactNode;
   beforeContent?: ReactNode;
 };
@@ -27,7 +28,7 @@ export function kindFlattenOptions<T extends ContentRenderProps = ContentRenderP
 
   function flatten(option: FilterOption<T>) {
     if (isBaseOption<T>(option)) {
-      const { value, label, contentRenderProps, disabled, afterContent, beforeContent } = option;
+      const { value, label, contentRenderProps, disabled, afterContent, beforeContent, hidden } = option;
 
       flattenOptions[value] = {
         value,
@@ -36,6 +37,7 @@ export function kindFlattenOptions<T extends ContentRenderProps = ContentRenderP
         disabled,
         afterContent,
         beforeContent,
+        hidden,
       };
 
       return;
