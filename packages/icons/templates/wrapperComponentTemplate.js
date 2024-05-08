@@ -8,7 +8,7 @@ export interface ISvgIconProps extends SVGProps<SVGSVGElement> {
 } 
 `;
 const ICON_SIZE_SINGLE = 1;
-const IMPORTS = ["import { SVGProps } from 'react';"];
+const IMPORTS = ["import { SVGProps, forwardRef, Ref } from 'react';"];
 const DEFAULT_SIZE = 24;
 
 const getComponent = (exportEntries, nameComponent, size) => {
@@ -19,13 +19,15 @@ const getComponent = (exportEntries, nameComponent, size) => {
   
   ${ICON_PROPS}
   
-  const ${nameComponent}SVG = ({ size = ${size}, ...props }: ISvgIconProps) => {
+  const ${nameComponent}SVG = forwardRef(({ size = ${size}, ...props }: ISvgIconProps, ref: Ref<SVGSVGElement>) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return ${
       isSingleIcon
-        ? '<SSVG size={size} {...props} />'
-        : `Number(size) >= 20 ? <SSVG size={size} {...props} /> : <XsSVG size={size} {...props} />`
+        ? '<SSVG ref={ref} size={size} {...props} />'
+        : `Number(size) >= 20 ? <SSVG ref={ref} size={size} {...props} /> : <XsSVG ref={ref} size={size} {...props} />`
     }
-  };
+  });
 
   export default ${nameComponent}SVG;`;
 };

@@ -25,7 +25,7 @@ const iconComponentTemplate =
       style?: React.CSSProperties;
     }
 
-    const ${componentName} = (${componentProp}): React.ReactElement | null => {
+    const ${componentName} = React.forwardRef((${componentProp}, ref: React.Ref<SVGSVGElement>) => {
       props.width = undefined;
       props.height = undefined;
       
@@ -40,6 +40,7 @@ const iconComponentTemplate =
       
       return (
         <svg
+          ref={ref}
           xmlns='http://www.w3.org/2000/svg'
           width={24}
           height={24}
@@ -51,7 +52,7 @@ const iconComponentTemplate =
            <use href={'#snack-uikit-' + testId.substring(1)} />
         </svg>
       );
-    }
+    })
     
     ${exports}
     `;
