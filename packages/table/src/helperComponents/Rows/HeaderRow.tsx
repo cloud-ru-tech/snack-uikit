@@ -26,7 +26,9 @@ export function HeaderRow() {
         <PinnedCells position={COLUMN_PIN_POSITION.Right}>
           {rightPinned.map(headerGroup =>
             headerGroup.headers.map(header =>
-              header.isPlaceholder ? null : <HeaderCell key={header.id} header={header} />,
+              header.isPlaceholder ? null : (
+                <HeaderCell key={header.id} header={header} pinPosition={COLUMN_PIN_POSITION.Right} />
+              ),
             ),
           )}
         </PinnedCells>

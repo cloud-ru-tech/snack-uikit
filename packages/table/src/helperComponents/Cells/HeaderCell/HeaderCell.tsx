@@ -5,7 +5,7 @@ import { MouseEvent, useRef } from 'react';
 import { TruncateString } from '@snack-uikit/truncate-string';
 
 import { TEST_IDS } from '../../../constants';
-import { ColumnDefinition } from '../../../types';
+import { ColumnDefinition, ColumnPinPosition } from '../../../types';
 import { useCellSizes } from '../../hooks';
 import { Cell, CellProps } from '../Cell';
 import { getSortingIcon } from './helpers';
@@ -14,9 +14,10 @@ import styles from './styles.module.scss';
 
 type HeaderCellProps<TData> = Omit<CellProps, 'align' | 'children' | 'onClick' | 'style'> & {
   header: Header<TData, unknown>;
+  pinPosition?: ColumnPinPosition;
 };
 
-export function HeaderCell<TData>({ header, className }: HeaderCellProps<TData>) {
+export function HeaderCell<TData>({ header, pinPosition, className }: HeaderCellProps<TData>) {
   const cellRef = useRef<HTMLDivElement>(null);
   const isSortable = header.column.getCanSort();
   const isResizable = header.column.getCanResize();
@@ -49,6 +50,7 @@ export function HeaderCell<TData>({ header, className }: HeaderCellProps<TData>)
       data-align={columnDef.headerAlign || undefined}
       data-header-id={header.id}
       data-resizing={isResizing || undefined}
+      data-pin-position={pinPosition || undefined}
       role='columnheader'
       className={cn(styles.tableHeaderCell, className, columnDef.headerClassName)}
       ref={cellRef}

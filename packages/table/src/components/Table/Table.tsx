@@ -38,9 +38,9 @@ import {
 import { ColumnDefinition } from '../../types';
 import { fuzzyFilter } from '../../utils';
 import { TableProps } from '../types';
-import { useLoadingTable } from './hooks';
-import { useStateControl } from './hooks/useStateControl';
+import { useLoadingTable, useStateControl } from './hooks';
 import styles from './styles.module.scss';
+import { getColumnStyleVars, getCurrentlyConfiguredHeaderWidth } from './utils';
 
 /** Компонент таблицы */
 export function Table<TData extends object>({
@@ -198,39 +198,18 @@ export function Table<TData extends object>({
 
   const columnSizeVarsRef = useRef<Record<string, string>>();
   const headers = table.getFlatHeaders();
-  const columnSizesSnapshot = table
-    .getAllColumns()
-    .map(column => column.getSize())
-    .join('_');
 
   const columnSizeVars = useMemo(() => {
-    const sizeKey = (id: string) => `--table-column-${id}-size`;
-    const flexKey = (id: string) => `--table-column-${id}-flex`;
-
-    const getCurrentlyConfiguredHeaderWidth = (id: string) => {
-      const cell = document.querySelector<HTMLDivElement>(`[data-header-id="${id}"]`);
-      const resizeHandler = cell?.querySelector<HTMLDivElement>(
-        '[data-test-id="table__header-cell-resize-handle-moving-part"]',
-      );
-
-      if (cell && resizeHandler) {
-        const { width } = cell.getBoundingClientRect();
-        const offset = parseInt(resizeHandler.style.getPropertyValue('--offset'));
-        return width + offset;
-      }
-
-      return 0;
-    };
-
     const originalColumnDefs = table._getColumnDefs();
     const colSizes: Record<string, string> = {};
 
     for (let i = 0; i < headers.length; i++) {
       const header = headers[i];
+      const { sizeKey, flexKey } = getColumnStyleVars(header.id);
       const originalColDef = originalColumnDefs.find(col => getColumnId(header) === col.id);
       const originalColumnDefSize = originalColDef?.size;
       const initSize = originalColumnDefSize ? `${originalColumnDefSize}px` : '100%';
-      const prevSize = columnSizeVarsRef.current?.[sizeKey(header.id)];
+      const prevSize = columnSizeVarsRef.current?.[sizeKey];
 
       let size = initSize;
 
@@ -248,8 +227,8 @@ export function Table<TData extends object>({
         }
       }
 
-      colSizes[sizeKey(header.id)] = size;
-      colSizes[flexKey(header.id)] = size === '100%' ? 'unset' : '0';
+      colSizes[sizeKey] = size;
+      colSizes[flexKey] = size === '100%' ? 'unset' : '0';
     }
 
     return colSizes;
@@ -259,10 +238,10 @@ export function Table<TData extends object>({
 
       headers ids can also change, so they also should present here
 
-      columnSizesSnapshot will trigger re-render after double-click size reset
+      table.getTotalSize() will trigger re-render after double-click size reset
     */
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [table.getState().columnSizingInfo.isResizingColumn, headers, columnSizesSnapshot]);
+  }, [table.getState().columnSizingInfo.isResizingColumn, headers, table.getTotalSize()]);
 
   useEffect(() => {
     columnSizeVarsRef.current = columnSizeVars;

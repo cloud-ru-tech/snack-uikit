@@ -1,4 +1,5 @@
 import { SortDirection } from '@tanstack/react-table';
+import { MouseEventHandler } from 'react';
 
 import { ArrowDownSVG, ArrowUpSVG } from '@snack-uikit/icons';
 
@@ -12,3 +13,7 @@ export function getSortingIcon(sort?: SortDirection | false) {
       return null;
   }
 }
+
+export const stopEventPropagation: MouseEventHandler = e => {
+  e.stopPropagation();
+};

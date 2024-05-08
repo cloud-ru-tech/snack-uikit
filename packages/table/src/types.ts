@@ -76,6 +76,7 @@ export type {
 } from './helperComponents';
 
 export type {
+  ColumnPinPosition,
   PaginationState,
   SortingState,
   RowSelectionState,

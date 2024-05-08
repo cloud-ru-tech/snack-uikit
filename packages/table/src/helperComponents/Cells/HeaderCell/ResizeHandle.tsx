@@ -2,6 +2,7 @@ import { Header } from '@tanstack/react-table';
 import cn from 'classnames';
 import { MouseEventHandler, RefObject } from 'react';
 
+import { stopEventPropagation } from './helpers';
 import styles from './styles.module.scss';
 
 type ResizeHandleProps<TData> = {
@@ -37,6 +38,7 @@ function getResizeIndicatorOffset<TData>({ header, cellRef }: ResizeHandleProps<
 export function ResizeHandle<TData>({ header, cellRef }: ResizeHandleProps<TData>) {
   const isResizing = header.column.getIsResizing();
   const resizeHandler = header.getResizeHandler();
+
   const handleMouseDown: MouseEventHandler = event => {
     if (event.detail === 2) {
       header.column.resetSize();
@@ -57,6 +59,7 @@ export function ResizeHandle<TData>({ header, cellRef }: ResizeHandleProps<TData
         data-resizing={isResizing || undefined}
         onMouseDown={handleMouseDown}
         onTouchStart={resizeHandler}
+        onMouseUp={stopEventPropagation}
       />
 
       {isResizing && (
