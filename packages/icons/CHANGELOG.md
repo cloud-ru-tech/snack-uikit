@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.21.0 (2024-05-08)
+
+
+### Features
+
+* **PDS-191:** add ref to icons ([8b3337a](https://github.com/cloud-ru-tech/snack-uikit/commit/8b3337a67708e7344e9dc5206cb0596bdb905256))
+
+
+
+
+
 ## 0.20.1 (2024-02-05)
 
 

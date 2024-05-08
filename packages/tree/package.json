@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tree",
-  "version": "0.5.21",
+  "version": "0.5.22",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,10 +33,10 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.17.1",
-    "@snack-uikit/droplist": "0.13.17",
-    "@snack-uikit/icons": "0.20.1",
-    "@snack-uikit/toggles": "0.9.8",
-    "@snack-uikit/truncate-string": "0.4.13",
+    "@snack-uikit/droplist": "0.13.18",
+    "@snack-uikit/icons": "0.21.0",
+    "@snack-uikit/toggles": "0.9.9",
+    "@snack-uikit/truncate-string": "0.4.14",
     "@snack-uikit/typography": "0.6.2",
     "@snack-uikit/utils": "3.3.0",
     "classnames": "2.3.2",

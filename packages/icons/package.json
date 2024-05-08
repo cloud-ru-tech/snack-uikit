@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Icons",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "sideEffects": [
     "*.svg",
     "*.css",
