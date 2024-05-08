@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.14.0 (2024-05-08)
+
+
+### Features
+
+* **PDS-135:** support list api update ([57a20c3](https://github.com/cloud-ru-tech/snack-uikit/commit/57a20c303fd7778706bd4a1b322c070e6b0422bb))
+
+
+
+
+
 ## 0.13.4 (2024-05-08)
 
 ### Only dependencies have been changed

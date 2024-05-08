@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.12 (2024-05-08)
+
+
+### Bug Fixes
+
+* **PDS-135:** tab bar marker position updated when children changed ([5732eee](https://github.com/cloud-ru-tech/snack-uikit/commit/5732eee04d623c06ca75353db78364524498a636))
+
+
+
+
+
 ## 0.6.11 (2024-05-08)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2024-05-08)
+
+
+### Features
+
+* **PDS-135:** add hidden flag for items ([489d07f](https://github.com/cloud-ru-tech/snack-uikit/commit/489d07f7b47142b6230f740e1c0c690f23a94512))
+
+
+
+
+
 ## 0.11.5 (2024-05-08)
 
 ### Only dependencies have been changed

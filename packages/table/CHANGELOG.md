@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2024-05-08)
+
+
+### Bug Fixes
+
+* **PDS-135:** change column sizing when header changes ([985fee7](https://github.com/cloud-ru-tech/snack-uikit/commit/985fee74f695cfc7c19dba2a1c73202a83295bc8))
+* **PDS-135:** fix first resize of columns, add reset of column size on double-click ([3094130](https://github.com/cloud-ru-tech/snack-uikit/commit/309413044ddacafe077f16686469d73fa676ded5))
+* **PDS-135:** keep page number when data is updated ([76b0b74](https://github.com/cloud-ru-tech/snack-uikit/commit/76b0b7448f112575bb35b413ac3db54ab938f70e))
+* **PDS-135:** right-pinned column does not change its place when resizing ([60b96b4](https://github.com/cloud-ru-tech/snack-uikit/commit/60b96b4dd652d5bc106d1d9b5ed1cc5ec9925d67))
+* **PDS-190:** redundant scroll, click on resize handler ([e520169](https://github.com/cloud-ru-tech/snack-uikit/commit/e5201697109c0dbb4e09034401367026c312fe9a))
+* **PDS-197:** fix copyCell flex behaviour ([cb3c2a5](https://github.com/cloud-ru-tech/snack-uikit/commit/cb3c2a516431cd1877756c3e3cc2f8e42b47ce83))
+
+
+### Features
+
+* **PDS-135:** add enableFuzzySearch prop ([cf203f3](https://github.com/cloud-ru-tech/snack-uikit/commit/cf203f33f27bcd34927de0090c3b7f5a8046fdab))
+* **PDS-208:** add headerAlign prop ([066fb90](https://github.com/cloud-ru-tech/snack-uikit/commit/066fb90898ed542d1763f23556b30a494b63c2b9))
+
+
+### BREAKING CHANGES
+
+
+* **PDS-135:** add full api from list to actions ([aae4ed3](https://github.com/cloud-ru-tech/snack-uikit/commit/aae4ed341d2e397b079e810a9b38762d9a96d952))
+
+
+
+
 ## 0.16.8 (2024-05-08)
 
 ### Only dependencies have been changed
