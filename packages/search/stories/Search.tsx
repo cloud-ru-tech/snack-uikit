@@ -2,7 +2,8 @@ import { Meta, StoryFn } from '@storybook/react';
 import debounce from 'lodash.debounce';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
+import { Card } from '@snack-uikit/card';
+import { BaseItemProps } from '@snack-uikit/list';
 import { Scroll } from '@snack-uikit/scroll';
 import { toaster } from '@snack-uikit/toaster';
 
@@ -24,7 +25,7 @@ export default meta;
 const Template: StoryFn<SearchProps> = ({ autocomplete, ...args }: SearchProps) => {
   const [value, setValue] = useState<string>(args.value || '');
   const [loading, setLoading] = useState<boolean>(false);
-  const [options, setOptions] = useState<ItemSingleProps[]>([]);
+  const [options, setOptions] = useState<BaseItemProps[]>([]);
   const [searchBeforeDebounce, setSearchBeforeDebounce] = useState<string>(value);
 
   const handleSearch = useCallback(
@@ -98,7 +99,20 @@ const Template: StoryFn<SearchProps> = ({ autocomplete, ...args }: SearchProps) 
           <Scroll className={styles.scroll}>
             <div className={styles.container}>
               {options.map(option => (
-                <Droplist.ItemSingle {...option} key={option.option} className={styles.card} />
+                <Card
+                  key={option.id}
+                  className={styles.card}
+                  header={
+                    <Card.Header
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
+                      title={option.content.option}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
+                      description={option.content.description}
+                    />
+                  }
+                />
               ))}
             </div>
           </Scroll>

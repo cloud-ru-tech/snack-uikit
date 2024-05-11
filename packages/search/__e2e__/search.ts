@@ -23,7 +23,7 @@ function getSelectors() {
   return {
     input: Selector(dataTestIdSelector(PRIVATE_SEARCH_TEST_IDS.input)),
     list: Selector(dataTestIdSelector(TEST_IDS.droplist)),
-    option: Selector(dataTestIdSelector(TEST_IDS.option)),
+    option: (id: string) => Selector(dataTestIdSelector(TEST_IDS.option + '__' + id)),
     submitToaster: Selector(dataTestIdSelector(TEST_ID_SUBMIT_TOASTER)),
     buttonClear: Selector(dataTestIdSelector(PRIVATE_SEARCH_TEST_IDS.buttonClearValue)),
     iconSun: Selector(dataTestIdSelector(PRIVATE_SEARCH_TEST_IDS.iconSun)),
@@ -49,27 +49,24 @@ test.page(getPage({ autocomplete: true }))(
   },
 );
 
-test.page(getPage({ autocomplete: true }))(
-  `Should call submit action by click on option in list and blur input`,
-  async t => {
-    const { input, list, option, submitToaster } = getSelectors();
+test.page(getPage({ autocomplete: true }))(`Should call submit action by click on option in list`, async t => {
+  const { input, list, option, submitToaster } = getSelectors();
 
-    await t.pressKey('tab');
-    await t.expect(list.exists).notOk("list is present although shouldn't");
+  await t.pressKey('tab');
+  await t.expect(list.exists).notOk("list is present although shouldn't");
 
-    await t.pressKey('o');
-    await t.expect(input.value).eql('o').wait(VALUE_LITTLE_MORE_DEBOUNCE_IN_HISTORY);
-    await t.expect(list.exists).ok('list is not present after input');
+  await t.pressKey('o');
+  await t.expect(input.value).eql('o').wait(VALUE_LITTLE_MORE_DEBOUNCE_IN_HISTORY);
+  await t.expect(list.exists).ok('list is not present after input');
 
-    await t.click(option);
+  const optionValue = generateOptions('o')[0].id;
 
-    const optionValue = generateOptions('o')[0].option;
-    await t.expect(input.value).eql(optionValue);
+  await t.click(option(optionValue));
 
-    await t.expect(submitToaster.exists).notOk('submit toast not present after option click');
-    await t.expect(input.focused).notOk('input should be blur after option click');
-  },
-);
+  await t.expect(input.value).eql(optionValue);
+
+  await t.expect(submitToaster.exists).notOk('submit toast not present after option click');
+});
 
 test.page(getPage({ autocomplete: true }))(`Should clear input by click on ButtonClear`, async t => {
   const { input, list, buttonClear } = getSelectors();
@@ -99,7 +96,9 @@ test.page(getPage({ autocomplete: true }))(`Should be controlled by keyboard`, a
 
   await t.pressKey('down');
 
-  await t.expect(option.focused).ok('Option should be focused  by ArrowDown press');
+  const optionValue = generateOptions('o')[0].id;
+
+  await t.expect(option(optionValue).focused).ok('Option should be focused  by ArrowDown press');
 
   await t.pressKey('up');
   await t.expect(input.focused).ok('Input should be focused by ArrowUp press');
@@ -120,8 +119,10 @@ test.page(getPage({ autocomplete: true }))(`Should handle keypress while focus o
   await t.pressKey('o');
   await t.expect(input.value).eql('o').wait(VALUE_LITTLE_MORE_DEBOUNCE_IN_HISTORY);
 
+  const optionValue = generateOptions('o')[0].id;
+
   await t.pressKey('down');
-  await t.expect(option.focused).ok('Option should be focused by ArrowDown press');
+  await t.expect(option(optionValue).focused).ok('Option should be focused by ArrowDown press');
 
   await t.pressKey('o');
   await t.expect(input.value).eql('oo').wait(VALUE_LITTLE_MORE_DEBOUNCE_IN_HISTORY);

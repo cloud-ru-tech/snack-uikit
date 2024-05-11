@@ -1,8 +1,17 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { forwardRef, KeyboardEvent, useCallback, useRef, useState } from 'react';
+import {
+  forwardRef,
+  KeyboardEvent,
+  KeyboardEventHandler,
+  MouseEvent,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
-import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
+import { BaseItemProps, Droplist } from '@snack-uikit/list';
 import { SearchPrivate, SearchPrivateProps } from '@snack-uikit/search-private';
 
 import { PRIVATE_SEARCH_TEST_IDS, SIZE, TEST_IDS } from '../../constants';
@@ -15,7 +24,7 @@ export type SearchAutocompleteProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
    *
    * На нажатие 'Space', 'Enter' или клике по элементу будет вызываться onSubmit.
    */
-  options: Pick<ItemSingleProps, 'option' | 'description' | 'tagLabel' | 'icon' | 'caption' | 'avatar'>[];
+  options: BaseItemProps[];
   /** Внешний бордер */
   outline?: boolean;
 };
@@ -37,60 +46,90 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
   ref,
 ) {
   const scrollRef = useRef<HTMLElement>(null);
+  const localRef = useRef<HTMLInputElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const {
-    firstElementRefCallback,
-    handleDroplistFocusLeave,
-    handleDroplistItemClick,
-    handleTriggerKeyDown,
-    handleDroplistItemKeyDown,
-    triggerElementRef,
-  } = Droplist.useKeyboardNavigation<HTMLInputElement>({
-    setDroplistOpen: setIsOpen,
-    triggerType: 'input',
-  });
-
   const handleOptionKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLButtonElement>) => {
-      event.stopPropagation();
+    (e: KeyboardEvent<HTMLButtonElement>) => {
+      if (e.key.length === 1) {
+        e.stopPropagation();
+        localRef.current?.focus();
+        scrollRef.current?.scroll(0, 0);
+
+        return;
+      }
 
       // ignoring special keys (tab, arrows, backspace, etc.)
-      if (event.key.length === 1) {
-        triggerElementRef.current?.focus();
-        scrollRef.current?.scroll(0, 0);
+      if (!['ArrowUp', 'ArrowDown'].includes(e.key)) {
+        e.stopPropagation();
+      } else {
+        e.preventDefault();
       }
     },
-    [triggerElementRef, scrollRef],
+    [scrollRef],
   );
 
-  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    handleTriggerKeyDown(e);
+  const handleKeyDown = (cb?: KeyboardEventHandler<HTMLInputElement>) => (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === ' ') {
+      e.stopPropagation();
+    }
 
     if (e.key.length === 1) {
       setIsOpen(true);
     }
+
+    cb?.(e);
   };
+
+  const items: BaseItemProps[] = useMemo(
+    () =>
+      options.map(({ onClick, ...item }, idx) => ({
+        ...item,
+        onClick: (e: MouseEvent<HTMLElement>) => {
+          // Dirty hack: by default list items call onClick by 'Space' || 'Enter'
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          if (!(e.type === 'keydown' && e?.key === ' ')) {
+            onClick?.(e);
+
+            if (item.id) {
+              onChange?.(String(item.id));
+              onSubmit?.(String(item.id));
+            } else if (typeof item.content === 'string') {
+              onChange?.(item.content);
+              onSubmit?.(item.content);
+            }
+
+            setIsOpen(false);
+            localRef.current?.focus();
+          }
+        },
+        onKeyDown: handleOptionKeyDown,
+        'data-test-id': `${TEST_IDS.option}__${item.id ?? idx}`,
+      })),
+    [handleOptionKeyDown, onChange, onSubmit, options],
+  );
 
   return (
     <div className={cn(styles.wrap, className)} {...rest}>
       <Droplist
-        open={Boolean(triggerElementRef.current?.value) && isOpen && options.length > 0}
-        firstElementRefCallback={firstElementRefCallback}
-        useScroll
+        open={isOpen && options.length > 0}
+        scroll
         size={size}
-        onFocusLeave={handleDroplistFocusLeave}
         onOpenChange={setIsOpen}
         data-test-id={TEST_IDS.droplist}
         triggerClassName={styles.triggerClassName}
         scrollRef={scrollRef}
-        triggerRef={triggerElementRef}
-        triggerElement={
+        triggerElemRef={localRef}
+        items={items}
+        loading={loading}
+      >
+        {({ onKeyDown }) => (
           <SearchDecorator
             size={size}
             outline={outline || undefined}
-            focused={(isOpen && Boolean(triggerElementRef.current?.value)) || undefined}
+            focused={(isOpen && Boolean(localRef.current?.value)) || undefined}
             data-test-id={TEST_IDS.decorator}
           >
             <SearchPrivate
@@ -99,29 +138,14 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
               onChange={onChange}
               onSubmit={onSubmit}
               placeholder={placeholder}
-              ref={mergeRefs(ref, triggerElementRef)}
-              onKeyDown={onKeyDown}
+              ref={mergeRefs(ref, localRef)}
+              onKeyDown={handleKeyDown(onKeyDown)}
               onFocus={onFocus}
               size={size}
               data-test-id={PRIVATE_SEARCH_TEST_IDS.field}
             />
           </SearchDecorator>
-        }
-      >
-        {options.map(item => (
-          <Droplist.ItemSingle
-            {...item}
-            key={item.option}
-            onClick={e => {
-              handleDroplistItemClick(e);
-              onChange?.(item.option);
-              onSubmit?.(item.option);
-              triggerElementRef.current?.blur();
-            }}
-            onKeyDown={e => handleDroplistItemKeyDown(e, handleOptionKeyDown)}
-            data-test-id={TEST_IDS.option}
-          />
-        ))}
+        )}
       </Droplist>
     </div>
   );
