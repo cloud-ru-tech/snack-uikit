@@ -90,15 +90,19 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
 
   const clearValue = () => setValue([]);
   const chipRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLElement>(null);
 
   const handleSelectionChange = useCallback(
     (newValue?: SelectionSingleValueType) => {
       if (newValue !== undefined) {
         setValue(newValue);
+        if (searchValue) {
+          listRef.current?.focus();
+        }
         setSearchValue('');
       }
     },
-    [setValue],
+    [searchValue, setValue],
   );
 
   useEffect(() => {
@@ -119,10 +123,10 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
       trigger='clickAndFocusVisible'
       placement='bottom-start'
       widthStrategy='gte'
+      listRef={listRef}
       size={DROPLIST_SIZE_MAP[size]}
       data-test-id={CHIP_CHOICE_TEST_IDS.droplist}
       open={open}
-      triggerElemRef={chipRef}
       onOpenChange={open => {
         if (!open) {
           setSearchValue('');

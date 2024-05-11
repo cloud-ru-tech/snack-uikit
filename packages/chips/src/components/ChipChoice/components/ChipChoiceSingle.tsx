@@ -110,7 +110,6 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
       className={dropDownClassName}
       widthStrategy='gte'
       open={open}
-      triggerElemRef={chipRef}
       onOpenChange={open => {
         if (!open) {
           setSearchValue('');
