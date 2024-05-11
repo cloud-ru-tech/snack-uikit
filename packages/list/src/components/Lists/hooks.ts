@@ -59,10 +59,7 @@ export function useNewKeyboardNavigation<T extends HTMLElement>({
               setActiveItemId(undefined);
               mainRef?.current?.focus();
             }
-            return;
-          }
-
-          if (activeItemIdRef.current !== undefined) {
+          } else if (activeItemIdRef.current !== undefined) {
             const activeIndex = ids.findIndex(id => id === activeItemIdRef.current);
             const nextId = Math.max(activeIndex - 1, 0);
             const itemId = ids[nextId];

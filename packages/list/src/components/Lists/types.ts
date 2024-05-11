@@ -56,6 +56,8 @@ export type ListProps = WithSupportProps<
 export type DroplistProps = {
   /** Ссылка на элемент-триггер для дроплиста */
   triggerElemRef?: RefObject<HTMLElement>;
+  /** Ссылка на элемент выпадающего списка */
+  listRef?: RefObject<HTMLElement>;
 
   /** Триггер для дроплиста
    * @type ReactNode | ({onKeyDown}) => ReactNode

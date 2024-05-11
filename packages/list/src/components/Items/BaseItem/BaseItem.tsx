@@ -90,7 +90,7 @@ export function BaseItem({
       return;
     }
 
-    if (e.code === 'Space' || e.key === 'Enter') {
+    if (e.code === 'Space' || e.key === 'Enter' || e.key === ' ') {
       if (isSelectionMultiple && isParentNode && onSelect) {
         onSelect();
       }

@@ -34,6 +34,7 @@ export function Droplist({
   size = 's',
   marker = true,
   className,
+  listRef: listRefProp,
   ...props
 }: DroplistProps) {
   const hasSearch = useMemo(() => Boolean(search), [search]);
@@ -114,7 +115,7 @@ export function Droplist({
 
   const { handleListKeyDownFactory, resetActiveItemId, activeItemId, forceUpdateActiveItemId } =
     useNewKeyboardNavigation({
-      mainRef: triggerElemRef,
+      mainRef: triggerElemRefProp ?? triggerElemRef,
       focusFlattenItems,
     });
 
@@ -202,7 +203,7 @@ export function Droplist({
                     onKeyDown={handleListKeyDown}
                     searchItem={searchItem}
                     tabIndex={0}
-                    ref={listRef}
+                    ref={mergeRefs(listRef, listRefProp)}
                     search={search}
                     onFocus={e => {
                       e.stopPropagation();
@@ -218,9 +219,7 @@ export function Droplist({
               trigger={trigger}
               placement={placement}
               widthStrategy={widthStrategy}
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-expect-error
-              triggerRef={triggerElemRefProp ? mergeRefs(triggerElemRef, triggerElemRefProp) : triggerElemRef}
+              triggerRef={!triggerElemRefProp ? triggerElemRef : undefined}
               open={open}
               onOpenChange={handleOpenChange}
             >
