@@ -47,8 +47,8 @@ const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
 | expandedNodes | `string[]` | - | Состояние для раскрытых элементов |
 | onExpand | `(expandedKeys: string[], nodeId: string) => void` | - | Колбэк при раскрытии/закрытии элементов |
 | onDataLoad | `(node: TreeNodeProps) => Promise<unknown>` | - | Колбэк для асинхронной загрузки данных при раскрытии дерева |
-| parentActions | `(node: TreeNodeProps) => DroplistItemSingleProps[]` | - | Дополнительные действия для элемента-родителя |
-| nodeActions | `(node: TreeNodeProps) => DroplistItemSingleProps[]` | - | Дополнительные действия для элемента-потомка |
+| parentActions | `(node: TreeNodeProps) => Item[]` | - | Дополнительные действия для элемента-родителя |
+| nodeActions | `(node: TreeNodeProps) => Item[]` | - | Дополнительные действия для элемента-потомка |
 | showIcons | `boolean` | true | Флаг отвечающий за отображение иконок у элементов дерева |
 | showLines | `boolean` | true | Флаг отвечающий за отображение линий вложенности |
 | className | `string` | - | CSS-класс |

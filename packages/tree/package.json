@@ -33,7 +33,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.17.1",
-    "@snack-uikit/droplist": "0.13.18",
+    "@snack-uikit/list": "0.12.0",
     "@snack-uikit/icons": "0.21.0",
     "@snack-uikit/toggles": "0.9.9",
     "@snack-uikit/truncate-string": "0.4.14",

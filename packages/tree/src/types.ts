@@ -1,6 +1,6 @@
 import { MouseEvent, MouseEventHandler, ReactNode } from 'react';
 
-import { ItemSingleProps } from '@snack-uikit/droplist';
+import { ItemProps } from '@snack-uikit/list';
 import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
 import { SELECTION_MODE } from './constants';
@@ -66,9 +66,9 @@ export type TreeCommonProps = {
   /** Колбэк для асинхронной загрузки данных при раскрытии дерева */
   onDataLoad?(node: TreeNodeProps): Promise<boolean | unknown>;
   /** Дополнительные действия для элемента-родителя */
-  parentActions?(node: TreeNodeProps): ItemSingleProps[];
+  parentActions?(node: TreeNodeProps): ItemProps[];
   /** Дополнительные действия для элемента-потомка */
-  nodeActions?(node: TreeNodeProps): ItemSingleProps[];
+  nodeActions?(node: TreeNodeProps): ItemProps[];
   /**
    * Флаг отвечающий за отображение иконок у элементов дерева
    * @default true

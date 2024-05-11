@@ -310,7 +310,7 @@ test.page(getPage())('Disabled element works as expected', async t => {
     .expect(disabledElement.nodeActionsButton.focused)
     .ok('Node actions should be focused after press "right" key');
 
-  await t.pressKey('space');
+  await t.pressKey('down');
   await t.expect(disabledElement.nodeActionsOption.exists).ok('Node actions should be available');
 
   await t.pressKey('left');

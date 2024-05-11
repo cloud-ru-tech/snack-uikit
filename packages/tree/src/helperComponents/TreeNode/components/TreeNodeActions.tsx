@@ -1,18 +1,18 @@
-import { Dispatch, KeyboardEventHandler, SetStateAction, useEffect } from 'react';
+import { Dispatch, KeyboardEventHandler, SetStateAction, useEffect, useRef } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
-import { Droplist, ItemSingleProps } from '@snack-uikit/droplist';
 import { KebabSVG } from '@snack-uikit/icons';
+import { Droplist, ItemProps } from '@snack-uikit/list';
 
 import { TEST_IDS } from '../../../constants';
 import { TreeNodeProps } from '../../../types';
 import styles from '../styles.module.scss';
-import { stopPropagationClick } from '../utils';
+import { stopPropagationClick, stopPropagationFocus } from '../utils';
 
 type TreeNodeActionsProps = {
   isDroplistOpen: boolean;
   setDroplistOpen: Dispatch<SetStateAction<boolean>>;
-  getNodeActions(node: TreeNodeProps): ItemSingleProps[];
+  getNodeActions(node: TreeNodeProps): ItemProps[];
   node: TreeNodeProps;
   isDroplistTriggerFocused: boolean;
   focusNode(): void;
@@ -30,38 +30,50 @@ export function TreeNodeActions({
 }: TreeNodeActionsProps) {
   const droplistActions = getNodeActions(node);
 
-  const {
-    triggerElementRef,
-    handleDroplistFocusLeave,
-    handleDroplistItemKeyDown,
-    handleTriggerKeyDown,
-    handleDroplistItemClick,
-    firstElementRefCallback,
-  } = Droplist.useKeyboardNavigation<HTMLButtonElement>({ setDroplistOpen });
+  const localRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (triggerElementRef.current && isDroplistTriggerFocused) {
-      triggerElementRef.current.focus();
+    if (localRef.current && isDroplistTriggerFocused) {
+      localRef.current.focus();
     }
-  }, [isDroplistTriggerFocused, triggerElementRef]);
+  }, [isDroplistTriggerFocused, localRef]);
 
-  if (!droplistActions.length) {
-    return null;
-  }
-
-  const handleKeyDown: KeyboardEventHandler<HTMLButtonElement> = e => {
-    handleTriggerKeyDown(e);
-
+  const handleKeyDown: KeyboardEventHandler<HTMLElement> = e => {
     switch (e.key) {
       case 'Tab': {
+        focusNode();
+        setDroplistOpen(false);
         e.preventDefault();
+        e.stopPropagation();
         return;
       }
       case 'ArrowLeft': {
         if (isDroplistTriggerFocused) {
           focusNode();
           setDroplistOpen(false);
+          e.stopPropagation();
         }
+        return;
+      }
+      case ' ':
+      case 'Enter': {
+        e.stopPropagation();
+
+        return;
+      }
+      case 'ArrowDown': {
+        if (isDroplistTriggerFocused) {
+          setDroplistOpen(true);
+        }
+
+        e.stopPropagation();
+        return;
+      }
+      case 'ArrowUp': {
+        setDroplistOpen(false);
+        localRef.current?.focus();
+
+        e.stopPropagation();
         return;
       }
       default:
@@ -69,40 +81,34 @@ export function TreeNodeActions({
     }
   };
 
+  if (!droplistActions.length) {
+    return null;
+  }
+
   return (
     <div
       role='presentation'
       className={styles.treeNodeActions}
       data-focused={isDroplistTriggerFocused || undefined}
       onClick={stopPropagationClick}
+      onKeyDown={handleKeyDown}
+      onFocus={stopPropagationFocus}
     >
       <Droplist
         open={isDroplistOpen}
         onOpenChange={setDroplistOpen}
-        onFocusLeave={handleDroplistFocusLeave}
-        firstElementRefCallback={firstElementRefCallback}
-        triggerRef={triggerElementRef}
+        items={droplistActions}
+        closeDroplistOnItemClick
         placement='bottom-end'
-        triggerElement={
-          <ButtonFunction
-            size='xs'
-            icon={<KebabSVG size={24} />}
-            onKeyDown={handleKeyDown}
-            onBlur={onBlurActions}
-            tabIndex={-1}
-            data-test-id={TEST_IDS.droplistTrigger}
-          />
-        }
+        triggerElemRef={localRef}
       >
-        {droplistActions.map(action => (
-          <Droplist.ItemSingle
-            key={action.option}
-            {...action}
-            onKeyDown={handleDroplistItemKeyDown}
-            onClick={e => handleDroplistItemClick(e, action.onClick)}
-            data-test-id={TEST_IDS.droplistAction}
-          />
-        ))}
+        <ButtonFunction
+          size='xs'
+          icon={<KebabSVG />}
+          onBlur={onBlurActions}
+          tabIndex={-1}
+          data-test-id={TEST_IDS.droplistTrigger}
+        />
       </Droplist>
     </div>
   );

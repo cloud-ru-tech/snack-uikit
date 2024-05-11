@@ -1,6 +1,7 @@
 import { PlaceholderSVG } from '@snack-uikit/icons';
 
 import { TreeNodeProps } from '../src';
+import { TEST_IDS } from '../src/constants';
 
 export function getNested(id: string) {
   return [
@@ -42,10 +43,12 @@ export function getNodeActions(isParent = false) {
     const option = isParent ? 'parent' : 'node';
     return [
       {
-        option: `${option} action 1 for node ${node.id}`,
+        content: `${option} action 1 for node ${node.id}`,
+        'data-test-id': TEST_IDS.droplistAction,
       },
       {
-        option: `${option} action 2 for node ${node.id}`,
+        content: `${option} action 2 for node ${node.id}`,
+        'data-test-id': TEST_IDS.droplistAction,
       },
     ];
   };
