@@ -1,0 +1,38 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
+
+.wrapper {
+  flex-shrink: 0;
+
+  &.sizeS {
+    @include composite-var($attachment-container-square-s);
+  }
+
+  &.sizeM {
+    @include composite-var($attachment-container-square-m);
+  }
+
+  .main {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .hover {
+    pointer-events: none;
+    height: 0;
+    opacity: 0;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &.hasFocusedActions {
+    .hover {
+      pointer-events: unset;
+      height: unset;
+      opacity: 1;
+    }
+
+    .main {
+      display: none;
+    }
+  }
+}

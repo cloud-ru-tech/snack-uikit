@@ -1,0 +1,22 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
+
+.actions {
+  @include composite-var($attachment, 'composition', 'end-item', 'gap');
+
+  display: flex;
+  flex-shrink: 0;
+
+  :not([data-disabled]).retryAction {
+    svg {
+      transform: rotate(360deg);
+      transition: transform 0.5s;
+    }
+
+    &:active {
+      svg {
+        transform: rotate(0deg);
+        transition-duration: 0s;
+      }
+    }
+  }
+}

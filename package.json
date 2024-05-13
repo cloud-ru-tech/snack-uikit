@@ -35,7 +35,7 @@
     "install:themes": "ts-node scripts/install-additional-themes"
   },
   "dependencies": {
-    "@snack-uikit/figma-tokens": "15.0.1",
+    "@snack-uikit/figma-tokens": "15.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -83,6 +83,7 @@
     "eslint-plugin-testcafe-community": "2.0.0",
     "glob": "10.2.7",
     "inquirer": "8.2.5",
+    "js-file-download": "0.4.12",
     "jsdom": "23.0.0",
     "lerna": "7.4.1",
     "lodash.debounce": "4.0.8",

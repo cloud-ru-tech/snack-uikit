@@ -1,0 +1,63 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
+
+$sizes: 's', 'm';
+
+$title: (
+  's': $sans-label-m,
+  'm': $sans-label-l,
+);
+
+$description: (
+  's': $sans-body-s,
+  'm': $sans-body-m,
+);
+
+.content {
+  overflow: hidden;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &[data-align='left'] {
+    text-align: left;
+  }
+
+  &[data-align='center'] {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      .title {
+        @include composite-var($title, $size);
+      }
+
+      .description,
+      .error {
+        @include composite-var($description, $size);
+      }
+    }
+  }
+}
+
+.title,
+.description,
+.error {
+  overflow: hidden;
+  width: 100%;
+}
+
+.title {
+  color: $sys-neutral-text-main;
+}
+
+.description {
+  color: $sys-neutral-text-light;
+}
+
+.error {
+  color: $sys-red-text-support;
+}

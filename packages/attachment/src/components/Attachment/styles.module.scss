@@ -1,0 +1,20 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
+
+$sizes: 's', 'm';
+
+.composition {
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+
+  box-sizing: border-box;
+  width: 100%;
+  margin: calc(0px - $dimension-050m);
+  padding: $dimension-050m;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($attachment, 'composition', $size);
+    }
+  }
+}
