@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.20.7 (2024-05-13)
+
+
+### Bug Fixes
+
+* **FF-0000:** add forgotten ([96e1334](https://github.com/cloud-ru-tech/snack-uikit/commit/96e13348e646f581a97cabe873cdfe02c5a96658))
+
+
+
+
+
 ## 0.20.6 (2024-05-13)
 
 ### Only dependencies have been changed
