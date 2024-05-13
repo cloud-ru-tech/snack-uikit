@@ -108,6 +108,7 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
       trigger='click'
       placement='bottom-start'
       className={dropDownClassName}
+      closeDroplistOnItemClick
       widthStrategy='gte'
       open={open}
       onOpenChange={open => {

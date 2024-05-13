@@ -184,7 +184,10 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
             value: value,
             onChange: value => {
               setValue(value);
-              updateInputValue();
+              if (inputValue) {
+                localRef.current?.focus();
+                updateInputValue();
+              }
             },
           }}
           dataFiltered={rest.dataFiltered ?? Boolean(inputValue.length)}

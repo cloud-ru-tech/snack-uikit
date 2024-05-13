@@ -101,6 +101,7 @@ export function TreeNodeActions({
         closeDroplistOnItemClick
         placement='bottom-end'
         triggerElemRef={localRef}
+        size='m'
       >
         <ButtonFunction
           size='xs'
