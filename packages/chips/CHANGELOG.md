@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.1 (2024-05-13)
+
+
+### Bug Fixes
+
+* **FF-0000:** fix keyboard control ([4fabf88](https://github.com/cloud-ru-tech/snack-uikit/commit/4fabf886d367c8f83648eccae36a7e2d500192da))
+
+
+
+
+
 # 0.14.0 (2024-05-08)
 
 

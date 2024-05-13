@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2024-05-13)
+
+
+### Bug Fixes
+
+* **FF-0000:** fix keyboard control; add listRef props ([bda03fe](https://github.com/cloud-ru-tech/snack-uikit/commit/bda03fee548908bdc07e1455cf5aa1a3c5b766f9))
+
+
+### Features
+
+* **FF-0000:** add closeDroplistOnItemClick prop ([fabd3a4](https://github.com/cloud-ru-tech/snack-uikit/commit/fabd3a4fe5443a985269228f082f9cfb0f4c0182))
+
+
+
+
+
 # 0.12.0 (2024-05-08)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2024-05-13)
+
+
+### BREAKING CHANGES
+
+
+* **FF-0000:** change droplist -> list package ([54f146b](https://github.com/cloud-ru-tech/snack-uikit/commit/54f146b520b43e2cc5976f2d8c62320b8c23176b))
+
+
+
+
 ## 0.7.22 (2024-05-08)
 
 ### Only dependencies have been changed
