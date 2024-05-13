@@ -58,6 +58,14 @@ export type DroplistProps = {
   triggerElemRef?: RefObject<HTMLElement>;
   /** Ссылка на элемент выпадающего списка */
   listRef?: RefObject<HTMLElement>;
+  /**
+   * Закрывать выпадающий список после клика на базовый айтем.
+   *
+   * Работает в режимах selection: 'none' | 'single'
+   *
+   * @default false
+   */
+  closeDroplistOnItemClick?: boolean;
 
   /** Триггер для дроплиста
    * @type ReactNode | ({onKeyDown}) => ReactNode

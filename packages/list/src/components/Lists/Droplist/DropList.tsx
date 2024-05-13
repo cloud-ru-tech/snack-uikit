@@ -6,7 +6,13 @@ import { Dropdown, DropdownProps } from '@snack-uikit/dropdown';
 import { useValueControl } from '@snack-uikit/utils';
 
 import { extractActiveItems, ItemId, kindFlattenItems, useCreateBaseItems } from '../../Items';
-import { CollapseContext, FocusListContext, NewListContextProvider, SelectionProvider } from '../contexts';
+import {
+  CollapseContext,
+  FocusListContext,
+  NewListContextProvider,
+  OpenListContext,
+  SelectionProvider,
+} from '../contexts';
 import { useNewKeyboardNavigation } from '../hooks';
 import { ListPrivate } from '../ListPrivate';
 import styles from '../styles.module.scss';
@@ -33,6 +39,7 @@ export function Droplist({
   contentRender,
   size = 's',
   marker = true,
+  closeDroplistOnItemClick = false,
   className,
   listRef: listRefProp,
   ...props
@@ -124,11 +131,14 @@ export function Droplist({
     [handleListKeyDownFactory, ids, expandedIds],
   );
 
-  const handleOpenChange = (open: boolean) => {
-    resetActiveItemId();
+  const handleOpenChange = useCallback(
+    (open: boolean) => {
+      resetActiveItemId();
 
-    setOpen(open);
-  };
+      setOpen(open);
+    },
+    [resetActiveItemId, setOpen],
+  );
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent<HTMLElement>, cb?: (e: KeyboardEvent<HTMLElement>) => void) => {
@@ -150,6 +160,8 @@ export function Droplist({
     },
     [resetActiveItemId, setOpen],
   );
+
+  const isValid = useMemo(() => isValidElement(children), [children]);
 
   const triggerElem: ReactNode = useMemo(() => {
     if (isValidElement(children)) {
@@ -192,39 +204,51 @@ export function Droplist({
               forceUpdateActiveItemId,
             }}
           >
-            <Dropdown
-              content={
-                <div className={cn(styles.wrapper, className)}>
-                  <ListPrivate
-                    {...props}
-                    items={memorizedItems.items.focusCloseChildIds}
-                    pinTop={memorizedItems.pinTop.focusCloseChildIds}
-                    pinBottom={memorizedItems.pinBottom.focusCloseChildIds}
-                    onKeyDown={handleListKeyDown}
-                    searchItem={searchItem}
-                    tabIndex={0}
-                    ref={mergeRefs(listRef, listRefProp)}
-                    search={search}
-                    onFocus={e => {
-                      e.stopPropagation();
-
-                      forceUpdateActiveItemId?.(ids[0]);
-                    }}
-                    limitedScrollHeight
-                  />
-                </div>
-              }
-              triggerClassName={triggerClassName}
-              fallbackPlacements={DEFAULT_FALLBACK_PLACEMENTS}
-              trigger={trigger}
-              placement={placement}
-              widthStrategy={widthStrategy}
-              triggerRef={!triggerElemRefProp ? triggerElemRef : undefined}
-              open={open}
-              onOpenChange={handleOpenChange}
+            <OpenListContext.Provider
+              value={{
+                closeDroplistOnItemClick,
+                closeDroplist: () => {
+                  setOpen(false);
+                  resetActiveItemId();
+                  (triggerElemRefProp ?? triggerElemRef).current?.focus();
+                },
+              }}
             >
-              {triggerElem}
-            </Dropdown>
+              <Dropdown
+                content={
+                  <div className={cn(styles.wrapper, className)}>
+                    <ListPrivate
+                      {...props}
+                      items={memorizedItems.items.focusCloseChildIds}
+                      pinTop={memorizedItems.pinTop.focusCloseChildIds}
+                      pinBottom={memorizedItems.pinBottom.focusCloseChildIds}
+                      onKeyDown={handleListKeyDown}
+                      searchItem={searchItem}
+                      tabIndex={0}
+                      ref={mergeRefs(listRef, listRefProp)}
+                      search={search}
+                      onFocus={e => {
+                        e.stopPropagation();
+
+                        forceUpdateActiveItemId?.(ids[0]);
+                      }}
+                      limitedScrollHeight
+                    />
+                  </div>
+                }
+                outsideClick
+                triggerClassName={triggerClassName}
+                fallbackPlacements={DEFAULT_FALLBACK_PLACEMENTS}
+                trigger={trigger}
+                placement={placement}
+                widthStrategy={widthStrategy}
+                triggerRef={!triggerElemRefProp ? triggerElemRef : (isValid && triggerElemRefProp) || undefined}
+                open={open}
+                onOpenChange={handleOpenChange}
+              >
+                {triggerElem}
+              </Dropdown>
+            </OpenListContext.Provider>
           </FocusListContext.Provider>
         </CollapseContext.Provider>
       </SelectionProvider>

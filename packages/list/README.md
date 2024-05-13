@@ -59,6 +59,7 @@
 | children* | `ReactNode \| ({onKeyDown}) => ReactNode * Рендер функция принимает аргументы `onKeyDown` - хендлер ввода, для поддержки управления с клавиатуры` | - | Триггер для дроплиста |
 | triggerElemRef | `RefObject<HTMLElement>` | - | Ссылка на элемент-триггер для дроплиста |
 | listRef | `RefObject<HTMLElement>` | - | Ссылка на элемент выпадающего списка |
+| closeDroplistOnItemClick | `boolean` | - | Закрывать выпадающий список после клика на базовый айтем.  Работает в режимах selection: 'none' \| 'single' |
 | triggerClassName | `string` | - | CSS-класс триггера |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |

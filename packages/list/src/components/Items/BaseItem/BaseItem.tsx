@@ -9,6 +9,7 @@ import {
   useCollapseLevelContext,
   useFocusListContext,
   useNewListContext,
+  useOpenListContext,
   useSelectionContext,
 } from '../../Lists/contexts';
 import commonStyles from '../styles.module.scss';
@@ -56,6 +57,7 @@ export function BaseItem({
   const { size = 's', marker, contentRender } = useNewListContext();
   const { level = 0 } = useCollapseLevelContext();
   const { forceUpdateActiveItemId } = useFocusListContext();
+  const { closeDroplist, closeDroplistOnItemClick } = useOpenListContext();
   const { value, onChange, mode, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
 
   const isChecked = isSelectionSingle ? value === id : checkedProp ?? value?.includes(id ?? '');
@@ -78,6 +80,29 @@ export function BaseItem({
     forceUpdateActiveItemId?.('~drop-focus');
   };
 
+  const handleItemFocus = (e: FocusEvent<HTMLElement>) => {
+    onFocus?.(e);
+    e.stopPropagation();
+  };
+
+  const handleCheckboxChange = () => {
+    if (isParentNode && onSelect) {
+      onSelect();
+    } else {
+      handleChange();
+    }
+  };
+
+  const handleItemClick = (e: MouseEvent<HTMLElement>) => {
+    if (!disabled) {
+      onClick?.(e);
+
+      if (!isSelectionMultiple && closeDroplistOnItemClick) {
+        closeDroplist();
+      }
+    }
+  };
+
   const handleItemKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     onKeyDown?.(e);
 
@@ -97,29 +122,10 @@ export function BaseItem({
 
       !isParentNode && handleChange();
       // TODO: should pass an event here?
-      !isParentNode && onClick?.(e as unknown as MouseEvent<HTMLElement>);
+      !isParentNode && handleItemClick?.(e as unknown as MouseEvent<HTMLElement>);
 
       e.stopPropagation();
       e.preventDefault();
-    }
-  };
-
-  const handleItemFocus = (e: FocusEvent<HTMLElement>) => {
-    onFocus?.(e);
-    e.stopPropagation();
-  };
-
-  const handleCheckboxChange = () => {
-    if (isParentNode && onSelect) {
-      onSelect();
-    } else {
-      handleChange();
-    }
-  };
-
-  const handleItemClick = (e: MouseEvent<HTMLElement>) => {
-    if (!disabled) {
-      onClick?.(e);
     }
   };
 
