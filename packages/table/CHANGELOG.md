@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.3 (2024-05-14)
+
+
+### Bug Fixes
+
+* **PDS-135:** prevent loop in page number changing ([2da818f](https://github.com/cloud-ru-tech/snack-uikit/commit/2da818f89c175782eeb2323f30e9f3459594fece))
+
+
+
+
+
 ## 0.17.2 (2024-05-13)
 
 ### Only dependencies have been changed
