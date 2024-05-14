@@ -39,6 +39,7 @@ import { ColumnDefinition } from '../../types';
 import { fuzzyFilter } from '../../utils';
 import { TableProps } from '../types';
 import { useLoadingTable, useStateControl } from './hooks';
+import { usePageReset } from './hooks/usePageReset';
 import styles from './styles.module.scss';
 import { getColumnStyleVars, getCurrentlyConfiguredHeaderWidth } from './utils';
 
@@ -99,11 +100,7 @@ export function Table<TData extends object>({
   );
   const enableSelection = Boolean(rowSelectionProp?.enable);
 
-  useEffect(() => {
-    if (pagination.pageIndex >= data.length / pagination.pageSize) {
-      onPaginationChange({ ...pagination, pageIndex: 0 });
-    }
-  }, [data.length, onPaginationChange, pagination]);
+  usePageReset({ data, pagination, onPaginationChange });
 
   const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
     let cols: ColumnDefinition<TData>[] = columnDefinitions;
