@@ -67,7 +67,7 @@ export function Card({
   const onKeyDown = useCallback(
     (e: KeyboardEvent<HTMLDivElement>) => {
       if (e.target === localDivRef.current) {
-        if (TRIGGER_CLICK_KEY_CODES.includes(e.code)) {
+        if (TRIGGER_CLICK_KEY_CODES.includes(e.code) || e.key === ' ') {
           href ? localAnchorRef.current?.click() : localDivRef.current?.click();
         }
       }

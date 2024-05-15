@@ -87,6 +87,47 @@ $sizes: 's', 'm', 'l';
     }
   }
 
+  &[data-checked] {
+    @include outline-var($container-focused-s);
+
+    outline-color: $sys-primary-decor-activated;
+    outline-width: $border-width-card-container;
+
+    &:hover {
+      outline-color: $sys-primary-decor-hovered;
+      box-shadow: none;
+    }
+
+    .contentWrapper::before {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      opacity: $opacity-a008;
+      background-color: $sys-primary-accent-default;
+    }
+
+    .check {
+      color: $sys-primary-on-accent;
+      background-color: $sys-primary-accent-default;
+    }
+  }
+
+  &[data-checked]:focus-visible {
+    @include outline-var($container-focused-l);
+
+    outline-color: $sys-primary-accent-default;
+
+    .check {
+      color: $sys-primary-on-accent;
+      background-color: $sys-primary-accent-default;
+    }
+  }
+
   &[data-disabled] {
     @include outline-var($container-focused-s);
 
@@ -95,9 +136,11 @@ $sizes: 's', 'm', 'l';
     outline-color: $sys-neutral-decor-default;
     outline-width: $border-width-card-container;
 
-    .check {
-      color: $sys-neutral-on-accent;
-      background-color: $sys-neutral-text-disabled;
+    &[data-checked] {
+      .check {
+        color: $sys-neutral-on-accent;
+        background-color: $sys-neutral-text-disabled;
+      }
     }
 
     * {
@@ -120,47 +163,6 @@ $sizes: 's', 'm', 'l';
         @include outline-var($container-focused-l);
 
         outline-color: $sys-primary-accent-default;
-      }
-    }
-
-    &[data-checked] {
-      @include outline-var($container-focused-s);
-
-      outline-color: $sys-primary-decor-activated;
-      outline-width: $border-width-card-container;
-
-      &:hover {
-        outline-color: $sys-primary-decor-hovered;
-        box-shadow: none;
-      }
-
-      .contentWrapper::before {
-        content: '';
-
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-
-        opacity: $opacity-a008;
-        background-color: $sys-primary-accent-default;
-      }
-
-      .check {
-        color: $sys-primary-on-accent;
-        background-color: $sys-primary-accent-default;
-      }
-    }
-
-    &[data-checked]:focus-visible {
-      @include outline-var($container-focused-l);
-
-      outline-color: $sys-primary-accent-default;
-
-      .check {
-        color: $sys-primary-on-accent;
-        background-color: $sys-primary-accent-default;
       }
     }
 
