@@ -170,12 +170,12 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
         onChange(value);
       };
 
-      if (textFieldNumValue < min) {
+      if (textFieldNumValue <= min) {
         handleChange(min);
         return;
       }
 
-      if (textFieldNumValue > max) {
+      if (textFieldNumValue >= max) {
         handleChange(max);
         return;
       }
@@ -204,7 +204,11 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
     };
 
     const handleTextValueChange = () => {
-      const textFieldNumValue = parseInt(textFieldInputValue);
+      const parsedValue = parseInt(textFieldInputValue);
+      const actualMinByMark = parseInt(String(getMarkValue(min)));
+      const actualMin = Number.isNaN(actualMinByMark) ? min : actualMinByMark;
+
+      const textFieldNumValue = textFieldInputValue ? parsedValue : actualMin;
 
       if (Number.isNaN(textFieldNumValue)) {
         return;
