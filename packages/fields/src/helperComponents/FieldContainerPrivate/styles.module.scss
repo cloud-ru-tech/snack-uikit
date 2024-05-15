@@ -109,6 +109,7 @@ $variants: 'single-line-container', 'multi-line-container';
     textarea,
     span {
       cursor: not-allowed;
+      background-color: simple-var($sys-neutral-background);
     }
 
     &,
