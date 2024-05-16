@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.20.8 (2024-05-16)
+
+
+### Bug Fixes
+
+* **FF-00:** fix empty value on remove input ([365f639](https://github.com/cloud-ru-tech/snack-uikit/commit/365f6394d2f2de0b43439d447f10cfc7a157ae40))
+* **FF-00:** fix safari bug with input disabled value ([3eeed10](https://github.com/cloud-ru-tech/snack-uikit/commit/3eeed106e4935d6fd7e49e695a7037b1cbf88190))
+
+
+
+
+
 ## 0.20.7 (2024-05-13)
 
 
