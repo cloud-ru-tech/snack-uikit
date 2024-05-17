@@ -1,0 +1,145 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-hotSpot';
+
+$appearances: 'neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
+
+@function withOffsetX($value) {
+  @return calc(var(--offset-x, 0px) + $value);
+}
+
+@function withInvertOffsetX($value) {
+  @return calc(calc(0px - var(--offset-x, 0px)) + $value);
+}
+
+@function withOffsetY($value) {
+  @return calc(var(--offset-y, 0px) + $value);
+}
+
+@function withInvertOffsetY($value) {
+  @return calc(calc(0px - var(--offset-y, 0px)) + $value);
+}
+
+.dotPlacementContainer {
+  position: absolute;
+
+  &[data-placement='left'],
+  &[data-placement='left-top'],
+  &[data-placement='left-bottom'] {
+    left: withOffsetX(0px);
+  }
+
+  &[data-placement='right'],
+  &[data-placement='right-top'],
+  &[data-placement='right-bottom'] {
+    right: withInvertOffsetX(0px);
+  }
+
+  &[data-placement='left-top'],
+  &[data-placement='center-top'],
+  &[data-placement='right-top'] {
+    top: withOffsetY(0px);
+  }
+
+  &[data-placement='left-bottom'],
+  &[data-placement='center-bottom'],
+  &[data-placement='right-bottom'] {
+    bottom: withInvertOffsetY(0px);
+  }
+
+  &[data-placement='center'],
+  &[data-placement='left'],
+  &[data-placement='right'] {
+    top: withOffsetY(50%);
+  }
+
+  &[data-placement='center'],
+  &[data-placement='center-top'],
+  &[data-placement='center-bottom'] {
+    left: withOffsetX(50%);
+  }
+
+  &[data-placement='center'] {
+    transform: translate(-50%, -50%);
+  }
+
+  &[data-placement='left'],
+  &[data-placement='right'] {
+    transform: translateY(-50%);
+  }
+
+  &[data-placement='center-top'],
+  &[data-placement='center-bottom'] {
+    transform: translateX(-50%);
+  }
+}
+
+.hotSpotDot {
+  @include composite-var($hot-spot, 'dot');
+
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    // Тут бы токен на зону клика (ну или какую нибудь штуку типа max(24, pulse.width))
+    width: $dimension-3m;
+    height: $dimension-3m;
+  }
+
+  &[data-pulse] {
+    &::before {
+      content: '';
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      opacity: $opacity-a024;
+
+      animation: pulse var(--duration, 2s) infinite;
+    }
+  }
+
+  @each $appearance in $appearances {
+    &[data-appearance='#{$appearance}'] {
+      &,
+      &::before {
+        background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+      }
+    }
+  }
+}
+
+.hotSpotDotContainer {
+  @include composite-var($hot-spot, 'dot');
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+@keyframes pulse {
+  0% {
+    @include composite-var($hot-spot, 'dot');
+  }
+
+  70% {
+    @include composite-var($hot-spot, 'pulse');
+  }
+
+  100% {
+    @include composite-var($hot-spot, 'dot');
+  }
+}
+
+.wrapper {
+  position: relative;
+  box-sizing: border-box;
+  width: fit-content;
+}
