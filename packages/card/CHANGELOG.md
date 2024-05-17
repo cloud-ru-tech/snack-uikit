@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.14 (2024-05-17)
+
+
+### Bug Fixes
+
+* **PDS-172:** shuffle classes order; add support props into Image; add space keydown handle' ([bb49373](https://github.com/cloud-ru-tech/snack-uikit/commit/bb49373d5a52a04cf86db7250db669e8600aa015))
+
+
+
+
+
 ## 0.12.13 (2024-05-13)
 
 ### Only dependencies have been changed
