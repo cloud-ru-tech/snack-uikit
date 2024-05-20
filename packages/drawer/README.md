@@ -42,9 +42,9 @@
 | image | `{ src: string; alt: string; }` | - | Изображение |
 | subtitle | `string` | - | Подзаголовок |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
-| approveButton | `Omit<ButtonFilledProps, "data-test-id" \| "size">` | - | Основная кнопка |
-| cancelButton | `Omit<ButtonOutlineProps, "data-test-id" \| "size">` | - | Кнопка отмены |
-| additionalButton | `Omit<ButtonSimpleProps, "data-test-id" \| "size">` | - | Дополнительная кнопка |
+| approveButton | `Omit<ButtonFilledProps, "data-test-id" \| "size"> & { tooltip?: TooltipProps; }` | - | Основная кнопка |
+| cancelButton | `Omit<ButtonOutlineProps, "data-test-id" \| "size"> & { tooltip?: TooltipProps; }` | - | Кнопка отмены |
+| additionalButton | `Omit<ButtonSimpleProps, "data-test-id" \| "size"> & { tooltip?: TooltipProps; }` | - | Дополнительная кнопка |
 | nestedDrawer | `ReactElement<DrawerProps, string \| JSXElementConstructor<any>>` | - | Вложенный Drawer |
 
 

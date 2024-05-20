@@ -8,10 +8,12 @@ import {
   ButtonSimple,
   ButtonSimpleProps,
 } from '@snack-uikit/button';
+import { TooltipProps } from '@snack-uikit/tooltip';
 import { TruncateString } from '@snack-uikit/truncate-string';
 
 import { NESTED_DRAWER_PUSH_DISTANCE, TEST_IDS } from '../../constants';
 import { DrawerBodyProps, DrawerHeaderProps } from '../../helperComponents';
+import { WithTooltip } from '../../helperComponents/WithTooltip';
 import { Size } from '../../types';
 import { DrawerCustom, DrawerCustomProps } from '../DrawerCustom';
 
@@ -25,11 +27,11 @@ export type DrawerProps = Omit<DrawerCustomProps, 'size' | 'children' | 'nestedD
     /** Размер */
     size?: Size;
     /** Основная кнопка */
-    approveButton?: Omit<ButtonFilledProps, 'size' | 'data-test-id'>;
+    approveButton?: Omit<ButtonFilledProps, 'size' | 'data-test-id'> & { tooltip?: TooltipProps };
     /** Кнопка отмены */
-    cancelButton?: Omit<ButtonOutlineProps, 'size' | 'data-test-id'>;
+    cancelButton?: Omit<ButtonOutlineProps, 'size' | 'data-test-id'> & { tooltip?: TooltipProps };
     /** Дополнительная кнопка */
-    additionalButton?: Omit<ButtonSimpleProps, 'size' | 'data-test-id'>;
+    additionalButton?: Omit<ButtonSimpleProps, 'size' | 'data-test-id'> & { tooltip?: TooltipProps };
     /** Вложенный Drawer */
     nestedDrawer?: ReactElement<DrawerProps>;
   };
@@ -66,12 +68,22 @@ export function Drawer({
           data-test-id={TEST_IDS.footer}
           actions={
             <>
-              {approveButton && <ButtonFilled {...approveButton} size='m' data-test-id={TEST_IDS.approveButton} />}
+              {approveButton && (
+                <WithTooltip tooltip={approveButton.tooltip}>
+                  <ButtonFilled {...approveButton} size='m' data-test-id={TEST_IDS.approveButton} />
+                </WithTooltip>
+              )}
 
-              {cancelButton && <ButtonOutline {...cancelButton} size='m' data-test-id={TEST_IDS.cancelButton} />}
+              {cancelButton && (
+                <WithTooltip tooltip={cancelButton.tooltip}>
+                  <ButtonOutline {...cancelButton} size='m' data-test-id={TEST_IDS.cancelButton} />
+                </WithTooltip>
+              )}
 
               {additionalButton && (
-                <ButtonSimple {...additionalButton} size='m' data-test-id={TEST_IDS.additionalButton} />
+                <WithTooltip tooltip={additionalButton.tooltip}>
+                  <ButtonSimple {...additionalButton} size='m' data-test-id={TEST_IDS.additionalButton} />
+                </WithTooltip>
               )}
             </>
           }

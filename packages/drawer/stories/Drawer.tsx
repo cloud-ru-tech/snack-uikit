@@ -61,7 +61,13 @@ const Template: StoryFn<DrawerStoryProps> = ({ open: openProp, ...args }: Drawer
         approveButton={!args.approveButton ? undefined : { ...args.approveButton, onClick: handleClose }}
         cancelButton={!args.cancelButton ? undefined : { ...args.cancelButton, onClick: handleClose }}
         additionalButton={
-          !args.additionalButton ? undefined : { label: NESTED_DRAWER.openButton, onClick: toggleInnerDrawer }
+          !args.additionalButton
+            ? undefined
+            : {
+                label: NESTED_DRAWER.openButton,
+                onClick: toggleInnerDrawer,
+                tooltip: { tip: 'You can open new drawer nested in the current one' },
+              }
         }
         nestedDrawer={
           <Drawer
