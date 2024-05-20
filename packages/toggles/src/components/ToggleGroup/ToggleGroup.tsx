@@ -1,13 +1,10 @@
-import { ReactNode, useCallback } from 'react';
+import { PropsWithChildren, useCallback } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { SELECTION_MODE } from '../../constants';
 import { ToggleGroupContext } from '../../context';
 
-export type ToggleGroupProps = {
-  /** Вложенный контент */
-  children: ReactNode;
-} & (
+export type ToggleGroupProps = PropsWithChildren<
   | {
       /** Начальное состояние */
       defaultValue?: string;
@@ -28,7 +25,7 @@ export type ToggleGroupProps = {
       /** Режим выбора */
       selectionMode?: typeof SELECTION_MODE.Multiple;
     }
-);
+>;
 
 export function ToggleGroup({
   children,

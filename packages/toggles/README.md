@@ -155,7 +155,6 @@ return (
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| children* | `ReactNode` | - | Вложенный контент |
 | defaultValue | `string \| string[]` | - | Начальное состояние |
 | value | `string \| string[]` | - | Controlled состояние |
 | onChange | `((value: string) => void) \| ((value: string[]) => void)` | - | Controlled обработчик измения состояния |
