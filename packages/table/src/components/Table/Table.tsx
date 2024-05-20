@@ -141,7 +141,7 @@ export function Table<TData extends object>({
     manualPagination,
     manualFiltering,
 
-    globalFilterFn: enableFuzzySearch ? fuzzyFilter : undefined,
+    globalFilterFn: enableFuzzySearch ? fuzzyFilter : 'includesString',
     onGlobalFilterChange,
 
     getRowId,
