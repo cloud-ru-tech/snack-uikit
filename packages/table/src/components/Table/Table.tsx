@@ -100,8 +100,6 @@ export function Table<TData extends object>({
   );
   const enableSelection = Boolean(rowSelectionProp?.enable);
 
-  usePageReset({ data, pagination, onPaginationChange });
-
   const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
     let cols: ColumnDefinition<TData>[] = columnDefinitions;
     if (enableSelection) {
@@ -256,6 +254,13 @@ export function Table<TData extends object>({
 
     return !tableRows.length ? Math.min(Math.max(tempPageSize, 5), DEFAULT_PAGE_SIZE) : tempPageSize;
   }, [pageSize, suppressPagination, tablePagination?.pageSize, tableRows.length]);
+
+  usePageReset({
+    manualPagination,
+    maximumAvailablePage: pageCount || data.length / pagination.pageSize,
+    pagination,
+    onPaginationChange,
+  });
 
   return (
     <>

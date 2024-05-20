@@ -1,19 +1,24 @@
 import { PaginationState } from '@tanstack/react-table';
 import { useEffect } from 'react';
 
-type UsePageResetProps<TData extends object> = {
-  data: TData[];
+type UsePageResetProps = {
+  manualPagination: boolean;
+  maximumAvailablePage: number;
   pagination: PaginationState;
   onPaginationChange(state: PaginationState): void;
 };
 
-export function usePageReset<TData extends object>({ pagination, data, onPaginationChange }: UsePageResetProps<TData>) {
+export function usePageReset({
+  manualPagination,
+  pagination,
+  maximumAvailablePage,
+  onPaginationChange,
+}: UsePageResetProps) {
   useEffect(() => {
     const { pageIndex } = pagination;
-    const maximumAvailablePage = data.length / pagination.pageSize;
 
-    if (pageIndex > 0 && pageIndex >= maximumAvailablePage) {
+    if (!manualPagination && pageIndex > 0 && pageIndex >= maximumAvailablePage) {
       onPaginationChange({ ...pagination, pageIndex: 0 });
     }
-  }, [data.length, onPaginationChange, pagination]);
+  }, [maximumAvailablePage, manualPagination, onPaginationChange, pagination]);
 }
