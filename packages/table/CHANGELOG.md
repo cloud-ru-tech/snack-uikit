@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.4 (2024-05-21)
+
+
+### Bug Fixes
+
+* **FF-4717:** do not reset page index when manual pagination is enabled ([8873460](https://github.com/cloud-ru-tech/snack-uikit/commit/8873460c458c75ec19e6e27a1f15e208a8e36c9c))
+* **FF-4717:** fix simple search when fuzzy filter is disabled ([cec391a](https://github.com/cloud-ru-tech/snack-uikit/commit/cec391a8127228c425a0bc88d3da31b991e13e20))
+
+
+
+
+
 ## 0.17.3 (2024-05-14)
 
 
