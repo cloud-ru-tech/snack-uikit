@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 0.1.0 (2024-05-21)
+
+
+### Features
+
+* **PDS-103:** add hot-spot ([9c94e07](https://github.com/cloud-ru-tech/snack-uikit/commit/9c94e07a3d6ffa95030b2d571606737a9c61bddd))
+
+
+
+
+
 ## CHANGELOG
 
 ### v0.0.0
