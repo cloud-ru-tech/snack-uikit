@@ -50,7 +50,7 @@ export function HotSpot({
   ...rest
 }: HotSpotProps) {
   if (!enabled) {
-    return children;
+    return <>{children}</>;
   }
 
   const dotJSX = (
