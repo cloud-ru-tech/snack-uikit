@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 
 export type CollapseBlockHeaderContainerProps = {
   children: ReactNode;
-  toggleExpanded(): void;
+  toggleExpanded(expanded: boolean): void;
   expanded: boolean;
   actions?: ReactNode;
 };
@@ -35,7 +35,7 @@ export function CollapseBlockHeaderContainer({
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div className={styles.header} data-test-id={TEST_IDS.header} onClick={toggleExpanded}>
+    <div className={styles.header} data-test-id={TEST_IDS.header} onClick={() => toggleExpanded(!expanded)}>
       <div className={styles.text} style={{ '--width': width }}>
         {children}
       </div>

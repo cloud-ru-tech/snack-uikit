@@ -1,9 +1,9 @@
 import cn from 'classnames';
 
-import { useToggleGroup } from '@snack-uikit/toggles';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { CollapseBlockHeaderContainer, CollapseBlockPrivate } from '../../helperComponents';
+import { useExpanded } from '../../hooks';
 import { CollapseBlockPrimaryProps } from '../../types';
 import styles from './styles.module.scss';
 
@@ -17,7 +17,7 @@ export function CollapseBlockPrimary({
   shape = 'round',
   ...rest
 }: CollapseBlockPrimaryProps) {
-  const { isChecked: isExpanded, handleClick: handleExpandedChange } = useToggleGroup({ value: id });
+  const { isExpanded, isExpandedDebounced, handleToggleExpanded } = useExpanded(id);
 
   return (
     <CollapseBlockPrivate
@@ -28,11 +28,12 @@ export function CollapseBlockPrimary({
       )}
       shape={shape}
       header={
-        <CollapseBlockHeaderContainer expanded={isExpanded} toggleExpanded={handleExpandedChange} actions={actions}>
+        <CollapseBlockHeaderContainer expanded={isExpanded} toggleExpanded={handleToggleExpanded} actions={actions}>
           {header}
         </CollapseBlockHeaderContainer>
       }
       expanded={isExpanded}
+      expandedDebounced={isExpandedDebounced}
       {...extractSupportProps(rest)}
     >
       {children}
