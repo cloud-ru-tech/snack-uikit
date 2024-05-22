@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.1 (2024-05-22)
+
+
+### Bug Fixes
+
+* **PDS-103:** children ([240c2da](https://github.com/cloud-ru-tech/snack-uikit/commit/240c2da0dec104179d87b77e0ffb3741ccd43ff7))
+
+
+
+
+
 # 0.1.0 (2024-05-21)
 
 
