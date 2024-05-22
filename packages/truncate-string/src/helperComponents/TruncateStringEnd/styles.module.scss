@@ -4,8 +4,12 @@
 
   max-width: 100%;
 
-  text-overflow: ellipsis;
+  text-overflow: initial;
   white-space: nowrap;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
 }
 
 .text2AndMoreLines {

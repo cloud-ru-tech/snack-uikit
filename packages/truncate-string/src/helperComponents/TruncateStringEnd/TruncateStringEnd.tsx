@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';
 import { extractSupportProps, useDebounce, WithSupportProps } from '@snack-uikit/utils';
@@ -27,17 +27,25 @@ export function TruncateStringEnd({
   placement,
   ...rest
 }: TruncateStringEndProps) {
-  const [showTooltip, setShowTooltip] = useState(false);
   const textElementRef = useRef<HTMLElement | null>(null);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const toggleShowTooltip = useDebounce(() => {
     setShowTooltip(isEllipsisActive(textElementRef.current));
   }, 50);
 
+  useLayoutEffect(() => {
+    if (textElementRef.current) {
+      setShowTooltip(isEllipsisActive(textElementRef.current));
+    }
+  }, []);
+
   useEffect(() => {
     const observer = new ResizeObserver(toggleShowTooltip);
 
     if (textElementRef.current) {
+      setShowTooltip(isEllipsisActive(textElementRef.current));
+
       observer.observe(textElementRef.current);
     }
 
@@ -49,7 +57,9 @@ export function TruncateStringEnd({
   const textElement = (
     <span
       ref={textElementRef}
-      className={cn(maxLines > 1 ? styles.text2AndMoreLines : styles.text1Line, className)}
+      className={cn(maxLines > 1 ? styles.text2AndMoreLines : styles.text1Line, className, {
+        [styles.ellipsis]: !textElementRef.current || showTooltip,
+      })}
       style={{ '--max-lines': maxLines }}
       {...extractSupportProps(rest)}
     >
