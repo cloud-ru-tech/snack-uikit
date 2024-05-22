@@ -30,7 +30,6 @@ export function CollapseBlockPrivate({
       // eslint-disable-next-line jsx-a11y/aria-role
       role='accordion'
       data-shape={shape}
-      // data-outline={outline || undefined}
       aria-expanded={expanded}
       {...extractSupportProps(rest)}
     >

@@ -5,6 +5,7 @@ import { ChevronDownSVG } from '@snack-uikit/icons';
 
 import { TEST_IDS } from '../../testIds';
 import styles from './styles.module.scss';
+import { stopPropagationClick } from './utils';
 
 export type CollapseBlockHeaderContainerProps = {
   children: ReactNode;
@@ -33,20 +34,23 @@ export function CollapseBlockHeaderContainer({
     });
   }, [functionLayoutRef]);
 
+  const handleToggleExpanded = () => toggleExpanded(!expanded);
+
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div className={styles.header} data-test-id={TEST_IDS.header} onClick={() => toggleExpanded(!expanded)}>
+    <div className={styles.header} data-test-id={TEST_IDS.header} onClick={handleToggleExpanded}>
       <div className={styles.text} style={{ '--width': width }}>
         {children}
       </div>
-
-      <div className={styles.functionLayout} ref={functionLayoutRef}>
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+      <div className={styles.functionLayout} ref={functionLayoutRef} onClick={stopPropagationClick}>
         {actions}
 
         <ButtonFunction
           className={styles.button}
           data-expanded={expanded || undefined}
           icon={<ChevronDownSVG />}
+          onClick={handleToggleExpanded}
           size='xs'
           data-test-id={TEST_IDS.chevron}
         />
