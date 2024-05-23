@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-05-23)
+
+
+### Features
+
+* **FF-4716:** add tooltip to drawer buttons ([053c122](https://github.com/cloud-ru-tech/snack-uikit/commit/053c1226d8688a77dbdedce1448bcb8367136837))
+
+
+
+
+
 ## 0.6.20 (2024-05-23)
 
 ### Only dependencies have been changed

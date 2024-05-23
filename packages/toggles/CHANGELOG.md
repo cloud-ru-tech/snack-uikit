@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.10 (2024-05-23)
+
+
+### Bug Fixes
+
+* **FF-4716:** children prop typing ([d95cc11](https://github.com/cloud-ru-tech/snack-uikit/commit/d95cc1144e116a31165cb7f9b6e0faeaf7e011d7))
+
+
+
+
+
 ## 0.9.9 (2024-05-08)
 
 ### Only dependencies have been changed
