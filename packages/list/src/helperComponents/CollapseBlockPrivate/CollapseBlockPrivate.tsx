@@ -26,7 +26,7 @@ export function CollapseBlockPrivate({ children, expanded, className, header, ..
 
       <div className={styles.contentWrapper} aria-hidden={!expanded}>
         <div className={styles.content} data-content>
-          {children}
+          {expanded && children}
         </div>
       </div>
     </div>
