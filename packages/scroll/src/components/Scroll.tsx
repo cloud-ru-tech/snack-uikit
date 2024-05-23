@@ -1,7 +1,7 @@
-import 'overlayscrollbars/css/OverlayScrollbars.css';
+import 'overlayscrollbars/styles/overlayscrollbars.css';
 
 import cn from 'classnames';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { OverlayScrollbarsComponent, OverlayScrollbarsComponentRef } from 'overlayscrollbars-react';
 import {
   forwardRef,
   PropsWithChildren,
@@ -81,7 +81,7 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
   },
   ref,
 ) {
-  const overlayScrollbarsRef = useRef<OverlayScrollbarsComponent | null>(null);
+  const overlayScrollbarsRef = useRef<OverlayScrollbarsComponentRef | null>(null);
   const [isOverlayScrollbarInited, setOverlayScrollbarInited] = useState(false);
   const getOSInstance = useCallback(
     (overlayScrollbars = overlayScrollbarsRef.current) => overlayScrollbars?.osInstance(),
@@ -90,16 +90,16 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
 
   useImperativeHandle<HTMLElement | null, HTMLElement | null>(
     ref,
-    () => (overlayScrollbarsRef.current?.osInstance()?.getElements('viewport') ?? null) as HTMLElement | null,
+    () => (overlayScrollbarsRef.current?.osInstance()?.elements().viewport ?? null) as HTMLElement | null,
   );
 
   const lastPositionsRef = useRef<PositionsRef>({ scrolledToBottom: false, scrolledToRight: false });
 
   const syncPositions = useCallback(
-    (scrollbars?: OverlayScrollbarsComponent | null) => {
+    (scrollbars?: OverlayScrollbarsComponentRef | null) => {
       const instance = getOSInstance(scrollbars);
       if (instance) {
-        const { viewport } = instance.getElements();
+        const { viewport } = instance.elements();
         const gapToBottom = viewport.scrollHeight - (viewport.offsetHeight + viewport.scrollTop);
         const gapToRight = viewport.scrollWidth - (viewport.offsetWidth + viewport.scrollLeft);
         const hasYScroll = viewport.scrollHeight > viewport.offsetHeight;
@@ -117,18 +117,23 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
     const instance = getOSInstance();
     if (instance && isOverlayScrollbarInited) {
       syncPositions();
-      autoscrollTo === AUTOSCROLL_TO.Bottom && instance.scroll({ y: '100%' }, 0);
-      autoscrollTo === AUTOSCROLL_TO.Right && instance.scroll({ x: '100%' }, 0);
+
+      const { content } = instance.elements();
+
+      autoscrollTo === AUTOSCROLL_TO.Bottom && content.scroll(0, content.scrollHeight);
+      autoscrollTo === AUTOSCROLL_TO.Right && content.scroll(content.scrollWidth, 0);
     }
     /* здесь умышленно autoscrollTo не входит в депсы хука, потому что его значение интересно только на момент маунта,
     но в дальнейшем не должно триггерить эту функцию */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getOSInstance, isOverlayScrollbarInited, syncPositions]);
 
-  const onInitialized = useCallback(() => setOverlayScrollbarInited(true), []);
+  const onInitialized = useCallback(() => {
+    setOverlayScrollbarInited(true);
+  }, []);
 
   const onScroll = useCallback(
-    (event?: UIEvent) => {
+    (event?: Event) => {
       onScrollProp?.(event);
 
       if (autoscrollTo) {
@@ -143,13 +148,14 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
   const onContentSizeChanged = useCallback(() => {
     if (!autoscrollTo) return;
 
-    const instance = getOSInstance();
-    if (instance) {
+    const instance = getOSInstance()?.elements();
+
+    if (instance?.content) {
       if (lastPositionsRef.current.scrolledToBottom && autoscrollTo === AUTOSCROLL_TO.Bottom) {
-        instance.scroll({ y: '100%' }, 0);
+        instance?.content.scroll(0, instance?.content.scrollHeight);
       }
       if (lastPositionsRef.current.scrolledToRight && autoscrollTo === AUTOSCROLL_TO.Right) {
-        instance.scroll({ x: '100%' }, 0);
+        instance?.content.scroll(instance?.content.scrollWidth, 0);
       }
     }
   }, [getOSInstance, autoscrollTo]);
@@ -161,21 +167,24 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
       data-size={size}
       data-untouchable-scrollbars={untouchableScrollbars || undefined}
       className={cn(className, styles.scroll, 'osThemeSnack')}
+      style={{ resize }}
       options={{
-        resize,
         scrollbars: {
           autoHide: barHideStrategy,
           autoHideDelay: BAR_AUTO_HIDE_DELAY_MS,
-          clickScrolling,
-        },
-        callbacks: {
-          onInitialized,
-          onScroll,
-          onContentSizeChanged,
+          clickScroll: clickScrolling,
         },
       }}
+      events={{
+        initialized: onInitialized,
+        scroll: (_instance, event) => {
+          onScroll(event);
+        },
+
+        updated: onContentSizeChanged,
+      }}
     >
-      {children}
+      {autoscrollTo ? isOverlayScrollbarInited && children : children}
     </OverlayScrollbarsComponent>
   );
 });

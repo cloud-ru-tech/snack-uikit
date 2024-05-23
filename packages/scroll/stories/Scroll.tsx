@@ -1,4 +1,8 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useEffect, useState } from 'react';
+
+import { Card } from '@snack-uikit/card';
+import { FieldStepper } from '@snack-uikit/fields';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -15,34 +19,50 @@ const meta: Meta = {
 export default meta;
 
 type StoryProps = ScrollProps & {
-  contentLines: number;
+  storyCards: number;
 };
 
-const Template: StoryFn<StoryProps> = ({ contentLines, ...args }) => (
-  <Scroll className={styles.box} {...args}>
-    <div data-test-id='content'>
-      {Array(contentLines)
-        .fill(true)
-        .map((_, index) => (
-          <h2 key={index} className={styles.line}>
-            {index}. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus animi corrupti neque!
-          </h2>
-        ))}
-    </div>
-  </Scroll>
-);
+const Template: StoryFn<StoryProps> = ({ storyCards, ...args }) => {
+  const [counter, setCounter] = useState<number>(storyCards);
+
+  useEffect(() => {
+    setCounter(storyCards);
+  }, [storyCards]);
+
+  return (
+    <>
+      <div className={styles.fieldWrapper}>
+        <FieldStepper value={counter} onChange={setCounter} min={1} max={100} label='Content cards count ' />
+      </div>
+      <Scroll className={styles.box} {...args}>
+        <div data-test-id='content' data-autoscroll={args.autoscrollTo || undefined} className={styles.wrapper}>
+          {Array.from({ length: counter })
+            .fill(true)
+            .map((_, index) => (
+              <Card key={index} header={<Card.Header title={(index + 1).toString()} />} outline>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus animi corrupti neque!
+              </Card>
+            ))}
+        </div>
+      </Scroll>
+    </>
+  );
+};
 
 export const scroll: StoryObj<StoryProps> = Template.bind({});
 
 scroll.args = {
-  contentLines: 15,
   size: SIZE.M,
   barHideStrategy: BAR_HIDE_STRATEGY.Leave,
   resize: RESIZE.None,
   untouchableScrollbars: false,
+  storyCards: 5,
 };
 
 scroll.argTypes = {
+  storyCards: {
+    name: '[Stories]: demo story cards count',
+  },
   barHideStrategy: {
     options: Object.values(BAR_HIDE_STRATEGY),
     control: {
@@ -53,12 +73,6 @@ scroll.argTypes = {
     options: Object.values(RESIZE),
     control: {
       type: 'radio',
-    },
-  },
-  contentLines: {
-    name: '[Stories]: Content text lines count ',
-    control: {
-      type: 'number',
     },
   },
 };

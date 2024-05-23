@@ -1,11 +1,35 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .box {
-  width: 600px;
+  width: 400px;
   height: 400px;
   background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
 }
 
 .line {
   white-space: nowrap;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, 400px);
+  grid-template-rows: 1fr;
+  gap: $dimension-1m;
+
+  padding: $dimension-3m;
+
+  &[data-autoscroll='right'] {
+    display: flex;
+
+    > div {
+      min-width: 200px;
+    }
+  }
+}
+
+.fieldWrapper {
+  width: 400px;
+  margin-bottom: $dimension-3m;
+  padding: $dimension-3m;
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
 }
