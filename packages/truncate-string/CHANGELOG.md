@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.15 (2024-05-23)
+
+
+### Bug Fixes
+
+* **PDS-83:** fix one line truncate ([ec6ac1e](https://github.com/cloud-ru-tech/snack-uikit/commit/ec6ac1e56b8f5155ad3b67295c9b8198c2d03f4d))
+
+
+
+
+
 ## 0.4.14 (2024-05-08)
 
 ### Only dependencies have been changed

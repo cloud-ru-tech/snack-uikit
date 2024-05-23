@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.2 (2024-05-23)
+
+
+### Bug Fixes
+
+* **FF-0000:** optimize render children non expanded collapse block ([2b67700](https://github.com/cloud-ru-tech/snack-uikit/commit/2b677004e3d04cce8ab972011962a7fa2b0cda52))
+* **FF-0000:** stopPropagation on actions click in CollapseBlock.Header ([157241c](https://github.com/cloud-ru-tech/snack-uikit/commit/157241c718646ae14763f733df914eb8ad4cf9f2))
+
+
+
+
+
 ## 0.7.1 (2024-05-08)
 
 ### Only dependencies have been changed

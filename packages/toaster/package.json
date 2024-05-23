@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Toaster",
-  "version": "0.6.14",
+  "version": "0.6.15",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,9 +33,9 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.21.0",
-    "@snack-uikit/link": "0.11.8",
+    "@snack-uikit/link": "0.11.9",
     "@snack-uikit/loaders": "0.5.2",
-    "@snack-uikit/truncate-string": "0.4.14",
+    "@snack-uikit/truncate-string": "0.4.15",
     "@snack-uikit/utils": "3.3.0",
     "classnames": "2.3.2",
     "react-toastify": "10.0.5"
