@@ -1,9 +1,9 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { STATUS_APPEARANCE } from '../../helperComponents';
 import { PaginationState } from '../../types';
 import { Table } from '../Table';
-import { useStateControl } from '../Table/hooks/useStateControl';
+import { useStateControl } from '../Table/hooks';
 import { ServerTableProps } from '../types';
 import { DEFAULT_PAGINATION_LIMIT } from './constants';
 import { onSearchDebounced } from './utils';
@@ -27,6 +27,14 @@ export function ServerTable<TData extends object>({
   const { state: search, onStateChange: setSearch } = useStateControl<string>(searchProp, '');
 
   const [tempSearch, setTempSearch] = useState(search || '');
+
+  useEffect(() => {
+    if (searchProp?.state !== tempSearch) {
+      setTempSearch(searchProp?.state ?? '');
+    }
+    // Needs update only when prop changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchProp?.state]);
 
   const handleSearch = useCallback(
     (newValue: string) => {

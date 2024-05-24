@@ -1,5 +1,4 @@
 import {
-  CellContext,
   ColumnPinningState,
   getCoreRowModel,
   getFilteredRowModel,
@@ -17,10 +16,9 @@ import { useLocale } from '@snack-uikit/locale';
 import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider } from '@snack-uikit/skeleton';
 import { Toolbar } from '@snack-uikit/toolbar';
-import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { DEFAULT_PAGE_SIZE } from '../../constants';
+import { DEFAULT_COLUMN, DEFAULT_PAGE_SIZE } from '../../constants';
 import {
   BodyRow,
   ExportButton,
@@ -130,12 +128,7 @@ export function Table<TData extends object>({
       pagination,
     },
     pageCount,
-    defaultColumn: {
-      enableSorting: false,
-      enableResizing: false,
-      minSize: 40,
-      cell: (cell: CellContext<TData, unknown>) => <TruncateString text={String(cell.getValue())} maxLines={1} />,
-    },
+    defaultColumn: DEFAULT_COLUMN,
 
     manualSorting,
     manualPagination,
