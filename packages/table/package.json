@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Table",
-  "version": "0.17.6",
+  "version": "0.17.7",
   "sideEffects": [
     "*.css",
     "*.woff",

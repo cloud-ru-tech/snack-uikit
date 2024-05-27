@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.7 (2024-05-27)
+
+
+### Bug Fixes
+
+* **FF-000:** reset search in serverTable on search prop change ([bb7706f](https://github.com/cloud-ru-tech/snack-uikit/commit/bb7706f888bc279eb21443f4b0a789d537915af3))
+
+
+
+
+
 ## 0.17.6 (2024-05-23)
 
 ### Only dependencies have been changed
