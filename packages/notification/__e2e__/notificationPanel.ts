@@ -24,7 +24,7 @@ fixture('NotificationPanel').skipJsErrors(args => Boolean(args?.message?.include
 
 function getScrollableElement() {
   // TODO: need to find solution to detect scrollable div not by classname
-  return Selector(dataTestIdSelector(STORY_TEST_IDS.panel)).find('.os-viewport');
+  return Selector(dataTestIdSelector(STORY_TEST_IDS.panel)).find('[data-overlayscrollbars-contents]');
 }
 
 test.page(getPage(PROPS_MOCK))('Renders correctly with proper amount of card, scroll is working', async t => {

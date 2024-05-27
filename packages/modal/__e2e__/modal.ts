@@ -35,7 +35,7 @@ function getPage(props?: Record<string, unknown>) {
 
 function getScrollableElement() {
   // TODO: need to find solution to detect scrollable div not by classname
-  return Selector(dataTestIdSelector(TEST_IDS.content)).find('.os-viewport');
+  return Selector(dataTestIdSelector(TEST_IDS.content)).find('[data-overlayscrollbars-contents]');
 }
 
 fixture('Modal').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
