@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
+import cn from 'classnames';
 import { useState } from 'react';
 
 import { Scroll } from '@snack-uikit/scroll';
@@ -80,8 +81,8 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
   };
 
   return (
-    <div className={styles.story}>
-      <Scroll resize='both' className={SCROLL_SIZE[args.size || SIZE.M]}>
+    <div className={cn(styles.story, SCROLL_SIZE[args.size || SIZE.M])}>
+      <Scroll>
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}
         <Calendar {...props} buildCellProps={getBuildCellProps(modeBuildCellProps)} />

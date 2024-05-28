@@ -25,7 +25,7 @@ export function TagMore({ items, text = '', size = SIZE.Xs, buttonRef, onItemRem
       triggerClassName={styles.triggerClassName}
       content={
         <div className={styles.tagRowDroplistContainer} data-size={size}>
-          <Scroll className={styles.tagRowDroplistScroll} size='s' barHideStrategy='move' resize='none'>
+          <Scroll className={styles.tagRowDroplistScroll} size='s' barHideStrategy='move'>
             <TagRowSimple
               items={items}
               size={size}

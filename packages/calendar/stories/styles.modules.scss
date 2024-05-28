@@ -1,8 +1,13 @@
 @import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .story {
+  resize: both;
+
+  overflow: hidden;
+
   width: fit-content;
   padding: 2rem;
+
   background-color: simple-var($sys-neutral-background1-level);
 }
 

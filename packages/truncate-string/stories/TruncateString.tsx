@@ -1,7 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
 
-import { Scroll } from '@snack-uikit/scroll';
-
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
@@ -17,9 +15,9 @@ export default meta;
 
 function Template({ ...args }: TruncateStringProps) {
   return (
-    <Scroll className={styles.wrapper} resize='horizontal'>
+    <div className={styles.wrapper}>
       <TruncateString {...args} />
-    </Scroll>
+    </div>
   );
 }
 

@@ -3,7 +3,6 @@ import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { HomeSVG } from '@snack-uikit/icons';
-import { Scroll } from '@snack-uikit/scroll';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -59,11 +58,9 @@ const Template = ({
   return (
     <div>
       <style>{`.${styles.scroll} { width: ${storyContainerWidth}; }`}</style>
-      <Scroll className={styles.scroll} resize='horizontal'>
-        <div className={styles.container}>
-          <Breadcrumbs {...rest} items={items} />
-        </div>
-      </Scroll>
+      <div className={styles.container}>
+        <Breadcrumbs {...rest} items={items} />
+      </div>
       <div className={styles.crumbClickHolder} data-test-id='last-clicked-crumb'>
         {lastClickedCrumb}
       </div>
