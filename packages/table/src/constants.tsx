@@ -1,7 +1,3 @@
-import { CellContext } from '@tanstack/react-table';
-
-import { TruncateString } from '@snack-uikit/truncate-string';
-
 export const COLUMN_PIN_POSITION = {
   Left: 'left',
   Right: 'right',
@@ -35,12 +31,3 @@ export const SORT_FN = {
 } as const;
 
 export const DEFAULT_PAGE_SIZE = 10;
-
-export const DEFAULT_COLUMN = {
-  enableSorting: false,
-  enableResizing: false,
-  minSize: 40,
-  // 'any' is used to bypass type-guard in table prop
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  cell: (cell: CellContext<any, unknown>) => <TruncateString text={String(cell.getValue())} maxLines={1} />,
-};
