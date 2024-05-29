@@ -20,7 +20,7 @@ function getPage(props?: Record<string, unknown>) {
   });
 }
 
-fixture('NotificationPanel').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
+fixture('NotificationPanel');
 
 function getScrollableElement() {
   // TODO: need to find solution to detect scrollable div not by classname

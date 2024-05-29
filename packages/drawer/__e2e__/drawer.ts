@@ -44,7 +44,7 @@ function getOverlayElement() {
   return Selector(dataTestIdSelector(TEST_IDS.main)).prevSibling('.rc-drawer-mask');
 }
 
-fixture('Drawer').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
+fixture('Drawer');
 
 test.page(
   getPage({

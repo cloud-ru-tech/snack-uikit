@@ -3,7 +3,7 @@ import { fixture, Selector } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { getInput, runCommonTests, runTestsForOpenableFields } from './utils';
 
-fixture('Field Date').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
+fixture('Field Date');
 
 const TEST_ID = 'field-date-test';
 const CALENDAR_TEST_ID = 'field-date__calendar';

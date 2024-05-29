@@ -36,7 +36,7 @@ const getPage = (props: Record<string, unknown> = {}) =>
     },
   });
 
-fixture('Popover').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
+fixture('Popover');
 
 test.page(getPage({ outsideClick: true }))('Should close by outside click when outsideClick = true', async t => {
   const button = Selector(dataTestIdSelector(BUTTON_TEST_ID));

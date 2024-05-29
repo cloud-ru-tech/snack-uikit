@@ -38,7 +38,7 @@ function getScrollableElement() {
   return Selector(dataTestIdSelector(TEST_IDS.content)).find('[data-overlayscrollbars-contents]');
 }
 
-fixture('Modal').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
+fixture('Modal');
 
 test.page(
   getPage({

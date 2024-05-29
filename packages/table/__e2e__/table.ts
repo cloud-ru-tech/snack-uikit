@@ -58,7 +58,7 @@ function getPage(props?: Record<string, unknown>) {
   });
 }
 
-fixture('Table').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
+fixture('Table');
 
 test.page(
   getPage({

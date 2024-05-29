@@ -3,7 +3,7 @@ import { fixture, Selector } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { getInput, runCommonTests } from './utils';
 
-fixture('Field TextArea').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
+fixture('Field TextArea');
 
 const TEST_ID = 'field-textarea-test';
 const COMPONENT_PREFIX = 'field-textarea';

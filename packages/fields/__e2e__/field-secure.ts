@@ -3,7 +3,7 @@ import { fixture, Selector } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { getButtonHideValue, getInput, runCommonTests } from './utils';
 
-fixture('Field Secure').skipJsErrors(args => Boolean(args?.message?.includes('ResizeObserver loop')));
+fixture('Field Secure');
 
 const TEST_ID = 'field-secure-test';
 const COMPONENT_PREFIX = 'field-secure';
