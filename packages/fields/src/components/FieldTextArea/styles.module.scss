@@ -11,6 +11,16 @@ $scroll-bar-heights: (
   'm': calc($dimension-025m + $dimension-050m),
   'l': $dimension-1m,
 );
+$padding-right: (
+  's': $fields-buttons-s,
+  'm': $fields-buttons-m,
+  'l': $fields-buttons-m,
+);
+$scroll-bar-heights: (
+  's': $dimension-050m,
+  'm': calc($dimension-025m + $dimension-050m),
+  'l': $dimension-1m,
+);
 
 .container {
   --max-rows: 1000;
@@ -19,10 +29,10 @@ $scroll-bar-heights: (
   .scrollContainer {
     min-height: calc(var(--min-rows) * var(--row-height) + var(--horizontal-scroll-bar-height));
     max-height: calc(var(--max-rows) * var(--row-height) + var(--horizontal-scroll-bar-height));
-  }
 
-  &[data-resizable] .scrollContainer {
-    height: calc(var(--min-rows) * var(--row-height) + var(--horizontal-scroll-bar-height));
+    &[data-resizable] {
+      height: calc(var(--min-rows) * var(--row-height) + var(--horizontal-scroll-bar-height));
+    }
   }
 
   @each $size in $sizes {

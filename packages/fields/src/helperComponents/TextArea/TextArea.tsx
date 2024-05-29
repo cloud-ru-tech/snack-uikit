@@ -45,6 +45,8 @@ export type TextAreaProps = RefAttributes<HTMLTextAreaElement> &
     onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>;
     /** HTML-аттрибут tab-index */
     tabIndex?: number;
+    /** Минимальное кол-во строк, до которого размер поля может быть увеличен @default 3*/
+    minRows?: number;
   }>;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -64,6 +66,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       onBlur,
       onKeyDown,
       tabIndex,
+      minRows = 3,
       ...rest
     },
     ref,
@@ -94,7 +97,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         onBlur={onBlur}
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
-        minRows={3}
+        minRows={minRows}
         {...extractSupportProps(rest)}
       />
     );

@@ -30,7 +30,9 @@ type WrapperProps = Pick<
 >;
 
 type FieldTextAreaOwnProps = {
-  /** Максимальное кол-во строк, до которого размер поля может быть увеличен */
+  /** Минимальное кол-во строк, до которого размер поля может быть увеличен @default 3*/
+  minRows?: number;
+  /** Максимальное кол-во строк, до которого размер поля может быть увеличен  @default 1000*/
   maxRows?: number;
   /** Может ли ли пользователь изменять размеры поля (если св-во не включено, поле автоматически меняет свой размер) */
   resizable?: boolean;
@@ -57,7 +59,8 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       value: valueProp,
       placeholder,
       maxLength,
-      maxRows,
+      minRows = 3,
+      maxRows = 1000,
       disabled = false,
       resizable = false,
       readonly = false,
@@ -139,7 +142,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
           readonly={readonly}
           data-resizable={isResizable || undefined}
           variant={CONTAINER_VARIANT.MultiLine}
-          style={{ '--max-rows': maxRows }}
+          style={{ '--max-rows': maxRows, '--min-rows': minRows }}
           inputRef={localRef}
           postfix={<span className={styles.postfix}>{buttons}</span>}
         >
@@ -158,6 +161,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
               placeholder={placeholder}
               disabled={disabled}
               readonly={readonly}
+              minRows={minRows}
               id={id}
               name={name}
               ref={mergeRefs(ref, localRef)}
