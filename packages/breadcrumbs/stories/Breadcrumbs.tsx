@@ -57,8 +57,7 @@ const Template = ({
 
   return (
     <div>
-      <style>{`.${styles.scroll} { width: ${storyContainerWidth}; }`}</style>
-      <div className={styles.container}>
+      <div className={styles.container} style={{ width: storyContainerWidth }}>
         <Breadcrumbs {...rest} items={items} />
       </div>
       <div className={styles.crumbClickHolder} data-test-id='last-clicked-crumb'>

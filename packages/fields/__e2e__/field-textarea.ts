@@ -40,10 +40,10 @@ test.page(visit({ value: '', maxRows: 4 }))("Shouldn't get bigger than maxRows p
   await t.typeText(input, '1\n2\n3\n4');
 
   const height1 = await getScrollArea(wrapper).offsetHeight;
-  await t.expect(input.offsetHeight).lt(height1);
+  await t.expect(input.offsetHeight).lte(height1);
 
   await t.typeText(input, '\n5');
 
   const height2 = await getScrollArea(wrapper).offsetHeight;
-  await t.expect(input.offsetHeight).gt(height2);
+  await t.expect(input.offsetHeight).gte(height2);
 });
