@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.8 (2024-05-30)
+
+**Note:** Version bump only for package @snack-uikit/popover
+
+
+
+
+
 ## 0.6.7 (2024-04-23)
 
 ### Only dependencies have been changed

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.29 (2024-05-30)
+
+### Only dependencies have been changed
+* [@snack-uikit/chips@0.14.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/info-block@0.3.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/info-block/CHANGELOG.md)
+* [@snack-uikit/link@0.11.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/link/CHANGELOG.md)
+* [@snack-uikit/list@0.13.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/scroll@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/scroll/CHANGELOG.md)
+* [@snack-uikit/tag@0.9.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.4.16](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 ## 0.7.28 (2024-05-23)
 
 ### Only dependencies have been changed

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2024-05-30)
+
+
+### Dependencies
+
+* **FF-0000:** up deps overlayscrollbars ([a9b2a1b](https://github.com/cloud-ru-tech/snack-uikit/commit/a9b2a1b978c2797f8dcf4dc37d030f2f7be826e8))
+
+
+### Features
+
+* **FF-0000:** add paddingAbsolute prop ([0f25e3e](https://github.com/cloud-ru-tech/snack-uikit/commit/0f25e3e0c2d1dc974576c9bd4487d93edc65117a))
+
+
+
+
+
 ## 0.5.3 (2024-04-23)
 
 ### Only dependencies have been changed

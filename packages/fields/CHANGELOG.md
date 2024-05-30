@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.21.0 (2024-05-30)
+
+
+### Features
+
+* **FF-0000:** add minRows prop ([b11143a](https://github.com/cloud-ru-tech/snack-uikit/commit/b11143a3ed2fcb7921d28b2846ec10323a1a50ea))
+
+
+
+
+
 ## 0.20.10 (2024-05-23)
 
 ### Only dependencies have been changed

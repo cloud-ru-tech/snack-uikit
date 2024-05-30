@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.3 (2024-05-30)
+
+
+### Bug Fixes
+
+* **FF-0000:** optimize accordion children render ([02af1d0](https://github.com/cloud-ru-tech/snack-uikit/commit/02af1d0e5f065d77e24f882c63c1d6c6190f4c87))
+
+
+
+
+
 ## 0.13.2 (2024-05-23)
 
 ### Only dependencies have been changed
