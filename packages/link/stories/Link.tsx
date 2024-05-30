@@ -109,6 +109,7 @@ link.args = {
   external: false,
   appearance: APPEARANCE.Primary,
   insideText: false,
+  truncateVariant: 'end',
 };
 
 link.argTypes = {

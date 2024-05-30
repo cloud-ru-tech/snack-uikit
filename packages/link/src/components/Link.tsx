@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { AnchorHTMLAttributes, MouseEventHandler } from 'react';
 
 import { ArrowLinksSVG } from '@snack-uikit/icons';
-import { TruncateString } from '@snack-uikit/truncate-string';
+import { TruncateString, TruncateStringProps } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { APPEARANCE, SIZE, TEXT_MODE } from './constants';
@@ -38,6 +38,12 @@ export type LinkProps = WithSupportProps<{
   textMode?: TextMode;
   /** Находится ли ссылка внутри текста (и можно ли её переносить) */
   insideText?: boolean;
+  /**
+   * Вариант обрезания строки:
+   * <br> - `end` - с конца;
+   * <br> - `middle` - по середине
+   * */
+  truncateVariant?: TruncateStringProps['variant'];
 }>;
 
 /** Компонент ссылка */
@@ -53,6 +59,7 @@ export function Link({
   external,
   appearance = APPEARANCE.Primary,
   insideText = false,
+  truncateVariant,
   ...rest
 }: LinkProps) {
   return (
@@ -69,7 +76,7 @@ export function Link({
       data-inside-text={insideText || undefined}
       rel={target === '_blank' ? 'noopener noreferrer' : undefined}
     >
-      {insideText ? text : <TruncateString text={text} maxLines={1} />}
+      {insideText ? text : <TruncateString text={text} maxLines={1} variant={truncateVariant} />}
 
       {external && <ArrowLinksSVG data-test-id='link__external-icon' className={styles.icon} />}
     </a>

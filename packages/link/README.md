@@ -40,6 +40,7 @@ import { Link } from '@snack-uikit/link';
 | appearance | enum Appearance: `"invert-neutral"`, `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Стилизует ссылку для размещения на цветном фоне |
 | textMode | enum TextMode: `"default"`, `"accent"`, `"on-accent"` | default | Тип поверхности, на которой размещена ссылка |
 | insideText | `boolean` | - | Находится ли ссылка внутри текста (и можно ли её переносить) |
+| truncateVariant | "end" \| "middle" | - | Вариант обрезания строки: <br> - `end` - с конца; <br> - `middle` - по середине |
 
 
 [//]: DOCUMENTATION_SECTION_END
