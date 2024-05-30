@@ -27,7 +27,7 @@ function SelectionCell({ isMulti, onChange, ...props }: SelectionCellProps) {
   );
 }
 
-export function getSelectionCellColumnDef<TData>(): ColumnDefinition<TData> {
+export function getSelectionCellColumnDef<TData>(enableSelectPinned: boolean): ColumnDefinition<TData> {
   return {
     id: 'selectionCell',
     pinned: COLUMN_PIN_POSITION.Left,
@@ -38,7 +38,7 @@ export function getSelectionCellColumnDef<TData>(): ColumnDefinition<TData> {
     cell: ({ row, table }) => {
       const disabled = !row.getCanSelect();
 
-      if (disabled) return null;
+      if (disabled || (!enableSelectPinned && row.getIsPinned())) return null;
 
       const { enableMultiRowSelection } = table.options;
 

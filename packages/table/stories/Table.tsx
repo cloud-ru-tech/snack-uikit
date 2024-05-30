@@ -33,6 +33,7 @@ type StoryProps = Omit<Props, 'rowSelection' | 'sort'> & {
   rowSelection?: { enable: boolean; multiRow: boolean };
   rowsAmount: number;
   disableSomeRows: boolean;
+  pinSomeRows: boolean;
   statusColumnViewMode?: StoryStatusColumnViewMode;
   showActionsColumn?: boolean;
   rowSelectionMode?: 'single' | 'multi';
@@ -145,6 +146,7 @@ const Template: StoryFn<StoryProps> = ({
   columnDefinitions,
   rowsAmount,
   disableSomeRows,
+  pinSomeRows,
   statusColumnViewMode,
   showActionsColumn,
   rowSelectionMode,
@@ -268,6 +270,7 @@ const Template: StoryFn<StoryProps> = ({
         }}
         onRefresh={onRefresh}
         onRowClick={enableOnRowClick ? handleRowClick : undefined}
+        rowPinning={pinSomeRows ? { top: ['0', '2'] } : undefined}
       />
     </div>
   );
@@ -294,6 +297,7 @@ table.args = {
   enableOnRowClick: false,
   enableFuzzySearch: false,
   'data-test-id': STORY_TEST_IDS.table,
+  pinSomeRows: false,
 };
 
 table.argTypes = {
@@ -314,6 +318,7 @@ table.argTypes = {
     },
     if: { arg: 'rowSelectionMode', truthy: true },
   },
+
   statusColumnViewMode: {
     name: '[Stories]: Show Status',
     options: [undefined, ...Object.values(StoryStatusColumnViewMode)],
@@ -350,6 +355,12 @@ table.argTypes = {
   onRowClick: {
     control: {
       type: 'disabled',
+    },
+  },
+  pinSomeRows: {
+    name: '[Stories]: Pin 1st and 3rd row',
+    controls: {
+      type: 'boolean',
     },
   },
 };

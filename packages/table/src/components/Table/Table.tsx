@@ -46,7 +46,12 @@ import { getColumnStyleVars, getCurrentlyConfiguredHeaderWidth } from './utils';
 /** Компонент таблицы */
 export function Table<TData extends object>({
   data,
+  rowPinning = {
+    top: [],
+  },
   columnDefinitions,
+  keepPinnedRows = false,
+  enableSelectPinned = false,
   rowSelection: rowSelectionProp,
   search,
   sorting: sortingProp,
@@ -78,6 +83,7 @@ export function Table<TData extends object>({
   scrollContainerRef,
   getRowId,
   enableFuzzySearch,
+
   ...rest
 }: TableProps<TData>) {
   const { state: globalFilter, onStateChange: onGlobalFilterChange } = useStateControl<string>(search, '');
@@ -85,6 +91,7 @@ export function Table<TData extends object>({
     rowSelectionProp,
     {},
   );
+
   const defaultPaginationState = useMemo(
     () => ({
       pageIndex: 0,
@@ -103,10 +110,10 @@ export function Table<TData extends object>({
   const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
     let cols: ColumnDefinition<TData>[] = columnDefinitions;
     if (enableSelection) {
-      cols = [getSelectionCellColumnDef(), ...cols];
+      cols = [getSelectionCellColumnDef(enableSelectPinned), ...cols];
     }
     return cols;
-  }, [columnDefinitions, enableSelection]);
+  }, [columnDefinitions, enableSelection, enableSelectPinned]);
 
   const columnPinning = useMemo(() => {
     const pinningState: Required<ColumnPinningState> = { left: [], right: [] };
@@ -128,6 +135,7 @@ export function Table<TData extends object>({
       rowSelection,
       sorting,
       pagination,
+      rowPinning,
     },
     pageCount,
     defaultColumn: {
@@ -160,6 +168,7 @@ export function Table<TData extends object>({
     getPaginationRowModel: getPaginationRowModel(),
     getCoreRowModel: getCoreRowModel(),
     columnResizeMode: 'onEnd',
+    keepPinnedRows,
   });
 
   const { loadingTable } = useLoadingTable({ pageSize, columnDefinitions: tableColumns, columnPinning });
@@ -243,8 +252,16 @@ export function Table<TData extends object>({
   }, [columnSizeVars]);
 
   const tableRows = table.getRowModel().rows;
+  const tableCenterRows = table.getCenterRows();
+  const tableFilteredRows = table.getFilteredRowModel().rows;
+  const tableFilteredRowsIds = tableFilteredRows.map(row => row.id);
+  const topRows = table.getTopRows();
   const loadingTableRows = loadingTable.getRowModel().rows;
   const tablePagination = table.getState().pagination;
+
+  const filteredTopRows = table.getState().globalFilter
+    ? topRows.filter(tr => tableFilteredRowsIds.includes(tr.id))
+    : topRows;
 
   const { t } = useLocale('Table');
   const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
@@ -319,8 +336,16 @@ export function Table<TData extends object>({
                   </SkeletonContextProvider>
                 ) : (
                   <>
-                    {tableRows.length ? <HeaderRow /> : null}
-                    {tableRows.map(row => (
+                    {tableCenterRows.length || filteredTopRows.length ? <HeaderRow /> : null}
+                    {filteredTopRows.length ? (
+                      <div className={styles.topRowWrapper}>
+                        {filteredTopRows.map(row => (
+                          <BodyRow key={row.id} row={row} onRowClick={onRowClick} />
+                        ))}
+                      </div>
+                    ) : null}
+
+                    {tableCenterRows.map(row => (
                       <BodyRow key={row.id} row={row} onRowClick={onRowClick} />
                     ))}
 

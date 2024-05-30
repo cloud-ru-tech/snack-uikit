@@ -66,3 +66,13 @@
   margin-top: calc($dimension-025m / -2);
   background: transparent;
 }
+
+.topRowWrapper {
+  position: sticky;
+  z-index: 3;
+  top: calc($size-table-line-height);
+
+  margin-bottom: calc(-1 * $border-width-table);
+
+  border-bottom: $border-width-table solid $sys-neutral-decor-default;
+}

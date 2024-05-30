@@ -111,6 +111,8 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
 | data* | `TData[]` | - | Данные для отрисовки |
+| keepPinnedRows | `boolean` | - | Параметр овтечает за сохранение закрепленных строк на всех страницах таблицы |
+| enableSelectPinned | `boolean` | - | Параметр овтечает за чекбокс выбора закрепленных строк |
 | sorting | `{ initialState?: SortingState; state?: SortingState; onChange?(state: SortingState): void; }` | - | Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>initialState</strong>: Начальное состояние сортировки <br> <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
 | search | `{ initialState?: string; state?: string; placeholder?: string; loading?: boolean; onChange?(value: string): void; }` | 'Search'<br> <strong>loading</strong>: Состояние загрузки в строке поиска <br> <strong>onChange</strong>: Колбэк на изменение данных в строке поиска | Параметры отвечают за глобальный поиск в таблице <br> <strong>initialState</strong>: Начальное состояние строки поиска <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>placeholder</strong>: Placeholder строки поиска |
@@ -142,6 +144,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | getRowId | `(originalRow: TData, index: number, parent?: Row<TData>) => string` | - | Дополнительная функция используется для получения уникального идентификатора для любой заданной строки |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| rowPinning | `Pick<RowPinningState, "top">` | {     top: [],   } | Определение какие строки должны быть закреплены в таблице |
 ## Table.getStatusColumnDef
 Вспомогательная функция для создания ячейки со статусом
 ### Props
@@ -168,6 +171,8 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | onChangePage* | `(offset: number, limit: number) => void` | - |  |
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
 | loading | `boolean` | - | Состояние загрузки |
+| keepPinnedRows | `boolean` | - | Параметр овтечает за сохранение закрепленных строк на всех страницах таблицы |
+| enableSelectPinned | `boolean` | - | Параметр овтечает за чекбокс выбора закрепленных строк |
 | sorting | `{ initialState?: SortingState; state?: SortingState; onChange?(state: SortingState): void; }` | - | Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>initialState</strong>: Начальное состояние сортировки <br> <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
@@ -194,6 +199,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | getRowId | `(originalRow: TData, index: number, parent?: Row<TData>) => string` | - | Дополнительная функция используется для получения уникального идентификатора для любой заданной строки |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| rowPinning | `Pick<RowPinningState, "top">` | - | Определение какие строки должны быть закреплены в таблице |
 | items | `TData[]` | - | Данные для отрисовки |
 | total | `number` | 10 | Общее кол-во строк |
 | limit | `number` | 10 | Кол-во строк на страницу |

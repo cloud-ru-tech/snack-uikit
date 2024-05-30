@@ -1,11 +1,17 @@
-import { PaginationState, Row, RowSelectionOptions, RowSelectionState, SortingState } from '@tanstack/react-table';
+import {
+  PaginationState,
+  Row,
+  RowPinningState,
+  RowSelectionOptions,
+  RowSelectionState,
+  SortingState,
+} from '@tanstack/react-table';
 import { ReactNode, RefObject } from 'react';
 
 import { ToolbarProps } from '@snack-uikit/toolbar';
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { RowClickHandler } from '../helperComponents';
-import { EmptyStateProps } from '../helperComponents/TableEmptyState';
+import { EmptyStateProps, RowClickHandler } from '../helperComponents';
 import { ColumnDefinition } from '../types';
 
 export type TableProps<TData extends object> = WithSupportProps<{
@@ -13,6 +19,10 @@ export type TableProps<TData extends object> = WithSupportProps<{
   data: TData[];
   /** Определение внешнего вида и функционала колонок */
   columnDefinitions: ColumnDefinition<TData>[];
+  /** Параметр овтечает за сохранение закрепленных строк на всех страницах таблицы */
+  keepPinnedRows?: boolean;
+  /** Параметр овтечает за чекбокс выбора закрепленных строк */
+  enableSelectPinned?: boolean;
   /** Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br>
    *  <strong>initialState</strong>: Начальное состояние сортировки <br>
    *  <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br>
@@ -132,6 +142,8 @@ export type TableProps<TData extends object> = WithSupportProps<{
   scrollRef?: RefObject<HTMLElement>;
   /** Ссылка на контейнер, который скроллится */
   scrollContainerRef?: RefObject<HTMLElement>;
+  /** Определение какие строки должны быть закреплены в таблице */
+  rowPinning?: Pick<RowPinningState, 'top'>;
 }>;
 
 export type ServerTableProps<TData extends object> = Omit<
