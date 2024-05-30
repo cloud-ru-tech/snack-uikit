@@ -58,6 +58,8 @@ export type ScrollProps = WithSupportProps<
     resize?: Resize;
     /** Отключает возможность взаимодействовать со скролбарами мышью. */
     untouchableScrollbars?: boolean;
+    /** Должны ли паддинги быть абсолютными */
+    paddingAbsolute?: boolean;
   }>
 >;
 
@@ -76,6 +78,7 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
     clickScrolling = true,
     barHideStrategy = BAR_HIDE_STRATEGY.Leave,
     autoscrollTo,
+    paddingAbsolute,
     untouchableScrollbars = false,
     ...rest
   },
@@ -169,6 +172,7 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
       className={cn(className, styles.scroll, 'osThemeSnack')}
       style={{ resize }}
       options={{
+        paddingAbsolute,
         scrollbars: {
           autoHide: barHideStrategy,
           autoHideDelay: BAR_AUTO_HIDE_DELAY_MS,

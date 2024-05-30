@@ -19,6 +19,7 @@
 | onScroll | `(event?: Event) => void` | - | Колбек события скрола. |
 | resize | enum Resize: `"none"`, `"horizontal"`, `"vertical"`, `"both"` | none | Настройка возможности регулировать Scroll-контейнер: <br> - `None` - нельзя изменять размер <br> - `Horizontal` - можно изменять размер только по горизонтали <br> - `Vertical` - можно изменять размер только по вертикали <br> - `Both` - можно изменять размер в обеих координатах |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
+| paddingAbsolute | `boolean` | - | Должны ли паддинги быть абсолютными |
 | ref | `Ref<HTMLElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 
