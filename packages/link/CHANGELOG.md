@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2024-05-31)
+
+
+### Features
+
+* **FF-00:** add truncateVariant prop ([db11f81](https://github.com/cloud-ru-tech/snack-uikit/commit/db11f81a139e024114031ecab2767fdfd8eef041))
+
+
+
+
+
 ## 0.11.10 (2024-05-30)
 
 ### Only dependencies have been changed
