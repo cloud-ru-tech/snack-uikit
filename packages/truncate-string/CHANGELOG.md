@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.17 (2024-05-31)
+
+
+### Bug Fixes
+
+* **FF-00:** re-calculate truncate params on text change ([55e3dbf](https://github.com/cloud-ru-tech/snack-uikit/commit/55e3dbf0dcc764fe32a3dfe97bf955ff7a76aa3e))
+
+
+
+
+
 ## 0.4.16 (2024-05-30)
 
 ### Only dependencies have been changed
