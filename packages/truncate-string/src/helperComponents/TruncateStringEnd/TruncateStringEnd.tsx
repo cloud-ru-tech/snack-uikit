@@ -1,8 +1,9 @@
 import cn from 'classnames';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import throttle from 'lodash.throttle';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';
-import { extractSupportProps, useDebounce, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { isEllipsisActive } from '../../helpers';
 import styles from './styles.module.scss';
@@ -30,22 +31,25 @@ export function TruncateStringEnd({
   const textElementRef = useRef<HTMLElement | null>(null);
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const toggleShowTooltip = useDebounce(() => {
+  const toggleShowTooltip = useCallback(() => {
     setShowTooltip(isEllipsisActive(textElementRef.current));
-  }, 50);
+  }, []);
 
   useLayoutEffect(() => {
     if (textElementRef.current) {
-      setShowTooltip(isEllipsisActive(textElementRef.current));
+      toggleShowTooltip();
     }
-  }, []);
+  }, [text, toggleShowTooltip]);
 
   useEffect(() => {
-    const observer = new ResizeObserver(toggleShowTooltip);
+    const throttledToggleShowTooltip = throttle(() => {
+      toggleShowTooltip();
+    }, 50);
+
+    const observer = new ResizeObserver(throttledToggleShowTooltip);
 
     if (textElementRef.current) {
-      setShowTooltip(isEllipsisActive(textElementRef.current));
-
+      toggleShowTooltip();
       observer.observe(textElementRef.current);
     }
 
