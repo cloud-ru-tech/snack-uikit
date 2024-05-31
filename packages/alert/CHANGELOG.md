@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-05-31)
+
+
+### Features
+
+* **FF-4718:** add external prop into link ([29ed86b](https://github.com/cloud-ru-tech/snack-uikit/commit/29ed86bb1b60ad6289f0cbcdb4f9e46b42b6f59b))
+
+
+
+
+
 ## 0.10.5 (2024-05-30)
 
 ### Only dependencies have been changed
