@@ -65,7 +65,7 @@
 | content | `ReactNode` | - | Содержимое модального окна |
 | cancelButton | `Omit<ButtonOutlineProps, "data-test-id" \| "size">` | - | Кнопка отмены |
 | additionalButton | `Omit<ButtonSimpleProps, "data-test-id" \| "size">` | - | Вторая кнопка действия |
-| disclaimer | `{ text: string; link?: Pick<LinkProps, "text" \| "href" \| "target">; }` | - | Небольшой текст под кнопками футера с возможностью передать дополнительно ссылку |
+| disclaimer | `{ text: string; link?: Pick<LinkProps, "text" \| "href" \| "target" \| "external">; }` | - | Небольшой текст под кнопками футера с возможностью передать дополнительно ссылку |
 | size | "s" \| "m" \| "l" | s | Размер |
 | align | enum Align: `"vertical"`, `"default"`, `"center"` | default | Выравнивание, для разных размеров доступны разные значения <br> для size=`s` - все <br> для size=`m` - align=`default \| center` <br> для size=`l` - align=`default` |
 | picture | `JSXElementConstructor<{ size?: number; className?: string; }> \| ModalHeaderImage` | - | Можно передать иконку из пакета `@snack-uikit/icon-predefined`, или путь к картинке и атрибут `alt` |

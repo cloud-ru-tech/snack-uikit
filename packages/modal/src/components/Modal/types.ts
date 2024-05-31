@@ -24,7 +24,7 @@ type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
   /** Небольшой текст под кнопками футера с возможностью передать дополнительно ссылку */
   disclaimer?: {
     text: string;
-    link?: Pick<LinkProps, 'text' | 'href' | 'target'>;
+    link?: Pick<LinkProps, 'text' | 'href' | 'target' | 'external'>;
   };
 };
 

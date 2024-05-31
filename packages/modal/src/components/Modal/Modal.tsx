@@ -80,7 +80,7 @@ export function Modal({
               <Typography.SansBodyS data-test-id={TEST_IDS.disclaimerText}>{disclaimer.text}</Typography.SansBodyS>
 
               {disclaimer.link && (
-                <Link {...disclaimer.link} size='s' external data-test-id={TEST_IDS.disclaimerLink} />
+                <Link external {...disclaimer.link} size='s' data-test-id={TEST_IDS.disclaimerLink} />
               )}
             </>
           )

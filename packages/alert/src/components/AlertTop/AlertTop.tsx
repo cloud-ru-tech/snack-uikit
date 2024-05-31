@@ -29,7 +29,7 @@ export type AlertTopProps = WithSupportProps<{
   /** Описание */
   description: ReactNode;
   /** Cсылка */
-  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href' | 'appearance'>;
+  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href' | 'appearance' | 'external'>;
   /** Кнопка дополнительного действия */
   action?: AlertButtonProps;
   /** Колбек закрытия */
@@ -96,10 +96,10 @@ export function AlertTop({
           {link && (
             <span>
               <Link
-                appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
-                {...link}
-                textMode='on-accent'
                 external
+                {...link}
+                appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
+                textMode='on-accent'
                 size='m'
                 data-test-id='alert-top__link'
               />
