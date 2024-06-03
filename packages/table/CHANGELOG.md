@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.18.0 (2024-06-03)
+
+
+### Features
+
+* **FF-0000:** fix search props ([2db9032](https://github.com/cloud-ru-tech/snack-uikit/commit/2db903299800ce149e6ebf69c9770cc16875a1f8))
+
+
+
+
+
 ## 0.17.9 (2024-05-31)
 
 ### Only dependencies have been changed
