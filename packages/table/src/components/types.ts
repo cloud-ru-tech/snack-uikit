@@ -45,7 +45,7 @@ export type TableProps<TData extends object> = WithSupportProps<{
    * <strong>onChange</strong>: Колбэк на изменение данных в строке поиска
    *  */
   search?: {
-    initialValue?: string;
+    initialState?: string;
     state?: string;
     placeholder?: string;
     loading?: boolean;
