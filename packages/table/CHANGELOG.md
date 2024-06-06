@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.19.0 (2024-06-06)
+
+
+### Features
+
+* **PDS-287:** add row pinning functionality to table ([f33a911](https://github.com/cloud-ru-tech/snack-uikit/commit/f33a9116d78de8ab09a01a0db22999e09c7fd773))
+
+
+
+
+
 ## 0.18.1 (2024-06-06)
 
 ### Only dependencies have been changed
