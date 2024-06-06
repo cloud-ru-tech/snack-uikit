@@ -6,6 +6,7 @@ import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { ALIGN, SIZE, TEST_IDS } from '../../constants';
+import { InfoBlockContext } from '../../contexts';
 import { Align, Size } from '../../types';
 import { Footer, FooterProps } from '../Footer';
 import styles from './styles.module.scss';
@@ -37,50 +38,57 @@ export function InfoBlock({
   ...rest
 }: InfoBlockProps) {
   return (
-    <div className={cn(styles.infoBlock, className)} data-size={size} data-align={align} {...extractSupportProps(rest)}>
-      {icon && (
-        <IconPredefined
-          icon={icon.icon}
-          appearance={icon.appearance ?? 'primary'}
-          decor={icon.decor ?? true}
-          size={size}
-          data-test-id={TEST_IDS.icon}
-        />
-      )}
+    <InfoBlockContext.Provider value={{ size }}>
+      <div
+        className={cn(styles.infoBlock, className)}
+        data-size={size}
+        data-align={align}
+        {...extractSupportProps(rest)}
+      >
+        {icon && (
+          <IconPredefined
+            icon={icon.icon}
+            appearance={icon.appearance ?? 'primary'}
+            decor={icon.decor ?? true}
+            size={size}
+            data-test-id={TEST_IDS.icon}
+          />
+        )}
 
-      <div className={styles.contentLayout}>
-        <div className={styles.textWrap}>
-          {title && (
-            <Typography
-              family='sans'
-              purpose='title'
-              size={size}
-              className={styles.title}
-              data-test-id={TEST_IDS.title}
-            >
-              {title}
-            </Typography>
-          )}
+        <div className={styles.contentLayout}>
+          <div className={styles.textWrap}>
+            {title && (
+              <Typography
+                family='sans'
+                purpose='title'
+                size={size}
+                className={styles.title}
+                data-test-id={TEST_IDS.title}
+              >
+                {title}
+              </Typography>
+            )}
 
-          {description && (
-            <Typography
-              family='sans'
-              purpose='body'
-              size={size}
-              className={styles.description}
-              data-test-id={TEST_IDS.description}
-            >
-              {description}
-            </Typography>
+            {description && (
+              <Typography
+                family='sans'
+                purpose='body'
+                size={size}
+                className={styles.description}
+                data-test-id={TEST_IDS.description}
+              >
+                {description}
+              </Typography>
+            )}
+          </div>
+
+          {footer && (
+            <div className={styles.footer} data-test-id={TEST_IDS.footer}>
+              {footer}
+            </div>
           )}
         </div>
-
-        {footer && (
-          <div className={styles.footer} data-test-id={TEST_IDS.footer}>
-            {footer}
-          </div>
-        )}
       </div>
-    </div>
+    </InfoBlockContext.Provider>
   );
 }

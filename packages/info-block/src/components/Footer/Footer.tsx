@@ -4,6 +4,7 @@ import { ButtonFilled, ButtonFilledProps, ButtonTonal, ButtonTonalProps } from '
 import { TooltipProps } from '@snack-uikit/tooltip';
 
 import { TEST_IDS } from '../../constants';
+import { useInfoBlockContext } from '../../contexts';
 import { useButtonWithTooltip } from './hooks';
 import styles from './styles.module.scss';
 
@@ -18,20 +19,21 @@ export type FooterProps = {
 export function Footer({ primaryButton, secondaryButton, className }: FooterProps) {
   const PrimaryButton = useButtonWithTooltip({ Button: ButtonFilled, tooltip: primaryButton.tooltip });
   const SecondaryButton = useButtonWithTooltip({ Button: ButtonTonal, tooltip: secondaryButton?.tooltip });
+  const { size } = useInfoBlockContext();
 
   return (
     <div className={cn(styles.infoBlockFooter, className)}>
       {secondaryButton && (
         <SecondaryButton
           {...secondaryButton}
-          size='m'
+          size={size}
           data-test-id={secondaryButton['data-test-id'] || TEST_IDS.secondaryButton}
         />
       )}
 
       <PrimaryButton
         {...primaryButton}
-        size='m'
+        size={size}
         data-test-id={primaryButton['data-test-id'] || TEST_IDS.primaryButton}
       />
     </div>
