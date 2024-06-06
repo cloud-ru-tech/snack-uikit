@@ -72,6 +72,10 @@ const collapseAllRest = (lastElementRenderMode: ItemRenderMode, rest: InnerItem[
   });
 
 export function buildBreadcrumbsConfigs(items: Item[], sizeMap: SizeMap, lastEmpty?: boolean): BreadcrumbsConfig[] {
+  if (!items.length) {
+    return [];
+  }
+
   const chains: InnerItem[][] = [];
   const [first, ...rest] = items.map(item => ({ ...item, renderMode: ITEM_RENDER_MODE.Full }));
 

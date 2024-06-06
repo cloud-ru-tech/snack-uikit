@@ -25,6 +25,9 @@ export const HiddenChain = memo(function HiddenChain({
   lastEmpty = false,
 }: HiddenChainProps) {
   const containerRef = useRef<HTMLUListElement>(null);
+  const itemsRef = useRef<Item[]>(items);
+
+  itemsRef.current = items;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -32,7 +35,7 @@ export const HiddenChain = memo(function HiddenChain({
       const observer = new ResizeObserver(([{ target }]) => {
         const sizeMap = buildSizeMap(target);
         if (sizeMap) {
-          onConfigsBuilt(buildBreadcrumbsConfigs(items, sizeMap, lastEmpty));
+          onConfigsBuilt(buildBreadcrumbsConfigs(itemsRef.current, sizeMap, lastEmpty));
         }
       });
       observer.observe(container);
@@ -41,7 +44,7 @@ export const HiddenChain = memo(function HiddenChain({
         observer.disconnect();
       };
     }
-  }, [items, lastEmpty, onConfigsBuilt]);
+  }, [lastEmpty, onConfigsBuilt]);
 
   const renderItemModes = useItemModesRender({ firstItemIconOnly });
 

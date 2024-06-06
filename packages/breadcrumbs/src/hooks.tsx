@@ -25,6 +25,8 @@ const selectConfig = (containerWidth: number, configs: BreadcrumbsConfig[]): Cur
           bestConfig = config;
         }
       }
+    } else if (config.width < bestConfig.width) {
+      bestConfig = config;
     }
   }
 
@@ -63,9 +65,7 @@ export function useBreadcrumbsLayout(containerRef: RefObject<HTMLElement>): Brea
       return;
     }
 
-    if (configs.length) {
-      setCurrentConfig(selectConfig(getMaxPossibleWidth(visibleContainer), configs));
-    }
+    setCurrentConfig(selectConfig(getMaxPossibleWidth(visibleContainer), configs));
   }, [configs, containerRef]);
 
   useEffect(() => {
