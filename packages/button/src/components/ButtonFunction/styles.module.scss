@@ -18,6 +18,11 @@ $typography: (
 
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
+      @if $appearance == 'primary' {
+        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
+        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
+      }
+
       &:hover {
         @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));

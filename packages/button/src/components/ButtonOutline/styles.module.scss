@@ -18,27 +18,27 @@ $typography: (
       @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
       @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
 
-      border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+      border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
 
       &:hover {
         @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
 
-        border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-hovered');
+        border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
       }
 
       &:focus-visible {
         @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
 
-        border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-hovered');
+        border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
       }
 
       &:active {
         @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
 
-        border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-pressed');
+        border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
       }
 
       &:disabled,
@@ -53,7 +53,7 @@ $typography: (
         @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
 
-        border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-pressed');
+        border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
       }
     }
   }
