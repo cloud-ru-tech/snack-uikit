@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2024-06-06)
+
+
+### Features
+
+* **PDS-42:** add size context to InfoBlock.Footer ([39c681a](https://github.com/cloud-ru-tech/snack-uikit/commit/39c681a045594645fb6c87cade4acd4d81e65a23))
+
+
+
+
+
 ## 0.3.6 (2024-05-30)
 
 ### Only dependencies have been changed

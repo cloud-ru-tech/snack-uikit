@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Info Block",
-  "version": "0.3.6",
+  "version": "0.4.0",
   "sideEffects": [
     "*.css",
     "*.woff",
