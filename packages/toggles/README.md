@@ -143,6 +143,7 @@ return (
 | autofocus | `boolean` | - | HTML-аттрибут autofocus |
 | checked | `boolean` | - | HTML-аттрибут checked |
 | defaultChecked | `boolean` | - | HTML-аттрибут checked по-умолчанию |
+| disabled | `boolean` | - | HTML-аттрибут disabled |
 | onChange | `(checked: boolean) => void` | - | Колбек смены значения |
 | onClick | `MouseEventHandler<HTMLInputElement>` | - | Колбек клика |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек потери фокуса |

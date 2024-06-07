@@ -18,7 +18,7 @@ const UNCHECKED_ICONS = {
   [FAVORITE_ICON.Heart]: HeartSVG,
 };
 
-export type FavoriteProps = Omit<ToggleProps, 'disabled'> & {
+export type FavoriteProps = ToggleProps & {
   /** Иконка */
   icon?: FavoriteIcon;
 };
