@@ -44,7 +44,7 @@ export const HiddenChain = memo(function HiddenChain({
         observer.disconnect();
       };
     }
-  }, [lastEmpty, onConfigsBuilt]);
+  }, [items, lastEmpty, onConfigsBuilt]);
 
   const renderItemModes = useItemModesRender({ firstItemIconOnly });
 
