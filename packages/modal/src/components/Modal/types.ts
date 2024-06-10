@@ -26,6 +26,16 @@ type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
     text: string;
     link?: Pick<LinkProps, 'text' | 'href' | 'target' | 'external'>;
   };
+  /**
+   *  Максимальное кол-во строк
+   * <br> - `title` - в заголовке
+   * <br> - `subtitle` - в подзаголовке
+   * @default '{ <br>title: 1; <br>subtitle: 2; }'
+   */
+  truncate?: {
+    title?: number;
+    subtitle?: number;
+  };
 };
 
 export type ModalSProps = BaseModalProps & {

@@ -46,6 +46,7 @@
 | cancelButton | `Omit<ButtonOutlineProps, "size"> & { tooltip?: TooltipProps; }` | - | Кнопка отмены |
 | additionalButton | `Omit<ButtonSimpleProps, "size"> & { tooltip?: TooltipProps; }` | - | Дополнительная кнопка |
 | nestedDrawer | `ReactElement<DrawerProps, string \| JSXElementConstructor<any>>` | - | Вложенный Drawer |
+| truncate | `{ title?: number; subtitle?: number; }` | '{ <br>title: 1; <br>subtitle: 2; }' | Максимальное кол-во строк <br> - `title` - в заголовке <br> - `subtitle` - в подзаголовке |
 
 
 [//]: DOCUMENTATION_SECTION_END

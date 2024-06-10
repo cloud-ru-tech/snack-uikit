@@ -34,6 +34,16 @@ export type DrawerProps = Omit<DrawerCustomProps, 'size' | 'children' | 'nestedD
     additionalButton?: Omit<ButtonSimpleProps, 'size'> & { tooltip?: TooltipProps };
     /** Вложенный Drawer */
     nestedDrawer?: ReactElement<DrawerProps>;
+    /**
+     *  Максимальное кол-во строк
+     * <br> - `title` - в заголовке
+     * <br> - `subtitle` - в подзаголовке
+     * @default '{ <br>title: 1; <br>subtitle: 2; }'
+     */
+    truncate?: {
+      title?: number;
+      subtitle?: number;
+    };
   };
 
 /** Готовый компонент Drawer */
@@ -47,6 +57,7 @@ export function Drawer({
   cancelButton,
   additionalButton,
   nestedDrawer,
+  truncate,
   ...rest
 }: DrawerProps) {
   const needFooter = Boolean(approveButton) || Boolean(cancelButton) || Boolean(additionalButton);
@@ -54,9 +65,9 @@ export function Drawer({
   return (
     <DrawerCustom {...rest} push={Boolean(nestedDrawer) && { distance: NESTED_DRAWER_PUSH_DISTANCE }}>
       <DrawerCustom.Header
-        title={<TruncateString text={title} />}
+        title={<TruncateString text={title} maxLines={truncate?.title || 1} />}
         titleTooltip={titleTooltip}
-        subtitle={subtitle}
+        subtitle={subtitle ? <TruncateString text={subtitle} maxLines={truncate?.subtitle || 2} /> : undefined}
         image={image}
         data-test-id={TEST_IDS.header}
       />

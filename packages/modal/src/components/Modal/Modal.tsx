@@ -26,6 +26,7 @@ export function Modal({
   cancelButton,
   additionalButton,
   disclaimer,
+  truncate,
   className,
   ...rest
 }: ModalProps) {
@@ -36,9 +37,9 @@ export function Modal({
   return (
     <ModalCustom open={open} onClose={onClose} size={size} mode={mode} className={className} {...rest}>
       <ModalCustom.Header
-        title={<TruncateString text={title} />}
+        title={<TruncateString text={title} maxLines={truncate?.title || 1} />}
         titleTooltip={titleTooltip}
-        subtitle={subtitle}
+        subtitle={subtitle ? <TruncateString text={subtitle} maxLines={truncate?.subtitle || 2} /> : undefined}
         picture={picture}
         align={aligns.header}
       />
