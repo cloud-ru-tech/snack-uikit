@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.40 (2024-06-10)
+
+
+### Bug Fixes
+
+* **FF-5062:** update breadcrumbs config with items ([1e62321](https://github.com/cloud-ru-tech/snack-uikit/commit/1e62321b7c0569d64e4d9cb454280e0d85e73323))
+
+
+
+
+
 ## 0.8.39 (2024-06-07)
 
 
