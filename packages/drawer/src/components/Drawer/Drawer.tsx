@@ -27,11 +27,11 @@ export type DrawerProps = Omit<DrawerCustomProps, 'size' | 'children' | 'nestedD
     /** Размер */
     size?: Size;
     /** Основная кнопка */
-    approveButton?: Omit<ButtonFilledProps, 'size' | 'data-test-id'> & { tooltip?: TooltipProps };
+    approveButton?: Omit<ButtonFilledProps, 'size'> & { tooltip?: TooltipProps };
     /** Кнопка отмены */
-    cancelButton?: Omit<ButtonOutlineProps, 'size' | 'data-test-id'> & { tooltip?: TooltipProps };
+    cancelButton?: Omit<ButtonOutlineProps, 'size'> & { tooltip?: TooltipProps };
     /** Дополнительная кнопка */
-    additionalButton?: Omit<ButtonSimpleProps, 'size' | 'data-test-id'> & { tooltip?: TooltipProps };
+    additionalButton?: Omit<ButtonSimpleProps, 'size'> & { tooltip?: TooltipProps };
     /** Вложенный Drawer */
     nestedDrawer?: ReactElement<DrawerProps>;
   };
@@ -70,19 +70,29 @@ export function Drawer({
             <>
               {approveButton && (
                 <WithTooltip tooltip={approveButton.tooltip}>
-                  <ButtonFilled {...approveButton} size='m' data-test-id={TEST_IDS.approveButton} />
+                  <ButtonFilled
+                    appearance='primary'
+                    size='m'
+                    data-test-id={TEST_IDS.approveButton}
+                    {...approveButton}
+                  />
                 </WithTooltip>
               )}
 
               {cancelButton && (
                 <WithTooltip tooltip={cancelButton.tooltip}>
-                  <ButtonOutline {...cancelButton} size='m' data-test-id={TEST_IDS.cancelButton} />
+                  <ButtonOutline appearance='neutral' size='m' data-test-id={TEST_IDS.cancelButton} {...cancelButton} />
                 </WithTooltip>
               )}
 
               {additionalButton && (
                 <WithTooltip tooltip={additionalButton.tooltip}>
-                  <ButtonSimple {...additionalButton} size='m' data-test-id={TEST_IDS.additionalButton} />
+                  <ButtonSimple
+                    appearance='neutral'
+                    size='m'
+                    data-test-id={TEST_IDS.additionalButton}
+                    {...additionalButton}
+                  />
                 </WithTooltip>
               )}
             </>

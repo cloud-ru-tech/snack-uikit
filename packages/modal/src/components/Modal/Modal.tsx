@@ -49,6 +49,7 @@ export function Modal({
         actions={
           <>
             <ButtonFilled
+              appearance='primary'
               {...approveButton}
               size={buttonsSize}
               className={styles.footerButton}
@@ -57,6 +58,7 @@ export function Modal({
 
             {cancelButton && (
               <ButtonOutline
+                appearance='neutral'
                 {...cancelButton}
                 size={buttonsSize}
                 className={styles.footerButton}
@@ -66,6 +68,7 @@ export function Modal({
 
             {additionalButton && (
               <ButtonSimple
+                appearance='neutral'
                 {...additionalButton}
                 size={buttonsSize}
                 className={styles.footerButton}

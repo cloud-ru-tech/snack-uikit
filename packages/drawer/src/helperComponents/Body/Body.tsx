@@ -16,7 +16,12 @@ export type DrawerBodyProps = WithSupportProps<{
 /** Вспомогательный компонент для добавления "тела" в DrawerCustom */
 export function DrawerBody({ content, className, ...rest }: DrawerBodyProps) {
   return (
-    <Scroll size='m' className={cn(styles.drawerBody, className)} {...extractSupportProps(rest)}>
+    <Scroll
+      size='m'
+      barHideStrategy='never'
+      className={cn(styles.drawerBody, className)}
+      {...extractSupportProps(rest)}
+    >
       {content}
     </Scroll>
   );

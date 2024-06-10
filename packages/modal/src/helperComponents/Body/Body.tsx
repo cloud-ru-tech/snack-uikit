@@ -20,6 +20,7 @@ export function ModalBody({ content, align = CONTENT_ALIGN.Default, className, .
   return (
     <Scroll
       size='m'
+      barHideStrategy='never'
       className={cn(styles.modalBody, className)}
       {...extractSupportProps(rest)}
       data-align={align}
