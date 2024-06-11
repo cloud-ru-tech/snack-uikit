@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.2 (2024-06-11)
+
+**Note:** Version bump only for package @snack-uikit/button
+
+
+
+
+
 ## 0.17.1 (2024-04-23)
 
 ### Only dependencies have been changed
