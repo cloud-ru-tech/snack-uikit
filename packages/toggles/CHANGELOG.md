@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2024-06-11)
+
+
+### Features
+
+* **FF-4725:** add disable prop into Favorite ([c44e575](https://github.com/cloud-ru-tech/snack-uikit/commit/c44e575667b523e166abc622387fa230c0951360))
+
+
+
+
+
 ## 0.9.10 (2024-05-23)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-06-11)
+
+
+### Features
+
+* **FF-4725:** add truncate prop ([b8ab633](https://github.com/cloud-ru-tech/snack-uikit/commit/b8ab633cfc672bcaea95b413a635956d96711f3e))
+* **FF-4725:** set default footer appearances; add barHideStrategy never ([a1476a7](https://github.com/cloud-ru-tech/snack-uikit/commit/a1476a72af183c3293bb8aef313c2b5be62bb05b))
+
+
+
+
+
 ## 0.10.3 (2024-06-11)
 
 ### Only dependencies have been changed
