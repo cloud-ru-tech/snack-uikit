@@ -51,6 +51,7 @@ export function Table<TData extends object>({
   },
   columnDefinitions,
   keepPinnedRows = false,
+  copyPinnedRows = false,
   enableSelectPinned = false,
   rowSelection: rowSelectionProp,
   search,
@@ -266,15 +267,16 @@ export function Table<TData extends object>({
   const filteredTopRows = table.getState().globalFilter
     ? topRows.filter(tr => tableFilteredRowsIds.includes(tr.id))
     : topRows;
+  const centerRows = copyPinnedRows ? tableRows : tableCenterRows;
 
   const { t } = useLocale('Table');
   const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
 
   const cssPageSize = useMemo(() => {
-    const tempPageSize = !suppressPagination ? tablePagination?.pageSize : pageSize;
+    const tempPageSize = (!suppressPagination ? tablePagination?.pageSize : pageSize) + filteredTopRows.length;
 
     return !tableRows.length ? Math.min(Math.max(tempPageSize, 5), DEFAULT_PAGE_SIZE) : tempPageSize;
-  }, [pageSize, suppressPagination, tablePagination?.pageSize, tableRows.length]);
+  }, [filteredTopRows.length, pageSize, suppressPagination, tablePagination?.pageSize, tableRows.length]);
 
   usePageReset({
     manualPagination,
@@ -340,7 +342,7 @@ export function Table<TData extends object>({
                   </SkeletonContextProvider>
                 ) : (
                   <>
-                    {tableCenterRows.length || filteredTopRows.length ? <HeaderRow /> : null}
+                    {centerRows.length || filteredTopRows.length ? <HeaderRow /> : null}
                     {filteredTopRows.length ? (
                       <div className={styles.topRowWrapper}>
                         {filteredTopRows.map(row => (
@@ -349,7 +351,7 @@ export function Table<TData extends object>({
                       </div>
                     ) : null}
 
-                    {tableCenterRows.map(row => (
+                    {centerRows.map(row => (
                       <BodyRow key={row.id} row={row} onRowClick={onRowClick} />
                     ))}
 
@@ -357,7 +359,7 @@ export function Table<TData extends object>({
                       emptyStates={emptyStates}
                       dataError={dataError}
                       dataFiltered={dataFiltered || Boolean(table.getState().globalFilter)}
-                      tableRowsLength={tableRows.length}
+                      tableRowsLength={tableRows.length + filteredTopRows.length}
                     />
                   </>
                 )}

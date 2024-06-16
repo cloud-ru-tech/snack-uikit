@@ -19,8 +19,10 @@ export type TableProps<TData extends object> = WithSupportProps<{
   data: TData[];
   /** Определение внешнего вида и функционала колонок */
   columnDefinitions: ColumnDefinition<TData>[];
-  /** Параметр овтечает за сохранение закрепленных строк на всех страницах таблицы */
+  /** Параметр овтечает за сохранение закрепленных строк на всех страницах таблицы @default false*/
   keepPinnedRows?: boolean;
+  /** Параметр овтечает за сохранение закрепленных строк на в теле таблицы @default false*/
+  copyPinnedRows?: boolean;
   /** Параметр овтечает за чекбокс выбора закрепленных строк */
   enableSelectPinned?: boolean;
   /** Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br>
@@ -79,7 +81,7 @@ export type TableProps<TData extends object> = WithSupportProps<{
     options?: number[];
     optionsLabel?: string;
     onChange?(state: PaginationState): void;
-    optionsRender?(value: string | number): string | number;
+    optionsRender?(value: string | number, idx: number): string | number;
   };
 
   /** Кол-во страниц (используется для внешнего управления) */

@@ -11,7 +11,7 @@ export type TablePaginationProps<TData> = {
   table: Table<TData>;
   options?: number[];
   optionsLabel?: string;
-  optionsRender?(value: number): string | number;
+  optionsRender?(value: number, idx: number): string | number;
   pageCount?: number;
 };
 
@@ -42,7 +42,10 @@ export function TablePagination<TData>({
     () =>
       optionsProp
         ?.sort((a, b) => a - b)
-        .map(value => ({ label: String(optionsRender ? optionsRender(value) : value), value: String(value) })),
+        .map((value, idx) => ({
+          label: String(optionsRender ? optionsRender(value, idx) : value),
+          value: String(value),
+        })),
     [optionsProp, optionsRender],
   );
 
