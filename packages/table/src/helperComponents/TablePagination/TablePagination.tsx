@@ -11,6 +11,7 @@ export type TablePaginationProps<TData> = {
   table: Table<TData>;
   options?: number[];
   optionsLabel?: string;
+  optionsRender?(value: number): string | number;
   pageCount?: number;
 };
 
@@ -18,6 +19,7 @@ export function TablePagination<TData>({
   table,
   options: optionsProp,
   optionsLabel: optionsLabelProp,
+  optionsRender,
 }: TablePaginationProps<TData>) {
   const { t } = useLocale('Table');
   const optionsLabel = optionsLabelProp ?? t('rowsOptionsLabel');
@@ -37,8 +39,11 @@ export function TablePagination<TData>({
   );
 
   const options = useMemo(
-    () => optionsProp?.sort((a, b) => a - b).map(value => ({ label: String(value), value: String(value) })),
-    [optionsProp],
+    () =>
+      optionsProp
+        ?.sort((a, b) => a - b)
+        .map(value => ({ label: String(optionsRender ? optionsRender(value) : value), value: String(value) })),
+    [optionsProp, optionsRender],
   );
 
   const tablePaginationState = table.getState().pagination;

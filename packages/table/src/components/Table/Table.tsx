@@ -171,7 +171,11 @@ export function Table<TData extends object>({
     keepPinnedRows,
   });
 
-  const { loadingTable } = useLoadingTable({ pageSize, columnDefinitions: tableColumns, columnPinning });
+  const { loadingTable } = useLoadingTable({
+    pageSize: Math.min(Math.max(pageSize, 5), DEFAULT_PAGE_SIZE),
+    columnDefinitions: tableColumns,
+    columnPinning,
+  });
 
   const handleOnRefresh = useCallback(() => {
     table.resetRowSelection();
@@ -369,6 +373,7 @@ export function Table<TData extends object>({
             options={paginationProp?.options}
             optionsLabel={paginationProp?.optionsLabel}
             pageCount={pageCount}
+            optionsRender={paginationProp?.optionsRender}
           />
         )}
       </div>

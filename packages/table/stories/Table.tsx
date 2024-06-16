@@ -40,6 +40,8 @@ type StoryProps = Omit<Props, 'rowSelection' | 'sort'> & {
   enableOnRowClick: boolean;
 };
 
+const PINNED_TOP_ROWS = ['0', '2'];
+
 const renderHeader = (ctx: HeaderContext<StubData, unknown>) => `Table column №${ctx.column.id}`;
 const accessorFn = (key: keyof StubData) => (row: StubData) =>
   `Cell ${Math.trunc(Number(row[key]) / 5) + 1}.${(Number(row[key]) % 5) + 1}`;
@@ -251,6 +253,12 @@ const Template: StoryFn<StoryProps> = ({
     setFilteredData(data);
   };
 
+  const modifyPaginationLabel = pinSomeRows && args.keepPinnedRows;
+  const getNotPinnedRows = (totalRows: string | number) =>
+    Number(totalRows) - (modifyPaginationLabel ? PINNED_TOP_ROWS.length : 0);
+  const paginationOptionsRender = (value: string | number) =>
+    `${getNotPinnedRows(value)}${modifyPaginationLabel ? ` + ${PINNED_TOP_ROWS.length}` : ''}`;
+
   return (
     <div className={styles.wrapper}>
       <Table
@@ -261,6 +269,7 @@ const Template: StoryFn<StoryProps> = ({
         className={styles.className}
         pagination={{
           options: [5, 10],
+          optionsRender: paginationOptionsRender,
         }}
         rowSelection={{
           multiRow: rowSelectionMode === 'multi',
@@ -270,7 +279,7 @@ const Template: StoryFn<StoryProps> = ({
         }}
         onRefresh={onRefresh}
         onRowClick={enableOnRowClick ? handleRowClick : undefined}
-        rowPinning={pinSomeRows ? { top: ['0', '2'] } : undefined}
+        rowPinning={pinSomeRows ? { top: PINNED_TOP_ROWS } : undefined}
       />
     </div>
   );

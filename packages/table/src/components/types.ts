@@ -79,6 +79,7 @@ export type TableProps<TData extends object> = WithSupportProps<{
     options?: number[];
     optionsLabel?: string;
     onChange?(state: PaginationState): void;
+    optionsRender?(value: string | number): string | number;
   };
 
   /** Кол-во страниц (используется для внешнего управления) */
