@@ -38,7 +38,7 @@ type StatusColumnDef = BaseStatusColumnDef & {
 
 type StatusColumnDefWithDescription<TData> = BaseStatusColumnDef & {
   /** Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса */
-  renderDescription(cellValue: string): string;
+  renderDescription(cellValue: string, row: TData): string;
   /** Размер ячейки */
   size: number;
   minSize?: number;
@@ -107,7 +107,7 @@ export function getStatusColumnDef<TData>({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     accessorFn: (row: any) =>
       renderDescription && Object.hasOwn(row as object, accessorKey)
-        ? renderDescription(row[accessorKey] as string)
+        ? renderDescription(row[accessorKey] as string, row)
         : undefined,
     cell: cell => {
       const value =
@@ -119,7 +119,12 @@ export function getStatusColumnDef<TData>({
 
       const appearance = mapStatusToAppearance(value);
 
-      return <StatusCell appearance={appearance} label={renderDescription ? renderDescription(value) : undefined} />;
+      return (
+        <StatusCell
+          appearance={appearance}
+          label={renderDescription ? renderDescription(value, cell.row.original) : undefined}
+        />
+      );
     },
   };
 }

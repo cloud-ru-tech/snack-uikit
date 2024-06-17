@@ -182,8 +182,8 @@ const Template: StoryFn<StoryProps> = ({
         statusColumnViewMode === StoryStatusColumnViewMode.Full
           ? {
               header: 'Status',
-              size: 100,
-              renderDescription: (value: string) => value,
+              size: 110,
+              renderDescription: (value: string, stub: StubData) => (stub.status === 'Not' ? 'Custom status' : value),
               enableResizing: true,
             }
           : {};
