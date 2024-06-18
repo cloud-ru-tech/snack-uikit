@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { QuestionSVG } from '@snack-uikit/icons';
 import { Size } from '@snack-uikit/input-private';
 import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';
@@ -9,7 +11,7 @@ export type HeaderProps = {
   /** Лейбл */
   label?: string;
   /** Всплывающая подсказка лейбла */
-  labelTooltip?: string;
+  labelTooltip?: ReactNode;
   /** Аттрибут for */
   labelFor?: string;
   /** Является ли поле обязательным */

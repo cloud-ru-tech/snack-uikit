@@ -5,7 +5,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { FieldSlider, FieldSliderProps } from '../src';
-import { ICONS } from './constants';
+import { COMMON_ARG_TYPES, ICONS } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -104,6 +104,7 @@ fieldSlider.args = {
 };
 
 fieldSlider.argTypes = {
+  labelTooltip: COMMON_ARG_TYPES.labelTooltip,
   moveByMarks: {
     name: '[Story]: change value only by marks',
     type: 'boolean',

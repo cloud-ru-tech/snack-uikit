@@ -145,6 +145,7 @@ fieldSelect.args = {
 fieldSelect.argTypes = {
   validationState: COMMON_ARG_TYPES.validationState,
   prefixIcon: COMMON_ARG_TYPES.prefixIcon,
+  labelTooltip: COMMON_ARG_TYPES.labelTooltip,
   showMoreOptions: {
     name: '[Stories] add more options to see scroll',
     type: 'boolean',

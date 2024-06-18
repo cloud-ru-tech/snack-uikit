@@ -42,6 +42,7 @@ fieldDecorator.args = {
 
 fieldDecorator.argTypes = {
   validationState: COMMON_ARG_TYPES.validationState,
+  labelTooltip: COMMON_ARG_TYPES.labelTooltip,
 };
 
 fieldDecorator.parameters = {

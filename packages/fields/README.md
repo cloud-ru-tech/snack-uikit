@@ -173,7 +173,7 @@ const [isOpen, setIsOpen] = useState(false);
 | readonly | `boolean` | - | Является ли поле доступным только на чтение Доступно ли поле только на чтение |
 | error | `string` | - |  |
 | label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | labelFor | `string` | - | Аттрибут for |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
@@ -203,7 +203,7 @@ const [isOpen, setIsOpen] = useState(false);
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
@@ -235,7 +235,7 @@ const [isOpen, setIsOpen] = useState(false);
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
@@ -267,7 +267,7 @@ const [isOpen, setIsOpen] = useState(false);
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
@@ -301,7 +301,7 @@ const [isOpen, setIsOpen] = useState(false);
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
@@ -326,7 +326,7 @@ const [isOpen, setIsOpen] = useState(false);
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
@@ -379,7 +379,7 @@ const [isOpen, setIsOpen] = useState(false);
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
@@ -411,7 +411,7 @@ const [isOpen, setIsOpen] = useState(false);
 | marks | `Record<string \| number, ReactNode \| MarkObj>` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
-| labelTooltip | `string` | - | Всплывающая подсказка лейбла |
+| labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |

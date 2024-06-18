@@ -27,6 +27,11 @@ export const COMMON_ARG_TYPES = {
       type: 'select',
     },
   },
+  labelTooltip: {
+    control: {
+      type: 'text',
+    },
+  },
   localeName: {
     options: ['ru-RU', 'en-US'],
     control: { type: 'radio' },
