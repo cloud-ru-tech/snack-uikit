@@ -80,6 +80,7 @@ export function Table<TData extends object>({
   manualSorting = false,
   manualPagination = false,
   manualFiltering = false,
+  autoResetPageIndex = false,
   scrollRef,
   scrollContainerRef,
   getRowId,
@@ -165,7 +166,7 @@ export function Table<TData extends object>({
     onSortingChange,
     getSortedRowModel: getSortedRowModel(),
     onPaginationChange,
-    autoResetPageIndex: false,
+    autoResetPageIndex,
     getPaginationRowModel: getPaginationRowModel(),
     getCoreRowModel: getCoreRowModel(),
     columnResizeMode: 'onEnd',
@@ -292,6 +293,7 @@ export function Table<TData extends object>({
     maximumAvailablePage: pageCount || data.length / pagination.pageSize,
     pagination,
     onPaginationChange,
+    autoResetPageIndex,
   });
 
   return (
