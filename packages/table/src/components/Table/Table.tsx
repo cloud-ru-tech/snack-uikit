@@ -194,16 +194,25 @@ export function Table<TData extends object>({
   }, [loading, onDelete, table]);
 
   const handleOnCheck = useCallback(() => {
+    if (!loading && !enableSelectPinned && table.getTopRows().length) {
+      const centerRows = table.getCenterRows();
+      const isSomeRowsSelected = table.getIsSomePageRowsSelected();
+      const isAllCenterRowsSelected = centerRows.every(row => row.getIsSelected());
+
+      if (isAllCenterRowsSelected) {
+        table.resetRowSelection();
+        return;
+      }
+
+      centerRows.forEach(row => row.toggleSelected(isSomeRowsSelected ? true : undefined));
+      return;
+    }
+
     if (!loading && rowSelectionProp?.multiRow) {
       table.toggleAllPageRowsSelected();
       return;
     }
-
-    if (!loading && table.getIsSomePageRowsSelected()) {
-      table.resetRowSelection();
-      return;
-    }
-  }, [loading, rowSelectionProp?.multiRow, table]);
+  }, [loading, rowSelectionProp?.multiRow, table, enableSelectPinned]);
 
   const columnSizeVarsRef = useRef<Record<string, string>>();
   const headers = table.getFlatHeaders();
