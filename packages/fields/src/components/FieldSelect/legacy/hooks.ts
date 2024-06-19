@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 
 import { ItemProps, kindFlattenItems } from '@snack-uikit/list';
 
-const DEFAULT_MIN_SEARCH_INPUT_LENGTH = 2;
+const DEFAULT_MIN_SEARCH_INPUT_LENGTH = 1;
 
 /**
  * Нечеткий поиск среди айтемов по полям 'content.option', 'content.caption', 'content.description', 'label'
@@ -17,13 +17,9 @@ export function useFuzzySearch(items: ItemProps[], minSearchInputLength?: number
 
   return useCallback(
     (search: string) => {
-      const searcher = new FuzzySearch(
-        flattenItems,
-        ['content.option', 'content.caption', 'content.description', 'label'],
-        {},
-      );
+      const searcher = new FuzzySearch(flattenItems, ['content.option', 'content.caption', 'content.description'], {});
 
-      return search.length > (minSearchInputLength ?? DEFAULT_MIN_SEARCH_INPUT_LENGTH)
+      return search.length >= (minSearchInputLength ?? DEFAULT_MIN_SEARCH_INPUT_LENGTH)
         ? searcher.search(search)
         : items;
     },
