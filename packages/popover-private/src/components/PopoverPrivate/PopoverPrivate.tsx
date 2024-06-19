@@ -33,7 +33,13 @@ import {
   POPOVER_WIDTH_STRATEGY,
 } from '../../constants';
 import { Placement, PopoverHeightStrategy, PopoverWidthStrategy, Trigger } from '../../types';
-import { getArrowOffset, getPopoverRootElement, getPopoverTriggerJSX, getTriggerProps } from '../../utils';
+import {
+  getArrowOffset,
+  getPopoverRootElement,
+  getPopoverTriggerJSX,
+  getTriggerProps,
+  stopPropagation,
+} from '../../utils';
 import { Arrow } from '../Arrow';
 import { useOffset } from './hooks';
 import styles from './styles.module.scss';
@@ -248,12 +254,20 @@ function PopoverPrivateComponent({
   const portal = isOpen && (
     <FloatingPortal root={getPopoverRootElement()}>
       <div
+        role='presentation'
         {...extractSupportProps(rest)}
         className={cn(styles.floating, className, {
           [styles.floatingHidden]: Boolean(middlewareData.hide?.referenceHidden),
         })}
         ref={refs.setFloating}
         style={floatingStyles}
+        onClick={stopPropagation}
+        onMouseMove={stopPropagation}
+        onMouseDown={stopPropagation}
+        onMouseUp={stopPropagation}
+        onTouchStart={stopPropagation}
+        onTouchEnd={stopPropagation}
+        onTouchMove={stopPropagation}
         {...getFloatingProps()}
       >
         {popoverContent}

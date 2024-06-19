@@ -1,6 +1,15 @@
 import { Placement, ReferenceType, useInteractions } from '@floating-ui/react';
 import cn from 'classnames';
-import { cloneElement, CSSProperties, HTMLProps, isValidElement, MutableRefObject, ReactNode } from 'react';
+import {
+  cloneElement,
+  CSSProperties,
+  HTMLProps,
+  isValidElement,
+  MouseEvent,
+  MutableRefObject,
+  ReactNode,
+  TouchEvent,
+} from 'react';
 import { isForwardRef, isValidElementType } from 'react-is';
 
 import { PopoverPrivateProps } from './components';
@@ -133,3 +142,5 @@ export const getTriggerProps = (trigger: Trigger): TriggerProps => {
       return defaultProps;
   }
 };
+
+export const stopPropagation = (e: MouseEvent<HTMLDivElement> | TouchEvent<HTMLElement>) => e.stopPropagation();
