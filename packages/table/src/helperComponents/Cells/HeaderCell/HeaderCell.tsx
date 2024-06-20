@@ -42,7 +42,7 @@ export function HeaderCell<TData>({ header, pinPosition, className }: HeaderCell
   return (
     <Cell
       style={style}
-      onMouseUp={sortingHandler}
+      onClick={sortingHandler}
       data-sortable={isSortable || undefined}
       data-no-padding={columnDef.noHeaderCellPadding || undefined}
       data-no-offset={columnDef.noHeaderCellBorderOffset || undefined}
