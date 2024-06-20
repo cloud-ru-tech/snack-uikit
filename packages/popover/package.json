@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Popover",
-  "version": "0.6.8",
+  "version": "0.6.9",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -32,7 +32,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/popover-private": "0.13.2",
+    "@snack-uikit/popover-private": "0.13.3",
     "@snack-uikit/utils": "3.3.0"
   }
 }

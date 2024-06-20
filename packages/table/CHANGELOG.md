@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.19.3 (2024-06-20)
+
+
+### Bug Fixes
+
+* **FF-001:** fix sort mouseUp action -> moved to onClick ([97f6da6](https://github.com/cloud-ru-tech/snack-uikit/commit/97f6da6804b1326f88beeae50a7af8eabb77f9b9))
+
+
+
+
+
 ## 0.19.2 (2024-06-11)
 
 ### Only dependencies have been changed

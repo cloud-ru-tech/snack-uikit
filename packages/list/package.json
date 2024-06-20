@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "List",
-  "version": "0.13.7",
+  "version": "0.13.8",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -34,14 +34,14 @@
   "dependencies": {
     "@snack-uikit/button": "0.17.2",
     "@snack-uikit/divider": "3.0.3",
-    "@snack-uikit/dropdown": "0.2.2",
+    "@snack-uikit/dropdown": "0.2.3",
     "@snack-uikit/icons": "0.21.0",
-    "@snack-uikit/info-block": "0.4.1",
+    "@snack-uikit/info-block": "0.4.2",
     "@snack-uikit/loaders": "0.5.2",
     "@snack-uikit/scroll": "0.6.0",
     "@snack-uikit/search-private": "0.2.1",
     "@snack-uikit/toggles": "0.10.0",
-    "@snack-uikit/truncate-string": "0.4.17",
+    "@snack-uikit/truncate-string": "0.4.18",
     "@snack-uikit/utils": "3.3.0",
     "classnames": "2.5.1",
     "merge-refs": "1.2.2"

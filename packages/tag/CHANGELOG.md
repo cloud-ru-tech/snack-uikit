@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.4 (2024-06-20)
+
+### Only dependencies have been changed
+* [@snack-uikit/dropdown@0.2.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/dropdown/CHANGELOG.md)
+
+
+
+
+
 ## 0.9.3 (2024-05-30)
 
 ### Only dependencies have been changed
