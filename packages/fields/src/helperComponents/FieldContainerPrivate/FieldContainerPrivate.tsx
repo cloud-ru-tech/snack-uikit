@@ -22,7 +22,6 @@ export type FieldContainerPrivateProps = WithSupportProps<{
   prefix?: ReactElement;
   postfix?: ReactElement;
   inputRef: RefObject<HTMLElement>;
-  onMouseDown?: MouseEventHandler<HTMLElement>;
 }>;
 
 export function FieldContainerPrivate({
@@ -39,7 +38,6 @@ export function FieldContainerPrivate({
   prefix,
   postfix,
   inputRef,
-  onMouseDown,
   ...rest
 }: FieldContainerPrivateProps) {
   const handleContainerClick: MouseEventHandler<HTMLDivElement> = () => {
@@ -62,7 +60,6 @@ export function FieldContainerPrivate({
       data-selectable={selectable || undefined}
       data-test-id='field-container-private'
       onClick={handleContainerClick}
-      onMouseDown={onMouseDown}
       role='textbox'
       tabIndex={-1}
       {...extractSupportProps(rest)}

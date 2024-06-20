@@ -179,6 +179,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
           {...extractListProps(rest)}
           items={result}
           triggerElemRef={localRef}
+          trigger='click'
           selection={{
             mode: 'multiple',
             value: value,

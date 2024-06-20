@@ -209,6 +209,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
           size={size}
           open={open}
           onOpenChange={handleOpenChange}
+          trigger='click'
           triggerElemRef={localRef}
         >
           {({ onKeyDown }) => (
