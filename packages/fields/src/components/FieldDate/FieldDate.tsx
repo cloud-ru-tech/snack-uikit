@@ -220,7 +220,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     }, [open]);
 
     useEffect(() => {
-      if (localRef.current && valueProp) {
+      if (localRef.current) {
         localRef.current.value = valueProp;
       }
     }, [valueProp]);
