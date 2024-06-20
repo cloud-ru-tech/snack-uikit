@@ -23,7 +23,7 @@
     "deps:global": "npm i",
     "deps:packages": "npm i --workspaces",
     "deps:reinstall": "npm run clean:all && rm -rf node_modules package-lock.json && npm cache clean -f && npm run deps:all",
-    "storybook:all": "npm run install:themes && storybook dev -c storybook -p 6006",
+    "storybook:all": "npm run install:themes && storybook dev -c storybook -p 6006 --https --ssl-cert ../cert.crt --ssl-key ../cert.key",
     "storybook:partial": "npm run install:themes && ts-node scripts/start-storybook-partially",
     "test:coverage": "ts-node scripts/testcafe-coverage-packages",
     "test:ci": "ts-node scripts/run-tests",
