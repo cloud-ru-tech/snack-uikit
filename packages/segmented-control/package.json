@@ -1,0 +1,40 @@
+{
+  "name": "@snack-uikit/segmented-control",
+  "publishConfig": {
+    "access": "public"
+  },
+  "title": "Segmented Control",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "homepage": "https://cloud-ru-tech.github.io/snack-uikit/packages/segmented-control",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit/tree/master",
+    "directory": "packages/segmented-control"
+  },
+  "author": "Sergei Khlupin <svhlupin@cloud.ru>",
+  "contributors": [
+    "Sergei Khlupin <svhlupin@cloud.ru>"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-uikit/truncate-string": "0.4.18",
+    "@snack-uikit/utils": "3.3.0",
+    "classnames": "2.5.1",
+    "uncontrollable": "8.0.4"
+  }
+}

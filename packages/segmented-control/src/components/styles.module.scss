@@ -1,0 +1,77 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-segmentedControl';
+
+$sizes: 's', 'm', 'l';
+
+.container {
+  @include composite-var($segmented-control-container);
+
+  position: relative;
+
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: stretch;
+
+  max-width: 100%;
+
+  &::before {
+    content: ' ';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+    background-color: $sys-neutral-background;
+    border-color: $sys-neutral-background;
+    border-style: solid;
+  }
+
+  &[data-outline]::before {
+    border-color: $sys-neutral-decor-default;
+  }
+
+  &[data-width='full'] {
+    display: flex;
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}']::before {
+      @include composite-var($segmented-control, 'background', $size);
+    }
+  }
+}
+
+.segmentHolder {
+  overflow: hidden;
+  flex-grow: 1;
+  flex-shrink: 1;
+  justify-content: center;
+
+  min-width: 0px;
+
+  &[data-outline] {
+    flex-basis: 0;
+  }
+}
+
+.selection {
+  position: absolute;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  background-color: $sys-neutral-background2-level;
+
+  transition: left 0.15s ease-in-out, width 0.15s ease-in-out;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($segmented-control, 'segment', $size, 'icon-only');
+    }
+  }
+}

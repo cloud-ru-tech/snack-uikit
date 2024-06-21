@@ -153,11 +153,19 @@
     },
     {
       "path": "./hot-spot"
+    },
+    {
+      "path": "./segmented-control"
     }
   ],
   "compilerOptions": {
     "target": "es6",
-    "lib": ["es2017", "dom", "dom.iterable", "esnext"],
+    "lib": [
+      "es2017",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "ES2015",
     "strict": true,
     "jsx": "react-jsx",

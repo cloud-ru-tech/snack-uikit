@@ -1,0 +1,75 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-segmentedControl';
+@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
+
+$sizes: 's', 'm', 'l';
+$layouts: 'label-only', 'icon-before', 'icon-only';
+$typographies: (
+  's': $sans-label-m,
+  'm': $sans-label-m,
+  'l': $sans-label-l,
+);
+
+.segment {
+  cursor: pointer;
+
+  position: relative;
+  z-index: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  color: $sys-neutral-text-support;
+
+  background-color: transparent;
+  border-width: 0;
+
+  &:hover {
+    color: $sys-neutral-text-main;
+  }
+
+  &[data-disabled], &[data-disabled]:hover {
+    cursor: not-allowed;
+    color: $sys-neutral-text-disabled;
+  }
+
+  &[data-active] {
+    color: $sys-neutral-text-main;
+
+    &[data-disabled], &[data-disabled]:hover {
+      color: $sys-neutral-text-disabled;
+    }
+  }
+
+  &:focus-visible {
+    @include outline-inside-var($container-focused-s);
+
+    outline-color: simple-var($sys-available-complementary);
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @each $layout in $layouts {
+        &[data-layout='#{$layout}'] {
+          @include composite-var($segmented-control, 'segment', $size, $layout);
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.label {
+  @each $size, $typography in $typographies {
+    &[data-size='#{$size}'] {
+      @include composite-var($typography);
+    }
+  }
+}
