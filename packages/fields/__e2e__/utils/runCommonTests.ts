@@ -42,7 +42,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
   const emptyValue = options.emptyValue || '';
 
   // disabled = true
-  test.page(visit({ value: '', disabled: true }))('Should not allow to input data if disabled', async t => {
+  test.page(visit({ value: emptyValue, disabled: true }))('Should not allow to input data if disabled', async t => {
     const wrapper = Selector(dataTestIdSelector(testId));
     const input = getInputInner(wrapper);
 
@@ -53,14 +53,17 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
   });
 
   // readonly = true
-  test.page(visit({ value: '', readonly: true }))('Should not allow to input data if readonly' + '', async t => {
-    const wrapper = Selector(dataTestIdSelector(testId));
-    const input = getInputInner(wrapper);
+  test.page(visit({ value: emptyValue, readonly: true }))(
+    'Should not allow to input data if readonly' + '',
+    async t => {
+      const wrapper = Selector(dataTestIdSelector(testId));
+      const input = getInputInner(wrapper);
 
-    await t.typeText(input, '123');
-    await t.expect(input.value).eql(emptyValue);
-    await t.expect(input.hasAttribute('readonly')).ok("attribute 'readonly' not present");
-  });
+      await t.typeText(input, '123');
+      await t.expect(input.value).eql(emptyValue);
+      await t.expect(input.hasAttribute('readonly')).ok("attribute 'readonly' not present");
+    },
+  );
 
   // no label, label hint, hint, hintIcon, required sign, maxLength, placeholder, prefix icon
   test.page(

@@ -236,6 +236,12 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
       setTextFieldInputValue(getTextFieldValue(value, textInputFormatter));
     }, [value, textInputFormatter]);
 
+    useEffect(() => {
+      handleTextValueChange();
+      // update value only when marks, min or max are changed
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [marks, min, max]);
+
     return (
       <FieldDecorator
         className={className}

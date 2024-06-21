@@ -66,7 +66,7 @@ runCommonTests(props => visit(props), TEST_ID, {
   hasClearButton: false,
   hasCopyButton: false,
   hasValidationStates: false,
-  emptyValue: '0',
+  emptyValue: '10',
 });
 
 test.page(visit({ value: 20 }))('Should not accept letters', async t => {
