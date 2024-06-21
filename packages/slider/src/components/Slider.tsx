@@ -44,6 +44,7 @@ const tipHandleRender = (tipFormatter?: TipFormatter): RCSliderProps['handleRend
 export function Slider({ className, handleTip, tipFormatter, ...props }: SliderProps) {
   return (
     <RcSlider
+      key={JSON.stringify(props.marks)}
       className={cn('osThemeSnack', className, {
         withMarks: Boolean(props.marks),
         reverse: Boolean(props.reverse),
