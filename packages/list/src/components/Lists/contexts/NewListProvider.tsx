@@ -46,7 +46,7 @@ function extractListProps<T extends ListContextType>({
   focusFlattenItems,
   contentRender,
 }: T) {
-  return { size, marker, parent, contentRender, flattenItems, focusFlattenItems };
+  return { size, marker, contentRender, flattenItems, focusFlattenItems };
 }
 
 export function NewListContextProvider({ children, ...props }: ListContextType & Child) {
