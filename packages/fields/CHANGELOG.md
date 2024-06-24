@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.22.0 (2024-06-24)
+
+
+### Bug Fixes
+
+* **PDS-131:** break-word for hint ([cb403c0](https://github.com/cloud-ru-tech/snack-uikit/commit/cb403c0ec104a7cdc600455b73d626523866140f))
+* **PDS-131:** field-select: should close when clicking on arrow ([626aff1](https://github.com/cloud-ru-tech/snack-uikit/commit/626aff15ef75ae414cbfe8b48a13ef38766376a6))
+* **PDS-131:** field-select: start search from first symbol ([4f228d0](https://github.com/cloud-ru-tech/snack-uikit/commit/4f228d0bbe4a941ae209ddb12ef60cba24c188ba))
+* **PDS-131:** field-slider: re-render value when marks, min or max are changed ([c4e7f77](https://github.com/cloud-ru-tech/snack-uikit/commit/c4e7f77991519095312f84bdbad0992ba58fae60))
+* **PDS-353:** field date: reset visual label when value is cleared from outside ([79247a9](https://github.com/cloud-ru-tech/snack-uikit/commit/79247a9821dbd2ec4833e389ccea6ba42291dc7b))
+
+
+### Features
+
+* **PDS-131:** allow to pass ReactNode for labelTooltip ([2d3efc2](https://github.com/cloud-ru-tech/snack-uikit/commit/2d3efc2c787ef5a69957bacbe04b12b31fcbfa58))
+
+
+
+
+
 ## 0.21.5 (2024-06-20)
 
 ### Only dependencies have been changed

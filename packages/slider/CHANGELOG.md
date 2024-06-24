@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.13 (2024-06-24)
+
+
+### Bug Fixes
+
+* **PDS-131:** make slider re-render when marks are changed ([8349f14](https://github.com/cloud-ru-tech/snack-uikit/commit/8349f140b775a717bcd315381704b9760a28d68c))
+
+
+
+
+
 ## 0.1.12 (2024-06-20)
 
 ### Only dependencies have been changed
