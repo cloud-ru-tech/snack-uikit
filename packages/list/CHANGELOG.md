@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.9 (2024-06-26)
+
+
+### Bug Fixes
+
+* **PDS-000001:** remove useless parent extraction prop ([4c84020](https://github.com/cloud-ru-tech/snack-uikit/commit/4c840204eb8144c39d0563eecbf9eb4a458dab5d))
+
+
+
+
+
 ## 0.13.8 (2024-06-20)
 
 ### Only dependencies have been changed
