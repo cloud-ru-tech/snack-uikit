@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.4 (2024-06-27)
+
+
+### Bug Fixes
+
+* **FF-000:** wrap dom api calls into useEffect ([095a09e](https://github.com/cloud-ru-tech/snack-uikit/commit/095a09e34c88dd7263e029e4f057a1f40ad05fc8))
+
+
+
+
+
 ## 0.13.3 (2024-06-20)
 
 
