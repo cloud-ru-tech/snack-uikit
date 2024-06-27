@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
 
 type UseOffsetProps = {
   triggerClassName?: string;
@@ -6,15 +6,17 @@ type UseOffsetProps = {
 };
 
 export function useOffset({ triggerClassName, offsetProp }: UseOffsetProps) {
-  const elem = document.querySelector('.' + String(triggerClassName).split(/\s+/g).map(CSS.escape).join('.'));
+  const [offset, setOffset] = useState(0);
 
-  const styles = elem ? getComputedStyle(elem) : null;
+  // TODO: change to useLayoutEffect when wrapper for browser/server check will be ready
+  useEffect(() => {
+    const elem = document.querySelector('.' + String(triggerClassName).split(/\s+/g).map(CSS.escape).join('.'));
+    const styles = elem ? getComputedStyle(elem) : null;
+    const rawOffset = styles ? styles.getPropertyValue('--offset') : null;
 
-  const rawOffset = styles ? styles.getPropertyValue('--offset') : null;
-
-  return useMemo(() => {
     if (offsetProp !== undefined) {
-      return offsetProp;
+      setOffset(offsetProp);
+      return;
     }
 
     const tempSpan = document.createElement('span');
@@ -26,9 +28,12 @@ export function useOffset({ triggerClassName, offsetProp }: UseOffsetProps) {
     const num = parseInt(rawOffsetValue || '');
 
     if (Number.isNaN(num) || num < 1) {
-      return 0;
+      setOffset(0);
+      return;
     }
 
-    return num;
-  }, [offsetProp, rawOffset]);
+    setOffset(num);
+  }, [offsetProp, triggerClassName]);
+
+  return offset;
 }
