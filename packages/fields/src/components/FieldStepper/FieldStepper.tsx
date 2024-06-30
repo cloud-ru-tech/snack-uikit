@@ -35,6 +35,7 @@ type WrapperProps = Pick<
   | 'label'
   | 'labelTooltip'
   | 'required'
+  | 'caption'
   | 'hint'
   | 'showHintIcon'
   | 'size'
@@ -90,6 +91,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
       labelTooltip,
       labelTooltipPlacement,
       required = false,
+      caption,
       hint,
       showHintIcon,
       size = SIZE.S,
@@ -215,6 +217,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
         labelTooltipPlacement={labelTooltipPlacement}
         labelFor={id}
         required={required}
+        caption={caption}
         hint={hint}
         disabled={disabled}
         readonly={readonly}

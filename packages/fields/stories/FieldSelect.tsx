@@ -126,6 +126,7 @@ fieldSelect.args = {
   labelTooltip: 'Tooltip description',
   placeholder: 'Placeholder',
   required: false,
+  caption: 'Caption',
   hint: 'Hint text',
   size: 's',
   selection: 'single',

@@ -32,6 +32,7 @@ export function FieldDecorator({
   labelTooltip,
   required,
   labelFor,
+  caption,
   length,
   hint,
   disabled,
@@ -55,6 +56,7 @@ export function FieldDecorator({
           label={label}
           labelTooltip={labelTooltip}
           labelFor={labelFor}
+          caption={caption}
           size={size}
         />
       )}

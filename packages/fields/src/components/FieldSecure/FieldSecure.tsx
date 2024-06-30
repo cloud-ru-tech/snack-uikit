@@ -28,6 +28,7 @@ type WrapperProps = Pick<
   | 'label'
   | 'labelTooltip'
   | 'required'
+  | 'caption'
   | 'hint'
   | 'size'
   | 'validationState'
@@ -76,6 +77,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       labelTooltip,
       labelTooltipPlacement,
       required = false,
+      caption,
       hint,
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
@@ -186,6 +188,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
         labelTooltipPlacement={labelTooltipPlacement}
         labelFor={id}
         required={required}
+        caption={caption}
         length={maxLength ? { max: maxLength, current: value.length } : undefined}
         hint={hint}
         disabled={disabled}

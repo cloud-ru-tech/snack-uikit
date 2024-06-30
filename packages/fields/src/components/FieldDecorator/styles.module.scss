@@ -17,6 +17,11 @@ $hint-icon-container: (
   'm': $fields-hint-icon-container-m,
   'l': $fields-hint-icon-container-m,
 );
+$caption-typography: (
+  's': $sans-body-s,
+  'm': $sans-body-m,
+  'l': $sans-body-m,
+);
 
 .decorator {
   display: flex;
@@ -35,12 +40,20 @@ $hint-icon-container: (
 
 .header {
   display: flex;
+  gap: $dimension-050m;
   box-sizing: border-box;
-  color: simple-var($sys-neutral-text-support);
+  color: $sys-neutral-text-support;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       @include composite-var($header-typography, $size);
+
+      .caption {
+        @include composite-var($caption-typography, $size);
+
+        margin-left: auto;
+        color: $sys-neutral-text-light;
+      }
     }
   }
 }
@@ -50,10 +63,16 @@ $hint-icon-container: (
 
   display: inline-flex;
   align-items: center;
+  color: $sys-neutral-text-light;
 }
 
 .label {
   display: grid;
+  color: $sys-neutral-text-support;
+}
+
+.required {
+  color: $sys-neutral-text-support;
 }
 
 .footer {
@@ -100,26 +119,26 @@ $hint-icon-container: (
   word-break: break-word;
 
   &[data-validation='default'] {
-    color: simple-var($sys-neutral-text-light);
+    color: $sys-neutral-text-light;
   }
 
   &[data-validation='error'] {
-    color: simple-var($sys-red-text-main);
+    color: $sys-red-text-main;
   }
 
   &[data-validation='warning'] {
-    color: simple-var($sys-yellow-text-main);
+    color: $sys-yellow-text-main;
   }
 
   &[data-validation='success'] {
-    color: simple-var($sys-green-text-main);
+    color: $sys-green-text-main;
   }
 }
 
 .icon {
   flex-shrink: 0;
   box-sizing: content-box;
-  color: simple-var($sys-neutral-text-light);
+  color: $sys-neutral-text-light;
 }
 
 .hintIcon {
@@ -127,39 +146,39 @@ $hint-icon-container: (
   box-sizing: content-box;
 
   &[data-validation='default'] {
-    color: simple-var($sys-neutral-text-light);
+    color: $sys-neutral-accent-default;
   }
 
   &[data-validation='error'] {
-    color: simple-var($sys-red-accent-default);
+    color: $sys-red-accent-default;
   }
 
   &[data-validation='warning'] {
-    color: simple-var($sys-yellow-accent-default);
+    color: $sys-yellow-accent-default;
   }
 
   &[data-validation='success'] {
-    color: simple-var($sys-green-accent-default);
+    color: $sys-green-accent-default;
   }
 }
 
 .counterLimit {
   > span {
     &[data-validation='default'] {
-      color: simple-var($sys-neutral-text-light);
+      color: $sys-neutral-text-light;
     }
 
     &[data-limit-exceeded],
     &[data-validation='error'] {
-      color: simple-var($sys-red-text-light);
+      color: $sys-red-text-light;
     }
 
     &[data-validation='warning'] {
-      color: simple-var($sys-yellow-text-light);
+      color: $sys-yellow-text-light;
     }
 
     &[data-validation='success'] {
-      color: simple-var($sys-green-text-light);
+      color: $sys-green-text-light;
     }
   }
 }
@@ -167,18 +186,18 @@ $hint-icon-container: (
 .counterCurrentValue {
   &[data-limit-exceeded] {
     &[data-validation='default'] {
-      color: simple-var($sys-neutral-text-main);
+      color: $sys-neutral-text-main;
     }
     &[data-validation='error'] {
-      color: simple-var($sys-red-text-main);
+      color: $sys-red-text-main;
     }
 
     &[data-validation='warning'] {
-      color: simple-var($sys-yellow-text-main);
+      color: $sys-yellow-text-main;
     }
 
     &[data-validation='success'] {
-      color: simple-var($sys-green-text-light);
+      color: $sys-green-text-light;
     }
   }
 }

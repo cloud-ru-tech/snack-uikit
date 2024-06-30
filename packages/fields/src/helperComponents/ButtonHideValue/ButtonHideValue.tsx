@@ -40,13 +40,13 @@ export const ButtonHideValue = forwardRef<HTMLButtonElement, ButtonHideValueProp
       >
         {hidden ? (
           <>
-            {size === BUTTON_SIZE.S && <EyeClosedSVG size={16} />}
-            {size === BUTTON_SIZE.M && <EyeClosedSVG />}
+            {size === BUTTON_SIZE.S && <EyeSVG size={16} />}
+            {size === BUTTON_SIZE.M && <EyeSVG />}
           </>
         ) : (
           <>
-            {size === BUTTON_SIZE.S && <EyeSVG size={16} />}
-            {size === BUTTON_SIZE.M && <EyeSVG />}
+            {size === BUTTON_SIZE.S && <EyeClosedSVG size={16} />}
+            {size === BUTTON_SIZE.M && <EyeClosedSVG />}
           </>
         )}
       </button>

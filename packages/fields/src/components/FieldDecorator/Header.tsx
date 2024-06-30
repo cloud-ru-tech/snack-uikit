@@ -10,6 +10,8 @@ import styles from './styles.module.scss';
 export type HeaderProps = {
   /** Лейбл */
   label?: string;
+  /** Подпись справа от лейбла */
+  caption?: string;
   /** Всплывающая подсказка лейбла */
   labelTooltip?: ReactNode;
   /** Аттрибут for */
@@ -28,6 +30,7 @@ export type HeaderProps = {
 export function Header({
   label = '',
   labelTooltip,
+  caption,
   labelFor,
   size,
   required = false,
@@ -41,7 +44,11 @@ export function Header({
           <label className={styles.label} htmlFor={labelFor} data-test-id='field-decorator__label'>
             <TruncateString text={label} />
           </label>
-          {required && <span data-test-id='field-decorator__required-sign'>*</span>}
+          {required && (
+            <span className={styles.required} data-test-id='field-decorator__required-sign'>
+              *
+            </span>
+          )}
           {labelTooltip && (
             <Tooltip
               tip={labelTooltip}
@@ -54,6 +61,8 @@ export function Header({
           )}
         </span>
       )}
+
+      {caption && <span className={styles.caption}>{caption}</span>}
     </span>
   );
 }

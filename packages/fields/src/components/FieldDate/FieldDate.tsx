@@ -47,6 +47,7 @@ type WrapperProps = Pick<
   | 'label'
   | 'labelTooltip'
   | 'required'
+  | 'caption'
   | 'hint'
   | 'showHintIcon'
   | 'size'
@@ -101,6 +102,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       labelTooltip,
       labelTooltipPlacement,
       required = false,
+      caption,
       hint,
       showHintIcon,
       size = SIZE.S,
@@ -259,6 +261,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
         labelTooltipPlacement={labelTooltipPlacement}
         labelFor={id}
         required={required}
+        caption={caption}
         hint={hint}
         disabled={disabled}
         readonly={readonly}
@@ -271,7 +274,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
         <Dropdown
           trigger='click'
           triggerClassName={styles.triggerClassName}
-          widthStrategy='gte'
+          widthStrategy='auto'
           {...(readonly || disabled
             ? { open: false }
             : {

@@ -44,6 +44,7 @@ fieldText.args = {
   label: 'Label text',
   labelTooltip: 'Tooltip description',
   required: false,
+  caption: 'Caption',
   hint: 'Hint text',
   size: 's',
   validationState: 'default',

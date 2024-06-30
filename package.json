@@ -35,7 +35,7 @@
     "install:themes": "ts-node scripts/install-additional-themes"
   },
   "dependencies": {
-    "@snack-uikit/figma-tokens": "15.4.0",
+    "@snack-uikit/figma-tokens": "15.4.1-bbd8e6c3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

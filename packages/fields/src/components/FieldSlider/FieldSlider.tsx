@@ -29,7 +29,15 @@ type SliderProps = Pick<InputPrivateProps, 'id' | 'name' | 'disabled' | 'readonl
 
 type WrapperProps = Pick<
   FieldDecoratorProps,
-  'className' | 'label' | 'labelTooltip' | 'required' | 'hint' | 'showHintIcon' | 'size' | 'labelTooltipPlacement'
+  | 'className'
+  | 'label'
+  | 'labelTooltip'
+  | 'required'
+  | 'caption'
+  | 'hint'
+  | 'showHintIcon'
+  | 'size'
+  | 'labelTooltipPlacement'
 >;
 
 type FieldSliderOwnProps = {
@@ -82,6 +90,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
       labelTooltip,
       labelTooltipPlacement,
       required,
+      caption,
       hint,
       showHintIcon,
       size = SIZE.S,
@@ -251,6 +260,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
         labelFor={id}
         disabled={disabled}
         required={required}
+        caption={caption}
         hint={hint}
         showHintIcon={showHintIcon}
         readonly={readonly}

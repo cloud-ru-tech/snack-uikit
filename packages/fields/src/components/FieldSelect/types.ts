@@ -57,6 +57,7 @@ export type WrapperProps = Pick<
   | 'label'
   | 'labelTooltip'
   | 'required'
+  | 'caption'
   | 'hint'
   | 'showHintIcon'
   | 'size'

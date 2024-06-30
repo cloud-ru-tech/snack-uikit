@@ -21,6 +21,7 @@ type WrapperProps = Pick<
   | 'label'
   | 'labelTooltip'
   | 'required'
+  | 'caption'
   | 'hint'
   | 'size'
   | 'validationState'
@@ -76,6 +77,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       labelTooltip,
       labelTooltipPlacement,
       required = false,
+      caption,
       hint,
       error,
       size = SIZE.S,
@@ -124,6 +126,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
         labelTooltipPlacement={labelTooltipPlacement}
         labelFor={id}
         required={required}
+        caption={caption}
         length={maxLength ? { max: maxLength, current: value.length } : undefined}
         hint={hint}
         disabled={disabled}

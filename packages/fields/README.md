@@ -195,6 +195,7 @@ FieldStepper в основном предназначен для работы с
 | readonly | `boolean` | - | Является ли поле доступным только на чтение Доступно ли поле только на чтение |
 | error | `string` | - |  |
 | label | `string` | - | Лейбл |
+| caption | `string` | - | Подпись справа от лейбла |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | labelFor | `string` | - | Аттрибут for |
 | required | `boolean` | - | Является ли поле обязательным |
@@ -225,6 +226,7 @@ FieldStepper в основном предназначен для работы с
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
+| caption | `string` | - | Подпись справа от лейбла |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
@@ -257,6 +259,7 @@ FieldStepper в основном предназначен для работы с
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
+| caption | `string` | - | Подпись справа от лейбла |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
@@ -289,6 +292,7 @@ FieldStepper в основном предназначен для работы с
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
+| caption | `string` | - | Подпись справа от лейбла |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
@@ -323,6 +327,7 @@ FieldStepper в основном предназначен для работы с
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
+| caption | `string` | - | Подпись справа от лейбла |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
@@ -348,6 +353,7 @@ FieldStepper в основном предназначен для работы с
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
+| caption | `string` | - | Подпись справа от лейбла |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | - | Размер |
@@ -401,6 +407,7 @@ FieldStepper в основном предназначен для работы с
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
+| caption | `string` | - | Подпись справа от лейбла |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
@@ -433,6 +440,7 @@ FieldStepper в основном предназначен для работы с
 | marks | `Record<string \| number, ReactNode \| MarkObj>` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
+| caption | `string` | - | Подпись справа от лейбла |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
 | size | enum Size: `"s"`, `"m"`, `"l"` | SIZE.S | Размер |
