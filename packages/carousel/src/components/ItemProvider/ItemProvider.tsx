@@ -1,8 +1,8 @@
+import debounce from 'lodash.debounce';
 import { MouseEvent, ReactElement, TouchEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { TEST_IDS } from '../../testIds';
 import { getPageX } from './helpers';
-import { useWindowWidthChange } from './hooks';
 import styles from './styles.module.scss';
 
 export type ItemProviderProps = {
@@ -26,29 +26,48 @@ export function ItemProvider({
   page,
   gap,
 }: ItemProviderProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const [computedValues, setComputedValues] = useState({
     itemWidth: 200,
     gap: 0,
   });
 
-  const ref = useCallback(
-    (node: HTMLDivElement) => {
-      if (node !== null) {
-        const styles = getComputedStyle(node);
+  const recalculateItemsSize = useCallback(() => {
+    const containerElement = containerRef.current;
 
-        const gap = Number.parseFloat(styles.getPropertyValue('--gap'));
-        const paddingLeft = Number.parseFloat(styles.getPropertyValue('padding-left'));
-        const paddingRight = Number.parseFloat(styles.getPropertyValue('padding-right'));
+    if (!containerElement) {
+      return;
+    }
 
-        const itemWidth =
-          (node.getBoundingClientRect().width - (Math.trunc(showItems) - 1) * gap - paddingLeft - paddingRight) /
-          showItems;
-        setComputedValues({ itemWidth, gap });
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [computedValues.itemWidth, showItems],
-  );
+    const styles = getComputedStyle(containerElement);
+
+    const gap = Number.parseFloat(styles.getPropertyValue('--gap'));
+    const paddingLeft = Number.parseFloat(styles.getPropertyValue('padding-left'));
+    const paddingRight = Number.parseFloat(styles.getPropertyValue('padding-right'));
+
+    const itemWidth =
+      (containerElement.getBoundingClientRect().width -
+        (Math.trunc(showItems) - 1) * gap -
+        paddingLeft -
+        paddingRight) /
+      showItems;
+    setComputedValues({ itemWidth, gap });
+  }, [showItems]);
+
+  useEffect(() => {
+    const node = containerRef.current;
+
+    if (!node) {
+      return;
+    }
+
+    recalculateItemsSize();
+
+    const observer = new ResizeObserver(debounce(recalculateItemsSize, 100));
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [recalculateItemsSize]);
 
   const itemsTrackerRef = useRef<HTMLDivElement>(null);
 
@@ -86,10 +105,6 @@ export function ItemProvider({
     hideNonVisibleItems();
     showVisibleItems(scrollBy, page, showItems);
   }, [page, scrollBy, showItems]);
-
-  useWindowWidthChange((change: number) => {
-    setComputedValues(computedValues => ({ ...computedValues, itemWidth: computedValues.itemWidth - change }));
-  });
 
   const [drag, setDrag] = useState({
     initial: transform,
@@ -163,7 +178,7 @@ export function ItemProvider({
 
   return (
     <div
-      ref={ref}
+      ref={containerRef}
       className={styles.itemProvider}
       data-pointers={!drag.pointers || undefined}
       data-swipe={swipe || undefined}
