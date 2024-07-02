@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.23.0 (2024-07-02)
+
+
+### Features
+
+* **PDS-153:** add caption, invert hidden button icon behavior, set width=auto for droplist in field-date, up tokens ([606716c](https://github.com/cloud-ru-tech/snack-uikit/commit/606716cc2b877d8a452a89dc23d3e38265ff5848))
+
+
+
+
+
 ## 0.22.2 (2024-06-27)
 
 ### Only dependencies have been changed
