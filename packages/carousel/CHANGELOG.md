@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.14 (2024-07-03)
+
+
+### Bug Fixes
+
+* **FF-5100:** width calculation ([f8de802](https://github.com/cloud-ru-tech/snack-uikit/commit/f8de8023b23530a37d0437161619945b2f6ca958))
+
+
+
+
+
 ## 0.2.13 (2024-06-11)
 
 ### Only dependencies have been changed
