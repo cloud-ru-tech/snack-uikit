@@ -31,6 +31,10 @@ $aligns: 'default', 'center';
 
       @if ($align == 'center') {
         align-items: center;
+
+        .title, .subtitle {
+          text-align: center;
+        }
       }
     }
   }
