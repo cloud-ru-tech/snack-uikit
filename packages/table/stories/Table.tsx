@@ -34,6 +34,7 @@ type StoryProps = Omit<Props, 'rowSelection' | 'sort'> & {
   rowsAmount: number;
   disableSomeRows: boolean;
   pinSomeRows: boolean;
+  showExport: boolean;
   statusColumnViewMode?: StoryStatusColumnViewMode;
   showActionsColumn?: boolean;
   rowSelectionMode?: 'single' | 'multi';
@@ -153,6 +154,7 @@ const Template: StoryFn<StoryProps> = ({
   showActionsColumn,
   rowSelectionMode,
   enableOnRowClick,
+  showExport,
   ...args
 }: StoryProps) => {
   const data = useMemo(() => generateRows(rowsAmount), [rowsAmount]);
@@ -255,7 +257,7 @@ const Template: StoryFn<StoryProps> = ({
 
   const modifyPaginationLabel = pinSomeRows && args.keepPinnedRows;
   const getNotPinnedRows = (totalRows: string | number) =>
-    Number(totalRows) - (modifyPaginationLabel ? PINNED_TOP_ROWS.length : 0);
+    Number(totalRows) - (modifyPaginationLabel && !args.copyPinnedRows ? PINNED_TOP_ROWS.length : 0);
   const paginationOptionsRender = (value: string | number) =>
     `${getNotPinnedRows(value)}${modifyPaginationLabel ? ` + ${PINNED_TOP_ROWS.length}` : ''}`;
 
@@ -280,6 +282,7 @@ const Template: StoryFn<StoryProps> = ({
         onRefresh={onRefresh}
         onRowClick={enableOnRowClick ? handleRowClick : undefined}
         rowPinning={pinSomeRows ? { top: PINNED_TOP_ROWS } : undefined}
+        exportSettings={showExport ? { fileName: 'test-export' } : undefined}
       />
     </div>
   );
@@ -306,6 +309,7 @@ table.args = {
   enableOnRowClick: false,
   enableFuzzySearch: false,
   'data-test-id': STORY_TEST_IDS.table,
+  showExport: false,
   pinSomeRows: false,
 };
 
@@ -368,6 +372,12 @@ table.argTypes = {
   },
   pinSomeRows: {
     name: '[Stories]: Pin 1st and 3rd row',
+    controls: {
+      type: 'boolean',
+    },
+  },
+  showExport: {
+    name: '[Stories]: Show export example',
     controls: {
       type: 'boolean',
     },

@@ -11,7 +11,7 @@ import { ReactNode, RefObject } from 'react';
 import { ToolbarProps } from '@snack-uikit/toolbar';
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { EmptyStateProps, RowClickHandler } from '../helperComponents';
+import { EmptyStateProps, ExportButtonProps, RowClickHandler } from '../helperComponents';
 import { ColumnDefinition } from '../types';
 
 export type TableProps<TData extends object> = WithSupportProps<{
@@ -115,8 +115,8 @@ export type TableProps<TData extends object> = WithSupportProps<{
   dataFiltered?: boolean;
   dataError?: boolean;
 
-  /** Название файла при экспорте CSV/XLSX */
-  exportFileName?: string;
+  /** Настройки экспорта в тулбаре */
+  exportSettings?: ExportButtonProps<TData>['settings'];
 
   /** Элементы выпадающего списка кнопки с действиями */
   moreActions?: ToolbarProps['moreActions'];

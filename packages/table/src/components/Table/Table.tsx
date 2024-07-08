@@ -67,7 +67,7 @@ export function Table<TData extends object>({
   loading = false,
   outline = false,
   moreActions,
-  exportFileName,
+  exportSettings,
   dataFiltered,
   dataError,
   noDataState,
@@ -324,11 +324,17 @@ export function Table<TData extends object>({
               selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
               before={toolbarBefore}
               after={
-                toolbarAfter || exportFileName ? (
+                toolbarAfter || exportSettings ? (
                   <>
                     {toolbarAfter}
-                    {exportFileName && (
-                      <ExportButton fileName={exportFileName} columnDefinitions={columnDefinitions} data={data} />
+                    {exportSettings && (
+                      <ExportButton
+                        settings={exportSettings}
+                        columnDefinitions={columnDefinitions}
+                        data={data}
+                        topRows={filteredTopRows}
+                        centerRows={centerRows}
+                      />
                     )}
                   </>
                 ) : undefined

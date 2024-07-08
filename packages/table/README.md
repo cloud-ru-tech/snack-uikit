@@ -131,7 +131,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | columnFilters | `ReactNode` | - | Фильтры |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
-| exportFileName | `string` | - | Название файла при экспорте CSV/XLSX |
+| exportSettings | `{ fileName: string; format?: Format; filterData?: boolean; }` | - | Настройки экспорта в тулбаре |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
@@ -188,7 +188,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | columnFilters | `ReactNode` | - | Фильтры |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
-| exportFileName | `string` | - | Название файла при экспорте CSV/XLSX |
+| exportSettings | `{ fileName: string; format?: Format; filterData?: boolean; }` | - | Настройки экспорта в тулбаре |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
