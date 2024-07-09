@@ -94,23 +94,23 @@ test.page(getPage({ rowLimit: 3, demoTagsAmount: 50 }))(
   async t => {
     await t.expect(getComponent().exists).ok();
     await t.expect(getVisibleTagsWrapper().exists).ok();
-    await t.expect(getAmountOfVisibleTags()).eql(18);
+    await t.expect(getAmountOfVisibleTags()).eql(17);
 
     await t.expect(getMoreTagsButton().exists).ok();
 
     await t.expect(getTagCloudWrapper().exists).notOk();
-    await t.expect(getMoreTagsButton().textContent).eql('More: 32');
+    await t.expect(getMoreTagsButton().textContent).eql('More: 33');
 
     await t.hover(getMoreTagsButton());
 
     await t.expect(getTagCloudWrapper().exists).ok();
-    await t.expect(getAmountOfCloudTags()).eql(32);
+    await t.expect(getAmountOfCloudTags()).eql(33);
   },
 );
 
 test.page(getPage({ moreButtonLabel: 'test' }))('Should support changing button text', async t => {
   await t.expect(getMoreTagsButton().exists).ok();
-  await t.expect(getMoreTagsButton().textContent).eql('test38');
+  await t.expect(getMoreTagsButton().textContent).eql('test39');
 });
 
 test.page(getPage({ removableMode: true, demoTagsAmount: 50 }))('Should support deleting tags', async t => {
