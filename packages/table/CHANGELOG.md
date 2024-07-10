@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.20.0 (2024-07-10)
+
+
+### Bug Fixes
+
+* **FF-5031:** fix results value view vith non empty filteredTopRows ([49fd328](https://github.com/cloud-ru-tech/snack-uikit/commit/49fd32812bc4a253af8331c649b3dd6b26cde795))
+
+
+### Features
+
+* **FF-5031:** activate autoResetPageIndex option ([9491074](https://github.com/cloud-ru-tech/snack-uikit/commit/9491074d85507a413c7202fe6050488f0de03dd4))
+* **FF-5031:** add pagination.optionsRender; fix loading skeleton count ([0f518f5](https://github.com/cloud-ru-tech/snack-uikit/commit/0f518f592945b53eb2be18fad50f87251c85b902))
+* **FF-5031:** fix pinned rows selection from toolbar checkbox ([caa0633](https://github.com/cloud-ru-tech/snack-uikit/commit/caa063317ee2b98e1b1e7915d1a159f909699ffa))
+
+
+### BREAKING CHANGES
+
+
+* **FF-5031:** expand export settings - add formats and filter settings ([b0a6f5a](https://github.com/cloud-ru-tech/snack-uikit/commit/b0a6f5a3650a68762cf0570c1ca7c36de0f201a2))
+
+
+
+
 ## 0.19.6 (2024-07-09)
 
 ### Only dependencies have been changed

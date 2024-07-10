@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.3 (2024-07-10)
+
+
+### Bug Fixes
+
+* **FF-5031:** center multi-line title and subtitle ([3dee6ed](https://github.com/cloud-ru-tech/snack-uikit/commit/3dee6ed237382c73610b48b1d7b6737f86e578e5))
+
+
+
+
+
 ## 0.11.2 (2024-06-27)
 
 ### Only dependencies have been changed
