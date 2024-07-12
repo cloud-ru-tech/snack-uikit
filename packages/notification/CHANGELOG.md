@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.39 (2024-07-12)
+
+
+### Bug Fixes
+
+* **FF-000:** card width ([bb76cfc](https://github.com/cloud-ru-tech/snack-uikit/commit/bb76cfc3928a638bfe64043abf83d158ee016bdb))
+
+
+
+
+
 ## 0.7.38 (2024-07-09)
 
 ### Only dependencies have been changed
