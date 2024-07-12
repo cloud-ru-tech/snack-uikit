@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.20.1 (2024-07-12)
+
+
+### Bug Fixes
+
+* **FF-5031:** enhance export format ([f310a4c](https://github.com/cloud-ru-tech/snack-uikit/commit/f310a4cea7ff077776258f4ef4356cad7afab51a))
+
+
+
+
+
 # 0.20.0 (2024-07-10)
 
 
