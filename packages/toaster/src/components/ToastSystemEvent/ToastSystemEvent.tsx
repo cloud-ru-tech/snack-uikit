@@ -83,6 +83,7 @@ export function ToastSystemEvent({
               text={link.text}
               href={link.href}
               size='m'
+              truncateVariant='end'
               onClick={link.onClick}
               appearance={APPEARANCE_TO_ON_COLOR_MAP[appearance]}
               data-test-id={TOAST_SYSTEM_EVENT_TEST_IDS.link}
