@@ -12,7 +12,7 @@
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| themeClassName | `string` | - | Класснейм подключенной темы (из хука useThemeConfig() или ThemeProvider) <br> По дефолту берется значение из useTheme внутри |
+| themeName | `string` | - | Название текущей темы. Значение не важно, важно что смена значения запускает пересчет стилей. |
 | hasBackground | `boolean` | true | Включение/отключение псевдобекграунда |
 | defaultValue | `string` | - | Default value of the current model |
 | defaultLanguage | `string` | - | Default language of the current model |

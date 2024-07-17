@@ -1,3 +1,5 @@
+import { loader } from '@monaco-editor/react';
+
 export function rgb2hsl(HTMLcolor: string) {
   const r = parseInt(HTMLcolor.substring(1, 3), 16) / 255;
   const g = parseInt(HTMLcolor.substring(3, 5), 16) / 255;
@@ -44,4 +46,14 @@ export function isDark(color: string) {
   const [h, _, l] = rgb2hsl(color);
 
   return (h < 0.55 && l >= 0.5) || (h >= 0.55 && l >= 0.75);
+}
+
+export function initLoaderConfig() {
+  if (!window) {
+    return;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  window['__snack-code-editor-loader-config__'] && loader.config(window['__snack-code-editor-loader-config__']);
 }

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useThemeContext } from '@snack-uikit/utils';
 
@@ -21,25 +21,24 @@ function getThemeVars(styles: CSSStyleDeclaration) {
   };
 }
 
-export function useCalculatedThemeValues(themeClassNameProps?: string) {
+type UseCalculatedThemeValuesProps = {
+  stylesOriginNode: HTMLDivElement | null;
+  themeName?: string;
+};
+
+export function useCalculatedThemeValues({ stylesOriginNode, themeName }: UseCalculatedThemeValuesProps) {
   const [values, setValues] = useState<typeof THEME_VARS | undefined>(undefined);
 
-  const { themeClassName: themeClassNameContext } = useThemeContext();
+  const { themeClassName } = useThemeContext();
 
-  const themeClassName = useMemo(
-    () => themeClassNameProps ?? themeClassNameContext,
-    [themeClassNameContext, themeClassNameProps],
-  );
+  const trigger = themeName ?? themeClassName;
 
   useEffect(() => {
-    const elem = document.querySelector(themeClassName ? '.' + themeClassName : 'body');
-
-    if (elem) {
-      const styles = getComputedStyle(elem);
-
+    if (stylesOriginNode) {
+      const styles = getComputedStyle(stylesOriginNode);
       setValues(getThemeVars(styles)(THEME_VARS) as typeof THEME_VARS);
     }
-  }, [themeClassName]);
+  }, [stylesOriginNode, trigger]);
 
   return values;
 }

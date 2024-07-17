@@ -1,6 +1,6 @@
-import { Editor, EditorProps, useMonaco } from '@monaco-editor/react';
+import { Editor, EditorProps, OnMount, useMonaco } from '@monaco-editor/react';
 import cn from 'classnames';
-import { useMemo } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 
 import { Spinner } from '@snack-uikit/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
@@ -8,30 +8,44 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 import { CODE_EDITOR_OPTIONS, DEFAULT_THEME_OPTIONS, DEFAULT_THEME_VALUES } from './constants';
 import { useCalculatedThemeValues } from './hooks';
 import styles from './styles.module.scss';
-import { isDark } from './utils';
+import { initLoaderConfig, isDark } from './utils';
+
+initLoaderConfig();
 
 export type CodeEditorProps = WithSupportProps<{
-  /** Класснейм подключенной темы (из хука useThemeConfig() или ThemeProvider)
-   * <br> По дефолту берется значение из useTheme внутри
+  /**
+   * Название текущей темы. Значение не важно, важно что смена значения запускает пересчет стилей.
    */
-  themeClassName?: string;
-  /** Включение/отключение псевдобекграунда*/
+  themeName?: string;
+  /**
+   * Включение/отключение псевдобекграунда
+   */
   hasBackground?: boolean;
 }> &
   EditorProps;
 
 export function CodeEditor({
-  themeClassName,
+  themeName,
   className,
   theme,
   options,
   loading,
   hasBackground = true,
+  onMount,
   ...props
 }: CodeEditorProps) {
   const monaco = useMonaco();
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const themeValues = useCalculatedThemeValues(themeClassName);
+  const onEditorMount = useCallback<OnMount>(
+    (editor, monaco) => {
+      monaco && window?.document?.fonts?.ready.finally(monaco.editor.remeasureFonts);
+      onMount?.(editor, monaco);
+    },
+    [onMount],
+  );
+
+  const themeValues = useCalculatedThemeValues({ themeName, stylesOriginNode: wrapperRef.current });
 
   const themeDataWithoutBase = useMemo(
     () => ({
@@ -110,13 +124,14 @@ export function CodeEditor({
   );
 
   return (
-    <div className={className} {...extractSupportProps(props)}>
+    <div className={className} {...extractSupportProps(props)} ref={wrapperRef}>
       <Editor
         {...props}
         theme={theme ?? dark ? 'snackDark' : 'snack'}
         className={cn({ [styles.editor]: hasBackground })}
         loading={loading ?? <Spinner />}
         options={mergedOptions}
+        onMount={onEditorMount}
       />
     </div>
   );

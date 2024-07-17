@@ -40,8 +40,8 @@ const Template: StoryFn<StoryProps> = (
     <>
       <div className={styles.wrapper}>
         <CodeEditor
+          themeName={themeClassName}
           {...args}
-          themeClassName={themeClassName}
           options={hideLineNumbers ? { lineNumbers: 'off', folding: false } : { lineNumbers: 'on', folding: true }}
         />
       </div>
