@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2024-07-18)
+
+
+### Bug Fixes
+
+* **PDS-450:** add loader config init ([1453a87](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/1453a87b70885d1b1beb351b6cf9124f2cf3889a))
+
+
+
+
+
 # 0.2.0 (2024-04-27)
 
 
