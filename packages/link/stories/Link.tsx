@@ -62,7 +62,7 @@ function Table({ header, options }: TableProps) {
 
 const Template: StoryFn<StoryProps> = ({ insideText, ...args }) => (
   <>
-    <div className={styles.wrapper} data-appearance={args.appearance} data-on-surface={args.textMode}>
+    <div className={styles.wrapper} data-appearance={args.appearance} data-text-mode={args.textMode}>
       {insideText ? (
         <span>
           Some text some text <Link {...args} insideText={true} /> some text some text
@@ -106,7 +106,6 @@ link.args = {
   text: DEFAULT_TEXT,
   size: SIZE.S,
   target: '_blank',
-  external: false,
   appearance: APPEARANCE.Primary,
   insideText: false,
   truncateVariant: 'end',

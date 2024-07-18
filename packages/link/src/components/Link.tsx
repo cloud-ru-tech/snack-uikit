@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import { AnchorHTMLAttributes, MouseEventHandler } from 'react';
 
-import { ArrowLinksSVG } from '@snack-uikit/icons';
 import { TruncateString, TruncateStringProps } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
@@ -26,8 +25,6 @@ export type LinkProps = WithSupportProps<{
    * @default 's'
    */
   size?: Size;
-  /** Ведет ли ссылка на внешний ресурс (добавляет иконку если true) */
-  external?: boolean;
   /** Стилизует ссылку для размещения на цветном фоне
    * @default 'primary'
    */
@@ -56,7 +53,6 @@ export function Link({
   onClick,
   textMode = TEXT_MODE.Default,
   size = SIZE.S,
-  external,
   appearance = APPEARANCE.Primary,
   insideText = false,
   truncateVariant,
@@ -77,8 +73,6 @@ export function Link({
       rel={target === '_blank' ? 'noopener noreferrer' : undefined}
     >
       {insideText ? text : <TruncateString text={text} maxLines={1} variant={truncateVariant} />}
-
-      {external && <ArrowLinksSVG data-test-id='link__external-icon' className={styles.icon} />}
     </a>
   );
 }

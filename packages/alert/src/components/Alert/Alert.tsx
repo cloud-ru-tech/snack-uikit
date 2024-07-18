@@ -28,7 +28,7 @@ export type AlertProps = WithSupportProps<{
   /** Описание */
   description: ReactNode;
   /** Cсылка */
-  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href' | 'appearance' | 'external'>;
+  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href' | 'appearance'>;
   /** Колбек закрытия */
   onClose?: () => void;
   /** Внешний вид */
@@ -106,7 +106,6 @@ export function Alert({
           {link && (
             <span>
               <Link
-                external
                 {...link}
                 appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
                 textMode='default'
