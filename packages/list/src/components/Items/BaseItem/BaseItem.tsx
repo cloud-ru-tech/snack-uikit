@@ -22,7 +22,6 @@ type AllBaseItemProps = FlattenBaseItem & {
   expandIcon?: ReactNode;
   open?: boolean;
   indeterminate?: boolean;
-  checked?: boolean;
   onSelect?(): void;
   isParentNode?: boolean;
   onOpenNestedList?(e?: KeyboardEvent<HTMLElement>): void;
@@ -60,7 +59,7 @@ export function BaseItem({
   const { closeDroplist, closeDroplistOnItemClick } = useOpenListContext();
   const { value, onChange, mode, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
 
-  const isChecked = isSelectionSingle ? value === id : checkedProp ?? value?.includes(id ?? '');
+  const isChecked = isSelectionSingle ? checkedProp ?? value === id : checkedProp ?? value?.includes(id ?? '');
 
   const handleChange = () => {
     onChange?.(id);

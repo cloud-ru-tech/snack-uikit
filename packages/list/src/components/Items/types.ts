@@ -60,6 +60,8 @@ export type BaseItem = WithSupportProps<{
   switch?: boolean;
 
   itemWrapRender?(item: ReactNode): ReactNode;
+
+  checked?: boolean;
 }>;
 
 type BaseItemWithoutNonGroup = Omit<BaseItem, 'switch' | 'inactive'>;
