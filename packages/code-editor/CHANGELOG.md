@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.2 (2024-07-19)
+
+
+### Bug Fixes
+
+* **FF-0000:** code-editor theme init ([da4f622](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/da4f622f5a5b9b8028127d357dbe6fc8e20a81ab))
+
+
+
+
+
 ## 0.2.1 (2024-07-18)
 
 
