@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.14.0 (2024-07-19)
+
+
+### Features
+
+* **FF-5120:** add checked prop into item ([c13eec8](https://github.com/cloud-ru-tech/snack-uikit/commit/c13eec86cd824f6c627d9473d0520af6ad7b7998))
+
+
+
+
+
 ## 0.13.10 (2024-06-27)
 
 ### Only dependencies have been changed
