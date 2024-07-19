@@ -1,6 +1,6 @@
 import { Editor, EditorProps, OnMount, useMonaco } from '@monaco-editor/react';
 import cn from 'classnames';
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { Spinner } from '@snack-uikit/loaders';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
@@ -35,7 +35,7 @@ export function CodeEditor({
   ...props
 }: CodeEditorProps) {
   const monaco = useMonaco();
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [wrapperElement, setWrapperElement] = useState<HTMLDivElement | null>(null);
 
   const onEditorMount = useCallback<OnMount>(
     (editor, monaco) => {
@@ -45,7 +45,7 @@ export function CodeEditor({
     [onMount],
   );
 
-  const themeValues = useCalculatedThemeValues({ themeName, stylesOriginNode: wrapperRef.current });
+  const themeValues = useCalculatedThemeValues({ themeName, stylesOriginNode: wrapperElement });
 
   const themeDataWithoutBase = useMemo(
     () => ({
@@ -124,7 +124,7 @@ export function CodeEditor({
   );
 
   return (
-    <div className={className} {...extractSupportProps(props)} ref={wrapperRef}>
+    <div className={className} {...extractSupportProps(props)} ref={setWrapperElement}>
       <Editor
         {...props}
         theme={theme ?? dark ? 'snackDark' : 'snack'}
