@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Attachment",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,11 +33,11 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.17.2",
-    "@snack-uikit/card": "0.12.26",
+    "@snack-uikit/card": "0.12.27",
     "@snack-uikit/icon-predefined": "0.5.1",
-    "@snack-uikit/icons": "0.21.0",
+    "@snack-uikit/icons": "0.22.0",
     "@snack-uikit/loaders": "0.5.2",
-    "@snack-uikit/truncate-string": "0.4.19",
+    "@snack-uikit/truncate-string": "0.4.20",
     "@snack-uikit/utils": "3.3.0",
     "classnames": "2.3.2"
   }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.41 (2024-07-19)
+
+
+### Bug Fixes
+
+* **FF-5145:** fix readAllButton size ([79e262b](https://github.com/cloud-ru-tech/snack-uikit/commit/79e262bc3898ed8f9e2bb0807f2cde72f1395b3e))
+
+
+
+
+
 ## 0.7.40 (2024-07-19)
 
 ### Only dependencies have been changed

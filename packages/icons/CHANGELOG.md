@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.22.0 (2024-07-19)
+
+
+### Features
+
+* **FF-5224:** add watch, theme-contrast, laptop-phone icons ([ce550ef](https://github.com/cloud-ru-tech/snack-uikit/commit/ce550ef6c61f9f5b319237bfcc836be09d1bb09b))
+
+
+
+
+
 # 0.21.0 (2024-05-08)
 
 
