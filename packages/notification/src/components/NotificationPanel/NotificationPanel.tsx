@@ -95,6 +95,7 @@ export function NotificationPanel({
           {readAllButton && (
             <ButtonFunction
               {...readAllButton}
+              size='xs'
               disabled={readAllButton.disabled || loading}
               data-test-id={TEST_IDS.readAll}
             />
