@@ -12,6 +12,10 @@ type PaletteProps = {
   colors: string[];
 };
 
+type ThemeVars = Record<string, Record<string, string>>;
+
+const THEME_VARS_REF: ThemeVars = themeVars.ref;
+
 export function Palette({ colors }: PaletteProps) {
   return (
     <div className={styles.table}>
@@ -28,7 +32,7 @@ export function Palette({ colors }: PaletteProps) {
                     [styles.firstRowCell]: colorIndex === 0,
                     [styles.lastRowCell]: colorIndex === colors.length - 1,
                   })}
-                  style={{ backgroundColor: themeVars.ref[color][tone] }}
+                  style={{ backgroundColor: THEME_VARS_REF[color][tone] }}
                 />
               </Fragment>
             ))}

@@ -172,7 +172,6 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | onChangePage* | `(offset: number, limit: number) => void` | - |  |
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
-| loading | `boolean` | - | Состояние загрузки |
 | keepPinnedRows | `boolean` | false | Параметр отвечает за отображение закрепленных строк на всех страницах таблицы |
 | copyPinnedRows | `boolean` | false | Параметр отвечает за сохранение закрепленных строк в теле таблицы |
 | enableSelectPinned | `boolean` | - | Параметр отвечает за чекбокс выбора закрепленных строк |
@@ -182,6 +181,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
 | onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
 | className | `string` | - | CSS-класс |
+| loading | `boolean` | - | Состояние загрузки |
 | onRefresh | `() => void` | - | Колбек обновления данных |
 | onDelete | `(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void) => void` | - | Колбек удаления выбранных |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |

@@ -7,7 +7,7 @@ import { DOCGEN_SECTION_PLACEHOLDER_END, DOCGEN_SECTION_PLACEHOLDER_START } from
 
 const PackagesRootFolder = 'packages';
 
-const Folders = {
+const Folders: Record<string, string> = {
   root: '/',
   src: '/src',
   stories: '/stories',

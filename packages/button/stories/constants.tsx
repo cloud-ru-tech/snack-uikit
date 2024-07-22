@@ -8,10 +8,12 @@ import { CounterInButtonProps } from '../src/types';
 export const ICONS = {
   none: undefined,
   ...Object.fromEntries(
-    Object.keys(Icons).map(key => {
-      const Icon = Icons[key];
-      return [key, <Icon key={key} />];
-    }),
+    (Object.keys(Icons) as Array<keyof typeof Icons>)
+      .filter(key => key !== 'Sprite')
+      .map(key => {
+        const Icon = Icons[key];
+        return [key, <Icon key={key} />];
+      }),
   ),
 };
 

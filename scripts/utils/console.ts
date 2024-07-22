@@ -1,6 +1,6 @@
 import colors from 'colors/safe';
 
-colors.setTheme({
+const themes = {
   silly: 'rainbow',
   input: 'grey',
   verbose: 'cyan',
@@ -11,10 +11,12 @@ colors.setTheme({
   warn: 'yellow',
   debug: 'blue',
   error: 'red',
-});
+} as const;
 
-const log = (message: string, theme = 'yellow'): void => {
-  console.log(colors[theme](`${message}\n`));
+colors.setTheme(themes);
+
+const log = (message: string, theme: keyof typeof themes = 'warn'): void => {
+  console.log(colors[themes[theme]](`${message}\n`));
 };
 
 export const logError = (message: string) => log(message, 'error');

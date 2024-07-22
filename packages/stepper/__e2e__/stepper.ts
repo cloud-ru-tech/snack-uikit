@@ -28,7 +28,7 @@ const getTextView = async () => {
       case STEP_TEST_ID:
         const state = await element.getAttribute('data-state');
         const text = (await element.innerText).split('\n').slice(0, 3).join(' ');
-        const view = {
+        const view: Record<string, string> = {
           completed: `(V${text})`,
           rejected: `(X${text})`,
           current: `((${text}))`,

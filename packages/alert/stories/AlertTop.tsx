@@ -9,19 +9,6 @@ import { AlertTop, AlertTopProps } from '../src';
 import { APPEARANCE } from '../src/constants';
 import styles from './styles.module.scss';
 
-const ICONS = {
-  none: undefined,
-  ...Object.fromEntries(
-    Object.keys(Icons).map(key => {
-      const Icon = Icons[key];
-      return [key, <Icon key={key} />];
-    }),
-  ),
-};
-
-const REQUIRED_ICONS = { ...ICONS };
-delete REQUIRED_ICONS.none;
-
 const meta: Meta = {
   title: 'Components/Alert/AlertTop',
   component: AlertTop,

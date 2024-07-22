@@ -13,10 +13,10 @@ const meta: Meta = {
 };
 export default meta;
 
-const NOT_LINEAR_MARKS = { 1: '512mb', 4: '2gb', 8: '4gb', 16: '8gb' };
-const LINEAR_MARKS = { 1: '1', 4: '4', 8: '8', 12: '12', 16: '16' };
+const NOT_LINEAR_MARKS: Record<number, string> = { 1: '512mb', 4: '2gb', 8: '4gb', 16: '8gb' };
+const LINEAR_MARKS: Record<number, string> = { 1: '1', 4: '4', 8: '8', 12: '12', 16: '16' };
 
-const STORY_MARKS = {
+const STORY_MARKS: Record<string, string> = {
   none: 'none',
   linear: 'linear',
   'not-linear': 'not-linear',
@@ -55,7 +55,7 @@ const Template: StoryFn<StoryProps> = ({ storyMarks, moveByMarks, step, ...args 
     (value: string | number) => {
       switch (storyMarks) {
         case 'not-linear': {
-          return NOT_LINEAR_MARKS[value];
+          return NOT_LINEAR_MARKS[Number(value)];
         }
         case 'linear':
         case 'none':

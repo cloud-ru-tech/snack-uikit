@@ -1,14 +1,18 @@
+import { ReactElement } from 'react';
+
 import * as Icons from '@snack-uikit/icons';
 
 import { VALIDATION_STATE } from '../src/constants';
 
-export const ICONS = {
+export const ICONS: Record<string, ReactElement | undefined> = {
   none: undefined,
   ...Object.fromEntries(
-    Object.keys(Icons).map(key => {
-      const Icon = Icons[key];
-      return [key, <Icon key={key} />];
-    }),
+    (Object.keys(Icons) as Array<keyof typeof Icons>)
+      .filter(key => key !== 'Sprite')
+      .map(key => {
+        const Icon = Icons[key];
+        return [key, <Icon key={key} />];
+      }),
   ),
 };
 

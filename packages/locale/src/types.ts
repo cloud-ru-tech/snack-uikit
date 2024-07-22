@@ -1,5 +1,5 @@
 import { LOCALES } from './locales';
-import { Join, PartialDeep, PathsToStringProps } from './typeUtils';
+import { PartialDeep, PathsToProps } from './typeUtils';
 
 export type KnownLocaleLang = keyof typeof LOCALES;
 
@@ -11,6 +11,5 @@ export type LocaleDictionary = typeof LOCALES.en_GB;
 // export type OverrideLocales = PartialDeep<Record<KnownLocaleLang, LocaleDictionary>> | Record<string, LocaleDictionary>;
 export type OverrideLocales = PartialDeep<Record<LocaleLang, LocaleDictionary>>;
 
-export type DottedTranslationKey<C extends keyof LocaleDictionary | undefined = undefined> = C extends string
-  ? Join<PathsToStringProps<LocaleDictionary[C]>, '.'>
-  : Join<PathsToStringProps<LocaleDictionary>, '.'>;
+export type DottedTranslationKey<C extends keyof LocaleDictionary | undefined = undefined> =
+  C extends keyof LocaleDictionary ? PathsToProps<LocaleDictionary[C], string> : PathsToProps<LocaleDictionary, string>;

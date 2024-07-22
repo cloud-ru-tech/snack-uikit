@@ -5,10 +5,12 @@ import { SIZE } from '../src/constants';
 export const ICONS = {
   none: undefined,
   ...Object.fromEntries(
-    Object.keys(Icons).map(key => {
-      const Icon = Icons[key];
-      return [key, <Icon key={key} size={24} />];
-    }),
+    (Object.keys(Icons) as Array<keyof typeof Icons>)
+      .filter(key => key !== 'Sprite')
+      .map(key => {
+        const Icon = Icons[key];
+        return [key, <Icon key={key} />];
+      }),
   ),
 };
 

@@ -58,7 +58,7 @@ const globalTypes: GlobalTypes = {
     description: 'Map of color for brands list',
     defaultValue: {
       ...DEFAULT_BRAND_COLORS_MAP,
-      ...additionalThemes.reduce((res, theme) => {
+      ...additionalThemes.reduce((res: Record<string, string>, theme) => {
         res[theme.key] = theme.color;
         return res;
       }, {}),
@@ -69,14 +69,20 @@ const globalTypes: GlobalTypes = {
     description: '',
     defaultValue: DEFAULT_BRAND_MAP[Brand.Default],
   },
-  ...additionalThemes.reduce((res, { key, name, defaultValue }) => {
-    res[key] = {
-      name,
-      description: '',
-      defaultValue,
-    };
-    return res;
-  }, {}),
+  ...additionalThemes.reduce(
+    (
+      res: Record<string, { name: string; description: string; defaultValue: Record<string, string> }>,
+      { key, name, defaultValue },
+    ) => {
+      res[key] = {
+        name,
+        description: '',
+        defaultValue,
+      };
+      return res;
+    },
+    {},
+  ),
 };
 
 const decorators: Preview['decorators'] = [

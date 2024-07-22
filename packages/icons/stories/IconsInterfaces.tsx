@@ -22,7 +22,7 @@ const Template: StoryFn<StoryProps> = ({ size, applySprite }) => (
   <div className={classnames.wrapper}>
     {applySprite && <Sprite content={CustomSpriteSVG as unknown as string} />}
 
-    {Object.keys(Icons).map(name => {
+    {(Object.keys(Icons) as Array<keyof typeof Icons>).map(name => {
       const Icon = Icons[name];
       return (
         <div key={name} className={classnames.iconCard}>

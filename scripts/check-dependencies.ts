@@ -15,7 +15,7 @@ const options = {
 
 const uikitPackageRegexp = new RegExp(`${globConfig.name}\\/`);
 
-const InternalPackages = {};
+const InternalPackages: Record<string, string> = {};
 const folders = getAllPackageFolders();
 
 for (const folder of folders) {

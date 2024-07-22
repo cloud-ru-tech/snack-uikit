@@ -17,6 +17,8 @@ type SystemColorsProps = {
   description: string;
 };
 
+type SystemPalette = keyof typeof SYSTEM_PALETTE;
+
 export function Cards({ sysPalette, description }: SystemColorsProps) {
   useThemeChange();
 
@@ -29,9 +31,16 @@ export function Cards({ sysPalette, description }: SystemColorsProps) {
         {TONE_GRID.map((tones: string[], index: number) => (
           <div className={styles.row} key={index}>
             {tones
-              .filter(tone => Object.keys(SYSTEM_PALETTE[sysPalette]).includes(tone))
+              .filter(tone => Object.keys(SYSTEM_PALETTE[sysPalette as SystemPalette]).includes(tone))
               .map(tone => (
-                <Card color={SYSTEM_PALETTE[sysPalette][tone]} key={tone} tone={tone} palette={sysPalette} />
+                <Card
+                  color={
+                    SYSTEM_PALETTE[sysPalette as SystemPalette][tone as keyof (typeof SYSTEM_PALETTE)[SystemPalette]]
+                  }
+                  key={tone}
+                  tone={tone}
+                  palette={sysPalette}
+                />
               ))}
           </div>
         ))}

@@ -2,7 +2,7 @@ import * as Icons from '@snack-uikit/icons';
 import { PlaceholderSVG } from '@snack-uikit/icons';
 
 export const ICONS = Object.fromEntries(
-  Object.keys(Icons).map(key => {
+  (Object.keys(Icons) as Array<keyof typeof Icons>).map(key => {
     const Icon = Icons[key];
 
     return [key, Icon];

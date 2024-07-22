@@ -23,6 +23,8 @@ const DESCRIPTION = {
 const OPACITY_TONE_GRID = ['Enabled', 'Hovered', 'Disabled', 'Activated'];
 const AVAILABLE_TONE_GRID = ['Complementary', 'OnComplementary'];
 
+type Tone = keyof typeof SYSTEM_PALETTE.Opacity;
+
 export function OtherColors() {
   useThemeChange();
 
@@ -33,7 +35,11 @@ export function OtherColors() {
       </Typography.SansBodyS>
       <div className={styles.opacityTable}>
         {OPACITY_TONE_GRID.filter(tone => Object.keys(SYSTEM_PALETTE.Opacity).includes(tone)).map(tone => (
-          <Card color={SYSTEM_PALETTE.Opacity[tone]} key={tone} tone={tone} palette={OtherPalette.Opacity} />
+          // TODO: Here the color value is wrong, in reality SYSTEM_PALETTE.Opacity[tone] is { value: string, type: string }
+          // TODO: vs expected { color: { description?: string }, tone?: string, palette: string }
+          // eslint-disable-next-line
+          // @ts-ignore
+          <Card color={SYSTEM_PALETTE.Opacity[tone as Tone]} key={tone} tone={tone} palette={OtherPalette.Opacity} />
         ))}
       </div>
 
@@ -42,7 +48,12 @@ export function OtherColors() {
       </Typography.SansBodyS>
       <div className={styles.availableTable}>
         {AVAILABLE_TONE_GRID.filter(tone => Object.keys(SYSTEM_PALETTE.Available).includes(tone)).map(tone => (
-          <Card color={SYSTEM_PALETTE.Available[tone]} key={tone} tone={tone} palette={OtherPalette.Available} />
+          <Card
+            color={SYSTEM_PALETTE.Available[tone as keyof typeof SYSTEM_PALETTE.Available]}
+            key={tone}
+            tone={tone}
+            palette={OtherPalette.Available}
+          />
         ))}
       </div>
 

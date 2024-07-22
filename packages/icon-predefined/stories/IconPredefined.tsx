@@ -9,8 +9,10 @@ import { IconPredefined as IconPredefinedComponent, IconPredefinedProps } from '
 import { APPEARANCE, SIZE } from '../src/constants';
 import styles from './styles.module.scss';
 
+type Icon = Exclude<keyof typeof Icons, 'Sprite'>;
+
 type StoryProps = Omit<IconPredefinedProps, 'icon'> & {
-  icon: string;
+  icon: Icon;
 };
 
 const meta: Meta = {
@@ -27,7 +29,7 @@ const Template: StoryFn<StoryProps> = ({ icon, ...args }) => (
 
 export const IconPredefined: StoryObj<StoryProps> = Template.bind({});
 
-const iconNames = Object.keys(Icons);
+const iconNames = Object.keys(Icons).filter(key => key !== 'Sprite');
 
 IconPredefined.args = {
   size: SIZE.M,
