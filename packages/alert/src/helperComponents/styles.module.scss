@@ -2,8 +2,10 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert-alertTop';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-$simpleAppearances: 'neutral', 'primary', 'red', 'yellow', 'green';
-$tonalAppearances: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
+$simpleAppearances: 'neutral', 'primary', 'red', 'yellow', 'green', 'blue';
+$tonalAppearances: 'invert-neutral', 'primary', 'red', 'yellow', 'green', 'blue';
+$sizes: 's', 'm';
+$text: ('s': 'm', 'm': 'l');
 
 .alertButton {
   cursor: pointer;
@@ -22,7 +24,11 @@ $tonalAppearances: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
   border: 0;
 
   .text {
-    @include composite-var($sans-label-l);
+    @each $name, $glyph in $text {
+      &[data-size='#{$name}'] {
+        @include composite-var($theme-variables, 'sans', 'label', $glyph)
+      }
+    }
   }
 
   .icon {
@@ -38,18 +44,28 @@ $tonalAppearances: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
       max-height: $icon-s;
     }
   }
+
+  &[data-loading='true'] {
+    cursor: not-allowed;
+    > * {
+      cursor: not-allowed;
+    }
+  }
 }
 
 .alertButton[data-variant='simple'] {
-  @include composite-var($alert-button-button-action);
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($alert, $size, 'button', 'button-action');
 
-  &[data-icon-only] {
-    @include composite-var($alert-button-button-close);
+      &[data-icon-only] {
+        @include composite-var($alert, $size, 'button', 'button-close');
+
+      }
+    }
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
-
     outline-color: $sys-available-complementary;
     outline-offset: $spacing-state-focus-offset;
   }
@@ -60,7 +76,7 @@ $tonalAppearances: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
 
       &:hover,
       &:focus-visible {
-        color: simple-var($theme-variables, 'sys', $appearance, 'text-light');
+        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
       }
 
       &:active {

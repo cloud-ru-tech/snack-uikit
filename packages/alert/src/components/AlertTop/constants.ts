@@ -6,6 +6,7 @@ const COLOR = {
   Red: 'red',
   Yellow: 'yellow',
   Green: 'green',
+  Blue: 'blue',
 } as const;
 
 export const APPEARANCE_TO_COLOR_MAP_INVERT = {
@@ -14,4 +15,5 @@ export const APPEARANCE_TO_COLOR_MAP_INVERT = {
   [APPEARANCE.Error]: COLOR.Red,
   [APPEARANCE.Warning]: COLOR.Yellow,
   [APPEARANCE.Success]: COLOR.Green,
+  [APPEARANCE.Info]: COLOR.Blue,
 } as const;

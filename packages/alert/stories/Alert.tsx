@@ -48,10 +48,12 @@ alert.args = {
   appearance: APPEARANCE.Error,
   showCloseButton: true,
   showActionButtons: true,
+  outline: true,
+  size: 'm',
   onClose: () => {},
   actions: {
-    primary: { text: 'Primary', onClick: () => {}, icon: <PlaceholderSVG /> },
-    secondary: { text: 'Secondary', onClick: () => {}, icon: <PlaceholderSVG /> },
+    primary: { text: 'Primary', onClick: () => {}, icon: <PlaceholderSVG />, loading: false },
+    secondary: { text: 'Secondary', onClick: () => {}, icon: <PlaceholderSVG />, loading: true },
   },
 };
 

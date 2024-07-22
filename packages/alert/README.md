@@ -60,7 +60,9 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 | truncate | `{ title?: number; }` | '{ <br>title: 1 }' | Максимальное кол-во строк <br> - `title` - в заголовке |
 | link | `Pick<LinkProps, "text" \| "target" \| "onClick" \| "href" \| "appearance" \| "external">` | - | Cсылка |
 | onClose | `() => void` | - | Колбек закрытия |
-| appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | neutral | Внешний вид |
+| appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"`, `"info"` | neutral | Внешний вид |
+| outline | `boolean` | - | Внешний бордер |
+| size | enum Size: `"s"`, `"m"` | m | Размер |
 | className | `string` | - | CSS-класс |
 | actions | `{ primary: Omit<AlertButtonProps, "appearance">; secondary?: Omit<AlertButtonProps, "appearance">; }` | - | Кнопки в футере алерта |
 ## AlertTop
@@ -75,7 +77,7 @@ import { InfoFilledSVG } from '@snack-uikit/icons';
 | link | `Pick<LinkProps, "text" \| "target" \| "onClick" \| "href" \| "appearance" \| "external">` | - | Cсылка |
 | action | `AlertButtonProps` | - | Кнопка дополнительного действия |
 | onClose | `() => void` | - | Колбек закрытия |
-| appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"` | neutral | Внешний вид |
+| appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"`, `"info"` | neutral | Внешний вид |
 | className | `string` | - | CSS-класс |
 
 

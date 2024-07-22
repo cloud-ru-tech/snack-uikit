@@ -8,7 +8,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { APPEARANCE, APPEARANCE_TO_COLOR_MAP } from '../../constants';
 import { AlertButton, AlertButtonProps } from '../../helperComponents';
-import { Appearance } from '../../types';
+import { Appearance, Size } from '../../types';
 import { getIcon } from '../../utils';
 import styles from './styles.module.scss';
 
@@ -33,6 +33,10 @@ export type AlertProps = WithSupportProps<{
   onClose?: () => void;
   /** Внешний вид */
   appearance?: Appearance;
+  /** Внешний бордер  */
+  outline?: boolean;
+  /** Размер */
+  size?: Size;
   /** CSS-класс */
   className?: string;
   /** Кнопки в футере алерта */
@@ -55,17 +59,31 @@ export function Alert({
   appearance = APPEARANCE.Neutral,
   className,
   actions,
+  outline,
+  size = 'm',
   ...rest
 }: AlertProps) {
   return (
     <div
-      className={cn(styles.alert, className)}
+      className={cn(
+        styles.alert,
+        {
+          [styles.alertOutline]: outline,
+        },
+        className,
+      )}
       {...extractSupportProps(rest)}
       data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
+      data-size={size}
     >
-      <div className={styles.body}>
+      <div className={styles.body} data-size={size}>
         {icon && (
-          <div className={styles.icon} data-color={APPEARANCE_TO_COLOR_MAP[appearance]} data-test-id='alert__icon'>
+          <div
+            className={styles.icon}
+            data-color={APPEARANCE_TO_COLOR_MAP[appearance]}
+            data-test-id='alert__icon'
+            data-size={size}
+          >
             {getIcon(appearance)}
           </div>
         )}
@@ -77,10 +95,11 @@ export function Alert({
               maxLines={truncate?.title ?? 1}
               className={styles.title}
               data-test-id='alert__title'
+              data-size={size}
             />
           )}
 
-          <span data-test-id='alert__description' className={styles.description}>
+          <span data-test-id='alert__description' className={styles.description} data-size={size}>
             {description}
           </span>
 
@@ -91,7 +110,7 @@ export function Alert({
                 {...link}
                 appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
                 textMode='default'
-                size='m'
+                size={size}
                 data-test-id='alert__link'
               />
             </span>
@@ -110,12 +129,22 @@ export function Alert({
       </div>
 
       {actions && (
-        <div className={styles.footer}>
+        <div className={styles.footer} data-size={size}>
           {actions.primary && (
-            <AlertButton {...actions.primary} appearance={APPEARANCE_TO_COLOR_MAP[appearance]} variant='simple' />
+            <AlertButton
+              {...actions.primary}
+              appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
+              variant='simple'
+              size={size}
+            />
           )}
           {actions?.secondary && (
-            <AlertButton {...actions.secondary} appearance={APPEARANCE_TO_COLOR_MAP[appearance]} variant='simple' />
+            <AlertButton
+              {...actions.secondary}
+              appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
+              variant='simple'
+              size={size}
+            />
           )}
         </div>
       )}

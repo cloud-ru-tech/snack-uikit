@@ -1,7 +1,7 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert-alertTop';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-$colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green';
+$colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green', 'blue';
 
 .alertTop {
   @include composite-var($alert-top-container-container);

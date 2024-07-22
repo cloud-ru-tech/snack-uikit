@@ -1,33 +1,55 @@
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert';
 @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-$colors: 'neutral', 'primary', 'red', 'yellow', 'green';
+$colors: 'neutral', 'primary', 'red', 'yellow', 'green', 'blue';
+$sizes: 's', 'm';
+$icons: ('s': 'xs', 'm': 's');
 
 .alert {
-  @include composite-var($alert-container-container);
-
   display: flex;
   flex-direction: column;
-
   box-sizing: border-box;
   min-width: 256px;
-
-  border-style: solid;
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
       background-color: simple-var($theme-variables, 'sys', $color, 'background');
-      border-color: simple-var($theme-variables, 'sys', $color, 'decor-default');
+    }
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($alert, $size, 'container');
+    }
+  }
+}
+
+.alertOutline {
+  outline-style: solid;
+  outline-width: $border-width-accordion-collapse-block-primary;
+
+  @each $color in $colors {
+    &[data-color='#{$color}'] {
+      outline-color: simple-var($theme-variables, 'sys', $color, 'decor-default');
+
+      &:focus-within,
+      &:hover {
+        outline-color: simple-var($theme-variables, 'sys', $color, 'decor-default');
+      }
     }
   }
 }
 
 .body {
-  @include composite-var($alert-container-body);
-
   display: flex;
   box-sizing: border-box;
   width: 100%;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($alert, $size, 'body');
+    }
+  }
 }
 
 .icon {
@@ -37,40 +59,56 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
     }
   }
 
-  width: $icon-s;
-  height: $icon-s;
+  @each $name, $glyph in $icons {
+    &[data-size='#{$name}'] {
+      width: simple-var($icon, $glyph);
+      height: simple-var($icon, $glyph);
 
-  svg {
-    max-width: $icon-s;
-    max-height: $icon-s;
+      svg {
+        max-width: simple-var($icon, $glyph);
+        max-height: simple-var($icon, $glyph);
+      }
+    }
   }
+
+
 }
 
 .contentLayout {
-  @include composite-var($alert-container-content-layout);
-
   display: flex;
   flex: 1;
   flex-direction: column;
   min-width: 0;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($alert, $size, 'content-layout');
+    }
+  }
 }
 
 .title {
-  @include composite-var($sans-title-s);
-
   color: $sys-neutral-text-main;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($theme-variables, 'sans', 'title', $size)
+    }
+  }
 }
 
 .description {
-  @include composite-var($sans-body-m);
-
   color: $sys-neutral-text-support;
   word-wrap: break-word;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($theme-variables, 'sans', 'body', $size)
+    }
+  }
 }
 
 .footer {
-  @include composite-var($alert-container-footer);
-
   position: relative;
 
   display: flex;
@@ -78,4 +116,10 @@ $colors: 'neutral', 'primary', 'red', 'yellow', 'green';
   align-items: center;
 
   width: 100%;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($alert, $size, 'footer');
+    }
+  }
 }
