@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2024-07-24)
+
+
+### Features
+
+* **PDS-128:** add alert-component updates ([93068f3](https://github.com/cloud-ru-tech/snack-uikit/commit/93068f3b499363d882efd69f6a4b5145b410f3c1))
+
+
+
+
+
 ## 0.11.5 (2024-07-19)
 
 ### Only dependencies have been changed
