@@ -48,7 +48,7 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
     <div onClick={stopPropagationClick} className={styles.rowActionsCellWrap} data-open={dropListOpened || undefined}>
       {!disabled && Boolean(actions.length) && (
         <Droplist
-          trigger='clickAndFocusVisible'
+          trigger='click'
           open={dropListOpened}
           onOpenChange={setDropListOpen}
           placement='bottom-end'
