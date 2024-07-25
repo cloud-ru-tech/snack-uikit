@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.20.4 (2024-07-25)
+
+
+### Bug Fixes
+
+* **FF-5318:** fixed table actions dropdown trigger ([270b67b](https://github.com/cloud-ru-tech/snack-uikit/commit/270b67bba666723b8ac2aaeeb0061230c8c8400a))
+
+
+
+
+
 ## 0.20.3 (2024-07-19)
 
 ### Only dependencies have been changed
