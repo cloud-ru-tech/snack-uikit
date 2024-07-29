@@ -3,17 +3,17 @@ import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG, InfoFilledSVG } from '@
 import { APPEARANCE } from './constants';
 import { Appearance } from './types';
 
-export function getIcon(appearance: Appearance) {
+export function getIcon(appearance: Appearance, size: number) {
   switch (appearance) {
     case APPEARANCE.Success:
-      return <CheckFilledSVG />;
+      return <CheckFilledSVG size={size} />;
     case APPEARANCE.Error:
-      return <CrossFilledSVG />;
+      return <CrossFilledSVG size={size} />;
     case APPEARANCE.Warning:
-      return <AlarmFilledSVG />;
+      return <AlarmFilledSVG size={size} />;
     case APPEARANCE.Primary:
     case APPEARANCE.Neutral:
     default:
-      return <InfoFilledSVG />;
+      return <InfoFilledSVG size={size} />;
   }
 }

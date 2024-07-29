@@ -84,7 +84,7 @@ export function Alert({
             data-test-id='alert__icon'
             data-size={size}
           >
-            {getIcon(appearance)}
+            {getIcon(appearance, size === 's' ? 16 : 24)}
           </div>
         )}
 

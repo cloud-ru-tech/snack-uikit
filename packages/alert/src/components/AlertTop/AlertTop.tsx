@@ -68,7 +68,7 @@ export function AlertTop({
             data-color={APPEARANCE_TO_COLOR_MAP_INVERT[appearance]}
             data-test-id='alert-top__icon'
           >
-            {getIcon(appearance)}
+            {getIcon(appearance, 24)}
           </div>
         )}
 
