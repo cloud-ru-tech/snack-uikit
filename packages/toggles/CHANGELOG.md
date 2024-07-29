@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.2 (2024-07-29)
+
+
+### Bug Fixes
+
+* **FF-00:** change checkbox, radio & switch colors ([9164c5a](https://github.com/cloud-ru-tech/snack-uikit/commit/9164c5a4d03b3777dd9c11f42c9fd43f6624b036))
+
+
+
+
+
 ## 0.10.1 (2024-07-19)
 
 ### Only dependencies have been changed

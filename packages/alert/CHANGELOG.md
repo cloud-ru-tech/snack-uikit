@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.1 (2024-07-29)
+
+
+### Bug Fixes
+
+* **FF-00:** change icon size for size='s' ([17923a9](https://github.com/cloud-ru-tech/snack-uikit/commit/17923a99dbadb946c3ba0e67c2415fc82a4fb3d0))
+
+
+
+
+
 # 0.12.0 (2024-07-24)
 
 
