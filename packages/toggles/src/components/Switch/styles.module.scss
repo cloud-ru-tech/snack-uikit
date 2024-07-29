@@ -24,16 +24,18 @@ $switchAnimationDuration: 0.1s;
   }
 
   &[data-disabled='true'] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
   }
 
   &[data-checked='true'] {
     background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+
     &[data-hover='true'] {
       background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
     }
+
     &[data-disabled='true'] {
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
     }
   }
 }
@@ -61,7 +63,7 @@ $switchAnimationDuration: 0.1s;
 }
 
 .flag {
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
@@ -69,8 +71,13 @@ $switchAnimationDuration: 0.1s;
     }
   }
 
+  &[data-focusvisible=true],
+  &[data-hover=true] {
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
+  }
+
   &[data-disabled='true'] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
   }
 }
 
@@ -94,16 +101,17 @@ $switchAnimationDuration: 0.1s;
 
   &[data-checked='true'] {
     color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+
     &[data-hover='true'] {
       color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
     }
   }
 
   &[data-disabled='true'] {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
+    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
 
     &[data-hover='true'] {
-      color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
+      color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
     }
   }
 }

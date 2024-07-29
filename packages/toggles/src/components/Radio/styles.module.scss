@@ -13,8 +13,8 @@ $sizes: 's', 'm';
 
   box-sizing: border-box;
 
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
-  border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
+  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
+  border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-activated');
   border-style: solid; // это наверное должно быть в композитном токене box
 
   @each $size in $sizes {
@@ -26,22 +26,24 @@ $sizes: 's', 'm';
   &[data-focusvisible=true],
   &[data-hover=true] {
     background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-    border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-hovered');
+    border-color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
   }
   
   &[data-disabled=true] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
-    border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+    background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+    border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
   }
 
   &[data-checked=true] {
     border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+
     &[data-focusvisible=true],
     &[data-hover=true] {
       border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
     }
+
     &[data-disabled=true] {
-      border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+      border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
     }
   }
 }
