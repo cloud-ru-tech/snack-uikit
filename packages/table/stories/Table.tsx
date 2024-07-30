@@ -314,6 +314,10 @@ table.args = {
   'data-test-id': STORY_TEST_IDS.table,
   showExport: false,
   pinSomeRows: false,
+  savedState: {
+    id: 'snack-ui-table-storybook',
+    resize: true,
+  },
 };
 
 table.argTypes = {
@@ -387,6 +391,12 @@ table.argTypes = {
     name: '[Stories]: Show export example',
     controls: {
       type: 'boolean',
+    },
+  },
+  savedState: {
+    name: '[Stories]: Save resize state in local storage',
+    controls: {
+      type: 'object',
     },
   },
 };

@@ -152,6 +152,15 @@ export type TableProps<TData extends object> = WithSupportProps<{
   scrollContainerRef?: RefObject<HTMLElement>;
   /** Определение какие строки должны быть закреплены в таблице */
   rowPinning?: Pick<RowPinningState, 'top'>;
+
+  /** Конфиг для сохранения состояния в localStorage. <br>
+   *  Поле id должно быть уникальным для разных таблиц в рамках приложения. <br>
+   *  Для корректной работы необходимо наличие id в конфиге columnDefinitions
+   *  */
+  savedState?: {
+    id: string;
+    resize?: boolean;
+  };
 }>;
 
 export type ServerTableProps<TData extends object> = Omit<

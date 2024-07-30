@@ -41,7 +41,12 @@ import { TableProps } from '../types';
 import { useLoadingTable, useStateControl } from './hooks';
 import { usePageReset } from './hooks/usePageReset';
 import styles from './styles.module.scss';
-import { getColumnStyleVars, getCurrentlyConfiguredHeaderWidth } from './utils';
+import {
+  getColumnStyleVars,
+  getCurrentlyConfiguredHeaderWidth,
+  getInitColumnSizeFromLocalStorage,
+  saveStateToLocalStorage,
+} from './utils';
 
 /** Компонент таблицы */
 export function Table<TData extends object>({
@@ -85,6 +90,7 @@ export function Table<TData extends object>({
   scrollContainerRef,
   getRowId,
   enableFuzzySearch,
+  savedState,
 
   ...rest
 }: TableProps<TData>) {
@@ -235,8 +241,17 @@ export function Table<TData extends object>({
         colSizes[flexKey] = '100%';
       } else {
         const originalColumnDefSize = originalColDef?.size;
-        const initSize = originalColumnDefSize ? `${originalColumnDefSize}px` : '100%';
+        let initSize = originalColumnDefSize ? `${originalColumnDefSize}px` : '100%';
         const prevSize = columnSizeVarsRef.current?.[sizeKey];
+
+        const isResizeSavedToStore = originalColDef?.enableResizing && savedState?.id && savedState?.resize !== false;
+
+        if (isResizeSavedToStore) {
+          const savedSize = getInitColumnSizeFromLocalStorage({ id: savedState.id, columnId: header.id });
+          if (savedSize) {
+            initSize = savedSize;
+          }
+        }
 
         let size = initSize;
 
@@ -252,6 +267,10 @@ export function Table<TData extends object>({
 
             size = `${realSize}px`;
           }
+        }
+
+        if (isResizeSavedToStore) {
+          saveStateToLocalStorage({ id: savedState.id, columnId: header.id, size });
         }
 
         colSizes[sizeKey] = size;

@@ -147,6 +147,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | rowPinning | `Pick<RowPinningState, "top">` | {     top: [],   } | Определение какие строки должны быть закреплены в таблице |
+| savedState | `{ id: string; resize?: boolean; }` | - | Конфиг для сохранения состояния в localStorage. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
 ## Table.getStatusColumnDef
 Вспомогательная функция для создания ячейки со статусом
 ### Props
@@ -206,6 +207,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | rowPinning | `Pick<RowPinningState, "top">` | - | Определение какие строки должны быть закреплены в таблице |
+| savedState | `{ id: string; resize?: boolean; }` | - | Конфиг для сохранения состояния в localStorage. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
 | items | `TData[]` | - | Данные для отрисовки |
 | total | `number` | 10 | Общее кол-во строк |
 | limit | `number` | 10 | Кол-во строк на страницу |
