@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.20.6 (2024-07-31)
+
+
+### Bug Fixes
+
+* **FF-3788:** updated typescript to v5 ([89e3338](https://github.com/cloud-ru-tech/snack-uikit/commit/89e3338a3ef4df24e4c20d9a9c8cd16e7934ba63))
+
+
+
+
+
 ## 0.20.5 (2024-07-29)
 
 ### Only dependencies have been changed
