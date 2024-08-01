@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.3 (2024-08-01)
+
+
+### Bug Fixes
+
+* **FF-0000:** add type button to Segment component ([025a480](https://github.com/cloud-ru-tech/snack-uikit/commit/025a4801a53e876eb3290e5e119c53c90e66fa45))
+
+
+
+
+
 ## 0.1.2 (2024-07-19)
 
 ### Only dependencies have been changed

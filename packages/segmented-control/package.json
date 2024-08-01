@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Segmented Control",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "sideEffects": [
     "*.css",
     "*.woff",
