@@ -13,7 +13,7 @@ import {
 
 import { InputPrivate, InputPrivateProps, SIZE } from '@snack-uikit/input-private';
 import { Slider, SliderProps as SliderComponentProps } from '@snack-uikit/slider';
-import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, useEventHandler, WithSupportProps } from '@snack-uikit/utils';
 
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
@@ -212,7 +212,11 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
       handleChange(mark);
     };
 
-    const handleTextValueChange = () => {
+    const handleTextValueChange = useEventHandler(() => {
+      if (range) {
+        return;
+      }
+
       const parsedValue = parseInt(textFieldInputValue);
       const actualMinByMark = parseInt(String(getMarkValue(min)));
       const actualMin = Number.isNaN(actualMinByMark) ? min : actualMinByMark;
@@ -228,7 +232,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
       } else {
         handleNonEqualMarksSliderChange(textFieldNumValue);
       }
-    };
+    });
 
     const onTextFieldBlur = (e: FocusEvent<HTMLInputElement, Element>) => {
       onBlur?.(e);
@@ -247,9 +251,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
 
     useEffect(() => {
       handleTextValueChange();
-      // update value only when marks, min or max are changed
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [marks, min, max]);
+    }, [marks, min, max, handleTextValueChange]);
 
     return (
       <FieldDecorator
