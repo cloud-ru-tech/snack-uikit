@@ -57,6 +57,7 @@ export function Segment({
       tabIndex={focusable ? 0 : -1}
       aria-checked={selected}
       role='radio'
+      type='button'
     >
       {icon && <div className={styles.icon}>{icon}</div>}
       {label && <TruncateString className={styles.label} data-size={size} text={label} />}
