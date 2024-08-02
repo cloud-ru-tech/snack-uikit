@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2024-08-02)
+
+
+### BREAKING CHANGES
+
+
+* **PDS-349:** link property external deleted ([fe15016](https://github.com/cloud-ru-tech/snack-uikit/commit/fe150162c9a6bdec5d43dabe1e1a8296ddbe0cd4))
+
+
+
+
 ## 0.12.4 (2024-07-19)
 
 ### Only dependencies have been changed
