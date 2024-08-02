@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.20.7 (2024-08-02)
+
+
+### Bug Fixes
+
+* **PDS-227:** fix status column ([b906c30](https://github.com/cloud-ru-tech/snack-uikit/commit/b906c30d574a8cec4b70cfc6b309a2443a41a019))
+
+
+
+
+
 ## 0.20.6 (2024-07-31)
 
 
