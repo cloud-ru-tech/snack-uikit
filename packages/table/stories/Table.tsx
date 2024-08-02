@@ -39,6 +39,7 @@ type StoryProps = Omit<Props, 'rowSelection' | 'sort'> & {
   showActionsColumn?: boolean;
   rowSelectionMode?: 'single' | 'multi';
   enableOnRowClick: boolean;
+  statusSortEnabled: boolean;
 };
 
 const PINNED_TOP_ROWS = ['0', '2'];
@@ -191,6 +192,7 @@ const Template: StoryFn<StoryProps> = ({
         Table.getStatusColumnDef<StubData>({
           accessorKey: 'status',
           mapStatusToAppearance: value => Table.statusAppearances[value],
+          enableSorting: args.statusSortEnabled,
           ...statusColDefProps,
         }),
         ...colDefs,
@@ -243,7 +245,7 @@ const Template: StoryFn<StoryProps> = ({
     }
 
     return colDefs;
-  }, [columnDefinitions, showActionsColumn, statusColumnViewMode]);
+  }, [args.statusSortEnabled, columnDefinitions, showActionsColumn, statusColumnViewMode]);
 
   const handleRowClick: RowClickHandler<StubData> = (_, row) => {
     toaster.userAction.success({
@@ -296,6 +298,7 @@ table.args = {
   rowsAmount: 35,
   loading: false,
   statusColumnViewMode: StoryStatusColumnViewMode.Full,
+  statusSortEnabled: true,
   showActionsColumn: true,
   data: [],
   columnDefinitions,
@@ -338,6 +341,10 @@ table.argTypes = {
     control: {
       type: 'select',
     },
+  },
+
+  statusSortEnabled: {
+    name: '[Stories]: enable sort by status column',
   },
   showActionsColumn: {
     name: '[Stories]: Show RowActions',

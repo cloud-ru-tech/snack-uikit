@@ -225,29 +225,38 @@ export function Table<TData extends object>({
     for (let i = 0; i < headers.length; i++) {
       const header = headers[i];
       const { sizeKey, flexKey } = getColumnStyleVars(header.id);
+
       const originalColDef = originalColumnDefs.find(col => getColumnId(header) === col.id);
-      const originalColumnDefSize = originalColDef?.size;
-      const initSize = originalColumnDefSize ? `${originalColumnDefSize}px` : '100%';
-      const prevSize = columnSizeVarsRef.current?.[sizeKey];
 
-      let size = initSize;
+      if (header.id === 'snack_predefined_statusColumn' && !originalColDef?.header && !originalColDef?.enableSorting) {
+        const indicatorSize = 'var(--size-table-cell-status-indicator-horizontal)';
 
-      if (header.column.getCanResize()) {
-        const currentSize = header.getSize();
-        const colDefSize = header.column.columnDef.size;
+        colSizes[sizeKey] = indicatorSize;
+        colSizes[flexKey] = '100%';
+      } else {
+        const originalColumnDefSize = originalColDef?.size;
+        const initSize = originalColumnDefSize ? `${originalColumnDefSize}px` : '100%';
+        const prevSize = columnSizeVarsRef.current?.[sizeKey];
 
-        size = currentSize === colDefSize ? initSize : `${currentSize}px`;
+        let size = initSize;
 
-        if (prevSize === '100%' && currentSize !== colDefSize) {
-          const realSize = getCurrentlyConfiguredHeaderWidth(header.id);
-          table.setColumnSizing(old => ({ ...old, [header.id]: realSize }));
+        if (header.column.getCanResize()) {
+          const currentSize = header.getSize();
+          const colDefSize = header.column.columnDef.size;
 
-          size = `${realSize}px`;
+          size = currentSize === colDefSize ? initSize : `${currentSize}px`;
+
+          if (prevSize === '100%' && currentSize !== colDefSize) {
+            const realSize = getCurrentlyConfiguredHeaderWidth(header.id);
+            table.setColumnSizing(old => ({ ...old, [header.id]: realSize }));
+
+            size = `${realSize}px`;
+          }
         }
-      }
 
-      colSizes[sizeKey] = size;
-      colSizes[flexKey] = size === '100%' ? 'unset' : '0';
+        colSizes[sizeKey] = size;
+        colSizes[flexKey] = size === '100%' ? 'unset' : '0';
+      }
     }
 
     return colSizes;

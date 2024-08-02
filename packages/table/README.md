@@ -154,9 +154,11 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | mapStatusToAppearance* | `MapStatusToAppearanceFnType` | - | Маппинг значений статуса на цвета |
 | accessorKey* | `string` | - | Имя ключа соответствующее полю в data |
-| enableSorting | `boolean` | - | Включение/выключение сортировки |
+| enableSorting | `boolean` | true | Включение/выключение сортировки |
 | renderDescription | `(cellValue: string) => string` | - | Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса |
 | size | `number` | - | Размер ячейки |
+| minSize | `number` | - |  |
+| maxSize | `number` | - |  |
 | header | `ColumnDefTemplate<HeaderContext<TData, unknown>> & (string \| ((ctx: HeaderContext<TData, unknown>) => string))` | - | Заголовок колонки |
 | enableResizing | `boolean` | - | Включение/выключение ресайза колонки |
 ## Table.getRowActionsColumnDef
@@ -224,9 +226,11 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | mapStatusToAppearance* | `MapStatusToAppearanceFnType` | - | Маппинг значений статуса на цвета |
 | accessorKey* | `string` | - | Имя ключа соответствующее полю в data |
-| enableSorting | `boolean` | - | Включение/выключение сортировки |
+| enableSorting | `boolean` | true | Включение/выключение сортировки |
 | renderDescription | `(cellValue: string) => string` | - | Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса |
 | size | `number` | - | Размер ячейки |
+| minSize | `number` | - |  |
+| maxSize | `number` | - |  |
 | header | `ColumnDefTemplate<HeaderContext<TData, unknown>> & (string \| ((ctx: HeaderContext<TData, unknown>) => string))` | - | Заголовок колонки |
 | enableResizing | `boolean` | - | Включение/выключение ресайза колонки |
 ## exportToCSV

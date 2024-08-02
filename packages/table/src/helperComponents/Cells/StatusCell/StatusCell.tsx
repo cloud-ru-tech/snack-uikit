@@ -30,6 +30,8 @@ type BaseStatusColumnDef = {
 type StatusColumnDef = BaseStatusColumnDef & {
   renderDescription?: never;
   size?: never;
+  minSize?: never;
+  maxSize?: never;
   header?: never;
   enableResizing?: never;
 };
@@ -39,6 +41,8 @@ type StatusColumnDefWithDescription<TData> = BaseStatusColumnDef & {
   renderDescription(cellValue: string): string;
   /** Размер ячейки */
   size: number;
+  minSize?: number;
+  maxSize?: number;
   /** Заголовок колонки */
   header?: ColumnDefinition<TData>['header'];
   /** Включение/выключение ресайза колонки */
@@ -77,7 +81,9 @@ export function getStatusColumnDef<TData>({
   mapStatusToAppearance,
   renderDescription,
   size,
-  enableSorting,
+  maxSize,
+  minSize,
+  enableSorting = true,
   enableResizing,
 }: StatusColumnDefinitionProps<TData>): ColumnDefinition<TData> {
   const hasDescription = Boolean(renderDescription);
@@ -89,7 +95,8 @@ export function getStatusColumnDef<TData>({
     noHeaderCellPadding: !hasDescription,
     noHeaderCellBorderOffset: hasDescription,
     size: hasDescription ? (size as number) : MIN_STATUS_CELL_SIZE,
-    minSize: MIN_STATUS_CELL_SIZE,
+    minSize: enableSorting || hasDescription ? Math.max(MIN_STATUS_CELL_SIZE, minSize || 0) : 1,
+    maxSize: maxSize,
     meta: {
       skipOnExport: true,
     },
