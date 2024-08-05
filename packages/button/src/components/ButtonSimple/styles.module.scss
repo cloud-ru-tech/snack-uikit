@@ -18,11 +18,6 @@ $typography: (
       @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
       @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
 
-      &:hover {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
-      }
-
       &:focus-visible {
         @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
@@ -42,6 +37,13 @@ $typography: (
       &[data-loading] {
         @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+        }
       }
     }
   }

@@ -20,13 +20,6 @@ $typography: (
 
       background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
 
-      &:hover {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
-      }
-
       &:focus-visible {
         @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
@@ -54,6 +47,15 @@ $typography: (
         @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
 
         background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+
+          background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
+        }
       }
     }
   }
