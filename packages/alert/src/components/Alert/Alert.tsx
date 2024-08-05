@@ -6,7 +6,7 @@ import { Link, LinkProps } from '@snack-uikit/link';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { APPEARANCE, APPEARANCE_TO_COLOR_MAP } from '../../constants';
+import { APPEARANCE, APPEARANCE_TO_COLOR_MAP, APPEARANCE_TO_LINK_COLOR_MAP } from '../../constants';
 import { AlertButton, AlertButtonProps } from '../../helperComponents';
 import { Appearance, Size } from '../../types';
 import { getIcon } from '../../utils';
@@ -107,7 +107,7 @@ export function Alert({
             <span>
               <Link
                 {...link}
-                appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
+                appearance={APPEARANCE_TO_LINK_COLOR_MAP[appearance]}
                 textMode='default'
                 size={size}
                 data-test-id='alert__link'
