@@ -66,13 +66,13 @@ const Template: StoryFn<StoryProps> = ({
     () =>
       GROUP_OPTIONS.map(group => ({
         ...group,
-        truncate: { variant: truncateVariant },
+        truncate: { ...group.truncate, variant: truncateVariant },
         items: group.items.map(item => ({
           ...item,
           switch: showSwitch,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          content: { ...item.content, truncate: { variant: truncateVariant } },
+          content: { ...item.content, truncate: { ...item.content.truncate, variant: truncateVariant } },
         })),
       })),
     [showSwitch, truncateVariant],
@@ -85,7 +85,7 @@ const Template: StoryFn<StoryProps> = ({
         switch: showSwitch,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        content: { ...item.content, truncate: { variant: truncateVariant } },
+        content: { ...item.content, truncate: { ...item.content.truncate, variant: truncateVariant } },
       })),
     [showEmptyList, showSwitch, truncateVariant],
   );

@@ -122,7 +122,7 @@
 | option* | `string \| number` | - |  |
 | caption | `string` | - |  |
 | description | `string` | - |  |
-| truncate | `{ option?: number; description?: number; variant?: "end" \| "middle"; }` | - |  |
+| truncate | `TruncateProps` | - |  |
 | disabled | `boolean` | - |  |
 | className | `string` | - | CSS-класс |
 

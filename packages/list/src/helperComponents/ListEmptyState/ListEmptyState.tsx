@@ -24,7 +24,7 @@ export function ListEmptyState({ dataError, dataFiltered, hasNoItems, emptyState
   if (dataError) {
     return (
       <div className={styles.listEmptyStateWrapper}>
-        <InfoBlock {...emptyStates.errorDataState} size='s' align='vertical' />
+        <InfoBlock {...emptyStates.errorDataState} size='m' align='vertical' />
       </div>
     );
   }
@@ -32,7 +32,7 @@ export function ListEmptyState({ dataError, dataFiltered, hasNoItems, emptyState
   if (dataFiltered && hasNoItems) {
     return (
       <div className={styles.listEmptyStateWrapper}>
-        <InfoBlock {...emptyStates.noResultsState} size='s' align='vertical' data-test-id='list__no-results' />
+        <InfoBlock {...emptyStates.noResultsState} size='m' align='vertical' data-test-id='list__no-results' />
       </div>
     );
   }
@@ -40,7 +40,7 @@ export function ListEmptyState({ dataError, dataFiltered, hasNoItems, emptyState
   if (!dataFiltered && hasNoItems) {
     return (
       <div className={styles.listEmptyStateWrapper}>
-        <InfoBlock {...emptyStates.noDataState} size='s' align='vertical' data-test-id='list__no-data' />
+        <InfoBlock {...emptyStates.noDataState} size='m' align='vertical' data-test-id='list__no-data' />
       </div>
     );
   }

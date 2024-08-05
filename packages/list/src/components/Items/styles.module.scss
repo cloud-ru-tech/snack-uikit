@@ -43,11 +43,19 @@ $sizes: 's', 'm', 'l';
   &:not([data-inactive], [data-disabled]) {
     &[data-open],
     &[data-focused],
-    &:hover,
     &:focus-visible {
       &::before {
         opacity: $opacity-a008;
         background-color: $sys-neutral-accent-default;
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        &::before {
+          opacity: $opacity-a008;
+          background-color: $sys-neutral-accent-default;
+        }
       }
     }
   }
@@ -60,7 +68,7 @@ $sizes: 's', 'm', 'l';
 
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 
   box-sizing: border-box;
   width: max-content;
