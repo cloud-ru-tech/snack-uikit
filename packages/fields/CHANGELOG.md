@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.23.5 (2024-08-05)
+
+
+### Bug Fixes
+
+* **FF-3788:** updated typescript to v5 ([89e3338](https://github.com/cloud-ru-tech/snack-uikit/commit/89e3338a3ef4df24e4c20d9a9c8cd16e7934ba63))
+* **PDS-617:** slider range should not change the label on input events ([d7ab88a](https://github.com/cloud-ru-tech/snack-uikit/commit/d7ab88a69e3cc47568766899e91c438493ed8c7e))
+
+
+
+
+
 ## 0.23.4 (2024-07-29)
 
 ### Only dependencies have been changed
