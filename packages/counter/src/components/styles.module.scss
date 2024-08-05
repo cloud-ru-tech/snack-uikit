@@ -7,27 +7,28 @@ $colors: 'accent', 'decor';
 
 $value-typography: (
   s: $sans-label-s,
-  m: $sans-label-l
+  m: $sans-label-l,
 );
 $plus-typography: (
   s: $sans-label-l,
-  m: $sans-label-l
+  m: $sans-label-l,
 );
 $key-typography: (
   s: $sans-label-s,
-  m: $sans-label-l
+  m: $sans-label-l,
 );
 $text-color: (
   accent: 'on-accent',
-  decor: 'text-main'
+  decor: 'text-main',
 );
 $bg-color: (
   accent: 'accent-default',
-  decor: 'decor-default'
+  decor: 'decor-default',
 );
 
 .counter {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
 
