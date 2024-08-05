@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.1 (2024-08-05)
+
+
+### Bug Fixes
+
+* **FF-0000:** link color for neutral appearance ([d264fc8](https://github.com/cloud-ru-tech/snack-uikit/commit/d264fc8c79772e0b4af2506dd6510f95c9b2093a))
+
+
+
+
+
 # 0.13.0 (2024-08-02)
 
 
