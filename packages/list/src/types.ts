@@ -1,5 +1,7 @@
 import { RefObject } from 'react';
 
+import { ScrollProps as OriginalScrollProps } from '@snack-uikit/scroll';
+
 export type SearchState = {
   placeholder?: string;
   loading?: boolean;
@@ -14,4 +16,6 @@ export type ScrollProps = {
   scrollRef?: RefObject<HTMLElement>;
   /** Ссылка на контейнер, который скроллится */
   scrollContainerRef?: RefObject<HTMLElement>;
+  /** Колбек на скролл прокручиваемого списка */
+  onScroll?: OriginalScrollProps['onScroll'];
 };

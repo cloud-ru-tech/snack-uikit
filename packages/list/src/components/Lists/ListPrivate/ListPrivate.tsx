@@ -29,6 +29,7 @@ export const ListPrivate = forwardRef(
       searchItem,
       scrollRef,
       scrollContainerRef,
+      onScroll,
       footer,
       loading,
       limitedScrollHeight,
@@ -116,6 +117,7 @@ export const ListPrivate = forwardRef(
             barHideStrategy='never'
             size={size === 's' ? 's' : 'm'}
             ref={scrollContainerRef}
+            onScroll={onScroll}
           >
             {content}
 
