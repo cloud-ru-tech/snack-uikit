@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.3 (2024-08-06)
+
+
+### Bug Fixes
+
+* **PDS-629:** fix headline height; fix content align; add media hover ([2817670](https://github.com/cloud-ru-tech/snack-uikit/commit/2817670df79299849a266425df5a53979c9e37f6))
+
+
+
+
+
 ## 0.14.2 (2024-07-29)
 
 ### Only dependencies have been changed

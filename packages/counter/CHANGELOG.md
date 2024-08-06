@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.3 (2024-08-06)
+
+
+### Bug Fixes
+
+* **FF-00:** fix counter flex shrink ([45c772c](https://github.com/cloud-ru-tech/snack-uikit/commit/45c772ccf250b8590083a96eb76fa9daa2f8a34d))
+
+
+
+
+
 ## 0.6.2 (2024-04-23)
 
 ### Only dependencies have been changed
