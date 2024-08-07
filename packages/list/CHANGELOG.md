@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.15.1 (2024-08-07)
+
+
+### Bug Fixes
+
+* **PDS-592:** add disabled to contentRenderProps ([e1202b5](https://github.com/cloud-ru-tech/snack-uikit/commit/e1202b58fd8a3f6228c6cee7d09fdcb7e0e1b1a2))
+
+
+
+
+
 # 0.15.0 (2024-08-07)
 
 
