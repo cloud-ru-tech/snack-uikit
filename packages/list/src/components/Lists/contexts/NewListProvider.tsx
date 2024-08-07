@@ -6,6 +6,7 @@ import { FlattenItem, FocusFlattenItem, ItemId } from '../../Items';
 type ContentRenderProps = {
   id?: ItemId;
   content?: ItemContentProps | ReactNode;
+  disabled?: boolean;
 };
 
 export type PublicListContextType = {

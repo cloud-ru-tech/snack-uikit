@@ -181,7 +181,7 @@ export function BaseItem({
 
         {beforeContent && <div className={styles.beforeContent}>{beforeContent}</div>}
         {content && isContentItem(content) ? (
-          contentRender?.({ id, content }) ?? <ItemContent disabled={disabled} {...content} />
+          contentRender?.({ id, content, disabled }) ?? <ItemContent disabled={disabled} {...content} />
         ) : (
           <div className={styles.content}> {content} </div>
         )}
