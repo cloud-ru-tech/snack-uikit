@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2024-08-07)
+
+
+### Features
+
+* **PDS-592:** add onScroll prop to list ([8ddce9c](https://github.com/cloud-ru-tech/snack-uikit/commit/8ddce9c26917719f44aa277eff057195cadfff6b))
+
+
+
+
+
 ## 0.14.3 (2024-08-06)
 
 
