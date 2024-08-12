@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.23.9 (2024-08-12)
+
+
+### Bug Fixes
+
+* **FF-0000:** select disabled error validation state ([c64c9e9](https://github.com/cloud-ru-tech/snack-uikit/commit/c64c9e9da6f48d2e7e28a54083b9dd4dfa44ed10))
+
+
+
+
+
 ## 0.23.8 (2024-08-07)
 
 ### Only dependencies have been changed
