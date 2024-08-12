@@ -45,7 +45,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | type | enum Type: `"number"`, `"text"`, `"password"` | text | Тип инпута |
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
-| autoComplete | `boolean` | - | Включен ли автокомплит для поля |
+| autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | min | `number` | - | Минимальное значение поля |
 | max | `number` | - | Максимальное значение поля |

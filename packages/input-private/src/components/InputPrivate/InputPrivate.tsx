@@ -19,7 +19,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
       type = TYPE.Text,
       disabled = false,
       readonly = false,
-      autoComplete = false,
+      autoComplete: autoCompleteProp = false,
       maxLength,
       min,
       max,
@@ -37,13 +37,27 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
       onChange?.(e.target.value, e);
     };
 
+    let autoComplete: string;
+
+    switch (autoCompleteProp) {
+      case true:
+        autoComplete = 'on';
+        break;
+      case false:
+        autoComplete = 'off';
+        break;
+      default:
+        autoComplete = autoCompleteProp;
+        break;
+    }
+
     return (
       <input
         name={name}
         maxLength={maxLength}
         id={id}
         className={cn(className, styles.inputPrivate)}
-        autoComplete={autoComplete ? 'on' : 'off'}
+        autoComplete={autoComplete}
         ref={ref}
         value={value}
         onChange={onChangeHandler}

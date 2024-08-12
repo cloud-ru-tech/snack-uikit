@@ -36,7 +36,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
      * Включен ли автокомплит для поля
      * @default false
      */
-    autoComplete?: boolean;
+    autoComplete?: boolean | string;
     /** Максимальная длина вводимого значения */
     maxLength?: number;
     /** Минимальное значение поля */
