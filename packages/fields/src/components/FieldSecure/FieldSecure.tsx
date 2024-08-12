@@ -20,7 +20,10 @@ import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
-  Pick<InputPrivateProps, 'id' | 'name' | 'placeholder' | 'maxLength' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur'>;
+  Pick<
+    InputPrivateProps,
+    'id' | 'name' | 'placeholder' | 'maxLength' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'autoComplete'
+  >;
 
 type WrapperProps = Pick<
   FieldDecoratorProps,
@@ -84,6 +87,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       prefixIcon,
       error,
       asyncValueGetter,
+      autoComplete,
       ...rest
     },
     ref,
@@ -227,6 +231,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
               id={id}
               name={name}
               data-test-id='field-secure__input'
+              autoComplete={autoComplete}
             />
           </WithSkeleton>
         </FieldContainerPrivate>

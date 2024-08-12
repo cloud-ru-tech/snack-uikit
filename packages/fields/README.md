@@ -289,6 +289,7 @@ FieldStepper в основном предназначен для работы с
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
