@@ -44,7 +44,7 @@ $icon-sizes: (
     }
 
     &[data-disabled=true] {
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+      background-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
       border-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
     }
   }
