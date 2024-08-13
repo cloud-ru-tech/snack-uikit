@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.3 (2024-08-13)
+
+### Only dependencies have been changed
+* [@snack-uikit/input-private@3.2.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/input-private/CHANGELOG.md)
+
+
+
+
+
 ## 0.2.2 (2024-07-19)
 
 ### Only dependencies have been changed

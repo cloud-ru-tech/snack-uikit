@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.24.0 (2024-08-13)
+
+
+### Features
+
+* **FF-5362:** add autoComplete property for field-secure ([ec28387](https://github.com/cloud-ru-tech/snack-uikit/commit/ec283873ab3b50f357a4d32b55d9469ac1a2835b))
+
+
+
+
+
 ## 0.23.9 (2024-08-12)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.2.0 (2024-08-13)
+
+
+### Features
+
+* **FF-5362:** extend autoComplete prop with custom string ([a8cc630](https://github.com/cloud-ru-tech/snack-uikit/commit/a8cc63009df5e21e01f1f360e10cc8ac7cf0f15f))
+
+
+
+
+
 ## 3.1.4 (2024-07-19)
 
 ### Only dependencies have been changed

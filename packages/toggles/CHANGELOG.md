@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.3 (2024-08-13)
+
+
+### Bug Fixes
+
+* **FF-0000:** checkbox disabled bgColor ([3005618](https://github.com/cloud-ru-tech/snack-uikit/commit/3005618ede21c1af73b664170303068f9d97e9f0))
+
+
+
+
+
 ## 0.10.2 (2024-07-29)
 
 
