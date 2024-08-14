@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.4 (2024-08-14)
+
+
+### Bug Fixes
+
+* **PDS-00:** fix hover style order in button ([cea4e02](https://github.com/cloud-ru-tech/snack-uikit/commit/cea4e026c0262f4659ee3f60a9f01cc77f3dcc27))
+
+
+
+
+
 ## 0.17.3 (2024-08-06)
 
 
