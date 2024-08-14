@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { ReactNode } from 'react';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
@@ -35,6 +36,9 @@ export type HotSpotProps = WithSupportProps<{
   offsetY?: number | string;
   /** Управление состоянием отрисовки */
   enabled?: boolean;
+
+  className?: string;
+  wrapperClassName?: string;
 }>;
 
 export function HotSpot({
@@ -47,6 +51,8 @@ export function HotSpot({
   pulse = true,
   enabled = true,
   appearance = 'primary',
+  className,
+  wrapperClassName,
   ...rest
 }: HotSpotProps) {
   if (!enabled) {
@@ -55,7 +61,7 @@ export function HotSpot({
 
   const dotJSX = (
     <div
-      className={styles.hotSpotDot}
+      className={cn(styles.hotSpotDot, className)}
       data-appearance={appearance}
       data-pulse={pulse || undefined}
       data-test-id={TEST_IDS.dot}
@@ -73,7 +79,7 @@ export function HotSpot({
   return (
     <div
       {...extractSupportProps(rest)}
-      className={styles.wrapper}
+      className={cn(styles.wrapper, wrapperClassName)}
       style={{
         '--offset-x': getOffsetStyle(offsetX),
         '--offset-y': getOffsetStyle(offsetY),

@@ -21,6 +21,8 @@
 | offsetX | `string \| number` | - | Смещение dot по оси X (ось направлена вправо) |
 | offsetY | `string \| number` | - | Смещение dot по оси Y (ось направлена вниз) |
 | enabled | `boolean` | true | Управление состоянием отрисовки |
+| className | `string` | - | CSS-класс |
+| wrapperClassName | `string` | - |  |
 
 
 [//]: DOCUMENTATION_SECTION_END
