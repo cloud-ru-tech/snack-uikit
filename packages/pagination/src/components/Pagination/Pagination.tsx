@@ -17,6 +17,8 @@ export type PaginationProps = WithSupportProps<{
   total: number;
   /** Текущая страница */
   page: number;
+  /** Максимальное количество страниц/элементов, помещающихся до транкейта */
+  maxLength?: number;
   /** Колбек смены значения */
   onChange(page: number): void;
   /** CSS класснейм */
@@ -31,12 +33,20 @@ const FIRST_PAGE = 1;
 const ARROW_STEP = 1;
 const MAX_LENGTH = 7;
 
-export function Pagination({ total, page, onChange, className, size = SIZE.S, ...rest }: PaginationProps) {
+export function Pagination({
+  total,
+  page,
+  onChange,
+  className,
+  size = SIZE.S,
+  maxLength = MAX_LENGTH,
+  ...rest
+}: PaginationProps) {
   const entries = getPaginationEntries({
     firstPage: FIRST_PAGE,
     lastPage: total,
     currentPage: page,
-    maxLength: MAX_LENGTH,
+    maxLength,
   });
 
   const buttonRefs = useRef<(HTMLButtonElement | undefined)[]>([]);

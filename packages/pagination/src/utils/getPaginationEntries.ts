@@ -81,8 +81,8 @@ function getEntriesGroupedOnTheLeft(state: PaginationState) {
 
 function getEntriesGroupedInTheMiddle(state: PaginationState) {
   const { firstPage, lastPage, currentPage, currentPageSiblingsCount } = state;
-  const groupFirstPage = currentPage - currentPageSiblingsCount / 2;
-  const groupLastPage = currentPage + currentPageSiblingsCount / 2;
+  const groupFirstPage = Math.floor(currentPage - currentPageSiblingsCount / 2);
+  const groupLastPage = Math.floor(currentPage + currentPageSiblingsCount / 2);
   const group = getRange(groupFirstPage, groupLastPage).map(createPageEntry);
 
   return [

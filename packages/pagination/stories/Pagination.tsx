@@ -32,6 +32,7 @@ export const pagination: StoryObj<StoryProps> = Template.bind({});
 pagination.args = {
   total: 10,
   page: 1,
+  maxLength: 7,
   size: 's',
 };
 

@@ -37,6 +37,7 @@ function App() {
 | onChange* | `(page: number) => void` | - | Колбек смены значения |
 | page* | `number` | - | Текущая страница |
 | total* | `number` | - | Общее количество страниц |
+| maxLength | `number` | 7 | Максимальное количество страниц/элементов, помещающихся до транкейта |
 | className | `string` | - | CSS класснейм |
 | size | enum Size: `"xs"`, `"s"` | s | Размер |
 ## PaginationSlider
