@@ -20,41 +20,43 @@ $typography: (
 
       background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
 
-      &:focus-visible {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
-
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-hovered');
-      }
-
-      &:active {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
-
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-pressed');
-      }
-
-      &:disabled,
-      &[data-disabled] {
-        @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
-        @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
-
-        background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
-      }
-
-      &[data-loading] {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
-
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-pressed');
-      }
-
       @media (hover: hover) {
         &:hover {
           @include label-color(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
           @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
 
           background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-hovered');
+        }
+      }
+
+      @media (hover: none) or (hover: hover) {
+        &:focus-visible {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
+
+          background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-hovered');
+        }
+
+        &:active {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
+
+          background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-pressed');
+        }
+
+        &[data-loading] {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'on-accent'));
+
+          background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-pressed');
+        }
+
+        &:disabled,
+        &[data-disabled] {
+          @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
+          @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
+
+          background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
         }
       }
     }

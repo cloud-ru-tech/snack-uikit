@@ -20,41 +20,43 @@ $typography: (
 
       border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
 
-      &:focus-visible {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
-
-        border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
-      }
-
-      &:active {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-
-        border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
-      }
-
-      &:disabled,
-      &[data-disabled] {
-        @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
-        @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
-
-        border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
-      }
-
-      &[data-loading] {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-
-        border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
-      }
-
       @media (hover: hover) {
         &:hover {
           @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
           @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
 
           border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
+        }
+      }
+
+      @media (hover: none) or (hover: hover) {
+        &:focus-visible {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+
+          border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
+        }
+
+        &:active {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+
+          border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
+        }
+
+        &[data-loading] {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+
+          border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
+        }
+
+        &:disabled,
+        &[data-disabled] {
+          @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
+          @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
+
+          border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
         }
       }
     }

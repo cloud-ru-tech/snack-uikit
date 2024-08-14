@@ -18,31 +18,33 @@ $typography: (
       @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
       @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
 
-      &:focus-visible {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
-      }
-
-      &:active {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-      }
-
-      &:disabled,
-      &[data-disabled] {
-        @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
-        @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
-      }
-
-      &[data-loading] {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-      }
-
       @media (hover: hover) {
         &:hover {
           @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
           @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+        }
+      }
+
+      @media (hover: none) or (hover: hover) {
+        &:focus-visible {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+        }
+
+        &:active {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+        }
+
+        &[data-loading] {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+        }
+
+        &:disabled,
+        &[data-disabled] {
+          @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
+          @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
         }
       }
     }

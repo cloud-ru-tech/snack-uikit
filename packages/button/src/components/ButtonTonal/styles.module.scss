@@ -20,41 +20,43 @@ $typography: (
 
       background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
 
-      &:focus-visible {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
-      }
-
-      &:active {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
-      }
-
-      &:disabled,
-      &[data-disabled] {
-        @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
-        @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
-
-        background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
-      }
-
-      &[data-loading] {
-        @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-        @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
-      }
-
       @media (hover: hover) {
         &:hover {
           @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
           @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
 
           background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
+        }
+      }
+
+      @media (hover: none) or (hover: hover) {
+        &:focus-visible {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+
+          background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
+        }
+
+        &:active {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+
+          background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
+        }
+
+        &[data-loading] {
+          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+
+          background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
+        }
+
+        &:disabled,
+        &[data-disabled] {
+          @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
+          @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
+
+          background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
         }
       }
     }
