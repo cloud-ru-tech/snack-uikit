@@ -10,11 +10,11 @@ export type Size = ValueOf<typeof SIZE>;
 
 export type Width = ValueOf<typeof WIDTH>;
 
-export type Segment = {
+export type Segment<Value extends IdType = IdType> = {
   /**
    * Идентификатор сегмента.
    */
-  value: IdType;
+  value: Value;
   /**
    * Текстовый заголовок сегмента.
    */

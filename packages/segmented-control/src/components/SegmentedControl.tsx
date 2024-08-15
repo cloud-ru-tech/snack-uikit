@@ -10,23 +10,23 @@ import { useFocusControl } from '../hooks';
 import { IdType, Segment as SegmentType, SelectionPosition, Size, Width } from '../types';
 import styles from './styles.module.scss';
 
-export type SegmentedControlProps = WithSupportProps<{
+export type SegmentedControlProps<Value extends IdType = IdType> = WithSupportProps<{
   /**
    * Набор сегментов.
    */
-  items: SegmentType[];
+  items: SegmentType<Value>[];
   /**
    * Value выбранного сегмента.
    */
-  value?: IdType;
+  value?: Value;
   /**
    * ID выбранного по умолчанию сегмента. (в uncontrolled режиме)
    */
-  defaultValue?: IdType;
+  defaultValue?: Value;
   /**
    * Колбек смены выбранного сегмента.
    */
-  onChange?: (value: IdType) => void;
+  onChange?: (value: Value) => void;
   /**
    * CSS-класс контейнера.
    */
@@ -48,7 +48,7 @@ export type SegmentedControlProps = WithSupportProps<{
 /**
  * SegmentedControl
  */
-export function SegmentedControl({
+export function SegmentedControl<Value extends IdType>({
   defaultValue,
   size = 'm',
   className,
@@ -58,7 +58,7 @@ export function SegmentedControl({
   outline,
   width = WIDTH.Auto,
   ...other
-}: SegmentedControlProps) {
+}: SegmentedControlProps<Value>) {
   const [selected, setSelected] = useUncontrolledProp(value, defaultValue, onChange);
   const { focusableSegmentValue, onGetFocusable, onKeyDown } = useFocusControl({ selected, items });
   const containerRef = useRef<HTMLDivElement>(null);

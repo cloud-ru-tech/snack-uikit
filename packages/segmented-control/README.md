@@ -14,10 +14,10 @@ SegmentedControl
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| items* | `Segment[]` | - | Набор сегментов. |
+| items* | `Segment<Value>[]` | - | Набор сегментов. |
 | value | `IdType` | - | Value выбранного сегмента. |
 | defaultValue | `IdType` | - | ID выбранного по умолчанию сегмента. (в uncontrolled режиме) |
-| onChange | `(value: IdType) => void` | - | Колбек смены выбранного сегмента. |
+| onChange | `(value: Value) => void` | - | Колбек смены выбранного сегмента. |
 | className | `string` | - | CSS-класс контейнера. |
 | size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер компонента. |
 | outline | `boolean` | - | Обводка |
