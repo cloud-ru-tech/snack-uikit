@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-08-15)
+
+
+### Features
+
+* **FF-5186:** add maxLength property ([d794d6f](https://github.com/cloud-ru-tech/snack-uikit/commit/d794d6fb17f995ab52f1d489ed3e8720a62cf029))
+
+
+
+
+
 ## 0.6.12 (2024-08-14)
 
 ### Only dependencies have been changed
