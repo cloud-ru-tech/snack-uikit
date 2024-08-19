@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.21.0 (2024-08-19)
+
+
+### Features
+
+* **PDS-516:** add saving resize mode ([e3c0137](https://github.com/cloud-ru-tech/snack-uikit/commit/e3c0137c6ff88bb4ea262f8509add7707ba65431))
+
+
+
+
+
 ## 0.20.13 (2024-08-15)
 
 ### Only dependencies have been changed
