@@ -44,6 +44,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   contentRender,
   dropDownClassName,
   showClearButton = true,
+  resetSearchOnOptionSelection = true,
   ...rest
 }: ChipChoiceMultipleProps<T>) {
   const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
@@ -99,10 +100,12 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
         if (searchValue) {
           listRef.current?.focus();
         }
-        setSearchValue('');
+        if (resetSearchOnOptionSelection) {
+          setSearchValue('');
+        }
       }
     },
-    [searchValue, setValue],
+    [searchValue, setValue, resetSearchOnOptionSelection],
   );
 
   useEffect(() => {

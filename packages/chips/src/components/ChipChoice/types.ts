@@ -127,4 +127,6 @@ export type ChipChoiceMultipleProps<T extends ContentRenderProps = ContentRender
       options: FilterOption<T>[];
       /** Колбек формирующий отображение выбранного значения. Принимает выбранное значение. По умолчанию для отображения используется FilterOption.label */
       valueRender?(option?: BaseOption<T>[]): ReactNode;
+      /** Поведение строки поиска при выборе опции из списка */
+      resetSearchOnOptionSelection?: boolean;
     };
