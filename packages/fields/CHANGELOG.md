@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.25.0 (2024-08-21)
+
+
+### Features
+
+* **DPS-13067:** pass untouchableScrollbars prop ([0f7ac6d](https://github.com/cloud-ru-tech/snack-uikit/commit/0f7ac6d42ba8064cddebe8a70cfa9bf32ea7eaa8))
+
+
+
+
+
 ## 0.24.1 (2024-08-14)
 
 ### Only dependencies have been changed
