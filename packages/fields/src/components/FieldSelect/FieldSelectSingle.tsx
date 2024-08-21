@@ -54,6 +54,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     autocomplete = false,
     prefixIcon,
     addOptionByEnter = false,
+    untouchableScrollbars = false,
     open: openProp,
     onOpenChange,
     selectedOptionFormatter = defaultSelectedOptionFormatter,
@@ -203,6 +204,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
         onOpenChange={handleOpenChange}
         trigger='click'
         triggerElemRef={localRef}
+        untouchableScrollbars={untouchableScrollbars}
       >
         {({ onKeyDown }) => (
           <FieldContainerPrivate

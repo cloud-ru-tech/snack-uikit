@@ -120,7 +120,10 @@ type FiledSelectCommonProps = WithSupportProps<{
 
   selectedOptionFormatter?: SelectedOptionFormatter;
 }> &
-  Pick<DroplistProps, 'dataError' | 'noDataState' | 'noResultsState' | 'errorDataState' | 'dataFiltered'>;
+  Pick<
+    DroplistProps,
+    'dataError' | 'noDataState' | 'noResultsState' | 'errorDataState' | 'dataFiltered' | 'untouchableScrollbars'
+  >;
 
 export type FieldSelectSingleProps = FieldSelectPrivateProps &
   Omit<SelectionSingleState, 'mode'> &

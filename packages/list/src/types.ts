@@ -16,6 +16,8 @@ export type ScrollProps = {
   scrollRef?: RefObject<HTMLElement>;
   /** Ссылка на контейнер, который скроллится */
   scrollContainerRef?: RefObject<HTMLElement>;
+  /** Отключает возможность взаимодействовать со скролбарами мышью. */
+  untouchableScrollbars?: boolean;
   /** Колбек на скролл прокручиваемого списка */
   onScroll?: OriginalScrollProps['onScroll'];
 };

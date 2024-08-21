@@ -380,6 +380,7 @@ FieldStepper в основном предназначен для работы с
 | open | `boolean` | - |  |
 | onOpenChange | `(open: boolean) => void` | - |  |
 | selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
+| untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |

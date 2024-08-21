@@ -33,6 +33,7 @@ export const ListPrivate = forwardRef(
       footer,
       loading,
       limitedScrollHeight,
+      untouchableScrollbars,
       className,
       noDataState,
       noResultsState,
@@ -117,6 +118,7 @@ export const ListPrivate = forwardRef(
             barHideStrategy='never'
             size={size === 's' ? 's' : 'm'}
             ref={scrollContainerRef}
+            untouchableScrollbars={untouchableScrollbars}
             onScroll={onScroll}
           >
             {content}

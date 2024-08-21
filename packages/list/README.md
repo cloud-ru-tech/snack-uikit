@@ -81,6 +81,7 @@
 | scroll | `boolean` | - | Включить ли скролл для основной части списка |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | onScroll | `(event?: Event) => void` | - | Колбек на скролл прокручиваемого списка |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
@@ -109,6 +110,7 @@
 | scroll | `boolean` | - | Включить ли скролл для основной части списка |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | onScroll | `(event?: Event) => void` | - | Колбек на скролл прокручиваемого списка |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |

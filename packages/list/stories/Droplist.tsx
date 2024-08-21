@@ -106,6 +106,7 @@ droplist.args = {
   showSearch: false,
   selectionMode: 'single',
   closeDroplistOnItemClick: false,
+  untouchableScrollbars: false,
 };
 
 droplist.argTypes = {

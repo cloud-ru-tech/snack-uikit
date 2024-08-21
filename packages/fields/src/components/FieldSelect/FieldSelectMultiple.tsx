@@ -46,6 +46,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     prefixIcon,
     removeByBackspace = false,
     addOptionByEnter = false,
+    untouchableScrollbars = false,
     open: openProp,
     onOpenChange,
     selectedOptionFormatter = defaultSelectedOptionFormatter,
@@ -185,6 +186,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
           },
         }}
         dataFiltered={rest.dataFiltered ?? Boolean(inputValue.length)}
+        untouchableScrollbars={untouchableScrollbars}
         size={size}
         open={!disabled && !readonly && open}
         onOpenChange={handleOpenChange}

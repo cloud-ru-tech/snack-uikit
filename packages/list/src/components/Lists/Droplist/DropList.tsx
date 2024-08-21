@@ -42,6 +42,7 @@ export function Droplist({
   closeDroplistOnItemClick = false,
   className,
   listRef: listRefProp,
+  untouchableScrollbars = false,
   ...props
 }: DroplistProps) {
   const hasSearch = useMemo(() => Boolean(search), [search]);
@@ -233,6 +234,7 @@ export function Droplist({
                         forceUpdateActiveItemId?.(ids[0]);
                       }}
                       limitedScrollHeight
+                      untouchableScrollbars={untouchableScrollbars}
                     />
                   </div>
                 }

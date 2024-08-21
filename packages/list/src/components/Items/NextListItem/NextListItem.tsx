@@ -24,6 +24,7 @@ export function NextListItem({
   allChildIds,
   loading = false,
   focusId = id,
+  untouchableScrollbars = false,
   ...option
 }: NextListItemProps) {
   const { flattenItems, focusFlattenItems } = useNewListContext();
@@ -104,6 +105,7 @@ export function NextListItem({
           }}
           scrollRef={scrollRef}
           limitedScrollHeight
+          untouchableScrollbars={untouchableScrollbars}
           loading={loading}
         />
       }

@@ -141,6 +141,7 @@ fieldSelect.args = {
   showCopyButton: true,
   showClearButton: true,
   showMoreOptions: false,
+  untouchableScrollbars: false,
 };
 
 fieldSelect.argTypes = {
