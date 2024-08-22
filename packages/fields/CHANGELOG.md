@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.25.1 (2024-08-22)
+
+
+### Bug Fixes
+
+* **EVODNS-255:** unbind input from marks in slider ([2aa0b2e](https://github.com/cloud-ru-tech/snack-uikit/commit/2aa0b2ede46c7a879933f3943b721d609e360069))
+
+
+
+
+
 # 0.25.0 (2024-08-21)
 
 
