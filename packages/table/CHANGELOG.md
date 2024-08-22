@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.22.0 (2024-08-22)
+
+
+### Features
+
+* **DPS-0000:** add row value to renderDescription ([752d6f2](https://github.com/cloud-ru-tech/snack-uikit/commit/752d6f2399fb734e3ffd9b9c0c79b3c2b735960c))
+
+
+
+
+
 ## 0.21.1 (2024-08-21)
 
 ### Only dependencies have been changed
