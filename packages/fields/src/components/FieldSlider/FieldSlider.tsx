@@ -47,6 +47,8 @@ type FieldSliderOwnProps = {
   showScaleBar?: boolean;
   /** Функция для форматирования значений в текстовом поле */
   textInputFormatter?: TextInputFormatter;
+  /** Отвязать текстовое поле от значений на линейке */
+  unbindInputFromMarks?: boolean;
 };
 
 export type FieldSliderProps = WithSupportProps<FieldSliderOwnProps & SliderProps & WrapperProps>;
@@ -96,6 +98,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
       size = SIZE.S,
       postfixIcon,
       textInputFormatter,
+      unbindInputFromMarks,
       ...rest
     },
     ref,
@@ -227,7 +230,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
         return;
       }
 
-      if (hasMarksEqualToValues) {
+      if (hasMarksEqualToValues || unbindInputFromMarks) {
         handleEqualMarksSliderChange(textFieldNumValue);
       } else {
         handleNonEqualMarksSliderChange(textFieldNumValue);

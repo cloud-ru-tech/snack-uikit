@@ -426,6 +426,7 @@ FieldStepper в основном предназначен для работы с
 | postfixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-постфикс для поля |
 | showScaleBar | `boolean` | true | Отображение линейки |
 | textInputFormatter | `TextInputFormatter` | - | Функция для форматирования значений в текстовом поле |
+| unbindInputFromMarks | `boolean` | - | Отвязать текстовое поле от значений на линейке |
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | id | `string` | - | Значение html-атрибута id |
