@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2024-08-23)
+
+
+### Features
+
+* **AICDTS-2159:** add resetSearchOnOptionSelection property ([ac874e8](https://github.com/cloud-ru-tech/snack-uikit/commit/ac874e8b0ea16589765f9b76ad0652bbcacbf424))
+
+
+
+
+
 ## 0.14.21 (2024-08-21)
 
 ### Only dependencies have been changed
