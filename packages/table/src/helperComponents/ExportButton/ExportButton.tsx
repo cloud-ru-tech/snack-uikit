@@ -6,13 +6,9 @@ import { DownloadSVG } from '@snack-uikit/icons';
 import { Droplist } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 
-import { exportToCSV, exportToXLSX } from '../../exportTable';
 import { ColumnDefinition } from '../../types';
 
-type Format = {
-  csv?: boolean;
-  xslx?: boolean;
-};
+type ExportProps<TData> = { fileName: string; columnDefinitions: ColumnDefinition<TData>[]; data: TData[] };
 
 export type ExportButtonProps<TData extends object> = {
   /** Данные для отрисовки */
@@ -24,11 +20,13 @@ export type ExportButtonProps<TData extends object> = {
     /** Название файла при экспорте */
     fileName: string;
 
-    /** Доступные форматы экспорта */
-    format?: Format;
-
     /** Настройка фильтрации данных */
     filterData?: boolean;
+
+    /** Обработчик экспорта в CSV */
+    exportToCSV?(args: ExportProps<TData>): void;
+    /** Обработчик экспорта в XLSX */
+    exportToXLSX?(args: ExportProps<TData>): void;
   };
 
   topRows: Row<TData>[];
@@ -46,7 +44,6 @@ export function ExportButton<TData extends object>({
   const { t } = useLocale('Table');
 
   const { fileName, filterData = true } = settings;
-  const format: Format = Object.assign({ csv: true, xslx: true }, settings.format);
 
   const filteredData = useMemo(() => {
     let newData = data;
@@ -69,18 +66,18 @@ export function ExportButton<TData extends object>({
         {
           content: { option: t('export') + 'CSV' },
           onClick: () => {
-            exportToCSV<TData>({ fileName, columnDefinitions, data: filteredData });
+            settings.exportToCSV?.({ fileName, columnDefinitions, data: filteredData });
             setIsOpen(false);
           },
-          hidden: !format.csv,
+          hidden: !settings.exportToCSV,
         },
         {
           content: { option: t('export') + 'XLSX' },
           onClick: () => {
-            exportToXLSX<TData>({ fileName, columnDefinitions, data: filteredData });
+            settings.exportToXLSX?.({ fileName, columnDefinitions, data: filteredData });
             setIsOpen(false);
           },
-          hidden: !format.xslx,
+          hidden: !settings.exportToXLSX,
         },
       ]}
     >

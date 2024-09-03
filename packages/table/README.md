@@ -131,7 +131,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | columnFilters | `ReactNode` | - | Фильтры |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
-| exportSettings | `{ fileName: string; format?: Format; filterData?: boolean; }` | - | Настройки экспорта в тулбаре |
+| exportSettings | `{ fileName: string; filterData?: boolean; exportToCSV?(args: ExportProps<TData>): void; exportToXLSX?(args: ExportProps<TData>): void; }` | - | Настройки экспорта в тулбаре |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
@@ -191,7 +191,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | columnFilters | `ReactNode` | - | Фильтры |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
-| exportSettings | `{ fileName: string; format?: Format; filterData?: boolean; }` | - | Настройки экспорта в тулбаре |
+| exportSettings | `{ fileName: string; filterData?: boolean; exportToCSV?(args: ExportProps<TData>): void; exportToXLSX?(args: ExportProps<TData>): void; }` | - | Настройки экспорта в тулбаре |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |

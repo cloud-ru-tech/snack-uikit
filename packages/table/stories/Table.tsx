@@ -10,6 +10,8 @@ import componentReadme from '../README.md';
 import {
   ColumnDefinition,
   CopyCell,
+  exportToCSV,
+  exportToXLSX,
   HeaderContext,
   RowClickHandler,
   RowSelectionState,
@@ -284,7 +286,7 @@ const Template: StoryFn<StoryProps> = ({
         onRefresh={onRefresh}
         onRowClick={enableOnRowClick ? handleRowClick : undefined}
         rowPinning={pinSomeRows ? { top: PINNED_TOP_ROWS } : undefined}
-        exportSettings={showExport ? { fileName: 'test-export' } : undefined}
+        exportSettings={showExport ? { fileName: 'test-export', exportToCSV, exportToXLSX } : undefined}
       />
     </div>
   );
