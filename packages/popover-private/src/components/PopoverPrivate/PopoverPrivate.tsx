@@ -268,6 +268,7 @@ function PopoverPrivateComponent({
         onTouchStart={stopPropagation}
         onTouchEnd={stopPropagation}
         onTouchMove={stopPropagation}
+        data-placement={placement}
         {...getFloatingProps()}
       >
         {popoverContent}
