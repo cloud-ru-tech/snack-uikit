@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.5 (2024-09-06)
+
+
+### Bug Fixes
+
+* **PDS-623:** provide data-attribute for placement ([365bff0](https://github.com/cloud-ru-tech/snack-uikit/commit/365bff0e1299ea79bfc269f340c15049c409e7e0))
+
+
+
+
+
 ## 0.13.4 (2024-06-27)
 
 
