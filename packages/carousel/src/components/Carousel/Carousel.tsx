@@ -23,6 +23,8 @@ export type CarouselProps = WithSupportProps<{
   transition?: number;
   /** Переключение страниц свайпом @default true */
   swipe?: boolean;
+  /** Минимальная длина в px для активации свайпа @default 48 */
+  swipeActivateLength?: number;
   /** Использовать стрелки для переключения страниц @default true */
   arrows?: boolean;
   /** Использовать пагинацию для переключения страниц @default true */
@@ -50,6 +52,7 @@ export function Carousel({
   gap,
   state,
   infiniteScroll = false,
+  swipeActivateLength = 48,
   ...rest
 }: CarouselProps) {
   const scrollBy = useMemo(() => scrollByProp ?? Math.trunc(showItems), [showItems, scrollByProp]);
@@ -96,6 +99,7 @@ export function Carousel({
           slideCallback={slideCallback}
           page={page}
           gap={gap}
+          swipeActivateLength={swipeActivateLength}
         />
 
         {arrows && (

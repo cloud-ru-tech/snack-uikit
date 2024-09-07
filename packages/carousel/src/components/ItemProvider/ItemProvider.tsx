@@ -12,6 +12,7 @@ export type ItemProviderProps = {
   slideCallback(direction: number): void;
   transition: number;
   swipe: boolean;
+  swipeActivateLength: number;
   page: number;
   gap?: string;
 };
@@ -23,6 +24,7 @@ export function ItemProvider({
   slideCallback,
   transition,
   swipe,
+  swipeActivateLength,
   page,
   gap,
 }: ItemProviderProps) {
@@ -131,7 +133,7 @@ export function ItemProvider({
     if (drag.finished) {
       return;
     }
-    if (Math.abs(drag.drag) < computedValues.itemWidth / 2) {
+    if (Math.abs(drag.drag) < swipeActivateLength) {
       return setDrag({
         initial: transform,
         start: 0,
