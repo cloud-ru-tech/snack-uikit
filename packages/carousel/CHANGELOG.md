@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.19 (2024-09-07)
+
+
+### Bug Fixes
+
+* **FF-5560:** fix swipe ([12714e8](https://github.com/cloud-ru-tech/snack-uikit/commit/12714e8c0318f7aac976fe327fa830ebd37cb3ed))
+
+
+
+
+
 ## 0.2.18 (2024-08-15)
 
 ### Only dependencies have been changed
