@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2024-09-09)
+
+
+### Features
+
+* **FF-0000:** improve segmented control value type ([e6f1d66](https://github.com/cloud-ru-tech/snack-uikit/commit/e6f1d66c132402a126d8b00a5918c1f3eb40f764))
+
+
+
+
+
 ## 0.1.4 (2024-09-06)
 
 ### Only dependencies have been changed
