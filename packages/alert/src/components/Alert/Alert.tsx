@@ -88,7 +88,7 @@ export function Alert({
           </div>
         )}
 
-        <div className={styles.contentLayout}>
+        <div className={styles.contentLayout} data-size={size}>
           {title && (
             <TruncateString
               text={title}
