@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.23.0 (2024-09-12)
+
+
+### BREAKING CHANGES
+
+
+* **FF-5443:** extracted export functions from component ([eba84e2](https://github.com/cloud-ru-tech/snack-uikit/commit/eba84e2a67efba27300c0a952890ea3cb61c8794))
+
+
+
+
 ## 0.22.2 (2024-09-06)
 
 ### Only dependencies have been changed
