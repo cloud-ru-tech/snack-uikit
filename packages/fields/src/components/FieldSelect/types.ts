@@ -116,6 +116,9 @@ type FiledSelectCommonProps = WithSupportProps<{
 
   open?: boolean;
 
+  /** Включить нечеткий поиск  */
+  enableFuzzySearch?: boolean;
+
   onOpenChange?(open: boolean): void;
 
   selectedOptionFormatter?: SelectedOptionFormatter;

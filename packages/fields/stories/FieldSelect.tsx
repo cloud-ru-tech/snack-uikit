@@ -142,6 +142,7 @@ fieldSelect.args = {
   showClearButton: true,
   showMoreOptions: false,
   untouchableScrollbars: false,
+  enableFuzzySearch: true,
 };
 
 fieldSelect.argTypes = {

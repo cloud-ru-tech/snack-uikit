@@ -21,11 +21,10 @@ import { useValueControl } from '../../hooks';
 import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
-import { useButtons, useHandleOnKeyDown, useSearchInput } from './hooks';
-import { useFuzzySearch } from './legacy';
+import { useButtons, useHandleOnKeyDown, useSearch, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
 import { FieldSelectSingleProps, ItemWithId, SelectedOptionFormatter } from './types';
-import { extractListProps, getArrowIcon, updateItems } from './utils';
+import { checkisSearchUnavailable, extractListProps, getArrowIcon, updateItems } from './utils';
 
 const defaultSelectedOptionFormatter: SelectedOptionFormatter = item =>
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -58,6 +57,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     open: openProp,
     onOpenChange,
     selectedOptionFormatter = defaultSelectedOptionFormatter,
+    enableFuzzySearch = true,
     ...rest
   } = props;
   const localRef = useRef<HTMLInputElement>(null);
@@ -177,11 +177,13 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     }
   };
 
-  const fuzzySearch = useFuzzySearch(items);
-  const result =
-    autocomplete || !searchable || selectedOptionFormatter(selectedItem) === inputValue
-      ? items
-      : fuzzySearch(inputValue);
+  const filterFunction = useSearch(items, enableFuzzySearch);
+  const isSearchUnavailable = checkisSearchUnavailable({
+    autocomplete,
+    searchable,
+    isSameValue: selectedOptionFormatter(selectedItem) === inputValue,
+  });
+  const result = isSearchUnavailable ? items : filterFunction(inputValue);
 
   const fieldValidationState = getValidationState({ validationState, error: rest.error });
 

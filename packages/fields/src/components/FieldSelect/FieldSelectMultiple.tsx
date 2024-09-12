@@ -12,11 +12,10 @@ import { useValueControl } from '../../hooks';
 import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
-import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearchInput } from './hooks';
-import { useFuzzySearch } from './legacy';
+import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearch, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
 import { FieldSelectMultipleProps, ItemWithId, SelectedOptionFormatter } from './types';
-import { extractListProps, getArrowIcon, updateMultipleItems } from './utils';
+import { checkisSearchUnavailable, extractListProps, getArrowIcon, updateMultipleItems } from './utils';
 
 const BASE_MIN_WIDTH = 4;
 
@@ -48,6 +47,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     addOptionByEnter = false,
     untouchableScrollbars = false,
     open: openProp,
+    enableFuzzySearch = true,
     onOpenChange,
     selectedOptionFormatter = defaultSelectedOptionFormatter,
     ...rest
@@ -158,8 +158,13 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     }
   };
 
-  const fuzzySearch = useFuzzySearch(items);
-  const result = autocomplete || !searchable || prevInputValue.current === inputValue ? items : fuzzySearch(inputValue);
+  const searchFunction = useSearch(items, enableFuzzySearch);
+  const isSearchUnavailable = checkisSearchUnavailable({
+    autocomplete,
+    searchable,
+    isSameValue: prevInputValue.current === inputValue,
+  });
+  const result = isSearchUnavailable ? items : searchFunction(inputValue);
 
   const fieldValidationState = getValidationState({ validationState, error: rest.error });
 

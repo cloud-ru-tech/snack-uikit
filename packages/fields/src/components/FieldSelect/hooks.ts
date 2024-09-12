@@ -1,18 +1,20 @@
+import FuzzySearch from 'fuzzy-search';
 import { KeyboardEvent, KeyboardEventHandler, MouseEvent, RefObject, useCallback, useMemo, useRef } from 'react';
 import { Handler } from 'uncontrollable';
 
 import { useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import {
-  // extractChildIds,
   isAccordionItemProps,
   isNextListItemProps,
+  ItemProps,
+  kindFlattenItems,
   SelectionSingleValueType,
 } from '@snack-uikit/list';
 
 import { useCopyButton, useValueControl } from '../../hooks';
 import { extractChildIds } from './legacy';
 import { ItemWithId, SearchState, SelectedOptionFormatter } from './types';
-import { isBaseOptionProps } from './utils';
+import { getValueByPath, isBaseOptionProps } from './utils';
 
 type UseHandleOnKeyDownProps = {
   inputKeyDownNavigationHandler: KeyboardEventHandler<HTMLInputElement>;
@@ -154,5 +156,42 @@ export function useHandleDeleteItem(setValue: Handler) {
       }
     },
     [setValue],
+  );
+}
+
+const DEFAULT_MIN_SEARCH_INPUT_LENGTH = 1;
+const COMMON_FIELDS_TO_SEARCH = ['content.option', 'content.caption', 'content.description'];
+
+/**
+ * Четкий и нечеткий поиск среди айтемов по полям 'content.option', 'content.caption', 'content.description', 'label'
+ */
+export function useSearch(items: ItemProps[], enableFuzzySearch: boolean = true) {
+  const flattenItems = useMemo(() => {
+    const { flattenItems } = kindFlattenItems({ items });
+
+    return Object.values(flattenItems);
+  }, [items]);
+
+  const filterFunction = useCallback(
+    (search: string) => {
+      if (!enableFuzzySearch) {
+        return flattenItems.filter(item =>
+          [...COMMON_FIELDS_TO_SEARCH, 'label'].some(key => {
+            const value = getValueByPath(item, key);
+
+            return value.toLowerCase().includes(search.toLowerCase());
+          }),
+        );
+      }
+
+      const searcher = new FuzzySearch(flattenItems, COMMON_FIELDS_TO_SEARCH, {});
+      return searcher.search(search);
+    },
+    [enableFuzzySearch, flattenItems],
+  );
+
+  return useCallback(
+    (search: string) => (search.length >= DEFAULT_MIN_SEARCH_INPUT_LENGTH ? filterFunction(search) : items),
+    [filterFunction, items],
   );
 }

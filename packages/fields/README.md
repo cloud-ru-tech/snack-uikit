@@ -158,6 +158,7 @@ const [isOpen, setIsOpen] = useState(false);
   size='s'
   validationState='error'
   prefixIcon={<PlaceholderSVG />}
+  enableFuzzySearch={true}
 />;
 ```
 ## Особенности работы FieldStepper-a
@@ -379,6 +380,7 @@ FieldStepper в основном предназначен для работы с
 | autocomplete | `boolean` | - |  |
 | addOptionByEnter | `boolean` | - |  |
 | open | `boolean` | - |  |
+| enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
 | onOpenChange | `(open: boolean) => void` | - |  |
 | selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
