@@ -223,7 +223,7 @@ FieldStepper в основном предназначен для работы с
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| autoComplete | `boolean` | false | Включен ли автокомплит для поля |
+| autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
@@ -290,7 +290,7 @@ FieldStepper в основном предназначен для работы с
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| autoComplete | `boolean` | false | Включен ли автокомплит для поля |
+| autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
 | error | `string` | - |  |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
@@ -343,7 +343,6 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| untouchableScrollbars* | `unknown` | - |  |
 | options* | `OptionProps[]` | - |  |
 | disabled | `boolean` | false | Является ли поле деактивированным |
 | readonly | `boolean` | false false | Является ли поле доступным только для чтения |
@@ -382,6 +381,7 @@ FieldStepper в основном предназначен для работы с
 | open | `boolean` | - |  |
 | onOpenChange | `(open: boolean) => void` | - |  |
 | selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
+| untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
