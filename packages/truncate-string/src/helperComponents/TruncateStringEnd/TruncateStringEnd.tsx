@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import throttle from 'lodash.throttle';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';
-import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, useLayoutEffect, WithSupportProps } from '@snack-uikit/utils';
 
 import { isEllipsisActive } from '../../helpers';
 import styles from './styles.module.scss';

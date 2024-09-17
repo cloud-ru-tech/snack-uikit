@@ -1,5 +1,7 @@
 import cn from 'classnames';
-import { useContext, useLayoutEffect, useRef } from 'react';
+import { useContext, useRef } from 'react';
+
+import { useLayoutEffect } from '@snack-uikit/utils';
 
 import { AUTOFOCUS, IN_RANGE_POSITION } from '../../constants';
 import { Cell } from '../../types';

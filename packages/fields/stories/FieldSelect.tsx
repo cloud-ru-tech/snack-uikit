@@ -1,10 +1,11 @@
 import { Meta, StoryFn } from '@storybook/react';
-import React, { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Avatar } from '@snack-uikit/avatar';
 import { DaySVG } from '@snack-uikit/icons';
 import { SelectionSingleValueType } from '@snack-uikit/list';
 import { Tag } from '@snack-uikit/tag';
+import { useLayoutEffect } from '@snack-uikit/utils';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';

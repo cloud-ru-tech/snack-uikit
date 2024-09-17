@@ -1,4 +1,6 @@
-import { Children, ReactElement, RefObject, useLayoutEffect, useMemo, useState } from 'react';
+import { Children, ReactElement, RefObject, useMemo, useState } from 'react';
+
+import { useLayoutEffect } from '@snack-uikit/utils';
 
 type OverflowState = {
   left: boolean;

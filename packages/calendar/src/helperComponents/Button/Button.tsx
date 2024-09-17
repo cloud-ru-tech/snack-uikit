@@ -1,6 +1,6 @@
-import { JSX, KeyboardEvent, useCallback, useContext, useLayoutEffect, useRef } from 'react';
+import { JSX, KeyboardEvent, useCallback, useContext, useRef } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, useLayoutEffect, WithSupportProps } from '@snack-uikit/utils';
 
 import { CalendarContext } from '../CalendarContext';
 import styles from './styles.module.scss';

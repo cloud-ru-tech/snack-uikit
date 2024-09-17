@@ -1,4 +1,5 @@
-import { useLayoutEffect, useState, memo } from 'react';
+import { useState, memo } from 'react';
+import { useLayoutEffect } from '@snack-uikit/utils';
 
 function SpriteInner({ content }: { content: string }) {
   const [div] = useState(() => document.createElement('div'));

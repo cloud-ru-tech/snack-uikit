@@ -1,4 +1,6 @@
-import { useCallback, useLayoutEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
+
+import { useLayoutEffect } from './useIsomorphicLayoutEffect';
 
 export function useEventHandler<T extends (...args: never[]) => unknown>(handler: T) {
   const handlerRef = useRef<T | null>(null);

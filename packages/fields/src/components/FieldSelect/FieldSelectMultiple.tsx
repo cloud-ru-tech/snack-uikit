@@ -1,11 +1,11 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useLayoutEffect, useRef, useState } from 'react';
+import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useRef, useState } from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { BaseItemProps, Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
 import { Tag } from '@snack-uikit/tag';
-import { extractSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, useLayoutEffect } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';

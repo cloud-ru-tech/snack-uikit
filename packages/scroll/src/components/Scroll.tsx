@@ -2,17 +2,9 @@ import 'overlayscrollbars/styles/overlayscrollbars.css';
 
 import cn from 'classnames';
 import { OverlayScrollbarsComponent, OverlayScrollbarsComponentRef } from 'overlayscrollbars-react';
-import {
-  forwardRef,
-  PropsWithChildren,
-  useCallback,
-  useImperativeHandle,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, PropsWithChildren, useCallback, useImperativeHandle, useRef, useState } from 'react';
 
-import { WithSupportProps } from '@snack-uikit/utils';
+import { useLayoutEffect, WithSupportProps } from '@snack-uikit/utils';
 
 import {
   AUTOSCROLL_ENABLE_LIMIT,

@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import { useLayoutEffect } from '@snack-uikit/utils';
 
 type UseOffsetProps = {
   triggerClassName?: string;
@@ -8,8 +10,7 @@ type UseOffsetProps = {
 export function useOffset({ triggerClassName, offsetProp }: UseOffsetProps) {
   const [offset, setOffset] = useState(0);
 
-  // TODO: change to useLayoutEffect when wrapper for browser/server check will be ready
-  useEffect(() => {
+  useLayoutEffect(() => {
     const elem = document.querySelector('.' + String(triggerClassName).split(/\s+/g).map(CSS.escape).join('.'));
     const styles = elem ? getComputedStyle(elem) : null;
     const rawOffset = styles ? styles.getPropertyValue('--offset') : null;

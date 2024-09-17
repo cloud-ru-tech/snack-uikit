@@ -1,8 +1,9 @@
-import { MouseEvent, ReactElement, ReactNode, useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
+import { MouseEvent, ReactElement, ReactNode, useCallback, useContext, useRef, useState } from 'react';
 
 import { KebabSVG } from '@snack-uikit/icons';
 import { BaseItemProps, Droplist } from '@snack-uikit/list';
 import { Tag } from '@snack-uikit/tag';
+import { useLayoutEffect } from '@snack-uikit/utils';
 
 import { TEST_IDS } from '../../constants';
 import { FunctionBadgeContext } from '../../context';

@@ -7,14 +7,13 @@ import {
   KeyboardEventHandler,
   useCallback,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
-import { extractSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, useLayoutEffect } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';
