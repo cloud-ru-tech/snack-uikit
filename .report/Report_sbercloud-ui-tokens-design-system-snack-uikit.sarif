@@ -1,0 +1,890 @@
+{
+  "version": "2.1.0",
+  "$schema": "http://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Positive Technologies Application Inspector",
+          "version": "4.7.3.37870",
+          "organization": "Positive Technologies",
+          "informationUri": "https://www.ptsecurity.com/ww-en/products/ai/",
+          "rules": [
+            {
+              "id": "Log Forging",
+              "name": "Log Forging",
+              "cve": "",
+              "fullDescription": {
+                "text": "<p>An application does not sufficiently validate user input that allows an attacker to create a malformed log file or inject an arbitrary code.</p>\n<p>A web application can generate log file entities based on user input data. Because of insufficient data processing, an attacker can inject dividing characters and therefore create a malformed log file entity, making it impossible to automatically process this file. Also, an attacker can inject malware and use it for further attacks.</p>\n<p>Please fins the vulnerable script example below:</p>\n<pre><code>    $result = $authService-&gt;authenticate($login, $password);\n\n    if (!$result-&gt;isValid()) {\n        $log-&gt;write(&quot;Authentication failed for user '$login'&quot;);\n    }\n</code></pre>\n<h1 id=\"recommendations\">Recommendations</h1>\n<p>We recommend you process log file data to delete or escape formaztting characters.</p>\n<h1 id=\"links\">Links</h1>\n<ul>\n<li><p><a href=\"https://owasp.org/www-community/attacks/Log_Injection\" title=\"https://owasp.org/www-community/attacks/Log_Injection\">Log Forging</a></p>\n</li>\n<li><p><a href=\"http://cwe.mitre.org/data/definitions/117.html\" title=\"http://cwe.mitre.org/data/definitions/117.html\">CWE-117: Improper Output Neutralization for Logs</a></p>\n</li>\n</ul>\n",
+                "markdown": "An application does not sufficiently validate user input that allows an attacker to create a malformed log file or inject an arbitrary code.\n\nA web application can generate log file entities based on user input data. Because of insufficient data processing, an attacker can inject dividing characters and therefore create a malformed log file entity, making it impossible to automatically process this file. Also, an attacker can inject malware and use it for further attacks.\n\nPlease fins the vulnerable script example below:\n```\n    $result = $authService->authenticate($login, $password);\n\n    if (!$result->isValid()) {\n        $log->write(\"Authentication failed for user '$login'\");\n    }\n```\n# Recommendations\n\nWe recommend you process log file data to delete or escape formaztting characters.\n\n# Links\n\n*   [Log Forging](https://owasp.org/www-community/attacks/Log_Injection \"https://owasp.org/www-community/attacks/Log_Injection\")\n\n*   [CWE-117: Improper Output Neutralization for Logs](http://cwe.mitre.org/data/definitions/117.html \"http://cwe.mitre.org/data/definitions/117.html\")"
+              },
+              "defaultConfiguration": {
+                "level": "warning",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Log Forging"
+                }
+              }
+            },
+            {
+              "id": "DC-FP-CVE-2024-437885.86.0",
+              "name": "webpack 5.86.0",
+              "cve": "CVE-2024-43788",
+              "fullDescription": {
+                "text": "\rWebpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset. The webpack developers have discovered a DOM Clobbering vulnerability in Webpack’s `AutoPublicPathRuntimeModule`. The DOM Clobbering gadget in the module can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an `img` tag with an unsanitized `name` attribute) are present. Real-world exploitation of this gadget has been observed in the Canvas LMS which allows a XSS attack to happen through a javascript code compiled by Webpack (the vulnerable part is from Webpack). DOM Clobbering is a type of code-reuse attack where the attacker first embeds a piece of non-script, seemingly benign HTML markups in the webpage (e.g. through a post or comment) and leverages the gadgets (pieces of js code) living in the existing javascript code to transform it into executable code. This vulnerability can lead to cross-site scripting (XSS) on websites that include Webpack-generated files and allow users to inject certain scriptless HTML tags with improperly sanitized name or id attributes. This issue has been addressed in release version 5.94.0. All users are advised to upgrade. There are no known workarounds for this issue.",
+                "markdown": "\rWebpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset. The webpack developers have discovered a DOM Clobbering vulnerability in Webpack’s `AutoPublicPathRuntimeModule`. The DOM Clobbering gadget in the module can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an `img` tag with an unsanitized `name` attribute) are present. Real-world exploitation of this gadget has been observed in the Canvas LMS which allows a XSS attack to happen through a javascript code compiled by Webpack (the vulnerable part is from Webpack). DOM Clobbering is a type of code-reuse attack where the attacker first embeds a piece of non-script, seemingly benign HTML markups in the webpage (e.g. through a post or comment) and leverages the gadgets (pieces of js code) living in the existing javascript code to transform it into executable code. This vulnerability can lead to cross-site scripting (XSS) on websites that include Webpack-generated files and allow users to inject certain scriptless HTML tags with improperly sanitized name or id attributes. This issue has been addressed in release version 5.94.0. All users are advised to upgrade. There are no known workarounds for this issue."
+              },
+              "defaultConfiguration": {
+                "level": "warning",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "webpack 5.86.0"
+                }
+              }
+            },
+            {
+              "id": "nginx.conf server_tokens",
+              "name": "Server_tokens parameter",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Server_tokens parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Enables or disables emitting nginx version in error messages and in the “Server” response header field. Attacker could use known vulnerabilities in current web-server's version. Recommended to deactivate.</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "Enables or disables emitting nginx version in error messages and in the “Server” response header field. Attacker could use known vulnerabilities in current web-server's version. Recommended to deactivate."
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Server_tokens parameter"
+                }
+              }
+            },
+            {
+              "id": "nginx.conf ssl_prefer_server_ciphers",
+              "name": "Ssl_prefer_server_ciphers directive",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_prefer_server_ciphers directive</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">If ssl_prefer_server_ciphers directive value is Off, in certain conditions an attacker can conduct BEAST attack (Browser Exploit Against SSL/TLS). If an attacker can listen user traffic MITM) via SSL (if earlier TLS versions are used) and impact the traffic in user's browser considering Same Origin Policy (for example via XSS or HTML Injection attack), this makes it possible to compromise user credentials send via this protocol.​</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "If ssl_prefer_server_ciphers directive value is Off, in certain conditions an attacker can conduct BEAST attack (Browser Exploit Against SSL/TLS). If an attacker can listen user traffic MITM) via SSL (if earlier TLS versions are used) and impact the traffic in user's browser considering Same Origin Policy (for example via XSS or HTML Injection attack), this makes it possible to compromise user credentials send via this protocol.​"
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Ssl_prefer_server_ciphers directive"
+                }
+              }
+            },
+            {
+              "id": "nginx.conf ssl_stapling",
+              "name": "Ssl_stapling parameter",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_stapling parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Allow or deny attachment of OCSP-responses by the server.</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "Allow or deny attachment of OCSP-responses by the server."
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Ssl_stapling parameter"
+                }
+              }
+            },
+            {
+              "id": "nginx.conf ssl",
+              "name": "Ssl parameter",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Enable HTTPS protocol for current virtual server.</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "Enable HTTPS protocol for current virtual server."
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Ssl parameter"
+                }
+              }
+            },
+            {
+              "id": "nginx.conf ssl_certificate",
+              "name": "Ssl_certificate parameter",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_certificate parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Specifies file with PEM-certificate for current virtual server.</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "Specifies file with PEM-certificate for current virtual server."
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Ssl_certificate parameter"
+                }
+              }
+            },
+            {
+              "id": "nginx.conf ssl_certificate_key",
+              "name": "Ssl_certificate_key parameter",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_certificate_key parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Specifies file with PEM secret key for current virtual server.</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "Specifies file with PEM secret key for current virtual server."
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Ssl_certificate_key parameter"
+                }
+              }
+            },
+            {
+              "id": "nginx.conf ssl_session_cache",
+              "name": "Ssl_session_cache parameter",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_session_cache parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Specifies size and type of caches that store session parameters.</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "Specifies size and type of caches that store session parameters."
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Ssl_session_cache parameter"
+                }
+              }
+            },
+            {
+              "id": "nginx.conf ssl_ciphers",
+              "name": "Ssl_ciphers parameter",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_ciphers parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Specifies allowed ciphers. Ciphers are specified in a format supported by the OpenSSL library.</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "Specifies allowed ciphers. Ciphers are specified in a format supported by the OpenSSL library."
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Ssl_ciphers parameter"
+                }
+              }
+            },
+            {
+              "id": "nginx.conf error_page",
+              "name": "error_page parameter",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>error_page parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Parameter error_page sets user-defined error pages. If it is not set some valuable infromation such as stack traces could be shown to users through error pages.</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "Parameter error_page sets user-defined error pages. If it is not set some valuable infromation such as stack traces could be shown to users through error pages."
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "error_page parameter"
+                }
+              }
+            },
+            {
+              "id": "Hardcoded Password PM",
+              "name": "Use of Hard-coded Password",
+              "cve": "",
+              "fullDescription": {
+                "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Use of Hard-coded Password</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">The software contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.\n\nA hard-coded password typically leads to a significant authentication failure that can be difficult for the system administrator to detect. Once detected, it can be difficult to fix, so the administrator may be forced into disabling the product entirely. There are two main variations:\n\n      Inbound: the software contains an authentication mechanism that checks for a hard-coded password.\n      Outbound: the software connects to another system or component, and it contains hard-coded password for connecting to that component.\n\nIn the Inbound variant, a default administration account is created, and a simple password is hard-coded into the product and associated with that account. This hard-coded password is the same for each installation of the product, and it usually cannot be changed or disabled by system administrators without manually modifying the program, or otherwise patching the software. If the password is ever discovered or published (a common occurrence on the Internet), then anybody with knowledge of this password can access the product. Finally, since all installations of the software will have the same password, even across different organizations, this enables massive attacks such as worms to take place.\n\nThe Outbound variant applies to front-end systems that authenticate with a back-end service. The back-end service may require a fixed password which can be easily discovered. The programmer may simply hard-code those back-end credentials into the front-end software. Any user of that program may be able to extract the password. Client-side systems with hard-coded passwords pose even more of a threat, since the extraction of a password from a binary is usually very simple.</p>\n\n    </main>\n</body>\n</html>",
+                "markdown": "The software contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.\n\nA hard-coded password typically leads to a significant authentication failure that can be difficult for the system administrator to detect. Once detected, it can be difficult to fix, so the administrator may be forced into disabling the product entirely. There are two main variations:\n\n      Inbound: the software contains an authentication mechanism that checks for a hard-coded password.\n      Outbound: the software connects to another system or component, and it contains hard-coded password for connecting to that component.\n\nIn the Inbound variant, a default administration account is created, and a simple password is hard-coded into the product and associated with that account. This hard-coded password is the same for each installation of the product, and it usually cannot be changed or disabled by system administrators without manually modifying the program, or otherwise patching the software. If the password is ever discovered or published (a common occurrence on the Internet), then anybody with knowledge of this password can access the product. Finally, since all installations of the software will have the same password, even across different organizations, this enables massive attacks such as worms to take place.\n\nThe Outbound variant applies to front-end systems that authenticate with a back-end service. The back-end service may require a fixed password which can be easily discovered. The programmer may simply hard-code those back-end credentials into the front-end software. Any user of that program may be able to extract the password. Client-side systems with hard-coded passwords pose even more of a threat, since the extraction of a password from a binary is usually very simple."
+              },
+              "defaultConfiguration": {
+                "level": "note",
+                "enabled": true
+              },
+              "messageStrings": {
+                "default": {
+                  "text": "Use of Hard-coded Password"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "Log Forging",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./scripts/utils/console.ts"
+                }
+                ,
+                "region": {
+                  "startLine": 19,
+                  "snippet": {
+                    "text": "console.log(colors[themes[theme]](`${message}\\n`))"
+                  }
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "./scripts/utils/console.ts"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "snippet": {
+                              "text": "theme"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "Entry point"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "./scripts/utils/console.ts"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "snippet": {
+                              "text": "theme"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "Data entry point"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "./scripts/utils/console.ts"
+                          },
+                          "region": {
+                            "startLine": 19,
+                            "snippet": {
+                              "text": "theme"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "Data changes"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "./scripts/utils/console.ts"
+                          },
+                          "region": {
+                            "startLine": 19,
+                            "snippet": {
+                              "text": "themes[theme]"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "Data changes"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "./scripts/utils/console.ts"
+                          },
+                          "region": {
+                            "startLine": 19,
+                            "snippet": {
+                              "text": "colors"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "Data changes"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "./scripts/utils/console.ts"
+                          },
+                          "region": {
+                            "startLine": 19,
+                            "snippet": {
+                              "text": "colors[themes[theme]](`${message}\\n`)"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "Data changes"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "./scripts/utils/console.ts"
+                          },
+                          "region": {
+                            "startLine": 19,
+                            "snippet": {
+                              "text": "console.log(colors[themes[theme]](`${message}\\n`))"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "Exit point"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "DC-FP-CVE-2024-437885.86.0",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./package-lock.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf server_tokens",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf ssl_prefer_server_ciphers",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf ssl_stapling",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf ssl",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf ssl_certificate",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf ssl_certificate_key",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf ssl_session_cache",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf ssl_ciphers",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nginx.conf error_page",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./nginx/nginx.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "Hardcoded Password PM",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./packages/code-editor/src/components/constants.ts"
+                }
+                ,
+                "region": {
+                  "startLine": 8,
+                  "snippet": {
+                    "text": "token: 'comment'"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "Hardcoded Password PM",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./packages/code-editor/src/components/constants.ts"
+                }
+                ,
+                "region": {
+                  "startLine": 9,
+                  "snippet": {
+                    "text": "token: 'string'"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "Hardcoded Password PM",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./packages/code-editor/src/components/constants.ts"
+                }
+                ,
+                "region": {
+                  "startLine": 10,
+                  "snippet": {
+                    "text": "token: 'constant'"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "Hardcoded Password PM",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./packages/code-editor/src/components/constants.ts"
+                }
+                ,
+                "region": {
+                  "startLine": 11,
+                  "snippet": {
+                    "text": "token: 'keyword'"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "Hardcoded Password PM",
+          "suppressions": [
+          ],
+          "message": {
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "./packages/input-private/src/components/InputPrivate/constants.ts"
+                }
+                ,
+                "region": {
+                  "startLine": 3,
+                  "snippet": {
+                    "text": "Password: 'password'"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

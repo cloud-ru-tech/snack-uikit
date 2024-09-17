@@ -1,0 +1,2530 @@
+{
+    "ScanInfo": {
+        "TotalFileCount": 1967,
+        "ScannedFileCount": 1967,
+        "TotalUrlCount": 0,
+        "ScannedUrlCount": 0,
+        "VulnerableFiles": 5,
+        "TotalVulnerabilityCount": 28,
+        "AcceptedVulnerabilities": 0,
+        "DiscardedVulnerabilities": 0,
+        "SuppressedVulnerabilities": 0,
+        "NewVulnerabilities": 0,
+        "PreviousVulnerabilities": 28,
+        "PolicyState": 0,
+        "NonFilteredVulnerabilitiesCount": 28,
+        "NonFilteredAcceptedVulnerabilitiesCount": 0,
+        "NonFilteredDiscardedVulnerabilitiesCount": 0,
+        "NonFilteredSuppressedVulnerabilitiesCount": 0,
+        "NonFilteredNewVulnerabilitiesCount": 0,
+        "NonFilteredPreviousVulnerabilitiesCount": 28,
+        "VulnerableLinks": 0,
+        "ScanDate": "17 September 2024",
+        "Settings": [
+            {
+                "Name": "Project",
+                "Value": "sbercloud-ui-tokens-design-system-snack-uikit",
+                "Order": 1,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Scan object",
+                "Value": "snack-uikit",
+                "Order": 2,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Website address",
+                "Value": "http://localhost",
+                "Order": 3,
+                "NeedLineBreak": false,
+                "IsExternalLink": true
+            },
+            {
+                "Name": "Application languages",
+                "Value": "JavaScript/TypeScript",
+                "Order": 3,
+                "NeedLineBreak": true,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Server version",
+                "Value": "4.7.3.37870",
+                "Order": 4,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Initiator",
+                "Value": "cloud-scan",
+                "Order": 5,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Scan duration",
+                "Value": "0:05:43",
+                "Order": 6,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Algorithm",
+                "Value": "Search starting from entry points, Search from available public and protected methods",
+                "Order": 7,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Scan agent",
+                "Value": "ptai-agent-03",
+                "Order": 8,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Agent version",
+                "Value": "4.7.3.37870",
+                "Order": 9,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Agent OS",
+                "Value": "Linux",
+                "Order": 10,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            },
+            {
+                "Name": "Disabled modules",
+                "Value": "Search for vulnerable source code, Black-box search",
+                "Order": 12,
+                "NeedLineBreak": false,
+                "IsExternalLink": false
+            }
+        ],
+        "Policies": "[]"
+    },
+    "Items": [
+        {
+            "MatchedCode": "",
+            "SourceFile": "./scripts/utils/console.ts : 19",
+            "VulnerableCode": "console.log(colors[themes[theme]](`${message}\\n`))",
+            "TypeKey": "Vulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "B5XJRwTPYq1kvx5bWBgaw5cOwak=",
+            "Type": {
+                "Id": "Log Forging",
+                "GroupId": "Log Forginglevel-medium",
+                "DisplayName": "Log Forging",
+                "Value": "Log Forging"
+            },
+            "Counter": 1999,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 30,
+                "DisplayName": "Medium",
+                "Value": "level-medium"
+            },
+            "Owasp": {
+                "DisplayName": "Security Logging and Monitoring Failures",
+                "Value": "A09"
+            },
+            "Owaspm": {
+                "DisplayName": "Insecure data storage",
+                "Value": "2"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Injection flaws",
+                        "Value": "6.5.1"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Information input validation",
+                        "Value": "SI-10"
+                }
+            ],
+            "CweId": "117",
+            "ParentItem": "Taint-Log Forging-[19,3..53)",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "DataFlowElements": [
+                {
+                    "FileName": "...\\console.ts",
+                    "FullPath": "./scripts/utils/console.ts",
+                    "EntryType": "EntryPoint",
+                    "EntryTypeDisplayValue": "Entry point",
+                    "Lines": [
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 13,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "  error: 'red',",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 14,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "} as const;",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 16,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "colors.setTheme(themes);",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "EntryPoint",
+                            "LineNumber": 18,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "const log = (message: string, ",
+                                    "PartType": "Code"
+                                },
+                                {
+                                    "CodeLinePart": "theme",
+                                    "PartType": "EntryPoint"
+                                },
+                                {
+                                    "CodeLinePart": ": keyof typeof themes = 'warn'): void =&gt; {",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 19,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "  console.log(colors[themes[theme]](`${message}\\n`));",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 20,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "};",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 22,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logError = (message: string) =&gt; log(message, 'error');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "FileName": "...\\console.ts",
+                    "FullPath": "./scripts/utils/console.ts",
+                    "EntryType": "DataEntryPoint",
+                    "EntryTypeDisplayValue": "Data entry point",
+                    "Lines": [
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 13,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "  error: 'red',",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 14,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "} as const;",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 16,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "colors.setTheme(themes);",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "DataEntryPoint",
+                            "LineNumber": 18,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "const log = (message: string, ",
+                                    "PartType": "Code"
+                                },
+                                {
+                                    "CodeLinePart": "theme",
+                                    "PartType": "DataEntryPoint"
+                                },
+                                {
+                                    "CodeLinePart": ": keyof typeof themes = 'warn'): void =&gt; {",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 19,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "  console.log(colors[themes[theme]](`${message}\\n`));",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 20,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "};",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 22,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logError = (message: string) =&gt; log(message, 'error');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "FileName": "...\\console.ts",
+                    "FullPath": "./scripts/utils/console.ts",
+                    "EntryType": "DataOperation",
+                    "EntryTypeDisplayValue": "Data changes",
+                    "Lines": [
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 14,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "} as const;",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 16,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "colors.setTheme(themes);",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 18,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "const log = (message: string, theme: keyof typeof themes = 'warn'): void =&gt; {",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "DataOperation",
+                            "LineNumber": 19,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "  console.log(colors[",
+                                    "PartType": "Code"
+                                },
+                                {
+                                    "CodeLinePart": "theme",
+                                    "PartType": "DataOperation"
+                                },
+                                {
+                                    "CodeLinePart": "s[theme]](`${message}\\n`));",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 20,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "};",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 22,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logError = (message: string) =&gt; log(message, 'error');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 23,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logInfo = (message: string) =&gt; log(message, 'info');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "FileName": "...\\console.ts",
+                    "FullPath": "./scripts/utils/console.ts",
+                    "EntryType": "DataOperation",
+                    "EntryTypeDisplayValue": "Data changes",
+                    "Lines": [
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 14,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "} as const;",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 16,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "colors.setTheme(themes);",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 18,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "const log = (message: string, theme: keyof typeof themes = 'warn'): void =&gt; {",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "DataOperation",
+                            "LineNumber": 19,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "  console.log(colors[",
+                                    "PartType": "Code"
+                                },
+                                {
+                                    "CodeLinePart": "themes[theme]",
+                                    "PartType": "DataOperation"
+                                },
+                                {
+                                    "CodeLinePart": "](`${message}\\n`));",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 20,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "};",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 22,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logError = (message: string) =&gt; log(message, 'error');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 23,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logInfo = (message: string) =&gt; log(message, 'info');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "FileName": "...\\console.ts",
+                    "FullPath": "./scripts/utils/console.ts",
+                    "EntryType": "DataOperation",
+                    "EntryTypeDisplayValue": "Data changes",
+                    "Lines": [
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 14,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "} as const;",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 16,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "colors.setTheme(themes);",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 18,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "const log = (message: string, theme: keyof typeof themes = 'warn'): void =&gt; {",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "DataOperation",
+                            "LineNumber": 19,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "  console.log(",
+                                    "PartType": "Code"
+                                },
+                                {
+                                    "CodeLinePart": "colors",
+                                    "PartType": "DataOperation"
+                                },
+                                {
+                                    "CodeLinePart": "[themes[theme]](`${message}\\n`));",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 20,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "};",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 22,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logError = (message: string) =&gt; log(message, 'error');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 23,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logInfo = (message: string) =&gt; log(message, 'info');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "FileName": "...\\console.ts",
+                    "FullPath": "./scripts/utils/console.ts",
+                    "EntryType": "DataOperation",
+                    "EntryTypeDisplayValue": "Data changes",
+                    "Lines": [
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 14,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "} as const;",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 16,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "colors.setTheme(themes);",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 18,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "const log = (message: string, theme: keyof typeof themes = 'warn'): void =&gt; {",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "DataOperation",
+                            "LineNumber": 19,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "  console.log(",
+                                    "PartType": "Code"
+                                },
+                                {
+                                    "CodeLinePart": "colors[themes[theme]](`${message}\\n`)",
+                                    "PartType": "DataOperation"
+                                },
+                                {
+                                    "CodeLinePart": ");",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 20,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "};",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 22,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logError = (message: string) =&gt; log(message, 'error');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 23,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logInfo = (message: string) =&gt; log(message, 'info');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "FileName": "...\\console.ts",
+                    "FullPath": "./scripts/utils/console.ts",
+                    "EntryType": "VulnerableCode",
+                    "EntryTypeDisplayValue": "Exit point",
+                    "Lines": [
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 14,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "} as const;",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 16,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "colors.setTheme(themes);",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 18,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "const log = (message: string, theme: keyof typeof themes = 'warn'): void =&gt; {",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "VulnerableCode",
+                            "LineNumber": 19,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "  ",
+                                    "PartType": "Code"
+                                },
+                                {
+                                    "CodeLinePart": "console.log(colors[themes[theme]](`${message}\\n`))",
+                                    "PartType": "VulnerableCode"
+                                },
+                                {
+                                    "CodeLinePart": ";",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 20,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "};",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 22,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logError = (message: string) =&gt; log(message, 'error');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        },
+                        {
+                            "LineType": "Code",
+                            "LineNumber": 23,
+                            "CodeLines": [
+                                {
+                                    "CodeLinePart": "export const logInfo = (message: string) =&gt; log(message, 'info');",
+                                    "PartType": "Code"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "IsPotential": false,
+            "IsSecondOrder": false,
+            "Function": "",
+            "Entry": "./scripts/utils/console.ts : 18",
+            "NumberLine": 19,
+            "Exploit": "",
+            "RawLine": "console.log(colors[themes[theme]](`${message}\\n`))",
+            "AdditionalConditions": "",
+            "ScanMode": "FromEntryPoint"
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./package-lock.json",
+            "VulnerableCode": "",
+            "TypeKey": "FingerprintVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "xWnTNlssPVDDRlFGE/5citQRWdM=",
+            "Type": {
+                "Id": "DC-FP-CVE-2024-437885.86.0",
+                "GroupId": "webpack 5.86.0level-medium",
+                "DisplayName": "webpack 5.86.0",
+                "Value": "IssueDetected"
+            },
+            "Counter": 2000,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 30,
+                "DisplayName": "Medium",
+                "Value": "level-medium"
+            },
+            "Owasp": {
+                "DisplayName": "Vulnarable and Outdated Components",
+                "Value": "A06"
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Ensure that all system components and software are protected from known vulnerabilities by installing applicable vendor-supplied security patches",
+                        "Value": "6.2"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "",
+            "ParentItem": "webpack5.86.0",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "Place": "webpack5.86.0",
+            "Component": "webpack",
+            "CveDescriptions": [
+                {
+                   "Key": "CVE-2024-43788",
+                   "Level": "",
+                   "Cvss2": {
+                                   "BaseScore": "",
+                                   "BaseVector": ""
+                            },
+                   "Cvss3": {
+                                    "BaseScore": "6.1",
+                                    "BaseVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+                            },
+                   "Description": "Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset. The webpack developers have discovered a DOM Clobbering vulnerability in Webpack’s `AutoPublicPathRuntimeModule`. The DOM Clobbering gadget in the module can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an `img` tag with an unsanitized `name` attribute) are present. Real-world exploitation of this gadget has been observed in the Canvas LMS which allows a XSS attack to happen through a javascript code compiled by Webpack (the vulnerable part is from Webpack). DOM Clobbering is a type of code-reuse attack where the attacker first embeds a piece of non-script, seemingly benign HTML markups in the webpage (e.g. through a post or comment) and leverages the gadgets (pieces of js code) living in the existing javascript code to transform it into executable code. This vulnerability can lead to cross-site scripting (XSS) on websites that include Webpack-generated files and allow users to inject certain scriptless HTML tags with improperly sanitized name or id attributes. This issue has been addressed in release version 5.94.0. All users are advised to upgrade. There are no known workarounds for this issue."
+                }
+            ]
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "JI7JKOJf3I9n4NXfxlbTDQCpBVk=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2009,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "400",
+            "RawLine": "http{ error_page 400; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "GNrN81TyLykUtPNX62ti6JAh/AM=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2010,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "401",
+            "RawLine": "http{ error_page 401; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "ewtwGFDnJl1+jjakzDEPzUwhaQU=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2011,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "403",
+            "RawLine": "http{ error_page 403; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "cWyy1wJW3J2LFH49OP1dttRzW54=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2012,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "404",
+            "RawLine": "http{ error_page 404; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "6ycqBgSMuTdA/kmXjnAAsB++udc=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2013,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "405",
+            "RawLine": "http{ error_page 405; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "55t2LRDVrP1ZPeq1rEkW0lDTE/w=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2014,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "408",
+            "RawLine": "http{ error_page 408; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "W2FQnfoJKu1/D7pmxQpLHkqQB6M=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2015,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "411",
+            "RawLine": "http{ error_page 411; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "4EPrZE40F5rV/zWJ2dxJqgAXmgw=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2016,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "413",
+            "RawLine": "http{ error_page 413; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "TGzRBu/5gZBXbjLR2fmy77vPwuo=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2017,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "414",
+            "RawLine": "http{ error_page 414; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "kljIU15lLfxcuVfGvQnd8a1g8NE=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2018,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "500",
+            "RawLine": "http{ error_page 500; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "I84oJGCmsVwcx4vCKIVgE36Ore8=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2019,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "502",
+            "RawLine": "http{ error_page 502; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "QOLjLRl/wtwINjivj32kWUZNRsM=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2020,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "503",
+            "RawLine": "http{ error_page 503; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "+w/lk88DS+S97TuhhIKoJ2ajBNY=",
+            "Type": {
+                "Id": "nginx.conf error_page",
+                "GroupId": "error_page parameterlevel-low",
+                "DisplayName": "error_page parameter",
+                "Value": "nginx.conf error_page"
+            },
+            "Counter": 2021,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Owaspm": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "The category is not determined",
+                        "Value": ""
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "29E0E5BC9125CE019842C3B0C3DF3528",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "504",
+            "RawLine": "http{ error_page 504; }",
+            "Function": "error_page",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "rva3am2/y3iOxS1Tdd0e4RHxtXg=",
+            "Type": {
+                "Id": "nginx.conf server_tokens",
+                "GroupId": "Server_tokens parameterlevel-low",
+                "DisplayName": "Server_tokens parameter",
+                "Value": "nginx.conf server_tokens"
+            },
+            "Counter": 2001,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "Security Misconfiguration",
+                "Value": "A05"
+            },
+            "Owaspm": {
+                "DisplayName": "Improper platform usage",
+                "Value": "1"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Improper error handling",
+                        "Value": "6.5.5"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Error handling",
+                        "Value": "SI-11"
+                },
+                {
+                       "DisplayName": "Authenticator feedback",
+                        "Value": "IA-6"
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "9034F37FA14246D9A72788B1E922F6A1",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "off",
+            "RawLine": "http{ server_tokens off; }",
+            "Function": "server_tokens",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "3WLrCXP7WT0tT+8tdEApVphqjsA=",
+            "Type": {
+                "Id": "nginx.conf ssl",
+                "GroupId": "Ssl parameterlevel-low",
+                "DisplayName": "Ssl parameter",
+                "Value": "nginx.conf ssl"
+            },
+            "Counter": 2004,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "Security Misconfiguration",
+                "Value": "A05"
+            },
+            "Owaspm": {
+                "DisplayName": "Improper platform usage",
+                "Value": "1"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Implement additional security features for any required services, protocols, or daemons that are considered to be insecure",
+                        "Value": "2.2.3"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Configuration settings",
+                        "Value": "CM-6"
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "33A0AF829F9A6B3BB2F1E4CC7E102AFC",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "on",
+            "RawLine": "http{ ssl on; }",
+            "Function": "ssl",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "ZoeQqP+qT3kFBhXfYC/qwgiTnhE=",
+            "Type": {
+                "Id": "nginx.conf ssl_certificate",
+                "GroupId": "Ssl_certificate parameterlevel-low",
+                "DisplayName": "Ssl_certificate parameter",
+                "Value": "nginx.conf ssl_certificate"
+            },
+            "Counter": 2005,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "Security Misconfiguration",
+                "Value": "A05"
+            },
+            "Owaspm": {
+                "DisplayName": "Improper platform usage",
+                "Value": "1"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Implement additional security features for any required services, protocols, or daemons that are considered to be insecure",
+                        "Value": "2.2.3"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Configuration settings",
+                        "Value": "CM-6"
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "C373A8A807CFAECA3BE84F2F86B02478",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "path/to/cert",
+            "RawLine": "http{ ssl_certificate path/to/cert; }",
+            "Function": "ssl_certificate",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "8Xns+tAQhZTennttle6mdmotclA=",
+            "Type": {
+                "Id": "nginx.conf ssl_certificate_key",
+                "GroupId": "Ssl_certificate_key parameterlevel-low",
+                "DisplayName": "Ssl_certificate_key parameter",
+                "Value": "nginx.conf ssl_certificate_key"
+            },
+            "Counter": 2006,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "Security Misconfiguration",
+                "Value": "A05"
+            },
+            "Owaspm": {
+                "DisplayName": "Improper platform usage",
+                "Value": "1"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Implement additional security features for any required services, protocols, or daemons that are considered to be insecure",
+                        "Value": "2.2.3"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Configuration settings",
+                        "Value": "CM-6"
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "9CC2719585325AB1AD528DEBD2BB478C",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "path/to/key",
+            "RawLine": "http{ ssl_certificate_key path/to/key; }",
+            "Function": "ssl_certificate_key",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "o3N1ZVG6bH5okc99ziaquJOdXfg=",
+            "Type": {
+                "Id": "nginx.conf ssl_ciphers",
+                "GroupId": "Ssl_ciphers parameterlevel-low",
+                "DisplayName": "Ssl_ciphers parameter",
+                "Value": "nginx.conf ssl_ciphers"
+            },
+            "Counter": 2008,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "Security Misconfiguration",
+                "Value": "A05"
+            },
+            "Owaspm": {
+                "DisplayName": "Improper platform usage",
+                "Value": "1"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Implement additional security features for any required services, protocols, or daemons that are considered to be insecure",
+                        "Value": "2.2.3"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Configuration settings",
+                        "Value": "CM-6"
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "3DC7A4682943A0D09EE5DED72A64EEA4",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH",
+            "RawLine": "http{ ssl_ciphers EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH; }",
+            "Function": "ssl_ciphers",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "nFwYmIrAHmnNrUF9+7Reh1RWMVI=",
+            "Type": {
+                "Id": "nginx.conf ssl_prefer_server_ciphers",
+                "GroupId": "Ssl_prefer_server_ciphers directivelevel-low",
+                "DisplayName": "Ssl_prefer_server_ciphers directive",
+                "Value": "nginx.conf ssl_prefer_server_ciphers"
+            },
+            "Counter": 2002,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "Security Misconfiguration",
+                "Value": "A05"
+            },
+            "Owaspm": {
+                "DisplayName": "Improper platform usage",
+                "Value": "1"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Implement additional security features for any required services, protocols, or daemons that are considered to be insecure",
+                        "Value": "2.2.3"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Configuration settings",
+                        "Value": "CM-6"
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "C3DD0731A607187E2B740AE84AF32D23",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "on",
+            "RawLine": "http{ ssl_prefer_server_ciphers on; }",
+            "Function": "ssl_prefer_server_ciphers",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "9WbjEKSJc6EzO5fhYtzc+vV4Kwo=",
+            "Type": {
+                "Id": "nginx.conf ssl_session_cache",
+                "GroupId": "Ssl_session_cache parameterlevel-low",
+                "DisplayName": "Ssl_session_cache parameter",
+                "Value": "nginx.conf ssl_session_cache"
+            },
+            "Counter": 2007,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "Security Misconfiguration",
+                "Value": "A05"
+            },
+            "Owaspm": {
+                "DisplayName": "Improper platform usage",
+                "Value": "1"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Implement additional security features for any required services, protocols, or daemons that are considered to be insecure",
+                        "Value": "2.2.3"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Configuration settings",
+                        "Value": "CM-6"
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "BC19ED93FC4574E436159262B60F85D0",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "shared:SSL:2m",
+            "RawLine": "http{ ssl_session_cache shared:SSL:2m; }",
+            "Function": "ssl_session_cache",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "",
+            "SourceFile": "./nginx/nginx.conf",
+            "VulnerableCode": "",
+            "TypeKey": "ConfigurationVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "h6YfZK6hH+ZxM3bEvtctZYhRNlg=",
+            "Type": {
+                "Id": "nginx.conf ssl_stapling",
+                "GroupId": "Ssl_stapling parameterlevel-low",
+                "DisplayName": "Ssl_stapling parameter",
+                "Value": "nginx.conf ssl_stapling"
+            },
+            "Counter": 2003,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 20,
+                "DisplayName": "Low",
+                "Value": "level-low"
+            },
+            "Owasp": {
+                "DisplayName": "Security Misconfiguration",
+                "Value": "A05"
+            },
+            "Owaspm": {
+                "DisplayName": "Improper platform usage",
+                "Value": "1"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Implement additional security features for any required services, protocols, or daemons that are considered to be insecure",
+                        "Value": "2.2.3"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Configuration settings",
+                        "Value": "CM-6"
+                }
+            ],
+            "CweId": "0",
+            "ParentItem": "F23198DD736C066A2C52A562386B195D",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "NumberLine": -1,
+            "ExistingValue": "not set",
+            "RecommendedValue": "on",
+            "RawLine": "http{ ssl_stapling on; }",
+            "Function": "ssl_stapling",
+            "Exploit": ""
+
+        },
+        {
+            "MatchedCode": "token: 'comment' : 8",
+            "SourceFile": "./packages/code-editor/src/components/constants.ts",
+            "VulnerableCode": "",
+            "TypeKey": "PotentialVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "J+EOMJgH8igEr7jrnJD9z+DZ72o=",
+            "Type": {
+                "Id": "Hardcoded Password PM",
+                "GroupId": "Use of Hard-coded Passwordlevel-pattern",
+                "DisplayName": "Use of Hard-coded Password",
+                "Value": "Use of Hard-coded Password"
+            },
+            "Counter": 2022,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 10,
+                "DisplayName": "Potential",
+                "Value": "level-pattern"
+            },
+            "Owasp": {
+                "DisplayName": "Identification and Authentication Failures",
+                "Value": "A07"
+            },
+            "Owaspm": {
+                "DisplayName": "Insecure authentication",
+                "Value": "4"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Remove test data and accounts before production systems become active",
+                        "Value": "6.4.4"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Account management",
+                        "Value": "AC-2"
+                },
+                {
+                       "DisplayName": "Authenticator management",
+                        "Value": "IA-5"
+                }
+            ],
+            "CweId": "259",
+            "ParentItem": "pm-Hardcoded Password PM",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "BeginLine": 8
+
+        },
+        {
+            "MatchedCode": "token: 'string' : 9",
+            "SourceFile": "./packages/code-editor/src/components/constants.ts",
+            "VulnerableCode": "",
+            "TypeKey": "PotentialVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "yifxeEk9bgbtEfKUV18raNImEjI=",
+            "Type": {
+                "Id": "Hardcoded Password PM",
+                "GroupId": "Use of Hard-coded Passwordlevel-pattern",
+                "DisplayName": "Use of Hard-coded Password",
+                "Value": "Use of Hard-coded Password"
+            },
+            "Counter": 2023,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 10,
+                "DisplayName": "Potential",
+                "Value": "level-pattern"
+            },
+            "Owasp": {
+                "DisplayName": "Identification and Authentication Failures",
+                "Value": "A07"
+            },
+            "Owaspm": {
+                "DisplayName": "Insecure authentication",
+                "Value": "4"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Remove test data and accounts before production systems become active",
+                        "Value": "6.4.4"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Account management",
+                        "Value": "AC-2"
+                },
+                {
+                       "DisplayName": "Authenticator management",
+                        "Value": "IA-5"
+                }
+            ],
+            "CweId": "259",
+            "ParentItem": "pm-Hardcoded Password PM",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "BeginLine": 9
+
+        },
+        {
+            "MatchedCode": "token: 'constant' : 10",
+            "SourceFile": "./packages/code-editor/src/components/constants.ts",
+            "VulnerableCode": "",
+            "TypeKey": "PotentialVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "VUIAvV4A1RMZ4Ohk/SaNNa0IbHQ=",
+            "Type": {
+                "Id": "Hardcoded Password PM",
+                "GroupId": "Use of Hard-coded Passwordlevel-pattern",
+                "DisplayName": "Use of Hard-coded Password",
+                "Value": "Use of Hard-coded Password"
+            },
+            "Counter": 2024,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 10,
+                "DisplayName": "Potential",
+                "Value": "level-pattern"
+            },
+            "Owasp": {
+                "DisplayName": "Identification and Authentication Failures",
+                "Value": "A07"
+            },
+            "Owaspm": {
+                "DisplayName": "Insecure authentication",
+                "Value": "4"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Remove test data and accounts before production systems become active",
+                        "Value": "6.4.4"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Account management",
+                        "Value": "AC-2"
+                },
+                {
+                       "DisplayName": "Authenticator management",
+                        "Value": "IA-5"
+                }
+            ],
+            "CweId": "259",
+            "ParentItem": "pm-Hardcoded Password PM",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "BeginLine": 10
+
+        },
+        {
+            "MatchedCode": "token: 'keyword' : 11",
+            "SourceFile": "./packages/code-editor/src/components/constants.ts",
+            "VulnerableCode": "",
+            "TypeKey": "PotentialVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "Fk2nEfjfjF3uo3co8X8Bw8mzv4w=",
+            "Type": {
+                "Id": "Hardcoded Password PM",
+                "GroupId": "Use of Hard-coded Passwordlevel-pattern",
+                "DisplayName": "Use of Hard-coded Password",
+                "Value": "Use of Hard-coded Password"
+            },
+            "Counter": 2025,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 10,
+                "DisplayName": "Potential",
+                "Value": "level-pattern"
+            },
+            "Owasp": {
+                "DisplayName": "Identification and Authentication Failures",
+                "Value": "A07"
+            },
+            "Owaspm": {
+                "DisplayName": "Insecure authentication",
+                "Value": "4"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Remove test data and accounts before production systems become active",
+                        "Value": "6.4.4"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Account management",
+                        "Value": "AC-2"
+                },
+                {
+                       "DisplayName": "Authenticator management",
+                        "Value": "IA-5"
+                }
+            ],
+            "CweId": "259",
+            "ParentItem": "pm-Hardcoded Password PM",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "BeginLine": 11
+
+        },
+        {
+            "MatchedCode": "Password: 'password' : 3",
+            "SourceFile": "./packages/input-private/src/components/InputPrivate/constants.ts",
+            "VulnerableCode": "",
+            "TypeKey": "PotentialVulnerability",
+            "IsSuspected": false,
+            "GroupType": "FromPreviousScan",
+            "IsSuppressed": false,
+            "IsNew": false,
+            "Id": "S+ho7xa8+FUADolQbmpHBdtcurE=",
+            "Type": {
+                "Id": "Hardcoded Password PM",
+                "GroupId": "Use of Hard-coded Passwordlevel-pattern",
+                "DisplayName": "Use of Hard-coded Password",
+                "Value": "Use of Hard-coded Password"
+            },
+            "Counter": 2026,
+            "ApprovalState": "None",
+            "IsFavorite": false,
+            "Level": {
+                "Severity": 10,
+                "DisplayName": "Potential",
+                "Value": "level-pattern"
+            },
+            "Owasp": {
+                "DisplayName": "Identification and Authentication Failures",
+                "Value": "A07"
+            },
+            "Owaspm": {
+                "DisplayName": "Insecure authentication",
+                "Value": "4"
+            },
+            "Sans": {
+                "DisplayName": "The category is not determined",
+                "Value": ""
+            },
+            "Pcidss": [
+                {
+                       "DisplayName": "Remove test data and accounts before production systems become active",
+                        "Value": "6.4.4"
+                }
+            ],
+            "Nist": [
+                {
+                       "DisplayName": "Account management",
+                        "Value": "AC-2"
+                },
+                {
+                       "DisplayName": "Authenticator management",
+                        "Value": "IA-5"
+                }
+            ],
+            "CweId": "259",
+            "ParentItem": "pm-Hardcoded Password PM",
+            "IsApproved":false,
+            "IsDiscarded":false,
+            "IsApprovedAutomatically":false,
+            "BeginLine": 3
+
+        }
+    ],
+    "HaveGroups": false,
+    "IncludedFilters":
+    {
+        "IsInclude": true,
+        "Favorite":  ""
+    },
+    "ExcludedFilters":
+    {
+        "IsInclude": false,
+        "Favorite": ""
+    },
+    "GlossaryItems": [
+        {
+            "DisplayName": "error_page parameter",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>error_page parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Parameter error_page sets user-defined error pages. If it is not set some valuable infromation such as stack traces could be shown to users through error pages.</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "error_page parameter",
+            "TypeId": "nginx.conf error_page"
+        },
+        {
+            "DisplayName": "Log Forging",
+            "Value": "<p>An application does not sufficiently validate user input that allows an attacker to create a malformed log file or inject an arbitrary code.</p>\n<p>A web application can generate log file entities based on user input data. Because of insufficient data processing, an attacker can inject dividing characters and therefore create a malformed log file entity, making it impossible to automatically process this file. Also, an attacker can inject malware and use it for further attacks.</p>\n<p>Please fins the vulnerable script example below:</p>\n<pre><code>    $result = $authService-&gt;authenticate($login, $password);\n\n    if (!$result-&gt;isValid()) {\n        $log-&gt;write(&quot;Authentication failed for user '$login'&quot;);\n    }\n</code></pre>\n<h1 id=\"recommendations\">Recommendations</h1>\n<p>We recommend you process log file data to delete or escape formaztting characters.</p>\n<h1 id=\"links\">Links</h1>\n<ul>\n<li><p><a href=\"https://owasp.org/www-community/attacks/Log_Injection\" title=\"https://owasp.org/www-community/attacks/Log_Injection\">Log Forging</a></p>\n</li>\n<li><p><a href=\"http://cwe.mitre.org/data/definitions/117.html\" title=\"http://cwe.mitre.org/data/definitions/117.html\">CWE-117: Improper Output Neutralization for Logs</a></p>\n</li>\n</ul>\n",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Log Forging",
+            "TypeId": "Log Forging"
+        },
+        {
+            "DisplayName": "Server_tokens parameter",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Server_tokens parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Enables or disables emitting nginx version in error messages and in the “Server” response header field. Attacker could use known vulnerabilities in current web-server's version. Recommended to deactivate.</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Server_tokens parameter",
+            "TypeId": "nginx.conf server_tokens"
+        },
+        {
+            "DisplayName": "Ssl parameter",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Enable HTTPS protocol for current virtual server.</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Ssl parameter",
+            "TypeId": "nginx.conf ssl"
+        },
+        {
+            "DisplayName": "Ssl_certificate parameter",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_certificate parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Specifies file with PEM-certificate for current virtual server.</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Ssl_certificate parameter",
+            "TypeId": "nginx.conf ssl_certificate"
+        },
+        {
+            "DisplayName": "Ssl_certificate_key parameter",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_certificate_key parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Specifies file with PEM secret key for current virtual server.</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Ssl_certificate_key parameter",
+            "TypeId": "nginx.conf ssl_certificate_key"
+        },
+        {
+            "DisplayName": "Ssl_ciphers parameter",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_ciphers parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Specifies allowed ciphers. Ciphers are specified in a format supported by the OpenSSL library.</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Ssl_ciphers parameter",
+            "TypeId": "nginx.conf ssl_ciphers"
+        },
+        {
+            "DisplayName": "Ssl_prefer_server_ciphers directive",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_prefer_server_ciphers directive</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">If ssl_prefer_server_ciphers directive value is Off, in certain conditions an attacker can conduct BEAST attack (Browser Exploit Against SSL/TLS). If an attacker can listen user traffic MITM) via SSL (if earlier TLS versions are used) and impact the traffic in user's browser considering Same Origin Policy (for example via XSS or HTML Injection attack), this makes it possible to compromise user credentials send via this protocol.​</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Ssl_prefer_server_ciphers directive",
+            "TypeId": "nginx.conf ssl_prefer_server_ciphers"
+        },
+        {
+            "DisplayName": "Ssl_session_cache parameter",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_session_cache parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Specifies size and type of caches that store session parameters.</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Ssl_session_cache parameter",
+            "TypeId": "nginx.conf ssl_session_cache"
+        },
+        {
+            "DisplayName": "Ssl_stapling parameter",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Ssl_stapling parameter</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">Allow or deny attachment of OCSP-responses by the server.</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Ssl_stapling parameter",
+            "TypeId": "nginx.conf ssl_stapling"
+        },
+        {
+            "DisplayName": "Use of Hard-coded Password",
+            "Value": "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Use of Hard-coded Password</title>\n</head>\n<body>\n    <main class=\"vulnerability-layout j-vulnerability-layout\">\n        <section>\n            <p style=\"color: #666;margin: 0 0 10px 0;font-family: Tahoma, sans-serif;    font-size: 13px;\n\">The software contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.\n\nA hard-coded password typically leads to a significant authentication failure that can be difficult for the system administrator to detect. Once detected, it can be difficult to fix, so the administrator may be forced into disabling the product entirely. There are two main variations:\n\n      Inbound: the software contains an authentication mechanism that checks for a hard-coded password.\n      Outbound: the software connects to another system or component, and it contains hard-coded password for connecting to that component.\n\nIn the Inbound variant, a default administration account is created, and a simple password is hard-coded into the product and associated with that account. This hard-coded password is the same for each installation of the product, and it usually cannot be changed or disabled by system administrators without manually modifying the program, or otherwise patching the software. If the password is ever discovered or published (a common occurrence on the Internet), then anybody with knowledge of this password can access the product. Finally, since all installations of the software will have the same password, even across different organizations, this enables massive attacks such as worms to take place.\n\nThe Outbound variant applies to front-end systems that authenticate with a back-end service. The back-end service may require a fixed password which can be easily discovered. The programmer may simply hard-code those back-end credentials into the front-end software. Any user of that program may be able to extract the password. Client-side systems with hard-coded passwords pose even more of a threat, since the extraction of a password from a binary is usually very simple.</p>\n\n    </main>\n</body>\n</html>",
+            "IsApprovedAutomaticallyName": false,
+            "TypeName": "Use of Hard-coded Password",
+            "TypeId": "Hardcoded Password PM"
+        }
+    ],
+    "FilteredIssuesCount": 28,
+    "ReportType": "Json"
+}

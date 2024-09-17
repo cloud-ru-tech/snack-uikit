@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.26.0 (2024-09-17)
+
+
+### Features
+
+* **FF-00:** add autocomplete to FieldText ([76c21fa](https://github.com/cloud-ru-tech/snack-uikit/commit/76c21fa78b8177c4025bdace62fd1fbd66526726))
+* **PDS-750:** Added simple search to field select ([dda75ec](https://github.com/cloud-ru-tech/snack-uikit/commit/dda75ecdffd9b6fa90adad40c90a842357aee78a))
+
+
+
+
+
 ## 0.25.2 (2024-09-06)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.3 (2024-09-17)
+
+
+### Bug Fixes
+
+* **PDS-759:** fix title size in M alert ([58397d7](https://github.com/cloud-ru-tech/snack-uikit/commit/58397d797ddfe48e1d72e0eee83dcf32b2176368))
+
+
+
+
+
 ## 0.13.2 (2024-09-06)
 
 ### Only dependencies have been changed

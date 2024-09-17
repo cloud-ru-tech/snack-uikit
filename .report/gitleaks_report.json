@@ -1,0 +1,22 @@
+[
+ {
+  "Description": "Detected a Generic API Key, potentially exposing access to various services and sensitive operations.",
+  "StartLine": 38,
+  "EndLine": 38,
+  "StartColumn": 25,
+  "EndColumn": 52,
+  "Match": "tokens\": \"15.4.1-bbd8e6c3.0\"",
+  "Secret": "15.4.1-bbd8e6c3.0",
+  "File": "package.json",
+  "SymlinkFile": "",
+  "Commit": "606716cc2b877d8a452a89dc23d3e38265ff5848",
+  "Entropy": 3.5724695,
+  "Author": "Anna Kozlova",
+  "Email": "apkozlova@cloud.ru",
+  "Date": "2024-06-30T11:55:06Z",
+  "Message": "feat(PDS-153): add caption, invert hidden button icon behavior, set width=auto for droplist in field-date, up tokens",
+  "Tags": [],
+  "RuleID": "generic-api-key",
+  "Fingerprint": "606716cc2b877d8a452a89dc23d3e38265ff5848:package.json:generic-api-key:38"
+ }
+]
