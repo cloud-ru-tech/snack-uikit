@@ -75,9 +75,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
   const { inputValue, setInputValue, prevInputValue, updateInputValue } = useSearchInput({
     ...search,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    defaultValue: selectedItem?.content.option ?? '',
+    defaultValue: selectedOptionFormatter(selectedItem), 
     selectedOptionFormatter,
   });
 
