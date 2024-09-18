@@ -5,7 +5,7 @@ import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useRef, us
 import { InputPrivate } from '@snack-uikit/input-private';
 import { BaseItemProps, Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
 import { Tag } from '@snack-uikit/tag';
-import { extractSupportProps, useLayoutEffect } from '@snack-uikit/utils';
+import { extractSupportProps, isBrowser, useLayoutEffect } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';
@@ -135,7 +135,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
   };
 
   const handleOpenChange = (open: boolean) => {
-    if (!readonly && !disabled && !buttonsRefs.includes(document.activeElement)) {
+    if (isBrowser() && !readonly && !disabled && !buttonsRefs.includes(document.activeElement)) {
       setOpen(open);
 
       if (!open) {

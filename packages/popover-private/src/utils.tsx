@@ -12,6 +12,8 @@ import {
 } from 'react';
 import { isForwardRef, isValidElementType } from 'react-is';
 
+import { isBrowser } from '@snack-uikit/utils';
+
 import { PopoverPrivateProps } from './components';
 import { TRIGGER } from './constants';
 import { Trigger } from './types';
@@ -58,7 +60,7 @@ export function getArrowPositionStyles({ placement, x, y, ref }: Params): CSSPro
   }
 }
 
-export const getPopoverRootElement = () => document?.body;
+export const getPopoverRootElement = () => (isBrowser() ? document.body : undefined);
 
 export const getArrowOffset = (arrowElement?: HTMLElement | null): number => arrowElement?.offsetWidth || 0;
 

@@ -13,7 +13,7 @@ import {
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
-import { extractSupportProps, useLayoutEffect } from '@snack-uikit/utils';
+import { extractSupportProps, isBrowser, useLayoutEffect } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useValueControl } from '../../hooks';
@@ -74,7 +74,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
   const { inputValue, setInputValue, prevInputValue, updateInputValue } = useSearchInput({
     ...search,
-    defaultValue: selectedOptionFormatter(selectedItem), 
+    defaultValue: selectedOptionFormatter(selectedItem),
     selectedOptionFormatter,
   });
 
@@ -165,7 +165,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
   };
 
   const handleOpenChange = (open: boolean) => {
-    if (!readonly && !disabled && !buttonsRefs.includes(document.activeElement)) {
+    if (isBrowser() && !readonly && !disabled && !buttonsRefs.includes(document.activeElement)) {
       setOpen(open);
 
       if (!open) {

@@ -2,6 +2,8 @@
 import { render } from 'react-dom';
 import { Id, toast, ToastOptions as RtToastOptions } from 'react-toastify';
 
+import { isBrowser } from '@snack-uikit/utils';
+
 import {
   ToasterContainer,
   ToasterContainerProps,
@@ -35,7 +37,7 @@ function getToasterContainer({
   containerProps,
 }: {
   type: ToasterType;
-  toasterParent: HTMLElement;
+  toasterParent?: HTMLElement;
   containerProps?: ToasterContainerProps;
 }) {
   const containerId = containerProps?.containerId || `${TOASTER_CONTAINER_PREFIX}${type}`;
@@ -48,9 +50,9 @@ function getToasterContainer({
 
   const toasterRootId = `${TOASTER_ROOT_ID}__${type}`;
 
-  let rootInDOM = toasterParent.querySelector(`#${toasterRootId}`);
+  let rootInDOM = toasterParent ? toasterParent.querySelector(`#${toasterRootId}`) : null;
 
-  if (!rootInDOM) {
+  if (!rootInDOM && toasterParent && isBrowser()) {
     rootInDOM = document.createElement('div');
     rootInDOM.id = toasterRootId;
     toasterParent.appendChild(rootInDOM);
@@ -105,7 +107,7 @@ export const openToast: OpenToast = ({
   toasterProps,
   containerProps,
   toastOptions,
-  toasterParent = document.body,
+  toasterParent = isBrowser() ? document.body : undefined,
 }) => {
   const { toasterContainer, toasterContainerProps } = getToasterContainer({
     type,

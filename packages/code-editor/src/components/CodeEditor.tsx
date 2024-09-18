@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { useCallback, useMemo, useState } from 'react';
 
 import { Spinner } from '@snack-uikit/loaders';
-import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, isBrowser, WithSupportProps } from '@snack-uikit/utils';
 
 import { CODE_EDITOR_OPTIONS, DEFAULT_THEME_OPTIONS, DEFAULT_THEME_VALUES } from './constants';
 import { useCalculatedThemeValues } from './hooks';
@@ -39,7 +39,7 @@ export function CodeEditor({
 
   const onEditorMount = useCallback<OnMount>(
     (editor, monaco) => {
-      monaco && window?.document?.fonts?.ready.finally(monaco.editor.remeasureFonts);
+      monaco && isBrowser() && document?.fonts?.ready.finally(monaco.editor.remeasureFonts);
       onMount?.(editor, monaco);
     },
     [onMount],

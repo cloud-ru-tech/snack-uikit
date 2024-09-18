@@ -1,5 +1,7 @@
 import { utils as xlsxUtils, writeFileXLSX } from 'xlsx';
 
+import { isBrowser } from '@snack-uikit/utils';
+
 import { ColumnDefinition } from './types';
 
 type ExportTableData<TData> = {
@@ -61,23 +63,27 @@ export function exportToCSV<TData extends object>({
   fileName = 'Table',
   data,
 }: ExportTableData<TData>) {
-  const xlsxData = getXlsxFormatTable({ data, columnDefinitions });
-  const headers = getFilteredColumnsHeaders(columnDefinitions);
-  const table = [headers, ...xlsxData];
-  const csv = table.map(line => line.map(el => (el === undefined ? `""` : `"${el}"`)).join(',')).join('\n');
+  if (isBrowser()) {
+    const xlsxData = getXlsxFormatTable({ data, columnDefinitions });
+    const headers = getFilteredColumnsHeaders(columnDefinitions);
+    const table = [headers, ...xlsxData];
+    const csv = table.map(line => line.map(el => (el === undefined ? `""` : `"${el}"`)).join(',')).join('\n');
 
-  const utf8Prefix = new Uint8Array([0xef, 0xbb, 0xbf]);
-  const blob = new Blob([utf8Prefix, csv], { type: 'text/csv' });
-  const url = window.URL.createObjectURL(blob);
-  const tempLink = Object.assign(document.createElement('a'), {
-    target: '_blank',
-    href: url,
-    download: fileName,
-  });
-  tempLink.click();
-  tempLink.remove();
+    const utf8Prefix = new Uint8Array([0xef, 0xbb, 0xbf]);
+    const blob = new Blob([utf8Prefix, csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const tempLink = Object.assign(document.createElement('a'), {
+      target: '_blank',
+      href: url,
+      download: fileName,
+    });
+    tempLink.click();
+    tempLink.remove();
 
-  return csv;
+    return csv;
+  }
+
+  return '';
 }
 
 export function exportToXLSX<TData extends object>({

@@ -9,7 +9,7 @@ module.exports = {
     '@typescript-eslint/no-namespace': 'off',
     'prettier/prettier': 'off',
   },
-  ignorePatterns: 'packages/icons/src',
+  ignorePatterns: 'packages/icons/src/components',
   overrides: [
     {
       files: ['packages/**/__e2e__/**/*.ts'],

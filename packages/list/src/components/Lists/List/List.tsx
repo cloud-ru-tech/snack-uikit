@@ -2,7 +2,7 @@ import cn from 'classnames';
 import mergeRefs from 'merge-refs';
 import { ForwardedRef, forwardRef, KeyboardEvent, useCallback, useMemo, useRef } from 'react';
 
-import { useValueControl } from '@snack-uikit/utils';
+import { isBrowser, useValueControl } from '@snack-uikit/utils';
 
 import { HiddenTabButton } from '../../../helperComponents';
 import { extractActiveItems, ItemId, kindFlattenItems, useCreateBaseItems } from '../../Items';
@@ -115,7 +115,7 @@ export const List = forwardRef(
       [handleListKeyDownFactory, ids, expandedIds],
     );
 
-    const isActive = listRef.current === document.activeElement && activeItemId === undefined;
+    const isActive = isBrowser() && listRef.current === document.activeElement && activeItemId === undefined;
 
     const mergedHandlerKeyDown = (e: KeyboardEvent<HTMLElement>) => {
       onKeyDown?.(e);

@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { ReactNode } from 'react';
 import RCModal from 'react-modal';
 
-import { WithSupportProps } from '@snack-uikit/utils';
+import { isBrowser, WithSupportProps } from '@snack-uikit/utils';
 
 import { MODE, SIZE } from '../../constants';
 import {
@@ -71,7 +71,7 @@ export function ModalCustom({
       data={{ ...getDataTestAttributes(rest), size }}
       isOpen
       onRequestClose={handleClose}
-      appElement={document.body}
+      appElement={isBrowser() ? document.body : undefined}
       overlayElement={(_, content) => (
         <OverlayElement
           blur={([MODE.Forced, MODE.Aggressive] as Mode[]).includes(mode)}

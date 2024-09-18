@@ -1,13 +1,17 @@
-export function getCurrentlyConfiguredHeaderWidth(id: string) {
-  const cell = document.querySelector<HTMLDivElement>(`[data-header-id="${id}"]`);
-  const resizeHandler = cell?.querySelector<HTMLDivElement>(
-    '[data-test-id="table__header-cell-resize-handle-moving-part"]',
-  );
+import { isBrowser } from '@snack-uikit/utils';
 
-  if (cell && resizeHandler) {
-    const { width } = cell.getBoundingClientRect();
-    const offset = parseInt(resizeHandler.style.getPropertyValue('--offset'));
-    return width + offset;
+export function getCurrentlyConfiguredHeaderWidth(id: string): number {
+  if (isBrowser()) {
+    const cell = document.querySelector<HTMLDivElement>(`[data-header-id="${id}"]`);
+    const resizeHandler = cell?.querySelector<HTMLDivElement>(
+      '[data-test-id="table__header-cell-resize-handle-moving-part"]',
+    );
+
+    if (cell && resizeHandler) {
+      const { width } = cell.getBoundingClientRect();
+      const offset = parseInt(resizeHandler.style.getPropertyValue('--offset'));
+      return width + offset;
+    }
   }
 
   return 0;

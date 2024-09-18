@@ -1,5 +1,7 @@
 import { ChangeEvent, FocusEventHandler, KeyboardEvent, RefObject, useCallback, useMemo, useRef } from 'react';
 
+import { isBrowser } from '@snack-uikit/utils';
+
 import { DEFAULT_LOCALE, MASK, SlotKey, SLOTS, SLOTS_PLACEHOLDER } from '../constants';
 import { getNextSlotKey, getPrevSlotKey, getSlotKey } from '../utils';
 import { useDateFieldHelpers } from './useDateFieldHelpers';
@@ -32,7 +34,7 @@ export function useDateField({ inputRef, onChange, readonly, locale = DEFAULT_LO
         return;
       }
 
-      if (document.activeElement !== inputRef.current) {
+      if (isBrowser() && document.activeElement !== inputRef.current) {
         focusSlotRef.current = focusSlot || SlotKey.Day;
         inputRef.current.focus();
         return;

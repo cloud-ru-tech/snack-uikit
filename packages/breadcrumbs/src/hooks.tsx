@@ -77,6 +77,7 @@ export function useBreadcrumbsLayout(containerRef: RefObject<HTMLElement>): Brea
 
     const reselectConfig = debounce(() => {
       const width = getMaxPossibleWidth(visibleContainer);
+
       setCurrentConfig(prevConfig => {
         if (prevConfig?.containerWidth === width) {
           return prevConfig;
@@ -90,7 +91,7 @@ export function useBreadcrumbsLayout(containerRef: RefObject<HTMLElement>): Brea
     const visibleContainerObserver = new ResizeObserver(reselectConfig);
 
     visibleContainerObserver.observe(visibleContainer);
-    visibleContainerObserver.observe(window.document.body);
+    visibleContainerObserver.observe(document.body);
 
     return () => visibleContainerObserver.disconnect();
   }, [containerRef, selectConfigForWidth]);

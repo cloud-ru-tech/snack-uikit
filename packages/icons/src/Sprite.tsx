@@ -1,21 +1,30 @@
-import { useState, memo } from 'react';
+import { memo, useState } from 'react';
+
 import { useLayoutEffect } from '@snack-uikit/utils';
 
 function SpriteInner({ content }: { content: string }) {
-  const [div] = useState(() => document.createElement('div'));
+  const [div, setDiv] = useState<HTMLDivElement>();
 
   useLayoutEffect(() => {
-    div.style.display = 'none';
-    document.body.prepend(div);
-
-    return () => {
-      document.body.removeChild(div);
-    };
+    setDiv(document.createElement('div'));
   }, []);
 
   useLayoutEffect(() => {
-    div.innerHTML = content;
-  }, [content]);
+    if (div) {
+      div.style.display = 'none';
+      document.body.prepend(div);
+
+      return () => {
+        document.body.removeChild(div);
+      };
+    }
+  }, [div]);
+
+  useLayoutEffect(() => {
+    if (div) {
+      div.innerHTML = content;
+    }
+  }, [content, div]);
 
   return null;
 }
