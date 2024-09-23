@@ -145,4 +145,5 @@ export const getTriggerProps = (trigger: Trigger): TriggerProps => {
   }
 };
 
-export const stopPropagation = (e: MouseEvent<HTMLDivElement> | TouchEvent<HTMLElement>) => e.stopPropagation();
+export const stopPropagationMouse = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();
+export const stopPropagationTouch = (e: TouchEvent<HTMLElement>) => e.stopPropagation();

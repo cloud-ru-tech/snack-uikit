@@ -38,7 +38,8 @@ import {
   getPopoverRootElement,
   getPopoverTriggerJSX,
   getTriggerProps,
-  stopPropagation,
+  stopPropagationMouse,
+  stopPropagationTouch,
 } from '../../utils';
 import { Arrow } from '../Arrow';
 import { useOffset } from './hooks';
@@ -243,10 +244,10 @@ function PopoverPrivateComponent({
   });
   const hover = useHover(context, {
     enabled: useHoverTrigger,
-    handleClose: safePolygon(),
+    handleClose: safePolygon({ requireIntent: false }),
     delay: { open: hoverDelayOpen, close: hoverDelayClose },
   });
-  const focus = useFocus(context, { enabled: useFocusTrigger, keyboardOnly });
+  const focus = useFocus(context, { enabled: useFocusTrigger, visibleOnly: keyboardOnly });
   const click = useClick(context, { enabled: useClickTrigger, keyboardHandlers: triggerClickByKeys });
 
   const { getFloatingProps, getReferenceProps } = useInteractions([dismiss, hover, focus, click]);
@@ -261,15 +262,15 @@ function PopoverPrivateComponent({
         })}
         ref={refs.setFloating}
         style={floatingStyles}
-        onClick={stopPropagation}
-        onMouseMove={stopPropagation}
-        onMouseDown={stopPropagation}
-        onMouseUp={stopPropagation}
-        onTouchStart={stopPropagation}
-        onTouchEnd={stopPropagation}
-        onTouchMove={stopPropagation}
         data-placement={placement}
-        {...getFloatingProps()}
+        {...getFloatingProps({
+          onClick: stopPropagationMouse,
+          onMouseDown: stopPropagationMouse,
+          onMouseUp: stopPropagationMouse,
+          onTouchStart: stopPropagationTouch,
+          onTouchEnd: stopPropagationTouch,
+          onTouchMove: stopPropagationTouch,
+        })}
       >
         {popoverContent}
         {middlewareData.arrow && (

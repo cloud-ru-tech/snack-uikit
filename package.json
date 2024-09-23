@@ -51,7 +51,7 @@
     "@cloud-ru/ft-config-prettier": "1.1.1",
     "@cloud-ru/ft-config-vitest": "1.2.0",
     "@cloud-ru/ft-conventional-changelog": "1.1.0",
-    "@cloud-ru/ft-storybook-brand-addon": "1.1.1",
+    "@cloud-ru/ft-storybook-brand-addon": "2.0.1",
     "@cloud-ru/ft-storybook-deps-graph-addon": "1.1.1",
     "@cloud-ru/ft-storybook-readme-addon": "1.1.1",
     "@geometricpanda/storybook-addon-badges": "2.0.0",
