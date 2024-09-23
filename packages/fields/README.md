@@ -368,31 +368,32 @@ FieldStepper в основном предназначен для работы с
 | value | `ItemId \| ItemId[]` | - | Controlled состояние |
 | onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
 | defaultValue | `ItemId \| ItemId[]` | - | Начальное состояние |
-| pinTop | `OptionProps[]` | - |  |
-| pinBottom | `OptionProps[]` | - |  |
-| searchable | `boolean` | - |  |
+| open | `boolean` | - |  |
+| onOpenChange | `(open: boolean) => void` | - |  |
 | showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
-| footer | `ReactNode` | - |  |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | - |  |
+| pinTop | `OptionProps[]` | - |  |
+| pinBottom | `OptionProps[]` | - |  |
+| footer | `ReactNode` | - |  |
 | search | `SearchState` | - |  |
-| autocomplete | `boolean` | - |  |
-| addOptionByEnter | `boolean` | - |  |
-| open | `boolean` | - |  |
-| enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
-| onOpenChange | `(open: boolean) => void` | - |  |
-| selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
+| searchable | `boolean` | - |  |
+| autocomplete | `boolean` | - |  |
+| addOptionByEnter | `boolean` | - |  |
+| enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
+| selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | selection | "single" \| "multiple" | - |  |
 | ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
 | key | `Key` | - |  |
 | removeByBackspace | `boolean` | - |  |
+| resetSearchOnOptionSelection | `boolean` | - | Поведение строки поиска при выборе опции из списка |
 ## FieldStepper
 ### Props
 | name | type | default value | description |

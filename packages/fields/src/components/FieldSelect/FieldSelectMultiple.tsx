@@ -48,6 +48,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     untouchableScrollbars = false,
     open: openProp,
     enableFuzzySearch = true,
+    resetSearchOnOptionSelection = true,
     onOpenChange,
     selectedOptionFormatter = defaultSelectedOptionFormatter,
     ...rest
@@ -73,6 +74,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     ...search,
     defaultValue: '',
     selectedOptionFormatter,
+    resetSearchOnOptionSelection,
   });
 
   useLayoutEffect(() => {

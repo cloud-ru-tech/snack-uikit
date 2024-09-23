@@ -119,6 +119,9 @@ type FiledSelectCommonProps = WithSupportProps<{
   /** Включить нечеткий поиск  */
   enableFuzzySearch?: boolean;
 
+  /** Поведение строки поиска при выборе опции из списка */
+  resetSearchOnOptionSelection?: boolean;
+
   onOpenChange?(open: boolean): void;
 
   selectedOptionFormatter?: SelectedOptionFormatter;
@@ -131,7 +134,7 @@ type FiledSelectCommonProps = WithSupportProps<{
 export type FieldSelectSingleProps = FieldSelectPrivateProps &
   Omit<SelectionSingleState, 'mode'> &
   WrapperProps &
-  FiledSelectCommonProps;
+  Omit<FiledSelectCommonProps, 'resetSearchOnOptionSelection'>;
 
 export type FieldSelectMultipleProps = FieldSelectPrivateProps & {
   removeByBackspace?: boolean;

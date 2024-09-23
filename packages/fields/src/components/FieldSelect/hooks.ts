@@ -106,7 +106,8 @@ export function useSearchInput({
   onChange,
   defaultValue,
   selectedOptionFormatter,
-}: SearchState & { selectedOptionFormatter: SelectedOptionFormatter }) {
+  resetSearchOnOptionSelection = true,
+}: SearchState & { selectedOptionFormatter: SelectedOptionFormatter; resetSearchOnOptionSelection?: boolean }) {
   const [inputValue = '', setInputValue] = useValueControl<string>({ value, onChange, defaultValue });
 
   const prevInputValue = useRef<string>(inputValue);
@@ -115,13 +116,13 @@ export function useSearchInput({
     (selectedItem?: ItemWithId) => {
       const newInputValue = selectedOptionFormatter(selectedItem);
 
-      if (inputValue !== newInputValue || prevInputValue.current !== newInputValue) {
+      if (resetSearchOnOptionSelection && (inputValue !== newInputValue || prevInputValue.current !== newInputValue)) {
         setInputValue(newInputValue);
 
         prevInputValue.current = newInputValue;
       }
     },
-    [inputValue, selectedOptionFormatter, setInputValue],
+    [inputValue, resetSearchOnOptionSelection, selectedOptionFormatter, setInputValue],
   );
 
   return { inputValue, setInputValue, prevInputValue, onInputValueChange: setInputValue, updateInputValue };
@@ -144,14 +145,13 @@ export function useHandleDeleteItem(setValue: Handler) {
       }
 
       if (isBaseOptionProps(item)) {
-        setValue(
-          (value: SelectionSingleValueType[]) =>
-            value?.filter(
-              v =>
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-expect-error
-                v !== item.id,
-            ),
+        setValue((value: SelectionSingleValueType[]) =>
+          value?.filter(
+            v =>
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-expect-error
+              v !== item.id,
+          ),
         );
       }
     },
