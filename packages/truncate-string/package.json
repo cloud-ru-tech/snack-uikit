@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Truncate String",
-  "version": "0.4.21",
+  "version": "0.4.22",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -35,8 +35,8 @@
     "@types/lodash.throttle": "4.1.8"
   },
   "dependencies": {
-    "@snack-uikit/tooltip": "0.13.8",
-    "@snack-uikit/utils": "3.3.0",
+    "@snack-uikit/tooltip": "0.13.9",
+    "@snack-uikit/utils": "3.4.0",
     "classnames": "2.3.2",
     "lodash.throttle": "4.1.1"
   }

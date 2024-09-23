@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Icons",
-  "version": "0.22.0",
+  "version": "0.22.1",
   "sideEffects": [
     "*.svg",
     "*.css",
@@ -41,7 +41,7 @@
     "compile": "npm run validate:icons && npm run build:interface-icons && npm run create-export-index-file && npm run create-sprite"
   },
   "dependencies": {
-    "@snack-uikit/utils": "3.3.0"
+    "@snack-uikit/utils": "3.4.0"
   },
   "devDependencies": {
     "@svgr/cli": "8.1.0",

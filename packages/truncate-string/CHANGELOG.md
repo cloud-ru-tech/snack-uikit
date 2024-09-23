@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.22 (2024-09-23)
+
+
+### Bug Fixes
+
+* **PDS-480:** replace useLayoutEffect -> useIsomorphicLayoutEffect for ssr ([21aa9ad](https://github.com/cloud-ru-tech/snack-uikit/commit/21aa9ad9f113e465766339d396924357ccb1d432))
+
+
+
+
+
 ## 0.4.21 (2024-09-06)
 
 ### Only dependencies have been changed

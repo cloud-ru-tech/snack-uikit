@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.3 (2024-09-23)
+
+
+### Bug Fixes
+
+* **PDS-480:** remove direct usage of browser api elements ([1231ff7](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/1231ff7ab7a1b210b579a7b694633ef23bffcf44))
+
+
+
+
+
 ## 0.2.2 (2024-07-19)
 
 

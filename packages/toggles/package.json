@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Toggles",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -32,8 +32,8 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/icons": "0.22.0",
-    "@snack-uikit/utils": "3.3.0",
+    "@snack-uikit/icons": "0.22.1",
+    "@snack-uikit/utils": "3.4.0",
     "classnames": "2.3.2",
     "merge-refs": "1.2.1",
     "uncontrollable": "8.0.0"

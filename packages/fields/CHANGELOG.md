@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.27.0 (2024-09-23)
+
+
+### Bug Fixes
+
+* **DPS-12873:** selectedOptionFormatter with predefined value ([7a8d335](https://github.com/cloud-ru-tech/snack-uikit/commit/7a8d33574a6205a56aa742aaa052d07d30f99eb0))
+* **PDS-480:** remove direct usage of browser api elements ([1231ff7](https://github.com/cloud-ru-tech/snack-uikit/commit/1231ff7ab7a1b210b579a7b694633ef23bffcf44))
+* **PDS-480:** replace useLayoutEffect -> useIsomorphicLayoutEffect for ssr ([21aa9ad](https://github.com/cloud-ru-tech/snack-uikit/commit/21aa9ad9f113e465766339d396924357ccb1d432))
+
+
+### Features
+
+* **PDS-000:** add resetSearchOnOptionSelection property ([1fe3640](https://github.com/cloud-ru-tech/snack-uikit/commit/1fe3640b23a3da35c6b949c2bdc0796073b51425))
+
+
+
+
+
 # 0.26.0 (2024-09-17)
 
 

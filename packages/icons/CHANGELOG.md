@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.22.1 (2024-09-23)
+
+
+### Bug Fixes
+
+* **FF-3788:** updated typescript to v5 ([89e3338](https://github.com/cloud-ru-tech/snack-uikit/commit/89e3338a3ef4df24e4c20d9a9c8cd16e7934ba63))
+* **PDS-480:** remove direct usage of browser api elements ([1231ff7](https://github.com/cloud-ru-tech/snack-uikit/commit/1231ff7ab7a1b210b579a7b694633ef23bffcf44))
+* **PDS-480:** replace useLayoutEffect -> useIsomorphicLayoutEffect for ssr ([21aa9ad](https://github.com/cloud-ru-tech/snack-uikit/commit/21aa9ad9f113e465766339d396924357ccb1d432))
+
+
+
+
+
 # 0.22.0 (2024-07-19)
 
 
@@ -261,7 +274,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.6.1 (2023-06-23)
 
-**Note:** Version bump only for package @snack-uikit/icons
+### Only dependencies have been changed
+* [@snack-uikit/utils@3.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 
 

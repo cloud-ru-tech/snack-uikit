@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.4.0 (2024-09-23)
+
+
+### Bug Fixes
+
+* **PDS-480:** remove direct usage of browser api elements ([1231ff7](https://github.com/cloud-ru-tech/snack-uikit/commit/1231ff7ab7a1b210b579a7b694633ef23bffcf44))
+* **PDS-480:** replace useLayoutEffect -> useIsomorphicLayoutEffect for ssr ([21aa9ad](https://github.com/cloud-ru-tech/snack-uikit/commit/21aa9ad9f113e465766339d396924357ccb1d432))
+
+
+### Features
+
+* **PDS-480:** add isomorphic layoutEffect and isBrowser predicate ([057ce9d](https://github.com/cloud-ru-tech/snack-uikit/commit/057ce9d98564dc33085f031bace53f97c76d22c0))
+
+
+
+
+
 # 3.3.0 (2024-04-23)
 
 

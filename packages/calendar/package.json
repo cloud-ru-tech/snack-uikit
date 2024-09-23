@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Calendar",
-  "version": "0.7.10",
+  "version": "0.7.11",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -32,8 +32,8 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/icons": "0.22.0",
-    "@snack-uikit/utils": "3.3.0",
+    "@snack-uikit/icons": "0.22.1",
+    "@snack-uikit/utils": "3.4.0",
     "classnames": "2.3.2",
     "uncontrollable": "8.0.2",
     "weekstart": "2.0.0"
