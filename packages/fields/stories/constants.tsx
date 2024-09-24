@@ -40,4 +40,4 @@ export const COMMON_ARG_TYPES = {
     options: ['ru-RU', 'en-US'],
     control: { type: 'radio' },
   },
-};
+} as const;

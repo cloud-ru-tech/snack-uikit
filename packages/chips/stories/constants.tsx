@@ -1,3 +1,5 @@
+import { ArgTypes } from '@storybook/react';
+
 import * as Icons from '@snack-uikit/icons';
 
 import { SIZE } from '../src/constants';
@@ -14,7 +16,7 @@ export const ICONS = {
   ),
 };
 
-export const COMMON_ARG_TYPES = {
+export const COMMON_ARG_TYPES: ArgTypes = {
   size: {
     options: Object.values(SIZE),
     control: {

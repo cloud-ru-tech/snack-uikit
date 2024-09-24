@@ -9,8 +9,10 @@ const NEXT_BUTTON = 'next';
 const PREV_BUTTON = 'prev';
 const IS_COMPLETED = 'is-completed';
 
+const mainElementSelector = Selector(dataTestIdSelector(TEST_ID));
+
 const getTextView = async () => {
-  const elements = await Selector(`[data-test-id^="${TEST_ID}_element"]`);
+  const elements = Selector(`[data-test-id^="${TEST_ID}_element"]`);
   const count = await elements.count;
   const texts: string[] = [];
 
@@ -61,11 +63,15 @@ const getPage = (props: object = {}) =>
 fixture('Stepper');
 
 test.page(getPage())('Should be rendered', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   const textView = await getTextView();
   await t.expect(textView).eql('((1))--(2)--(3)--(4)--(5)');
 });
 
 test.page(getPage())('Should go to the next step and go back', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.click(Selector(dataTestIdSelector(NEXT_BUTTON)));
   const textView1 = await getTextView();
   await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)');
@@ -78,6 +84,8 @@ test.page(getPage())('Should go to the next step and go back', async t => {
 test.page(getPage({ validationTimeout: 9999999999 }))(
   'Should show spinner while waiting validation promise',
   async t => {
+    await t.expect(mainElementSelector.visible).ok();
+
     await t.click(Selector(dataTestIdSelector(NEXT_BUTTON)));
     const textView1 = await getTextView();
     await t.expect(textView1).eql('(O)--(2)--(3)--(4)--(5)');
@@ -85,6 +93,8 @@ test.page(getPage({ validationTimeout: 9999999999 }))(
 );
 
 test.page(getPage())('Should call complete callback if all steps are done', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   const isCompletedBefore = await Selector(dataTestIdSelector(IS_COMPLETED)).innerText;
   await t.expect(isCompletedBefore).eql('isCompleted: no');
 
@@ -102,6 +112,8 @@ test.page(getPage())('Should call complete callback if all steps are done', asyn
 });
 
 test.page(getPage({ defaultCurrentStepIndex: 1 }))('Go next by clicking next step', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   const textView1 = await getTextView();
   await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)');
   await t.click(Selector(`${dataTestIdSelector(STEP_TEST_ID)}`).nth(2));
@@ -112,6 +124,8 @@ test.page(getPage({ defaultCurrentStepIndex: 1 }))('Go next by clicking next ste
 test.page(getPage({ defaultCurrentStepIndex: 1, isValid: false }))(
   'Going next by clicking should fail if step invalid',
   async t => {
+    await t.expect(mainElementSelector.visible).ok();
+
     const textView1 = await getTextView();
     await t.expect(textView1).eql('(V)==((2))--(3)--(4)--(5)');
     await t.click(Selector(`${dataTestIdSelector(STEP_TEST_ID)}`).nth(2));
@@ -121,6 +135,8 @@ test.page(getPage({ defaultCurrentStepIndex: 1, isValid: false }))(
 );
 
 test.page(getPage({ defaultCurrentStepIndex: 3 }))('Go back by clicking completed step', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   const textView1 = await getTextView();
   await t.expect(textView1).eql('(V)==(V)==(V)==((4))--(5)');
   await t.click(Selector(`${dataTestIdSelector(STEP_TEST_ID)}`).nth(1));

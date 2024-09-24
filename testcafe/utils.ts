@@ -1,5 +1,4 @@
 import { IStringifyOptions, stringify } from 'qs';
-import { Selector } from 'testcafe';
 
 import { UIKIT_URL } from './constants';
 

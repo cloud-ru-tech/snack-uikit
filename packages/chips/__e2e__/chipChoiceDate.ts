@@ -15,7 +15,7 @@ test.page(getPage({ useDefaultValue: true }))(
     await t.expect(label.exists).ok();
     await t.expect(value.exists).ok();
 
-    await t.expect(value.innerText).eql(new Date(2023, 10, 15).toLocaleDateString());
+    await t.expect(value.innerText).eql(new Date('2023-10-15').toLocaleDateString());
 
     await t.click(clearButton);
 

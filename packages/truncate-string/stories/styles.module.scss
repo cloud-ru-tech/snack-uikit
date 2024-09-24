@@ -1,6 +1,15 @@
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
 .wrapper {
   resize: horizontal;
+
   overflow: hidden;
-  width: 250px;
+
+  box-sizing: border-box;
+  width: 265px;
   padding-right: 16px;
+}
+
+.text {
+  @include composite-var($sans-body-m);
 }

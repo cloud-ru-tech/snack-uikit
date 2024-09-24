@@ -74,6 +74,8 @@ test.page(visit({ value: 'op1', searchable: true }))(
     const input = getInputInner(wrapper);
     const list = Selector(dataTestIdSelector(LIST_TEST_ID));
 
+    await t.expect(wrapper.visible).ok();
+
     await t.pressKey('tab');
 
     await t.pressKey('o').pressKey('o');

@@ -5,7 +5,7 @@ import { VARIANT } from '../src/components/constants';
 
 const TRUNCATE_STRING_TEST_ID = 'truncate-string';
 const FULL_TEXT = 'Very long text that should be truncated in the middle';
-const TRUNCATED_TEXT = 'Very long text that ...uncated in the middle';
+const TRUNCATED_TEXT = 'Very long text th...ated in the middle';
 
 fixture('Truncate string').page(
   getTestcafeUrl({

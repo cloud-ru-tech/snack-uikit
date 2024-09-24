@@ -21,6 +21,8 @@ const DEFAULT_EMPTY_SETTINGS = {
   showGroups: false,
 };
 
+const mainElementSelector = Selector(dataTestIdSelector(TEST_ID));
+
 const getAccordionItem = (id: string | number) => Selector(dataTestIdSelector(`list__accordion-item-${id}`));
 const getBaseItem = (id: string | number) => Selector(dataTestIdSelector(`list__base-item_${id}`));
 const getBaseItemCheckbox = (id: string | number) =>
@@ -40,7 +42,7 @@ const getPage = (props: object = {}) =>
 fixture('List');
 
 test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS }))('Should render', async t => {
-  await t.expect(Selector(dataTestIdSelector(TEST_ID)).exists).ok('list is missing');
+  await t.expect(mainElementSelector.exists).ok('list is missing');
 });
 
 test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, showPinTopItems: true }))('Should show pinned top items', async t => {
@@ -268,6 +270,8 @@ test.page(
     await t.expect(getBaseItem(id).hasAttribute('data-checked')).notOk(`item "${id}" shouldn't be checked`);
   }
 
+  await t.expect(mainElementSelector.visible).ok();
+
   // select item 1
   await t.pressKey('tab').pressKey('down').pressKey('down').pressKey('enter');
 
@@ -308,6 +312,8 @@ test.page(
       .expect(getBaseItemCheckbox(id).getAttribute('data-checked'))
       .eql('false', `checkbox for item "${id}" shouldn't be checked`);
   }
+
+  await t.expect(mainElementSelector.visible).ok();
 
   // select item 1
   await t.pressKey('tab').pressKey('down').pressKey('down').pressKey('enter');

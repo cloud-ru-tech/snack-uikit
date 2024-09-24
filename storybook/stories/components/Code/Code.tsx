@@ -1,9 +1,8 @@
-import { Icons } from '@storybook/components';
+import { CopyIcon } from '@storybook/icons';
 import copyToClipboard from 'copy-to-clipboard';
 import { useRef, useState } from 'react';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { useDarkMode } from 'storybook-dark-mode';
 
 import { dark } from './dark';
 import { light } from './light';
@@ -19,9 +18,8 @@ const CODE_THEME = {
   light: light,
   dark: dark,
 };
-export function Code({ inline, className, children, ...rest }: CodeProps) {
-  const isDark = useDarkMode();
-  const theme = isDark ? 'dark' : 'light';
+export function Code({ inline, className, children, darkMode, ...rest }: CodeProps & { darkMode?: boolean }) {
+  const theme = darkMode ? 'dark' : 'light';
   const [copyText, setCopyText] = useState(TEXTS.Copy);
   const timer = useRef<ReturnType<typeof setTimeout>>();
   const match = /language-(\w+)/.exec(className || '');
@@ -45,7 +43,7 @@ export function Code({ inline, className, children, ...rest }: CodeProps) {
       </SyntaxHighlighter>
       <div className={styles.copyButton}>
         {copyText}
-        <Icons icon='copy' />
+        <CopyIcon />
       </div>
     </div>
   ) : (

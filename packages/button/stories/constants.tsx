@@ -1,3 +1,5 @@
+import { ArgTypes } from '@storybook/react';
+
 import { CounterProps } from '@snack-uikit/counter';
 import * as Icons from '@snack-uikit/icons';
 
@@ -38,7 +40,7 @@ export type StoryCounterProps = {
   counterPlusLimit: CounterProps['plusLimit'];
 };
 
-export const STORY_WITH_COUNTER_ARG_TYPES = {
+export const STORY_WITH_COUNTER_ARG_TYPES: ArgTypes = {
   counter: {
     name: '[Stories]: Show counter examples',
     control: {
@@ -79,7 +81,7 @@ export const STORY_WITH_COUNTER_ARG_TYPES = {
   },
 };
 
-export const COMMON_ARG_TYPES = {
+export const COMMON_ARG_TYPES: ArgTypes = {
   type: {
     options: Object.values(HTML_TYPE),
     control: {

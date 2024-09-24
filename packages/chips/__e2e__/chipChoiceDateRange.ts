@@ -19,7 +19,7 @@ test.page(getPage({ useDefaultValue: true }))(
     await t
       .expect(value.innerText)
       .eql(
-        [new Date(2022, 10, 15).toLocaleDateString(), new Date(2023, 10, 15).toLocaleDateString()].join(
+        [new Date('2022-10-15').toLocaleDateString(), new Date('2023-10-15').toLocaleDateString()].join(
           ` ${DEFAULT_EMPTY_VALUE} `,
         ),
       );

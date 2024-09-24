@@ -36,6 +36,8 @@ test.page(getPage({ autocomplete: true }))(
   async t => {
     const { input, list } = getSelectors();
 
+    await t.expect(input.visible).ok();
+
     await t.pressKey('tab');
     await t.expect(list.exists).notOk("list is present although shouldn't");
 
@@ -51,6 +53,8 @@ test.page(getPage({ autocomplete: true }))(
 
 test.page(getPage({ autocomplete: true }))(`Should call submit action by click on option in list`, async t => {
   const { input, list, option, submitToaster } = getSelectors();
+
+  await t.expect(input.visible).ok();
 
   await t.pressKey('tab');
   await t.expect(list.exists).notOk("list is present although shouldn't");
@@ -71,6 +75,8 @@ test.page(getPage({ autocomplete: true }))(`Should call submit action by click o
 test.page(getPage({ autocomplete: true }))(`Should clear input by click on ButtonClear`, async t => {
   const { input, list, buttonClear } = getSelectors();
 
+  await t.expect(input.visible).ok();
+
   await t.pressKey('tab');
   await t.expect(list.exists).notOk("list is present although shouldn't");
 
@@ -87,6 +93,8 @@ test.page(getPage({ autocomplete: true }))(`Should clear input by click on Butto
 
 test.page(getPage({ autocomplete: true }))(`Should be controlled by keyboard`, async t => {
   const { input, list, option, buttonClear } = getSelectors();
+
+  await t.expect(input.visible).ok();
 
   await t.pressKey('tab');
   await t.expect(list.exists).notOk("list is present although shouldn't");
@@ -113,6 +121,8 @@ test.page(getPage({ autocomplete: true }))(`Should be controlled by keyboard`, a
 test.page(getPage({ autocomplete: true }))(`Should handle keypress while focus on option`, async t => {
   const { input, list, option } = getSelectors();
 
+  await t.expect(input.visible).ok();
+
   await t.pressKey('tab');
   await t.expect(list.exists).notOk("list is present although shouldn't");
 
@@ -131,6 +141,8 @@ test.page(getPage({ autocomplete: true }))(`Should handle keypress while focus o
 test.page(getPage({ autocomplete: false }))(`Should be render without list`, async t => {
   const { input, list } = getSelectors();
 
+  await t.expect(input.visible).ok();
+
   await t.pressKey('tab');
   await t.expect(list.exists).notOk("list is present although shouldn't");
 
@@ -143,6 +155,8 @@ test.page(getPage({ autocomplete: false }))(`Should be render without list`, asy
 test.page(getPage({ autocomplete: false }))(`Should be changed icon`, async t => {
   const { input, iconSearch, iconSun } = getSelectors();
 
+  await t.expect(input.visible).ok();
+
   await t.pressKey('tab');
   await t.expect(iconSearch.exists).ok('icon search should be rendered');
 
@@ -154,6 +168,8 @@ test.page(getPage({ autocomplete: false }))(`Should be changed icon`, async t =>
 
 test.page(getPage({ autocomplete: false }))(`Should call submit by Enter click`, async t => {
   const { input, submitToaster } = getSelectors();
+
+  await t.expect(input.visible).ok();
 
   await t.pressKey('tab');
 

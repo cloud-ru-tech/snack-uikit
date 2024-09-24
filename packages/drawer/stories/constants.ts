@@ -1,4 +1,4 @@
-import { ArgTypes } from '@storybook/types';
+import { ArgTypes } from '@storybook/react';
 
 import { MODE, POSITION, SIZE } from '../src/constants';
 import { DrawerHeaderProps } from '../src/helperComponents';
@@ -45,12 +45,12 @@ export const DEFAULT_ARGS: DrawerCustomStoryProps | DrawerStoryProps = {
 export const ARG_TYPES: ArgTypes<DrawerCustomStoryProps> = {
   open: {
     control: {
-      type: 'disabled',
+      disable: true,
     },
   },
   onClose: {
     control: {
-      type: 'disabled',
+      disable: true,
     },
   },
   title: {

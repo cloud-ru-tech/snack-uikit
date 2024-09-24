@@ -21,6 +21,8 @@ const getPageUrl = (props: Record<string, unknown> = {}) =>
     },
   });
 
+const toastElementSelector = Selector(dataTestIdSelector(TEST_ID));
+
 fixture('Toast SystemEvent');
 
 test.page(getPageUrl())('Should be rendered', async t => {
@@ -34,19 +36,15 @@ test.page(getPageUrl())('Should be rendered', async t => {
 test.page(getPageUrl())('Should disappear after 5s', async t => {
   const toastTrigger = Selector(dataTestIdSelector(TOAST_TRIGGER));
 
-  let toastSystemEvent = Selector(dataTestIdSelector(TEST_ID));
+  await t.click(toastTrigger).expect(toastElementSelector.exists).ok().wait(5000);
 
-  await t.click(toastTrigger).expect(toastSystemEvent.exists).ok().wait(5000);
-
-  toastSystemEvent = Selector(dataTestIdSelector(TEST_ID));
-
-  await t.expect(Selector(dataTestIdSelector(TEST_ID)).exists).notOk();
+  await t.expect(toastElementSelector.exists).notOk();
 });
 
 test.page(getPageUrl())('Should not disappear after 5s when hovered', async t => {
   const toastTrigger = Selector(dataTestIdSelector(TOAST_TRIGGER));
   await t.click(toastTrigger);
-  const toastSystemEvent = Selector(dataTestIdSelector(TEST_ID));
+  const toastSystemEvent = toastElementSelector;
   await t.hover(toastSystemEvent).wait(5000);
   await t.expect(toastSystemEvent.exists).ok();
 });
@@ -118,8 +116,7 @@ test.page(getPageUrl())(`Should disappear all toasts`, async t => {
 
   const toastSystemEventButtonCloseColumn = Selector(dataTestIdSelector(TOAST_SYSTEM_EVENT_TEST_IDS.buttonCloseColumn));
   await t.click(toastSystemEventButtonCloseColumn);
-  const toastSystemEvent = Selector(dataTestIdSelector(TEST_ID));
-  await t.expect(toastSystemEvent.exists).notOk();
+  await t.expect(toastElementSelector.exists).notOk();
 });
 
 test.page(getPageUrl({ showAction: true }))(`Should render with action buttons`, async t => {

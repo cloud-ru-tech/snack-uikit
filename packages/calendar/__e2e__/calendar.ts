@@ -9,6 +9,8 @@ const PERIOD_LEVEL = `period-level-${TEST_ID}`;
 const NEXT_PERIOD = `period-next-${TEST_ID}`;
 const PREV_PERIOD = `period-prev-${TEST_ID}`;
 
+const mainElementSelector = Selector(dataTestIdSelector(TEST_ID));
+
 const getPage = (props: object = {}) =>
   getTestcafeUrl({
     name: 'calendar',
@@ -28,6 +30,8 @@ test.page(
     modeBuildCellProps: 'for-tests',
   }),
 )('Check the focus to the first not disable cell', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.pressKey('tab');
   await t.pressKey('down');
   await t.pressKey('enter');
@@ -56,11 +60,12 @@ test.page(
 });
 
 test.page(getPage())('Should be rendered', async t => {
-  const calendar = Selector(dataTestIdSelector(TEST_ID));
-  await t.expect(calendar.exists).ok();
+  await t.expect(mainElementSelector.exists).ok();
 });
 
 test.page(getPage())('Should show all items for period with today', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.expect(await getCalendarTextSnapshot()).eql({
     header: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
     items:
@@ -103,6 +108,8 @@ test.page(getPage())('Should shift to prev period', async t => {
 });
 
 test.page(getPage({ localeName: 'ru-RU' }))('Should render in ru localeName', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.expect(await getCalendarTextSnapshot()).eql({
     header: 'Пн,Вт,Ср,Чт,Пт,Сб,Вс',
     items:
@@ -114,6 +121,8 @@ test.page(getPage({ localeName: 'ru-RU' }))('Should render in ru localeName', as
 test.page(getPage({ localeName: 'ru-RU', dateValue: 1678870800000 /* 15 марта 23 */ }))(
   'Should render with selected date',
   async t => {
+    await t.expect(mainElementSelector.visible).ok();
+
     await t.expect(await getCalendarTextSnapshot()).eql({
       header: 'Пн,Вт,Ср,Чт,Пт,Сб,Вс',
       items:
@@ -257,6 +266,8 @@ test.page(
     rangeValueEnd: 1682672400000, // 28 апреля 23
   }),
 )('Should highlight selected range', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.expect(await getCalendarTextSnapshot()).eql({
     header: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
     items:
@@ -272,6 +283,8 @@ test.page(
     rangeValueEnd: 1751101200000, // 28 июня 25
   }),
 )('Should show start of selected range', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.expect(await getCalendarTextSnapshot()).eql({
     header: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
     items:
@@ -361,6 +374,8 @@ test.page(
 });
 
 test.page(getPage())('Should set focus on viewMode button on tab', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.pressKey('tab');
   await t.pressKey('enter');
   await t.expect(await getCalendarTextSnapshot()).eql({
@@ -371,6 +386,8 @@ test.page(getPage())('Should set focus on viewMode button on tab', async t => {
 });
 
 test.page(getPage())('Should set focus on prev period button with arrow right', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.pressKey('tab');
   await t.pressKey('right');
   await t.pressKey('enter');
@@ -383,6 +400,8 @@ test.page(getPage())('Should set focus on prev period button with arrow right', 
 });
 
 test.page(getPage())('Should set focus on date items with arrow down', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.pressKey('tab');
   await t.pressKey('down');
   await t.pressKey('enter');
@@ -395,6 +414,8 @@ test.page(getPage())('Should set focus on date items with arrow down', async t =
 });
 
 test.page(getPage())('Should set prev period when arrow up pressed with on-top date focused', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.pressKey('tab');
   await t.pressKey('down');
   await t.pressKey('up');
@@ -412,6 +433,8 @@ test.page(
     mode: 'range',
   }),
 )('Should select range by keyboard', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
   await t.pressKey('tab');
   await t.pressKey('down'); // попадаем на даты
   await t.pressKey('up'); // переходим на предыдущий месяц

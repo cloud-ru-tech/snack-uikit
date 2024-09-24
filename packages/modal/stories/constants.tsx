@@ -1,4 +1,4 @@
-import { ArgTypes } from '@storybook/types';
+import { ArgTypes } from '@storybook/react';
 
 import * as Icons from '@snack-uikit/icons';
 

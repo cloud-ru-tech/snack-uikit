@@ -111,6 +111,8 @@ test.page(
 )(`Should control by keyboard`, async t => {
   const { search, checkbox, moreActionsButton, refreshButton, deleteButton, option } = getSelectors();
 
+  await t.expect(search.visible).ok();
+
   const searchInput = search.find('input');
 
   await t.pressKey('tab').expect(checkbox.focused).ok('Checkbox should be focused');

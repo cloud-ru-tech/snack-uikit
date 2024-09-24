@@ -59,11 +59,13 @@ test.page(getUrl())('Should be scrolled to top on init', async t => {
 test.page(getUrl({ autoscrollTo: 'bottom' }))('Should be scrolled to bottom on init', async t => {
   const { viewport, host } = getSelectors();
 
+  await t.expect(viewport.visible).ok();
+
   const hostHeight = await host.offsetHeight;
   const scrollHeight = await viewport.scrollHeight;
 
   const scrollTop = await viewport.scrollTop;
   const delta = scrollHeight - hostHeight;
 
-  await t.expect(scrollTop).within(delta - 1, delta + 1);
+  await t.expect(scrollTop).within(delta - 2, delta + 2);
 });

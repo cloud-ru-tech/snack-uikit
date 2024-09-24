@@ -1,11 +1,10 @@
 import './styles.module.scss';
 
+import { GlobalTypes, Parameters } from '@storybook/csf';
 import { Preview } from '@storybook/react';
 import { themes, ThemeVars } from '@storybook/theming';
-import { GlobalTypes, Parameters } from '@storybook/types';
-import { withDesign } from 'storybook-addon-designs';
 
-import { PARAM_COLOR_MAP_KEY, PARAM_KEY } from '@cloud-ru/ft-storybook-brand-addon';
+import { PARAM_COLOR_MAP_KEY, PARAM_KEY, withBrand } from '@cloud-ru/ft-storybook-brand-addon';
 import { Sprite, SpriteSVG } from '@snack-uikit/icons';
 import { LocaleProvider } from '@snack-uikit/locale';
 
@@ -69,20 +68,14 @@ const globalTypes: GlobalTypes = {
     description: '',
     defaultValue: DEFAULT_BRAND_MAP[Brand.Default],
   },
-  ...additionalThemes.reduce(
-    (
-      res: Record<string, { name: string; description: string; defaultValue: Record<string, string> }>,
-      { key, name, defaultValue },
-    ) => {
-      res[key] = {
-        name,
-        description: '',
-        defaultValue,
-      };
-      return res;
-    },
-    {},
-  ),
+  ...additionalThemes.reduce((res: GlobalTypes, { key, name, defaultValue }) => {
+    res[key] = {
+      name,
+      description: '',
+      defaultValue,
+    };
+    return res;
+  }, {}),
 };
 
 const decorators: Preview['decorators'] = [
@@ -93,7 +86,7 @@ const decorators: Preview['decorators'] = [
       <LocaleProvider lang='en_GB'>{Story()}</LocaleProvider>
     </>
   ),
-  withDesign,
+  withBrand,
 ];
 
 const preview: Preview = {

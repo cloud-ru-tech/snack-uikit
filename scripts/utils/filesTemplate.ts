@@ -208,26 +208,26 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template: StoryFn<${componentName}Props> = ({ ...args }: ${componentName}Props) => <${componentName} {...args} />;
+const Template: StoryFn<${componentName}Props> = ({ ...args }) => <${componentName} {...args} />;
 
-export const ${componentStoryName}: StoryObj<${componentName}Props> = Template.bind({});
-
-${componentStoryName}.args = {};
-
-${componentStoryName}.argTypes = {};
-
-${componentStoryName}.parameters = {
-  readme: {
-    sidebar: [\`Latest version: $\{componentPackage.version}\`, componentReadme, componentChangelog],
+export const ${componentStoryName}: StoryObj<${componentName}Props> = {
+  render: Template,
+  args: {},
+  argTypes: {},
+  parameters: {
+    readme: {
+      sidebar: [\`Latest version: $\{componentPackage.version}\`, componentReadme, componentChangelog],
+    },
+    packageName: componentPackage.name,
+    design: {
+      name: 'Figma',
+      type: 'figma',
+      //TODO
+      url: 'https://pocka.github.io/storybook-addon-designs/?path=/story/docs-quick-start--page',
+    },
   },
-  packageName: componentPackage.name,
-  design: {
-    name: 'Figma',
-    type: 'figma',
-    //TODO
-    url: 'https://pocka.github.io/storybook-addon-designs/?path=/story/docs-quick-start--page',
-  },
-};`;
+};
+`;
 
   fs.writeFileSync(filePath, fileContent);
 };

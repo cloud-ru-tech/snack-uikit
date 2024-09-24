@@ -1,6 +1,8 @@
 import { exec } from 'shelljs';
 
 type PackageItem = {
+  // TODO: wrong linter warning
+  // eslint-disable-next-line @cloud-ru/ssr-safe-react/domApi
   location: string;
 };
 
@@ -19,6 +21,8 @@ export function getChangedPackages(): string[] {
   }
 
   if (Array.isArray(changedPackages) && changedPackages.every(isPackageItem)) {
+    // TODO: wrong linter warning
+    // eslint-disable-next-line @cloud-ru/ssr-safe-react/domApi
     return changedPackages.map(item => item.location);
   }
 

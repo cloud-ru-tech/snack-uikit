@@ -114,6 +114,7 @@ export function chipChoiceCommonTests(getPage: ReturnType<typeof createChipGetPa
     }
 
     const { chip, droplist, clearButton } = getComponent();
+    await t.expect(chip.visible).ok('Chip should be rendered');
 
     await t.pressKey('Tab');
     await t.expect(chip.focused).ok('Chip should be focused after first "Tab" key press');

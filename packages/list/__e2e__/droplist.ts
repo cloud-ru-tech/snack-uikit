@@ -8,6 +8,8 @@ const NEXT_LIST_ITEMS = ['0-0', '0-1', '1-0', '1-1', '2-0', '2-1', '3-0', '3-1',
   id => 'first-nested-' + id,
 );
 
+const triggerElementSelector = Selector(dataTestIdSelector(DROPLIST_TRIGGER_TEST_ID));
+
 const getBaseItem = (id: string) => Selector(dataTestIdSelector(`list__base-item_${id}`));
 const getBaseItemCheckbox = (id: string) => getBaseItem(id).find(dataTestIdSelector('list__base-item-checkbox'));
 const getBaseItemSwitch = (id: string) => getBaseItem(id).find(dataTestIdSelector('list__base-item-switch'));
@@ -27,7 +29,7 @@ const getPage = (props: object = {}) =>
 fixture('DropList');
 
 test.page(getPage())('Should render', async t => {
-  await t.click(Selector(dataTestIdSelector(DROPLIST_TRIGGER_TEST_ID)));
+  await t.click(triggerElementSelector);
 
   await t.expect(Selector(dataTestIdSelector(TEST_ID)).exists).ok('droplist is missing');
 });
@@ -43,7 +45,7 @@ test.page(getPage({ selectionMode: 'single', marker: true }))(
       await t.expect(getBaseItemMarker(id).exists).notOk(`item"${id}" has a marker`);
     }
 
-    await t.click(Selector(dataTestIdSelector(DROPLIST_TRIGGER_TEST_ID)));
+    await t.click(triggerElementSelector);
     await t.hover(getBaseItem('first'));
     await t.hover(getBaseItem('first-nested'));
 
@@ -80,7 +82,7 @@ test.page(getPage({ selectionMode: 'single' }))('Should select items in single m
     }
   }
 
-  await t.click(Selector(dataTestIdSelector(DROPLIST_TRIGGER_TEST_ID)));
+  await t.click(triggerElementSelector);
   await t.hover(getBaseItem('first'));
   await t.hover(getBaseItem('first-nested'));
   await t.click(getBaseItem('first-nested-0-0'));
@@ -144,7 +146,7 @@ test.page(getPage({ selectionMode: 'multiple' }))('Should select next list items
     }
   }
 
-  await t.click(Selector(dataTestIdSelector(DROPLIST_TRIGGER_TEST_ID)));
+  await t.click(triggerElementSelector);
 
   // next list item - click inner items
   await t.hover(getBaseItemCheckbox('first'));
@@ -202,7 +204,7 @@ test.page(getPage({ selectionMode: 'multiple' }))('Should select accordion items
     }
   }
 
-  await t.click(Selector(dataTestIdSelector(DROPLIST_TRIGGER_TEST_ID)));
+  await t.click(triggerElementSelector);
 
   // accordion item - select by inner items
   await t.click(getBaseItem('3'));
@@ -272,6 +274,8 @@ test.page(getPage({ selectionMode: 'single' }))('Should select items in single m
       await t.expect(getBaseItem(id).hasAttribute('data-checked')).notOk(`item"${id}" shouldn't be checked`);
     }
   }
+
+  await t.expect(triggerElementSelector.exists).ok();
 
   // select item first-nested-0-0
   await t.pressKey('tab').pressKey('down').pressKey('right').pressKey('right').pressKey('enter');
@@ -349,6 +353,7 @@ test.page(getPage({ selectionMode: 'multiple' }))(
       }
     }
 
+    await t.expect(triggerElementSelector.exists).ok();
     // next list item - click inner items
     // select item first-nested-0-0
     await t.pressKey('tab').pressKey('down').pressKey('right').pressKey('right').pressKey('enter');
@@ -424,6 +429,7 @@ test.page(getPage({ selectionMode: 'multiple' }))(
       }
     }
 
+    await t.expect(triggerElementSelector.exists).ok();
     // accordion item - select by inner items
     // select item 2
     await t.pressKey('tab').pressKey('down').pressKey('down').pressKey('down').pressKey('enter');

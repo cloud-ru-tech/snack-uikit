@@ -10,7 +10,11 @@ const COMPONENT_PREFIX = 'field-stepper';
 const MINUS_BUTTON_TEST_ID = 'field-stepper__minus-button';
 const PLUS_BUTTON_TEST_ID = 'field-stepper__plus-button';
 const LIMIT_TOOLTIP_TEST_ID = 'field-stepper__limit-tooltip';
+
 const getInputInner = (wrapper: Selector) => getInput(wrapper, COMPONENT_PREFIX);
+
+const wrapper = Selector(dataTestIdSelector(TEST_ID));
+const input = getInputInner(wrapper);
 
 const visit = (props?: Record<string, unknown>): string =>
   getTestcafeUrl({
@@ -34,17 +38,12 @@ runCommonTests(props => visit(props), TEST_ID, {
 });
 
 test.page(visit({ value: 6 }))('Should not accept letters', async t => {
-  const wrapper = Selector(dataTestIdSelector(TEST_ID));
-  const input = getInputInner(wrapper);
-
   await t.click(input).pressKey('ctrl+a').pressKey('a');
 
   await t.expect(input.value).eql('0');
 });
 
 test.page(visit({ value: 4, step: 2, min: 0, max: 6 }))('Should increase/decrease by buttons', async t => {
-  const wrapper = Selector(dataTestIdSelector(TEST_ID));
-  const input = getInputInner(wrapper);
   const minusButton = Selector(dataTestIdSelector(MINUS_BUTTON_TEST_ID));
   const plusButton = Selector(dataTestIdSelector(PLUS_BUTTON_TEST_ID));
 
@@ -59,8 +58,7 @@ test.page(visit({ value: 4, step: 2, min: 0, max: 6 }))('Should increase/decreas
 });
 
 test.page(visit({ value: 4, step: 2, min: 0, max: 6 }))('Should increase/decrease from keyboard', async t => {
-  const wrapper = Selector(dataTestIdSelector(TEST_ID));
-  const input = getInputInner(wrapper);
+  await t.expect(wrapper.visible).ok();
 
   await t.pressKey('tab').pressKey('left').pressKey('enter').expect(input.value).eql('2');
   await t.pressKey('right').pressKey('right').pressKey('enter').expect(input.value).eql('4');
@@ -87,8 +85,6 @@ test.page(visit({ value: 4, step: 2, min: 0, max: 6 }))('Should increase/decreas
 });
 
 test.page(visit({ value: 6, disabled: true }))('Should not click buttons in disabled state', async t => {
-  const wrapper = Selector(dataTestIdSelector(TEST_ID));
-  const input = getInputInner(wrapper);
   const minusButton = Selector(dataTestIdSelector(MINUS_BUTTON_TEST_ID));
   const plusButton = Selector(dataTestIdSelector(PLUS_BUTTON_TEST_ID));
 
@@ -97,8 +93,6 @@ test.page(visit({ value: 6, disabled: true }))('Should not click buttons in disa
 });
 
 test.page(visit({ value: 6, readonly: true }))('Should not click buttons in readonly state', async t => {
-  const wrapper = Selector(dataTestIdSelector(TEST_ID));
-  const input = getInputInner(wrapper);
   const minusButton = Selector(dataTestIdSelector(MINUS_BUTTON_TEST_ID));
   const plusButton = Selector(dataTestIdSelector(PLUS_BUTTON_TEST_ID));
 
@@ -107,8 +101,6 @@ test.page(visit({ value: 6, readonly: true }))('Should not click buttons in read
 });
 
 test.page(visit({ value: 8, min: 5, max: 15, allowMoreThanLimits: true }))('Can enter value out of limits', async t => {
-  const wrapper = Selector(dataTestIdSelector(TEST_ID));
-  const input = getInputInner(wrapper);
 
   await t.click(input).typeText(input, '0').click(Selector('body')).expect(input.value).eql('80');
 
@@ -118,9 +110,6 @@ test.page(visit({ value: 8, min: 5, max: 15, allowMoreThanLimits: true }))('Can 
 test.page(visit({ value: 8, min: 5, max: 15, allowMoreThanLimits: false }))(
   'Should not enter value out of limits if not allowed',
   async t => {
-    const wrapper = Selector(dataTestIdSelector(TEST_ID));
-    const input = getInputInner(wrapper);
-
     await t.click(input).typeText(input, '0').click(Selector('body'));
 
     await t
