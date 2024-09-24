@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Segmented Control",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -32,7 +32,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/truncate-string": "0.4.22",
+    "@snack-uikit/truncate-string": "0.4.23",
     "@snack-uikit/utils": "3.4.0",
     "classnames": "2.5.1",
     "uncontrollable": "8.0.4"

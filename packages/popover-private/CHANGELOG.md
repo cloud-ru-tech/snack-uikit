@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.7 (2024-09-24)
+
+
+### Bug Fixes
+
+* **PDS-611:** fix too quick popover closing on hover ([c04abd4](https://github.com/cloud-ru-tech/snack-uikit/commit/c04abd462ee29ebd3b538e73256169bbbed440a5))
+
+
+
+
+
 ## 0.13.6 (2024-09-23)
 
 
