@@ -43,4 +43,8 @@ export const en_GB = {
   SearchPrivate: {
     placeholder: 'Search',
   },
+  ColorPicker: {
+    apply: 'Apply',
+    cancel: 'Cancel',
+  },
 };

@@ -45,4 +45,8 @@ export const ru_RU: typeof en_GB = {
   SearchPrivate: {
     placeholder: 'Поиск',
   },
+  ColorPicker: {
+    apply: 'Применить',
+    cancel: 'Отменить',
+  },
 };
