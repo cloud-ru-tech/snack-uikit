@@ -6,3 +6,4 @@ export * from './FieldDate';
 export * from './FieldSelect';
 export * from './FieldStepper';
 export * from './FieldSlider';
+export * from './FieldColor';

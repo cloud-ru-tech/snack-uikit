@@ -34,6 +34,7 @@
   "dependencies": {
     "@snack-uikit/button": "0.17.5",
     "@snack-uikit/calendar": "0.7.11",
+    "@snack-uikit/color-picker": "0.0.0",
     "@snack-uikit/dropdown": "0.2.7",
     "@snack-uikit/icons": "0.22.1",
     "@snack-uikit/input-private": "3.2.1",
