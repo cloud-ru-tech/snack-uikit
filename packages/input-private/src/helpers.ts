@@ -24,6 +24,14 @@ export function runAfterRerender(callback: () => void) {
 }
 
 /**
+ * Проверяет находится ли курсор в начале поля ввода
+ * @function  helper
+ */
+export function isCursorInTheBeginning(input: HTMLInputElement | HTMLTextAreaElement | null) {
+  return input?.selectionStart === 0;
+}
+
+/**
  * Проверяет находится ли курсор в конце поля ввода
  * @function  helper
  */

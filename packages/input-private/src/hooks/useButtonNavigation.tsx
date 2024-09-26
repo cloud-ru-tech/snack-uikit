@@ -2,13 +2,14 @@ import { KeyboardEventHandler, MouseEventHandler, RefObject, useCallback, useSta
 
 import { useEventHandler } from '@snack-uikit/utils';
 
-import { isCursorInTheEnd, runAfterRerender, selectAll } from '../helpers';
+import { isCursorInTheBeginning, isCursorInTheEnd, runAfterRerender, selectAll } from '../helpers';
 import { ButtonProps } from './types';
 
 type UseButtonNavigationProps<T extends HTMLInputElement | HTMLTextAreaElement> = {
   setInputFocus?(): void;
   inputRef: RefObject<T>;
-  buttons: ButtonProps[];
+  postfixButtons: ButtonProps[];
+  prefixButtons?: ButtonProps[];
   onButtonKeyDown?: KeyboardEventHandler<HTMLButtonElement>;
   readonly: boolean;
   submitKeys: string[];
@@ -21,49 +22,82 @@ type UseButtonNavigationProps<T extends HTMLInputElement | HTMLTextAreaElement> 
 export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaElement>({
   inputRef,
   setInputFocus = () => inputRef.current?.focus(),
-  buttons,
+  postfixButtons,
+  prefixButtons = [],
   onButtonKeyDown = () => {},
   readonly,
   submitKeys,
 }: UseButtonNavigationProps<T>) {
-  const getInitialButtonTabIndices = useCallback(() => buttons.map(() => -1), [buttons]);
   const [inputTabIndex, setInputTabIndex] = useState(0);
-  const [buttonTabIndices, setButtonTabIndices] = useState(getInitialButtonTabIndices);
   const buttonKeyDownEventHandler = useEventHandler(onButtonKeyDown);
 
-  const findVisibleButton = useCallback(
+  const getInitialPrefixButtonTabIndices = useCallback(() => prefixButtons.map(() => -1), [prefixButtons]);
+  const [prefixButtonTabIndices, setPrefixButtonTabIndices] = useState(getInitialPrefixButtonTabIndices);
+
+  const getInitialPostfixButtonTabIndices = useCallback(() => postfixButtons.map(() => -1), [postfixButtons]);
+  const [postfixButtonTabIndices, setPostfixButtonTabIndices] = useState(getInitialPostfixButtonTabIndices);
+
+  const findVisiblePrefixButton = useCallback(
     (index: number, direction: 'ArrowRight' | 'ArrowLeft') => {
       const delta = direction === 'ArrowLeft' ? -1 : 1;
-      const condition = (i: number) => (direction === 'ArrowLeft' ? i >= 0 : i < buttons.length);
+      const condition = (i: number) => (direction === 'ArrowLeft' ? i >= 0 : i < prefixButtons.length);
 
       for (let i = index + delta; condition(i); i += delta) {
-        if (buttons[i].show) {
+        if (prefixButtons[i].active && prefixButtons[i].show) {
           return i;
         }
       }
 
       return index;
     },
-    [buttons],
+    [prefixButtons],
+  );
+
+  const findVisiblePostfixButton = useCallback(
+    (index: number, direction: 'ArrowRight' | 'ArrowLeft') => {
+      const delta = direction === 'ArrowLeft' ? -1 : 1;
+      const condition = (i: number) => (direction === 'ArrowLeft' ? i >= 0 : i < postfixButtons.length);
+
+      for (let i = index + delta; condition(i); i += delta) {
+        if (postfixButtons[i].active && postfixButtons[i].show) {
+          return i;
+        }
+      }
+
+      return index;
+    },
+    [postfixButtons],
   );
 
   const setInitialTabIndices = useCallback(() => {
     setInputTabIndex(0);
-    setButtonTabIndices(getInitialButtonTabIndices);
-  }, [getInitialButtonTabIndices]);
+    setPrefixButtonTabIndices(getInitialPrefixButtonTabIndices);
+    setPostfixButtonTabIndices(getInitialPostfixButtonTabIndices);
+  }, [getInitialPrefixButtonTabIndices, getInitialPostfixButtonTabIndices]);
 
   const focusInput = useCallback(() => {
     setInitialTabIndices();
     setInputFocus();
   }, [setInitialTabIndices, setInputFocus]);
 
-  const focusButton = useCallback(
+  const focusPrefixButton = useCallback(
     (index: number) => {
       setInputTabIndex(-1);
-      setButtonTabIndices(tabIndices => tabIndices.map((_, i) => (i === index ? 0 : -1)));
-      buttons[index].ref.current?.focus();
+      setPrefixButtonTabIndices(tabIndices => tabIndices.map((_, i) => (i === index ? 0 : -1)));
+      setPostfixButtonTabIndices(getInitialPostfixButtonTabIndices);
+      prefixButtons[index].active && prefixButtons[index].ref.current?.focus();
     },
-    [buttons],
+    [getInitialPostfixButtonTabIndices, prefixButtons],
+  );
+
+  const focusPostfixButton = useCallback(
+    (index: number) => {
+      setInputTabIndex(-1);
+      setPrefixButtonTabIndices(getInitialPrefixButtonTabIndices);
+      setPostfixButtonTabIndices(tabIndices => tabIndices.map((_, i) => (i === index ? 0 : -1)));
+      postfixButtons[index].active && postfixButtons[index].ref.current?.focus();
+    },
+    [getInitialPrefixButtonTabIndices, postfixButtons],
   );
 
   const handleInputKeyDown: KeyboardEventHandler<T> = useCallback(
@@ -71,20 +105,36 @@ export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaEle
       setInitialTabIndices();
 
       if (event.key === 'ArrowRight' && (readonly || isCursorInTheEnd(inputRef.current))) {
-        const index = findVisibleButton(-1, event.key);
+        const index = findVisiblePostfixButton(-1, event.key);
         if (index >= 0) {
-          focusButton(index);
+          focusPostfixButton(index);
+        }
+      }
+
+      if (event.key === 'ArrowLeft' && (readonly || isCursorInTheBeginning(inputRef.current))) {
+        const index = findVisiblePrefixButton(prefixButtons.length, event.key);
+        if (index >= 0) {
+          focusPrefixButton(index);
         }
       }
     },
-    [findVisibleButton, focusButton, inputRef, readonly, setInitialTabIndices],
+    [
+      findVisiblePostfixButton,
+      findVisiblePrefixButton,
+      focusPostfixButton,
+      focusPrefixButton,
+      inputRef,
+      prefixButtons.length,
+      readonly,
+      setInitialTabIndices,
+    ],
   );
 
-  const handleButtonKeyDown = useCallback(
+  const handlePrefixButtonKeyDown = useCallback(
     (index: number): KeyboardEventHandler<HTMLButtonElement> =>
       event => {
-        if (event.key === 'ArrowLeft') {
-          const nextIndex = findVisibleButton(index, event.key);
+        if (event.key === 'ArrowRight') {
+          const nextIndex = findVisiblePrefixButton(index, event.key);
           if (index === nextIndex) {
             event.preventDefault();
             focusInput();
@@ -93,13 +143,13 @@ export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaEle
               runAfterRerender(() => selectAll(inputRef.current));
             }
           } else {
-            focusButton(nextIndex);
+            focusPrefixButton(nextIndex);
           }
         }
 
-        if (event.key === 'ArrowRight') {
-          if (index <= buttons.length - 1) {
-            focusButton(findVisibleButton(index, event.key));
+        if (event.key === 'ArrowLeft') {
+          if (index <= prefixButtons.length - 1) {
+            focusPrefixButton(findVisiblePrefixButton(index, event.key));
           }
         }
 
@@ -111,9 +161,51 @@ export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaEle
       },
     [
       buttonKeyDownEventHandler,
-      buttons.length,
-      findVisibleButton,
-      focusButton,
+      prefixButtons.length,
+      findVisiblePrefixButton,
+      focusPrefixButton,
+      focusInput,
+      inputRef,
+      readonly,
+      setInitialTabIndices,
+      submitKeys,
+    ],
+  );
+
+  const handlePostfixButtonKeyDown = useCallback(
+    (index: number): KeyboardEventHandler<HTMLButtonElement> =>
+      event => {
+        if (event.key === 'ArrowLeft') {
+          const nextIndex = findVisiblePostfixButton(index, event.key);
+          if (index === nextIndex) {
+            event.preventDefault();
+            focusInput();
+
+            if (readonly) {
+              runAfterRerender(() => selectAll(inputRef.current));
+            }
+          } else {
+            focusPostfixButton(nextIndex);
+          }
+        }
+
+        if (event.key === 'ArrowRight') {
+          if (index <= postfixButtons.length - 1) {
+            focusPostfixButton(findVisiblePostfixButton(index, event.key));
+          }
+        }
+
+        if (submitKeys.includes(event.key)) {
+          runAfterRerender(() => setInitialTabIndices());
+        }
+
+        buttonKeyDownEventHandler?.(event);
+      },
+    [
+      buttonKeyDownEventHandler,
+      postfixButtons.length,
+      findVisiblePostfixButton,
+      focusPostfixButton,
       focusInput,
       inputRef,
       readonly,
@@ -130,20 +222,43 @@ export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaEle
     inputTabIndex,
     onInputKeyDown: handleInputKeyDown,
     setInitialTabIndices,
-    buttons: (
+    prefixButtons: prefixButtons.some(button => button.show) ? (
       <>
-        {buttons.map(({ id, render, ref, show }, index) =>
-          show
-            ? render({
-                key: id,
-                ref,
-                tabIndex: buttonTabIndices[index],
-                onKeyDown: handleButtonKeyDown(index),
+        {prefixButtons.map((props, index) => {
+          if (!props.show) {
+            return null;
+          }
+
+          return props.active
+            ? props.render({
+                key: props.id,
+                ref: props.ref,
+                tabIndex: prefixButtonTabIndices[index],
+                onKeyDown: handlePrefixButtonKeyDown(index),
                 onClick: onButtonClick,
               })
-            : null,
-        )}
+            : props.render({ key: props.id });
+        })}
       </>
-    ),
+    ) : undefined,
+    postfixButtons: postfixButtons.some(button => button.show) ? (
+      <>
+        {postfixButtons.map((props, index) => {
+          if (!props.show) {
+            return null;
+          }
+
+          return props.active
+            ? props.render({
+                key: props.id,
+                ref: props.ref,
+                tabIndex: postfixButtonTabIndices[index],
+                onKeyDown: handlePostfixButtonKeyDown(index),
+                onClick: onButtonClick,
+              })
+            : props.render({ key: props.id });
+        })}
+      </>
+    ) : undefined,
   };
 }

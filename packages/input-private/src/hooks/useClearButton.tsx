@@ -24,6 +24,7 @@ export function useClearButton({ clearButtonRef, showClearButton, size, onClear 
   return useMemo(
     () => ({
       id: 'clear',
+      active: true,
       ref: clearButtonRef,
       show: showClearButton,
       render: props => {

@@ -77,6 +77,10 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 `helper` 
 
 Откладывает колбек на следующий цикл EventLoop
+## isCursorInTheBeginning
+`helper` 
+
+Проверяет находится ли курсор в начале поля ввода
 ## isCursorInTheEnd
 `helper` 
 
