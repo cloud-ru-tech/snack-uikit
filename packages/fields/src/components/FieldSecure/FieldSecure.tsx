@@ -177,9 +177,9 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       disabled: disabled || isLoading,
     });
 
-    const { buttons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
+    const { postfixButtons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
       inputRef: localRef,
-      buttons: useMemo(() => [copyButtonSettings, hideButtonSettings], [copyButtonSettings, hideButtonSettings]),
+      postfixButtons: useMemo(() => [copyButtonSettings, hideButtonSettings], [copyButtonSettings, hideButtonSettings]),
       readonly,
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
@@ -211,7 +211,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
           variant={CONTAINER_VARIANT.SingleLine}
           inputRef={localRef}
           prefix={prefixIcon}
-          postfix={buttons}
+          postfix={postfixButtons}
         >
           <WithSkeleton skeleton={<Skeleton width='100%' borderRadius={2} />} loading={isLoading}>
             <InputPrivate

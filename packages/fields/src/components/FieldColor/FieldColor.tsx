@@ -111,9 +111,12 @@ export const FieldColor = forwardRef<HTMLInputElement, FieldColorProps>(
 
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
     const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: value });
-    const { buttons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
+    const { postfixButtons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
       inputRef: localRef,
-      buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
+      postfixButtons: useMemo(
+        () => [clearButtonSettings, copyButtonSettings],
+        [clearButtonSettings, copyButtonSettings],
+      ),
       readonly,
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
@@ -175,7 +178,7 @@ export const FieldColor = forwardRef<HTMLInputElement, FieldColorProps>(
             variant={CONTAINER_VARIANT.SingleLine}
             focused={showDropList}
             inputRef={localRef}
-            postfix={buttons}
+            postfix={postfixButtons}
             prefix={
               <div
                 className={styles.colorPreview}

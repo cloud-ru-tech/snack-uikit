@@ -75,9 +75,9 @@ export const SearchPrivate = forwardRef<HTMLInputElement, SearchPrivateProps>(fu
     onClear,
   });
 
-  const { buttons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
+  const { postfixButtons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
     inputRef: localRef,
-    buttons: useMemo(() => [clearButtonSettings], [clearButtonSettings]),
+    postfixButtons: useMemo(() => [clearButtonSettings], [clearButtonSettings]),
     readonly: false,
     submitKeys: ['Enter', 'Space'],
   });
@@ -125,7 +125,7 @@ export const SearchPrivate = forwardRef<HTMLInputElement, SearchPrivateProps>(fu
         data-test-id={PRIVATE_SEARCH_TEST_IDS.input}
       />
 
-      <span className={styles.postfix}>{buttons}</span>
+      <span className={styles.postfix}>{postfixButtons}</span>
     </div>
   );
 });

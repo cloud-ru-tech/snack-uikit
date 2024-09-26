@@ -92,7 +92,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
 
   const { ArrowIcon, arrowIconSize } = getArrowIcon({ size, open });
 
-  const { buttons, inputKeyDownNavigationHandler, buttonsRefs } = useButtons({
+  const { postfixButtons, inputKeyDownNavigationHandler, buttonsRefs } = useButtons({
     readonly,
     size,
     showClearButton: showClearButton && !disabled && !readonly && Boolean(selectedItems?.find(item => !item.disabled)),
@@ -256,7 +256,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
               </div>
 
               <div className={styles.postfix}>
-                {buttons}
+                {postfixButtons}
                 <ArrowIcon size={arrowIconSize} className={styles.arrowIcon} />
               </div>
 

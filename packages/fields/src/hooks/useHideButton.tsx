@@ -27,6 +27,7 @@ export function useHideButton({
   return useMemo(
     () => ({
       id: 'hide',
+      active: true,
       ref: hideButtonRef,
       show: showHideButton,
       render: props => {

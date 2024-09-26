@@ -16,6 +16,7 @@ import { Calendar, CalendarProps } from '@snack-uikit/calendar';
 import { Dropdown } from '@snack-uikit/dropdown';
 import { CalendarSVG } from '@snack-uikit/icons';
 import {
+  ButtonProps,
   ICON_SIZE,
   InputPrivate,
   InputPrivateProps,
@@ -154,10 +155,21 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
 
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear: handleClear });
     const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: valueProp || '' });
+    const calendarIcon: ButtonProps = useMemo(
+      () => ({
+        active: false,
+        show: true,
+        id: 'calendarIcon',
+        render: props => (
+          <CalendarSVG {...props} size={calendarIconSize} className={styles.calendarIcon} data-size={size} />
+        ),
+      }),
+      [calendarIconSize, size],
+    );
 
     const memorizedButtons = useMemo(
-      () => [clearButtonSettings, copyButtonSettings],
-      [clearButtonSettings, copyButtonSettings],
+      () => [clearButtonSettings, copyButtonSettings, calendarIcon],
+      [clearButtonSettings, copyButtonSettings, calendarIcon],
     );
 
     const {
@@ -179,14 +191,14 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const setInputFocusFromButtons = useCallback(() => setInputFocus(SlotKey.Year), [setInputFocus]);
 
     const {
-      buttons,
+      postfixButtons,
       inputTabIndex,
       onInputKeyDown: navigationInputKeyDownHandler,
       setInitialTabIndices,
     } = useButtonNavigation({
       setInputFocus: setInputFocusFromButtons,
       inputRef: localRef,
-      buttons: memorizedButtons,
+      postfixButtons: memorizedButtons,
       onButtonKeyDown: checkForLeavingFocus,
       readonly,
       submitKeys: ['Enter', 'Space', 'Tab'],
@@ -311,12 +323,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
             variant={CONTAINER_VARIANT.SingleLine}
             focused={showDropList}
             inputRef={localRef}
-            postfix={
-              <>
-                {buttons}
-                <CalendarSVG size={calendarIconSize} className={styles.calendarIcon} data-size={size} />
-              </>
-            }
+            postfix={postfixButtons}
           >
             <InputPrivate
               ref={mergeRefs(ref, localRef)}

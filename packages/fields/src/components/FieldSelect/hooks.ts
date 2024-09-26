@@ -90,15 +90,15 @@ export function useButtons({
     size,
     valueToCopy,
   });
-  const { onInputKeyDown: inputKeyDownNavigationHandler, buttons } = useButtonNavigation({
+  const { onInputKeyDown: inputKeyDownNavigationHandler, postfixButtons } = useButtonNavigation({
     inputRef,
-    buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
+    postfixButtons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
     onButtonKeyDown: undefined,
     readonly,
     submitKeys: ['Enter', 'Space', 'Tab'],
   });
 
-  return { buttons, inputKeyDownNavigationHandler, buttonsRefs };
+  return { postfixButtons, inputKeyDownNavigationHandler, buttonsRefs };
 }
 
 export function useSearchInput({

@@ -111,9 +111,12 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
 
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
     const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: value });
-    const { buttons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
+    const { postfixButtons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
       inputRef: localRef,
-      buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
+      postfixButtons: useMemo(
+        () => [clearButtonSettings, copyButtonSettings],
+        [clearButtonSettings, copyButtonSettings],
+      ),
       readonly,
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
@@ -147,7 +150,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
           variant={CONTAINER_VARIANT.MultiLine}
           style={{ '--max-rows': maxRows, '--min-rows': minRows }}
           inputRef={localRef}
-          postfix={<span className={styles.postfix}>{buttons}</span>}
+          postfix={<span className={styles.postfix}>{postfixButtons}</span>}
         >
           <Scroll
             className={styles.scrollContainer}

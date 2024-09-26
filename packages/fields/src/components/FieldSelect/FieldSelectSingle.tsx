@@ -111,7 +111,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
   const { ArrowIcon, arrowIconSize } = getArrowIcon({ size, open });
 
-  const { buttons, inputKeyDownNavigationHandler, buttonsRefs } = useButtons({
+  const { postfixButtons, inputKeyDownNavigationHandler, buttonsRefs } = useButtons({
     readonly,
     size,
     showClearButton: showClearButton && !disabled && !readonly && value !== undefined,
@@ -236,7 +236,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
             />
 
             <div className={styles.postfix}>
-              {buttons}
+              {postfixButtons}
               <ArrowIcon size={arrowIconSize} className={styles.arrowIcon} />
             </div>
           </FieldContainerPrivate>

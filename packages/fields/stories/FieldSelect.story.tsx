@@ -140,6 +140,7 @@ export const fieldSelect: StoryObj<StoryProps> = {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     prefixIcon: 'none',
+
     showCopyButton: true,
     showClearButton: true,
     showMoreOptions: false,
@@ -151,6 +152,7 @@ export const fieldSelect: StoryObj<StoryProps> = {
     validationState: COMMON_ARG_TYPES.validationState,
     prefixIcon: COMMON_ARG_TYPES.prefixIcon,
     labelTooltip: COMMON_ARG_TYPES.labelTooltip,
+
     showMoreOptions: {
       name: '[Stories] add more options to see scroll',
       type: 'boolean',

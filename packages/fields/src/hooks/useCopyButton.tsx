@@ -25,6 +25,7 @@ export function useCopyButton({
   return useMemo(
     () => ({
       id: 'copy',
+      active: true,
       ref: copyButtonRef,
       show: showCopyButton,
       render: props => (

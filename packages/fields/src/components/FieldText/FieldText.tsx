@@ -103,9 +103,12 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
 
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
     const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: value });
-    const { buttons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
+    const { postfixButtons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
       inputRef: localRef,
-      buttons: useMemo(() => [clearButtonSettings, copyButtonSettings], [clearButtonSettings, copyButtonSettings]),
+      postfixButtons: useMemo(
+        () => [clearButtonSettings, copyButtonSettings],
+        [clearButtonSettings, copyButtonSettings],
+      ),
       readonly,
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
@@ -137,7 +140,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
           variant={CONTAINER_VARIANT.SingleLine}
           inputRef={localRef}
           prefix={prefixIcon}
-          postfix={buttons}
+          postfix={postfixButtons}
         >
           <InputPrivate
             ref={mergeRefs(ref, localRef)}

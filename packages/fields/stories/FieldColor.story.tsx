@@ -4,19 +4,16 @@ import { useEffect, useState } from 'react';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { FieldText, FieldTextProps } from '../src';
-import { COMMON_ARG_TYPES } from './constants';
+import { FieldColor, FieldColorProps } from '../src';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
-  title: 'Components/Fields/Field Text',
-  component: FieldText,
+  title: 'Components/Fields/Field Color',
+  component: FieldColor,
 };
 export default meta;
 
-type StoryProps = FieldTextProps & {
-  localeName: undefined;
-};
+type StoryProps = FieldColorProps;
 
 const Template = ({ size, ...args }: StoryProps) => {
   const [value, setValue] = useState(args.value);
@@ -27,46 +24,37 @@ const Template = ({ size, ...args }: StoryProps) => {
 
   return (
     <div className={styles.wrapper} data-size={size}>
-      <FieldText
-        {...args}
-        size={size}
-        value={value}
-        onChange={setValue}
-      />
+      <FieldColor {...args} size={size} value={value} onChange={setValue} />
     </div>
   );
 };
 
-export const fieldText: StoryObj<StoryProps> = {
+export const fieldColor: StoryObj<StoryProps> = {
   render: Template,
 
   args: {
     id: 'text',
-    value: '',
-    placeholder: 'Placeholder',
-    maxLength: undefined,
+    value: '#794ed3',
+    autoApply: false,
+    withAlpha: true,
     readonly: false,
     disabled: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',
+    placeholder: '#f5f5f5',
     required: false,
     caption: 'Caption',
     hint: 'Hint text',
     size: 's',
     validationState: 'default',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    prefixIcon: 'none',
     showCopyButton: true,
     showClearButton: true,
-    allowMoreThanMaxLength: false,
   },
 
   argTypes: {
-    ...COMMON_ARG_TYPES,
-    localeName: {
-      table: {
-        disable: true,
+    labelTooltip: {
+      control: {
+        type: 'text',
       },
     },
   },
