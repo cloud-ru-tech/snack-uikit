@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2024-09-26)
+
+
+### Features
+
+* **PDS-691:** add ColorPicker locale ([093a5d0](https://github.com/cloud-ru-tech/snack-uikit/commit/093a5d0b35c42571ae93e7b690c97cc2d02a7cca))
+
+
+
+
+
 ## 0.7.1 (2024-07-31)
 
 

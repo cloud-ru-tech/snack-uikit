@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.24 (2024-09-26)
+
+**Note:** Version bump only for package @snack-uikit/truncate-string
+
+
+
+
+
 ## 0.4.23 (2024-09-24)
 
 ### Only dependencies have been changed

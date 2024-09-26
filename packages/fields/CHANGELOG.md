@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.28.0 (2024-09-26)
+
+
+### Features
+
+* **PDS-691:** add FieldColor ([abba77c](https://github.com/cloud-ru-tech/snack-uikit/commit/abba77c02e2ee3181505dead81833a1adc37bc8e))
+
+
+
+
+
 ## 0.27.1 (2024-09-24)
 
 ### Only dependencies have been changed
