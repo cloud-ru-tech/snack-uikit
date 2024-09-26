@@ -1,0 +1,136 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+/* stylelint-disable no-descending-specificity */
+
+$sizes: 's', 'm', 'l';
+$variants: 'single-line-container', 'multi-line-container';
+
+@mixin validationState($rainbowColor, $bgDefault) {
+  background-color: simple-var($theme-variables, 'sys', $bgDefault, 'background1-level');
+  border-color: simple-var($theme-variables, 'sys', $bgDefault, 'decor-default');
+
+  &:hover {
+    background-color: $sys-neutral-background2-level;
+    border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-hovered');
+  }
+
+  &:not([data-readonly]) {
+    &:focus-within,
+    &[data-focused] {
+      &:not([data-disabled]) {
+        @include outline-var($container-focused-m);
+
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'accent-default');
+        outline-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-activated');
+      }
+    }
+  }
+}
+
+.container {
+  @include validationState('primary', 'neutral');
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  min-width: 52px;
+
+  border-style: solid;
+
+  &[data-validation='error'] {
+    @include validationState('red', 'red');
+  }
+
+  &[data-selectable] {
+    &,
+    input,
+    select,
+    textarea,
+    span {
+      cursor: pointer;
+    }
+  }
+
+  &[data-readonly] {
+    &,
+    input,
+    select,
+    textarea,
+    span {
+      cursor: default;
+    }
+
+    &,
+    &:hover {
+      background-color: simple-var($sys-neutral-decor-disabled);
+      border-color: simple-var($sys-neutral-decor-disabled);
+    }
+
+    &:focus-within,
+    &[data-focused] {
+      @include outline-var($container-focused-m);
+
+      background-color: simple-var($sys-neutral-decor-disabled);
+      border-color: simple-var($sys-neutral-decor-disabled);
+      outline: none;
+    }
+  }
+
+  &[data-disabled] {
+    &,
+    input,
+    select,
+    textarea,
+    span {
+      cursor: not-allowed;
+      background-color: simple-var($sys-neutral-background);
+    }
+
+    &,
+    &:focus-within,
+    &[data-focused],
+    &:hover {
+      background-color: simple-var($sys-neutral-background);
+      border-color: simple-var($sys-neutral-decor-disabled);
+      outline: none;
+    }
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include composite-var($fields, 'container', $size);
+
+      &,
+      input,
+      select,
+      textarea,
+      span {
+        @include composite-var($theme-variables, 'sans', 'body', $size);
+      }
+
+      @each $variant in $variants {
+        &[data-variant='#{$variant}'] {
+          @include composite-var($fields, $variant, $size);
+        }
+      }
+    }
+  }
+}
+
+.prefix {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: $sys-neutral-text-disabled;
+}
+
+.postfix {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: $space-fields-postfix-gap;
+}

@@ -1,0 +1,82 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-scroll';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-colorPicker';
+
+$orientations: 'vertical', 'horizontal';
+$sizes: 's', 'm';
+
+.container {
+  @include composite-var($color-picker-container);
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-width: 248px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  padding-top: $space-color-picker-footer-gap;
+
+  border-top: solid 1px $sys-neutral-decor-default;
+}
+
+.colorModel {
+  @include composite-var($color-picker-color-model);
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.colorFields {
+  @include composite-var($color-picker-color-model);
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  &[data-with-alpha] {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &[data-mode='hex'] {
+    grid-template-columns: 1fr;
+
+    &[data-with-alpha] {
+      grid-template-columns: 1fr min-content;
+    }
+  }
+}
+
+$theme-name: osThemeSnack;
+$scrollbar-slider-active-zone: 12px;
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:global {
+  .#{$theme-name} .react-colorful {
+    @include composite-var($color-picker-color-palette);
+
+    width: 100%;
+    min-height: 200px;
+
+    .react-colorful__saturation {
+      border-bottom-width: 8px;
+      border-radius: 0;
+    }
+
+    .react-colorful__pointer {
+      @include composite-var($color-picker-color-slider);
+
+      /* stylelint-disable-next-line color-no-hex */
+      border-color: #fff;
+      box-shadow: $box-shadow-elevation-level3;
+    }
+
+    .react-colorful__hue,
+    .react-colorful__alpha {
+      @include composite-var($color-picker-slider-track);
+    }
+  }
+}

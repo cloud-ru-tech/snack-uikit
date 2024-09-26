@@ -1,0 +1,26 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+.container {
+  resize: horizontal;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  width: 248px;
+  min-width: 248px;
+  padding: $dimension-2m;
+
+  background-color: $sys-neutral-background1-level;
+}
+
+.wrapper {
+  display: flex;
+  gap: $dimension-3m;
+}
+
+.rawContainer {
+  width: 400px;
+  padding: $dimension-2m;
+  background-color: $sys-neutral-background1-level;
+}
