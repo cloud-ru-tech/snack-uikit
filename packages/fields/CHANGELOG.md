@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.29.0 (2024-09-27)
+
+
+### Bug Fixes
+
+* **PDS-199:** ajust components according to new useButtonNavigation api ([4e9b58b](https://github.com/cloud-ru-tech/snack-uikit/commit/4e9b58b2345e4e630aee94679c9831c9861a4548))
+
+
+### Features
+
+* **PDS-199:** add button prop - to field-text; add prefix and postfix props - to field-text, field-slider, field-stepper, field-select ([8bfb5eb](https://github.com/cloud-ru-tech/snack-uikit/commit/8bfb5ebc9320a451cb3765b8377e022115b4a371))
+
+
+
+
+
 # 0.28.0 (2024-09-26)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.0.0 (2024-09-27)
+
+
+### BREAKING CHANGES
+
+
+* **PDS-199:** differentiate postfix and prefix buttons in useButtonNavigation hook ([662f72c](https://github.com/cloud-ru-tech/snack-uikit/commit/662f72ce6797a563f6e13535dcf3912c961b632c))
+
+
+
+
 ## 3.2.1 (2024-09-23)
 
 ### Only dependencies have been changed

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Search Private",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,7 +33,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.22.1",
-    "@snack-uikit/input-private": "3.2.1",
+    "@snack-uikit/input-private": "4.0.0",
     "@snack-uikit/loaders": "0.5.3",
     "@snack-uikit/utils": "3.4.0",
     "classnames": "2.5.1",

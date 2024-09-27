@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2024-09-27)
+
+
+### BREAKING CHANGES
+
+
+* **PDS-199:** move change selection from mouse down to click ([7357ca2](https://github.com/cloud-ru-tech/snack-uikit/commit/7357ca2f65f8d5f539c9e11135319110d1447c6b))
+
+
+
+
 ## 0.16.4 (2024-09-26)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.5 (2024-09-27)
+
+
+### Bug Fixes
+
+* **PDS-199:** ajust components according to new useButtonNavigation api ([4e9b58b](https://github.com/cloud-ru-tech/snack-uikit/commit/4e9b58b2345e4e630aee94679c9831c9861a4548))
+
+
+
+
+
 ## 0.2.4 (2024-09-23)
 
 ### Only dependencies have been changed
