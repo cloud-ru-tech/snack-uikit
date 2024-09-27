@@ -4,8 +4,8 @@
 $sizes: 's', 'm', 'l';
 
 $typography: (
-  's': styles-tokens-calendar.$sans-label-s,
-  'm': styles-tokens-calendar.$sans-label-m,
+  's': styles-tokens-calendar.$sans-label-m,
+  'm': styles-tokens-calendar.$sans-label-l,
   'l': styles-tokens-calendar.$sans-label-l,
 );
 
@@ -25,7 +25,7 @@ $typography: (
 
     &:hover,
     &:focus-visible {
-      background-color: styles-tokens-calendar.color-on-background-with-opacity(styles-tokens-calendar.$sys-neutral-accent-default, styles-tokens-calendar.$sys-neutral-background2-level, styles-tokens-calendar.$opacity-a008);
+      background-color: styles-tokens-calendar.color-on-background-with-opacity(styles-tokens-calendar.$sys-neutral-accent-default, styles-tokens-calendar.$sys-neutral-background1-level, styles-tokens-calendar.$opacity-a008);
     }
 
     &:focus-visible {

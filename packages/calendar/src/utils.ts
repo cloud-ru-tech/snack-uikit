@@ -13,8 +13,9 @@ export const isTheSameYear = (date1: Date, date2: Date): boolean => date1.getFul
 export const isTheSameMonth = (date1: Date, date2: Date): boolean =>
   isTheSameYear(date1, date2) && date1.getMonth() === date2.getMonth();
 
-export const isTheSameDate = (date1: Date, date2: Date): boolean =>
-  isTheSameMonth(date1, date2) && date1.getDate() === date2.getDate();
+export function isTheSameDate(date1: Date, date2: Date): boolean {
+  return isTheSameMonth(date1, date2) && date1.getDate() === date2.getDate();
+}
 
 export const capitalize = (str: string) => str.substring(0, 1).toUpperCase() + str.substring(1);
 
@@ -86,7 +87,7 @@ export const getEndOfTheDay = (date: Date) =>
 export const getTestIdBuilder = (testId?: string) => (prefix: string) => (testId ? `${prefix}-${testId}` : undefined);
 
 export const getLocale = ({ localeProp, ctxLang }: { localeProp?: Intl.Locale; ctxLang?: LocaleLang } = {}) =>
-  localeProp || new Intl.Locale(ctxLang ? ctxLang.replace('_', '-') : navigator?.language ?? 'ru-RU');
+  localeProp || new Intl.Locale(ctxLang ? ctxLang.replace('_', '-') : (navigator?.language ?? 'ru-RU'));
 
 export const getStartOfWeek = (locale: Intl.Locale) => getWeekStartByLocale(locale.language);
 

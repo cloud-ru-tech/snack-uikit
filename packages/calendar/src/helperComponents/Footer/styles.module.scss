@@ -1,0 +1,31 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-calendar';
+
+$sizes: 's', 'm', 'l';
+
+.divider {
+  flex-shrink: 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, "item", $size, 'content-pin-bottom')
+    }
+  }
+}
+
+.currentWrapper {
+  display: flex;
+  justify-content: space-between;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, "item", $size, 'container');
+      @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, "footer-elements", $size);
+    }
+  }
+}

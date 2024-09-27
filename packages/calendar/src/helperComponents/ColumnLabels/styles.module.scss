@@ -9,7 +9,7 @@ $sizes: 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, 'container', 'header', 'weeks', $size)
+      @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, 'container', 'header', 'lines-height', $size)
     }
   }
 }

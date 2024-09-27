@@ -2,12 +2,26 @@
 
 $sizes: 's', 'm', 'l';
 
-.calendar {
-  --min-width-s: 240px;
-  --min-height-s: 256px;
-  --min-width-m: 280px;
-  --min-height-m: 308px;
+.calendarWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 
+  box-sizing: border-box;
+  width: fit-content;
+
+  &[data-fit-to-container] {
+    min-width: 100%;
+    height: 100%;
+  }
+}
+
+.dateWrapper {
+  display: flex;
+  flex-grow: 1;
+}
+
+.calendar {
   display: inline-flex;
   flex-direction: column;
 
@@ -15,11 +29,8 @@ $sizes: 's', 'm', 'l';
   max-width: 100%;
   max-height: 100%;
 
-  background-color: styles-tokens-calendar.$sys-neutral-background2-level;
-
   &[data-fit-to-container] {
     width: 100%;
-    height: 100%;
   }
 }
 
@@ -37,6 +48,18 @@ $sizes: 's', 'm', 'l';
 
 .calendarSizeL {
   @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar-container-l);
+}
+
+.dateWrapperSizeS {
+  min-height: styles-tokens-calendar.simple-var(styles-tokens-calendar.$calendar-container-s, 'min-height')
+}
+
+.dateWrapperSizeM {
+  min-height: styles-tokens-calendar.simple-var(styles-tokens-calendar.$calendar-container-m, 'min-height')
+}
+
+.dateWrapperSizeL {
+  min-height: styles-tokens-calendar.simple-var(styles-tokens-calendar.$calendar-container-l, 'min-height')
 }
 
 .header {

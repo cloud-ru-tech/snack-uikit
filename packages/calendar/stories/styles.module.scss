@@ -5,25 +5,26 @@
 
   overflow: hidden;
 
+  box-sizing: border-box;
   width: fit-content;
-  padding: 2rem;
 
-  background-color: styles-theme-variables.simple-var(styles-theme-variables.$sys-neutral-background1-level);
+  background: styles-theme-variables.$sys-neutral-background1-level;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
 }
 
 .scroll_s {
-  width: 260px;
-  height: 266px;
+  width: 363px;
+  height: 307px;
 }
 
 .scroll_m {
-  width: 304px;
-  height: 328px;
+  width: 443px;
+  height: 387px;
 }
 
 .scroll_l {
-  width: 350px;
-  height: 366px;
+  width: 523px;
+  height: 459px;
 }
 
 .valueHolder {

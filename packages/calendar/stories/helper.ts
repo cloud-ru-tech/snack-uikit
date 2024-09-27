@@ -46,13 +46,13 @@ const buildCellPropsForTests: BuildCellPropsFunction = (date, viewMode) => {
   return { isDisabled };
 };
 export const getBuildCellProps = (modeBuildCellProps: 'for-tests' | 'disable-past' | 'none') => {
-  // eslint-disable-next-line default-case
   switch (modeBuildCellProps) {
     case 'disable-past':
       return disablePast;
     case 'for-tests':
       return buildCellPropsForTests;
     case 'none':
-      return null;
+    default:
+      return;
   }
 };

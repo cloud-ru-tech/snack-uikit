@@ -30,6 +30,7 @@ export function Item({ data, className }: CellProps) {
     isInCurrentLevelPeriod,
     isSelected,
     tabIndex,
+    onKeyDown,
   } = data;
 
   const ref = useRef<HTMLButtonElement>(null);
@@ -47,7 +48,7 @@ export function Item({ data, className }: CellProps) {
     }
   }, [focus, tabIndex]);
 
-  const keyDownHandler = useKeyboardFocus(address);
+  const keyDownHandler = useKeyboardFocus(address, onKeyDown);
 
   const attributes = {
     'data-is-in-current-level-period': isInCurrentLevelPeriod || undefined,

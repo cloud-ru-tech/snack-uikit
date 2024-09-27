@@ -1,7 +1,8 @@
 import cn from 'classnames';
-import { CSSProperties, RefCallback, useCallback, useMemo, useRef, useState } from 'react';
+import { CSSProperties, RefObject, useCallback, useMemo, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
+import { ListProps } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
@@ -12,7 +13,9 @@ import { CalendarBody } from '../CalendarBody';
 import { CalendarContext } from '../CalendarContext';
 import { CalendarNavigation } from '../CalendarNavigation';
 import { ColumnLabels } from '../ColumnLabels';
-import { useViewDate } from './hooks';
+import { Footer } from '../Footer';
+import { TimePickerBase } from '../TimePickerBase';
+import { useDateAndTime, useRange, useViewDate } from './hooks';
 import styles from './styles.module.scss';
 
 export type CalendarBaseProps = WithSupportProps<{
@@ -24,16 +27,23 @@ export type CalendarBaseProps = WithSupportProps<{
   today?: Date | number;
   buildCellProps?: BuildCellPropsFunction;
   showHolidays?: boolean;
+  showSeconds?: boolean;
   style?: CSSProperties;
   className?: string;
   defaultValue?: Range;
   fitToContainer?: boolean;
   autofocus?: boolean;
   locale?: Intl.Locale;
-  navigationStartRef?: RefCallback<HTMLButtonElement>;
+  navigationStartRef?: RefObject<HTMLButtonElement>;
 }>;
 
-const CONTAINER_SIZE_MAP = {
+const DATE_WRAPPER_SIZE_MAP = {
+  [SIZE.S]: styles.dateWrapperSizeS,
+  [SIZE.M]: styles.dateWrapperSizeM,
+  [SIZE.L]: styles.dateWrapperSizeL,
+};
+
+const CALENDAR_SIZE_MAP = {
   [SIZE.S]: styles.calendarSizeS,
   [SIZE.M]: styles.calendarSizeM,
   [SIZE.L]: styles.calendarSizeL,
@@ -50,6 +60,7 @@ export function CalendarBase({
   onChangeValue,
   today: todayProp = new Date(),
   showHolidays = false,
+  showSeconds = true,
   style,
   locale: localeProp,
   onFocusLeave,
@@ -63,9 +74,24 @@ export function CalendarBase({
   const [value, setValueState] = useUncontrolledProp<Range | undefined>(valueProp, defaultValue, onChangeValue);
   const today = typeof todayProp === 'number' ? new Date(todayProp) : todayProp;
   const [referenceDate] = useState(value?.[0] || today);
-  const [preselectedRange, setPreselectedRange] = useState<Range | undefined>();
   const viewDate = useViewDate(referenceDate, viewMode, viewShift);
   const [focus, setFocus] = useState<string | undefined>(autofocus ? AUTOFOCUS : undefined);
+
+  const {
+    dateAndTime,
+    onTimeChange,
+    onDateChange,
+    onDateAndTimeChange,
+    isDateFilled,
+    isTimeFilled,
+    isDateAndTimeFilled,
+  } = useDateAndTime({ initialDate: mode === 'date-time' ? value?.[0] : undefined });
+
+  const applyButtonRef = useRef<HTMLButtonElement>(null);
+  const currentButtonRef = useRef<HTMLButtonElement>(null);
+  const hoursKeyboardNavigationRef: ListProps['keyboardNavigationRef'] = useRef({ focusItem: () => {} });
+  const minutesKeyboardNavigationRef: ListProps['keyboardNavigationRef'] = useRef({ focusItem: () => {} });
+  const secondsKeyboardNavigationRef: ListProps['keyboardNavigationRef'] = useRef({ focusItem: () => {} });
 
   const setValue = useCallback(
     (dates: Range) => {
@@ -75,27 +101,9 @@ export function CalendarBase({
     [setValueState],
   );
 
-  const startPreselect = useCallback((date: Date) => {
-    setPreselectedRange([date, date]);
-  }, []);
-
-  const continuePreselect = useCallback((date: Date) => {
-    setPreselectedRange(prevState => prevState && [prevState[0], date]);
-  }, []);
-
-  const restartPreselect = useCallback(() => {
-    setPreselectedRange(prevState => prevState && [prevState[0], prevState[0]]);
-  }, []);
-
-  const completePreselect = useCallback(
-    (date: Date) => {
-      if (preselectedRange) {
-        setPreselectedRange(undefined);
-        setValue([preselectedRange[0], date]);
-      }
-    },
-    [preselectedRange, setValue],
-  );
+  const { preselectedRange, continuePreselect, completePreselect, restartPreselect, startPreselect } = useRange({
+    setValue,
+  });
 
   const getTestId = useMemo(() => getTestIdBuilder(testId), [testId]);
 
@@ -106,20 +114,14 @@ export function CalendarBase({
   const firstNotDisableCell = useRef<[number, number]>([0, 0]);
 
   return (
-    <div
-      {...extractSupportProps(rest)}
-      className={cn(styles.calendar, className, CONTAINER_SIZE_MAP[size])}
-      style={style}
-      data-size={size}
-      data-fit-to-container={fitToContainer || undefined}
-      data-test-id={testId}
-    >
+    <div className={cn(styles.calendarWrapper, className)} data-fit-to-container={fitToContainer || undefined}>
       <CalendarContext.Provider
         value={{
           locale,
           size,
           value,
           firstNotDisableCell,
+          fitToContainer,
           today,
           showHolidays,
           viewDate,
@@ -141,17 +143,49 @@ export function CalendarBase({
           onFocusLeave,
           buildCellProps,
           navigationStartRef,
+          showSeconds,
+          dateAndTime,
+          onTimeChange,
+          onDateChange,
+          onDateAndTimeChange,
+          isDateAndTimeFilled,
+          isDateFilled,
+          isTimeFilled,
+          applyButtonRef,
+          currentButtonRef,
+          hoursKeyboardNavigationRef,
+          minutesKeyboardNavigationRef,
+          secondsKeyboardNavigationRef,
         }}
       >
-        <div className={styles.header} data-size={size}>
-          <CalendarNavigation />
-          <ColumnLabels />
-        </div>
-        <div className={styles.body}>
-          <div className={styles.rows} data-size={size}>
-            <CalendarBody />
+        <div
+          className={cn(styles.dateWrapper, DATE_WRAPPER_SIZE_MAP[size])}
+          data-size={size}
+          data-show-footer={(mode === 'date-time' && viewMode === 'month') || undefined}
+        >
+          <div
+            {...extractSupportProps(rest)}
+            className={cn(styles.calendar, CALENDAR_SIZE_MAP[size])}
+            style={style}
+            data-size={size}
+            data-fit-to-container={fitToContainer || undefined}
+            data-test-id={testId}
+          >
+            <div className={styles.header} data-size={size}>
+              <CalendarNavigation />
+              <ColumnLabels />
+            </div>
+            <div className={styles.body}>
+              <div className={styles.rows} data-size={size}>
+                <CalendarBody />
+              </div>
+            </div>
           </div>
+
+          <TimePickerBase />
         </div>
+
+        <Footer />
       </CalendarContext.Provider>
     </div>
   );

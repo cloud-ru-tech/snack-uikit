@@ -1,7 +1,9 @@
-import { createContext, MutableRefObject, RefCallback } from 'react';
+import { createContext, MutableRefObject, RefObject } from 'react';
+
+import { ListProps } from '@snack-uikit/list';
 
 import { CALENDAR_MODE, SIZE, VIEW_MODE } from '../../constants';
-import { BuildCellPropsFunction, CalendarMode, FocusDirection, Range, Size, ViewMode } from '../../types';
+import { BuildCellPropsFunction, CalendarMode, DateAndTime, FocusDirection, Range, Size, ViewMode } from '../../types';
 import { getLocale } from '../../utils';
 
 export type CalendarContextType = {
@@ -13,6 +15,8 @@ export type CalendarContextType = {
   /** Дата начала текущего видимого периода, высчитывается от referenceDate, viewShift и viewMode */
   viewDate: Date;
   showHolidays: boolean;
+  showSeconds: boolean;
+  fitToContainer: boolean;
   value?: Range;
   firstNotDisableCell?: MutableRefObject<[number, number]>;
   mode: CalendarMode;
@@ -33,12 +37,27 @@ export type CalendarContextType = {
   continuePreselect(date: Date): void;
   completePreselect(date: Date): void;
   getTestId: (prefix: string) => string | undefined;
-  navigationStartRef?: RefCallback<HTMLButtonElement>;
+  navigationStartRef?: RefObject<HTMLButtonElement>;
+  dateAndTime?: DateAndTime;
+  onDateChange(dateAndTime: Date | DateAndTime): void;
+  onTimeChange(dateAndTime: Date | DateAndTime): void;
+  onDateAndTimeChange(dateAndTime: Date | DateAndTime): void;
+  isDateAndTimeFilled(): boolean;
+  isTimeFilled(): boolean;
+  isDateFilled(): boolean;
+  applyButtonRef: RefObject<HTMLButtonElement>;
+  currentButtonRef: RefObject<HTMLButtonElement>;
+  hoursKeyboardNavigationRef: NonNullable<ListProps['keyboardNavigationRef']>;
+  minutesKeyboardNavigationRef: NonNullable<ListProps['keyboardNavigationRef']>;
+  secondsKeyboardNavigationRef: NonNullable<ListProps['keyboardNavigationRef']>;
 };
 
 const stub = () => {
   /* it is a stub */
 };
+
+// it is a ref stub
+const refStub = { current: null };
 
 export const CalendarContext = createContext<CalendarContextType>({
   locale: getLocale(),
@@ -53,10 +72,23 @@ export const CalendarContext = createContext<CalendarContextType>({
   setValue: stub,
   setViewMode: stub,
   showHolidays: false,
+  showSeconds: true,
+  fitToContainer: true,
   setViewShift: stub,
   startPreselect: stub,
   continuePreselect: stub,
   completePreselect: stub,
   restartPreselect: stub,
+  onDateAndTimeChange: stub,
+  onTimeChange: stub,
+  onDateChange: stub,
+  isDateAndTimeFilled: () => false,
+  isDateFilled: () => false,
+  isTimeFilled: () => false,
   getTestId: () => undefined,
+  applyButtonRef: refStub,
+  currentButtonRef: refStub,
+  hoursKeyboardNavigationRef: refStub,
+  minutesKeyboardNavigationRef: refStub,
+  secondsKeyboardNavigationRef: refStub,
 });

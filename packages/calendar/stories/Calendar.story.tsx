@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import cn from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Scroll } from '@snack-uikit/scroll';
 
@@ -9,11 +9,12 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Calendar, CalendarProps } from '../src';
 import { CALENDAR_MODE, SIZE } from '../src/constants';
+import { Range } from '../src/types';
 import { getBuildCellProps } from './helper';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
-  title: 'Components/Calendar',
+  title: 'Components/Calendar/Calendar',
   component: Calendar,
 };
 export default meta;
@@ -36,19 +37,12 @@ type StoryProps = CalendarProps & {
   dateToday: string;
 };
 
+type DateValue = Date | Range | undefined;
+
 const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args }: StoryProps) => {
-  const [selectedValue, setSelectedValue] = useState<Date | Range | undefined>();
-
-  const onChangeValue = (value: Date | Range) => {
-    setSelectedValue(value);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    args.onChangeValue?.(value);
-  };
-
   const locale = new Intl.Locale(localeName);
-  let value;
-  if (args.mode === CALENDAR_MODE.Date) {
+  let value: DateValue;
+  if (args.mode === CALENDAR_MODE.Date || args.mode === CALENDAR_MODE.DateTime || args.mode === CALENDAR_MODE.Month) {
     if (args.dateValue) {
       value = new Date(args.dateValue);
     }
@@ -58,8 +52,8 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
     }
   }
 
-  let defaultValue;
-  if (args.mode === CALENDAR_MODE.Date) {
+  let defaultValue: DateValue;
+  if (args.mode === CALENDAR_MODE.Date || args.mode === CALENDAR_MODE.DateTime) {
     if (args.dateDefaultValue) {
       defaultValue = new Date(args.dateDefaultValue);
     }
@@ -68,6 +62,20 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
       defaultValue = [new Date(args.rangeDefaultValueStart), new Date(args.rangeDefaultValueEnd)];
     }
   }
+
+  const [selectedValue, setSelectedValue] = useState<DateValue>();
+
+  useEffect(() => {
+    setSelectedValue(value || defaultValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [args.mode]);
+
+  const onChangeValue = (value: Date | Range) => {
+    setSelectedValue(value);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    args.onChangeValue?.(value);
+  };
 
   const today = args.dateToday ? new Date(args.dateToday) : undefined;
 
@@ -81,18 +89,20 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
   };
 
   return (
-    <div key={args.mode} className={cn(styles.story, SCROLL_SIZE[args.size || SIZE.M])}>
-      <Scroll>
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/* @ts-ignore */}
-        <Calendar {...props} buildCellProps={getBuildCellProps(modeBuildCellProps)} />
-      </Scroll>
+    <>
+      <div key={args.mode} className={cn(styles.story, SCROLL_SIZE[args.size || SIZE.M])}>
+        <Scroll>
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-ignore */}
+          <Calendar {...props} buildCellProps={getBuildCellProps(modeBuildCellProps)} key={args.mode} />
+        </Scroll>
+      </div>
       <div className={styles.valueHolder} data-test-id='calendar-value-holder'>
         {selectedValue instanceof Date && selectedValue.valueOf()}
         {Array.isArray(selectedValue) && selectedValue[0].valueOf()}
         {Array.isArray(selectedValue) && selectedValue[1].valueOf()}
       </div>
-    </div>
+    </>
   );
 };
 
@@ -104,6 +114,8 @@ export const calendar = {
     mode: CALENDAR_MODE.Date,
     autofocus: false,
     localeName: 'en-US',
+    showHolidays: false,
+    showSeconds: true,
     fitToContainer: true,
     modeBuildCellProps: 'none',
   },
@@ -137,12 +149,12 @@ export const calendar = {
     dateValue: {
       name: 'value',
       control: { type: 'date' },
-      if: { arg: 'mode', eq: CALENDAR_MODE.Date },
+      if: { arg: 'mode', neq: CALENDAR_MODE.Range },
     },
     dateDefaultValue: {
       name: 'defaultValue',
       control: { type: 'date' },
-      if: { arg: 'mode', eq: CALENDAR_MODE.Date },
+      if: { arg: 'mode', neq: CALENDAR_MODE.Range },
     },
     rangeValueStart: {
       name: 'value start',

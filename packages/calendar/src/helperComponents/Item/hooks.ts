@@ -1,16 +1,18 @@
-import { KeyboardEvent, useCallback, useContext } from 'react';
+import { KeyboardEvent, KeyboardEventHandler, useCallback, useContext } from 'react';
 
 import { GRID_SIZE } from '../../constants';
 import { CalendarContext } from '../CalendarContext';
 import { stringifyAddress } from './utils';
 
-export function useKeyboardFocus([row, column]: [number, number]) {
+export function useKeyboardFocus([row, column]: [number, number], onKeyDown?: KeyboardEventHandler) {
   const { viewMode, viewShift, setViewShift, setFocus, onFocusLeave } = useContext(CalendarContext);
 
   const { rows, columns } = GRID_SIZE[viewMode];
 
   return useCallback(
     (e: KeyboardEvent<HTMLButtonElement>) => {
+      onKeyDown?.(e);
+
       switch (e.key) {
         case 'ArrowLeft':
           if (column) {
@@ -47,6 +49,6 @@ export function useKeyboardFocus([row, column]: [number, number]) {
         // do nothing
       }
     },
-    [column, columns, onFocusLeave, row, rows, setFocus, setViewShift, viewShift],
+    [column, columns, onFocusLeave, onKeyDown, row, rows, setFocus, setViewShift, viewShift],
   );
 }

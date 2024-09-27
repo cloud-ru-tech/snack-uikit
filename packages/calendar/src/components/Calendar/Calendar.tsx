@@ -1,11 +1,11 @@
-import { CSSProperties, RefCallback, useCallback } from 'react';
+import { CSSProperties, RefObject, useCallback } from 'react';
 
 import { WithSupportProps } from '@snack-uikit/utils';
 
 import { CALENDAR_MODE } from '../../constants';
 import { CalendarBase } from '../../helperComponents/CalendarBase';
 import { BuildCellPropsFunction, FocusDirection, Range, Size } from '../../types';
-import { getNormalizedDefaultValue, getNormalizedValue } from './utils';
+import { getNormalizedValue } from './utils';
 
 type CommonCalendarProps = {
   /**
@@ -47,8 +47,8 @@ type CommonCalendarProps = {
   locale?: Intl.Locale;
   /** Колбек потери фокуса. Вызывается со значением `next`, когда фокус покидает компонент, передвигаясь вперед, по клавише `tab`. Со значением `prev` - по клавише стрелки вверх или `shift + tab`. */
   onFocusLeave?(direction: FocusDirection): void;
-  /** Ref-callback на первый доступный интерактивный элемент  */
-  navigationStartRef?: RefCallback<HTMLButtonElement>;
+  /** Ref на первый доступный интерактивный элемент  */
+  navigationStartRef?: RefObject<HTMLButtonElement>;
 };
 
 type DateCalendarProps = CommonCalendarProps & {
@@ -63,14 +63,27 @@ type DateCalendarProps = CommonCalendarProps & {
 };
 
 type MonthCalendarProps = CommonCalendarProps & {
-  /** Режим работы календаря: <br> - `month` - режим выбора месяца */
+  /** <br> - `month` - режим выбора месяца */
   mode: typeof CALENDAR_MODE.Month;
-  /** Выбранное значение.<br> - в режиме month тип `Date` */
+  /** <br> - в режиме month тип `Date` */
   value?: Date;
-  /** Значение по-умолчанию для uncontrolled.<br> - в режиме month тип `Date` */
+  /** <br> - в режиме month тип `Date` */
   defaultValue?: Date;
-  /** Колбек выбора значения.<br> - в режиме month принимает тип `Date` */
+  /** <br> - в режиме month принимает тип `Date` */
   onChangeValue?(value: Date): void;
+};
+
+type DateTimeCalendarProps = CommonCalendarProps & {
+  /** <br> - `date-time` - режим выбора даты и времени */
+  mode: typeof CALENDAR_MODE.DateTime;
+  /** <br> - в режиме date-time тип `Date` */
+  value?: Date;
+  /** <br> - в режиме date-time тип `Date` */
+  defaultValue?: Date;
+  /** <br> - в режиме date-time принимает тип `Date` */
+  onChangeValue?(value: Date): void;
+  /** Показывать ли секунды (только в режиме date-time) */
+  showSeconds?: boolean;
 };
 
 type RangeCalendarProps = CommonCalendarProps & {
@@ -84,14 +97,16 @@ type RangeCalendarProps = CommonCalendarProps & {
   onChangeValue?(value: Range): void;
 };
 
-export type CalendarProps = WithSupportProps<DateCalendarProps | RangeCalendarProps | MonthCalendarProps>;
+export type CalendarProps = WithSupportProps<
+  DateCalendarProps | RangeCalendarProps | MonthCalendarProps | DateTimeCalendarProps
+>;
 
 export function Calendar(props: CalendarProps) {
   const { className, onChangeValue, buildCellProps, mode, ...rest } = props;
 
   const changeValueHandler = useCallback(
     (value: Range) => {
-      if (mode === CALENDAR_MODE.Date || mode === CALENDAR_MODE.Month) {
+      if (mode === CALENDAR_MODE.Date || mode === CALENDAR_MODE.Month || mode === CALENDAR_MODE.DateTime) {
         const [date] = value;
         onChangeValue?.(date);
         return;
@@ -106,8 +121,8 @@ export function Calendar(props: CalendarProps) {
       {...rest}
       mode={mode}
       className={className}
-      value={getNormalizedValue(props)}
-      defaultValue={getNormalizedDefaultValue(props)}
+      value={getNormalizedValue(mode, props.value)}
+      defaultValue={getNormalizedValue(mode, props.defaultValue)}
       onChangeValue={changeValueHandler}
       buildCellProps={buildCellProps}
     />

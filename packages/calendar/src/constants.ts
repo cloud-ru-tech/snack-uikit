@@ -6,6 +6,7 @@ export const VIEW_MODE = {
 
 export const CALENDAR_MODE = {
   Date: 'date',
+  DateTime: 'date-time',
   Range: 'range',
   Month: 'month',
 } as const;
@@ -31,3 +32,7 @@ export const GRID_SIZE = {
 } as const;
 
 export const AUTOFOCUS = 'autofocus';
+
+export const HOURS = 24;
+export const MINUTES = 60;
+export const SECONDS = 60;

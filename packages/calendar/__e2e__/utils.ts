@@ -5,6 +5,9 @@ export const getCalendarTextSnapshot = ClientFunction(() => {
   const ITEM = `item-${TEST_ID}`;
   const HEADER_ITEM = `header-item-${TEST_ID}`;
   const PERIOD_LEVEL = `period-level-${TEST_ID}`;
+  const HOURS_ITEM = `hours-${TEST_ID}`;
+  const MINUTES_ITEM = `minutes-${TEST_ID}`;
+  const SECONDS_ITEM = `seconds-${TEST_ID}`;
 
   const dataTestIdSelector = (testId: string) => `*[data-test-id="${testId}"]`;
 
@@ -14,7 +17,7 @@ export const getCalendarTextSnapshot = ClientFunction(() => {
 
     for (const element of elements) {
       let text = element.innerText;
-      const isSelected = element.getAttribute('data-is-selected');
+      const isSelected = element.getAttribute('data-is-selected') || element.getAttribute('data-checked');
       const isCurrent = element.getAttribute('data-is-current');
       const inRangePosition = element.getAttribute('data-in-range-position');
       text = isCurrent ? `!${text}` : text;
@@ -34,13 +37,23 @@ export const getCalendarTextSnapshot = ClientFunction(() => {
 
   const items = getItemsText(ITEM);
   const header = getItemsText(HEADER_ITEM);
+  const hours = getItemsText(HOURS_ITEM);
+  const minutes = getItemsText(MINUTES_ITEM);
+  const seconds = getItemsText(SECONDS_ITEM);
   const periodLevelName = document.querySelector<HTMLElement>(dataTestIdSelector(PERIOD_LEVEL))?.innerText;
 
-  return { items: items.join(','), header: header.join(','), periodLevelName };
+  return {
+    periodLevelName,
+    items: items.join(','),
+    header: header.join(','),
+    ...(hours.length > 0 ? { hours: hours.join(',') } : {}),
+    ...(minutes.length > 0 ? { minutes: minutes.join(',') } : {}),
+    ...(seconds.length > 0 ? { seconds: seconds.join(',') } : {}),
+  };
 });
 
 export const focusItem = ClientFunction((index: number) => {
-  const items = document.querySelectorAll<HTMLButtonElement>('*[data-test-id="item-calendar"]');
+  const items = document.querySelectorAll<HTMLButtonElement>('*[data-test-id="item-test-id"]');
   const button = items?.[index];
   button?.focus();
 });

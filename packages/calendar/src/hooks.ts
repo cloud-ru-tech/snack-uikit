@@ -1,5 +1,6 @@
-import { useContext, useMemo } from 'react';
+import { KeyboardEventHandler, useContext, useMemo } from 'react';
 
+import { CALENDAR_MODE, IN_RANGE_POSITION } from './constants';
 import { CalendarContext } from './helperComponents/CalendarContext';
 import { stringifyAddress } from './helperComponents/Item/utils';
 import { BaseGrid, BuildCellProps, Cell } from './types';
@@ -13,6 +14,7 @@ export type UseGridParams = {
   onSelect?(date: Date): void;
   onPreselect?(date: Date): void;
   onLeave?(): void;
+  onKeyDown?: KeyboardEventHandler;
 };
 
 export function useGrid({
@@ -23,17 +25,21 @@ export function useGrid({
   isTheSameItem,
   getItemLabel,
   isInPeriod,
+  onKeyDown,
 }: UseGridParams) {
   const {
     today,
     showHolidays,
     preselectedRange,
     value,
+    dateAndTime,
+    mode,
     viewDate,
     viewMode,
     focus,
     buildCellProps,
     firstNotDisableCell,
+    isDateFilled,
   } = useContext(CalendarContext);
 
   return useMemo(() => {
@@ -62,9 +68,19 @@ export function useGrid({
           }
         }
 
-        const inRangePosition = getInRangePosition(date, viewMode, preselectedRange || value);
+        const intermediateValue = isDateFilled()
+          ? new Date(dateAndTime?.year ?? 0, dateAndTime?.month ?? 0, dateAndTime?.day)
+          : undefined;
+
+        const inRangePosition =
+          mode === CALENDAR_MODE.Range
+            ? getInRangePosition(date, viewMode, preselectedRange || value)
+            : IN_RANGE_POSITION.Out;
+
         const isSelectedValue =
-          value && !preselectedRange ? isTheSameItem(value[0], date) || isTheSameItem(value[1], date) : false;
+          (value && !preselectedRange ? isTheSameItem(value[0], date) || isTheSameItem(value[1], date) : false) ||
+          (intermediateValue && isTheSameItem(intermediateValue, date));
+
         const isPreselected = preselectedRange ? isTheSameItem(preselectedRange[0], date) : false;
 
         const tabIndex = focus && stringifyAddress(address) === focus ? 0 : -1;
@@ -86,6 +102,7 @@ export function useGrid({
           label: getItemLabel(date),
           isSelected: isSelectedValue || isPreselected,
           isInCurrentLevelPeriod: isInPeriod(viewDate, date),
+          onKeyDown,
         };
 
         if (isCurrent) {
@@ -104,11 +121,17 @@ export function useGrid({
   }, [
     buildCellProps,
     buildGrid,
+    dateAndTime?.day,
+    dateAndTime?.month,
+    dateAndTime?.year,
     firstNotDisableCell,
     focus,
     getItemLabel,
+    isDateFilled,
     isInPeriod,
     isTheSameItem,
+    mode,
+    onKeyDown,
     onLeave,
     onPreselect,
     onSelect,

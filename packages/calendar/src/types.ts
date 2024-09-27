@@ -1,3 +1,5 @@
+import { KeyboardEventHandler } from 'react';
+
 import { ValueOf } from '@snack-uikit/utils';
 
 import { CALENDAR_MODE, IN_RANGE_POSITION, SIZE, VIEW_MODE } from './constants';
@@ -30,9 +32,22 @@ export type Cell = {
   onSelect?(date: Date): void;
   onPreselect?(date: Date): void;
   onLeave?(): void;
+  onKeyDown?: KeyboardEventHandler;
 };
 
 export type FocusDirection = 'prev' | 'next';
 
 export type BuildCellProps = { isDisabled?: boolean; isHoliday?: boolean };
 export type BuildCellPropsFunction = (date: Date, viewMode: ViewMode) => BuildCellProps;
+
+export type TimeValue = {
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+};
+
+export type DateAndTime = TimeValue & {
+  year?: number;
+  month?: number;
+  day?: number;
+};

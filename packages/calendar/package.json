@@ -36,11 +36,18 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
+    "@snack-uikit/button": "0.19.0",
+    "@snack-uikit/divider": "3.2.0",
     "@snack-uikit/icons": "0.24.0",
+    "@snack-uikit/list": "0.20.0",
     "@snack-uikit/utils": "3.5.0",
     "classnames": "2.3.2",
+    "merge-refs": "1.2.2",
     "uncontrollable": "8.0.2",
     "weekstart": "2.0.0"
+  },
+  "devDependencies": {
+    "@types/merge-refs": "1.0.0"
   },
   "peerDependencies": {
     "@snack-uikit/locale": "*"

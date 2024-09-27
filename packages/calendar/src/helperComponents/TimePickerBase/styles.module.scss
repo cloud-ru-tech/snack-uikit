@@ -1,0 +1,75 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-calendar';
+
+$sizes: 's', 'm', 'l';
+
+$time-header-typography: (
+  's': styles-tokens-calendar.$sans-label-m,
+  'm': styles-tokens-calendar.$sans-label-l,
+  'l': styles-tokens-calendar.$sans-label-l
+) ;
+
+.divider {
+  flex-shrink: 0;
+  height: auto;
+}
+
+.timePicker {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  max-width: 100%;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, 'time', $size);
+
+      max-height: styles-tokens-calendar.simple-var(styles-tokens-calendar.$calendar, 'container', $size, 'min-height');
+
+      &[data-fit-to-container] {
+        max-height: 100%;
+      }
+    }
+  }
+}
+
+.timeListsWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+
+  &[data-show-seconds] {
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      max-height: calc(100% - #{styles-tokens-calendar.simple-var(styles-tokens-calendar.$calendar, 'time', 'header', 'lines-height', $size, 'height')});
+    }
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  align-items: center;
+
+  color: styles-tokens-calendar.$sys-neutral-text-main;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, 'time', 'header', $size);
+      @include styles-tokens-calendar.composite-var($time-header-typography, $size);
+
+      .title {
+        @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, 'time', 'header', 'lines-height', $size);
+      }
+    }
+  }
+}
