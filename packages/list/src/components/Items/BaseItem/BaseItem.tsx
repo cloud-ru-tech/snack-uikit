@@ -7,7 +7,6 @@ import { extractSupportProps } from '@snack-uikit/utils';
 import { ItemContent } from '../../../helperComponents';
 import {
   useCollapseLevelContext,
-  useFocusListContext,
   useNewListContext,
   useOpenListContext,
   useSelectionContext,
@@ -55,7 +54,6 @@ export function BaseItem({
 
   const { size = 's', marker, contentRender } = useNewListContext();
   const { level = 0 } = useCollapseLevelContext();
-  const { forceUpdateActiveItemId } = useFocusListContext();
   const { closeDroplist, closeDroplistOnItemClick } = useOpenListContext();
   const { value, onChange, mode, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
 
@@ -68,15 +66,7 @@ export function BaseItem({
   const handleItemMouseDown = (e: MouseEvent<HTMLElement>) => {
     if (disabled) return;
 
-    if (interactive) {
-      if (!isParentNode) {
-        handleChange();
-      }
-    }
-
     onMouseDown?.(e);
-
-    forceUpdateActiveItemId?.('~drop-focus');
   };
 
   const handleItemFocus = (e: FocusEvent<HTMLElement>) => {
@@ -95,6 +85,12 @@ export function BaseItem({
   const handleItemClick = (e: MouseEvent<HTMLElement>) => {
     if (!disabled) {
       onClick?.(e);
+
+      if (interactive) {
+        if (!isParentNode) {
+          handleChange();
+        }
+      }
 
       if (!isSelectionMultiple && closeDroplistOnItemClick) {
         closeDroplist();
