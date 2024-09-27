@@ -31,12 +31,26 @@ export const COMMON_ARG_TYPES = {
       type: 'select',
     },
   },
+  prefix: {
+    name: 'prefix',
+    control: {
+      type: 'text',
+    },
+  },
+  postfix: {
+    name: 'postfix',
+    control: {
+      type: 'text',
+    },
+  },
   labelTooltip: {
+    name: 'labelTooltip',
     control: {
       type: 'text',
     },
   },
   localeName: {
+    name: 'localeName',
     options: ['ru-RU', 'en-US'],
     control: { type: 'radio' },
   },

@@ -1,0 +1,17 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
+
+.prefix {
+  color: $sys-neutral-text-support;
+
+  &[data-disabled] {
+    opacity: $opacity-a056;
+  }
+}
+
+.postfix {
+  color: $sys-neutral-text-support;
+
+  &[data-disabled] {
+    opacity: $opacity-a056;
+  }
+}

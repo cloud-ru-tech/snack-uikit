@@ -36,6 +36,7 @@
     "@snack-uikit/calendar": "0.7.12",
     "@snack-uikit/color-picker": "0.1.0",
     "@snack-uikit/dropdown": "0.2.7",
+    "@snack-uikit/divider": "3.0.4",
     "@snack-uikit/icons": "0.22.1",
     "@snack-uikit/input-private": "3.2.1",
     "@snack-uikit/list": "0.16.4",

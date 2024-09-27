@@ -4,7 +4,7 @@
 /* stylelint-disable no-descending-specificity */
 
 $sizes: 's', 'm', 'l';
-$variants: 'single-line-container', 'multi-line-container';
+$variants: 'single-line-container', 'single-line-container-button-before', 'single-line-container-button-after', 'multi-line-container';
 
 @mixin validationState($state, $rainbowColor, $bgDefault) {
   &[data-validation='#{$state}'] {
@@ -16,7 +16,7 @@ $variants: 'single-line-container', 'multi-line-container';
       border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-hovered');
     }
 
-    &:not([data-readonly]) {
+    &:not([data-readonly]):not([data-disable-focus]) {
       &:focus-within,
       &[data-focused] {
         &:not([data-disabled]) {
@@ -92,13 +92,15 @@ $variants: 'single-line-container', 'multi-line-container';
       border-color: simple-var($sys-neutral-decor-disabled);
     }
 
-    &:focus-within,
-    &[data-focused] {
-      @include outline-var($container-focused-m);
+    &:not([data-disable-focus]) {
+      &:focus-within,
+      &[data-focused] {
+        @include outline-var($container-focused-m);
 
-      background-color: simple-var($sys-neutral-decor-disabled);
-      border-color: simple-var($sys-neutral-decor-disabled);
-      outline: none;
+        background-color: simple-var($sys-neutral-decor-disabled);
+        border-color: simple-var($sys-neutral-decor-disabled);
+        outline: none;
+      }
     }
   }
 
@@ -126,6 +128,9 @@ $variants: 'single-line-container', 'multi-line-container';
 .prefix {
   display: inline-flex;
   flex-shrink: 0;
+  gap: $space-fields-postfix-gap;
+  align-items: center;
+
   color: $sys-neutral-text-disabled;
 }
 
@@ -133,4 +138,5 @@ $variants: 'single-line-container', 'multi-line-container';
   display: inline-flex;
   flex-shrink: 0;
   gap: $space-fields-postfix-gap;
+  align-items: center;
 }

@@ -4,6 +4,7 @@ import {
   forwardRef,
   KeyboardEvent,
   ReactElement,
+  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -17,7 +18,7 @@ import { extractSupportProps, useEventHandler, WithSupportProps } from '@snack-u
 
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
-import { useValueControl } from '../../hooks';
+import { usePostfix, usePrefix, useValueControl } from '../../hooks';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import { generateAllowedValues, getClosestMark, getTextFieldValue, isMarkObject } from './helpers';
 import styles from './styles.module.scss';
@@ -49,6 +50,10 @@ type FieldSliderOwnProps = {
   textInputFormatter?: TextInputFormatter;
   /** Отвязать текстовое поле от значений на линейке */
   unbindInputFromMarks?: boolean;
+  /** Произвольный префикс для поля */
+  prefix?: ReactNode;
+  /** Произвольный постфикс для поля */
+  postfix?: ReactNode;
 };
 
 export type FieldSliderProps = WithSupportProps<FieldSliderOwnProps & SliderProps & WrapperProps>;
@@ -96,13 +101,29 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
       hint,
       showHintIcon,
       size = SIZE.S,
-      postfixIcon,
       textInputFormatter,
       unbindInputFromMarks,
+      postfixIcon,
+      prefix,
+      postfix,
       ...rest
     },
     ref,
   ) => {
+    const [value = getDefaultValue(range, min, max, valueProp), onChange] = useValueControl<number | number[]>({
+      value: valueProp,
+      defaultValue: getDefaultValue(range, min, max, valueProp),
+      onChange: onChangeProp,
+    });
+
+    const [textFieldInputValue, setTextFieldInputValue] = useState<string>(
+      getTextFieldValue(value, textInputFormatter),
+    );
+    const localRef = useRef<HTMLInputElement>(null);
+
+    const prefixSettings = usePrefix({ prefix, disabled });
+    const postfixSettings = usePostfix({ postfix, disabled });
+
     const getMarkValue = useCallback(
       (key: keyof SliderProps['marks']) => {
         const mark = marks[key];
@@ -120,17 +141,6 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
       () => Object.keys(marks).every(key => key === getMarkValue(key)),
       [getMarkValue, marks],
     );
-
-    const [value = getDefaultValue(range, min, max, valueProp), onChange] = useValueControl<number | number[]>({
-      value: valueProp,
-      defaultValue: getDefaultValue(range, min, max, valueProp),
-      onChange: onChangeProp,
-    });
-
-    const [textFieldInputValue, setTextFieldInputValue] = useState<string>(
-      getTextFieldValue(value, textInputFormatter),
-    );
-    const localRef = useRef<HTMLInputElement>(null);
 
     const onTextFieldChange = (textFieldValue: string) => {
       const numValue = parseInt(textFieldValue);
@@ -280,7 +290,13 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
           readonly={readonly}
           variant={CONTAINER_VARIANT.SingleLine}
           inputRef={localRef}
-          postfix={postfixIcon}
+          prefix={prefixSettings.show && prefixSettings.render({ key: prefixSettings.id })}
+          postfix={
+            <>
+              {postfixSettings.show && postfixSettings.render({ key: postfixSettings.id })}
+              {postfixIcon}
+            </>
+          }
         >
           <InputPrivate
             ref={mergeRefs(ref, localRef)}

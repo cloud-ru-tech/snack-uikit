@@ -62,6 +62,14 @@ export function getPrefixIcon(wrapper: Selector) {
   return wrapper.find(dataTestIdSelector('field-container-private__prefix-icon'));
 }
 
+export function getPrefix(wrapper: Selector) {
+  return wrapper.find(dataTestIdSelector('field-prefix'));
+}
+
+export function getPostfix(wrapper: Selector) {
+  return wrapper.find(dataTestIdSelector('field-postfix'));
+}
+
 export function getButtonClearValue(wrapper: Selector) {
   return wrapper.find(dataTestIdSelector('button-clear-value'));
 }
@@ -72,4 +80,12 @@ export function getButtonCopyValue(wrapper: Selector) {
 
 export function getButtonHideValue(wrapper: Selector) {
   return wrapper.find(dataTestIdSelector('button-hide-value'));
+}
+
+export function getButtonField(wrapper: Selector) {
+  return wrapper.find(dataTestIdSelector('button-field'));
+}
+
+export function getButtonFieldList() {
+  return Selector(dataTestIdSelector('button-field-list'));
 }

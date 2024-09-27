@@ -16,7 +16,7 @@ import { Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list
 import { extractSupportProps, isBrowser, useLayoutEffect } from '@snack-uikit/utils';
 
 import { FieldContainerPrivate } from '../../helperComponents';
-import { useValueControl } from '../../hooks';
+import { usePostfix, usePrefix, useValueControl } from '../../hooks';
 import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
@@ -51,6 +51,8 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     search,
     autocomplete = false,
     prefixIcon,
+    prefix,
+    postfix,
     addOptionByEnter = false,
     untouchableScrollbars = false,
     open: openProp,
@@ -79,6 +81,9 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
   });
 
   const prevSelectedItem = useRef<ItemWithId | undefined>(selectedItem);
+
+  const prefixSettings = usePrefix({ prefix, disabled });
+  const postfixSettings = usePostfix({ postfix, disabled });
 
   useLayoutEffect(() => {
     setItems(({ selectedItem }) => updateItems({ options, value, selectedItem }));
@@ -215,7 +220,14 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
             variant={'single-line-container'}
             inputRef={localRef}
             size={size}
-            prefix={prefixIcon}
+            prefix={
+              (prefixIcon || prefixSettings.show) && (
+                <>
+                  {prefixIcon}
+                  {prefixSettings.show && prefixSettings.render({ key: prefixSettings.id })}
+                </>
+              )
+            }
           >
             <InputPrivate
               id={id}
@@ -237,6 +249,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
             <div className={styles.postfix}>
               {postfixButtons}
+              {postfixSettings.show && postfixSettings.render({ key: postfixSettings.id })}
               <ArrowIcon size={arrowIconSize} className={styles.arrowIcon} />
             </div>
           </FieldContainerPrivate>

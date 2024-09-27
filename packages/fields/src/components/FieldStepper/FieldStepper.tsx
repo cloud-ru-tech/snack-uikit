@@ -5,6 +5,7 @@ import {
   forwardRef,
   KeyboardEventHandler,
   MouseEvent,
+  ReactNode,
   useEffect,
   useRef,
   useState,
@@ -19,7 +20,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
-import { useValueControl } from '../../hooks';
+import { usePostfix, usePrefix, useValueControl } from '../../hooks';
 import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
@@ -53,6 +54,10 @@ type FieldStepperOwnProps = {
   step?: number;
   /** Можно ли вводить c клавиатуры числа, выходящие за пределы min/max */
   allowMoreThanLimits?: boolean;
+  /** Произвольный префикс для поля */
+  prefix?: ReactNode;
+  /** Произвольный постфикс для поля */
+  postfix?: ReactNode;
 };
 
 export type FieldStepperProps = WithSupportProps<FieldStepperOwnProps & InputProps & WrapperProps>;
@@ -97,6 +102,8 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
       error,
+      prefix,
+      postfix,
       ...rest
     },
     ref,
@@ -115,6 +122,9 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     const plusButtonRef = useRef<HTMLButtonElement>(null);
     const isMinusButtonDisabled = (typeof min === 'number' && value <= min) || readonly || disabled;
     const isPlusButtonDisabled = (typeof max === 'number' && value >= max) || readonly || disabled;
+
+    const prefixSettings = usePrefix({ prefix, disabled });
+    const postfixSettings = usePostfix({ postfix, disabled });
 
     const fieldValidationState = getValidationState({ validationState, error });
 
@@ -240,30 +250,37 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
             variant={CONTAINER_VARIANT.SingleLine}
             inputRef={inputRef}
             prefix={
-              <ButtonFunction
-                tabIndex={-1}
-                ref={minusButtonRef}
-                size='xs'
-                className={styles.button}
-                icon={<MinusSVG />}
-                onClick={handleMinusButtonClick}
-                onKeyDown={handleMinusButtonKeyDown}
-                disabled={isMinusButtonDisabled}
-                data-test-id='field-stepper__minus-button'
-              />
+              <>
+                <ButtonFunction
+                  tabIndex={-1}
+                  ref={minusButtonRef}
+                  size='xs'
+                  className={styles.button}
+                  icon={<MinusSVG />}
+                  onClick={handleMinusButtonClick}
+                  onKeyDown={handleMinusButtonKeyDown}
+                  disabled={isMinusButtonDisabled}
+                  data-test-id='field-stepper__minus-button'
+                />
+                {prefixSettings.show && prefixSettings.render({ key: prefixSettings.id })}
+              </>
             }
             postfix={
-              <ButtonFunction
-                ref={plusButtonRef}
-                tabIndex={-1}
-                size='xs'
-                className={styles.button}
-                icon={<PlusSVG />}
-                onClick={handlePlusButtonClick}
-                onKeyDown={handlePlusButtonKeyDown}
-                disabled={isPlusButtonDisabled}
-                data-test-id='field-stepper__plus-button'
-              />
+              <>
+                {postfixSettings.show && postfixSettings.render({ key: postfixSettings.id })}
+
+                <ButtonFunction
+                  ref={plusButtonRef}
+                  tabIndex={-1}
+                  size='xs'
+                  className={styles.button}
+                  icon={<PlusSVG />}
+                  onClick={handlePlusButtonClick}
+                  onKeyDown={handlePlusButtonKeyDown}
+                  disabled={isPlusButtonDisabled}
+                  data-test-id='field-stepper__plus-button'
+                />
+              </>
             }
           >
             <InputPrivate

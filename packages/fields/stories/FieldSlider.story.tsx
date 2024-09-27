@@ -103,10 +103,14 @@ export const fieldSlider: StoryObj<StoryProps> = {
     hint: 'Hint text',
     size: 's',
     postfixIcon: ICONS['PlaceholderSVG'],
+    prefix: '',
+    postfix: '',
   },
 
   argTypes: {
     labelTooltip: COMMON_ARG_TYPES.labelTooltip,
+    prefix: COMMON_ARG_TYPES.prefix,
+    postfix: COMMON_ARG_TYPES.postfix,
     moveByMarks: {
       name: '[Story]: change value only by marks',
       type: 'boolean',

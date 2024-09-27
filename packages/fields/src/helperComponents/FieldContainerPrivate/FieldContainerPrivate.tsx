@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { CSSProperties, MouseEventHandler, ReactElement, ReactNode, RefObject } from 'react';
+import { CSSProperties, MouseEventHandler, ReactNode, RefObject } from 'react';
 
 import { Size } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
@@ -17,10 +17,11 @@ export type FieldContainerPrivateProps = WithSupportProps<{
   disabled: boolean;
   readonly: boolean;
   focused?: boolean;
+  disableFocus?: boolean;
   selectable?: boolean;
   style?: CSSProperties;
-  prefix?: ReactElement;
-  postfix?: ReactElement;
+  prefix?: ReactNode;
+  postfix?: ReactNode;
   inputRef: RefObject<HTMLElement>;
 }>;
 
@@ -33,6 +34,7 @@ export function FieldContainerPrivate({
   disabled,
   readonly,
   focused,
+  disableFocus,
   selectable,
   style,
   prefix,
@@ -57,6 +59,7 @@ export function FieldContainerPrivate({
       data-disabled={disabled || undefined}
       data-readonly={readonly || undefined}
       data-focused={focused || undefined}
+      data-disable-focus={disableFocus || undefined}
       data-selectable={selectable || undefined}
       data-test-id='field-container-private'
       onClick={handleContainerClick}

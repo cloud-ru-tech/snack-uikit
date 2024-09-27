@@ -37,7 +37,7 @@
   "dependencies": {
     "@cloud-ru/ft-config-tsconfig": "1.1.1",
     "@cloud-ru/ft-license-validator": "1.1.1",
-    "@snack-uikit/figma-tokens": "15.6.0",
+    "@snack-uikit/figma-tokens": "15.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

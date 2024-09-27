@@ -31,6 +31,8 @@ runCommonTests(props => visit(props), TEST_ID, {
   hasCounter: false,
   hasPlaceholder: false,
   hasPrefixIcon: false,
+  hasPrefix: true,
+  hasPostfix: true,
   hasClearButton: false,
   hasCopyButton: false,
   hasValidationStates: true,
@@ -101,7 +103,6 @@ test.page(visit({ value: 6, readonly: true }))('Should not click buttons in read
 });
 
 test.page(visit({ value: 8, min: 5, max: 15, allowMoreThanLimits: true }))('Can enter value out of limits', async t => {
-
   await t.click(input).typeText(input, '0').click(Selector('body')).expect(input.value).eql('80');
 
   await t.click(input).pressKey('ctrl+a').typeText(input, '1').click(Selector('body')).expect(input.value).eql('1');

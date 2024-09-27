@@ -50,6 +50,8 @@ export const fieldStepper: StoryObj<StoryProps> = {
     caption: 'Caption',
     hint: 'Hint text',
     size: 's',
+    prefix: '',
+    postfix: '',
     validationState: 'default',
     allowMoreThanLimits: true,
   },

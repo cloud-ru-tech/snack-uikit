@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 import { InputPrivateProps } from '@snack-uikit/input-private';
 import {
@@ -79,7 +79,15 @@ export type SearchState = {
   onChange?(value: string): void;
 };
 
-export type FieldSelectPrivateProps = InputProps & WrapperProps & { options: OptionProps[]; loading?: boolean };
+export type FieldSelectPrivateProps = InputProps &
+  WrapperProps & {
+    options: OptionProps[];
+    loading?: boolean;
+    /** Произвольный префикс для поля */
+    prefix?: ReactNode;
+    /** Произвольный постфикс для поля */
+    postfix?: ReactNode;
+  };
 
 type FiledSelectCommonProps = WithSupportProps<{
   options: OptionProps[];

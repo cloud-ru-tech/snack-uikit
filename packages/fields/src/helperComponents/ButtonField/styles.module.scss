@@ -1,0 +1,57 @@
+@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
+@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields";
+
+$variants: 'before', 'after';
+$sizes: 's', 'm', 'l';
+
+.buttonField {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+
+  color: $sys-neutral-text-support;
+
+  background-color: transparent;
+  border: none;
+
+  @each $variant in $variants {
+    &[data-variant='#{$variant}'] {
+      @each $size in $sizes {
+        &[data-size='#{$size}'] {
+          @include composite-var($fields, 'button-field', $variant, $size);
+        }
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: color-on-background-with-opacity($sys-neutral-accent-default, $sys-neutral-background1-level, $opacity-a008);
+  }
+
+  &:focus-visible, &[data-arrow-open] {
+    @include outline-var($container-focused-s);
+
+    background: color-on-background-with-opacity($sys-neutral-accent-default, $sys-neutral-background1-level, $opacity-a008);
+    outline-color: $sys-primary-accent-default;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: $opacity-a056;
+    background-color: transparent;
+  }
+}
+
+.divider {
+  align-self: stretch;
+  height: auto;
+}
+
+.content {
+  display: inline-flex;
+}

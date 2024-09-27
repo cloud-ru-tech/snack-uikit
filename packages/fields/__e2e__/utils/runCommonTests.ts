@@ -16,6 +16,8 @@ import {
   getInput,
   getLabel,
   getLabelTooltip,
+  getPostfix,
+  getPrefix,
   getPrefixIcon,
   getRequiredSign,
 } from './commonSelectors';
@@ -27,6 +29,8 @@ type Options = {
   hasCounter: boolean;
   hasPlaceholder: boolean;
   hasPrefixIcon: boolean;
+  hasPrefix: boolean;
+  hasPostfix: boolean;
   hasClearButton: boolean;
   hasCopyButton: boolean;
   hasValidationStates: boolean;
@@ -76,33 +80,46 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
       maxLength: undefined,
       placeholder: undefined,
       prefixIcon: undefined,
+      postfix: undefined,
+      prefix: undefined,
     }),
-  )('Renders without label, hint, counter, prefixIcon and placeholder in case they are not specified', async t => {
-    const wrapper = Selector(dataTestIdSelector(testId));
+  )(
+    'Renders without label, hint, counter, prefixIcon, prefix, postfix and placeholder in case they are not specified',
+    async t => {
+      const wrapper = Selector(dataTestIdSelector(testId));
 
-    await t
-      .expect(getLabel(wrapper).exists)
-      .notOk("label is present although shouldn't")
-      .expect(getLabelTooltip().exists)
-      .notOk("label hint is present although shouldn't")
-      .expect(getRequiredSign(wrapper).exists)
-      .notOk("required sign is present although shouldn't")
-      .expect(getHint(wrapper).exists)
-      .notOk("hint is present although shouldn't")
-      .expect(getHintDefaultIcon(wrapper).exists)
-      .notOk("hintIcon is present although shouldn't")
-      .expect(getCounter(wrapper).exists)
-      .notOk("length counter is present although shouldn't");
+      await t
+        .expect(getLabel(wrapper).exists)
+        .notOk("label is present although shouldn't")
+        .expect(getLabelTooltip().exists)
+        .notOk("label hint is present although shouldn't")
+        .expect(getRequiredSign(wrapper).exists)
+        .notOk("required sign is present although shouldn't")
+        .expect(getHint(wrapper).exists)
+        .notOk("hint is present although shouldn't")
+        .expect(getHintDefaultIcon(wrapper).exists)
+        .notOk("hintIcon is present although shouldn't")
+        .expect(getCounter(wrapper).exists)
+        .notOk("length counter is present although shouldn't");
 
-    if (options.hasPlaceholder) {
-      const input = getInputInner(wrapper);
-      await t.expect(input.hasAttribute('placeholder')).notOk("placeholder is present although shouldn't");
-    }
+      if (options.hasPlaceholder) {
+        const input = getInputInner(wrapper);
+        await t.expect(input.hasAttribute('placeholder')).notOk("placeholder is present although shouldn't");
+      }
 
-    if (options.hasPrefixIcon) {
-      await t.expect(getPrefixIcon(wrapper).exists).notOk("prefix icon is present although shouldn't");
-    }
-  });
+      if (options.hasPrefixIcon) {
+        await t.expect(getPrefixIcon(wrapper).exists).notOk("prefix icon is present although shouldn't");
+      }
+
+      if (options.hasPrefix) {
+        await t.expect(getPrefix(wrapper).exists).notOk("prefix is present although shouldn't");
+      }
+
+      if (options.hasPostfix) {
+        await t.expect(getPostfix(wrapper).exists).notOk("postfix is present although shouldn't");
+      }
+    },
+  );
 
   // label, hint, hintIcon, required sign, placeholder, prefixIcon
   test.page(
@@ -113,8 +130,10 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
       required: true,
       placeholder: 'Enter something here',
       prefixIcon: 'PlaceholderSVG',
+      prefix: 'PRE',
+      postfix: 'POST',
     }),
-  )('Renders with label, hint, prefixIcon and placeholder in case they are specified', async t => {
+  )('Renders with label, hint, prefixIcon, prefix, postfix and placeholder in case they are specified', async t => {
     const wrapper = Selector(dataTestIdSelector(testId));
 
     await t
@@ -127,9 +146,20 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
       .expect(getRequiredSign(wrapper).textContent)
       .eql('*');
 
-    if (options.hasPrefixIcon) {
+    // TODO: return condition
+    if (options.hasPrefixIcon /* || options.hasPrefix*/) {
       await t.expect(getPrefixIcon(wrapper).exists).ok('prefix icon is not present');
+
+      // TODO: return test
+      // if (options.hasPrefix) {
+      //   await t.expect(getPrefix(wrapper).textContent).eql('PRE');
+      // }
     }
+
+    // TODO: return test
+    // if (options.hasPostfix) {
+    //   await t.expect(getPostfix(wrapper).textContent).eql('POST');
+    // }
 
     if (options.hasPlaceholder) {
       await t.expect(getInputInner(wrapper).getAttribute('placeholder')).eql('Enter something here');

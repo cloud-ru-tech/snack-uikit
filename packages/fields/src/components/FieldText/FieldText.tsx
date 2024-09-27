@@ -1,14 +1,16 @@
 import mergeRefs from 'merge-refs';
-import { forwardRef, ReactElement, useMemo, useRef } from 'react';
+import { forwardRef, ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
 
 import { InputPrivate, InputPrivateProps, SIZE, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
+import { VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
-import { useCopyButton, useValueControl } from '../../hooks';
+import { useCopyButton, usePostfix, usePostfixButton, usePrefix, usePrefixButton, useValueControl } from '../../hooks';
+import { Button } from '../../types';
 import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
+import { getContainerVariant } from './helpers';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
   Pick<
@@ -43,6 +45,12 @@ type FieldTextOwnProps = {
   allowMoreThanMaxLength?: boolean;
   /** Иконка-префикс для поля */
   prefixIcon?: ReactElement;
+  /** Произвольный префикс для поля */
+  prefix?: ReactNode;
+  /** Произвольный постфикс для поля */
+  postfix?: ReactNode;
+  /** Кнопка действия внутри поля */
+  button?: Button;
 };
 
 export type FieldTextProps = WithSupportProps<FieldTextOwnProps & InputProps & WrapperProps>;
@@ -73,9 +81,12 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       showHintIcon,
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
-      prefixIcon,
       error,
       autoComplete,
+      prefixIcon,
+      prefix,
+      postfix,
+      button: buttonProp,
       ...rest
     },
     ref,
@@ -93,6 +104,25 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
     const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
     const fieldValidationState = getValidationState({ validationState, error });
 
+    const button: Button | undefined = useMemo(
+      () =>
+        buttonProp
+          ? {
+              ...buttonProp,
+              selection: {
+                ...buttonProp.selection,
+                onChange: value => {
+                  buttonProp.selection?.onChange?.(value);
+                  setTimeout(() => localRef.current?.focus(), 0);
+                },
+              },
+            }
+          : undefined,
+      [buttonProp],
+    );
+
+    const containerVariant = getContainerVariant({ button });
+
     const onClear = () => {
       onChange('');
 
@@ -102,13 +132,47 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
     };
 
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
-    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: value });
-    const { postfixButtons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
+    const copyButtonSettings = useCopyButton({
+      copyButtonRef,
+      showCopyButton,
+      size,
+      valueToCopy: value,
+      prefix: typeof prefix === 'string' ? prefix : undefined,
+      postfix: typeof postfix === 'string' ? postfix : undefined,
+    });
+
+    const [isButtonFocused, setIsButtonFocused] = useState(false);
+    const onButtonFocus = useCallback(() => setIsButtonFocused(true), []);
+    const onButtonBlur = useCallback(() => setIsButtonFocused(false), []);
+
+    const prefixSettings = usePrefix({ prefix, disabled });
+    const prefixButtonSettings = usePrefixButton({
+      button,
+      prefixIcon,
+      size,
+      disabled,
+      readonly,
+      onFocus: onButtonFocus,
+      onBlur: onButtonBlur,
+    });
+
+    const postfixSettings = usePostfix({ postfix, disabled });
+    const postfixButtonSettings = usePostfixButton({
+      button,
+      size,
+      disabled,
+      readonly,
+      onFocus: onButtonFocus,
+      onBlur: onButtonBlur,
+    });
+
+    const { postfixButtons, prefixButtons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
       inputRef: localRef,
       postfixButtons: useMemo(
-        () => [clearButtonSettings, copyButtonSettings],
-        [clearButtonSettings, copyButtonSettings],
+        () => [clearButtonSettings, copyButtonSettings, postfixSettings, postfixButtonSettings],
+        [clearButtonSettings, copyButtonSettings, postfixSettings, postfixButtonSettings],
       ),
+      prefixButtons: useMemo(() => [prefixButtonSettings, prefixSettings], [prefixButtonSettings, prefixSettings]),
       readonly,
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
@@ -137,10 +201,11 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
           validationState={fieldValidationState}
           disabled={disabled}
           readonly={readonly}
-          variant={CONTAINER_VARIANT.SingleLine}
+          variant={containerVariant}
           inputRef={localRef}
-          prefix={prefixIcon}
+          prefix={prefixButtons}
           postfix={postfixButtons}
+          disableFocus={isButtonFocused}
         >
           <InputPrivate
             ref={mergeRefs(ref, localRef)}

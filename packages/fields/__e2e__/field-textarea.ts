@@ -27,6 +27,8 @@ runCommonTests(props => visit(props), TEST_ID, {
   hasCounter: true,
   hasPlaceholder: true,
   hasPrefixIcon: false,
+  hasPrefix: false,
+  hasPostfix: false,
   hasClearButton: true,
   hasValidationStates: true,
   hasCopyButton: true,
