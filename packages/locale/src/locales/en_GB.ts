@@ -47,4 +47,8 @@ export const en_GB = {
     apply: 'Apply',
     cancel: 'Cancel',
   },
+  Calendar: {
+    current: 'Current',
+    time: 'Time',
+  },
 };

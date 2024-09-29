@@ -49,4 +49,8 @@ export const ru_RU: typeof en_GB = {
     apply: 'Применить',
     cancel: 'Отменить',
   },
+  Calendar: {
+    current: 'Сейчас',
+    time: 'Время',
+  },
 };
