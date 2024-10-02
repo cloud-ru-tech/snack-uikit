@@ -7,6 +7,7 @@ export const VIEW_MODE = {
 export const CALENDAR_MODE = {
   Date: 'date',
   Range: 'range',
+  Month: 'month',
 } as const;
 
 export const IN_RANGE_POSITION = {

@@ -62,6 +62,17 @@ type DateCalendarProps = CommonCalendarProps & {
   onChangeValue?(value: Date): void;
 };
 
+type MonthCalendarProps = CommonCalendarProps & {
+  /** Режим работы календаря: <br> - `month` - режим выбора месяца */
+  mode: typeof CALENDAR_MODE.Month;
+  /** Выбранное значение.<br> - в режиме month тип `Date` */
+  value?: Date;
+  /** Значение по-умолчанию для uncontrolled.<br> - в режиме month тип `Date` */
+  defaultValue?: Date;
+  /** Колбек выбора значения.<br> - в режиме month принимает тип `Date` */
+  onChangeValue?(value: Date): void;
+};
+
 type RangeCalendarProps = CommonCalendarProps & {
   /** <br> - `range` - режим выбора периода */
   mode: typeof CALENDAR_MODE.Range;
@@ -73,14 +84,14 @@ type RangeCalendarProps = CommonCalendarProps & {
   onChangeValue?(value: Range): void;
 };
 
-export type CalendarProps = WithSupportProps<DateCalendarProps | RangeCalendarProps>;
+export type CalendarProps = WithSupportProps<DateCalendarProps | RangeCalendarProps | MonthCalendarProps>;
 
 export function Calendar(props: CalendarProps) {
   const { className, onChangeValue, buildCellProps, mode, ...rest } = props;
 
   const changeValueHandler = useCallback(
     (value: Range) => {
-      if (mode === CALENDAR_MODE.Date) {
+      if (mode === CALENDAR_MODE.Date || mode === CALENDAR_MODE.Month) {
         const [date] = value;
         onChangeValue?.(date);
         return;

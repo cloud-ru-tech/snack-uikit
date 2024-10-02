@@ -81,7 +81,7 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
   };
 
   return (
-    <div className={cn(styles.story, SCROLL_SIZE[args.size || SIZE.M])}>
+    <div key={args.mode} className={cn(styles.story, SCROLL_SIZE[args.size || SIZE.M])}>
       <Scroll>
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}

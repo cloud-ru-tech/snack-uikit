@@ -454,3 +454,17 @@ test.page(
     periodLevelName: 'May 2023',
   });
 });
+
+test.page(
+  getPage({
+    mode: 'month',
+  }),
+)('Should select month by click in month mode', async t => {
+  await t.click(Selector(dataTestIdSelector(ITEM)).nth(1)); // выбрать второй месяц
+
+  await t.expect(await getCalendarTextSnapshot()).eql({
+    header: '',
+    items: 'January,[February],March,April,!May,June,July,August,September,October,November,December',
+    periodLevelName: '2023',
+  });
+});

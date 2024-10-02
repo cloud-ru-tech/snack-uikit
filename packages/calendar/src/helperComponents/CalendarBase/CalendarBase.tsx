@@ -5,7 +5,7 @@ import { useUncontrolledProp } from 'uncontrollable';
 import { useLocale } from '@snack-uikit/locale';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { AUTOFOCUS, SIZE, VIEW_MODE } from '../../constants';
+import { AUTOFOCUS, CALENDAR_MODE, SIZE, VIEW_MODE } from '../../constants';
 import { BuildCellPropsFunction, CalendarMode, FocusDirection, Range, Size, ViewMode } from '../../types';
 import { getEndOfTheDay, getLocale, getTestIdBuilder, sortDates } from '../../utils';
 import { CalendarBody } from '../CalendarBody';
@@ -58,7 +58,7 @@ export function CalendarBase({
   navigationStartRef,
   ...rest
 }: CalendarBaseProps) {
-  const [viewMode, setViewMode] = useState<ViewMode>(VIEW_MODE.Month);
+  const [viewMode, setViewMode] = useState<ViewMode>(mode === CALENDAR_MODE.Month ? VIEW_MODE.Year : VIEW_MODE.Month);
   const [viewShift, setViewShift] = useState<number>(0);
   const [value, setValueState] = useUncontrolledProp<Range | undefined>(valueProp, defaultValue, onChangeValue);
   const today = typeof todayProp === 'number' ? new Date(todayProp) : todayProp;
