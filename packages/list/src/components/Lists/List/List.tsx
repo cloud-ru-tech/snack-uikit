@@ -4,6 +4,7 @@ import { ForwardedRef, forwardRef, KeyboardEvent, useCallback, useMemo, useRef }
 
 import { isBrowser, useValueControl } from '@snack-uikit/utils';
 
+import { ITEM_PREFIXES } from '../../../constants';
 import { HiddenTabButton } from '../../../helperComponents';
 import { extractActiveItems, ItemId, kindFlattenItems, useCreateBaseItems } from '../../Items';
 import { CollapseContext, FocusListContext, NewListContextProvider, SelectionProvider } from '../contexts';
@@ -28,6 +29,8 @@ export const List = forwardRef(
       contentRender,
       size = 's',
       marker = true,
+      keyboardNavigationRef,
+      hasListInFocusChain = true,
       ...props
     }: ListProps,
     ref: ForwardedRef<HTMLElement>,
@@ -49,9 +52,21 @@ export const List = forwardRef(
      * Объект с пропсами всех вложенных айтемов; ключ id
      */
     const { flattenItems, focusFlattenItems, ...memorizedItems } = useMemo(() => {
-      const pinTop = kindFlattenItems({ items: pinTopProp, prefix: '~pinTop', parentId: '~main' });
-      const items = kindFlattenItems({ items: itemsProp, prefix: '~main', parentId: '~main' });
-      const pinBottom = kindFlattenItems({ items: pinBottomProp, prefix: '~pinBottom', parentId: '~main' });
+      const pinTop = kindFlattenItems({
+        items: pinTopProp,
+        prefix: ITEM_PREFIXES.pinTop,
+        parentId: ITEM_PREFIXES.default,
+      });
+      const items = kindFlattenItems({
+        items: itemsProp,
+        prefix: ITEM_PREFIXES.default,
+        parentId: ITEM_PREFIXES.default,
+      });
+      const pinBottom = kindFlattenItems({
+        items: pinBottomProp,
+        prefix: ITEM_PREFIXES.pinBottom,
+        parentId: ITEM_PREFIXES.default,
+      });
 
       const flattenItems = { ...pinTop.flattenItems, ...pinBottom.flattenItems, ...items.flattenItems };
       const focusFlattenItems = {
@@ -102,12 +117,16 @@ export const List = forwardRef(
 
     const listRef = useRef<HTMLElement>(null);
     const btnRef = useRef<HTMLButtonElement>(null);
+    const firstItemId = ids[0];
 
     const { handleListKeyDownFactory, activeItemId, resetActiveItemId, forceUpdateActiveItemId } =
       useNewKeyboardNavigation({
         mainRef: listRef,
         btnRef,
         focusFlattenItems,
+        keyboardNavigationRef,
+        hasListInFocusChain,
+        firstItemId,
       });
 
     const handleListKeyDown = useCallback(
@@ -133,6 +152,7 @@ export const List = forwardRef(
         contentRender={contentRender}
         size={size}
         marker={marker}
+        firstItemId={firstItemId}
       >
         <SelectionProvider {...selection}>
           <CollapseContext.Provider
@@ -158,12 +178,12 @@ export const List = forwardRef(
                   ref={mergeRefs(ref, listRef)}
                   onFocus={handleOnFocus}
                   onKeyDown={mergedHandlerKeyDown}
-                  tabIndex={tabIndex}
+                  tabIndex={hasListInFocusChain ? tabIndex : undefined}
                   search={search}
                   nested={false}
                 />
 
-                <HiddenTabButton ref={btnRef} listRef={listRef} tabIndex={tabIndex} />
+                {hasListInFocusChain && <HiddenTabButton ref={btnRef} listRef={listRef} tabIndex={tabIndex} />}
               </div>
             </FocusListContext.Provider>
           </CollapseContext.Provider>

@@ -3,6 +3,7 @@ import { KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from
 import { Dropdown } from '@snack-uikit/dropdown';
 import { ChevronRightSVG } from '@snack-uikit/icons';
 
+import { ITEM_PREFIXES } from '../../../constants';
 import { useCollapseContext, useFocusListContext, useNewListContext, useSelectionContext } from '../../Lists/contexts';
 import { ListPrivate } from '../../Lists/ListPrivate';
 import { BaseItem } from '../BaseItem';
@@ -71,7 +72,7 @@ export function NextListItem({
   });
 
   const handleOutsideClick = useCallback(() => {
-    forceUpdateActiveItemId?.('~drop-focus');
+    forceUpdateActiveItemId?.(ITEM_PREFIXES.dropFocus);
     setOpen(false);
     return true;
   }, [forceUpdateActiveItemId]);

@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext } from 'react';
 
+import { ITEM_PREFIXES } from '../../../constants';
 import { ItemContentProps } from '../../../helperComponents';
 import { FlattenItem, FocusFlattenItem, ItemId } from '../../Items';
 
@@ -23,6 +24,7 @@ export type PublicListContextType = {
 export type PrivateListContextType = {
   flattenItems: Record<string, FlattenItem>;
   focusFlattenItems: Record<string, FocusFlattenItem>;
+  firstItemId: ItemId;
 };
 
 type Child = {
@@ -31,9 +33,10 @@ type Child = {
 
 type ListContextType = PublicListContextType & PrivateListContextType;
 
-export const ListContext = createContext({
+export const ListContext = createContext<ListContextType>({
   flattenItems: {},
   focusFlattenItems: {},
+  firstItemId: ITEM_PREFIXES.default,
 });
 
 export function useNewListContext() {
@@ -46,8 +49,9 @@ function extractListProps<T extends ListContextType>({
   flattenItems,
   focusFlattenItems,
   contentRender,
+  firstItemId,
 }: T) {
-  return { size, marker, contentRender, flattenItems, focusFlattenItems };
+  return { size, marker, contentRender, flattenItems, focusFlattenItems, firstItemId };
 }
 
 export function NewListContextProvider({ children, ...props }: ListContextType & Child) {

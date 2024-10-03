@@ -1,5 +1,7 @@
 import { createRef, RefObject, useMemo } from 'react';
 
+import { ITEM_PREFIXES } from '../../constants';
+import { getFooterItemId } from '../../utils';
 import { useNewListContext, useSelectionContext } from '../Lists/contexts';
 import { AccordionItem } from './AccordionItem';
 import { BaseItem } from './BaseItem';
@@ -64,16 +66,16 @@ export function useCreateBaseItems({ footerActiveElementsRefs }: UseCreateBaseIt
     () => ({
       searchItem: {
         itemRef: createRef<HTMLInputElement>(),
-        id: '~search',
-        parentId: '~main',
+        id: ITEM_PREFIXES.search,
+        parentId: ITEM_PREFIXES.default,
         items: [],
         allChildIds: [],
       },
       footerItems:
         footerActiveElementsRefs?.map((itemRef, idx) => ({
-          id: `~footer__${idx}`,
+          id: getFooterItemId(idx),
           itemRef,
-          parentId: '~main',
+          parentId: ITEM_PREFIXES.default,
           items: [],
           allChildIds: [],
         })) ?? [],

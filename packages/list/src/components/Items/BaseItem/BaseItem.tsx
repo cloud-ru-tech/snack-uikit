@@ -52,12 +52,12 @@ export function BaseItem({
 }: AllBaseItemProps) {
   const interactive = !inactive;
 
-  const { size = 's', marker, contentRender } = useNewListContext();
+  const { size = 's', marker, contentRender, firstItemId, focusFlattenItems } = useNewListContext();
   const { level = 0 } = useCollapseLevelContext();
   const { closeDroplist, closeDroplistOnItemClick } = useOpenListContext();
   const { value, onChange, mode, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
 
-  const isChecked = isSelectionSingle ? checkedProp ?? value === id : checkedProp ?? value?.includes(id ?? '');
+  const isChecked = isSelectionSingle ? (checkedProp ?? value === id) : (checkedProp ?? value?.includes(id ?? ''));
 
   const handleChange = () => {
     onChange?.(id);
@@ -150,7 +150,7 @@ export function BaseItem({
         data-size={size}
         onClick={handleItemClick}
         onMouseDown={handleItemMouseDown}
-        tabIndex={-1}
+        tabIndex={id === focusFlattenItems[firstItemId].originalId ? 0 : -1}
         data-non-pointer={inactive && !onClick}
         data-variant={mode || undefined}
         data-open={open || undefined}
@@ -179,7 +179,7 @@ export function BaseItem({
 
         {beforeContent && <div className={styles.beforeContent}>{beforeContent}</div>}
         {content && isContentItem(content) ? (
-          contentRender?.({ id, content, disabled }) ?? <ItemContent disabled={disabled} {...content} />
+          (contentRender?.({ id, content, disabled }) ?? <ItemContent disabled={disabled} {...content} />)
         ) : (
           <div className={styles.content}> {content} </div>
         )}

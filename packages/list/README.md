@@ -97,12 +97,14 @@
 | pinBottom | `Item[]` | - | Элементы списка, закрепленные снизу |
 | footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
+| keyboardNavigationRef | `RefObject<{ focusItem(id: ItemId): void; }>` | - | Ссылка на управление навигацией листа с клавиатуры |
 | search | `SearchState` | - | Настройки поисковой строки |
 | tabIndex | `number` | - | Tab Index |
 | collapse | `CollapseState` | {} | Настройки раскрытия элементов |
 | className | `string` | - | CSS-класс |
-| onKeyDown | `(e: KeyboardEvent<HTMLElement>) => void` | - |  |
 | loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
+| onKeyDown | `(e: KeyboardEvent<HTMLElement>) => void` | - | Обработчик события по нажатию клавиш |
+| hasListInFocusChain | `boolean` | true | Флаг, отвещающий за включение самого родительского контейнера листа в цепочку фокусирующихся элементов |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | size | "s" \| "m" \| "l" | s | Размер списка |
 | marker | `boolean` | true | Отображать ли маркер у выбранного жлемента списка |
@@ -129,6 +131,18 @@
 | truncate | `TruncateProps` | - |  |
 | disabled | `boolean` | - |  |
 | className | `string` | - | CSS-класс |
+## getFooterItemId
+`helper` 
+
+Возвращает id для элемента футера
+## getItemAutoId
+`helper` 
+
+Возвращает id для элемента, подставляя перфикс
+## getDefaultItemId
+`helper` 
+
+Возвращает id для дефолтного элемента
 
 
 [//]: DOCUMENTATION_SECTION_END

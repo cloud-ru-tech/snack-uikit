@@ -5,6 +5,7 @@ import { cloneElement, isValidElement, KeyboardEvent, ReactNode, useCallback, us
 import { Dropdown, DropdownProps } from '@snack-uikit/dropdown';
 import { useValueControl } from '@snack-uikit/utils';
 
+import { ITEM_PREFIXES } from '../../../constants';
 import { extractActiveItems, ItemId, kindFlattenItems, useCreateBaseItems } from '../../Items';
 import {
   CollapseContext,
@@ -67,9 +68,21 @@ export function Droplist({
    * Объект с пропсами всех вложенных айтемов; ключ id
    */
   const { flattenItems, focusFlattenItems, ...memorizedItems } = useMemo(() => {
-    const pinTop = kindFlattenItems({ items: pinTopProp, prefix: '~pinTop', parentId: '~main' });
-    const items = kindFlattenItems({ items: itemsProp, prefix: '~main', parentId: '~main' });
-    const pinBottom = kindFlattenItems({ items: pinBottomProp, prefix: '~pinBottom', parentId: '~main' });
+    const pinTop = kindFlattenItems({
+      items: pinTopProp,
+      prefix: ITEM_PREFIXES.pinTop,
+      parentId: ITEM_PREFIXES.default,
+    });
+    const items = kindFlattenItems({
+      items: itemsProp,
+      prefix: ITEM_PREFIXES.default,
+      parentId: ITEM_PREFIXES.default,
+    });
+    const pinBottom = kindFlattenItems({
+      items: pinBottomProp,
+      prefix: ITEM_PREFIXES.pinBottom,
+      parentId: ITEM_PREFIXES.default,
+    });
 
     const flattenItems = { ...pinTop.flattenItems, ...pinBottom.flattenItems, ...items.flattenItems };
     const focusFlattenItems = {
@@ -120,11 +133,14 @@ export function Droplist({
 
   const triggerElemRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLElement>(null);
+  const firstItemId = ids[0];
 
   const { handleListKeyDownFactory, resetActiveItemId, activeItemId, forceUpdateActiveItemId } =
     useNewKeyboardNavigation({
       mainRef: triggerElemRefProp ?? triggerElemRef,
       focusFlattenItems,
+      hasListInFocusChain: true,
+      firstItemId,
     });
 
   const handleListKeyDown = useCallback(
@@ -190,6 +206,7 @@ export function Droplist({
       contentRender={contentRender}
       size={size}
       marker={marker}
+      firstItemId={firstItemId}
     >
       <SelectionProvider {...selection}>
         <CollapseContext.Provider

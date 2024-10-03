@@ -247,6 +247,7 @@ const Template: StoryFn<StoryProps> = ({
             footer={
               showFooter ? (
                 <ButtonOutline
+                  tabIndex={-1}
                   className={styles.btn}
                   ref={footerActiveItemRefs}
                   icon={<PlusSVG />}
@@ -285,6 +286,7 @@ export const list = {
     showCollapsedList: false,
     showAsyncList: false,
     selectionMode: 'single',
+    hasListInFocusChain: true,
   },
 
   argTypes: {

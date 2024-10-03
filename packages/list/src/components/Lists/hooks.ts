@@ -1,21 +1,33 @@
-import { KeyboardEvent, RefObject, useCallback, useRef, useState } from 'react';
+import { KeyboardEvent, RefObject, useCallback, useImperativeHandle, useRef, useState } from 'react';
 
+import { ITEM_PREFIXES } from '../../constants';
 import { FocusFlattenItem, ItemId } from '../Items';
 
 type UseNewKeyboardNavigationProps<T extends HTMLElement> = {
   mainRef?: RefObject<T>;
   btnRef?: RefObject<HTMLButtonElement>;
   focusFlattenItems: Record<string, FocusFlattenItem>;
+  keyboardNavigationRef?: RefObject<{ focusItem(item: ItemId): void }>;
+  hasListInFocusChain: boolean;
+  firstItemId: ItemId;
 };
 
 export function useNewKeyboardNavigation<T extends HTMLElement>({
   mainRef,
   btnRef,
   focusFlattenItems,
+  keyboardNavigationRef,
+  hasListInFocusChain,
+  firstItemId,
 }: UseNewKeyboardNavigationProps<T>) {
-  const [activeItemId, setActiveItemId] = useState<ItemId | undefined>();
+  const defaultActiveItemId = hasListInFocusChain ? undefined : firstItemId;
+  const [activeItemId, setActiveItemId] = useState<ItemId | undefined>(() => defaultActiveItemId);
+  const activeItemIdRef = useRef<ItemId | undefined>(defaultActiveItemId);
 
-  const activeItemIdRef = useRef<ItemId | undefined>();
+  const resetActiveItemId = useCallback(() => {
+    setActiveItemId(defaultActiveItemId);
+    activeItemIdRef.current = defaultActiveItemId;
+  }, [defaultActiveItemId]);
 
   const handleListKeyDownFactory = useCallback(
     (ids: ItemId[], expandedIds: ItemId[]) => (e: KeyboardEvent<T>) => {
@@ -52,12 +64,14 @@ export function useNewKeyboardNavigation<T extends HTMLElement>({
         }
         case 'ArrowUp': {
           if (ids[0] === activeItemIdRef.current) {
-            const item = focusFlattenItems[ids[0]];
+            if (hasListInFocusChain) {
+              const item = focusFlattenItems[ids[0]];
 
-            if (item.parentId === '~main') {
-              activeItemIdRef.current = undefined;
-              setActiveItemId(undefined);
-              mainRef?.current?.focus();
+              if (item.parentId === ITEM_PREFIXES.default) {
+                activeItemIdRef.current = undefined;
+                setActiveItemId(undefined);
+                mainRef?.current?.focus();
+              }
             }
           } else if (activeItemIdRef.current !== undefined) {
             const activeIndex = ids.findIndex(id => id === activeItemIdRef.current);
@@ -99,12 +113,16 @@ export function useNewKeyboardNavigation<T extends HTMLElement>({
 
         case 'Tab': {
           if (activeItemIdRef.current !== undefined) {
-            e.preventDefault();
-            e.stopPropagation();
+            if (hasListInFocusChain) {
+              e.preventDefault();
+              e.stopPropagation();
 
-            activeItemIdRef.current = undefined;
-            setActiveItemId(undefined);
-            mainRef?.current?.focus();
+              activeItemIdRef.current = undefined;
+              setActiveItemId(undefined);
+              mainRef?.current?.focus();
+            } else {
+              resetActiveItemId();
+            }
           } else {
             btnRef && !e.shiftKey ? btnRef?.current?.focus() : mainRef?.current?.focus();
           }
@@ -116,13 +134,8 @@ export function useNewKeyboardNavigation<T extends HTMLElement>({
         }
       }
     },
-    [focusFlattenItems, mainRef, btnRef],
+    [focusFlattenItems, hasListInFocusChain, mainRef, resetActiveItemId, btnRef],
   );
-
-  const resetActiveItemId = useCallback(() => {
-    setActiveItemId(undefined);
-    activeItemIdRef.current = undefined;
-  }, []);
 
   const forceUpdateActiveItemId = useCallback(
     (itemId: ItemId) => {
@@ -135,6 +148,8 @@ export function useNewKeyboardNavigation<T extends HTMLElement>({
     },
     [focusFlattenItems],
   );
+
+  useImperativeHandle(keyboardNavigationRef, () => ({ focusItem: forceUpdateActiveItemId }), [forceUpdateActiveItemId]);
 
   return {
     resetActiveItemId,

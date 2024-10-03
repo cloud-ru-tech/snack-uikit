@@ -1,6 +1,8 @@
 import { createRef } from 'react';
 
+import { ITEM_PREFIXES } from '../../constants';
 import { ItemContentProps } from '../../helperComponents';
+import { getItemAutoId } from '../../utils';
 import {
   AccordionItem,
   AnyType,
@@ -55,13 +57,13 @@ export function kindFlattenItems({ items, prefix, parentId }: KindFlattenItemsPr
   const flattenItems: Record<string, FlattenItem> = {};
   const focusFlattenItems: Record<string, FocusFlattenItem> = {};
 
-  function flatten({ item, idx, prefix, parentId = '~main' }: FlattenProps): {
+  function flatten({ item, idx, prefix, parentId = ITEM_PREFIXES.default }: FlattenProps): {
     id: ItemId;
     children: ItemId[];
     focusChildren: ItemId[];
     autoId: ItemId;
   } {
-    const autoId = prefix !== undefined ? [prefix, idx].join('-') : String(idx);
+    const autoId = prefix !== undefined ? getItemAutoId(prefix, idx) : String(idx);
     const itemId = (!isGroupItem(item) ? item.id : undefined) ?? autoId;
 
     if (isBaseItem(item)) {
@@ -92,7 +94,7 @@ export function kindFlattenItems({ items, prefix, parentId }: KindFlattenItemsPr
     const autoChildIds: ItemId[] = [];
 
     const { items, ...rest } = item;
-    const childActiveParent = isGroupItem(item) ? parentId ?? '~main' : autoId;
+    const childActiveParent = isGroupItem(item) ? parentId ?? ITEM_PREFIXES.default : autoId;
 
     const filteredItems = items.filter(item => !item.hidden);
 

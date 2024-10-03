@@ -34,6 +34,8 @@ export type ListProps = WithSupportProps<
     footer?: ReactNode;
     /** Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка  */
     footerActiveElementsRefs?: RefObject<HTMLElement>[];
+    /** Ссылка на управление навигацией листа с клавиатуры  */
+    keyboardNavigationRef?: RefObject<{ focusItem(id: ItemId): void }>;
     /** Настройки поисковой строки */
     search?: SearchState;
 
@@ -43,10 +45,14 @@ export type ListProps = WithSupportProps<
     collapse?: CollapseState;
     /** CSS-класс */
     className?: string;
-    onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
 
     /** Флаг, отвещающий за состояние загрузки списка */
     loading?: boolean;
+
+    /** Обработчик события по нажатию клавиш */
+    onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
+    /** Флаг, отвещающий за включение самого родительского контейнера листа в цепочку фокусирующихся элементов */
+    hasListInFocusChain?: boolean;
   } & SelectionState &
     PublicListContextType &
     ScrollProps &
@@ -74,7 +80,7 @@ export type DroplistProps = {
    */
   children: ReactNode | ((params: { onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void }) => ReactNode);
 } & Pick<DropdownProps, 'trigger' | 'placement' | 'widthStrategy' | 'open' | 'onOpenChange' | 'triggerClassName'> &
-  Omit<ListProps, 'tabIndex' | 'onKeyDown'>;
+  Omit<ListProps, 'tabIndex' | 'onKeyDown' | 'hasListInFocusChain' | 'keyboardNavigationRef'>;
 
 export type ListPrivateProps = Omit<ListProps, 'pinTop' | 'pinBottom' | 'items'> & {
   nested?: boolean;
