@@ -1,4 +1,4 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { FieldTextArea } from '@snack-uikit/fields';
@@ -15,7 +15,9 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template: StoryFn<ColorPickerProps> = ({ ...args }: ColorPickerProps) => {
+type StoryProps = ColorPickerProps;
+
+const Template = ({ ...args }: StoryProps) => {
   const [value, setValue] = useState<string>('#000');
   const [rawValue, setRawValue] = useState<RawColor>({} as RawColor);
 
@@ -36,31 +38,33 @@ const Template: StoryFn<ColorPickerProps> = ({ ...args }: ColorPickerProps) => {
   );
 };
 
-export const colorPicker: StoryObj<ColorPickerProps> = Template.bind({});
+export const colorPicker: StoryObj<StoryProps> = {
+  render: Template,
 
-colorPicker.args = {
-  autoApply: false,
-  withAlpha: true,
-  value: '#000000',
-};
+  args: {
+    autoApply: false,
+    withAlpha: true,
+    value: '#000000',
+  },
 
-colorPicker.argTypes = {
-  value: {
-    type: 'string',
+  argTypes: {
+    value: {
+      type: 'string',
+    },
+    onChange: {
+      visibility: false,
+    },
   },
-  onChange: {
-    visibility: false,
-  },
-};
 
-colorPicker.parameters = {
-  readme: {
-    sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
-  },
-  packageName: componentPackage.name,
-  design: {
-    name: 'Figma',
-    type: 'figma',
-    url: 'https://www.figma.com/design/jtGxAPvFJOMir7V0eQFukN/branch/Rq5wXgsa8hopMLIL5iXxN2/Snack-UI-Kit-4.0.0?node-id=10776-174&node-type=canvas&m=dev',
+  parameters: {
+    readme: {
+      sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
+    },
+    packageName: componentPackage.name,
+    design: {
+      name: 'Figma',
+      type: 'figma',
+      url: 'https://www.figma.com/design/jtGxAPvFJOMir7V0eQFukN/branch/Rq5wXgsa8hopMLIL5iXxN2/Snack-UI-Kit-4.0.0?node-id=10776-174&node-type=canvas&m=dev',
+    },
   },
 };
