@@ -1,13 +1,22 @@
-import { CALENDAR_MODE } from '../../constants';
-import { CalendarMode, Range } from '../../types';
+import { Range } from '../../types';
 import { CalendarProps } from './Calendar';
 
-export const getNormalizedValue = (mode: CalendarMode, value: CalendarProps['value']): Range | undefined => {
-  if (!value) return value;
+function isRangeValue(value: CalendarProps['value']): value is Range {
+  return Array.isArray(value) && value.length === 2 && value[0] instanceof Date && value[1] instanceof Date;
+}
 
-  if (mode === CALENDAR_MODE.Range) {
-    return value as Range;
+function isDateValue(value: CalendarProps['value']): value is Date {
+  return value instanceof Date;
+}
+
+export const getNormalizedValue = (value: CalendarProps['value']): Range | undefined => {
+  if (isRangeValue(value)) {
+    return value;
   }
 
-  return [value as Date, value as Date];
+  if (isDateValue(value)) {
+    return [value, value];
+  }
+
+  return value;
 };

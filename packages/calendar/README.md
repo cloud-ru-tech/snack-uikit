@@ -42,11 +42,25 @@ import { Calendar } from '@snack-uikit/calendar';
 | autofocus | `boolean` | - | Автофокус |
 | locale | `Intl.Locale` | Проставляется в соответствие с языком в настройках браузера | Локаль, в соответствие с которой выставляется язык названий и первый день недели |
 | onFocusLeave | `(direction: FocusDirection) => void` | - | Колбек потери фокуса. Вызывается со значением `next`, когда фокус покидает компонент, передвигаясь вперед, по клавише `tab`. Со значением `prev` - по клавише стрелки вверх или `shift + tab`. |
-| navigationStartRef | `RefObject<HTMLButtonElement>` | - | Ref на первый доступный интерактивный элемент |
+| navigationStartRef | `RefObject<{ focus(): void; }>` | - | Ссылка на управление первым элементом навигации |
 | value | `Date \| Range` | - | Выбранное значение.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` |
 | defaultValue | `Date \| Range` | - | Значение по-умолчанию для uncontrolled.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` |
 | onChangeValue | `((value: Date) => void) \| ((value: Range) => void) \| ((value: Date) => void) \| ((value: Date) => void)` | - | Колбек выбора значения.<br> - в режиме date принимает тип `Date` <br> - в режиме range принимает тип `Range` <br> - в режиме month принимает тип `Date` <br> - в режиме date-time принимает тип `Date` |
 | showSeconds | `boolean` | - | Показывать ли секунды (только в режиме date-time) |
+## TimePicker
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| value | `TimeValue` | - | Выбранное значение. |
+| today | `number \| Date` | - | Дата сегодняшнего дня |
+| defaultValue | `TimeValue` | - | Значение по-умолчанию для uncontrolled. |
+| onChangeValue | `(value?: TimeValue) => void` | - | Колбек выбора значения |
+| showSeconds | `boolean` | true | Показывать ли секунды |
+| size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер |
+| className | `string` | - | CSS-класс контейнера |
+| fitToContainer | `boolean` | true | Отключает предустановленный размер, заставляя компонент подстраиваться к размеру контейнра: (width: 100%, height: 100%). |
+| onFocusLeave | `(direction: FocusDirection) => void` | - | Колбек потери фокуса. Вызывается со значением `next`, когда фокус покидает компонент, передвигаясь вперед, по клавише `tab`. Со значением `prev` - по клавише стрелки вверх или `shift + tab`. |
+| navigationStartRef | `RefObject<{ focus(): void; }>` | - | Ссылка на управление первым элементом навигации |
 
 
 [//]: DOCUMENTATION_SECTION_END

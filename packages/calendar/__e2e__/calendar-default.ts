@@ -3,7 +3,7 @@ import { fixture, Selector, test } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { getCalendarTextSnapshot } from './utils';
 
-const TEST_ID = 'calendar';
+const TEST_ID = 'test-id';
 const ITEM = `item-${TEST_ID}`;
 const PERIOD_LEVEL = `period-level-${TEST_ID}`;
 const NEXT_PERIOD = `period-next-${TEST_ID}`;
@@ -14,6 +14,7 @@ const mainElementSelector = Selector(dataTestIdSelector(TEST_ID));
 const getPage = (props: object = {}) =>
   getTestcafeUrl({
     name: 'calendar',
+    group: 'calendar',
     props: {
       'data-test-id': TEST_ID,
       dateToday: 1684141200000, // 15 Мая 2023, 12-00

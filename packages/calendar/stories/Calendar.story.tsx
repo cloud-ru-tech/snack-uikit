@@ -112,15 +112,21 @@ export const calendar = {
   args: {
     size: SIZE.M,
     mode: CALENDAR_MODE.Date,
+    showSeconds: true,
     autofocus: false,
     localeName: 'en-US',
     showHolidays: false,
-    showSeconds: true,
     fitToContainer: true,
     modeBuildCellProps: 'none',
   },
 
   argTypes: {
+    showSeconds: {
+      if: {
+        arg: 'mode',
+        eq: 'date-time',
+      },
+    },
     value: { table: { disable: true } },
     navigationStartRef: { table: { disable: true } },
     onChangeValue: { table: { disable: true } },
@@ -179,7 +185,6 @@ export const calendar = {
   },
 
   parameters: {
-    controls: { sort: 'requiredFirst' },
     readme: {
       sidebar: [`Latest version: ${componentPackage.version}`, componentReadme, componentChangelog],
     },

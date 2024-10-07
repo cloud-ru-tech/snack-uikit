@@ -3,7 +3,7 @@ import { fixture, Selector, test } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { getCalendarTextSnapshot } from './utils';
 
-const TEST_ID = 'calendar';
+const TEST_ID = 'test-id';
 const ITEM = `item-${TEST_ID}`;
 
 const getPage = (props: object = {}) =>

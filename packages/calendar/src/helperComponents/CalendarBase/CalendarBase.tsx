@@ -7,6 +7,7 @@ import { useLocale } from '@snack-uikit/locale';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { AUTOFOCUS, CALENDAR_MODE, SIZE, VIEW_MODE } from '../../constants';
+import { useDateAndTime } from '../../hooks';
 import { BuildCellPropsFunction, CalendarMode, FocusDirection, Range, Size, ViewMode } from '../../types';
 import { getEndOfTheDay, getLocale, getTestIdBuilder, sortDates } from '../../utils';
 import { CalendarBody } from '../CalendarBody';
@@ -15,7 +16,7 @@ import { CalendarNavigation } from '../CalendarNavigation';
 import { ColumnLabels } from '../ColumnLabels';
 import { Footer } from '../Footer';
 import { TimePickerBase } from '../TimePickerBase';
-import { useDateAndTime, useRange, useViewDate } from './hooks';
+import { useRange, useViewDate } from './hooks';
 import styles from './styles.module.scss';
 
 export type CalendarBaseProps = WithSupportProps<{
@@ -34,7 +35,7 @@ export type CalendarBaseProps = WithSupportProps<{
   fitToContainer?: boolean;
   autofocus?: boolean;
   locale?: Intl.Locale;
-  navigationStartRef?: RefObject<HTMLButtonElement>;
+  navigationStartRef?: RefObject<{ focus(): void }>;
 }>;
 
 const DATE_WRAPPER_SIZE_MAP = {
@@ -58,7 +59,7 @@ export function CalendarBase({
   value: valueProp,
   defaultValue,
   onChangeValue,
-  today: todayProp = new Date(),
+  today: todayProp,
   showHolidays = false,
   showSeconds = true,
   style,
@@ -73,7 +74,7 @@ export function CalendarBase({
   const [viewShift, setViewShift] = useState<number>(0);
   const [value, setValueState] = useUncontrolledProp<Range | undefined>(valueProp, defaultValue, onChangeValue);
   const today = typeof todayProp === 'number' ? new Date(todayProp) : todayProp;
-  const [referenceDate] = useState(value?.[0] || today);
+  const [referenceDate] = useState(value?.[0] || today || new Date());
   const viewDate = useViewDate(referenceDate, viewMode, viewShift);
   const [focus, setFocus] = useState<string | undefined>(autofocus ? AUTOFOCUS : undefined);
 
@@ -85,7 +86,7 @@ export function CalendarBase({
     isDateFilled,
     isTimeFilled,
     isDateAndTimeFilled,
-  } = useDateAndTime({ initialDate: mode === 'date-time' ? value?.[0] : undefined });
+  } = useDateAndTime({ showSeconds, value: mode === CALENDAR_MODE.DateTime ? value : undefined });
 
   const applyButtonRef = useRef<HTMLButtonElement>(null);
   const currentButtonRef = useRef<HTMLButtonElement>(null);
@@ -161,7 +162,7 @@ export function CalendarBase({
         <div
           className={cn(styles.dateWrapper, DATE_WRAPPER_SIZE_MAP[size])}
           data-size={size}
-          data-show-footer={(mode === 'date-time' && viewMode === 'month') || undefined}
+          data-show-footer={(mode === CALENDAR_MODE.DateTime && viewMode === 'month') || undefined}
         >
           <div
             {...extractSupportProps(rest)}
@@ -182,7 +183,7 @@ export function CalendarBase({
             </div>
           </div>
 
-          <TimePickerBase />
+          {mode === CALENDAR_MODE.DateTime && viewMode === 'month' && <TimePickerBase />}
         </div>
 
         <Footer />

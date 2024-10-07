@@ -27,7 +27,7 @@ export function MonthView() {
 
   const onDayKeyDown: KeyboardEventHandler = useCallback(
     e => {
-      if (mode !== 'date-time' && viewMode !== 'month') {
+      if (mode !== CALENDAR_MODE.DateTime || viewMode !== 'month') {
         return;
       }
 
@@ -35,6 +35,7 @@ export function MonthView() {
         case 'Tab':
           if (!e.shiftKey) {
             e.preventDefault();
+            e.stopPropagation();
             hoursKeyboardNavigationRef.current?.focusItem(getDefaultItemId(dateAndTime?.hours ?? 0));
           }
 

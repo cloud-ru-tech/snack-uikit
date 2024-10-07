@@ -1,9 +1,9 @@
-import { KeyboardEventHandler, useContext, useMemo } from 'react';
+import { KeyboardEventHandler, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import { CALENDAR_MODE, IN_RANGE_POSITION } from './constants';
 import { CalendarContext } from './helperComponents/CalendarContext';
 import { stringifyAddress } from './helperComponents/Item/utils';
-import { BaseGrid, BuildCellProps, Cell } from './types';
+import { BaseGrid, BuildCellProps, Cell, DateAndTime, Range, TimeValue } from './types';
 import { getInRangePosition, isWeekend } from './utils';
 
 export type UseGridParams = {
@@ -68,8 +68,8 @@ export function useGrid({
           }
         }
 
-        const intermediateValue = isDateFilled()
-          ? new Date(dateAndTime?.year ?? 0, dateAndTime?.month ?? 0, dateAndTime?.day)
+        const dateTimeSelectedValue = isDateFilled()
+          ? new Date(dateAndTime?.year ?? 0, dateAndTime?.month ?? 0, dateAndTime?.day ?? 0)
           : undefined;
 
         const inRangePosition =
@@ -78,15 +78,16 @@ export function useGrid({
             : IN_RANGE_POSITION.Out;
 
         const isSelectedValue =
-          (value && !preselectedRange ? isTheSameItem(value[0], date) || isTheSameItem(value[1], date) : false) ||
-          (intermediateValue && isTheSameItem(intermediateValue, date));
-
+          value && !preselectedRange && !dateTimeSelectedValue
+            ? isTheSameItem(value[0], date) || isTheSameItem(value[1], date)
+            : false;
         const isPreselected = preselectedRange ? isTheSameItem(preselectedRange[0], date) : false;
+        const isDateTimeValueSelected = dateTimeSelectedValue ? isTheSameItem(dateTimeSelectedValue, date) : false;
 
         const tabIndex = focus && stringifyAddress(address) === focus ? 0 : -1;
         hasFocusInGrid = tabIndex === 0 || hasFocusInGrid;
 
-        const isCurrent = isTheSameItem(today, date);
+        const isCurrent = isTheSameItem(today || new Date(), date);
 
         const cell: Cell = {
           date,
@@ -100,7 +101,7 @@ export function useGrid({
           onPreselect,
           inRangePosition,
           label: getItemLabel(date),
-          isSelected: isSelectedValue || isPreselected,
+          isSelected: isSelectedValue || isPreselected || isDateTimeValueSelected,
           isInCurrentLevelPeriod: isInPeriod(viewDate, date),
           onKeyDown,
         };
@@ -142,4 +143,113 @@ export function useGrid({
     viewDate,
     viewMode,
   ]);
+}
+
+export function useDateAndTime({
+  showSeconds,
+  value,
+}: {
+  showSeconds?: boolean;
+  value: Range | TimeValue | undefined;
+}) {
+  const [dateAndTime, setDateAndTime] = useState<DateAndTime>(() => {
+    if (Array.isArray(value)) {
+      const initialValue = value[0];
+
+      return {
+        year: initialValue.getFullYear(),
+        month: initialValue.getMonth(),
+        day: initialValue.getDate(),
+        hours: initialValue.getHours(),
+        minutes: initialValue.getMinutes(),
+        seconds: initialValue.getSeconds(),
+      };
+    }
+
+    return {
+      year: undefined,
+      month: undefined,
+      day: undefined,
+      hours: value?.hours,
+      minutes: value?.minutes,
+      seconds: value?.seconds,
+    };
+  });
+
+  const isDateFilled = useCallback(() => {
+    const { year, month, day } = dateAndTime;
+    return [year, month, day].every(value => value !== undefined);
+  }, [dateAndTime]);
+
+  const isTimeFilled = useCallback(() => {
+    const { hours, minutes, seconds } = dateAndTime;
+    return [hours, minutes, ...(showSeconds ? [seconds] : [])].every(value => value !== undefined);
+  }, [dateAndTime, showSeconds]);
+
+  const isDateAndTimeFilled = useCallback(() => isTimeFilled() && isDateFilled(), [isDateFilled, isTimeFilled]);
+
+  const onDateChange = useCallback((value: Pick<DateAndTime, 'year' | 'month' | 'day'> | Date) => {
+    if (value instanceof Date) {
+      setDateAndTime(prevDate => ({
+        ...prevDate,
+        year: value.getFullYear(),
+        month: value.getMonth(),
+        day: value.getDate(),
+      }));
+    } else {
+      setDateAndTime(prevDate => ({ ...prevDate, ...value }));
+    }
+  }, []);
+
+  const onTimeChange = useCallback((value: TimeValue | Date) => {
+    if (value instanceof Date) {
+      setDateAndTime(prevDate => ({
+        ...prevDate,
+        hours: value.getHours(),
+        minutes: value.getMinutes(),
+        seconds: value.getSeconds(),
+      }));
+    } else {
+      setDateAndTime(prevDate => ({ ...prevDate, ...value }));
+    }
+  }, []);
+
+  const onDateAndTimeChange = useCallback((value: DateAndTime | Date) => {
+    if (value instanceof Date) {
+      setDateAndTime({
+        year: value.getFullYear(),
+        month: value.getMonth(),
+        day: value.getDate(),
+        hours: value.getHours(),
+        minutes: value.getMinutes(),
+        seconds: value.getSeconds(),
+      });
+    } else {
+      setDateAndTime(value);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!value) {
+      setDateAndTime({});
+      return;
+    }
+
+    if (Array.isArray(value)) {
+      onDateAndTimeChange(value[0]);
+    } else {
+      onTimeChange(value);
+    }
+  }, [onDateAndTimeChange, onTimeChange, value]);
+
+  return {
+    dateAndTime,
+    setDateAndTime,
+    isDateAndTimeFilled,
+    isTimeFilled,
+    isDateFilled,
+    onDateChange,
+    onTimeChange,
+    onDateAndTimeChange,
+  };
 }

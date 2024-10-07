@@ -1,9 +1,9 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { getCalendarTextSnapshot, getValueFromHolder } from './utils';
+import { getCalendarTextSnapshot, getDateValueFromHolder } from './utils';
 
-const TEST_ID = 'calendar';
+const TEST_ID = 'test-id';
 const ITEM = `item-${TEST_ID}`;
 const PERIOD_LEVEL = `period-level-${TEST_ID}`;
 const HOURS_ITEM = `hours-${TEST_ID}`;
@@ -33,7 +33,7 @@ test.page(getPage())('Should select date and then time by click', async t => {
   await t.click(Selector(dataTestIdSelector(APPLY_BUTTON)));
 
   // check apply button is still disabled
-  await t.expect(getValueFromHolder()).eql('');
+  await t.expect(getDateValueFromHolder()).eql('');
 
   await t.click(Selector(dataTestIdSelector(HOURS_ITEM)).nth(5));
   await t.click(Selector(dataTestIdSelector(MINUTES_ITEM)).nth(5));
@@ -56,7 +56,7 @@ test.page(getPage())('Should select date and then time by click', async t => {
     ].join(','),
   });
 
-  await t.expect(getValueFromHolder()).eql('1683165905000');
+  await t.expect(getDateValueFromHolder()).eql('1683165905000');
 });
 
 test.page(getPage())('Should select time and then date by click', async t => {
@@ -66,7 +66,7 @@ test.page(getPage())('Should select time and then date by click', async t => {
   await t.click(Selector(dataTestIdSelector(APPLY_BUTTON)));
 
   // check apply button is still disabled
-  await t.expect(getValueFromHolder()).eql('');
+  await t.expect(getDateValueFromHolder()).eql('');
 
   await t.click(Selector(dataTestIdSelector(ITEM)).nth(4));
   await t.click(Selector(dataTestIdSelector(APPLY_BUTTON)));
@@ -87,7 +87,7 @@ test.page(getPage())('Should select time and then date by click', async t => {
     ].join(','),
   });
 
-  await t.expect(getValueFromHolder()).eql('1683165905000');
+  await t.expect(getDateValueFromHolder()).eql('1683165905000');
 });
 
 test.page(getPage())('Should save selected time then moving between periods', async t => {
@@ -136,7 +136,7 @@ test.page(getPage({ dateValue: 1678845905000 /* 15 марта 23 05:05:05 */ }))
       ].join(','),
     });
 
-    await t.expect(getValueFromHolder()).eql('1678845905000');
+    await t.expect(getDateValueFromHolder()).eql('1678845905000');
   },
 );
 
@@ -162,7 +162,7 @@ test.page(getPage({ dateDefaultValue: 1678845905000 /* 15 марта 23 05:05:05
       ].join(','),
     });
 
-    await t.expect(getValueFromHolder()).eql('1684141200000');
+    await t.expect(getDateValueFromHolder()).eql('1684141200000');
   },
 );
 
@@ -210,7 +210,7 @@ test.page(getPage())('Should select date and then time by keyboard', async t => 
     ].join(','),
   });
 
-  await t.expect(getValueFromHolder()).eql('1683165905000');
+  await t.expect(getDateValueFromHolder()).eql('1683165905000');
 });
 
 test.page(getPage())('Should select time and then date by keyboard', async t => {
@@ -263,7 +263,7 @@ test.page(getPage())('Should select time and then date by keyboard', async t => 
     ].join(','),
   });
 
-  await t.expect(getValueFromHolder()).eql('1683165905000');
+  await t.expect(getDateValueFromHolder()).eql('1683165905000');
 });
 
 test.page(getPage({ dateDefaultValue: 1678845905000 /* 15 марта 23 05:05:05 */ }))(
@@ -275,7 +275,7 @@ test.page(getPage({ dateDefaultValue: 1678845905000 /* 15 марта 23 05:05:05
 
     await t.expect(mainElementSelector.visible).ok();
 
-    // go to current button
+    // go to current button & apply
     await pressKey('tab', 6);
     await pressKey('enter', 2);
 
@@ -295,7 +295,7 @@ test.page(getPage({ dateDefaultValue: 1678845905000 /* 15 марта 23 05:05:05
       ].join(','),
     });
 
-    await t.expect(getValueFromHolder()).eql('1684141200000');
+    await t.expect(getDateValueFromHolder()).eql('1684141200000');
   },
 );
 
@@ -313,7 +313,7 @@ test.page(getPage({ dateValue: 1683165905000 /* 4 мая 2023 05:05:05 */ }))(
     await pressKey('enter', 3);
     await t.click(Selector(dataTestIdSelector(APPLY_BUTTON)));
 
-    await t.expect(getValueFromHolder()).eql('1683165905000');
+    await t.expect(getDateValueFromHolder()).eql('1683165905000');
 
     // go back to seconds
     await pressKey('shift+tab', 2);
@@ -330,6 +330,6 @@ test.page(getPage({ dateValue: 1683165905000 /* 4 мая 2023 05:05:05 */ }))(
     // apply
     await t.click(Selector(dataTestIdSelector(APPLY_BUTTON)));
 
-    await t.expect(getValueFromHolder()).eql('1683165905000');
+    await t.expect(getDateValueFromHolder()).eql('1683165905000');
   },
 );

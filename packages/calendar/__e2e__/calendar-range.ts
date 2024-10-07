@@ -3,7 +3,7 @@ import { fixture, Selector, test } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { focusItem, getCalendarTextSnapshot } from './utils';
 
-const TEST_ID = 'calendar';
+const TEST_ID = 'test-id';
 const ITEM = `item-${TEST_ID}`;
 const PERIOD_LEVEL = `period-level-${TEST_ID}`;
 

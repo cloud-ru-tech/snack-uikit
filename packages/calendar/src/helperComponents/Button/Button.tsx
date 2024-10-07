@@ -1,5 +1,4 @@
-import mergeRefs from 'merge-refs';
-import { JSX, KeyboardEvent, useCallback, useContext, useRef } from 'react';
+import { JSX, KeyboardEvent, useCallback, useContext, useImperativeHandle, useRef } from 'react';
 
 import { extractSupportProps, useLayoutEffect, WithSupportProps } from '@snack-uikit/utils';
 
@@ -68,6 +67,12 @@ export function Button({
     [onDownArrowKeyDown, onFocusLeave, onLeftArrowKeyDown, onRightArrowKeyDown],
   );
 
+  useImperativeHandle(useNavigationStartRef ? navigationStartRef : undefined, () => ({
+    focus: () => {
+      ref.current?.focus();
+    },
+  }));
+
   return (
     <button
       type='button'
@@ -75,7 +80,7 @@ export function Button({
       className={styles.button}
       onClick={onClick}
       data-size={size}
-      ref={mergeRefs(useNavigationStartRef ? navigationStartRef : undefined, ref)}
+      ref={ref}
       onKeyDown={onKeyDownHandler}
       onFocus={() => setFocus(focusName)}
       onBlur={() => setFocus(undefined)}

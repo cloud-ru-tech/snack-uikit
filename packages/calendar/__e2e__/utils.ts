@@ -1,7 +1,7 @@
 import { ClientFunction } from 'testcafe';
 
 export const getCalendarTextSnapshot = ClientFunction(() => {
-  const TEST_ID = 'calendar';
+  const TEST_ID = 'test-id';
   const ITEM = `item-${TEST_ID}`;
   const HEADER_ITEM = `header-item-${TEST_ID}`;
   const PERIOD_LEVEL = `period-level-${TEST_ID}`;
@@ -43,9 +43,9 @@ export const getCalendarTextSnapshot = ClientFunction(() => {
   const periodLevelName = document.querySelector<HTMLElement>(dataTestIdSelector(PERIOD_LEVEL))?.innerText;
 
   return {
-    periodLevelName,
-    items: items.join(','),
-    header: header.join(','),
+    ...(periodLevelName ? { periodLevelName } : {}),
+    ...(items.length > 0 ? { items: items.join(',') } : {}),
+    ...(header.length > 0 ? { header: header.join(',') } : {}),
     ...(hours.length > 0 ? { hours: hours.join(',') } : {}),
     ...(minutes.length > 0 ? { minutes: minutes.join(',') } : {}),
     ...(seconds.length > 0 ? { seconds: seconds.join(',') } : {}),
@@ -58,7 +58,12 @@ export const focusItem = ClientFunction((index: number) => {
   button?.focus();
 });
 
-export const getValueFromHolder = ClientFunction(() => {
+export const getDateValueFromHolder = ClientFunction(() => {
   const holder = document.querySelector<HTMLElement>('[data-test-id="calendar-value-holder"]');
+  return holder?.innerText || '';
+});
+
+export const getTimeValueFromHolder = ClientFunction(() => {
+  const holder = document.querySelector<HTMLElement>('[data-test-id="timepicker-value-holder"]');
   return holder?.innerText || '';
 });

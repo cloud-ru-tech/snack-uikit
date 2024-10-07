@@ -1,0 +1,13 @@
+.timePickerWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  box-sizing: border-box;
+  width: fit-content;
+
+  &[data-fit-to-container] {
+    min-width: 100%;
+    height: 100%;
+  }
+}

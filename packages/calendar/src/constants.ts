@@ -36,3 +36,5 @@ export const AUTOFOCUS = 'autofocus';
 export const HOURS = 24;
 export const MINUTES = 60;
 export const SECONDS = 60;
+
+export const DEFAULT_LOCALE = new Intl.Locale('ru-RU');

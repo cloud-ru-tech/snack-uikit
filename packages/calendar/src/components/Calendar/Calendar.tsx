@@ -47,8 +47,8 @@ type CommonCalendarProps = {
   locale?: Intl.Locale;
   /** Колбек потери фокуса. Вызывается со значением `next`, когда фокус покидает компонент, передвигаясь вперед, по клавише `tab`. Со значением `prev` - по клавише стрелки вверх или `shift + tab`. */
   onFocusLeave?(direction: FocusDirection): void;
-  /** Ref на первый доступный интерактивный элемент  */
-  navigationStartRef?: RefObject<HTMLButtonElement>;
+  /** Ссылка на управление первым элементом навигации */
+  navigationStartRef?: RefObject<{ focus(): void }>;
 };
 
 type DateCalendarProps = CommonCalendarProps & {
@@ -121,8 +121,8 @@ export function Calendar(props: CalendarProps) {
       {...rest}
       mode={mode}
       className={className}
-      value={getNormalizedValue(mode, props.value)}
-      defaultValue={getNormalizedValue(mode, props.defaultValue)}
+      value={getNormalizedValue(props.value)}
+      defaultValue={getNormalizedValue(props.defaultValue)}
       onChangeValue={changeValueHandler}
       buildCellProps={buildCellProps}
     />

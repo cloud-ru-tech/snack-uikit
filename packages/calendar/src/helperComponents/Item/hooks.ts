@@ -1,11 +1,11 @@
 import { KeyboardEvent, KeyboardEventHandler, useCallback, useContext } from 'react';
 
-import { GRID_SIZE } from '../../constants';
+import { CALENDAR_MODE, GRID_SIZE } from '../../constants';
 import { CalendarContext } from '../CalendarContext';
 import { stringifyAddress } from './utils';
 
 export function useKeyboardFocus([row, column]: [number, number], onKeyDown?: KeyboardEventHandler) {
-  const { viewMode, viewShift, setViewShift, setFocus, onFocusLeave } = useContext(CalendarContext);
+  const { viewMode, viewShift, setViewShift, setFocus, onFocusLeave, mode } = useContext(CalendarContext);
 
   const { rows, columns } = GRID_SIZE[viewMode];
 
@@ -41,7 +41,7 @@ export function useKeyboardFocus([row, column]: [number, number], onKeyDown?: Ke
           }
           return;
         case 'Tab':
-          if (!e.shiftKey) {
+          if (!e.shiftKey && (mode !== CALENDAR_MODE.DateTime || viewMode !== 'month')) {
             onFocusLeave?.('next');
           }
           return;
@@ -49,6 +49,6 @@ export function useKeyboardFocus([row, column]: [number, number], onKeyDown?: Ke
         // do nothing
       }
     },
-    [column, columns, onFocusLeave, onKeyDown, row, rows, setFocus, setViewShift, viewShift],
+    [column, columns, mode, onFocusLeave, onKeyDown, row, rows, setFocus, setViewShift, viewMode, viewShift],
   );
 }

@@ -3,13 +3,22 @@ import { createContext, MutableRefObject, RefObject } from 'react';
 import { ListProps } from '@snack-uikit/list';
 
 import { CALENDAR_MODE, SIZE, VIEW_MODE } from '../../constants';
-import { BuildCellPropsFunction, CalendarMode, DateAndTime, FocusDirection, Range, Size, ViewMode } from '../../types';
+import {
+  BuildCellPropsFunction,
+  CalendarMode,
+  DateAndTime,
+  FocusDirection,
+  Range,
+  Size,
+  TimeValue,
+  ViewMode,
+} from '../../types';
 import { getLocale } from '../../utils';
 
 export type CalendarContextType = {
   size: Size;
   /** Дата текущего дня */
-  today: Date;
+  today?: Date;
   /** Дата базового дня,  */
   referenceDate: Date;
   /** Дата начала текущего видимого периода, высчитывается от referenceDate, viewShift и viewMode */
@@ -19,7 +28,7 @@ export type CalendarContextType = {
   fitToContainer: boolean;
   value?: Range;
   firstNotDisableCell?: MutableRefObject<[number, number]>;
-  mode: CalendarMode;
+  mode: CalendarMode | 'time';
   /** Предвыбранный период, когда выбрана первая дата, а вторая под ховером или фокусом */
   preselectedRange?: Range;
   viewMode: ViewMode;
@@ -36,11 +45,11 @@ export type CalendarContextType = {
   restartPreselect(): void;
   continuePreselect(date: Date): void;
   completePreselect(date: Date): void;
-  getTestId: (prefix: string) => string | undefined;
-  navigationStartRef?: RefObject<HTMLButtonElement>;
+  getTestId(prefix: string): string | undefined;
+  navigationStartRef?: RefObject<{ focus(): void }>;
   dateAndTime?: DateAndTime;
   onDateChange(dateAndTime: Date | DateAndTime): void;
-  onTimeChange(dateAndTime: Date | DateAndTime): void;
+  onTimeChange(dateAndTime: Date | TimeValue): void;
   onDateAndTimeChange(dateAndTime: Date | DateAndTime): void;
   isDateAndTimeFilled(): boolean;
   isTimeFilled(): boolean;
@@ -62,7 +71,6 @@ const refStub = { current: null };
 export const CalendarContext = createContext<CalendarContextType>({
   locale: getLocale(),
   size: SIZE.M,
-  today: new Date(),
   viewDate: new Date(),
   referenceDate: new Date(),
   mode: CALENDAR_MODE.Date,

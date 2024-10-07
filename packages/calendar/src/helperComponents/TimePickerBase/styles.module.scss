@@ -37,6 +37,7 @@ $time-header-typography: (
 .timeListsWrapper {
   display: grid;
   grid-template-columns: 1fr 1px 1fr;
+  min-height: 0;
 
   &[data-show-seconds] {
     grid-template-columns: 1fr 1px 1fr 1px 1fr;
