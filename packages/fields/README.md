@@ -321,10 +321,11 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| value* | `string` | - | Значение input |
+| mode* | enum Mode: `"date"`, `"date-time"` | - |  |
 | open | `boolean` | - | Открыт date-picker |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
-| onChange | `(value: string) => void` | - | Колбек смены значения |
+| value | `Date` | - | Значение поля |
+| onChange | `(value: Date) => void` | - | Колбек смены значения |
 | showCopyButton | `boolean` | - | Отображение кнопки копирования |
 | showClearButton | `boolean` | true | Отображение кнопки Очистки поля |
 | locale | `Locale` | new Intl.Locale('ru-RU') | Текущая локаль календаря |

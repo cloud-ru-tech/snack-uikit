@@ -11,7 +11,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { BaseOptionProps, FieldSelect, FieldSelectProps, OptionProps } from '../src/components';
-import { COMMON_ARG_TYPES } from './constants';
+import { COMMON_ARG_TYPES, PREFIX_POSTFIX_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -150,11 +150,10 @@ export const fieldSelect: StoryObj<StoryProps> = {
   },
 
   argTypes: {
+    ...PREFIX_POSTFIX_ARG_TYPES,
     validationState: COMMON_ARG_TYPES.validationState,
     prefixIcon: COMMON_ARG_TYPES.prefixIcon,
     labelTooltip: COMMON_ARG_TYPES.labelTooltip,
-    prefix: COMMON_ARG_TYPES.prefix,
-    postfix: COMMON_ARG_TYPES.postfix,
     showMoreOptions: {
       name: '[Stories] add more options to see scroll',
       type: 'boolean',

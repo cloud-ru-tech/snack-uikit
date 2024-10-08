@@ -1,15 +1,5 @@
 import mergeRefs from 'merge-refs';
-import {
-  FocusEvent,
-  forwardRef,
-  KeyboardEvent,
-  MouseEvent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { FocusEvent, forwardRef, KeyboardEvent, MouseEvent, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar, CalendarProps } from '@snack-uikit/calendar';
@@ -22,7 +12,6 @@ import {
   InputPrivateProps,
   runAfterRerender,
   SIZE,
-  Size,
   useButtonNavigation,
   useClearButton,
 } from '@snack-uikit/input-private';
@@ -38,9 +27,9 @@ import { useDateField } from './hooks';
 import { useFocusHandlers } from './hooks/useFocusHandlers';
 import { useHandlers } from './hooks/useHandlers';
 import styles from './styles.module.scss';
-import { parseDate } from './utils';
+import { Mode } from './types';
 
-type InputProps = Pick<InputPrivateProps, 'id' | 'name' | 'value' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur'>;
+type InputProps = Pick<InputPrivateProps, 'id' | 'name' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur'>;
 
 type WrapperProps = Pick<
   FieldDecoratorProps,
@@ -62,8 +51,10 @@ type FieldDateOwnProps = {
   open?: boolean;
   /** Колбек открытия пикера */
   onOpenChange?(value: boolean): void;
+  /** Значение поля */
+  value?: Date;
   /** Колбек смены значения */
-  onChange?(value: string): void;
+  onChange?(value: Date | undefined): void;
   /** Отображение кнопки копирования */
   showCopyButton?: boolean;
   /**
@@ -73,15 +64,19 @@ type FieldDateOwnProps = {
   showClearButton?: boolean;
   /** Текущая локаль календаря */
   locale?: Intl.Locale;
-} & Pick<CalendarProps, 'buildCellProps'>;
+  mode: Mode;
+} & Pick<CalendarProps, 'buildCellProps'> &
+  (
+    | {
+        mode: typeof MODES.Date;
+      }
+    | {
+        mode: typeof MODES.DateTime;
+        showSeconds?: boolean;
+      }
+  );
 
 export type FieldDateProps = WithSupportProps<FieldDateOwnProps & InputProps & WrapperProps>;
-
-const CALENDAR_SIZE_MAP: Record<Size, CalendarProps['size']> = {
-  [SIZE.S]: 's',
-  [SIZE.M]: 'm',
-  [SIZE.L]: 'm',
-};
 
 export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
   (
@@ -111,12 +106,12 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       locale = DEFAULT_LOCALE,
       buildCellProps,
       error,
+      mode,
       ...rest
     },
     ref,
   ) => {
     const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
-    const [pickerAutofocus, setPickerAutofocus] = useState(false);
 
     const localRef = useRef<HTMLInputElement>(null);
     const clearButtonRef = useRef<HTMLButtonElement>(null);
@@ -128,18 +123,20 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
     const fieldValidationState = getValidationState({ validationState, error });
 
+    const navigationStartRef = useRef<HTMLButtonElement>(null);
+
     const checkForLeavingFocus = useCallback(
       <T extends HTMLInputElement | HTMLButtonElement>(event: KeyboardEvent<T>) => {
         if (event.key === 'ArrowDown') {
-          setPickerAutofocus(true);
           setIsOpen(true);
+          setTimeout(() => navigationStartRef.current?.focus(), 0);
         }
       },
       [setIsOpen],
     );
 
     const handleClear = useCallback(() => {
-      onChange && onChange('');
+      onChange && onChange(undefined);
       if (localRef.current?.value) {
         localRef.current.value = '';
       }
@@ -153,8 +150,14 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       }
     }, [onChange, required, setIsOpen]);
 
+    const getStringDateValue = useCallback(
+      (date: Date | undefined) => (mode === 'date' ? date?.toLocaleDateString() : date?.toLocaleString()) ?? '',
+      [mode],
+    );
+
+    const valueToCopy = getStringDateValue(valueProp);
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear: handleClear });
-    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: valueProp || '' });
+    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy });
     const calendarIcon: ButtonProps = useMemo(
       () => ({
         active: false,
@@ -186,9 +189,13 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       readonly,
       locale,
       setIsOpen,
+      mode,
     });
 
-    const setInputFocusFromButtons = useCallback(() => setInputFocus(SlotKey.Year), [setInputFocus]);
+    const setInputFocusFromButtons = useCallback(
+      () => setInputFocus(mode === 'date' ? SlotKey.Year : SlotKey.Seconds),
+      [mode, setInputFocus],
+    );
 
     const {
       postfixButtons,
@@ -204,11 +211,14 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
-    // TODO: do not hardcode locale here
     const handleSelectDate = (date: Date) => {
-      onChange && onChange(date.toLocaleDateString(DEFAULT_LOCALE));
+      onChange && onChange(date);
       localRef.current?.focus();
       setIsOpen(false);
+
+      if (localRef.current) {
+        localRef.current.value = getStringDateValue(date);
+      }
     };
 
     const handleCalendarFocusLeave: CalendarProps['onFocusLeave'] = () => {
@@ -235,9 +245,10 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
 
     useEffect(() => {
       if (localRef.current) {
-        localRef.current.value = valueProp;
+        localRef.current.value = getStringDateValue(valueProp);
       }
-    }, [valueProp]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [getStringDateValue]);
 
     const onFocusByKeyboard = useCallback(
       (e: FocusEvent<HTMLInputElement>) => {
@@ -296,20 +307,17 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
           content={
             <div className={styles.calendarWrapper} data-size={size}>
               <Calendar
-                mode='date'
-                size={CALENDAR_SIZE_MAP[size]}
-                value={valueProp ? parseDate(valueProp) : undefined}
+                mode={mode}
+                size={size}
+                value={valueProp}
+                showSeconds={mode === 'date-time' && 'showSeconds' in rest ? rest.showSeconds : undefined}
                 onChangeValue={handleSelectDate}
                 buildCellProps={buildCellProps}
-                navigationStartRef={element => {
-                  if (pickerAutofocus) {
-                    element?.focus();
-                    setPickerAutofocus(false);
-                  }
-                }}
+                navigationStartRef={navigationStartRef}
                 onFocusLeave={handleCalendarFocusLeave}
                 locale={locale}
                 data-test-id='field-date__calendar'
+                fitToContainer={false}
               />
             </div>
           }

@@ -5,7 +5,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { FieldSlider, FieldSliderProps } from '../src';
-import { COMMON_ARG_TYPES, ICONS } from './constants';
+import { COMMON_ARG_TYPES, ICONS, PREFIX_POSTFIX_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -108,9 +108,8 @@ export const fieldSlider: StoryObj<StoryProps> = {
   },
 
   argTypes: {
+    ...PREFIX_POSTFIX_ARG_TYPES,
     labelTooltip: COMMON_ARG_TYPES.labelTooltip,
-    prefix: COMMON_ARG_TYPES.prefix,
-    postfix: COMMON_ARG_TYPES.postfix,
     moveByMarks: {
       name: '[Story]: change value only by marks',
       type: 'boolean',

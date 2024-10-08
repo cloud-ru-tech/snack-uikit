@@ -31,6 +31,20 @@ export const COMMON_ARG_TYPES = {
       type: 'select',
     },
   },
+  labelTooltip: {
+    name: 'labelTooltip',
+    control: {
+      type: 'text',
+    },
+  },
+  localeName: {
+    name: 'localeName',
+    options: ['ru-RU', 'en-US'],
+    control: { type: 'radio' },
+  },
+} as const;
+
+export const PREFIX_POSTFIX_ARG_TYPES = {
   prefix: {
     name: 'prefix',
     control: {
@@ -42,16 +56,5 @@ export const COMMON_ARG_TYPES = {
     control: {
       type: 'text',
     },
-  },
-  labelTooltip: {
-    name: 'labelTooltip',
-    control: {
-      type: 'text',
-    },
-  },
-  localeName: {
-    name: 'localeName',
-    options: ['ru-RU', 'en-US'],
-    control: { type: 'radio' },
   },
 } as const;

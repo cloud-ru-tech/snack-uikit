@@ -9,7 +9,7 @@ import componentReadme from '../README.md';
 import { FieldText, FieldTextProps } from '../src';
 import { BUTTON_VARIANT } from '../src/constants';
 import { ButtonVariant } from '../src/types';
-import { COMMON_ARG_TYPES, ICONS } from './constants';
+import { COMMON_ARG_TYPES, ICONS, PREFIX_POSTFIX_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -111,6 +111,7 @@ export const fieldText: StoryObj<StoryProps> = {
   },
 
   argTypes: {
+    ...PREFIX_POSTFIX_ARG_TYPES,
     ...COMMON_ARG_TYPES,
     localeName: {
       table: {

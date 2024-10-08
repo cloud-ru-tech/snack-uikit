@@ -37,6 +37,7 @@ type Options = {
   defaultValue?: string;
   emptyValue?: string;
   expectedValue?: string;
+  valuePropName?: string;
 };
 
 export const runCommonTests = (visit: VisitCallback, testId: string, options: Options) => {
@@ -44,20 +45,24 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
   const value = options.defaultValue || 'Test value';
   const expectedValue = options.expectedValue || options.defaultValue || 'Test value';
   const emptyValue = options.emptyValue || '';
+  const valuePropName = options.valuePropName || 'value';
 
   // disabled = true
-  test.page(visit({ value: emptyValue, disabled: true }))('Should not allow to input data if disabled', async t => {
-    const wrapper = Selector(dataTestIdSelector(testId));
-    const input = getInputInner(wrapper);
+  test.page(visit({ [valuePropName]: emptyValue, disabled: true }))(
+    'Should not allow to input data if disabled',
+    async t => {
+      const wrapper = Selector(dataTestIdSelector(testId));
+      const input = getInputInner(wrapper);
 
-    await t.typeText(input, '123');
+      await t.typeText(input, '123');
 
-    await t.expect(input.value).eql(emptyValue);
-    await t.expect(input.hasAttribute('disabled')).ok("attribute 'disabled' not present");
-  });
+      await t.expect(input.value).eql(emptyValue);
+      await t.expect(input.hasAttribute('disabled')).ok("attribute 'disabled' not present");
+    },
+  );
 
   // readonly = true
-  test.page(visit({ value: emptyValue, readonly: true }))(
+  test.page(visit({ [valuePropName]: emptyValue, readonly: true }))(
     'Should not allow to input data if readonly' + '',
     async t => {
       const wrapper = Selector(dataTestIdSelector(testId));
@@ -179,7 +184,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
 
   // maxLength
   if (options.hasCounter) {
-    test.page(visit({ value: '', maxLength: 2, allowMoreThanMaxLength: false }))(
+    test.page(visit({ [valuePropName]: '', maxLength: 2, allowMoreThanMaxLength: false }))(
       'Should limit amount of text characters in case a limit is set and should demonstrate a relevant indicator',
       async t => {
         const wrapper = Selector(dataTestIdSelector(testId));
@@ -201,7 +206,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
       },
     );
 
-    test.page(visit({ value: '', maxLength: 2, allowMoreThanMaxLength: true }))(
+    test.page(visit({ [valuePropName]: '', maxLength: 2, allowMoreThanMaxLength: true }))(
       'Should not limit amount of text characters if allowed',
       async t => {
         const wrapper = Selector(dataTestIdSelector(testId));
@@ -226,7 +231,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
   }
 
   // showCopyButton = false
-  test.page(visit({ value, readonly: true, showCopyButton: false }))(
+  test.page(visit({ [valuePropName]: value, readonly: true, showCopyButton: false }))(
     "Shouldn't have copy button when showCopyButton = false",
     async t => {
       const wrapper = Selector(dataTestIdSelector(testId));
@@ -237,7 +242,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
 
   if (options.hasCopyButton) {
     // copy button
-    test.page(visit({ value, readonly: true, showCopyButton: true }))(
+    test.page(visit({ [valuePropName]: value, readonly: true, showCopyButton: true }))(
       'Should copy value by clicking the button',
       async t => {
         await t.setNativeDialogHandler(() => true);
@@ -252,11 +257,14 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     );
 
     // copy with keyboard
-    test.page(visit({ value, readonly: true, showCopyButton: true }))('Should copy value with keyboard', async t => {
-      await t.setNativeDialogHandler(() => true);
+    test.page(visit({ [valuePropName]: value, readonly: true, showCopyButton: true }))(
+      'Should copy value with keyboard',
+      async t => {
+        await t.setNativeDialogHandler(() => true);
 
-      await t.pressKey('tab').pressKey('right').pressKey('enter');
-    });
+        await t.pressKey('tab').pressKey('right').pressKey('enter');
+      },
+    );
   }
 
   // clear button
@@ -269,7 +277,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     });
 
     // mouse
-    test.page(visit({ value }))('Should clear value by clicking the button', async t => {
+    test.page(visit({ [valuePropName]: value }))('Should clear value by clicking the button', async t => {
       const wrapper = Selector(dataTestIdSelector(testId));
       const input = getInputInner(wrapper);
       const clearButton = getButtonClearValue(wrapper);
@@ -282,7 +290,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     });
 
     // keyboard = space
-    test.page(visit({ value }))('Should clear value with space', async t => {
+    test.page(visit({ [valuePropName]: value }))('Should clear value with space', async t => {
       // not working in FF
       if (t.browser.name === 'Chrome') {
         const wrapper = Selector(dataTestIdSelector(testId));
@@ -295,7 +303,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     });
 
     // keyboard = enter
-    test.page(visit({ value }))('Should clear value with enter', async t => {
+    test.page(visit({ [valuePropName]: value }))('Should clear value with enter', async t => {
       // not working in FF for textarea
       if (t.browser.name === 'Chrome') {
         const wrapper = Selector(dataTestIdSelector(testId));
@@ -308,7 +316,7 @@ export const runCommonTests = (visit: VisitCallback, testId: string, options: Op
     });
   } else {
     // no clear button
-    test.page(visit({ value: value }))("Shouldn't have clear button", async t => {
+    test.page(visit({ [valuePropName]: value }))("Shouldn't have clear button", async t => {
       const wrapper = Selector(dataTestIdSelector(testId));
       const clearButton = getButtonClearValue(wrapper);
 

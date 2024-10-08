@@ -5,7 +5,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { FieldStepper, FieldStepperProps } from '../src';
-import { COMMON_ARG_TYPES } from './constants';
+import { COMMON_ARG_TYPES, PREFIX_POSTFIX_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -57,6 +57,7 @@ export const fieldStepper: StoryObj<StoryProps> = {
   },
 
   argTypes: {
+    ...PREFIX_POSTFIX_ARG_TYPES,
     ...COMMON_ARG_TYPES,
     localeName: { table: { disable: true } },
     prefixIcon: { table: { disable: true } },

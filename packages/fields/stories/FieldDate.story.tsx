@@ -1,12 +1,12 @@
 import { action } from '@storybook/addon-actions';
 import { Meta, StoryObj } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { getBuildCellProps } from '../../calendar/stories/helper';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { FieldDate, FieldDateProps, parseDate } from '../src';
+import { FieldDate, FieldDateProps } from '../src';
 import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
@@ -16,17 +16,17 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = Omit<FieldDateProps, 'locale'> & {
+type StoryProps = Omit<FieldDateProps, 'locale' | 'value'> & {
   localeName: 'ru-RU' | 'en-US';
   prefixIcon: undefined;
   modeBuildCellProps: 'for-tests' | 'disable-past' | 'none';
+  dateValue?: string;
 };
 
 const Template = ({ size, localeName, modeBuildCellProps, ...args }: StoryProps) => {
   const locale = new Intl.Locale(localeName);
 
-  const argsNormalizedValue = args.value?.replaceAll('-', '.');
-
+  const argsNormalizedValue = useMemo(() => (args.dateValue ? new Date(args.dateValue) : undefined), [args.dateValue]);
   const [value, setValue] = useState(argsNormalizedValue);
 
   useEffect(() => {
@@ -34,11 +34,11 @@ const Template = ({ size, localeName, modeBuildCellProps, ...args }: StoryProps)
   }, [argsNormalizedValue]);
 
   const buildCellProps = getBuildCellProps(modeBuildCellProps) || undefined;
-  const validationState = buildCellProps?.(parseDate(value), 'month')?.isDisabled ? 'error' : undefined;
+  const validationState = value && buildCellProps?.(value, 'month')?.isDisabled ? 'error' : undefined;
   const hint = validationState === 'error' ? 'Дата не может быть выбрана' : args.hint;
 
   return (
-    <div className={styles.wrapper} data-size={size}>
+    <div className={styles.wrapper} data-size={size} key={args.mode}>
       <FieldDate
         {...args}
         size={size}
@@ -60,8 +60,8 @@ export const fieldDate: StoryObj<StoryProps> = {
   render: Template,
 
   args: {
+    mode: 'date',
     id: 'date',
-    value: '',
     readonly: false,
     disabled: false,
     label: 'Label text',
@@ -88,6 +88,10 @@ export const fieldDate: StoryObj<StoryProps> = {
       name: '[story] select buildCellProps operating mode',
       options: ['for-tests', 'disable-past', 'none'],
       control: { type: 'radio' },
+    },
+    dateValue: {
+      name: 'value',
+      control: { type: 'date' },
     },
   },
 
