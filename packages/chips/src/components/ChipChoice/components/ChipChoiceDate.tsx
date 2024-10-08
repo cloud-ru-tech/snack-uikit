@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useRef, useState } from 'react';
 
-import { Calendar } from '@snack-uikit/calendar';
+import { Calendar, CalendarProps } from '@snack-uikit/calendar';
 import { Dropdown } from '@snack-uikit/dropdown';
 import { useLocale } from '@snack-uikit/locale';
 import { useValueControl } from '@snack-uikit/utils';
@@ -20,6 +20,7 @@ export type ChipChoiceDateProps = ChipChoiceCommonProps & {
   onChange?(value: Date): void;
   /** Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение */
   valueRender?(value?: Date): ReactNode;
+  mode?: Exclude<CalendarProps['mode'], 'range'>;
 };
 
 export function ChipChoiceDate({
@@ -29,6 +30,7 @@ export function ChipChoiceDate({
   onChange,
   valueRender,
   dropDownClassName,
+  mode = 'date',
   ...rest
 }: ChipChoiceDateProps) {
   const [selectedValue, setSelectedValue] = useValueControl<Date>({ value, defaultValue, onChange });
@@ -55,10 +57,10 @@ export function ChipChoiceDate({
     <Dropdown
       content={
         <Calendar
-          mode='date'
+          mode={mode}
           size={CALENDAR_SIZE_MAP[size]}
           value={selectedValue}
-          onChangeValue={value => {
+          onChangeValue={(value: Date) => {
             setSelectedValue(value);
             closeDroplist();
           }}

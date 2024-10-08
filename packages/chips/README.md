@@ -221,6 +221,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | defaultValue | `Date` | - | Значение компонента по-умолчанию |
 | onChange | `(value: Date) => void` | - | Колбек смены значения |
 | valueRender | `(value?: Date) => ReactNode` | - | Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение |
+| mode | "date" \| "month" | - |  |
 ## ChipChoice.DateRange
 ### Props
 | name | type | default value | description |
