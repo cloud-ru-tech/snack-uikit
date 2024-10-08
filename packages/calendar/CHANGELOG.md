@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2024-10-08)
+
+
+### Features
+
+* **PSD-834:** add calendar mode month ([d75096e](https://github.com/cloud-ru-tech/snack-uikit/commit/d75096e9fb79c0ce2928e7478e23bc6e027d8fc0))
+
+
+
+
+
 ## 0.7.12 (2024-09-26)
 
 **Note:** Version bump only for package @snack-uikit/calendar

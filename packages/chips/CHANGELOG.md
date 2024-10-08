@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.16.0 (2024-10-08)
+
+
+### Features
+
+* **PSD-834:** add prop mode for ChipChoiceDate ([10091b9](https://github.com/cloud-ru-tech/snack-uikit/commit/10091b9031686f10f59fd382cd26540fbb0dc4d4))
+
+
+
+
+
 ## 0.15.5 (2024-09-27)
 
 ### Only dependencies have been changed

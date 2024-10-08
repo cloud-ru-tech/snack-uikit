@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Fields",
-  "version": "0.29.0",
+  "version": "0.29.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -33,7 +33,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.17.5",
-    "@snack-uikit/calendar": "0.7.12",
+    "@snack-uikit/calendar": "0.8.0",
     "@snack-uikit/color-picker": "0.1.1",
     "@snack-uikit/divider": "3.0.4",
     "@snack-uikit/dropdown": "0.2.7",
