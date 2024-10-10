@@ -86,7 +86,16 @@ export function SegmentedControl<Value extends IdType>({
 
     const observer = new ResizeObserver(() => updateSelectionPosition());
     observer.observe(containerRef.current);
-    return () => observer.disconnect();
+
+    const ob = new MutationObserver(() => updateSelectionPosition());
+    ob.observe(containerRef.current, {
+      childList: true,
+    });
+
+    return () => {
+      observer.disconnect();
+      ob.disconnect();
+    };
   }, [updateSelectionPosition]);
 
   const itemsJSX = useMemo(
