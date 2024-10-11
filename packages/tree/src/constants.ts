@@ -13,6 +13,7 @@ export const TEST_IDS = {
   item: 'tree__node__item',
   chevron: 'tree__node__chevron',
   checkbox: 'tree__node__checkbox',
+  radio: 'tree__node__radio',
   icon: 'tree__node__icon',
   title: 'tree__node__title',
   droplistTrigger: 'tree__node__droplist-trigger',

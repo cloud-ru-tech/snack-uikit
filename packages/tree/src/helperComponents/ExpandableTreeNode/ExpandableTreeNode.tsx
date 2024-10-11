@@ -48,8 +48,6 @@ export function ExpandableTreeNode({
   }, [isExpanded, node.nested, state.status]);
 
   const toggleExpand = async () => {
-    if (node.disabled) return;
-
     if (node.nested && !node.nested.length && !isExpanded && onDataLoad) {
       setLoading(true);
 
@@ -114,7 +112,13 @@ export function ExpandableTreeNode({
                 {node.nested.map(nestedNode => {
                   const parent: ParentNode = { id: node.id, nested: node.nested, parentNode };
 
-                  return <TreeItem key={nestedNode.id} node={nestedNode} parentNode={parent} />;
+                  return (
+                    <TreeItem
+                      key={nestedNode.id}
+                      node={{ ...nestedNode, disabled: node.disabled || nestedNode.disabled }}
+                      parentNode={parent}
+                    />
+                  );
                 })}
               </div>
             </div>

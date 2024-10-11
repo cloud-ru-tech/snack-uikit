@@ -5,7 +5,14 @@ import { SELECTION_MODE } from '../constants';
 import { findAllExpandedChildNodeIds, lookupTreeForSelectedNodes } from '../helpers';
 import { OnNodeClick, ParentNode, TreeBaseProps, TreeNodeId, TreeNodeProps } from '../types';
 
-type TreeContextProps = Omit<TreeBaseProps, 'onSelect' | 'onExpand' | 'onNodeClick' | 'selected' | 'selectionMode'> & {
+type TreeContextBaseProps = TreeBaseProps & {
+  showToggle?: boolean;
+};
+
+type TreeContextProps = Omit<
+  TreeContextBaseProps,
+  'onSelect' | 'onExpand' | 'onNodeClick' | 'selected' | 'selectionMode'
+> & {
   onExpand(node: TreeNodeProps): void;
   onSelect(node: Pick<TreeNodeProps, 'id' | 'nested' | 'disabled'>, parentNode?: ParentNode): void;
   selected?: TreeNodeId[] | TreeNodeId;
@@ -22,7 +29,7 @@ type TreeContextProps = Omit<TreeBaseProps, 'onSelect' | 'onExpand' | 'onNodeCli
 
 type TreeContextProviderProps = {
   children: ReactNode;
-  value: TreeBaseProps;
+  value: TreeContextBaseProps;
 };
 
 export const TreeContext = createContext<TreeContextProps>({
@@ -81,7 +88,7 @@ export function TreeContextProvider({ children, value }: TreeContextProviderProp
       if (!isSelectable || node.disabled) return;
 
       if (isSingleSelect) {
-        onSelectHandler(node.id, node);
+        onSelectHandler(node.id === selectedNodes ? undefined : node.id, node);
         return;
       }
 

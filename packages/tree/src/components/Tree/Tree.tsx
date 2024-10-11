@@ -27,6 +27,7 @@ export function Tree({
     <div className={cn(styles.tree, className)} role='tree' {...extractSupportProps(rest)}>
       <TreeContextProvider
         value={{
+          showToggle: rest.selectionMode === 'single' && rest.showToggle,
           data,
           expandedNodes,
           onNodeClick,

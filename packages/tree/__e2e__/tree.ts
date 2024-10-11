@@ -41,6 +41,7 @@ const selectors = {
       getChevronChildTestId: () => chevron.child().getAttribute('data-test-id'),
       line: node.find(dataTestIdSelector(TEST_IDS.line)),
       checkbox: node.find(dataTestIdSelector(TEST_IDS.checkbox)),
+      radio: node.find(dataTestIdSelector(TEST_IDS.radio)),
       checkboxIndeterminateAttribute: node
         .find(dataTestIdSelector(TEST_IDS.checkbox))
         .find('[data-indeterminate]')
@@ -74,6 +75,14 @@ test.page(getPage({ selectionMode: 'single', enableNodeActions: false }))(
 
     const firstElement = selectors.getNode(0);
 
+    await t.click(firstElement.item);
+
+    await t.expect(firstElement.selectedAttribute).eql('true', 'item should be selected');
+
+    await t.click(firstElement.item);
+
+    await t.expect(firstElement.selectedAttribute).eql('false', 'Item should be selected');
+
     await t.expect(firstElement.node.exists).ok('No nodes found');
     await t.expect(firstElement.checkbox.exists).notOk('Checkbox found in single mode');
     await t.expect(firstElement.nodeActionsButton.exists).notOk('Node actions should not exist');
@@ -84,7 +93,6 @@ test.page(getPage({ selectionMode: 'single', enableNodeActions: false }))(
     await t.expect(secondElement.selectedAttribute).eql('false');
 
     await t.click(firstElement.item);
-
     await t.expect(firstElement.selectedAttribute).eql('true');
     await t.expect(secondElement.selectedAttribute).eql('false');
     await t.expect(firstElement.expandableContent.exists).notOk('Node should be not expanded after click on it');
@@ -108,6 +116,15 @@ test.page(getPage({ selectionMode: 'single', enableNodeActions: false }))(
 
     await t.expect(firstElement.selectedAttribute).eql('false');
     await t.expect(secondElement.selectedAttribute).eql('true');
+  },
+);
+
+test.page(getPage({ selectionMode: true, showToggle: true }))(
+  'Works correctly in selectionMode=single showToggle=true',
+  async t => {
+    const firstElement = selectors.getNode(0);
+
+    await t.expect(firstElement.radio.exists).ok('Radio found in single selectionMode');
   },
 );
 

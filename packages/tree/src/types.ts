@@ -13,7 +13,7 @@ export type BaseTreeNode = WithSupportProps<{
   /** Идентификатор элемента */
   id: TreeNodeId;
   /** Имя элемента */
-  title: string;
+  title: string | ((value: Pick<BaseTreeNode, 'id' | 'disabled'>) => ReactNode);
   /** Является ли элемент деактивированным */
   disabled?: boolean;
   /** Обработчик клика по элементу */
@@ -37,6 +37,8 @@ export type ParentTreeNode = BaseTreeNode & {
   collapsedIcon?: ReactNode;
   /** Вложенные элементы дерева */
   nested: (ChildTreeNode | ParentTreeNode)[];
+
+  title: string | ((value: Pick<ParentTreeNode, 'id' | 'disabled' | 'nested'>) => ReactNode);
 };
 
 export type TreeNodeProps = ChildTreeNode | ParentTreeNode;
@@ -92,6 +94,7 @@ export type TreeSingleSelect = Omit<TreeCommonProps, 'selected'> & {
   selected?: TreeNodeId;
   /** <br> - При <strong>selectionMode</strong>=`Single` - возвращает строку */
   onSelect?(selectedKey: TreeNodeId, node: TreeNodeProps): void;
+  showToggle?: boolean;
 };
 
 export type TreeMultiSelect = Omit<TreeCommonProps, 'selected'> & {

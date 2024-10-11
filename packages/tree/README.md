@@ -55,6 +55,7 @@ const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
 | selectionMode | "single" \| "multi" | - | Режим выбора элементов: <br> - `Single` - одиночный выбор <br> - `Multi` - множественный выбор <br> - `undefined` - без выбора |
 | selected | `string \| string[]` | - | Состояние для выбраных элементов: <br> - При <strong>selectionMode</strong>=`Multi` - принимает массив строк <br> - При <strong>selectionMode</strong>=`Single` - принимает строку |
 | onSelect | `((selectedKeys: string[], node: TreeNodeProps) => void) \| ((selectedKey: string, node: TreeNodeProps) => void)` | - | Колбэк при изменении выбраных элементов: <br> - При <strong>selectionMode</strong>=`Multi` - возвращает массив строк <br> - При <strong>selectionMode</strong>=`Single` - возвращает строку |
+| showToggle | `boolean` | - |  |
 
 
 [//]: DOCUMENTATION_SECTION_END

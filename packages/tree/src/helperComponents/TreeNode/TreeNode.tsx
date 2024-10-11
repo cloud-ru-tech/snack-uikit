@@ -3,7 +3,7 @@ import { FocusEvent, KeyboardEventHandler, MouseEventHandler, useEffect, useMemo
 
 import { ButtonFunction } from '@snack-uikit/button';
 import { ChevronRightSVG, FileSVG, FolderOpenSVG, FolderSVG } from '@snack-uikit/icons';
-import { Checkbox } from '@snack-uikit/toggles';
+import { Checkbox, Radio } from '@snack-uikit/toggles';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps } from '@snack-uikit/utils';
@@ -58,6 +58,7 @@ export function TreeNode({
     focusedNodeId,
     setFocusIndex,
     focusableNodeIds,
+    showToggle,
     showLines,
     showIcons,
   } = useTreeContext();
@@ -71,9 +72,9 @@ export function TreeNode({
   const isExpanded = isExpandable ? expandedNodes?.includes(id) : undefined;
 
   const nestedNodesSelection = useMemo(() => {
-    if (!nested || !Array.isArray(selected) || !selected?.length) return undefined;
+    if (!nested || !selected) return undefined;
 
-    return checkNestedNodesSelection(nested, selected);
+    return checkNestedNodesSelection(nested, Array.isArray(selected) ? selected : [selected]);
   }, [nested, selected]);
 
   const isSelected =
@@ -221,7 +222,6 @@ export function TreeNode({
         <ButtonFunction
           size='xs'
           icon={<ChevronRightSVG />}
-          disabled={disabled}
           loading={isLoading}
           onClick={onChevronClick}
           data-expanded={isExpanded || undefined}
@@ -247,18 +247,29 @@ export function TreeNode({
         data-test-id={TEST_IDS.item}
         ref={ref}
       >
-        {isMultiSelect && (
+        {(isMultiSelect || showToggle) && (
           <div className={styles.treeNodeCheckboxWrap}>
-            <Checkbox
-              size='s'
-              disabled={disabled}
-              checked={!disabled && isSelected}
-              indeterminate={!disabled && !isSelected && nestedNodesSelection?.someSelected}
-              onChange={handleSelect}
-              onClick={stopPropagationClick}
-              data-test-id={TEST_IDS.checkbox}
-              tabIndex={-1}
-            />
+            {isMultiSelect && (
+              <Checkbox
+                size='s'
+                disabled={disabled}
+                checked={isSelected}
+                indeterminate={!isSelected && nestedNodesSelection?.someSelected}
+                onChange={handleSelect}
+                onClick={stopPropagationClick}
+                data-test-id={TEST_IDS.checkbox}
+                tabIndex={-1}
+              />
+            )}
+            {showToggle && (
+              <Radio
+                size='s'
+                checked={isSelected}
+                disabled={disabled || (!isSelected && nestedNodesSelection?.someSelected)}
+                data-test-id={TEST_IDS.radio}
+                tabIndex={-1}
+              />
+            )}
           </div>
         )}
 
@@ -269,7 +280,8 @@ export function TreeNode({
         )}
 
         <Typography.SansBodyM tag='div' className={styles.treeNodeTitle}>
-          <TruncateString text={title} data-test-id={TEST_IDS.title} />
+          {typeof title === 'string' && <TruncateString text={title} data-test-id={TEST_IDS.title} />}
+          {typeof title !== 'string' && title({ id, disabled, nested } as TreeNodeProps)}
         </Typography.SansBodyM>
 
         {getNodeActions && (
