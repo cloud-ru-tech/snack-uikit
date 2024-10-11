@@ -1,7 +1,7 @@
-import { SlotKey, SLOTS } from './constants';
-import { Mode } from './types';
+import { SlotKey, SLOTS } from '../constants';
+import { Mode, TimeMode } from '../types';
 
-export function getSlotKey(index: number | null, mode: Mode): SlotKey | null {
+export function getSlotKey(index: number | null, mode: Mode | TimeMode): SlotKey | null {
   if (index !== null) {
     for (const key in SLOTS[mode]) {
       if (index >= SLOTS[mode][key].start && index <= SLOTS[mode][key].end) {
@@ -12,7 +12,7 @@ export function getSlotKey(index: number | null, mode: Mode): SlotKey | null {
 
   return null;
 }
-export function getNextSlotKeyWithDate(slotKey: string | null) {
+export function getNextSlotKeyDate(slotKey: string | null) {
   switch (slotKey) {
     case SlotKey.Day: {
       return SlotKey.Month;
@@ -25,7 +25,7 @@ export function getNextSlotKeyWithDate(slotKey: string | null) {
   }
 }
 
-export function getPrevSlotKeyWithDate(slotKey: string | null) {
+export function getPrevSlotKeyDate(slotKey: string | null) {
   switch (slotKey) {
     case SlotKey.Year: {
       return SlotKey.Month;
@@ -38,7 +38,7 @@ export function getPrevSlotKeyWithDate(slotKey: string | null) {
   }
 }
 
-export function getNextSlotKeyWithTime(slotKey: string | null) {
+export function getNextSlotKeyDateTime(slotKey: string | null) {
   switch (slotKey) {
     case SlotKey.Day: {
       return SlotKey.Month;
@@ -60,7 +60,7 @@ export function getNextSlotKeyWithTime(slotKey: string | null) {
   }
 }
 
-export function getPrevSlotKeyWithTime(slotKey: string | null) {
+export function getPrevSlotKeyDateTime(slotKey: string | null) {
   switch (slotKey) {
     case SlotKey.Seconds: {
       return SlotKey.Minutes;
@@ -82,12 +82,56 @@ export function getPrevSlotKeyWithTime(slotKey: string | null) {
   }
 }
 
-export function getNextSlotKey(mode: Mode) {
-  return mode === 'date' ? getNextSlotKeyWithDate : getNextSlotKeyWithTime;
+export function getNextSlotKeyTime(slotKey: string | null) {
+  switch (slotKey) {
+    case SlotKey.Hours: {
+      return SlotKey.Minutes;
+    }
+    case SlotKey.Minutes:
+    case SlotKey.Seconds:
+    default: {
+      return SlotKey.Seconds;
+    }
+  }
 }
 
-export function getPrevSlotKey(mode: Mode) {
-  return mode === 'date' ? getPrevSlotKeyWithDate : getPrevSlotKeyWithTime;
+export function getPrevSlotKeyTime(slotKey: string | null) {
+  switch (slotKey) {
+    case SlotKey.Seconds: {
+      return SlotKey.Minutes;
+    }
+    case SlotKey.Minutes:
+    case SlotKey.Hours:
+    default: {
+      return SlotKey.Hours;
+    }
+  }
+}
+
+export function getNextSlotKey(mode: Mode | TimeMode) {
+  switch (mode) {
+    case 'full-time':
+    case 'no-seconds':
+      return getNextSlotKeyTime;
+    case 'date-time':
+      return getNextSlotKeyDateTime;
+    case 'date':
+    default:
+      return getNextSlotKeyDate;
+  }
+}
+
+export function getPrevSlotKey(mode: Mode | TimeMode) {
+  switch (mode) {
+    case 'full-time':
+    case 'no-seconds':
+      return getPrevSlotKeyTime;
+    case 'date-time':
+      return getPrevSlotKeyDateTime;
+    case 'date':
+    default:
+      return getPrevSlotKeyDate;
+  }
 }
 
 const DATE_STUB = new Date();

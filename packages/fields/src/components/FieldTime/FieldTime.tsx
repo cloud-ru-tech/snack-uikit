@@ -2,9 +2,9 @@ import mergeRefs from 'merge-refs';
 import { FocusEvent, forwardRef, KeyboardEvent, MouseEvent, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Calendar, CalendarProps } from '@snack-uikit/calendar';
+import { TimePicker, TimePickerProps } from '@snack-uikit/calendar';
 import { Dropdown } from '@snack-uikit/dropdown';
-import { CalendarSVG } from '@snack-uikit/icons';
+import { WatchSVG } from '@snack-uikit/icons';
 import {
   ButtonProps,
   ICON_SIZE,
@@ -17,10 +17,9 @@ import {
 } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { CONTAINER_VARIANT, DEFAULT_LOCALE, MODES, SlotKey, VALIDATION_STATE } from '../../constants';
+import { CONTAINER_VARIANT, DEFAULT_LOCALE, SlotKey, TIME_MODE, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useCopyButton, useDateField, useFocusHandlers, useHandlers } from '../../hooks';
-import { Mode } from '../../types';
 import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
@@ -42,39 +41,49 @@ type WrapperProps = Pick<
   | 'error'
 >;
 
-type FieldDateOwnProps = {
-  /** Открыт date-picker */
+type FieldTimeOwnProps = {
+  /** Открыт time-picker */
   open?: boolean;
   /** Колбек открытия пикера */
   onOpenChange?(value: boolean): void;
   /** Значение поля */
-  value?: Date;
+  value?: TimePickerProps['value'];
   /** Колбек смены значения */
-  onChange?(value: Date | undefined): void;
+  onChange?: TimePickerProps['onChangeValue'];
   /** Отображение кнопки копирования */
   showCopyButton?: boolean;
+  /** Показывать ли секунды */
+  showSeconds?: boolean;
   /**
    * Отображение кнопки Очистки поля
    * @default true
    */
   showClearButton?: boolean;
-  /** Текущая локаль календаря */
-  locale?: Intl.Locale;
-  mode: Mode;
-} & Pick<CalendarProps, 'buildCellProps'> &
-  (
-    | {
-        mode: typeof MODES.Date;
-      }
-    | {
-        mode: typeof MODES.DateTime;
-        showSeconds?: boolean;
-      }
-  );
+};
 
-export type FieldDateProps = WithSupportProps<FieldDateOwnProps & InputProps & WrapperProps>;
+export type FieldTimeProps = WithSupportProps<FieldTimeOwnProps & InputProps & WrapperProps>;
 
-export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
+const getStringTimeValue = (
+  time: TimePickerProps['value'],
+  { showSeconds, locale }: Pick<TimePickerProps, 'showSeconds'> & { locale: Intl.Locale },
+) => {
+  if (!time) {
+    return '';
+  }
+
+  const date = new Date();
+  date.setHours(time.hours ?? 0);
+  date.setMinutes(time.minutes ?? 0);
+  date.setSeconds(time.seconds ?? 0);
+
+  return date.toLocaleTimeString(locale, {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: showSeconds ? 'numeric' : undefined,
+  });
+};
+
+export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
   (
     {
       id,
@@ -97,12 +106,10 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       caption,
       hint,
       showHintIcon,
+      showSeconds = true,
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
-      locale = DEFAULT_LOCALE,
-      buildCellProps,
       error,
-      mode,
       ...rest
     },
     ref,
@@ -118,7 +125,6 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const showClearButton = showClearButtonProp && showAdditionalButton && !readonly;
     const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
     const fieldValidationState = getValidationState({ validationState, error });
-
     const navigationStartRef = useRef<HTMLButtonElement>(null);
 
     const checkForLeavingFocus = useCallback(
@@ -146,21 +152,16 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       }
     }, [onChange, required, setIsOpen]);
 
-    const getStringDateValue = useCallback(
-      (date: Date | undefined) => (mode === 'date' ? date?.toLocaleDateString() : date?.toLocaleString()) ?? '',
-      [mode],
-    );
-
-    const valueToCopy = getStringDateValue(valueProp);
+    const valueToCopy = getStringTimeValue(valueProp, { showSeconds, locale: DEFAULT_LOCALE });
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear: handleClear });
     const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy });
     const calendarIcon: ButtonProps = useMemo(
       () => ({
         active: false,
         show: true,
-        id: 'calendarIcon',
+        id: 'watchIcon',
         render: props => (
-          <CalendarSVG {...props} size={calendarIconSize} className={styles.calendarIcon} data-size={size} />
+          <WatchSVG {...props} size={calendarIconSize} className={styles.calendarIcon} data-size={size} />
         ),
       }),
       [calendarIconSize, size],
@@ -174,24 +175,22 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const {
       value,
       handleChange,
-      handleClick: dateInputClickHandler,
-      handleKeyDown: dateInputKeyDownHandler,
-      handleBlur: dateInputBlurHandler,
+      handleClick: timeInputClickHandler,
+      handleKeyDown: timeInputKeyDownHandler,
+      handleBlur: timeInputBlurHandler,
       mask,
       setInputFocus,
     } = useDateField({
       inputRef: localRef,
       onChange,
       readonly,
-      locale,
+      locale: DEFAULT_LOCALE,
       setIsOpen,
-      mode,
+      mode: showSeconds ? TIME_MODE.FullTime : TIME_MODE.NoSeconds,
+      showSeconds,
     });
 
-    const setInputFocusFromButtons = useCallback(
-      () => setInputFocus(mode === 'date' ? SlotKey.Year : SlotKey.Seconds),
-      [mode, setInputFocus],
-    );
+    const setInputFocusFromButtons = useCallback(() => setInputFocus(SlotKey.Seconds), [setInputFocus]);
 
     const {
       postfixButtons,
@@ -207,29 +206,29 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
-    const handleSelectDate = (date: Date) => {
-      onChange && onChange(date);
+    const handleSelectTime = (time: TimePickerProps['value']) => {
+      onChange && onChange(time);
       localRef.current?.focus();
       setIsOpen(false);
 
       if (localRef.current) {
-        localRef.current.value = getStringDateValue(date);
+        localRef.current.value = getStringTimeValue(time, { showSeconds, locale: DEFAULT_LOCALE });
       }
     };
 
-    const handleCalendarFocusLeave: CalendarProps['onFocusLeave'] = () => {
+    const handleCalendarFocusLeave: TimePickerProps['onFocusLeave'] = () => {
       setInitialTabIndices();
       // TODO: find out why it works not as expected (focus is moved to the next element instead of the focused one)
       // maybe floating-ui causes the problem
       runAfterRerender(() => {
-        setInputFocus(SlotKey.Day);
+        setInputFocus(SlotKey.Hours);
         setIsOpen(false);
       });
     };
 
     const handleInputKeyDown = useHandlers<KeyboardEvent<HTMLInputElement>>([
       checkForLeavingFocus,
-      dateInputKeyDownHandler,
+      timeInputKeyDownHandler,
       navigationInputKeyDownHandler,
     ]);
 
@@ -241,10 +240,10 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
 
     useEffect(() => {
       if (localRef.current) {
-        localRef.current.value = getStringDateValue(valueProp);
+        localRef.current.value = getStringTimeValue(valueProp, { showSeconds, locale: DEFAULT_LOCALE });
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [getStringDateValue]);
+    }, [showSeconds]);
 
     const onFocusByKeyboard = useCallback(
       (e: FocusEvent<HTMLInputElement>) => {
@@ -259,17 +258,17 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       onFocusByKeyboard,
     });
 
-    const onBlur = useHandlers([dateInputBlurHandler, inputHandlers.onBlur, onBlurProp]);
+    const onBlur = useHandlers([timeInputBlurHandler, inputHandlers.onBlur, onBlurProp]);
 
     const onClick = useCallback(
       (e: MouseEvent<HTMLInputElement>) => {
-        dateInputClickHandler();
+        timeInputClickHandler();
         if (isOpen) {
           // stop the event because want picker to stay opened
           e.stopPropagation();
         }
       },
-      [dateInputClickHandler, isOpen],
+      [timeInputClickHandler, isOpen],
     );
 
     return (
@@ -301,21 +300,16 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
                 onOpenChange: setIsOpen,
               })}
           content={
-            <div className={styles.calendarWrapper} data-size={size}>
-              <Calendar
-                mode={mode}
-                size={size}
-                value={valueProp}
-                showSeconds={mode === 'date-time' && 'showSeconds' in rest ? rest.showSeconds : undefined}
-                onChangeValue={handleSelectDate}
-                buildCellProps={buildCellProps}
-                navigationStartRef={navigationStartRef}
-                onFocusLeave={handleCalendarFocusLeave}
-                locale={locale}
-                data-test-id='field-date__calendar'
-                fitToContainer={false}
-              />
-            </div>
+            <TimePicker
+              size={size}
+              value={valueProp}
+              onChangeValue={handleSelectTime}
+              navigationStartRef={navigationStartRef}
+              onFocusLeave={handleCalendarFocusLeave}
+              data-test-id='field-time__timepicker'
+              fitToContainer={false}
+              showSeconds={showSeconds}
+            />
           }
         >
           <FieldContainerPrivate
@@ -346,7 +340,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
               type='text'
               id={id}
               name={name}
-              data-test-id='field-date__input'
+              data-test-id='field-time__input'
             />
           </FieldContainerPrivate>
         </Dropdown>

@@ -1,12 +1,12 @@
 import { RefObject, useCallback } from 'react';
 
-import { SlotKey, SLOTS } from '../constants';
+import { MODES, SlotKey, SLOTS } from '../../constants';
 
 export function useDateFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
   const setFocus = useCallback(
     (slotKey: string) => {
       if (inputRef.current) {
-        const { start, end } = SLOTS.date[slotKey];
+        const { start, end } = SLOTS[MODES.Date][slotKey];
 
         inputRef.current.setSelectionRange(start, end);
       }
@@ -22,7 +22,7 @@ export function useDateFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
   const getSlot = useCallback(
     (slotKey: string) => {
       if (inputRef.current) {
-        return inputRef.current.value.slice(SLOTS.date[slotKey].start, SLOTS.date[slotKey].end);
+        return inputRef.current.value.slice(SLOTS[MODES.Date][slotKey].start, SLOTS[MODES.Date][slotKey].end);
       }
 
       return '';
@@ -32,7 +32,9 @@ export function useDateFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
 
   const isLikeDate = useCallback(() => {
     if (inputRef.current) {
-      return Object.keys(SLOTS.date).every(slotKey => getSlot(slotKey) && Number.isInteger(Number(getSlot(slotKey))));
+      return Object.keys(SLOTS[MODES.Date]).every(
+        slotKey => getSlot(slotKey) && Number.isInteger(Number(getSlot(slotKey))),
+      );
     }
     return false;
   }, [getSlot, inputRef]);
@@ -56,7 +58,7 @@ export function useDateFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
     const month = parseInt(getSlot(SlotKey.Month), 10);
     const year = parseInt(getSlot(SlotKey.Year), 10);
 
-    const { min, max } = SLOTS.date[SlotKey.Year];
+    const { min, max } = SLOTS[MODES.Date][SlotKey.Year];
 
     const isCompleted = Boolean(day && month && year >= min && year <= max);
 
@@ -72,7 +74,7 @@ export function useDateFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
   const updateSlot = useCallback(
     (slotKey: string, slotValue: number | string) => {
       if (inputRef.current) {
-        const { start, end, max } = SLOTS.date[slotKey];
+        const { start, end, max } = SLOTS[MODES.Date][slotKey];
 
         inputRef.current.value =
           inputRef.current.value.slice(0, start) +

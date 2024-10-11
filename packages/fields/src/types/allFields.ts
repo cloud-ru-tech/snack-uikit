@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { DroplistProps, SelectionSingleState } from '@snack-uikit/list';
 import { ValueOf } from '@snack-uikit/utils';
 
-import { BUTTON_VARIANT, CONTAINER_VARIANT, VALIDATION_STATE } from './constants';
+import { BUTTON_VARIANT, CONTAINER_VARIANT, VALIDATION_STATE } from '../constants';
 
 export type ValidationState = ValueOf<typeof VALIDATION_STATE>;
 

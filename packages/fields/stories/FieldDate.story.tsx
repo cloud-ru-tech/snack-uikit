@@ -41,6 +41,7 @@ const Template = ({ size, localeName, modeBuildCellProps, ...args }: StoryProps)
     <div className={styles.wrapper} data-size={size} key={args.mode}>
       <FieldDate
         {...args}
+        key={value?.toUTCString() ?? ''}
         size={size}
         value={value}
         buildCellProps={buildCellProps}

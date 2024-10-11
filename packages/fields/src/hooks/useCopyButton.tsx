@@ -36,7 +36,7 @@ export function useCopyButton({
         <ButtonCopyValue
           {...props}
           size={BUTTON_SIZE_MAP[size]}
-          valueToCopy={prefix + valueToCopy + postfix}
+          valueToCopy={(prefix ?? '') + valueToCopy + (postfix ?? '')}
           onValueRequest={onValueRequest}
           disabled={disabled}
         />

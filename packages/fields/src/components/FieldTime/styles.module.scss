@@ -1,0 +1,41 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
+
+$sizes: 's', 'm', 'l';
+$icons-sizes: (
+  's': styles-tokens-element.$icon-xs,
+  'm': styles-tokens-element.$icon-s,
+  'l': styles-tokens-element.$icon-s
+);
+
+.triggerClassName {
+  --offset: #{styles-tokens-fields.$space-drop-list-drop-offset};
+
+  display: block;
+  width: 100%;
+}
+
+.container {
+  .calendarIcon {
+    color: styles-tokens-fields.$sys-neutral-text-light;
+
+    @each $size in $sizes {
+      &[data-size='#{$size}'] {
+        width: styles-tokens-fields.simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: styles-tokens-fields.simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+      }
+    }
+  }
+
+  &:hover, &:focus-within, &[data-focused] {
+    .calendarIcon {
+      color: styles-tokens-fields.$sys-neutral-text-support;
+    }
+  }
+
+  &[data-disabled], &[data-readonly] {
+    .calendarIcon {
+      color: styles-tokens-fields.$sys-neutral-text-disabled;
+    }
+  }
+}

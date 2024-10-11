@@ -1,17 +1,18 @@
 import { RefObject, useCallback } from 'react';
 
-import { SlotKey, SLOTS } from '../constants';
+import { SlotKey, SLOTS, TIME_MODE } from '../../constants';
+import { TimeMode } from '../../types';
 
-export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
+export function useTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>, timeMode: TimeMode) {
   const setFocus = useCallback(
     (slotKey: string) => {
       if (inputRef.current) {
-        const { start, end } = SLOTS['date-time'][slotKey];
+        const { start, end } = SLOTS[timeMode][slotKey];
 
         inputRef.current.setSelectionRange(start, end);
       }
     },
-    [inputRef],
+    [inputRef, timeMode],
   );
 
   const isAllSelected = useCallback(
@@ -22,56 +23,36 @@ export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
   const getSlot = useCallback(
     (slotKey: string) => {
       if (inputRef.current) {
-        return inputRef.current.value.slice(SLOTS['date-time'][slotKey].start, SLOTS['date-time'][slotKey].end);
+        return inputRef.current.value.slice(SLOTS[timeMode][slotKey].start, SLOTS[timeMode][slotKey].end);
       }
 
       return '';
     },
-    [inputRef],
+    [inputRef, timeMode],
   );
 
   const isLikeDate = useCallback(() => {
     if (inputRef.current) {
-      return Object.keys(SLOTS['date-time']).every(
+      return Object.keys(SLOTS[timeMode]).every(
         slotKey => getSlot(slotKey) && Number.isInteger(Number(getSlot(slotKey))),
       );
     }
     return false;
-  }, [getSlot, inputRef]);
+  }, [getSlot, inputRef, timeMode]);
 
-  const isValidInput = useCallback((): boolean => {
-    const day = parseInt(getSlot(SlotKey.Day), 10);
-    const month = parseInt(getSlot(SlotKey.Month), 10);
-    const year = parseInt(getSlot(SlotKey.Year), 10);
-
-    if (!month || !day) {
-      return true;
-    }
-
-    const date = new Date(year || /* високосный год = */ 2020, month - 1, day);
-
-    return date.getDate() === day;
-  }, [getSlot]);
+  const isValidInput = useCallback(() => true, []);
 
   const tryToCompleteInput = useCallback((): boolean => {
-    const day = parseInt(getSlot(SlotKey.Day), 10);
-    const month = parseInt(getSlot(SlotKey.Month), 10);
-    const year = parseInt(getSlot(SlotKey.Year), 10);
     const hours = parseInt(getSlot(SlotKey.Hours), 10);
     const minutes = parseInt(getSlot(SlotKey.Minutes), 10);
-    const seconds = parseInt(getSlot(SlotKey.Seconds), 10);
 
-    const { min, max } = SLOTS['date-time'][SlotKey.Year];
+    let isCompleted = Boolean(hours !== undefined && minutes !== undefined);
 
-    const isCompleted = Boolean(
-      day &&
-        month &&
-        year >= min &&
-        year <= max &&
-        hours !== undefined &&
-        minutes !== undefined &&
-        seconds !== undefined,
-    );
+    if (timeMode === TIME_MODE.FullTime) {
+      const seconds = parseInt(getSlot(SlotKey.Seconds), 10);
+
+      isCompleted = isCompleted && seconds !== undefined;
+    }
 
     if (isCompleted && inputRef.current) {
       const lastPosition = inputRef.current?.value.length;
@@ -80,12 +61,12 @@ export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
     }
 
     return isCompleted;
-  }, [getSlot, inputRef]);
+  }, [getSlot, inputRef, timeMode]);
 
   const updateSlot = useCallback(
     (slotKey: string, slotValue: number | string) => {
       if (inputRef.current) {
-        const { start, end, max } = SLOTS['date-time'][slotKey];
+        const { start, end, max } = SLOTS[timeMode][slotKey];
 
         inputRef.current.value =
           inputRef.current.value.slice(0, start) +
@@ -94,7 +75,7 @@ export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
         setFocus(slotKey);
       }
     },
-    [inputRef, setFocus],
+    [inputRef, setFocus, timeMode],
   );
 
   return {

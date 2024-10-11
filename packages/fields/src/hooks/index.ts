@@ -1,3 +1,4 @@
+export * from './dateHandlers';
 export * from './useCopyButton';
 export * from './useHideButton';
 export * from './usePostfix';
