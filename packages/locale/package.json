@@ -11,8 +11,11 @@
     "*.woff2"
   ],
   "description": "",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
   "homepage": "https://cloud-ru-tech.github.io/snack-uikit/packages/locale",
   "repository": {
     "type": "git",
@@ -24,7 +27,8 @@
     "Белов Алексей <anbelov@cloud.ru>"
   ],
   "files": [
-    "dist",
+    "dist/cjs",
+    "dist/esm",
     "src",
     "./CHANGELOG.md",
     "./LICENSE"

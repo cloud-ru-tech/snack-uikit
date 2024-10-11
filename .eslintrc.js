@@ -19,6 +19,12 @@ module.exports = {
       },
     },
     {
+      files: ['packages/**/scripts/**/*.ts'],
+      rules: {
+        '@cloud-ru/ssr-safe-react/domApi': 'off',
+      },
+    },
+    {
       files: ['packages/**/__tests__/**/*.ts'],
       rules: {
         'vitest/consistent-test-it': ['error', { fn: 'it' }],

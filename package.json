@@ -10,10 +10,12 @@
   "scripts": {
     "add-package": "ts-node scripts/npm-init",
     "build:storybook": "npm run install:themes && cross-env TEST_SERVER=true storybook build -c storybook",
+    "build:packages:esm": "tspc -b ./packages/tsconfig.esm.json",
+    "build:packages:cjs": "tspc -b ./packages/tsconfig.cjs.json",
     "build:packages": "npm run clean:all && npm run deps:packages && lerna run compile && npm run build:ts && npm run build:css",
-    "build:css": "ts-node scripts/compileCSS",
+    "build:css": "ts-node scripts/compileCSS && ts-node scripts/compileJsCssModules",
     "docgen": "ts-node scripts/docgen/docgenForAllPackages",
-    "build:ts": "tspc -b ./packages/tsconfig.json",
+    "build:ts": "npm run build:packages:esm && npm run build:packages:cjs",
     "changelog": "ts-node scripts/changelog",
     "clean:all": "npm run clean:dist && npm run clean:modules && npm run clean:buildinfo",
     "clean:buildinfo": "rimraf --glob ./packages/**/*.tsbuildinfo ./packages/npm-package.tsconfig.tsbuildinfo",
@@ -42,6 +44,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@babel/core": "7.25.8",
     "@cloud-ru/eslint-config": "1.1.2",
     "@cloud-ru/eslint-plugin-ssr-safe-react": "0.1.0",
     "@cloud-ru/ft-config-babel": "1.1.1",
@@ -78,6 +81,7 @@
     "@types/shelljs": "0.8.12",
     "autoprefixer": "10.4.14",
     "babel-plugin-istanbul": "6.1.1",
+    "babel-plugin-react-css-modules": "5.2.6",
     "colors": "1.4.0",
     "copy-to-clipboard": "3.3.3",
     "cross-env": "7.0.3",

@@ -1,0 +1,193 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./utils/tsconfig.cjs.json"
+    },
+    {
+      "path": "./locale/tsconfig.cjs.json"
+    },
+    {
+      "path": "./popover-private/tsconfig.cjs.json"
+    },
+    {
+      "path": "./popover/tsconfig.cjs.json"
+    },
+    {
+      "path": "./typography/tsconfig.cjs.json"
+    },
+    {
+      "path": "./icons/tsconfig.cjs.json"
+    },
+    {
+      "path": "./tooltip/tsconfig.cjs.json"
+    },
+    {
+      "path": "./truncate-string/tsconfig.cjs.json"
+    },
+    {
+      "path": "./link/tsconfig.cjs.json"
+    },
+    {
+      "path": "./counter/tsconfig.cjs.json"
+    },
+    {
+      "path": "./status/tsconfig.cjs.json"
+    },
+    {
+      "path": "./avatar/tsconfig.cjs.json"
+    },
+    {
+      "path": "./loaders/tsconfig.cjs.json"
+    },
+    {
+      "path": "./button/tsconfig.cjs.json"
+    },
+    {
+      "path": "./drop-zone/tsconfig.cjs.json"
+    },
+    {
+      "path": "./pagination/tsconfig.cjs.json"
+    },
+    {
+      "path": "./skeleton/tsconfig.cjs.json"
+    },
+    {
+      "path": "./toggles/tsconfig.cjs.json"
+    },
+    {
+      "path": "./divider/tsconfig.cjs.json"
+    },
+    {
+      "path": "./input-private/tsconfig.cjs.json"
+    },
+    {
+      "path": "./search-private/tsconfig.cjs.json"
+    },
+    {
+      "path": "./scroll/tsconfig.cjs.json"
+    },
+    {
+      "path": "./tabs/tsconfig.cjs.json"
+    },
+    {
+      "path": "./icon-predefined/tsconfig.cjs.json"
+    },
+    {
+      "path": "./info-block/tsconfig.cjs.json"
+    },
+    {
+      "path": "./dropdown/tsconfig.cjs.json"
+    },
+    {
+      "path": "./tag/tsconfig.cjs.json"
+    },
+    {
+      "path": "./list/tsconfig.cjs.json"
+    },
+    {
+      "path": "./breadcrumbs/tsconfig.cjs.json"
+    },
+    {
+      "path": "./calendar/tsconfig.cjs.json"
+    },
+    {
+      "path": "./chips/tsconfig.cjs.json"
+    },
+    {
+      "path": "./slider/tsconfig.cjs.json"
+    },
+    {
+      "path": "./segmented-control/tsconfig.cjs.json"
+    },
+    {
+      "path": "./color-picker/tsconfig.cjs.json"
+    },
+    {
+      "path": "./fields/tsconfig.cjs.json"
+    },
+    {
+      "path": "./alert/tsconfig.cjs.json"
+    },
+    {
+      "path": "./toaster/tsconfig.cjs.json"
+    },
+    {
+      "path": "./modal/tsconfig.cjs.json"
+    },
+    {
+      "path": "./stepper/tsconfig.cjs.json"
+    },
+    {
+      "path": "./promo-tag/tsconfig.cjs.json"
+    },
+    {
+      "path": "./drawer/tsconfig.cjs.json"
+    },
+    {
+      "path": "./search/tsconfig.cjs.json"
+    },
+    {
+      "path": "./card/tsconfig.cjs.json"
+    },
+    {
+      "path": "./toolbar/tsconfig.cjs.json"
+    },
+    {
+      "path": "./table/tsconfig.cjs.json"
+    },
+    {
+      "path": "./notification/tsconfig.cjs.json"
+    },
+    {
+      "path": "./accordion/tsconfig.cjs.json"
+    },
+    {
+      "path": "./tree/tsconfig.cjs.json"
+    },
+    {
+      "path": "./timeline/tsconfig.cjs.json"
+    },
+    {
+      "path": "./code-editor/tsconfig.cjs.json"
+    },
+    {
+      "path": "./carousel/tsconfig.cjs.json"
+    },
+    {
+      "path": "./attachment/tsconfig.cjs.json"
+    },
+    {
+      "path": "./hot-spot/tsconfig.cjs.json"
+    },
+    {
+      "path": "./markdown/tsconfig.cjs.json"
+    }
+  ],
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es2017", "dom", "dom.iterable", "esnext"],
+    "module": "CommonJS",
+    "strict": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "composite": true,
+    "plugins": [
+      {
+        "transform": "../../scripts/scss-extension-transformer.ts"
+      },
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "customRenderer": "../../scripts/compile/sass-custom-renderer.js"
+        }
+      }
+    ]
+  }
+}

@@ -39,8 +39,11 @@ export const bootstrapFiles = ({
   fileTemplates.license({ packageRootFolderName });
   logInfo('Created license');
 
-  fileTemplates.tsConfig({ packageRootFolderName });
-  logInfo('Created tsconfig.json');
+  fileTemplates.tsConfigCjs({ packageRootFolderName });
+  logInfo('Created tsconfig.cjs.json');
+
+  fileTemplates.tsConfigEsm({ packageRootFolderName });
+  logInfo('Created tsconfig.esm.json');
 
   fileTemplates.packageJson({
     packageRootFolderName,
@@ -70,5 +73,5 @@ export const bootstrapFiles = ({
   logInfo('Created story entry');
 
   fileTemplates.globalTsConfig({ packageRootFolderName });
-  logInfo('Update global tsconfig.json');
+  logInfo('Update global tsconfig.cjs.json');
 };

@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.esm.json",
+  "compilerOptions": {
+    "module": "CommonJS"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    },
+    "files": true
+  }
+}

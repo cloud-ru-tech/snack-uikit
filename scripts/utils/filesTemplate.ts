@@ -2,7 +2,8 @@ import fs from 'fs';
 import path from 'path';
 
 import globConfig from '../../package.json';
-import globTSConfig from '../../packages/tsconfig.json';
+import globTSConfigCjs from '../../packages/tsconfig.cjs.json';
+import globTSConfigEsm from '../../packages/tsconfig.esm.json';
 import { DOCGEN_SECTION_PLACEHOLDER_END, DOCGEN_SECTION_PLACEHOLDER_START } from '../docgen/constants';
 
 const PackagesRootFolder = 'packages';
@@ -44,8 +45,11 @@ export const packageJson = ({
     version: '0.0.0',
     sideEffects: ['*.css', '*.woff', '*.woff2'],
     description: `${packageDescription}`,
-    main: './dist/index.js',
-    module: './dist/index.js',
+    types: './dist/esm/index.d.ts',
+    exports: {
+      import: './dist/esm/index.js',
+      require: './dist/cjs/index.js',
+    },
     homepage: `${globConfig.homepage}packages/${packageRootFolderName}`,
     repository: {
       type: 'git',
@@ -54,7 +58,7 @@ export const packageJson = ({
     },
     author: `${user} <${email}>`,
     contributors: [`${user} <${email}>`],
-    files: ['dist', 'src', './CHANGELOG.md', './LICENSE'],
+    files: ['dist/cjs', 'dist/esm', 'src', './CHANGELOG.md', './LICENSE'],
     license: 'Apache-2.0',
     scripts: {},
     dependencies: {},
@@ -118,18 +122,32 @@ export const license = ({ packageRootFolderName }: { packageRootFolderName: stri
   fs.copyFileSync(src, dist);
 };
 
-export const tsConfig = ({ packageRootFolderName }: { packageRootFolderName: string }) => {
+export const tsConfigCjs = ({ packageRootFolderName }: { packageRootFolderName: string }) => {
   const fileContent = `{
-  "extends": "../tsconfig.json",
+  "extends": "../tsconfig.cjs.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist/cjs"
   },
   "include": ["./src", "../../types"],
   "exclude": ["./dist"]
 }`;
 
-  fs.writeFileSync(path.join(`./${PackagesRootFolder}/${packageRootFolderName}/tsconfig.json`), fileContent);
+  fs.writeFileSync(path.join(`./${PackagesRootFolder}/${packageRootFolderName}/tsconfig.cjs.json`), fileContent);
+};
+
+export const tsConfigEsm = ({ packageRootFolderName }: { packageRootFolderName: string }) => {
+  const fileContent = `{
+  "extends": "../tsconfig.esm.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist/esm"
+  },
+  "include": ["./src", "../../types"],
+  "exclude": ["./dist"]
+}`;
+
+  fs.writeFileSync(path.join(`./${PackagesRootFolder}/${packageRootFolderName}/tsconfig.esm.json`), fileContent);
 };
 
 export const componentEntry = ({
@@ -235,8 +253,12 @@ export const ${componentStoryName}: StoryObj<${componentName}Props> = {
 export const globalTsConfig = ({ packageRootFolderName }: { packageRootFolderName: string }) => {
   const packagePath = `./${packageRootFolderName}`;
 
-  if (!globTSConfig.references.find(({ path }) => path === packagePath)) {
-    globTSConfig.references.push({ path: packagePath });
-    fs.writeFileSync(`./${PackagesRootFolder}/tsconfig.json`, JSON.stringify(globTSConfig, null, 2));
+  if (!globTSConfigEsm.references.find(({ path }) => path === packagePath)) {
+    globTSConfigEsm.references.push({ path: `${packagePath}/tsconfig.esm.json` });
+    fs.writeFileSync(`./${PackagesRootFolder}/tsconfig.esm.json`, JSON.stringify(globTSConfigEsm, null, 2));
+  }
+  if (!globTSConfigCjs.references.find(({ path }) => path === packagePath)) {
+    globTSConfigCjs.references.push({ path: `${packagePath}/tsconfig.cjs.json` });
+    fs.writeFileSync(`./${PackagesRootFolder}/tsconfig.cjs.json`, JSON.stringify(globTSConfigCjs, null, 2));
   }
 };

@@ -11,8 +11,11 @@
     "*.woff2"
   ],
   "description": "Индикация статуса (точка или точка с текстом)",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
   "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/status",
   "repository": {
     "type": "git",
@@ -24,7 +27,8 @@
     "Anna Kozlova <apkozlova@cloud.ru>"
   ],
   "files": [
-    "dist",
+    "dist/cjs",
+    "dist/esm",
     "src",
     "./CHANGELOG.md",
     "./LICENSE"

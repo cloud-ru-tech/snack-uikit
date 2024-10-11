@@ -20,15 +20,17 @@ const pkg = argv.pkg || '*';
   for (const folder of folders) {
     const src = `${folder}/${srcPart}`;
     const dist = `${folder}/${distPart}`;
-    const distESM = `${dist}`;
+    const distESM = `${dist}/esm`;
+    const distCJS = `${dist}/cjs`;
 
     const filesToCopy = globSync(`${src}/**/*.{woff,woff2,png,css}`);
-    filesToCopy.forEach(simpleCopy({ src, distESM }));
+    filesToCopy.forEach(simpleCopy({ src, dist: distESM }));
+    filesToCopy.forEach(simpleCopy({ src, dist: distCJS }));
 
     const scssFiles = globSync(`${src}/**/!(_)*.scss`);
-    const scssPipe = writeScss({ src, distESM });
+    const scssPipeEsm = writeScss({ src, distESM, distCJS });
     for (const file of scssFiles) {
-      await scssPipe(file);
+      await scssPipeEsm(file);
     }
 
     logDebug(`FINISHED: ${folder}`);

@@ -3,7 +3,7 @@ import path from 'path';
 
 import { ensureDirectory } from '../utils/ensureDirectory';
 
-export function simpleCopy({ src, distESM }: { src: string; distESM: string }) {
+export function simpleCopy({ src, dist }: { src: string; dist: string }) {
   return (file: string) => {
     const relativePathToSrcFile = path.relative(src, file);
     const dirname = path.dirname(relativePathToSrcFile);
@@ -11,7 +11,7 @@ export function simpleCopy({ src, distESM }: { src: string; distESM: string }) {
     const basename = path.basename(relativePathToSrcFile, extension);
     const filename = path.join(dirname, `${basename}${extension}`);
 
-    const esmOutFile = path.resolve(distESM, filename);
+    const esmOutFile = path.resolve(dist, filename);
 
     const content = fs.readFileSync(file);
 

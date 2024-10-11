@@ -36,7 +36,11 @@ function getAllSVGPaths(directory: string): string[] {
   return paths;
 }
 
-const OUTPUT_DIRS = [join(...['src', 'sprite', 'svg']), join(...['dist', 'sprite', 'svg'])];
+const OUTPUT_DIRS = [
+  join(...['src', 'sprite', 'svg']),
+  join(...['dist', 'cjs', 'sprite', 'svg']),
+  join(...['dist', 'esm', 'sprite', 'svg']),
+];
 const PREFIX = 'snack-uikit-';
 const FILENAME = 'sprite.symbol.svg';
 

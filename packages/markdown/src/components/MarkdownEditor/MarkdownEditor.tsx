@@ -1,8 +1,7 @@
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
 
-import { FieldDecorator, FieldTextArea } from '@snack-uikit/fields';
-import { VALIDATION_STATE } from '@snack-uikit/fields/dist/constants';
+import { FieldDecorator, FieldTextArea, VALIDATION_STATE } from '@snack-uikit/fields';
 import { Switch } from '@snack-uikit/toggles';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
