@@ -15,9 +15,7 @@ export const Control = forwardRef<HTMLButtonElement, ControlProps>(
     <button
       ref={ref}
       className={styles.control}
-      onClick={() => {
-        onClick?.();
-      }}
+      onClick={onClick}
       type='button'
       data-variant={variant}
       {...extractSupportProps(rest)}

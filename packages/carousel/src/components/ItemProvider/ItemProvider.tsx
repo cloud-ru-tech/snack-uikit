@@ -1,5 +1,15 @@
 import debounce from 'lodash.debounce';
-import { MouseEvent, ReactElement, TouchEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  MouseEvent,
+  MouseEventHandler,
+  ReactElement,
+  TouchEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { TEST_IDS } from '../../testIds';
 import { getPageX } from './helpers';
@@ -73,30 +83,28 @@ export function ItemProvider({
 
   const itemsTrackerRef = useRef<HTMLDivElement>(null);
 
-  function hideNonVisibleItems() {
-    itemsTrackerRef.current?.querySelectorAll(`[data-test-id=${TEST_IDS.trackItem}]`).forEach(function (slide) {
+  const hideNonVisibleItems = () => {
+    itemsTrackerRef.current?.querySelectorAll(`[data-test-id=${TEST_IDS.trackItem}]`).forEach(slide => {
       slide.setAttribute('aria-hidden', '0');
 
-      slide.querySelectorAll('a, button, select, input, textarea, [tabindex="0"]').forEach(function (focusableElement) {
+      slide.querySelectorAll('a, button, select, input, textarea, [tabindex="0"]').forEach(focusableElement => {
         focusableElement.setAttribute('tabindex', '-5');
         focusableElement.classList.add(styles.hiddenItem);
       });
     });
-  }
+  };
 
-  function showVisibleItems(slide: number, page: number, show: number) {
+  const showVisibleItems = (slide: number, page: number, show: number) => {
     itemsTrackerRef.current?.querySelectorAll(`[data-test-id=${TEST_IDS.trackItem}]`).forEach((item, i) => {
       if (i >= page * slide && i < page * slide + Math.trunc(show)) {
         item.removeAttribute('aria-hidden');
-        item
-          .querySelectorAll('a, button, select, input, textarea, [tabindex="-5"]')
-          .forEach(function (focusableElement) {
-            focusableElement.setAttribute('tabindex', '0');
-            focusableElement.classList.remove(styles.hiddenItem);
-          });
+        item.querySelectorAll('a, button, select, input, textarea, [tabindex="-5"]').forEach(focusableElement => {
+          focusableElement.setAttribute('tabindex', '0');
+          focusableElement.classList.remove(styles.hiddenItem);
+        });
       }
     });
-  }
+  };
 
   const transform = useMemo(
     () => Number(-(page * scrollBy * computedValues.itemWidth + computedValues.gap * page * scrollBy)),
@@ -130,9 +138,11 @@ export function ItemProvider({
 
   const handleDragFinish = (e: MouseEvent | TouchEvent) => {
     e.persist();
+
     if (drag.finished) {
       return;
     }
+
     if (Math.abs(drag.drag) < swipeActivateLength) {
       return setDrag({
         initial: transform,
@@ -178,12 +188,28 @@ export function ItemProvider({
       }
     : {};
 
+  const handleSlideClick: MouseEventHandler = useCallback(
+    e => {
+      const slideRect = e.currentTarget.getBoundingClientRect();
+      const containerRect = containerRef.current?.getBoundingClientRect();
+      const containerViewport = containerRect?.right ?? 0;
+      const slidePositionDelta = containerViewport - slideRect.right;
+      const minPos = Math.min(slidePositionDelta, slideRect.x);
+
+      if (minPos < 0) {
+        slideCallback(slidePositionDelta);
+      }
+    },
+    [slideCallback],
+  );
+
   return (
     <div
       ref={containerRef}
       className={styles.itemProvider}
       data-pointers={!drag.pointers || undefined}
       data-swipe={swipe || undefined}
+      data-gap={gap}
       style={{
         ...(Boolean(gap) ? { '--gap': gap } : {}),
       }}
@@ -199,12 +225,14 @@ export function ItemProvider({
         ref={itemsTrackerRef}
       >
         {items.map((item, i) => (
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
           <div
             key={i}
             style={{ width: computedValues.itemWidth }}
             className={styles.itemContainer}
             role='group'
             data-test-id={TEST_IDS.trackItem}
+            onClick={handleSlideClick}
           >
             {item}
           </div>

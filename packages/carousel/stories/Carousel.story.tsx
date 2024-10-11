@@ -6,7 +6,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Carousel, CarouselProps } from '../src';
 import { STORY_TEST_IDS } from './constants';
-import { StoryCard } from './helperComponents/StoryCard';
+import { StoryCard } from './helperComponents';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
