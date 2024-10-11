@@ -125,7 +125,9 @@ export function BaseItem({
   };
 
   const handleCheckboxClick = (e: MouseEvent) => {
-    e.stopPropagation();
+    if (isParentNode) {
+      e.stopPropagation();
+    }
   };
 
   const props = extractSupportProps(rest);
