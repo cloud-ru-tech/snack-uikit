@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.1 (2024-10-14)
+
+
+### Bug Fixes
+
+* **PDS-854:** fix checkbox click in droplist ([99a63fe](https://github.com/cloud-ru-tech/snack-uikit/commit/99a63feadae3ccdd03227f524f824839805c4730))
+
+
+
+
+
 # 0.17.0 (2024-09-27)
 
 
