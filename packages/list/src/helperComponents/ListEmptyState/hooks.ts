@@ -28,7 +28,7 @@ export function useEmptyState({
     };
 
     const errorDataState: EmptyStateProps = {
-      icon: { icon: CrossSVG, appearance: 'red', decor: true },
+      icon: { icon: CrossSVG, appearance: 'neutral', decor: true },
       description: t('errorData.description'),
       ...errorDataStateProp,
     };
