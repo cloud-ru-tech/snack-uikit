@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.27 (2024-10-15)
+
+
+### Bug Fixes
+
+* **PDS-556:** add render fn for tree component ([6b2608e](https://github.com/cloud-ru-tech/snack-uikit/commit/6b2608ee282abe8ac039d98ca71c4365c84774f1))
+
+
+
+
+
 ## 0.6.26 (2024-10-14)
 
 ### Only dependencies have been changed
