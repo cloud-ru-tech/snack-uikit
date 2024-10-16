@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.29.3 (2024-10-16)
+
+### Only dependencies have been changed
+* [@snack-uikit/color-picker@0.1.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/color-picker/CHANGELOG.md)
+
+
+
+
+
 ## 0.29.2 (2024-10-14)
 
 ### Only dependencies have been changed

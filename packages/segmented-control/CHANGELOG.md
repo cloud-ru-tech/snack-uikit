@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.4 (2024-10-16)
+
+
+### Bug Fixes
+
+* **PDS-881:** update selection position when items changed ([9d89cb9](https://github.com/cloud-ru-tech/snack-uikit/commit/9d89cb960959d46aa1cfdda0a2fc6999d8c49608))
+
+
+
+
+
 ## 0.2.3 (2024-09-26)
 
 ### Only dependencies have been changed
