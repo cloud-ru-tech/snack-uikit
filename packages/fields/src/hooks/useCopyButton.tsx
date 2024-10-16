@@ -23,8 +23,8 @@ export function useCopyButton({
   valueToCopy,
   onValueRequest,
   disabled,
-  prefix,
-  postfix,
+  prefix = '',
+  postfix = '',
 }: UseCopyButtonProps): ButtonProps {
   return useMemo(
     () => ({
