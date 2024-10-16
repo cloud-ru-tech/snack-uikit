@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.29.5 (2024-10-16)
+
+
+### Bug Fixes
+
+* **FF-5758:** prefix and suffix no longer convert to undefined ([323e0e7](https://github.com/cloud-ru-tech/snack-uikit/commit/323e0e7d187a5c70c28de877fbc6192dcd1e083a))
+
+
+
+
+
 ## 0.29.4 (2024-10-16)
 
 ### Only dependencies have been changed
