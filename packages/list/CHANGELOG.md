@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.2 (2024-10-16)
+
+
+### Bug Fixes
+
+* **PDS-755:** fix error icon in table notification list ([e4b0409](https://github.com/cloud-ru-tech/snack-uikit/commit/e4b040948862f54ed219558a9023d816c4d4fa3f))
+
+
+
+
+
 ## 0.17.1 (2024-10-14)
 
 
