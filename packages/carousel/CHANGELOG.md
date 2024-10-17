@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.21 (2024-10-17)
+
+
+### Bug Fixes
+
+* **PDS-882:** scroll to partially visible slide on click ([f974fa2](https://github.com/cloud-ru-tech/snack-uikit/commit/f974fa298b3b972e4a27cb9cc5a065d92c583577))
+
+
+
+
+
 ## 0.2.20 (2024-09-23)
 
 ### Only dependencies have been changed
