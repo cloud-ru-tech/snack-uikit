@@ -76,9 +76,9 @@ test.page(visit({ mode: 'date', dateValue: '1686344400000' /* 10.06.2023 */ }))(
     await t.click(input);
 
     await t.expect(getSelectedDay().textContent).eql('10');
-    await t.expect(getMonthAndYear().textContent).eql('June 2023');
+    await t.expect(getMonthAndYear().textContent).eql('Июнь 2023');
 
-    await t.click(getMonthAndYear()).click(getDay().nth(7)).click(getDay().nth(24));
+    await t.click(getMonthAndYear()).click(getDay().nth(7)).click(getDay().nth(23));
 
     await t.expect(calendar.exists).notOk('calendar is still present after selection');
     await t.expect(input.value).eql('23.08.2023');
@@ -94,18 +94,17 @@ test.page(visit({ mode: 'date', dateValue: '1686344400000' /* 10.06.2023 */ }))(
 
     await t.expect(input.value).eql('10.06.2023');
 
-    await t.click(wrapper);
-    // await t.pressKey('tab').pressKey('space');
+    await t.pressKey('tab').pressKey('down');
 
     await t.expect(getSelectedDay().textContent).eql('10');
-    await t.expect(getMonthAndYear().textContent).eql('June 2023');
+    await t.expect(getMonthAndYear().textContent).eql('Июнь 2023');
 
-    // open month menu
-    await t.pressKey('down').pressKey('enter');
+    // open month selection
+    await t.pressKey('enter');
     // select month
     await t.pressKey('down down').pressKey('right').pressKey('enter');
     //select day
-    await t.pressKey('down down down').pressKey('right right right').pressKey('enter');
+    await t.pressKey('down down down').pressKey('right right').pressKey('enter');
 
     await t.expect(calendar.exists).notOk('calendar is still present after selection');
     await t.expect(input.value).eql('24.05.2023');
@@ -122,6 +121,17 @@ test.page(visit({ mode: 'date-time', dateValue: '' }))("[mode='date-time'] Shoul
   await t.typeText(input, '19121987122025').expect(input.value).eql('19.12.1987, 12:20:25');
 });
 
+// format data
+test.page(visit({ mode: 'date-time', dateValue: '', showSeconds: false }))(
+  "[mode='date-time', showSeconds=false] Should format value correctly",
+  async t => {
+    const wrapper = Selector(dataTestIdSelector(TEST_ID));
+    const input = getInputInner(wrapper);
+
+    await t.typeText(input, '19121987122025').expect(input.value).eql('19.12.1987, 12:25');
+  },
+);
+
 // select data
 test.page(visit({ mode: 'date-time', dateValue: '1686356605000' /* 10.06.2023, 03:23:25 */ }))(
   "[mode='date-time'] Should select value from calendar with mouse",
@@ -135,12 +145,12 @@ test.page(visit({ mode: 'date-time', dateValue: '1686356605000' /* 10.06.2023, 0
     await t.click(input);
 
     await t.expect(getSelectedDay().textContent).eql('10');
-    await t.expect(getMonthAndYear().textContent).eql('June 2023');
-    await t.expect(getSelectedHour().textContent).eql('3');
+    await t.expect(getMonthAndYear().textContent).eql('Июнь 2023');
+    await t.expect(getSelectedHour().textContent).eql('03');
     await t.expect(getSelectedMinute().textContent).eql('23');
     await t.expect(getSelectedSeconds().textContent).eql('25');
 
-    await t.click(getMonthAndYear()).click(getDay().nth(7)).click(getDay().nth(24));
+    await t.click(getMonthAndYear()).click(getDay().nth(7)).click(getDay().nth(23));
     await t.click(getHour().nth(10)).click(getMinute().nth(11)).click(getSeconds().nth(12)).click(getApplyButton());
 
     await t.expect(calendar.exists).notOk('calendar is still present after selection');
@@ -160,8 +170,8 @@ test.page(visit({ mode: 'date-time', dateValue: '1686356605000' /* 10.06.2023, 0
     await t.click(wrapper);
 
     await t.expect(getSelectedDay().textContent).eql('10');
-    await t.expect(getMonthAndYear().textContent).eql('June 2023');
-    await t.expect(getSelectedHour().textContent).eql('3');
+    await t.expect(getMonthAndYear().textContent).eql('Июнь 2023');
+    await t.expect(getSelectedHour().textContent).eql('03');
     await t.expect(getSelectedMinute().textContent).eql('23');
     await t.expect(getSelectedSeconds().textContent).eql('25');
 
@@ -170,7 +180,7 @@ test.page(visit({ mode: 'date-time', dateValue: '1686356605000' /* 10.06.2023, 0
     // select month
     await t.pressKey('down down').pressKey('right').pressKey('enter');
     //select day
-    await t.pressKey('down down down').pressKey('right right right').pressKey('enter');
+    await t.pressKey('down down down').pressKey('right right').pressKey('enter');
 
     //select hour
     await t.pressKey('down down down').pressKey('enter');

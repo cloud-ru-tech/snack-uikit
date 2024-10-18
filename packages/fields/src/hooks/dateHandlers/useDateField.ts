@@ -3,7 +3,16 @@ import { ChangeEvent, FocusEventHandler, KeyboardEvent, RefObject, useCallback, 
 import { TimePickerProps } from '@snack-uikit/calendar';
 import { isBrowser } from '@snack-uikit/utils';
 
-import { DEFAULT_LOCALE, MASK, MODES, SlotKey, SLOTS, SLOTS_PLACEHOLDER, TIME_MODE } from '../../constants';
+import {
+  DEFAULT_LOCALE,
+  MASK,
+  MODES,
+  NO_SECONDS_MODE,
+  SlotKey,
+  SLOTS,
+  SLOTS_PLACEHOLDER,
+  TIME_MODE,
+} from '../../constants';
 import { Mode, TimeMode } from '../../types';
 import { getNextSlotKey, getPrevSlotKey, getSlotKey, parseDate } from '../../utils/dateFieldsUtils';
 import { useDateFieldHelpers } from './useDateFieldHelpers';
@@ -45,21 +54,22 @@ export function useDateField({
     return isTimeMode ? SlotKey.Hours : SlotKey.Day;
   }, [mode]);
 
+  const dateTimeMode = mode === MODES.DateTime && !showSeconds ? NO_SECONDS_MODE : mode;
+
   const helpersMap = {
     [MODES.Date]: useDateFieldHelpers(inputRef),
-    [MODES.DateTime]: useDateTimeFieldHelpers(inputRef),
+    [MODES.DateTime]: useDateTimeFieldHelpers(inputRef, true),
+    [NO_SECONDS_MODE]: useDateTimeFieldHelpers(inputRef, false),
     [TIME_MODE.FullTime]: useTimeFieldHelpers(inputRef, TIME_MODE.FullTime),
     [TIME_MODE.NoSeconds]: useTimeFieldHelpers(inputRef, TIME_MODE.NoSeconds),
   };
 
   const { setFocus, updateSlot, getSlot, isLikeDate, isAllSelected, tryToCompleteInput, isValidInput } =
-    helpersMap[mode];
+    helpersMap[dateTimeMode];
 
   const focusSlotRef = useRef<FocusSlot>(focusSlotKey);
 
   const { mask, slotsPlaceholder } = useMemo(() => {
-    let dateTimeMode = mode;
-
     const mask = MASK[dateTimeMode][locale.baseName] || MASK[dateTimeMode][DEFAULT_LOCALE.baseName];
     const slotsPlaceholder =
       SLOTS_PLACEHOLDER[dateTimeMode][locale.baseName] || SLOTS_PLACEHOLDER[dateTimeMode][DEFAULT_LOCALE.baseName];
@@ -68,10 +78,10 @@ export function useDateField({
       mask,
       slotsPlaceholder,
     };
-  }, [locale.baseName, mode, showSeconds]);
+  }, [dateTimeMode, locale.baseName]);
 
-  const getNextSlotKeyHandler = getNextSlotKey(mode);
-  const getPrevSlotKeyHandler = getPrevSlotKey(mode);
+  const getNextSlotKeyHandler = getNextSlotKey(dateTimeMode);
+  const getPrevSlotKeyHandler = getPrevSlotKey(dateTimeMode);
 
   const setInputFocus = useCallback(
     (focusSlot?: FocusSlot) => {
@@ -102,14 +112,14 @@ export function useDateField({
         return;
       }
 
-      const slotKey = getSlotKey(inputRef.current.selectionStart, mode);
+      const slotKey = getSlotKey(inputRef.current.selectionStart, dateTimeMode);
 
       if (slotKey) {
-        const { start, end } = SLOTS[mode][slotKey];
+        const { start, end } = SLOTS[dateTimeMode][slotKey];
         inputRef.current.setSelectionRange(start, end);
       }
     },
-    [inputRef, isLikeDate, mask, mode, readonly, setFocus, focusSlotKey],
+    [inputRef, isLikeDate, mask, dateTimeMode, readonly, setFocus, focusSlotKey],
   );
 
   const handleClick = useCallback(() => {
@@ -122,7 +132,7 @@ export function useDateField({
 
   const checkInputAndGoNext = useCallback(
     (slotKey: string) => {
-      if (slotKey === (mode === 'date' ? SlotKey.Year : SlotKey.Seconds) && tryToCompleteInput()) {
+      if (slotKey === (dateTimeMode === 'date' ? SlotKey.Year : SlotKey.Seconds) && tryToCompleteInput()) {
         return;
       }
 
@@ -145,7 +155,7 @@ export function useDateField({
           setFocus(getNextSlotKeyHandler(slotKey));
       }
     },
-    [mode, tryToCompleteInput, isValidInput, setFocus, getNextSlotKeyHandler, updateSlot, slotsPlaceholder],
+    [dateTimeMode, tryToCompleteInput, isValidInput, setFocus, getNextSlotKeyHandler, updateSlot, slotsPlaceholder],
   );
 
   const handleKeyDown = useCallback(
@@ -170,16 +180,16 @@ export function useDateField({
         }
 
         const clickIndex = inputRef.current.selectionStart;
-        const slotKey = getSlotKey(clickIndex, mode);
+        const slotKey = getSlotKey(clickIndex, dateTimeMode);
 
         if (slotKey) {
           const value = getSlot(slotKey);
-          const { max } = SLOTS[mode][slotKey];
+          const { max } = SLOTS[dateTimeMode][slotKey];
 
           const numberValue = Number(value) || 0;
 
           if (e.key === 'ArrowRight') {
-            if (isAllSelected() || slotKey === (mode === 'date' ? SlotKey.Year : SlotKey.Seconds)) {
+            if (isAllSelected() || slotKey === (dateTimeMode === 'date' ? SlotKey.Year : SlotKey.Seconds)) {
               inputRef.current.selectionStart = inputRef.current.value.length;
               return;
             }
@@ -248,7 +258,7 @@ export function useDateField({
       isAllSelected,
       isLikeDate,
       mask,
-      mode,
+      dateTimeMode,
       onChange,
       readonly,
       setFocus,

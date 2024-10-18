@@ -228,14 +228,13 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| mode* | enum Mode: `"date"`, `"date-time"` | - |  |
+| mode* | "date" \| "date-time" | - |  |
 | open | `boolean` | - | Открыт date-picker |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
 | value | `Date` | - | Значение поля |
 | onChange | `(value: Date) => void` | - | Колбек смены значения |
 | showCopyButton | `boolean` | - | Отображение кнопки копирования |
 | showClearButton | `boolean` | true | Отображение кнопки Очистки поля |
-| locale | `Locale` | new Intl.Locale('ru-RU') | Текущая локаль календаря |
 | buildCellProps | `(date: Date, viewMode: ViewMode) => { isDisabled?: boolean; isHoliday?: boolean } ;` | - | Колбек установки свойств ячеек календаря. Вызывается на построение каждой ячейки. Принимает два параметра: <br> `Date` - дата ячейки <br> `ViewMode`: <br>  - `month` отображение месяца, каждая ячейка - 1 день <br>  - `year` отображение года, каждая ячейка - 1 месяц <br>  - `decade` отображение декады, каждая ячейка - 1 год <br><br> Колбек должен возвращать объект с полями, отвечающими за отключение и подкраску ячейки. |
 | id | `string` | - | Значение html-атрибута id |
 | name | `string` | - | Значение html-атрибута name |
@@ -256,6 +255,7 @@ FieldStepper в основном предназначен для работы с
 | error | `string` | - |  |
 | ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
+| showSeconds | `boolean` | - |  |
 ## FieldDecorator
 ### Props
 | name | type | default value | description |

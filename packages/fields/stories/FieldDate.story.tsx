@@ -16,16 +16,14 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = Omit<FieldDateProps, 'locale' | 'value'> & {
-  localeName: 'ru-RU' | 'en-US';
+type StoryProps = Omit<FieldDateProps, 'value'> & {
   prefixIcon: undefined;
   modeBuildCellProps: 'for-tests' | 'disable-past' | 'none';
   dateValue?: string;
+  showSeconds?: boolean;
 };
 
-const Template = ({ size, localeName, modeBuildCellProps, ...args }: StoryProps) => {
-  const locale = new Intl.Locale(localeName);
-
+const Template = ({ size, modeBuildCellProps, ...args }: StoryProps) => {
   const argsNormalizedValue = useMemo(() => (args.dateValue ? new Date(args.dateValue) : undefined), [args.dateValue]);
   const [value, setValue] = useState(argsNormalizedValue);
 
@@ -42,6 +40,7 @@ const Template = ({ size, localeName, modeBuildCellProps, ...args }: StoryProps)
       <FieldDate
         {...args}
         key={value?.toUTCString() ?? ''}
+        showSeconds={'showSeconds' in args ? (args.showSeconds as boolean) : undefined}
         size={size}
         value={value}
         buildCellProps={buildCellProps}
@@ -51,7 +50,6 @@ const Template = ({ size, localeName, modeBuildCellProps, ...args }: StoryProps)
           action('onChange')(value);
           setValue(value);
         }}
-        locale={locale}
       />
     </div>
   );
@@ -62,8 +60,10 @@ export const fieldDate: StoryObj<StoryProps> = {
 
   args: {
     mode: 'date',
+    showSeconds: true,
     id: 'date',
     readonly: false,
+    showCopyButton: true,
     disabled: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',
@@ -72,14 +72,18 @@ export const fieldDate: StoryObj<StoryProps> = {
     hint: 'Hint text',
     size: 's',
     validationState: 'default',
-    showCopyButton: true,
     showClearButton: true,
-    localeName: 'en-US',
     modeBuildCellProps: 'none',
   },
 
   argTypes: {
     ...COMMON_ARG_TYPES,
+    showSeconds: {
+      if: {
+        arg: 'mode',
+        eq: 'date-time',
+      },
+    },
     prefixIcon: {
       table: {
         disable: true,

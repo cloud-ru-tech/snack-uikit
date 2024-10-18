@@ -134,6 +134,7 @@ export const fieldSelect: StoryObj<StoryProps> = {
     selection: 'single',
     searchable: true,
     readonly: false,
+    showCopyButton: true,
     validationState: 'default',
     value: undefined,
     disabled: false,
@@ -142,7 +143,6 @@ export const fieldSelect: StoryObj<StoryProps> = {
     prefixIcon: 'none',
     prefix: '',
     postfix: '',
-    showCopyButton: true,
     showClearButton: true,
     showMoreOptions: false,
     untouchableScrollbars: false,
@@ -154,6 +154,7 @@ export const fieldSelect: StoryObj<StoryProps> = {
     validationState: COMMON_ARG_TYPES.validationState,
     prefixIcon: COMMON_ARG_TYPES.prefixIcon,
     labelTooltip: COMMON_ARG_TYPES.labelTooltip,
+    showCopyButton: COMMON_ARG_TYPES.showCopyButton,
     showMoreOptions: {
       name: '[Stories] add more options to see scroll',
       type: 'boolean',

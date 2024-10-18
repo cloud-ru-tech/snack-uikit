@@ -57,6 +57,7 @@ export const fieldSecure: StoryObj<StoryProps> = {
     placeholder: 'Placeholder',
     maxLength: undefined,
     readonly: false,
+    showCopyButton: true,
     disabled: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',
@@ -68,7 +69,6 @@ export const fieldSecure: StoryObj<StoryProps> = {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     prefixIcon: 'none',
-    showCopyButton: true,
     allowMoreThanMaxLength: false,
     showAsyncValueExample: false,
   },

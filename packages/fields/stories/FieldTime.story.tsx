@@ -62,7 +62,9 @@ export const fieldTime: StoryObj<StoryProps> = {
 
   args: {
     id: 'date',
+    showSeconds: true,
     readonly: false,
+    showCopyButton: true,
     disabled: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',
@@ -71,7 +73,6 @@ export const fieldTime: StoryObj<StoryProps> = {
     hint: 'Hint text',
     size: 's',
     validationState: 'default',
-    showCopyButton: true,
     showClearButton: true,
   },
 

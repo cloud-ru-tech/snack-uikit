@@ -50,6 +50,7 @@ export const fieldTextArea: StoryObj<FieldTextAreaProps> = {
     minRows: 3,
     maxRows: 1000,
     readonly: false,
+    showCopyButton: true,
     disabled: false,
     resizable: false,
     label: 'Label text',
@@ -59,7 +60,6 @@ export const fieldTextArea: StoryObj<FieldTextAreaProps> = {
     hint: 'Hint text',
     size: 's',
     validationState: 'default',
-    showCopyButton: true,
     showClearButton: true,
     allowMoreThanMaxLength: true,
   },
@@ -67,6 +67,7 @@ export const fieldTextArea: StoryObj<FieldTextAreaProps> = {
   argTypes: {
     validationState: COMMON_ARG_TYPES.validationState,
     labelTooltip: COMMON_ARG_TYPES.labelTooltip,
+    showCopyButton: COMMON_ARG_TYPES.showCopyButton,
   },
 
   parameters: {

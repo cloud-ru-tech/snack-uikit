@@ -1,17 +1,19 @@
 import { RefObject, useCallback } from 'react';
 
-import { MODES, SlotKey, SLOTS } from '../../constants';
+import { MODES, NO_SECONDS_MODE, SlotKey, SLOTS } from '../../constants';
 
-export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
+export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>, showSeconds?: boolean) {
+  const mode = showSeconds ? MODES.DateTime : NO_SECONDS_MODE;
+
   const setFocus = useCallback(
     (slotKey: string) => {
       if (inputRef.current) {
-        const { start, end } = SLOTS[MODES.DateTime][slotKey];
+        const { start, end } = SLOTS[mode][slotKey];
 
         inputRef.current.setSelectionRange(start, end);
       }
     },
-    [inputRef],
+    [inputRef, mode],
   );
 
   const isAllSelected = useCallback(
@@ -22,22 +24,20 @@ export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
   const getSlot = useCallback(
     (slotKey: string) => {
       if (inputRef.current) {
-        return inputRef.current.value.slice(SLOTS[MODES.DateTime][slotKey].start, SLOTS[MODES.DateTime][slotKey].end);
+        return inputRef.current.value.slice(SLOTS[mode][slotKey].start, SLOTS[mode][slotKey].end);
       }
 
       return '';
     },
-    [inputRef],
+    [inputRef, mode],
   );
 
   const isLikeDate = useCallback(() => {
     if (inputRef.current) {
-      return Object.keys(SLOTS[MODES.DateTime]).every(
-        slotKey => getSlot(slotKey) && Number.isInteger(Number(getSlot(slotKey))),
-      );
+      return Object.keys(SLOTS[mode]).every(slotKey => getSlot(slotKey) && Number.isInteger(Number(getSlot(slotKey))));
     }
     return false;
-  }, [getSlot, inputRef]);
+  }, [getSlot, inputRef, mode]);
 
   const isValidInput = useCallback((): boolean => {
     const day = parseInt(getSlot(SlotKey.Day), 10);
@@ -61,16 +61,14 @@ export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
     const minutes = parseInt(getSlot(SlotKey.Minutes), 10);
     const seconds = parseInt(getSlot(SlotKey.Seconds), 10);
 
-    const { min, max } = SLOTS[MODES.DateTime][SlotKey.Year];
+    const { min, max } = SLOTS[mode][SlotKey.Year];
 
     const isCompleted = Boolean(
       day &&
         month &&
         year >= min &&
         year <= max &&
-        hours !== undefined &&
-        minutes !== undefined &&
-        seconds !== undefined,
+        [hours, minutes, ...(showSeconds ? [seconds] : [])].every(value => value !== undefined),
     );
 
     if (isCompleted && inputRef.current) {
@@ -80,12 +78,12 @@ export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
     }
 
     return isCompleted;
-  }, [getSlot, inputRef]);
+  }, [getSlot, inputRef, mode, showSeconds]);
 
   const updateSlot = useCallback(
     (slotKey: string, slotValue: number | string) => {
       if (inputRef.current) {
-        const { start, end, max } = SLOTS[MODES.DateTime][slotKey];
+        const { start, end, max } = SLOTS[mode][slotKey];
 
         inputRef.current.value =
           inputRef.current.value.slice(0, start) +
@@ -94,7 +92,7 @@ export function useDateTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>) {
         setFocus(slotKey);
       }
     },
-    [inputRef, setFocus],
+    [inputRef, mode, setFocus],
   );
 
   return {

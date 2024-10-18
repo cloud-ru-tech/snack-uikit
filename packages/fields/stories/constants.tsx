@@ -37,10 +37,11 @@ export const COMMON_ARG_TYPES = {
       type: 'text',
     },
   },
-  localeName: {
-    name: 'localeName',
-    options: ['ru-RU', 'en-US'],
-    control: { type: 'radio' },
+  showCopyButton: {
+    if: {
+      arg: 'readonly',
+      eq: true,
+    },
   },
 } as const;
 

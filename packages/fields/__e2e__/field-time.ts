@@ -104,8 +104,8 @@ test.page(visit({ valueHours: 4, valueMinutes: 5, valueSeconds: 6 }))(
     await t.expect(getSelectedMinute().textContent).eql('05');
     await t.expect(getSelectedSeconds().textContent).eql('06');
 
-    // open month menu & select hours
-    await t.pressKey('down down down').pressKey('enter');
+    // open menu & select hours
+    await t.pressKey('down down down down').pressKey('enter');
 
     // select minutes
     await t.pressKey('down down down').pressKey('enter');

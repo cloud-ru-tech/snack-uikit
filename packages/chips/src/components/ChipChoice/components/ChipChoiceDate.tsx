@@ -31,6 +31,8 @@ export function ChipChoiceDate({
   valueRender,
   dropDownClassName,
   mode = 'date',
+  placement,
+  widthStrategy,
   ...rest
 }: ChipChoiceDateProps) {
   const [selectedValue, setSelectedValue] = useValueControl<Date>({ value, defaultValue, onChange });
@@ -53,6 +55,16 @@ export function ChipChoiceDate({
 
   const clearValue = () => setSelectedValue(undefined);
 
+  const handleChangeValue = useCallback(
+    (value: Date) => {
+      setSelectedValue(value);
+      closeDroplist();
+    },
+    [closeDroplist, setSelectedValue],
+  );
+
+  const navigationStartRef = useCallback((element: HTMLButtonElement | null) => element?.focus(), []);
+
   return (
     <Dropdown
       content={
@@ -60,14 +72,14 @@ export function ChipChoiceDate({
           mode={mode}
           size={CALENDAR_SIZE_MAP[size]}
           value={selectedValue}
-          onChangeValue={(value: Date) => {
-            setSelectedValue(value);
-            closeDroplist();
-          }}
-          navigationStartRef={element => element?.focus()}
+          fitToContainer={false}
+          onChangeValue={handleChangeValue}
+          navigationStartRef={navigationStartRef}
           onFocusLeave={closeDroplist}
         />
       }
+      placement={placement}
+      widthStrategy={widthStrategy}
       outsideClick
       triggerRef={localRef}
       open={open}

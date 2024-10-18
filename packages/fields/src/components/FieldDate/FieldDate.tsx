@@ -42,6 +42,11 @@ type WrapperProps = Pick<
   | 'error'
 >;
 
+type FieldDateWithSeconds = {
+  mode: typeof MODES.DateTime;
+  showSeconds?: boolean;
+};
+
 type FieldDateOwnProps = {
   /** Открыт date-picker */
   open?: boolean;
@@ -58,18 +63,13 @@ type FieldDateOwnProps = {
    * @default true
    */
   showClearButton?: boolean;
-  /** Текущая локаль календаря */
-  locale?: Intl.Locale;
   mode: Mode;
 } & Pick<CalendarProps, 'buildCellProps'> &
   (
     | {
         mode: typeof MODES.Date;
       }
-    | {
-        mode: typeof MODES.DateTime;
-        showSeconds?: boolean;
-      }
+    | FieldDateWithSeconds
   );
 
 export type FieldDateProps = WithSupportProps<FieldDateOwnProps & InputProps & WrapperProps>;
@@ -99,7 +99,6 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       showHintIcon,
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
-      locale = DEFAULT_LOCALE,
       buildCellProps,
       error,
       mode,
@@ -117,9 +116,10 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     const showAdditionalButton = Boolean(valueProp && !disabled);
     const showClearButton = showClearButtonProp && showAdditionalButton && !readonly;
     const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
+    const showSeconds = mode === 'date-time' ? ((rest as FieldDateWithSeconds).showSeconds ?? true) : undefined;
     const fieldValidationState = getValidationState({ validationState, error });
 
-    const navigationStartRef = useRef<HTMLButtonElement>(null);
+    const navigationStartRef: CalendarProps['navigationStartRef'] = useRef(null);
 
     const checkForLeavingFocus = useCallback(
       <T extends HTMLInputElement | HTMLButtonElement>(event: KeyboardEvent<T>) => {
@@ -147,8 +147,23 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     }, [onChange, required, setIsOpen]);
 
     const getStringDateValue = useCallback(
-      (date: Date | undefined) => (mode === 'date' ? date?.toLocaleDateString() : date?.toLocaleString()) ?? '',
-      [mode],
+      (date: Date | undefined) => {
+        if (!date) return '';
+
+        if (mode === 'date') {
+          return date.toLocaleDateString(DEFAULT_LOCALE);
+        }
+
+        return date.toLocaleString(DEFAULT_LOCALE, {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: showSeconds ? '2-digit' : undefined,
+        });
+      },
+      [mode, showSeconds],
     );
 
     const valueToCopy = getStringDateValue(valueProp);
@@ -183,9 +198,10 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       inputRef: localRef,
       onChange,
       readonly,
-      locale,
+      locale: DEFAULT_LOCALE,
       setIsOpen,
       mode,
+      showSeconds,
     });
 
     const setInputFocusFromButtons = useCallback(
@@ -240,11 +256,10 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
     }, [open]);
 
     useEffect(() => {
-      if (localRef.current) {
+      if (localRef.current && document.activeElement !== localRef.current) {
         localRef.current.value = getStringDateValue(valueProp);
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [getStringDateValue]);
+    }, [getStringDateValue, valueProp]);
 
     const onFocusByKeyboard = useCallback(
       (e: FocusEvent<HTMLInputElement>) => {
@@ -306,12 +321,12 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
                 mode={mode}
                 size={size}
                 value={valueProp}
-                showSeconds={mode === 'date-time' && 'showSeconds' in rest ? rest.showSeconds : undefined}
+                showSeconds={showSeconds}
                 onChangeValue={handleSelectDate}
                 buildCellProps={buildCellProps}
                 navigationStartRef={navigationStartRef}
                 onFocusLeave={handleCalendarFocusLeave}
-                locale={locale}
+                locale={DEFAULT_LOCALE}
                 data-test-id='field-date__calendar'
                 fitToContainer={false}
               />

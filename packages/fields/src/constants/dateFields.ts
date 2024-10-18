@@ -1,4 +1,4 @@
-import { Mode, Slot, TimeMode } from '../types';
+import { Mode, NoSecondsMode, Slot, TimeMode } from '../types';
 
 export enum SlotKey {
   Day = 'D',
@@ -19,7 +19,9 @@ export const TIME_MODE = {
   NoSeconds: 'no-seconds',
 } as const;
 
-export const MASK: Record<Mode | TimeMode, Record<string, string>> = {
+export const NO_SECONDS_MODE = 'date-time-no-sec';
+
+export const MASK: Record<Mode | TimeMode | NoSecondsMode, Record<string, string>> = {
   [MODES.Date]: {
     'ru-RU': 'ДД.ММ.ГГГГ',
     'en-US': 'DD.MM.YYYY',
@@ -27,6 +29,10 @@ export const MASK: Record<Mode | TimeMode, Record<string, string>> = {
   [MODES.DateTime]: {
     'ru-RU': 'ДД.ММ.ГГГГ, чч:мм:сс',
     'en-US': 'DD.MM.YYYY, hh:mm:ss',
+  },
+  [NO_SECONDS_MODE]: {
+    'ru-RU': 'ДД.ММ.ГГГГ, чч:мм',
+    'en-US': 'DD.MM.YYYY, hh:mm',
   },
   [TIME_MODE.FullTime]: {
     'ru-RU': 'чч:мм:сс',
@@ -46,17 +52,18 @@ const DATE_SLOTS = {
   [SlotKey.Year]: { start: 6, end: 10, max: 2100, min: 1900 },
 };
 
-const TIME_SLOTS = (shift: number) => ({
+const TIME_SLOTS = (shift: number, showSeconds: boolean) => ({
   [SlotKey.Hours]: { start: shift, end: shift + 2, max: 23, min: 0 },
   [SlotKey.Minutes]: { start: shift + 3, end: shift + 5, max: 59, min: 0 },
-  [SlotKey.Seconds]: { start: shift + 6, end: shift + 8, max: 59, min: 0 },
+  ...(showSeconds ? { [SlotKey.Seconds]: { start: shift + 6, end: shift + 8, max: 59, min: 0 } } : {}),
 });
 
-export const SLOTS: Record<Mode | TimeMode, Record<SlotKey | string, Slot>> = {
+export const SLOTS: Record<Mode | TimeMode | NoSecondsMode, Record<SlotKey | string, Slot>> = {
   [MODES.Date]: DATE_SLOTS,
-  [MODES.DateTime]: { ...DATE_SLOTS, ...TIME_SLOTS(12) },
-  [TIME_MODE.FullTime]: TIME_SLOTS(0),
-  [TIME_MODE.NoSeconds]: TIME_SLOTS(0),
+  [MODES.DateTime]: { ...DATE_SLOTS, ...TIME_SLOTS(12, true) },
+  [NO_SECONDS_MODE]: { ...DATE_SLOTS, ...TIME_SLOTS(12, false) },
+  [TIME_MODE.FullTime]: TIME_SLOTS(0, true),
+  [TIME_MODE.NoSeconds]: TIME_SLOTS(0, false),
 };
 
 const RU_DATE_SLOTS_PLACEHOLDER = {
@@ -83,7 +90,10 @@ const EN_TIME_SLOTS_PLACEHOLDER = {
   [SlotKey.Seconds]: 'ss',
 };
 
-export const SLOTS_PLACEHOLDER: Record<Mode | TimeMode, Record<string, Partial<Record<SlotKey, string>>>> = {
+export const SLOTS_PLACEHOLDER: Record<
+  Mode | TimeMode | NoSecondsMode,
+  Record<string, Partial<Record<SlotKey, string>>>
+> = {
   [MODES.Date]: {
     'ru-RU': RU_DATE_SLOTS_PLACEHOLDER,
     'en-US': EN_DATE_SLOTS_PLACEHOLDER,
@@ -91,6 +101,10 @@ export const SLOTS_PLACEHOLDER: Record<Mode | TimeMode, Record<string, Partial<R
   [MODES.DateTime]: {
     'ru-RU': { ...RU_DATE_SLOTS_PLACEHOLDER, ...RU_TIME_SLOTS_PLACEHOLDER },
     'en-US': { ...EN_DATE_SLOTS_PLACEHOLDER, ...EN_TIME_SLOTS_PLACEHOLDER },
+  },
+  [NO_SECONDS_MODE]: {
+    'ru-RU': { ...RU_DATE_SLOTS_PLACEHOLDER, ...RU_TIME_SLOTS_PLACEHOLDER, [SlotKey.Seconds]: undefined },
+    'en-US': { ...EN_DATE_SLOTS_PLACEHOLDER, ...EN_TIME_SLOTS_PLACEHOLDER, [SlotKey.Seconds]: undefined },
   },
   [TIME_MODE.FullTime]: {
     'ru-RU': RU_TIME_SLOTS_PLACEHOLDER,

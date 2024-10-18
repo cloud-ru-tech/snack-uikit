@@ -125,7 +125,7 @@ export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
     const showClearButton = showClearButtonProp && showAdditionalButton && !readonly;
     const showCopyButton = showCopyButtonProp && showAdditionalButton && readonly;
     const fieldValidationState = getValidationState({ validationState, error });
-    const navigationStartRef = useRef<HTMLButtonElement>(null);
+    const navigationStartRef: TimePickerProps['navigationStartRef'] = useRef(null);
 
     const checkForLeavingFocus = useCallback(
       <T extends HTMLInputElement | HTMLButtonElement>(event: KeyboardEvent<T>) => {
@@ -239,11 +239,10 @@ export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
     }, [open]);
 
     useEffect(() => {
-      if (localRef.current) {
+      if (localRef.current && document.activeElement !== localRef.current) {
         localRef.current.value = getStringTimeValue(valueProp, { showSeconds, locale: DEFAULT_LOCALE });
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [showSeconds]);
+    }, [showSeconds, valueProp]);
 
     const onFocusByKeyboard = useCallback(
       (e: FocusEvent<HTMLInputElement>) => {

@@ -45,14 +45,11 @@ export function useTimeFieldHelpers(inputRef: RefObject<HTMLInputElement>, timeM
   const tryToCompleteInput = useCallback((): boolean => {
     const hours = parseInt(getSlot(SlotKey.Hours), 10);
     const minutes = parseInt(getSlot(SlotKey.Minutes), 10);
+    const seconds = parseInt(getSlot(SlotKey.Seconds), 10);
 
-    let isCompleted = Boolean(hours !== undefined && minutes !== undefined);
-
-    if (timeMode === TIME_MODE.FullTime) {
-      const seconds = parseInt(getSlot(SlotKey.Seconds), 10);
-
-      isCompleted = isCompleted && seconds !== undefined;
-    }
+    const isCompleted = [hours, minutes, ...(timeMode === TIME_MODE.FullTime ? [seconds] : [])].every(
+      value => value !== undefined,
+    );
 
     if (isCompleted && inputRef.current) {
       const lastPosition = inputRef.current?.value.length;

@@ -5,6 +5,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { FieldColor, FieldColorProps } from '../src';
+import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -38,6 +39,7 @@ export const fieldColor: StoryObj<StoryProps> = {
     autoApply: false,
     withAlpha: true,
     readonly: false,
+    showCopyButton: true,
     disabled: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',
@@ -47,11 +49,11 @@ export const fieldColor: StoryObj<StoryProps> = {
     hint: 'Hint text',
     size: 's',
     validationState: 'default',
-    showCopyButton: true,
     showClearButton: true,
   },
 
   argTypes: {
+    showCopyButton: COMMON_ARG_TYPES.showCopyButton,
     labelTooltip: {
       control: {
         type: 'text',
