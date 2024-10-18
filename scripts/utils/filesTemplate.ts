@@ -191,7 +191,7 @@ export const storyEntry = ({
   packageRootFolderName: string;
 }) => {
   const filePath = path.join(
-    `./${PackagesRootFolder}/${packageRootFolderName}/${Folders.stories}/${componentName}.tsx`,
+    `./${PackagesRootFolder}/${packageRootFolderName}/${Folders.stories}/${componentName}.story.tsx`,
   );
   const componentStoryName = componentName.replace(/[A-Z]/, x => x.toLowerCase());
   const componentStoryTitle = componentName.split(/(?=[A-Z])/).join(' ');
