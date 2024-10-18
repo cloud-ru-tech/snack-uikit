@@ -1,0 +1,5 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+
+.wrapper {
+  @include composite-var($markdown-syntax-divider);
+}

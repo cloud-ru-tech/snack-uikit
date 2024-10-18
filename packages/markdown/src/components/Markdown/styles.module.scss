@@ -1,0 +1,90 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+
+.markdown {
+  overflow: auto;
+  height: 100%;
+  color: $sys-neutral-text-main;
+
+  >:first-child {
+    padding-top: 0;
+  }
+
+  img {
+    box-sizing: content-box;
+    max-width: 100%;
+    border-style: none;
+  }
+
+  h1 {
+    @include composite-var($sans-headline-l);
+    @include composite-var($markdown-syntax-headings-level1);
+  }
+
+  h2 {
+    @include composite-var($sans-headline-m);
+    @include composite-var($markdown-syntax-headings-level2);
+  }
+
+  h3 {
+    @include composite-var($sans-headline-s);
+    @include composite-var($markdown-syntax-headings-level3);
+  }
+
+  h4 {
+    @include composite-var($sans-title-l);
+    @include composite-var($markdown-syntax-headings-level4);
+  }
+
+  h5 {
+    @include composite-var($sans-title-m);
+    @include composite-var($markdown-syntax-headings-level5);
+  }
+
+  h6 {
+    @include composite-var($sans-title-s);
+    @include composite-var($markdown-syntax-headings-level6);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  p {
+    @include composite-var($sans-body-m);
+    @include composite-var($markdown-syntax-paragraphs);
+
+    margin: 0;
+  }
+
+  li {
+    @include composite-var($sans-body-m);
+  }
+
+  strong {
+    @include composite-var($sans-label-l);
+  }
+
+  ul,
+  ol {
+    @include composite-var($markdown-syntax-list);
+
+    padding-inline-start: calc($dimension-3m - $dimension-050m);
+
+    p {
+      padding-top: 0;
+    }
+  }
+
+  ul > li {
+    list-style-type: disc;
+  }
+
+  ol > li {
+    list-style-type: decimal;
+  }
+}

@@ -1,0 +1,8 @@
+@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background-color: $sys-neutral-background1-level;
+}

@@ -1,0 +1,27 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+
+.wrapper {
+  @include composite-var($markdown-syntax-table);
+
+  border-spacing: 0;
+  width: 100%;
+
+  th, td {
+    @include composite-var($markdown-table-cell-container);
+
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid $sys-neutral-decor-default;
+  }
+
+  th {
+    @include composite-var($sans-label-l);
+
+    background-color: $sys-neutral-background;
+  }
+
+  td {
+    @include composite-var($sans-body-m);
+  }
+}

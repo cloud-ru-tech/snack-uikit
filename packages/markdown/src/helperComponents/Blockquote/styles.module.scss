@@ -1,0 +1,20 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+
+.wrapper {
+  @include composite-var($markdown-syntax-quote);
+
+  .blockquote > p {
+    padding-top: 0;
+  }
+}
+
+.blockquote {
+  @include composite-var($markdown-quote-container);
+
+  box-sizing: border-box;
+  margin: 0;
+
+  background-color: $sys-neutral-background;
+  border-left-color: $sys-neutral-decor-default;
+  border-left-style: solid;
+}

@@ -1,0 +1,57 @@
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+@mixin validationState($state, $rainbowColor, $bgDefault) {
+  &[data-validation='#{$state}'] {
+    background-color: simple-var($theme-variables, 'sys', $bgDefault, 'background1-level');
+    border-color: simple-var($theme-variables, 'sys', $bgDefault, 'decor-default');
+
+    &:hover {
+      background-color: $sys-neutral-background2-level;
+      border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-hovered');
+    }
+
+    &:focus-within,
+    &[data-focused] {
+      &:not([data-disabled]) {
+        @include outline-var($container-focused-m);
+
+        background-color: simple-var($sys-neutral-background2-level);
+        border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'accent-default');
+        outline-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-activated');
+      }
+    }
+  }
+}
+
+.viewWrapper {
+  @include composite-var($markdown-preview-container);
+  @include validationState('default', 'primary', 'neutral');
+  @include validationState('error', 'red', 'red');
+
+  border-style: solid;
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: $dimension-1m;
+}
+
+.control {
+  display: flex;
+  gap: $dimension-1m;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.switchWrapper {
+  display: flex;
+  gap: $dimension-1m;
+  align-items: center;
+}
+
+.tip {
+  color: $sys-neutral-text-light;
+}
+
