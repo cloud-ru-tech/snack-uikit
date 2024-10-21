@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { CrossSVG } from '@snack-uikit/icons';
+import { CrossSVG, SearchSVG } from '@snack-uikit/icons';
 import { useLocale } from '@snack-uikit/locale';
 
 import { EmptyStateProps } from './ListEmptyState';
@@ -18,6 +18,7 @@ export function useEmptyState({
 
   return useMemo(() => {
     const noDataState: EmptyStateProps = {
+      icon: { icon: SearchSVG, appearance: 'neutral', decor: true },
       description: t('noData.description'),
       ...noDataStateProp,
     };

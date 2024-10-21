@@ -9,7 +9,15 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { List, ListProps } from '../src/components';
-import { BASE_OPTIONS, EXPAND_OPTIONS, GROUP_OPTIONS, LONG_LIST_OPTIONS, withDataTestId } from './constants';
+import {
+  BASE_OPTIONS,
+  EmptyState,
+  emptyStateSample,
+  EXPAND_OPTIONS,
+  GROUP_OPTIONS,
+  LONG_LIST_OPTIONS,
+  withDataTestId,
+} from './constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -35,6 +43,8 @@ type StoryProps = ListProps & {
   showEmptyList?: boolean;
   showCollapsedList?: boolean;
   showAsyncList?: boolean;
+  showEmptyState?: EmptyState;
+  showEmptyStateActionButton?: boolean;
   selectionMode: 'single' | 'multiple' | 'none';
 };
 
@@ -48,6 +58,8 @@ const Template: StoryFn<StoryProps> = ({
   showGroups,
   showCollapsedList,
   showAsyncList,
+  showEmptyState = EmptyState.None,
+  showEmptyStateActionButton,
   selectionMode,
   truncateVariant,
   ...args
@@ -132,6 +144,29 @@ const Template: StoryFn<StoryProps> = ({
     };
   }, [showAsyncList]);
 
+  const unfilteredItems = useMemo(
+    () =>
+      withDataTestId(
+        showGroups ? groupItemsWithSwitch : baseItemsWithSwitch,
+        '',
+        showPinBottomItems ? baseItemsWithSwitch.length : 0,
+      ),
+    [baseItemsWithSwitch, groupItemsWithSwitch, showGroups, showPinBottomItems],
+  );
+
+  const filteredItems = useMemo(() => {
+    switch (showEmptyState) {
+      case EmptyState.NotFound:
+      case EmptyState.NoData:
+        return [];
+
+      case EmptyState.DataError:
+      case EmptyState.None:
+      default:
+        return unfilteredItems;
+    }
+  }, [showEmptyState, unfilteredItems]);
+
   if (showAsyncList) {
     return (
       <div className={styles.wrapper}>
@@ -195,11 +230,7 @@ const Template: StoryFn<StoryProps> = ({
                 : undefined
             }
             search={showSearch ? { value: search, onChange: setSearch, placeholder: 'Placeholder' } : undefined}
-            items={withDataTestId(
-              showGroups ? groupItemsWithSwitch : baseItemsWithSwitch,
-              '',
-              showPinBottomItems ? baseItemsWithSwitch.length : 0,
-            )}
+            items={filteredItems}
             {...(selectionMode !== 'none'
               ? { selection: { value, onChange: setValue, mode: selectionMode } }
               : { selection: undefined })}
@@ -208,6 +239,11 @@ const Template: StoryFn<StoryProps> = ({
               value: collapse,
               onChange: setCollapseValue,
             }}
+            dataError={showEmptyState === EmptyState.DataError || args.dataError}
+            dataFiltered={showEmptyState === EmptyState.NotFound}
+            noDataState={showEmptyStateActionButton ? emptyStateSample : undefined}
+            noResultsState={showEmptyStateActionButton ? emptyStateSample : undefined}
+            errorDataState={showEmptyStateActionButton ? emptyStateSample : undefined}
             footer={
               showFooter ? (
                 <ButtonOutline
@@ -239,6 +275,8 @@ export const list = {
     showFooter: true,
     showSwitch: false,
     showGroups: true,
+    showEmptyState: EmptyState.None,
+    showEmptyStateActionButton: false,
     truncateVariant: 'end',
     marker: true,
     loading: false,
@@ -259,6 +297,17 @@ export const list = {
     showGroups: { name: '[Stories]: Show group items', control: { type: 'boolean' } },
     showCollapsedList: { name: '[Stories]: Show collapsed list', control: { type: 'boolean' } },
     showAsyncList: { name: '[Stories]: Show async list', control: { type: 'boolean' } },
+    showEmptyState: {
+      name: '[Stories]: Empty state',
+      control: { type: 'radio' },
+      options: Object.values(EmptyState),
+      defaultValue: EmptyState.None,
+    },
+    showEmptyStateActionButton: {
+      name: '[Stories]: Show empty state action button',
+      control: { type: 'boolean' },
+      if: { arg: 'showEmptyState', neq: EmptyState.None },
+    },
     truncateVariant: {
       name: '[Stories]: Truncate variant',
       control: { type: 'radio' },
@@ -272,8 +321,11 @@ export const list = {
     scrollRef: { table: { disable: true } },
     scrollContainerRef: { table: { disable: true } },
     selection: { table: { disable: true } },
+    noDataState: { table: { disable: true } },
+    noResultsState: { table: { disable: true } },
+    errorDataState: { table: { disable: true } },
     selectionMode: {
-      name: '[Story]: selection Mode',
+      name: '[Stories]: selection Mode',
       options: Object.keys(STORY_SELECTION_MODE),
       mapping: STORY_SELECTION_MODE,
       control: {

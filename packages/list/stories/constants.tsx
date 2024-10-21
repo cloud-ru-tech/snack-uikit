@@ -1,9 +1,11 @@
 import { Avatar } from '@snack-uikit/avatar';
+import { ButtonSimple } from '@snack-uikit/button';
 import { Counter } from '@snack-uikit/counter';
-import { PlaceholderSVG } from '@snack-uikit/icons';
+import { PlaceholderSVG, UpdateSVG } from '@snack-uikit/icons';
 
 import { AccordionItemProps, BaseItemProps, GroupItemProps, ItemProps, NextListItemProps } from '../src';
 import { GroupItem, GroupSelectItem, isAccordionItem, isBaseItem, isGroupItem } from '../src/components/Items';
+import { EmptyStateProps } from '../src/helperComponents';
 
 export function withDataTestId(items: ItemProps[], prefix?: string, shift?: number): ItemProps[] {
   return items.map((item, idx) => {
@@ -144,3 +146,14 @@ export const DROPLIST_OPTIONS: Array<AccordionItemProps | NextListItemProps | Ba
     items: BASE_OPTIONS.map(item => ({ ...item, disabled: true })),
   },
 ];
+
+export enum EmptyState {
+  None = 'none',
+  NotFound = 'not-found',
+  NoData = 'no-data',
+  DataError = 'data-error',
+}
+
+export const emptyStateSample: EmptyStateProps = {
+  footer: <ButtonSimple label='Update' size='m' icon={<UpdateSVG />} onClick={() => window.alert('Clicked!')} />,
+};

@@ -2,7 +2,7 @@ import { InfoBlock, InfoBlockProps } from '@snack-uikit/info-block';
 
 import styles from './styles.module.scss';
 
-export type EmptyStateProps = Pick<InfoBlockProps, 'description' | 'icon' | 'data-test-id'>;
+export type EmptyStateProps = Pick<InfoBlockProps, 'description' | 'icon' | 'data-test-id' | 'footer'>;
 
 export type ListEmptyState = {
   emptyStates: {
