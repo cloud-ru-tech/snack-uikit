@@ -27,7 +27,6 @@ const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, ...a
           defaultValue={useDefaultValue ? new Date('2023-10-15') : undefined}
           valueRender={formatter}
           onClick={increaseCounter}
-          label={CHIP_CHOICE_STORY_ARGS.label}
         />
       )}
     />
@@ -39,10 +38,22 @@ export const chipChoiceDate: StoryObj<StoryProps> = {
 
   args: {
     ...CHIP_CHOICE_STORY_ARGS,
+    mode: 'date',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    showSeconds: true,
     useDefaultValue: false,
   },
 
-  argTypes: CHIP_CHOICE_ARG_TYPES,
+  argTypes: {
+    ...CHIP_CHOICE_ARG_TYPES,
+    showSeconds: {
+      if: {
+        arg: 'mode',
+        eq: 'date-time',
+      },
+    },
+  },
 
   parameters: {
     readme: {

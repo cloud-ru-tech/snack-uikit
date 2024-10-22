@@ -37,7 +37,6 @@ const Template: StoryFn<StoryProps> = ({
         defaultValue={useDefaultValue ? defaultValue || BASE_OPTIONS[0].value : undefined}
         options={useBaseOptions ? BASE_OPTIONS : FILTER_OPTIONS}
         onClick={increaseCounter}
-        label={CHIP_CHOICE_STORY_ARGS.label}
         dropDownClassName={styles.droplist}
       />
     )}

@@ -243,6 +243,26 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | defaultValue | `Range` | - | Значение компонента по умолчанию |
 | onChange | `(value: Range) => void` | - | Колбек смены значения |
 | valueRender | `(value?: Range) => ReactNode` | - | Колбек формирующий строковое представление выбранного значения. Принимает массив выбранных значений |
+## ChipChoice.Time
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| label | `string` | - | Лейбл |
+| disabled | `boolean` | - | Деактивирован ли компонент |
+| loading | `boolean` | - | Состояние загрузки |
+| icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
+| className | `string` | - | CSS-класс |
+| tabIndex | `number` | - | HTML tab index |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
+| onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| dropDownClassName | `string` | - |  |
+| value | `TimeValue` | - | Выбранное значение. |
+| defaultValue | `TimeValue` | - | Значение по-умолчанию для uncontrolled. |
+| showSeconds | `boolean` | - | Показывать ли секунды |
+| onChange | `(value: TimeValue) => void` | - | Колбек смены значения |
+| valueRender | `(value?: TimeValue) => ReactNode` | - | Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение |
 ## isAccordionOption
 ### Props
 | name | type | default value | description |

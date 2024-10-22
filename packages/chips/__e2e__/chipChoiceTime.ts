@@ -2,9 +2,9 @@ import { fixture, test } from 'testcafe';
 
 import { chipChoiceCommonTests, createChipGetPage, getComponent } from './utils/chipChoice';
 
-fixture('ChipChoice.DateRange');
+fixture('ChipChoice.Time');
 
-const getPage = createChipGetPage('date-range');
+const getPage = createChipGetPage('time');
 
 test.page(getPage({ useDefaultValue: true }))(
   'should render with "defaultValue" and click on clearButton removes it',
@@ -15,7 +15,7 @@ test.page(getPage({ useDefaultValue: true }))(
     await t.expect(label.exists).ok();
     await t.expect(value.exists).ok();
 
-    await t.expect(value.innerText).eql('15.10.2022 — 15.10.2023');
+    await t.expect(value.innerText).eql('20:15:30');
 
     await t.click(clearButton);
 
@@ -23,4 +23,16 @@ test.page(getPage({ useDefaultValue: true }))(
   },
 );
 
-chipChoiceCommonTests(getPage, 'date-range');
+test.page(getPage({ useDefaultValue: true, showSeconds: false }))(
+  '[mode="date-time", showSeconds=false] should render with value as hh:mm',
+  async t => {
+    const { chip, value } = getComponent();
+
+    await t.expect(chip.exists).ok();
+    await t.expect(value.exists).ok();
+
+    await t.expect(value.innerText).eql('20:15');
+  },
+);
+
+chipChoiceCommonTests(getPage, 'time');

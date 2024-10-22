@@ -4,7 +4,7 @@ import { dataTestIdSelector, getTestcafeUrl } from '../../../../testcafe/utils';
 import { CHIP_CHOICE_TEST_IDS } from '../../src/constants';
 import { validateClicks, validateNoIconForSizeXs } from './commonTests';
 
-type ChipType = 'single' | 'multi' | 'date' | 'date-range';
+type ChipType = 'single' | 'multi' | 'date' | 'date-range' | 'time';
 
 const BASE_TEST_ID = 'chip-choice';
 

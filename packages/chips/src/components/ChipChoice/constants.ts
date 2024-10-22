@@ -1,4 +1,4 @@
-import { CalendarProps } from '@snack-uikit/calendar';
+import { CalendarProps, TimePickerProps } from '@snack-uikit/calendar';
 import { DroplistProps } from '@snack-uikit/list';
 
 import { BUTTON_SIZE, SIZE } from '../../constants';
@@ -16,6 +16,13 @@ export const CALENDAR_SIZE_MAP: Record<Size, CalendarProps['size']> = {
   [SIZE.S]: 's',
   [SIZE.M]: 'm',
   [SIZE.L]: 'm',
+};
+
+export const TIME_PICKER_SIZE_MAP: Record<Size, TimePickerProps['size']> = {
+  [SIZE.Xs]: 's',
+  [SIZE.S]: 's',
+  [SIZE.M]: 'm',
+  [SIZE.L]: 'l',
 };
 
 export const DROPLIST_SIZE_MAP: Record<Size, DroplistProps['size']> = {

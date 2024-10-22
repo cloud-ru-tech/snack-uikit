@@ -6,7 +6,7 @@ import { Dropdown } from '@snack-uikit/dropdown';
 import { useLocale } from '@snack-uikit/locale';
 
 import { CHIP_CHOICE_TEST_IDS, DEFAULT_EMPTY_VALUE, SIZE } from '../../../constants';
-import { CALENDAR_SIZE_MAP } from '../constants';
+import { CALENDAR_SIZE_MAP, DEFAULT_LOCALE } from '../constants';
 import { useHandleOnKeyDown } from '../hooks';
 import { ChipChoiceCommonProps } from '../types';
 import { ChipChoiceBase } from './ChipChoiceBase';
@@ -34,7 +34,7 @@ function defaultRangeFormatter({ value, allLabel }: DefaultRangeFormatterProps) 
 
   const [from, to] = value;
 
-  return `${from.toLocaleDateString()} ${DEFAULT_EMPTY_VALUE} ${to.toLocaleDateString()}`;
+  return `${from.toLocaleDateString(DEFAULT_LOCALE)} ${DEFAULT_EMPTY_VALUE} ${to.toLocaleDateString(DEFAULT_LOCALE)}`;
 }
 
 export function ChipChoiceDateRange({
@@ -78,6 +78,7 @@ export function ChipChoiceDateRange({
             setSelectedValue(value);
             closeDroplist();
           }}
+          locale={DEFAULT_LOCALE}
           // bug with focus
           // navigationStartRef={element => element?.focus()}
           onFocusLeave={closeDroplist}
