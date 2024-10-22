@@ -46,8 +46,16 @@ const Template: StoryFn<StoryProps> = ({
 
 export const chipChoiceSingle: StoryObj<StoryProps> = {
   render: Template,
-  args: CHIP_CHOICE_STORY_ARGS,
-  argTypes: CHIP_CHOICE_ARG_TYPES,
+  args: {
+    ...CHIP_CHOICE_STORY_ARGS,
+    useBaseOptions: false,
+  },
+  argTypes: {
+    ...CHIP_CHOICE_ARG_TYPES,
+    useBaseOptions: {
+      name: '[Stories]: BaseOptions',
+    },
+  },
 
   parameters: {
     readme: {

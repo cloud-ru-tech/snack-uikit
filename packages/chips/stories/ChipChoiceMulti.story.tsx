@@ -44,9 +44,15 @@ export const chipChoiceMulti: StoryObj<StoryProps> = {
 
   args: {
     ...CHIP_CHOICE_STORY_ARGS,
+    useBaseOptions: false,
   },
 
-  argTypes: CHIP_CHOICE_ARG_TYPES,
+  argTypes: {
+    ...CHIP_CHOICE_ARG_TYPES,
+    useBaseOptions: {
+      name: '[Stories]: BaseOptions',
+    },
+  },
 
   parameters: {
     readme: {

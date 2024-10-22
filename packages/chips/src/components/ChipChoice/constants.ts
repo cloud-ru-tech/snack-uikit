@@ -28,7 +28,10 @@ export const DROPLIST_SIZE_MAP: Record<Size, DroplistProps['size']> = {
 export const CHIP_CHOICE_TYPE = {
   Multiple: 'multiple',
   Date: 'date',
+  DateTime: 'date-time',
   DateRange: 'date-range',
   Single: 'single',
   Custom: 'custom',
 } as const;
+
+export const DEFAULT_LOCALE = new Intl.Locale('ru-RU');

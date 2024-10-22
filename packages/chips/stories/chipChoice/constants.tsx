@@ -89,7 +89,6 @@ export const CHIP_CHOICE_STORY_ARGS = {
   size: SIZE.S,
   disabled: false,
   loading: false,
-  searchable: true,
   'data-test-id': 'chip-choice',
   tabIndex: undefined,
   className: undefined,
@@ -97,7 +96,6 @@ export const CHIP_CHOICE_STORY_ARGS = {
   showClickCounter: false,
   customFormatter: false,
   useDefaultValue: true,
-  useBaseOptions: false,
 };
 
 export const CHIP_CHOICE_ARG_TYPES: ArgTypes = {
@@ -123,9 +121,6 @@ export const CHIP_CHOICE_ARG_TYPES: ArgTypes = {
   },
   useDefaultValue: {
     name: '[Stories]: Init component with default value',
-  },
-  useBaseOptions: {
-    name: '[Stories]: BaseOptions',
   },
 };
 

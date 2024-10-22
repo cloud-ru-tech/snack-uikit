@@ -1,5 +1,4 @@
-import { ChipChoiceRowProps } from '../src';
-import { CustomContentRenderProps } from '../src/components/ChipChoice/components';
+import { ChipChoiceRowProps, CustomContentRenderProps } from '../src';
 import { STORY_TEST_IDS } from './testIds';
 
 export type Filters = {
@@ -37,6 +36,21 @@ export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
     id: 'dates',
     label: 'Created at',
     'data-test-id': STORY_TEST_IDS.Date,
+  },
+  {
+    type: 'date-time',
+    id: 'date-time',
+    label: 'Created at with time',
+    'data-test-id': STORY_TEST_IDS.Date,
+    mode: 'date-time',
+  },
+  {
+    type: 'date-time',
+    id: 'date-time-no-sec',
+    label: 'Created at time no seconds',
+    'data-test-id': STORY_TEST_IDS.Date,
+    mode: 'date-time',
+    showSeconds: false,
   },
   {
     type: 'date-range',
