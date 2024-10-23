@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.18.0 (2024-10-23)
+
+
+### Features
+
+* **PDS-756:** Empty States action button for List ([1c53f68](https://github.com/cloud-ru-tech/snack-uikit/commit/1c53f68544fefaa8622ee9f23926e5670b71d846))
+
+
+
+
+
 ## 0.17.2 (2024-10-16)
 
 
