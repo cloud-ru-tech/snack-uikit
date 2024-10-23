@@ -85,7 +85,10 @@ export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaEle
       setInputTabIndex(-1);
       setPrefixButtonTabIndices(tabIndices => tabIndices.map((_, i) => (i === index ? 0 : -1)));
       setPostfixButtonTabIndices(getInitialPostfixButtonTabIndices);
-      prefixButtons[index].active && prefixButtons[index].ref.current?.focus();
+
+      if (prefixButtons[index]?.active) {
+        prefixButtons[index].ref.current?.focus();
+      }
     },
     [getInitialPostfixButtonTabIndices, prefixButtons],
   );
@@ -95,7 +98,10 @@ export function useButtonNavigation<T extends HTMLInputElement | HTMLTextAreaEle
       setInputTabIndex(-1);
       setPrefixButtonTabIndices(getInitialPrefixButtonTabIndices);
       setPostfixButtonTabIndices(tabIndices => tabIndices.map((_, i) => (i === index ? 0 : -1)));
-      postfixButtons[index].active && postfixButtons[index].ref.current?.focus();
+
+      if (postfixButtons[index]?.active) {
+        postfixButtons[index].ref.current?.focus();
+      }
     },
     [getInitialPrefixButtonTabIndices, postfixButtons],
   );
