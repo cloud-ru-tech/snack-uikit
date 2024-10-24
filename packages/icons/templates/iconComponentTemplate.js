@@ -21,7 +21,7 @@ const iconComponentTemplate =
     `}
     export interface ISvgIconProps extends SVGProps<SVGSVGElement> {
       className?: string;
-      size?: string | number;
+      size?: number;
       style?: React.CSSProperties;
     }
 

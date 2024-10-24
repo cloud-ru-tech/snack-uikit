@@ -3,7 +3,7 @@ const path = require('path');
 const ICON_PROPS = `
 export interface ISvgIconProps extends SVGProps<SVGSVGElement> {
   className?: string;
-  size?: string | number;
+  size?: number;
   style?: React.CSSProperties;
 } 
 `;

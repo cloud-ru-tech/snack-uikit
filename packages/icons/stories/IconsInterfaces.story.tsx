@@ -9,7 +9,7 @@ import CustomSpriteSVG from './sprites/customSprite.symbol.svg';
 import classnames from './styles.module.scss';
 
 type StoryProps = {
-  size?: number | string;
+  size?: number;
   applySprite?: boolean;
 };
 
