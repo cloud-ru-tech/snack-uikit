@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.24.0 (2024-10-28)
+
+
+### Features
+
+* **FF-5782:** sass use/forward approach ([3e53869](https://github.com/cloud-ru-tech/snack-uikit/commit/3e53869ace864a7718e434b7f410c15dbd911cd5))
+
+
+### BREAKING CHANGES
+
+
+* **FF-5782:** size prop accepts only numbers ([925de28](https://github.com/cloud-ru-tech/snack-uikit/commit/925de28d3efce8d3e436a5d6dca74c5b0b3c33b1))
+
+
+
+
 # 0.23.0 (2024-10-28)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-10-28)
+
+
+### Features
+
+* **FF-5782:** sass use/forward approach ([3e53869](https://github.com/cloud-ru-tech/snack-uikit/commit/3e53869ace864a7718e434b7f410c15dbd911cd5))
+
+
+
+
+
 # 0.10.0 (2024-10-28)
 
 
@@ -143,7 +154,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.8.1 (2024-02-27)
 
-**Note:** Version bump only for package @snack-uikit/tag
+### Only dependencies have been changed
+* [@snack-uikit/dropdown@0.4.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/dropdown/CHANGELOG.md)
+* [@snack-uikit/icons@0.24.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/scroll@0.8.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/scroll/CHANGELOG.md)
 
 
 
