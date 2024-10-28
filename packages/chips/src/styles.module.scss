@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 @mixin chip-defaults {
   cursor: pointer;
@@ -37,21 +37,21 @@
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       .label {
-        @include composite-var($typography, $size);
+        @include styles-tokens-element.composite-var($typography, $size);
       }
 
       .labelLayout {
-        @include composite-var($chip-theme, 'label-layout', $size);
+        @include styles-tokens-element.composite-var($chip-theme, 'label-layout', $size);
       }
 
       @if ($contentClassName) {
         .#{$contentClassName} {
-          @include composite-var($chip-theme, 'container', $size);
+          @include styles-tokens-element.composite-var($chip-theme, 'container', $size);
         }
       }
 
  @else {
-        @include composite-var($chip-theme, 'container', $size);
+        @include styles-tokens-element.composite-var($chip-theme, 'container', $size);
 
       }
     }
@@ -63,8 +63,8 @@
     display: inline-flex;
 
     svg {
-      width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-      height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+      width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+      height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 }
@@ -84,7 +84,7 @@
     @if $classNamesToHide {
       @each $className in $classNamesToHide {
         .#{$className} {
-          @include composite-var($chip-theme, 'label-layout', 'label', 'load-label-only');
+          @include styles-tokens-element.composite-var($chip-theme, 'label-layout', 'label', 'load-label-only');
         }
       }
     }
@@ -107,8 +107,8 @@
 }
 
 @mixin chip-outline {
-  @include outline-var($container-focused-s);
+  @include styles-tokens-element.outline-var(styles-tokens-element.$container-focused-s);
 
-  outline-color: $sys-available-complementary;
-  outline-offset: $spacing-state-focus-offset;
+  outline-color: styles-tokens-element.$sys-available-complementary;
+  outline-offset: styles-tokens-element.$spacing-state-focus-offset;
 }

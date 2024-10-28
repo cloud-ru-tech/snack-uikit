@@ -1,25 +1,25 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
 
 $sizes: 's', 'm', 'l';
 $padding-right: (
-  's': $fields-buttons-s,
-  'm': $fields-buttons-m,
-  'l': $fields-buttons-m,
+  's': styles-tokens-fields.$fields-buttons-s,
+  'm': styles-tokens-fields.$fields-buttons-m,
+  'l': styles-tokens-fields.$fields-buttons-m,
 );
 $scroll-bar-heights: (
-  's': $dimension-050m,
-  'm': calc($dimension-025m + $dimension-050m),
-  'l': $dimension-1m,
+  's': styles-tokens-fields.$dimension-050m,
+  'm': calc(styles-tokens-fields.$dimension-025m + styles-tokens-fields.$dimension-050m),
+  'l': styles-tokens-fields.$dimension-1m,
 );
 $padding-right: (
-  's': $fields-buttons-s,
-  'm': $fields-buttons-m,
-  'l': $fields-buttons-m,
+  's': styles-tokens-fields.$fields-buttons-s,
+  'm': styles-tokens-fields.$fields-buttons-m,
+  'l': styles-tokens-fields.$fields-buttons-m,
 );
 $scroll-bar-heights: (
-  's': $dimension-050m,
-  'm': calc($dimension-025m + $dimension-050m),
-  'l': $dimension-1m,
+  's': styles-tokens-fields.$dimension-050m,
+  'm': calc(styles-tokens-fields.$dimension-025m + styles-tokens-fields.$dimension-050m),
+  'l': styles-tokens-fields.$dimension-1m,
 );
 
 .container {
@@ -37,18 +37,18 @@ $scroll-bar-heights: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      --row-height: #{simple-var($theme-variables, 'sans', 'body', $size, 'line-height')};
-      --horizontal-scroll-bar-height: #{simple-var($scroll-bar-heights, $size)};
+      --row-height: #{styles-tokens-fields.simple-var(styles-tokens-fields.$theme-variables, 'sans', 'body', $size, 'line-height')};
+      --horizontal-scroll-bar-height: #{styles-tokens-fields.simple-var($scroll-bar-heights, $size)};
 
       .textarea {
         overflow: hidden;
-        padding-right: calc(simple-var($padding-right, $size, 'width') + simple-var($fields-scroll-bar-width, 'width'));
+        padding-right: calc(styles-tokens-fields.simple-var($padding-right, $size, 'width') + styles-tokens-fields.simple-var(styles-tokens-fields.$fields-scroll-bar-width, 'width'));
       }
 
       .postfix {
         position: absolute;
-        top: simple-var($fields, 'multi-line-container', $size, 'padding-top');
-        right: calc(simple-var($fields, 'multi-line-container', $size, 'padding-right') + simple-var($fields-scroll-bar-width, 'width'));
+        top: styles-tokens-fields.simple-var(styles-tokens-fields.$fields, 'multi-line-container', $size, 'padding-top');
+        right: calc(styles-tokens-fields.simple-var(styles-tokens-fields.$fields, 'multi-line-container', $size, 'padding-right') + styles-tokens-fields.simple-var(styles-tokens-fields.$fields-scroll-bar-width, 'width'));
       }
     }
   }

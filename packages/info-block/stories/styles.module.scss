@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapperResize {
   resize: horizontal;
@@ -12,7 +12,7 @@
   min-width: 304px;
   padding: 20px;
 
-  background-color: $sys-neutral-background;
-  border: 1px solid $sys-neutral-decor-default;
-  border-radius: $dimension-050m;
+  background-color: styles-theme-variables.$sys-neutral-background;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
+  border-radius: styles-theme-variables.$dimension-050m;
 }

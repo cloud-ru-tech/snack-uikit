@@ -1,10 +1,10 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $sizes: 's', 'm', 'l';
 $typography: (
-  's': $sans-body-s,
-  'm': $sans-body-m,
-  'l': $sans-body-l,
+  's': styles-theme-variables.$sans-body-s,
+  'm': styles-theme-variables.$sans-body-m,
+  'l': styles-theme-variables.$sans-body-l,
 );
 
 .wrapper {
@@ -14,11 +14,11 @@ $typography: (
   align-items: center;
   justify-content: center;
 
-  color: simple-var($sys-neutral-text-disabled);
+  color: styles-theme-variables.simple-var(styles-theme-variables.$sys-neutral-text-disabled);
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($typography, $size);
+      @include styles-theme-variables.composite-var($typography, $size);
     }
   }
 }

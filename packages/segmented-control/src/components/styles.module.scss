@@ -1,9 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-segmentedControl';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-segmentedControl';
 
 $sizes: 's', 'm', 'l';
 
 .container {
-  @include composite-var($segmented-control-container);
+  @include styles-tokens-segmentedControl.composite-var(styles-tokens-segmentedControl.$segmented-control-container);
 
   position: relative;
 
@@ -25,13 +25,13 @@ $sizes: 's', 'm', 'l';
     width: 100%;
     height: 100%;
 
-    background-color: $sys-neutral-background;
-    border-color: $sys-neutral-background;
+    background-color: styles-tokens-segmentedControl.$sys-neutral-background;
+    border-color: styles-tokens-segmentedControl.$sys-neutral-background;
     border-style: solid;
   }
 
   &[data-outline]::before {
-    border-color: $sys-neutral-decor-default;
+    border-color: styles-tokens-segmentedControl.$sys-neutral-decor-default;
   }
 
   &[data-width='full'] {
@@ -40,7 +40,7 @@ $sizes: 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}']::before {
-      @include composite-var($segmented-control, 'background', $size);
+      @include styles-tokens-segmentedControl.composite-var(styles-tokens-segmentedControl.$segmented-control, 'background', $size);
     }
   }
 }
@@ -51,7 +51,7 @@ $sizes: 's', 'm', 'l';
   flex-shrink: 1;
   justify-content: center;
 
-  min-width: 0px;
+  min-width: 0;
 
   &[data-outline] {
     flex-basis: 0;
@@ -65,13 +65,13 @@ $sizes: 's', 'm', 'l';
 
   box-sizing: border-box;
 
-  background-color: $sys-neutral-background2-level;
+  background-color: styles-tokens-segmentedControl.$sys-neutral-background2-level;
 
   transition: left 0.15s ease-in-out, width 0.15s ease-in-out;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($segmented-control, 'segment', $size, 'icon-only');
+      @include styles-tokens-segmentedControl.composite-var(styles-tokens-segmentedControl.$segmented-control, 'segment', $size, 'icon-only');
     }
   }
 }

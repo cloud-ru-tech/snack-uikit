@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
 
 .wrapper {
-  padding: $dimension-3m;
-  background-color: $sys-neutral-background1-level;
+  padding: styles-tokens-carousel.$dimension-3m;
+  background-color: styles-tokens-carousel.$sys-neutral-background1-level;
 }
 
 .hiddenPageCounter {

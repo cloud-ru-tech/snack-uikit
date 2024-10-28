@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .container {
   resize: horizontal;
@@ -9,18 +9,18 @@
 
   width: 248px;
   min-width: 248px;
-  padding: $dimension-2m;
+  padding: styles-tokens-element.$dimension-2m;
 
-  background-color: $sys-neutral-background1-level;
+  background-color: styles-tokens-element.$sys-neutral-background1-level;
 }
 
 .wrapper {
   display: flex;
-  gap: $dimension-3m;
+  gap: styles-tokens-element.$dimension-3m;
 }
 
 .rawContainer {
   width: 400px;
-  padding: $dimension-2m;
-  background-color: $sys-neutral-background1-level;
+  padding: styles-tokens-element.$dimension-2m;
+  background-color: styles-tokens-element.$sys-neutral-background1-level;
 }

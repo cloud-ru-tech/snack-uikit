@@ -1,6 +1,6 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUserAction';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUserAction';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 
 .icon {
@@ -9,19 +9,19 @@
   justify-content: center;
 
   svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }
 
 .label {
-  @include composite-var($sans-label-l);
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-label-l);
 
-  color: $sys-invert-neutral-text-main;
+  color: styles-theme-variables.$sys-invert-neutral-text-main;
 }
 
 .container {
-  @include composite-var($toaster-user-action-toast-container);
+  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterUserAction.$toaster-user-action-toast-container);
 
   display: flex;
   align-items: center;
@@ -29,23 +29,23 @@
 
   box-sizing: border-box;
 
-  background-color: $sys-invert-neutral-background;
+  background-color: styles-theme-variables.$sys-invert-neutral-background;
 
   &[data-appearance='error'] {
     .icon {
-      color: $sys-red-accent-default;
+      color: styles-theme-variables.$sys-red-accent-default;
     }
   }
 
   &[data-appearance='warning'] {
     .icon {
-      color: $sys-yellow-accent-default;
+      color: styles-theme-variables.$sys-yellow-accent-default;
     }
   }
 
   &[data-appearance='success'] {
     .icon {
-      color: $sys-green-accent-default;
+      color: styles-theme-variables.$sys-green-accent-default;
     }
   }
 }
@@ -54,11 +54,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $sys-invert-neutral-text-main
+  color: styles-theme-variables.$sys-invert-neutral-text-main
 }
 
 .contentLayout {
-  @include composite-var($toaster-user-action-toast-content-layout);
+  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterUserAction.$toaster-user-action-toast-content-layout);
 
   display: flex;
   align-items: center

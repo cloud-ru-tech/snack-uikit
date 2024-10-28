@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 @mixin item ($type) {
   width: 100px;
@@ -6,10 +6,10 @@
   margin: 10px;
 
   font-size: 1.2rem;
-  color: simple-var($theme-variables, 'sys', $type, 'text-main');
+  color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', $type, 'text-main');
 
-  background-color: simple-var($theme-variables, 'sys', $type, 'background');
-  border: 3px solid simple-var($theme-variables, 'sys', $type, 'decor-activated');
+  background-color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', $type, 'background');
+  border: 3px solid styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', $type, 'decor-activated');
   border-radius: 0.2em;
 }
 
@@ -30,6 +30,6 @@
 
 .toggleGroup {
   display: flex;
-  gap: $dimension-1m;
+  gap: styles-tokens-element.$dimension-1m;
   align-items: center;
 }

@@ -1,5 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-timeline';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-timeline';
 
 $appearances: 'primary', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
 
@@ -10,33 +9,33 @@ $appearances: 'primary', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', '
   height: 100%;
 
   &[data-variant='default'] {
-    @include composite-var($timeline-track-dot-event);
+    @include styles-tokens-timeline.composite-var(styles-tokens-timeline.$timeline-track-dot-event);
 
-    border-color: $sys-neutral-decor-default;
+    border-color: styles-tokens-timeline.$sys-neutral-decor-default;
     border-style: solid;
 
     @each $appearance in $appearances {
       &[data-appearance='#{$appearance}'] {
-        border-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+        border-color: styles-tokens-timeline.simple-var(styles-tokens-timeline.$theme-variables, 'sys', $appearance, 'accent-default');
       }
     }
   }
 
   &[data-variant='subEvent'] {
-    @include composite-var($timeline-track-dot-sub-event);
+    @include styles-tokens-timeline.composite-var(styles-tokens-timeline.$timeline-track-dot-sub-event);
 
-    background-color: $sys-neutral-decor-default;
+    background-color: styles-tokens-timeline.$sys-neutral-decor-default;
 
     @each $appearance in $appearances {
       &[data-appearance='#{$appearance}'] {
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+        background-color: styles-tokens-timeline.simple-var(styles-tokens-timeline.$theme-variables, 'sys', $appearance, 'accent-default');
       }
     }
   }
 }
 
 .trackDotContainer {
-  @include composite-var($timeline-track-dot-container);
+  @include styles-tokens-timeline.composite-var(styles-tokens-timeline.$timeline-track-dot-container);
 
   display: flex;
   flex-shrink: 0;

@@ -1,11 +1,11 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-scroll';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-colorPicker';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-scroll';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-colorPicker';
 
 $orientations: 'vertical', 'horizontal';
 $sizes: 's', 'm';
 
 .container {
-  @include composite-var($color-picker-container);
+  @include styles-tokens-scroll.composite-var(styles-tokens-colorPicker.$color-picker-container);
 
   display: flex;
   flex-direction: column;
@@ -18,13 +18,13 @@ $sizes: 's', 'm';
   justify-content: space-between;
 
   box-sizing: border-box;
-  padding-top: $space-color-picker-footer-gap;
+  padding-top: styles-tokens-scroll.$space-color-picker-footer-gap;
 
-  border-top: solid 1px $sys-neutral-decor-default;
+  border-top: solid 1px styles-tokens-scroll.$sys-neutral-decor-default;
 }
 
 .colorModel {
-  @include composite-var($color-picker-color-model);
+  @include styles-tokens-scroll.composite-var(styles-tokens-colorPicker.$color-picker-color-model);
 
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ $sizes: 's', 'm';
 }
 
 .colorFields {
-  @include composite-var($color-picker-color-model);
+  @include styles-tokens-scroll.composite-var(styles-tokens-colorPicker.$color-picker-color-model);
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -56,7 +56,7 @@ $scrollbar-slider-active-zone: 12px;
 /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 :global {
   .#{$theme-name} .react-colorful {
-    @include composite-var($color-picker-color-palette);
+    @include styles-tokens-scroll.composite-var(styles-tokens-colorPicker.$color-picker-color-palette);
 
     width: 100%;
     min-height: 200px;
@@ -67,16 +67,16 @@ $scrollbar-slider-active-zone: 12px;
     }
 
     .react-colorful__pointer {
-      @include composite-var($color-picker-color-slider);
+      @include styles-tokens-scroll.composite-var(styles-tokens-colorPicker.$color-picker-color-slider);
 
       /* stylelint-disable-next-line color-no-hex */
       border-color: #fff;
-      box-shadow: $box-shadow-elevation-level3;
+      box-shadow: styles-tokens-scroll.$box-shadow-elevation-level3;
     }
 
     .react-colorful__hue,
     .react-colorful__alpha {
-      @include composite-var($color-picker-slider-track);
+      @include styles-tokens-scroll.composite-var(styles-tokens-colorPicker.$color-picker-slider-track);
     }
   }
 }

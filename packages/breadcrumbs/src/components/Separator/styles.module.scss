@@ -1,16 +1,16 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $sizes: 'xs', 's';
 
 .separator {
   display: flex;
   align-items: center;
-  color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+  color: styles-theme-variables.simple-var(styles-theme-variables.$theme-variables, 'sys', 'neutral', 'text-disabled');
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($breadcrumbs, 'separator', $size);
+      @include styles-theme-variables.composite-var(styles-tokens-breadcrumbs.$breadcrumbs, 'separator', $size);
     }
   }
 }

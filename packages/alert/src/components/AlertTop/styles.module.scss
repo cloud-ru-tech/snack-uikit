@@ -1,10 +1,10 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert-alertTop';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert-alertTop';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green', 'blue';
 
 .alertTop {
-  @include composite-var($alert-top-container-container);
+  @include styles-tokens-alert-alertTop.composite-var(styles-tokens-alert-alertTop.$alert-top-container-container);
 
   display: flex;
   justify-content: space-between;
@@ -13,11 +13,11 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green', 'blue';
   @each $color in $colors {
     &[data-color='#{$color}'] {
       @if $color == 'invert-neutral' {
-        background-color: $sys-invert-neutral-background;
+        background-color: styles-tokens-alert-alertTop.$sys-invert-neutral-background;
       }
 
  @else {
-        background-color: simple-var($theme-variables, 'sys', $color, 'accent-default');
+        background-color: styles-tokens-alert-alertTop.simple-var(styles-tokens-alert-alertTop.$theme-variables, 'sys', $color, 'accent-default');
       }
     }
   }
@@ -31,50 +31,50 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green', 'blue';
   @each $color in $colors {
     &[data-color='#{$color}'] {
       @if $color == 'invert-neutral' {
-        color: $sys-invert-neutral-text-main;
+        color: styles-tokens-alert-alertTop.$sys-invert-neutral-text-main;
       }
 
  @else {
-        color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+        color: styles-tokens-alert-alertTop.simple-var(styles-tokens-alert-alertTop.$theme-variables, 'sys', $color, 'on-accent');
       }
     }
   }
 
   svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }
 
 .title {
-  @include composite-var($sans-title-s);
+  @include styles-tokens-alert-alertTop.composite-var(styles-tokens-alert-alertTop.$sans-title-s);
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
       @if $color == 'invert-neutral' {
-        color: $sys-invert-neutral-text-main;
+        color: styles-tokens-alert-alertTop.$sys-invert-neutral-text-main;
       }
 
  @else {
-        color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+        color: styles-tokens-alert-alertTop.simple-var(styles-tokens-alert-alertTop.$theme-variables, 'sys', $color, 'on-accent');
       }
     }
   }
 }
 
 .description {
-  @include composite-var($sans-body-m);
+  @include styles-tokens-alert-alertTop.composite-var(styles-tokens-alert-alertTop.$sans-body-m);
 
   word-wrap: break-word;
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
       @if $color == 'invert-neutral' {
-        color: $sys-invert-neutral-text-main;
+        color: styles-tokens-alert-alertTop.$sys-invert-neutral-text-main;
       }
 
  @else {
-        color: simple-var($theme-variables, 'sys', $color, 'on-accent');
+        color: styles-tokens-alert-alertTop.simple-var(styles-tokens-alert-alertTop.$theme-variables, 'sys', $color, 'on-accent');
       }
     }
   }
@@ -82,13 +82,13 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green', 'blue';
 
 .contentWrapper {
   display: flex;
-  gap: $dimension-2m;
+  gap: styles-tokens-alert-alertTop.$dimension-2m;
   align-items: center;
   min-width: 0;
 }
 
 .contentLayout {
-  @include composite-var($alert-top-container-content-layout);
+  @include styles-tokens-alert-alertTop.composite-var(styles-tokens-alert-alertTop.$alert-top-container-content-layout);
 
   display: flex;
   flex-direction: column;
@@ -101,6 +101,6 @@ $colors: 'invert-neutral', 'primary', 'red', 'yellow', 'green', 'blue';
 
 .actions {
   display: flex;
-  gap: $dimension-2m;
+  gap: styles-tokens-alert-alertTop.$dimension-2m;
   align-items: center;
 }

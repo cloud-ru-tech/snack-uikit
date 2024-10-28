@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
 
 $sizes: 's', 'm';
 
@@ -11,14 +11,14 @@ $sizes: 's', 'm';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($toggles, $size, $component, 'container');
+      @include styles-tokens-toggles.composite-var(styles-tokens-toggles.$toggles, $size, $component, 'container');
     }
   }
 
   &[data-focusvisible=true] {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-toggles.outline-var(styles-tokens-element.$container-focused-s);
     &[data-size='s'] {
-      outline-offset: simple-var($theme-variables, 'border-width', 'state-focus', 's');
+      outline-offset: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'border-width', 'state-focus', 's');
     }
   }
 }

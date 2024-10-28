@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .callToAction {
-  @include composite-var($card-call-to-action);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-call-to-action);
 
   display: flex;
   align-items: center;
@@ -14,14 +14,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $sys-primary-accent-default;
+  color: styles-tokens-card.$sys-primary-accent-default;
   
   svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }
 
 .label {
-  color: $sys-primary-accent-default;
+  color: styles-tokens-card.$sys-primary-accent-default;
 }

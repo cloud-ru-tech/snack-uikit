@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tabs';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tabs';
 
 $directions: 'left', 'right';
 $types: 'primary', 'secondary';
@@ -17,7 +17,7 @@ $types: 'primary', 'secondary';
 
       @each $type in $types {
         &[data-type=#{$type}] {
-          padding-#{$direction}: simple-var($theme-variables, 'space', 'tabs', $type, 'scroll-button-layout');
+          padding-#{$direction}: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'space', 'tabs', $type, 'scroll-button-layout');
         }
       }
     }

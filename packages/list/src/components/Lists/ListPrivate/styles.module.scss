@@ -1,11 +1,11 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
 
 $loader-height: (
-  's': $dimension-3m,
-  'm': $dimension-4m,
-  'l': $dimension-5m,
+  's': styles-tokens-element.$dimension-3m,
+  'm': styles-tokens-element.$dimension-4m,
+  'l': styles-tokens-element.$dimension-5m,
 );
 
 .loader {
@@ -15,10 +15,10 @@ $loader-height: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      height: simple-var($loader-height, $size);
+      height: styles-tokens-element.simple-var($loader-height, $size);
 
       &[data-no-items] {
-        $no-items-loading-height: calc(3 * simple-var($loader-height, $size));
+        $no-items-loading-height: calc(3 * styles-tokens-element.simple-var($loader-height, $size));
 
         min-width: calc(2 * $no-items-loading-height);
         height: $no-items-loading-height;
@@ -27,15 +27,15 @@ $loader-height: (
   }
 
   &:focus-visible {
-    @include outline-inside-var($container-focused-s);
+    @include styles-tokens-element.outline-inside-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-element.$sys-available-complementary;
   }
 }
 
 .scrollStub {
-  height: calc($dimension-025m / 2);
-  margin-top: calc($dimension-025m / -2);
+  height: calc(styles-tokens-element.$dimension-025m / 2);
+  margin-top: calc(styles-tokens-element.$dimension-025m / -2);
   background: transparent;
 }
 
@@ -43,7 +43,7 @@ $loader-height: (
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: $dimension-050m;
+  padding: styles-tokens-element.$dimension-050m;
 }
 
 .content {

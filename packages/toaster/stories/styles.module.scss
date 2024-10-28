@@ -1,19 +1,19 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
   display: flex;
-  gap: $dimension-1m;
+  gap: styles-theme-variables.$dimension-1m;
   align-items: center;
   justify-content: center;
 
   width: max-content;
-  margin-bottom: $dimension-2m;
-  padding: $dimension-3m;
+  margin-bottom: styles-theme-variables.$dimension-2m;
+  padding: styles-theme-variables.$dimension-3m;
 
-  background-color: $sys-neutral-background1-level;
-  border: 1px solid $sys-neutral-decor-default;
-  border-radius: $dimension-050m;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
+  border-radius: styles-theme-variables.$dimension-050m;
 }
 
 $border-width: 0.5px;
@@ -21,8 +21,8 @@ $border-width: 0.5px;
 .table {
   display: inline-grid;
   grid-template-columns: repeat(2, max-content);
-  background-color: $sys-neutral-background1-level;
-  border: $border-width solid $sys-neutral-decor-default;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: $border-width solid styles-theme-variables.$sys-neutral-decor-default;
 }
 
 .cell {
@@ -30,18 +30,18 @@ $border-width: 0.5px;
   align-items: center;
   justify-content: center;
 
-  padding: $dimension-1m;
+  padding: styles-theme-variables.$dimension-1m;
 
-  border: $border-width solid $sys-neutral-decor-disabled;
+  border: $border-width solid styles-theme-variables.$sys-neutral-decor-disabled;
 }
 
 .headerCell {
-  min-width: $dimension-6m;
+  min-width: styles-theme-variables.$dimension-6m;
   text-transform: uppercase;
 }
 
 .toastContainer {
-  @include composite-var($toaster-system-event-toaster-container);
+  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toaster-container);
 
   box-sizing: border-box;
 }

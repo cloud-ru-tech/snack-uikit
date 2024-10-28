@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
-  resize: auto;
+  resize: both;
   
   overflow: auto;
 
@@ -12,6 +12,6 @@
   max-height: 750px;
   padding: 24px;
 
-  background-color: $sys-neutral-background;
+  background-color: styles-theme-variables.$sys-neutral-background;
 }
 

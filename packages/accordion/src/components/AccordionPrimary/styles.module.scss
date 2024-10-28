@@ -1,10 +1,10 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
 
 .accordionPrimary {
-  --accordion-header-padding-horizontal: #{$space-accordion-collapse-block-primary-horizontal-padding};
-  --accordion-header-padding-vertical: #{$space-accordion-collapse-block-primary-vertical-padding};
+  --accordion-header-padding-horizontal: #{styles-tokens-accordion.$space-accordion-collapse-block-primary-horizontal-padding};
+  --accordion-header-padding-vertical: #{styles-tokens-accordion.$space-accordion-collapse-block-primary-vertical-padding};
 
-  @include composite-var($accordion-primary);
+  @include styles-tokens-accordion.composite-var(styles-tokens-accordion.$accordion-primary);
 
   display: flex;
   flex-direction: column;

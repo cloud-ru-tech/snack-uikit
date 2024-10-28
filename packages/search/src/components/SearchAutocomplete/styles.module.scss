@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-search';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-search';
 
 .wrap {
   display: flex;
@@ -8,7 +8,7 @@
 }
 
 .triggerClassName {
-  --offset: #{$space-drop-list-drop-offset};
+  --offset: #{styles-tokens-search.$space-drop-list-drop-offset};
 
   display: flex;
   flex-grow: 1;

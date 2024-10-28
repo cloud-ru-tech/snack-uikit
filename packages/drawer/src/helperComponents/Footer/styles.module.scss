@@ -1,14 +1,14 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-drawer';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-drawer';
 
 .footer {
-  @include composite-var($drawer-footer);
+  @include styles-tokens-drawer.composite-var(styles-tokens-drawer.$drawer-footer);
 
   display: flex;
   flex-direction: column;
 }
 
 .footerActions {
-  @include composite-var($drawer-action-row);
+  @include styles-tokens-drawer.composite-var(styles-tokens-drawer.$drawer-action-row);
 
   display: flex;
   flex-direction: row-reverse;

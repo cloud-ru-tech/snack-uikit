@@ -1,22 +1,21 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipToggle';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '../../styles.module';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipToggle';
+@use '../../styles.module';
 
 $sizes: 'xs', 's', 'm', 'l';
 
 $typography: (
-  'xs': $sans-label-s,
-  's': $sans-label-m,
-  'm': $sans-label-l,
-  'l': $sans-label-l,
+  'xs': styles-tokens-chips-chipToggle.$sans-label-s,
+  's': styles-tokens-chips-chipToggle.$sans-label-m,
+  'm': styles-tokens-chips-chipToggle.$sans-label-l,
+  'l': styles-tokens-chips-chipToggle.$sans-label-l,
 );
 
 .toggleChipContent {
-  @include chip-defaults;
+  @include styles.chip-defaults;
 
-  color: $sys-neutral-text-support;
-  background-color: $sys-neutral-background1-level;
-  border-color: $sys-neutral-decor-default;
+  color: styles-tokens-chips-chipToggle.$sys-neutral-text-support;
+  background-color: styles-tokens-chips-chipToggle.$sys-neutral-background1-level;
+  border-color: styles-tokens-chips-chipToggle.$sys-neutral-decor-default;
 }
 
 .toggleChipInput {
@@ -32,16 +31,16 @@ $typography: (
   opacity: 0;
 
   &:focus-visible + .toggleChipContent {
-    @include chip-outline;
+    @include styles.chip-outline;
 
-    color: $sys-neutral-text-main;
-    background-color: $sys-neutral-background2-level;
-    border-color: $sys-neutral-decor-hovered;
+    color: styles-tokens-chips-chipToggle.$sys-neutral-text-main;
+    background-color: styles-tokens-chips-chipToggle.$sys-neutral-background2-level;
+    border-color: styles-tokens-chips-chipToggle.$sys-neutral-decor-hovered;
   }
 }
 
 .toggleChip {
-  @include chip-anatomy-styles($chip-toggle, $sizes, $typography, toggleChipContent);
+  @include styles.chip-anatomy-styles(styles-tokens-chips-chipToggle.$chip-toggle, $sizes, $typography, toggleChipContent);
 
   position: relative;
 
@@ -53,100 +52,100 @@ $typography: (
   outline-offset: 0;
 
   .icon {
-    color: $sys-neutral-text-support;
+    color: styles-tokens-chips-chipToggle.$sys-neutral-text-support;
   }
 
   &:hover {
    .toggleChipContent {
-      color: $sys-neutral-text-main;
-      background-color: $sys-neutral-background2-level;
-      border-color: $sys-neutral-decor-hovered;
+      color: styles-tokens-chips-chipToggle.$sys-neutral-text-main;
+      background-color: styles-tokens-chips-chipToggle.$sys-neutral-background2-level;
+      border-color: styles-tokens-chips-chipToggle.$sys-neutral-decor-hovered;
     }
   }
 
   &:active {
     .toggleChipContent {
-      color: $sys-neutral-text-main;
-      background-color: $sys-neutral-background;
-      border-color: $sys-neutral-decor-activated;
+      color: styles-tokens-chips-chipToggle.$sys-neutral-text-main;
+      background-color: styles-tokens-chips-chipToggle.$sys-neutral-background;
+      border-color: styles-tokens-chips-chipToggle.$sys-neutral-decor-activated;
     }
   }
 
   &[data-loading] {
-    @include chip-loading-state($chip-toggle, '&[data-variant="label-only"]', label, toggleChipContent);
+    @include styles.chip-loading-state(styles-tokens-chips-chipToggle.$chip-toggle, '&[data-variant="label-only"]', label, toggleChipContent);
 
     .toggleChipContent {
-      color: $sys-neutral-text-main;
-      background-color: $sys-neutral-background;
-      border-color: $sys-neutral-decor-activated;
+      color: styles-tokens-chips-chipToggle.$sys-neutral-text-main;
+      background-color: styles-tokens-chips-chipToggle.$sys-neutral-background;
+      border-color: styles-tokens-chips-chipToggle.$sys-neutral-decor-activated;
     }
   }
 
   &[data-disabled] {
     .toggleChipContent {
       cursor: not-allowed;
-      color: $sys-neutral-text-light;
-      background-color: $sys-neutral-background;
-      border-color: $sys-neutral-decor-disabled;
+      color: styles-tokens-chips-chipToggle.$sys-neutral-text-light;
+      background-color: styles-tokens-chips-chipToggle.$sys-neutral-background;
+      border-color: styles-tokens-chips-chipToggle.$sys-neutral-decor-disabled;
     }
 
     .icon {
-      color: $sys-neutral-text-light;
+      color: styles-tokens-chips-chipToggle.$sys-neutral-text-light;
     }
   }
 
   &[data-checked] {
     .icon {
-      color: $sys-primary-text-support;
+      color: styles-tokens-chips-chipToggle.$sys-primary-text-support;
     }
 
     .toggleChipContent {
-      color: $sys-primary-text-support;
-      background-color: $sys-primary-decor-default;
+      color: styles-tokens-chips-chipToggle.$sys-primary-text-support;
+      background-color: styles-tokens-chips-chipToggle.$sys-primary-decor-default;
       border-color: transparent;
     }
 
     &:hover {
       .toggleChipContent {
-        color: $sys-primary-text-main;
-        background-color: $sys-primary-decor-hovered;
+        color: styles-tokens-chips-chipToggle.$sys-primary-text-main;
+        background-color: styles-tokens-chips-chipToggle.$sys-primary-decor-hovered;
         border-color: transparent;
       }
     }
 
     &:active {
       .toggleChipContent {
-        color: $sys-primary-text-main;
-        background-color: $sys-primary-decor-activated;
+        color: styles-tokens-chips-chipToggle.$sys-primary-text-main;
+        background-color: styles-tokens-chips-chipToggle.$sys-primary-decor-activated;
         border-color: transparent;
       }
     }
 
     .toggleChipInput {
       &:focus-visible + .toggleChipContent {
-        color: $sys-primary-text-main;
-        background-color: $sys-primary-decor-hovered;
+        color: styles-tokens-chips-chipToggle.$sys-primary-text-main;
+        background-color: styles-tokens-chips-chipToggle.$sys-primary-decor-hovered;
         border-color: transparent;
       }
     }
 
     &[data-loading] {
       .toggleChipInput + .toggleChipContent {
-        color: $sys-neutral-text-main;
-        background-color: $sys-neutral-background;
-        border-color: $sys-neutral-decor-activated;
+        color: styles-tokens-chips-chipToggle.$sys-neutral-text-main;
+        background-color: styles-tokens-chips-chipToggle.$sys-neutral-background;
+        border-color: styles-tokens-chips-chipToggle.$sys-neutral-decor-activated;
       }
     }
 
     &[data-disabled] {
       .toggleChipInput + .toggleChipContent {
-        color: $sys-neutral-text-light;
-        background-color: $sys-neutral-decor-disabled;
+        color: styles-tokens-chips-chipToggle.$sys-neutral-text-light;
+        background-color: styles-tokens-chips-chipToggle.$sys-neutral-decor-disabled;
         border-color: transparent;
       }
 
       .icon {
-        color: $sys-neutral-text-light;
+        color: styles-tokens-chips-chipToggle.$sys-neutral-text-light;
       }
     }
   }

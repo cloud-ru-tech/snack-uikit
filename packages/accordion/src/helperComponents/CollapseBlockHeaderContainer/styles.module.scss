@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
 
 .button {
   &[data-expanded] {
@@ -9,7 +9,7 @@
 }
 
 .header {
-  @include composite-var($collapse-block-container-header-container);
+  @include styles-tokens-accordion.composite-var(styles-tokens-accordion.$collapse-block-container-header-container);
 
   cursor: pointer;
 
@@ -27,7 +27,7 @@
   &:hover {
     .button  { 
       span {
-        color: $sys-neutral-accent-hovered;
+        color: styles-tokens-accordion.$sys-neutral-accent-hovered;
       }
     }
   }
@@ -36,11 +36,11 @@
 .text {
   display: flex;
   flex-direction: column;
-  max-width: calc(100% - var(--width, 0px) - $space-accordion-collapse-block-title-gap);
+  max-width: calc(100% - var(--width, 0px) - styles-tokens-accordion.$space-accordion-collapse-block-title-gap);
 }
 
 .functionLayout {
-  @include composite-var($collapse-block-container-header-function-layout);
+  @include styles-tokens-accordion.composite-var(styles-tokens-accordion.$collapse-block-container-header-function-layout);
 
   display: flex;
   flex-shrink: 0;

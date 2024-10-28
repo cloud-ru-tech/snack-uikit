@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .tableHeaderResizeHandle {
   cursor: ew-resize;
@@ -10,7 +10,7 @@
   right: 0;
   transform: translateX(50%);
 
-  width: $dimension-1m;
+  width: styles-tokens-table.$dimension-1m;
   height: 100%;
 
   opacity: 0;
@@ -23,10 +23,10 @@
     left: 50%;
     transform: translateX(-50%);
 
-    width: $border-width-table;
+    width: styles-tokens-table.$border-width-table;
     height: 100%;
 
-    background-color: $sys-neutral-decor-hovered;
+    background-color: styles-tokens-table.$sys-neutral-decor-hovered;
   }
 
   &[data-resizing] {
@@ -46,7 +46,7 @@
   width: 1px;
   height: 100%;
 
-  background-color: $sys-neutral-decor-activated;
+  background-color: styles-tokens-table.$sys-neutral-decor-activated;
 
   &::after {
     content: '';
@@ -56,13 +56,13 @@
     left: 0;
     transform: translateX(-50%);
 
-    width: calc(100% + $dimension-4m);
+    width: calc(100% + styles-tokens-table.$dimension-4m);
     height: 100%;
   }
 }
 
 .tableHeaderCell {
-  @include composite-var($table-head-column);
+  @include styles-tokens-table.composite-var(styles-tokens-table.$table-head-column);
 
   position: relative;
 
@@ -84,10 +84,10 @@
     left: 50%;
     transform: translateX(-50%);
 
-    width: calc(100% - $space-table-head-separator-padding * 2);
-    height: $border-width-table;
+    width: calc(100% - styles-tokens-table.$space-table-head-separator-padding * 2);
+    height: styles-tokens-table.$border-width-table;
 
-    background-color: $sys-neutral-decor-default;
+    background-color: styles-tokens-table.$sys-neutral-decor-default;
   }
 
   &:hover {
@@ -104,7 +104,7 @@
     &::after {
       left: 0;
       transform: none;
-      width: calc(100% - $space-table-head-separator-padding);
+      width: calc(100% - styles-tokens-table.$space-table-head-separator-padding);
     }
   }
 
@@ -134,7 +134,7 @@
       }
 
       .tableHeaderResizeIndicator {
-        right: calc($dimension-1m / 2);
+        right: calc(styles-tokens-table.$dimension-1m / 2);
       }
     }
   }
@@ -150,7 +150,7 @@
 }
 
 .tableHeaderCellName {
-  @include composite-var($table-head-name-layout);
+  @include styles-tokens-table.composite-var(styles-tokens-table.$table-head-name-layout);
 
   display: inline-flex;
   align-items: center;
@@ -158,16 +158,16 @@
   box-sizing: border-box;
   min-width: 0;
 
-  color: simple-var($sys-neutral-text-light);
+  color: styles-tokens-table.simple-var(styles-tokens-table.$sys-neutral-text-light);
 }
 
 .tableHeaderIcon {
   display: flex;
   box-sizing: border-box;
-  color: simple-var($sys-neutral-text-light);
+  color: styles-tokens-table.simple-var(styles-tokens-table.$sys-neutral-text-light);
 
   svg {
-    width: simple-var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
-    height: simple-var($icon-xs) !important; /* stylelint-disable-line declaration-no-important */
+    width: styles-tokens-table.simple-var(styles-tokens-element.$icon-xs) !important; /* stylelint-disable-line declaration-no-important */
+    height: styles-tokens-table.simple-var(styles-tokens-element.$icon-xs) !important; /* stylelint-disable-line declaration-no-important */
   }
 }

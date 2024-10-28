@@ -15,15 +15,14 @@
 .text2AndMoreLines {
   overflow: hidden;
   display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
 
   max-width: 100%;
   margin: 0;
 
   text-overflow: ellipsis;
   word-break: initial;
-
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--max-lines);
 }
 
 .tooltipTrigger {

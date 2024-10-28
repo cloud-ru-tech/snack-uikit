@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
 
 .tableEmptyStateWrapper {
   display: flex;
@@ -7,6 +7,6 @@
   justify-content: center;
 
   box-sizing: border-box;
-  height: calc((var(--page-size, 10) * $size-table-line-height) + $size-table-line-height);
-  padding: $dimension-3m;
+  height: calc((var(--page-size, 10) * styles-tokens-table.$size-table-line-height) + styles-tokens-table.$size-table-line-height);
+  padding: styles-tokens-table.$dimension-3m;
 }

@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $containerSize: 1px;
 
@@ -7,7 +7,7 @@ $containerSize: 1px;
   margin: 0;
   padding: 0;
 
-  background-color: $sys-neutral-decor-default;
+  background-color: styles-theme-variables.$sys-neutral-decor-default;
   border: none;
 }
 

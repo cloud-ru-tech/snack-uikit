@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
 
@@ -10,8 +10,8 @@ $sizes: 's', 'm', 'l';
   align-items: center;
   justify-content: center;
 
-  width: $dimension-3m;
-  height: $dimension-3m;
+  width: styles-tokens-dropList.$dimension-3m;
+  height: styles-tokens-dropList.$dimension-3m;
 }
 
 .beforeContent {
@@ -21,10 +21,10 @@ $sizes: 's', 'm', 'l';
   align-items: center;
   justify-content: center;
 
-  width: $icon-s;
-  height: $icon-s;
+  width: styles-tokens-element.$icon-s;
+  height: styles-tokens-element.$icon-s;
 
-  color: $sys-neutral-text-light;
+  color: styles-tokens-dropList.$sys-neutral-text-light;
 
   svg {
     max-width: 100%;
@@ -35,12 +35,12 @@ $sizes: 's', 'm', 'l';
 .expandableIcon {
   display: flex;
   align-items: center;
-  color: $sys-neutral-text-light;
+  color: styles-tokens-dropList.$sys-neutral-text-light;
   fill: currentColor;
 }
 
 .markerContainer {
-  @include composite-var($drop-list, 'item', 'marker-container');
+  @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, 'item', 'marker-container');
 
   pointer-events: none;
 
@@ -52,7 +52,7 @@ $sizes: 's', 'm', 'l';
   height: 100%;
 
   &:before {
-    @include composite-var($drop-list, 'item', 'marker');
+    @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, 'item', 'marker');
 
     content: '';
     display: block;
@@ -65,11 +65,11 @@ $sizes: 's', 'm', 'l';
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       padding-left: calc(
-        var(--level, 0) * $dimension-050m + simple-var($drop-list, 'item', $size, 'container', 'padding-left')
+        var(--level, 0) * styles-tokens-dropList.$dimension-050m + styles-tokens-dropList.simple-var(styles-tokens-dropList.$drop-list, 'item', $size, 'container', 'padding-left')
       );
 
       .headline {
-        @include composite-var($drop-list, 'item', $size, 'headline');
+        @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, 'item', $size, 'headline');
       }
     }
   }
@@ -82,11 +82,11 @@ $sizes: 's', 'm', 'l';
 .innerWrapper {
   &[data-disabled] {
     .expandableIcon {
-      color: $sys-neutral-text-disabled;
+      color: styles-tokens-dropList.$sys-neutral-text-disabled;
     }
 
     .beforeContent {
-      opacity: $opacity-a064;
+      opacity: styles-tokens-dropList.$opacity-a064;
     }
 
     .droplistItem {
@@ -98,31 +98,31 @@ $sizes: 's', 'm', 'l';
   &[data-checked] {
     &[data-variant='single'] {
       &::before {
-        opacity: $opacity-a008;
-        background-color: $sys-primary-accent-default;
+        opacity: styles-tokens-dropList.$opacity-a008;
+        background-color: styles-tokens-dropList.$sys-primary-accent-default;
       }
 
       &:hover {
         &::before {
-          opacity: $opacity-a016;
-          background-color: $sys-primary-accent-default;
+          opacity: styles-tokens-dropList.$opacity-a016;
+          background-color: styles-tokens-dropList.$sys-primary-accent-default;
         }
       }
     }
 
     .markerContainer:before {
-      background-color: $sys-primary-accent-default;
+      background-color: styles-tokens-dropList.$sys-primary-accent-default;
     }
 
     .droplistItem:focus-visible {
       &[data-variant='single'] {
-        outline-color: $sys-primary-accent-default;
+        outline-color: styles-tokens-dropList.$sys-primary-accent-default;
       }
     }
 
     &[data-disabled] {
       .markerContainer:before {
-        background-color: $sys-neutral-text-disabled;
+        background-color: styles-tokens-dropList.$sys-neutral-text-disabled;
       }
     }
   }

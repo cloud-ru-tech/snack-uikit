@@ -1,92 +1,92 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tag';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tag';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 'xs', 's';
 $label-typography: (
-  'xs': $sans-label-s,
-  's': $sans-label-m,
+  'xs': styles-tokens-tag.$sans-label-s,
+  's': styles-tokens-tag.$sans-label-m,
 );
 $appearances: (
   'neutral': (
-    'container': $sys-neutral-decor-default,
-    'container-disabled': $sys-neutral-decor-disabled,
-    'label': $sys-neutral-text-support,
-    'icon': $sys-neutral-text-light,
-    'icon-active': $sys-neutral-text-main,
-    'button-hovered': $sys-neutral-decor-hovered,
-    'button-active': $sys-neutral-decor-activated,
+    'container': styles-tokens-tag.$sys-neutral-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-neutral-decor-disabled,
+    'label': styles-tokens-tag.$sys-neutral-text-support,
+    'icon': styles-tokens-tag.$sys-neutral-text-light,
+    'icon-active': styles-tokens-tag.$sys-neutral-text-main,
+    'button-hovered': styles-tokens-tag.$sys-neutral-decor-hovered,
+    'button-active': styles-tokens-tag.$sys-neutral-decor-activated,
   ),
   'primary': (
-    'container': $sys-primary-decor-default,
-    'container-disabled': $sys-primary-decor-disabled,
-    'label': $sys-primary-text-support,
-    'icon': $sys-primary-text-light,
-    'icon-active': $sys-primary-text-main,
-    'button-hovered': $sys-primary-decor-hovered,
-    'button-active': $sys-primary-decor-activated,
+    'container': styles-tokens-tag.$sys-primary-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-primary-decor-disabled,
+    'label': styles-tokens-tag.$sys-primary-text-support,
+    'icon': styles-tokens-tag.$sys-primary-text-light,
+    'icon-active': styles-tokens-tag.$sys-primary-text-main,
+    'button-hovered': styles-tokens-tag.$sys-primary-decor-hovered,
+    'button-active': styles-tokens-tag.$sys-primary-decor-activated,
   ),
   'red': (
-    'container': $sys-red-decor-default,
-    'container-disabled': $sys-red-decor-disabled,
-    'label': $sys-red-text-support,
-    'icon': $sys-red-text-light,
-    'icon-active': $sys-red-text-main,
-    'button-hovered': $sys-red-decor-hovered,
-    'button-active': $sys-red-decor-activated,
+    'container': styles-tokens-tag.$sys-red-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-red-decor-disabled,
+    'label': styles-tokens-tag.$sys-red-text-support,
+    'icon': styles-tokens-tag.$sys-red-text-light,
+    'icon-active': styles-tokens-tag.$sys-red-text-main,
+    'button-hovered': styles-tokens-tag.$sys-red-decor-hovered,
+    'button-active': styles-tokens-tag.$sys-red-decor-activated,
   ),
   'orange': (
-    'container': $sys-orange-decor-default,
-    'container-disabled': $sys-orange-decor-disabled,
-    'label': $sys-orange-text-support,
-    'icon': $sys-orange-text-light,
-    'icon-active': $sys-orange-text-main,
-    'button-hovered': $sys-orange-decor-hovered,
-    'button-active': $sys-orange-decor-activated,
+    'container': styles-tokens-tag.$sys-orange-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-orange-decor-disabled,
+    'label': styles-tokens-tag.$sys-orange-text-support,
+    'icon': styles-tokens-tag.$sys-orange-text-light,
+    'icon-active': styles-tokens-tag.$sys-orange-text-main,
+    'button-hovered': styles-tokens-tag.$sys-orange-decor-hovered,
+    'button-active': styles-tokens-tag.$sys-orange-decor-activated,
   ),
   'yellow': (
-    'container': $sys-yellow-decor-default,
-    'container-disabled': $sys-yellow-decor-disabled,
-    'label': $sys-yellow-text-support,
-    'icon': $sys-yellow-text-light,
-    'icon-active': $sys-yellow-text-main,
-    'button-hovered': $sys-yellow-decor-hovered,
-    'button-active': $sys-yellow-decor-activated,
+    'container': styles-tokens-tag.$sys-yellow-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-yellow-decor-disabled,
+    'label': styles-tokens-tag.$sys-yellow-text-support,
+    'icon': styles-tokens-tag.$sys-yellow-text-light,
+    'icon-active': styles-tokens-tag.$sys-yellow-text-main,
+    'button-hovered': styles-tokens-tag.$sys-yellow-decor-hovered,
+    'button-active': styles-tokens-tag.$sys-yellow-decor-activated,
   ),
   'green': (
-    'container': $sys-green-decor-default,
-    'container-disabled': $sys-green-decor-disabled,
-    'label': $sys-green-text-support,
-    'icon': $sys-green-text-light,
-    'icon-active': $sys-green-text-main,
-    'button-hovered': $sys-green-decor-hovered,
-    'button-active': $sys-green-decor-activated,
+    'container': styles-tokens-tag.$sys-green-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-green-decor-disabled,
+    'label': styles-tokens-tag.$sys-green-text-support,
+    'icon': styles-tokens-tag.$sys-green-text-light,
+    'icon-active': styles-tokens-tag.$sys-green-text-main,
+    'button-hovered': styles-tokens-tag.$sys-green-decor-hovered,
+    'button-active': styles-tokens-tag.$sys-green-decor-activated,
   ),
   'blue': (
-    'container': $sys-blue-decor-default,
-    'container-disabled': $sys-blue-decor-disabled,
-    'label': $sys-blue-text-support,
-    'icon': $sys-blue-text-light,
-    'icon-active': $sys-blue-text-main,
-    'button-hovered': $sys-blue-decor-hovered,
-    'button-active': $sys-blue-decor-activated,
+    'container': styles-tokens-tag.$sys-blue-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-blue-decor-disabled,
+    'label': styles-tokens-tag.$sys-blue-text-support,
+    'icon': styles-tokens-tag.$sys-blue-text-light,
+    'icon-active': styles-tokens-tag.$sys-blue-text-main,
+    'button-hovered': styles-tokens-tag.$sys-blue-decor-hovered,
+    'button-active': styles-tokens-tag.$sys-blue-decor-activated,
   ),
   'violet': (
-    'container': $sys-violet-decor-default,
-    'container-disabled': $sys-violet-decor-disabled,
-    'label': $sys-violet-text-support,
-    'icon': $sys-violet-text-light,
-    'icon-active': $sys-violet-text-main,
-    'button-hovered': $sys-violet-decor-hovered,
-    'button-active': $sys-violet-decor-activated,
+    'container': styles-tokens-tag.$sys-violet-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-violet-decor-disabled,
+    'label': styles-tokens-tag.$sys-violet-text-support,
+    'icon': styles-tokens-tag.$sys-violet-text-light,
+    'icon-active': styles-tokens-tag.$sys-violet-text-main,
+    'button-hovered': styles-tokens-tag.$sys-violet-decor-hovered,
+    'button-active': styles-tokens-tag.$sys-violet-decor-activated,
   ),
   'pink': (
-    'container': $sys-pink-decor-default,
-    'container-disabled': $sys-pink-decor-disabled,
-    'label': $sys-pink-text-support,
-    'icon': $sys-pink-text-light,
-    'icon-active': $sys-pink-text-main,
-    'button-hovered': $sys-pink-decor-hovered,
-    'button-active': $sys-pink-decor-activated,
+    'container': styles-tokens-tag.$sys-pink-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-pink-decor-disabled,
+    'label': styles-tokens-tag.$sys-pink-text-support,
+    'icon': styles-tokens-tag.$sys-pink-text-light,
+    'icon-active': styles-tokens-tag.$sys-pink-text-main,
+    'button-hovered': styles-tokens-tag.$sys-pink-decor-hovered,
+    'button-active': styles-tokens-tag.$sys-pink-decor-activated,
   ),
 );
 
@@ -109,7 +109,7 @@ $appearances: (
     border: none;
 
     &:focus {
-      @include outline-inside-var($container-focused-s);
+      @include styles-tokens-tag.outline-inside-var(styles-tokens-element.$container-focused-s);
     }
 
     &:active {
@@ -126,49 +126,49 @@ $appearances: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($tag, 'container', $size, 'label-only');
+      @include styles-tokens-tag.composite-var(styles-tokens-tag.$tag, 'container', $size, 'label-only');
 
       &[data-removable='true'] {
-        @include composite-var($tag, 'container', $size, 'button-after');
+        @include styles-tokens-tag.composite-var(styles-tokens-tag.$tag, 'container', $size, 'button-after');
       }
 
       .label {
-        @include composite-var($label-typography, $size);
+        @include styles-tokens-tag.composite-var($label-typography, $size);
       }
 
       .tagButton {
-        @include composite-var($tag-button, 'container', $size, 'icon-only');
+        @include styles-tokens-tag.composite-var(styles-tokens-tag.$tag-button, 'container', $size, 'icon-only');
       }
     }
   }
 
   @each $appearanceKey, $appearance in $appearances {
     &[data-appearance='#{$appearanceKey}'] {
-      background-color: simple-var($appearance, 'container');
+      background-color: styles-tokens-tag.simple-var($appearance, 'container');
 
       .label {
         overflow: hidden;
-        color: simple-var($appearance, 'label');
+        color: styles-tokens-tag.simple-var($appearance, 'label');
         text-overflow: ellipsis;
         white-space: nowrap;
       }
 
       .tagButton {
-        color: simple-var($appearance, 'icon');
+        color: styles-tokens-tag.simple-var($appearance, 'icon');
 
         &:focus,
         &:hover,
         &:active {
-          color: simple-var($appearance, 'icon-active');
+          color: styles-tokens-tag.simple-var($appearance, 'icon-active');
         }
 
         &:focus,
         &:hover {
-          background-color: simple-var($appearance, 'button-hovered');
+          background-color: styles-tokens-tag.simple-var($appearance, 'button-hovered');
         }
 
         &:active {
-          background-color: simple-var($appearance, 'button-active');
+          background-color: styles-tokens-tag.simple-var($appearance, 'button-active');
         }
       }
     }

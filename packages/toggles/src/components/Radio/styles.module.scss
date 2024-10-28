@@ -1,11 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '../styles.module';
-
-$sizes: 's', 'm';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
+@use '../styles.module';
 
 .container {
-  @include container('radio');
+  @include styles.container('radio');
 }
 
 .box {
@@ -13,37 +10,37 @@ $sizes: 's', 'm';
 
   box-sizing: border-box;
 
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-  border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-activated');
+  background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'background2-level');
+  border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-activated');
   border-style: solid; // это наверное должно быть в композитном токене box
 
-  @each $size in $sizes {
+  @each $size in styles.$sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($toggles, $size, 'radio', 'box');
+      @include styles-tokens-toggles.composite-var(styles-tokens-toggles.$toggles, $size, 'radio', 'box');
     }
   }
 
   &[data-focusvisible=true],
   &[data-hover=true] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-    border-color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'background2-level');
+    border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'accent-hovered');
   }
   
   &[data-disabled=true] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
-    border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-disabled');
+    border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-default');
   }
 
   &[data-checked=true] {
-    border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-default');
 
     &[data-focusvisible=true],
     &[data-hover=true] {
-      border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+      border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-hovered');
     }
 
     &[data-disabled=true] {
-      border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
+      border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-default');
     }
   }
 }
@@ -54,23 +51,23 @@ $sizes: 's', 'm';
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+  background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-default');
 
   &[data-hover=true] {
-    background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-hovered');
   }
 
   &[data-disabled=true] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'text-disabled');
   }
 
   &[data-checked=false] {
     display: none;
   }
 
-  @each $size in $sizes {
+  @each $size in styles.$sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($toggles, $size, 'radio', 'flag');
+      @include styles-tokens-toggles.composite-var(styles-tokens-toggles.$toggles, $size, 'radio', 'flag');
     }
   }
 }

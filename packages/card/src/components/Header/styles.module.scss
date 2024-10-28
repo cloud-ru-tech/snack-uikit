@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
 
 $sizes: 's', 'm', 'l';
 
@@ -10,7 +10,7 @@ $sizes: 's', 'm', 'l';
   
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($card, 'content', $size, 'header');
+      @include styles-tokens-card.composite-var(styles-tokens-card.$card, 'content', $size, 'header');
     }
   }
 }
@@ -24,16 +24,16 @@ $sizes: 's', 'm', 'l';
 .title {
   display: block;
   max-width: 100%;
-  color: $sys-neutral-text-main;
+  color: styles-tokens-card.$sys-neutral-text-main;
 }
 
 .metadata {
   max-width: 100%;
-  color: $sys-neutral-text-light;
+  color: styles-tokens-card.$sys-neutral-text-light;
 }
 
 .description {
   max-width: 100%;
-  color: $sys-neutral-text-support;
+  color: styles-tokens-card.$sys-neutral-text-support;
 }
 

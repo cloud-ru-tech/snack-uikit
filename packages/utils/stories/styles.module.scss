@@ -1,9 +1,9 @@
-@import "@snack-uikit/figma-tokens/build/scss/styles-theme-variables";
+@use "@snack-uikit/figma-tokens/build/scss/styles-theme-variables";
 
 .themeWrapper {
   padding: 16px;
-  background-color: $sys-neutral-background;
-  border: $border-width-018m solid $sys-neutral-decor-default;
+  background-color: styles-theme-variables.$sys-neutral-background;
+  border: styles-theme-variables.$border-width-018m solid styles-theme-variables.$sys-neutral-decor-default;
 }
 
 .buttonWrapper {

@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
 
 $sizes:  's', 'm', 'l';
 
@@ -9,12 +9,12 @@ $sizes:  's', 'm', 'l';
   box-sizing: border-box;
 
   object-fit: cover;
-  border-color: $sys-neutral-decor-disabled;
+  border-color: styles-tokens-card.$sys-neutral-decor-disabled;
   border-style: solid;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($card, 'picture', $size);
+      @include styles-tokens-card.composite-var(styles-tokens-card.$card, 'picture', $size);
     }
   }
 }

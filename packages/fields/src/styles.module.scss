@@ -1,10 +1,10 @@
-@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
-@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields";
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields";
 
 $sizes: 's', 'm';
 $icon-sizes: (
-  's': $icon-xs,
-  'm': $icon-s
+  's': styles-tokens-element.$icon-xs,
+  'm': styles-tokens-element.$icon-s
 );
 
 @mixin button-styles {
@@ -15,41 +15,41 @@ $icon-sizes: (
   margin: 0;
   padding: 0;
 
-  color: $sys-neutral-text-light;
+  color: styles-tokens-element.$sys-neutral-text-light;
 
   background-color: transparent;
   border: none;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($fields, 'buttons', $size);
+      @include styles-tokens-element.composite-var(styles-tokens-fields.$fields, 'buttons', $size);
 
       svg {
-        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        width: styles-tokens-element.simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: styles-tokens-element.simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
       }
     }
   }
 
   &:hover {
     cursor: pointer;
-    color: $sys-neutral-text-support;
+    color: styles-tokens-element.$sys-neutral-text-support;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-element.outline-var(styles-tokens-element.$container-focused-s);
 
-    color: $sys-neutral-text-support;
-    outline-color: $sys-available-complementary;
-    outline-offset: $spacing-state-focus-offset;
+    color: styles-tokens-element.$sys-neutral-text-support;
+    outline-color: styles-tokens-element.$sys-available-complementary;
+    outline-offset: styles-tokens-element.$spacing-state-focus-offset;
   }
 
   &:active {
-    color: $sys-neutral-text-main;
+    color: styles-tokens-element.$sys-neutral-text-main;
   }
 
   &[data-disabled] {
     cursor: not-allowed;
-    color: $sys-neutral-text-disabled;
+    color: styles-tokens-element.$sys-neutral-text-disabled;
   }
 }

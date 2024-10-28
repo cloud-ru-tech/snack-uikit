@@ -1,11 +1,11 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-loader';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-loader';
 
 $sizes: 's', 'xs';
 
 @mixin progress-anatomy-styles {
   @each $size in $sizes {
     &[data-size="#{$size}"] {
-      @include composite-var($progress-bar, 'container', $size);
+      @include styles-tokens-loader.composite-var(styles-tokens-loader.$progress-bar, 'container', $size);
     }
   }
 }
@@ -13,12 +13,12 @@ $sizes: 's', 'xs';
 .progressBarContainer {
   @include progress-anatomy-styles;
 
-  background-color: $sys-neutral-decor-default;
+  background-color: styles-tokens-loader.$sys-neutral-decor-default;
 }
 
 .progressBarFiller {
   width: var(--progress);
   height: 100%;
-  background-color: $sys-primary-accent-default;
+  background-color: styles-tokens-loader.$sys-primary-accent-default;
   border-radius: inherit;
 }

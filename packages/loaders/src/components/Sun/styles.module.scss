@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-loader';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-loader';
 
 $sizes: 'xs', 's', 'm', 'l';
 
@@ -8,7 +8,7 @@ $sizes: 'xs', 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size="#{$size}"] {
-      @include composite-var($loader, 'sun', $size);
+      @include styles-tokens-loader.composite-var(styles-tokens-loader.$loader, 'sun', $size);
     }
   }
 

@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .button {
   cursor: pointer;
@@ -50,7 +50,7 @@
 }
 
 .counterForLabel {
-  margin-left: $label-badge;
+  margin-left: styles-tokens-element.$label-badge;
 }
 
 .counterForIcon {

@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .questionTooltip {
   cursor: pointer;
@@ -8,51 +8,51 @@
   margin: 0;
   padding: 0;
 
-  color: $sys-neutral-text-light;
+  color: styles-tokens-element.$sys-neutral-text-light;
 
   background: none;
   border: 0;
 
 
   &:hover {
-    color: $sys-neutral-text-light;
+    color: styles-tokens-element.$sys-neutral-text-light;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-element.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-element.$sys-available-complementary;
   }
 
   &[data-trigger='click'] {
     &[data-opened='true'] {
-      color: $sys-neutral-text-main;
+      color: styles-tokens-element.$sys-neutral-text-main;
     }
 
     &:hover {
-      color: $sys-neutral-text-support;
+      color: styles-tokens-element.$sys-neutral-text-support;
     }
 
     &:active {
-      color: $sys-neutral-text-main
+      color: styles-tokens-element.$sys-neutral-text-main
     }
 
     &:focus-visible {
-      color: $sys-neutral-text-support;
+      color: styles-tokens-element.$sys-neutral-text-support;
     }
   }
 
   &[data-size='xs'] {
     svg {
-      width: $icon-xs !important; /* stylelint-disable-line declaration-no-important */
-      height: $icon-xs !important; /* stylelint-disable-line declaration-no-important */
+      width: styles-tokens-element.$icon-xs !important; /* stylelint-disable-line declaration-no-important */
+      height: styles-tokens-element.$icon-xs !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 
   &[data-size='s'] {
     svg {
-      width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-      height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+      width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+      height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 }

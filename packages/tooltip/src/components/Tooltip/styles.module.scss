@@ -1,26 +1,25 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tooltip';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tooltip';
 
 .tooltipContainer {
-  @include composite-var($tooltip-container);
-  @include composite-var($sans-body-s);
+  @include styles-tokens-tooltip.composite-var(styles-tokens-tooltip.$tooltip-container);
+  @include styles-tokens-tooltip.composite-var(styles-tokens-tooltip.$sans-body-s);
 
   overflow: hidden;
 
   box-sizing: border-box;
 
-  color: $sys-invert-neutral-text-main;
+  color: styles-tokens-tooltip.$sys-invert-neutral-text-main;
   word-wrap: break-word;
 
-  background-color: $sys-invert-neutral-background;
+  background-color: styles-tokens-tooltip.$sys-invert-neutral-background;
 
   &[data-disable-max-width='true'] {
-    max-width: calc(100vw - $dimension-2m);
+    max-width: calc(100vw - styles-tokens-tooltip.$dimension-2m);
   }
 }
 
 .tooltipArrowContainer {
-  @include composite-var($tooltip-tooltip-pointer);
+  @include styles-tokens-tooltip.composite-var(styles-tokens-tooltip.$tooltip-tooltip-pointer);
 
   position: absolute;
 
@@ -29,11 +28,11 @@
   padding-top: 0;
   padding-bottom: 0;
 
-  color: $sys-invert-neutral-background;
+  color: styles-tokens-tooltip.$sys-invert-neutral-background;
 }
 
 .tooltipArrowElement {
-  @include composite-var($tooltip-pointer-arrow);
+  @include styles-tokens-tooltip.composite-var(styles-tokens-tooltip.$tooltip-pointer-arrow);
 
   fill: currentColor;
 }

@@ -1,62 +1,61 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonTonal';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '../../styles.module';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonTonal';
+@use '../../styles.module';
 
 $appearances: 'primary', 'neutral', 'red';
 $sizes: 'xs', 's', 'm', 'l';
 $variants: 'label-only', 'icon-only', 'icon-after';
 $typography: (
-  'xs': $sans-label-s,
-  's': $sans-label-m,
-  'm': $sans-label-l,
-  'l': $sans-label-l,
+  'xs': styles-tokens-button-buttonTonal.$sans-label-s,
+  's': styles-tokens-button-buttonTonal.$sans-label-m,
+  'm': styles-tokens-button-buttonTonal.$sans-label-l,
+  'l': styles-tokens-button-buttonTonal.$sans-label-l,
 );
 
 @mixin button-colors-styles {
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
-      @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-support'));
-      @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-support'));
+      @include styles.label-color(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-support'));
+      @include styles.icon-fill(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-support'));
 
-      background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
+      background-color: styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'decor-default');
 
       @media (hover: hover) {
         &:hover {
-          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+          @include styles.label-color(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-main'));
+          @include styles.icon-fill(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-main'));
 
-          background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
+          background-color: styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'decor-hovered');
         }
       }
 
       @media (hover: none) or (hover: hover) {
         &:focus-visible {
-          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+          @include styles.label-color(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-main'));
+          @include styles.icon-fill(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-main'));
 
-          background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
+          background-color: styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'decor-hovered');
         }
 
         &:active {
-          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+          @include styles.label-color(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-main'));
+          @include styles.icon-fill(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-main'));
 
-          background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
+          background-color: styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'decor-activated');
         }
 
         &[data-loading] {
-          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
-          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'text-main'));
+          @include styles.label-color(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-main'));
+          @include styles.icon-fill(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'text-main'));
 
-          background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
+          background-color: styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', $appearance, 'decor-activated');
         }
 
         &:disabled,
         &[data-disabled] {
-          @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
-          @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-light'));
+          @include styles.label-color(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', 'neutral', 'text-light'));
+          @include styles.icon-fill(styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', 'neutral', 'text-light'));
 
-          background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+          background-color: styles-tokens-button-buttonTonal.simple-var(styles-tokens-button-buttonTonal.$theme-variables, 'sys', 'neutral', 'decor-disabled');
         }
       }
     }
@@ -67,16 +66,16 @@ $typography: (
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
       &:focus-visible {
-        outline-color: $sys-available-complementary;
+        outline-color: styles-tokens-button-buttonTonal.$sys-available-complementary;
       }
     }
   }
 }
 
 .button {
-  @include button-anatomy-styles($button-tonal, $sizes, $variants, $typography);
-  @include loading-label-only($button-tonal);
+  @include styles.button-anatomy-styles(styles-tokens-button-buttonTonal.$button-tonal, $sizes, $variants, $typography);
+  @include styles.loading-label-only(styles-tokens-button-buttonTonal.$button-tonal);
   @include button-colors-styles;
   @include button-outline-colors-styles;
-  @include button-common-state;
+  @include styles.button-common-state;
 }

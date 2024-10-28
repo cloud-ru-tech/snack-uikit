@@ -1,18 +1,18 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
 
 .container {
-  @include composite-var($collapse-block-container-secondary);
+  @include styles-tokens-accordion.composite-var(styles-tokens-accordion.$collapse-block-container-secondary);
 
   box-sizing: border-box;
   max-width: 100%;
 
-  border-color: $sys-neutral-decor-default;
+  border-color: styles-tokens-accordion.$sys-neutral-decor-default;
   border-style: solid;
   border-top: 0;
   border-right: 0;
   border-left: 0;
 
   &:hover {
-    border-color: $sys-neutral-accent-hovered;
+    border-color: styles-tokens-accordion.$sys-neutral-accent-hovered;
   }
 } 

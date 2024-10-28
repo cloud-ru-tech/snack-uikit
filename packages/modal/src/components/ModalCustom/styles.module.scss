@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
 
 $sizes: 's', 'm', 'l';
 
@@ -15,22 +15,22 @@ $sizes: 's', 'm', 'l';
 
   box-sizing: border-box;
   width: 100%;
-  max-width: calc(100% - ($space-modal-outside-gap * 2));
-  max-height: calc(100vh - ($space-modal-outside-gap * 2));
+  max-width: calc(100% - (styles-tokens-modal.$space-modal-outside-gap * 2));
+  max-height: calc(100vh - (styles-tokens-modal.$space-modal-outside-gap * 2));
 
-  background-color: simple-var($sys-neutral-background1-level);
+  background-color: styles-tokens-modal.simple-var(styles-tokens-modal.$sys-neutral-background1-level);
   outline: none;
 
   @each $size in $sizes {
     &[data-size="#{$size}"] {
-      @include composite-var($modal, 'window', $size);
+      @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'window', $size);
     }
   }
 }
 
 .headerElements {
-  @include composite-var($modal, 'header-elements', 'container');
-  @include composite-var($modal, 'header-elements', 'elements-layout');
+  @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'header-elements', 'container');
+  @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'header-elements', 'elements-layout');
 
   position: absolute;
   top: 0;

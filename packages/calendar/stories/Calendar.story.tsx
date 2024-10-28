@@ -10,7 +10,7 @@ import componentReadme from '../README.md';
 import { Calendar, CalendarProps } from '../src';
 import { CALENDAR_MODE, SIZE } from '../src/constants';
 import { getBuildCellProps } from './helper';
-import styles from './styles.modules.scss';
+import styles from './styles.module.scss';
 
 const meta: Meta = {
   title: 'Components/Calendar',

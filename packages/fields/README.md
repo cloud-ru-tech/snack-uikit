@@ -239,7 +239,7 @@ FieldStepper в основном предназначен для работы с
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## FieldTextArea
 ### Props
@@ -272,7 +272,7 @@ FieldStepper в основном предназначен для работы с
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
-| ref | `Ref<HTMLTextAreaElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLTextAreaElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## FieldSecure
 ### Props
@@ -306,7 +306,7 @@ FieldStepper в основном предназначен для работы с
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## parseDate
 `helper` 
@@ -341,7 +341,7 @@ FieldStepper в основном предназначен для работы с
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## FieldSelect
 ### Props
@@ -395,7 +395,7 @@ FieldStepper в основном предназначен для работы с
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
 | selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | selection | "single" \| "multiple" | - |  |
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 | removeByBackspace | `boolean` | - |  |
 | resetSearchOnOptionSelection | `boolean` | - | Поведение строки поиска при выборе опции из списка |
@@ -428,7 +428,7 @@ FieldStepper в основном предназначен для работы с
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## FieldSlider
 ### Props
@@ -463,7 +463,7 @@ FieldStepper в основном предназначен для работы с
 | labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
 | hint | `string` | - | Подсказка внизу |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## FieldColor
 ### Props
@@ -496,7 +496,7 @@ FieldStepper в основном предназначен для работы с
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"default"`, `"error"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 
 

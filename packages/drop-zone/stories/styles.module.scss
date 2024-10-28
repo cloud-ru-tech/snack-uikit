@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .card {
   display: grid;
@@ -8,8 +8,8 @@
   width: 400px;
   height: 220px;
 
-  background-color: $sys-neutral-background1-level;
-  border: 1px solid $sys-neutral-decor-default;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
   border-radius: 5px;
 }
 
@@ -28,7 +28,7 @@
     min-width: 300px;
     padding: 24px;
 
-    background-color: $sys-neutral-background1-level;
-    border: 1px solid $sys-neutral-decor-default;
-    border-radius: $dimension-050m;
+    background-color: styles-theme-variables.$sys-neutral-background1-level;
+    border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
+    border-radius: styles-theme-variables.$dimension-050m;
 }

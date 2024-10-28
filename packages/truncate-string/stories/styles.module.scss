@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
   resize: horizontal;
@@ -11,5 +11,5 @@
 }
 
 .text {
-  @include composite-var($sans-body-m);
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-m);
 }

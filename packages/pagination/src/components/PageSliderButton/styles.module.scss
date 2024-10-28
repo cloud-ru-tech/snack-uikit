@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-pagination';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-pagination';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .pageButtonSlider {
-  @include composite-var($pagination-page-button-slider-container);
+  @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination-page-button-slider-container);
 
   cursor: pointer;
 
@@ -21,67 +21,67 @@
   outline-offset: 0;
 
   .pageButtonSliderDot {
-    @include composite-var($pagination-page-button-slider-dot-page-default);
+    @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination-page-button-slider-dot-page-default);
 
-    background-color: $sys-neutral-decor-default;
+    background-color: styles-tokens-pagination.$sys-neutral-decor-default;
   }
 
   &:hover {
     .pageButtonSliderDot {
-      @include composite-var($pagination-page-button-slider-dot-page-interactions);
+      @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination-page-button-slider-dot-page-interactions);
 
-      background-color: $sys-neutral-decor-hovered;
+      background-color: styles-tokens-pagination.$sys-neutral-decor-hovered;
     }
   }
 
   &:focus-visible {
     .pageButtonSliderDot {
-      @include outline-var($container-focused-s);
-      @include composite-var($pagination-page-button-slider-dot-page-interactions);
+      @include styles-tokens-pagination.outline-var(styles-tokens-element.$container-focused-s);
+      @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination-page-button-slider-dot-page-interactions);
 
-      background-color: $sys-neutral-decor-hovered;
-      outline-color: $sys-available-complementary;
-      outline-offset: $spacing-state-focus-offset;
+      background-color: styles-tokens-pagination.$sys-neutral-decor-hovered;
+      outline-color: styles-tokens-pagination.$sys-available-complementary;
+      outline-offset: styles-tokens-pagination.$spacing-state-focus-offset;
     }
   }
 
   &:active {
     .pageButtonSliderDot {
-      @include composite-var($pagination-page-button-slider-dot-page-interactions);
+      @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination-page-button-slider-dot-page-interactions);
 
-      background-color: $sys-neutral-decor-activated;
+      background-color: styles-tokens-pagination.$sys-neutral-decor-activated;
     }
   }
 
 
   &[data-activated] {
     .pageButtonSliderDot {
-      @include composite-var($pagination-page-button-slider-dot-page-interactions);
+      @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination-page-button-slider-dot-page-interactions);
 
-      background-color: $sys-primary-accent-default;
+      background-color: styles-tokens-pagination.$sys-primary-accent-default;
     }
 
     &:hover {
       .pageButtonSliderDot {
-        @include composite-var($pagination-page-button-slider-dot-page-interactions);
+        @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination-page-button-slider-dot-page-interactions);
 
-        background-color: $sys-primary-accent-default;
+        background-color: styles-tokens-pagination.$sys-primary-accent-default;
       }
     }
 
     &:focus-visible {
       .pageButtonSliderDot {
-        @include composite-var($pagination-page-button-slider-dot-page-interactions);
+        @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination-page-button-slider-dot-page-interactions);
 
-        background-color: $sys-primary-accent-hovered;
+        background-color: styles-tokens-pagination.$sys-primary-accent-hovered;
       }
     }
 
     &:active {
       .pageButtonSliderDot {
-        @include composite-var($pagination-page-button-slider-dot-page-interactions);
+        @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination-page-button-slider-dot-page-interactions);
 
-        background-color: $sys-primary-accent-hovered;
+        background-color: styles-tokens-pagination.$sys-primary-accent-hovered;
       }
     }
   }

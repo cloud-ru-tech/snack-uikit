@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $duration: 300ms;
 
@@ -45,7 +45,7 @@ $duration: 300ms;
     width: 100%;
     height: 100%;
 
-    opacity: $opacity-a004;
-    background-color: $sys-neutral-accent-default;
+    opacity: styles-tokens-element.$opacity-a004;
+    background-color: styles-tokens-element.$sys-neutral-accent-default;
   }
 }

@@ -1,11 +1,11 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-pagination';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-pagination';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 'xs', 's';
 
 $typography: (
-  'xs': $sans-label-s,
-  's': $sans-label-l,
+  'xs': styles-tokens-pagination.$sans-label-s,
+  's': styles-tokens-pagination.$sans-label-l,
 );
 
 .pageButton {
@@ -20,7 +20,7 @@ $typography: (
   padding-top: 0;
   padding-bottom: 0;
 
-  color: $sys-neutral-accent-default;
+  color: styles-tokens-pagination.$sys-neutral-accent-default;
   text-decoration: none;
   text-transform: none;
 
@@ -31,46 +31,46 @@ $typography: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($pagination, 'page-button', 'container', $size);
-      @include composite-var(simple-var($typography, $size));
+      @include styles-tokens-pagination.composite-var(styles-tokens-pagination.$pagination, 'page-button', 'container', $size);
+      @include styles-tokens-pagination.composite-var(styles-tokens-pagination.simple-var($typography, $size));
     }
   }
 
   &:hover {
-    color: $sys-neutral-text-main;
-    background-color: $sys-neutral-decor-hovered;
+    color: styles-tokens-pagination.$sys-neutral-text-main;
+    background-color: styles-tokens-pagination.$sys-neutral-decor-hovered;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-pagination.outline-var(styles-tokens-element.$container-focused-s);
 
-    color: $sys-neutral-text-main;
-    background-color: $sys-neutral-decor-hovered;
-    outline-color: $sys-available-complementary;
+    color: styles-tokens-pagination.$sys-neutral-text-main;
+    background-color: styles-tokens-pagination.$sys-neutral-decor-hovered;
+    outline-color: styles-tokens-pagination.$sys-available-complementary;
   }
 
   &:active {
-    color: $sys-neutral-text-main;
-    background-color: $sys-neutral-decor-activated;
+    color: styles-tokens-pagination.$sys-neutral-text-main;
+    background-color: styles-tokens-pagination.$sys-neutral-decor-activated;
   }
 
   &[data-activated] {
-    color: $sys-primary-text-support;
-    background-color: $sys-primary-decor-default;
+    color: styles-tokens-pagination.$sys-primary-text-support;
+    background-color: styles-tokens-pagination.$sys-primary-decor-default;
 
     &:hover {
-      color: $sys-primary-text-support;
-      background-color: $sys-primary-decor-default;
+      color: styles-tokens-pagination.$sys-primary-text-support;
+      background-color: styles-tokens-pagination.$sys-primary-decor-default;
     }
 
     &:focus-visible {
-      color: $sys-primary-text-support;
-      background-color: $sys-primary-decor-hovered;
+      color: styles-tokens-pagination.$sys-primary-text-support;
+      background-color: styles-tokens-pagination.$sys-primary-decor-hovered;
     }
 
     &:active {
-      color: $sys-primary-text-support;
-      background-color: $sys-primary-decor-default;
+      color: styles-tokens-pagination.$sys-primary-text-support;
+      background-color: styles-tokens-pagination.$sys-primary-decor-default;
     }
   }
 }

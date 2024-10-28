@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
 
 .carouselBase {
   position: relative;
@@ -19,7 +19,7 @@
 }
 
 .pagination {
-  @include composite-var($carousel-sliders-wrap);
+  @include styles-tokens-carousel.composite-var(styles-tokens-carousel.$carousel-sliders-wrap);
 
   display: flex;
   justify-content: center;

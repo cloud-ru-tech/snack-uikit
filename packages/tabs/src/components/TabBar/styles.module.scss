@@ -1,9 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tabs';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tabs';
 
 $types: 'primary', 'secondary';
 
 .tabBar {
-  @include composite-var($tabs-container);
+  @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs-container);
 
   position: relative;
   display: flex;
@@ -35,25 +35,25 @@ $types: 'primary', 'secondary';
   white-space: nowrap;
 
   &[data-type='primary'] {
-    @include composite-var($tabs-primary);
+    @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs-primary);
   }
 
   &[data-type='secondary'] {
-    @include composite-var($tabs-secondary);
+    @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs-secondary);
   }
 }
 
 .marker {
   position: absolute;
   bottom: 0;
-  background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+  background-color: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'sys', 'primary', 'accent-default');
   transition:
     left 0.1s ease,
     width 0.1s ease;
 
   @each $type in $types {
     &[data-type='#{$type}'] {
-      @include composite-var($tabs, 'tab-button-#{$type}', 'marker');
+      @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs, 'tab-button-#{$type}', 'marker');
     }
   }
 }

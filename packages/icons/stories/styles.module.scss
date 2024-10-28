@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
   display: grid;
@@ -14,5 +14,5 @@
 
   padding: 8px;
 
-  color: $sys-primary-text-main;
+  color: styles-theme-variables.$sys-primary-text-main;
 }

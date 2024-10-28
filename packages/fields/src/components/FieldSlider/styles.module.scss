@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $sizes: 's', 'm', 'l';
 
@@ -14,7 +14,7 @@ $sizes: 's', 'm', 'l';
 
     @each $size in $sizes {
       &[data-size='#{$size}'] {
-        @include composite-var($fields, 'slider-wrap', $size);
+        @include styles-theme-variables.composite-var(styles-tokens-fields.$fields, 'slider-wrap', $size);
 
         height: inherit;
       }
@@ -24,6 +24,6 @@ $sizes: 's', 'm', 'l';
 
 .fieldContainer {
   svg {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+    color: styles-theme-variables.simple-var(styles-theme-variables.$theme-variables, 'sys', 'neutral', 'text-disabled');
   }
 }

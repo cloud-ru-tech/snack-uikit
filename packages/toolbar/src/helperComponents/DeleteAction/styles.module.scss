@@ -1,9 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toolbar';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toolbar';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 
 .checkboxWrapper {
-  @include composite-var($toolbar-checkbox);
+  @include styles-tokens-toolbar.composite-var(styles-tokens-toolbar.$toolbar-checkbox);
 
   cursor: pointer;
 
@@ -17,8 +17,8 @@
   box-sizing: border-box;
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-toolbar.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-toolbar.$sys-available-complementary;
   }
 }

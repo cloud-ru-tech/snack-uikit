@@ -1,12 +1,12 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
 
 .modalBody {
-  @include composite-var($modal-body);
+  @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal-body);
 
   flex: 1 1 auto;
   box-sizing: border-box;
-  min-height: $dimension-2m;
-  color: $sys-neutral-text-main;
+  min-height: styles-tokens-modal.$dimension-2m;
+  color: styles-tokens-modal.$sys-neutral-text-main;
 
   &[data-align='center'] {
     text-align: center;

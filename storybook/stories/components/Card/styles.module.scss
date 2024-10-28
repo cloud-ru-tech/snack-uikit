@@ -1,10 +1,10 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $cell-width: 360px;
 $cell-height: 280px;
 
 .card {
-  @include composite-var($sans-body-m);
+  @include styles-tokens-element.composite-var(styles-tokens-element.$sans-body-m);
 
   cursor: pointer;
 
@@ -19,18 +19,18 @@ $cell-height: 280px;
   height: $cell-height;
   padding: 8px;
 
-  color: $sys-primary-text-main;
+  color: styles-tokens-element.$sys-primary-text-main;
   text-align: center;
   text-decoration: none;
 
-  background-color: $sys-neutral-background1-level;
+  background-color: styles-tokens-element.$sys-neutral-background1-level;
   border: 0;
   border-radius: 16px;
 
   transition: background-color 100ms;
 
   &[data-small] {
-    @include composite-var($sans-body-s);
+    @include styles-tokens-element.composite-var(styles-tokens-element.$sans-body-s);
 
     gap: 4px;
     width: calc($cell-width / 1.75);
@@ -39,18 +39,18 @@ $cell-height: 280px;
 
 
   &:hover {
-    background-color: $sys-primary-decor-hovered;
+    background-color: styles-tokens-element.$sys-primary-decor-hovered;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-element.outline-var(styles-tokens-element.$container-focused-s);
 
-    background-color: $sys-primary-decor-hovered;
-    outline-offset: $spacing-state-focus-offset;
+    background-color: styles-tokens-element.$sys-primary-decor-hovered;
+    outline-offset: styles-tokens-element.$spacing-state-focus-offset;
   }
 
   &:active {
-    background-color: $sys-primary-decor-hovered;
+    background-color: styles-tokens-element.$sys-primary-decor-hovered;
   }
 }
 

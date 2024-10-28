@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
   resize: horizontal;
@@ -7,8 +7,8 @@
 
   padding: 16px;
 
-  background: $sys-neutral-background1-level;
-  border: 1px solid $sys-neutral-decor-default;
+  background: styles-theme-variables.$sys-neutral-background1-level;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
 
   &[data-size='s'] {
     width: 256px;
@@ -30,5 +30,5 @@
 
   height: 100px;
 
-  background-color: $sys-neutral-background2-level;
+  background-color: styles-theme-variables.$sys-neutral-background2-level;
 }

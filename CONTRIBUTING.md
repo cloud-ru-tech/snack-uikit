@@ -258,13 +258,14 @@ Effects имеет 2 модификации - темная и светлая. Э
 3. Подключите файлы с токенами в `styles.module.scss` (тематические, компонентные - какие нужны):
     * файлы с токенами компонентов по умолчанию уже включают в себя тематические токены
 ```scss
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-***';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-***';
 ```
 4. Соберите стили компонента по макетам в figma, подключая токены через `var`, `simple-var` или `composite-var`
     * в scss можно также добавлять миксины и различные функции, чтобы убирать дублирование кода, пример:
 ```scss
-// пример миксина, в других случаях код может быть другой
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonFilled';
 
 $sizes: s, m, l;
 $variants: label-only, icon-only, label-icon;
@@ -274,7 +275,7 @@ $variants: label-only, icon-only, label-icon;
     &[data-size="#{$size}"] {
       @each $variant in $variants {
         &[data-variant="#{$variant}"] {
-          @include composite-var($button-filled, 'container', $size, $variant);
+          @include styles-theme-variables.composite-var(styles-tokens-button-buttonFilled.$button-filled, 'container', $size, $variant);
         }
       }
     }

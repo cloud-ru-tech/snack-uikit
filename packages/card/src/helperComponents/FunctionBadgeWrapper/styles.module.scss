@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
 
 .functionBadge {
-  @include composite-var($card-function-badge);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-function-badge);
 
   position: absolute;
   z-index: 1;
@@ -15,7 +15,7 @@
   position: relative;
 
   &::before {
-    @include composite-var($card-function-row-transparent-background);
+    @include styles-tokens-card.composite-var(styles-tokens-card.$card-function-row-transparent-background);
 
     content: '';
 
@@ -26,7 +26,7 @@
     width: 100%;
     height: 100%;
 
-    background-color: $sys-neutral-background1-level;
-    box-shadow: $box-shadow-elevation-level2;
+    background-color: styles-tokens-card.$sys-neutral-background1-level;
+    box-shadow: styles-tokens-card.$box-shadow-elevation-level2;
   }
 }

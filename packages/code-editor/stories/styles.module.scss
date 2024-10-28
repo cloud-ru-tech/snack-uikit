@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $dimension-2m;
-  background-color: $sys-neutral-background1-level;
+  gap: styles-theme-variables.$dimension-2m;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
 }

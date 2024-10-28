@@ -1,11 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-
-$sizes: 's', 'm';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $icon-sizes: (
-  's': $icon-xs,
-  'm': $icon-s,
+  's': styles-tokens-element.$icon-xs,
+  'm': styles-tokens-element.$icon-s,
 );
 
 .toggleLayout {
@@ -21,7 +19,7 @@ $icon-sizes: (
 
   &[data-disabled=true] {
     cursor: not-allowed;
-    color: $sys-neutral-text-disabled;
+    color: styles-tokens-toggles.$sys-neutral-text-disabled;
   }
 }
 

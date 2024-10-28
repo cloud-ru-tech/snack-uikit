@@ -1,12 +1,12 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-slider';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-slider';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $theme-name: osThemeSnack;
 
-$height: $size-slider-handle;
+$height: styles-tokens-slider.$size-slider-handle;
 
 $height-with-marks: calc(
-  $size-slider-handle + $size-slider-scale-bar-step-height + $space-slider-scale-bar-step-gap + $sans-body-s-line-height
+  styles-tokens-slider.$size-slider-handle + styles-tokens-slider.$size-slider-scale-bar-step-height + styles-tokens-slider.$space-slider-scale-bar-step-gap + styles-tokens-slider.$sans-body-s-line-height
 );
 
 /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
@@ -20,32 +20,32 @@ $height-with-marks: calc(
     box-sizing: border-box;
     width: 100%;
     height: $height;
-    padding: calc(($size-slider-handle - $size-slider-track-line) / 2) 0;
+    padding: calc((styles-tokens-slider.$size-slider-handle - styles-tokens-slider.$size-slider-track-line) / 2) 0;
 
     .rc-slider * {
       box-sizing: border-box;
     }
     .rc-slider-rail {
-      @include composite-var($slider-track-line);
+      @include styles-tokens-slider.composite-var(styles-tokens-slider.$slider-track-line);
 
       position: absolute;
       width: 100%;
-      background-color: $sys-neutral-decor-default;
+      background-color: styles-tokens-slider.$sys-neutral-decor-default;
     }
     .rc-slider-track,
     .rc-slider-tracks {
-      @include composite-var($slider-track-line);
+      @include styles-tokens-slider.composite-var(styles-tokens-slider.$slider-track-line);
 
       position: absolute;
       display: block;
-      background-color: $sys-primary-accent-default;
+      background-color: styles-tokens-slider.$sys-primary-accent-default;
     }
     .rc-slider-track-draggable {
       box-sizing: content-box;
       background-clip: content-box;
     }
     .rc-slider-handle {
-      @include composite-var($slider-handle);
+      @include styles-tokens-slider.composite-var(styles-tokens-slider.$slider-handle);
 
       touch-action: pan-x;
       cursor: -webkit-grab;
@@ -54,49 +54,49 @@ $height-with-marks: calc(
       position: absolute;
       z-index: 1;
 
-      margin-top: calc(0px - ($size-slider-handle - $size-slider-track-line) / 2);
+      margin-top: calc(0px - (styles-tokens-slider.$size-slider-handle - styles-tokens-slider.$size-slider-track-line) / 2);
 
       opacity: 1;
-      background-color: $sys-primary-accent-default;
+      background-color: styles-tokens-slider.$sys-primary-accent-default;
       border: none;
       box-shadow: none;
 
       &:hover {
-        background-color: $sys-primary-accent-hovered;
+        background-color: styles-tokens-slider.$sys-primary-accent-hovered;
       }
 
       &:focus-visible {
-        @include outline-var($container-focused-s);
+        @include styles-tokens-slider.outline-var(styles-tokens-element.$container-focused-s);
 
-        background-color: $sys-primary-accent-hovered;
-        outline-color: $sys-primary-accent-default;
-        outline-offset: $spacing-state-focus-offset;
+        background-color: styles-tokens-slider.$sys-primary-accent-hovered;
+        outline-color: styles-tokens-slider.$sys-primary-accent-default;
+        outline-offset: styles-tokens-slider.$spacing-state-focus-offset;
       }
 
       &:active {
         cursor: -webkit-grabbing;
         cursor: grabbing;
-        background-color: $sys-primary-accent-hovered;
+        background-color: styles-tokens-slider.$sys-primary-accent-hovered;
       }
     }
 
     .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
-      @include outline-var($container-focused-s);
+      @include styles-tokens-slider.outline-var(styles-tokens-element.$container-focused-s);
 
-      background-color: $sys-primary-accent-hovered;
-      outline-color: $sys-primary-accent-default;
-      outline-offset: $spacing-state-focus-offset;
+      background-color: styles-tokens-slider.$sys-primary-accent-hovered;
+      outline-color: styles-tokens-slider.$sys-primary-accent-default;
+      outline-offset: styles-tokens-slider.$spacing-state-focus-offset;
       box-shadow: none;
     }
 
     .rc-slider-mark {
       position: absolute;
-      top: calc($size-slider-handle + $size-slider-scale-bar-step-height + $space-slider-scale-bar-step-gap);
+      top: calc(styles-tokens-slider.$size-slider-handle + styles-tokens-slider.$size-slider-scale-bar-step-height + styles-tokens-slider.$space-slider-scale-bar-step-gap);
       left: 0;
       width: 100%;
     }
     .rc-slider-mark-text {
-      @include composite-var($sans-body-s);
+      @include styles-tokens-slider.composite-var(styles-tokens-slider.$sans-body-s);
 
       cursor: pointer;
 
@@ -104,23 +104,23 @@ $height-with-marks: calc(
 
       display: inline-block;
 
-      color: $sys-neutral-text-support;
+      color: styles-tokens-slider.$sys-neutral-text-support;
       text-align: center;
       vertical-align: middle;
 
       &::before {
-        @include composite-var($slider-scale-bar-step-line);
+        @include styles-tokens-slider.composite-var(styles-tokens-slider.$slider-scale-bar-step-line);
 
         content: '';
 
         position: absolute;
-        top: calc(0px - ($size-slider-scale-bar-step-height + $space-slider-scale-bar-step-gap));
+        top: calc(0px - (styles-tokens-slider.$size-slider-scale-bar-step-height + styles-tokens-slider.$space-slider-scale-bar-step-gap));
         left: 50%;
         transform: translateX(-50%);
 
-        width: $size-slider-track-line;
+        width: styles-tokens-slider.$size-slider-track-line;
 
-        background-color: $sys-neutral-decor-default;
+        background-color: styles-tokens-slider.$sys-neutral-decor-default;
       }
     }
 
@@ -145,13 +145,13 @@ $height-with-marks: calc(
       }
     }
     .rc-slider-mark-text-active {
-      color: $sys-neutral-text-support;
+      color: styles-tokens-slider.$sys-neutral-text-support;
     }
 
     .rc-slider-step {
       position: absolute;
       width: 100%;
-      height: calc($size-slider-track-line * 2);
+      height: calc(styles-tokens-slider.$size-slider-track-line * 2);
       background: transparent;
     }
 
@@ -160,7 +160,7 @@ $height-with-marks: calc(
 
       .rc-slider-track,
       .rc-slider-handle {
-        background-color: $sys-neutral-text-disabled;
+        background-color: styles-tokens-slider.$sys-neutral-text-disabled;
       }
 
       .rc-slider-mark-text,

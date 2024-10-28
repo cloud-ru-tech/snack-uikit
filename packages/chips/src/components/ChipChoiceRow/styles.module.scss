@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipChoice';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipChoice';
 
 .chipChoiceRow { 
-  @include composite-var($chip-choice-row-container);
+  @include styles-tokens-chips-chipChoice.composite-var(styles-tokens-chips-chipChoice.$chip-choice-row-container);
 
   display: flex;
   flex-wrap: wrap;

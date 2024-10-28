@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-searchPrivate';
-@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-searchPrivate';
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
 
 $sizes: 's', 'm', 'l';
 
@@ -11,17 +11,17 @@ $sizes: 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($search-private, $size);
+      @include styles-tokens-searchPrivate.composite-var(styles-tokens-searchPrivate.$search-private, $size);
 
       input {
-        @include composite-var($theme-variables, 'sans', 'body', $size);
+        @include styles-tokens-searchPrivate.composite-var(styles-tokens-searchPrivate.$theme-variables, 'sans', 'body', $size);
 
         cursor: text;
       }
 
       svg {
-        width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-        height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+        width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+        height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
       }
     }
   }
@@ -30,7 +30,7 @@ $sizes: 's', 'm', 'l';
 .postfix {
   display: inline-flex;
   flex-shrink: 0;
-  gap: $space-fields-postfix-gap;
+  gap: styles-tokens-searchPrivate.$space-fields-postfix-gap;
 }
 
 .prefix {
@@ -39,5 +39,5 @@ $sizes: 's', 'm', 'l';
   align-items: center;
   justify-content: center;
 
-  color: $sys-neutral-text-light;
+  color: styles-tokens-searchPrivate.$sys-neutral-text-light;
 }

@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 'xs', 's';
 
@@ -20,7 +20,7 @@ $sizes: 'xs', 's';
   margin: 0;
   padding: 0;
 
-  color: simple-var($theme-variables, 'sys', 'neutral', 'text-light');
+  color: styles-tokens-breadcrumbs.simple-var(styles-tokens-breadcrumbs.$theme-variables, 'sys', 'neutral', 'text-light');
   text-decoration: none;
 
   background: none;
@@ -30,23 +30,23 @@ $sizes: 'xs', 's';
     cursor: pointer;
     &:focus-visible,
     &:hover {
-      color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+      color: styles-tokens-breadcrumbs.simple-var(styles-tokens-breadcrumbs.$theme-variables, 'sys', 'neutral', 'text-support');
     }
   }
 
   &[data-current='true'] {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+    color: styles-tokens-breadcrumbs.simple-var(styles-tokens-breadcrumbs.$theme-variables, 'sys', 'neutral', 'text-support');
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-breadcrumbs.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
+    outline-color: styles-tokens-breadcrumbs.simple-var(styles-tokens-breadcrumbs.$theme-variables, 'sys', 'available', 'complementary');
   }
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($breadcrumbs, 'crumb', $size);
+      @include styles-tokens-breadcrumbs.composite-var(styles-tokens-breadcrumbs.$breadcrumbs, 'crumb', $size);
     }
   }
 

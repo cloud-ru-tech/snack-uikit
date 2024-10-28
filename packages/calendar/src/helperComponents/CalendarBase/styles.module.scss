@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-calendar';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-calendar';
 
 $sizes: 's', 'm', 'l';
 
@@ -15,7 +15,7 @@ $sizes: 's', 'm', 'l';
   max-width: 100%;
   max-height: 100%;
 
-  background-color: $sys-neutral-background2-level;
+  background-color: styles-tokens-calendar.$sys-neutral-background2-level;
 
   &[data-fit-to-container] {
     width: 100%;
@@ -28,15 +28,15 @@ $sizes: 's', 'm', 'l';
   чтоб было легко задать размер "снаружи".
 */
 .calendarSizeS {
-  @include composite-var($calendar-container-s);
+  @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar-container-s);
 }
 
 .calendarSizeM {
-  @include composite-var($calendar-container-m);
+  @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar-container-m);
 }
 
 .calendarSizeL {
-  @include composite-var($calendar-container-l);
+  @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar-container-l);
 }
 
 .header {
@@ -45,7 +45,7 @@ $sizes: 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($calendar, 'container', 'header', $size);
+      @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, 'container', 'header', $size);
     }
   }
 }
@@ -64,7 +64,7 @@ $sizes: 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($calendar, 'container', 'rows', $size);
+      @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, 'container', 'rows', $size);
     }
   }
 }

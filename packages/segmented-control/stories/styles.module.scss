@@ -1,10 +1,10 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .story {
   resize: horizontal;
   overflow: hidden;
   padding: 2rem;
-  background-color: $sys-neutral-background2-level;
+  background-color: styles-theme-variables.$sys-neutral-background2-level;
 }
 
 .invisible {

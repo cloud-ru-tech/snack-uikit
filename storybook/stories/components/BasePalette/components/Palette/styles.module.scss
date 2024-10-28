@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $cells-count: 22;
 $cells-without-titles: $cells-count - 2;
@@ -20,16 +20,16 @@ $cells-without-titles: $cells-count - 2;
   height: 50px;
 
   &:nth-child(#{$cells-count}n - #{$cells-without-titles}), &:nth-child(#{$cells-count}n) {
-    border-left: 1px solid $sys-neutral-decor-default;
+    border-left: 1px solid styles-theme-variables.$sys-neutral-decor-default;
   }
 }
 
 .firstRowCell {
-  border-top: 1px solid $sys-neutral-decor-default;
+  border-top: 1px solid styles-theme-variables.$sys-neutral-decor-default;
 }
 
 .lastRowCell {
-  border-bottom: 1px solid $sys-neutral-decor-default;
+  border-bottom: 1px solid styles-theme-variables.$sys-neutral-decor-default;
 }
 
 .firstCell {
@@ -43,5 +43,5 @@ $cells-without-titles: $cells-count - 2;
 }
 
 .lastCell, .firstCell {
-  color: $sys-neutral-text-disabled;
+  color: styles-theme-variables.$sys-neutral-text-disabled;
 }

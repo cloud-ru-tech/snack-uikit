@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-counter';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-counter';
 
 .wrapper {
     resize: horizontal;
@@ -9,7 +9,7 @@
     min-width: 300px;
     padding: 24px;
 
-    background-color: $sys-neutral-background1-level;
-    border: 1px solid $sys-neutral-decor-default;
-    border-radius: $dimension-050m;
+    background-color: styles-tokens-counter.$sys-neutral-background1-level;
+    border: 1px solid styles-tokens-counter.$sys-neutral-decor-default;
+    border-radius: styles-tokens-counter.$dimension-050m;
 }

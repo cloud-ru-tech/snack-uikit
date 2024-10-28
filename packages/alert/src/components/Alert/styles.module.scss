@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $colors: 'neutral', 'primary', 'red', 'yellow', 'green', 'blue';
 $sizes: 's', 'm';
@@ -16,28 +16,28 @@ $icons: (
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
-      background-color: simple-var($theme-variables, 'sys', $color, 'background');
+      background-color: styles-tokens-alert.simple-var(styles-tokens-alert.$theme-variables, 'sys', $color, 'background');
     }
   }
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($alert, $size, 'container');
+      @include styles-tokens-alert.composite-var(styles-tokens-alert.$alert, $size, 'container');
     }
   }
 }
 
 .alertOutline {
   outline-style: solid;
-  outline-width: $border-width-accordion-collapse-block-primary;
+  outline-width: styles-tokens-alert.$border-width-accordion-collapse-block-primary;
 
   @each $color in $colors {
     &[data-color='#{$color}'] {
-      outline-color: simple-var($theme-variables, 'sys', $color, 'decor-default');
+      outline-color: styles-tokens-alert.simple-var(styles-tokens-alert.$theme-variables, 'sys', $color, 'decor-default');
 
       &:focus-within,
       &:hover {
-        outline-color: simple-var($theme-variables, 'sys', $color, 'decor-default');
+        outline-color: styles-tokens-alert.simple-var(styles-tokens-alert.$theme-variables, 'sys', $color, 'decor-default');
       }
     }
   }
@@ -50,7 +50,7 @@ $icons: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($alert, $size, 'body');
+      @include styles-tokens-alert.composite-var(styles-tokens-alert.$alert, $size, 'body');
     }
   }
 }
@@ -58,18 +58,18 @@ $icons: (
 .icon {
   @each $color in $colors {
     &[data-color='#{$color}'] {
-      color: simple-var($theme-variables, 'sys', $color, 'accent-default');
+      color: styles-tokens-alert.simple-var(styles-tokens-alert.$theme-variables, 'sys', $color, 'accent-default');
     }
   }
 
   @each $name, $glyph in $icons {
     &[data-size='#{$name}'] {
-      width: simple-var($icon, $glyph);
-      height: simple-var($icon, $glyph);
+      width: styles-tokens-alert.simple-var(styles-tokens-element.$icon, $glyph);
+      height: styles-tokens-alert.simple-var(styles-tokens-element.$icon, $glyph);
 
       svg {
-        max-width: simple-var($icon, $glyph);
-        max-height: simple-var($icon, $glyph);
+        max-width: styles-tokens-alert.simple-var(styles-tokens-element.$icon, $glyph);
+        max-height: styles-tokens-alert.simple-var(styles-tokens-element.$icon, $glyph);
       }
     }
   }
@@ -83,30 +83,30 @@ $icons: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($alert, $size, 'content-layout');
+      @include styles-tokens-alert.composite-var(styles-tokens-alert.$alert, $size, 'content-layout');
     }
   }
 }
 
 .title {
-  color: $sys-neutral-text-main;
+  color: styles-tokens-alert.$sys-neutral-text-main;
 
   &[data-size='s'] {
-    @include composite-var($sans-label-m);
+    @include styles-tokens-alert.composite-var(styles-tokens-alert.$sans-label-m);
   }
 
   &[data-size='m'] {
-    @include composite-var($sans-title-s);
+    @include styles-tokens-alert.composite-var(styles-tokens-alert.$sans-title-s);
   }
 }
 
 .description {
-  color: $sys-neutral-text-support;
+  color: styles-tokens-alert.$sys-neutral-text-support;
   word-wrap: break-word;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($theme-variables, 'sans', 'body', $size);
+      @include styles-tokens-alert.composite-var(styles-tokens-alert.$theme-variables, 'sans', 'body', $size);
     }
   }
 }
@@ -122,7 +122,7 @@ $icons: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($alert, $size, 'footer');
+      @include styles-tokens-alert.composite-var(styles-tokens-alert.$alert, $size, 'footer');
     }
   }
 }

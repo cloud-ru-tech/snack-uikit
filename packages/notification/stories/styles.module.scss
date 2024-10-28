@@ -1,7 +1,6 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $border-width: 0.5px;
-
 
 .pageWrapper {
   display: flex;
@@ -11,7 +10,6 @@ $border-width: 0.5px;
   &[data-resizable] {
     resize: both;
     overflow: hidden;
-
     width: 350px;
     height: 700px;
   }
@@ -30,9 +28,9 @@ $border-width: 0.5px;
   margin-bottom: 16px;
   padding: 24px;
 
-  background-color: $sys-neutral-background1-level;
-  border: 1px solid $sys-neutral-decor-disabled;
-  border-radius: $dimension-050m;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-disabled;
+  border-radius: styles-theme-variables.$dimension-050m;
 }
 
 .controlledCard {
@@ -45,8 +43,8 @@ $border-width: 0.5px;
 
   width: max-content;
 
-  background-color: $sys-neutral-background1-level;
-  border: $border-width solid $sys-neutral-decor-default;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: $border-width solid styles-theme-variables.$sys-neutral-decor-default;
 }
 
 .cell {
@@ -56,7 +54,7 @@ $border-width: 0.5px;
 
   padding: 8px;
 
-  border: $border-width solid $sys-neutral-decor-disabled;
+  border: $border-width solid styles-theme-variables.$sys-neutral-decor-disabled;
 }
 
 .headerCell {

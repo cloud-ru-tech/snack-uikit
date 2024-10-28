@@ -56,7 +56,7 @@
     "copy-to-clipboard": "3.3.3",
     "lodash.debounce": "4.0.8",
     "uncontrollable": "8.0.0",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "peerDependencies": {
     "@snack-uikit/locale": "*"

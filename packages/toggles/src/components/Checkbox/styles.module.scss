@@ -1,61 +1,59 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '../styles.module';
-
-$sizes: 's', 'm';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '../styles.module';
 
 $icon-sizes: (
-  's': $icon-xs,
-  'm': $icon-s,
+  's': styles-tokens-element.$icon-xs,
+  'm': styles-tokens-element.$icon-s,
 );
 
 .container {
-  @include container('checkbox');
+  @include styles.container('checkbox');
 }
 
 .box {
   box-sizing: border-box;
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-  border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-activated');
+  background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'background2-level');
+  border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-activated');
   border-style: solid; // это наверное должно быть в композитном токене box
 
   &[data-checked=false] {
     &[data-focusvisible=true],
     &[data-hover=true] {
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-      border-color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
+      background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'background2-level');
+      border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'accent-hovered');
     }
 
     &[data-disabled=true] {
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
-      border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
+      background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-disabled');
+      border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-default');
     }
   }
 
   &[data-indeterminate=true],
   &[data-checked=true] {
-    background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
-    border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-default');
+    border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-default');
 
     &[data-focusvisible=true],
     &[data-hover=true] {
-      background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
-      border-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+      background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-hovered');
+      border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-hovered');
     }
 
     &[data-disabled=true] {
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
-      border-color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+      background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'text-disabled');
+      border-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'text-disabled');
     }
   }
 
-  @each $size in $sizes {
+  @each $size in styles.$sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($toggles, $size, 'checkbox', 'box');
+      @include styles-tokens-toggles.composite-var(styles-tokens-toggles.$toggles, $size, 'checkbox', 'box');
 
       svg {
-        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        width: styles-tokens-toggles.simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: styles-tokens-toggles.simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
       }
     }
   }
@@ -71,7 +69,7 @@ $icon-sizes: (
   width: 100%;
   height: 100%;
 
-  color: simple-var($theme-variables, 'sys', 'primary', 'on-accent');
+  color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'on-accent');
 
   &[data-indeterminate=true],
   &[data-checked=true] {
@@ -79,6 +77,6 @@ $icon-sizes: (
   }
 
   &[data-disabled=true] {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+    color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-disabled');
   }
 }

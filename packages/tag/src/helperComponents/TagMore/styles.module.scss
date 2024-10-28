@@ -1,10 +1,10 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tag';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tag';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 'xs', 's';
 $label-typography: (
-  'xs': $sans-label-s,
-  's': $sans-label-m
+  'xs': styles-tokens-tag.$sans-label-s,
+  's': styles-tokens-tag.$sans-label-m
 );
 
 .button {
@@ -15,24 +15,24 @@ $label-typography: (
 
   box-sizing: border-box;
 
-  color: $sys-neutral-text-support;
+  color: styles-tokens-tag.$sys-neutral-text-support;
   white-space: nowrap;
 
   background: none;
-  border-color: $sys-neutral-decor-disabled;
+  border-color: styles-tokens-tag.$sys-neutral-decor-disabled;
   border-style: solid;
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-tag.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-tag.$sys-available-complementary;
   }
 
   @each $size in $sizes {
-    @include composite-var($label-typography, $size);
+    @include styles-tokens-tag.composite-var($label-typography, $size);
 
     &[data-size=#{$size}] {
-      @include composite-var($tag-more, 'container', $size, 'label-only');
+      @include styles-tokens-tag.composite-var(styles-tokens-tag.$tag-more, 'container', $size, 'label-only');
     }
   }
 }
@@ -40,7 +40,7 @@ $label-typography: (
 .tagRowDroplistContainer {
   @each $size in $sizes {
     &[data-size=#{$size}] {
-      @include composite-var($tag-list, $size);
+      @include styles-tokens-tag.composite-var(styles-tokens-tag.$tag-list, $size);
     }
   }
 }
@@ -50,5 +50,5 @@ $label-typography: (
 }
 
 .triggerClassName {
-  --offset: #{$space-drop-list-drop-offset}; 
+  --offset: #{styles-tokens-tag.$space-drop-list-drop-offset}; 
 }

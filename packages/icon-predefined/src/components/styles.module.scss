@@ -1,12 +1,12 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-iconPredefined';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-iconPredefined';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
 
 $sizes: (
-  's': simple-var($icon-s),
-  'm': simple-var($icon-s),
-  'l': simple-var($icon-scale-x2),
+  's': styles-tokens-iconPredefined.simple-var(styles-tokens-element.$icon-s),
+  'm': styles-tokens-iconPredefined.simple-var(styles-tokens-element.$icon-s),
+  'l': styles-tokens-iconPredefined.simple-var(styles-tokens-element.$icon-scale-x2),
 );
 
 .decor {
@@ -19,8 +19,8 @@ $sizes: (
   &[data-decor] {
     @each $appearance in $appearances {
       &[data-appearance='#{$appearance}'] {
-        color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
+        color: styles-tokens-iconPredefined.simple-var(styles-tokens-iconPredefined.$theme-variables, 'sys', $appearance, 'accent-default');
+        background-color: styles-tokens-iconPredefined.simple-var(styles-tokens-iconPredefined.$theme-variables, 'sys', $appearance, 'decor-default');
       }
     }
   }
@@ -28,11 +28,11 @@ $sizes: (
   @each $size, $sideLength in $sizes {
     &[data-size='#{$size}'] {
       &[data-shape='round'] {
-        @include composite-var($icon-predefined, 'decor-round', $size);
+        @include styles-tokens-iconPredefined.composite-var(styles-tokens-iconPredefined.$icon-predefined, 'decor-round', $size);
       }
 
       &[data-shape='square'] {
-        @include composite-var($icon-predefined, 'decor-square', $size);
+        @include styles-tokens-iconPredefined.composite-var(styles-tokens-iconPredefined.$icon-predefined, 'decor-square', $size);
       }
     }
   }
@@ -46,7 +46,7 @@ $sizes: (
 
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
-      color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+      color: styles-tokens-iconPredefined.simple-var(styles-tokens-iconPredefined.$theme-variables, 'sys', $appearance, 'accent-default');
     }
 
     @each $size, $sideLength in $sizes {
@@ -59,6 +59,6 @@ $sizes: (
 
   // для желтого исключение
   &[data-appearance='yellow'] {
-    color: $sys-yellow-text-light;
+    color: styles-tokens-iconPredefined.$sys-yellow-text-light;
   }
 }

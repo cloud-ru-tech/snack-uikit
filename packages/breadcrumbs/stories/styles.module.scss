@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 .container {
   resize: horizontal;
 
@@ -10,8 +10,8 @@
   height: 100%;
   padding: 10px;
 
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
-  box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
+  background-color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'neutral', 'background1-level');
+  box-shadow: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'box-shadow', 'elevation', 'level2');
 }
 
 .crumbClickHolder {

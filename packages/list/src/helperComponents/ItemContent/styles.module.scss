@@ -1,25 +1,24 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
 
 $sizes: 's', 'm', 'l';
 $typography: (
   's': (
-    'label': $sans-body-s,
-    'caption': $sans-body-s,
-    'description': $sans-body-s,
-    'separator': $light-label-m,
+    'label': styles-tokens-dropList.$sans-body-s,
+    'caption': styles-tokens-dropList.$sans-body-s,
+    'description': styles-tokens-dropList.$sans-body-s,
+    'separator': styles-tokens-dropList.$light-label-m,
   ),
   'm': (
-    'label': $sans-body-m,
-    'caption': $sans-body-s,
-    'description': $sans-body-s,
-    'separator': $light-label-l,
+    'label': styles-tokens-dropList.$sans-body-m,
+    'caption': styles-tokens-dropList.$sans-body-s,
+    'description': styles-tokens-dropList.$sans-body-s,
+    'separator': styles-tokens-dropList.$light-label-l,
   ),
   'l': (
-    'label': $sans-body-l,
-    'caption': $sans-body-m,
-    'description': $sans-body-m,
-    'separator': $light-label-l,
+    'label': styles-tokens-dropList.$sans-body-l,
+    'caption': styles-tokens-dropList.$sans-body-m,
+    'description': styles-tokens-dropList.$sans-body-m,
+    'separator': styles-tokens-dropList.$light-label-l,
   ),
 );
 
@@ -30,18 +29,18 @@ $typography: (
 .label {
   overflow: hidden;
   flex: 1;
-  color: $sys-neutral-text-main;
+  color: styles-tokens-dropList.$sys-neutral-text-main;
 }
 
 .caption {
   overflow: hidden;
-  color: $sys-neutral-text-light;
+  color: styles-tokens-dropList.$sys-neutral-text-light;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .description {
-  color: $sys-neutral-text-support;
+  color: styles-tokens-dropList.$sys-neutral-text-support;
 }
 
 .content {
@@ -53,19 +52,19 @@ $typography: (
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       .headline {
-        @include composite-var($drop-list, 'item', $size, 'headline');
+        @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, 'item', $size, 'headline');
       }
       .label {
-        @include composite-var($typography, $size, 'label');
+        @include styles-tokens-dropList.composite-var($typography, $size, 'label');
 
         display: flex;
         align-items: center;
       }
       .caption {
-        @include composite-var($typography, $size, 'caption');
+        @include styles-tokens-dropList.composite-var($typography, $size, 'caption');
       }
       .description {
-        @include composite-var($typography, $size, 'description');
+        @include styles-tokens-dropList.composite-var($typography, $size, 'description');
       }
     }
   }
@@ -74,7 +73,7 @@ $typography: (
     .label,
     .description,
     .caption {
-      color: $sys-neutral-text-disabled;
+      color: styles-tokens-dropList.$sys-neutral-text-disabled;
     }
   }
 }

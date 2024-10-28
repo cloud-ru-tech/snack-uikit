@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-status';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-status';
 
 $appearances-system: 'primary', 'neutral';
 $appearances-index: 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
@@ -11,10 +11,10 @@ $sizes: 'xxs', 'xs', 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($status-indicator, 'container', $size);
+      @include styles-tokens-status.composite-var(styles-tokens-status.$status-indicator, 'container', $size);
 
       .indicator {
-        @include composite-var($status-indicator, 'indicator', $size);
+        @include styles-tokens-status.composite-var(styles-tokens-status.$status-indicator, 'indicator', $size);
       }
     }
   }
@@ -22,17 +22,17 @@ $sizes: 'xxs', 'xs', 's', 'm', 'l';
 
 .indicator {
   box-sizing: border-box;
-  border: 0 solid $sys-neutral-background1-level;
+  border: 0 solid styles-tokens-status.$sys-neutral-background1-level;
 
   @each $appearance in $appearances-system {
     &[data-appearance='#{$appearance}'] {
-      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+      background-color: styles-tokens-status.simple-var(styles-tokens-status.$theme-variables, 'sys', $appearance, 'accent-default');
     }
   }
 
   @each $appearance in $appearances-index {
     &[data-appearance='#{$appearance}'] {
-      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+      background-color: styles-tokens-status.simple-var(styles-tokens-status.$theme-variables, 'sys', $appearance, 'accent-default');
     }
   }
 }

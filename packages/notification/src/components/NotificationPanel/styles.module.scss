@@ -1,15 +1,15 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .notificationPanelHeader {
-  @include composite-var($notification-panel-header-container);
+  @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-header-container);
 
   position: relative;
 
   display: flex;
   flex-direction: column;
 
-  border-bottom-color: $sys-neutral-decor-default;
+  border-bottom-color: styles-tokens-notification-notificationPanel.$sys-neutral-decor-default;
   border-bottom-style: solid;
 
   &::before {
@@ -22,15 +22,15 @@
 
     box-sizing: border-box;
     width: 100%;
-    height: calc(100% + $border-width-notification-panel-container);
+    height: calc(100% + styles-tokens-notification-notificationPanel.$border-width-notification-panel-container);
 
-    opacity: $opacity-a004;
-    background-color: $sys-neutral-accent-default;
+    opacity: styles-tokens-notification-notificationPanel.$opacity-a004;
+    background-color: styles-tokens-notification-notificationPanel.$sys-neutral-accent-default;
     border-radius: inherit;
   }
 }
 .notificationPanelChips {
-  @include composite-var($notification-panel-header-chips);
+  @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-header-chips);
 
   display: flex;
   align-items: center;
@@ -44,11 +44,11 @@
 
 
 .notificationPanelHeadline {
-  @include composite-var($notification-panel-header-headline);
+  @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-header-headline);
 
   display: flex;
   align-items: center;
-  color: $sys-neutral-text-main;
+  color: styles-tokens-notification-notificationPanel.$sys-neutral-text-main;
 }
 
 .notificationPanelTitle {
@@ -68,7 +68,7 @@
 }
 
 .notificationPanelFooterButton {
-  @include composite-var($notification-panel-button-container);
+  @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-button-container);
 
   cursor: pointer;
 
@@ -79,10 +79,10 @@
   margin: 0;
   padding: 0;
 
-  color: $sys-neutral-text-light;
+  color: styles-tokens-notification-notificationPanel.$sys-neutral-text-light;
 
   background: none;
-  border-color: $sys-neutral-decor-default;
+  border-color: styles-tokens-notification-notificationPanel.$sys-neutral-decor-default;
   border-top-style: solid;
   border-right: none;
   border-bottom: none;
@@ -91,33 +91,34 @@
   outline-offset: 0;
 
   &:hover {
-    color: $sys-neutral-text-support;
+    color: styles-tokens-notification-notificationPanel.$sys-neutral-text-support;
   }
 
   &:focus-visible {
-    @include outline-inside-var($container-focused-s);
+    @include styles-tokens-notification-notificationPanel.outline-inside-var(styles-tokens-element.$container-focused-s);
 
-    color: $sys-neutral-text-support;
+    color: styles-tokens-notification-notificationPanel.$sys-neutral-text-support;
     border-color: transparent;
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-notification-notificationPanel.$sys-available-complementary;
   }
 
   &:active {
-    color: $sys-neutral-text-main;
-    border-color: $sys-neutral-decor-default;
+    color: styles-tokens-notification-notificationPanel.$sys-neutral-text-main;
+    border-color: styles-tokens-notification-notificationPanel.$sys-neutral-decor-default;
   }
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .scrollStub {
-  height: calc($dimension-025m / 2);
-  margin-top: calc($dimension-025m / -2);
+  height: calc(styles-tokens-notification-notificationPanel.$dimension-025m / 2);
+  margin-top: calc(styles-tokens-notification-notificationPanel.$dimension-025m / -2);
   background: transparent;
 }

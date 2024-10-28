@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .title {
   margin-bottom: 16px;
@@ -7,7 +7,7 @@
 .description {
   max-width: 473px;
   margin-bottom: 48px;
-  color: $sys-neutral-text-support;
+  color: styles-theme-variables.$sys-neutral-text-support;
 }
 
 .offset {

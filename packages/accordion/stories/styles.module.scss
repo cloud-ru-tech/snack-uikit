@@ -1,9 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: $dimension-1m;
+  gap: styles-theme-variables.$dimension-1m;
 }
 
 .wrapper {
@@ -14,17 +14,17 @@
   flex-direction: column;
 
   width: 400px;
-  padding: $dimension-1m;
+  padding: styles-theme-variables.$dimension-1m;
 }
 
 .customHeader {
   display: flex;
   flex-direction: column;
-  gap: $dimension-1m;
+  gap: styles-theme-variables.$dimension-1m;
 }
 
 .headline {
   display: flex;
-  gap: $dimension-1m;
+  gap: styles-theme-variables.$dimension-1m;
   align-items: center;
 }

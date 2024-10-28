@@ -1,4 +1,4 @@
 include:
   - project: sbercloud-ui/cicd
-    ref: FF-0000_temp-skip
+    ref: master
     file: /gitlab-ci-uikit-tokens.yml

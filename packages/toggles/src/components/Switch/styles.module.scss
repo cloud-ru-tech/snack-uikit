@@ -1,41 +1,39 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '../styles.module';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toggles';
+@use '../styles.module';
 
-$sizes: 's', 'm';
 $switchAnimationDuration: 0.1s;
 
 .container {
-  @include container('switch');
+  @include styles.container('switch');
 }
 
 .box {
   position: relative;
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-activated');
+  background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-activated');
 
-  @each $size in $sizes {
+  @each $size in styles.$sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($toggles, $size, 'switch', 'box');
+      @include styles-tokens-toggles.composite-var(styles-tokens-toggles.$toggles, $size, 'switch', 'box');
     }
   }
 
   &[data-hover='true'] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'accent-hovered');
   }
 
   &[data-disabled='true'] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-default');
   }
 
   &[data-checked='true'] {
-    background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-default');
 
     &[data-hover='true'] {
-      background-color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+      background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-hovered');
     }
 
     &[data-disabled='true'] {
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-default');
+      background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'decor-default');
     }
   }
 }
@@ -52,32 +50,32 @@ $switchAnimationDuration: 0.1s;
   transition-duration: $switchAnimationDuration;
   transition-property: left;
 
-  @each $size in $sizes {
+  @each $size in styles.$sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($toggles, $size, 'switch', 'container-flag');
+      @include styles-tokens-toggles.composite-var(styles-tokens-toggles.$toggles, $size, 'switch', 'container-flag');
       &[data-checked='true'] {
-        left: calc(100% - #{simple-var($toggles, $size, 'switch', 'container-flag', 'width')});
+        left: calc(100% - #{styles-tokens-toggles.simple-var(styles-tokens-toggles.$toggles, $size, 'switch', 'container-flag', 'width')});
       }
     }
   }
 }
 
 .flag {
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
+  background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'background2-level');
 
-  @each $size in $sizes {
+  @each $size in styles.$sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($toggles, $size, 'switch', 'flag');
+      @include styles-tokens-toggles.composite-var(styles-tokens-toggles.$toggles, $size, 'switch', 'flag');
     }
   }
 
   &[data-focusvisible=true],
   &[data-hover=true] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'on-accent');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'on-accent');
   }
 
   &[data-disabled='true'] {
-    background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
+    background-color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'background2-level');
   }
 }
 
@@ -89,29 +87,29 @@ $switchAnimationDuration: 0.1s;
 
   display: flex;
 
-  color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+  color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'text-disabled');
 
   fill: transparent;
 
   transition: opacity $switchAnimationDuration linear;
 
   &[data-hover='true'] {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'accent-hovered');
+    color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'accent-hovered');
   }
 
   &[data-checked='true'] {
-    color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+    color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-default');
 
     &[data-hover='true'] {
-      color: simple-var($theme-variables, 'sys', 'primary', 'accent-hovered');
+      color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'primary', 'accent-hovered');
     }
   }
 
   &[data-disabled='true'] {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+    color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'text-disabled');
 
     &[data-hover='true'] {
-      color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+      color: styles-tokens-toggles.simple-var(styles-tokens-toggles.$theme-variables, 'sys', 'neutral', 'text-disabled');
     }
   }
 }

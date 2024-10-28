@@ -56,7 +56,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | onClick | `MouseEventHandler<HTMLInputElement>` | - | Колбек обработки клика |
 | onMouseDown | `MouseEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия кнопки мыши |
 | key | `Key` | - |  |
-| ref | `Ref<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 ## useButtonNavigation
 `hook` 
 

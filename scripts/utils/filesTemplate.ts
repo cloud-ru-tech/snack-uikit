@@ -180,7 +180,7 @@ export function ${componentName}(props: ${componentName}Props) {
     `./${PackagesRootFolder}/${packageRootFolderName}/${Folders.srcComponents}/styles.module.scss`,
   );
   const stylesFileContent = `// todo: update path to the correct one
-// @import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-${className}';
+// @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-${className}';
 
 .${className} {
   box-sizing: border-box;

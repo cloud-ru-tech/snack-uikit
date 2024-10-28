@@ -1,14 +1,14 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .control {
-  @include composite-var($carousel-control-container);
+  @include styles-tokens-carousel.composite-var(styles-tokens-carousel.$carousel-control-container);
 
   cursor: pointer;
 
   position: absolute;
   top: 50%;
-  left: calc($size-carousel-control-wrap-width - $size-carousel-control-container);
+  left: calc(styles-tokens-carousel.$size-carousel-control-wrap-width - styles-tokens-carousel.$size-carousel-control-container);
   transform: translateY(-50%);
 
   display: flex;
@@ -16,35 +16,35 @@
   align-items: center;
   justify-content: center;
 
-  color: $sys-neutral-text-light;
+  color: styles-tokens-carousel.$sys-neutral-text-light;
 
-  background-color: $sys-neutral-background1-level;
+  background-color: styles-tokens-carousel.$sys-neutral-background1-level;
   border-color: transparent;
   border-style: solid;
   outline-color: transparent;
-  box-shadow: $box-shadow-elevation-level3;
+  box-shadow: styles-tokens-carousel.$box-shadow-elevation-level3;
 
   &:hover, &:focus-visible {
-    color: $sys-neutral-text-main;
+    color: styles-tokens-carousel.$sys-neutral-text-main;
   }
 
   &:hover {
-    box-shadow: $box-shadow-elevation-level4;
+    box-shadow: styles-tokens-carousel.$box-shadow-elevation-level4;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-carousel.outline-var(styles-tokens-element.$container-focused-s);
 
-    border-color: $sys-available-complementary;
-    outline-color: $sys-available-on-complementary;
+    border-color: styles-tokens-carousel.$sys-available-complementary;
+    outline-color: styles-tokens-carousel.$sys-available-on-complementary;
     box-shadow: none;
   }
 
   &[data-variant='next'] {
-    right: calc($size-carousel-control-wrap-width - $size-carousel-control-container);
+    right: calc(styles-tokens-carousel.$size-carousel-control-wrap-width - styles-tokens-carousel.$size-carousel-control-container);
     left: auto;
     &:focus-visible {
-      outline-offset: $dimension-025m;
+      outline-offset: styles-tokens-carousel.$dimension-025m;
     }
 
     .icon {

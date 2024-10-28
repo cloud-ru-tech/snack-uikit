@@ -240,7 +240,7 @@ const Template: StoryFn<StoryProps> = ({
               onChange: setCollapseValue,
             }}
             dataError={showEmptyState === EmptyState.DataError || args.dataError}
-            dataFiltered={showEmptyState === EmptyState.NotFound}
+            dataFiltered={args.dataFiltered ?? showEmptyState === EmptyState.NotFound}
             noDataState={showEmptyStateActionButton ? emptyStateSample : undefined}
             noResultsState={showEmptyStateActionButton ? emptyStateSample : undefined}
             errorDataState={showEmptyStateActionButton ? emptyStateSample : undefined}

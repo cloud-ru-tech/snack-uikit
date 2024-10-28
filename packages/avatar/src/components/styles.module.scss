@@ -1,18 +1,16 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-avatar';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-avatar';
 
 $appearances: 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink', 'neutral';
 $shapes: 'round', 'square';
 $sizes: 'xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl';
 $typography: (
-  'xxs': $sans-label-s,
-  'xs': $sans-label-s,
-  's': $sans-label-l,
-  'm': $sans-title-l,
-  'l': $sans-headline-m,
-  'xl': $sans-display-s,
-  'xxl': $sans-display-m
-
-  
+  'xxs': styles-tokens-avatar.$sans-label-s,
+  'xs': styles-tokens-avatar.$sans-label-s,
+  's': styles-tokens-avatar.$sans-label-l,
+  'm': styles-tokens-avatar.$sans-title-l,
+  'l': styles-tokens-avatar.$sans-headline-m,
+  'xl': styles-tokens-avatar.$sans-display-s,
+  'xxl': styles-tokens-avatar.$sans-display-m
 );
 
 .avatar {
@@ -25,18 +23,18 @@ $typography: (
 
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
-      color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
-      background-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
+      color: styles-tokens-avatar.simple-var(styles-tokens-avatar.$theme-variables, 'sys', $appearance, 'text-main');
+      background-color: styles-tokens-avatar.simple-var(styles-tokens-avatar.$theme-variables, 'sys', $appearance, 'decor-default');
     }
   }
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($typography, $size);
+      @include styles-tokens-avatar.composite-var($typography, $size);
 
       @each $shape in $shapes {
         &[data-shape='#{$shape}'] {
-          @include composite-var($avatar, $shape, $size)
+          @include styles-tokens-avatar.composite-var(styles-tokens-avatar.$avatar, $shape, $size)
         }
       }
     }

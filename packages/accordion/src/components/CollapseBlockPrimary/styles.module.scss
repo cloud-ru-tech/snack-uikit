@@ -1,42 +1,42 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-accordion';
 
 .containerBase {
   max-width: 100%;
-  background-color: $sys-neutral-background1-level;
+  background-color: styles-tokens-accordion.$sys-neutral-background1-level;
 
   &:focus-within,
   &:hover {
-    background-color: $sys-neutral-background2-level;
+    background-color: styles-tokens-accordion.$sys-neutral-background2-level;
   }
 
   &[data-shape='round'] {
-    @include composite-var($collapse-block, 'container', 'shape-round');
+    @include styles-tokens-accordion.composite-var(styles-tokens-accordion.$collapse-block, 'container', 'shape-round');
   }
 
   &[data-shape='square'] {
-    @include composite-var($collapse-block, 'container', 'shape-square');
+    @include styles-tokens-accordion.composite-var(styles-tokens-accordion.$collapse-block, 'container', 'shape-square');
   }
 }
 
 .container {
-  @include composite-var($collapse-block-container-primary);
+  @include styles-tokens-accordion.composite-var(styles-tokens-accordion.$collapse-block-container-primary);
 
   &:focus-within,
   &:hover {
-    box-shadow: $box-shadow-elevation-level2;
+    box-shadow: styles-tokens-accordion.$box-shadow-elevation-level2;
   }
 }
 
 .containerOutline {
-  @include composite-var($collapse-block-container-primary);
+  @include styles-tokens-accordion.composite-var(styles-tokens-accordion.$collapse-block-container-primary);
 
   border-width: 0;
-  outline-color: $sys-neutral-decor-default;
+  outline-color: styles-tokens-accordion.$sys-neutral-decor-default;
   outline-style: solid;
-  outline-width: $border-width-accordion-collapse-block-primary;
+  outline-width: styles-tokens-accordion.$border-width-accordion-collapse-block-primary;
 
   &:focus-within,
   &:hover {
-    outline-color: $sys-neutral-decor-hovered;
+    outline-color: styles-tokens-accordion.$sys-neutral-decor-hovered;
   }
 }

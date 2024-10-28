@@ -1,44 +1,44 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUserAction';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUserAction';
 
 .buttonCloseColumnWrapper {
-  @include composite-var($toaster-system-event-toaster-container);
+  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toaster-container);
 
   position: fixed;
   box-sizing: border-box;
 }
 
 .buttonCloseColumn {
-  @include composite-var($toaster-system-event-toaster-button-close-column);
-  @include composite-var($sans-body-m);
+  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toaster-button-close-column);
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-m);
 
   cursor: pointer;
 
   box-sizing: border-box;
   width: 100%;
 
-  color: $sys-invert-neutral-text-main;
+  color: styles-theme-variables.$sys-invert-neutral-text-main;
 
-  background-color: $sys-invert-neutral-background;
+  background-color: styles-theme-variables.$sys-invert-neutral-background;
   border: none;
   outline: none;
 
   &:hover {
-    background-color: $sys-invert-neutral-decor-hovered;
+    background-color: styles-theme-variables.$sys-invert-neutral-decor-hovered;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-theme-variables.outline-var(styles-tokens-element.$container-focused-s);
 
-    background-color: $sys-invert-neutral-decor-hovered;
-    outline-color: $sys-available-complementary;
-    outline-offset: $spacing-state-focus-offset;
+    background-color: styles-theme-variables.$sys-invert-neutral-decor-hovered;
+    outline-color: styles-theme-variables.$sys-available-complementary;
+    outline-offset: styles-theme-variables.$spacing-state-focus-offset;
   }
 
   &:active {
-    color: $sys-invert-neutral-text-light;
+    color: styles-theme-variables.$sys-invert-neutral-text-light;
   }
 }
 
@@ -61,12 +61,12 @@
 }
 
 .containerWithCloseAllButton {
-  margin-bottom: calc($size-toaster-button-close-column + $space-toaster-system-event-gap);
+  margin-bottom: calc(styles-theme-variables.$size-toaster-button-close-column + styles-theme-variables.$space-toaster-system-event-gap);
 }
 
 @media only screen and (max-width: 480px) {
   .buttonCloseColumnWrapper {
-    max-width: calc(100vw - 2 * $space-toaster-toast-system-event-container-padding);
+    max-width: calc(100vw - 2 * styles-theme-variables.$space-toaster-toast-system-event-container-padding);
   }
 }
 
@@ -113,7 +113,7 @@ $theme-name: osThemeSnack;
     }
 
     .#{container-user-action} {
-      @include composite-var($toaster-user-action-toaster-container);
+      @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterUserAction.$toaster-user-action-toaster-container);
 
       display: flex;
       flex-direction: column;
@@ -166,15 +166,15 @@ $theme-name: osThemeSnack;
   }
 
   .#{$theme-name}.Toastify__toast-container.osThemeSnack__toast-container__system-event {
-    @include composite-var($toaster-system-event-toaster-container);
+    @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toaster-container);
 
     display: flex;
     flex-direction: column;
-    max-width: calc(100vw - 2 * $space-toaster-toast-system-event-container-padding);
+    max-width: calc(100vw - 2 * styles-theme-variables.$space-toaster-toast-system-event-container-padding);
   }
 
   .#{$theme-name}.Toastify__toast-container.osThemeSnack__toast-container__user-action {
-    @include composite-var($toaster-user-action-toaster-container);
+    @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterUserAction.$toaster-user-action-toaster-container);
 
     display: flex;
     flex-direction: column;

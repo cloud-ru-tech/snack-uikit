@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
 
 .wrapper {
-  @include composite-var($card-dimension);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-dimension);
 
   display: flex;
   flex: 1 0 auto;
@@ -19,13 +19,13 @@
 }
 
 .currentValue {
-  color: $sys-neutral-text-main;
+  color: styles-tokens-card.$sys-neutral-text-main;
 }
 
 .oldValue {
-  color: $sys-neutral-text-light;
+  color: styles-tokens-card.$sys-neutral-text-light;
 }
 
 .dimension {
-  color: $sys-neutral-text-light;
+  color: styles-tokens-card.$sys-neutral-text-light;
 }

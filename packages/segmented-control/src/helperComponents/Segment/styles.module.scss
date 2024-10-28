@@ -1,12 +1,12 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-segmentedControl';
-@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-segmentedControl';
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
 
 $sizes: 's', 'm', 'l';
 $layouts: 'label-only', 'icon-before', 'icon-only';
 $typographies: (
-  's': $sans-label-m,
-  'm': $sans-label-m,
-  'l': $sans-label-l,
+  's': styles-tokens-segmentedControl.$sans-label-m,
+  'm': styles-tokens-segmentedControl.$sans-label-m,
+  'l': styles-tokens-segmentedControl.$sans-label-l,
 );
 
 .segment {
@@ -21,39 +21,39 @@ $typographies: (
 
   width: 100%;
 
-  color: $sys-neutral-text-support;
+  color: styles-tokens-segmentedControl.$sys-neutral-text-support;
 
   background-color: transparent;
   border-width: 0;
 
   &:hover {
-    color: $sys-neutral-text-main;
+    color: styles-tokens-segmentedControl.$sys-neutral-text-main;
   }
 
   &[data-disabled], &[data-disabled]:hover {
     cursor: not-allowed;
-    color: $sys-neutral-text-disabled;
+    color: styles-tokens-segmentedControl.$sys-neutral-text-disabled;
   }
 
   &[data-active] {
-    color: $sys-neutral-text-main;
+    color: styles-tokens-segmentedControl.$sys-neutral-text-main;
 
     &[data-disabled], &[data-disabled]:hover {
-      color: $sys-neutral-text-disabled;
+      color: styles-tokens-segmentedControl.$sys-neutral-text-disabled;
     }
   }
 
   &:focus-visible {
-    @include outline-inside-var($container-focused-s);
+    @include styles-tokens-segmentedControl.outline-inside-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: simple-var($sys-available-complementary);
+    outline-color: styles-tokens-segmentedControl.simple-var(styles-tokens-segmentedControl.$sys-available-complementary);
   }
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       @each $layout in $layouts {
         &[data-layout='#{$layout}'] {
-          @include composite-var($segmented-control, 'segment', $size, $layout);
+          @include styles-tokens-segmentedControl.composite-var(styles-tokens-segmentedControl.$segmented-control, 'segment', $size, $layout);
         }
       }
     }
@@ -69,7 +69,7 @@ $typographies: (
 .label {
   @each $size, $typography in $typographies {
     &[data-size='#{$size}'] {
-      @include composite-var($typography);
+      @include styles-tokens-segmentedControl.composite-var($typography);
     }
   }
 }

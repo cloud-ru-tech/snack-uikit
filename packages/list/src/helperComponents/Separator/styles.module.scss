@@ -1,19 +1,18 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonFunction';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonFunction';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
 
 $sizes: 's', 'm', 'l';
 
 $typography-primary: (
-  's': $sans-label-m,
-  'm': $sans-label-l,
-  'l': $sans-title-m,
+  's': styles-tokens-button-buttonFunction.$sans-label-m,
+  'm': styles-tokens-button-buttonFunction.$sans-label-l,
+  'l': styles-tokens-button-buttonFunction.$sans-title-m,
 );
 
 $typography-secondary: (
-  's': $light-label-m,
-  'm': $light-label-l,
-  'l': $light-title-m,
+  's': styles-tokens-button-buttonFunction.$light-label-m,
+  'm': styles-tokens-button-buttonFunction.$light-label-l,
+  'l': styles-tokens-button-buttonFunction.$light-title-m,
 );
 
 $button-size: (
@@ -26,7 +25,7 @@ $containerSize: 1px;
 
 .separatorWithLabel {
   display: flex;
-  gap: $dimension-1m;
+  gap: styles-tokens-button-buttonFunction.$dimension-1m;
   align-items: flex-end;
 
   box-sizing: border-box;
@@ -35,14 +34,14 @@ $containerSize: 1px;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($drop-list, 'item', $size, 'container-separator-subheader');
+      @include styles-tokens-button-buttonFunction.composite-var(styles-tokens-dropList.$drop-list, 'item', $size, 'container-separator-subheader');
 
       .label {
         &[data-mode='primary'] {
-          @include composite-var(simple-var($typography-primary, $size));
+          @include styles-tokens-button-buttonFunction.composite-var(styles-tokens-button-buttonFunction.simple-var($typography-primary, $size));
         }
         &[data-mode='secondary'] {
-          @include composite-var(simple-var($typography-secondary, $size));
+          @include styles-tokens-button-buttonFunction.composite-var(styles-tokens-button-buttonFunction.simple-var($typography-secondary, $size));
         }
       }
     }
@@ -55,7 +54,7 @@ $containerSize: 1px;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($drop-list, 'item', $size, 'container-separator');
+      @include styles-tokens-button-buttonFunction.composite-var(styles-tokens-dropList.$drop-list, 'item', $size, 'container-separator');
     }
   }
 
@@ -67,11 +66,11 @@ $containerSize: 1px;
   flex-shrink: 1;
 
   &[data-mode='primary'] {
-    color: $sys-neutral-text-main;
+    color: styles-tokens-button-buttonFunction.$sys-neutral-text-main;
   }
 
   &[data-mode='secondary'] {
-    color: $sys-neutral-text-light;
+    color: styles-tokens-button-buttonFunction.$sys-neutral-text-light;
   }
 }
 
@@ -98,15 +97,14 @@ hr.divider {
       transform: translateY(
         calc(
           (
-              simple-var(
-                  $button-function,
+              styles-tokens-button-buttonFunction.simple-var(
+                  styles-tokens-button-buttonFunction.$button-function,
                   'container',
-                  simple-var($button-size, $size),
+                  styles-tokens-button-buttonFunction.simple-var($button-size, $size),
                   'label-only',
                   'height'
-                ) - simple-var($theme-variables, 'sans', 'label', $size, 'line-height')
-            ) /
-            2 - var(--divider-height, 0)
+                ) - styles-tokens-button-buttonFunction.simple-var(styles-tokens-button-buttonFunction.$theme-variables, 'sans', 'label', $size, 'line-height')
+            ) / 2 - var(--divider-height, 0)
         )
       );
     }

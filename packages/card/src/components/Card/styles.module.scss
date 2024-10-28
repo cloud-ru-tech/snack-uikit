@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
 
@@ -17,7 +17,7 @@ $sizes: 's', 'm', 'l';
 }
 
 .composition {
-  @include composite-var($card-composition-container);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-composition-container);
 
   box-sizing: border-box;
   height: 100%;
@@ -29,7 +29,7 @@ $sizes: 's', 'm', 'l';
 }
 
 .card {
-  @include composite-var($card-container);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-container);
 
   position: relative;
   z-index: 0;
@@ -44,7 +44,7 @@ $sizes: 's', 'm', 'l';
 
   text-align: left;
 
-  background-color: $sys-neutral-background1-level;
+  background-color: styles-tokens-card.$sys-neutral-background1-level;
   border: 0;
   outline-color: transparent;
 
@@ -55,29 +55,29 @@ $sizes: 's', 'm', 'l';
   }
 
   &[data-outline] {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-card.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-neutral-decor-default;
-    outline-width: $border-width-card-container;
+    outline-color: styles-tokens-card.$sys-neutral-decor-default;
+    outline-width: styles-tokens-card.$border-width-card-container;
   }
 
   &:hover,
   &:focus-visible {
-    --snack-ui-card-background-color: #{$sys-neutral-background2-level};
+    --snack-ui-card-background-color: #{styles-tokens-card.$sys-neutral-background2-level};
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-l);
+    @include styles-tokens-card.outline-var(styles-tokens-element.$container-focused-l);
 
-    background-color: $sys-neutral-background2-level;
-    outline-color: $sys-primary-accent-default;
+    background-color: styles-tokens-card.$sys-neutral-background2-level;
+    outline-color: styles-tokens-card.$sys-primary-accent-default;
 
     .functionBadgeWrapper {
       display: block;
     }
 
     .check {
-      background-color: $sys-primary-accent-default;
+      background-color: styles-tokens-card.$sys-primary-accent-default;
     }
   }
 
@@ -88,13 +88,13 @@ $sizes: 's', 'm', 'l';
   }
 
   &[data-checked] {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-card.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-primary-decor-activated;
-    outline-width: $border-width-card-container;
+    outline-color: styles-tokens-card.$sys-primary-decor-activated;
+    outline-width: styles-tokens-card.$border-width-card-container;
 
     &:hover {
-      outline-color: $sys-primary-decor-hovered;
+      outline-color: styles-tokens-card.$sys-primary-decor-hovered;
       box-shadow: none;
     }
 
@@ -107,39 +107,39 @@ $sizes: 's', 'm', 'l';
       bottom: 0;
       left: 0;
 
-      opacity: $opacity-a008;
-      background-color: $sys-primary-accent-default;
+      opacity: styles-tokens-card.$opacity-a008;
+      background-color: styles-tokens-card.$sys-primary-accent-default;
     }
 
     .check {
-      color: $sys-primary-on-accent;
-      background-color: $sys-primary-accent-default;
+      color: styles-tokens-card.$sys-primary-on-accent;
+      background-color: styles-tokens-card.$sys-primary-accent-default;
     }
   }
 
   &[data-checked]:focus-visible {
-    @include outline-var($container-focused-l);
+    @include styles-tokens-card.outline-var(styles-tokens-element.$container-focused-l);
 
-    outline-color: $sys-primary-accent-default;
+    outline-color: styles-tokens-card.$sys-primary-accent-default;
 
     .check {
-      color: $sys-primary-on-accent;
-      background-color: $sys-primary-accent-default;
+      color: styles-tokens-card.$sys-primary-on-accent;
+      background-color: styles-tokens-card.$sys-primary-accent-default;
     }
   }
 
   &[data-disabled] {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-card.outline-var(styles-tokens-element.$container-focused-s);
 
     cursor: not-allowed;
-    background-color: $sys-neutral-background;
-    outline-color: $sys-neutral-decor-default;
-    outline-width: $border-width-card-container;
+    background-color: styles-tokens-card.$sys-neutral-background;
+    outline-color: styles-tokens-card.$sys-neutral-decor-default;
+    outline-width: styles-tokens-card.$border-width-card-container;
 
     &[data-checked] {
       .check {
-        color: $sys-neutral-on-accent;
-        background-color: $sys-neutral-text-disabled;
+        color: styles-tokens-card.$sys-neutral-on-accent;
+        background-color: styles-tokens-card.$sys-neutral-text-disabled;
       }
     }
 
@@ -155,19 +155,19 @@ $sizes: 's', 'm', 'l';
 
     &[data-outline] {
       &:hover {
-        outline-color: $sys-neutral-decor-hovered;
+        outline-color: styles-tokens-card.$sys-neutral-decor-hovered;
         box-shadow: none;
       }
 
       &:focus-visible {
-        @include outline-var($container-focused-l);
+        @include styles-tokens-card.outline-var(styles-tokens-element.$container-focused-l);
 
-        outline-color: $sys-primary-accent-default;
+        outline-color: styles-tokens-card.$sys-primary-accent-default;
       }
     }
 
     &:hover {
-      box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
+      box-shadow: styles-tokens-card.simple-var(styles-tokens-card.$theme-variables, 'box-shadow', 'elevation', 'level2');
     }
   }
 
@@ -186,7 +186,7 @@ $sizes: 's', 'm', 'l';
   bottom: 0;
   left: 0;
 
-  border-radius: $radius-card-container;
+  border-radius: styles-tokens-card.$radius-card-container;
 }
 
 .body {
@@ -196,7 +196,7 @@ $sizes: 's', 'm', 'l';
 
   width: 100%;
 
-  color: $sys-neutral-text-support;
+  color: styles-tokens-card.$sys-neutral-text-support;
   text-align: initial;
 }
 
@@ -214,7 +214,7 @@ $sizes: 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($card, 'content', $size, 'container');
+      @include styles-tokens-card.composite-var(styles-tokens-card.$card, 'content', $size, 'container');
     }
   }
 }

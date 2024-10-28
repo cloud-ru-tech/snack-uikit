@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
-@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
 
 .button {
-  @include composite-var($card-button);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-button);
 
   cursor: pointer;
 
@@ -12,35 +12,35 @@
   align-items: center;
   justify-content: center;
 
-  color: $sys-neutral-text-main;
+  color: styles-tokens-card.$sys-neutral-text-main;
 
   background-color: transparent;
   border: 0;
   outline-color: transparent;
 
   &:hover {
-    color: $sys-neutral-text-support;
+    color: styles-tokens-card.$sys-neutral-text-support;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-card.outline-var(styles-tokens-element.$container-focused-s);
 
-    color: $sys-neutral-text-support;
-    outline-color: $sys-available-complementary;
+    color: styles-tokens-card.$sys-neutral-text-support;
+    outline-color: styles-tokens-card.$sys-available-complementary;
   }
 
   &:active {
-    color: $sys-neutral-text-light;
+    color: styles-tokens-card.$sys-neutral-text-light;
   }
 
   svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }
 
 .triggerClassName {
-  --offset: #{$space-drop-list-drop-offset};
+  --offset: #{styles-tokens-card.$space-drop-list-drop-offset};
 }
 
 .wrapper {

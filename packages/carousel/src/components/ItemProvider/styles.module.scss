@@ -1,13 +1,13 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-carousel';
 
 .itemProvider {
-  --gap: #{$dimension-2m};
+  --gap: #{styles-tokens-carousel.$dimension-2m};
 
-  @include composite-var($carousel-content-layout);
+  @include styles-tokens-carousel.composite-var(styles-tokens-carousel.$carousel-content-layout);
 
   overflow: hidden;
   width: 100%;
-  margin: calc(0px - $space-carousel-content-layout-padding);
+  margin: calc(0px - styles-tokens-carousel.$space-carousel-content-layout-padding);
 
   &[data-swipe] {
     cursor: grab;
@@ -28,7 +28,7 @@
 
 .itemTracker {
   display: flex;
-  gap: var(--gap, $dimension-2m);
+  gap: var(--gap, styles-tokens-carousel.$dimension-2m);
   box-sizing: border-box;
   height: 100%;
 }

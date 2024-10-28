@@ -1,10 +1,10 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-drawer';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-drawer';
 
 $modes: ('regular', 'soft');
 $sizes: ('s', 'm', 'l');
 $drawer-background-color: (
-  'regular': $sys-neutral-background1-level,
-  'soft': $sys-neutral-background2-level,
+  'regular': styles-tokens-drawer.$sys-neutral-background1-level,
+  'soft': styles-tokens-drawer.$sys-neutral-background2-level,
 );
 
 .drawerRoot {
@@ -18,19 +18,19 @@ div[data-content-wrapper='true'] {
 
   overflow: unset;
 
-  max-width: calc(100% - $space-drawer-outside-gap);
+  max-width: calc(100% - styles-tokens-drawer.$space-drawer-outside-gap);
   height: 100%;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($drawer, 'window', $size);
+      @include styles-tokens-drawer.composite-var(styles-tokens-drawer.$drawer, 'window', $size);
     }
   }
 
   @each $mode in $modes {
     &[data-mode='#{$mode}'] {
       .drawer {
-        background-color: simple-var($drawer-background-color, $mode);
+        background-color: styles-tokens-drawer.simple-var($drawer-background-color, $mode);
       }
     }
   }
@@ -43,12 +43,12 @@ div[data-content-wrapper='true'] {
 
   box-sizing: border-box;
 
-  box-shadow: simple-var($box-shadow-elevation-level5);
+  box-shadow: styles-tokens-drawer.simple-var(styles-tokens-drawer.$box-shadow-elevation-level5);
 }
 
 .headerElements {
-  @include composite-var($drawer-header-elements-container);
-  @include composite-var($drawer-header-elements-elements-layout);
+  @include styles-tokens-drawer.composite-var(styles-tokens-drawer.$drawer-header-elements-container);
+  @include styles-tokens-drawer.composite-var(styles-tokens-drawer.$drawer-header-elements-elements-layout);
 
   position: absolute;
   top: 0;
@@ -60,5 +60,5 @@ div[data-content-wrapper='true'] {
 
 .mask {
   z-index: auto !important; /* stylelint-disable-line declaration-no-important */
-  background-color: simple-var($sys-blackout);
+  background-color: styles-tokens-drawer.simple-var(styles-tokens-drawer.$sys-blackout);
 }

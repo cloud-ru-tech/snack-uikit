@@ -1,60 +1,59 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipAssist';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '../../styles.module';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipAssist';
+@use '../../styles.module';
 
 $sizes: 'xs', 's', 'm', 'l';
 
 $typography: (
-  'xs': $sans-label-s,
-  's': $sans-label-m,
-  'm': $sans-label-l,
-  'l': $sans-label-l,
+  'xs': styles-tokens-chips-chipAssist.$sans-label-s,
+  's': styles-tokens-chips-chipAssist.$sans-label-m,
+  'm': styles-tokens-chips-chipAssist.$sans-label-l,
+  'l': styles-tokens-chips-chipAssist.$sans-label-l,
 );
 
 .assistChip {
-  @include chip-defaults;
-  @include chip-anatomy-styles($chip-assist, $sizes, $typography);
+  @include styles.chip-defaults;
+  @include styles.chip-anatomy-styles(styles-tokens-chips-chipAssist.$chip-assist, $sizes, $typography);
 
-  color: $sys-neutral-text-support;
-  background-color: $sys-neutral-background1-level;
-  border-color: $sys-neutral-decor-default;
+  color: styles-tokens-chips-chipAssist.$sys-neutral-text-support;
+  background-color: styles-tokens-chips-chipAssist.$sys-neutral-background1-level;
+  border-color: styles-tokens-chips-chipAssist.$sys-neutral-decor-default;
 
   .icon {
-    color: $sys-neutral-text-light;
+    color: styles-tokens-chips-chipAssist.$sys-neutral-text-light;
   }
 
   &:hover {
-    color: $sys-neutral-text-main;
-    background-color: $sys-neutral-background2-level;
-    border-color: $sys-neutral-decor-hovered;
+    color: styles-tokens-chips-chipAssist.$sys-neutral-text-main;
+    background-color: styles-tokens-chips-chipAssist.$sys-neutral-background2-level;
+    border-color: styles-tokens-chips-chipAssist.$sys-neutral-decor-hovered;
   }
 
   &:focus-visible {
-    @include chip-outline;
+    @include styles.chip-outline;
 
-    color: $sys-neutral-text-main;
-    background-color: $sys-neutral-background2-level;
-    border-color: $sys-neutral-decor-hovered;
+    color: styles-tokens-chips-chipAssist.$sys-neutral-text-main;
+    background-color: styles-tokens-chips-chipAssist.$sys-neutral-background2-level;
+    border-color: styles-tokens-chips-chipAssist.$sys-neutral-decor-hovered;
   }
 
   &:active {
-    color: $sys-neutral-text-main;
-    background-color: $sys-neutral-background;
-    border-color: $sys-neutral-decor-activated;
+    color: styles-tokens-chips-chipAssist.$sys-neutral-text-main;
+    background-color: styles-tokens-chips-chipAssist.$sys-neutral-background;
+    border-color: styles-tokens-chips-chipAssist.$sys-neutral-decor-activated;
   }
 
   &:disabled {
     cursor: not-allowed;
-    color: $sys-neutral-text-light;
-    background-color: $sys-neutral-background;
-    border-color: $sys-neutral-decor-hovered;
+    color: styles-tokens-chips-chipAssist.$sys-neutral-text-light;
+    background-color: styles-tokens-chips-chipAssist.$sys-neutral-background;
+    border-color: styles-tokens-chips-chipAssist.$sys-neutral-decor-hovered;
   }
 
   &[data-loading] {
-    @include chip-loading-state($chip-assist, '&[data-variant="label-only"]', label);
+    @include styles.chip-loading-state(styles-tokens-chips-chipAssist.$chip-assist, '&[data-variant="label-only"]', label);
 
-    color: $sys-neutral-text-main;
-    background-color: $sys-neutral-background;
-    border-color: $sys-neutral-decor-activated;
+    color: styles-tokens-chips-chipAssist.$sys-neutral-text-main;
+    background-color: styles-tokens-chips-chipAssist.$sys-neutral-background;
+    border-color: styles-tokens-chips-chipAssist.$sys-neutral-decor-activated;
   }
 }

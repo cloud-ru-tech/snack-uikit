@@ -1,18 +1,18 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .card {
   padding: 48px 8px 8px 8px;
-  border: 1px solid $sys-neutral-decor-default;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
   border-radius: 16px;
 }
 
 .content {
   padding: 8px 8px 4px 8px;
 
-  color: $sys-neutral-text-support;
+  color: styles-theme-variables.$sys-neutral-text-support;
 
-  background-color: $sys-neutral-background1-level;
-  border: 1px solid $sys-neutral-decor-default;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
   border-radius: 8px;
 }
 
@@ -25,14 +25,14 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  color: $sys-neutral-text-light;
+  color: styles-theme-variables.$sys-neutral-text-light;
 }
 
 .value {
   flex: 1;
   min-width: 0;
   margin-left: 4px;
-  color: $sys-neutral-text-support;
+  color: styles-theme-variables.$sys-neutral-text-support;
 }
 
 .divider {
@@ -41,5 +41,5 @@
 
 .description {
   min-width: 0;
-  color: $sys-neutral-text-support;
+  color: styles-theme-variables.$sys-neutral-text-support;
 }

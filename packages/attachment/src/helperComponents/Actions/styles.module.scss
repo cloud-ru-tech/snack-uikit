@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
 
 .actions {
-  @include composite-var($attachment, 'composition', 'end-item', 'gap');
+  @include styles-tokens-attachment.composite-var(styles-tokens-attachment.$attachment, 'composition', 'end-item', 'gap');
 
   display: flex;
   flex-shrink: 0;

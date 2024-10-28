@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $modes: 'little', 'middle', 'background';
 
@@ -25,13 +25,13 @@ $modes: 'little', 'middle', 'background';
         object-fit: cover;
 
         &[data-fading]{
-          -webkit-mask-image: $gradient-linear-mask-90deg;
-          mask-image: $gradient-linear-mask-90deg;
+          -webkit-mask-image: styles-theme-variables.$gradient-linear-mask-90deg;
+          mask-image: styles-theme-variables.$gradient-linear-mask-90deg;
         }
       }
 
       @else {
-        @include composite-var($card, 'image', $mode);
+        @include styles-theme-variables.composite-var(styles-tokens-card.$card, 'image', $mode);
       }
     }
   }

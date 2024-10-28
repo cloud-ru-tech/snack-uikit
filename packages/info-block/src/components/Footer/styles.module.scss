@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-infoBlock';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-infoBlock';
 
 .infoBlockFooter {
-  @include composite-var($info-block-footer);
+  @include styles-tokens-infoBlock.composite-var(styles-tokens-infoBlock.$info-block-footer);
 
   display: flex;
   align-items: center;

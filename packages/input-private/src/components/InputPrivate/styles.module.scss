@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .inputPrivate {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
 
-  color: simple-var($sys-neutral-text-main);
+  color: styles-theme-variables.simple-var(styles-theme-variables.$sys-neutral-text-main);
   text-overflow: ellipsis;
 
   background-color: transparent;
@@ -16,11 +16,11 @@
   outline: 0;
 
   &::placeholder {
-    color: simple-var($sys-neutral-text-disabled);
+    color: styles-theme-variables.simple-var(styles-theme-variables.$sys-neutral-text-disabled);
   }
 
   &:read-only {
-    color: simple-var($sys-neutral-text-support);
+    color: styles-theme-variables.simple-var(styles-theme-variables.$sys-neutral-text-support);
   }
 
   &:placeholder-shown {
@@ -28,7 +28,7 @@
   }
 
   &[disabled] {
-    color: simple-var($sys-neutral-text-disabled);
+    color: styles-theme-variables.simple-var(styles-theme-variables.$sys-neutral-text-disabled);
   }
 
   &[type=number] {

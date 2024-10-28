@@ -1,13 +1,13 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-link';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-link';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
 $text-modes: 'default', 'accent', 'on-accent';
 $appearances: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
 $icon-sizes: (
-  's': $icon-xs,
-  'm': $icon-s,
-  'l': $icon-s,
+  's': styles-tokens-element.$icon-xs,
+  'm': styles-tokens-element.$icon-s,
+  'l': styles-tokens-element.$icon-s,
 );
 
 .link {
@@ -29,56 +29,56 @@ $icon-sizes: (
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
       &[data-text-mode='default'] {
-        color: simple-var($theme-variables, 'sys', $appearance, 'text-support');
+        color: styles-tokens-link.simple-var(styles-tokens-link.$theme-variables, 'sys', $appearance, 'text-support');
 
         &:hover {
-          color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+          color: styles-tokens-link.simple-var(styles-tokens-link.$theme-variables, 'sys', $appearance, 'text-main');
         }
 
         &:focus-visible {
-          @include outline-var($container-focused-s);
+          @include styles-tokens-link.outline-var(styles-tokens-element.$container-focused-s);
 
-          color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
-          outline-color: $sys-available-complementary;
+          color: styles-tokens-link.simple-var(styles-tokens-link.$theme-variables, 'sys', $appearance, 'text-main');
+          outline-color: styles-tokens-link.$sys-available-complementary;
         }
       }
 
       &[data-text-mode='accent'] {
-        color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+        color: styles-tokens-link.simple-var(styles-tokens-link.$theme-variables, 'sys', $appearance, 'accent-default');
 
         &:hover {
-          color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+          color: styles-tokens-link.simple-var(styles-tokens-link.$theme-variables, 'sys', $appearance, 'text-main');
         }
 
         &:focus-visible {
-          @include outline-var($container-focused-s);
+          @include styles-tokens-link.outline-var(styles-tokens-element.$container-focused-s);
 
-          color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+          color: styles-tokens-link.simple-var(styles-tokens-link.$theme-variables, 'sys', $appearance, 'text-main');
 
           @if $appearance == 'invert-neutral' {
-            outline-color: $sys-available-on-complementary;
+            outline-color: styles-tokens-link.$sys-available-on-complementary;
           }
 
  @else {
-            outline-color: $sys-available-complementary;
+            outline-color: styles-tokens-link.$sys-available-complementary;
           }
         }
       }
 
       &[data-text-mode='on-accent'] {
-        color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
+        color: styles-tokens-link.simple-var(styles-tokens-link.$theme-variables, 'sys', $appearance, 'on-accent');
 
         &:hover {
-          color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
-          opacity: $opacity-a080;
+          color: styles-tokens-link.simple-var(styles-tokens-link.$theme-variables, 'sys', $appearance, 'on-accent');
+          opacity: styles-tokens-link.$opacity-a080;
         }
 
         &:focus-visible {
-          @include outline-var($container-focused-s);
+          @include styles-tokens-link.outline-var(styles-tokens-element.$container-focused-s);
 
-          color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
-          opacity: $opacity-a080;
-          outline-color: $sys-available-on-complementary;
+          color: styles-tokens-link.simple-var(styles-tokens-link.$theme-variables, 'sys', $appearance, 'on-accent');
+          opacity: styles-tokens-link.$opacity-a080;
+          outline-color: styles-tokens-link.$sys-available-on-complementary;
         }
       }
     }
@@ -89,20 +89,20 @@ $icon-sizes: (
       @each $text-mode in $text-modes {
         &[data-text-mode='#{$text-mode}'] {
           @if $text-mode == 'default' {
-            @include composite-var($theme-variables, 'sans', 'body', $size);
+            @include styles-tokens-link.composite-var(styles-tokens-link.$theme-variables, 'sans', 'body', $size);
           }
 
  @else {
-            @include composite-var($theme-variables, 'link', 'body', $size);
+            @include styles-tokens-link.composite-var(styles-tokens-link.$theme-variables, 'link', 'body', $size);
           }
         }
       }
 
-      @include composite-var($link, 'container', $size);
+      @include styles-tokens-link.composite-var(styles-tokens-link.$link, 'container', $size);
 
       svg {
-        width: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-        height: simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        width: styles-tokens-link.simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: styles-tokens-link.simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
       }
     }
   }

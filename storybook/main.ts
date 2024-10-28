@@ -52,9 +52,7 @@ const mainConfig: StorybookConfig = {
         backgrounds: false,
       },
     },
-    // TODO: вернуть, когда выйдет апдейт с поддержкой Storybook 8
-    //   https://github.com/geometricpanda/storybook-addon-badges/issues/20#issuecomment-2356342452
-    // '@geometricpanda/storybook-addon-badges',
+    '@geometricpanda/storybook-addon-badges',
     '@cloud-ru/ft-storybook-brand-addon',
     'storybook-dark-mode',
     '@storybook/addon-links',

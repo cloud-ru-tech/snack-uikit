@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-popover';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-popover';
 
 .popoverContainer {
-  @include composite-var($popover-container);
-  @include composite-var($sans-body-s);
+  @include styles-tokens-popover.composite-var(styles-tokens-popover.$popover-container);
+  @include styles-tokens-popover.composite-var(styles-tokens-popover.$sans-body-s);
 
   overflow: hidden;
 
@@ -10,22 +10,22 @@
 
   word-wrap: break-word;
 
-  background-color: $sys-neutral-background2-level;
-  box-shadow: $box-shadow-elevation-level3;
+  background-color: styles-tokens-popover.$sys-neutral-background2-level;
+  box-shadow: styles-tokens-popover.$box-shadow-elevation-level3;
 
   &[data-disable-max-width='true'] {
-    max-width: calc(100vw - $dimension-2m);
+    max-width: calc(100vw - styles-tokens-popover.$dimension-2m);
   }
 }
 
 .popoverArrowElement {
-  @include composite-var($popover-pointer-arrow);
+  @include styles-tokens-popover.composite-var(styles-tokens-popover.$popover-pointer-arrow);
 
   fill: currentColor;
 }
 
 .popoverArrowContainer {
-  @include composite-var($popover-popover-pointer);
+  @include styles-tokens-popover.composite-var(styles-tokens-popover.$popover-popover-pointer);
 
   position: absolute;
 
@@ -34,5 +34,5 @@
   padding-top: 0;
   padding-bottom: 0;
 
-  color: $sys-neutral-background2-level;
+  color: styles-tokens-popover.$sys-neutral-background2-level;
 }

@@ -1,4 +1,4 @@
-@import "@snack-uikit/figma-tokens/build/scss/styles-theme-variables";
+@use "@snack-uikit/figma-tokens/build/scss/styles-theme-variables";
 
 @font-face {
   font-family: 'SB Sans Interface';
@@ -49,9 +49,9 @@
 }
 
 body {
-  @include composite-var($sans-body-s);
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-s);
 
   box-sizing: border-box;
-  color: $sys-neutral-text-main;
-  background-color: $sys-neutral-background;
+  color: styles-theme-variables.$sys-neutral-text-main;
+  background-color: styles-theme-variables.$sys-neutral-background;
 }

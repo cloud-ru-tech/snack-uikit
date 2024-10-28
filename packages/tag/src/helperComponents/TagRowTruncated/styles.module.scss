@@ -1,5 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tag';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tag';
 
 $sizes: 'xs', 's';
 
@@ -15,7 +14,7 @@ $sizes: 'xs', 's';
 
   @each $size in $sizes {
     &[data-size=#{$size}] {
-      @include composite-var($tag-row, $size);
+      @include styles-tokens-tag.composite-var(styles-tokens-tag.$tag-row, $size);
     }
   }
 }
@@ -27,7 +26,7 @@ $sizes: 'xs', 's';
 
   @each $size in $sizes {
     &[data-size=#{$size}] {
-      @include composite-var($tag-row, $size);
+      @include styles-tokens-tag.composite-var(styles-tokens-tag.$tag-row, $size);
     }
   }
 }
@@ -46,7 +45,7 @@ $sizes: 'xs', 's';
 
   @each $size in $sizes {
     &[data-size=#{$size}] {
-      @include composite-var($tag-row, $size);
+      @include styles-tokens-tag.composite-var(styles-tokens-tag.$tag-row, $size);
     }
   }
 }

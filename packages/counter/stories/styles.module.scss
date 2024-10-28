@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
   display: flex;
@@ -11,9 +11,9 @@
   margin-bottom: 16px;
   padding: 0 24px;
 
-  background-color: $sys-neutral-background1-level;
-  border: 1px solid $sys-neutral-decor-default;
-  border-radius: $dimension-050m;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
+  border-radius: styles-theme-variables.$dimension-050m;
 }
 
 $border-width: 0.5px;
@@ -21,8 +21,8 @@ $border-width: 0.5px;
 .table {
   display: inline-grid;
   grid-template-columns: repeat(7, 1fr);
-  background-color: $sys-neutral-background1-level;
-  border: $border-width solid $sys-neutral-decor-default;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: $border-width solid styles-theme-variables.$sys-neutral-decor-default;
 }
 
 .cell {
@@ -32,7 +32,7 @@ $border-width: 0.5px;
 
   padding: 8px;
 
-  border: $border-width solid $sys-neutral-decor-disabled;
+  border: $border-width solid styles-theme-variables.$sys-neutral-decor-disabled;
 }
 
 .headerCell {

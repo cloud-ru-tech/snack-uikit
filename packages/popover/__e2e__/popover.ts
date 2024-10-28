@@ -70,7 +70,8 @@ test.page(getPage({ open: true }))('Should be open when controlled "open" flag i
 
 // eslint-disable-next-line testcafe-community/missing-expect
 test.page(getPage({ trigger: TRIGGER.Click }))('Opens by click', async t => {
-  await verifyPopoverBehavior(t, { click: true });
+  //https://github.com/DevExpress/testcafe/issues/7969
+  if (t.browser.name !== 'Firefox') await verifyPopoverBehavior(t, { click: true });
 });
 
 // eslint-disable-next-line testcafe-community/missing-expect
@@ -85,7 +86,8 @@ test.page(getPage({ trigger: TRIGGER.FocusVisible }))('Opens by focus', async t 
 
 // eslint-disable-next-line testcafe-community/missing-expect
 test.page(getPage({ trigger: TRIGGER.ClickAndFocusVisible }))('Opens by click & focus', async t => {
-  await verifyPopoverBehavior(t, { click: true, focus: true });
+  //https://github.com/DevExpress/testcafe/issues/7969
+  if (t.browser.name !== 'Firefox') await verifyPopoverBehavior(t, { click: true, focus: true });
 });
 
 // eslint-disable-next-line testcafe-community/missing-expect

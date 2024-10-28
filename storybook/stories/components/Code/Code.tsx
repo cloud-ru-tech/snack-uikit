@@ -1,7 +1,6 @@
 import { CopyIcon } from '@storybook/icons';
 import copyToClipboard from 'copy-to-clipboard';
-import { useRef, useState } from 'react';
-import { CodeProps } from 'react-markdown/lib/ast-to-react';
+import { ReactNode, useRef, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 import { dark } from './dark';
@@ -18,7 +17,18 @@ const CODE_THEME = {
   light: light,
   dark: dark,
 };
-export function Code({ inline, className, children, darkMode, ...rest }: CodeProps & { darkMode?: boolean }) {
+export function Code({
+  inline,
+  className,
+  children,
+  darkMode,
+  ...rest
+}: {
+  darkMode?: boolean;
+  className?: string;
+  children?: ReactNode;
+  inline?: boolean;
+}) {
   const theme = darkMode ? 'dark' : 'light';
   const [copyText, setCopyText] = useState(TEXTS.Copy);
   const timer = useRef<ReturnType<typeof setTimeout>>();

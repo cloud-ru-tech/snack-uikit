@@ -1,15 +1,15 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
 
 $sizes: 's', 'm';
 
 $title: (
-  's': $sans-label-m,
-  'm': $sans-label-l,
+  's': styles-tokens-attachment.$sans-label-m,
+  'm': styles-tokens-attachment.$sans-label-l,
 );
 
 $description: (
-  's': $sans-body-s,
-  'm': $sans-body-m,
+  's': styles-tokens-attachment.$sans-body-s,
+  'm': styles-tokens-attachment.$sans-body-m,
 );
 
 .content {
@@ -32,12 +32,12 @@ $description: (
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       .title {
-        @include composite-var($title, $size);
+        @include styles-tokens-attachment.composite-var($title, $size);
       }
 
       .description,
       .error {
-        @include composite-var($description, $size);
+        @include styles-tokens-attachment.composite-var($description, $size);
       }
     }
   }
@@ -51,13 +51,13 @@ $description: (
 }
 
 .title {
-  color: $sys-neutral-text-main;
+  color: styles-tokens-attachment.$sys-neutral-text-main;
 }
 
 .description {
-  color: $sys-neutral-text-light;
+  color: styles-tokens-attachment.$sys-neutral-text-light;
 }
 
 .error {
-  color: $sys-red-text-support;
+  color: styles-tokens-attachment.$sys-red-text-support;
 }

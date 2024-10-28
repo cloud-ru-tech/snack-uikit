@@ -1,14 +1,13 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-timeline';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-timeline';
 
 .trackItem {
-  @include composite-var($timeline-container);
+  @include styles-tokens-timeline.composite-var(styles-tokens-timeline.$timeline-container);
 
   display: flex;
   flex-direction: row;
 
   .opposite, .content {
-    @include composite-var($timeline-content-layout);
+    @include styles-tokens-timeline.composite-var(styles-tokens-timeline.$timeline-content-layout);
 
     flex: 1 1 0;
   }

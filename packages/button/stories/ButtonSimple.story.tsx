@@ -40,9 +40,6 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
           <TableCell>
             <ButtonSimple {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
           </TableCell>
-          <TableCell>
-            <ButtonSimple {...BUTTON_ARGS} icon={<PlaceholderSVG />} label={undefined} />
-          </TableCell>
         </TableColumn>
 
         <TableColumn>
@@ -50,16 +47,10 @@ const Template: StoryFn<StoryProps> = ({ testMode, ...args }) => {
           <TableCell>
             <ButtonSimple {...BUTTON_ARGS} icon={undefined} label='Label Text' />
           </TableCell>
-          <TableCell>
-            <ButtonSimple {...BUTTON_ARGS} icon={undefined} label='Label Text' />
-          </TableCell>
         </TableColumn>
 
         <TableColumn>
           <TableCell>Label + Icon</TableCell>
-          <TableCell>
-            <ButtonSimple {...BUTTON_ARGS} icon={<PlaceholderSVG />} label='Label Text' />
-          </TableCell>
           <TableCell>
             <ButtonSimple {...BUTTON_ARGS} icon={<PlaceholderSVG />} label='Label Text' />
           </TableCell>

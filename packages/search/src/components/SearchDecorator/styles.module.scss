@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-search';
-@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-search';
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
 
 $sizes: 's', 'm', 'l';
 
@@ -12,32 +12,32 @@ $sizes: 's', 'm', 'l';
   width: 100%;
   min-width: 0;
 
-  background-color: $sys-neutral-background1-level;
+  background-color: styles-tokens-search.$sys-neutral-background1-level;
   border-color: transparent;
   border-style: solid;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($search, $size);
+      @include styles-tokens-search.composite-var(styles-tokens-search.$search, $size);
     }
   }
 
   &[data-outline] {
-    border-color: $sys-neutral-decor-default;
+    border-color: styles-tokens-search.$sys-neutral-decor-default;
   }
 
   &:hover {
-    background-color: $sys-neutral-background2-level;
-    border-color: $sys-primary-decor-hovered;
+    background-color: styles-tokens-search.$sys-neutral-background2-level;
+    border-color: styles-tokens-search.$sys-primary-decor-hovered;
   }
 
   &:focus-within,
   &[data-focused] {
-    @include outline-var($container-focused-m);
+    @include styles-tokens-search.outline-var(styles-tokens-element.$container-focused-m);
 
-    background-color: $sys-neutral-background2-level;
-    border-color: $sys-primary-accent-default;
-    outline-color: $sys-primary-decor-activated;
+    background-color: styles-tokens-search.$sys-neutral-background2-level;
+    border-color: styles-tokens-search.$sys-primary-accent-default;
+    outline-color: styles-tokens-search.$sys-primary-decor-activated;
   }
 }
 

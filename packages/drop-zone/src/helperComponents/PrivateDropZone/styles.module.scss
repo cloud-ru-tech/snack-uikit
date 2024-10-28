@@ -1,13 +1,13 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropZone';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropZone';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .hidden {
   display: none;
 }
 
 .container {
-  @include composite-var($drop-zone-container-single);
-  @include composite-var($drop-zone-content-layout-single);
+  @include styles-tokens-dropZone.composite-var(styles-tokens-dropZone.$drop-zone-container-single);
+  @include styles-tokens-dropZone.composite-var(styles-tokens-dropZone.$drop-zone-content-layout-single);
 
   cursor: pointer;
 
@@ -21,65 +21,65 @@
   min-width: 174px;
   min-height: 80px;
 
-  background-color: $sys-neutral-background2-level;
-  border-color: $sys-neutral-decor-default;
+  background-color: styles-tokens-dropZone.$sys-neutral-background2-level;
+  border-color: styles-tokens-dropZone.$sys-neutral-decor-default;
 
   .title {
-    @include composite-var($sans-title-s);
+    @include styles-tokens-dropZone.composite-var(styles-tokens-dropZone.$sans-title-s);
 
     margin: 0;
-    color: $sys-neutral-text-main;
+    color: styles-tokens-dropZone.$sys-neutral-text-main;
   }
 
   .description {
-    @include composite-var($sans-body-s);
+    @include styles-tokens-dropZone.composite-var(styles-tokens-dropZone.$sans-body-s);
 
-    color: $sys-neutral-text-light;
+    color: styles-tokens-dropZone.$sys-neutral-text-light;
   }
 
   &:hover {
-    border-color: $sys-primary-accent-hovered;
+    border-color: styles-tokens-dropZone.$sys-primary-accent-hovered;
 
     .description {
-      color: $sys-neutral-text-support;
+      color: styles-tokens-dropZone.$sys-neutral-text-support;
     }
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-dropZone.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-primary-accent-default;
-    outline-offset: $spacing-state-focus-offset;
+    outline-color: styles-tokens-dropZone.$sys-primary-accent-default;
+    outline-offset: styles-tokens-dropZone.$spacing-state-focus-offset;
 
     .description {
-      color: $sys-neutral-text-support;
+      color: styles-tokens-dropZone.$sys-neutral-text-support;
     }
   }
 
   &[data-over] {
-    background-color: $sys-primary-background;
-    border-color: $sys-primary-accent-hovered;
+    background-color: styles-tokens-dropZone.$sys-primary-background;
+    border-color: styles-tokens-dropZone.$sys-primary-accent-hovered;
 
     .title {
-      color: $sys-primary-text-main;
+      color: styles-tokens-dropZone.$sys-primary-text-main;
     }
 
     .description {
-      color: $sys-primary-text-support;
+      color: styles-tokens-dropZone.$sys-primary-text-support;
     }
   }
 
   &[data-disabled] {
     cursor: not-allowed;
-    background-color: $sys-neutral-background;
-    border-color: $sys-neutral-decor-disabled;
+    background-color: styles-tokens-dropZone.$sys-neutral-background;
+    border-color: styles-tokens-dropZone.$sys-neutral-decor-disabled;
 
     .title {
-      color: $sys-neutral-text-light;
+      color: styles-tokens-dropZone.$sys-neutral-text-light;
     }
 
     .description {
-      color: $sys-neutral-text-disabled;
+      color: styles-tokens-dropZone.$sys-neutral-text-disabled;
     }
   }
 }

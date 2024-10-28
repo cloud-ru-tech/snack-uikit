@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .treeNode {
   display: flex;
@@ -16,19 +16,19 @@
 
   box-sizing: border-box;
 
-  color: $sys-neutral-text-support;
+  color: styles-tokens-tree.$sys-neutral-text-support;
 
   svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }
 
 .treeNodeTitle {
   flex-grow: 1;
   box-sizing: border-box;
-  min-width: $size-tree-item-checkbox-wrap;
-  color: $sys-neutral-text-main;
+  min-width: styles-tokens-tree.$size-tree-item-checkbox-wrap;
+  color: styles-tokens-tree.$sys-neutral-text-main;
 }
 
 .treeNodeActions {
@@ -41,7 +41,7 @@
 }
 
 .treeNodeContent {
-  @include composite-var($tree-item-content-layout);
+  @include styles-tokens-tree.composite-var(styles-tokens-tree.$tree-item-content-layout);
 
   cursor: pointer;
 
@@ -66,13 +66,13 @@
     height: 100%;
 
     opacity: 0;
-    background-color: $sys-neutral-accent-default;
+    background-color: styles-tokens-tree.$sys-neutral-accent-default;
     border-radius: inherit;
   }
 
   &:hover, &:focus-visible, &[data-droplist-active] {
     &::before {
-      opacity: $opacity-a008;
+      opacity: styles-tokens-tree.$opacity-a008;
     }
 
     .treeNodeActions {
@@ -81,9 +81,9 @@
   }
 
   &:focus-visible {
-    @include outline-inside-var($container-focused-s);
+    @include styles-tokens-tree.outline-inside-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-tree.$sys-available-complementary;
   }
 
   &[data-multiselect] {
@@ -98,26 +98,26 @@
     }
 
     .treeNodeTitle, .treeNodeIcon {
-      color: $sys-neutral-text-disabled;
+      color: styles-tokens-tree.$sys-neutral-text-disabled;
     }
   }
 
   &[aria-selected='true']:not([data-multiselect]) {
     &::before {
-      opacity: $opacity-a008;
-      background-color: $sys-primary-accent-default;
+      opacity: styles-tokens-tree.$opacity-a008;
+      background-color: styles-tokens-tree.$sys-primary-accent-default;
     }
 
     &:hover {
       &::before {
-        opacity: $opacity-a016;
+        opacity: styles-tokens-tree.$opacity-a016;
       }
     }
   }
 }
 
 .treeNodeCheckboxWrap {
-  @include composite-var($tree-item-checkbox-wrap);
+  @include styles-tokens-tree.composite-var(styles-tokens-tree.$tree-item-checkbox-wrap);
 
   display: flex;
   flex-shrink: 0;

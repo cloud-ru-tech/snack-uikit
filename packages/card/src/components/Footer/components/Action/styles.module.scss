@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
 
 .action {
-  @include composite-var($card-action);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-action);
 
   display: flex;
   align-items: center;

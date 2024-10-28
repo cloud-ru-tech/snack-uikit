@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .container {
   display: flex;
@@ -8,7 +8,7 @@
   width: 100px;
   height: 100px;
 
-  background-color: $sys-neutral-background2-level;
-  border: 1px solid $sys-neutral-decor-default;
+  background-color: styles-theme-variables.$sys-neutral-background2-level;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
   border-radius: 10%;
 }

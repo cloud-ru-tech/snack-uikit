@@ -1,31 +1,31 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 @mixin validationState($state, $rainbowColor, $bgDefault) {
   &[data-validation='#{$state}'] {
-    background-color: simple-var($theme-variables, 'sys', $bgDefault, 'background1-level');
-    border-color: simple-var($theme-variables, 'sys', $bgDefault, 'decor-default');
+    background-color: styles-tokens-markdown.simple-var(styles-tokens-markdown.$theme-variables, 'sys', $bgDefault, 'background1-level');
+    border-color: styles-tokens-markdown.simple-var(styles-tokens-markdown.$theme-variables, 'sys', $bgDefault, 'decor-default');
 
     &:hover {
-      background-color: $sys-neutral-background2-level;
-      border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-hovered');
+      background-color: styles-tokens-markdown.$sys-neutral-background2-level;
+      border-color: styles-tokens-markdown.simple-var(styles-tokens-markdown.$theme-variables, 'sys', $rainbowColor, 'decor-hovered');
     }
 
     &:focus-within,
     &[data-focused] {
       &:not([data-disabled]) {
-        @include outline-var($container-focused-m);
+        @include styles-tokens-markdown.outline-var(styles-tokens-element.$container-focused-m);
 
-        background-color: simple-var($sys-neutral-background2-level);
-        border-color: simple-var($theme-variables, 'sys', $rainbowColor, 'accent-default');
-        outline-color: simple-var($theme-variables, 'sys', $rainbowColor, 'decor-activated');
+        background-color: styles-tokens-markdown.simple-var(styles-tokens-markdown.$sys-neutral-background2-level);
+        border-color: styles-tokens-markdown.simple-var(styles-tokens-markdown.$theme-variables, 'sys', $rainbowColor, 'accent-default');
+        outline-color: styles-tokens-markdown.simple-var(styles-tokens-markdown.$theme-variables, 'sys', $rainbowColor, 'decor-activated');
       }
     }
   }
 }
 
 .viewWrapper {
-  @include composite-var($markdown-preview-container);
+  @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-preview-container);
   @include validationState('default', 'primary', 'neutral');
   @include validationState('error', 'red', 'red');
 
@@ -35,23 +35,23 @@
 .editor {
   display: flex;
   flex-direction: column;
-  gap: $dimension-1m;
+  gap: styles-tokens-markdown.$dimension-1m;
 }
 
 .control {
   display: flex;
-  gap: $dimension-1m;
+  gap: styles-tokens-markdown.$dimension-1m;
   align-items: center;
   justify-content: space-between;
 }
 
 .switchWrapper {
   display: flex;
-  gap: $dimension-1m;
+  gap: styles-tokens-markdown.$dimension-1m;
   align-items: center;
 }
 
 .tip {
-  color: $sys-neutral-text-light;
+  color: styles-tokens-markdown.$sys-neutral-text-light;
 }
 

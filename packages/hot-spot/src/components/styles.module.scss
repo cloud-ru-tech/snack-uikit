@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-hotSpot';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-hotSpot';
 
 $appearances: 'neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
 
@@ -73,7 +73,7 @@ $appearances: 'neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', '
 }
 
 .hotSpotDot {
-  @include composite-var($hot-spot, 'dot');
+  @include styles-tokens-hotSpot.composite-var(styles-tokens-hotSpot.$hot-spot, 'dot');
 
   position: relative;
 
@@ -86,8 +86,8 @@ $appearances: 'neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', '
     transform: translate(-50%, -50%);
 
     // Тут бы токен на зону клика (ну или какую нибудь штуку типа max(24, pulse.width))
-    width: $dimension-3m;
-    height: $dimension-3m;
+    width: styles-tokens-hotSpot.$dimension-3m;
+    height: styles-tokens-hotSpot.$dimension-3m;
   }
 
   &[data-pulse] {
@@ -99,7 +99,7 @@ $appearances: 'neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', '
       left: 50%;
       transform: translate(-50%, -50%);
 
-      opacity: $opacity-a024;
+      opacity: styles-tokens-hotSpot.$opacity-a024;
 
       animation: pulse var(--duration, 2s) infinite;
     }
@@ -109,14 +109,14 @@ $appearances: 'neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', '
     &[data-appearance='#{$appearance}'] {
       &,
       &::before {
-        background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+        background-color: styles-tokens-hotSpot.simple-var(styles-tokens-hotSpot.$theme-variables, 'sys', $appearance, 'accent-default');
       }
     }
   }
 }
 
 .hotSpotDotContainer {
-  @include composite-var($hot-spot, 'dot');
+  @include styles-tokens-hotSpot.composite-var(styles-tokens-hotSpot.$hot-spot, 'dot');
 
   display: flex;
   align-items: center;
@@ -126,15 +126,15 @@ $appearances: 'neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', '
 
 @keyframes pulse {
   0% {
-    @include composite-var($hot-spot, 'dot');
+    @include styles-tokens-hotSpot.composite-var(styles-tokens-hotSpot.$hot-spot, 'dot');
   }
 
   70% {
-    @include composite-var($hot-spot, 'pulse');
+    @include styles-tokens-hotSpot.composite-var(styles-tokens-hotSpot.$hot-spot, 'pulse');
   }
 
   100% {
-    @include composite-var($hot-spot, 'dot');
+    @include styles-tokens-hotSpot.composite-var(styles-tokens-hotSpot.$hot-spot, 'dot');
   }
 }
 

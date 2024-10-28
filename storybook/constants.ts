@@ -1,13 +1,13 @@
-// import { BADGE as Badges } from '@geometricpanda/storybook-addon-badges';
+import { BADGE as Badges } from '@geometricpanda/storybook-addon-badges';
 
 import DefaultBrandThemes from '@snack-uikit/figma-tokens/build/css/brand.module.css';
 
-// enum CustomBadges {
-//   PRIVATE = 'private',
-// }
+enum CustomBadges {
+  PRIVATE = 'private',
+  STABLE = 'stable',
+}
 
-// export const BADGE = { ...Badges, ...CustomBadges };
-export const BADGE = { STABLE: 'stable', PRIVATE: 'private' }; // FIXME: вернуть обратно
+export const BADGE = { ...Badges, ...CustomBadges };
 
 export enum Brand {
   Default = 'Default',

@@ -1,10 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
-
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .spinner {
   pointer-events: none;
-  width: $dimension-2m;
-  height: $dimension-2m;
+  width: styles-theme-variables.$dimension-2m;
+  height: styles-theme-variables.$dimension-2m;
   animation: spin 1s ease-in-out infinite;
 
   & > path {

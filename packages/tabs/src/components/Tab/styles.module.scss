@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tabs';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tabs';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 @mixin increasedClickArea($gap) {
   &::after {
@@ -26,7 +26,7 @@ $types: 'primary', 'secondary';
 
   padding: 0;
 
-  color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+  color: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'sys', 'neutral', 'text-support');
 
   background-color: transparent;
   border-width: 0;
@@ -34,10 +34,10 @@ $types: 'primary', 'secondary';
 
   @each $type in $types {
     &[data-type=#{$type}] {
-      @include composite-var($tabs, 'tab-button-#{$type}', 'height');
-      @include increasedClickArea(simple-var($theme-variables, 'space', 'tabs', $type, 'gap'));
+      @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs, 'tab-button-#{$type}', 'height');
+      @include increasedClickArea(styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'space', 'tabs', $type, 'gap'));
       & .container {
-        @include composite-var($tabs, 'tab-button-#{$type}', 'container');
+        @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs, 'tab-button-#{$type}', 'container');
       }
     }
   }
@@ -45,12 +45,12 @@ $types: 'primary', 'secondary';
   &[data-selected=true],
   &:focus-visible,
   &:hover {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'text-main');
+    color: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'sys', 'neutral', 'text-main');
   }
 
   &:disabled {
     cursor: not-allowed;
-    color: simple-var($theme-variables, 'sys', 'neutral', 'text-disabled');
+    color: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'sys', 'neutral', 'text-disabled');
   }
 
   & .container {
@@ -61,12 +61,12 @@ $types: 'primary', 'secondary';
 
   &:focus-visible {
     & .container {
-      @include outline-var($container-focused-s);
+      @include styles-tokens-tabs.outline-var(styles-tokens-element.$container-focused-s);
 
-      outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
+      outline-color: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'sys', 'available', 'complementary');
     }
     &[data-selected=true] .container {
-      outline-color: simple-var($theme-variables, 'sys', 'primary', 'accent-default');
+      outline-color: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'sys', 'primary', 'accent-default');
     }
   }
 }

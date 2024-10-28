@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .editor {
   background-color: inherit;
@@ -13,7 +13,7 @@
 
     width: 100%;
 
-    opacity: $opacity-a004;
-    background-color: $sys-neutral-accent-default;
+    opacity: styles-theme-variables.$opacity-a004;
+    background-color: styles-theme-variables.$sys-neutral-accent-default;
   }
 }

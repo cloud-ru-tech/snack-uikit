@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
 
 $sizes: 's', 'm';
 
@@ -10,7 +10,7 @@ $sizes: 's', 'm';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($attachment, 'composition', 'start-item', $size);
+      @include styles-tokens-attachment.composite-var(styles-tokens-attachment.$attachment, 'composition', 'start-item', $size);
     }
   }
 }

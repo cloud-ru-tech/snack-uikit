@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
 
 $aligns: 'default', 'center';
 
@@ -7,7 +7,7 @@ $aligns: 'default', 'center';
 }
 
 .image {
-  @include composite-var($modal, 'image');
+  @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'image');
 
   display: block;
   width: 100%;
@@ -15,7 +15,7 @@ $aligns: 'default', 'center';
 }
 
 .icon {
-  @include composite-var($modal, 'icon-decor');
+  @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'icon-decor');
 
   display: flex;
   justify-content: center;
@@ -24,7 +24,7 @@ $aligns: 'default', 'center';
 .headlineLayout {
   @each $align in $aligns {
     &[data-align="#{$align}"] {
-      @include composite-var($modal, 'headline-layout', $align);
+      @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'headline-layout', $align);
 
       display: flex;
       flex-direction: column;
@@ -41,7 +41,7 @@ $aligns: 'default', 'center';
 }
 
 .headline {
-  @include composite-var($modal-headline);
+  @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal-headline);
 
   display: flex;
   align-items: center;
@@ -52,5 +52,5 @@ $aligns: 'default', 'center';
 }
 
 .subtitle {
-  color: $sys-neutral-text-support;
+  color: styles-tokens-modal.$sys-neutral-text-support;
 }

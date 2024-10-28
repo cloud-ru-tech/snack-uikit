@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .listContainer {
   display: flex;
@@ -13,9 +13,9 @@
     outline: none;
 
     &[data-active] {
-      @include outline-inside-var($container-focused-s);
+      @include styles-tokens-element.outline-inside-var(styles-tokens-element.$container-focused-s);
 
-      outline-color: $sys-available-complementary;
+      outline-color: styles-tokens-element.$sys-available-complementary;
 
       * {
         cursor: inherit;
@@ -39,9 +39,9 @@
   height: 100%;
 
   &:has(.listContainer:focus-visible) {
-    @include outline-inside-var($container-focused-s);
+    @include styles-tokens-element.outline-inside-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-element.$sys-available-complementary;
   }
   li,
   ul {
@@ -51,15 +51,15 @@
 
 .scrollContainerS {
   height: auto;
-  max-height: calc($dimension-1m * 32); // 256px
+  max-height: calc(styles-tokens-element.$dimension-1m * 32); // 256px
 }
 
 .scrollContainerM {
   height: auto;
-  max-height: calc($dimension-1m * 40); // 320px
+  max-height: calc(styles-tokens-element.$dimension-1m * 40); // 320px
 }
 
 .scrollContainerL {
   height: auto;
-  max-height: calc($dimension-1m * 48); // 384px
+  max-height: calc(styles-tokens-element.$dimension-1m * 48); // 384px
 }

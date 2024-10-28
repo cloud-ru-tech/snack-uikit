@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
 
 .promoBadge {
-  @include composite-var($card-promo-badge);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-promo-badge);
 
   position: absolute;
   top: 0;

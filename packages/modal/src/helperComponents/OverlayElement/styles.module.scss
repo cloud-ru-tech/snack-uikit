@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
 
 .modalOverlay {
   position: fixed;
@@ -9,9 +9,9 @@
   width: 100%;
   height: 100%;
 
-  background: simple-var($sys-blackout);
+  background: styles-tokens-modal.simple-var(styles-tokens-modal.$sys-blackout);
 
   &[data-blur] {
-    backdrop-filter: blur(simple-var($background-blur-background-blur));
+    backdrop-filter: blur(styles-tokens-modal.simple-var(styles-tokens-modal.$background-blur-background-blur));
   }
 }

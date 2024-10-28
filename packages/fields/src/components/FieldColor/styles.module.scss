@@ -1,15 +1,14 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
 $icons-sizes: (
-  's': $icon-xs,
-  'm': $icon-s,
-  'l': $icon-s,
+  's': styles-tokens-element.$icon-xs,
+  'm': styles-tokens-element.$icon-s,
+  'l': styles-tokens-element.$icon-s,
 );
 
 .triggerClassName {
-  --offset: #{$space-drop-list-drop-offset};
+  --offset: #{styles-tokens-element.$space-drop-list-drop-offset};
 
   display: block;
   width: 100%;
@@ -18,12 +17,12 @@ $icons-sizes: (
 .colorPreview {
   position: relative;
 
-  width: $dimension-2m;
-  height: $dimension-2m;
+  width: styles-tokens-element.$dimension-2m;
+  height: styles-tokens-element.$dimension-2m;
 
   /* stylelint-disable-next-line color-no-hex */
   background-color: #fff;
-  border-radius: $dimension-050m;
+  border-radius: styles-tokens-element.$dimension-050m;
 
   &::after {
     content: '';
@@ -36,6 +35,6 @@ $icons-sizes: (
     height: 100%;
 
     background-color: var(--color);
-    border-radius: $dimension-050m;
+    border-radius: styles-tokens-element.$dimension-050m;
   }
 }

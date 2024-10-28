@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-counter';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-counter';
 
 $sizes: 's', 'm';
 $appearances: 'primary', 'neutral', 'red';
@@ -6,16 +6,16 @@ $variants: 'count', 'count-plus', 'count-k';
 $colors: 'accent', 'decor';
 
 $value-typography: (
-  s: $sans-label-s,
-  m: $sans-label-l,
+  s: styles-tokens-counter.$sans-label-s,
+  m: styles-tokens-counter.$sans-label-l,
 );
 $plus-typography: (
-  s: $sans-label-l,
-  m: $sans-label-l,
+  s: styles-tokens-counter.$sans-label-l,
+  m: styles-tokens-counter.$sans-label-l,
 );
 $key-typography: (
-  s: $sans-label-s,
-  m: $sans-label-l,
+  s: styles-tokens-counter.$sans-label-s,
+  m: styles-tokens-counter.$sans-label-l,
 );
 $text-color: (
   accent: 'on-accent',
@@ -41,12 +41,12 @@ $bg-color: (
     @each $appearance in $appearances {
       &[data-color='#{$color}'] {
         &[data-appearance='#{$appearance}'] {
-          $text: simple-var($text-color, $color);
-          $background: simple-var($bg-color, $color);
+          $text: styles-tokens-counter.simple-var($text-color, $color);
+          $background: styles-tokens-counter.simple-var($bg-color, $color);
 
-          color: simple-var($theme-variables, 'sys', $appearance, $text);
-          background-color: simple-var($theme-variables, 'sys', $appearance, $background);
-          border-color: $sys-neutral-background1-level;
+          color: styles-tokens-counter.simple-var(styles-tokens-counter.$theme-variables, 'sys', $appearance, $text);
+          background-color: styles-tokens-counter.simple-var(styles-tokens-counter.$theme-variables, 'sys', $appearance, $background);
+          border-color: styles-tokens-counter.$sys-neutral-background1-level;
         }
       }
     }
@@ -54,15 +54,15 @@ $bg-color: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($value-typography, $size);
-      @include composite-var($counter, $size);
+      @include styles-tokens-counter.composite-var($value-typography, $size);
+      @include styles-tokens-counter.composite-var(styles-tokens-counter.$counter, $size);
 
       .plus {
-        @include composite-var($plus-typography, $size);
+        @include styles-tokens-counter.composite-var($plus-typography, $size);
       }
 
       .key {
-        @include composite-var($key-typography, $size);
+        @include styles-tokens-counter.composite-var($key-typography, $size);
       }
     }
   }

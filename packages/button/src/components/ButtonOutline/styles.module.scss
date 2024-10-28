@@ -1,62 +1,61 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonOutline';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '../../styles.module';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonOutline';
+@use '../../styles.module';
 
 $appearances: 'primary', 'neutral', 'red';
 $sizes: 'xs', 's', 'm', 'l';
 $variants: 'label-only', 'icon-only', 'icon-after';
 $typography: (
-  'xs': $sans-label-s,
-  's': $sans-label-m,
-  'm': $sans-label-l,
-  'l': $sans-label-l,
+  'xs': styles-tokens-button-buttonOutline.$sans-label-s,
+  's': styles-tokens-button-buttonOutline.$sans-label-m,
+  'm': styles-tokens-button-buttonOutline.$sans-label-l,
+  'l': styles-tokens-button-buttonOutline.$sans-label-l,
 );
 
 @mixin button-colors-styles {
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
-      @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
-      @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-default'));
+      @include styles.label-color(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-default'));
+      @include styles.icon-fill(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-default'));
 
-      border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-default');
+      border-color: styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'decor-default');
 
       @media (hover: hover) {
         &:hover {
-          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
-          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+          @include styles.label-color(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-hovered'));
+          @include styles.icon-fill(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-hovered'));
 
-          border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
+          border-color: styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'decor-hovered');
         }
       }
 
       @media (hover: none) or (hover: hover) {
         &:focus-visible {
-          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
-          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-hovered'));
+          @include styles.label-color(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-hovered'));
+          @include styles.icon-fill(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-hovered'));
 
-          border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-hovered');
+          border-color: styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'decor-hovered');
         }
 
         &:active {
-          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+          @include styles.label-color(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-pressed'));
+          @include styles.icon-fill(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-pressed'));
 
-          border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
+          border-color: styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'decor-activated');
         }
 
         &[data-loading] {
-          @include label-color(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
-          @include icon-fill(simple-var($theme-variables, 'sys', $appearance, 'accent-pressed'));
+          @include styles.label-color(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-pressed'));
+          @include styles.icon-fill(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'accent-pressed'));
 
-          border-color: simple-var($theme-variables, 'sys', $appearance, 'decor-activated');
+          border-color: styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', $appearance, 'decor-activated');
         }
 
         &:disabled,
         &[data-disabled] {
-          @include label-color(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
-          @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
+          @include styles.label-color(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', 'neutral', 'text-disabled'));
+          @include styles.icon-fill(styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', 'neutral', 'text-disabled'));
 
-          border-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+          border-color: styles-tokens-button-buttonOutline.simple-var(styles-tokens-button-buttonOutline.$theme-variables, 'sys', 'neutral', 'decor-disabled');
         }
       }
     }
@@ -67,16 +66,16 @@ $typography: (
   @each $appearance in $appearances {
     &[data-appearance='#{$appearance}'] {
       &:focus-visible {
-        outline-color: $sys-available-complementary;
+        outline-color: styles-tokens-button-buttonOutline.$sys-available-complementary;
       }
     }
   }
 }
 
 .button {
-  @include button-anatomy-styles($button-outline, $sizes, $variants, $typography);
-  @include loading-label-only($button-outline);
+  @include styles.button-anatomy-styles(styles-tokens-button-buttonOutline.$button-outline, $sizes, $variants, $typography);
+  @include styles.loading-label-only(styles-tokens-button-buttonOutline.$button-outline);
   @include button-colors-styles;
   @include button-outline-colors-styles;
-  @include button-common-state;
+  @include styles.button-common-state;
 }

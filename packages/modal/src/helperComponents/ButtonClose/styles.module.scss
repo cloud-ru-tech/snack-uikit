@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .buttonClose {
-  @include composite-var($modal-button-close);
+  @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal-button-close);
 
   cursor: pointer;
 
@@ -14,31 +14,31 @@
   margin: 0;
   padding: 0;
 
-  color: simple-var($sys-neutral-text-support);
+  color: styles-tokens-modal.simple-var(styles-tokens-modal.$sys-neutral-text-support);
 
-  background-color: simple-var($sys-neutral-decor-default);
+  background-color: styles-tokens-modal.simple-var(styles-tokens-modal.$sys-neutral-decor-default);
   border: 0 solid transparent;
   outline: 0;
-  outline-offset: $spacing-state-focus-offset;
+  outline-offset: styles-tokens-modal.$spacing-state-focus-offset;
 
   &:hover, &:focus-visible {
-    color: simple-var($sys-neutral-text-main);
-    background-color: simple-var($sys-neutral-decor-hovered);
+    color: styles-tokens-modal.simple-var(styles-tokens-modal.$sys-neutral-text-main);
+    background-color: styles-tokens-modal.simple-var(styles-tokens-modal.$sys-neutral-decor-hovered);
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-modal.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-modal.$sys-available-complementary;
   }
 
   &:active {
-    color: simple-var($sys-neutral-text-main);
-    background-color: simple-var($sys-neutral-decor-activated);
+    color: styles-tokens-modal.simple-var(styles-tokens-modal.$sys-neutral-text-main);
+    background-color: styles-tokens-modal.simple-var(styles-tokens-modal.$sys-neutral-decor-activated);
   }
 
   svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }

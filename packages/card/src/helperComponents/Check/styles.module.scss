@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-card';
 
 .checkWrapper {
-  @include composite-var($card-check-badge);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-check-badge);
   
   position: absolute;
   top: 0;
@@ -9,7 +9,7 @@
 }
 
 .checkContainer {
-  @include composite-var($card-check);
+  @include styles-tokens-card.composite-var(styles-tokens-card.$card-check);
 
   display: flex;
   align-items: center;

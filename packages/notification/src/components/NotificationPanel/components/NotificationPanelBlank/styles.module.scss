@@ -1,6 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
 
 .notificationPanelBlank {
-  @include composite-var($notification-panel-body-info-container);
+  @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-body-info-container);
 }

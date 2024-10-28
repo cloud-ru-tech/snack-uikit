@@ -1,5 +1,5 @@
-@import "@snack-uikit/figma-tokens/build/scss/styles-theme-variables";
+@use "@snack-uikit/figma-tokens/build/scss/styles-theme-variables";
 
 .triggerClassName {
-  --offset: #{$space-drop-list-drop-offset};
+  --offset: #{styles-theme-variables.$space-drop-list-drop-offset};
 }

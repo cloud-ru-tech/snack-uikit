@@ -1,9 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .box {
   width: 400px;
   height: 400px;
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
+  background-color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'neutral', 'background2-level');
 }
 
 .line {
@@ -14,9 +14,9 @@
   display: grid;
   grid-template-columns: repeat(1, 400px);
   grid-template-rows: 1fr;
-  gap: $dimension-1m;
+  gap: styles-tokens-element.$dimension-1m;
 
-  padding: $dimension-3m;
+  padding: styles-tokens-element.$dimension-3m;
 
   &[data-autoscroll='right'] {
     display: flex;
@@ -29,7 +29,7 @@
 
 .fieldWrapper {
   width: 400px;
-  margin-bottom: $dimension-3m;
-  padding: $dimension-3m;
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background1-level');
+  margin-bottom: styles-tokens-element.$dimension-3m;
+  padding: styles-tokens-element.$dimension-3m;
+  background-color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'neutral', 'background1-level');
 }

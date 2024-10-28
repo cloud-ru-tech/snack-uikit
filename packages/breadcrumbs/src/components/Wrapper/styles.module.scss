@@ -1,9 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-breadcrumbs';
 
 $sizes: 'xs', 's';
 
 .wrapper {
-  @include composite-var($breadcrumbs, 'container'); 
+  @include styles-tokens-breadcrumbs.composite-var(styles-tokens-breadcrumbs.$breadcrumbs, 'container'); 
 
   overflow: hidden;
 

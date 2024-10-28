@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
 
 .table {
-  @include composite-var($table-table-container);
+  @include styles-tokens-table.composite-var(styles-tokens-table.$table-table-container);
 
   position: relative;
   z-index: 0;
@@ -14,24 +14,24 @@
   width: 100%;
   height: auto;
   max-height: calc(
-    (var(--page-size, 10) * $size-table-line-height) + $size-table-line-height + $border-width-table * 2
+    (var(--page-size, 10) * styles-tokens-table.$size-table-line-height) + styles-tokens-table.$size-table-line-height + styles-tokens-table.$border-width-table * 2
   );
 
-  background-color: $sys-neutral-background1-level;
-  border-color: $sys-neutral-background1-level;
+  background-color: styles-tokens-table.$sys-neutral-background1-level;
+  border-color: styles-tokens-table.$sys-neutral-background1-level;
   border-style: solid;
 }
 
 .scrollWrapper {
   &[data-outline] {
     .table {
-      border-color: $sys-neutral-decor-default;
+      border-color: styles-tokens-table.$sys-neutral-decor-default;
     }
   }
 }
 
 .header {
-  @include composite-var($table-header);
+  @include styles-tokens-table.composite-var(styles-tokens-table.$table-header);
 
   display: flex;
   flex-direction: column;
@@ -48,13 +48,13 @@
 .filtersWrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: $dimension-1m;
+  gap: styles-tokens-table.$dimension-1m;
   align-items: center;
   justify-content: flex-start;
 }
 
 .skeleton {
-  padding: 0 $dimension-1m;
+  padding: 0 styles-tokens-table.$dimension-1m;
 }
 
 .wrapper {
@@ -62,17 +62,17 @@
 }
 
 .scrollStub {
-  height: calc($dimension-025m / 2);
-  margin-top: calc($dimension-025m / -2);
+  height: calc(styles-tokens-table.$dimension-025m / 2);
+  margin-top: calc(styles-tokens-table.$dimension-025m / -2);
   background: transparent;
 }
 
 .topRowWrapper {
   position: sticky;
   z-index: 3;
-  top: calc($size-table-line-height);
+  top: calc(styles-tokens-table.$size-table-line-height);
 
-  margin-bottom: calc(-1 * $border-width-table);
+  margin-bottom: calc(-1 * styles-tokens-table.$border-width-table);
 
-  border-bottom: $border-width-table solid $sys-neutral-decor-default;
+  border-bottom: styles-tokens-table.$border-width-table solid styles-tokens-table.$sys-neutral-decor-default;
 }

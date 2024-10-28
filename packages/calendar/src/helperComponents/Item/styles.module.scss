@@ -1,11 +1,11 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-calendar';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-calendar';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
 $typography: (
-  's': $sans-body-s,
-  'm': $sans-body-m,
-  'l': $sans-body-l,
+  's': styles-tokens-calendar.$sans-body-s,
+  'm': styles-tokens-calendar.$sans-body-m,
+  'l': styles-tokens-calendar.$sans-body-l,
 );
 
 .item {
@@ -13,13 +13,13 @@ $typography: (
 }
 
 .label {
-  @include composite-var($calendar-item-label-decorator);
+  @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar-item-label-decorator);
 }
 
 .marker {
-  @include composite-var($calendar-item-marker);
+  @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar-item-marker);
 
-  background-color: $sys-primary-accent-default;
+  background-color: styles-tokens-calendar.$sys-primary-accent-default;
 }
 
 .range,
@@ -32,14 +32,14 @@ $typography: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($calendar, 'item', 'box', $size);
+      @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, 'item', 'box', $size);
     }
   }
 }
 
 .range {
   &:not([data-in-range-position='out']) {
-    background-color: $sys-primary-decor-default;
+    background-color: styles-tokens-calendar.$sys-primary-decor-default;
   }
 
   &[data-in-range-position='in'] {
@@ -71,7 +71,7 @@ $typography: (
   height: 100%;
   padding: 0;
 
-  color: simple-var($sys-neutral-text-light);
+  color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-neutral-text-light);
 
   appearance: none;
   background-color: transparent;
@@ -79,29 +79,29 @@ $typography: (
   outline: none;
 
   &[data-is-holiday] {
-    color: simple-var($sys-red-text-light);
+    color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-red-text-light);
   }
 
   &:focus-visible {
     .box {
-      @include outline-inside-var($container-focused-s);
+      @include styles-tokens-calendar.outline-inside-var(styles-tokens-element.$container-focused-s);
 
-      outline-color: simple-var($sys-available-complementary);
+      outline-color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-available-complementary);
     }
   }
 
   &[data-is-in-current-level-period] {
-    color: simple-var($sys-neutral-text-main);
+    color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-neutral-text-main);
 
     &[data-is-holiday] {
-      color: simple-var($sys-red-accent-default);
+      color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-red-accent-default);
     }
   }
 
   &[data-is-disabled] {
     cursor: not-allowed;
-    color: simple-var($sys-neutral-text-disabled);
-    background-color: $sys-neutral-background;
+    color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-neutral-text-disabled);
+    background-color: styles-tokens-calendar.$sys-neutral-background;
 
     .marker {
       background-color: currentColor
@@ -112,35 +112,35 @@ $typography: (
     }
     
     &[data-is-holiday] {
-      color: simple-var($sys-red-text-disabled);
+      color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-red-text-disabled);
     }
   }
 
   &[data-is-selected] {
-    color: simple-var($sys-primary-on-accent);
+    color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-primary-on-accent);
 
     &[data-is-holiday] {
-      color: simple-var($sys-primary-on-accent)
+      color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-primary-on-accent)
     }
 
     .box {
-      background-color: $sys-primary-accent-default;
+      background-color: styles-tokens-calendar.$sys-primary-accent-default;
      }
 
     .marker {
-      background-color: $sys-primary-on-accent;
+      background-color: styles-tokens-calendar.$sys-primary-on-accent;
     }
 
     &:hover,
     &:focus-visible {
-      color: $sys-neutral-text-main;
+      color: styles-tokens-calendar.$sys-neutral-text-main;
 
       .marker {
-        background-color: $sys-primary-accent-default;
+        background-color: styles-tokens-calendar.$sys-primary-accent-default;
       }
 
       .box {
-        background-color: color-on-background-with-opacity($sys-primary-accent-default, $sys-primary-decor-default, $opacity-a016);
+        background-color: styles-tokens-calendar.color-on-background-with-opacity(styles-tokens-calendar.$sys-primary-accent-default, styles-tokens-calendar.$sys-primary-decor-default, styles-tokens-calendar.$opacity-a016);
       }
     }
   }
@@ -149,12 +149,12 @@ $typography: (
   &:focus-visible {
     &:not([data-is-selected]):not([data-is-disabled]) {
       .box {
-        background-color: color-on-background-with-opacity($sys-neutral-accent-default, $sys-neutral-background2-level,  $opacity-a016);
+        background-color: styles-tokens-calendar.color-on-background-with-opacity(styles-tokens-calendar.$sys-neutral-accent-default, styles-tokens-calendar.$sys-neutral-background2-level,  styles-tokens-calendar.$opacity-a016);
       }   
       
       .range {
         +.box {
-          background-color: color-on-background-with-opacity($sys-primary-accent-default, $sys-primary-decor-default, $opacity-a016);
+          background-color: styles-tokens-calendar.color-on-background-with-opacity(styles-tokens-calendar.$sys-primary-accent-default, styles-tokens-calendar.$sys-primary-decor-default, styles-tokens-calendar.$opacity-a016);
         }
       }
     }
@@ -162,7 +162,7 @@ $typography: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($typography, $size);
+      @include styles-tokens-calendar.composite-var($typography, $size);
     }
   }
 }

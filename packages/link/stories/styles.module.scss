@@ -1,6 +1,5 @@
 @use "sass:map";
-
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $appearance: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
 $text-modes: 'accent', 'default', 'on-accent';
@@ -23,14 +22,14 @@ $link-surface: (
   margin-bottom: 16px;
   padding: 0 24px;
 
-  border: 1px solid $sys-neutral-decor-default;
-  border-radius: $dimension-050m;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-default;
+  border-radius: styles-theme-variables.$dimension-050m;
 
   @each $text-mode in $text-modes {
     &[data-text-mode='#{$text-mode}'] {
       @each $appearance in $appearance {
         &[data-appearance='#{$appearance}'] {
-          background-color: simple-var($theme-variables, 'sys', $appearance, map.get($link-surface, $text-mode));
+          background-color: styles-theme-variables.simple-var(styles-theme-variables.$theme-variables, 'sys', $appearance, map.get($link-surface, $text-mode));
         }
       }
     }  
@@ -46,8 +45,8 @@ $border-width: 0.5px;
 
   margin-right: 16px;
 
-  background-color: $sys-neutral-background1-level;
-  border: $border-width solid $sys-neutral-decor-default;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: $border-width solid styles-theme-variables.$sys-neutral-decor-default;
 }
 
 .cell {
@@ -57,13 +56,13 @@ $border-width: 0.5px;
 
   padding: 8px;
 
-  border: $border-width solid $sys-neutral-decor-disabled;
+  border: $border-width solid styles-theme-variables.$sys-neutral-decor-disabled;
 
   @each $text-mode in $text-modes {
     &[data-text-mode='#{$text-mode}'] {
       @each $appearance in $appearance {
         &[data-appearance='#{$appearance}'] {
-          background-color: simple-var($theme-variables, 'sys', $appearance, map.get($link-surface, $text-mode));
+          background-color: styles-theme-variables.simple-var(styles-theme-variables.$theme-variables, 'sys', $appearance, map.get($link-surface, $text-mode));
         }
       }
     }  

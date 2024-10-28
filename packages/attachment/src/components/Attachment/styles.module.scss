@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-attachment';
 
 $sizes: 's', 'm';
 
@@ -9,12 +9,12 @@ $sizes: 's', 'm';
 
   box-sizing: border-box;
   width: 100%;
-  margin: calc(0px - $dimension-050m);
-  padding: $dimension-050m;
+  margin: calc(0px - styles-tokens-attachment.$dimension-050m);
+  padding: styles-tokens-attachment.$dimension-050m;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($attachment, 'composition', $size);
+      @include styles-tokens-attachment.composite-var(styles-tokens-attachment.$attachment, 'composition', $size);
     }
   }
 }

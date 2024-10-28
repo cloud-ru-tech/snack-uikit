@@ -1,4 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useDarkMode } from 'storybook-dark-mode';
 
 import TokensChangelog from '@snack-uikit/figma-tokens/CHANGELOG.md';
 import TokensReadme from '@snack-uikit/figma-tokens/README.md';
@@ -10,7 +11,7 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template: StoryFn = ({ md }) => <Markdown md={md} />;
+const Template: StoryFn = ({ md }) => <Markdown md={md} darkMode={useDarkMode()} />;
 
 export const howToUse: StoryObj = {
   render: Template,

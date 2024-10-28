@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .wrapper {
   display: block;
   width: fit-content;
   padding: 2rem;
-  background-color: simple-var($sys-neutral-background1-level);
+  background-color: styles-theme-variables.simple-var(styles-theme-variables.$sys-neutral-background1-level);
 }

@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 $families: 'sans', 'light', 'link', 'crossed-out', 'mono';
 $purposes: 'display', 'headline', 'title', 'label', 'body';
@@ -18,7 +18,7 @@ $sizes: 's', 'm', 'l';
         &[data-purpose='#{$purpose}'] {
           @each $size in $sizes {
             &[data-size='#{$size}'] {
-              @include composite-var($theme-variables, $family, $purpose, $size)
+              @include styles-theme-variables.composite-var(styles-theme-variables.$theme-variables, $family, $purpose, $size)
             }
           }
         }

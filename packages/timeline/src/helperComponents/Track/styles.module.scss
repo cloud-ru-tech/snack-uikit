@@ -1,20 +1,19 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-timeline';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-timeline';
 
 $positions: 'center', 'end';
 
 .trackLine {
-  width: $border-timeline-track-line-solid-border-width;
+  width: styles-tokens-timeline.$border-timeline-track-line-solid-border-width;
   height: 100%;
-  background: $sys-neutral-decor-default;
+  background: styles-tokens-timeline.$sys-neutral-decor-default;
 
   &[data-style='dashed'] {
-    background: repeating-linear-gradient(to bottom, transparent 0 $dimension-050m, $sys-neutral-decor-default 0 #{calc($dimension-1m + $dimension-050m)});
+    background: repeating-linear-gradient(to bottom, transparent 0 styles-tokens-timeline.$dimension-050m, styles-tokens-timeline.$sys-neutral-decor-default 0 #{calc(styles-tokens-timeline.$dimension-1m + styles-tokens-timeline.$dimension-050m)});
   }
 }
 
 .track {
-  @include composite-var($timeline-track-container);
+  @include styles-tokens-timeline.composite-var(styles-tokens-timeline.$timeline-track-container);
 
   position: relative;
   display: flex;
@@ -24,7 +23,7 @@ $positions: 'center', 'end';
   &[data-dot-variant='default'] {
     .trackLine {
       &[data-style='dashed'] {
-        background-position-y: #{calc($dimension-0m - $dimension-1m)};
+        background-position-y: #{calc(styles-tokens-timeline.$dimension-0m - styles-tokens-timeline.$dimension-1m)};
       }
     }
   }
@@ -32,7 +31,7 @@ $positions: 'center', 'end';
   &[data-dot-variant='subEvent'] {
     .trackLine {
       &[data-style='dashed'] {
-        background-position-y: #{calc($dimension-0m - $dimension-050m)};
+        background-position-y: #{calc(styles-tokens-timeline.$dimension-0m - styles-tokens-timeline.$dimension-050m)};
       }
     }
   }
@@ -40,11 +39,11 @@ $positions: 'center', 'end';
   @each $position in $positions {
     &[data-position='#{$position}'] {
       .trackLinePre {
-        @include composite-var($timeline-track-line-before-height);
+        @include styles-tokens-timeline.composite-var(styles-tokens-timeline.$timeline-track-line-before-height);
 
         position: absolute;
         top: 0;
-        min-height: $size-timeline-track-line-before-height;
+        min-height: styles-tokens-timeline.$size-timeline-track-line-before-height;
       }
     }
   }

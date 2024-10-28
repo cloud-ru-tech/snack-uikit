@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-infoBlock';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-infoBlock';
 
 $sizes: 's', 'm', 'l';
 
@@ -19,11 +19,11 @@ $sizes: 's', 'm', 'l';
 }
 
 .title {
-  color: $sys-neutral-text-main;
+  color: styles-tokens-infoBlock.$sys-neutral-text-main;
 }
 
 .description {
-  color: $sys-neutral-text-support;
+  color: styles-tokens-infoBlock.$sys-neutral-text-support;
 }
 
 .infoBlock {
@@ -60,14 +60,14 @@ $sizes: 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($info-block, $size, 'container');
+      @include styles-tokens-infoBlock.composite-var(styles-tokens-infoBlock.$info-block, $size, 'container');
 
       .contentLayout {
-        @include composite-var($info-block, $size, 'content-layout');
+        @include styles-tokens-infoBlock.composite-var(styles-tokens-infoBlock.$info-block, $size, 'content-layout');
       }
 
       .textWrap {
-        @include composite-var($info-block, $size, 'text-wrap');
+        @include styles-tokens-infoBlock.composite-var(styles-tokens-infoBlock.$info-block, $size, 'text-wrap');
       }
     }
   }

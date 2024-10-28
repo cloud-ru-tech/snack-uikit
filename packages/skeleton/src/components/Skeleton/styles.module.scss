@@ -1,11 +1,11 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .skeleton {
   box-sizing: border-box;
   width: 100%;
   height: 1em;
 
-  background: $gradient-skeleton 0 0 / 200% 100% repeat fixed;
+  background: styles-tokens-element.$gradient-skeleton 0 0 / 200% 100% repeat fixed;
 
   animation: loading 2s infinite linear;
 

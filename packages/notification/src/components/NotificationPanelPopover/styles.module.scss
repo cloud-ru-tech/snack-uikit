@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
 
 .notificationPanelPopoverWrap {
-  @include composite-var($notification-panel-container);
+  @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-container);
 
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 .notificationPanelPopover {
-  @include composite-var($notification-panel-panel);
+  @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-panel);
 
   overflow: hidden;
   display: flex;
@@ -18,6 +18,6 @@
 
   height: 100%;
 
-  background-color: $sys-neutral-background2-level;
-  box-shadow: $box-shadow-elevation-level2;
+  background-color: styles-tokens-notification-notificationPanel.$sys-neutral-background2-level;
+  box-shadow: styles-tokens-notification-notificationPanel.$box-shadow-elevation-level2;
 }

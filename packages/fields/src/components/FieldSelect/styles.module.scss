@@ -1,18 +1,18 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields';
 
 $sizes: 's', 'm', 'l';
 $containerVariant: 'single-line-container';
 $icons-sizes: (
-  's': $icon-xs,
-  'm': $icon-s,
-  'l': $icon-s,
+  's': styles-tokens-element.$icon-xs,
+  'm': styles-tokens-element.$icon-s,
+  'l': styles-tokens-element.$icon-s,
 );
 
 $base-min-width: 4px;
 
 .triggerClassName {
-  --offset: #{$space-drop-list-drop-offset};
+  --offset: #{styles-tokens-element.$space-drop-list-drop-offset};
 
   width: 100%;
 }
@@ -33,10 +33,10 @@ $base-min-width: 4px;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($fields, 'select-multiple', $size);
+      @include styles-tokens-element.composite-var(styles-tokens-fields.$fields, 'select-multiple', $size);
 
       .contentWrapper {
-        gap: simple-var($fields, 'select-multiple', $size, 'gap');
+        gap: styles-tokens-element.simple-var(styles-tokens-fields.$fields, 'select-multiple', $size, 'gap');
       }
     }
   }
@@ -49,27 +49,27 @@ $base-min-width: 4px;
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       .inputPlug {
-        @include composite-var($theme-variables, 'sans', 'body', $size);
+        @include styles-tokens-element.composite-var(styles-tokens-element.$theme-variables, 'sans', 'body', $size);
       }
 
       .arrowIcon {
-        width: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-        height: simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
-        color: $sys-neutral-text-light;
+        width: styles-tokens-element.simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        height: styles-tokens-element.simple-var($icons-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */
+        color: styles-tokens-element.$sys-neutral-text-light;
       }
 
       &[data-variant='#{$containerVariant}'] {
         .displayValue {
-          $button-width: simple-var($icons-sizes, $size);
-          $postfix-width: calc(var(#{$space-fields-postfix-gap}) + $button-width * 2);
+          $button-width: styles-tokens-element.simple-var($icons-sizes, $size);
+          $postfix-width: calc(var(#{styles-tokens-element.$space-fields-postfix-gap}) + $button-width * 2);
           $margin-right: calc(
-            #{simple-var($fields, $containerVariant, $size, 'padding-right')} + #{simple-var($fields, $containerVariant, $size, 'gap')} + #{$postfix-width}
+            #{styles-tokens-element.simple-var(styles-tokens-fields.$fields, $containerVariant, $size, 'padding-right')} + #{styles-tokens-element.simple-var(styles-tokens-fields.$fields, $containerVariant, $size, 'gap')} + #{$postfix-width}
           );
 
           width: calc(100% - $margin-right);
           margin-right: $margin-right;
-          padding-left: simple-var($fields, $containerVariant, $size, 'padding-left');
-          border-radius: simple-var($fields, $containerVariant, $size, 'border-radius');
+          padding-left: styles-tokens-element.simple-var(styles-tokens-fields.$fields, $containerVariant, $size, 'padding-left');
+          border-radius: styles-tokens-element.simple-var(styles-tokens-fields.$fields, $containerVariant, $size, 'border-radius');
         }
       }
     }
@@ -79,14 +79,14 @@ $base-min-width: 4px;
   &:focus-within,
   &[data-focused] {
     .arrowIcon {
-      color: $sys-neutral-text-support;
+      color: styles-tokens-element.$sys-neutral-text-support;
     }
   }
 
   &[data-disabled],
   &[data-readonly] {
     .arrowIcon {
-      color: $sys-neutral-text-disabled;
+      color: styles-tokens-element.$sys-neutral-text-disabled;
     }
   }
 }
@@ -125,7 +125,7 @@ $base-min-width: 4px;
 .postfix {
   display: inline-flex;
   flex-shrink: 0;
-  gap: $space-fields-postfix-gap;
+  gap: styles-tokens-element.$space-fields-postfix-gap;
 }
 
 input.readonlyCursor {

@@ -1,19 +1,19 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .collapse {
-  color: simple-var($theme-variables, 'sys', 'neutral', 'text-light');
+  color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'neutral', 'text-light');
   background: none;
   border: none;
 
   &:focus-visible,
   &:hover {
-    color: simple-var($theme-variables, 'sys', 'neutral', 'text-support');
+    color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'neutral', 'text-support');
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-element.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: simple-var($theme-variables, 'sys', 'available', 'complementary');
+    outline-color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'available', 'complementary');
   }
 }
 

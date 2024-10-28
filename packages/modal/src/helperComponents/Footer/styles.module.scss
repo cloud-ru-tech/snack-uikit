@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
 
 .footerActions {
-  @include composite-var($modal, 'action-row');
+  @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'action-row');
 
   display: flex;
   flex-direction: row-reverse;
@@ -13,11 +13,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  color: simple-var($sys-neutral-text-disabled);
+  color: styles-tokens-modal.simple-var(styles-tokens-modal.$sys-neutral-text-disabled);
 }
 
 .footer {
-  @include composite-var($modal, 'footer');
+  @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'footer');
 
   display: flex;
   flex-direction: column;

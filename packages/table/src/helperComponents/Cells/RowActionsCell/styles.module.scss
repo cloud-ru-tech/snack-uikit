@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
 
 .rowActionsCell {
   position: relative;
@@ -9,15 +9,15 @@
     content: '';
 
     position: absolute;
-    top: calc(0px - $border-width-table);
-    bottom: calc(0px - $border-width-table);
+    top: calc(0px - styles-tokens-table.$border-width-table);
+    bottom: calc(0px - styles-tokens-table.$border-width-table);
     left: 0;
 
     box-sizing: border-box;
     width: 100%;
 
     /* stylelint-disable */
-    border-left: $border-width-table solid;
+    border-left: styles-tokens-table.$border-width-table solid;
     border-color: inherit;
     /* stylelint-enable */
   }
@@ -25,14 +25,16 @@
 
 .rowActionsCellWrap {
   --offset: 0px;
-  cursor: pointer;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
 
-  @include composite-var($table-cells-action);
+  cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  @include styles-tokens-table.composite-var(styles-tokens-table.$table-cells-action);
 }

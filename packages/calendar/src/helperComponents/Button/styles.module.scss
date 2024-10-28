@@ -1,12 +1,12 @@
-@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-calendar";
-@import "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-calendar";
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
 
 $sizes: 's', 'm', 'l';
 
 $typography: (
-  's': $sans-label-s,
-  'm': $sans-label-m,
-  'l': $sans-label-l,
+  's': styles-tokens-calendar.$sans-label-s,
+  'm': styles-tokens-calendar.$sans-label-m,
+  'l': styles-tokens-calendar.$sans-label-l,
 );
 
 .button {
@@ -15,7 +15,7 @@ $typography: (
   align-items: center;
   justify-content: center;
 
-  color: simple-var($sys-neutral-text-main);
+  color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-neutral-text-main);
 
   background: none;
   border: none;
@@ -25,25 +25,25 @@ $typography: (
 
     &:hover,
     &:focus-visible {
-      background-color: color-with-opacity($sys-neutral-accent-default, $opacity-a008);
+      background-color: styles-tokens-calendar.color-on-background-with-opacity(styles-tokens-calendar.$sys-neutral-accent-default, styles-tokens-calendar.$sys-neutral-background2-level, styles-tokens-calendar.$opacity-a008);
     }
 
     &:focus-visible {
-      @include outline-inside-var($container-focused-s);
+      @include styles-tokens-calendar.outline-inside-var(styles-tokens-element.$container-focused-s);
 
-      outline-color: simple-var($sys-available-complementary);
+      outline-color: styles-tokens-calendar.simple-var(styles-tokens-calendar.$sys-available-complementary);
     }
   }
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($calendar, 'button', $size);
-      @include composite-var($typography, $size);
+      @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, 'button', $size);
+      @include styles-tokens-calendar.composite-var($typography, $size);
     }
   }
 }
 
 .icon {
   display: inline-flex;
-  color: $sys-neutral-text-light;
+  color: styles-tokens-calendar.$sys-neutral-text-light;
 }

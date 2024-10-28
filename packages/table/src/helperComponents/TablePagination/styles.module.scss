@@ -1,7 +1,7 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
 
 .footer {
-  @include composite-var($table-footer);
+  @include styles-tokens-table.composite-var(styles-tokens-table.$table-footer);
 
   display: flex;
   align-items: center;

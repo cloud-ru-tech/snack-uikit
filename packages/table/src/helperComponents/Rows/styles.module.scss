@@ -1,16 +1,15 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
 
 $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 
 @function color-with-opacity-local($color, $opacity) {
-  @return color-on-background-with-opacity($color, $snack-ui-table-row-background, $opacity);
+  @return styles-tokens-table.color-on-background-with-opacity($color, $snack-ui-table-row-background, $opacity);
 }
 
 .tableRow {
-  --snack-ui-table-row-background: #{$sys-neutral-background1-level};
+  --snack-ui-table-row-background: #{styles-tokens-table.$sys-neutral-background1-level};
 
-  @include composite-var($table-line-container);
+  @include styles-tokens-table.composite-var(styles-tokens-table.$table-line-container);
 
   position: relative;
 
@@ -32,18 +31,18 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
   box-sizing: border-box;
 
   background-color: $snack-ui-table-row-background;
-  border-color: $sys-neutral-decor-default;
+  border-color: styles-tokens-table.$sys-neutral-decor-default;
 
   &::after {
     pointer-events: none;
     content: '';
 
     position: absolute;
-    top: calc(0px - $border-width-table);
-    bottom: calc(0px - $border-width-table);
+    top: calc(0px - styles-tokens-table.$border-width-table);
+    bottom: calc(0px - styles-tokens-table.$border-width-table);
 
     box-sizing: border-box;
-    width: $border-width-table;
+    width: styles-tokens-table.$border-width-table;
   }
 
   &[data-position='left'] {
@@ -53,7 +52,7 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
       right: 0;
 
       /* stylelint-disable */
-      border-right: $border-width-table solid;
+      border-right: styles-tokens-table.$border-width-table solid;
       border-color: inherit;
       /* stylelint-enable */
     }
@@ -67,7 +66,7 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
       left: 0;
 
       /* stylelint-disable */
-      border-left: $border-width-table solid;
+      border-left: styles-tokens-table.$border-width-table solid;
       border-color: inherit;
       /* stylelint-enable */
     }
@@ -77,28 +76,28 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 .bodyRow {
   &[data-disabled] {
     cursor: not-allowed;
-    background-color: $sys-neutral-background;
+    background-color: styles-tokens-table.$sys-neutral-background;
 
     .rowPinnedCells {
-      background-color: $sys-neutral-background;
+      background-color: styles-tokens-table.$sys-neutral-background;
     }
   }
 
   &[data-selected] {
-    background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a008);
+    background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a008);
 
     .rowPinnedCells {
-      background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a008);
-      border-color: $sys-primary-decor-activated;
+      background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a008);
+      border-color: styles-tokens-table.$sys-primary-decor-activated;
     }
 
     &:hover, &[data-actions-opened] {
-      background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a016);
-      border-color: $sys-primary-decor-hovered;
+      background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a016);
+      border-color: styles-tokens-table.$sys-primary-decor-hovered;
 
       .rowPinnedCells {
-        background-color: color-with-opacity-local($sys-primary-accent-default, $opacity-a016);
-        border-color: $sys-primary-decor-activated;
+        background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a016);
+        border-color: styles-tokens-table.$sys-primary-decor-activated;
       }
     }
   }
@@ -109,11 +108,11 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 
   &:not([data-disabled]):not([data-selected]) {
     &:hover, &[data-actions-opened] {
-      background-color: color-with-opacity-local($sys-neutral-accent-default, $opacity-a008);
-      border-color: $sys-neutral-decor-hovered;
+      background-color: color-with-opacity-local(styles-tokens-table.$sys-neutral-accent-default, styles-tokens-table.$opacity-a008);
+      border-color: styles-tokens-table.$sys-neutral-decor-hovered;
 
       .rowPinnedCells {
-        background-color: color-with-opacity-local($sys-neutral-accent-default, $opacity-a008);        
+        background-color: color-with-opacity-local(styles-tokens-table.$sys-neutral-accent-default, styles-tokens-table.$opacity-a008);        
         border-color: inherit;
       }
     }

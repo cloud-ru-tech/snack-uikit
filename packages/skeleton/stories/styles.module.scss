@@ -1,4 +1,4 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .textContainer {
   display: flex;
@@ -18,9 +18,9 @@
   max-width: 600px;
   margin: 10px auto;
 
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
+  background-color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'neutral', 'background2-level');
   border-radius: 10px;
-  box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
+  box-shadow: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'box-shadow', 'elevation', 'level2');
 
   &_header {
     display: flex;
@@ -40,7 +40,7 @@
     width: 100px;
     height: 100px;
 
-    background: linear-gradient(30deg, simple-var($theme-variables, 'sys', 'primary', 'accent-default') 37%, simple-var($theme-variables, 'sys', 'red', 'accent-default') 64%);
+    background: linear-gradient(30deg, styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'primary', 'accent-default') 37%, styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'red', 'accent-default') 64%);
     border-radius: 50%;
   }
 

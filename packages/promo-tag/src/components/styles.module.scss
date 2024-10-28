@@ -1,9 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-promoTag';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-promoTag';
 
 $appearances: 'primary', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
 
 .promoTag {
-  @include composite-var($promo-tag-container);
+  @include styles-tokens-promoTag.composite-var(styles-tokens-promoTag.$promo-tag-container);
 
   display: inline-flex;
   align-items: center;
@@ -11,8 +11,8 @@ $appearances: 'primary', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', '
 
   @each $appearance in $appearances {
     &[data-appearance=#{$appearance}] {
-      color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
-      background-color: simple-var($theme-variables, 'sys', $appearance, 'accent-default');
+      color: styles-tokens-promoTag.simple-var(styles-tokens-promoTag.$theme-variables, 'sys', $appearance, 'on-accent');
+      background-color: styles-tokens-promoTag.simple-var(styles-tokens-promoTag.$theme-variables, 'sys', $appearance, 'accent-default');
     }
   }
 }

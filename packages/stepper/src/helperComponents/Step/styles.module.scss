@@ -1,11 +1,11 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-stepper';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-stepper';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .tailLine {
-  @include composite-var($stepper-step-track-line);
+  @include styles-tokens-stepper.composite-var(styles-tokens-stepper.$stepper-step-track-line);
 
   flex-grow: 1;
-  background-color: $sys-neutral-decor-default;
+  background-color: styles-tokens-stepper.$sys-neutral-decor-default;
 }
 
 .tail {
@@ -14,25 +14,25 @@
   flex-shrink: 1;
   align-items: center;
 
-  min-width: $dimension-2m;
+  min-width: styles-tokens-stepper.$dimension-2m;
 
   &[data-completed] .tailLine {
-    background-color: $sys-primary-accent-default;
+    background-color: styles-tokens-stepper.$sys-primary-accent-default;
   }
 }
 
 .title {
   overflow: hidden;
-  color: $sys-neutral-text-main;
+  color: styles-tokens-stepper.$sys-neutral-text-main;
 }
 
 .description {
   overflow: hidden;
-  color: $sys-neutral-text-light;
+  color: styles-tokens-stepper.$sys-neutral-text-light;
 }
 
 .step {
-  @include composite-var($stepper-step-container);
+  @include styles-tokens-stepper.composite-var(styles-tokens-stepper.$stepper-step-container);
 
   display: flex;
   flex: 1;
@@ -44,14 +44,14 @@
 }
 
 .track {
-  @include composite-var($stepper-step-track);
+  @include styles-tokens-stepper.composite-var(styles-tokens-stepper.$stepper-step-track);
 
   display: flex;
   width: 100%;
 }
 
 .statusContainer {
-  @include composite-var($stepper-step-status-container);
+  @include styles-tokens-stepper.composite-var(styles-tokens-stepper.$stepper-step-status-container);
 
   overflow: hidden;
   display: flex;
@@ -61,22 +61,22 @@
   margin: 0;
   padding: 0;
 
-  color: $sys-neutral-text-main;
+  color: styles-tokens-stepper.$sys-neutral-text-main;
 
   background-color: transparent;
   border: none;
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-stepper.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-complementary;
-    outline-offset: $spacing-state-focus-offset;
+    outline-color: styles-tokens-stepper.$sys-available-complementary;
+    outline-offset: styles-tokens-stepper.$spacing-state-focus-offset;
   }
 
   &:not([disabled]) {
     cursor: pointer;
     &:focus-visible, &:hover {
-      color: $sys-neutral-text-light;
+      color: styles-tokens-stepper.$sys-neutral-text-light;
     }
   }
 }

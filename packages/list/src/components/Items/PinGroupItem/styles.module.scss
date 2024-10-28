@@ -1,12 +1,11 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
 
 $sizes: 's', 'm', 'l';
 
 .pinTopItem {
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($drop-list, 'item', $size, 'content-pin-top');
+      @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, 'item', $size, 'content-pin-top');
     }
   }
 
@@ -23,7 +22,7 @@ $sizes: 's', 'm', 'l';
 .pinBottomItem {
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($drop-list, 'item', $size, 'content-pin-bottom');
+      @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, 'item', $size, 'content-pin-bottom');
     }
   }
 

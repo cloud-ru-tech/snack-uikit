@@ -1,6 +1,6 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert-alertTop';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-alert-alertTop';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $simpleAppearances: 'neutral', 'primary', 'red', 'yellow', 'green', 'blue';
 $tonalAppearances: 'invert-neutral', 'primary', 'red', 'yellow', 'green', 'blue';
@@ -26,7 +26,7 @@ $text: ('s': 'm', 'm': 'l');
   .text {
     @each $name, $glyph in $text {
       &[data-size='#{$name}'] {
-        @include composite-var($theme-variables, 'sans', 'label', $glyph)
+        @include styles-tokens-alert.composite-var(styles-tokens-alert.$theme-variables, 'sans', 'label', $glyph)
       }
     }
   }
@@ -36,12 +36,12 @@ $text: ('s': 'm', 'm': 'l');
     align-items: center;
     justify-content: center;
 
-    width: $icon-s;
-    height: $icon-s;
+    width: styles-tokens-element.$icon-s;
+    height: styles-tokens-element.$icon-s;
 
     svg {
-      max-width: $icon-s;
-      max-height: $icon-s;
+      max-width: styles-tokens-element.$icon-s;
+      max-height: styles-tokens-element.$icon-s;
     }
   }
 
@@ -56,70 +56,70 @@ $text: ('s': 'm', 'm': 'l');
 .alertButton[data-variant='simple'] {
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($alert, $size, 'button', 'button-action');
+      @include styles-tokens-alert.composite-var(styles-tokens-alert.$alert, $size, 'button', 'button-action');
 
       &[data-icon-only] {
-        @include composite-var($alert, $size, 'button', 'button-close');
+        @include styles-tokens-alert.composite-var(styles-tokens-alert.$alert, $size, 'button', 'button-close');
 
       }
     }
   }
 
   &:focus-visible {
-    outline-color: $sys-available-complementary;
-    outline-offset: $spacing-state-focus-offset;
+    outline-color: styles-tokens-alert.$sys-available-complementary;
+    outline-offset: styles-tokens-alert.$spacing-state-focus-offset;
   }
 
   @each $appearance in $simpleAppearances {
     &[data-appearance='#{$appearance}'] {
-      color: simple-var($theme-variables, 'sys', $appearance, 'text-support');
+      color: styles-tokens-alert.simple-var(styles-tokens-alert.$theme-variables, 'sys', $appearance, 'text-support');
 
       &:hover,
       &:focus-visible {
-        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+        color: styles-tokens-alert.simple-var(styles-tokens-alert.$theme-variables, 'sys', $appearance, 'text-main');
       }
 
       &:active {
-        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+        color: styles-tokens-alert.simple-var(styles-tokens-alert.$theme-variables, 'sys', $appearance, 'text-main');
       }
     }
   }
 }
 
 .alertButton[data-variant='tonal'] {
-  @include composite-var($alert-top-button-button-action);
+  @include styles-tokens-alert.composite-var(styles-tokens-alert-alertTop.$alert-top-button-button-action);
 
-  background: $sys-opacity-enabled;
+  background: styles-tokens-alert.$sys-opacity-enabled;
 
   &[data-icon-only] {
-    @include composite-var($alert-top-button-button-close);
+    @include styles-tokens-alert.composite-var(styles-tokens-alert-alertTop.$alert-top-button-button-close);
 
     background: none;
   }
 
   &:hover {
     opacity: unset;
-    background-color: $sys-opacity-hovered;
+    background-color: styles-tokens-alert.$sys-opacity-hovered;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-alert.outline-var(styles-tokens-element.$container-focused-s);
 
-    background-color: $sys-opacity-hovered;
-    outline-color: $sys-available-on-complementary;
+    background-color: styles-tokens-alert.$sys-opacity-hovered;
+    outline-color: styles-tokens-alert.$sys-available-on-complementary;
   }
   &:active {
-    background-color: $sys-opacity-activated;
+    background-color: styles-tokens-alert.$sys-opacity-activated;
   }
 
   @each $appearance in $tonalAppearances {
     &[data-appearance='#{$appearance}'] {
       @if $appearance == 'invert-neutral' {
-        color: simple-var($theme-variables, 'sys', $appearance, 'text-main');
+        color: styles-tokens-alert.simple-var(styles-tokens-alert.$theme-variables, 'sys', $appearance, 'text-main');
       }
 
  @else {
-        color: simple-var($theme-variables, 'sys', $appearance, 'on-accent');
+        color: styles-tokens-alert.simple-var(styles-tokens-alert.$theme-variables, 'sys', $appearance, 'on-accent');
       }
     }
   }

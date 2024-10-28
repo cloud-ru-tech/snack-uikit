@@ -1,53 +1,53 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonElevated';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '../../styles.module';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-button-buttonElevated';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '../../styles.module';
 
 $sizes: 'xs', 's', 'm', 'l';
 $variants: 'icon-only';
 $typography: ();
 
 @mixin button-colors-styles {
-  @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-support'));
+  @include styles.icon-fill(styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'text-support'));
 
-  background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-  box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level2');
+  background-color: styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'background2-level');
+  box-shadow: styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'box-shadow', 'elevation', 'level2');
 
   @media (hover: hover) {
     &:hover {
-      @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-main'));
+      @include styles.icon-fill(styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'text-main'));
 
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-      box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level3');
+      background-color: styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'background2-level');
+      box-shadow: styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'box-shadow', 'elevation', 'level3');
     }
   }
 
   @media (hover: none) or (hover: hover) {
     &:focus-visible {
-      @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-main'));
+      @include styles.icon-fill(styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'text-main'));
 
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'background2-level');
-      box-shadow: simple-var($theme-variables, 'box-shadow', 'elevation', 'level3');
+      background-color: styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'background2-level');
+      box-shadow: styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'box-shadow', 'elevation', 'level3');
     }
 
     &:active {
-      @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-support'));
+      @include styles.icon-fill(styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'text-support'));
 
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'background');
+      background-color: styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'background');
       box-shadow: none;
     }
 
     &:disabled,
     &[data-disabled] {
-      @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-disabled'));
+      @include styles.icon-fill(styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'text-disabled'));
 
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'decor-disabled');
+      background-color: styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'decor-disabled');
       box-shadow: none;
     }
 
     &[data-loading] {
-      @include icon-fill(simple-var($theme-variables, 'sys', 'neutral', 'text-main'));
+      @include styles.icon-fill(styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'text-main'));
 
-      background-color: simple-var($theme-variables, 'sys', 'neutral', 'background');
+      background-color: styles-tokens-button-buttonElevated.simple-var(styles-tokens-button-buttonElevated.$theme-variables, 'sys', 'neutral', 'background');
       box-shadow: none;
     }
   }
@@ -55,15 +55,15 @@ $typography: ();
 
 @mixin button-outline-colors-styles {
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-button-buttonElevated.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-button-buttonElevated.$sys-available-complementary;
   }
 }
 
 .button {
-  @include button-anatomy-styles($button-elevated, $sizes, $variants, $typography, false);
-  @include loading-label-only($button-elevated);
+  @include styles.button-anatomy-styles(styles-tokens-button-buttonElevated.$button-elevated, $sizes, $variants, $typography, false);
+  @include styles.loading-label-only(styles-tokens-button-buttonElevated.$button-elevated);
   @include button-colors-styles;
   @include button-outline-colors-styles;
 }

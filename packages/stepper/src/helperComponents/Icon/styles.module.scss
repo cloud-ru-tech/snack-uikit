@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-stepper';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-stepper';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .icon {
-  @include composite-var($stepper-step-status-container);
+  @include styles-tokens-stepper.composite-var(styles-tokens-stepper.$stepper-step-status-container);
 
   overflow: hidden;
   display: inline-flex;
@@ -10,36 +10,36 @@
   justify-content: center;
 
   svg {
-    width: $icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: $icon-s !important; /* stylelint-disable-line declaration-no-important */
+    width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 
   &[data-state='completed'] {
-    color: $sys-primary-accent-default;
-    background-color: $sys-primary-decor-default;
+    color: styles-tokens-stepper.$sys-primary-accent-default;
+    background-color: styles-tokens-stepper.$sys-primary-decor-default;
   }
 
   &[data-state='current'] {
-    color: $sys-primary-on-accent;
-    background-color: $sys-primary-accent-default;
+    color: styles-tokens-stepper.$sys-primary-on-accent;
+    background-color: styles-tokens-stepper.$sys-primary-accent-default;
   }
 
   &[data-state='waiting'] {
     box-sizing: border-box;
-    color: $sys-neutral-text-support;
-    border-color: $sys-neutral-decor-default;
+    color: styles-tokens-stepper.$sys-neutral-text-support;
+    border-color: styles-tokens-stepper.$sys-neutral-decor-default;
     border-style: solid;
   }
 
   &[data-state='loading'] {
     box-sizing: border-box;
-    color: $sys-neutral-accent-default;
-    border-color: $sys-neutral-decor-default;
+    color: styles-tokens-stepper.$sys-neutral-accent-default;
+    border-color: styles-tokens-stepper.$sys-neutral-decor-default;
     border-style: solid;
   }
 
   &[data-state='rejected'] {
-    color: $sys-red-on-accent;
-    background-color: $sys-red-accent-default;
+    color: styles-tokens-stepper.$sys-red-on-accent;
+    background-color: styles-tokens-stepper.$sys-red-accent-default;
   }
 }

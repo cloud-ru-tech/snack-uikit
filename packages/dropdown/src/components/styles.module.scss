@@ -1,14 +1,14 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
 
 .dropdownContainer {
-  @include composite-var($drop-list-container);
+  @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list-container);
 
   overflow: hidden;
   box-sizing: border-box;
-  background-color: $sys-neutral-background2-level;
-  box-shadow: $box-shadow-elevation-level3;
+  background-color: styles-tokens-dropList.$sys-neutral-background2-level;
+  box-shadow: styles-tokens-dropList.$box-shadow-elevation-level3;
 }
 
 .defaultTriggerClassName {
-  --offset: #{$space-drop-list-drop-offset};
+  --offset: #{styles-tokens-dropList.$space-drop-list-drop-offset};
 }

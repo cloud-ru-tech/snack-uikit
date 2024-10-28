@@ -1,12 +1,12 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toolbar';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toolbar';
 
 .toolbar {
   box-sizing: border-box;
 }
 
 .container {
-  @include composite-var($toolbar-container);
+  @include styles-tokens-element.composite-var(styles-tokens-toolbar.$toolbar-container);
 
   position: relative;
 
@@ -15,11 +15,11 @@
 
   box-sizing: border-box;
 
-  background-color: $sys-neutral-background1-level;
+  background-color: styles-tokens-element.$sys-neutral-background1-level;
 
   &[data-outline] {
     &::before {
-      @include composite-var($toolbar-container-outline);
+      @include styles-tokens-element.composite-var(styles-tokens-toolbar.$toolbar-container-outline);
 
       pointer-events: none;
       content: '';
@@ -32,7 +32,7 @@
       width: 100%;
       height: 100%;
 
-      border-color: $sys-neutral-decor-default;
+      border-color: styles-tokens-element.$sys-neutral-decor-default;
       border-style: solid;
     }
   }
@@ -40,13 +40,13 @@
 }
 
 .search {
-  @include composite-var($toolbar-search);  
+  @include styles-tokens-element.composite-var(styles-tokens-toolbar.$toolbar-search);  
 
   &:focus-within {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-element.outline-var(styles-tokens-element.$container-focused-s);
 
     position: relative;
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-element.$sys-available-complementary;
   }
 }
 

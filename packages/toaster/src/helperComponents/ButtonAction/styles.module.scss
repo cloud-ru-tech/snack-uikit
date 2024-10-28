@@ -1,9 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .buttonAction {
-  @include composite-var($toaster-system-event-toast-button-button-action);
-  @include composite-var($sans-body-m);
+  @include styles-tokens-toaster-toasterSystemEvent.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-button-button-action);
+  @include styles-tokens-toaster-toasterSystemEvent.composite-var(styles-tokens-toaster-toasterSystemEvent.$sans-body-m);
 
   cursor: pointer;
 
@@ -14,37 +14,37 @@
   box-sizing: border-box;
   margin: 0;
 
-  color: $sys-invert-neutral-text-main;
+  color: styles-tokens-toaster-toasterSystemEvent.$sys-invert-neutral-text-main;
 
-  background-color: $sys-invert-neutral-decor-default;
+  background-color: styles-tokens-toaster-toasterSystemEvent.$sys-invert-neutral-decor-default;
   border: none;
 
   &:hover,
   &:focus-visible {
-    background-color: $sys-invert-neutral-decor-hovered;
+    background-color: styles-tokens-toaster-toasterSystemEvent.$sys-invert-neutral-decor-hovered;
   }
 
   &:active {
-    background-color: $sys-invert-neutral-decor-activated;
+    background-color: styles-tokens-toaster-toasterSystemEvent.$sys-invert-neutral-decor-activated;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-toaster-toasterSystemEvent.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: $sys-available-on-complementary;
-    outline-offset: $spacing-state-focus-offset;
+    outline-color: styles-tokens-toaster-toasterSystemEvent.$sys-available-on-complementary;
+    outline-offset: styles-tokens-toaster-toasterSystemEvent.$spacing-state-focus-offset;
   }
 
   &[data-critical] {
-    background-color: $sys-opacity-enabled;
+    background-color: styles-tokens-toaster-toasterSystemEvent.$sys-opacity-enabled;
 
     &:hover,
     &:focus-visible {
-      background-color: $sys-opacity-hovered;
+      background-color: styles-tokens-toaster-toasterSystemEvent.$sys-opacity-hovered;
     }
 
     &:active {
-      background-color: $sys-opacity-activated;
+      background-color: styles-tokens-toaster-toasterSystemEvent.$sys-opacity-activated;
     }
   }
 }

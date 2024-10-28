@@ -1,5 +1,5 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
 
@@ -45,16 +45,16 @@ $sizes: 's', 'm', 'l';
     &[data-focused],
     &:focus-visible {
       &::before {
-        opacity: $opacity-a008;
-        background-color: $sys-neutral-accent-default;
+        opacity: styles-tokens-dropList.$opacity-a008;
+        background-color: styles-tokens-dropList.$sys-neutral-accent-default;
       }
     }
 
     @media (hover: hover) {
       &:hover {
         &::before {
-          opacity: $opacity-a008;
-          background-color: $sys-neutral-accent-default;
+          opacity: styles-tokens-dropList.$opacity-a008;
+          background-color: styles-tokens-dropList.$sys-neutral-accent-default;
         }
       }
     }
@@ -76,7 +76,7 @@ $sizes: 's', 'm', 'l';
   margin: 0;
   padding: 0;
 
-  color: $sys-neutral-text-main;
+  color: styles-tokens-dropList.$sys-neutral-text-main;
   text-align: start;
 
   appearance: unset;
@@ -86,14 +86,14 @@ $sizes: 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include composite-var($drop-list, 'item', $size, 'container');
+      @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, 'item', $size, 'container');
     }
   }
 
   &:not([data-inactive], [data-disabled]) {
     &[data-focused],
     &:focus-visible {
-      @include outline-inside-var($container-focused-s);
+      @include styles-tokens-dropList.outline-inside-var(styles-tokens-element.$container-focused-s);
     }
   }
 }

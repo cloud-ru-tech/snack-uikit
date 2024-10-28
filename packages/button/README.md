@@ -69,7 +69,7 @@ const CounterProps = {
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
 | fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
-| ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## ButtonSimple
 ### Props
@@ -91,7 +91,7 @@ const CounterProps = {
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
 | fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
-| ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## ButtonOutline
 ### Props
@@ -113,7 +113,7 @@ const CounterProps = {
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
 | fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
-| ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## ButtonTonal
 ### Props
@@ -135,7 +135,7 @@ const CounterProps = {
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
 | fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
-| ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## ButtonFunction
 ### Props
@@ -159,7 +159,7 @@ const CounterProps = {
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
 | fullWidth | `boolean` | - | Сделать кнопку во всю ширину |
 | counter | `CounterInButtonProps` | - | Пропсы каунтера в кнопке |
-| ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 ## ButtonElevated
 ### Props
@@ -178,7 +178,7 @@ const CounterProps = {
 | type | "submit" \| "reset" \| "button" | button | HTML-аттрибут type |
 | tabIndex | `number` | - | HTML-аттрибут tab-index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
-| ref | `Ref<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom |
+| ref | `LegacyRef<HTMLButtonElement \| HTMLAnchorElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 
 

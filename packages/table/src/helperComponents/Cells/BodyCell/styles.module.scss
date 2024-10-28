@@ -1,9 +1,9 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
 
 .tableBodyCell {
-  @include composite-var($table-cells);
+  @include styles-tokens-table.composite-var(styles-tokens-table.$table-cells);
 
-  color: $sys-neutral-text-main;
+  color: styles-tokens-table.$sys-neutral-text-main;
 
   &[data-align='right'] {
     justify-content: flex-end;

@@ -1,8 +1,8 @@
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationCard';
-@import '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationCard';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 .notificationCardFunction {
-  @include composite-var($notification-card-function-badge);
+  @include styles-tokens-notification-notificationCard.composite-var(styles-tokens-notification-notificationCard.$notification-card-function-badge);
 
   pointer-events: none;
 
@@ -17,11 +17,11 @@
 
 .notificationCardTitleText {
   box-sizing: border-box;
-  color: $sys-neutral-text-main;
+  color: styles-tokens-notification-notificationCard.$sys-neutral-text-main;
 }
 
 .notificationCardTitleIcon {
-  @include composite-var($notification-card-icon-type);
+  @include styles-tokens-notification-notificationCard.composite-var(styles-tokens-notification-notificationCard.$notification-card-icon-type);
 
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@
 }
 
 .notificationCard {
-  @include composite-var($notification-card-container);
+  @include styles-tokens-notification-notificationCard.composite-var(styles-tokens-notification-notificationCard.$notification-card-container);
 
   position: relative;
 
@@ -40,7 +40,7 @@
   box-sizing: border-box;
   max-width: 100%;
 
-  border-bottom-color: $sys-neutral-decor-default;
+  border-bottom-color: styles-tokens-notification-notificationCard.$sys-neutral-decor-default;
   border-bottom-style: solid;
 
   &::before {
@@ -53,21 +53,21 @@
 
     box-sizing: border-box;
     width: 100%;
-    height: calc(100% + $border-width-notification-panel-card);
+    height: calc(100% + styles-tokens-notification-notificationCard.$border-width-notification-panel-card);
 
-    opacity: $opacity-a004;
+    opacity: styles-tokens-notification-notificationCard.$opacity-a004;
   }
 
   &:focus-visible {
-    @include outline-var($container-focused-s);
+    @include styles-tokens-notification-notificationCard.outline-var(styles-tokens-element.$container-focused-s);
 
     border-bottom-color: transparent;
-    outline-color: $sys-available-complementary;
+    outline-color: styles-tokens-notification-notificationCard.$sys-available-complementary;
   }
 
   &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
     &::before {
-      background-color: $sys-neutral-accent-default;
+      background-color: styles-tokens-notification-notificationCard.$sys-neutral-accent-default;
     }
 
     .notificationCardFunction {
@@ -82,51 +82,51 @@
 
   &[data-unread] {
     &::before {
-      opacity: $opacity-a008;
-      background-color: $sys-neutral-accent-default;
+      opacity: styles-tokens-notification-notificationCard.$opacity-a008;
+      background-color: styles-tokens-notification-notificationCard.$sys-neutral-accent-default;
     }
 
     &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
       &::before {
-        opacity: $opacity-a004;
+        opacity: styles-tokens-notification-notificationCard.$opacity-a004;
       }
     }
   }
 
   &[data-appearance='neutral'] {
     .notificationCardTitleIcon {
-      color: $sys-neutral-accent-default;
+      color: styles-tokens-notification-notificationCard.$sys-neutral-accent-default;
     }
   }
 
   &[data-appearance='error'],
   &[data-appearance='errorCritical'] {
     .notificationCardTitleIcon {
-      color: $sys-red-accent-default;
+      color: styles-tokens-notification-notificationCard.$sys-red-accent-default;
     }
   }
 
   &[data-appearance='errorCritical'] {
     &[data-unread], &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
       &::before {
-        background-color: $sys-red-accent-default;
+        background-color: styles-tokens-notification-notificationCard.$sys-red-accent-default;
       }
     }
 
     .notificationCardTitleText {
-      color: $sys-red-accent-default;
+      color: styles-tokens-notification-notificationCard.$sys-red-accent-default;
     }
   }
 
   &[data-appearance='warning'] {
     .notificationCardTitleIcon {
-      color: $sys-yellow-accent-default;
+      color: styles-tokens-notification-notificationCard.$sys-yellow-accent-default;
     }
   }
 
   &[data-appearance='success'] {
     .notificationCardTitleIcon {
-      color: $sys-green-accent-default;
+      color: styles-tokens-notification-notificationCard.$sys-green-accent-default;
     }
   }
 
@@ -139,11 +139,11 @@
 
 .notificationCardLabel {
   display: grid;
-  color: $sys-neutral-text-support;
+  color: styles-tokens-notification-notificationCard.$sys-neutral-text-support;
 }
 
 .notificationCardTitle {
-  @include composite-var($notification-card-title-layout);
+  @include styles-tokens-notification-notificationCard.composite-var(styles-tokens-notification-notificationCard.$notification-card-title-layout);
 
   display: flex;
 
@@ -154,7 +154,7 @@
 
 .notificationCardContent {
   box-sizing: border-box;
-  color: $sys-neutral-text-support;
+  color: styles-tokens-notification-notificationCard.$sys-neutral-text-support;
   white-space: pre-line;
 }
 
@@ -168,7 +168,7 @@
 .notificationCardDate {
   flex: 1 0 auto;
   box-sizing: border-box;
-  color: $sys-neutral-text-light;
+  color: styles-tokens-notification-notificationCard.$sys-neutral-text-light;
   text-align: right;
 }
 
