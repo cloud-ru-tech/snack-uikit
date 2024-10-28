@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Card",
-  "version": "0.12.42",
+  "version": "0.13.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,15 +36,15 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.17.5",
-    "@snack-uikit/icon-predefined": "0.5.2",
-    "@snack-uikit/icons": "0.22.1",
-    "@snack-uikit/list": "0.18.0",
-    "@snack-uikit/promo-tag": "0.4.3",
-    "@snack-uikit/tag": "0.9.11",
-    "@snack-uikit/truncate-string": "0.4.24",
-    "@snack-uikit/typography": "0.6.3",
-    "@snack-uikit/utils": "3.4.0",
+    "@snack-uikit/button": "0.18.0",
+    "@snack-uikit/icon-predefined": "0.6.0",
+    "@snack-uikit/icons": "0.23.0",
+    "@snack-uikit/list": "0.19.0",
+    "@snack-uikit/promo-tag": "0.5.0",
+    "@snack-uikit/tag": "0.10.0",
+    "@snack-uikit/truncate-string": "0.5.0",
+    "@snack-uikit/typography": "0.7.0",
+    "@snack-uikit/utils": "3.5.0",
     "classnames": "2.3.2"
   }
 }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2024-10-28)
+
+
+### Features
+
+* **FF-5502:** add cjs build ([ffada28](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/ffada28bfdc37ea760eb1c8759342e680bdf8dd6))
+
+
+
+
+
 ## 0.2.3 (2024-09-23)
 
 
