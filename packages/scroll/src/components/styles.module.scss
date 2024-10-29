@@ -5,6 +5,7 @@ $sizes: 's', 'm';
 
 .scroll {
   position: relative;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 0;
 
   box-sizing: border-box;
@@ -118,6 +119,7 @@ $scrollbar-slider-active-zone: 12px;
 
     @include styles-tokens-scroll.composite-var(styles-tokens-scroll.$scroll, 'button-resize', 'container', 'single');
 
+    /* stylelint-disable-next-line declaration-property-value-allowed-list */
     z-index: 0;
 
     background-color: styles-tokens-scroll.simple-var(styles-tokens-scroll.$theme-variables, 'sys', 'neutral', 'text-disabled');

@@ -5,6 +5,7 @@
   cursor: ew-resize;
 
   position: absolute;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 1;
   top: 0;
   right: 0;
@@ -38,6 +39,7 @@
   cursor: col-resize;
 
   position: absolute;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 2;
   top: 0;
   right: 0;

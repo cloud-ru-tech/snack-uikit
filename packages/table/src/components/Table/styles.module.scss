@@ -4,6 +4,7 @@
   @include styles-tokens-table.composite-var(styles-tokens-table.$table-table-container);
 
   position: relative;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 0;
 
   /* stylelint-disable-next-line declaration-no-important */
@@ -69,6 +70,7 @@
 
 .topRowWrapper {
   position: sticky;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 3;
   top: calc(styles-tokens-table.$size-table-line-height);
 

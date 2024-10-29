@@ -4,6 +4,7 @@
   @include styles-tokens-loader.composite-var(styles-tokens-loader.$progress-bar-page-container-single);
 
   position: fixed;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 1;
   top: 0;
   left: 0;

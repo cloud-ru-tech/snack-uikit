@@ -4,10 +4,8 @@
   @include styles-tokens-card.composite-var(styles-tokens-card.$card-function-badge);
 
   position: absolute;
-  z-index: 1;
   top: 0;
   right: 0;
-  
   box-sizing: border-box;
 }
 

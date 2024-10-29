@@ -8,13 +8,13 @@ $drawer-background-color: (
 );
 
 .drawerRoot {
-  z-index: auto !important; /* stylelint-disable-line declaration-no-important */
+  z-index: initial !important; /* stylelint-disable-line declaration-no-important */
 }
 
 div[data-content-wrapper='true'] {
   will-change: transform;
 
-  z-index: auto;
+  z-index: initial;
 
   overflow: unset;
 
@@ -59,6 +59,6 @@ div[data-content-wrapper='true'] {
 }
 
 .mask {
-  z-index: auto !important; /* stylelint-disable-line declaration-no-important */
+  z-index: initial !important; /* stylelint-disable-line declaration-no-important */
   background-color: styles-tokens-drawer.simple-var(styles-tokens-drawer.$sys-blackout);
 }

@@ -24,6 +24,7 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 
 .rowPinnedCells {
   position: sticky;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 1;
 
   display: flex;
@@ -121,6 +122,7 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 
 .tableHeader {
   position: sticky;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 3;
   top: 0;
   border: none;

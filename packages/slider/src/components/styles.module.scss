@@ -15,6 +15,7 @@ $height-with-marks: calc(
     touch-action: none;
 
     position: relative;
+    /* stylelint-disable-next-line declaration-property-value-allowed-list */
     z-index: 0;
 
     box-sizing: border-box;
@@ -52,6 +53,7 @@ $height-with-marks: calc(
       cursor: grab;
 
       position: absolute;
+      /* stylelint-disable-next-line declaration-property-value-allowed-list */
       z-index: 1;
 
       margin-top: calc(0px - (styles-tokens-slider.$size-slider-handle - styles-tokens-slider.$size-slider-track-line) / 2);

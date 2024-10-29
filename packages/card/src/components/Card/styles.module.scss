@@ -5,6 +5,7 @@ $sizes: 's', 'm', 'l';
 
 .functionBadgeWrapper {
   position: absolute;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 1;
   top: 0;
   right: 0;
@@ -32,6 +33,7 @@ $sizes: 's', 'm', 'l';
   @include styles-tokens-card.composite-var(styles-tokens-card.$card-container);
 
   position: relative;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 0;
 
   overflow: hidden;
@@ -180,6 +182,7 @@ $sizes: 's', 'm', 'l';
 
 .anchor {
   position: absolute;
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 1;
   top: 0;
   right: 0;

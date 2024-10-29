@@ -86,6 +86,7 @@ $theme-name: osThemeSnack;
       cursor: default;
 
       position: relative;
+      /* stylelint-disable-next-line declaration-property-value-allowed-list */
       z-index: 0;
 
       overflow: hidden;
