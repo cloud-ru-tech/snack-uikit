@@ -180,6 +180,8 @@ test('does not select focused tab via letters keydown', async t => {
 });
 
 test('move tabs on mouse scroll', async t => {
+  await t.expect(getWrapper().exists).ok();
+
   const tabButton1 = getTabButton('tab1');
   const tabButton8 = getTabButton('tab8');
   const tabButton15 = getTabButton('tab15');
@@ -194,6 +196,8 @@ test('move tabs on mouse scroll', async t => {
 });
 
 test('move tabs on drag', async t => {
+  await t.expect(getWrapper().exists).ok();
+
   const tabButton1 = getTabButton('tab1');
   const tabButton8 = getTabButton('tab8');
   const tabButton15 = getTabButton('tab15');
