@@ -8,6 +8,7 @@ fixture('Field Date');
 const TEST_ID = 'field-date-test';
 const CALENDAR_TEST_ID = 'field-date__calendar';
 const COMPONENT_PREFIX = 'field-date';
+const MILLISECONDS_TIMEZONE_OFFSET = new Date().getTimezoneOffset() * 60 * 1000;
 
 const getInputInner = (wrapper: Selector) => getInput(wrapper, COMPONENT_PREFIX);
 const getApplyButton = () => Selector(dataTestIdSelector('apply-button-' + CALENDAR_TEST_ID));
@@ -45,7 +46,7 @@ runCommonTests(props => visit(props), TEST_ID, {
   hasClearButton: true,
   hasCopyButton: true,
   hasValidationStates: true,
-  defaultValue: '1286654640000' /* 10.06.2023 00:04:00 */,
+  defaultValue: String(1286668800000 + MILLISECONDS_TIMEZONE_OFFSET) /* 10.10.2023 00:00:00 */,
   expectedValue: '10.10.2010',
   valuePropName: 'dateValue',
 });
@@ -64,7 +65,7 @@ test.page(visit({ mode: 'date', dateValue: '' }))("[mode='date'] Should format v
 });
 
 // select data
-test.page(visit({ mode: 'date', dateValue: '1686344400000' /* 10.06.2023 */ }))(
+test.page(visit({ mode: 'date', dateValue: 1686355200000 + MILLISECONDS_TIMEZONE_OFFSET /* 10.06.2023 */ }))(
   "[mode='date'] Should select value from calendar with mouse",
   async t => {
     const wrapper = Selector(dataTestIdSelector(TEST_ID));
@@ -85,7 +86,7 @@ test.page(visit({ mode: 'date', dateValue: '1686344400000' /* 10.06.2023 */ }))(
   },
 );
 
-test.page(visit({ mode: 'date', dateValue: '1686344400000' /* 10.06.2023 */ }))(
+test.page(visit({ mode: 'date', dateValue: 1686355200000 + MILLISECONDS_TIMEZONE_OFFSET /* 10.06.2023 */ }))(
   "[mode='date'] Should select value from calendar with keyboard",
   async t => {
     const wrapper = Selector(dataTestIdSelector(TEST_ID));
@@ -133,68 +134,69 @@ test.page(visit({ mode: 'date-time', dateValue: '', showSeconds: false }))(
 );
 
 // select data
-test.page(visit({ mode: 'date-time', dateValue: '1686356605000' /* 10.06.2023, 03:23:25 */ }))(
-  "[mode='date-time'] Should select value from calendar with mouse",
-  async t => {
-    const wrapper = Selector(dataTestIdSelector(TEST_ID));
-    const input = getInputInner(wrapper);
-    const calendar = Selector(dataTestIdSelector(CALENDAR_TEST_ID));
+test.page(
+  visit({ mode: 'date-time', dateValue: 1686367405000 + MILLISECONDS_TIMEZONE_OFFSET /* 10.06.2023, 03:23:25 */ }),
+)("[mode='date-time'] Should select value from calendar with mouse", async t => {
+  const wrapper = Selector(dataTestIdSelector(TEST_ID));
+  const input = getInputInner(wrapper);
+  const calendar = Selector(dataTestIdSelector(CALENDAR_TEST_ID));
 
-    await t.expect(input.value).eql('10.06.2023, 03:23:25');
+  await t.expect(input.value).eql('10.06.2023, 03:23:25');
 
-    await t.click(input);
+  await t.click(input);
 
-    await t.expect(getSelectedDay().textContent).eql('10');
-    await t.expect(getMonthAndYear().textContent).eql('Июнь 2023');
-    await t.expect(getSelectedHour().textContent).eql('03');
-    await t.expect(getSelectedMinute().textContent).eql('23');
-    await t.expect(getSelectedSeconds().textContent).eql('25');
+  await t.expect(getSelectedDay().textContent).eql('10');
+  await t.expect(getMonthAndYear().textContent).eql('Июнь 2023');
+  await t.expect(getSelectedHour().textContent).eql('03');
+  await t.expect(getSelectedMinute().textContent).eql('23');
+  await t.expect(getSelectedSeconds().textContent).eql('25');
 
-    await t.click(getMonthAndYear()).click(getDay().nth(7)).click(getDay().nth(23));
-    await t.click(getHour().nth(10)).click(getMinute().nth(11)).click(getSeconds().nth(12)).click(getApplyButton());
+  await t.click(getMonthAndYear()).click(getDay().nth(7)).click(getDay().nth(23));
+  await t.click(getHour().nth(10)).click(getMinute().nth(11)).click(getSeconds().nth(12)).click(getApplyButton());
 
-    await t.expect(calendar.exists).notOk('calendar is still present after selection');
-    await t.expect(input.value).eql('23.08.2023, 10:11:12');
-  },
-);
+  await t.expect(calendar.exists).notOk('calendar is still present after selection');
+  await t.expect(input.value).eql('23.08.2023, 10:11:12');
+});
 
-test.page(visit({ mode: 'date-time', dateValue: '1686356605000' /* 10.06.2023, 03:23:25 */ }))(
-  "[mode='date-time'] Should select value from calendar with keyboard",
-  async t => {
-    const wrapper = Selector(dataTestIdSelector(TEST_ID));
-    const input = getInputInner(wrapper);
-    const calendar = Selector(dataTestIdSelector(CALENDAR_TEST_ID));
+test.page(
+  visit({
+    mode: 'date-time',
+    dateValue: String(1686367405000 + MILLISECONDS_TIMEZONE_OFFSET) /* 10.06.2023, 03:23:25 */,
+  }),
+)("[mode='date-time'] Should select value from calendar with keyboard", async t => {
+  const wrapper = Selector(dataTestIdSelector(TEST_ID));
+  const input = getInputInner(wrapper);
+  const calendar = Selector(dataTestIdSelector(CALENDAR_TEST_ID));
 
-    await t.expect(input.value).eql('10.06.2023, 03:23:25');
+  await t.expect(input.value).eql('10.06.2023, 03:23:25');
 
-    await t.click(wrapper);
+  await t.click(wrapper);
 
-    await t.expect(getSelectedDay().textContent).eql('10');
-    await t.expect(getMonthAndYear().textContent).eql('Июнь 2023');
-    await t.expect(getSelectedHour().textContent).eql('03');
-    await t.expect(getSelectedMinute().textContent).eql('23');
-    await t.expect(getSelectedSeconds().textContent).eql('25');
+  await t.expect(getSelectedDay().textContent).eql('10');
+  await t.expect(getMonthAndYear().textContent).eql('Июнь 2023');
+  await t.expect(getSelectedHour().textContent).eql('03');
+  await t.expect(getSelectedMinute().textContent).eql('23');
+  await t.expect(getSelectedSeconds().textContent).eql('25');
 
-    // open month menu
-    await t.pressKey('down').pressKey('enter');
-    // select month
-    await t.pressKey('down down').pressKey('right').pressKey('enter');
-    //select day
-    await t.pressKey('down down down').pressKey('right right').pressKey('enter');
+  // open month menu
+  await t.pressKey('down').pressKey('enter');
+  // select month
+  await t.pressKey('down down').pressKey('right').pressKey('enter');
+  //select day
+  await t.pressKey('down down down').pressKey('right right').pressKey('enter');
 
-    //select hour
-    await t.pressKey('down down down').pressKey('enter');
+  //select hour
+  await t.pressKey('down down down').pressKey('enter');
 
-    //select minute
-    await t.pressKey('up up up').pressKey('enter');
+  //select minute
+  await t.pressKey('up up up').pressKey('enter');
 
-    //select minute & apply
-    await t.pressKey('up up up').pressKey('enter').pressKey('enter');
+  //select minute & apply
+  await t.pressKey('up up up').pressKey('enter').pressKey('enter');
 
-    await t.expect(calendar.exists).notOk('calendar is still present after selection');
-    await t.expect(input.value).eql('24.05.2023, 06:20:22');
-  },
-);
+  await t.expect(calendar.exists).notOk('calendar is still present after selection');
+  await t.expect(input.value).eql('24.05.2023, 06:20:22');
+});
 
 // regress test
 test.page(visit())('should not toggle droplist by many clicks', async t => {

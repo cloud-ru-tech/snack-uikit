@@ -11,6 +11,7 @@ const MINUTES_ITEM = `minutes-${TEST_ID}`;
 const SECONDS_ITEM = `seconds-${TEST_ID}`;
 const APPLY_BUTTON = `apply-button-${TEST_ID}`;
 const CURRENT_BUTTON = `current-button-${TEST_ID}`;
+const MILLISECONDS_TIMEZONE_OFFSET = new Date().getTimezoneOffset() * 60 * 1000;
 
 const mainElementSelector = Selector(dataTestIdSelector(TEST_ID));
 
@@ -20,7 +21,7 @@ const getPage = (props: object = {}) =>
     group: 'calendar',
     props: {
       'data-test-id': TEST_ID,
-      dateToday: 1684141200000, // 15 Мая 2023, 12-00
+      dateToday: 1684152000000 + MILLISECONDS_TIMEZONE_OFFSET, // 15 Мая 2023, 12-00
       mode: 'date-time',
       ...props,
     },
@@ -56,7 +57,7 @@ test.page(getPage())('Should select date and then time by click', async t => {
     ].join(','),
   });
 
-  await t.expect(getDateValueFromHolder()).eql('1683165905000');
+  await t.expect(getDateValueFromHolder()).eql(String(1683176705000 + MILLISECONDS_TIMEZONE_OFFSET));
 });
 
 test.page(getPage())('Should select time and then date by click', async t => {
@@ -87,7 +88,7 @@ test.page(getPage())('Should select time and then date by click', async t => {
     ].join(','),
   });
 
-  await t.expect(getDateValueFromHolder()).eql('1683165905000');
+  await t.expect(getDateValueFromHolder()).eql(String(1683176705000 + MILLISECONDS_TIMEZONE_OFFSET));
 });
 
 test.page(getPage())('Should save selected time then moving between periods', async t => {
@@ -115,7 +116,7 @@ test.page(getPage())('Should save selected time then moving between periods', as
   });
 });
 
-test.page(getPage({ dateValue: 1678845905000 /* 15 марта 23 05:05:05 */ }))(
+test.page(getPage({ dateValue: 1678856705000 + MILLISECONDS_TIMEZONE_OFFSET /* 15 марта 23 05:05:05*/ }))(
   'Should render with selected date & time',
   async t => {
     await t.expect(mainElementSelector.visible).ok();
@@ -136,11 +137,11 @@ test.page(getPage({ dateValue: 1678845905000 /* 15 марта 23 05:05:05 */ }))
       ].join(','),
     });
 
-    await t.expect(getDateValueFromHolder()).eql('1678845905000');
+    await t.expect(getDateValueFromHolder()).eql(String(1678856705000 + MILLISECONDS_TIMEZONE_OFFSET));
   },
 );
 
-test.page(getPage({ dateDefaultValue: 1678845905000 /* 15 марта 23 05:05:05 */ }))(
+test.page(getPage({ dateDefaultValue: 1678856705000 + MILLISECONDS_TIMEZONE_OFFSET /* 15 марта 23 05:05:05 */ }))(
   'Should select current date & time by click',
   async t => {
     await t.click(Selector(dataTestIdSelector(CURRENT_BUTTON)));
@@ -162,7 +163,7 @@ test.page(getPage({ dateDefaultValue: 1678845905000 /* 15 марта 23 05:05:05
       ].join(','),
     });
 
-    await t.expect(getDateValueFromHolder()).eql('1684141200000');
+    await t.expect(getDateValueFromHolder()).eql(String(1684152000000 + MILLISECONDS_TIMEZONE_OFFSET));
   },
 );
 
@@ -210,7 +211,7 @@ test.page(getPage())('Should select date and then time by keyboard', async t => 
     ].join(','),
   });
 
-  await t.expect(getDateValueFromHolder()).eql('1683165905000');
+  await t.expect(getDateValueFromHolder()).eql(String(1683176705000 + MILLISECONDS_TIMEZONE_OFFSET));
 });
 
 test.page(getPage())('Should select time and then date by keyboard', async t => {
@@ -263,10 +264,10 @@ test.page(getPage())('Should select time and then date by keyboard', async t => 
     ].join(','),
   });
 
-  await t.expect(getDateValueFromHolder()).eql('1683165905000');
+  await t.expect(getDateValueFromHolder()).eql(String(1683176705000 + MILLISECONDS_TIMEZONE_OFFSET));
 });
 
-test.page(getPage({ dateDefaultValue: 1678845905000 /* 15 марта 23 05:05:05 */ }))(
+test.page(getPage({ dateDefaultValue: 1678856705000 + MILLISECONDS_TIMEZONE_OFFSET /* 15 марта 23 05:05:05 */ }))(
   'Should select current date & time by keyboard',
   async t => {
     const pressKey = async (keys: string, times: number = 1) => {
@@ -295,11 +296,11 @@ test.page(getPage({ dateDefaultValue: 1678845905000 /* 15 марта 23 05:05:05
       ].join(','),
     });
 
-    await t.expect(getDateValueFromHolder()).eql('1684141200000');
+    await t.expect(getDateValueFromHolder()).eql(String(1684152000000 + MILLISECONDS_TIMEZONE_OFFSET));
   },
 );
 
-test.page(getPage({ dateValue: 1683165905000 /* 4 мая 2023 05:05:05 */ }))(
+test.page(getPage({ dateValue: 1683176705000 + MILLISECONDS_TIMEZONE_OFFSET /* 4 мая 2023 05:05:05 */ }))(
   'Should navigate by active elements in time lists',
   async t => {
     const pressKey = async (keys: string, times: number = 1) => {
@@ -313,7 +314,7 @@ test.page(getPage({ dateValue: 1683165905000 /* 4 мая 2023 05:05:05 */ }))(
     await pressKey('enter', 3);
     await t.click(Selector(dataTestIdSelector(APPLY_BUTTON)));
 
-    await t.expect(getDateValueFromHolder()).eql('1683165905000');
+    await t.expect(getDateValueFromHolder()).eql(String(1683176705000 + MILLISECONDS_TIMEZONE_OFFSET));
 
     // go back to seconds
     await pressKey('shift+tab', 2);
@@ -330,6 +331,6 @@ test.page(getPage({ dateValue: 1683165905000 /* 4 мая 2023 05:05:05 */ }))(
     // apply
     await t.click(Selector(dataTestIdSelector(APPLY_BUTTON)));
 
-    await t.expect(getDateValueFromHolder()).eql('1683165905000');
+    await t.expect(getDateValueFromHolder()).eql(String(1683176705000 + MILLISECONDS_TIMEZONE_OFFSET));
   },
 );

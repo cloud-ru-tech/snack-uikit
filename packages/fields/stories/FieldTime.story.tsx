@@ -45,7 +45,6 @@ const Template = ({ size, valueHours, valueMinutes, valueSeconds, ...args }: Sto
     <div className={styles.wrapper} data-size={size}>
       <FieldTime
         {...args}
-        key={JSON.stringify(value)}
         size={size}
         value={value}
         onChange={value => {
