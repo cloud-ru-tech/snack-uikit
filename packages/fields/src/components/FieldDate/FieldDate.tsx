@@ -255,6 +255,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       }
     }, [open]);
 
+    // TODO input ref - determine whether to update ref based on input/non-input state
     useEffect(() => {
       if (localRef.current && document.activeElement !== localRef.current) {
         localRef.current.value = getStringDateValue(valueProp);

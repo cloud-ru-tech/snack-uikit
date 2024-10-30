@@ -17,7 +17,7 @@ import {
 } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { CONTAINER_VARIANT, DEFAULT_LOCALE, SlotKey, TIME_MODE, VALIDATION_STATE } from '../../constants';
+import { CONTAINER_VARIANT, DEFAULT_LOCALE, SlotKey, TIME_MODES, VALIDATION_STATE } from '../../constants';
 import { FieldContainerPrivate } from '../../helperComponents';
 import { useCopyButton, useDateField, useFocusHandlers, useHandlers } from '../../hooks';
 import { getValidationState } from '../../utils/getValidationState';
@@ -186,7 +186,7 @@ export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
       readonly,
       locale: DEFAULT_LOCALE,
       setIsOpen,
-      mode: showSeconds ? TIME_MODE.FullTime : TIME_MODE.NoSeconds,
+      mode: showSeconds ? TIME_MODES.FullTime : TIME_MODES.NoSeconds,
       showSeconds,
     });
 
@@ -238,6 +238,7 @@ export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
       }
     }, [open]);
 
+    // TODO input ref - determine whether to update ref based on input/non-input state
     useEffect(() => {
       if (localRef.current && document.activeElement !== localRef.current) {
         localRef.current.value = getStringTimeValue(valueProp, { showSeconds, locale: DEFAULT_LOCALE });

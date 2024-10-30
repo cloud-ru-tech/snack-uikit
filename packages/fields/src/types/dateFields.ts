@@ -1,6 +1,6 @@
 import { ValueOf } from '@snack-uikit/utils';
 
-import { MODES, NO_SECONDS_MODE, TIME_MODE } from '../constants';
+import { MODES, NO_SECONDS_MODE, TIME_MODES } from '../constants';
 
 export type Slot = {
   start: number;
@@ -10,5 +10,5 @@ export type Slot = {
 };
 
 export type Mode = ValueOf<typeof MODES>;
-export type TimeMode = ValueOf<typeof TIME_MODE>;
+export type TimeMode = ValueOf<typeof TIME_MODES>;
 export type NoSecondsMode = typeof NO_SECONDS_MODE;

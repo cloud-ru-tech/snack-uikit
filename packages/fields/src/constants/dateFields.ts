@@ -14,7 +14,7 @@ export const MODES = {
   DateTime: 'date-time',
 } as const;
 
-export const TIME_MODE = {
+export const TIME_MODES = {
   FullTime: 'full-time',
   NoSeconds: 'no-seconds',
 } as const;
@@ -34,11 +34,11 @@ export const MASK: Record<Mode | TimeMode | NoSecondsMode, Record<string, string
     'ru-RU': 'ДД.ММ.ГГГГ, чч:мм',
     'en-US': 'DD.MM.YYYY, hh:mm',
   },
-  [TIME_MODE.FullTime]: {
+  [TIME_MODES.FullTime]: {
     'ru-RU': 'чч:мм:сс',
     'en-US': 'hh:mm:ss',
   },
-  [TIME_MODE.NoSeconds]: {
+  [TIME_MODES.NoSeconds]: {
     'ru-RU': 'чч:мм',
     'en-US': 'hh:mm',
   },
@@ -62,8 +62,18 @@ export const SLOTS: Record<Mode | TimeMode | NoSecondsMode, Record<SlotKey | str
   [MODES.Date]: DATE_SLOTS,
   [MODES.DateTime]: { ...DATE_SLOTS, ...TIME_SLOTS(12, true) },
   [NO_SECONDS_MODE]: { ...DATE_SLOTS, ...TIME_SLOTS(12, false) },
-  [TIME_MODE.FullTime]: TIME_SLOTS(0, true),
-  [TIME_MODE.NoSeconds]: TIME_SLOTS(0, false),
+  [TIME_MODES.FullTime]: TIME_SLOTS(0, true),
+  [TIME_MODES.NoSeconds]: TIME_SLOTS(0, false),
+};
+
+export type FocusSlot = SlotKey | 'auto';
+
+export const SLOT_ORDER: Record<Mode | TimeMode | NoSecondsMode, SlotKey[]> = {
+  [MODES.Date]: [SlotKey.Day, SlotKey.Month, SlotKey.Year],
+  [MODES.DateTime]: [SlotKey.Day, SlotKey.Month, SlotKey.Year, SlotKey.Hours, SlotKey.Minutes, SlotKey.Seconds],
+  [NO_SECONDS_MODE]: [SlotKey.Day, SlotKey.Month, SlotKey.Year, SlotKey.Hours, SlotKey.Minutes],
+  [TIME_MODES.FullTime]: [SlotKey.Hours, SlotKey.Minutes, SlotKey.Seconds],
+  [TIME_MODES.NoSeconds]: [SlotKey.Hours, SlotKey.Minutes],
 };
 
 const RU_DATE_SLOTS_PLACEHOLDER = {
@@ -106,11 +116,11 @@ export const SLOTS_PLACEHOLDER: Record<
     'ru-RU': { ...RU_DATE_SLOTS_PLACEHOLDER, ...RU_TIME_SLOTS_PLACEHOLDER, [SlotKey.Seconds]: undefined },
     'en-US': { ...EN_DATE_SLOTS_PLACEHOLDER, ...EN_TIME_SLOTS_PLACEHOLDER, [SlotKey.Seconds]: undefined },
   },
-  [TIME_MODE.FullTime]: {
+  [TIME_MODES.FullTime]: {
     'ru-RU': RU_TIME_SLOTS_PLACEHOLDER,
     'en-US': EN_TIME_SLOTS_PLACEHOLDER,
   },
-  [TIME_MODE.NoSeconds]: {
+  [TIME_MODES.NoSeconds]: {
     'ru-RU': { ...RU_TIME_SLOTS_PLACEHOLDER, [SlotKey.Seconds]: undefined },
     'en-US': { ...EN_TIME_SLOTS_PLACEHOLDER, [SlotKey.Seconds]: undefined },
   },
