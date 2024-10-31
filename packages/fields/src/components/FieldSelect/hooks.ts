@@ -108,7 +108,7 @@ export function useSearchInput({
   selectedOptionFormatter,
   resetSearchOnOptionSelection = true,
 }: SearchState & { selectedOptionFormatter: SelectedOptionFormatter; resetSearchOnOptionSelection?: boolean }) {
-  const [inputValue = '', setInputValue] = useValueControl<string>({ value, onChange, defaultValue });
+  const [inputValue = '', setInputValueState] = useValueControl<string>({ value, onChange, defaultValue });
 
   const prevInputValue = useRef<string>(inputValue);
 
@@ -117,12 +117,24 @@ export function useSearchInput({
       const newInputValue = selectedOptionFormatter(selectedItem);
 
       if (resetSearchOnOptionSelection && (inputValue !== newInputValue || prevInputValue.current !== newInputValue)) {
-        setInputValue(newInputValue);
+        setInputValueState(newInputValue);
 
         prevInputValue.current = newInputValue;
       }
     },
-    [inputValue, resetSearchOnOptionSelection, selectedOptionFormatter, setInputValue],
+    [inputValue, resetSearchOnOptionSelection, selectedOptionFormatter, setInputValueState],
+  );
+
+  const setInputValue = useCallback(
+    (value: string) => {
+      const updatedValue =
+        prevInputValue.current && value.includes(prevInputValue.current)
+          ? value.replace(prevInputValue.current, '')
+          : value;
+
+      setInputValueState(updatedValue);
+    },
+    [setInputValueState],
   );
 
   return { inputValue, setInputValue, prevInputValue, onInputValueChange: setInputValue, updateInputValue };
