@@ -6,8 +6,8 @@ import { Scroll } from '@snack-uikit/scroll';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { ListEmptyState, useEmptyState } from '../../../helperComponents';
-import { PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from '../../Items';
-import { useNewListContext } from '../contexts';
+import { FlattenBaseItem, PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from '../../Items';
+import { useNewListContext, useSelectionContext } from '../contexts';
 import commonStyles from '../styles.module.scss';
 import { ListPrivateProps } from '../types';
 import styles from './styles.module.scss';
@@ -40,11 +40,14 @@ export const ListPrivate = forwardRef(
       errorDataState,
       dataError,
       dataFiltered,
+      scrollToSelectedItem,
       ...props
     }: ListPrivateProps,
     ref: ForwardedRef<HTMLElement>,
   ) => {
-    const { size = 's' } = useNewListContext();
+    const { size = 's', flattenItems } = useNewListContext();
+    const { value, isSelectionSingle } = useSelectionContext();
+    const selectedItem = isSelectionSingle && value ? flattenItems[value] : undefined;
 
     const itemsJSX = useRenderItems(items);
     const itemsPinTopJSX = useRenderItems(pinTop);
@@ -88,6 +91,12 @@ export const ListPrivate = forwardRef(
       [dataError, dataFiltered, emptyStates, hasNoItems, itemsJSX, loading, loadingJSX, search?.value],
     );
 
+    const onScrollInitialized = () => {
+      if (scrollToSelectedItem) {
+        (selectedItem as FlattenBaseItem)?.itemRef?.current?.scrollIntoView();
+      }
+    };
+
     const listJSX = (
       <ul
         className={cn(commonStyles.listContainer, className)}
@@ -120,6 +129,7 @@ export const ListPrivate = forwardRef(
             ref={scrollContainerRef}
             untouchableScrollbars={untouchableScrollbars}
             onScroll={onScroll}
+            onInitialized={onScrollInitialized}
           >
             {content}
 

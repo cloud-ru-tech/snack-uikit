@@ -53,6 +53,8 @@ export type ListProps = WithSupportProps<
     onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
     /** Флаг, отвещающий за включение самого родительского контейнера листа в цепочку фокусирующихся элементов */
     hasListInFocusChain?: boolean;
+    /** Флаг, отвещающий за прокручивание до выбранного элемента */
+    scrollToSelectedItem?: boolean;
   } & SelectionState &
     PublicListContextType &
     ScrollProps &
@@ -82,7 +84,7 @@ export type DroplistProps = {
 } & Pick<DropdownProps, 'trigger' | 'placement' | 'widthStrategy' | 'open' | 'onOpenChange' | 'triggerClassName'> &
   Omit<ListProps, 'tabIndex' | 'onKeyDown' | 'hasListInFocusChain' | 'keyboardNavigationRef'>;
 
-export type ListPrivateProps = Omit<ListProps, 'pinTop' | 'pinBottom' | 'items'> & {
+export type ListPrivateProps = Omit<ListProps, 'pinTop' | 'pinBottom' | 'items' | 'hasListInFocusChain'> & {
   nested?: boolean;
   active?: boolean;
   tabIndex?: number;

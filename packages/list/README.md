@@ -74,6 +74,7 @@
 | search | `SearchState` | - | Настройки поисковой строки |
 | collapse | `CollapseState` | {} | Настройки раскрытия элементов |
 | loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
+| scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | size | "s" \| "m" \| "l" | s | Размер списка |
 | marker | `boolean` | true | Отображать ли маркер у выбранного жлемента списка |
@@ -105,6 +106,7 @@
 | loading | `boolean` | - | Флаг, отвещающий за состояние загрузки списка |
 | onKeyDown | `(e: KeyboardEvent<HTMLElement>) => void` | - | Обработчик события по нажатию клавиш |
 | hasListInFocusChain | `boolean` | true | Флаг, отвещающий за включение самого родительского контейнера листа в цепочку фокусирующихся элементов |
+| scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | size | "s" \| "m" \| "l" | s | Размер списка |
 | marker | `boolean` | true | Отображать ли маркер у выбранного жлемента списка |
