@@ -52,6 +52,8 @@ export type ScrollProps = WithSupportProps<
     untouchableScrollbars?: boolean;
     /** Должны ли паддинги быть абсолютными */
     paddingAbsolute?: boolean;
+    /** Коллбэк вызывающийся на инициализацию скролла */
+    onInitialized?(): void;
   }>
 >;
 
@@ -65,6 +67,7 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
     children,
     className,
     onScroll: onScrollProp,
+    onInitialized: onInitializedProp,
     size = SIZE.M,
     resize = RESIZE.None,
     clickScrolling = true,
@@ -107,7 +110,10 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
   );
 
   useLayoutEffect(() => {
-    if (!autoscrollTo) return;
+    if (!autoscrollTo) {
+      onInitializedProp?.();
+      return;
+    }
 
     const instance = getOSInstance();
     if (instance && isOverlayScrollbarInited) {
@@ -118,6 +124,9 @@ export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
       autoscrollTo === AUTOSCROLL_TO.Bottom && content.scroll(0, content.scrollHeight);
       autoscrollTo === AUTOSCROLL_TO.Right && content.scroll(content.scrollWidth, 0);
     }
+
+    onInitializedProp?.();
+
     /* здесь умышленно autoscrollTo не входит в депсы хука, потому что его значение интересно только на момент маунта,
     но в дальнейшем не должно триггерить эту функцию */
     // eslint-disable-next-line react-hooks/exhaustive-deps
