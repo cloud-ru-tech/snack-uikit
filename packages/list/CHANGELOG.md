@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.21.0 (2024-10-31)
+
+
+### Features
+
+* **PDS-438:** add keyboardNavigationRef, hasListInFocusChain props; export ids for navigation ([4472173](https://github.com/cloud-ru-tech/snack-uikit/commit/447217313b3aaf71196f20ce3298ce129a49a750))
+* **PDS-438:** add scrollToSelectedItem prop ([ffc168f](https://github.com/cloud-ru-tech/snack-uikit/commit/ffc168f2201891a48b50d638ee0f4de91df18aa6))
+
+
+
+
+
 # 0.20.0 (2024-10-28)
 
 

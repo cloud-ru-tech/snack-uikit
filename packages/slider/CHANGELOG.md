@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.1 (2024-10-31)
+
+
+### Bug Fixes
+
+* **PDS-438:** stylelint update ([9d40d4e](https://github.com/cloud-ru-tech/snack-uikit/commit/9d40d4eb445eeaaca5a2dc1f6421d496f86aeac3))
+
+
+
+
+
 # 0.3.0 (2024-10-28)
 
 

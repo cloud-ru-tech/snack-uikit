@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2024-10-31)
+
+
+### Features
+
+* **PDS-438:** add calendar translations ([a51b79d](https://github.com/cloud-ru-tech/snack-uikit/commit/a51b79d13cf041f3ded2ba99cb250f009fec1a1b))
+
+
+
+
+
 # 0.9.0 (2024-10-28)
 
 

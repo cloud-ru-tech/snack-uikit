@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.2.1 (2024-10-31)
+
+
+### Bug Fixes
+
+* **PDS-438:** add condition before triggering focus for prefix|postfix buttons ([076fa51](https://github.com/cloud-ru-tech/snack-uikit/commit/076fa514120e40c168ba320d682bab74880b4ea9))
+
+
+
+
+
 # 4.2.0 (2024-10-28)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.19.0 (2024-10-31)
+
+
+### Features
+
+* **PDS-438:** add ChipChoiceTime ([805b98a](https://github.com/cloud-ru-tech/snack-uikit/commit/805b98a2927ff0b38b704cae8f7b0beef3369469))
+* **PDS-438:** chip-choice - hide day in mode=month, add mode=date-time ([3108090](https://github.com/cloud-ru-tech/snack-uikit/commit/310809000629677374ded8280e73249eabe6410e))
+
+
+### BREAKING CHANGES
+
+
+* **PDS-438:** add showSeconds prop, remove locale prop ([0235eb7](https://github.com/cloud-ru-tech/snack-uikit/commit/0235eb7a5a7f7d8ac5e4e7cb03fe6e2408682b54))
+
+
+
+
 # 0.18.0 (2024-10-28)
 
 

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.32.0 (2024-10-31)
+
+
+### Bug Fixes
+
+* **PDS-808:** FieldSelectSingle clear value on input change in searchable mode ([7470936](https://github.com/cloud-ru-tech/snack-uikit/commit/74709365c60535da9ed60c088c412d701af13084))
+
+
+### Features
+
+* **PDS-438:** add field-time ([a6fb31e](https://github.com/cloud-ru-tech/snack-uikit/commit/a6fb31e6f69c5a1ea57297be791542f5e4b1a106))
+
+
+### BREAKING CHANGES
+
+
+* **PDS-438:** add showSeconds prop, remove locale prop ([0235eb7](https://github.com/cloud-ru-tech/snack-uikit/commit/0235eb7a5a7f7d8ac5e4e7cb03fe6e2408682b54))
+* **PDS-438:** add time selection into field-date, change type of value to Date ([1fe99a6](https://github.com/cloud-ru-tech/snack-uikit/commit/1fe99a6cacaa6bf3a1f53ea95e69f95177d57473))
+
+
+
+
 # 0.31.0 (2024-10-28)
 
 

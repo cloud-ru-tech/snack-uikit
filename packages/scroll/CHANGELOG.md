@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2024-10-31)
+
+
+### Bug Fixes
+
+* **PDS-438:** stylelint update ([9d40d4e](https://github.com/cloud-ru-tech/snack-uikit/commit/9d40d4eb445eeaaca5a2dc1f6421d496f86aeac3))
+
+
+### Features
+
+* **PDS-438:** add onInitialized prop ([e8c7bdd](https://github.com/cloud-ru-tech/snack-uikit/commit/e8c7bdd925ec9b6df7416f3e1a8fbf62da7b90b1))
+
+
+
+
+
 # 0.8.0 (2024-10-28)
 
 

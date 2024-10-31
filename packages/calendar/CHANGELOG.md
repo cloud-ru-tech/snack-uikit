@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2024-10-31)
+
+
+### Features
+
+* **PDS-438:** add timepicker ([f4d2536](https://github.com/cloud-ru-tech/snack-uikit/commit/f4d253672750e1fcafa435fc1cace4ea22f79e13))
+
+
+### BREAKING CHANGES
+
+
+* **PDS-438:** add mode date-time to calendar, change type of navigationStartRef to RefObject ([4b4b7aa](https://github.com/cloud-ru-tech/snack-uikit/commit/4b4b7aadc6f1ab81b6b730a01c7dfed6d978ffcf))
+
+
+
+
 # 0.10.0 (2024-10-28)
 
 
