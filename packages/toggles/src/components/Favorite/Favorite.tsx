@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { KeyboardEventHandler, useMemo } from 'react';
 
 import { HeartFilledSVG, HeartSVG, StarFilledSVG, StarSVG } from '@snack-uikit/icons';
 
@@ -21,6 +21,8 @@ const UNCHECKED_ICONS = {
 export type FavoriteProps = ToggleProps & {
   /** Иконка */
   icon?: FavoriteIcon;
+  /** Колбек нажатия клавиши клавиатуры */
+  onKeyUp?: KeyboardEventHandler<HTMLDivElement>;
 };
 
 export function Favorite({
@@ -28,6 +30,7 @@ export function Favorite({
   'data-test-id': dataTestId,
   size = SIZE.M,
   icon = FAVORITE_ICON.Heart,
+  onKeyUp,
   ...restProps
 }: FavoriteProps) {
   const iconSize = useMemo(() => getIconSize(size), [size]);
@@ -38,6 +41,7 @@ export function Favorite({
       data-test-id={dataTestId}
       ref={inputRef}
       size={size}
+      onKeyUp={onKeyUp}
       render={function Favorite(visualState) {
         const Icon = visualState.checked ? CHECKED_ICONS[icon] : UNCHECKED_ICONS[icon];
         const data = getVisualStateAttributes({ ...visualState, icon });

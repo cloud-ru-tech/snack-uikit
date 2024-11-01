@@ -152,6 +152,7 @@ return (
 | size | enum Size: `"s"`, `"m"` | m | Размер |
 | inputRef | `RefObject<HTMLInputElement>` | - |  |
 | icon | enum FavoriteIcon: `"star"`, `"heart"` | heart | Иконка |
+| onKeyUp | `KeyboardEventHandler<HTMLDivElement>` | - | Колбек нажатия клавиши клавиатуры |
 ## ToggleGroup
 ### Props
 | name | type | default value | description |

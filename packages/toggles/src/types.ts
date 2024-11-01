@@ -1,4 +1,4 @@
-import { FocusEventHandler, MouseEventHandler, ReactNode, RefObject } from 'react';
+import { FocusEventHandler, KeyboardEventHandler, MouseEventHandler, ReactNode, RefObject } from 'react';
 
 import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
@@ -51,6 +51,8 @@ export type TogglePrivateProps = WithSupportProps<{
   onBlur?: FocusEventHandler<HTMLInputElement>;
   /** Колбек приобретения фокуса */
   onFocus?: FocusEventHandler<HTMLInputElement>;
+  /** Колбек нажатия клавиши клавиатуры */
+  onKeyUp?: KeyboardEventHandler<HTMLDivElement>;
 }>;
 
 export type ToggleProps = WithSupportProps<

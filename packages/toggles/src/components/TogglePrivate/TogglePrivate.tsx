@@ -19,6 +19,7 @@ export const TogglePrivate = forwardRef<HTMLInputElement, TogglePrivateProps>(fu
     className,
     size = SIZE.M,
     mode = MODE.Checkbox,
+    onKeyUp,
     'data-test-id': testId,
     ...otherProps
   },
@@ -38,11 +39,13 @@ export const TogglePrivate = forwardRef<HTMLInputElement, TogglePrivateProps>(fu
 
   return (
     <span
+      role={mode}
       className={cn(className, styles.toggleLayout)}
       data-size={size}
       data-test-id={testId}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onKeyUp={onKeyUp}
       {...getVisualStateAttributes(visualState)}
     >
       {render(visualState)}
