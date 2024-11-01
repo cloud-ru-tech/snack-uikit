@@ -1,5 +1,15 @@
 import cn from 'classnames';
-import { KeyboardEvent, MouseEvent, ReactElement, ReactNode, useCallback, useRef } from 'react';
+import mergeRefs from 'merge-refs';
+import {
+  forwardRef,
+  KeyboardEvent,
+  KeyboardEventHandler,
+  MouseEvent,
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useRef,
+} from 'react';
 
 import { PromoTagProps } from '@snack-uikit/promo-tag';
 import { Typography } from '@snack-uikit/typography';
@@ -42,94 +52,104 @@ export type CardProps = WithSupportProps<{
   className?: string;
   /** Ссылка карточки */
   href?: string;
+  /** Колбек нажатия клавиши клавиатуры */
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
 }>;
 
-export function Card({
-  onClick,
-  disabled = false,
-  checked,
-  outline,
-  multipleSelection = false,
-  size = SIZE.M,
-  children,
-  header,
-  footer,
-  functionBadge,
-  promoBadge,
-  image,
-  className,
-  href,
-  ...rest
-}: CardProps) {
-  const localDivRef = useRef<HTMLDivElement>(null);
-  const localAnchorRef = useRef<HTMLAnchorElement>(null);
-
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent<HTMLDivElement>) => {
-      if (e.target === localDivRef.current) {
-        if (TRIGGER_CLICK_KEY_CODES.includes(e.code) || e.key === ' ') {
-          href ? localAnchorRef.current?.click() : localDivRef.current?.click();
-        }
-      }
+export const Card = forwardRef<HTMLDivElement, CardProps>(
+  (
+    {
+      onClick,
+      disabled = false,
+      checked,
+      outline,
+      multipleSelection = false,
+      size = SIZE.M,
+      children,
+      header,
+      footer,
+      functionBadge,
+      promoBadge,
+      image,
+      className,
+      href,
+      onKeyDown: onKeyDownProp,
+      ...rest
     },
-    [href],
-  );
+    ref,
+  ) => {
+    const localDivRef = useRef<HTMLDivElement>(null);
+    const localAnchorRef = useRef<HTMLAnchorElement>(null);
 
-  const supportProps = extractSupportProps(rest);
+    const onKeyDown = useCallback(
+      (e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.target === localDivRef.current) {
+          if (TRIGGER_CLICK_KEY_CODES.includes(e.code) || e.key === ' ') {
+            href ? localAnchorRef.current?.click() : localDivRef.current?.click();
+          }
 
-  return (
-    <CardContext.Provider value={{ size, disabled }}>
-      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-      <div
-        ref={localDivRef}
-        className={cn(styles.card, className)}
-        {...supportProps}
-        onClick={onClick}
-        data-disabled={disabled || undefined}
-        data-checked={checked || undefined}
-        data-outline={outline || undefined}
-        data-pointer={onClick ? true : undefined}
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex={0}
-        onKeyDown={onKeyDown}
-      >
-        {image}
+          onKeyDownProp?.(e);
+        }
+      },
+      [href, onKeyDownProp],
+    );
 
-        <div className={styles.composition} tabIndex={-1}>
-          {href && (
-            <a
-              ref={localAnchorRef}
-              data-test-id={TEST_IDS.anchor}
-              tabIndex={-1}
-              href={href}
-              className={styles.anchor}
-              aria-label={supportProps['aria-label'] as string}
-            />
-          )}
+    const supportProps = extractSupportProps(rest);
 
-          {!disabled && functionBadge && (
-            <FunctionBadgeWrapper className={styles.functionBadgeWrapper}>{functionBadge}</FunctionBadgeWrapper>
-          )}
+    return (
+      <CardContext.Provider value={{ size, disabled }}>
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <div
+          ref={mergeRefs(ref, localDivRef)}
+          className={cn(styles.card, className)}
+          {...supportProps}
+          onClick={onClick}
+          data-disabled={disabled || undefined}
+          data-checked={checked || undefined}
+          data-outline={outline || undefined}
+          data-pointer={onClick ? true : undefined}
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+          tabIndex={0}
+          onKeyDown={onKeyDown}
+        >
+          {image}
 
-          <div className={styles.contentWrapper}>
-            <div className={styles.content} data-size={size}>
-              {header || null}
+          <div className={styles.composition} tabIndex={-1}>
+            {href && (
+              <a
+                ref={localAnchorRef}
+                data-test-id={TEST_IDS.anchor}
+                tabIndex={-1}
+                href={href}
+                className={styles.anchor}
+                aria-label={supportProps['aria-label'] as string}
+              />
+            )}
 
-              {children && (
-                <Typography family='sans' size={size} purpose='body' className={styles.body} tag='div'>
-                  {children}
-                </Typography>
-              )}
+            {!disabled && functionBadge && (
+              <FunctionBadgeWrapper className={styles.functionBadgeWrapper}>{functionBadge}</FunctionBadgeWrapper>
+            )}
 
-              {footer && <div className={styles.footer}>{footer}</div>}
+            <div className={styles.contentWrapper}>
+              <div className={styles.content} data-size={size}>
+                {header || null}
+
+                {children && (
+                  <Typography family='sans' size={size} purpose='body' className={styles.body} tag='div'>
+                    {children}
+                  </Typography>
+                )}
+
+                {footer && <div className={styles.footer}>{footer}</div>}
+              </div>
             </div>
+
+            {promoBadge && <PromoBadge {...(typeof promoBadge === 'string' ? { text: promoBadge } : promoBadge)} />}
           </div>
 
-          {promoBadge && <PromoBadge {...(typeof promoBadge === 'string' ? { text: promoBadge } : promoBadge)} />}
+          {checked && multipleSelection && <Check className={styles.check} />}
         </div>
-
-        {checked && multipleSelection && <Check className={styles.check} />}
-      </div>
-    </CardContext.Provider>
-  );
-}
+      </CardContext.Provider>
+    );
+  },
+);
