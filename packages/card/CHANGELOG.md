@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2024-11-05)
+
+
+### Features
+
+* **PDS-955:** add onKeyDown and ref props ([512ee21](https://github.com/cloud-ru-tech/snack-uikit/commit/512ee21f97e4da21582455828f2a2571de86e4cd))
+
+
+
+
+
 ## 0.14.1 (2024-10-31)
 
 

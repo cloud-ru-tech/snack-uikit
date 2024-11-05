@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2024-11-05)
+
+
+### Features
+
+* **PDS-955:** add onKeyup prop ([c1eb677](https://github.com/cloud-ru-tech/snack-uikit/commit/c1eb6778df4af3380a8d29ac41af8a123c5d821e))
+
+
+
+
+
 # 0.12.0 (2024-10-28)
 
 
