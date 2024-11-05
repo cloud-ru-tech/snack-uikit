@@ -6,7 +6,7 @@ import componentReadme from '../README.md';
 import { ProgressBar, ProgressBarProps } from '../src';
 
 const meta: Meta = {
-  title: 'Components/Loaders/Progress Bar',
+  title: 'Components/Progress Bar/Progress Bar',
   component: ProgressBar,
 };
 export default meta;

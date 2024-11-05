@@ -1,7 +1,7 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-loader';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-progressBar';
 
 .progressBarPageContainer {
-  @include styles-tokens-loader.composite-var(styles-tokens-loader.$progress-bar-page-container-single);
+  @include styles-tokens-progressBar.composite-var(styles-tokens-progressBar.$progress-bar-page-container-single);
 
   position: fixed;
   /* stylelint-disable-next-line declaration-property-value-allowed-list */
@@ -16,7 +16,7 @@
   width: calc(var(--progress) * 100%);
   height: 100%;
 
-  background-color: styles-tokens-loader.$sys-primary-accent-default;
+  background-color: styles-tokens-progressBar.$sys-primary-accent-default;
   border-radius: inherit;
 
   transition: width var(--animation-duration);

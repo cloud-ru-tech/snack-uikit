@@ -1,30 +1,30 @@
 {
-  "name": "@snack-uikit/loaders",
+  "name": "@snack-uikit/progress-bar",
   "publishConfig": {
     "access": "public"
   },
-  "title": "Loaders",
-  "version": "0.7.1",
+  "title": "Progress Bar",
+  "version": "0.0.0",
   "sideEffects": [
     "*.css",
     "*.woff",
     "*.woff2"
   ],
-  "description": "Индикация загрузки: полоса загрузки, спиннер и загрузчик- \"солнышко\"",
+  "description": "",
   "types": "./dist/esm/index.d.ts",
   "exports": {
     "import": "./dist/esm/index.js",
     "require": "./dist/cjs/index.js"
   },
-  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/loaders",
+  "homepage": "https://cloud-ru-tech.github.io/snack-uikit/packages/progress-bar",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
-    "directory": "packages/loaders"
+    "url": "https://github.com/cloud-ru-tech/snack-uikit/tree/master",
+    "directory": "packages/progress-bar"
   },
-  "author": "Dmitry Kruglov <dvkruglov@cloud.ru>",
+  "author": "Данил Непомнящих <dpnepomnyaschih@cloud.ru>",
   "contributors": [
-    "Dmitry Kruglov <dvkruglov@cloud.ru>"
+    "Данил Непомнящих <dpnepomnyaschih@cloud.ru>"
   ],
   "files": [
     "dist/cjs",
@@ -36,6 +36,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
+    "@tanem/react-nprogress": "5.0.35",
     "@snack-uikit/utils": "3.5.0",
     "classnames": "2.3.2"
   }

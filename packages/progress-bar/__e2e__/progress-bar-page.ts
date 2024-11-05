@@ -12,7 +12,7 @@ fixture('ProgressBarPage').page(
     props: {
       'data-test-id': PROGRESS_TEST_ID,
     },
-    group: 'loaders',
+    group: 'progress-bar',
   }),
 );
 

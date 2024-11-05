@@ -1,0 +1,59 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-progressBar';
+
+$sizes: 's', 'xs';
+
+$appearances: (
+  'neutral': (
+    'container': styles-tokens-progressBar.$sys-neutral-accent-default,
+  ),
+  'primary': (
+    'container': styles-tokens-progressBar.$sys-primary-accent-default,
+  ),
+  'red': (
+    'container': styles-tokens-progressBar.$sys-red-accent-default,
+  ),
+  'orange': (
+    'container': styles-tokens-progressBar.$sys-orange-accent-default,
+  ),
+  'yellow': (
+    'container': styles-tokens-progressBar.$sys-yellow-accent-default,
+  ),
+  'green': (
+    'container': styles-tokens-progressBar.$sys-green-accent-default,
+  ),
+  'blue': (
+    'container': styles-tokens-progressBar.$sys-blue-accent-default,
+  ),
+  'violet': (
+    'container': styles-tokens-progressBar.$sys-violet-accent-default,
+  ),
+  'pink': (
+    'container': styles-tokens-progressBar.$sys-pink-accent-default,
+  ),
+);
+
+@mixin progress-anatomy-styles {
+  @each $size in $sizes {
+    &[data-size="#{$size}"] {
+      @include styles-tokens-progressBar.composite-var(styles-tokens-progressBar.$progress-bar, 'container', $size);
+    }
+  }
+}
+
+.progressBarContainer {
+  @include progress-anatomy-styles;
+
+  overflow: hidden;
+  background-color: styles-tokens-progressBar.$sys-neutral-decor-default;
+}
+
+.progressBarFiller {
+  width: var(--progress);
+  height: 100%;
+
+  @each $appearanceKey, $appearance in $appearances {
+    &[data-appearance='#{$appearanceKey}'] {
+      background-color: styles-tokens-progressBar.simple-var($appearance, 'container');
+    }
+  }
+}

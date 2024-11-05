@@ -12,7 +12,7 @@ const getPageUrl = (props: Record<string, unknown> = {}) =>
       'data-test-id': TEST_ID,
       ...props,
     },
-    group: 'loaders',
+    group: 'progress-bar',
   });
 
 fixture('ProgressBar');

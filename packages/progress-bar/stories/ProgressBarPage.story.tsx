@@ -9,7 +9,7 @@ import componentReadme from '../README.md';
 import { ProgressBarPage, ProgressBarPageProps } from '../src';
 
 const meta: Meta = {
-  title: 'Components/Loaders/Progress Bar Page',
+  title: 'Components/Progress Bar/Progress Bar Page',
   component: ProgressBarPage,
 };
 export default meta;
