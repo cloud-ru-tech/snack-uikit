@@ -41,7 +41,7 @@ export function ItemProvider({
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [computedValues, setComputedValues] = useState({
-    itemWidth: 200,
+    itemWidth: 0,
     gap: 0,
   });
 
@@ -203,6 +203,15 @@ export function ItemProvider({
     [slideCallback],
   );
 
+  const itemWidth = useMemo(() => {
+    if (computedValues.itemWidth > 0) {
+      return computedValues.itemWidth;
+    }
+
+    const fallbackWidth = Math.floor(100 / showItems);
+    return `${fallbackWidth}%`;
+  }, [computedValues.itemWidth, showItems]);
+
   return (
     <div
       ref={containerRef}
@@ -228,7 +237,7 @@ export function ItemProvider({
           // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
           <div
             key={i}
-            style={{ width: computedValues.itemWidth }}
+            style={{ width: itemWidth }}
             className={styles.itemContainer}
             role='group'
             data-test-id={TEST_IDS.trackItem}
