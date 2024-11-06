@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.2 (2024-11-06)
+
+
+### Bug Fixes
+
+* **PDS-1011:** carousel item width calculation fixed ([0975a99](https://github.com/cloud-ru-tech/snack-uikit/commit/0975a99b76286a9f8adf528a0aa283cfccd0d1fc))
+
+
+
+
+
 ## 0.4.1 (2024-10-31)
 
 ### Only dependencies have been changed
