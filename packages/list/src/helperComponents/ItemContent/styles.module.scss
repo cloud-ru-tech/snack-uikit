@@ -34,6 +34,9 @@ $typography: (
 
 .caption {
   overflow: hidden;
+  display: flex;
+  align-items: center;
+
   color: styles-tokens-dropList.$sys-neutral-text-light;
   text-overflow: ellipsis;
   white-space: nowrap;

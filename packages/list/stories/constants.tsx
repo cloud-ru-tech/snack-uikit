@@ -39,7 +39,7 @@ export function withDataTestId(items: ItemProps[], prefix?: string, shift?: numb
 
 export const BASE_OPTIONS: BaseItemProps[] = [
   {
-    content: { option: 'Content', description: 'Long Long Long Long Long Description' },
+    content: { option: 'Content', description: 'Long Long Long Long Long Description', caption: 'caption' },
     beforeContent: <PlaceholderSVG />,
     afterContent: <Counter value={10} />,
     switch: true,
