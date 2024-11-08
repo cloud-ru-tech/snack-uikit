@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.21.2 (2024-11-08)
+
+
+### Bug Fixes
+
+* **LK-4937:** fix caption position in List component ([a6827f4](https://github.com/cloud-ru-tech/snack-uikit/commit/a6827f4d547b100a80f56edd2f89716a5088ddf4))
+
+
+
+
+
 ## 0.21.1 (2024-11-05)
 
 ### Only dependencies have been changed
