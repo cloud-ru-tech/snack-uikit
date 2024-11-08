@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.21.3 (2024-11-08)
+
+
+### Bug Fixes
+
+* **PDS-955:** fix focusing first item behavior when all items are disabled ([d0dc98f](https://github.com/cloud-ru-tech/snack-uikit/commit/d0dc98ff45d127d23258503edf24ce0642aa2824))
+
+
+
+
+
 ## 0.21.2 (2024-11-08)
 
 
