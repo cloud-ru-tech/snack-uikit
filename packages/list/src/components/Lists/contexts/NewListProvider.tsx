@@ -24,7 +24,7 @@ export type PublicListContextType = {
 export type PrivateListContextType = {
   flattenItems: Record<string, FlattenItem>;
   focusFlattenItems: Record<string, FocusFlattenItem>;
-  firstItemId: ItemId;
+  firstItemId?: ItemId;
 };
 
 type Child = {

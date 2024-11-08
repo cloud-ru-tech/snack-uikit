@@ -150,7 +150,7 @@ export function BaseItem({
         data-size={size}
         onClick={handleItemClick}
         onMouseDown={handleItemMouseDown}
-        tabIndex={id === focusFlattenItems[firstItemId].originalId ? 0 : -1}
+        tabIndex={firstItemId && id === focusFlattenItems[firstItemId].originalId ? 0 : -1}
         data-non-pointer={inactive && !onClick}
         data-variant={mode || undefined}
         data-open={open || undefined}
