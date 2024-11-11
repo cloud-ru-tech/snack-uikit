@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.20.0 (2024-11-11)
+
+
+### BREAKING CHANGES
+
+
+* **PDS-965:** remove redundant prop resetSearchOnOptionSelection ([88e052a](https://github.com/cloud-ru-tech/snack-uikit/commit/88e052ae556239d0eed11fa32fa0b2a56edfebbb))
+
+
+
+
 ## 0.19.3 (2024-11-08)
 
 ### Only dependencies have been changed
