@@ -200,7 +200,6 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | value | `ItemId[]` | - | Controlled состояние |
 | defaultValue | `ItemId[]` | - | Начальное состояние |
 | valueRender | `(option?: BaseOption<T>[]) => ReactNode` | - | Колбек формирующий отображение выбранного значения. Принимает выбранное значение. По умолчанию для отображения используется FilterOption.label |
-| resetSearchOnOptionSelection | `boolean` | - | Поведение строки поиска при выборе опции из списка |
 ## ChipChoice.Date
 ### Props
 | name | type | default value | description |
