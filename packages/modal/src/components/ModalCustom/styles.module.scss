@@ -3,7 +3,7 @@
 $sizes: 's', 'm', 'l';
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   right: auto;
   bottom: auto;
@@ -22,7 +22,7 @@ $sizes: 's', 'm', 'l';
   outline: none;
 
   @each $size in $sizes {
-    &[data-size="#{$size}"] {
+    &[data-size='#{$size}'] {
       @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'window', $size);
     }
   }
