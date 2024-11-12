@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.2 (2024-11-12)
+
+
+### Bug Fixes
+
+* **PDS-967:** overflow can be overwritten by style ordering ([4f92c3c](https://github.com/cloud-ru-tech/snack-uikit/commit/4f92c3c56a71049721449719e9086a3376e59733))
+
+
+
+
+
 ## 0.10.1 (2024-10-31)
 
 
