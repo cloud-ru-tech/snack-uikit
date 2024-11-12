@@ -37,7 +37,7 @@ div[data-content-wrapper='true'] {
 }
 
 .drawer {
-  overflow: unset;
+  overflow: unset !important; /* stylelint-disable-line declaration-no-important */
   display: flex;
   flex-direction: column;
 
