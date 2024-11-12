@@ -46,6 +46,7 @@ type StoryProps = ListProps & {
   showEmptyState?: EmptyState;
   showEmptyStateActionButton?: boolean;
   selectionMode: 'single' | 'multiple' | 'none';
+  defaultValue?: string;
 };
 
 const Template: StoryFn<StoryProps> = ({
@@ -62,15 +63,24 @@ const Template: StoryFn<StoryProps> = ({
   showEmptyStateActionButton,
   selectionMode,
   truncateVariant,
+  defaultValue: defaultValueProp,
   ...args
 }) => {
-  const [value, setValue] = useState<string | string[]>();
+  const defaultValue = useMemo(() => {
+    if (!defaultValueProp) {
+      return selectionMode === 'single' ? undefined : [];
+    }
+
+    return selectionMode === 'single' ? defaultValueProp : [defaultValueProp];
+  }, [defaultValueProp, selectionMode]);
+
+  const [value, setValue] = useState<string | string[] | undefined>(defaultValue);
 
   const [collapse, setCollapseValue] = useState<Array<string | number>>();
 
   useEffect(() => {
-    setValue(selectionMode === 'single' ? undefined : []);
-  }, [selectionMode]);
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   const [search, setSearch] = useState<string>();
 
@@ -287,6 +297,8 @@ export const list = {
     showAsyncList: false,
     selectionMode: 'single',
     hasListInFocusChain: true,
+    scrollToSelectedItem: false,
+    defaultValue: '',
   },
 
   argTypes: {
@@ -333,6 +345,10 @@ export const list = {
       control: {
         type: 'select',
       },
+    },
+    defaultValue: {
+      name: '[Stories]: default value',
+      control: { type: 'text' },
     },
   },
 

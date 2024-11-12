@@ -6,7 +6,7 @@ import { Scroll } from '@snack-uikit/scroll';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { ListEmptyState, useEmptyState } from '../../../helperComponents';
-import { FlattenBaseItem, PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from '../../Items';
+import { PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from '../../Items';
 import { useNewListContext, useSelectionContext } from '../contexts';
 import commonStyles from '../styles.module.scss';
 import { ListPrivateProps } from '../types';
@@ -40,14 +40,13 @@ export const ListPrivate = forwardRef(
       errorDataState,
       dataError,
       dataFiltered,
-      scrollToSelectedItem,
+      scrollToSelectedItem = false,
       ...props
     }: ListPrivateProps,
     ref: ForwardedRef<HTMLElement>,
   ) => {
-    const { size = 's', flattenItems } = useNewListContext();
+    const { size = 's', flattenItems, focusFlattenItems } = useNewListContext();
     const { value, isSelectionSingle } = useSelectionContext();
-    const selectedItem = isSelectionSingle && value ? flattenItems[value] : undefined;
 
     const itemsJSX = useRenderItems(items);
     const itemsPinTopJSX = useRenderItems(pinTop);
@@ -93,7 +92,18 @@ export const ListPrivate = forwardRef(
 
     const onScrollInitialized = () => {
       if (scrollToSelectedItem) {
-        (selectedItem as FlattenBaseItem)?.itemRef?.current?.scrollIntoView();
+        if (!value) {
+          return;
+        }
+
+        const selectedItem = isSelectionSingle ? flattenItems[value] : flattenItems[value[0]];
+
+        if (!selectedItem?.id) {
+          return;
+        }
+
+        const itemToScrollTo = Object.values(focusFlattenItems).find(item => item.originalId === selectedItem.id);
+        itemToScrollTo?.itemRef?.current?.scrollIntoView({ block: 'center' });
       }
     };
 

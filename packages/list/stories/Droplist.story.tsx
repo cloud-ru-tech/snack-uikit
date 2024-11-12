@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { ButtonFilled, ButtonOutline } from '@snack-uikit/button';
 import { PlusSVG } from '@snack-uikit/icons';
@@ -27,14 +27,29 @@ type StoryProps = DroplistProps & {
   showFooter?: boolean;
   showSearch?: boolean;
   selectionMode: 'single' | 'multiple' | 'none';
+  defaultValue?: string;
 };
 
-const Template: StoryFn<StoryProps> = ({ showFooter, showSearch, selectionMode, ...args }) => {
-  const [value, setValue] = useState<string | string[]>();
+const Template: StoryFn<StoryProps> = ({
+  showFooter,
+  showSearch,
+  selectionMode,
+  defaultValue: defaultValueProp,
+  ...args
+}) => {
+  const defaultValue = useMemo(() => {
+    if (!defaultValueProp) {
+      return selectionMode === 'single' ? undefined : [];
+    }
+
+    return selectionMode === 'single' ? defaultValueProp : [defaultValueProp];
+  }, [defaultValueProp, selectionMode]);
+
+  const [value, setValue] = useState<string | string[] | undefined>(defaultValue);
 
   useEffect(() => {
-    setValue(selectionMode === 'single' ? undefined : []);
-  }, [selectionMode]);
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   const [search, setSearch] = useState<string>();
 
@@ -108,6 +123,8 @@ export const droplist = {
     selectionMode: 'single',
     closeDroplistOnItemClick: false,
     untouchableScrollbars: false,
+    scrollToSelectedItem: false,
+    defaultValue: '',
   },
 
   argTypes: {
@@ -132,6 +149,10 @@ export const droplist = {
     search: { table: { disable: true } },
     scrollRef: { table: { disable: true } },
     scrollContainerRef: { table: { disable: true } },
+    defaultValue: {
+      name: '[Stories]: default value',
+      control: { type: 'text' },
+    },
   },
 
   parameters: {

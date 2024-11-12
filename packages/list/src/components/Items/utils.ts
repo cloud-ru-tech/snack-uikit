@@ -94,7 +94,7 @@ export function kindFlattenItems({ items, prefix, parentId }: KindFlattenItemsPr
     const autoChildIds: ItemId[] = [];
 
     const { items, ...rest } = item;
-    const childActiveParent = isGroupItem(item) ? parentId ?? ITEM_PREFIXES.default : autoId;
+    const childActiveParent = isGroupItem(item) ? (parentId ?? ITEM_PREFIXES.default) : autoId;
 
     const filteredItems = items.filter(item => !item.hidden);
 
@@ -131,7 +131,7 @@ export function kindFlattenItems({ items, prefix, parentId }: KindFlattenItemsPr
       allChildIds: focusChildren,
       disabled: (item.type === 'collapse' || item.type === 'next-list') && item.disabled,
       type: item.type,
-      itemRef: (!isGroupItem(item) ? item.itemRef : undefined) ?? createRef<HTMLElement>(),
+      itemRef: !isGroupItem(item) ? (item.itemRef ?? createRef<HTMLElement>()) : undefined,
     };
 
     return { id: itemId, children, autoId, focusChildren };
