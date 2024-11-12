@@ -11,6 +11,7 @@ type UseCopyButtonProps = {
   valueToCopy: string;
   size: Size;
   onValueRequest?(): AsyncValueRequest;
+  onCopyButtonClick?(): void;
   disabled?: boolean;
   prefix?: string;
   postfix?: string;
@@ -22,6 +23,7 @@ export function useCopyButton({
   size,
   valueToCopy,
   onValueRequest,
+  onCopyButtonClick,
   disabled,
   prefix = '',
   postfix = '',
@@ -38,10 +40,11 @@ export function useCopyButton({
           size={BUTTON_SIZE_MAP[size]}
           valueToCopy={(prefix ?? '') + valueToCopy + (postfix ?? '')}
           onValueRequest={onValueRequest}
+          onClick={onCopyButtonClick}
           disabled={disabled}
         />
       ),
     }),
-    [copyButtonRef, disabled, onValueRequest, showCopyButton, size, valueToCopy, prefix, postfix],
+    [copyButtonRef, showCopyButton, size, prefix, valueToCopy, postfix, onValueRequest, onCopyButtonClick, disabled],
   );
 }

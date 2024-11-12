@@ -52,6 +52,8 @@ type FieldTimeOwnProps = {
   onChange?: TimePickerProps['onChangeValue'];
   /** Отображение кнопки копирования */
   showCopyButton?: boolean;
+  /** Колбек клика по кнопке Копировать для поля */
+  onCopyButtonClick?(): void;
   /** Показывать ли секунды */
   showSeconds?: boolean;
   /**
@@ -110,6 +112,7 @@ export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
       error,
+      onCopyButtonClick,
       ...rest
     },
     ref,
@@ -154,7 +157,7 @@ export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
 
     const valueToCopy = getStringTimeValue(valueProp, { showSeconds, locale: DEFAULT_LOCALE });
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear: handleClear });
-    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy });
+    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy, onCopyButtonClick });
     const calendarIcon: ButtonProps = useMemo(
       () => ({
         active: false,

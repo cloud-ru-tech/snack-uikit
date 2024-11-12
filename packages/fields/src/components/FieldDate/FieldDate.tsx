@@ -58,6 +58,8 @@ type FieldDateOwnProps = {
   onChange?(value: Date | undefined): void;
   /** Отображение кнопки копирования */
   showCopyButton?: boolean;
+  /** Колбек клика по кнопке Копировать для поля */
+  onCopyButtonClick?(): void;
   /**
    * Отображение кнопки Очистки поля
    * @default true
@@ -102,6 +104,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       buildCellProps,
       error,
       mode,
+      onCopyButtonClick,
       ...rest
     },
     ref,
@@ -168,7 +171,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
 
     const valueToCopy = getStringDateValue(valueProp);
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear: handleClear });
-    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy });
+    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy, onCopyButtonClick });
     const calendarIcon: ButtonProps = useMemo(
       () => ({
         active: false,

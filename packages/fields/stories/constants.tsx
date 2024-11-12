@@ -43,6 +43,11 @@ export const COMMON_ARG_TYPES = {
       eq: true,
     },
   },
+  onCopyButtonClick: {
+    table: {
+      disable: true,
+    },
+  },
 } as const;
 
 export const PREFIX_POSTFIX_ARG_TYPES = {

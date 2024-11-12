@@ -60,6 +60,7 @@ type UseButtonsProps = {
   showCopyButton: boolean;
   size: 's' | 'm' | 'l';
   onClear(): void;
+  onCopyButtonClick?(): void;
   inputRef: RefObject<HTMLInputElement>;
   valueToCopy?: string;
 };
@@ -70,6 +71,7 @@ export function useButtons({
   showCopyButton,
   size,
   onClear,
+  onCopyButtonClick,
   inputRef,
   valueToCopy = '',
 }: UseButtonsProps) {
@@ -89,6 +91,7 @@ export function useButtons({
     showCopyButton: readonly && showCopyButton,
     size,
     valueToCopy,
+    onCopyButtonClick,
   });
   const { onInputKeyDown: inputKeyDownNavigationHandler, postfixButtons } = useButtonNavigation({
     inputRef,

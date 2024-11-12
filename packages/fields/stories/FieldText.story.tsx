@@ -39,6 +39,7 @@ const Template = ({ size, ...args }: StoryProps) => {
         size={size}
         value={value}
         onChange={setValue}
+        onCopyButtonClick={args.showCopyButton ? () => alert('Copy button clicked!') : () => {}}
         button={
           args.buttonContent
             ? {

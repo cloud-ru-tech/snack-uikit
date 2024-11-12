@@ -47,6 +47,8 @@ type FieldSecureOwnProps = {
   onHiddenChange?(value: boolean): void;
   /** Отображение кнопки копирования */
   showCopyButton?: boolean;
+  /** Колбек клика по кнопке Копировать для поля */
+  onCopyButtonClick?(): void;
   /** Можно ли вводить больше разрешённого кол-ва символов */
   allowMoreThanMaxLength?: boolean;
   /** Иконка-префикс для поля */
@@ -88,6 +90,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       error,
       asyncValueGetter,
       autoComplete,
+      onCopyButtonClick,
       ...rest
     },
     ref,
@@ -166,6 +169,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       valueToCopy: value,
       onValueRequest: getAsyncValue,
       disabled: isLoading,
+      onCopyButtonClick,
     });
 
     const hideButtonSettings = useHideButton({

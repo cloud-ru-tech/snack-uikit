@@ -41,6 +41,8 @@ type FieldDateOwnProps = {
   onOpenChange?(value: boolean): void;
   /** Отображение кнопки копирования */
   showCopyButton?: boolean;
+  /** Колбек клика по кнопке Копировать для поля */
+  onCopyButtonClick?(): void;
   /**
    * Отображение кнопки Очистки поля
    * @default true
@@ -82,6 +84,7 @@ export const FieldColor = forwardRef<HTMLInputElement, FieldColorProps>(
       placeholder,
       onFocus,
       onBlur,
+      onCopyButtonClick,
       ...rest
     },
     ref,
@@ -110,7 +113,13 @@ export const FieldColor = forwardRef<HTMLInputElement, FieldColorProps>(
     };
 
     const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
-    const copyButtonSettings = useCopyButton({ copyButtonRef, showCopyButton, size, valueToCopy: value });
+    const copyButtonSettings = useCopyButton({
+      copyButtonRef,
+      showCopyButton,
+      size,
+      valueToCopy: value,
+      onCopyButtonClick,
+    });
     const { postfixButtons, inputTabIndex, onInputKeyDown } = useButtonNavigation({
       inputRef: localRef,
       postfixButtons: useMemo(

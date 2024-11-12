@@ -59,6 +59,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     onOpenChange,
     selectedOptionFormatter = defaultSelectedOptionFormatter,
     enableFuzzySearch = true,
+    onCopyButtonClick,
     ...rest
   } = props;
   const localRef = useRef<HTMLInputElement>(null);
@@ -123,6 +124,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     showCopyButton,
     inputRef: localRef,
     onClear,
+    onCopyButtonClick,
     valueToCopy: selectedOptionFormatter(selectedItem),
   });
 

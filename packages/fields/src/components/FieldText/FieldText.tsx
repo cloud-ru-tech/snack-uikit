@@ -36,6 +36,8 @@ type WrapperProps = Pick<
 type FieldTextOwnProps = {
   /** Отображение кнопки Копировать для поля (актуально только для `readonly = true`) */
   showCopyButton?: boolean;
+  /** Колбек клика по кнопке Копировать для поля */
+  onCopyButtonClick?(): void;
   /**
    * Отображение кнопки очистки поля
    * @default true
@@ -71,6 +73,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       onChange: onChangeProp,
       onFocus,
       onBlur,
+      onCopyButtonClick,
       className,
       label,
       labelTooltip,
@@ -139,6 +142,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       valueToCopy: value,
       prefix: typeof prefix === 'string' ? prefix : undefined,
       postfix: typeof postfix === 'string' ? postfix : undefined,
+      onCopyButtonClick,
     });
 
     const [isButtonFocused, setIsButtonFocused] = useState(false);

@@ -198,6 +198,7 @@ FieldStepper в основном предназначен для работы с
 | open | `boolean` | - | Открыт color-picker |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
 | showCopyButton | `boolean` | - | Отображение кнопки копирования |
+| onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showClearButton | `boolean` | true | Отображение кнопки Очистки поля |
 | value | `string` | - | Значение input |
 | onChange | `(value: string) => void` | - |  |
@@ -234,6 +235,7 @@ FieldStepper в основном предназначен для работы с
 | value | `Date` | - | Значение поля |
 | onChange | `(value: Date) => void` | - | Колбек смены значения |
 | showCopyButton | `boolean` | - | Отображение кнопки копирования |
+| onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showClearButton | `boolean` | true | Отображение кнопки Очистки поля |
 | buildCellProps | `(date: Date, viewMode: ViewMode) => { isDisabled?: boolean; isHoliday?: boolean } ;` | - | Колбек установки свойств ячеек календаря. Вызывается на построение каждой ячейки. Принимает два параметра: <br> `Date` - дата ячейки <br> `ViewMode`: <br>  - `month` отображение месяца, каждая ячейка - 1 день <br>  - `year` отображение года, каждая ячейка - 1 месяц <br>  - `decade` отображение декады, каждая ячейка - 1 год <br><br> Колбек должен возвращать объект с полями, отвечающими за отключение и подкраску ячейки. |
 | id | `string` | - | Значение html-атрибута id |
@@ -283,6 +285,7 @@ FieldStepper в основном предназначен для работы с
 | hidden | `boolean` | - | Замаскированно ли значение поля |
 | onHiddenChange | `(value: boolean) => void` | - | Колбек смены маскирования |
 | showCopyButton | `boolean` | - | Отображение кнопки копирования |
+| onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | allowMoreThanMaxLength | `boolean` | - | Можно ли вводить больше разрешённого кол-ва символов |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
 | asyncValueGetter | `() => Promise<string>` | - | Свойство позволяет грузить данные в поле по требованию |
@@ -344,6 +347,7 @@ FieldStepper в основном предназначен для работы с
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | open | `boolean` | - |  |
 | onOpenChange | `(open: boolean) => void` | - |  |
+| onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | - |  |
 | pinTop | `OptionProps[]` | - |  |
@@ -438,6 +442,7 @@ FieldStepper в основном предназначен для работы с
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
+| onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | allowMoreThanMaxLength | `boolean` | - | Можно ли вводить больше разрешённого кол-ва символов |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
@@ -477,6 +482,7 @@ FieldStepper в основном предназначен для работы с
 | resizable | `boolean` | - | Может ли ли пользователь изменять размеры поля (если св-во не включено, поле автоматически меняет свой размер) |
 | onChange | `(value: string, e?: ChangeEvent<HTMLTextAreaElement>) => void` | - | Колбек смены значения |
 | showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
+| onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | allowMoreThanMaxLength | `boolean` | true | Можно ли вводить больше разрешённого кол-ва символов |
 | value | `string` | - | HTML-аттрибут value |
@@ -510,6 +516,7 @@ FieldStepper в основном предназначен для работы с
 | value | `TimeValue` | - | Значение поля |
 | onChange | `(value?: TimeValue) => void` | - | Колбек смены значения |
 | showCopyButton | `boolean` | - | Отображение кнопки копирования |
+| onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showSeconds | `boolean` | true | Показывать ли секунды |
 | showClearButton | `boolean` | true | Отображение кнопки Очистки поля |
 | id | `string` | - | Значение html-атрибута id |
