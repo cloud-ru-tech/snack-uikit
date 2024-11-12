@@ -134,6 +134,8 @@ $sizes: 's', 'm', 'l';
     @include styles-tokens-card.outline-var(styles-tokens-element.$container-focused-s);
 
     cursor: not-allowed;
+
+    opacity: styles-tokens-element.$opacity-a048;
     background-color: styles-tokens-card.$sys-neutral-background;
     outline-color: styles-tokens-card.$sys-neutral-decor-default;
     outline-width: styles-tokens-card.$border-width-card-container;
@@ -169,7 +171,12 @@ $sizes: 's', 'm', 'l';
     }
 
     &:hover {
-      box-shadow: styles-tokens-card.simple-var(styles-tokens-card.$theme-variables, 'box-shadow', 'elevation', 'level2');
+      box-shadow: styles-tokens-card.simple-var(
+        styles-tokens-card.$theme-variables,
+        'box-shadow',
+        'elevation',
+        'level2'
+      );
     }
   }
 
