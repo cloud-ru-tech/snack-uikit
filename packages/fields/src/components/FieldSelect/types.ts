@@ -136,7 +136,13 @@ type FiledSelectCommonProps = WithSupportProps<{
 }> &
   Pick<
     DroplistProps,
-    'dataError' | 'noDataState' | 'noResultsState' | 'errorDataState' | 'dataFiltered' | 'untouchableScrollbars'
+    | 'dataError'
+    | 'noDataState'
+    | 'noResultsState'
+    | 'errorDataState'
+    | 'dataFiltered'
+    | 'untouchableScrollbars'
+    | 'scrollToSelectedItem'
   >;
 
 export type FieldSelectSingleProps = FieldSelectPrivateProps &

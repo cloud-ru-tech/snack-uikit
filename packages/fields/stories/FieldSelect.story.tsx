@@ -147,6 +147,7 @@ export const fieldSelect: StoryObj<StoryProps> = {
     showMoreOptions: false,
     untouchableScrollbars: false,
     enableFuzzySearch: true,
+    scrollToSelectedItem: false,
   },
 
   argTypes: {

@@ -110,6 +110,7 @@ export type ChipChoiceSelectCommonProps<T extends ContentRenderProps = ContentRe
     | 'dataFiltered'
     | 'noResultsState'
     | 'loading'
+    | 'scrollToSelectedItem'
   >;
 
 export type ChipChoiceSingleProps<T extends ContentRenderProps = ContentRenderProps> = ChipChoiceSelectCommonProps<T> &

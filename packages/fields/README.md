@@ -350,6 +350,7 @@ FieldStepper в основном предназначен для работы с
 | pinBottom | `OptionProps[]` | - |  |
 | footer | `ReactNode` | - |  |
 | search | `SearchState` | - |  |
+| scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |

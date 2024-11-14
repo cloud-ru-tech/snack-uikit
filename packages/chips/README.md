@@ -154,6 +154,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | searchable | `boolean` | - |  |
 | footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
+| scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
@@ -188,6 +189,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | searchable | `boolean` | - |  |
 | footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
+| scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
