@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.16.0 (2024-11-14)
+
+
+### Features
+
+* **FF-5681:** add opacity to disabled card ([8afda65](https://github.com/cloud-ru-tech/snack-uikit/commit/8afda65d8c19cc4a05a4d8087521e3dd14496e68))
+
+
+
+
+
 ## 0.15.4 (2024-11-14)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.4 (2024-11-14)
+
+
+### Bug Fixes
+
+* **FF-5887:** make modal fixed ([398c4bb](https://github.com/cloud-ru-tech/snack-uikit/commit/398c4bbc1b3997c126b4c8646c35936816eea14b))
+
+
+
+
+
 ## 0.14.3 (2024-11-14)
 
 
