@@ -39,7 +39,7 @@
     "@snack-uikit/list": "0.21.4",
     "@snack-uikit/typography": "0.8.0",
     "@snack-uikit/utils": "3.5.0",
-    "classnames": "2.3.2",
+    "classnames": "2.5.1",
     "lodash.debounce": "4.0.8"
   }
 }

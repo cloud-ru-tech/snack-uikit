@@ -41,7 +41,7 @@
     "@snack-uikit/loaders": "0.8.0",
     "@snack-uikit/truncate-string": "0.6.0",
     "@snack-uikit/utils": "3.5.0",
-    "classnames": "2.3.2",
+    "classnames": "2.5.1",
     "react-toastify": "10.0.5"
   }
 }

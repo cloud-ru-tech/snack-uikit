@@ -41,7 +41,7 @@
   "dependencies": {
     "@snack-uikit/tooltip": "0.15.0",
     "@snack-uikit/utils": "3.5.0",
-    "classnames": "2.3.2",
+    "classnames": "2.5.1",
     "lodash.throttle": "4.1.1"
   }
 }

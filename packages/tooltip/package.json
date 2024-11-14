@@ -39,7 +39,7 @@
     "@snack-uikit/icons": "0.24.0",
     "@snack-uikit/popover-private": "0.14.0",
     "@snack-uikit/utils": "3.5.0",
-    "classnames": "2.3.2",
-    "uncontrollable": "8.0.2"
+    "classnames": "2.5.1",
+    "uncontrollable": "8.0.4"
   }
 }

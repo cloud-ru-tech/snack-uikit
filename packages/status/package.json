@@ -37,6 +37,6 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/utils": "3.5.0",
-    "classnames": "2.3.2"
+    "classnames": "2.5.1"
   }
 }
