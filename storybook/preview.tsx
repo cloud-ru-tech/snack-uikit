@@ -11,6 +11,8 @@ import { LocaleProvider } from '@snack-uikit/locale';
 import { themes as additionalThemes } from '../themes.config';
 import { BADGE, Brand, DEFAULT_BRAND_COLORS_MAP, DEFAULT_BRAND_MAP } from './constants';
 
+const url = process.env.DEPS_URL && new URL(process.env.DEPS_URL);
+
 const brandInfo: Partial<ThemeVars> = {
   base: 'light',
   brandTitle: 'Snack UI',
@@ -28,6 +30,7 @@ const parameters: Parameters = {
   dependenciesGraph: {
     graphLinks: process.env.DEPENDENCIES_LINKS,
   },
+  packagesUrl: url ? url.pathname : undefined,
   badgesConfig: {
     [BADGE.PRIVATE]: {
       styles: {
