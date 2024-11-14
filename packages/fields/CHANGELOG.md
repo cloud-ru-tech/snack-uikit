@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.33.0 (2024-11-14)
+
+
+### Features
+
+* **FF-5827:** add scrollToSelectedItem prop ([bb57f81](https://github.com/cloud-ru-tech/snack-uikit/commit/bb57f81b3bd1c46f10c4de17a9284b47feb3e4b4))
+
+
+
+
+
 ## 0.32.5 (2024-11-14)
 
 

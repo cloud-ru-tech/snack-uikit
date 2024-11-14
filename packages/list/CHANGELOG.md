@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.21.6 (2024-11-14)
+
+
+### Bug Fixes
+
+* **FF-5827:** scroll to selected item into center, make it work for all cases in list/droplist ([a63d432](https://github.com/cloud-ru-tech/snack-uikit/commit/a63d432b9718f7c99638acb940d06138c03c2421))
+
+
+
+
+
 ## 0.21.5 (2024-11-14)
 
 
