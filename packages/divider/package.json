@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Divider",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "sideEffects": [
     "*.css",
     "*.woff",
