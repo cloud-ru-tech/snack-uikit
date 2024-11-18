@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.34.0 (2024-11-18)
+
+
+### Features
+
+* **LK-4944:** added onClickCopy props for copyButton in Fields ([03a5182](https://github.com/cloud-ru-tech/snack-uikit/commit/03a5182cd7c57211aae0e4e9d507eea4c61d9040))
+
+
+
+
+
 # 0.33.0 (2024-11-14)
 
 
