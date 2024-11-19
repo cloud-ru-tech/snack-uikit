@@ -49,6 +49,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | min | `number` | - | Минимальное значение поля |
 | max | `number` | - | Максимальное значение поля |
+| step | `string \| number` | - | Максимальное значение поля |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |

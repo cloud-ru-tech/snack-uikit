@@ -43,6 +43,8 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
     min?: number;
     /** Максимальное значение поля */
     max?: number;
+    /** Максимальное значение поля */
+    step?: number | string;
     /**
      * Значение атрибута tab-index
      * @default 0

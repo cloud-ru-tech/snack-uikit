@@ -23,6 +23,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
       maxLength,
       min,
       max,
+      step,
       onFocus,
       onBlur,
       onKeyDown,
@@ -73,6 +74,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
         onMouseDown={onMouseDown}
         min={min}
         max={max}
+        step={step}
         title=''
         {...extractSupportProps(rest)}
       />
