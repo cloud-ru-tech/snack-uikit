@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.35.0 (2024-11-19)
+
+
+### Features
+
+* **FF-5887:** change prefix/postfix for FieldStepper ([b7aca2d](https://github.com/cloud-ru-tech/snack-uikit/commit/b7aca2da5ef613747599ff1cafaaa3de747be717))
+
+
+
+
+
 # 0.34.0 (2024-11-18)
 
 

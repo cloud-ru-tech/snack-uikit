@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.3.0 (2024-11-19)
+
+
+### Features
+
+* **FF-5887:** add native step prop ([50679ed](https://github.com/cloud-ru-tech/snack-uikit/commit/50679ed9020ce646c1047577a32f519e735ceacc))
+
+
+
+
+
 ## 4.2.2 (2024-11-14)
 
 

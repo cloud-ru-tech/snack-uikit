@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Chips",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,10 +37,10 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.19.3",
-    "@snack-uikit/calendar": "0.11.6",
+    "@snack-uikit/calendar": "0.11.7",
     "@snack-uikit/dropdown": "0.4.1",
     "@snack-uikit/icons": "0.24.0",
-    "@snack-uikit/list": "0.21.6",
+    "@snack-uikit/list": "0.21.7",
     "@snack-uikit/loaders": "0.8.1",
     "@snack-uikit/utils": "3.5.0",
     "classnames": "2.5.1",
