@@ -1,3 +1,5 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-fields' as ft-fields;
+
 .stepper {
   text-align: center;
 }
@@ -10,4 +12,23 @@
   &[data-disabled] * {
     cursor: not-allowed;
   }
+}
+
+.trigger {
+  min-width: auto;
+}
+
+.wrap {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.prefixWrapper {
+  margin-right: ft-fields.$space-fields-stepper-content-container;
+}
+
+.postfixWrapper {
+  margin-left: ft-fields.$space-fields-stepper-content-container;
 }

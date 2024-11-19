@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import mergeRefs from 'merge-refs';
 import {
   ChangeEvent,
@@ -76,6 +77,12 @@ const getDefaultValue = (min: number, max: number) => {
   return 0;
 };
 
+const SymbolWidth = {
+  s: 8,
+  m: 9,
+  l: 10,
+};
+
 export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
   (
     {
@@ -118,8 +125,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     const [tooltip, setTooltip] = useState('');
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
     const inputRef = useRef<HTMLInputElement>(null);
-    const minusButtonRef = useRef<HTMLButtonElement>(null);
-    const plusButtonRef = useRef<HTMLButtonElement>(null);
+
     const isMinusButtonDisabled = (typeof min === 'number' && value <= min) || readonly || disabled;
     const isPlusButtonDisabled = (typeof max === 'number' && value >= max) || readonly || disabled;
 
@@ -171,17 +177,9 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
 
     const handleInputChange = (value: string, event: ChangeEvent<HTMLInputElement>) => setValue(Number(value), event);
 
-    const handleInputKeyDown: KeyboardEventHandler<HTMLInputElement> = event => {
+    const handleInputKeyDown: KeyboardEventHandler<HTMLInputElement> = () => {
       if (readonly || disabled) {
         return;
-      }
-
-      if (event.key === 'ArrowRight' && !isPlusButtonDisabled) {
-        plusButtonRef.current?.focus();
-      }
-
-      if (event.key === 'ArrowLeft' && !isMinusButtonDisabled) {
-        minusButtonRef.current?.focus();
       }
     };
 
@@ -197,25 +195,15 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
       setValue(Math.max(Math.min(max, value + step), min));
     };
 
-    const handleMinusButtonKeyDown: KeyboardEventHandler<HTMLInputElement> = event => {
+    const handleMinusButtonKeyDown: KeyboardEventHandler<HTMLInputElement> = () => {
       if (readonly || disabled) {
         return;
-      }
-
-      if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        inputRef.current?.focus();
       }
     };
 
-    const handlePlusButtonKeyDown: KeyboardEventHandler<HTMLInputElement> = event => {
+    const handlePlusButtonKeyDown: KeyboardEventHandler<HTMLInputElement> = () => {
       if (readonly || disabled) {
         return;
-      }
-
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        inputRef.current?.focus();
       }
     };
 
@@ -241,6 +229,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
           tip={tooltip}
           open={allowMoreThanLimits ? false : tooltipOpen}
           data-test-id='field-stepper__limit-tooltip'
+          triggerClassName={styles.trigger}
         >
           <FieldContainerPrivate
             size={size}
@@ -250,58 +239,66 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
             variant={CONTAINER_VARIANT.SingleLine}
             inputRef={inputRef}
             prefix={
-              <>
-                <ButtonFunction
-                  tabIndex={-1}
-                  ref={minusButtonRef}
-                  size='xs'
-                  className={styles.button}
-                  icon={<MinusSVG />}
-                  onClick={handleMinusButtonClick}
-                  onKeyDown={handleMinusButtonKeyDown}
-                  disabled={isMinusButtonDisabled}
-                  data-test-id='field-stepper__minus-button'
-                />
-                {prefixSettings.show && prefixSettings.render({ key: prefixSettings.id })}
-              </>
+              <ButtonFunction
+                tabIndex={-1}
+                size='xs'
+                className={styles.button}
+                icon={<MinusSVG />}
+                onClick={handleMinusButtonClick}
+                onKeyDown={handleMinusButtonKeyDown}
+                disabled={isMinusButtonDisabled}
+                data-test-id='field-stepper__minus-button'
+              />
             }
             postfix={
-              <>
-                {postfixSettings.show && postfixSettings.render({ key: postfixSettings.id })}
-
-                <ButtonFunction
-                  ref={plusButtonRef}
-                  tabIndex={-1}
-                  size='xs'
-                  className={styles.button}
-                  icon={<PlusSVG />}
-                  onClick={handlePlusButtonClick}
-                  onKeyDown={handlePlusButtonKeyDown}
-                  disabled={isPlusButtonDisabled}
-                  data-test-id='field-stepper__plus-button'
-                />
-              </>
+              <ButtonFunction
+                tabIndex={-1}
+                size='xs'
+                className={styles.button}
+                icon={<PlusSVG />}
+                onClick={handlePlusButtonClick}
+                onKeyDown={handlePlusButtonKeyDown}
+                disabled={isPlusButtonDisabled}
+                data-test-id='field-stepper__plus-button'
+              />
             }
           >
-            <InputPrivate
-              ref={mergeRefs(ref, inputRef)}
-              className={styles.stepper}
-              data-size={size}
-              value={String(value)}
-              tabIndex={0}
-              onKeyDown={handleInputKeyDown}
-              onChange={handleInputChange}
-              onBlur={handleInputBlur}
-              onFocus={handleInputFocus}
-              disabled={disabled}
-              readonly={readonly}
-              type='number'
-              id={id}
-              name={name}
-              min={min}
-              max={max}
-              data-test-id='field-stepper__input'
-            />
+            <div className={styles.wrap}>
+              <div className={cn({ [styles.prefixWrapper]: prefixSettings.show })}>
+                {prefixSettings.show && prefixSettings.render({ key: prefixSettings.id })}
+              </div>
+
+              <div
+                style={{
+                  width: String(value).length * SymbolWidth[size],
+                  maxWidth: '100%',
+                }}
+              >
+                <InputPrivate
+                  ref={mergeRefs(ref, inputRef)}
+                  className={styles.stepper}
+                  data-size={size}
+                  value={String(value)}
+                  tabIndex={0}
+                  onKeyDown={handleInputKeyDown}
+                  onChange={handleInputChange}
+                  onBlur={handleInputBlur}
+                  onFocus={handleInputFocus}
+                  disabled={disabled}
+                  readonly={readonly}
+                  type='number'
+                  id={id}
+                  step={step}
+                  name={name}
+                  min={min}
+                  max={max}
+                  data-test-id='field-stepper__input'
+                />
+              </div>
+              <div className={cn({ [styles.postfixWrapper]: postfixSettings.show })}>
+                {postfixSettings.show && postfixSettings.render({ key: postfixSettings.id })}
+              </div>
+            </div>
           </FieldContainerPrivate>
         </Tooltip>
       </FieldDecorator>

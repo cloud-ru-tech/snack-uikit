@@ -59,33 +59,6 @@ test.page(visit({ value: 4, step: 2, min: 0, max: 6 }))('Should increase/decreas
   await t.click(plusButton).click(plusButton).click(plusButton).click(plusButton).expect(input.value).eql('6');
 });
 
-test.page(visit({ value: 4, step: 2, min: 0, max: 6 }))('Should increase/decrease from keyboard', async t => {
-  await t.expect(wrapper.visible).ok();
-
-  await t.pressKey('tab').pressKey('left').pressKey('enter').expect(input.value).eql('2');
-  await t.pressKey('right').pressKey('right').pressKey('enter').expect(input.value).eql('4');
-
-  // min
-  await t
-    .pressKey('left')
-    .pressKey('left')
-    .pressKey('enter')
-    .pressKey('enter')
-    .pressKey('enter')
-    .expect(input.value)
-    .eql('0');
-
-  // max
-  await t
-    .pressKey('right')
-    .pressKey('enter')
-    .pressKey('enter')
-    .pressKey('enter')
-    .pressKey('enter')
-    .expect(input.value)
-    .eql('6');
-});
-
 test.page(visit({ value: 6, disabled: true }))('Should not click buttons in disabled state', async t => {
   const minusButton = Selector(dataTestIdSelector(MINUS_BUTTON_TEST_ID));
   const plusButton = Selector(dataTestIdSelector(PLUS_BUTTON_TEST_ID));
