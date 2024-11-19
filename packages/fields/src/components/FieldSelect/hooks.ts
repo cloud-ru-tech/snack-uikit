@@ -15,6 +15,7 @@ import { useCopyButton, useValueControl } from '../../hooks';
 import { extractChildIds } from './legacy';
 import { ItemWithId, SearchState, SelectedOptionFormatter } from './types';
 import { getValueByPath, isBaseOptionProps } from './utils';
+import { filterItemsByFlattenIds } from './utils/filterItemsByFlattenIds';
 
 type UseHandleOnKeyDownProps = {
   inputKeyDownNavigationHandler: KeyboardEventHandler<HTMLInputElement>;
@@ -187,13 +188,12 @@ export function useSearch(items: ItemProps[], enableFuzzySearch: boolean = true)
     return Object.values(flattenItems);
   }, [items]);
 
-  const filterFunction = useCallback(
+  const filterFlattenFunction = useCallback(
     (search: string) => {
       if (!enableFuzzySearch) {
         return flattenItems.filter(item =>
           [...COMMON_FIELDS_TO_SEARCH, 'label'].some(key => {
             const value = getValueByPath(item, key);
-
             return value.toLowerCase().includes(search.toLowerCase());
           }),
         );
@@ -203,6 +203,14 @@ export function useSearch(items: ItemProps[], enableFuzzySearch: boolean = true)
       return searcher.search(search);
     },
     [enableFuzzySearch, flattenItems],
+  );
+
+  const filterFunction = useCallback(
+    (search: string) => {
+      const filteredIds = filterFlattenFunction(search).map(item => item.id);
+      return filterItemsByFlattenIds(items, filteredIds);
+    },
+    [filterFlattenFunction, items],
   );
 
   return useCallback(
