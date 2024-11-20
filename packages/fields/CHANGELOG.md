@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.35.1 (2024-11-20)
+
+
+### Bug Fixes
+
+* **PDS-959:** do not change item structure in search mode ([1abca3d](https://github.com/cloud-ru-tech/snack-uikit/commit/1abca3d7ca7cef91665195ee51a06cc9af14461e))
+
+
+
+
+
 # 0.35.0 (2024-11-19)
 
 
