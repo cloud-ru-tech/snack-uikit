@@ -6,6 +6,7 @@ import componentReadme from '../README.md';
 import { ChipChoice, ChipChoiceDateProps } from '../src';
 import { ChipChoiceStoryWrap } from './chipChoice/ChipChoiceStoryWrap';
 import { CHIP_CHOICE_ARG_TYPES, CHIP_CHOICE_STORY_ARGS, ChipChoiceCustomStoryProps } from './chipChoice/constants';
+import { getBuildCellProps } from './helpers';
 
 const meta: Meta = {
   title: 'Components/Chips/ChipChoice',
@@ -13,9 +14,17 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = ChipChoiceDateProps & ChipChoiceCustomStoryProps;
+type StoryProps = ChipChoiceDateProps &
+  ChipChoiceCustomStoryProps & {
+    modeBuildCellProps: 'disable-past' | 'none';
+  };
 
-const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({
+  useDefaultValue,
+  showClickCounter,
+  modeBuildCellProps,
+  ...args
+}: StoryProps) => {
   const formatter = args.customFormatter ? (value?: Date): string => value?.toUTCString() || 'empty' : undefined;
 
   return (
@@ -27,6 +36,7 @@ const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, ...a
           defaultValue={useDefaultValue ? new Date('2023-10-15') : undefined}
           valueRender={formatter}
           onClick={increaseCounter}
+          buildCalendarCellProps={getBuildCellProps(modeBuildCellProps)}
         />
       )}
     />
@@ -38,6 +48,7 @@ export const chipChoiceDate: StoryObj<StoryProps> = {
 
   args: {
     ...CHIP_CHOICE_STORY_ARGS,
+    modeBuildCellProps: 'none',
     mode: 'date',
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -47,6 +58,11 @@ export const chipChoiceDate: StoryObj<StoryProps> = {
 
   argTypes: {
     ...CHIP_CHOICE_ARG_TYPES,
+    modeBuildCellProps: {
+      name: '[story] select buildCalendarCellProps operating mode',
+      options: ['disable-past', 'none'],
+      control: { type: 'radio' },
+    },
     showSeconds: {
       if: {
         arg: 'mode',

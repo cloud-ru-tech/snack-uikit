@@ -6,6 +6,7 @@ import componentReadme from '../README.md';
 import { ChipChoice, ChipChoiceDateRangeProps } from '../src';
 import { ChipChoiceStoryWrap } from './chipChoice/ChipChoiceStoryWrap';
 import { CHIP_CHOICE_ARG_TYPES, CHIP_CHOICE_STORY_ARGS, ChipChoiceCustomStoryProps } from './chipChoice/constants';
+import { getBuildCellProps } from './helpers';
 
 const meta: Meta = {
   title: 'Components/Chips/ChipChoice',
@@ -13,9 +14,17 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = ChipChoiceDateRangeProps & ChipChoiceCustomStoryProps;
+type StoryProps = ChipChoiceDateRangeProps &
+  ChipChoiceCustomStoryProps & {
+    modeBuildCellProps: 'disable-past' | 'none';
+  };
 
-const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({
+  useDefaultValue,
+  showClickCounter,
+  modeBuildCellProps,
+  ...args
+}: StoryProps) => {
   const formatter = args.customFormatter
     ? (value?: [Date, Date]): string => {
         if (!value || !value.length) return 'all dates';
@@ -33,6 +42,7 @@ const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, ...a
           defaultValue={useDefaultValue ? [new Date('2022-10-15'), new Date('2023-10-15')] : undefined}
           onClick={increaseCounter}
           valueRender={formatter}
+          buildCalendarCellProps={getBuildCellProps(modeBuildCellProps)}
         />
       )}
     />
@@ -41,8 +51,15 @@ const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, ...a
 
 export const chipChoiceDateRange: StoryObj<StoryProps> = {
   render: Template,
-  args: { ...CHIP_CHOICE_STORY_ARGS, useDefaultValue: false },
-  argTypes: CHIP_CHOICE_ARG_TYPES,
+  args: { ...CHIP_CHOICE_STORY_ARGS, useDefaultValue: false, modeBuildCellProps: 'none' },
+  argTypes: {
+    ...CHIP_CHOICE_ARG_TYPES,
+    modeBuildCellProps: {
+      name: '[story] select buildCalendarCellProps operating mode',
+      options: ['disable-past', 'none'],
+      control: { type: 'radio' },
+    },
+  },
 
   parameters: {
     readme: {

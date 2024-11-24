@@ -26,6 +26,8 @@ export type ChipChoiceDateProps = ChipChoiceCommonProps & {
   /** Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение */
   valueRender?(value?: Date): ReactNode;
   mode?: Exclude<CalendarProps['mode'], 'range'>;
+  /** Колбек свойств для управления ячейками календаря */
+  buildCalendarCellProps?: CalendarProps['buildCellProps'];
 } & (
     | ChipChoiceDateWithSeconds
     | {
@@ -43,6 +45,7 @@ export function ChipChoiceDate({
   mode = 'date',
   placement,
   widthStrategy,
+  buildCalendarCellProps,
   ...rest
 }: ChipChoiceDateProps) {
   const [selectedValue, setSelectedValue] = useValueControl<Date>({ value, defaultValue, onChange });
@@ -114,6 +117,7 @@ export function ChipChoiceDate({
           onFocusLeave={closeDroplist}
           showSeconds={showSeconds}
           locale={DEFAULT_LOCALE}
+          buildCellProps={buildCalendarCellProps}
         />
       }
       placement={placement}

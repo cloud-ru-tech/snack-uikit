@@ -1,3 +1,5 @@
+import { CalendarProps } from '@snack-uikit/calendar';
+
 import { ChipChoiceRowProps, CustomContentRenderProps } from '../src';
 import { STORY_TEST_IDS } from './testIds';
 
@@ -72,3 +74,48 @@ export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
     ),
   },
 ];
+
+type BuildCellPropsFunction = Exclude<CalendarProps['buildCellProps'], undefined>;
+
+const disablePast: BuildCellPropsFunction = (date, viewMode) => {
+  let isDisabled = false;
+
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+
+  switch (viewMode) {
+    case 'month':
+      if (date.valueOf() + 86400000 < Date.now()) {
+        isDisabled = true;
+      }
+      break;
+    case 'year':
+      if (currentYear > date.getFullYear()) {
+        isDisabled = false;
+      } else if (currentYear === date.getFullYear()) {
+        if (date.getMonth() < currentMonth) {
+          isDisabled = true;
+        }
+      }
+      break;
+    case 'decade':
+      if (date.getFullYear() < currentYear) {
+        isDisabled = true;
+      }
+      break;
+    default:
+      return { isDisabled };
+  }
+  return { isDisabled };
+};
+
+export const getBuildCellProps = (modeBuildCellProps: 'disable-past' | 'none') => {
+  switch (modeBuildCellProps) {
+    case 'disable-past':
+      return disablePast;
+    case 'none':
+    default:
+      return;
+  }
+};

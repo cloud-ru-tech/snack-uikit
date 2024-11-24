@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { Calendar } from '@snack-uikit/calendar';
+import { Calendar, CalendarProps } from '@snack-uikit/calendar';
 import { Dropdown } from '@snack-uikit/dropdown';
 import { useLocale } from '@snack-uikit/locale';
 
@@ -22,6 +22,8 @@ export type ChipChoiceDateRangeProps = ChipChoiceCommonProps & {
   onChange?(value: Range): void;
   /** Колбек формирующий строковое представление выбранного значения. Принимает массив выбранных значений */
   valueRender?(value?: Range): ReactNode;
+  /** Колбек свойств для управления ячейками календаря */
+  buildCalendarCellProps?: CalendarProps['buildCellProps'];
 };
 
 type DefaultRangeFormatterProps = {
@@ -44,6 +46,7 @@ export function ChipChoiceDateRange({
   onChange,
   valueRender,
   dropDownClassName,
+  buildCalendarCellProps,
   ...rest
 }: ChipChoiceDateRangeProps) {
   const [selectedValue, setSelectedValue] = useUncontrolledProp<Range>(value, defaultValue, onChange);
@@ -82,6 +85,7 @@ export function ChipChoiceDateRange({
           // bug with focus
           // navigationStartRef={element => element?.focus()}
           onFocusLeave={closeDroplist}
+          buildCellProps={buildCalendarCellProps}
         />
       }
       outsideClick
