@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.22.0 (2024-11-26)
+
+
+### Features
+
+* **PDS-899:** add buildCalendarCellProps ([17015dd](https://github.com/cloud-ru-tech/snack-uikit/commit/17015dde179b455425f71f8444c89aa252886b80))
+
+
+
+
+
 ## 0.21.1 (2024-11-19)
 
 ### Only dependencies have been changed

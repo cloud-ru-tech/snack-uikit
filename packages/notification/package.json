@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Notification",
-  "version": "0.9.9",
+  "version": "0.9.10",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,7 +37,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.19.3",
-    "@snack-uikit/chips": "0.21.1",
+    "@snack-uikit/chips": "0.22.0",
     "@snack-uikit/icons": "0.24.0",
     "@snack-uikit/info-block": "0.6.3",
     "@snack-uikit/link": "0.15.1",
