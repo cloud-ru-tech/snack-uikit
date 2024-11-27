@@ -1,9 +1,12 @@
 import { loader } from '@monaco-editor/react';
+import chroma from 'chroma-js';
 
 export function rgb2hsl(HTMLcolor: string) {
-  const r = parseInt(HTMLcolor.substring(1, 3), 16) / 255;
-  const g = parseInt(HTMLcolor.substring(3, 5), 16) / 255;
-  const b = parseInt(HTMLcolor.substring(5, 7), 16) / 255;
+  const [r, g, b] = chroma.valid(HTMLcolor)
+    ? chroma(HTMLcolor)
+        .rgb()
+        .map(c => c / 255)
+    : [0, 0, 0];
 
   const max = Math.max(r, g, b),
     min = Math.min(r, g, b);

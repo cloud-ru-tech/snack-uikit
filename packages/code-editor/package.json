@@ -39,6 +39,10 @@
     "@monaco-editor/react": "4.6.0",
     "@snack-uikit/loaders": "0.8.1",
     "@snack-uikit/utils": "3.5.0",
+    "chroma-js": "3.1.2",
     "classnames": "2.5.1"
+  },
+  "devDependencies": {
+    "@types/chroma-js": "2.4.4"
   }
 }

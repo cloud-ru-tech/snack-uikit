@@ -127,7 +127,7 @@ export function CodeEditor({
     <div className={className} {...extractSupportProps(props)} ref={setWrapperElement}>
       <Editor
         {...props}
-        theme={theme ?? dark ? 'snackDark' : 'snack'}
+        theme={theme ?? (dark ? 'snackDark' : 'snack')}
         className={cn({ [styles.editor]: hasBackground })}
         loading={loading ?? <Spinner />}
         options={mergedOptions}
