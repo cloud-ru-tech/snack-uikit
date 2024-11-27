@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.4 (2024-11-27)
+
+
+### Bug Fixes
+
+* **PDS-1023:** fix calc isDark ([8c34b37](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/8c34b3758b20ef57c4f68e1dbc0472acf6ef611c))
+
+
+
+
+
 ## 0.4.3 (2024-11-14)
 
 ### Only dependencies have been changed
