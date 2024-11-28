@@ -37,7 +37,6 @@
 |------|------|---------------|-------------|
 | loading | `boolean` | - | Флаг состояния загрузки. Если значение true, будет отрисован блок скелетона, если false - children. |
 | width | `Width<string \| number>` | - | Ширина блока. Можно указать значение допустимое для CSSProperty.width (пример `'60%'`, `'400px'` и т.д) |
-| borderRadius | `BorderRadius<string \| number>` | 0.4em | Радиус скругления. Можно указать значение допустимое для CSSProperty.borderRadius (пример `'10px'`, `'50%'` и т.д) |
 | className | `string` | - | CSS-класс |
 | lines | `number` | 3 | Количество строк. |
 | rowClassName | `string` | - | CSS-класс строки |

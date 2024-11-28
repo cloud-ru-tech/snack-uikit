@@ -67,33 +67,35 @@ const VARIANT = Object.values(PURPOSE).reduce((res, purpose) => {
 
 export const skeletonText = {
   render: ({ text, typography, textOpacity, ...args }: skeletonTextStoryArgs) => (
-    <div
-      className={styles.textContainer}
-      style={{
-        position: 'relative',
-      }}
+    <Typography
+      family='sans'
+      size={(typography?.split('-')[1] as Size) || 'm'}
+      purpose={(typography?.split('-')[0] as Purpose) || 'body'}
     >
-      <div style={{ opacity: textOpacity / 100 }}>
-        <Typography
-          family='sans'
-          size={(typography?.split('-')[1] as Size) || 'm'}
-          purpose={(typography?.split('-')[0] as Purpose) || 'body'}
-        >
-          <TruncateString text={text} maxLines={args.lines} />
-        </Typography>
-      </div>
       <div
+        className={styles.textContainer}
         style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
+          position: 'relative',
         }}
       >
-        <SkeletonText {...args} typography={typography}>
-          <div data-test-id='children'>{text}</div>
-        </SkeletonText>
+        <div style={{ opacity: textOpacity / 100 }}>
+          <TruncateString text={text} maxLines={args.lines} />
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+          }}
+        >
+          <SkeletonText {...args} typography={typography}>
+            <div data-test-id='children'>
+              <TruncateString text={text} maxLines={args.lines} />
+            </div>
+          </SkeletonText>
+        </div>
       </div>
-    </div>
+    </Typography>
   ),
 
   args: {
@@ -101,7 +103,6 @@ export const skeletonText = {
     textOpacity: 50,
     typography: 'body-m',
     lines: 3,
-    radius: '0.4em',
     loading: true,
   },
 
@@ -112,7 +113,6 @@ export const skeletonText = {
   },
 
   argTypes: {
-    borderRadius: { type: 'string' },
     lines: { type: 'number' },
     text: {
       name: '[Stories]: demo text',

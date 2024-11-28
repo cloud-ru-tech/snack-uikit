@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 import { Variant } from './types';
 
 export type SkeletonTextProps = WithSupportProps<
-  Omit<SkeletonProps, 'height'> & {
+  Omit<SkeletonProps, 'height' | 'borderRadius'> & {
     /** Количество строк. */
     lines?: number;
     /** CSS-класс строки */
@@ -29,7 +29,6 @@ export function SkeletonText({
   children,
   loading,
   lines = 3,
-  borderRadius = '0.4em',
   typography = 'body-m',
   ...restProps
 }: SkeletonTextProps) {
@@ -44,20 +43,19 @@ export function SkeletonText({
             key={index}
             className={cn(styles.skeletonTextRow, rowClassName)}
             style={{
-              lineHeight: `var(--sans-${typography}-line-height)`,
-              fontSize: `var(--sans-${typography}-font-size)`,
+              lineHeight: `var(--size-skeleton-text-line-height-${typography})`,
             }}
           >
             <Skeleton
               data-test-id={lineTestId}
               loading
-              height={`var(--sans-${typography}-font-size)`}
-              borderRadius={borderRadius}
+              height={`var(--size-skeleton-text-font-size-${typography})`}
+              borderRadius={`var(--radius-skeleton-text-${typography})`}
               className={cn(styles.skeletonTextLine, lineClassName)}
             />
           </div>
         )),
-    [lines, rowClassName, lineTestId, typography, borderRadius, lineClassName],
+    [lines, rowClassName, lineTestId, typography, lineClassName],
   );
 
   const isLoading = useIsLoadingValue(loading);
