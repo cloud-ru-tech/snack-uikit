@@ -42,6 +42,7 @@
 | lines | `number` | 3 | Количество строк. |
 | rowClassName | `string` | - | CSS-класс строки |
 | lineClassName | `string` | - | CSS-класс линии |
+| typography | "display-l" \| "display-m" \| "display-s" \| "headline-l" \| "headline-m" \| "headline-s" \| "title-l" \| "title-m" \| "title-s" \| "label-l" \| "label-m" \| "label-s" \| "body-l" \| "body-m" \| "body-s" | body-m | Типографика |
 ## WithSkeleton
 ### Props
 | name | type | default value | description |

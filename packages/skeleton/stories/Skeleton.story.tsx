@@ -1,6 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { PropsWithChildren } from 'react';
 
+import { TruncateString } from '@snack-uikit/truncate-string';
+import { PURPOSE, Purpose, SIZE, Size, Typography } from '@snack-uikit/typography';
+
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
@@ -51,16 +54,42 @@ export const skeleton: StoryObj<SkeletonProps> = {
 
 type skeletonTextStoryArgs = SkeletonTextProps & {
   text: string;
-  fontSize: string;
-  lineHeight: string;
+  textOpacity: number;
 };
 
+const VARIANT = Object.values(PURPOSE).reduce((res, purpose) => {
+  Object.values(SIZE).forEach(size => {
+    res.push([purpose, size].join('-'));
+  });
+
+  return res;
+}, [] as string[]);
+
 export const skeletonText = {
-  render: ({ text, fontSize, lineHeight, ...args }: skeletonTextStoryArgs) => (
-    <div className={styles.textContainer} style={{ fontSize: `${fontSize}px`, lineHeight: `${lineHeight}px` }}>
-      <div>{text}</div>
-      <div>
-        <SkeletonText {...args}>
+  render: ({ text, typography, textOpacity, ...args }: skeletonTextStoryArgs) => (
+    <div
+      className={styles.textContainer}
+      style={{
+        position: 'relative',
+      }}
+    >
+      <div style={{ opacity: textOpacity / 100 }}>
+        <Typography
+          family='sans'
+          size={(typography?.split('-')[1] as Size) || 'm'}
+          purpose={(typography?.split('-')[0] as Purpose) || 'body'}
+        >
+          <TruncateString text={text} maxLines={args.lines} />
+        </Typography>
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+        }}
+      >
+        <SkeletonText {...args} typography={typography}>
           <div data-test-id='children'>{text}</div>
         </SkeletonText>
       </div>
@@ -68,9 +97,9 @@ export const skeletonText = {
   ),
 
   args: {
-    text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati rerum, at sit aperiam doloribus.',
-    fontSize: 16,
-    lineHeight: 24,
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nesciunt consequuntur veniam libero aliquid perspiciatis earum quasi natus unde saepe provident, aliquam maiores dolor. Illum possimus modi saepe architecto voluptatibus!',
+    textOpacity: 50,
+    typography: 'body-m',
     lines: 3,
     radius: '0.4em',
     loading: true,
@@ -85,9 +114,26 @@ export const skeletonText = {
   argTypes: {
     borderRadius: { type: 'string' },
     lines: { type: 'number' },
-    text: { type: 'string' },
-    fontSize: { type: 'number' },
-    lineHeight: { type: 'number' },
+    text: {
+      name: '[Stories]: demo text',
+      type: 'string',
+    },
+    typography: {
+      options: VARIANT,
+
+      control: {
+        type: 'select',
+      },
+    },
+    textOpacity: {
+      name: '[Stories]: demo text opacity',
+      control: {
+        type: 'range',
+        min: 0,
+        max: 100,
+        step: 1,
+      },
+    },
   },
 };
 
