@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2024-11-29)
+
+
+### Features
+
+* **PDS-801:** use typography prop ([7982dbf](https://github.com/cloud-ru-tech/snack-uikit/commit/7982dbf1c203ab09c148f91eb96e148710fe9b05))
+
+
+
+
+
 ## 0.9.10 (2024-11-26)
 
 ### Only dependencies have been changed

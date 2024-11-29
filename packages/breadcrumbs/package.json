@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Breadcrumbs",
-  "version": "0.10.8",
+  "version": "0.10.9",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,8 +36,8 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/list": "0.21.7",
-    "@snack-uikit/typography": "0.8.1",
+    "@snack-uikit/list": "0.21.8",
+    "@snack-uikit/typography": "0.8.2",
     "@snack-uikit/utils": "3.5.0",
     "classnames": "2.5.1",
     "lodash.debounce": "4.0.8"

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.2 (2024-11-29)
+
+
+### Bug Fixes
+
+* **PDS-801:** add constants/types export ([ff2f386](https://github.com/cloud-ru-tech/snack-uikit/commit/ff2f3860f176addf7708f530212000d1aa3eda29))
+
+
+
+
+
 ## 0.8.1 (2024-11-14)
 
 
