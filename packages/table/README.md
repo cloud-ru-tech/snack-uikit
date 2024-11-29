@@ -115,6 +115,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | copyPinnedRows | `boolean` | - | Параметр отвечает за сохранение закрепленных строк в теле таблицы |
 | enableSelectPinned | `boolean` | - | Параметр отвечает за чекбокс выбора закрепленных строк |
 | sorting | `{ initialState?: SortingState; state?: SortingState; onChange?(state: SortingState): void; }` | - | Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>initialState</strong>: Начальное состояние сортировки <br> <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
+| expanding | `{ getSubRows: (element: TData) => TData[]; expandingColumnDefinition: TreeColumnDefinitionProps<TData>; }` | - | Параметр отвечает за общие настройки раскрывающихся строк |
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
 | search | `{ initialState?: string; state?: string; placeholder?: string; loading?: boolean; onChange?(value: string): void; }` | 'Search'<br> <strong>loading</strong>: Состояние загрузки в строке поиска <br> <strong>onChange</strong>: Колбэк на изменение данных в строке поиска | Параметры отвечают за глобальный поиск в таблице <br> <strong>initialState</strong>: Начальное состояние строки поиска <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>placeholder</strong>: Placeholder строки поиска |
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
@@ -160,7 +161,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | size | `number` | - | Размер ячейки |
 | minSize | `number` | - |  |
 | maxSize | `number` | - |  |
-| header | `ColumnDefTemplate<HeaderContext<TData, unknown>> & (string \| ((ctx: HeaderContext<TData, unknown>) => string))` | - | Заголовок колонки |
+| header | `string \| (string & ReactElement<any, string \| JSXElementConstructor<any>>) \| (string & Iterable<ReactNode>) \| ... 9 more ... \| (((props: HeaderContext<...>) => any) & ((ctx: HeaderContext<...>) => ReactNode))` | - | Заголовок колонки |
 | enableResizing | `boolean` | - | Включение/выключение ресайза колонки |
 ## Table.getRowActionsColumnDef
 Вспомогательная функция для создания ячейки с дополнительными действиями у строки
@@ -179,6 +180,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | copyPinnedRows | `boolean` | false | Параметр отвечает за сохранение закрепленных строк в теле таблицы |
 | enableSelectPinned | `boolean` | - | Параметр отвечает за чекбокс выбора закрепленных строк |
 | sorting | `{ initialState?: SortingState; state?: SortingState; onChange?(state: SortingState): void; }` | - | Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>initialState</strong>: Начальное состояние сортировки <br> <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
+| expanding | `{ getSubRows: (element: TData) => TData[]; expandingColumnDefinition: TreeColumnDefinitionProps<TData>; }` | - | Параметр отвечает за общие настройки раскрывающихся строк |
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
 | autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
@@ -233,7 +235,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | size | `number` | - | Размер ячейки |
 | minSize | `number` | - |  |
 | maxSize | `number` | - |  |
-| header | `ColumnDefTemplate<HeaderContext<TData, unknown>> & (string \| ((ctx: HeaderContext<TData, unknown>) => string))` | - | Заголовок колонки |
+| header | `string \| (string & ReactElement<any, string \| JSXElementConstructor<any>>) \| (string & Iterable<ReactNode>) \| ... 9 more ... \| (((props: HeaderContext<...>) => any) & ((ctx: HeaderContext<...>) => ReactNode))` | - | Заголовок колонки |
 | enableResizing | `boolean` | - | Включение/выключение ресайза колонки |
 ## exportToCSV
 ### Props

@@ -16,6 +16,13 @@ export const TEST_IDS = {
   bodyCell: 'table__body-cell',
   pinnedCells: 'table__pinned-cells',
   rowSelect: 'table__row-select',
+  tree: {
+    node: 'tree__node',
+    chevron: 'tree__chevron',
+    checkbox: 'tree__checkbox',
+    radio: 'tree__radio',
+    icon: 'tree__icon',
+  },
   rowActions: {
     droplistTrigger: 'table__body-row__droplistTrigger',
     droplist: 'table__body-row__actions-droplist',

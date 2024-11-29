@@ -1,0 +1,1 @@
+export const TREE_CELL_ADDITIONAL_WIDTH = 10;

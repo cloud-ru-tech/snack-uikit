@@ -8,6 +8,7 @@ import {
   RowSelectionState,
   SortingState,
 } from '@tanstack/react-table';
+import { ReactNode } from 'react';
 
 import { ToolbarProps } from '@snack-uikit/toolbar';
 import { ValueOf } from '@snack-uikit/utils';
@@ -32,7 +33,7 @@ type BaseColumnDefinition<TData> = Except<
   | 'enableHiding'
 > & {
   /** Заголовок колонки */
-  header?: string | ((ctx: HeaderContext<TData, unknown>) => string);
+  header?: ReactNode | ((ctx: HeaderContext<TData, unknown>) => ReactNode);
   /** Позиционирование заголовка колонки */
   headerAlign?: ColumnAlign;
   /** Позиционирование контента ячейки в теле таблицы */

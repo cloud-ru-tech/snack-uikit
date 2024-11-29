@@ -9,7 +9,7 @@ function randomIntFromInterval(min: number, max: number) {
 
 export const numberFormatter = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 2 });
 
-export function generateRows(count: number): StubData[] {
+export function generateRows(count: number, subRows?: { count: number; level: number }): StubData[] {
   const res: StubData[] = [];
 
   for (let i = 0; i < count; ++i) {
@@ -21,6 +21,11 @@ export function generateRows(count: number): StubData[] {
 
     res.push({
       status: i === 3 ? 'Not' : STATUSES[randomIntFromInterval(0, STATUSES.length - 1)],
+      subRows:
+        subRows && subRows.level > 0
+          ? generateRows(subRows.count, { count: subRows.count, level: subRows.level - 1 })
+          : undefined,
+      tree: subRows && subRows.level > 0 ? `Tree cell ${subRows.level}.${i}` : `Item ${i}`,
       col1: i * 5,
       col2: i * 5 + 1,
       col3: i * 5 + 2,

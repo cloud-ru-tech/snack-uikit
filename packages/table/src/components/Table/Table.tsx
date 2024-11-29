@@ -2,10 +2,12 @@ import {
   CellContext,
   ColumnPinningState,
   getCoreRowModel,
+  getExpandedRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   PaginationState,
+  Row,
   RowSelectionState,
   SortingState,
   useReactTable,
@@ -21,6 +23,7 @@ import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { DEFAULT_PAGE_SIZE } from '../../constants';
+import { CellAutoResizeContext, useCellAutoResizeController } from '../../contexts';
 import {
   BodyRow,
   ExportButton,
@@ -35,6 +38,7 @@ import {
   TablePagination,
   useEmptyState,
 } from '../../helperComponents';
+import { getTreeColumnDef } from '../../helperComponents/Cells/TreeCell';
 import { ColumnDefinition } from '../../types';
 import { fuzzyFilter } from '../../utils';
 import { TableProps } from '../types';
@@ -91,7 +95,7 @@ export function Table<TData extends object>({
   getRowId,
   enableFuzzySearch,
   savedState,
-
+  expanding,
   ...rest
 }: TableProps<TData>) {
   const { state: globalFilter, onStateChange: onGlobalFilterChange } = useStateControl<string>(search, '');
@@ -107,7 +111,6 @@ export function Table<TData extends object>({
     }),
     [pageSize],
   );
-
   const { state: sorting, onStateChange: onSortingChange } = useStateControl<SortingState>(sortingProp, []);
   const { state: pagination, onStateChange: onPaginationChange } = useStateControl<PaginationState>(
     paginationProp,
@@ -117,11 +120,14 @@ export function Table<TData extends object>({
 
   const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
     let cols: ColumnDefinition<TData>[] = columnDefinitions;
-    if (enableSelection) {
+    if (enableSelection && !expanding) {
       cols = [getSelectionCellColumnDef(enableSelectPinned), ...cols];
     }
+    if (expanding) {
+      cols = [getTreeColumnDef(expanding.expandingColumnDefinition), ...cols];
+    }
     return cols;
-  }, [columnDefinitions, enableSelection, enableSelectPinned]);
+  }, [columnDefinitions, enableSelection, enableSelectPinned, expanding]);
 
   const columnPinning = useMemo(() => {
     const pinningState: Required<ColumnPinningState> = { left: [], right: [] };
@@ -134,6 +140,20 @@ export function Table<TData extends object>({
     return pinningState;
   }, [tableColumns]);
 
+  const enableRowSelection = useCallback(
+    (row: Row<TData>) => {
+      const parent = row.getParentRow();
+      const isParentEnable = parent ? parent.getCanSelect() : true;
+      let isCurrentRowSelectionEnable = true;
+      if (rowSelectionProp?.enable !== undefined) {
+        isCurrentRowSelectionEnable =
+          typeof rowSelectionProp.enable === 'boolean' ? rowSelectionProp.enable : rowSelectionProp.enable(row);
+      }
+      return isParentEnable && isCurrentRowSelectionEnable;
+    },
+    [rowSelectionProp],
+  );
+
   const table = useReactTable<TData>({
     data,
     columns: tableColumns,
@@ -143,7 +163,7 @@ export function Table<TData extends object>({
       rowSelection,
       sorting,
       pagination,
-      rowPinning,
+      rowPinning: expanding ? { top: [] } : rowPinning,
     },
     pageCount,
     defaultColumn: {
@@ -156,17 +176,20 @@ export function Table<TData extends object>({
     manualSorting,
     manualPagination,
     manualFiltering,
-
     globalFilterFn: enableFuzzySearch ? fuzzyFilter : 'includesString',
     onGlobalFilterChange,
 
     getRowId,
     onRowSelectionChange,
-    enableRowSelection: rowSelectionProp?.enable,
+    enableRowSelection,
     enableMultiRowSelection: rowSelectionProp?.multiRow,
     enableFilters: true,
+    getSubRows: expanding?.getSubRows,
+    enableSubRowSelection: true,
     getFilteredRowModel: getFilteredRowModel(),
+    getExpandedRowModel: getExpandedRowModel(),
     enableColumnResizing: true,
+    paginateExpandedRows: manualPagination,
     enableSorting: true,
     enableMultiSort: true,
     onSortingChange,
@@ -178,6 +201,12 @@ export function Table<TData extends object>({
     columnResizeMode: 'onEnd',
     keepPinnedRows,
   });
+
+  useEffect(() => {
+    if (!expanding) {
+      table.toggleAllRowsExpanded(false);
+    }
+  }, [expanding, table]);
 
   const { loadingTable } = useLoadingTable({
     pageSize: Math.min(Math.max(pageSize, 5), DEFAULT_PAGE_SIZE),
@@ -323,9 +352,9 @@ export function Table<TData extends object>({
     onPaginationChange,
     autoResetPageIndex,
   });
-
+  const { updateCellMap } = useCellAutoResizeController(table);
   return (
-    <>
+    <CellAutoResizeContext.Provider value={{ updateCellMap }}>
       <div
         style={{
           '--page-size': cssPageSize,
@@ -388,6 +417,7 @@ export function Table<TData extends object>({
                 ) : (
                   <>
                     {centerRows.length || filteredTopRows.length ? <HeaderRow /> : null}
+
                     {filteredTopRows.length ? (
                       <div className={styles.topRowWrapper}>
                         {filteredTopRows.map(row => (
@@ -424,7 +454,7 @@ export function Table<TData extends object>({
           />
         )}
       </div>
-    </>
+    </CellAutoResizeContext.Provider>
   );
 }
 

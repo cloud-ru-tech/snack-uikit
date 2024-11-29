@@ -1,0 +1,113 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree';
+
+.treeCell {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    width: fit-content;
+    height: styles-tokens-table.$size-markdown-table-cell-height;
+}
+
+.cellUserToggleIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  svg {
+    color: styles-tokens-tree.$sys-neutral-text-support;
+  }
+}
+
+.treeNodeContent {
+  @include styles-tokens-tree.composite-var(styles-tokens-tree.$tree-item-content-layout);
+
+  cursor: pointer;
+
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  height: styles-tokens-table.$size-markdown-table-cell-height;
+
+  &:focus-visible {
+    @include styles-tokens-tree.outline-inside-var(styles-tokens-element.$container-focused-s);
+
+    outline-color: styles-tokens-tree.$sys-available-complementary;
+  }
+
+  &[data-multiselect] {
+    cursor: default;
+  }
+
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+
+    &::before {
+      display: none;
+    }
+
+    .treeNodeTitle, .treeNodeIcon {
+      color: styles-tokens-tree.$sys-neutral-text-disabled;
+    }
+  }
+
+  &[aria-selected='true']:not([data-multiselect]) {
+      opacity: styles-tokens-tree.$opacity-a008;
+      background-color: styles-tokens-tree.$sys-primary-accent-default;
+
+    &:hover {
+        opacity: styles-tokens-tree.$opacity-a016;
+    }
+  }
+}
+.userContent {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  svg {
+    color: styles-tokens-tree.$sys-neutral-text-support;
+  }
+}
+  .treeCellContainer {
+    position: relative;
+    overflow: hidden;
+
+    @include styles-tokens-table.composite-var(styles-tokens-table.$sans-body-m);
+  }
+  .line {
+    margin-left: calc(styles-tokens-table.$dimension-4m + styles-tokens-table.$dimension-025m);
+  }
+  .firstLine {
+    margin-left: styles-tokens-table.$dimension-2m
+  }
+  .cellExpandButton {
+    box-sizing: border-box;
+
+
+    svg {
+      width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+      height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+      transition: transform 0.2s ease;
+    }
+
+    &[data-expanded] {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+.treeCheckboxWrap {
+  @include styles-tokens-tree.composite-var(styles-tokens-tree.$tree-item-checkbox-wrap);
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+}

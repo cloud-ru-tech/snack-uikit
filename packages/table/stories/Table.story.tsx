@@ -34,10 +34,13 @@ type Props = TableProps<StubData>;
 type StoryProps = Omit<Props, 'rowSelection' | 'sort'> & {
   rowSelection?: { enable: boolean; multiRow: boolean };
   rowsAmount: number;
+  expandRowsCount: number;
+  expandRowsLevel: number;
   disableSomeRows: boolean;
   pinSomeRows: boolean;
   showExport: boolean;
   statusColumnViewMode?: StoryStatusColumnViewMode;
+  showTableTree: boolean;
   showActionsColumn?: boolean;
   rowSelectionMode?: 'single' | 'multi';
   enableOnRowClick: boolean;
@@ -151,17 +154,22 @@ const columnDefinitions: ColumnDefinition<StubData>[] = [
 const Template: StoryFn<StoryProps> = ({
   columnDefinitions,
   rowsAmount,
+  expandRowsLevel,
+  expandRowsCount,
   disableSomeRows,
   pinSomeRows,
   statusColumnViewMode,
+  showTableTree,
   showActionsColumn,
   rowSelectionMode,
   enableOnRowClick,
   showExport,
   ...args
 }: StoryProps) => {
-  const data = useMemo(() => generateRows(rowsAmount), [rowsAmount]);
-
+  const data = useMemo(
+    () => generateRows(rowsAmount, { count: expandRowsCount, level: expandRowsLevel }),
+    [rowsAmount, expandRowsLevel, expandRowsCount],
+  );
   const [filteredData, setFilteredData] = useState(data);
 
   useEffect(() => {
@@ -178,7 +186,6 @@ const Template: StoryFn<StoryProps> = ({
 
   const columns = useMemo(() => {
     let colDefs = [...columnDefinitions];
-
     if (statusColumnViewMode) {
       const statusColDefProps =
         statusColumnViewMode === StoryStatusColumnViewMode.Full
@@ -273,6 +280,18 @@ const Template: StoryFn<StoryProps> = ({
         data={filteredData}
         onDelete={onDelete}
         className={styles.className}
+        expanding={
+          showTableTree
+            ? {
+                getSubRows: (element: StubData) => element.subRows,
+                expandingColumnDefinition: {
+                  showToggle: Boolean(rowSelectionMode),
+                  accessorKey: 'tree',
+                  header: 'Tree column',
+                },
+              }
+            : undefined
+        }
         pagination={{
           options: [5, 10],
           optionsRender: paginationOptionsRender,
@@ -291,7 +310,6 @@ const Template: StoryFn<StoryProps> = ({
     </div>
   );
 };
-
 export const table: StoryObj<StoryProps> = {
   render: Template,
 
@@ -299,10 +317,13 @@ export const table: StoryObj<StoryProps> = {
     suppressPagination: false,
     suppressToolbar: false,
     rowsAmount: 35,
+    expandRowsCount: 3,
+    expandRowsLevel: 3,
     loading: false,
     statusColumnViewMode: StoryStatusColumnViewMode.Full,
     statusSortEnabled: true,
     showActionsColumn: true,
+    showTableTree: false,
     data: [],
     columnDefinitions,
     rowSelection: {
@@ -324,6 +345,25 @@ export const table: StoryObj<StoryProps> = {
   },
 
   argTypes: {
+    expandRowsCount: {
+      name: '[Stories]: Amount of  subRows ',
+      control: {
+        type: 'range',
+        min: 0,
+        max: 10,
+        step: 1,
+      },
+    },
+    expandRowsLevel: {
+      name: '[Stories]: Level of  subRows ',
+      control: {
+        type: 'range',
+        min: 0,
+        max: 5,
+        step: 1,
+      },
+    },
+
     rowsAmount: {
       name: '[Stories]: Amount of rows within the table',
       description: 'demonstration purposes only, this parameter does not exist in component',
@@ -347,6 +387,12 @@ export const table: StoryObj<StoryProps> = {
       options: [undefined, ...Object.values(StoryStatusColumnViewMode)],
       control: {
         type: 'select',
+      },
+    },
+    showTableTree: {
+      name: '[Stories]: Show tree column',
+      control: {
+        type: 'boolean',
       },
     },
 

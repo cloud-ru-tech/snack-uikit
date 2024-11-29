@@ -5,12 +5,15 @@ import { TEST_IDS } from '../src/constants';
 import { STORY_TEST_IDS, StoryStatusColumnViewMode } from '../stories/constants';
 
 const ROWS_AMOUNT = 30;
+const SUB_ROWS_AMOUNT = 3;
+const SUB_ROWS_LEVEL = 3;
 
 const DATA_ATTRIBUTES = {
   sortable: 'data-sortable',
   rowId: 'data-row-id',
   sortDirection: 'data-sort-direction',
   selected: 'data-selected',
+  checked: 'data-checked',
   disabled: 'data-disabled',
   pinnedPosition: 'data-position',
 };
@@ -30,6 +33,12 @@ const selectors = {
 
     return {
       row,
+      tree: {
+        chevron: row.find(dataTestIdSelector(TEST_IDS.tree.chevron)),
+        node: row.find(dataTestIdSelector(TEST_IDS.tree.node)),
+        checkBox: row.find(dataTestIdSelector(TEST_IDS.tree.checkbox)),
+        radio: row.find(dataTestIdSelector(TEST_IDS.tree.radio)),
+      },
       selectToggle: row.find(dataTestIdSelector(TEST_IDS.rowSelect)),
       rowSelectedAttribute: row.getAttribute(DATA_ATTRIBUTES.selected),
       statusIndicator: row.find(dataTestIdSelector(TEST_IDS.statusIndicator)),
@@ -64,6 +73,7 @@ test.page(
   getPage({
     rowsAmount: ROWS_AMOUNT,
     pageSize: ROWS_AMOUNT,
+    showTableTree: false,
   }),
 )('Renders correctly with proper amount of rows, has pinnedCells and Status column with label', async t => {
   await t.expect(Selector(dataTestIdSelector(STORY_TEST_IDS.table)).exists).ok('Table is not rendered');
@@ -81,6 +91,7 @@ test.page(
 
 test.page(
   getPage({
+    showTableTree: false,
     statusColumnViewMode: StoryStatusColumnViewMode.Small,
   }),
 )('Render rows with Status indicator and without label', async t => {
@@ -92,6 +103,7 @@ test.page(
 
 test.page(
   getPage({
+    showTableTree: false,
     statusColumnViewMode: '!undefined',
   }),
 )('Render rows without Status', async t => {
@@ -103,6 +115,7 @@ test.page(
 
 test.page(
   getPage({
+    showTableTree: false,
     statusColumnViewMode: '!undefined',
   }),
 )('Click on column header sorts data', async t => {
@@ -136,7 +149,11 @@ test.page(
   await t.expect(sortIndicator.exists).notOk("Sort indicator shouldn't exist");
 });
 
-test.page(getPage())('Multi row selection', async t => {
+test.page(
+  getPage({
+    showTableTree: false,
+  }),
+)('Multi row selection', async t => {
   const first = selectors.getRow(0);
   const second = selectors.getRow(1);
 
@@ -149,7 +166,12 @@ test.page(getPage())('Multi row selection', async t => {
   await t.expect(second.rowSelectedAttribute).eql('true');
 });
 
-test.page(getPage({ rowSelectionMode: 'single' }))('Single row selection', async t => {
+test.page(
+  getPage({
+    showTableTree: false,
+    rowSelectionMode: 'single',
+  }),
+)('Single row selection', async t => {
   const first = selectors.getRow(0);
   const second = selectors.getRow(1);
 
@@ -164,7 +186,7 @@ test.page(getPage({ rowSelectionMode: 'single' }))('Single row selection', async
   await t.expect(first.rowSelectedAttribute).eql(null);
 });
 
-test.page(getPage({ disableSomeRows: true }))(
+test.page(getPage({ disableSomeRows: true, showTableTree: false }))(
   'Disabled rows cannot be selected and have no RowActions button',
   async t => {
     const { row, selectToggle, rowSelectedAttribute, rowActionsButton } = selectors.getRow(0, true);
@@ -177,7 +199,7 @@ test.page(getPage({ disableSomeRows: true }))(
   },
 );
 
-test.page(getPage())('Row actions exists and opens dropdown on click', async t => {
+test.page(getPage({ showTableTree: false }))('Row actions exists and opens dropdown on click', async t => {
   const { rowActionsButton, rowActionsDropdown, rowActionsOption } = selectors.getRow(0);
 
   await t.expect(rowActionsButton.exists).ok('No RowAction button found');
@@ -195,4 +217,98 @@ test.page(getPage())('Row actions exists and opens dropdown on click', async t =
   await t.expect(toaster.exists).ok('Toast not present after option click');
 
   await t.expect(rowActionsDropdown.exists).notOk('Dropdown should be closed after click');
+});
+
+test.page(getPage({ showTableTree: true, expandRowsCount: SUB_ROWS_AMOUNT, expandRowsLevel: SUB_ROWS_LEVEL }))(
+  'Row toggles on chevron click',
+  async t => {
+    const rows = selectors.getRow('all');
+    const { tree } = selectors.getRow(0);
+    const initialRowsCount = await rows.tree.node.count;
+
+    await t.expect(tree.chevron.exists).ok('Chevron should exists');
+
+    await t.click(tree.chevron).wait(50);
+
+    const rowsCountAfterExpand = await rows.tree.node.count;
+
+    await t.expect(rowsCountAfterExpand > initialRowsCount).ok('Chevron not Opened');
+
+    await t.click(tree.chevron).wait(50);
+
+    const rowsCountAfterCollapse = await rows.tree.node.count;
+
+    await t.expect(rowsCountAfterCollapse === initialRowsCount).notOk('Chevron not closed');
+  },
+);
+
+test.page(
+  getPage({
+    showTableTree: true,
+    expandRowsCount: SUB_ROWS_AMOUNT,
+    expandRowsLevel: SUB_ROWS_LEVEL,
+  }),
+)('MultiSelect: parent checkbox works correctly', async t => {
+  const rows = selectors.getRow('all');
+  const { tree } = selectors.getRow(0);
+  await t.wait(50);
+
+  await t.click(tree.chevron).wait(50);
+  await t.click(tree.checkBox).wait(50);
+  await t
+    .expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count)
+    .eql(SUB_ROWS_AMOUNT + 1, 'Count of selected rows incorrect');
+
+  await t.click(tree.checkBox).wait(50);
+  await t.expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count).eql(0, 'Count of selected rows incorrect1');
+
+  const firstSubRow = selectors.getRow(1);
+  await t.click(firstSubRow.tree.checkBox).wait(50);
+  await t.click(tree.checkBox).wait(50);
+  await t.expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count).eql(0, 'Count of selected rows incorrect2');
+
+  for (let i = 1; i <= SUB_ROWS_AMOUNT; i++) {
+    const row = selectors.getRow(i);
+    await t.click(row.tree.checkBox).wait(50);
+  }
+  await t
+    .expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count)
+    .eql(SUB_ROWS_AMOUNT + 1, 'Parent checkbox not select automatically, when selected all children');
+
+  for (let i = 1; i <= SUB_ROWS_AMOUNT; i++) {
+    const row = selectors.getRow(i);
+    await t.click(row.tree.checkBox).wait(50);
+  }
+  await t
+    .expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count)
+    .eql(0, 'Parent checkbox not unselect automatically, when unselected all children');
+});
+
+test.page(
+  getPage({
+    showTableTree: true,
+    expandRowsCount: SUB_ROWS_AMOUNT,
+    expandRowsLevel: 1,
+    rowSelectionMode: 'single',
+  }),
+)('SingleSelect: works correctly', async t => {
+  const { tree } = selectors.getRow(0);
+
+  await t.click(tree.chevron).wait(50);
+
+  const firstSubRow = selectors.getRow(1);
+  const secondSubRow = selectors.getRow(2);
+
+  await t.click(firstSubRow.tree.radio).wait(50);
+
+  await t.expect(firstSubRow.rowSelectedAttribute).ok('First sub row not selected by radio click');
+
+  await t.click(secondSubRow.tree.radio).wait(50);
+
+  await t.expect(secondSubRow.rowSelectedAttribute).ok('Second row not selected by radio click');
+  await t.expect(firstSubRow.rowSelectedAttribute).notOk('First sub row should not be selected after click of first');
+
+  await t.click(secondSubRow.tree.radio).wait(50);
+
+  await t.expect(secondSubRow.rowSelectedAttribute).notOk('Second sub row should not be selected after second click');
 });

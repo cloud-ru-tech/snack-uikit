@@ -12,6 +12,7 @@ import { ToolbarProps } from '@snack-uikit/toolbar';
 import { WithSupportProps } from '@snack-uikit/utils';
 
 import { EmptyStateProps, ExportButtonProps, RowClickHandler } from '../helperComponents';
+import { TreeColumnDefinitionProps } from '../helperComponents/Cells/TreeCell';
 import { ColumnDefinition } from '../types';
 
 export type TableProps<TData extends object> = WithSupportProps<{
@@ -34,6 +35,13 @@ export type TableProps<TData extends object> = WithSupportProps<{
     initialState?: SortingState;
     state?: SortingState;
     onChange?(state: SortingState): void;
+  };
+
+  /** Параметр отвечает за общие настройки раскрывающихся строк*/
+  expanding?: {
+    /** Метод отвечает за получение дочерних строк*/
+    getSubRows: (element: TData) => TData[] | undefined;
+    expandingColumnDefinition: TreeColumnDefinitionProps<TData>;
   };
   /** Параметры отвечают за возможность выбора строк <br>
    * <strong>initialState</strong>: Начальное состояние выбора строк <br>

@@ -1,6 +1,8 @@
 export type StubData = {
   status: string;
+  tree: string;
   col1: number;
+  subRows?: StubData[];
   col2: number;
   col3: number;
   col4: number;

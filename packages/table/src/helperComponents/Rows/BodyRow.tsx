@@ -18,7 +18,7 @@ export type RowInfo<TData> = {
 
 export type RowClickHandler<TData> = (e: MouseEvent<HTMLDivElement>, row: RowInfo<TData>) => void;
 
-type BodyRowProps<TData> = {
+export type BodyRowProps<TData> = {
   row: TableRow<TData>;
   onRowClick?: RowClickHandler<TData>;
 };
@@ -47,7 +47,11 @@ export function BodyRow<TData>({ row, onRowClick }: BodyRowProps<TData>) {
         onClick={handleRowClick}
         data-clickable={Boolean(onRowClick) || undefined}
         data-disabled={disabled || undefined}
-        data-selected={row.getIsSelected() || undefined}
+        data-selected={
+          row.getIsSelected() ||
+          (row.getIsSomeSelected() && !row.getCanMultiSelect() && !row.getIsExpanded()) ||
+          undefined
+        }
         data-actions-opened={dropListOpened || undefined}
         data-test-id={TEST_IDS.bodyRow}
         data-row-id={row.id}
