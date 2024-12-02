@@ -2,6 +2,8 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import cn from 'classnames';
 import { Fragment, useState } from 'react';
 
+import { ValueOf } from '@snack-uikit/utils';
+
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
@@ -15,9 +17,17 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = TagProps & { removableMode: boolean };
+const STORY_MODE = {
+  Default: 'default',
+  Removable: 'removable',
+  Link: 'link',
+} as const;
 
-const Template: StoryFn<StoryProps> = ({ removableMode, ...args }) => {
+type StoryMode = ValueOf<typeof STORY_MODE>;
+
+type StoryProps = TagProps & { storyMode: StoryMode };
+
+const Template: StoryFn<StoryProps> = ({ storyMode: mode, ...args }) => {
   const sizes = Object.values(SIZE);
   const appearances = Object.values(APPEARANCE);
   const [visible, setVisible] = useState(true);
@@ -27,7 +37,19 @@ const Template: StoryFn<StoryProps> = ({ removableMode, ...args }) => {
     <>
       <div className={styles.wrapper}>
         Controlled:
-        {visible && <Tag {...args} onDelete={removableMode ? () => setVisible(false) : undefined} />}
+        {visible && (
+          <Tag
+            {...args}
+            href={
+              mode === STORY_MODE.Link
+                ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-expect-error
+                  args?.href || '#'
+                : undefined
+            }
+            onDelete={mode === STORY_MODE.Removable ? () => setVisible(false) : undefined}
+          />
+        )}
       </div>
 
       <div className={styles.table} style={{ '--columns': 3 }}>
@@ -42,7 +64,14 @@ const Template: StoryFn<StoryProps> = ({ removableMode, ...args }) => {
             <div className={headerCellClassnames}>{appearance}</div>
             {sizes.map(size => (
               <div key={size} className={styles.cell}>
-                <Tag size={size} appearance={appearance} label='Label text' />
+                <Tag
+                  size={size}
+                  appearance={appearance}
+                  label='Label text'
+                  onClick={e => {
+                    e.preventDefault();
+                  }}
+                />
               </div>
             ))}
           </Fragment>
@@ -56,8 +85,10 @@ export const tag: StoryObj<StoryProps> = {
   render: Template,
 
   args: {
+    storyMode: STORY_MODE.Default,
     label: 'Tag Label',
-    removableMode: false,
+    href: 'https://cloud.ru',
+    target: '_blank',
   },
 
   argTypes: {
@@ -67,11 +98,24 @@ export const tag: StoryObj<StoryProps> = {
         type: 'radio',
       },
     },
-    removableMode: {
-      name: '[Stories]: Show remove mode',
+    storyMode: {
+      name: '[Stories]: Story mode',
+      options: Object.values(STORY_MODE),
       control: {
-        type: 'boolean',
+        type: 'radio',
       },
+    },
+    onDelete: {
+      if: { arg: 'storyMode', eq: STORY_MODE.Removable },
+    },
+    href: {
+      if: { arg: 'storyMode', eq: STORY_MODE.Link },
+    },
+    onClick: {
+      if: { arg: 'storyMode', eq: STORY_MODE.Link },
+    },
+    target: {
+      if: { arg: 'storyMode', eq: STORY_MODE.Link },
     },
   },
 

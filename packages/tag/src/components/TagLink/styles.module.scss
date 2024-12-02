@@ -1,0 +1,125 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tag';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+
+$sizes: 'xs', 's';
+$label-typography: (
+  'xs': styles-tokens-tag.$sans-label-s,
+  's': styles-tokens-tag.$sans-label-m,
+);
+$appearances: (
+  'neutral': (
+    'container': styles-tokens-tag.$sys-neutral-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-neutral-decor-disabled,
+    'label': styles-tokens-tag.$sys-neutral-text-support,
+    'hovered': styles-tokens-tag.$sys-neutral-decor-hovered,
+    'active': styles-tokens-tag.$sys-neutral-decor-activated,
+  ),
+  'primary': (
+    'container': styles-tokens-tag.$sys-primary-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-primary-decor-disabled,
+    'label': styles-tokens-tag.$sys-primary-text-support,
+    'hovered': styles-tokens-tag.$sys-primary-decor-hovered,
+    'active': styles-tokens-tag.$sys-primary-decor-activated,
+  ),
+  'red': (
+    'container': styles-tokens-tag.$sys-red-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-red-decor-disabled,
+    'label': styles-tokens-tag.$sys-red-text-support,
+    'hovered': styles-tokens-tag.$sys-red-decor-hovered,
+    'active': styles-tokens-tag.$sys-red-decor-activated,
+  ),
+  'orange': (
+    'container': styles-tokens-tag.$sys-orange-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-orange-decor-disabled,
+    'label': styles-tokens-tag.$sys-orange-text-support,
+    'hovered': styles-tokens-tag.$sys-orange-decor-hovered,
+    'active': styles-tokens-tag.$sys-orange-decor-activated,
+  ),
+  'yellow': (
+    'container': styles-tokens-tag.$sys-yellow-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-yellow-decor-disabled,
+    'label': styles-tokens-tag.$sys-yellow-text-support,
+    'hovered': styles-tokens-tag.$sys-yellow-decor-hovered,
+    'active': styles-tokens-tag.$sys-yellow-decor-activated,
+  ),
+  'green': (
+    'container': styles-tokens-tag.$sys-green-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-green-decor-disabled,
+    'label': styles-tokens-tag.$sys-green-text-support,
+    'hovered': styles-tokens-tag.$sys-green-decor-hovered,
+    'active': styles-tokens-tag.$sys-green-decor-activated,
+  ),
+  'blue': (
+    'container': styles-tokens-tag.$sys-blue-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-blue-decor-disabled,
+    'label': styles-tokens-tag.$sys-blue-text-support,
+    'hovered': styles-tokens-tag.$sys-blue-decor-hovered,
+    'active': styles-tokens-tag.$sys-blue-decor-activated,
+  ),
+  'violet': (
+    'container': styles-tokens-tag.$sys-violet-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-violet-decor-disabled,
+    'label': styles-tokens-tag.$sys-violet-text-support,
+    'hovered': styles-tokens-tag.$sys-violet-decor-hovered,
+    'active': styles-tokens-tag.$sys-violet-decor-activated,
+  ),
+  'pink': (
+    'container': styles-tokens-tag.$sys-pink-decor-default,
+    'container-disabled': styles-tokens-tag.$sys-pink-decor-disabled,
+    'label': styles-tokens-tag.$sys-pink-text-support,
+    'hovered': styles-tokens-tag.$sys-pink-decor-hovered,
+    'active': styles-tokens-tag.$sys-pink-decor-activated,
+  ),
+);
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  max-width: 100%;
+
+  text-decoration: none;
+
+  &:focus-visible {
+    @include styles-tokens-tag.outline-var(styles-tokens-element.$container-focused-s);
+
+    outline-color: styles-tokens-element.$sys-available-complementary;
+  }
+
+  &:active {
+    outline: none;
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include styles-tokens-tag.composite-var(styles-tokens-tag.$tag, 'container', $size, 'label-only');
+
+      .label {
+        @include styles-tokens-tag.composite-var($label-typography, $size);
+      }
+    }
+  }
+
+  @each $appearanceKey, $appearance in $appearances {
+    &[data-appearance='#{$appearanceKey}'] {
+      background-color: styles-tokens-tag.simple-var($appearance, 'container');
+
+      .label {
+        overflow: hidden;
+        color: styles-tokens-tag.simple-var($appearance, 'label');
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &:focus-visible,
+      &:hover {
+        background-color: styles-tokens-tag.simple-var($appearance, 'hovered');
+      }
+
+      &:active {
+        background-color: styles-tokens-tag.simple-var($appearance, 'active');
+      }
+    }
+  }
+}
