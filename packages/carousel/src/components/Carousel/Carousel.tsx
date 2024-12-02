@@ -62,10 +62,12 @@ export function Carousel({
     state?.onChange(result);
   });
 
-  const total = useMemo(
-    () => Math.trunc(items.length / scrollBy) + (items.length % scrollBy ? 1 : 0),
-    [items.length, scrollBy],
-  );
+  const total = useMemo(() => {
+    if (items.length <= showItems) {
+      return 1;
+    }
+    return 1 + Math.ceil((items.length - showItems) / scrollBy);
+  }, [items.length, scrollBy, showItems]);
 
   const onLeftArrowClick = useCallback(() => {
     setPage((page: number) => (infiniteScroll ? (total + page - 1) % total : Math.max(0, page - 1)));
