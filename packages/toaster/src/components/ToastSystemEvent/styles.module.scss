@@ -1,3 +1,5 @@
+/* stylelint-disable scss/operator-no-newline-after */
+
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 @use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
@@ -30,7 +32,9 @@
 }
 
 .buttonClose {
-  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-button-button-close);
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-button-button-close
+  );
 
   cursor: pointer;
 
@@ -71,7 +75,9 @@
 }
 
 .contentLayout {
-  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-content-layout);
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-content-layout
+  );
 
   display: flex;
   flex: 1;
@@ -102,7 +108,9 @@
 }
 
 .progress {
-  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-progress-bar);
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-progress-bar
+  );
 
   position: absolute;
   bottom: 0;
@@ -115,7 +123,9 @@
 }
 
 .body {
-  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-body);
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-body
+  );
 
   display: flex;
   width: 100%;
@@ -123,7 +133,9 @@
 }
 
 .footer {
-  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-footer);
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-footer
+  );
 
   position: relative;
   display: flex;
@@ -132,7 +144,9 @@
 }
 
 .container {
-  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-container);
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-container
+  );
 
   cursor: default;
 
@@ -143,27 +157,31 @@
   flex-direction: column;
 
   box-sizing: border-box;
+  width: calc(
+    styles-tokens-toaster-toasterSystemEvent.$size-toaster-toast-system-event-container -
+      (2 * styles-tokens-toaster-toasterSystemEvent.$space-toaster-system-event-padding)
+  );
+  max-width: 100%;
 
   &:hover .progress {
     animation-play-state: paused;
   }
 
-
   &[data-appearance='neutral'] {
     @include colorMap(
-      styles-theme-variables.$sys-invert-neutral-background, 
-      styles-theme-variables.$sys-invert-neutral-accent-default, 
-      styles-theme-variables.$sys-invert-neutral-text-main, 
-      styles-theme-variables.$sys-invert-neutral-text-support, 
+      styles-theme-variables.$sys-invert-neutral-background,
+      styles-theme-variables.$sys-invert-neutral-accent-default,
+      styles-theme-variables.$sys-invert-neutral-text-main,
+      styles-theme-variables.$sys-invert-neutral-text-support,
       styles-theme-variables.$sys-neutral-accent-default
     );
   }
 
   &[data-appearance='error'] {
     @include colorMap(
-      styles-theme-variables.$sys-invert-neutral-background, 
-      styles-theme-variables.$sys-red-accent-default, 
-      styles-theme-variables.$sys-invert-neutral-text-main, 
+      styles-theme-variables.$sys-invert-neutral-background,
+      styles-theme-variables.$sys-red-accent-default,
+      styles-theme-variables.$sys-invert-neutral-text-main,
       styles-theme-variables.$sys-invert-neutral-text-support,
       styles-theme-variables.$sys-red-accent-default
     );
@@ -171,13 +189,13 @@
 
   &[data-appearance='errorCritical'] {
     @include colorMap(
-      styles-theme-variables.$sys-red-accent-default, 
-      styles-theme-variables.$sys-red-on-accent, 
-      styles-theme-variables.$sys-red-on-accent, 
+      styles-theme-variables.$sys-red-accent-default,
+      styles-theme-variables.$sys-red-on-accent,
+      styles-theme-variables.$sys-red-on-accent,
       styles-theme-variables.$sys-red-on-accent,
       styles-theme-variables.$sys-red-decor-activated
     );
-    
+
     .buttonClose {
       color: styles-theme-variables.$sys-red-on-accent;
       opacity: styles-theme-variables.$opacity-a064;
@@ -195,9 +213,9 @@
 
   &[data-appearance='warning'] {
     @include colorMap(
-      styles-theme-variables.$sys-invert-neutral-background, 
-      styles-theme-variables.$sys-yellow-accent-default, 
-      styles-theme-variables.$sys-invert-neutral-text-main, 
+      styles-theme-variables.$sys-invert-neutral-background,
+      styles-theme-variables.$sys-yellow-accent-default,
+      styles-theme-variables.$sys-invert-neutral-text-main,
       styles-theme-variables.$sys-invert-neutral-text-support,
       styles-theme-variables.$sys-yellow-accent-default
     );
@@ -205,9 +223,9 @@
 
   &[data-appearance='success'] {
     @include colorMap(
-      styles-theme-variables.$sys-invert-neutral-background, 
-      styles-theme-variables.$sys-green-accent-default, 
-      styles-theme-variables.$sys-invert-neutral-text-main, 
+      styles-theme-variables.$sys-invert-neutral-background,
+      styles-theme-variables.$sys-green-accent-default,
+      styles-theme-variables.$sys-invert-neutral-text-main,
       styles-theme-variables.$sys-invert-neutral-text-support,
       styles-theme-variables.$sys-green-accent-default
     );
