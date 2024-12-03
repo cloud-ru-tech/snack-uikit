@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.4 (2024-12-03)
+
+
+### Bug Fixes
+
+* **PDS-1019:** fix min-width toaster ([bc2316d](https://github.com/cloud-ru-tech/snack-uikit/commit/bc2316db9212e5ea33fe8f4b180f45ca21ea7814))
+
+
+
+
+
 ## 0.8.3 (2024-11-14)
 
 
