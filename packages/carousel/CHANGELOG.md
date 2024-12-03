@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.5 (2024-12-03)
+
+
+### Bug Fixes
+
+* **ONB-3090:** fixed slider behavior with showItems more than 1 ([7668b07](https://github.com/cloud-ru-tech/snack-uikit/commit/7668b07c16ba4980019c4b86111d63b5aacb4400))
+
+
+
+
+
 ## 0.4.4 (2024-11-14)
 
 
