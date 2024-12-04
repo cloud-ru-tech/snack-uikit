@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.25.12 (2024-12-04)
+
+### Only dependencies have been changed
+* [@snack-uikit/toolbar@0.9.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toolbar/CHANGELOG.md)
+
+
+
+
+
 ## 0.25.11 (2024-11-29)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2024-12-04)
+
+
+### Features
+
+* **PDS-1061:** add link props to tag ([4f38cab](https://github.com/cloud-ru-tech/snack-uikit/commit/4f38cabff174e5be894bb45fce44dcddfba9cc98))
+
+
+
+
+
 ## 0.11.2 (2024-11-14)
 
 
