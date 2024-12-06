@@ -1,18 +1,10 @@
 import debounce from 'lodash.debounce';
-import {
-  MouseEvent,
-  MouseEventHandler,
-  ReactElement,
-  TouchEvent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import mergeRefs from 'merge-refs';
+import { MouseEventHandler, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
+import { SwipeCallback, useSwipeable } from '@snack-uikit/utils';
 
 import { TEST_IDS } from '../../testIds';
-import { getPageX } from './helpers';
 import styles from './styles.module.scss';
 
 export type ItemProviderProps = {
@@ -116,78 +108,6 @@ export function ItemProvider({
     showVisibleItems(scrollBy, page, showItems);
   }, [page, scrollBy, showItems]);
 
-  const [drag, setDrag] = useState({
-    initial: transform,
-    start: 0,
-    isDown: false,
-    drag: 0,
-    finished: true,
-    pointers: true,
-  });
-
-  const handleDragStart = (e: MouseEvent | TouchEvent) => {
-    e.persist();
-    setDrag({
-      ...drag,
-      isDown: true,
-      start: getPageX(e),
-      initial: transform,
-      finished: false,
-    });
-  };
-
-  const handleDragFinish = (e: MouseEvent | TouchEvent) => {
-    e.persist();
-
-    if (drag.finished) {
-      return;
-    }
-
-    if (Math.abs(drag.drag) < swipeActivateLength) {
-      return setDrag({
-        initial: transform,
-        start: 0,
-        isDown: false,
-        drag: 0,
-        finished: true,
-        pointers: true,
-      });
-    }
-
-    slideCallback(drag.drag > 0 ? -1 : 1);
-    setDrag({ ...drag, drag: 0, isDown: false, finished: true, pointers: true });
-    return;
-  };
-
-  const handleDragMove = (e: MouseEvent | TouchEvent) => {
-    e.persist();
-
-    if (!drag.isDown) {
-      return;
-    }
-
-    const pos = getPageX(e);
-
-    setDrag({
-      ...drag,
-      drag: drag.start - pos,
-      pointers: Math.abs(drag.start - pos) < Number.MIN_SAFE_INTEGER,
-    });
-  };
-
-  const swipeProps = swipe
-    ? {
-        onTouchCancel: handleDragFinish,
-        onTouchEnd: handleDragFinish,
-        onTouchMove: handleDragMove,
-        onTouchStart: handleDragStart,
-        onMouseDown: handleDragStart,
-        onMouseLeave: handleDragFinish,
-        onMouseUp: handleDragFinish,
-        onMouseMove: handleDragMove,
-      }
-    : {};
-
   const handleSlideClick: MouseEventHandler = useCallback(
     e => {
       const slideRect = e.currentTarget.getBoundingClientRect();
@@ -212,6 +132,30 @@ export function ItemProvider({
     return `${fallbackWidth}%`;
   }, [computedValues.itemWidth, showItems]);
 
+  const [drag, setDrag] = useState({ drag: 0, pointers: true });
+
+  const handleSwiping: SwipeCallback = eventData => {
+    setDrag({ drag: eventData.deltaX, pointers: Math.abs(eventData.deltaX) < Number.MIN_SAFE_INTEGER });
+  };
+
+  const handleSwiped: SwipeCallback = eventData => {
+    if (Math.abs(drag.drag) < swipeActivateLength) {
+      return setDrag({ drag: 0, pointers: true });
+    }
+
+    slideCallback(eventData.dir === 'Left' ? -1 : 1);
+    setDrag({ drag: 0, pointers: true });
+    return;
+  };
+
+  const { ref, ...swipeProps } = useSwipeable({
+    onSwiping: handleSwiping,
+    onSwiped: handleSwiped,
+    trackMouse: true,
+    enabled: swipe,
+    availableDirections: ['Left', 'Right'],
+  });
+
   return (
     <div
       ref={containerRef}
@@ -228,10 +172,10 @@ export function ItemProvider({
         className={styles.itemTracker}
         data-test-id={TEST_IDS.trackLine}
         style={{
-          transform: `translateX(${transform - drag.drag}px)`,
+          transform: `translateX(${transform + drag.drag}px)`,
           transition: `transform ${transition}s ease 0s`,
         }}
-        ref={itemsTrackerRef}
+        ref={mergeRefs(ref as (element: HTMLDivElement) => void, itemsTrackerRef)}
       >
         {items.map((item, i) => (
           // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
