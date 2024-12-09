@@ -1,8 +1,9 @@
 import cn from 'classnames';
 import RcSlider, { SliderProps as RCSliderProps } from 'rc-slider';
-import { ReactNode } from 'react';
+import { cloneElement, ReactElement, ReactNode } from 'react';
 
 import { Tooltip } from '@snack-uikit/tooltip';
+import { DATA_SWIPE_DIRECTIONS_ATTRIBUTE } from '@snack-uikit/utils';
 
 import styles from './styles.module.scss';
 
@@ -26,6 +27,9 @@ export type SliderProps = Omit<
 
 type TipFormatter = (value: string | number) => ReactNode;
 
+const addSwipeAttribute = (node: ReactElement) =>
+  cloneElement(node, { [DATA_SWIPE_DIRECTIONS_ATTRIBUTE]: 'Left Right' });
+
 const tipHandleRender = (tipFormatter?: TipFormatter): RCSliderProps['handleRender'] =>
   function (node, handleProps) {
     return (
@@ -36,7 +40,7 @@ const tipHandleRender = (tipFormatter?: TipFormatter): RCSliderProps['handleRend
         trigger='hoverAndFocusVisible'
         className={styles.tipWrapper}
       >
-        {node}
+        {addSwipeAttribute(node)}
       </Tooltip>
     );
   };
@@ -49,7 +53,7 @@ export function Slider({ className, handleTip, tipFormatter, ...props }: SliderP
         withMarks: Boolean(props.marks),
         reverse: Boolean(props.reverse),
       })}
-      handleRender={handleTip ? tipHandleRender(tipFormatter) : undefined}
+      handleRender={handleTip ? tipHandleRender(tipFormatter) : addSwipeAttribute}
       {...props}
     />
   );
