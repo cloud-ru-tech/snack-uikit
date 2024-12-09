@@ -36,6 +36,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "uncontrollable": "8.0.4"
+    "uncontrollable": "8.0.4",
+    "react-swipeable": "7.0.2"
   }
 }
