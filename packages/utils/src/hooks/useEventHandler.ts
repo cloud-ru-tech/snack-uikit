@@ -2,6 +2,11 @@ import { useCallback, useRef } from 'react';
 
 import { useLayoutEffect } from './useIsomorphicLayoutEffect';
 
+/**
+ * Хук для создания обработчика событий с неизменной функцией.
+ * @function React hook
+ * @param handler коллбек события, без параметров
+ */
 export function useEventHandler<T extends (...args: never[]) => unknown>(handler: T) {
   const handlerRef = useRef<T | null>(null);
 

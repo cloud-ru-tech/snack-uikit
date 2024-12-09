@@ -1,7 +1,12 @@
 import { useState } from 'react';
 
 type UseThemePropsWithDefaultTheme<T extends string> = { themeMap: Record<T, string>; defaultTheme: T };
-type UseThemeProps<T extends string> = { themeMap: Record<T, string> };
+type UseThemeProps<T extends string> = {
+  /**
+   * Объект с указанием соответсвия темы и css-класса
+   */
+  themeMap: Record<T, string>;
+};
 
 function hasDefaultTheme<T extends string>(
   props: UseThemePropsWithDefaultTheme<T> | UseThemeProps<T>,
@@ -9,6 +14,9 @@ function hasDefaultTheme<T extends string>(
   return Boolean((props as UseThemePropsWithDefaultTheme<T>).defaultTheme);
 }
 
+/**
+ * Хук для работы с темами
+ */
 export function useThemeConfig<T extends string>(
   props: UseThemeProps<T>,
 ): {

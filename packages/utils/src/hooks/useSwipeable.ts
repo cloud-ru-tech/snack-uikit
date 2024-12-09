@@ -10,15 +10,25 @@ import {
 
 export const DATA_SWIPE_DIRECTIONS_ATTRIBUTE = 'data-swipe-directions';
 
-export type UseSwipeProps = SwipeableProps & {
+export type UseSwipeProps = {
+  /**
+   * Включен ли свайп
+   */
   enabled?: boolean;
+  /**
+   * Направления, в которых будет работать свайп.
+   * Укажите это свойство, чтобы предотвратить конфликты и заблокировать свайп в родительских элементах по этим направлениям.
+   */
   availableDirections?: SwipeDirections[];
-};
+} & SwipeableProps;
 
 export type UseSwipeReturnType = SwipeableHandlers & {
   [DATA_SWIPE_DIRECTIONS_ATTRIBUTE]?: string;
 };
 
+/**
+ * Хук для работы с событиями свайпа
+ */
 export function useSwipeable({ availableDirections, enabled = true, ...options }: UseSwipeProps): UseSwipeReturnType {
   const canSwipe = useRef(true);
 

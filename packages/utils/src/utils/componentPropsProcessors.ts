@@ -16,11 +16,14 @@ function excludeProps<T extends Record<string, unknown>>(props: T, regexp: RegEx
 }
 
 function extractProps<T extends Record<string, unknown>>(props: T, regex: RegExp) {
-  return Object.keys(props).reduce((nextProps, prop) => {
-    if (prop.match(regex)) nextProps[prop] = props[prop];
+  return Object.keys(props).reduce(
+    (nextProps, prop) => {
+      if (prop.match(regex)) nextProps[prop] = props[prop];
 
-    return nextProps;
-  }, {} as Record<string, unknown>);
+      return nextProps;
+    },
+    {} as Record<string, unknown>,
+  );
 }
 
 export type WithSupportProps<T> = {
@@ -28,14 +31,26 @@ export type WithSupportProps<T> = {
 } & AriaAttributes &
   T;
 
+/**
+ * Функция для исключения вспомогательных свойств (data-test-id & aria-*)
+ * @function helper
+ */
 export function excludeSupportProps<T extends Record<string, unknown>>(props: T) {
   return excludeProps(props, DATA_AND_ARIA_REGEXP);
 }
 
+/**
+ * Функция для отбора свойства data-test-id
+ * @function helper
+ */
 export function extractDataTestProps<T extends Record<string, unknown>>(props: T) {
   return extractProps(props, DATA_TEST_REGEXP);
 }
 
+/**
+ * Функция для отбора вспомогательных свойств (data-test-id & aria-*)
+ * @function helper
+ */
 export function extractSupportProps<T extends Record<string, unknown>>(props: T) {
   return extractProps(props, DATA_AND_ARIA_REGEXP);
 }
