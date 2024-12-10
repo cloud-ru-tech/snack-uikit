@@ -32,13 +32,13 @@
       "path": "./counter/tsconfig.cjs.json"
     },
     {
+      "path": "./loaders/tsconfig.cjs.json"
+    },
+    {
       "path": "./status/tsconfig.cjs.json"
     },
     {
       "path": "./avatar/tsconfig.cjs.json"
-    },
-    {
-      "path": "./loaders/tsconfig.cjs.json"
     },
     {
       "path": "./button/tsconfig.cjs.json"

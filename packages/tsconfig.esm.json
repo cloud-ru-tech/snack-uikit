@@ -32,13 +32,13 @@
       "path": "./counter/tsconfig.esm.json"
     },
     {
+      "path": "./loaders/tsconfig.esm.json"
+    },
+    {
       "path": "./status/tsconfig.esm.json"
     },
     {
       "path": "./avatar/tsconfig.esm.json"
-    },
-    {
-      "path": "./loaders/tsconfig.esm.json"
     },
     {
       "path": "./button/tsconfig.esm.json"

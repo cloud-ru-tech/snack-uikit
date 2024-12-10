@@ -26,14 +26,14 @@ import { Spinner, Sun } from "@snack-uikit/loaders";
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| size | enum LoaderSize: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
+| size | enum LoaderSize: `"xxs"`, `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 | className | `string` | - | CSS-класс |
 ## Sun
 Компонент спиннер
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| size | enum LoaderSize: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
+| size | enum LoaderSize: `"xxs"`, `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 | className | `string` | - | CSS-класс |
 
 
