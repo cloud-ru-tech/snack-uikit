@@ -51,7 +51,7 @@ const MAP_TYPE_TO_PROPS: Record<
 
 export function Tab({ label, value, disabled = false, className, onClick, counter, ...otherProps }: TabProps) {
   const ref = useRef<HTMLButtonElement>(null);
-  const { onSelect, type, focusedTab, onFocus } = useTabBarContext();
+  const { onSelect, type, orientation, focusedTab, onFocus } = useTabBarContext();
   const { selectedTab, setSelectedTab } = useTabsContext();
   const selected = value === selectedTab;
 
@@ -115,6 +115,7 @@ export function Tab({ label, value, disabled = false, className, onClick, counte
       aria-selected={selected}
       data-selected={selected}
       data-type={type}
+      data-orientation={orientation}
       onClick={handleClick}
       onFocus={onFocusHandler}
       onKeyDown={clickByEnterOrSpaceKey}

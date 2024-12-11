@@ -1,9 +1,28 @@
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
 .tab {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  min-height: 400px;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
 
   font-size: 2.4rem;
+}
+
+.story {
+  display: flex;
+  width: 100%;
+  height: 400px;
+  background-color: styles-theme-variables.$sys-neutral-background2-level;
+
+  &[data-orientation='vertical'] {
+    flex-direction: row;
+  }
+
+  &[data-orientation='horizontal'] {
+    flex-direction: column;
+  }
 }

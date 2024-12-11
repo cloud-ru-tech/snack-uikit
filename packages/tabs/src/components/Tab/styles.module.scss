@@ -13,6 +13,7 @@
   }
 }
 
+$orientations: 'vertical', 'horizontal';
 $types: 'primary', 'secondary';
 
 .tab {
@@ -32,17 +33,35 @@ $types: 'primary', 'secondary';
   border-width: 0;
   outline: none;
 
-  @each $type in $types {
-    &[data-type=#{$type}] {
-      @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs, 'tab-button-#{$type}', 'height');
-      @include increasedClickArea(styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'space', 'tabs', $type, 'gap'));
-      & .container {
-        @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs, 'tab-button-#{$type}', 'container');
+  @each $orientation in $orientations {
+    @each $type in $types {
+      &[data-orientation='#{$orientation}'] {
+        &[data-type='#{$type}'] {
+          @if $type == 'primary' {
+            @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs, 'tab-button-#{$type}', 'height');
+          }
+
+ @else {
+            @include styles-tokens-tabs.composite-var(
+              styles-tokens-tabs.$tabs,
+              'tab-button-#{$type}',
+              $orientation,
+              'height'
+            );
+          }
+
+          @include increasedClickArea(
+            styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'space', 'tabs', $type, 'gap')
+          );
+          & .container {
+            @include styles-tokens-tabs.composite-var(styles-tokens-tabs.$tabs, 'tab-button-#{$type}', 'container');
+          }
+        }
       }
     }
   }
 
-  &[data-selected=true],
+  &[data-selected='true'],
   &:focus-visible,
   &:hover {
     color: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'sys', 'neutral', 'text-main');
@@ -63,10 +82,20 @@ $types: 'primary', 'secondary';
     & .container {
       @include styles-tokens-tabs.outline-var(styles-tokens-element.$container-focused-s);
 
-      outline-color: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'sys', 'available', 'complementary');
+      outline-color: styles-tokens-tabs.simple-var(
+        styles-tokens-tabs.$theme-variables,
+        'sys',
+        'available',
+        'complementary'
+      );
     }
-    &[data-selected=true] .container {
-      outline-color: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'sys', 'primary', 'accent-default');
+    &[data-selected='true'] .container {
+      outline-color: styles-tokens-tabs.simple-var(
+        styles-tokens-tabs.$theme-variables,
+        'sys',
+        'primary',
+        'accent-default'
+      );
     }
   }
 }

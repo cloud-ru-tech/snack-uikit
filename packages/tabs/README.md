@@ -53,6 +53,8 @@ const [value, setValue] = useState('tab1');
 |------|------|---------------|-------------|
 | children* | `ReactElement<TabProps, string \| JSXElementConstructor<any>>[]` | - | Контент (элементы Tabs.Tab) |
 | after | `ReactNode` | - | Дополнительный слот для кастомного контента справа от табов |
+| orientation | enum Orientation: `"horizontal"`, `"vertical"` | - | Ориентация |
+| markerPosition | enum MarkerPosition: `"before"`, `"after"` | - | Позиция маркера |
 | className | `string` | - | CSS-класс |
 | type | "primary" \| "secondary" | "primary" <br> - `Primary` - когда панель табов является верхнеуровневым элементом страницы, замещающим заголовок. <br> - `Secondary` - когда панель табов расположена на том же уровне что и остальной контент | Тип панели табов: |
 | disableDivider | `boolean` | - |  |

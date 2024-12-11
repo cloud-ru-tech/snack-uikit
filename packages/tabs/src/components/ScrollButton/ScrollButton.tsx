@@ -1,13 +1,16 @@
+import { ReactElement } from 'react';
+
 import { ButtonElevated, ButtonElevatedProps } from '@snack-uikit/button';
-import { ChevronLeftSVG, ChevronRightSVG } from '@snack-uikit/icons';
+import { ChevronDownSVG, ChevronLeftSVG, ChevronRightSVG, ChevronUpSVG } from '@snack-uikit/icons';
 
 import { TYPE } from '../../constants';
-import { Type } from '../../types';
+import { Direction, Orientation, Type } from '../../types';
 import styles from './styles.module.scss';
 
 export type ScrollButtonProps = {
   type: Type;
-  direction: 'left' | 'right';
+  direction: Direction;
+  orientation: Orientation;
   onClick: () => void;
 };
 
@@ -16,17 +19,25 @@ const MAP_TYPE_TO_ICON_SIZE: Record<Type, ButtonElevatedProps['size']> = {
   [TYPE.Secondary]: 'xs',
 };
 
-export function ScrollButton({ type, onClick, direction }: ScrollButtonProps) {
+const MAP_DIRECTION_TO_ICON: Record<Direction, ReactElement> = {
+  left: <ChevronLeftSVG />,
+  right: <ChevronRightSVG />,
+  top: <ChevronUpSVG />,
+  bottom: <ChevronDownSVG />,
+};
+
+export function ScrollButton({ type, onClick, direction, orientation }: ScrollButtonProps) {
   return (
     <div
       className={styles.scrollButton}
       data-direction={direction}
       data-type={type}
+      data-orientation={orientation}
       data-test-id={`tabs__scroll-button-${direction}`}
     >
       <ButtonElevated
         tabIndex={-1}
-        icon={direction === 'left' ? <ChevronLeftSVG /> : <ChevronRightSVG />}
+        icon={MAP_DIRECTION_TO_ICON[direction]}
         size={MAP_TYPE_TO_ICON_SIZE[type]}
         onClick={onClick}
       />

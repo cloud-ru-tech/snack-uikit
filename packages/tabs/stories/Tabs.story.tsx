@@ -6,8 +6,8 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Tabs, TabsProps } from '../src';
-import { TYPE } from '../src/constants';
-import { Type } from '../src/types';
+import { MARKER_POSITION, ORIENTATION, TYPE } from '../src/constants';
+import { MarkerPosition, Orientation, Type } from '../src/types';
 import styles from './styles.module.scss';
 
 type StoryType = Omit<TabsProps, 'value'> & {
@@ -15,6 +15,8 @@ type StoryType = Omit<TabsProps, 'value'> & {
   disableDivider?: boolean;
   showAfter?: boolean;
   type: Type;
+  orientation: Orientation;
+  markerPosition: MarkerPosition;
   'data-test-id'?: string;
 };
 
@@ -45,24 +47,45 @@ const tabsData = [
 
 const tabIds = Object.values(tabsData).map(({ value }) => value);
 
-const Template: StoryFn<StoryType> = function ({ type, defaultValue, disableDivider, showAfter, ...args }) {
+const Template: StoryFn<StoryType> = function ({
+  type,
+  orientation,
+  defaultValue,
+  disableDivider,
+  showAfter,
+  markerPosition,
+  ...args
+}) {
   return (
-    <Tabs {...args} defaultValue={defaultValue}>
-      <Tabs.TabBar
-        {...(type === TYPE.Secondary ? { disableDivider, type } : { type })}
-        after={showAfter && <ButtonFilled label='custom btn' />}
-        {...args}
-      >
-        {tabsData.map(props => (
-          <Tabs.Tab key={props.value} {...props} />
-        ))}
-      </Tabs.TabBar>
-      {tabsData.map(({ value }) => (
-        <Tabs.TabContent className={styles.tab} key={value} value={value}>
-          Content of {value}
-        </Tabs.TabContent>
-      ))}
-    </Tabs>
+    <div className={styles.story} data-orientation={orientation}>
+      <Tabs {...args} defaultValue={defaultValue}>
+        {markerPosition === 'before' &&
+          tabsData.map(({ value }) => (
+            <Tabs.TabContent className={styles.tab} key={value} value={value}>
+              Content of {value}
+            </Tabs.TabContent>
+          ))}
+
+        <Tabs.TabBar
+          {...(type === TYPE.Secondary ? { disableDivider, type } : { type })}
+          after={showAfter && <ButtonFilled label='custom btn' />}
+          orientation={orientation}
+          markerPosition={markerPosition}
+          {...args}
+        >
+          {tabsData.map(props => (
+            <Tabs.Tab key={props.value} {...props} />
+          ))}
+        </Tabs.TabBar>
+
+        {markerPosition === 'after' &&
+          tabsData.map(({ value }) => (
+            <Tabs.TabContent className={styles.tab} key={value} value={value}>
+              Content of {value}
+            </Tabs.TabContent>
+          ))}
+      </Tabs>
+    </div>
   );
 };
 
@@ -71,6 +94,8 @@ export const tabs: StoryObj<StoryType> = {
 
   args: {
     type: TYPE.Primary,
+    orientation: ORIENTATION.Horizontal,
+    markerPosition: MARKER_POSITION.After,
     defaultValue: tabIds[0],
     disableDivider: false,
     showAfter: false,
@@ -81,6 +106,22 @@ export const tabs: StoryObj<StoryType> = {
       name: 'type',
       options: Object.values(TYPE),
       defaultValue: TYPE.Primary,
+      control: {
+        type: 'radio',
+      },
+    },
+    orientation: {
+      name: 'orientation',
+      options: Object.values(ORIENTATION),
+      defaultValue: ORIENTATION.Horizontal,
+      control: {
+        type: 'radio',
+      },
+    },
+    markerPosition: {
+      name: 'markerPosition',
+      options: Object.values(MARKER_POSITION),
+      defaultValue: MARKER_POSITION.After,
       control: {
         type: 'radio',
       },

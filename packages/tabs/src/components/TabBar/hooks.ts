@@ -2,19 +2,29 @@ import { Children, ReactElement, RefObject, useMemo, useState } from 'react';
 
 import { useLayoutEffect } from '@snack-uikit/utils';
 
+import { Direction } from '../../types';
+
 type OverflowState = {
-  left: boolean;
-  right: boolean;
+  [key in Direction]: boolean;
 };
 
 type ScrollContainerControl = {
   hasOverflow: OverflowState;
   scrollLeft: () => void;
   scrollRight: () => void;
+  scrollTop: () => void;
+  scrollBottom: () => void;
+};
+
+const defaultOverflowState: OverflowState = {
+  top: false,
+  bottom: false,
+  left: false,
+  right: false,
 };
 
 export function useScrollContainer(container: RefObject<HTMLElement>): ScrollContainerControl {
-  const [hasOverflow, setHasOverflow] = useState<OverflowState>({ left: false, right: false });
+  const [hasOverflow, setHasOverflow] = useState<OverflowState>(defaultOverflowState);
 
   useLayoutEffect(() => {
     const recheck = () => {
@@ -26,10 +36,17 @@ export function useScrollContainer(container: RefObject<HTMLElement>): ScrollCon
 
       const left = element.scrollLeft > 0;
       const right = element.scrollLeft + element.offsetWidth <= element.scrollWidth - 2;
+      const top = element.scrollTop > 0;
+      const bottom = element.scrollTop + element.offsetHeight <= element.scrollHeight - 2;
 
       setHasOverflow(prevState => {
-        if (prevState.left !== left || prevState.right !== right) {
-          return { left, right };
+        if (
+          prevState.left !== left ||
+          prevState.right !== right ||
+          prevState.top !== top ||
+          prevState.bottom !== bottom
+        ) {
+          return { left, right, top, bottom };
         }
         return prevState;
       });
@@ -59,26 +76,41 @@ export function useScrollContainer(container: RefObject<HTMLElement>): ScrollCon
     };
   }, [container]);
 
-  const [scrollLeft, scrollRight] = useMemo(() => {
-    function scroll(direction: 'left' | 'right') {
+  const [scrollLeft, scrollRight, scrollTop, scrollBottom] = useMemo(() => {
+    function scroll(direction: Direction) {
       const containerElement = container.current;
 
       if (!containerElement) {
         return;
       }
 
-      const scrollSize = containerElement.offsetWidth / 2;
+      const scrollHorizontalSize = containerElement.offsetWidth / 2;
+      const scrollVerticalSize = containerElement.offsetHeight / 2;
+
+      if (['top', 'bottom'].includes(direction)) {
+        containerElement.scroll({
+          top:
+            direction === 'top'
+              ? containerElement.scrollTop - scrollVerticalSize
+              : containerElement.scrollTop + scrollVerticalSize,
+          behavior: 'smooth',
+        });
+        return;
+      }
+
       containerElement.scroll({
         left:
-          direction === 'left' ? containerElement.scrollLeft - scrollSize : containerElement.scrollLeft + scrollSize,
+          direction === 'left'
+            ? containerElement.scrollLeft - scrollHorizontalSize
+            : containerElement.scrollLeft + scrollHorizontalSize,
         behavior: 'smooth',
       });
     }
 
-    return [() => scroll('left'), () => scroll('right')];
+    return [() => scroll('left'), () => scroll('right'), () => scroll('top'), () => scroll('bottom')];
   }, [container]);
 
-  return { hasOverflow, scrollLeft, scrollRight };
+  return { hasOverflow, scrollLeft, scrollRight, scrollTop, scrollBottom };
 }
 
 export function useFocusControl(children: ReactElement<{ value: string; disabled?: boolean }>[]) {

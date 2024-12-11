@@ -1,25 +1,38 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tabs';
 
-$directions: 'left', 'right';
+$directions: 'left', 'right', 'top', 'bottom';
 $types: 'primary', 'secondary';
 
 .scrollButton {
   position: absolute;
-  top: 0;
-  bottom: 0;
-
   display: flex;
   align-items: center;
 
   @each $direction in $directions {
-    &[data-direction=#{$direction}] {
+    &[data-direction='#{$direction}'] {
       #{$direction}: 0;
 
       @each $type in $types {
-        &[data-type=#{$type}] {
-          padding-#{$direction}: styles-tokens-tabs.simple-var(styles-tokens-tabs.$theme-variables, 'space', 'tabs', $type, 'scroll-button-layout');
+        &[data-type='#{$type}'] {
+          padding-#{$direction}: styles-tokens-tabs.simple-var(
+            styles-tokens-tabs.$theme-variables,
+            'space',
+            'tabs',
+            $type,
+            'scroll-button-layout'
+          );
         }
       }
     }
+  }
+
+  &[data-orientation='vertical'] {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &[data-orientation='horizontal'] {
+    top: 0;
+    bottom: 0;
   }
 }
