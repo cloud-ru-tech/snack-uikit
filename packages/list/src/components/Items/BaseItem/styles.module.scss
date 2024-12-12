@@ -1,3 +1,6 @@
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable scss/operator-no-newline-after */
+
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-dropList';
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
@@ -59,14 +62,49 @@ $sizes: 's', 'm', 'l';
     height: 100%;
   }
 }
+
+$level: var(--level, 0);
+
 .droplistItem {
   width: 100%;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      padding-left: calc(
-        var(--level, 0) * styles-tokens-dropList.$dimension-050m + styles-tokens-dropList.simple-var(styles-tokens-dropList.$drop-list, 'item', $size, 'container', 'padding-left')
+      $nestingLevelOffset: styles-tokens-dropList.simple-var(
+        styles-tokens-dropList.$drop-list,
+        'item',
+        $size,
+        'nesting-level-offset',
+        'width'
       );
+
+      $nestingLevelGapCompensator: styles-tokens-dropList.simple-var(
+        styles-tokens-dropList.$drop-list,
+        'item',
+        $size,
+        'nesting-level-gap-compensator',
+        'width'
+      );
+
+      $itemPaddingLeft: styles-tokens-dropList.simple-var(
+        styles-tokens-dropList.$drop-list,
+        'item',
+        $size,
+        'container',
+        'padding-left'
+      );
+
+      $itemGap: styles-tokens-dropList.simple-var(styles-tokens-dropList.$drop-list, 'item', $size, 'container', 'gap');
+
+      &[data-level-one] {
+        padding-left: calc($itemPaddingLeft + $nestingLevelGapCompensator + $itemGap);
+      }
+
+      &[data-level-more-one] {
+        padding-left: calc(
+          $itemPaddingLeft + $nestingLevelGapCompensator + $itemGap + ($level - 1) * $nestingLevelOffset
+        );
+      }
 
       .headline {
         @include styles-tokens-dropList.composite-var(styles-tokens-dropList.$drop-list, 'item', $size, 'headline');

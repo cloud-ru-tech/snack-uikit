@@ -213,7 +213,17 @@ const Template: StoryFn<StoryProps> = ({
       <div className={styles.wrapper}>
         <div className={styles.listContainer}>
           Collapsed List
-          <List items={withDataTestId(EXPAND_OPTIONS)} size={args.size} data-test-id={args['data-test-id']} scroll />
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-expect-error */}
+          <List
+            items={withDataTestId(EXPAND_OPTIONS)}
+            size={args.size}
+            data-test-id={args['data-test-id']}
+            scroll
+            {...(selectionMode !== 'none'
+              ? { selection: { value, onChange: setValue, mode: selectionMode } }
+              : { selection: undefined })}
+          />
         </div>
       </div>
     );

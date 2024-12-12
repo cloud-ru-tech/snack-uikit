@@ -138,13 +138,12 @@ export function BaseItem({
       data-inactive={inactive || undefined}
       data-disabled={disabled || undefined}
       data-variant={mode || undefined}
-      data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
+      data-checked={(isParentNode && isChecked) || (!isParentNode && isChecked && !switchProp) || undefined}
     >
       <li
         data-type='outside'
         role={'menuitem'}
         data-test-id={props['data-test-id'] || 'list__base-item_' + id}
-        data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
         ref={itemRef as unknown as RefObject<HTMLLIElement>}
         className={cn(commonStyles.listItem, styles.droplistItem)}
         data-size={size}
@@ -157,6 +156,9 @@ export function BaseItem({
         onKeyDown={handleItemKeyDown}
         onFocus={handleItemFocus}
         style={{ '--level': level }}
+        data-level-one={level === 1 || undefined}
+        data-level-more-one={level > 1 || undefined}
+        data-checked={(isParentNode && (indeterminate || isChecked)) || (isChecked && !switchProp) || undefined}
       >
         {!switchProp && isSelectionSingle && marker && !isParentNode && interactive && (
           <div className={styles.markerContainer} data-test-id='list__base-item-marker' />

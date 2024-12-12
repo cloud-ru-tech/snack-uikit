@@ -3,7 +3,12 @@ import { MouseEvent, useCallback } from 'react';
 import { ChevronDownSVG, ChevronUpSVG } from '@snack-uikit/icons';
 
 import { CollapseBlockPrivate } from '../../../helperComponents';
-import { CollapseLevelContext, useCollapseContext, useCollapseLevelContext } from '../../Lists/contexts';
+import {
+  CollapseLevelContext,
+  useCollapseContext,
+  useCollapseLevelContext,
+  useSelectionContext,
+} from '../../Lists/contexts';
 import { BaseItem } from '../BaseItem';
 import { useGroupItemSelection, useRenderItems } from '../hooks';
 import { CommonFlattenProps, FlattenAccordionItem } from '../types';
@@ -11,10 +16,16 @@ import { CommonFlattenProps, FlattenAccordionItem } from '../types';
 type AccordionItemProps = Omit<FlattenAccordionItem, 'type>'> & CommonFlattenProps;
 
 export function AccordionItem({ id, disabled, allChildIds, items, ...option }: AccordionItemProps) {
-  const { level = 1 } = useCollapseLevelContext();
+  const { level = 0 } = useCollapseLevelContext();
   const { openCollapseItems = [], toggleOpenCollapseItem } = useCollapseContext();
 
-  const { indeterminate, checked, handleOnSelect } = useGroupItemSelection({
+  const { value, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
+
+  const {
+    indeterminate,
+    handleOnSelect,
+    checked: checkedProp,
+  } = useGroupItemSelection({
     items,
     id,
     disabled,
@@ -22,6 +33,11 @@ export function AccordionItem({ id, disabled, allChildIds, items, ...option }: A
   });
 
   const isOpen = Boolean(openCollapseItems.includes(id ?? ''));
+
+  const checked = Boolean(
+    (indeterminate && !isOpen && isSelectionSingle && value && allChildIds.includes(value)) ||
+      (isSelectionMultiple && checkedProp),
+  );
 
   const handleKeyDown = useCallback(() => {
     toggleOpenCollapseItem?.(id ?? '');

@@ -29,7 +29,7 @@ export function NextListItem({
   ...option
 }: NextListItemProps) {
   const { flattenItems, focusFlattenItems } = useNewListContext();
-  const { isSelectionMultiple } = useSelectionContext();
+  const { value, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
   const { openCollapseItems = [] } = useCollapseContext();
 
   const item = flattenItems[id];
@@ -64,7 +64,11 @@ export function NextListItem({
     [handleListKeyDownFactory, ids, expandedIds, forceUpdateActiveItemId, focusId],
   );
 
-  const { indeterminate, checked, handleOnSelect } = useGroupItemSelection({
+  const {
+    indeterminate,
+    checked: checkedProp,
+    handleOnSelect,
+  } = useGroupItemSelection({
     items: isNextListItem<FlattenNextListItem>(item) ? item.items : [],
     id,
     disabled,
@@ -80,6 +84,11 @@ export function NextListItem({
   const isOpen = useMemo(
     () => Boolean(!disabled && activeItemId && focusFlattenItems[focusId].allChildIds.includes(activeItemId)),
     [activeItemId, disabled, focusFlattenItems, focusId],
+  );
+
+  const checked = Boolean(
+    (indeterminate && !open && isSelectionSingle && value && allChildIds.includes(value)) ||
+      (isSelectionMultiple && checkedProp),
   );
 
   useEffect(() => {

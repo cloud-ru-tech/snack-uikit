@@ -41,6 +41,7 @@ export const ListPrivate = forwardRef(
       dataError,
       dataFiltered,
       scrollToSelectedItem = false,
+      scrollContainerClassName,
       ...props
     }: ListPrivateProps,
     ref: ForwardedRef<HTMLElement>,
@@ -129,11 +130,14 @@ export const ListPrivate = forwardRef(
 
         {scroll ? (
           <Scroll
-            className={cn({
-              [commonStyles.scrollContainerS]: scroll && limitedScrollHeight && size === 's',
-              [commonStyles.scrollContainerM]: scroll && limitedScrollHeight && size === 'm',
-              [commonStyles.scrollContainerL]: scroll && limitedScrollHeight && size === 'l',
-            })}
+            className={cn(
+              {
+                [commonStyles.scrollContainerS]: scroll && limitedScrollHeight && size === 's',
+                [commonStyles.scrollContainerM]: scroll && limitedScrollHeight && size === 'm',
+                [commonStyles.scrollContainerL]: scroll && limitedScrollHeight && size === 'l',
+              },
+              scrollContainerClassName,
+            )}
             barHideStrategy='never'
             size={size === 's' ? 's' : 'm'}
             ref={scrollContainerRef}

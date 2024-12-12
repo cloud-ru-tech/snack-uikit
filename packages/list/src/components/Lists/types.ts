@@ -55,6 +55,8 @@ export type ListProps = WithSupportProps<
     hasListInFocusChain?: boolean;
     /** Флаг, отвещающий за прокручивание до выбранного элемента */
     scrollToSelectedItem?: boolean;
+    /** CSS-класс для scroll обертки основного списка айтемов */
+    scrollContainerClassName?: string;
   } & SelectionState &
     PublicListContextType &
     ScrollProps &
