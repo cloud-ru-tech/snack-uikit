@@ -42,7 +42,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | placeholder | `string` | - | Значение плейсхолдера |
 | id | `string` | - | Значение html-атрибута id |
 | className | `string` | - | CSS-класс |
-| type | enum Type: `"number"`, `"text"`, `"password"` | text | Тип инпута |
+| type | enum Type: `"number"`, `"text"`, `"password"`, `"tel"`, `"email"`, `"url"` | text | Тип инпута |
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
