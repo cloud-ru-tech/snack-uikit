@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.6 (2024-12-12)
+
+
+### Bug Fixes
+
+* **PDS-1047:** fix carousel drag ([29b8892](https://github.com/cloud-ru-tech/snack-uikit/commit/29b8892c5448ccec6c7377cdb343b4b0cffc3998))
+
+
+
+
+
 ## 0.4.5 (2024-12-03)
 
 

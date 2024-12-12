@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Progress Bar",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,7 +36,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/utils": "3.5.0",
+    "@snack-uikit/utils": "3.6.0",
     "@tanem/react-nprogress": "5.0.35",
     "classnames": "2.5.1"
   }

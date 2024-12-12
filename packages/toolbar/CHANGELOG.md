@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.12 (2024-12-12)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/icons@0.24.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/list@0.21.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/search-private@0.4.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search-private/CHANGELOG.md)
+* [@snack-uikit/tag@0.12.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/toggles@0.13.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/utils@3.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.9.11 (2024-12-12)
 
 ### Only dependencies have been changed

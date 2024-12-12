@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.21.10 (2024-12-12)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/divider@3.2.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/divider/CHANGELOG.md)
+* [@snack-uikit/dropdown@0.4.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/dropdown/CHANGELOG.md)
+* [@snack-uikit/icons@0.24.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/info-block@0.6.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/info-block/CHANGELOG.md)
+* [@snack-uikit/loaders@0.8.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-uikit/scroll@0.9.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/scroll/CHANGELOG.md)
+* [@snack-uikit/search-private@0.4.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search-private/CHANGELOG.md)
+* [@snack-uikit/toggles@0.13.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.6.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-uikit/utils@3.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.21.9 (2024-12-12)
 
 ### Only dependencies have been changed

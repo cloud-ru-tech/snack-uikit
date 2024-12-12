@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.3 (2024-12-12)
+
+
+### Bug Fixes
+
+* **PDS-1047:** add swipe data-attribute ([757536e](https://github.com/cloud-ru-tech/snack-uikit/commit/757536e474be635570f5fef3953bb7f9711652a4))
+
+
+
+
+
 ## 0.3.2 (2024-11-14)
 
 ### Only dependencies have been changed

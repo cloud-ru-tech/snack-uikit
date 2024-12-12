@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.6.0 (2024-12-12)
+
+
+### Features
+
+* **FF-5782:** sass use/forward approach ([3e53869](https://github.com/cloud-ru-tech/snack-uikit/commit/3e53869ace864a7718e434b7f410c15dbd911cd5))
+* **PDS-1047:** add useSwipe hook ([94c92a4](https://github.com/cloud-ru-tech/snack-uikit/commit/94c92a4112f599797354a90bbaa62604c73f4553))
+
+
+
+
+
 # 3.5.0 (2024-10-28)
 
 

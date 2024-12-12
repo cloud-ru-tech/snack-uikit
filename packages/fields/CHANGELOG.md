@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.35.5 (2024-12-12)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/calendar@0.11.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-uikit/color-picker@0.3.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/color-picker/CHANGELOG.md)
+* [@snack-uikit/divider@3.2.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/divider/CHANGELOG.md)
+* [@snack-uikit/dropdown@0.4.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/dropdown/CHANGELOG.md)
+* [@snack-uikit/icons@0.24.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/input-private@4.4.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/input-private/CHANGELOG.md)
+* [@snack-uikit/list@0.21.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/scroll@0.9.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/scroll/CHANGELOG.md)
+* [@snack-uikit/skeleton@0.6.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/skeleton/CHANGELOG.md)
+* [@snack-uikit/slider@0.3.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/slider/CHANGELOG.md)
+* [@snack-uikit/tag@0.12.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.15.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.6.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-uikit/utils@3.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.35.4 (2024-12-12)
 
 ### Only dependencies have been changed
