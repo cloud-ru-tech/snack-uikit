@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.4.0 (2024-12-12)
+
+
+### Features
+
+* **FF-5969:** add new types - tel, email, url ([a346fb1](https://github.com/cloud-ru-tech/snack-uikit/commit/a346fb18337cdfbe0c2622e90f419159fa7486df))
+
+
+
+
+
 # 4.3.0 (2024-11-19)
 
 

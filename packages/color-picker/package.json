@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Color Picker",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -38,7 +38,7 @@
   "dependencies": {
     "@snack-uikit/button": "0.19.3",
     "@snack-uikit/icons": "0.24.0",
-    "@snack-uikit/input-private": "4.3.0",
+    "@snack-uikit/input-private": "4.4.0",
     "@snack-uikit/segmented-control": "0.4.2",
     "@snack-uikit/utils": "3.5.0",
     "classnames": "2.5.1",

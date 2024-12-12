@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.12 (2024-12-12)
+
+### Only dependencies have been changed
+* [@snack-uikit/card@0.16.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/card/CHANGELOG.md)
+
+
+
+
+
 ## 0.3.11 (2024-12-04)
 
 ### Only dependencies have been changed
