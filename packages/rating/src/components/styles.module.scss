@@ -1,0 +1,75 @@
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+$appearances: 'primary', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
+
+.firstStarContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  overflow: hidden;
+
+  width: 50%;
+  height: 100%;
+
+    color: styles-theme-variables.$sys-neutral-decor-default;
+}
+
+.secondStarContainer{
+    color: styles-theme-variables.$sys-neutral-decor-default;
+}
+
+.rating {
+  cursor: pointer;
+
+  position: relative;
+
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+
+  &:focus-visible {
+    outline: 2px styles-theme-variables.$sys-available-complementary solid;
+  }
+}
+
+.starContainer {
+  position: relative;
+  display: inline-block;
+
+}
+
+.starHalf{
+  .firstStarContainer {
+    @each $appearance in $appearances {
+      &[data-appearance=#{$appearance}] {
+          color: styles-theme-variables.simple-var(styles-theme-variables.$theme-variables, 'sys', $appearance, 'accent-default');
+      }
+    }
+  }
+}
+
+.starFull {
+  .firstStarContainer {
+    @each $appearance in $appearances {
+      &[data-appearance=#{$appearance}] {
+          color: styles-theme-variables.simple-var(styles-theme-variables.$theme-variables, 'sys', $appearance, 'accent-default');
+      }
+    }
+  }
+  .secondStarContainer {
+    @each $appearance in $appearances {
+      &[data-appearance=#{$appearance}] {
+          color: styles-theme-variables.simple-var(styles-theme-variables.$theme-variables, 'sys', $appearance, 'accent-default');
+      }
+    }
+  }
+}
+
+.starDisabled {
+  cursor: default;
+}
+
+

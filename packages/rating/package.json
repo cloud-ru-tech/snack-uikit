@@ -1,0 +1,44 @@
+{
+  "name": "@snack-uikit/rating",
+  "publishConfig": {
+    "access": "public"
+  },
+  "title": "Rating",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "Rating component",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "homepage": "https://cloud-ru-tech.github.io/snack-uikit/packages/rating",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit/tree/master",
+    "directory": "packages/rating"
+  },
+  "author": "Dmitry Karvonen <dmkarvonen@cloud.ru>",
+  "contributors": [
+    "Dmitry Karvonen <dmkarvonen@cloud.ru>"
+  ],
+  "files": [
+    "dist/cjs",
+    "dist/esm",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-uikit/icons": "0.24.1",
+    "@snack-uikit/utils": "3.6.0",
+    "classnames": "2.5.1",
+    "uncontrollable": "8.0.4"
+  }
+}

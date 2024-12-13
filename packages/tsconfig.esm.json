@@ -165,6 +165,9 @@
     },
     {
       "path": "./progress-bar/tsconfig.esm.json"
+    },
+    {
+      "path": "./rating/tsconfig.esm.json"
     }
   ],
   "compilerOptions": {
