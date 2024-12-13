@@ -33,6 +33,7 @@ import { Status, StatusIndicator } from '@snack-uikit/status';
 | size | enum Size: `"xs"`, `"s"` | xs | Размер |
 | appearance | enum Appearance: `"primary"`, `"neutral"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Внешний вид |
 | hasBackground | `boolean` | - | Наличие фона |
+| loading | `boolean` | - |  |
 | className | `string` | - | CSS-класс |
 ## StatusIndicator
 ### Props

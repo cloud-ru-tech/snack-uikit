@@ -75,6 +75,7 @@ export const status: StoryObj<StoryProps> = {
     appearance: APPEARANCE.Primary,
     label: 'Label text',
     hasBackground: false,
+    loading: false,
   },
 
   argTypes: {

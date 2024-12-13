@@ -5,13 +5,22 @@ $label-typography: (
   's': styles-tokens-status.$sans-label-m
 );
 $sizes: 'xs', 's';
+$appearances: 'primary', 'neutral', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
 
 .container {
   display: inline-flex;
   align-items: center;
 
   &[data-has-background] {
-    background-color: styles-tokens-status.$sys-neutral-decor-default;
+    @each $appearance in $appearances {
+      &[data-appearance='#{$appearance}'] {
+        background-color: styles-tokens-status.simple-var(styles-tokens-status.$theme-variables, 'sys', $appearance, 'decor-default');
+  
+        .label {
+          color: styles-tokens-status.simple-var(styles-tokens-status.$theme-variables, 'sys', $appearance, 'text-support')
+        }
+      }
+    }
 
     @each $size in $sizes {
       &[data-size='#{$size}'] {
