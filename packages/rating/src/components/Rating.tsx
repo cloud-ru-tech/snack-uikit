@@ -3,22 +3,32 @@ import { KeyboardEventHandler, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { StarFilledSVG } from '@snack-uikit/icons';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { APPEARANCE, DEFAULT_RATING_VALUE, DEFAULT_STAR_COUNT } from '../constants';
 import { Appearance } from '../types';
 import styles from './styles.module.scss';
 
-export type RatingProps = {
+export type RatingProps = WithSupportProps<{
+  /** Общее количество звезд */
   count: number;
+  /** Значение количества звезд в случае необходимости управления */
   value?: number;
+  /** Количество звезд, заполненных по умолчанию */
   defaultValue?: number;
+  /** Показывать или нет рейтинг в виде половины звезды */
   allowHalf: boolean;
+  /** Разрещает сброс рейтинга при повторном нажатии на звезду */
   allowClear: boolean;
   readonly: boolean;
   appearance?: Appearance;
   onChange?: (value: number) => void;
   className?: string;
-};
+}>;
+
+/**
+ * Компонент Rating
+ */
 
 export function Rating({
   className,
@@ -30,12 +40,14 @@ export function Rating({
   readonly = false,
   appearance = APPEARANCE.Yellow,
   onChange,
+  ...otherProps
 }: RatingProps) {
   const [hoverRating, setHoverRating] = useState<null | number>(null);
   const [rating, setRating] = useUncontrolledProp(value, defaultValue, onChange);
+  const supportProps = extractSupportProps(otherProps);
 
   return (
-    <div className={className}>
+    <div className={className} data-test-id={supportProps['data-test-id']}>
       {[...Array(count)].map((star, index) => {
         const currentRating = index + 1;
         const isHalfFilled =
