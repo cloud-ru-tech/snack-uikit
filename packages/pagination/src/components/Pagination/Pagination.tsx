@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
 import { ChevronLeftSVG, ChevronRightSVG } from '@snack-uikit/icons';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { SIZE } from '../../constants';
+import { SIZE, VARIANT } from '../../constants';
 import { PaginationContext } from '../../contexts';
-import { Size } from '../../types';
+import { Size, Variant } from '../../types';
 import { getPaginationEntries, PaginationEntry, PaginationEntryKind } from '../../utils';
 import { PageMoreButton } from '../PageMoreButton';
 import { PageNumberButton } from '../PageNumberButton';
@@ -17,10 +17,14 @@ export type PaginationProps = WithSupportProps<{
   total: number;
   /** Текущая страница */
   page: number;
+  /** Варианты тега кнопок: <a/> или <button/> */
+  variant?: Variant;
   /** Максимальное количество страниц/элементов, помещающихся до транкейта */
   maxLength?: number;
-  /** Колбек смены значения */
-  onChange(page: number): void;
+  /** Колбэк смены значения */
+  onChange(page: number, event?: MouseEvent<HTMLButtonElement | HTMLAnchorElement>): void;
+  /** Колбэк форматирования ссылки */
+  hrefFormatter?(page: number): string;
   /** CSS класснейм */
   className?: string;
   /** Размер
@@ -37,7 +41,9 @@ export function Pagination({
   total,
   page,
   onChange,
+  hrefFormatter,
   className,
+  variant = VARIANT.Button,
   size = SIZE.S,
   maxLength = MAX_LENGTH,
   ...rest
@@ -49,7 +55,7 @@ export function Pagination({
     maxLength,
   });
 
-  const buttonRefs = useRef<(HTMLButtonElement | undefined)[]>([]);
+  const buttonRefs = useRef<(HTMLButtonElement | HTMLAnchorElement | undefined)[]>([]);
   const [buttonToFocus, setButtonToFocus] = useState(-1);
 
   useEffect(() => {
@@ -88,9 +94,10 @@ export function Pagination({
             page={entry.page}
             activated={entry.page === page}
             onClick={onChange}
-            setButtonRef={(el: HTMLButtonElement) => {
+            setButtonRef={(el: HTMLButtonElement | HTMLAnchorElement) => {
               buttonRefs.current[entry.page] = el;
             }}
+            hrefFormatter={hrefFormatter}
           />
         </li>
       );
@@ -106,7 +113,7 @@ export function Pagination({
   };
 
   return (
-    <PaginationContext.Provider value={{ size }}>
+    <PaginationContext.Provider value={{ size, variant }}>
       <nav className={className} {...extractSupportProps(rest)}>
         <ul className={styles.pagination}>
           <li>

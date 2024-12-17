@@ -1,5 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -17,13 +17,18 @@ type StoryProps = PaginationProps;
 const Template: StoryFn<StoryProps> = ({ ...args }) => {
   const [page, setPage] = useState(args.page);
 
+  const handleChange = (page: number, event?: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    setPage(page);
+    event?.preventDefault();
+  };
+
   useEffect(() => {
     setPage(args.page);
   }, [args.total, args.page]);
 
   return (
     <div className={styles.wrapper}>
-      <Pagination {...args} page={page} onChange={setPage} />
+      <Pagination {...args} page={page} onChange={handleChange} />
     </div>
   );
 };
@@ -36,6 +41,8 @@ export const pagination: StoryObj<StoryProps> = {
     page: 1,
     maxLength: 7,
     size: 's',
+    variant: 'button',
+    hrefFormatter: (page: number) => `/cases/${page}`,
   },
 
   argTypes: {},

@@ -34,10 +34,12 @@ function App() {
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| onChange* | `(page: number) => void` | - | Колбек смены значения |
+| onChange* | `(page: number, event?: MouseEvent<HTMLButtonElement \| HTMLAnchorElement, MouseEvent>) => void` | - | Колбэк смены значения |
 | page* | `number` | - | Текущая страница |
 | total* | `number` | - | Общее количество страниц |
+| variant | enum Variant: `"link"`, `"button"` | button | Варианты тега кнопок: <a/> или <button/> |
 | maxLength | `number` | 7 | Максимальное количество страниц/элементов, помещающихся до транкейта |
+| hrefFormatter | `(page: number) => string` | - | Колбэк форматирования ссылки |
 | className | `string` | - | CSS класснейм |
 | size | enum Size: `"xs"`, `"s"` | s | Размер |
 ## PaginationSlider
