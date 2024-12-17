@@ -15,7 +15,16 @@ import { getContainerVariant } from './helpers';
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
   Pick<
     InputPrivateProps,
-    'id' | 'name' | 'placeholder' | 'maxLength' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'autoComplete'
+    | 'id'
+    | 'name'
+    | 'placeholder'
+    | 'maxLength'
+    | 'disabled'
+    | 'readonly'
+    | 'onFocus'
+    | 'onBlur'
+    | 'autoComplete'
+    | 'onPaste'
   >;
 
 type WrapperProps = Pick<
@@ -90,6 +99,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       prefix,
       postfix,
       button: buttonProp,
+      onPaste,
       ...rest
     },
     ref,
@@ -220,6 +230,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
             onBlur={onBlur}
             tabIndex={inputTabIndex}
             onKeyDown={onInputKeyDown}
+            onPaste={onPaste}
             placeholder={placeholder}
             disabled={disabled}
             readonly={readonly}

@@ -52,7 +52,8 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | step | `string \| number` | - | Максимальное значение поля |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
-| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |
+| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки начала нажатия клавиши клавиатуры |
+| onPaste | `ClipboardEventHandler<HTMLInputElement>` | - | Колбек обработки вставки значения |
 | tabIndex | `number` | - | Значение атрибута tab-index |
 | onClick | `MouseEventHandler<HTMLInputElement>` | - | Колбек обработки клика |
 | onMouseDown | `MouseEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия кнопки мыши |

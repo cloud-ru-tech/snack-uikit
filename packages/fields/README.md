@@ -325,7 +325,7 @@ FieldStepper в основном предназначен для работы с
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | placeholder | `string` | - | Значение плейсхолдера |
-| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия клавиши клавиатуры |
+| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки начала нажатия клавиши клавиатуры |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
@@ -460,6 +460,7 @@ FieldStepper в основном предназначен для работы с
 | placeholder | `string` | - | Значение плейсхолдера |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
+| onPaste | `ClipboardEventHandler<HTMLInputElement>` | - | Колбек обработки вставки значения |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |

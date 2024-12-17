@@ -1,4 +1,11 @@
-import { ChangeEvent, FocusEventHandler, KeyboardEventHandler, MouseEventHandler, RefAttributes } from 'react';
+import {
+  ChangeEvent,
+  ClipboardEventHandler,
+  FocusEventHandler,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  RefAttributes,
+} from 'react';
 
 import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
@@ -54,8 +61,10 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
     onFocus?: FocusEventHandler<HTMLInputElement>;
     /** Колбек обработки потери фокуса */
     onBlur?: FocusEventHandler<HTMLInputElement>;
-    /** Колбек обработки нажатия клавиши клавиатуры */
+    /** Колбек обработки начала нажатия клавиши клавиатуры */
     onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+    /** Колбек обработки вставки значения */
+    onPaste?: ClipboardEventHandler<HTMLInputElement>;
     /** Колбек обработки клика */
     onClick?: MouseEventHandler<HTMLInputElement>;
     /** Колбек обработки нажатия кнопки мыши */

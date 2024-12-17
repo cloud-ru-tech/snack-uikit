@@ -27,6 +27,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
       onFocus,
       onBlur,
       onKeyDown,
+      onPaste,
       tabIndex = 0,
       onClick,
       onMouseDown,
@@ -69,6 +70,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
         onFocus={onFocus}
         onBlur={onBlur}
         onKeyDown={onKeyDown}
+        onPaste={onPaste}
         tabIndex={tabIndex}
         onClick={onClick}
         onMouseDown={onMouseDown}
