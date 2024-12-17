@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2024-12-17)
+
+
+### Features
+
+* **PDS-77:** added Spinner to Status ([12ed8bc](https://github.com/cloud-ru-tech/snack-uikit/commit/12ed8bcb0568aeb33c48b21751ac0e9bdd09d687))
+
+
+
+
+
 ## 0.7.2 (2024-12-12)
 
 ### Only dependencies have been changed

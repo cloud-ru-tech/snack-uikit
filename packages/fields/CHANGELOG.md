@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.35.6 (2024-12-17)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/calendar@0.11.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-uikit/color-picker@0.3.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/color-picker/CHANGELOG.md)
+* [@snack-uikit/list@0.21.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+
+
+
+
+
 ## 0.35.5 (2024-12-12)
 
 ### Only dependencies have been changed

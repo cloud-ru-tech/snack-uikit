@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2024-12-17)
+
+
+### Features
+
+* **PDS-77:** added size XXS to Loader ([f1006dd](https://github.com/cloud-ru-tech/snack-uikit/commit/f1006dd5654fa9d165c301e1d2ba4757b3d2d6fc))
+
+
+
+
+
 ## 0.8.2 (2024-12-12)
 
 ### Only dependencies have been changed

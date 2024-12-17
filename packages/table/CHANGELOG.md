@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.25.15 (2024-12-17)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/chips@0.22.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/info-block@0.6.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/info-block/CHANGELOG.md)
+* [@snack-uikit/list@0.21.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/pagination@0.9.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/pagination/CHANGELOG.md)
+* [@snack-uikit/toolbar@0.9.13](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toolbar/CHANGELOG.md)
+
+
+
+
+
 ## 0.25.14 (2024-12-12)
 
 ### Only dependencies have been changed
