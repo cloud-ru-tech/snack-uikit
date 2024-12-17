@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2024-12-17)
+
+
+### Features
+
+* **PDS-371:** added vertical orientation for Tab ([07d06a2](https://github.com/cloud-ru-tech/snack-uikit/commit/07d06a2de7ce974fd05aadb651f54611437883f3))
+
+
+
+
+
 ## 0.8.6 (2024-12-17)
 
 ### Only dependencies have been changed
