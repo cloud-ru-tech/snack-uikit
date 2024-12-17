@@ -460,6 +460,7 @@ FieldStepper в основном предназначен для работы с
 | placeholder | `string` | - | Значение плейсхолдера |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
+| onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки начала нажатия клавиши клавиатуры |
 | onPaste | `ClipboardEventHandler<HTMLInputElement>` | - | Колбек обработки вставки значения |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |

@@ -1,5 +1,14 @@
 import mergeRefs from 'merge-refs';
-import { forwardRef, ReactElement, ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import {
+  forwardRef,
+  KeyboardEventHandler,
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { InputPrivate, InputPrivateProps, SIZE, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
@@ -25,6 +34,7 @@ type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
     | 'onBlur'
     | 'autoComplete'
     | 'onPaste'
+    | 'onKeyDown'
   >;
 
 type WrapperProps = Pick<
@@ -100,6 +110,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       postfix,
       button: buttonProp,
       onPaste,
+      onKeyDown,
       ...rest
     },
     ref,
@@ -191,6 +202,11 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
+    const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = event => {
+      onInputKeyDown(event);
+      onKeyDown?.(event);
+    };
+
     return (
       <FieldDecorator
         className={className}
@@ -229,7 +245,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
             onFocus={onFocus}
             onBlur={onBlur}
             tabIndex={inputTabIndex}
-            onKeyDown={onInputKeyDown}
+            onKeyDown={handleKeyDown}
             onPaste={onPaste}
             placeholder={placeholder}
             disabled={disabled}
