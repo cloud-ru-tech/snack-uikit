@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2024-12-18)
+
+
+### Features
+
+* **SITE-8103:** add variant link to Pagination ([24a4e1c](https://github.com/cloud-ru-tech/snack-uikit/commit/24a4e1c7132c12337acfb51aabeb5f6a31bc2316))
+
+
+
+
+
 ## 0.9.5 (2024-12-17)
 
 ### Only dependencies have been changed
