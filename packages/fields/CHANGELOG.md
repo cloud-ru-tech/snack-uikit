@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.36.0 (2024-12-18)
+
+
+### Features
+
+* **FCB-40:** add onKeyDown prop ([fdbda5b](https://github.com/cloud-ru-tech/snack-uikit/commit/fdbda5b5b861527d0dfa54b13fb5a353128a5984))
+* **FCB-40:** add onPaste prop ([a31d8f3](https://github.com/cloud-ru-tech/snack-uikit/commit/a31d8f3d985b9dc1a8f53fc7740505d74eefd961))
+
+
+
+
+
 ## 0.35.6 (2024-12-17)
 
 ### Only dependencies have been changed

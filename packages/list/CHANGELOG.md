@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.22.0 (2024-12-18)
+
+
+### Features
+
+* **PDS-1124:** add cn; fix accordion list offset; change view selection parent item ([c79e325](https://github.com/cloud-ru-tech/snack-uikit/commit/c79e325728a81541a8344bb787b301cf77b24aa8))
+
+
+
+
+
 ## 0.21.11 (2024-12-17)
 
 ### Only dependencies have been changed
