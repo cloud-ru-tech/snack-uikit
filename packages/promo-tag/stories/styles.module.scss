@@ -4,5 +4,10 @@
   display: inline-block;
   margin-bottom: 1rem;
   padding: 1rem;
-  background-color: styles-theme-variables.simple-var(styles-theme-variables.$theme-variables, 'sys', 'neutral', 'background1-level');
+  background-color: styles-theme-variables.simple-var(
+    styles-theme-variables.$theme-variables,
+    'sys',
+    'neutral',
+    'background1-level'
+  );
 }

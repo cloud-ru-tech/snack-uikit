@@ -23,3 +23,11 @@ test.page(getPage())('Should be rendered', async t => {
 test.page(getPage({ text: 'Super promo tag' }))('Should has children text', async t => {
   await t.expect(Selector(dataTestIdSelector(TEST_ID)).innerText).eql('Super promo tag');
 });
+
+test.page(getPage({ showBefore: true, size: 'xs' }))('Should has before node', async t => {
+  await t.expect(Selector(dataTestIdSelector('before-node')).exists).ok();
+});
+
+test.page(getPage({ showAfter: true, size: 'xs' }))('Should has after node', async t => {
+  await t.expect(Selector(dataTestIdSelector('after-node')).exists).ok();
+});

@@ -14,9 +14,14 @@
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| text* | `string` | - | Текст компонента |
-| appearance | enum Appearance: `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Внешний вид |
+| text | `string` | - | Текст компонента |
+| appearance | enum Appearance: `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Внешний вид |
+| color | enum Color: `"accent"`, `"decor"` | accent | Семантический цвет |
 | className | `string` | - | CSS-класс |
+| onClick | `(e: MouseEvent<HTMLDivElement, MouseEvent>) => void` | - | Колбэк для обработки клика на тег |
+| size | "xxs" \| "xs" \| "s" | xxs | Размер |
+| beforeContent | `ReactNode` | - | Контент перед текстом |
+| afterContent | `ReactNode` | - | Контент после текста |
 
 
 [//]: DOCUMENTATION_SECTION_END

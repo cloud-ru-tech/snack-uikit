@@ -1,4 +1,5 @@
 export const APPEARANCE = {
+  Neutral: 'neutral',
   Primary: 'primary',
   Red: 'red',
   Orange: 'orange',
@@ -7,4 +8,15 @@ export const APPEARANCE = {
   Blue: 'blue',
   Violet: 'violet',
   Pink: 'pink',
+} as const;
+
+export const COLOR = {
+  Accent: 'accent',
+  Decor: 'decor',
+} as const;
+
+export const SIZE = {
+  Xxs: 'xxs',
+  Xs: 'xs',
+  S: 's',
 } as const;

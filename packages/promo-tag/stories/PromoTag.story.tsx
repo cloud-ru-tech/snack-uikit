@@ -1,11 +1,16 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
+import { PlaceholderSVG } from '@snack-uikit/icons';
+
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { PromoTag, PromoTagProps } from '../src';
-import { APPEARANCE } from '../src/constants';
+import { APPEARANCE, COLOR } from '../src/constants';
 import styles from './styles.module.scss';
+
+const beforeNode = <PlaceholderSVG data-test-id='before-node' size={24} />;
+const afterNode = <PlaceholderSVG data-test-id='after-node' size={24} />;
 
 const meta: Meta = {
   title: 'Components/Promo Tag',
@@ -13,40 +18,91 @@ const meta: Meta = {
 };
 export default meta;
 
-const storyTable = (
+type StoryProps = PromoTagProps & { showText: boolean; showBefore: boolean; showAfter: boolean; clickable: boolean };
+
+const defaultClickHandler = () => alert('clicked');
+
+const renderStoryTable = ({ showText, showBefore, showAfter, clickable, ...args }: StoryProps) => (
   <table>
     {Object.values(APPEARANCE).map(appearance => (
       <tr key={appearance}>
         <td>{appearance}:</td>
         <td>
-          <PromoTag appearance={appearance} text='Promo Tag' />
+          <PromoTag
+            {...args}
+            text={showText ? args.text : undefined}
+            size={args.size as Exclude<PromoTagProps['size'], 'xxs'>}
+            beforeContent={showBefore ? beforeNode : undefined}
+            afterContent={showAfter ? afterNode : undefined}
+            appearance={appearance}
+            onClick={clickable ? defaultClickHandler : undefined}
+          />
         </td>
       </tr>
     ))}
   </table>
 );
 
-const Template: StoryFn<PromoTagProps> = ({ ...args }: PromoTagProps) => (
+const Template: StoryFn<StoryProps> = ({ showText, showBefore, showAfter, clickable, ...args }) => (
   <>
     <div>
       <div className={styles.story}>
-        controlled:&nbsp;
-        <PromoTag {...args} />
+        <table>
+          <tr>
+            <td>controlled:</td>
+            <td>
+              <PromoTag
+                {...args}
+                text={showText ? args.text : undefined}
+                size={args.size as Exclude<PromoTagProps['size'], 'xxs'>}
+                beforeContent={showBefore ? beforeNode : undefined}
+                afterContent={showAfter ? afterNode : undefined}
+                onClick={clickable ? defaultClickHandler : undefined}
+              />
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
-    <div className={styles.story}>{storyTable}</div>
+    <div className={styles.story}>{renderStoryTable({ showText, showBefore, showAfter, clickable, ...args })}</div>
   </>
 );
 
-export const promoTag: StoryObj<PromoTagProps> = {
+export const promoTag: StoryObj<StoryProps> = {
   render: Template,
 
   args: {
-    text: 'Promo tag',
-    appearance: APPEARANCE.Primary,
+    text: 'Promo Tag',
+    showText: true,
+    showBefore: true,
+    showAfter: true,
+    clickable: false,
+    appearance: APPEARANCE.Neutral,
+    color: COLOR.Accent,
+    size: 'xxs',
   },
 
-  argTypes: {},
+  argTypes: {
+    showText: {
+      name: '[Story]: Show text node',
+      type: 'boolean',
+    },
+    showBefore: {
+      name: '[Story]: Show beforeContent node',
+      type: 'boolean',
+    },
+    showAfter: {
+      name: '[Story]: Show afterContent node',
+      type: 'boolean',
+    },
+    clickable: {
+      name: '[Story]: Show behavior tag with onClick',
+      type: 'boolean',
+    },
+    onClick: { table: { disable: true } },
+    beforeContent: { table: { disable: true } },
+    afterContent: { table: { disable: true } },
+  },
 
   parameters: {
     readme: {

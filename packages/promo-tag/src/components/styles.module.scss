@@ -1,18 +1,102 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-promoTag';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-$appearances: 'primary', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
+$appearances: 'neutral', 'primary', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
+$colors: 'accent', 'decor';
+$sizes: 'xxs', 'xs', 's';
+
+$text-color: (
+  accent: 'on-accent',
+  decor: 'text-main',
+);
+$bg-color: (
+  accent: 'accent-default',
+  decor: 'decor-default',
+);
 
 .promoTag {
-  @include styles-tokens-promoTag.composite-var(styles-tokens-promoTag.$promo-tag-container);
-
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
 
-  @each $appearance in $appearances {
-    &[data-appearance=#{$appearance}] {
-      color: styles-tokens-promoTag.simple-var(styles-tokens-promoTag.$theme-variables, 'sys', $appearance, 'on-accent');
-      background-color: styles-tokens-promoTag.simple-var(styles-tokens-promoTag.$theme-variables, 'sys', $appearance, 'accent-default');
+  @each $color in $colors {
+    @each $appearance in $appearances {
+      &[data-color='#{$color}'] {
+        &[data-appearance='#{$appearance}'] {
+          $text: styles-tokens-promoTag.simple-var($text-color, $color);
+          $background: styles-tokens-promoTag.simple-var($bg-color, $color);
+
+          color: styles-tokens-promoTag.simple-var(styles-tokens-promoTag.$theme-variables, 'sys', $appearance, $text);
+          background-color: styles-tokens-promoTag.simple-var(
+            styles-tokens-promoTag.$theme-variables,
+            'sys',
+            $appearance,
+            $background
+          );
+
+          &[data-color='decor'] {
+            @include styles-tokens-promoTag.outline-inside-var(styles-tokens-element.$container-focused-s);
+
+            outline-color: styles-tokens-promoTag.simple-var(
+              styles-tokens-promoTag.$theme-variables,
+              'sys',
+              $appearance,
+              'decor-activated'
+            );
+            outline-width: styles-tokens-promoTag.$border-width-promo-tag-single;
+            outline-offset: calc(0px - styles-tokens-promoTag.$border-width-promo-tag-single);
+          }
+
+          &[role='button'] {
+            cursor: pointer;
+
+            &:hover {
+              background-color: styles-tokens-promoTag.simple-var(
+                styles-tokens-promoTag.$theme-variables,
+                'sys',
+                $appearance,
+                #{$color}-hovered
+              );
+            }
+
+            &:focus-visible {
+              @include styles-tokens-promoTag.outline-inside-var(styles-tokens-element.$container-focused-s);
+
+              outline-color: styles-tokens-promoTag.$sys-available-complementary;
+            }
+
+            &:active {
+              &[data-color='accent'] {
+                background-color: styles-tokens-promoTag.simple-var(
+                  styles-tokens-promoTag.$theme-variables,
+                  'sys',
+                  $appearance,
+                  'accent-pressed'
+                );
+              }
+
+              &[data-color='decor'] {
+                background-color: styles-tokens-promoTag.simple-var(
+                  styles-tokens-promoTag.$theme-variables,
+                  'sys',
+                  $appearance,
+                  'decor-activated'
+                );
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include styles-tokens-promoTag.composite-var(styles-tokens-promoTag.$promo-tag, 'container', $size);
+
+      .labelWrapper {
+        @include styles-tokens-promoTag.composite-var(styles-tokens-promoTag.$promo-tag, 'label-wrapper', $size);
+      }
     }
   }
 }
