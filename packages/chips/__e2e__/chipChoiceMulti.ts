@@ -35,4 +35,29 @@ test.page(getPage({ label: LABEL_TEXT, useDefaultValue: false }))(
   },
 );
 
+test.page(getPage({ useDefaultValue: false, autoApply: false }))(
+  `should not change value by selecting option and chance by approve click`,
+  async t => {
+    const { footer, chip, getOption, value, approveButton, cancelButton } = getComponent();
+
+    await t.click(chip);
+    await t.expect(footer.exists).ok('Droplist footer dont exists');
+
+    await t.click(getOption(VALUES_LABELS[0].value));
+
+    await t.expect(value.innerText).eql('All', 'Value changed after selection with autoApply flag');
+
+    await t.click(cancelButton);
+    await t.click(chip);
+
+    await t.expect(getOption(VALUES_LABELS[0].value).checked).notOk('Values not resets after click on cancel button');
+
+    await t.click(getOption(VALUES_LABELS[0].value));
+    await t.click(getOption(VALUES_LABELS[1].value));
+
+    await t.click(approveButton);
+    await t.expect(value.innerText).eql('2/5', 'Value not matched after selection');
+  },
+);
+
 chipChoiceCommonTests(getPage, 'multi');

@@ -6,7 +6,7 @@ import { useValueControl } from '@snack-uikit/utils';
 
 import { CHIP_CHOICE_TEST_IDS, SIZE } from '../../../constants';
 import { DROPLIST_SIZE_MAP } from '../constants';
-import { useFuzzySearch, useHandleOnKeyDown } from '../hooks';
+import { useAutoApply, useFuzzySearch, useHandleOnKeyDown } from '../hooks';
 import { ChipChoiceSingleProps, ContentRenderProps } from '../types';
 import { FlattenOption, kindFlattenOptions } from '../utils';
 import { transformOptionsToItems } from '../utils/options';
@@ -32,12 +32,19 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
   searchable,
   contentRender,
   dropDownClassName,
+  autoApply = true,
+  onApprove,
+  onCancel,
   ...rest
 }: ChipChoiceSingleProps<T>) {
   const [value, setValue] = useValueControl<SelectionSingleValueType>({
     value: valueProp,
     defaultValue,
     onChange: onChangeProp,
+  });
+
+  const [deferredValue, setDeferredValue] = useValueControl<SelectionSingleValueType>({
+    defaultValue,
   });
 
   const flattenOptions = useMemo(() => {
@@ -52,6 +59,8 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
   const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
 
   const flatMapOptions = useMemo(() => Object.values(flattenOptions), [flattenOptions]);
+
+  const dropListSelection = useMemo(() => (autoApply ? value : deferredValue), [autoApply, deferredValue, value]);
 
   const selectedOption = useMemo(
     () => (value ? flattenOptions[value] : ({} as FlattenOption<T>)),
@@ -72,7 +81,10 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
   );
   const items = useMemo(() => transformOptionsToItems<T>(result, contentRender), [contentRender, result]);
 
-  const clearValue = () => setValue(undefined);
+  const clearValue = () => {
+    setValue(undefined);
+    setDeferredValue(undefined);
+  };
   const chipRef = useRef<HTMLDivElement>(null);
 
   const handleSelectionChange = useCallback(
@@ -80,13 +92,38 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
       if (newValue !== undefined) {
         chipRef.current?.focus();
 
-        setOpen(false);
-        setValue(newValue);
-        setSearchValue('');
+        if (autoApply) {
+          setOpen(false);
+          setSearchValue('');
+          setValue(newValue);
+        } else {
+          setDeferredValue(newValue);
+        }
       }
     },
-    [setSearchValue, setValue],
+    [autoApply, setValue, setDeferredValue],
   );
+
+  const handleOnCancelClick = () => {
+    onCancel && onCancel();
+
+    setDeferredValue(value);
+    setOpen(false);
+  };
+
+  const handleOnApproveClick = () => {
+    onApprove && onApprove();
+
+    setValue(deferredValue);
+    setOpen(false);
+  };
+
+  const renderFooter = useAutoApply({
+    autoApply,
+    size,
+    onApprove: handleOnApproveClick,
+    onCancel: handleOnCancelClick,
+  });
 
   useEffect(() => {
     if (searchValue && !open) {
@@ -94,12 +131,17 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
     }
   }, [searchable, open, searchValue]);
 
+  useEffect(() => {
+    setDeferredValue(value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
   return (
     <Droplist
       {...rest}
       items={items}
       selection={{
-        value,
+        value: dropListSelection,
         onChange: handleSelectionChange,
         mode: 'single',
       }}
@@ -108,11 +150,12 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
       trigger='click'
       placement='bottom-start'
       className={dropDownClassName}
-      closeDroplistOnItemClick
+      closeDroplistOnItemClick={autoApply}
       widthStrategy='gte'
       open={open}
       onOpenChange={open => {
         if (!open) {
+          !autoApply && setDeferredValue(value);
           setSearchValue('');
         }
         setOpen(open);
@@ -126,6 +169,7 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
             }
           : undefined
       }
+      pinBottom={renderFooter()}
     >
       <ChipChoiceBase
         {...rest}

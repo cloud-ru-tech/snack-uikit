@@ -6,7 +6,7 @@ import { useValueControl } from '@snack-uikit/utils';
 
 import { CHIP_CHOICE_TEST_IDS, SIZE } from '../../../constants';
 import { DROPLIST_SIZE_MAP } from '../constants';
-import { useFuzzySearch, useHandleOnKeyDown } from '../hooks';
+import { useAutoApply, useFuzzySearch, useHandleOnKeyDown } from '../hooks';
 import { ChipChoiceMultipleProps, ContentRenderProps } from '../types';
 import { FlattenOption, kindFlattenOptions } from '../utils';
 import { transformOptionsToItems } from '../utils/options';
@@ -44,12 +44,19 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   contentRender,
   dropDownClassName,
   showClearButton = true,
+  autoApply = true,
+  onApprove,
+  onCancel,
   ...rest
 }: ChipChoiceMultipleProps<T>) {
   const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
     value: valueProp,
     defaultValue,
     onChange: onChangeProp,
+  });
+
+  const [deferredValue, setDeferredValue] = useValueControl<SelectionSingleValueType[]>({
+    defaultValue,
   });
 
   const flattenOptions = useMemo(() => {
@@ -66,6 +73,8 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
 
   const flatMapOptions = useMemo(() => Object.values(flattenOptions), [flattenOptions]);
+
+  const dropListSelection = useMemo(() => (autoApply ? value : deferredValue), [autoApply, deferredValue, value]);
 
   const selectedOptions = useMemo(
     () => (value && value.length ? value.map(id => flattenOptions[id]).filter(Boolean) : ([] as FlattenOption<T>[])),
@@ -88,21 +97,50 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   );
   const items = useMemo(() => transformOptionsToItems<T>(result, contentRender), [contentRender, result]);
 
-  const clearValue = () => setValue([]);
+  const clearValue = () => {
+    setValue([]);
+    setDeferredValue([]);
+  };
   const chipRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLElement>(null);
 
   const handleSelectionChange = useCallback(
     (newValue?: SelectionSingleValueType) => {
       if (newValue !== undefined) {
-        setValue(newValue);
+        if (autoApply) {
+          setValue(newValue);
+        } else {
+          setDeferredValue(newValue);
+        }
+
         if (searchValue) {
           listRef.current?.focus();
         }
       }
     },
-    [searchValue, setValue],
+    [autoApply, searchValue, setValue, setDeferredValue],
   );
+
+  const handleOnCancelClick = () => {
+    onCancel && onCancel();
+
+    setDeferredValue(value);
+    setOpen(false);
+  };
+
+  const handleOnApproveClick = () => {
+    onApprove && onApprove();
+
+    setValue(deferredValue);
+    setOpen(false);
+  };
+
+  const renderFooter = useAutoApply({
+    autoApply,
+    size,
+    onApprove: handleOnApproveClick,
+    onCancel: handleOnCancelClick,
+  });
 
   useEffect(() => {
     if (searchValue && !open) {
@@ -110,12 +148,17 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
     }
   }, [searchable, open, searchValue]);
 
+  useEffect(() => {
+    setDeferredValue(value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
   return (
     <Droplist
       {...rest}
       items={items}
       selection={{
-        value,
+        value: dropListSelection,
         onChange: handleSelectionChange,
         mode: 'multiple',
       }}
@@ -128,6 +171,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
       open={open}
       onOpenChange={open => {
         if (!open) {
+          !autoApply && setDeferredValue(value);
           setSearchValue('');
         }
         setOpen(open);
@@ -142,6 +186,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
             }
           : undefined
       }
+      pinBottom={renderFooter()}
     >
       <ChipChoiceBase
         {...rest}

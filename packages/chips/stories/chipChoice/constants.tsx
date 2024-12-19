@@ -105,6 +105,8 @@ export const CHIP_CHOICE_ARG_TYPES: ArgTypes = {
   defaultValue: { table: { disable: true } },
   onChangeValue: { table: { disable: true } },
   valueFormatter: { table: { disable: true } },
+  onApprove: { table: { disable: true } },
+  onCancel: { table: { disable: true } },
   ...COMMON_ARG_TYPES,
   icon: {
     ...COMMON_ARG_TYPES.icon,

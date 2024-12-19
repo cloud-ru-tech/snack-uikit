@@ -1,4 +1,5 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipChoice';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-calendar';
 @use '../../styles.module';
 
 @forward '../../styles.module';
@@ -17,6 +18,13 @@ $valueTypography: (
   's': styles-tokens-chips-chipChoice.$sans-label-m,
   'm': styles-tokens-chips-chipChoice.$sans-label-l,
   'l': styles-tokens-chips-chipChoice.$sans-label-l,
+);
+
+$footerGap: (
+  'xs': styles-tokens-calendar.$calendar-footer-elements-s,
+  's': styles-tokens-calendar.$calendar-footer-elements-s,
+  'm': styles-tokens-calendar.$calendar-footer-elements-m,
+  'l': styles-tokens-calendar.$calendar-footer-elements-l,
 );
 
 .label,
@@ -88,6 +96,18 @@ $valueTypography: (
     .label,
     .value {
       color: styles-tokens-chips-chipChoice.$sys-neutral-text-support;
+    }
+  }
+}
+
+.choiceChipFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @each $size in $sizes {
+    &[data-size='#{$size}'] {
+      @include styles-tokens-calendar.composite-var($footerGap, $size);
     }
   }
 }

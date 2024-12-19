@@ -49,6 +49,7 @@ export const chipChoiceSingle: StoryObj<StoryProps> = {
     ...CHIP_CHOICE_STORY_ARGS,
     useBaseOptions: false,
     scrollToSelectedItem: false,
+    autoApply: true,
   },
   argTypes: {
     ...CHIP_CHOICE_ARG_TYPES,

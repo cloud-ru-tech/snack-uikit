@@ -152,6 +152,9 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | contentRender | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => ReactNode` | - |  |
 | filterFn | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => boolean` | - |  |
 | searchable | `boolean` | - |  |
+| autoApply | `boolean` | - | Флаг, отвечающий за применение выбранного значения по умолчанию |
+| onApprove | `() => void` | - | Колбек основной кнопки |
+| onCancel | `() => void` | - | Колбек кнопки отмены |
 | footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
@@ -187,6 +190,9 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | contentRender | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => ReactNode` | - |  |
 | filterFn | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => boolean` | - |  |
 | searchable | `boolean` | - |  |
+| autoApply | `boolean` | - | Флаг, отвечающий за применение выбранного значения по умолчанию |
+| onApprove | `() => void` | - | Колбек основной кнопки |
+| onCancel | `() => void` | - | Колбек кнопки отмены |
 | footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |

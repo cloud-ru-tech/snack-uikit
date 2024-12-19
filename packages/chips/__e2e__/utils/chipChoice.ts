@@ -50,6 +50,9 @@ export function getComponent() {
     icon: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.icon)).find('svg'),
     spinner: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.spinner)).find('svg'),
     clearButton: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.clearButton)),
+    footer: droplist.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.footer)),
+    cancelButton: droplist.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.cancelButton)),
+    approveButton: droplist.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.approveButton)),
     droplist,
     getOption,
     getOptionCheckbox,
@@ -79,6 +82,12 @@ export function chipChoiceCommonTests(getPage: ReturnType<typeof createChipGetPa
       await t.expect(value.innerText).eql('All');
     });
   }
+
+  test.page(getPage({ autoApply: true }))('should not render footer', async t => {
+    const { footer } = getComponent();
+
+    await t.expect(footer.exists).notOk('footer should not be exists with autoApply flag');
+  });
 
   test.page(getPage({ icon: ICON_NAME }))('should render with icon', async t => {
     const { value, icon } = getComponent();

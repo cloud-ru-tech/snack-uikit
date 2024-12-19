@@ -97,6 +97,13 @@ export type ChipChoiceSelectCommonProps<T extends ContentRenderProps = ContentRe
   filterFn?(option: { label: ItemId; value?: ItemId; contentRenderProps?: T }): boolean;
 
   searchable?: boolean;
+
+  /** Флаг, отвечающий за применение выбранного значения по умолчанию  */
+  autoApply?: boolean;
+  /** Колбек основной кнопки */
+  onApprove?: () => void;
+  /** Колбек кнопки отмены */
+  onCancel?: () => void;
 } & Pick<
     DroplistProps,
     | 'selection'

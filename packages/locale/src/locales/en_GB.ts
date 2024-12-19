@@ -33,6 +33,8 @@ export const en_GB = {
   Chips: {
     clearAllButton: 'Clear all',
     allLabel: 'All',
+    apply: 'Apply',
+    cancel: 'Cancel',
   },
   Fields: {
     limitTooltip: {

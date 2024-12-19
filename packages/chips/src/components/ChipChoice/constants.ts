@@ -1,3 +1,4 @@
+import { ButtonFunctionProps } from '@snack-uikit/button';
 import { CalendarProps, TimePickerProps } from '@snack-uikit/calendar';
 import { DroplistProps } from '@snack-uikit/list';
 
@@ -30,6 +31,13 @@ export const DROPLIST_SIZE_MAP: Record<Size, DroplistProps['size']> = {
   [SIZE.S]: 's',
   [SIZE.M]: 'm',
   [SIZE.L]: 'l',
+};
+
+export const DROPLIST_FOOTER_SIZE_MAP: Record<Size, ButtonFunctionProps['size']> = {
+  [SIZE.Xs]: 'xs',
+  [SIZE.S]: 'xs',
+  [SIZE.M]: 's',
+  [SIZE.L]: 's',
 };
 
 export const CHIP_CHOICE_TYPE = {

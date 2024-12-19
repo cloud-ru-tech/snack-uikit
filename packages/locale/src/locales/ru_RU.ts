@@ -20,6 +20,8 @@ export const ru_RU: typeof en_GB = {
   Chips: {
     clearAllButton: 'Удалить все',
     allLabel: 'Все',
+    apply: 'Применить',
+    cancel: 'Отменить',
   },
   List: {
     noData: {
