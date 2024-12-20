@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2024-12-20)
+
+
+### Features
+
+* **PDS-1240:** add color, size, before and after nodes, onClick to PromoTag ([1626bc8](https://github.com/cloud-ru-tech/snack-uikit/commit/1626bc8b80787b34624746cec30fc08dfb6a2bff))
+
+
+
+
+
 ## 0.6.3 (2024-12-12)
 
 ### Only dependencies have been changed
