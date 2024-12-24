@@ -1,4 +1,4 @@
-export function GitHubLogo() {
+export function GithubLogo() {
   return (
     <svg
       height='40'

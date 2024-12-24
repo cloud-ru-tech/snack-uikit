@@ -43,9 +43,9 @@ const parameters: Parameters = {
   },
   darkMode: {
     // Override the default dark theme
-    dark: { ...themes.dark, ...brandInfo, brandImage: './storybook/assets/CloudRuFullLogoDark.svg', base: 'dark' },
+    dark: { ...themes.dark, ...brandInfo, brandImage: 'storybook/assets/SnackUILogoDark.svg', base: 'dark' },
     // Override the default light theme
-    light: { ...themes.normal, ...brandInfo, brandImage: './storybook/assets/CloudRuFullLogo.svg', base: 'light' },
+    light: { ...themes.normal, ...brandInfo, brandImage: 'storybook/assets/SnackUILogoLight.svg', base: 'light' },
   },
 };
 

@@ -1,0 +1,62 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1281_62632)">
+<rect width="24" height="24" rx="6" fill="#794ED3"/>
+<g filter="url(#filter0_d_1281_62632)">
+<path d="M12.2459 2.49979C13.2099 1.28754 15.1247 1.57346 15.6925 3.01443C15.6925 3.01443 17.9784 9.96717 18.5405 11.0682C19.1026 12.1693 21.9436 18.878 21.9436 18.878C22.5115 20.319 21.4549 21.8565 19.7746 21.6056C18.0943 21.3547 15.9887 20.8586 11.3427 20.3465C6.69656 19.8344 2.91071 19.0875 2.91071 19.0875C1.37887 18.8587 0.757928 17.2766 1.63311 15.8453C1.63311 15.8453 4.62684 11.3156 6.85989 8.52493C9.09294 5.73429 12.2459 2.49979 12.2459 2.49979Z" fill="#EAB74E"/>
+</g>
+<g clip-path="url(#clip1_1281_62632)">
+<mask id="mask0_1281_62632" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="6" y="10" width="6" height="4">
+<ellipse cx="2.6025" cy="1.90427" rx="2.6025" ry="1.90427" transform="matrix(0.989035 0.147681 -0.147689 0.989034 6.80469 9.79395)" fill="white"/>
+</mask>
+<g mask="url(#mask0_1281_62632)">
+<ellipse cx="2.6025" cy="1.90427" rx="2.6025" ry="1.90427" transform="matrix(0.989035 0.147681 -0.147689 0.989034 6.80469 9.79395)" fill="white"/>
+<circle cx="1.65036" cy="1.65036" r="1.65036" transform="matrix(0.989035 0.147681 -0.147689 0.989034 7.77344 10.1943)" fill="#1C1C24"/>
+<circle cx="0.57128" cy="0.57128" r="0.57128" transform="matrix(0.989035 0.147681 -0.147689 0.989034 7.61719 10.4277)" fill="white"/>
+</g>
+</g>
+<g clip-path="url(#clip2_1281_62632)">
+<mask id="mask1_1281_62632" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="13" y="11" width="6" height="4">
+<ellipse cx="2.6025" cy="1.90427" rx="2.6025" ry="1.90427" transform="matrix(0.989035 0.147681 -0.147689 0.989034 13.3359 10.7686)" fill="white"/>
+</mask>
+<g mask="url(#mask1_1281_62632)">
+<ellipse cx="2.6025" cy="1.90427" rx="2.6025" ry="1.90427" transform="matrix(0.989035 0.147681 -0.147689 0.989034 13.3359 10.7686)" fill="white"/>
+<circle cx="1.65036" cy="1.65036" r="1.65036" transform="matrix(0.989035 0.147681 -0.147689 0.989034 14.3047 11.1689)" fill="#1C1C24"/>
+<circle cx="0.57128" cy="0.57128" r="0.57128" transform="matrix(0.989035 0.147681 -0.147689 0.989034 14.1406 11.4023)" fill="white"/>
+</g>
+</g>
+<g filter="url(#filter1_d_1281_62632)">
+<path d="M12.8679 15.8923C12.1747 16.4054 11.1069 16.246 10.5938 15.5527" stroke="#1C1C24" stroke-width="0.5" stroke-linecap="round"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_1281_62632" x="-1.68443" y="-2" width="28.6501" height="28.6501" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="0.684432"/>
+<feGaussianBlur stdDeviation="0.342216"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1281_62632"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1281_62632" result="shape"/>
+</filter>
+<filter id="filter1_d_1281_62632" x="9.65932" y="13.3369" width="4.73605" height="4.63644" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="0.684432"/>
+<feGaussianBlur stdDeviation="0.342216"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1281_62632"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1281_62632" result="shape"/>
+</filter>
+<clipPath id="clip0_1281_62632">
+<rect width="24" height="24" rx="6" fill="white"/>
+</clipPath>
+<clipPath id="clip1_1281_62632">
+<rect width="5.205" height="3.80853" fill="white" transform="matrix(0.989035 0.147681 -0.147689 0.989034 6.80469 9.79395)"/>
+</clipPath>
+<clipPath id="clip2_1281_62632">
+<rect width="5.205" height="3.80853" fill="white" transform="matrix(0.989035 0.147681 -0.147689 0.989034 13.3359 10.7686)"/>
+</clipPath>
+</defs>
+</svg>

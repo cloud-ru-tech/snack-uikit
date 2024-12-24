@@ -65,6 +65,7 @@ const mainConfig: StorybookConfig = {
     ...(process.env.CUSTOM_STORYBOOK_ADDONS?.split(' ') ?? []),
   ],
   staticDirs: [
+    './public',
     { from: '../storybook/assets', to: '/storybook/assets' },
     { from: '../storybook/assets', to: '/assets' },
   ],
