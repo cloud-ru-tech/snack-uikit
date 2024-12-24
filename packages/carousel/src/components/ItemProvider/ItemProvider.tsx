@@ -164,7 +164,7 @@ export function ItemProvider({
       data-swipe={swipe || undefined}
       data-gap={gap}
       style={{
-        ...(Boolean(gap) ? { '--gap': gap } : {}),
+        ...(gap ? { '--gap': gap } : {}),
       }}
     >
       <div

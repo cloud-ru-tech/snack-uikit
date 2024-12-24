@@ -27,7 +27,7 @@ export function SearchItem({ search, itemRef }: SearchItemProps) {
     e.stopPropagation();
   };
 
-  if (!Boolean(search)) {
+  if (!search) {
     return null;
   }
 

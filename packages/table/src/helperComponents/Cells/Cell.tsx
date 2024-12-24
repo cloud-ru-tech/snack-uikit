@@ -15,7 +15,6 @@ export type CellProps = {
 
 export const Cell = forwardRef<HTMLDivElement, CellProps>(
   ({ onClick, onMouseUp, className, style, children, role = 'cell', ...attributes }, ref) => (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <div
       role={role}
       onClick={onClick}

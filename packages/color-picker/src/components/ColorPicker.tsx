@@ -56,7 +56,7 @@ export function ColorPicker({
 
     return Object.keys(colorModeConfig).reduce(
       (res, colorMode: ColorMode) => {
-        if (Boolean(colorModeConfig[colorMode])) {
+        if (colorModeConfig[colorMode]) {
           res.push({
             value: colorMode,
             label: COLOR_MODE_LABEL[colorMode],

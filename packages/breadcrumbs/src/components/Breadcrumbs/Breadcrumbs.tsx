@@ -86,7 +86,7 @@ export const Breadcrumbs = memo(function Breadcrumbs({
               return <Separator key={index} />;
             case ELEMENT_TYPE.Collapse:
               return <Collapse key={index} currentConfig={currentConfig.chain} />;
-            case ELEMENT_TYPE.Item:
+            case ELEMENT_TYPE.Item: {
               const { renderMode, id } = block.item;
               if (renderMode !== ITEM_RENDER_MODE.Collapsed) {
                 return (
@@ -100,6 +100,8 @@ export const Breadcrumbs = memo(function Breadcrumbs({
                   />
                 );
               }
+              break;
+            }
             default:
               return null;
           }

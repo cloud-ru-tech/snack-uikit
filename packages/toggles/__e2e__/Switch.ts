@@ -38,6 +38,7 @@ test.page(getPage({ disabled: true }))("Shouldn't be switched to checked by clic
 
 // FIXME: этот падает в firefox, нужно починить
 // https://github.com/DevExpress/testcafe/issues/6969
+// eslint-disable-next-line vitest/no-commented-out-tests
 // test.page(getPage())('Should be switched by keyboard', async t => {
 //   await t.expect(Selector(NATIVE_CHECKBOX).checked).eql(false, "checked shouldn't be set at start");
 //   await focus(NATIVE_CHECKBOX);

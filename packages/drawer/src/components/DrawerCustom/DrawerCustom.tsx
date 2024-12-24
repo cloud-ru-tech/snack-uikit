@@ -45,7 +45,7 @@ export type DrawerCustomProps = WithSupportProps<
   }>
 >;
 
-function DrawerCustomComponent({
+export function DrawerCustom({
   open,
   mode = MODE.Regular,
   position = POSITION.Right,
@@ -94,19 +94,11 @@ function DrawerCustomComponent({
   );
 }
 
-/** Компонент-конструктор */
-export const DrawerCustom = DrawerCustomComponent as typeof DrawerCustomComponent & {
-  Header: typeof DrawerHeader;
-  Body: typeof DrawerBody;
-  Footer: typeof DrawerFooter;
-};
-
-DrawerCustom.Header = DrawerHeader;
-DrawerCustom.Body = DrawerBody;
-DrawerCustom.Footer = DrawerFooter;
-
 export namespace DrawerCustom {
   export type HeaderProps = DrawerHeaderProps;
   export type BodyProps = DrawerBodyProps;
   export type FooterProps = DrawerFooterProps;
+  export const Header = DrawerHeader;
+  export const Body = DrawerBody;
+  export const Footer = DrawerFooter;
 }

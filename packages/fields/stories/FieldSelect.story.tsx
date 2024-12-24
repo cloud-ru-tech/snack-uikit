@@ -46,7 +46,7 @@ const DEFAULT_OPTIONS: OptionProps[] = [
   { value: 'op11', option: 'Option 11', beforeContent: <DaySVG /> },
   { value: 'op12', option: 'Option 12', beforeContent: <Avatar name='Will Wheaton' size='xs' /> },
 ];
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 const MORE_OPTIONS: BaseOptionProps[] = [
   { value: 'op13', option: 'Option 13' },
   { value: 'op14', option: 'Option 14' },

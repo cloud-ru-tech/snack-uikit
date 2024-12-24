@@ -139,7 +139,7 @@ export function extractAllChildIds({ items }: { items: ItemProps[] }): Array<str
 }
 
 /**
- *  Функция разворачивает массив айтемов в плоский список
+ * Функция разворачивает массив айтемов в плоский список
  *  @function  flattenItems
  */
 

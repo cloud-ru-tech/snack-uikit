@@ -133,7 +133,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
             success: true,
             value: asyncValue,
           };
-        } catch (e) {
+        } catch {
           return {
             success: false,
           };

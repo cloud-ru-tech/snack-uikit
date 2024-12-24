@@ -8,14 +8,16 @@ export function usePeriodName(): string {
   const { viewDate, viewMode, locale } = useContext(CalendarContext);
 
   switch (viewMode) {
-    case VIEW_MODE.Month:
+    case VIEW_MODE.Month: {
       const year = viewDate.getFullYear();
       return `${getMonthName(viewDate, locale)} ${year}`;
+    }
     case VIEW_MODE.Year:
       return viewDate.getFullYear().toString();
-    case VIEW_MODE.Decade:
+    case VIEW_MODE.Decade: {
       const decadeStart = viewDate.getFullYear();
       return `${decadeStart}-${decadeStart + 9}`;
+    }
     default:
       return '';
   }

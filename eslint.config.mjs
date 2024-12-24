@@ -16,7 +16,7 @@ export default [
     },
   },
   {
-    ignores: ['**/dist/**/*', 'packages/icons/src/**/*', 'packages/icons/templates/**/*'],
+    ignores: ['**/dist/**/*', 'packages/icons/src/**/*.tsx', 'packages/icons/templates/**/*'],
   },
   {
     files: ['packages/**/__e2e__/**/*.ts'],

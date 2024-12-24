@@ -17,7 +17,7 @@ export function OverlayElement({ onClose, content, blur = false }: OverlayElemen
 
   return (
     <>
-      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
       <div
         className={styles.modalOverlay}
         data-blur={blur || undefined}

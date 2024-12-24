@@ -203,7 +203,7 @@ export function TreeNode({
     }
   };
 
-  const getNodeActions = Boolean(nested) ? parentActions : nodeActions;
+  const getNodeActions = nested ? parentActions : nodeActions;
 
   return (
     <div
@@ -216,7 +216,7 @@ export function TreeNode({
         <TreeLine halfWidth={Boolean(nested)} horizontal visible={showLines} data-test-id={TEST_IDS.line} />
       )}
 
-      {!parentNode && !Boolean(nested) && <TreeLine visible={false} />}
+      {!parentNode && !nested && <TreeLine visible={false} />}
 
       {isExpandable && (
         <ButtonFunction

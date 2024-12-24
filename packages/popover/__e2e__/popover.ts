@@ -68,39 +68,32 @@ test.page(getPage({ open: true }))('Should be open when controlled "open" flag i
   await t.expect(popover.exists).ok();
 });
 
-// eslint-disable-next-line testcafe-community/missing-expect
 test.page(getPage({ trigger: TRIGGER.Click }))('Opens by click', async t => {
   //https://github.com/DevExpress/testcafe/issues/7969
   if (t.browser.name !== 'Firefox') await verifyPopoverBehavior(t, { click: true });
 });
 
-// eslint-disable-next-line testcafe-community/missing-expect
 test.page(getPage({ trigger: TRIGGER.Hover }))('Opens by hover', async t => {
   await verifyPopoverBehavior(t, { hover: true });
 });
 
-// eslint-disable-next-line testcafe-community/missing-expect
 test.page(getPage({ trigger: TRIGGER.FocusVisible }))('Opens by focus', async t => {
   await verifyPopoverBehavior(t, { focus: true });
 });
 
-// eslint-disable-next-line testcafe-community/missing-expect
 test.page(getPage({ trigger: TRIGGER.ClickAndFocusVisible }))('Opens by click & focus', async t => {
   //https://github.com/DevExpress/testcafe/issues/7969
   if (t.browser.name !== 'Firefox') await verifyPopoverBehavior(t, { click: true, focus: true });
 });
 
-// eslint-disable-next-line testcafe-community/missing-expect
 test.page(getPage({ trigger: TRIGGER.HoverAndFocusVisible }))('Opens by hover & focus', async t => {
   await verifyPopoverBehavior(t, { hover: true, focus: true });
 });
 
-// eslint-disable-next-line testcafe-community/missing-expect
 test.page(getPage({ trigger: TRIGGER.Focus }))('Opens by strong focus', async t => {
   await verifyPopoverBehavior(t, { focus: true, strongFocus: true });
 });
 
-// eslint-disable-next-line testcafe-community/missing-expect
 test.page(getPage({ trigger: TRIGGER.HoverAndFocus }))('Opens by hover & strong focus', async t => {
   await verifyPopoverBehavior(t, { hover: true, focus: true, strongFocus: true });
 });

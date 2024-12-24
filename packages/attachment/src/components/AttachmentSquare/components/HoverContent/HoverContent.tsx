@@ -19,7 +19,7 @@ export function HoverContent({ title, description, error, className = '' }: Hove
     >
       <TextBlock title={title} error={error} description={!error ? description : undefined} align='center' />
 
-      <Actions hideDownload={Boolean(error)} hideRetry={!Boolean(error)} />
+      <Actions hideDownload={Boolean(error)} hideRetry={!error} />
     </div>
   );
 }

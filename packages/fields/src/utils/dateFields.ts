@@ -66,7 +66,7 @@ export function parseDate(value: string) {
       day = DATE_STUB.getDay();
     }
 
-    const [hours = 0, minutes = 0, seconds = 0] = time.split(':').map(str => Number(str) ?? 0);
+    const [hours = 0, minutes = 0, seconds = 0] = time.split(':').map(str => Number(str ?? 0));
 
     return new Date(year, month, day, hours, minutes, seconds);
   }

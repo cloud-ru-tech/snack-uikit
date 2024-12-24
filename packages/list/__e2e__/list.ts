@@ -170,7 +170,6 @@ test.page(
 });
 
 // TODO: add later
-// eslint-disable-next-line testcafe-community/no-disabled-tests
 test.skip.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, showCollapsedList: true, collapse: 'single' }))(
   'Should work in collapsed single mode',
   async t => {
@@ -387,7 +386,6 @@ test.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, showCollapsedList: true, collapse
   },
 );
 
-// eslint-disable-next-line testcafe-community/no-disabled-tests
 test.skip.page(getPage({ ...DEFAULT_EMPTY_SETTINGS, showAsyncList: true }))(
   'Should work in async mode from keyboard',
   async t => {

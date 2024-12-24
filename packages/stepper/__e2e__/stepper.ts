@@ -27,7 +27,7 @@ const getTextView = async () => {
           texts.push('--');
         }
         break;
-      case STEP_TEST_ID:
+      case STEP_TEST_ID: {
         const state = await element.getAttribute('data-state');
         const text = (await element.innerText).split('\n').slice(0, 3).join(' ');
         const view: Record<string, string> = {
@@ -40,6 +40,8 @@ const getTextView = async () => {
 
         const textView = state ? view[state] || '!!!' : '!!!';
         texts.push(textView);
+        break;
+      }
       default:
         break;
     }

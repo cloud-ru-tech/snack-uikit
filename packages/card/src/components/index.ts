@@ -4,6 +4,7 @@ import { FunctionBadge, FunctionBadgeProps as FunctionBadgeComponentProps } from
 import { Header, HeaderProps as HeaderComponentProps } from './Header';
 import { Image, ImageProps as ImageComponentProps } from './Image';
 
+// eslint-disable-next-line import/export
 export const Card = CardComponent as typeof CardComponent & {
   Header: typeof Header;
   Image: typeof Image;
@@ -18,6 +19,7 @@ Card.FunctionBadge = FunctionBadge;
 
 export { type CardProps };
 
+// eslint-disable-next-line import/export
 export namespace Card {
   export type HeaderProps = HeaderComponentProps;
   export type ImageProps = ImageComponentProps;

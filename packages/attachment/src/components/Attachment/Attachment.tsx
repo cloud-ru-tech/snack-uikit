@@ -51,7 +51,7 @@ export function Attachment({
           <div className={styles.composition} data-size={size}>
             <Emblem title={title} loading={isLoading} icon={icon} imageData={imageData} />
             <TextBlock title={title} description={description} error={error} />
-            <Actions hideDownload={isLoading || Boolean(error)} hideRetry={isLoading || !Boolean(error)} />
+            <Actions hideDownload={isLoading || Boolean(error)} hideRetry={isLoading || !error} />
           </div>
         </AttachmentContext.Provider>
       }
