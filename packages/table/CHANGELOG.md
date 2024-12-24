@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.26.0 (2024-12-24)
+
+
+### Features
+
+* **PDS-671:** add tree cell ([794a3c2](https://github.com/cloud-ru-tech/snack-uikit/commit/794a3c246789147cb8c59d347a692550628b3081))
+
+
+
+
+
 ## 0.25.17 (2024-12-18)
 
 ### Only dependencies have been changed
