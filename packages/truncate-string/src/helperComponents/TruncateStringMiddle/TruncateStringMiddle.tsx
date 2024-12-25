@@ -33,6 +33,8 @@ export function TruncateStringMiddle({ text, className, hideTooltip, placement, 
       setShowTooltip(isEllipsisActive(textElementRef.current));
     }, 50);
 
+    setTruncate();
+
     const observer = new ResizeObserver(setTruncate);
 
     if (textElementRef.current) {
