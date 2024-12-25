@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.3 (2024-12-25)
+
+
+### Bug Fixes
+
+* **FF-5676:** fix truncate-middle string initial behavior ([a013003](https://github.com/cloud-ru-tech/snack-uikit/commit/a0130033653370833b7bbbc37551ff0d80d06af7))
+
+
+
+
+
 ## 0.6.2 (2024-12-12)
 
 ### Only dependencies have been changed
