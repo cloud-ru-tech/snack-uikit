@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.23.0 (2024-12-25)
+
+
+### Features
+
+* **PDS-540:** add autoApply flag for multiple and single ChipChoice ([62f298d](https://github.com/cloud-ru-tech/snack-uikit/commit/62f298d27763f3c67b14ec1a03d3bb660b2468af))
+
+
+
+
+
 ## 0.22.5 (2024-12-18)
 
 ### Only dependencies have been changed
