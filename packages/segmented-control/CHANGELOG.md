@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.5 (2024-12-26)
+
+### Only dependencies have been changed
+* [@snack-uikit/truncate-string@0.6.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 ## 0.4.4 (2024-12-25)
 
 ### Only dependencies have been changed
