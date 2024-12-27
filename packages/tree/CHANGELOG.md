@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.16 (2024-12-27)
+
+
+### Bug Fixes
+
+* **PDS-1315:** tree radio selected element parents ([fae6416](https://github.com/cloud-ru-tech/snack-uikit/commit/fae64165834b2eaa32c66eccad01178ab321436e))
+
+
+
+
+
 ## 0.8.15 (2024-12-26)
 
 
