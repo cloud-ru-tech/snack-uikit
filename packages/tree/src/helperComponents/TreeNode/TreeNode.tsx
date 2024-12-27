@@ -234,7 +234,9 @@ export function TreeNode({
       <div
         role='treeitem'
         aria-expanded={isExpanded}
-        aria-selected={isSelectable ? isSelected : undefined}
+        aria-selected={
+          isSelectable ? isSelected || (nestedNodesSelection?.someSelected && !isExpanded && !isMultiSelect) : undefined
+        }
         aria-disabled={disabled}
         data-multiselect={isMultiSelect || undefined}
         data-droplist-active={isDroplistOpen || isDroplistTriggerFocused || undefined}
@@ -262,13 +264,7 @@ export function TreeNode({
               />
             )}
             {showToggle && (
-              <Radio
-                size='s'
-                checked={isSelected}
-                disabled={disabled || (!isSelected && nestedNodesSelection?.someSelected)}
-                data-test-id={TEST_IDS.radio}
-                tabIndex={-1}
-              />
+              <Radio size='s' checked={isSelected} disabled={disabled} data-test-id={TEST_IDS.radio} tabIndex={-1} />
             )}
           </div>
         )}
