@@ -16,17 +16,15 @@ export default [
     },
   },
   {
-    ignores: ['**/dist/**/*', 'packages/icons/src/**/*.tsx', 'packages/icons/templates/**/*'],
+    ignores: [
+      '**/dist/**/*',
+      'packages/icons/src/components/**/*',
+      'packages/icons/templates/**/*',
+      'packages/icons/scripts/**/*',
+    ],
   },
   {
-    files: ['packages/**/__e2e__/**/*.ts'],
-    rules: {
-      'testcafe-community/missing-expect': 'off',
-      '@cloud-ru/ssr-safe-react/domApi': 'off',
-    },
-  },
-  {
-    files: ['packages/**/scripts/**/*.ts'],
+    files: ['packages/**/__e2e__/**/*.ts', 'packages/**/scripts/**/*.ts'],
     rules: {
       '@cloud-ru/ssr-safe-react/domApi': 'off',
     },
@@ -43,6 +41,8 @@ export default [
     rules: {
       'react/function-component-definition': 'off',
       '@cloud-ru/ssr-safe-react/domApi': 'off',
+      'import/no-default-export': 'off',
+      'no-restricted-imports': 'off',
     },
   },
   {
