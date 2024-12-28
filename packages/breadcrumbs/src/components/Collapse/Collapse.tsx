@@ -1,6 +1,6 @@
 import { useContext, useRef } from 'react';
 
-import { Droplist } from '@snack-uikit/list';
+import { Droplist, DroplistProps } from '@snack-uikit/list';
 
 import { ELEMENT_TYPE, ITEM_RENDER_MODE } from '../../constants';
 import { BreadcrumbsContext } from '../../context';
@@ -19,14 +19,24 @@ export function Collapse({ currentConfig, className }: CollapseProps) {
   const { hidden, size, testId } = ctx;
   const buttonRef = useRef(null);
 
-  const collapsedItems = currentConfig
+  const collapsedItems: DroplistProps['items'] = currentConfig
     .filter(node => node.element === ELEMENT_TYPE.Item && node.item.renderMode === ITEM_RENDER_MODE.Collapsed)
     .map(
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       (node: { element: typeof ELEMENT_TYPE.Item; width: number; item: InnerItem }) => ({
         content: { option: node.item.label },
-        onClick: node.item.onClick,
+        ...(node.item.href
+          ? {
+              itemWrapRender: crumb => (
+                <a href={node.item.href} onClick={node.item.onClick} className={styles.a}>
+                  {crumb}
+                </a>
+              ),
+            }
+          : {
+              onClick: node.item.onClick,
+            }),
       }),
     );
 

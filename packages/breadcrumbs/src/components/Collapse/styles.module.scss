@@ -13,10 +13,19 @@
   &:focus-visible {
     @include styles-tokens-element.outline-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: styles-tokens-element.simple-var(styles-tokens-element.$theme-variables, 'sys', 'available', 'complementary');
+    outline-color: styles-tokens-element.simple-var(
+      styles-tokens-element.$theme-variables,
+      'sys',
+      'available',
+      'complementary'
+    );
   }
 }
 
 .collapsedRow {
   display: flex;
+}
+
+.a {
+  text-decoration: none;
 }
