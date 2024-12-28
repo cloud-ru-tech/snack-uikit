@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.16 (2024-12-28)
+
+
+### Bug Fixes
+
+* **PDS-1341:** collapse crumb href ([82800ad](https://github.com/cloud-ru-tech/snack-uikit/commit/82800ad09cda1a60828847db124037f4baeec222))
+
+
+
+
+
 ## 0.10.15 (2024-12-26)
 
 
