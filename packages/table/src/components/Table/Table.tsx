@@ -347,7 +347,7 @@ export function Table<TData extends object>({
 
   usePageReset({
     manualPagination,
-    maximumAvailablePage: pageCount || data.length / pagination.pageSize,
+    maximumAvailablePage: pageCount || tableFilteredRows.length / pagination.pageSize,
     pagination,
     onPaginationChange,
     autoResetPageIndex,
