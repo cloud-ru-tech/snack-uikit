@@ -296,7 +296,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| filters* | `OmitBetter<ChipChoiceProps, "size" \| "onChange" \| "value" \| "defaultValue">[]` | - | Массив чипов |
+| filters* | `ChipChoiceRowFilter[]` | - | Массив чипов |
 | value | `FiltersState` | - | Состояние фильтров |
 | defaultValue | `Partial<TState>` | - | Начальное состояние фильтров |
 | onChange | `(filters: TState) => void` | - | Колбек изменения состояния фильтров |

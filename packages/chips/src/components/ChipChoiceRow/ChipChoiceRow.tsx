@@ -14,6 +14,8 @@ import { ChipChoiceProps, ChipChoiceRowSize, FilterValue, OmitBetter } from './t
 
 export type FiltersState = Record<string, unknown>;
 
+export type ChipChoiceRowFilter = OmitBetter<ChipChoiceProps, 'onChange' | 'value' | 'size' | 'defaultValue'>;
+
 export type ChipChoiceRowProps<TState extends FiltersState> = WithSupportProps<{
   /** Состояние фильтров */
   value?: TState;
@@ -22,7 +24,7 @@ export type ChipChoiceRowProps<TState extends FiltersState> = WithSupportProps<{
   /** Колбек изменения состояния фильтров */
   onChange?(filters: TState): void;
   /** Массив чипов */
-  filters: OmitBetter<ChipChoiceProps, 'onChange' | 'value' | 'size' | 'defaultValue'>[];
+  filters: ChipChoiceRowFilter[];
   /** Размер @default 's' */
   size?: ChipChoiceRowSize;
   /** CSS-класс */
