@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.23.3 (2025-01-13)
+
+
+### Bug Fixes
+
+* **PREBILLING-000:** opened the filter type export in ChipChoiceRow ([f7d0bd9](https://github.com/cloud-ru-tech/snack-uikit/commit/f7d0bd9aafe9013e50e80185d3bf58b176bcc681))
+
+
+
+
+
 ## 0.23.2 (2024-12-26)
 
 ### Only dependencies have been changed
