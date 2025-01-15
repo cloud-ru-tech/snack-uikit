@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.26.5 (2025-01-15)
+
+
+### Bug Fixes
+
+* **FF-5532:** table search filter pagination bug fixed ([36f8799](https://github.com/cloud-ru-tech/snack-uikit/commit/36f879940a2d2244f98456ae890c708a748e275e))
+
+
+
+
+
 ## 0.26.4 (2025-01-13)
 
 ### Only dependencies have been changed
