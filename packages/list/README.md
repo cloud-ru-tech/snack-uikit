@@ -60,6 +60,7 @@
 | triggerElemRef | `RefObject<HTMLElement>` | - | Ссылка на элемент-триггер для дроплиста |
 | listRef | `RefObject<HTMLElement>` | - | Ссылка на элемент выпадающего списка |
 | closeDroplistOnItemClick | `boolean` | - | Закрывать выпадающий список после клика на базовый айтем.  Работает в режимах selection: 'none' \| 'single' |
+| virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | triggerClassName | `string` | - | CSS-класс триггера |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |

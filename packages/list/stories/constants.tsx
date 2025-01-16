@@ -145,6 +145,36 @@ export const DROPLIST_OPTIONS: Array<AccordionItemProps | NextListItemProps | Ba
     id: 'second',
     items: BASE_OPTIONS.map(item => ({ ...item, disabled: true })),
   },
+  {
+    content: { option: 'Some Basic Content', description: 'description' },
+    beforeContent: <PlaceholderSVG />,
+    id: 'third',
+    items: BASE_OPTIONS.map(item => ({ ...item, disabled: true })),
+  },
+  {
+    content: { option: 'Some More Basic Content', description: 'Awesome description' },
+    beforeContent: <PlaceholderSVG />,
+    id: 'fourth',
+    items: BASE_OPTIONS.map(item => ({ ...item, disabled: true })),
+  },
+  {
+    content: { option: 'Basic Content After Basic Content', description: 'Basic Description' },
+    beforeContent: <PlaceholderSVG />,
+    id: 'fifth',
+    items: BASE_OPTIONS.map(item => ({ ...item, disabled: true })),
+  },
+  {
+    content: { option: 'Basic Content Again', description: 'Basic Description Again' },
+    beforeContent: <PlaceholderSVG />,
+    id: 'sixth',
+    items: BASE_OPTIONS.map(item => ({ ...item, disabled: true })),
+  },
+  {
+    content: { option: 'Basic Content Final', description: 'Final Description' },
+    beforeContent: <PlaceholderSVG />,
+    id: 'seventh',
+    items: BASE_OPTIONS.map(item => ({ ...item, disabled: true })),
+  },
 ];
 
 export enum EmptyState {

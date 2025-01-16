@@ -77,6 +77,11 @@ export type DroplistProps = {
    */
   closeDroplistOnItemClick?: boolean;
 
+  /**
+   * Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка
+   */
+  virtualized?: boolean;
+
   /** Триггер для дроплиста
    * @type ReactNode | ({onKeyDown}) => ReactNode
    *
@@ -90,6 +95,7 @@ export type ListPrivateProps = Omit<ListProps, 'pinTop' | 'pinBottom' | 'items' 
   nested?: boolean;
   active?: boolean;
   tabIndex?: number;
+  virtualized?: boolean;
   onFocus?(e: FocusEvent<HTMLElement>): void;
   onBlur?(e: FocusEvent<HTMLElement>): void;
   onKeyDown?(e: KeyboardEvent<HTMLElement>): void;

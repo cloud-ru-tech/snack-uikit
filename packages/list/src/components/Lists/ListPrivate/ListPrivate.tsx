@@ -1,5 +1,6 @@
+import { useVirtualizer } from '@tanstack/react-virtual';
 import cn from 'classnames';
-import { ForwardedRef, forwardRef, RefObject, useMemo } from 'react';
+import { ForwardedRef, forwardRef, RefObject, useEffect, useMemo, useRef } from 'react';
 
 import { Spinner } from '@snack-uikit/loaders';
 import { Scroll } from '@snack-uikit/scroll';
@@ -10,6 +11,7 @@ import { PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from 
 import { useNewListContext, useSelectionContext } from '../contexts';
 import commonStyles from '../styles.module.scss';
 import { ListPrivateProps } from '../types';
+import { ALL_SIZES } from './constants';
 import styles from './styles.module.scss';
 
 export const ListPrivate = forwardRef(
@@ -41,6 +43,7 @@ export const ListPrivate = forwardRef(
       dataError,
       dataFiltered,
       scrollToSelectedItem = false,
+      virtualized = false,
       scrollContainerClassName,
       ...props
     }: ListPrivateProps,
@@ -48,6 +51,7 @@ export const ListPrivate = forwardRef(
   ) => {
     const { size = 's', flattenItems, focusFlattenItems } = useNewListContext();
     const { value, isSelectionSingle } = useSelectionContext();
+    const innerScrollRef = useRef<HTMLElement | null>(null);
 
     const itemsJSX = useRenderItems(items);
     const itemsPinTopJSX = useRenderItems(pinTop);
@@ -55,6 +59,18 @@ export const ListPrivate = forwardRef(
 
     const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
     const hasNoItems = items.length === 0;
+
+    const virtualizer = useVirtualizer({
+      count: itemsJSX.length,
+      getScrollElement: () => (scroll ? innerScrollRef.current : null),
+      estimateSize: () => ALL_SIZES[size],
+      enabled: virtualized,
+    });
+    const virtualItems = virtualizer.getVirtualItems();
+
+    useEffect(() => {
+      virtualizer.measure();
+    }, [virtualizer]);
 
     const loadingJSX = useMemo(
       () =>
@@ -76,7 +92,28 @@ export const ListPrivate = forwardRef(
     const content = useMemo(
       () => (
         <div className={styles.content}>
-          {itemsJSX}
+          {virtualized ? (
+            <div className={styles.virtualizedContainer} style={{ height: virtualizer.getTotalSize() }} tabIndex={-1}>
+              <div
+                className={styles.virtualizedPositionBox}
+                style={{ transform: `translateY(${virtualItems[0]?.start ?? 0}px)` }}
+                tabIndex={-1}
+              >
+                {virtualItems.map(virtualRow => (
+                  <div
+                    key={virtualRow.key}
+                    data-index={virtualRow.index}
+                    ref={virtualizer.measureElement}
+                    tabIndex={-1}
+                  >
+                    {itemsJSX[virtualRow.index]}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            itemsJSX
+          )}
           {loadingJSX}
 
           <ListEmptyState
@@ -88,7 +125,19 @@ export const ListPrivate = forwardRef(
           />
         </div>
       ),
-      [dataError, dataFiltered, emptyStates, hasNoItems, itemsJSX, loading, loadingJSX, search?.value],
+      [
+        dataError,
+        dataFiltered,
+        emptyStates,
+        hasNoItems,
+        itemsJSX,
+        loading,
+        loadingJSX,
+        search?.value,
+        virtualItems,
+        virtualized,
+        virtualizer,
+      ],
     );
 
     const onScrollInitialized = () => {
@@ -140,7 +189,10 @@ export const ListPrivate = forwardRef(
             )}
             barHideStrategy='never'
             size={size === 's' ? 's' : 'm'}
-            ref={scrollContainerRef}
+            ref={ref => {
+              innerScrollRef.current = ref;
+              if (scrollContainerRef) (scrollContainerRef as React.MutableRefObject<HTMLElement | null>).current = ref;
+            }}
             untouchableScrollbars={untouchableScrollbars}
             onScroll={onScroll}
             onInitialized={onScrollInitialized}

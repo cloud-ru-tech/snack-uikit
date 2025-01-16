@@ -2,7 +2,7 @@ import FuzzySearch from 'fuzzy-search';
 import { KeyboardEvent, KeyboardEventHandler, useCallback } from 'react';
 
 import { ButtonFilled, ButtonFunction } from '@snack-uikit/button';
-import { DroplistProps } from '@snack-uikit/list';
+import { DroplistProps, ItemId } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 
 import { CHIP_CHOICE_TEST_IDS } from '../../constants';
@@ -60,26 +60,28 @@ export function useOptionSearch<T extends ContentRenderProps = ContentRenderProp
 }) {
   return useCallback(
     (search: string) => {
-      const searcher = new FuzzySearch(
+      if (search.length < (minSearchInputLength ?? DEFAULT_MIN_SEARCH_INPUT_LENGTH)) return options;
+
+      if (disableFuzzySearch) {
+        return options.filter(option => {
+          const fieldsForSearch = [option.label];
+
+          if ('contentRenderProps' in option) {
+            fieldsForSearch.push(option?.contentRenderProps?.description);
+            fieldsForSearch.push(option?.contentRenderProps?.caption);
+          }
+
+          return fieldsForSearch
+            .filter((v): v is ItemId => Boolean(v))
+            .some(value => value.toString().includes(search));
+        });
+      }
+
+      return new FuzzySearch(
         flatMapOptions,
         ['label', 'contentRenderProps.description', 'contentRenderProps.caption'],
         {},
-      );
-
-      const plainSearcher = (searchQuery: string) =>
-        options.filter(option => {
-          let matchesQuery = false;
-          matchesQuery ||= Boolean(option.label?.toString().includes(String(searchQuery)));
-          if ('contentRenderProps' in option) {
-            matchesQuery ||= Boolean(option?.contentRenderProps?.description?.toString().includes(String(searchQuery)));
-            matchesQuery ||= Boolean(option?.contentRenderProps?.caption?.toString().includes(String(searchQuery)));
-          }
-          return matchesQuery;
-        });
-
-      if (search.length < (minSearchInputLength ?? DEFAULT_MIN_SEARCH_INPUT_LENGTH)) return options;
-
-      return disableFuzzySearch ? plainSearcher(search) : searcher.search(search);
+      ).search(search);
     },
     [disableFuzzySearch, flatMapOptions, minSearchInputLength, options],
   );

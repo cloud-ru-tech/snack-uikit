@@ -18,9 +18,27 @@ export default meta;
 function Template({ ...args }: ChipChoiceRowProps<Filters>) {
   const [state, setState] = useState<Filters>((args.defaultValue ?? {}) as Filters);
 
+  const exampleWithTonOfOptions = {
+    type: 'multiple' as const,
+    id: 'vms_multiple',
+    label: 'Virtual machines (10k values with virtualization)',
+    virtualized: true,
+    options: Array.from({ length: 10000 }).map((_, i) => ({
+      value: `vm-${i}`,
+      label: `vm-${i}`,
+    })),
+    'data-test-id': STORY_TEST_IDS.MultiTonOfValues,
+  };
+
   return (
     <div>
-      <ChipChoiceRow<Filters> {...args} value={state} onChange={setState} data-test-id={STORY_TEST_IDS.Row} />
+      <ChipChoiceRow<Filters>
+        {...args}
+        filters={[...args.filters, exampleWithTonOfOptions]}
+        value={state}
+        onChange={setState}
+        data-test-id={STORY_TEST_IDS.Row}
+      />
       <span style={{ opacity: 0 }} data-test-id={STORY_TEST_IDS.State}>
         {JSON.stringify(state)}
       </span>

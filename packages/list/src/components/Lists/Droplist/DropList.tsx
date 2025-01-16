@@ -44,6 +44,7 @@ export function Droplist({
   className,
   listRef: listRefProp,
   untouchableScrollbars = false,
+  virtualized = false,
   ...props
 }: DroplistProps) {
   const hasSearch = useMemo(() => Boolean(search), [search]);
@@ -240,6 +241,7 @@ export function Droplist({
                       items={memorizedItems.items.focusCloseChildIds}
                       pinTop={memorizedItems.pinTop.focusCloseChildIds}
                       pinBottom={memorizedItems.pinBottom.focusCloseChildIds}
+                      virtualized={virtualized}
                       onKeyDown={handleListKeyDown}
                       searchItem={searchItem}
                       tabIndex={0}
