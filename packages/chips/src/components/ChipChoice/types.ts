@@ -74,6 +74,11 @@ export type ChipChoiceCommonProps = WithSupportProps<
     size?: Size;
     /** Колбек обработки клика */
     onClick?: MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
+    /**
+     * Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search
+     * @default false
+     */
+    disableFuzzySearch?: boolean;
     /** Отображение кнопки очистки значения @default true*/
     showClearButton?: boolean;
     /** Расположение выпадающего меню */

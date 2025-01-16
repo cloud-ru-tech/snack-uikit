@@ -47,11 +47,17 @@ const DEFAULT_MIN_SEARCH_INPUT_LENGTH = 2;
 /**
  * Нечеткий поиск среди айтемов по полям 'content.option', 'content.caption', 'content.description', 'label'
  */
-export function useFuzzySearch<T extends ContentRenderProps = ContentRenderProps>(
-  options: FilterOption<T>[],
-  flatMapOptions: (BaseOption<T> | AccordionOption<T> | NestListOption<T>)[],
-  minSearchInputLength?: number,
-) {
+export function useOptionSearch<T extends ContentRenderProps = ContentRenderProps>({
+  options,
+  flatMapOptions,
+  minSearchInputLength,
+  disableFuzzySearch,
+}: {
+  options: FilterOption<T>[];
+  flatMapOptions: (BaseOption<T> | AccordionOption<T> | NestListOption<T>)[];
+  minSearchInputLength?: number;
+  disableFuzzySearch?: boolean;
+}) {
   return useCallback(
     (search: string) => {
       const searcher = new FuzzySearch(
@@ -60,11 +66,22 @@ export function useFuzzySearch<T extends ContentRenderProps = ContentRenderProps
         {},
       );
 
-      return search.length > (minSearchInputLength ?? DEFAULT_MIN_SEARCH_INPUT_LENGTH)
-        ? searcher.search(search)
-        : options;
+      const plainSearcher = (searchQuery: string) =>
+        options.filter(option => {
+          let matchesQuery = false;
+          matchesQuery ||= Boolean(option.label?.toString().includes(String(searchQuery)));
+          if ('contentRenderProps' in option) {
+            matchesQuery ||= Boolean(option?.contentRenderProps?.description?.toString().includes(String(searchQuery)));
+            matchesQuery ||= Boolean(option?.contentRenderProps?.caption?.toString().includes(String(searchQuery)));
+          }
+          return matchesQuery;
+        });
+
+      if (search.length < (minSearchInputLength ?? DEFAULT_MIN_SEARCH_INPUT_LENGTH)) return options;
+
+      return disableFuzzySearch ? plainSearcher(search) : searcher.search(search);
     },
-    [flatMapOptions, minSearchInputLength, options],
+    [disableFuzzySearch, flatMapOptions, minSearchInputLength, options],
   );
 }
 

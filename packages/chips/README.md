@@ -124,6 +124,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
 | showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
@@ -145,6 +146,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
 | showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
@@ -183,6 +185,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
 | showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
@@ -220,6 +223,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
 | showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
@@ -243,6 +247,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
 | showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
@@ -264,6 +269,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | tabIndex | `number` | - | HTML tab index |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
+| disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
 | showClearButton | `boolean` | true | Отображение кнопки очистки значения |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | dropDownClassName | `string` | - |  |

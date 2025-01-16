@@ -6,7 +6,7 @@ import { useValueControl } from '@snack-uikit/utils';
 
 import { CHIP_CHOICE_TEST_IDS, SIZE } from '../../../constants';
 import { DROPLIST_SIZE_MAP } from '../constants';
-import { useAutoApply, useFuzzySearch, useHandleOnKeyDown } from '../hooks';
+import { useAutoApply, useHandleOnKeyDown, useOptionSearch } from '../hooks';
 import { ChipChoiceSingleProps, ContentRenderProps } from '../types';
 import { FlattenOption, kindFlattenOptions } from '../utils';
 import { transformOptionsToItems } from '../utils/options';
@@ -32,6 +32,7 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
   searchable,
   contentRender,
   dropDownClassName,
+  disableFuzzySearch,
   autoApply = true,
   onApprove,
   onCancel,
@@ -73,11 +74,11 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
     ? valueRender(selectedOption)
     : defaultSingleValueFormatter({ label: selectedOption?.label, allLabel: t('allLabel') });
 
-  const fuzzySearch = useFuzzySearch(options, flatMapOptions);
+  const optionSearch = useOptionSearch({ options, flatMapOptions, disableFuzzySearch });
 
   const result = useMemo(
-    () => (!searchable || valueToRender === searchValue ? options : fuzzySearch(searchValue)),
-    [fuzzySearch, options, searchValue, searchable, valueToRender],
+    () => (!searchable || valueToRender === searchValue ? options : optionSearch(searchValue)),
+    [optionSearch, options, searchValue, searchable, valueToRender],
   );
   const items = useMemo(() => transformOptionsToItems<T>(result, contentRender), [contentRender, result]);
 
