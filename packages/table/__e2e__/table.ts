@@ -222,23 +222,22 @@ test.page(getPage({ showTableTree: false }))('Row actions exists and opens dropd
 test.page(getPage({ showTableTree: true, expandRowsCount: SUB_ROWS_AMOUNT, expandRowsLevel: SUB_ROWS_LEVEL }))(
   'Row toggles on chevron click',
   async t => {
-    const rows = selectors.getRow('all');
     const { tree } = selectors.getRow(0);
-    const initialRowsCount = await rows.tree.node.count;
 
     await t.expect(tree.chevron.exists).ok('Chevron should exists');
 
-    await t.click(tree.chevron).wait(50);
+    const rows = selectors.getRow('all');
+    const initialRowsCount = await rows.tree.node.count;
+
+    await t.click(tree.chevron).wait(250);
 
     const rowsCountAfterExpand = await rows.tree.node.count;
+    await t.expect(rowsCountAfterExpand).gt(initialRowsCount, 'Chevron not Opened');
 
-    await t.expect(rowsCountAfterExpand > initialRowsCount).ok('Chevron not Opened');
-
-    await t.click(tree.chevron).wait(50);
+    await t.click(tree.chevron).wait(250);
 
     const rowsCountAfterCollapse = await rows.tree.node.count;
-
-    await t.expect(rowsCountAfterCollapse === initialRowsCount).notOk('Chevron not closed');
+    await t.expect(rowsCountAfterCollapse).eql(initialRowsCount, 'Chevron not closed');
   },
 );
 

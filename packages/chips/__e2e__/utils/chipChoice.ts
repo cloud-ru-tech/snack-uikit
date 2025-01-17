@@ -131,10 +131,16 @@ export function chipChoiceCommonTests(getPage: ReturnType<typeof createChipGetPa
     await t.pressKey('Down');
     await t.expect(droplist.exists).ok('Droplist should be opened after "Down" key press');
 
-    await t.pressKey('Up');
-    await t.expect(chip.focused).ok('Chip should be focused after "Up" key press');
-    await t.pressKey('Up');
-    await t.expect(droplist.exists).notOk('Droplist should be closed after "Up" key press');
+    if (chipType === 'time') {
+      await t.pressKey(new Array(21).fill('Up').join(' '));
+      await t.expect(chip.focused).ok('Chip should be focused after "Up" key press');
+      await t.expect(droplist.exists).notOk('Droplist should be closed after "Up" key press');
+    } else {
+      await t.pressKey('Up');
+      await t.expect(chip.focused).ok('Chip should be focused after "Up" key press');
+      await t.pressKey('Up');
+      await t.expect(droplist.exists).notOk('Droplist should be closed after "Up" key press');
+    }
 
     await t.pressKey('Right');
     await t.expect(chip.focused).notOk('Chip should loose focus after "Right" key press');

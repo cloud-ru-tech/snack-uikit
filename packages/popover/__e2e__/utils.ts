@@ -4,10 +4,6 @@ import { dataTestIdSelector } from '../../../testcafe/utils';
 
 export const ACTIVITY_REMOVAL_ITEM = dataTestIdSelector('activity-removal');
 
-const focus = ClientFunction((selector: string) => {
-  document.querySelector<HTMLElement>(selector)?.focus();
-});
-
 const clickWithoutFocus = ClientFunction((selector: string) => {
   document.querySelector<HTMLElement>(selector)?.click();
 });
@@ -86,25 +82,24 @@ export const verifyHoverTrigger = async ({
 
 export const verifyFocusTrigger = async ({
   t,
-  targetId,
   popoverId,
   enabled,
 }: {
   t: TestController;
-  targetId: string;
   popoverId: string;
   enabled?: boolean;
 }) => {
-  const targetSelector = dataTestIdSelector(targetId);
   const getPopover = () => Selector(dataTestIdSelector(popoverId));
 
   if (enabled) {
-    await focus(targetSelector);
+    await t.click(ACTIVITY_REMOVAL_ITEM);
+    await t.pressKey('tab');
     await t.expect(getPopover().exists).ok(`Element "${popoverId}" should be open by focus`);
     await t.click(ACTIVITY_REMOVAL_ITEM);
     await t.expect(getPopover().exists).notOk(`Element "${popoverId}" is not closed by removing focus`);
   } else {
-    await focus(targetSelector);
+    await t.click(ACTIVITY_REMOVAL_ITEM);
+    await t.pressKey('tab');
     await t.expect(getPopover().exists).notOk(`Element "${popoverId}" shouldn't be open by focus`);
   }
 };

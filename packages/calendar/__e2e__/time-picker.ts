@@ -134,7 +134,8 @@ test.page(getPage({ valueHours: 5, valueMinutes: 5, valueSeconds: 5 }))(
       await t.pressKey(new Array(times).fill(keys).join(' '));
     };
 
-    await t.expect(mainElementSelector.visible).ok();
+    // workaround to place focus in the beginning, because of some issues in Testcafe
+    await t.click(mainElementSelector, { offsetX: 0, offsetY: 0 });
 
     // go to current button & apply
     await pressKey('tab', 4);

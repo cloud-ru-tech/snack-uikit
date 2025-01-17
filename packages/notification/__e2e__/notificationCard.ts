@@ -52,6 +52,8 @@ test.page(getPage(NOTIFICATION_CARD_MOCK))('Renders correctly with passed props 
   await t.expect(link.getAttribute('href')).eql(NOTIFICATION_CARD_MOCK.link.href, getErrorMessages('link href').eql);
 
   // actions checks
+  // workaround to place focus in the beginning, because of some issues in Testcafe
+  await t.click(Selector('body'), { offsetX: 0, offsetY: 0 });
   await t.expect(actions.droplistTrigger.exists).ok(getErrorMessages('actions droplist trigger').exists);
 
   const cardActionsWrapperOpacityBeforeHover = (await actions.wrapper.style).opacity;

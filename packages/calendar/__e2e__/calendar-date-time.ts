@@ -274,7 +274,8 @@ test.page(getPage({ dateDefaultValue: 1678856705000 + MILLISECONDS_TIMEZONE_OFFS
       await t.pressKey(new Array(times).fill(keys).join(' '));
     };
 
-    await t.expect(mainElementSelector.visible).ok();
+    // workaround to place focus in the beginning, because of some issues in Testcafe
+    await t.click(mainElementSelector, { offsetX: 0, offsetY: 0 });
 
     // go to current button & apply
     await pressKey('tab', 6);

@@ -131,6 +131,8 @@ test.page(getPage({ selectionMode: true, showToggle: true }))(
 test.page(getPage())('Node actions exists and opens dropdown on click', async t => {
   const { nodeActionsOption, nodeActionsButton, item } = selectors.getNode(0);
 
+  // workaround to place focus in the beginning, because of some issues in Testcafe
+  await t.click(Selector('body'), { offsetX: 0, offsetY: 0 });
   await t.expect(nodeActionsButton.exists).ok('No NodeActions button found');
   await t.expect(nodeActionsButton.visible).notOk('Node actions should not be visible');
 

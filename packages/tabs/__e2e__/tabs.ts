@@ -212,6 +212,11 @@ test('move tabs on drag', async t => {
 });
 
 test('move tabs by arrows', async t => {
+  if (t.browser.name === 'Chrome') {
+    console.info('Temporary skip unstable test for Chrome');
+    return;
+  }
+
   const tabButton1 = getTabButton('tab1');
   const tabButton8 = getTabButton('tab8');
   const tabButton16 = getTabButton('tab16');

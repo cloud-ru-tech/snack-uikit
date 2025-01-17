@@ -19,6 +19,7 @@ export default meta;
 type StoryProps = PopoverProps;
 const Template: StoryFn<StoryProps> = ({ ...args }) => (
   <>
+    <div data-test-id='activity-removal' role='button' tabIndex={0} className={styles.item} />
     <div className={styles.story}>
       <Popover
         {...args}
@@ -34,7 +35,6 @@ const Template: StoryFn<StoryProps> = ({ ...args }) => (
         <ButtonFilled label='Reference button' data-test-id='button-with-popover' />
       </Popover>
     </div>
-    <div data-test-id='activity-removal' role='button' tabIndex={0} className={styles.item} />
   </>
 );
 

@@ -20,7 +20,7 @@ const verifyPopoverBehavior = async (
 ) => {
   await verifyClickTrigger({ t, popoverId: POPOVER_TEST_ID, targetId: BUTTON_TEST_ID, enabled: click });
   await verifyHoverTrigger({ t, popoverId: POPOVER_TEST_ID, targetId: BUTTON_TEST_ID, enabled: hover });
-  await verifyFocusTrigger({ t, popoverId: POPOVER_TEST_ID, targetId: BUTTON_TEST_ID, enabled: focus });
+  await verifyFocusTrigger({ t, popoverId: POPOVER_TEST_ID, enabled: focus });
 
   if (strongFocus) {
     await verifyClickWithFocusTrigger({ t, popoverId: POPOVER_TEST_ID, targetId: BUTTON_TEST_ID });
@@ -69,32 +69,44 @@ test.page(getPage({ open: true }))('Should be open when controlled "open" flag i
 });
 
 test.page(getPage({ trigger: TRIGGER.Click }))('Opens by click', async t => {
-  //https://github.com/DevExpress/testcafe/issues/7969
-  if (t.browser.name !== 'Firefox') await verifyPopoverBehavior(t, { click: true });
+  await t.expect(Selector(dataTestIdSelector(BUTTON_TEST_ID)).exists).ok();
+
+  await verifyPopoverBehavior(t, { click: true });
 });
 
 test.page(getPage({ trigger: TRIGGER.Hover }))('Opens by hover', async t => {
+  await t.expect(Selector(dataTestIdSelector(BUTTON_TEST_ID)).exists).ok();
+
   await verifyPopoverBehavior(t, { hover: true });
 });
 
 test.page(getPage({ trigger: TRIGGER.FocusVisible }))('Opens by focus', async t => {
+  await t.expect(Selector(dataTestIdSelector(BUTTON_TEST_ID)).exists).ok();
+
   await verifyPopoverBehavior(t, { focus: true });
 });
 
 test.page(getPage({ trigger: TRIGGER.ClickAndFocusVisible }))('Opens by click & focus', async t => {
-  //https://github.com/DevExpress/testcafe/issues/7969
-  if (t.browser.name !== 'Firefox') await verifyPopoverBehavior(t, { click: true, focus: true });
+  await t.expect(Selector(dataTestIdSelector(BUTTON_TEST_ID)).exists).ok();
+
+  await verifyPopoverBehavior(t, { click: true, focus: true });
 });
 
 test.page(getPage({ trigger: TRIGGER.HoverAndFocusVisible }))('Opens by hover & focus', async t => {
+  await t.expect(Selector(dataTestIdSelector(BUTTON_TEST_ID)).exists).ok();
+
   await verifyPopoverBehavior(t, { hover: true, focus: true });
 });
 
 test.page(getPage({ trigger: TRIGGER.Focus }))('Opens by strong focus', async t => {
+  await t.expect(Selector(dataTestIdSelector(BUTTON_TEST_ID)).exists).ok();
+
   await verifyPopoverBehavior(t, { focus: true, strongFocus: true });
 });
 
 test.page(getPage({ trigger: TRIGGER.HoverAndFocus }))('Opens by hover & strong focus', async t => {
+  await t.expect(Selector(dataTestIdSelector(BUTTON_TEST_ID)).exists).ok();
+
   await verifyPopoverBehavior(t, { hover: true, focus: true, strongFocus: true });
 });
 

@@ -36,15 +36,14 @@ test.page(getPage({ disabled: true }))("Shouldn't be switched to checked by clic
   await t.expect(Selector(NATIVE_CHECKBOX).checked).eql(false, "checked shouldn't be set");
 });
 
-// FIXME: этот падает в firefox
-// https://github.com/DevExpress/testcafe/issues/6969
-// eslint-disable-next-line vitest/no-commented-out-tests
-// test.page(getPage())('Should be switched by keyboard', async t => {
-//   await t.expect(Selector(NATIVE_CHECKBOX).checked).eql(false, "checked shouldn't be set at start");
-//   await focus(NATIVE_CHECKBOX);
-//   await t.pressKey('space');
-//   await t.expect(Selector(NATIVE_CHECKBOX).checked).eql(true, 'checked should be set');
-// });
+test.page(getPage())('Should be switched by keyboard', async t => {
+  await t.expect(Selector(NATIVE_CHECKBOX).exists).eql(true, 'checkbox is not present');
+
+  await t.expect(Selector(NATIVE_CHECKBOX).checked).eql(false, "checked shouldn't be set at start");
+  await focus(NATIVE_CHECKBOX);
+  await t.pressKey('space');
+  await t.expect(Selector(NATIVE_CHECKBOX).checked).eql(true, 'checked should be set');
+});
 
 test.page(getPage({ disabled: true }))("Shouldn't be switched by keyboard if disabled", async t => {
   await t.expect(Selector(NATIVE_CHECKBOX).checked).eql(false, "checked shouldn't be set at start");
