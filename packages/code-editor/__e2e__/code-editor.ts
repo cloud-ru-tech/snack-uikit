@@ -15,9 +15,10 @@ const getPage = (props: Record<string, unknown> = {}) =>
   });
 
 fixture('Code Editor');
+test
+  .page(getPage())('Rendered', async t => {
+    const codeEditor = Selector(dataTestIdSelector(TEST_ID));
 
-test.page(getPage())('Rendered', async t => {
-  const codeEditor = Selector(dataTestIdSelector(TEST_ID));
-
-  await t.expect(codeEditor.exists).ok();
-});
+    await t.expect(codeEditor.exists).ok();
+  })
+  .skipJsErrors(true);

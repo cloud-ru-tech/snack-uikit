@@ -1,4 +1,4 @@
-import { Editor, EditorProps, OnMount, useMonaco } from '@monaco-editor/react';
+import { Editor, OnMount, useMonaco } from '@monaco-editor/react';
 import cn from 'classnames';
 import { useCallback, useMemo, useState } from 'react';
 
@@ -6,8 +6,9 @@ import { Spinner } from '@snack-uikit/loaders';
 import { extractSupportProps, isBrowser, WithSupportProps } from '@snack-uikit/utils';
 
 import { CODE_EDITOR_OPTIONS, DEFAULT_THEME_OPTIONS, DEFAULT_THEME_VALUES } from './constants';
-import { useCalculatedThemeValues } from './hooks';
+import { useApplyJsonSchema, useCalculatedThemeValues } from './hooks';
 import styles from './styles.module.scss';
+import { EditorBaseProps, EditorWithJsonSchemaProps } from './types';
 import { initLoaderConfig, isDark } from './utils';
 
 initLoaderConfig();
@@ -22,7 +23,7 @@ export type CodeEditorProps = WithSupportProps<{
    */
   hasBackground?: boolean;
 }> &
-  EditorProps;
+  (EditorBaseProps | EditorWithJsonSchemaProps);
 
 export function CodeEditor({
   themeName,
@@ -32,10 +33,16 @@ export function CodeEditor({
   loading,
   hasBackground = true,
   onMount,
+  language,
   ...props
 }: CodeEditorProps) {
   const monaco = useMonaco();
   const [wrapperElement, setWrapperElement] = useState<HTMLDivElement | null>(null);
+
+  const { jsonSchemaProps, jsonSchemaOptions } = useApplyJsonSchema(
+    language,
+    'jsonSchema' in props ? props.jsonSchema : undefined,
+  );
 
   const onEditorMount = useCallback<OnMount>(
     (editor, monaco) => {
@@ -111,6 +118,7 @@ export function CodeEditor({
   const mergedOptions = useMemo(
     () => ({
       ...CODE_EDITOR_OPTIONS,
+      ...jsonSchemaOptions,
       ...(themeValues?.mono
         ? {
             fontSize: Number.parseFloat(themeValues.mono.body.s['font-size']),
@@ -120,18 +128,20 @@ export function CodeEditor({
         : DEFAULT_THEME_OPTIONS.mono.s),
       ...options,
     }),
-    [options, themeValues?.mono],
+    [options, themeValues?.mono, jsonSchemaOptions],
   );
 
   return (
     <div className={className} {...extractSupportProps(props)} ref={setWrapperElement}>
       <Editor
         {...props}
+        {...jsonSchemaProps}
         theme={theme ?? (dark ? 'snackDark' : 'snack')}
         className={cn({ [styles.editor]: hasBackground })}
         loading={loading ?? <Spinner />}
         options={mergedOptions}
         onMount={onEditorMount}
+        language={language}
       />
     </div>
   );

@@ -1,3 +1,63 @@
+import { JsonSchema } from '../src/components';
+
+export const JSON_SCHEMA: JsonSchema = {
+  uri: 'http://myserver/com/example/schema.json',
+  fileMatch: 'file:///schema.yaml',
+  schema: {
+    $schema: 'http://json-schema.org/draft-07/schema#',
+    title: 'ExampleSchema',
+    type: 'object',
+    properties: {
+      name: {
+        type: 'string',
+      },
+      age: {
+        type: 'integer',
+        minimum: 0,
+      },
+      email: {
+        type: 'string',
+        format: 'email',
+      },
+      isActive: {
+        type: 'boolean',
+      },
+      roles: {
+        type: 'array',
+        items: {
+          type: 'string',
+        },
+      },
+      preferences: {
+        type: 'object',
+        properties: {
+          newsletter: {
+            type: 'boolean',
+          },
+          notifications: {
+            type: 'boolean',
+          },
+        },
+        required: ['newsletter', 'notifications'],
+      },
+    },
+    required: ['name', 'email', 'isActive', 'roles'],
+  },
+};
+
+export const CODE_YAML = `\
+name: "John Doe"
+age: 30
+email: "john.doe@example.com"
+isActive: true
+roles:
+  - "admin"
+  - "user"
+preferences:
+  newsletter: true
+  notifications: false\
+`;
+
 export const CODE = `/* Game of Life
 * Implemented in TypeScript
 * To learn more about TypeScript, please visit http://www.typescriptlang.org/

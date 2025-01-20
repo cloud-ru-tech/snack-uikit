@@ -3,6 +3,7 @@ import path from 'path';
 import { StorybookConfig } from '@storybook/react-webpack5';
 import dotenv from 'dotenv';
 import { globSync } from 'glob';
+import MonacoWebpackPlugin from 'monaco-editor-webpack-plugin';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import { Configuration as WebpackConfig, RuleSetRule } from 'webpack';
 
@@ -115,6 +116,27 @@ const mainConfig: StorybookConfig = {
         }),
       );
     }
+
+    if (!config.plugins) {
+      config.plugins = [];
+    }
+
+    config.plugins.push(
+      new MonacoWebpackPlugin({
+        globalAPI: false,
+        filename: 'monaco-editor/[name].worker.js',
+        customLanguages: [
+          {
+            label: 'yaml',
+            entry: 'monaco-yaml',
+            worker: {
+              id: 'monaco-yaml/yamlWorker',
+              entry: 'monaco-yaml/yaml.worker',
+            },
+          },
+        ],
+      }),
+    );
 
     const SVG_SPRITE_EXPRESSION = /\.symbol.svg$/;
 

@@ -1,5 +1,6 @@
 import { EditorProps } from '@monaco-editor/react';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import * as monaco from 'monaco-editor';
 import { useDarkMode } from 'storybook-dark-mode';
 
 import { Typography } from '@snack-uikit/typography';
@@ -7,9 +8,11 @@ import { Typography } from '@snack-uikit/typography';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { CodeEditor, CodeEditorProps } from '../src';
-import { CODE } from './constants';
+import { CodeEditor, loader, WithJsonSchema } from '../src';
+import { CODE, JSON_SCHEMA } from './constants';
 import styles from './styles.module.scss';
+
+loader.config({ monaco });
 
 const meta: Meta = {
   title: 'Components/Code Editor',
@@ -18,23 +21,21 @@ const meta: Meta = {
 
 export default meta;
 
+type CombinedEditorStory = EditorProps & Pick<WithJsonSchema, 'jsonSchema'>;
+
 type StoryProps = {
   themeClassName: string;
   'data-test-id': string;
   hideLineNumbers: boolean;
   hasBackground: boolean;
-} & EditorProps;
+} & CombinedEditorStory;
 
-const Template: StoryFn<StoryProps> = ({
-  hideLineNumbers,
-  themeClassName,
-  ...args
-}: CodeEditorProps & { hideLineNumbers: boolean; themeClassName: string }) => (
+const Template: StoryFn<StoryProps> = ({ hideLineNumbers, themeClassName, ...args }: StoryProps) => (
   <>
     <div className={styles.wrapper}>
       <CodeEditor
         themeName={themeClassName}
-        {...args}
+        {...(args as EditorProps)}
         options={hideLineNumbers ? { lineNumbers: 'off', folding: false } : { lineNumbers: 'on', folding: true }}
       />
     </div>
@@ -61,6 +62,7 @@ export const codeEditor: StoryObj<StoryProps> = {
     height: '500px',
     language: 'typescript',
     value: CODE,
+    jsonSchema: JSON_SCHEMA,
     hasBackground: true,
     hideLineNumbers: false,
     'data-test-id': 'code-editor',

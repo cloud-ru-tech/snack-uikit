@@ -95,6 +95,8 @@
     "lerna": "8.1.8",
     "lodash.debounce": "4.0.8",
     "minimist": "1.2.8",
+    "monaco-editor-webpack-plugin": "7.1.0",
+    "monaco-yaml": "5.2.3",
     "nyc": "17.1.0",
     "postcss": "8.4.47",
     "postcss-discard-comments": "7.0.3",

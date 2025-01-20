@@ -1,5 +1,9 @@
 import { loader } from '@monaco-editor/react';
 import chroma from 'chroma-js';
+import { SchemasSettings } from 'monaco-yaml';
+
+import { DEFAULT_SCHEMA_URI } from './constants';
+import { JsonSchema } from './types';
 
 export function rgb2hsl(HTMLcolor: string) {
   const [r, g, b] = chroma.valid(HTMLcolor)
@@ -60,3 +64,6 @@ export function initLoaderConfig() {
   // @ts-ignore
   window['__snack-code-editor-loader-config__'] && loader.config(window['__snack-code-editor-loader-config__']);
 }
+
+export const getJsonSchema = (jsonSchema?: JsonSchema): SchemasSettings | undefined =>
+  jsonSchema && { ...jsonSchema, uri: jsonSchema?.uri || DEFAULT_SCHEMA_URI, fileMatch: [jsonSchema.fileMatch] };

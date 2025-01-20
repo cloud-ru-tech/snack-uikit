@@ -98,3 +98,11 @@ export const CODE_EDITOR_OPTIONS = {
     indentation: false,
   },
 };
+
+export const YAML_CODE_EDITOR_OPTIONS = {
+  quickSuggestions: {
+    strings: true,
+  },
+};
+
+export const DEFAULT_SCHEMA_URI = 'schema://editor-schema';
