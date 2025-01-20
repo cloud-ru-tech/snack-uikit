@@ -15,6 +15,7 @@ export function CollapseBlockPrimary({
   className,
   outline,
   shape = 'round',
+  removeContentFromDOM,
   ...rest
 }: CollapseBlockPrimaryProps) {
   const { isExpanded, isExpandedDebounced, handleToggleExpanded } = useExpanded(id);
@@ -34,6 +35,7 @@ export function CollapseBlockPrimary({
       }
       expanded={isExpanded}
       expandedDebounced={isExpandedDebounced}
+      removeContentFromDOM={removeContentFromDOM}
       {...extractSupportProps(rest)}
     >
       {children}

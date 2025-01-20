@@ -11,6 +11,7 @@ export type CollapseBlockPrivateProps = WithSupportProps<{
   header: ReactNode;
   expanded: boolean;
   expandedDebounced: boolean;
+  removeContentFromDOM?: boolean;
   className?: string;
   shape?: 'round' | 'square';
 }>;
@@ -22,6 +23,7 @@ export function CollapseBlockPrivate({
   header,
   shape,
   expandedDebounced,
+  removeContentFromDOM = true,
   ...rest
 }: CollapseBlockPrivateProps) {
   return (
@@ -37,7 +39,7 @@ export function CollapseBlockPrivate({
 
       <div className={styles.contentWrapper} aria-hidden={!expanded} data-test-id={TEST_IDS.content}>
         <div className={styles.content} data-content>
-          {(expanded || expandedDebounced) && children}
+          {(!removeContentFromDOM || expanded || expandedDebounced) && children}
         </div>
       </div>
     </div>

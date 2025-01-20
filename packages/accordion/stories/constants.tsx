@@ -16,6 +16,7 @@ export const COLLAPSE_BLOCK_STORY_SETTINGS = {
     tip: DEFAULT_PROPS.tip,
     showActions: true,
     expanded: false,
+    removeContentFromDOM: true,
   },
 
   argTypes: {

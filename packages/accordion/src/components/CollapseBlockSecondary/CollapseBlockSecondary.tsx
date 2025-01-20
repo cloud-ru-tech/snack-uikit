@@ -13,6 +13,7 @@ export function CollapseBlockSecondary({
   id,
   actions,
   className,
+  removeContentFromDOM,
   ...rest
 }: CollapseBlockSecondaryProps) {
   const { isExpanded, isExpandedDebounced, handleToggleExpanded } = useExpanded(id);
@@ -27,6 +28,7 @@ export function CollapseBlockSecondary({
       }
       expanded={isExpanded}
       expandedDebounced={isExpandedDebounced}
+      removeContentFromDOM={removeContentFromDOM}
       {...extractSupportProps(rest)}
     >
       {children}

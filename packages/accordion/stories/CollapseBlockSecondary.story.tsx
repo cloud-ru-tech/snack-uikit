@@ -31,7 +31,13 @@ type StoryProps = CollapseBlockSecondaryProps & {
   metadata?: string;
 } & CollapseBlockHeaderProps;
 
-const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({
+  id,
+  showActions,
+  customHeader,
+  removeContentFromDOM,
+  ...args
+}: StoryProps) => {
   const [expanded, setExpanded] = useState<string>();
 
   useEffect(() => {
@@ -68,6 +74,7 @@ const Template: StoryFn<StoryProps> = ({ id, showActions, customHeader, ...args 
           actions={actions}
           data-test-id={args['data-test-id']}
           header={customHeader ? <CustomHeader {...args} /> : <AccordionSecondary.CollapseBlockHeader {...args} />}
+          removeContentFromDOM={removeContentFromDOM}
         >
           <Content />
         </AccordionSecondary.CollapseBlock>

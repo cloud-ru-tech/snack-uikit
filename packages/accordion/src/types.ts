@@ -15,6 +15,8 @@ export type CollapseBlockSecondaryProps = WithSupportProps<{
   children: ReactNode;
   /** CSS-класс */
   className?: string;
+  /** Проп отвечающий будет ли контент удаляться из DOM дерева */
+  removeContentFromDOM?: boolean;
 }>;
 
 export type CollapseBlockPrimaryProps = CollapseBlockSecondaryProps & {
