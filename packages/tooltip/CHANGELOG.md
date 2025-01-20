@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.15.4 (2025-01-20)
+
+**Note:** Version bump only for package @snack-uikit/tooltip
+
+
+
+
+
 ## 0.15.3 (2024-12-26)
 
 

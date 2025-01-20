@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.15 (2025-01-20)
+
+
+### Bug Fixes
+
+* **FF-5828:** move main data-test-id to the top container ([a7ea2db](https://github.com/cloud-ru-tech/snack-uikit/commit/a7ea2db64c52e4acd6bdf7182455f05f59746368))
+
+
+
+
+
 ## 0.11.14 (2024-12-26)
 
 
