@@ -115,7 +115,11 @@ export function CalendarBase({
   const firstNotDisableCell = useRef<[number, number]>([0, 0]);
 
   return (
-    <div className={cn(styles.calendarWrapper, className)} data-fit-to-container={fitToContainer || undefined}>
+    <div
+      className={cn(styles.calendarWrapper, className)}
+      data-fit-to-container={fitToContainer || undefined}
+      data-test-id={testId}
+    >
       <CalendarContext.Provider
         value={{
           locale,
@@ -170,7 +174,6 @@ export function CalendarBase({
             style={style}
             data-size={size}
             data-fit-to-container={fitToContainer || undefined}
-            data-test-id={testId}
           >
             <div className={styles.header} data-size={size}>
               <CalendarNavigation />
