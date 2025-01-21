@@ -1,13 +1,17 @@
-@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toolbar' as toolbar;
+
+.separatorWrapper {
+  @include toolbar.composite-var(toolbar.$toolbar-separator-wrap);
+
+  flex-shrink: 0;
+}
+
 
 .separator {
-  flex-shrink: 0;
-
   box-sizing: border-box;
-  width: styles-theme-variables.$border-width-toolbar-separator;
-  margin: styles-theme-variables.$space-toolbar-separator-padding 0;
-
-  background-color: styles-theme-variables.$sys-neutral-decor-default;
+  width: toolbar.$border-width-toolbar-separator;
+  height: 100%;
+  background-color: toolbar.$sys-neutral-decor-default;
 }
 
 

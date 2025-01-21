@@ -1,0 +1,55 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toolbar' as toolbar;
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element' as element;
+
+.bulkActions {
+  @include toolbar.composite-var(toolbar.$toolbar-bulk-action);
+
+  scrollbar-width: none;  /* Firefox */
+
+  display: flex;
+  flex-shrink: 1;
+  justify-content: stretch;
+
+  min-width: 0;
+
+  /* Hide scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+.checkboxWrapper {
+  @include toolbar.composite-var(toolbar.$toolbar-checkbox);
+
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  &:focus-visible {
+    @include element.outline-var(element.$container-focused-s);
+
+    outline-color: toolbar.$sys-available-complementary;
+  }
+}
+
+.moreActionButton {
+  flex-shrink: 0;
+}
+
+.action {
+  white-space: nowrap;
+
+  &[data-full-width]:not([data-variant="icon-only"]) {
+    flex-shrink: 0;
+    width: auto;
+  }
+}

@@ -41,6 +41,7 @@
     "@snack-uikit/list": "0.23.0",
     "@snack-uikit/search-private": "0.4.8",
     "@snack-uikit/tag": "0.12.1",
+    "@snack-uikit/tooltip": "0.15.4",
     "@snack-uikit/toggles": "0.13.4",
     "@snack-uikit/utils": "3.6.0",
     "classnames": "2.5.1"

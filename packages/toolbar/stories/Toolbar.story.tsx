@@ -11,7 +11,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Toolbar, ToolbarProps } from '../src';
-import { OPTIONS } from './constants';
+import { BULK_ACTIONS, OPTIONS } from './constants';
 import styles from './styles.module.scss';
 import { TEST_ID_TOASTER } from './testIds';
 
@@ -25,23 +25,22 @@ export default meta;
 type StoryProps = ToolbarProps & {
   showSearch: boolean;
   showOnRefresh: boolean;
-  showOnDelete: boolean;
-  showBeforeActions: boolean;
+  showBulkActions: boolean;
+  showManyBulkActions: boolean;
   showAfterActions: boolean;
-  showCheckbox: boolean;
   showMoreActions: boolean;
 };
 
 const Template: StoryFn<StoryProps> = ({
-  showCheckbox,
   showOnRefresh,
-  showOnDelete,
-  showBeforeActions,
+  showBulkActions,
+  showManyBulkActions,
   showAfterActions,
   showSearch,
   showMoreActions,
   outline,
   selectionMode,
+  bulkActions,
   ...args
 }: StoryProps) => {
   const [{ search, checked, indeterminate }, updateArgs] = useArgs<StoryProps>();
@@ -62,19 +61,10 @@ const Template: StoryFn<StoryProps> = ({
     checked && setIndeterminate(false);
   }, [checked, updateArgs]);
 
-  const onSubmit = () => {
-    toaster.userAction.success({ label: 'Submit action', 'data-test-id': TEST_ID_TOASTER.submit });
-  };
+  const onRefresh = () => toaster.userAction.neutral({ label: 'Refresh', 'data-test-id': TEST_ID_TOASTER.refresh });
+  const onSubmit = () => toaster.userAction.success({ label: 'Submit', 'data-test-id': TEST_ID_TOASTER.submit });
 
-  const onDelete = () => {
-    toaster.userAction.warning({ label: 'Delete action', 'data-test-id': TEST_ID_TOASTER.delete });
-  };
-
-  const onRefresh = () => {
-    toaster.userAction.neutral({ label: 'Refresh action', 'data-test-id': TEST_ID_TOASTER.refresh });
-  };
-
-  const actions = (
+  const afterActions = (
     <>
       <ButtonFunction icon={<PlaceholderSVG />} size='m' />
       <ButtonFunction icon={<PlaceholderSVG />} size='m' />
@@ -89,14 +79,14 @@ const Template: StoryFn<StoryProps> = ({
         {...extractSupportProps(args)}
         outline={outline}
         selectionMode={selectionMode}
-        {...(showCheckbox
+        {...(showBulkActions
           ? {
               checked,
               onCheck: toggleChecked,
-              onDelete: showOnDelete ? onDelete : undefined,
+              bulkActions: showManyBulkActions ? bulkActions : bulkActions?.slice(0, 3),
               indeterminate,
             }
-          : { checked: undefined, onCheck: undefined, onDelete: undefined })}
+          : {})}
         search={
           showSearch && search
             ? {
@@ -108,8 +98,7 @@ const Template: StoryFn<StoryProps> = ({
             : undefined
         }
         onRefresh={showOnRefresh ? onRefresh : undefined}
-        after={showAfterActions ? actions : undefined}
-        before={showBeforeActions ? actions : undefined}
+        after={showAfterActions ? afterActions : undefined}
         moreActions={showMoreActions ? OPTIONS : undefined}
       />
     </div>
@@ -128,53 +117,47 @@ export const toolbar: StoryObj<StoryProps> = {
     },
     outline: false,
     selectionMode: 'multiple',
-    showCheckbox: true,
+    showBulkActions: true,
+    showManyBulkActions: true,
+    bulkActions: BULK_ACTIONS,
     checked: false,
     indeterminate: false,
-    showOnDelete: true,
     showMoreActions: true,
     moreActions: OPTIONS,
     showSearch: true,
     showOnRefresh: true,
-    showBeforeActions: false,
     showAfterActions: true,
     'data-test-id': 'toolbar',
   },
 
   argTypes: {
-    showCheckbox: {
-      name: '[Story]: Show checkbox',
+    showBulkActions: {
+      name: '[Story]: Show bulk actions',
       type: 'boolean',
+    },
+    showManyBulkActions: {
+      name: '[Story]: Show many bulk actions to display droplist',
+      type: 'boolean',
+      if: {
+        arg: 'showBulkActions',
+        eq: true,
+      },
+    },
+    bulkActions: {
+      if: {
+        arg: 'showBulkActions',
+        eq: true,
+      },
     },
     checked: {
       if: {
-        arg: 'showCheckbox',
+        arg: 'showBulkActions',
         eq: true,
       },
     },
     indeterminate: {
       if: {
-        arg: 'showCheckbox',
-        eq: true,
-      },
-    },
-    onCheck: {
-      if: {
-        arg: 'showCheckbox',
-        eq: true,
-      },
-    },
-    showOnDelete: {
-      name: '[Story]: Apply onDelete callback',
-      type: 'boolean',
-      if: {
-        arg: 'showCheckbox',
-        eq: true,
-      },
-    },
-    onDelete: {
-      if: {
-        arg: 'showOnDelete',
+        arg: 'showBulkActions',
         eq: true,
       },
     },
@@ -188,10 +171,6 @@ export const toolbar: StoryObj<StoryProps> = {
     },
     showAfterActions: {
       name: '[Story]: Show custom ReactNode "after" (on the right side)',
-      type: 'boolean',
-    },
-    showBeforeActions: {
-      name: '[Story]: Show ReactNode "before" (on the left side)',
       type: 'boolean',
     },
     showMoreActions: {
@@ -211,12 +190,8 @@ export const toolbar: StoryObj<StoryProps> = {
         eq: true,
       },
     },
-    before: {
-      if: {
-        arg: 'showBeforeActions',
-        eq: true,
-      },
-    },
+    onCheck: { table: { disable: true } },
+    onRefresh: { table: { disable: true } },
   },
 
   parameters: {

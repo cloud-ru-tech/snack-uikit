@@ -17,12 +17,11 @@ Toolbar
 | className | `string` | - | Класснейм |
 | outline | `boolean` | - | Внешний бордер |
 | onCheck | `() => void` | - | Колбек смены значения чекбокса |
-| onDelete | `() => void` | - | Колбек удаления |
-| checked | `boolean` | - | Значения чекбокса |
+| checked | `boolean` | - | Значение чекбокса |
 | indeterminate | `boolean` | - | Состояние частичного выбора |
 | selectionMode | enum SelectionMode: `"single"`, `"multiple"` | 'multiple' | Режим выбора |
+| bulkActions | `BulkAction[]` | - | Список массовых действий |
 | onRefresh | `() => void` | - | Колбек обновления |
-| before | `ReactNode` | - | Дополнительный слот в начале Тулбара |
 | after | `ReactNode` | - | Дополнительный слот в конце тулбара |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 

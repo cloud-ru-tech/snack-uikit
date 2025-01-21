@@ -1,12 +1,12 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toolbar';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element' as element;
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toolbar' as toolbar;
 
 .toolbar {
   box-sizing: border-box;
 }
 
 .container {
-  @include styles-tokens-element.composite-var(styles-tokens-toolbar.$toolbar-container);
+  @include element.composite-var(toolbar.$toolbar-container);
 
   position: relative;
 
@@ -15,11 +15,11 @@
 
   box-sizing: border-box;
 
-  background-color: styles-tokens-element.$sys-neutral-background1-level;
+  background-color: element.$sys-neutral-background1-level;
 
   &[data-outline] {
     &::before {
-      @include styles-tokens-element.composite-var(styles-tokens-toolbar.$toolbar-container-outline);
+      @include element.composite-var(toolbar.$toolbar-container-outline);
 
       pointer-events: none;
       content: '';
@@ -32,7 +32,7 @@
       width: 100%;
       height: 100%;
 
-      border-color: styles-tokens-element.$sys-neutral-decor-default;
+      border-color: element.$sys-neutral-decor-default;
       border-style: solid;
     }
   }
@@ -40,17 +40,19 @@
 }
 
 .search {
-  @include styles-tokens-element.composite-var(styles-tokens-toolbar.$toolbar-search);  
+  @include element.composite-var(toolbar.$toolbar-search);
 
   &:focus-within {
-    @include styles-tokens-element.outline-var(styles-tokens-element.$container-focused-s);
+    @include element.outline-var(element.$container-focused-s);
 
     position: relative;
-    outline-color: styles-tokens-element.$sys-available-complementary;
+    outline-color: element.$sys-available-complementary;
   }
 }
 
 .updateButton {
+  flex-shrink: 0;
+
   svg {
     transform: rotate(360deg);
     transition: transform 0.5s;
@@ -62,6 +64,13 @@
       transition-duration: 0s;
     }
   }
+}
+
+.beforeSearch {
+  display: flex;
+  flex-shrink: 1;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .flexRow {

@@ -1,24 +1,22 @@
 import { ToolbarProps } from './Toolbar';
-import { CheckedToolbarProps } from './types';
+import { ToolbarBulkActionProps } from './types';
 
-export function extractDeleteActionProps({
+export function extractBulkActionsProps({
   onCheck,
   checked,
   indeterminate,
-  onDelete,
+  bulkActions = [],
   selectionMode,
-}: Omit<CheckedToolbarProps, 'onRefresh'>) {
-  return { onCheck, checked, indeterminate, onDelete, selectionMode };
+}: ToolbarBulkActionProps) {
+  return { onCheck, checked, indeterminate, actions: bulkActions, selectionMode };
 }
 
-export function isDeleteActionProps(props: Partial<ToolbarProps>): props is CheckedToolbarProps {
+export function isBulkActionsProps(props: Partial<ToolbarProps>): props is ToolbarBulkActionProps {
   return (
-    ('onDelete' in props && props.onDelete !== undefined) ||
-    ('checked' in props &&
-      props.checked !== undefined &&
-      'onCheck' in props &&
-      props.onCheck !== undefined &&
-      'selectionMode' in props &&
-      props.selectionMode === 'multiple')
+    'bulkActions' in props &&
+    Array.isArray(props.bulkActions) &&
+    props.bulkActions.length > 0 &&
+    'selectionMode' in props &&
+    props.selectionMode === 'multiple'
   );
 }

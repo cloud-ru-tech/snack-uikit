@@ -1,13 +1,11 @@
 import { ReactNode } from 'react';
 
-import { DeleteActionProps, MoreActionsProps } from '../../helperComponents';
+import { BulkActionsProps, MoreActionsProps } from '../../helperComponents';
 import { NeverOrUndefined, RequireAtLeastOne } from './typesUtils';
 
 type OptionalProps = {
   /** Колбек обновления */
   onRefresh?(): void;
-  /** Дополнительный слот в начале Тулбара */
-  before?: ReactNode;
   /** Дополнительный слот в конце тулбара */
   after?: ReactNode;
   /** Элементы выпадающего списка кнопки с действиями */
@@ -35,8 +33,13 @@ export type CommonToolbarProps = {
   outline?: boolean;
 };
 
-export type CheckedToolbarProps = CommonToolbarProps & DeleteActionProps & OptionalProps;
+export type ToolbarBulkActionProps = Omit<BulkActionsProps, 'actions'> & {
+  /** Список массовых действий */
+  bulkActions?: BulkActionsProps['actions'];
+};
+
+export type CheckedToolbarProps = CommonToolbarProps & ToolbarBulkActionProps & OptionalProps;
 
 export type DefaultToolbarProps = CommonToolbarProps &
-  NeverOrUndefined<DeleteActionProps> &
+  NeverOrUndefined<ToolbarBulkActionProps> &
   RequireAtLeastOne<OptionalProps>;
