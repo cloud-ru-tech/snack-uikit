@@ -79,7 +79,7 @@
     @include styles-tokens-table.composite-var(styles-tokens-table.$sans-body-m);
   }
   .line {
-    margin-left: calc(styles-tokens-table.$dimension-4m + styles-tokens-table.$dimension-025m);
+    margin-left: calc(#{styles-tokens-table.$dimension-4m} + #{styles-tokens-table.$dimension-025m});
   }
   .firstLine {
     margin-left: styles-tokens-table.$dimension-2m

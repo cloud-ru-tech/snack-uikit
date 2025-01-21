@@ -15,6 +15,10 @@ import { EmptyStateProps, ExportButtonProps, RowClickHandler } from '../helperCo
 import { TreeColumnDefinitionProps } from '../helperComponents/Cells/TreeCell';
 import { ColumnDefinition } from '../types';
 
+type BulkAction = Omit<NonNullable<ToolbarProps['bulkActions']>[number], 'onClick'> & {
+  onClick?(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void): void;
+};
+
 export type TableProps<TData extends object> = WithSupportProps<{
   /** Данные для отрисовки */
   data: TData[];
@@ -111,9 +115,6 @@ export type TableProps<TData extends object> = WithSupportProps<{
   /** Колбек обновления данных */
   onRefresh?(): void;
 
-  /** Колбек удаления выбранных */
-  onDelete?(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void): void;
-
   /** Внешний бордер для тулбара и таблицы */
   outline?: boolean;
 
@@ -122,12 +123,6 @@ export type TableProps<TData extends object> = WithSupportProps<{
 
   dataFiltered?: boolean;
   dataError?: boolean;
-
-  /** Настройки экспорта в тулбаре */
-  exportSettings?: ExportButtonProps<TData>['settings'];
-
-  /** Элементы выпадающего списка кнопки с действиями */
-  moreActions?: ToolbarProps['moreActions'];
 
   /** Экран при отстутствии данных */
   noDataState?: EmptyStateProps;
@@ -138,10 +133,14 @@ export type TableProps<TData extends object> = WithSupportProps<{
 
   /** Отключение тулбара */
   suppressToolbar?: boolean;
-  /** Дополнительный слот в `Toolbar` перед строкой поиска */
-  toolbarBefore?: ReactNode;
+  /** Список действия для массовых операций */
+  bulkActions?: BulkAction[];
+  /** Элементы выпадающего списка кнопки с действиями */
+  moreActions?: ToolbarProps['moreActions'];
   /** Дополнительный слот в `Toolbar` после строки поиска */
   toolbarAfter?: ReactNode;
+  /** Настройки экспорта в тулбаре */
+  exportSettings?: ExportButtonProps<TData>['settings'];
 
   /** Отключение пагинации */
   suppressPagination?: boolean;

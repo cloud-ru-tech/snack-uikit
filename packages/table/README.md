@@ -127,19 +127,18 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | className | `string` | - | CSS-класс |
 | loading | `boolean` | - | Состояние загрузки |
 | onRefresh | `() => void` | - | Колбек обновления данных |
-| onDelete | `(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void) => void` | - | Колбек удаления выбранных |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
 | columnFilters | `ReactNode` | - | Фильтры |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
-| exportSettings | `{ fileName: string; filterData?: boolean; exportToCSV?(args: ExportProps<TData>): void; exportToXLSX?(args: ExportProps<TData>): void; }` | - | Настройки экспорта в тулбаре |
-| moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
-| toolbarBefore | `ReactNode` | - | Дополнительный слот в `Toolbar` перед строкой поиска |
+| bulkActions | `BulkAction[]` | - | Список действия для массовых операций |
+| moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | toolbarAfter | `ReactNode` | - | Дополнительный слот в `Toolbar` после строки поиска |
+| exportSettings | `{ fileName: string; filterData?: boolean; exportToCSV?(args: ExportProps<TData>): void; exportToXLSX?(args: ExportProps<TData>): void; }` | - | Настройки экспорта в тулбаре |
 | suppressPagination | `boolean` | - | Отключение пагинации |
 | manualSorting | `boolean` | - |  |
 | manualPagination | `boolean` | - |  |
@@ -188,19 +187,18 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | className | `string` | - | CSS-класс |
 | loading | `boolean` | - | Состояние загрузки |
 | onRefresh | `() => void` | - | Колбек обновления данных |
-| onDelete | `(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void) => void` | - | Колбек удаления выбранных |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
 | columnFilters | `ReactNode` | - | Фильтры |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
-| exportSettings | `{ fileName: string; filterData?: boolean; exportToCSV?(args: ExportProps<TData>): void; exportToXLSX?(args: ExportProps<TData>): void; }` | - | Настройки экспорта в тулбаре |
-| moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
-| toolbarBefore | `ReactNode` | - | Дополнительный слот в `Toolbar` перед строкой поиска |
+| bulkActions | `BulkAction[]` | - | Список действия для массовых операций |
+| moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | toolbarAfter | `ReactNode` | - | Дополнительный слот в `Toolbar` после строки поиска |
+| exportSettings | `{ fileName: string; filterData?: boolean; exportToCSV?(args: ExportProps<TData>): void; exportToXLSX?(args: ExportProps<TData>): void; }` | - | Настройки экспорта в тулбаре |
 | suppressPagination | `boolean` | - | Отключение пагинации |
 | manualSorting | `boolean` | true |  |
 | manualPagination | `boolean` | true |  |

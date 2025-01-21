@@ -18,7 +18,7 @@ import { RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useLocale } from '@snack-uikit/locale';
 import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider } from '@snack-uikit/skeleton';
-import { Toolbar } from '@snack-uikit/toolbar';
+import { Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps } from '@snack-uikit/utils';
 
@@ -70,7 +70,6 @@ export function Table<TData extends object>({
   className,
   onRowClick,
   onRefresh,
-  onDelete,
   pageSize = DEFAULT_PAGE_SIZE,
   pageCount,
   loading = false,
@@ -83,7 +82,6 @@ export function Table<TData extends object>({
   noResultsState,
   errorDataState,
   suppressToolbar = false,
-  toolbarBefore,
   toolbarAfter,
   suppressPagination = false,
   manualSorting = false,
@@ -96,6 +94,7 @@ export function Table<TData extends object>({
   enableFuzzySearch,
   savedState,
   expanding,
+  bulkActions: bulkActionsProp,
   ...rest
 }: TableProps<TData>) {
   const { state: globalFilter, onStateChange: onGlobalFilterChange } = useStateControl<string>(search, '');
@@ -219,15 +218,16 @@ export function Table<TData extends object>({
     onRefresh?.();
   }, [onRefresh, table]);
 
-  const handleOnDelete = useCallback(() => {
-    if (loading) {
-      return;
-    }
-
-    if (onDelete) {
-      onDelete(table.getState().rowSelection, table.resetRowSelection);
-    }
-  }, [loading, onDelete, table]);
+  const bulkActions: ToolbarProps['bulkActions'] = useMemo(
+    () =>
+      enableSelection
+        ? bulkActionsProp?.map(action => ({
+            ...action,
+            onClick: () => action.onClick?.(table.getState().rowSelection, table.resetRowSelection),
+          }))
+        : undefined,
+    [bulkActionsProp, enableSelection, table],
+  );
 
   const handleOnCheck = useCallback(() => {
     if (!loading && !enableSelectPinned && table.getTopRows().length) {
@@ -371,15 +371,14 @@ export function Table<TData extends object>({
                 loading: search?.loading,
                 placeholder: search?.placeholder || t('searchPlaceholder'),
               }}
-              checked={table.getIsAllPageRowsSelected()}
-              indeterminate={table.getIsSomePageRowsSelected()}
               className={styles.toolbar}
               onRefresh={onRefresh ? handleOnRefresh : undefined}
-              onDelete={enableSelection && onDelete ? handleOnDelete : undefined}
+              bulkActions={bulkActions}
+              selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
+              checked={table.getIsAllPageRowsSelected()}
+              indeterminate={table.getIsSomePageRowsSelected()}
               onCheck={enableSelection ? handleOnCheck : undefined}
               outline={outline}
-              selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
-              before={toolbarBefore}
               after={
                 toolbarAfter || exportSettings ? (
                   <>

@@ -1,6 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import { TrashSVG } from '@snack-uikit/icons';
 import { TagRow, TagRowProps } from '@snack-uikit/tag';
 import { toaster } from '@snack-uikit/toaster';
 
@@ -278,7 +279,13 @@ const Template: StoryFn<StoryProps> = ({
         {...args}
         columnDefinitions={columns}
         data={filteredData}
-        onDelete={onDelete}
+        bulkActions={[
+          {
+            label: 'Удалить',
+            icon: TrashSVG,
+            onClick: onDelete,
+          },
+        ]}
         className={styles.className}
         expanding={
           showTableTree
