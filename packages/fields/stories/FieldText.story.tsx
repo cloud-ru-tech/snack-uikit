@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useMemo, useState } from 'react';
 
 import { toaster } from '@snack-uikit/toaster';
 
@@ -23,14 +23,50 @@ type StoryProps = FieldTextProps & {
   buttonContent?: ReactElement;
   buttonVariant: ButtonVariant;
   showButtonItems: boolean;
+  showButtonSearch: boolean;
 };
 
 const Template = ({ size, ...args }: StoryProps) => {
   const [value, setValue] = useState(args.value);
 
+  const [search, setSearch] = useState('');
+
   useEffect(() => {
     setValue(args.value);
   }, [args.value]);
+
+  const listItems = useMemo(() => {
+    const items = [
+      {
+        id: '1',
+        content: { option: 'Option 1', caption: 'Caption' },
+        onClick: () => {
+          toaster.userAction.success({ label: 'Option 1 clicked' });
+        },
+      },
+      {
+        id: '2',
+        content: { option: 'Option 2', caption: 'Caption' },
+        onClick: () => {
+          toaster.userAction.success({ label: 'Option 2 clicked' });
+        },
+      },
+      {
+        id: '3',
+        content: { option: 'Option 3', caption: 'Caption' },
+        disabled: true,
+        onClick: () => {
+          toaster.userAction.success({ label: 'Option 2 clicked' });
+        },
+      },
+    ];
+
+    if (!args.showButtonSearch) {
+      return items;
+    }
+
+    return items.filter(item => item.content.option.includes(search));
+  }, [search, args.showButtonSearch]);
 
   return (
     <div className={styles.wrapper} data-size={size}>
@@ -45,32 +81,10 @@ const Template = ({ size, ...args }: StoryProps) => {
             ? {
                 variant: args.buttonVariant,
                 content: args.buttonContent,
-                items: args.showButtonItems
-                  ? [
-                      {
-                        id: '1',
-                        content: { option: 'Option 1', caption: 'Caption' },
-                        onClick: () => {
-                          toaster.userAction.success({ label: 'Option 1 clicked' });
-                        },
-                      },
-                      {
-                        id: '2',
-                        content: { option: 'Option 2', caption: 'Caption' },
-                        onClick: () => {
-                          toaster.userAction.success({ label: 'Option 2 clicked' });
-                        },
-                      },
-                      {
-                        id: '3',
-                        content: { option: 'Option 3', caption: 'Caption' },
-                        disabled: true,
-                        onClick: () => {
-                          toaster.userAction.success({ label: 'Option 2 clicked' });
-                        },
-                      },
-                    ]
+                search: args.showButtonSearch
+                  ? { value: search, onChange: setSearch, placeholder: 'Search' }
                   : undefined,
+                items: args.showButtonItems ? listItems : undefined,
               }
             : undefined
         }
@@ -108,6 +122,7 @@ export const fieldText: StoryObj<StoryProps> = {
     buttonVariant: 'before',
     showButtonItems: false,
     showClearButton: true,
+    showButtonSearch: false,
     allowMoreThanMaxLength: false,
   },
 
@@ -135,6 +150,9 @@ export const fieldText: StoryObj<StoryProps> = {
     },
     showButtonItems: {
       name: '[Story]: Show icon drop',
+    },
+    showButtonSearch: {
+      name: '[Story]: Show search in drop',
     },
   },
 

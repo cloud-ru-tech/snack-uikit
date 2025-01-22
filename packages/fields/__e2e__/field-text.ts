@@ -89,6 +89,29 @@ test.page(
     buttonVariant: 'before',
     showButtonItems: true,
   }),
+)('Should show button field list with search', async t => {
+  const buttonField = getButtonField(wrapper);
+  const buttonFieldList = getButtonFieldList();
+  const search = buttonField.find(dataTestIdSelector('list__search-item'));
+
+  await t.expect(buttonField.exists).ok('button field is not present');
+  await t
+    .expect(buttonField.find(dataTestIdSelector('icon-chevron-down-xs')).exists)
+    .ok('button chevron is not present');
+
+  await t.click(buttonField);
+
+  await t.expect(buttonFieldList.exists).ok('button field list is not present');
+  await t.expect(search).ok('search in button field list is not present');
+});
+
+test.page(
+  visit({
+    buttonContent: 'DaySVG',
+    prefixIcon: 'PlaceholderSVG',
+    buttonVariant: 'before',
+    showButtonItems: true,
+  }),
 )('Should navigate to button field via keyboard', async t => {
   await t.expect(wrapper.visible).ok('field is not present');
 
