@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.24.0 (2025-01-22)
+
+
+### Features
+
+* **CORESERV-5847:** add ability to disable fuzzy search on chips ([5016fe7](https://github.com/cloud-ru-tech/snack-uikit/commit/5016fe7989cd363e834dca181b60c870128da72f))
+* **CORESERV-5847:** add optional virtualization to list ([6a05691](https://github.com/cloud-ru-tech/snack-uikit/commit/6a056917c7cd8b56fa432bf4edc804c13feb0a0a))
+
+
+
+
+
 ## 0.23.4 (2025-01-20)
 
 ### Only dependencies have been changed
