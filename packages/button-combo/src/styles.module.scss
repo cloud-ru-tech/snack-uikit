@@ -15,8 +15,8 @@ $sizes: 'xs', 's', 'm', 'l';
   }
 
   button {
-    &:not(:focus-visible) {
-      position: static;
+    &:focus-visible + button { 
+      position: static 
     }
 
     &[data-type='option'] {
