@@ -1,0 +1,45 @@
+{
+  "name": "@snack-uikit/button-combo",
+  "publishConfig": {
+    "access": "public"
+  },
+  "title": "Button Combo",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.woff",
+    "*.woff2"
+  ],
+  "description": "Кнопка с выбором действий",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/button-combo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
+    "directory": "packages/button-combo"
+  },
+  "author": "Артемий Зимин <aazimin@cloud.ru>",
+  "contributors": [
+    "Артемий Зимин <aazimin@cloud.ru>"
+  ],
+  "files": [
+    "dist/cjs",
+    "dist/esm",
+    "src",
+    "./CHANGELOG.md",
+    "./LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@snack-uikit/button": "0.19.5",
+    "@snack-uikit/icons": "0.24.1",
+    "@snack-uikit/list": "0.23.0",
+    "@snack-uikit/utils": "3.6.0",
+    "classnames": "2.5.1"
+  }
+}

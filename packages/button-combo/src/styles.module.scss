@@ -1,0 +1,43 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-buttonCombo';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+$sizes: 'xs', 's', 'm', 'l';
+
+.buttonComboWrapper {
+  display: inline-flex;
+  align-items: center;
+
+  &[data-full-width] {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%;
+  }
+
+  button {
+    &:not(:focus-visible) {
+      position: static;
+    }
+
+    &[data-type='option'] {
+      @each $size in $sizes {
+        &[data-size='#{$size}'] {
+          min-width: auto;
+
+          @include styles-tokens-element.composite-var(styles-tokens-buttonCombo.$button-combo, 'container', $size, 'option');
+        }
+      }
+
+      border-right: styles-theme-variables.$border-width-button-combo-divider solid
+        styles-theme-variables.$sys-neutral-decor-default;
+    }
+
+    &[data-type='dropdown'] {
+      @each $size in $sizes {
+        &[data-size='#{$size}'] {
+          @include styles-tokens-element.composite-var(styles-tokens-buttonCombo.$button-combo, 'container', $size, 'dropdown');
+        }
+      }
+    }
+  }
+}
