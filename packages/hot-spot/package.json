@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "HotSpot",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,7 +36,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/utils": "3.6.0",
+    "@snack-uikit/utils": "3.7.0",
     "classnames": "2.5.1"
   }
 }

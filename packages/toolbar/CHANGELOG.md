@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2025-01-23)
+
+
+### BREAKING CHANGES
+
+
+* **PDS-926:** add bulk actions, remove onDelete and before props ([a871db9](https://github.com/cloud-ru-tech/snack-uikit/commit/a871db9ea3446189852704ee135e8a510d2f7204))
+
+
+
+
 ## 0.9.18 (2025-01-22)
 
 ### Only dependencies have been changed

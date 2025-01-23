@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.7.0 (2025-01-23)
+
+
+### Features
+
+* **PDS-926:** add useDynamicList hook ([1d95c09](https://github.com/cloud-ru-tech/snack-uikit/commit/1d95c0969ef96e7b891e927543a38b0929edc760))
+
+
+
+
+
 # 3.6.0 (2024-12-12)
 
 
