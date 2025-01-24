@@ -10,6 +10,7 @@ import { Tree, TreeNodeProps, TreeProps } from '../src';
 import { SELECTION_MODE } from '../src/constants';
 import { TreeNodeId } from '../src/types';
 import { getNested, getNodeActions } from './helpers';
+import picture from './ImageProdContentLittle.jpg';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -38,9 +39,9 @@ const TREE_DATA: TreeNodeProps[] = [
     nested: [
       {
         id: '3.1',
-        title: 'first',
+        title: () => <img src={picture} alt='custom-content' className={styles.image} />,
         nested: [
-          { id: '3.1-1', title: 'first-first' },
+          { id: '3.1-1', title: () => <img src={picture} alt='custom-content' className={styles.image} /> },
           { id: '3.1-2', title: 'first-second' },
         ],
       },
@@ -59,7 +60,7 @@ const TREE_DATA: TreeNodeProps[] = [
       },
       {
         id: '3.3',
-        title: '3.3',
+        title: () => <img src={picture} alt='custom-content' className={styles.image} />,
       },
     ],
   },

@@ -55,7 +55,7 @@
     "@cloud-ru/ft-storybook-deps-graph-addon": "2.0.3",
     "@cloud-ru/ft-storybook-readme-addon": "2.0.3",
     "@geometricpanda/storybook-addon-badges": "2.0.5",
-    "@snack-uikit/figma-tokens": "17.2.1",
+    "@snack-uikit/figma-tokens": "17.4.0",
     "@storybook/addon-a11y": "8.3.6",
     "@storybook/addon-actions": "8.3.6",
     "@storybook/addon-designs": "8.0.3",

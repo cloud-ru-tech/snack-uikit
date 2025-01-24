@@ -1,3 +1,5 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree' as tree;
+
 .expandableTreeNode {
   position: relative;
   width: 100%;
@@ -38,4 +40,8 @@
 .expandableNested {
   width: 100%;
   min-width: 0;
+}
+
+.treeLine {
+  padding-bottom: calc(#{tree.$size-tree-item-line-height} / 2);
 }

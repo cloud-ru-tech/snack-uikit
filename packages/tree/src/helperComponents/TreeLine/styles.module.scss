@@ -1,4 +1,4 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree' as tree;
 
 .treeLine {
   pointer-events: none;
@@ -7,7 +7,7 @@
 
   flex-shrink: 0;
 
-  width: styles-tokens-element.$size-tree-item-line-width;
+  width: tree.$size-tree-item-line-width;
 
   visibility: hidden;
 
@@ -23,25 +23,21 @@
       transform: translateX(-50%);
 
       width: 1px;
-      height: calc(100% - (styles-tokens-element.$size-tree-item-height / 2));
+      height: 100%;
 
-      background: styles-tokens-element.$sys-neutral-decor-default;
-    }
-  }
-
-  &[data-half-height] {
-    &::after {
-      height: calc(100% - (styles-tokens-element.$size-tree-item-height / 2));
+      background: tree.$sys-neutral-decor-default;
     }
   }
 
   &[data-horizontal] {
+    @include tree.composite-var(tree.$tree-item-expand-wrap);
+
     &::after {
       top: 50%;
       left: -50%;
       transform: translateY(-50%);
 
-      width: calc(150% - styles-tokens-element.$space-tree-item-child-line-padding);
+      width: calc(150% - #{tree.$space-tree-item-child-line-padding});
       height: 1px;
     }
 
@@ -49,8 +45,8 @@
       width: 0;
 
       &::after {
-        left: calc(0px - styles-tokens-element.$size-tree-item-line-width / 2);
-        width: calc(styles-tokens-element.$size-tree-item-line-width / 2);
+        left: calc(0px - #{tree.$size-tree-item-line-width} / 2);
+        width: calc(#{tree.$size-tree-item-line-width} / 2);
       }
     }
   }

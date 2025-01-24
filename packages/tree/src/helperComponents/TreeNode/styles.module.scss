@@ -1,9 +1,9 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree';
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree' as tree;
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element' as element;
 
 .treeNode {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   box-sizing: border-box;
   width: 100%;
 }
@@ -16,19 +16,25 @@
 
   box-sizing: border-box;
 
-  color: styles-tokens-tree.$sys-neutral-text-support;
+  color: tree.$sys-neutral-text-support;
 
   svg {
-    width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
-    height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    width: element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
   }
 }
 
 .treeNodeTitle {
+  @include tree.composite-var(tree.$tree-item-content-wrap);
+
+  display: flex;
   flex-grow: 1;
+  align-items: center;
+
   box-sizing: border-box;
-  min-width: styles-tokens-tree.$size-tree-item-checkbox-wrap;
-  color: styles-tokens-tree.$sys-neutral-text-main;
+  min-width: tree.$size-tree-item-wrap;
+
+  color: tree.$sys-neutral-text-main;
 }
 
 .treeNodeActions {
@@ -41,14 +47,14 @@
 }
 
 .treeNodeContent {
-  @include styles-tokens-tree.composite-var(styles-tokens-tree.$tree-item-content-layout);
+  @include tree.composite-var(tree.$tree-item-content-layout);
 
   cursor: pointer;
 
   position: relative;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   box-sizing: border-box;
   width: 100%;
@@ -66,13 +72,13 @@
     height: 100%;
 
     opacity: 0;
-    background-color: styles-tokens-tree.$sys-neutral-accent-default;
+    background-color: tree.$sys-neutral-accent-default;
     border-radius: inherit;
   }
 
   &:hover, &:focus-visible, &[data-droplist-active] {
     &::before {
-      opacity: styles-tokens-tree.$opacity-a008;
+      opacity: tree.$opacity-a008;
     }
 
     .treeNodeActions {
@@ -81,9 +87,9 @@
   }
 
   &:focus-visible {
-    @include styles-tokens-tree.outline-inside-var(styles-tokens-element.$container-focused-s);
+    @include tree.outline-inside-var(element.$container-focused-s);
 
-    outline-color: styles-tokens-tree.$sys-available-complementary;
+    outline-color: tree.$sys-available-complementary;
   }
 
   &[data-multiselect] {
@@ -98,26 +104,26 @@
     }
 
     .treeNodeTitle, .treeNodeIcon {
-      color: styles-tokens-tree.$sys-neutral-text-disabled;
+      color: tree.$sys-neutral-text-disabled;
     }
   }
 
   &[aria-selected='true']:not([data-multiselect]) {
     &::before {
-      opacity: styles-tokens-tree.$opacity-a008;
-      background-color: styles-tokens-tree.$sys-primary-accent-default;
+      opacity: tree.$opacity-a008;
+      background-color: tree.$sys-primary-accent-default;
     }
 
     &:hover {
       &::before {
-        opacity: styles-tokens-tree.$opacity-a016;
+        opacity: tree.$opacity-a016;
       }
     }
   }
 }
 
 .treeNodeCheckboxWrap {
-  @include styles-tokens-tree.composite-var(styles-tokens-tree.$tree-item-checkbox-wrap);
+  @include tree.composite-var(tree.$tree-item-toggle-wrap);
 
   display: flex;
   flex-shrink: 0;
@@ -128,6 +134,8 @@
 }
 
 .treeNodeExpandButton {
+  @include tree.composite-var(tree.$tree-item-expand-wrap);
+
   box-sizing: border-box;
 
   svg {
@@ -139,4 +147,13 @@
       transform: rotate(90deg);
     }
   }
+}
+
+.treeNodeExpandButtonWrapper {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+
+  min-width: tree.$size-button-xs;
 }

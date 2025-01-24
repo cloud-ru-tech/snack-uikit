@@ -1,4 +1,4 @@
-import { KeyboardEventHandler, useEffect, useMemo, useState } from 'react';
+import { forwardRef, KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 import useTransition from 'react-transition-state';
 
 import { TEST_IDS, TRANSITION_TIMING } from '../../constants';
@@ -15,116 +15,139 @@ type ExpandableTreeNodeProps = {
   tabIndexAvailable?: boolean;
 };
 
-export function ExpandableTreeNode({
-  node: { 'data-test-id': dataTestId, ...node },
-  parentNode,
-  tabIndexAvailable,
-}: ExpandableTreeNodeProps) {
-  const { expandedNodes, onExpand, onDataLoad, showLines } = useTreeContext();
+export const ExpandableTreeNode = forwardRef<HTMLDivElement, ExpandableTreeNodeProps>(
+  ({ node: { 'data-test-id': dataTestId, ...node }, parentNode, tabIndexAvailable }, ref) => {
+    const { expandedNodes, onExpand, onDataLoad, showLines } = useTreeContext();
 
-  const isExpandable = Boolean(node.nested);
-  const isExpanded = expandedNodes?.includes(node.id) || false;
+    const isExpandable = Boolean(node.nested);
+    const isExpanded = expandedNodes?.includes(node.id) || false;
 
-  const [isLoading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(false);
 
-  const [state, toggle] = useTransition({
-    timeout: TRANSITION_TIMING.accordionFolding,
-    initialEntered: isExpanded || undefined,
-    enter: isExpanded,
-  });
+    const [state, toggle] = useTransition({
+      timeout: TRANSITION_TIMING.accordionFolding,
+      initialEntered: isExpanded || undefined,
+      enter: isExpanded,
+    });
 
-  const showContent = node.nested && node.nested.length > 0 && state.status !== 'exited';
+    const showContent = node.nested && node.nested.length > 0 && state.status !== 'exited';
 
-  const isLineHalfHeight = useMemo(() => {
-    if (!node.nested?.length) return false;
+    const childrenRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [lastItemHeight, setLastItemHeight] = useState(0);
 
-    return !node.nested.at(-1)?.nested;
-  }, [node.nested]);
+    useEffect(() => {
+      const lastItem = childrenRefs.current?.at(-1);
 
-  useEffect(() => {
-    if (node.nested?.length && isExpanded && state.status === 'exited') {
-      toggle(true);
-    }
-  }, [isExpanded, node.nested, state.status]);
+      if (lastItem) {
+        const observer = new ResizeObserver(entities =>
+          entities.forEach(entity => {
+            if (entity.target === lastItem) {
+              const [{ blockSize: newHeight }] = entity.contentBoxSize;
+              setLastItemHeight(newHeight);
+            }
+          }),
+        );
 
-  const toggleExpand = async () => {
-    if (node.nested && !node.nested.length && !isExpanded && onDataLoad) {
-      setLoading(true);
+        observer.observe(lastItem);
 
-      await onDataLoad(node).finally(() => {
-        setLoading(false);
-      });
-    }
+        setLastItemHeight(lastItem.scrollHeight ?? 0);
 
-    onExpand(node);
-
-    toggle();
-  };
-
-  const handleKeyDown: KeyboardEventHandler<HTMLElement> = e => {
-    if (!isExpandable) return;
-
-    switch (e.key) {
-      case 'ArrowRight': {
-        if (!isExpanded) {
-          toggleExpand();
-        }
-        return;
+        return () => observer.disconnect();
       }
-      case 'ArrowLeft': {
-        if (isExpanded) {
-          toggleExpand();
-        }
-        return;
+    }, [state.status]);
+
+    useEffect(() => {
+      if (node.nested?.length && isExpanded && state.status === 'exited') {
+        toggle(true);
       }
-      default:
-        return;
-    }
-  };
+    }, [isExpanded, node.nested, state.status]);
 
-  return (
-    <div
-      className={styles.expandableTreeNode}
-      data-test-id={dataTestId}
-      data-expandable={Boolean(node.nested) || undefined}
-      data-disabled={node.disabled || undefined}
-    >
-      <TreeNode
-        {...node}
-        isLoading={isLoading}
-        parentNode={parentNode}
-        onChevronClick={toggleExpand}
-        onKeyDown={handleKeyDown}
-        tabIndexAvailable={tabIndexAvailable}
-      />
+    const toggleExpand = async () => {
+      if (node.nested && !node.nested.length && !isExpanded && onDataLoad) {
+        setLoading(true);
 
-      {node.nested && (
-        <div
-          className={styles.expandableWrap}
-          data-expanded={isExpanded || undefined}
-          data-test-id={TEST_IDS.expandable}
-        >
-          {showContent && (
-            <div className={styles.expandableContent} data-test-id={TEST_IDS.expandableContent}>
-              <TreeLine visible={showLines} halfHeight={isLineHalfHeight} data-test-id={TEST_IDS.line} />
+        await onDataLoad(node).finally(() => {
+          setLoading(false);
+        });
+      }
 
-              <div className={styles.expandableNested}>
-                {node.nested.map(nestedNode => {
-                  const parent: ParentNode = { id: node.id, nested: node.nested, parentNode };
+      onExpand(node);
 
-                  return (
-                    <TreeItem
-                      key={nestedNode.id}
-                      node={{ ...nestedNode, disabled: node.disabled || nestedNode.disabled }}
-                      parentNode={parent}
-                    />
-                  );
-                })}
+      toggle();
+    };
+
+    const handleKeyDown: KeyboardEventHandler<HTMLElement> = e => {
+      if (!isExpandable) return;
+
+      switch (e.key) {
+        case 'ArrowRight': {
+          if (!isExpanded) {
+            toggleExpand();
+          }
+          return;
+        }
+        case 'ArrowLeft': {
+          if (isExpanded) {
+            toggleExpand();
+          }
+          return;
+        }
+        default:
+          return;
+      }
+    };
+
+    return (
+      <div
+        className={styles.expandableTreeNode}
+        data-test-id={dataTestId}
+        data-expandable={Boolean(node.nested) || undefined}
+        data-disabled={node.disabled || undefined}
+        ref={ref}
+      >
+        <TreeNode
+          {...node}
+          isLoading={isLoading}
+          parentNode={parentNode}
+          onChevronClick={toggleExpand}
+          onKeyDown={handleKeyDown}
+          tabIndexAvailable={tabIndexAvailable}
+        />
+
+        {node.nested && (
+          <div
+            className={styles.expandableWrap}
+            data-expanded={isExpanded || undefined}
+            data-test-id={TEST_IDS.expandable}
+          >
+            {showContent && (
+              <div className={styles.expandableContent} data-test-id={TEST_IDS.expandableContent}>
+                <TreeLine
+                  visible={showLines}
+                  data-test-id={TEST_IDS.line}
+                  height={`calc(100% - ${lastItemHeight}px)`}
+                  className={styles.treeLine}
+                />
+
+                <div className={styles.expandableNested}>
+                  {node.nested.map((nestedNode, index) => {
+                    const parent: ParentNode = { id: node.id, nested: node.nested, parentNode };
+
+                    return (
+                      <TreeItem
+                        ref={el => (childrenRefs.current[index] = el)}
+                        key={nestedNode.id}
+                        node={{ ...nestedNode, disabled: node.disabled || nestedNode.disabled }}
+                        parentNode={parent}
+                      />
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
+            )}
+          </div>
+        )}
+      </div>
+    );
+  },
+);
