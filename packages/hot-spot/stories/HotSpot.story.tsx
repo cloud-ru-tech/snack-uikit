@@ -74,8 +74,7 @@ export const hotSpot: StoryObj<StoryProps> = {
     design: {
       name: 'Figma',
       type: 'figma',
-      //TODO
-      url: 'https://pocka.github.io/storybook-addon-designs/?path=/story/docs-quick-start--page',
+      url: 'https://www.figma.com/design/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-5.0.0?node-id=4799-2805',
     },
   },
 };

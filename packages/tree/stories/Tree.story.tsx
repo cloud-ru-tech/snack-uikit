@@ -78,6 +78,16 @@ const TREE_DATA: TreeNodeProps[] = [
     id: 'justItem',
     title: 'file',
   },
+  {
+    id: 'custom-content',
+    title: 'item with custom content',
+    nested: [
+      {
+        id: 'custom-content-1',
+        title: () => <img src={picture} alt='custom-content' className={styles.image} />,
+      },
+    ],
+  },
 ];
 
 type StoryProps = TreeProps & { enableNodeActions: boolean };
