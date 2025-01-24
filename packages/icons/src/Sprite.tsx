@@ -1,19 +1,18 @@
 import { memo, useState } from 'react';
 
-import { useLayoutEffect } from '@snack-uikit/utils';
+import { isBrowser, useLayoutEffect } from '@snack-uikit/utils';
 
 function SpriteInner({ content }: { content: string }) {
-  const [div, setDiv] = useState<HTMLDivElement>();
+  const [div] = useState(isBrowser() ? document.createElement('div') : undefined);
 
-  useLayoutEffect(() => {
-    setDiv(document.createElement('div'));
-  }, []);
+  if (isBrowser() && div && div.parentNode !== document.body) {
+    div.style.display = 'none';
+    div.innerHTML = content;
+    document.body.prepend(div);
+  }
 
   useLayoutEffect(() => {
     if (div) {
-      div.style.display = 'none';
-      document.body.prepend(div);
-
       return () => {
         document.body.removeChild(div);
       };
@@ -21,9 +20,7 @@ function SpriteInner({ content }: { content: string }) {
   }, [div]);
 
   useLayoutEffect(() => {
-    if (div) {
-      div.innerHTML = content;
-    }
+    div && (div.innerHTML = content);
   }, [content, div]);
 
   return null;
