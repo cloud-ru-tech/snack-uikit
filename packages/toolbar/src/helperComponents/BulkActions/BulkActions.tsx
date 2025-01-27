@@ -57,28 +57,30 @@ export function BulkActions({
       )}
 
       {(checked || indeterminate) && (
-        <div className={styles.bulkActions} data-test-id={TEST_IDS.bulkActions} ref={parentContainerRef}>
-          {visibleItems.map(({ label, icon: Icon, onClick, disabled, tooltip, 'data-test-id': testId }) => (
-            <Tooltip
-              tip={tooltip}
-              key={label}
-              open={tooltip ? undefined : false}
-              placement='top'
-              data-test-id={`${testId}-tooltip`}
-            >
-              <ButtonFunction
-                className={styles.action}
-                fullWidth
-                data-test-id={testId}
-                iconPosition='before'
-                icon={<Icon />}
-                label={label}
-                size='m'
-                onClick={onClick}
-                disabled={disabled}
-              />
-            </Tooltip>
-          ))}
+        <div className={styles.bulkActionsWrapper} data-test-id={TEST_IDS.bulkActions} ref={parentContainerRef}>
+          <div className={styles.bulkActions}>
+            {visibleItems.map(({ label, icon: Icon, onClick, disabled, tooltip, 'data-test-id': testId }) => (
+              <Tooltip
+                tip={tooltip}
+                key={label}
+                open={tooltip ? undefined : false}
+                placement='top'
+                data-test-id={`${testId}-tooltip`}
+              >
+                <ButtonFunction
+                  className={styles.action}
+                  fullWidth
+                  data-test-id={testId}
+                  iconPosition='before'
+                  icon={<Icon />}
+                  label={label}
+                  size='m'
+                  onClick={onClick}
+                  disabled={disabled}
+                />
+              </Tooltip>
+            ))}
+          </div>
 
           {hiddenItems.length > 0 && (
             <Droplist

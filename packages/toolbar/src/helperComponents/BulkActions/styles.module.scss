@@ -1,8 +1,8 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toolbar' as toolbar;
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element' as element;
 
-.bulkActions {
-  @include toolbar.composite-var(toolbar.$toolbar-bulk-action);
+.bulkActionsWrapper {
+  @include toolbar.composite-var(toolbar.$toolbar-bulk-action-wrap);
 
   scrollbar-width: none;  /* Firefox */
 
@@ -18,6 +18,12 @@
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
   }
+}
+
+.bulkActions {
+  @include toolbar.composite-var(toolbar.$toolbar-bulk-action);
+
+  display: flex;
 }
 
 .checkboxWrapper {

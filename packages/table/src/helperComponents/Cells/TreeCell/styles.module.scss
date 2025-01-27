@@ -1,6 +1,6 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element' as element;
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table' as table;
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree' as tree;
 
 .treeCell {
     display: flex;
@@ -8,7 +8,7 @@
     justify-content: start;
 
     width: fit-content;
-    height: styles-tokens-table.$size-markdown-table-cell-height;
+    height: table.$size-markdown-table-cell-height;
 }
 
 .cellUserToggleIcon {
@@ -17,12 +17,12 @@
   align-items: center;
   box-sizing: border-box;
   svg {
-    color: styles-tokens-tree.$sys-neutral-text-support;
+    color: tree.$sys-neutral-text-support;
   }
 }
 
 .treeNodeContent {
-  @include styles-tokens-tree.composite-var(styles-tokens-tree.$tree-item-content-layout);
+  @include tree.composite-var(tree.$tree-item-content-layout);
 
   cursor: pointer;
 
@@ -31,12 +31,12 @@
   align-items: center;
 
   box-sizing: border-box;
-  height: styles-tokens-table.$size-markdown-table-cell-height;
+  height: table.$size-markdown-table-cell-height;
 
   &:focus-visible {
-    @include styles-tokens-tree.outline-inside-var(styles-tokens-element.$container-focused-s);
+    @include element.outline-inside-var(element.$container-focused-s);
 
-    outline-color: styles-tokens-tree.$sys-available-complementary;
+    outline-color: tree.$sys-available-complementary;
   }
 
   &[data-multiselect] {
@@ -51,46 +51,47 @@
     }
 
     .treeNodeTitle, .treeNodeIcon {
-      color: styles-tokens-tree.$sys-neutral-text-disabled;
+      color: tree.$sys-neutral-text-disabled;
     }
   }
 
   &[aria-selected='true']:not([data-multiselect]) {
-      opacity: styles-tokens-tree.$opacity-a008;
-      background-color: styles-tokens-tree.$sys-primary-accent-default;
+      opacity: tree.$opacity-a008;
+      background-color: tree.$sys-primary-accent-default;
 
     &:hover {
-        opacity: styles-tokens-tree.$opacity-a016;
+        opacity: tree.$opacity-a016;
     }
   }
 }
+
 .userContent {
   cursor: pointer;
   display: flex;
   align-items: center;
   svg {
-    color: styles-tokens-tree.$sys-neutral-text-support;
+    color: tree.$sys-neutral-text-support;
   }
 }
   .treeCellContainer {
     position: relative;
     overflow: hidden;
 
-    @include styles-tokens-table.composite-var(styles-tokens-table.$sans-body-m);
+    @include table.composite-var(table.$sans-body-m);
   }
   .line {
-    margin-left: calc(#{styles-tokens-table.$dimension-4m} + #{styles-tokens-table.$dimension-025m});
+    margin-left: calc(#{table.$dimension-4m} + #{table.$dimension-025m});
   }
   .firstLine {
-    margin-left: styles-tokens-table.$dimension-2m
+    margin-left: table.$dimension-2m
   }
   .cellExpandButton {
     box-sizing: border-box;
 
 
     svg {
-      width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
-      height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+      width: element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+      height: element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
       transition: transform 0.2s ease;
     }
 
@@ -102,7 +103,7 @@
   }
 
 .treeCheckboxWrap {
-  @include styles-tokens-tree.composite-var(styles-tokens-tree.$tree-item-checkbox-wrap);
+  @include tree.composite-var(tree.$tree-item-toggle-wrap);
 
   display: flex;
   flex-shrink: 0;
