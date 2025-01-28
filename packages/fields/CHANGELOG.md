@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.37.0 (2025-01-28)
+
+
+### Features
+
+* **PDS-1409:** add search prop to FieldText button ([d0e4687](https://github.com/cloud-ru-tech/snack-uikit/commit/d0e4687dd8996cf5ee3adb9eeb34374f4e0d02a2))
+
+
+
+
+
 ## 0.36.5 (2025-01-23)
 
 ### Only dependencies have been changed
