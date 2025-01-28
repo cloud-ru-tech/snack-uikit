@@ -18,10 +18,13 @@ export const ru_RU: typeof en_GB = {
     export: 'Экспортировать в ',
   },
   Chips: {
-    clearAllButton: 'Удалить все',
     allLabel: 'Все',
     apply: 'Применить',
     cancel: 'Отменить',
+    add: 'Добавить',
+    clear: 'Очистить',
+    resetFilter: 'Сбросить значение фильтра',
+    addButtonDisabledTip: 'Нет фильтров для добавления',
   },
   List: {
     noData: {
@@ -54,5 +57,9 @@ export const ru_RU: typeof en_GB = {
   Calendar: {
     current: 'Сейчас',
     time: 'Время',
+  },
+  Toolbar: {
+    hideFilters: 'Скрыть фильтры',
+    showFilters: 'Показать фильтры',
   },
 };

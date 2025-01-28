@@ -31,10 +31,13 @@ export const en_GB = {
     },
   },
   Chips: {
-    clearAllButton: 'Clear all',
     allLabel: 'All',
     apply: 'Apply',
     cancel: 'Cancel',
+    add: 'Add',
+    clear: 'Clear',
+    resetFilter: 'Reset filter value',
+    addButtonDisabledTip: 'No more filters to add',
   },
   Fields: {
     limitTooltip: {
@@ -52,5 +55,9 @@ export const en_GB = {
   Calendar: {
     current: 'Current',
     time: 'Time',
+  },
+  Toolbar: {
+    hideFilters: 'Hide filters',
+    showFilters: 'Show filters',
   },
 };
