@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+.containerWrapper {
+  @include element.composite-var(toolbar.$toolbar-container-wrapper);
+
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
   @include element.composite-var(toolbar.$toolbar-container);
 
@@ -86,4 +93,8 @@
 .actions {
   flex-shrink: 0;
   box-sizing: border-box;
+}
+
+.list {
+  width: 200px;
 }

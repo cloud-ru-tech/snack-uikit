@@ -1,3 +1,5 @@
+import { FiltersState } from '@snack-uikit/chips';
+
 import { ToolbarProps } from './Toolbar';
 import { ToolbarBulkActionProps } from './types';
 
@@ -11,7 +13,9 @@ export function extractBulkActionsProps({
   return { onCheck, checked, indeterminate, actions: bulkActions, selectionMode };
 }
 
-export function isBulkActionsProps(props: Partial<ToolbarProps>): props is ToolbarBulkActionProps {
+export function isBulkActionsProps<TState extends FiltersState>(
+  props: Partial<ToolbarProps<TState>>,
+): props is ToolbarBulkActionProps {
   return (
     'bulkActions' in props &&
     Array.isArray(props.bulkActions) &&

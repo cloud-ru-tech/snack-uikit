@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { ChipChoiceRowProps, FiltersState } from '@snack-uikit/chips';
+
 import { BulkActionsProps, MoreActionsProps } from '../../helperComponents';
 import { NeverOrUndefined, RequireAtLeastOne } from './typesUtils';
 
@@ -43,3 +45,8 @@ export type CheckedToolbarProps = CommonToolbarProps & ToolbarBulkActionProps & 
 export type DefaultToolbarProps = CommonToolbarProps &
   NeverOrUndefined<ToolbarBulkActionProps> &
   RequireAtLeastOne<OptionalProps>;
+
+export type FilterRow<TState extends FiltersState> = Omit<ChipChoiceRowProps<TState>, 'size' | 'data-test-id'> & {
+  open?: boolean;
+  onOpenChange?(isOpen: boolean): void;
+};

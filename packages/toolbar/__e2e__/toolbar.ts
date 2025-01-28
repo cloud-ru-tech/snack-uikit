@@ -2,7 +2,7 @@ import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { TEST_IDS } from '../src/constants';
-import { TEST_ID_TOASTER } from '../stories/testIds';
+import { STORY_TEST_IDS, TEST_ID_TOASTER } from '../stories/testIds';
 
 const TEST_ID = 'toolbar-test';
 
@@ -43,68 +43,93 @@ function getSelectors() {
     deleteActionTooltip: Selector(dataTestIdSelector(`${TEST_IDS.deleteAction}-tooltip`)),
     disabledActionTooltip: Selector(dataTestIdSelector(`${TEST_IDS.disabledAction}-tooltip`)),
     after: Selector(dataTestIdSelector(TEST_IDS.after)),
+    filterRow: Selector(dataTestIdSelector(TEST_IDS.filterRow)),
+    filterButton: Selector(dataTestIdSelector(TEST_IDS.filterButton)),
+    filterButtonCounter: Selector(dataTestIdSelector(`${TEST_IDS.filterButton}__counter`)),
+    filterRowAddButton: Selector(dataTestIdSelector('chip-choice-row__add-button')),
+    filterRowPinnedSingleFilter: Selector(dataTestIdSelector(STORY_TEST_IDS.pinnedSingleFilter)),
+    filterRowSingleFilter: Selector(dataTestIdSelector(STORY_TEST_IDS.singleFilter)),
+    filterRowAddListSingleFilter: Selector(
+      dataTestIdSelector(`chip-choice-row__add-button-option-${STORY_TEST_IDS.singleFilter}`),
+    ),
+    filterRowDateFilter: Selector(dataTestIdSelector(STORY_TEST_IDS.dateFilter)),
+    filterRowAddListDateFilter: Selector(
+      dataTestIdSelector(`chip-choice-row__add-button-option-${STORY_TEST_IDS.dateFilter}`),
+    ),
+    singleFilterItem: (optionId: string) => Selector(dataTestIdSelector(`list__base-item_${optionId}`)),
+    singleFilterApplyButton: Selector(dataTestIdSelector(`chip-choice__approve-button`)),
   };
 }
 
-test.page(
-  getPage({
-    showBulkActions: true,
-    showOnRefresh: true,
-    showAfterActions: true,
-    showMoreActions: true,
-  }),
-)(`Should render all items`, async t => {
-  const { search, checkbox, moreActionsButton, after, refreshButton } = getSelectors();
+function verifyElementRender(
+  message: string,
+  pageProps: {
+    showBulkActions?: boolean;
+    showOnRefresh?: boolean;
+    showSearch?: boolean;
+    showAfterActions?: boolean;
+    showFilters?: boolean;
+    filterRowOpened?: boolean;
+    showMoreActions?: boolean;
+  },
+) {
+  test.page(
+    getPage({
+      showBulkActions: false,
+      showOnRefresh: false,
+      showSearch: false,
+      showAfterActions: false,
+      showFilters: false,
+      filterRowOpened: false,
+      showMoreActions: false,
+      ...pageProps,
+    }),
+  )(message, async t => {
+    const { search, checkbox, moreActionsButton, after, refreshButton, filterButton, filterRow } = getSelectors();
+    const {
+      showBulkActions,
+      showOnRefresh,
+      showSearch,
+      showAfterActions,
+      showFilters,
+      filterRowOpened,
+      showMoreActions,
+    } = pageProps;
 
-  await t.expect(search.exists).ok('Search should be rendered');
-  await t.expect(after.exists).ok('After search should be rendered when applied');
-  await t.expect(moreActionsButton.exists).ok('MoreActionsButton should be rendered when moreActions applied');
-  await t.expect(refreshButton.exists).ok('RefreshButton should be rendered when onRefresh callback applied');
-  await t.expect(checkbox.exists).ok('Checkbox should be rendered when checked & onCheck applied');
+    const checkItem = async (element: Selector, elementName: string, condition?: boolean) => {
+      const not = condition ? 'not ' : '';
+      await t
+        .expect(element.exists)
+        [condition ? 'ok' : 'notOk'](`${elementName} should ${not}be rendered when ${not}applied`);
+    };
+
+    await checkItem(checkbox, 'Checkbox', showBulkActions);
+    await checkItem(refreshButton, 'RefreshButton', showOnRefresh);
+    await checkItem(search, 'Search', showSearch);
+    await checkItem(after, 'After', showAfterActions);
+    await checkItem(filterButton, 'FilterButton', showFilters);
+    await checkItem(filterRow, 'FilterRow', filterRowOpened);
+    await checkItem(moreActionsButton, 'MoreActionsButton', showMoreActions);
+  });
+}
+
+verifyElementRender('Should render all items', {
+  showBulkActions: true,
+  showOnRefresh: true,
+  showSearch: true,
+  showAfterActions: true,
+  showFilters: true,
+  filterRowOpened: true,
+  showMoreActions: true,
 });
 
-test.page(
-  getPage({
-    showBulkActions: false,
-    showOnRefresh: false,
-    showAfterActions: false,
-    showMoreActions: false,
-  }),
-)(`Should render only search`, async t => {
-  const { search, checkbox, moreActionsButton, after, refreshButton } = getSelectors();
-
-  await t.expect(search.exists).ok('Search should be rendered');
-  await t.expect(after.exists).notOk('Actions should not be rendered when actions not applied');
-  await t
-    .expect(moreActionsButton.exists)
-    .notOk('MoreActionsButton should not be rendered when moreActions not applied');
-  await t
-    .expect(refreshButton.exists)
-    .notOk('RefreshButton should not be rendered when onRefresh callback not applied');
-  await t.expect(checkbox.exists).notOk('Checkbox should not be rendered when bulk actions not applied');
-});
-
-test.page(
-  getPage({
-    showBulkActions: false,
-    showOnRefresh: false,
-    showSearch: false,
-    showAfterActions: false,
-    showMoreActions: false,
-  }),
-)(`Should render without search`, async t => {
-  const { search, checkbox, moreActionsButton, after, refreshButton } = getSelectors();
-
-  await t.expect(search.exists).notOk('Search should not be rendered');
-  await t.expect(after.exists).notOk('Actions should not be rendered when actions not applied');
-  await t
-    .expect(moreActionsButton.exists)
-    .notOk('MoreActionsButton should not be rendered when moreActions not applied');
-  await t
-    .expect(refreshButton.exists)
-    .notOk('RefreshButton should not be rendered when onRefresh callback not applied');
-  await t.expect(checkbox.exists).notOk('Checkbox should not be rendered when bulk actions not applied');
-});
+verifyElementRender('Should render checkbox only', { showBulkActions: true });
+verifyElementRender('Should render refresh button only', { showOnRefresh: true });
+verifyElementRender('Should render search only', { showSearch: true });
+verifyElementRender('Should render after actions only', { showAfterActions: true });
+verifyElementRender('Should render filter button only', { showFilters: true });
+verifyElementRender('Should render filter button & filter row', { showFilters: true, filterRowOpened: true });
+verifyElementRender('Should render more actions only', { showMoreActions: true });
 
 test.page(
   getPage({
@@ -113,6 +138,8 @@ test.page(
     showOnRefresh: true,
     showAfterActions: true,
     showMoreActions: true,
+    showFilters: true,
+    filterRowOpened: true,
   }),
 )(`Should control by keyboard`, async t => {
   const {
@@ -125,6 +152,9 @@ test.page(
     rejectAction,
     moreBulkActionsButton,
     deactivateAction,
+    filterButton,
+    filterRowAddButton,
+    filterRowAddListSingleFilter,
   } = getSelectors();
 
   await t.expect(search.visible).ok();
@@ -142,9 +172,15 @@ test.page(
   await t.pressKey('tab').expect(searchInput.focused).ok('Search should be focused');
   await t.pressKey('tab').expect(searchInput.focused).notOk('Search should not be focused');
   await t.pressKey('tab').expect(moreActionsButton.focused).notOk('MoreActionsButton should not be focused');
+  await t.pressKey('tab').expect(filterButton.focused).ok('FilterButton should be focused');
+  // TODO: fix
+  // await t.pressKey('enter').expect(filterRow.exists).ok('Filter row not rendered');
+  // await t.pressKey('enter').expect(filterRow.exists).notOk("Filter row rendered although shouldn't");
   await t.pressKey('tab').expect(moreActionsButton.focused).ok('MoreActionsButton should be focused');
   await t.pressKey('down').expect(option.focused).ok('Option should be focused');
   await t.pressKey('up up').expect(moreActionsButton.focused).ok('MoreActionsButton should be focused');
+  await t.pressKey('tab tab tab').expect(filterRowAddButton.focused).ok('FilterRowAddButton should be focused');
+  await t.expect(filterRowAddListSingleFilter.exists).ok('FilterRowAddButtonList should be visible');
 });
 
 test.page(getPage({ value: '' }))(`Should change input value & call onSubmit callback by Enter`, async t => {
@@ -266,3 +302,58 @@ test.page(getPage({ indeterminate: false, checked: true, showBulkActions: true }
       .ok('DisabledActionTooltip should be shown');
   },
 );
+
+test.page(getPage({ showFilters: true }))('Should show active filter number in filter button', async t => {
+  const {
+    filterButton,
+    filterRow,
+    filterRowAddButton,
+    filterRowAddListDateFilter,
+    filterRowAddListSingleFilter,
+    singleFilterItem,
+    singleFilterApplyButton,
+    filterRowPinnedSingleFilter,
+    filterButtonCounter,
+  } = getSelectors();
+
+  await t.click(filterButton).expect(filterRow.exists).ok('Filter row not rendered');
+  await t.click(filterButton).expect(filterRow.exists).notOk("Filter row rendered although shouldn't");
+
+  await t.click(filterButton);
+
+  await t.click(filterRowAddButton).click(filterRowAddListDateFilter);
+  await t
+    .click(filterRowAddButton)
+    .click(filterRowAddListSingleFilter)
+    .click(singleFilterItem('1'))
+    .click(singleFilterApplyButton);
+  await t.click(filterRowPinnedSingleFilter).click(singleFilterItem('1'));
+
+  await t.expect(filterButtonCounter.textContent).eql('2');
+});
+
+test.page(getPage({ showFilters: true }))('Should keep added chips after toggling filter button', async t => {
+  const {
+    filterButton,
+    filterRowAddButton,
+    filterRowDateFilter,
+    filterRowAddListDateFilter,
+    filterRowSingleFilter,
+    filterRowAddListSingleFilter,
+    singleFilterItem,
+    singleFilterApplyButton,
+  } = getSelectors();
+
+  await t.click(filterButton);
+  await t.click(filterRowAddButton).click(filterRowAddListDateFilter);
+  await t
+    .click(filterRowAddButton)
+    .click(filterRowAddListSingleFilter)
+    .click(singleFilterItem('1'))
+    .click(singleFilterApplyButton);
+
+  await t.click(filterButton).click(filterButton);
+
+  await t.expect(filterRowSingleFilter.exists).ok('Single filter chip should exist');
+  await t.expect(filterRowDateFilter.exists).ok('Date filter chip should exist');
+});

@@ -24,7 +24,7 @@ export function BulkActions({
 }) {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLDivElement>) => {
-      if (e.key === ' ') {
+      if (e.key === ' ' || e.key === 'Enter') {
         onCheck?.();
       }
     },

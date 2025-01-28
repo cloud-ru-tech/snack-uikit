@@ -11,7 +11,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Toolbar, ToolbarProps } from '../src';
-import { BULK_ACTIONS, OPTIONS } from './constants';
+import { BULK_ACTIONS, FILTER_ROW, OPTIONS } from './constants';
 import styles from './styles.module.scss';
 import { TEST_ID_TOASTER } from './testIds';
 
@@ -22,10 +22,12 @@ const meta: Meta = {
 
 export default meta;
 
-type StoryProps = ToolbarProps & {
+type StoryProps = ToolbarProps<Record<string, string>> & {
   showSearch: boolean;
   showOnRefresh: boolean;
   showBulkActions: boolean;
+  showFilters: boolean;
+  filterRowOpened: boolean;
   showManyBulkActions: boolean;
   showAfterActions: boolean;
   showMoreActions: boolean;
@@ -35,12 +37,15 @@ const Template: StoryFn<StoryProps> = ({
   showOnRefresh,
   showBulkActions,
   showManyBulkActions,
+  showFilters,
+  filterRowOpened,
   showAfterActions,
   showSearch,
   showMoreActions,
   outline,
   selectionMode,
   bulkActions,
+  filterRow,
   ...args
 }: StoryProps) => {
   const [{ search, checked, indeterminate }, updateArgs] = useArgs<StoryProps>();
@@ -100,6 +105,7 @@ const Template: StoryFn<StoryProps> = ({
         onRefresh={showOnRefresh ? onRefresh : undefined}
         after={showAfterActions ? afterActions : undefined}
         moreActions={showMoreActions ? OPTIONS : undefined}
+        filterRow={showFilters && filterRow ? { ...filterRow, open: filterRowOpened } : undefined}
       />
     </div>
   );
@@ -109,12 +115,6 @@ export const toolbar: StoryObj<StoryProps> = {
   render: Template,
 
   args: {
-    search: {
-      value: '',
-      placeholder: 'Search',
-      loading: false,
-      onChange() {},
-    },
     outline: false,
     selectionMode: 'multiple',
     showBulkActions: true,
@@ -122,9 +122,18 @@ export const toolbar: StoryObj<StoryProps> = {
     bulkActions: BULK_ACTIONS,
     checked: false,
     indeterminate: false,
+    showSearch: true,
+    search: {
+      value: '',
+      placeholder: 'Search',
+      loading: false,
+      onChange() {},
+    },
+    showFilters: true,
+    filterRow: FILTER_ROW,
+    filterRowOpened: undefined,
     showMoreActions: true,
     moreActions: OPTIONS,
-    showSearch: true,
     showOnRefresh: true,
     showAfterActions: true,
     'data-test-id': 'toolbar',
@@ -149,6 +158,24 @@ export const toolbar: StoryObj<StoryProps> = {
         eq: true,
       },
     },
+    showFilters: {
+      name: '[Story]: Show filters',
+      type: 'boolean',
+    },
+    filterRowOpened: {
+      name: '[Story]: Filter row open',
+      type: 'boolean',
+      if: {
+        arg: 'showFilters',
+        eq: true,
+      },
+    },
+    filterRow: {
+      if: {
+        arg: 'showFilters',
+        eq: true,
+      },
+    },
     checked: {
       if: {
         arg: 'showBulkActions',
@@ -169,6 +196,12 @@ export const toolbar: StoryObj<StoryProps> = {
       name: '[Story]: Apply search props',
       type: 'boolean',
     },
+    search: {
+      if: {
+        arg: 'showSearch',
+        eq: true,
+      },
+    },
     showAfterActions: {
       name: '[Story]: Show custom ReactNode "after" (on the right side)',
       type: 'boolean',
@@ -184,12 +217,7 @@ export const toolbar: StoryObj<StoryProps> = {
         eq: true,
       },
     },
-    after: {
-      if: {
-        arg: 'showAfterActions',
-        eq: true,
-      },
-    },
+    after: { table: { disable: true } },
     onCheck: { table: { disable: true } },
     onRefresh: { table: { disable: true } },
   },

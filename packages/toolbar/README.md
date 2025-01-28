@@ -24,6 +24,7 @@ Toolbar
 | onRefresh | `() => void` | - | Колбек обновления |
 | after | `ReactNode` | - | Дополнительный слот в конце тулбара |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
+| filterRow | `FilterRow<TState>` | - |  |
 
 
 [//]: DOCUMENTATION_SECTION_END

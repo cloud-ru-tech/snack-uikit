@@ -10,6 +10,8 @@ export const TEST_IDS = {
   moreBulkActionsButton: 'toolbar__more-bulk-actions-button',
   refreshButton: 'toolbar__refresh-button',
   search: 'toolbar__search',
+  filterButton: 'toolbar__filter-button',
+  filterRow: 'toolbar__filter-row',
   moreActionsButton: 'toolbar__more-actions-button',
   droplist: 'toolbar__droplist',
   option: 'toolbar__droplist-option',

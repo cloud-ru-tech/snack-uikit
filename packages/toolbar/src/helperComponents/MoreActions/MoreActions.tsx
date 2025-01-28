@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
-import { KebabSVG } from '@snack-uikit/icons';
+import { MoreSVG } from '@snack-uikit/icons';
 import { BaseItemProps, Droplist } from '@snack-uikit/list';
 import { Tag } from '@snack-uikit/tag';
 
@@ -41,7 +41,7 @@ export function MoreActions({ moreActions }: MoreActionsProps) {
         'data-test-id': TEST_IDS.option,
       }))}
     >
-      <ButtonFunction icon={<KebabSVG size={24} />} size='m' data-test-id={TEST_IDS.moreActionsButton} />
+      <ButtonFunction icon={<MoreSVG size={24} />} size='m' data-test-id={TEST_IDS.moreActionsButton} />
     </Droplist>
   );
 }

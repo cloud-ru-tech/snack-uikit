@@ -8,3 +8,9 @@ export const TEST_ID_TOASTER = {
   refresh: 'refresh-toaster',
   option: 'option-toaster',
 };
+
+export const STORY_TEST_IDS = {
+  pinnedSingleFilter: 'pinned-single-filter',
+  singleFilter: 'single-filter',
+  dateFilter: 'date-filter',
+};

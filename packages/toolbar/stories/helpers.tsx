@@ -1,3 +1,4 @@
+import { FiltersState } from '@snack-uikit/chips';
 import { PlaceholderSVG } from '@snack-uikit/icons';
 import { toaster } from '@snack-uikit/toaster';
 
@@ -13,6 +14,9 @@ export function generateOptions(length: number) {
   }));
 }
 
-export function extractToolbarArgs<T extends ToolbarProps>({ outline, selectionMode }: Partial<T>) {
+export function extractToolbarArgs<TState extends FiltersState, T extends ToolbarProps<TState>>({
+  outline,
+  selectionMode,
+}: Partial<T>) {
   return { outline, selectionMode };
 }
