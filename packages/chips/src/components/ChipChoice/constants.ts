@@ -44,6 +44,7 @@ export const CHIP_CHOICE_TYPE = {
   Multiple: 'multiple',
   Date: 'date',
   DateTime: 'date-time',
+  Time: 'time',
   DateRange: 'date-range',
   Single: 'single',
   Custom: 'custom',

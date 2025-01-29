@@ -86,6 +86,7 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
     setValue(undefined);
     setDeferredValue(undefined);
   };
+
   const chipRef = useRef<HTMLDivElement>(null);
 
   const handleSelectionChange = useCallback(
