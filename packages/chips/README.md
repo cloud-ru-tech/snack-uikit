@@ -125,10 +125,12 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | dropDownClassName | `string` | - |  |
+| open | `boolean` | - | Управляет состоянием показан/не показан. |
+| onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | valueRender | `(value: any) => ReactNode` | - | Отображаемое значение |
 | value | `any` | - | Фактическое значение. Используется для отображения кнопки очистки, если свойство <strong>showClearButton=true</strong> |
 | onChange | `(value: any) => void` | - |  |
@@ -147,10 +149,12 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | dropDownClassName | `string` | - |  |
+| open | `boolean` | - | Управляет состоянием показан/не показан. |
+| onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | contentRender | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => ReactNode` | - |  |
 | filterFn | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => boolean` | - |  |
 | searchable | `boolean` | - |  |
@@ -168,6 +172,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
+| virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
 | value | `ItemId` | - | Controlled состояние |
 | defaultValue | `ItemId` | - | Начальное состояние |
@@ -186,10 +191,12 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | dropDownClassName | `string` | - |  |
+| open | `boolean` | - | Управляет состоянием показан/не показан. |
+| onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | contentRender | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => ReactNode` | - |  |
 | filterFn | `(option: { label: ItemId; value?: ItemId; contentRenderProps?: T; }) => boolean` | - |  |
 | searchable | `boolean` | - |  |
@@ -207,6 +214,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
+| virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
 | value | `ItemId[]` | - | Controlled состояние |
 | defaultValue | `ItemId[]` | - | Начальное состояние |
@@ -224,10 +232,12 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | dropDownClassName | `string` | - |  |
+| open | `boolean` | - | Управляет состоянием показан/не показан. |
+| onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | value | `Date` | - | Значение компонента |
 | defaultValue | `Date` | - | Значение компонента по-умолчанию |
 | onChange | `(value: Date) => void` | - | Колбек смены значения |
@@ -248,10 +258,12 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | gte | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | dropDownClassName | `string` | - |  |
+| open | `boolean` | - | Управляет состоянием показан/не показан. |
+| onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | value | `Range` | - | Значение компонента |
 | defaultValue | `Range` | - | Значение компонента по умолчанию |
 | onChange | `(value: Range) => void` | - | Колбек смены значения |
@@ -270,8 +282,10 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
-| showClearButton | `boolean` | true | Отображение кнопки очистки значения |
+| onClearButtonClick | `MouseEventHandler<HTMLButtonElement>` | - | Колбек для клика по кнопке очистки |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Расположение выпадающего меню |
+| open | `boolean` | - | Управляет состоянием показан/не показан. |
+| onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | dropDownClassName | `string` | - |  |
 | value | `TimeValue` | - | Выбранное значение. |
 | defaultValue | `TimeValue` | - | Значение по-умолчанию для uncontrolled. |
@@ -308,8 +322,14 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | onChange | `(filters: TState) => void` | - | Колбек изменения состояния фильтров |
 | size | enum ChipChoiceRowSize: `"xs"`, `"s"`, `"m"` | s | Размер |
 | className | `string` | - | CSS-класс |
-| showClearAllButton | `boolean` | true | Скрыть/показать кнопку очиски |
-| clearAllButtonLabel | `string` | 'Clear all' | Текст кнопки очистки |
+| showClearButton | `boolean` | true | Скрыть/показать кнопку очиски фильтров |
+| showAddButton | `boolean` | true | Скрыть/показать кнопку добавления фильров |
+| visibleFilters | `string[]` | - | Состояние для видимых фильтров |
+| onVisibleFiltersChange | `(value: string[]) => void` | - | Коллбек на изменение видимых фильтров |
+## hasFilterBeenApplied
+`hasFilterBeenApplied` 
+
+функция проверки заполненности фильтра
 
 
 [//]: DOCUMENTATION_SECTION_END

@@ -62,3 +62,10 @@ $border-width: 0.5px;
 .droplist {
   min-width: 200px;
 }
+
+.chipChoiceRowWrapper {
+  resize: horizontal;
+  overflow: auto;
+  width: 1000px;
+  min-width: 360px;
+}

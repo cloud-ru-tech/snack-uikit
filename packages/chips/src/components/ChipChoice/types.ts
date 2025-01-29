@@ -79,8 +79,8 @@ export type ChipChoiceCommonProps = WithSupportProps<
      * @default false
      */
     disableFuzzySearch?: boolean;
-    /** Отображение кнопки очистки значения @default true*/
-    showClearButton?: boolean;
+    /** Колбек для клика по кнопке очистки */
+    onClearButtonClick?: MouseEventHandler<HTMLButtonElement>;
     /** Расположение выпадающего меню */
     placement?: DropdownProps['placement'];
     /**
@@ -92,6 +92,10 @@ export type ChipChoiceCommonProps = WithSupportProps<
      */
     widthStrategy?: DropdownProps['widthStrategy'];
     dropDownClassName?: string;
+    /** Управляет состоянием показан/не показан. */
+    open?: boolean;
+    /** Колбек отображения компонента. Срабатывает при изменении состояния open. */
+    onOpenChange?: (isOpen: boolean) => void;
   }
 >;
 
@@ -123,6 +127,7 @@ export type ChipChoiceSelectCommonProps<T extends ContentRenderProps = ContentRe
     | 'noResultsState'
     | 'loading'
     | 'scrollToSelectedItem'
+    | 'virtualized'
   >;
 
 export type ChipChoiceSingleProps<T extends ContentRenderProps = ContentRenderProps> = ChipChoiceSelectCommonProps<T> &

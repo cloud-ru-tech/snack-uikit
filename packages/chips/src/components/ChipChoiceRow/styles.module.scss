@@ -1,8 +1,31 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipChoice';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipChoice' as chips;
 
 .chipChoiceRow { 
-  @include styles-tokens-chips-chipChoice.composite-var(styles-tokens-chips-chipChoice.$chip-choice-row-container);
+  @include chips.composite-var(chips.$chip-choice-row-container);
 
   display: flex;
   flex-wrap: wrap;
+}
+
+.pinnedItems {
+  @include chips.composite-var(chips.$chip-choice-row-pinned);
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.controlWrapper {
+  @include chips.composite-var(chips.$chip-choice-row-control-wrapper);
+
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.divider {
+  align-self: stretch;
+  height: auto;
+}
+
+.addButtonWrapper {
+  display: inline-flex;
 }

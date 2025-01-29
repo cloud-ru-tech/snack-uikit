@@ -23,6 +23,7 @@ const Template: StoryFn<StoryProps> = ({
   useDefaultValue,
   showClickCounter,
   modeBuildCellProps,
+  showClearButton,
   ...args
 }: StoryProps) => {
   const formatter = args.customFormatter
@@ -36,10 +37,16 @@ const Template: StoryFn<StoryProps> = ({
   return (
     <ChipChoiceStoryWrap
       showClickCounter={showClickCounter}
-      chipControlled={({ increaseCounter }) => (
+      showClearButton={showClearButton}
+      defaultValue={
+        useDefaultValue
+          ? ([new Date('2022-10-15'), new Date('2023-10-15')] as ChipChoiceDateRangeProps['value'])
+          : undefined
+      }
+      chipControlled={({ increaseCounter, ...props }) => (
         <ChipChoice.DateRange
           {...args}
-          defaultValue={useDefaultValue ? [new Date('2022-10-15'), new Date('2023-10-15')] : undefined}
+          {...props}
           onClick={increaseCounter}
           valueRender={formatter}
           buildCalendarCellProps={getBuildCellProps(modeBuildCellProps)}

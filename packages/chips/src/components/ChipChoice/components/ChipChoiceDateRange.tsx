@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useRef, useState } from 'react';
+import { ReactNode, useCallback, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar, CalendarProps } from '@snack-uikit/calendar';
@@ -47,6 +47,9 @@ export function ChipChoiceDateRange({
   valueRender,
   dropDownClassName,
   buildCalendarCellProps,
+  onClearButtonClick,
+  open: openProp,
+  onOpenChange,
   ...rest
 }: ChipChoiceDateRangeProps) {
   const [selectedValue, setSelectedValue] = useUncontrolledProp<Range>(value, defaultValue, onChange);
@@ -56,17 +59,14 @@ export function ChipChoiceDateRange({
   const valueToRender = valueRender
     ? valueRender(selectedValue)
     : defaultRangeFormatter({ value: selectedValue, allLabel: t('allLabel') });
-
-  const clearValue = () => setSelectedValue(undefined);
-
   const localRef = useRef<HTMLDivElement>(null);
 
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useUncontrolledProp(openProp, false, onOpenChange);
 
   const closeDroplist = useCallback(() => {
     setOpen(false);
     setTimeout(() => localRef.current?.focus(), 0);
-  }, []);
+  }, [setOpen]);
 
   const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
 
@@ -98,7 +98,7 @@ export function ChipChoiceDateRange({
       <ChipChoiceBase
         {...rest}
         ref={localRef}
-        onClearButtonClick={clearValue}
+        onClearButtonClick={onClearButtonClick}
         value={selectedValue}
         valueToRender={valueToRender}
         size={size}

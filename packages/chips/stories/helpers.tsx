@@ -1,76 +1,86 @@
-import { CalendarProps } from '@snack-uikit/calendar';
+import { CalendarProps, TimePickerProps } from '@snack-uikit/calendar';
 
 import { ChipChoiceRowProps, CustomContentRenderProps } from '../src';
-import { STORY_TEST_IDS } from './testIds';
+import { STORY_TEST_IDS } from './forTests';
 
 export type Filters = {
-  vms: string[];
-  ip: string;
-  tags: string[];
-  dates: Date[];
-  test: string;
+  multiple1: string[];
+  multiple2: string[];
+  single1: string;
+  single2: string;
+  date: Date;
+  dateTime: Date;
+  dateTimeAndSec: Date;
+  dateRange: [Date, Date];
+  time: TimePickerProps['value'];
+  timeAndSec: TimePickerProps['value'];
+  multiple_many_option: string[];
+  custom: string;
 };
+
+const generateVMs = (length: number) =>
+  Array.from({ length }).map((_, index) => ({ value: `vm-${index}`, label: `Vm-${index}` }));
 
 export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
   {
     type: 'multiple',
-    id: 'vms',
+    id: 'multiple1',
+    label: 'Virtual machines with apply button',
+    options: generateVMs(20),
+    autoApply: false,
+    'data-test-id': STORY_TEST_IDS.Multiple1,
+  },
+  {
+    type: 'multiple',
+    id: 'multiple2',
     label: 'Virtual machines',
-    options: [
-      { value: 'vm-1', label: 'Vm-1' },
-      { value: 'vm-2', label: 'Vm-2' },
-      { value: 'vm-3', label: 'Vm-3' },
-      { value: 'vm-4', label: 'Vm-4' },
-      { value: 'vm-5', label: 'Vm-5' },
-      { value: 'vm-6', label: 'Vm-6' },
-      { value: 'vm-7', label: 'Vm-7' },
-      { value: 'vm-8', label: 'Vm-8' },
-      { value: 'vm-9', label: 'Vm-9' },
-      { value: 'vm-10', label: 'Vm-10' },
-      { value: 'vm-11', label: 'Vm-11' },
-      { value: 'vm-12', label: 'Vm-12' },
-      { value: 'vm-13', label: 'Vm-13' },
-      { value: 'vm-14', label: 'Vm-14' },
-      { value: 'vm-15', label: 'Vm-15' },
-      { value: 'vm-16', label: 'Vm-16' },
-      { value: 'vm-17', label: 'Vm-17' },
-      { value: 'vm-18', label: 'Vm-18' },
-      { value: 'vm-19', label: 'Vm-19' },
-      { value: 'vm-20', label: 'Vm-20' },
-      { value: 'vm-21', label: 'Vm-21' },
-    ],
-    'data-test-id': STORY_TEST_IDS.Multi,
+    options: generateVMs(20),
+    pinned: true,
+    'data-test-id': STORY_TEST_IDS.Multiple2,
   },
   {
     type: 'single',
-    id: 'ip',
+    id: 'single1',
+    label: 'External IP with apply button',
+    autoApply: false,
+    options: [
+      { value: 'true', label: 'On' },
+      { value: 'false', label: 'Off' },
+    ],
+    'data-test-id': STORY_TEST_IDS.Single1,
+  },
+  {
+    type: 'single',
+    id: 'single2',
     label: 'External IP',
     options: [
       { value: 'true', label: 'On' },
       { value: 'false', label: 'Off' },
     ],
-    'data-test-id': STORY_TEST_IDS.Single,
+    'data-test-id': STORY_TEST_IDS.Single2,
   },
+
   {
     type: 'date',
-    id: 'dates',
+    id: 'date',
     label: 'Created at',
+    pinned: true,
     'data-test-id': STORY_TEST_IDS.Date,
   },
   {
     type: 'date-time',
-    id: 'date-time',
+    id: 'dateTime',
     label: 'Created at with time',
-    'data-test-id': STORY_TEST_IDS.Date,
-    mode: 'date-time',
-  },
-  {
-    type: 'date-time',
-    id: 'date-time-no-sec',
-    label: 'Created at time no seconds',
-    'data-test-id': STORY_TEST_IDS.Date,
+    'data-test-id': STORY_TEST_IDS.DateTime,
     mode: 'date-time',
     showSeconds: false,
+  },
+  {
+    type: 'date-time',
+    id: 'dateTimeAndSec',
+    label: 'Created at with time & seconds',
+    'data-test-id': STORY_TEST_IDS.DateTimeAndSec,
+    mode: 'date-time',
   },
   {
     type: 'date-range',
@@ -79,10 +89,23 @@ export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
     'data-test-id': STORY_TEST_IDS.DateRange,
   },
   {
+    type: 'time',
+    id: 'time',
+    label: 'Starts at',
+    'data-test-id': STORY_TEST_IDS.Time,
+    showSeconds: false,
+  },
+  {
+    type: 'time',
+    id: 'timeAndSec',
+    label: 'Starts at with seconds',
+    'data-test-id': STORY_TEST_IDS.TimeAndSec,
+  },
+  {
     type: 'custom',
-    id: 'test',
+    id: 'custom',
     label: 'Custom',
-    'data-test-id': 'custom',
+    'data-test-id': STORY_TEST_IDS.Custom,
     valueRender: (value: string) => value ?? 'all',
     content: ({ closeDroplist, value, onChange }: CustomContentRenderProps<string>) => (
       <div>
@@ -90,6 +113,14 @@ export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
         <button onClick={closeDroplist}>Close</button>
       </div>
     ),
+  },
+  {
+    type: 'multiple',
+    id: 'multiple_many_option',
+    label: 'Virtual machines (10k values with virtualization)',
+    virtualized: true,
+    options: generateVMs(10000),
+    'data-test-id': STORY_TEST_IDS.MultipleManyOption,
   },
 ];
 

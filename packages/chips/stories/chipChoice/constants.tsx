@@ -96,6 +96,7 @@ export const CHIP_CHOICE_STORY_ARGS = {
   showClickCounter: false,
   customFormatter: false,
   useDefaultValue: true,
+  showClearButton: true,
 };
 
 export const CHIP_CHOICE_ARG_TYPES: ArgTypes = {
@@ -107,6 +108,7 @@ export const CHIP_CHOICE_ARG_TYPES: ArgTypes = {
   valueFormatter: { table: { disable: true } },
   onApprove: { table: { disable: true } },
   onCancel: { table: { disable: true } },
+  onClearButtonClick: { table: { disable: true } },
   ...COMMON_ARG_TYPES,
   icon: {
     ...COMMON_ARG_TYPES.icon,
@@ -121,6 +123,9 @@ export const CHIP_CHOICE_ARG_TYPES: ArgTypes = {
   showClickCounter: {
     name: '[Stories]: Show click counter',
   },
+  showClearButton: {
+    name: '[Stories]: Show clear button',
+  },
   useDefaultValue: {
     name: '[Stories]: Init component with default value',
   },
@@ -131,4 +136,5 @@ export type ChipChoiceCustomStoryProps = {
   customFormatter: boolean;
   useDefaultValue: boolean;
   useBaseOptions: boolean;
+  showClearButton: boolean;
 };

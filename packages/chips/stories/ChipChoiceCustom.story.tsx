@@ -16,8 +16,10 @@ export default meta;
 
 type StoryProps = ChipChoiceCustomProps & ChipChoiceCustomStoryProps;
 
-const Template: StoryFn<StoryProps> = ({ ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({ showClearButton, ...args }: StoryProps) => {
   const [selectedValue, setSelectedValue] = useState<string>();
+
+  const onClearButtonClick = showClearButton && selectedValue ? () => setSelectedValue(undefined) : undefined;
 
   return (
     <ChipChoice.Custom
@@ -25,6 +27,7 @@ const Template: StoryFn<StoryProps> = ({ ...args }: StoryProps) => {
       value={selectedValue}
       onChange={setSelectedValue}
       valueRender={() => selectedValue}
+      onClearButtonClick={onClearButtonClick}
       content={() => (
         <button className={styles.customButton} onClick={() => setSelectedValue('value')}>
           click me to select value

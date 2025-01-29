@@ -34,7 +34,10 @@ export const CHIP_CHOICE_TEST_IDS = {
 };
 
 export const CHIP_CHOICE_ROW_IDS = {
-  clearAllButton: 'chip-choice-row__clear-all-button',
+  clearButton: 'chip-choice-row__clear-button',
+  addButton: 'chip-choice-row__add-button',
+  addButtonTooltip: 'chip-choice-row__add-button-tooltip',
+  addButtonOption: 'chip-choice-row__add-button-option',
 };
 
 export const CHIP_TOGGLE_TEST_IDS = {

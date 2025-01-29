@@ -21,7 +21,7 @@ const DEFAULT_VALUE: ChipChoiceTimeProps['value'] = {
   seconds: 30,
 };
 
-const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, ...args }: StoryProps) => {
+const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, showClearButton, ...args }: StoryProps) => {
   const formatter = args.customFormatter
     ? (value?: ChipChoiceTimeProps['value']): string => {
         if (!value) return 'empty';
@@ -33,13 +33,10 @@ const Template: StoryFn<StoryProps> = ({ useDefaultValue, showClickCounter, ...a
   return (
     <ChipChoiceStoryWrap
       showClickCounter={showClickCounter}
-      chipControlled={({ increaseCounter }) => (
-        <ChipChoice.Time
-          {...args}
-          defaultValue={useDefaultValue ? DEFAULT_VALUE : undefined}
-          valueRender={formatter}
-          onClick={increaseCounter}
-        />
+      showClearButton={showClearButton}
+      defaultValue={useDefaultValue ? DEFAULT_VALUE : undefined}
+      chipControlled={({ increaseCounter, ...props }) => (
+        <ChipChoice.Time {...args} {...props} valueRender={formatter} onClick={increaseCounter} />
       )}
     />
   );

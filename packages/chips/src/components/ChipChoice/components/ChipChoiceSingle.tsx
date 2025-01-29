@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useUncontrolledProp } from 'uncontrollable';
 
 import { Droplist, ItemId, SelectionSingleValueType } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
@@ -36,6 +37,9 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
   autoApply = true,
   onApprove,
   onCancel,
+  onClearButtonClick,
+  open: openProp,
+  onOpenChange,
   ...rest
 }: ChipChoiceSingleProps<T>) {
   const [value, setValue] = useValueControl<SelectionSingleValueType>({
@@ -56,7 +60,7 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
 
   const { t } = useLocale('Chips');
 
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useUncontrolledProp(openProp, false, onOpenChange);
   const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
 
   const flatMapOptions = useMemo(() => Object.values(flattenOptions), [flattenOptions]);
@@ -82,11 +86,6 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
   );
   const items = useMemo(() => transformOptionsToItems<T>(result, contentRender), [contentRender, result]);
 
-  const clearValue = () => {
-    setValue(undefined);
-    setDeferredValue(undefined);
-  };
-
   const chipRef = useRef<HTMLDivElement>(null);
 
   const handleSelectionChange = useCallback(
@@ -103,7 +102,7 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
         }
       }
     },
-    [autoApply, setValue, setDeferredValue],
+    [autoApply, setOpen, setValue, setDeferredValue],
   );
 
   const handleOnCancelClick = () => {
@@ -176,7 +175,7 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
       <ChipChoiceBase
         {...rest}
         ref={chipRef}
-        onClearButtonClick={clearValue}
+        onClearButtonClick={onClearButtonClick}
         value={value}
         valueToRender={valueToRender}
         label={label}

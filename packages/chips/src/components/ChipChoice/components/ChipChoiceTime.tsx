@@ -1,4 +1,5 @@
-import { ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import { ReactNode, useCallback, useMemo, useRef } from 'react';
+import { useUncontrolledProp } from 'uncontrollable';
 
 import { TimePicker, TimePickerProps } from '@snack-uikit/calendar';
 import { Dropdown } from '@snack-uikit/dropdown';
@@ -50,19 +51,22 @@ export function ChipChoiceTime({
   dropDownClassName,
   showSeconds = true,
   placement,
+  onClearButtonClick,
+  open: openProp,
+  onOpenChange,
   ...rest
 }: ChipChoiceTimeProps) {
   const [selectedValue, setSelectedValue] = useValueControl<TimeValue>({ value, defaultValue, onChange });
 
   const localRef = useRef<HTMLDivElement>(null);
 
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useUncontrolledProp(openProp, false, onOpenChange);
   const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
 
   const closeDroplist = useCallback(() => {
     setOpen(false);
     setTimeout(() => localRef.current?.focus(), 0);
-  }, []);
+  }, [setOpen]);
 
   const { t } = useLocale('Chips');
 
@@ -75,8 +79,6 @@ export function ChipChoiceTime({
 
     return getStringTimeValue(selectedValue, { showSeconds, locale: DEFAULT_LOCALE });
   }, [selectedValue, showSeconds, t, valueRender]);
-
-  const clearValue = () => setSelectedValue(undefined);
 
   const handleChangeValue = useCallback(
     (value: TimeValue) => {
@@ -114,7 +116,7 @@ export function ChipChoiceTime({
       <ChipChoiceBase
         {...rest}
         ref={localRef}
-        onClearButtonClick={clearValue}
+        onClearButtonClick={onClearButtonClick}
         value={selectedValue}
         valueToRender={valueToRender}
         size={size}

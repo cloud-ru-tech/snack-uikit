@@ -1,4 +1,5 @@
-import { ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import { ReactNode, useCallback, useMemo, useRef } from 'react';
+import { useUncontrolledProp } from 'uncontrollable';
 
 import { Calendar, CalendarProps } from '@snack-uikit/calendar';
 import { Dropdown } from '@snack-uikit/dropdown';
@@ -46,6 +47,9 @@ export function ChipChoiceDate({
   placement,
   widthStrategy,
   buildCalendarCellProps,
+  onClearButtonClick,
+  open: openProp,
+  onOpenChange,
   ...rest
 }: ChipChoiceDateProps) {
   const [selectedValue, setSelectedValue] = useValueControl<Date>({ value, defaultValue, onChange });
@@ -54,13 +58,13 @@ export function ChipChoiceDate({
 
   const localRef = useRef<HTMLDivElement>(null);
 
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useUncontrolledProp(openProp, false, onOpenChange);
   const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
 
   const closeDroplist = useCallback(() => {
     setOpen(false);
     setTimeout(() => localRef.current?.focus(), 0);
-  }, []);
+  }, [setOpen]);
 
   const { t } = useLocale('Chips');
 
@@ -90,8 +94,6 @@ export function ChipChoiceDate({
       day: mode === 'date' ? 'numeric' : undefined,
     });
   }, [mode, selectedValue, showSeconds, t, valueRender]);
-
-  const clearValue = () => setSelectedValue(undefined);
 
   const handleChangeValue = useCallback(
     (value: Date) => {
@@ -132,7 +134,7 @@ export function ChipChoiceDate({
       <ChipChoiceBase
         {...rest}
         ref={localRef}
-        onClearButtonClick={clearValue}
+        onClearButtonClick={onClearButtonClick}
         value={selectedValue}
         valueToRender={valueToRender}
         size={size}

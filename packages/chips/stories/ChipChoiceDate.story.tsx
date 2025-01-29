@@ -23,6 +23,7 @@ const Template: StoryFn<StoryProps> = ({
   useDefaultValue,
   showClickCounter,
   modeBuildCellProps,
+  showClearButton,
   ...args
 }: StoryProps) => {
   const formatter = args.customFormatter ? (value?: Date): string => value?.toUTCString() || 'empty' : undefined;
@@ -30,10 +31,12 @@ const Template: StoryFn<StoryProps> = ({
   return (
     <ChipChoiceStoryWrap
       showClickCounter={showClickCounter}
-      chipControlled={({ increaseCounter }) => (
+      defaultValue={useDefaultValue ? new Date('2023-10-15') : undefined}
+      showClearButton={showClearButton}
+      chipControlled={({ increaseCounter, ...props }) => (
         <ChipChoice.Date
           {...args}
-          defaultValue={useDefaultValue ? new Date('2023-10-15') : undefined}
+          {...props}
           valueRender={formatter}
           onClick={increaseCounter}
           buildCalendarCellProps={getBuildCellProps(modeBuildCellProps)}

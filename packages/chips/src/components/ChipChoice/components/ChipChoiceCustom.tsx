@@ -1,4 +1,5 @@
-import { ReactNode, useCallback, useRef, useState } from 'react';
+import { ReactNode, useCallback, useRef } from 'react';
+import { useUncontrolledProp } from 'uncontrollable';
 
 import { Dropdown } from '@snack-uikit/dropdown';
 import { useValueControl } from '@snack-uikit/utils';
@@ -41,6 +42,9 @@ export function ChipChoiceCustom({
   widthStrategy = 'gte',
   content,
   valueRender,
+  onClearButtonClick,
+  open: openProp,
+  onOpenChange,
   ...rest
 }: ChipChoiceCustomProps) {
   const localRef = useRef<HTMLDivElement>(null);
@@ -50,18 +54,13 @@ export function ChipChoiceCustom({
     onChange: onChangeProp,
   });
 
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useUncontrolledProp(openProp, false, onOpenChange);
   const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
 
   const closeDroplist = useCallback(() => {
     setOpen(false);
     setTimeout(() => localRef.current?.focus(), 0);
-  }, []);
-
-  const clearValue = () => {
-    setValue?.(undefined);
-    closeDroplist();
-  };
+  }, [setOpen]);
 
   return (
     <Dropdown
@@ -78,7 +77,7 @@ export function ChipChoiceCustom({
       <ChipChoiceBase
         {...rest}
         valueToRender={valueRender?.(value) ?? value}
-        onClearButtonClick={clearValue}
+        onClearButtonClick={onClearButtonClick}
         ref={localRef}
         value={value}
         size={size}

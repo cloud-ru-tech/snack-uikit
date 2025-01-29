@@ -26,15 +26,18 @@ const Template: StoryFn<StoryProps> = ({
   useDefaultValue,
   useBaseOptions,
   showClickCounter,
+  showClearButton,
   defaultValue,
   ...args
 }: StoryProps) => (
   <ChipChoiceStoryWrap
     showClickCounter={showClickCounter}
-    chipControlled={({ increaseCounter }) => (
+    showClearButton={showClearButton}
+    defaultValue={useDefaultValue ? defaultValue || BASE_OPTIONS[0].value : undefined}
+    chipControlled={({ increaseCounter, ...props }) => (
       <ChipChoice.Single
         {...args}
-        defaultValue={useDefaultValue ? defaultValue || BASE_OPTIONS[0].value : undefined}
+        {...props}
         options={useBaseOptions ? BASE_OPTIONS : FILTER_OPTIONS}
         onClick={increaseCounter}
         dropDownClassName={styles.droplist}

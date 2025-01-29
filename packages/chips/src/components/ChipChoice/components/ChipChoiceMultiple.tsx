@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useUncontrolledProp } from 'uncontrollable';
 
 import { Droplist, ItemId, SelectionSingleValueType } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
@@ -43,11 +44,13 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   searchable,
   contentRender,
   dropDownClassName,
-  showClearButton = true,
+  onClearButtonClick,
   autoApply = true,
   disableFuzzySearch = false,
   onApprove,
   onCancel,
+  open: openProp,
+  onOpenChange,
   ...rest
 }: ChipChoiceMultipleProps<T>) {
   const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
@@ -70,7 +73,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
 
   const { t } = useLocale('Chips');
 
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useUncontrolledProp(openProp, false, onOpenChange);
   const handleOnKeyDown = useHandleOnKeyDown({ setOpen });
 
   const flatMapOptions = useMemo(() => Object.values(flattenOptions), [flattenOptions]);
@@ -98,10 +101,6 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   );
   const items = useMemo(() => transformOptionsToItems<T>(result, contentRender), [contentRender, result]);
 
-  const clearValue = () => {
-    setValue([]);
-    setDeferredValue([]);
-  };
   const chipRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLElement>(null);
 
@@ -192,9 +191,8 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
       <ChipChoiceBase
         {...rest}
         ref={chipRef}
-        onClearButtonClick={clearValue}
+        onClearButtonClick={onClearButtonClick}
         value={value}
-        showClearButton={showClearButton && !(Array.isArray(value) && [0].includes(value.length))}
         valueToRender={valueToRender}
         label={label}
         loading={rest.loading}
