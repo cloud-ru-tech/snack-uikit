@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import { FiltersState } from '@snack-uikit/chips';
+
 import { STATUS_APPEARANCE } from '../../helperComponents';
 import { PaginationState } from '../../types';
 import { Table } from '../Table';
@@ -8,7 +10,7 @@ import { ServerTableProps } from '../types';
 import { DEFAULT_PAGINATION_LIMIT } from './constants';
 import { onSearchDebounced } from './utils';
 
-export function ServerTable<TData extends object>({
+export function ServerTable<TData extends object, TFilters extends FiltersState>({
   items,
   total = DEFAULT_PAGINATION_LIMIT,
   limit = DEFAULT_PAGINATION_LIMIT,
@@ -21,9 +23,7 @@ export function ServerTable<TData extends object>({
   manualPagination = true,
   manualFiltering = true,
   ...rest
-}: ServerTableProps<TData>) {
-  // добавить uncontrolledState
-
+}: ServerTableProps<TData, TFilters>) {
   const { state: search, onStateChange: setSearch } = useStateControl<string>(searchProp, '');
 
   const [tempSearch, setTempSearch] = useState(search || '');

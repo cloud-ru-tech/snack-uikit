@@ -30,6 +30,7 @@ export const TEST_IDS = {
   },
   statusIndicator: 'table__status-indicator',
   statusLabel: 'table__status-label',
+  toolbar: 'table__toolbar',
 };
 
 export const SORT_FN = {

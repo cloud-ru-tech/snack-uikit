@@ -10,3 +10,10 @@ export type StubData = {
   col6: number;
   date: number;
 };
+
+export type Filters = {
+  single: string;
+  multiple: string[];
+  date: Date;
+  dateRange: [Date, Date];
+};

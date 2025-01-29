@@ -8,6 +8,7 @@ import {
 } from '@tanstack/react-table';
 import { ReactNode, RefObject } from 'react';
 
+import { ChipChoiceRowProps, FiltersState } from '@snack-uikit/chips';
 import { ToolbarProps } from '@snack-uikit/toolbar';
 import { WithSupportProps } from '@snack-uikit/utils';
 
@@ -15,11 +16,11 @@ import { EmptyStateProps, ExportButtonProps, RowClickHandler } from '../helperCo
 import { TreeColumnDefinitionProps } from '../helperComponents/Cells/TreeCell';
 import { ColumnDefinition } from '../types';
 
-type BulkAction = Omit<NonNullable<ToolbarProps['bulkActions']>[number], 'onClick'> & {
+type BulkAction = Omit<NonNullable<ToolbarProps<Record<string, string>>['bulkActions']>[number], 'onClick'> & {
   onClick?(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void): void;
 };
 
-export type TableProps<TData extends object> = WithSupportProps<{
+export type TableProps<TData extends object, TFilters extends FiltersState> = WithSupportProps<{
   /** Данные для отрисовки */
   data: TData[];
   /** Определение внешнего вида и функционала колонок */
@@ -119,9 +120,11 @@ export type TableProps<TData extends object> = WithSupportProps<{
   outline?: boolean;
 
   /** Фильтры */
-  columnFilters?: ReactNode;
+  columnFilters?: ChipChoiceRowProps<TFilters>;
 
+  /** Флаг, показывающий что данные были отфильтрованы при пустых данных */
   dataFiltered?: boolean;
+  /** Флаг, показывающий что произошла ошибка запроса при пустых данных */
   dataError?: boolean;
 
   /** Экран при отстутствии данных */
@@ -133,10 +136,12 @@ export type TableProps<TData extends object> = WithSupportProps<{
 
   /** Отключение тулбара */
   suppressToolbar?: boolean;
+  /** Отключение поиска */
+  suppressSearch?: boolean;
   /** Список действия для массовых операций */
   bulkActions?: BulkAction[];
   /** Элементы выпадающего списка кнопки с действиями */
-  moreActions?: ToolbarProps['moreActions'];
+  moreActions?: ToolbarProps<TFilters>['moreActions'];
   /** Дополнительный слот в `Toolbar` после строки поиска */
   toolbarAfter?: ReactNode;
   /** Настройки экспорта в тулбаре */
@@ -170,8 +175,8 @@ export type TableProps<TData extends object> = WithSupportProps<{
   };
 }>;
 
-export type ServerTableProps<TData extends object> = Omit<
-  TableProps<TData>,
+export type ServerTableProps<TData extends object, TFilters extends FiltersState> = Omit<
+  TableProps<TData, TFilters>,
   'pageSize' | 'pageCount' | 'pagination' | 'search' | 'data'
 > & {
   /** Данные для отрисовки */

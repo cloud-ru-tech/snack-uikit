@@ -41,6 +41,10 @@ const selectors = {
       },
       selectToggle: row.find(dataTestIdSelector(TEST_IDS.rowSelect)),
       rowSelectedAttribute: row.getAttribute(DATA_ATTRIBUTES.selected),
+      toolbar: Selector(dataTestIdSelector(TEST_IDS.toolbar)),
+      toolbarSearch: Selector(dataTestIdSelector('toolbar__search')),
+      toolbarFilterButton: Selector(dataTestIdSelector('toolbar__filter-button')),
+      toolbarFilterRow: Selector(dataTestIdSelector('toolbar__filter-row')),
       statusIndicator: row.find(dataTestIdSelector(TEST_IDS.statusIndicator)),
       statusLabel: row.find(dataTestIdSelector(TEST_IDS.statusLabel)),
       rowActionsButton: row.find(dataTestIdSelector(TEST_IDS.rowActions.droplistTrigger)),
@@ -88,6 +92,60 @@ test.page(
   await t.expect(statusIndicator.exists).ok('No status indicator found');
   await t.expect(statusLabel.exists).ok('No status label found');
 });
+
+test.page(getPage({ suppressToolbar: false, suppressSearch: false, showFilters: true }))(
+  'Renders correctly with search & filters',
+  async t => {
+    const { toolbar, toolbarSearch, toolbarFilterButton, toolbarFilterRow } = selectors.getRow('all');
+
+    await t.expect(toolbar.exists).ok('Toolbar should exist');
+    await t.expect(toolbarSearch.exists).ok('ToolbarSearch should exist');
+    await t.expect(toolbarFilterButton.exists).ok('ToolbarFilterButton should exist');
+
+    await t.click(toolbarFilterButton);
+
+    await t.expect(toolbarFilterRow.exists).ok('ToolbarFilterRow should exist');
+  },
+);
+
+test.page(getPage({ suppressToolbar: false, suppressSearch: false, showFilters: false }))(
+  'Renders correctly with search only',
+  async t => {
+    const { toolbar, toolbarSearch, toolbarFilterButton, toolbarFilterRow } = selectors.getRow('all');
+
+    await t.expect(toolbar.exists).ok('Toolbar should exist');
+    await t.expect(toolbarSearch.exists).ok('ToolbarSearch should exist');
+    await t.expect(toolbarFilterButton.exists).notOk('ToolbarFilterButton should not exist');
+    await t.expect(toolbarFilterRow.exists).notOk('ToolbarFilterRow should not exist');
+  },
+);
+
+test.page(getPage({ suppressToolbar: false, suppressSearch: true, showFilters: true }))(
+  'Renders correctly with filters only',
+  async t => {
+    const { toolbar, toolbarSearch, toolbarFilterButton, toolbarFilterRow } = selectors.getRow('all');
+
+    await t.expect(toolbar.exists).ok('Toolbar should exist');
+    await t.expect(toolbarSearch.exists).notOk('ToolbarSearch should not exist');
+    await t.expect(toolbarFilterButton.exists).ok('ToolbarFilterButton should exist');
+
+    await t.click(toolbarFilterButton);
+
+    await t.expect(toolbarFilterRow.exists).ok('ToolbarFilterRow should exist');
+  },
+);
+
+test.page(getPage({ suppressToolbar: true, suppressSearch: false, showFilters: true }))(
+  'Renders without search & filters',
+  async t => {
+    const { toolbar, toolbarSearch, toolbarFilterButton, toolbarFilterRow } = selectors.getRow('all');
+
+    await t.expect(toolbar.exists).notOk('Toolbar should not exist');
+    await t.expect(toolbarSearch.exists).notOk('ToolbarSearch should not exist');
+    await t.expect(toolbarFilterButton.exists).notOk('ToolbarFilterButton should not exist');
+    await t.expect(toolbarFilterRow.exists).notOk('ToolbarFilterRow should not exist');
+  },
+);
 
 test.page(
   getPage({

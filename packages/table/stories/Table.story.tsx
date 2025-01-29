@@ -1,6 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import { ChipChoiceRowProps } from '@snack-uikit/chips';
 import { TrashSVG } from '@snack-uikit/icons';
 import { TagRow, TagRowProps } from '@snack-uikit/tag';
 import { toaster } from '@snack-uikit/toaster';
@@ -22,7 +23,7 @@ import {
 import { STORY_TEST_IDS, StoryStatusColumnViewMode } from './constants';
 import { generateRows, numberFormatter } from './helpers';
 import styles from './styles.module.scss';
-import { StubData } from './types';
+import { Filters, StubData } from './types';
 
 const meta: Meta = {
   title: 'Components/Table',
@@ -30,9 +31,7 @@ const meta: Meta = {
 };
 export default meta;
 
-type Props = TableProps<StubData>;
-
-type StoryProps = Omit<Props, 'rowSelection' | 'sort'> & {
+type StoryProps = Omit<TableProps<StubData, Filters>, 'rowSelection' | 'sort'> & {
   rowSelection?: { enable: boolean; multiRow: boolean };
   rowsAmount: number;
   expandRowsCount: number;
@@ -40,6 +39,7 @@ type StoryProps = Omit<Props, 'rowSelection' | 'sort'> & {
   disableSomeRows: boolean;
   pinSomeRows: boolean;
   showExport: boolean;
+  showFilters: boolean;
   statusColumnViewMode?: StoryStatusColumnViewMode;
   showTableTree: boolean;
   showActionsColumn?: boolean;
@@ -62,6 +62,47 @@ const tags: TagRowProps['items'] = [
   { label: 'tag5xxx', appearance: 'blue' },
   { label: 'tag6x', appearance: 'pink' },
 ];
+
+const columnFilters: ChipChoiceRowProps<Filters> = {
+  defaultValue: {
+    single: 'op1',
+    multiple: ['op1'],
+  },
+  filters: [
+    {
+      id: 'single',
+      type: 'single',
+      label: 'Single',
+      pinned: true,
+      options: [
+        { value: 'op1', label: 'Option 1' },
+        { value: 'op2', label: 'Option 2' },
+        { value: 'op3', label: 'Option 3 ' },
+      ],
+    },
+    {
+      id: 'multiple',
+      type: 'multiple',
+      label: 'Multiple',
+      pinned: true,
+      options: [
+        { value: 'op1', label: 'Option 1' },
+        { value: 'op2', label: 'Option 2' },
+        { value: 'op3', label: 'Option 3 ' },
+      ],
+    },
+    {
+      id: 'date',
+      type: 'date',
+      label: 'Date',
+    },
+    {
+      id: 'dateRange',
+      type: 'date-range',
+      label: 'Date Range',
+    },
+  ],
+};
 
 const columnDefinitions: ColumnDefinition<StubData>[] = [
   {
@@ -165,6 +206,7 @@ const Template: StoryFn<StoryProps> = ({
   rowSelectionMode,
   enableOnRowClick,
   showExport,
+  showFilters,
   ...args
 }: StoryProps) => {
   const data = useMemo(
@@ -281,7 +323,7 @@ const Template: StoryFn<StoryProps> = ({
         data={filteredData}
         bulkActions={[
           {
-            label: 'Удалить',
+            label: 'Delete',
             icon: TrashSVG,
             onClick: onDelete,
           },
@@ -313,6 +355,7 @@ const Template: StoryFn<StoryProps> = ({
         onRowClick={enableOnRowClick ? handleRowClick : undefined}
         rowPinning={pinSomeRows ? { top: PINNED_TOP_ROWS } : undefined}
         exportSettings={showExport ? { fileName: 'test-export', exportToCSV, exportToXLSX } : undefined}
+        columnFilters={showFilters ? args.columnFilters : undefined}
       />
     </div>
   );
@@ -323,6 +366,9 @@ export const table: StoryObj<StoryProps> = {
   args: {
     suppressPagination: false,
     suppressToolbar: false,
+    suppressSearch: false,
+    showFilters: true,
+    columnFilters,
     rowsAmount: 35,
     expandRowsCount: 3,
     expandRowsLevel: 3,
@@ -447,6 +493,18 @@ export const table: StoryObj<StoryProps> = {
       name: '[Stories]: Show export example',
       controls: {
         type: 'boolean',
+      },
+    },
+    showFilters: {
+      name: '[Stories]: Show filters example',
+      controls: {
+        type: 'boolean',
+      },
+    },
+    columnFilters: {
+      if: {
+        arg: 'showFilters',
+        eq: true,
       },
     },
     savedState: {

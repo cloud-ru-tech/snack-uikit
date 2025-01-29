@@ -128,13 +128,14 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | loading | `boolean` | - | Состояние загрузки |
 | onRefresh | `() => void` | - | Колбек обновления данных |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
-| columnFilters | `ReactNode` | - | Фильтры |
-| dataFiltered | `boolean` | - |  |
-| dataError | `boolean` | - |  |
+| columnFilters | `ChipChoiceRowProps<TFilters>` | - | Фильтры |
+| dataFiltered | `boolean` | - | Флаг, показывающий что данные были отфильтрованы при пустых данных |
+| dataError | `boolean` | - | Флаг, показывающий что произошла ошибка запроса при пустых данных |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
+| suppressSearch | `boolean` | - | Отключение поиска |
 | bulkActions | `BulkAction[]` | - | Список действия для массовых операций |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | toolbarAfter | `ReactNode` | - | Дополнительный слот в `Toolbar` после строки поиска |
@@ -188,13 +189,14 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | loading | `boolean` | - | Состояние загрузки |
 | onRefresh | `() => void` | - | Колбек обновления данных |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
-| columnFilters | `ReactNode` | - | Фильтры |
-| dataFiltered | `boolean` | - |  |
-| dataError | `boolean` | - |  |
+| columnFilters | `ChipChoiceRowProps<TFilters>` | - | Фильтры |
+| dataFiltered | `boolean` | - | Флаг, показывающий что данные были отфильтрованы при пустых данных |
+| dataError | `boolean` | - | Флаг, показывающий что произошла ошибка запроса при пустых данных |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
+| suppressSearch | `boolean` | - | Отключение поиска |
 | bulkActions | `BulkAction[]` | - | Список действия для массовых операций |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | toolbarAfter | `ReactNode` | - | Дополнительный слот в `Toolbar` после строки поиска |

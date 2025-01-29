@@ -15,6 +15,7 @@ import {
 import cn from 'classnames';
 import { RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
 
+import { FiltersState } from '@snack-uikit/chips';
 import { useLocale } from '@snack-uikit/locale';
 import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider } from '@snack-uikit/skeleton';
@@ -22,7 +23,7 @@ import { Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { DEFAULT_PAGE_SIZE } from '../../constants';
+import { DEFAULT_PAGE_SIZE, TEST_IDS } from '../../constants';
 import { CellAutoResizeContext, useCellAutoResizeController } from '../../contexts';
 import {
   BodyRow,
@@ -53,7 +54,7 @@ import {
 } from './utils';
 
 /** Компонент таблицы */
-export function Table<TData extends object>({
+export function Table<TData extends object, TFilters extends FiltersState>({
   data,
   rowPinning = {
     top: [],
@@ -82,6 +83,7 @@ export function Table<TData extends object>({
   noResultsState,
   errorDataState,
   suppressToolbar = false,
+  suppressSearch = false,
   toolbarAfter,
   suppressPagination = false,
   manualSorting = false,
@@ -96,7 +98,7 @@ export function Table<TData extends object>({
   expanding,
   bulkActions: bulkActionsProp,
   ...rest
-}: TableProps<TData>) {
+}: TableProps<TData, TFilters>) {
   const { state: globalFilter, onStateChange: onGlobalFilterChange } = useStateControl<string>(search, '');
   const { state: rowSelection, onStateChange: onRowSelectionChange } = useStateControl<RowSelectionState>(
     rowSelectionProp,
@@ -218,7 +220,7 @@ export function Table<TData extends object>({
     onRefresh?.();
   }, [onRefresh, table]);
 
-  const bulkActions: ToolbarProps['bulkActions'] = useMemo(
+  const bulkActions: ToolbarProps<TFilters>['bulkActions'] = useMemo(
     () =>
       enableSelection
         ? bulkActionsProp?.map(action => ({
@@ -264,9 +266,7 @@ export function Table<TData extends object>({
       const originalColDef = originalColumnDefs.find(col => getColumnId(header) === col.id);
 
       if (header.id === 'snack_predefined_statusColumn' && !originalColDef?.header && !originalColDef?.enableSorting) {
-        const indicatorSize = 'var(--size-table-cell-status-indicator-horizontal)';
-
-        colSizes[sizeKey] = indicatorSize;
+        colSizes[sizeKey] = 'var(--size-table-cell-status-indicator-horizontal)';
         colSizes[flexKey] = '100%';
       } else {
         const originalColumnDefSize = originalColDef?.size;
@@ -352,7 +352,11 @@ export function Table<TData extends object>({
     onPaginationChange,
     autoResetPageIndex,
   });
+
   const { updateCellMap } = useCellAutoResizeController(table);
+
+  const showToolbar = !suppressToolbar;
+
   return (
     <CellAutoResizeContext.Provider value={{ updateCellMap }}>
       <div
@@ -362,15 +366,19 @@ export function Table<TData extends object>({
         className={cn(styles.wrapper, className)}
         {...extractSupportProps(rest)}
       >
-        {!suppressToolbar && (
+        {showToolbar && (
           <div className={styles.header}>
             <Toolbar
-              search={{
-                value: globalFilter,
-                onChange: onGlobalFilterChange,
-                loading: search?.loading,
-                placeholder: search?.placeholder || t('searchPlaceholder'),
-              }}
+              search={
+                suppressSearch
+                  ? undefined
+                  : {
+                      value: globalFilter,
+                      onChange: onGlobalFilterChange,
+                      loading: search?.loading,
+                      placeholder: search?.placeholder || t('searchPlaceholder'),
+                    }
+              }
               className={styles.toolbar}
               onRefresh={onRefresh ? handleOnRefresh : undefined}
               bulkActions={bulkActions}
@@ -396,9 +404,9 @@ export function Table<TData extends object>({
                 ) : undefined
               }
               moreActions={moreActions}
+              filterRow={columnFilters}
+              data-test-id={TEST_IDS.toolbar}
             />
-
-            {columnFilters && <div className={styles.filtersWrapper}> {columnFilters} </div>}
           </div>
         )}
 

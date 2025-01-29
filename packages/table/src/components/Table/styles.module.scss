@@ -1,7 +1,7 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table' as table;
 
 .table {
-  @include styles-tokens-table.composite-var(styles-tokens-table.$table-table-container);
+  @include table.composite-var(table.$table-table-container);
 
   position: relative;
   /* stylelint-disable-next-line declaration-property-value-allowed-list */
@@ -15,24 +15,24 @@
   width: 100%;
   height: auto;
   max-height: calc(
-    (var(--page-size, 10) * styles-tokens-table.$size-table-line-height) + styles-tokens-table.$size-table-line-height + styles-tokens-table.$border-width-table * 2
+    (var(--page-size, 10) * #{table.$size-table-line-height}) + #{table.$size-table-line-height} + #{table.$border-width-table} * 2
   );
 
-  background-color: styles-tokens-table.$sys-neutral-background1-level;
-  border-color: styles-tokens-table.$sys-neutral-background1-level;
+  background-color: table.$sys-neutral-background1-level;
+  border-color: table.$sys-neutral-background1-level;
   border-style: solid;
 }
 
 .scrollWrapper {
   &[data-outline] {
     .table {
-      border-color: styles-tokens-table.$sys-neutral-decor-default;
+      border-color: table.$sys-neutral-decor-default;
     }
   }
 }
 
 .header {
-  @include styles-tokens-table.composite-var(styles-tokens-table.$table-header);
+  @include table.composite-var(table.$table-header);
 
   display: flex;
   flex-direction: column;
@@ -49,13 +49,13 @@
 .filtersWrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: styles-tokens-table.$dimension-1m;
+  gap: table.$dimension-1m;
   align-items: center;
   justify-content: flex-start;
 }
 
 .skeleton {
-  padding: 0 styles-tokens-table.$dimension-1m;
+  padding: 0 table.$dimension-1m;
 }
 
 .wrapper {
@@ -63,8 +63,8 @@
 }
 
 .scrollStub {
-  height: calc(styles-tokens-table.$dimension-025m / 2);
-  margin-top: calc(styles-tokens-table.$dimension-025m / -2);
+  height: calc(#{table.$dimension-025m} / 2);
+  margin-top: calc(#{table.$dimension-025m} / -2);
   background: transparent;
 }
 
@@ -72,9 +72,9 @@
   position: sticky;
   /* stylelint-disable-next-line declaration-property-value-allowed-list */
   z-index: 3;
-  top: calc(styles-tokens-table.$size-table-line-height);
+  top: table.$size-table-line-height;
 
-  margin-bottom: calc(-1 * styles-tokens-table.$border-width-table);
+  margin-bottom: calc(-1 * #{table.$border-width-table});
 
-  border-bottom: styles-tokens-table.$border-width-table solid styles-tokens-table.$sys-neutral-decor-default;
+  border-bottom: table.$border-width-table solid table.$sys-neutral-decor-default;
 }
