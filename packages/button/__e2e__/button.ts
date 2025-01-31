@@ -68,7 +68,7 @@ buttons.forEach(({ name, story, testId, iconBefore }) => {
     await t.expect(label.exists).ok();
     const icon = button.find(dataTestIdSelector('icon'));
     await t.expect(icon.exists).ok();
-    const counter = button.find(dataTestIdSelector('counter'));
+    const counter = button.find(dataTestIdSelector(`${testId}__counter`));
 
     if (buttonsWithCounter.includes(name)) {
       await t.expect(counter.exists).ok();

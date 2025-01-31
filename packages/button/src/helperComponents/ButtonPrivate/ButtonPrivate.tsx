@@ -55,6 +55,7 @@ export const ButtonPrivate = forwardRef<HTMLButtonElement | HTMLAnchorElement, B
       loading,
       disabled,
       counter,
+      'data-test-id': rest['data-test-id'],
     });
     const tabIndex = loading || disabled ? -1 : tabIndexProp;
 

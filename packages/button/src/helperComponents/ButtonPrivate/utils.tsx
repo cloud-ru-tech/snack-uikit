@@ -2,6 +2,7 @@ import cn from 'classnames';
 
 import { Counter } from '@snack-uikit/counter';
 import { Sun } from '@snack-uikit/loaders';
+import { WithSupportProps } from '@snack-uikit/utils';
 
 import { ICON_POSITION } from '../../constants';
 import { ButtonPrivateProps } from './ButtonPrivate';
@@ -26,16 +27,26 @@ export function getVariant({ label, icon, iconPosition }: GetVariantProps) {
   return Variant.IconOnly;
 }
 
-type GetWrappedCounterProps = Pick<ButtonPrivateProps, 'loading' | 'disabled' | 'counter'> & {
-  counterForIcon: boolean | undefined;
-};
+type GetWrappedCounterProps = Pick<ButtonPrivateProps, 'loading' | 'disabled' | 'counter'> &
+  WithSupportProps<{
+    counterForIcon: boolean | undefined;
+  }>;
 type WrappedCounterProp = {
   wrappedCounter?: JSX.Element | undefined;
 };
 
-export function getWrappedCounter({ counter, loading, disabled, counterForIcon }: GetWrappedCounterProps) {
+export function getWrappedCounter({
+  counter,
+  loading,
+  disabled,
+  counterForIcon,
+  'data-test-id': testId,
+}: GetWrappedCounterProps) {
   return typeof counter?.value === 'number' && !loading && !disabled ? (
-    <span data-test-id={'counter'} className={cn(counterForIcon ? styles.counterForIcon : styles.counterForLabel)}>
+    <span
+      data-test-id={`${testId ?? 'button'}__counter`}
+      className={cn(counterForIcon ? styles.counterForIcon : styles.counterForLabel)}
+    >
       <Counter {...counter} />
     </span>
   ) : undefined;
@@ -77,7 +88,15 @@ export function getWrappedLabel({ label, labelClassName, wrappedCounter }: GetWr
 
 type GetChildrenProps = Pick<
   ButtonPrivateProps,
-  'icon' | 'label' | 'iconPosition' | 'iconClassName' | 'labelClassName' | 'loading' | 'disabled' | 'counter'
+  | 'icon'
+  | 'label'
+  | 'iconPosition'
+  | 'iconClassName'
+  | 'labelClassName'
+  | 'loading'
+  | 'disabled'
+  | 'counter'
+  | 'data-test-id'
 >;
 
 export function getChildren({
@@ -89,9 +108,10 @@ export function getChildren({
   loading,
   disabled,
   counter,
+  'data-test-id': testId,
 }: GetChildrenProps) {
   const counterForIcon = icon && (iconPosition === ICON_POSITION.After || !label);
-  const wrappedCounter = getWrappedCounter({ counter, loading, disabled, counterForIcon });
+  const wrappedCounter = getWrappedCounter({ counter, loading, disabled, counterForIcon, 'data-test-id': testId });
   const wrappedIcon = getWrappedIcon({
     icon,
     iconClassName,
