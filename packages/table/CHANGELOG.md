@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.27.1 (2025-01-31)
+
+
+### Bug Fixes
+
+* **PDS-1461:** update after token change ([3324d1d](https://github.com/cloud-ru-tech/snack-uikit/commit/3324d1da07b8d0e26186046d859985774fc06ce6))
+
+
+
+
+
 # 0.27.0 (2025-01-23)
 
 

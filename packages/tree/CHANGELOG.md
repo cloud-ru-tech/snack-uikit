@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.20 (2025-01-31)
+
+
+### Bug Fixes
+
+* **PDS-1461:** fix height of tree node with custom content ([c53e1cc](https://github.com/cloud-ru-tech/snack-uikit/commit/c53e1cc2a90634bee4619c2b8f1d4690ef49d461))
+
+
+
+
+
 ## 0.8.19 (2025-01-23)
 
 ### Only dependencies have been changed
