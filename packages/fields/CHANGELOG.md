@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.38.0 (2025-02-03)
+
+
+### Features
+
+* **PDS-1586:** Add prop 'virtualized' to FieldSelect ([2ba4801](https://github.com/cloud-ru-tech/snack-uikit/commit/2ba48013ec0d950859e3aa767612747d7a314dcd))
+
+
+
+
+
 # 0.37.0 (2025-01-28)
 
 
