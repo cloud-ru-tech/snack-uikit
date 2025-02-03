@@ -145,6 +145,7 @@ type FiledSelectCommonProps = WithSupportProps<{
     | 'dataFiltered'
     | 'untouchableScrollbars'
     | 'scrollToSelectedItem'
+    | 'virtualized'
   >;
 
 export type FieldSelectSingleProps = FieldSelectPrivateProps &

@@ -361,6 +361,7 @@ FieldStepper в основном предназначен для работы с
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
+| virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | searchable | `boolean` | - |  |
 | autocomplete | `boolean` | - |  |
 | addOptionByEnter | `boolean` | - |  |
