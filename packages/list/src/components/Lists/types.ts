@@ -57,6 +57,10 @@ export type ListProps = WithSupportProps<
     scrollToSelectedItem?: boolean;
     /** CSS-класс для scroll обертки основного списка айтемов */
     scrollContainerClassName?: string;
+    /**
+     * Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка
+     */
+    virtualized?: boolean;
   } & SelectionState &
     PublicListContextType &
     ScrollProps &

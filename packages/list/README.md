@@ -110,6 +110,7 @@
 | hasListInFocusChain | `boolean` | true | Флаг, отвещающий за включение самого родительского контейнера листа в цепочку фокусирующихся элементов |
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | scrollContainerClassName | `string` | - | CSS-класс для scroll обертки основного списка айтемов |
+| virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | size | "s" \| "m" \| "l" | s | Размер списка |
 | marker | `boolean` | true | Отображать ли маркер у выбранного жлемента списка |
