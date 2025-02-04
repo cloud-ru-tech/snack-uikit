@@ -72,6 +72,9 @@ type FieldTextOwnProps = {
   postfix?: ReactNode;
   /** Кнопка действия внутри поля */
   button?: Button;
+
+  /* HTMLInputTypeAttribute */
+  type?: 'text' | 'tel' | 'email';
 };
 
 export type FieldTextProps = WithSupportProps<FieldTextOwnProps & InputProps & WrapperProps>;
@@ -111,6 +114,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       button: buttonProp,
       onPaste,
       onKeyDown,
+      type = 'text',
       ...rest
     },
     ref,
@@ -250,7 +254,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
             placeholder={placeholder}
             disabled={disabled}
             readonly={readonly}
-            type='text'
+            type={type}
             maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
             id={id}
             name={name}

@@ -450,6 +450,7 @@ FieldStepper в основном предназначен для работы с
 | prefix | `ReactNode` | - | Произвольный префикс для поля |
 | postfix | `ReactNode` | - | Произвольный постфикс для поля |
 | button | `Button` | - | Кнопка действия внутри поля |
+| type | "text" \| "tel" \| "email" | text |  |
 | onChange | `(value: string, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
 | value | `string` | - | Значение input |
 | id | `string` | - | Значение html-атрибута id |
