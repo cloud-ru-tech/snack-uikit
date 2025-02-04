@@ -35,10 +35,11 @@ export function NotificationPanelPopover({
   trigger = 'click',
   placement = 'bottom-end',
   children,
+  triggerRef,
   contentClassName,
   ...otherProps
 }: NotificationPanelPopoverProps) {
-  if (!children) {
+  if (!children && !triggerRef) {
     return null;
   }
 
@@ -52,6 +53,7 @@ export function NotificationPanelPopover({
         </div>
       }
       trigger={trigger}
+      triggerRef={triggerRef}
       hasArrow={false}
       heightStrategy='lte'
       {...otherProps}

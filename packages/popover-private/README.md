@@ -8,6 +8,7 @@
 ## Example
 
 ```typescript jsx
+import { useRef } from "react";
 import { PopoverPrivate } from "@snack-uikit/popover-private";
 
 function App() {
@@ -21,6 +22,23 @@ function App() {
     </PopoverPrivate>
   );
 }
+
+// Без оборачивания таргета
+function App() {
+  const triggerRef = useRef(null)
+
+  return (
+    <>
+      <PopoverPrivate
+        placement='top'
+        popoverContent='Не нажимать, опасно!'
+        trigger='click'
+        triggerRef={triggerRef}
+      />
+      <button ref={triggerRef}>Button with popover</button>
+    </>
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START
@@ -31,7 +49,6 @@ function App() {
 |------|------|---------------|-------------|
 | trigger* | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
 | popoverContent* | `ReactNode \| ReactNode[]` | - | Контент поповера |
-| children* | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
 | placement* | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Положение поповера относительно своего триггера (children). |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
@@ -44,13 +61,14 @@ function App() {
 | offset | `number` | 0 | Отступ поповера от его триггер-элемента (в пикселях). |
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
-| triggerRef | `ForwardedRef<ReferenceType \| HTMLElement>` | - | Ref ссылка на триггер |
 | widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | auto | Стратегия управления шириной контейнера поповера <br> - `auto` - соответствует ширине контента, <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире, <br> - `eq` - Equal, строго равен ширине таргета. |
 | heightStrategy | enum PopoverHeightStrategy: `"auto"`, `"eq"`, `"lte"` | auto | Стратегия управления высотой контейнера поповера <br> - `auto` - соответствует высоте контента, <br> - `lte` - Less Than or Equal, равен высоте таргета или меньше ее, если контент в поповере меньше, <br> - `eq` - Equal, строго равен высоте таргета. |
 | closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
 | triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | fallbackPlacements | `Placement[]` | - | Цепочка расположений которая будет применяться к поповеру от первого к последнему если при текущем он не влезает. |
 | disableSpanWrapper | `boolean` | - | Отключает для `isValidElement` внешнюю обертку триггера <br> Пригодится для элементов с `position: absolute` |
+| triggerRef | `ForwardedRef<ReferenceType \| HTMLElement>` | - | Ref ссылка на триггер |
+| children | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
 
 
 [//]: DOCUMENTATION_SECTION_END
@@ -90,3 +108,20 @@ function App() {
     ```
 
   - в **`children`** передан примитив string, number или React.Fragment. Children будет обернут в `span`.
+
+  - **`children`**  не передан в компонент, в таком случае необходимо передать `ref` элемента в `triggerRef`, который будет служить триггером для поповера.
+  Пример:
+  ```typescript jsx
+  const triggerRef = useRef(null)
+
+  return (
+    <>
+      <PopoverPrivate 
+        popoverContent={<div className={style.content}>some tip here</div>}
+        useHoverTrigger
+        triggerRef={triggerRef}
+      />
+      <button ref={triggerRef}>Click me</button>
+    </>
+  )
+  ```

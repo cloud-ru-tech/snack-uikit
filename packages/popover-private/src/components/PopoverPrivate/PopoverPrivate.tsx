@@ -21,10 +21,10 @@ import {
   useInteractions,
 } from '@floating-ui/react';
 import cn from 'classnames';
-import { ForwardedRef, ReactNode, useCallback, useRef } from 'react';
+import { ForwardedRef, ReactNode, useCallback, useEffect, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, isBrowser, WithSupportProps } from '@snack-uikit/utils';
 
 import {
   DEFAULT_FALLBACK_PLACEMENTS,
@@ -38,6 +38,8 @@ import {
   getPopoverRootElement,
   getPopoverTriggerJSX,
   getTriggerProps,
+  mapPopoverActionsToSynthetic,
+  referenceActionToEvent,
   stopPropagationMouse,
   stopPropagationTouch,
 } from '../../utils';
@@ -54,91 +56,102 @@ type ChildrenFunction = (params: {
 
 type OutsideClickHandler = (event: MouseEvent) => boolean;
 
-export type PopoverPrivateProps = WithSupportProps<{
-  /** Управляет состоянием показан/не показан. */
-  open?: boolean;
-  /** Колбек отображения компонента. Срабатывает при изменении состояния open. */
-  onOpenChange?: (isOpen: boolean) => void;
-  /** Закрывать ли при клике вне поповера */
-  outsideClick?: boolean | OutsideClickHandler;
-  /**
-   * Положение поповера относительно своего триггера (children).
-   * @default top
-   */
-  placement: Placement;
-  className?: string;
-  /** CSS-класс триггера */
-  triggerClassName?: string;
-  /** Параметр наличия стрелки у поповера. В размеры стрелки встроен отступ. Дополнительный отступ может быть задан параметром `offset`. У элемента стрелки нет цвета, необходимо задавать его через параметр `arrowClassName`. */
-  hasArrow?: boolean;
+export type PopoverPrivateProps = WithSupportProps<
+  {
+    /** Управляет состоянием показан/не показан. */
+    open?: boolean;
+    /** Колбек отображения компонента. Срабатывает при изменении состояния open. */
+    onOpenChange?: (isOpen: boolean) => void;
+    /** Закрывать ли при клике вне поповера */
+    outsideClick?: boolean | OutsideClickHandler;
+    /**
+     * Положение поповера относительно своего триггера (children).
+     * @default top
+     */
+    placement: Placement;
+    className?: string;
+    /** CSS-класс триггера */
+    triggerClassName?: string;
+    /** Параметр наличия стрелки у поповера. В размеры стрелки встроен отступ. Дополнительный отступ может быть задан параметром `offset`. У элемента стрелки нет цвета, необходимо задавать его через параметр `arrowClassName`. */
+    hasArrow?: boolean;
 
-  /** CSS-класс контейнера стрелки поповера */
-  arrowContainerClassName?: string;
-  /** CSS-класс стрелки поповера */
-  arrowElementClassName?: string;
-  /**
-   * Отступ поповера от его триггер-элемента (в пикселях).
-   * @default 0
-   */
-  offset?: number;
-  /** Триггер поповера (подробнее читайте ниже) */
-  children: ReactNode | ChildrenFunction;
-  /** Контент поповера */
-  popoverContent: ReactNode | ReactNode[];
-  /**
-   * Условие отображения поповера:
-   * <br> - `click` - открывать по клику
-   * <br> - `hover` - открывать по ховеру
-   * <br> - `focusVisible` - открывать по focus-visible
-   * <br> - `focus` - открывать по фокусу
-   * <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible
-   * <br> - `hoverAndFocus` - открывать по ховеру и фокусу
-   * <br> - `clickAndFocusVisible` - открывать по клику и focus-visible
-   */
-  trigger: Trigger;
-  /** Задержка открытия по ховеру */
-  hoverDelayOpen?: number;
-  /** Задержка закрытия по ховеру */
-  hoverDelayClose?: number;
-  /** Ref ссылка на триггер */
-  triggerRef?: ForwardedRef<ReferenceType | HTMLElement | null>;
-  /**
-   * Стратегия управления шириной контейнера поповера
-   * <br> - `auto` - соответствует ширине контента,
-   * <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире,
-   * <br> - `eq` - Equal, строго равен ширине таргета.
-   * @default auto
-   */
-  widthStrategy?: PopoverWidthStrategy;
-  /**
-   * Стратегия управления высотой контейнера поповера
-   * <br> - `auto` - соответствует высоте контента,
-   * <br> - `lte` - Less Than or Equal, равен высоте таргета или меньше ее, если контент в поповере меньше,
-   * <br> - `eq` - Equal, строго равен высоте таргета.
-   * @default auto
-   */
-  heightStrategy?: PopoverHeightStrategy;
-  /**
-   * Закрывать ли по нажатию на кнопку `Esc`
-   * @default true
-   */
-  closeOnEscapeKey?: boolean;
-  /**
-   * Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`)
-   * @default true
-   */
-  triggerClickByKeys?: boolean;
-  /**
-   * Цепочка расположений которая будет применяться к поповеру от первого к последнему если при текущем он не влезает.
-   */
-  fallbackPlacements?: Placement[];
-  /**
-   * Отключает для `isValidElement` внешнюю обертку триггера
-   * <br>
-   * Пригодится для элементов с `position: absolute`
-   */
-  disableSpanWrapper?: boolean;
-}>;
+    /** CSS-класс контейнера стрелки поповера */
+    arrowContainerClassName?: string;
+    /** CSS-класс стрелки поповера */
+    arrowElementClassName?: string;
+    /**
+     * Отступ поповера от его триггер-элемента (в пикселях).
+     * @default 0
+     */
+    offset?: number;
+    /** Контент поповера */
+    popoverContent: ReactNode | ReactNode[];
+    /**
+     * Условие отображения поповера:
+     * <br> - `click` - открывать по клику
+     * <br> - `hover` - открывать по ховеру
+     * <br> - `focusVisible` - открывать по focus-visible
+     * <br> - `focus` - открывать по фокусу
+     * <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible
+     * <br> - `hoverAndFocus` - открывать по ховеру и фокусу
+     * <br> - `clickAndFocusVisible` - открывать по клику и focus-visible
+     */
+    trigger: Trigger;
+    /** Задержка открытия по ховеру */
+    hoverDelayOpen?: number;
+    /** Задержка закрытия по ховеру */
+    hoverDelayClose?: number;
+    /**
+     * Стратегия управления шириной контейнера поповера
+     * <br> - `auto` - соответствует ширине контента,
+     * <br> - `gte` - Great Than or Equal, равен ширине таргета или больше ее, если контент в поповере шире,
+     * <br> - `eq` - Equal, строго равен ширине таргета.
+     * @default auto
+     */
+    widthStrategy?: PopoverWidthStrategy;
+    /**
+     * Стратегия управления высотой контейнера поповера
+     * <br> - `auto` - соответствует высоте контента,
+     * <br> - `lte` - Less Than or Equal, равен высоте таргета или меньше ее, если контент в поповере меньше,
+     * <br> - `eq` - Equal, строго равен высоте таргета.
+     * @default auto
+     */
+    heightStrategy?: PopoverHeightStrategy;
+    /**
+     * Закрывать ли по нажатию на кнопку `Esc`
+     * @default true
+     */
+    closeOnEscapeKey?: boolean;
+    /**
+     * Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`)
+     * @default true
+     */
+    triggerClickByKeys?: boolean;
+    /**
+     * Цепочка расположений которая будет применяться к поповеру от первого к последнему если при текущем он не влезает.
+     */
+    fallbackPlacements?: Placement[];
+    /**
+     * Отключает для `isValidElement` внешнюю обертку триггера
+     * <br>
+     * Пригодится для элементов с `position: absolute`
+     */
+    disableSpanWrapper?: boolean;
+  } & (
+    | {
+        /** Ref ссылка на триггер */
+        triggerRef?: ForwardedRef<ReferenceType | HTMLElement | null>;
+        /** Триггер поповера (подробнее читайте ниже) */
+        children: ReactNode | ChildrenFunction;
+      }
+    | {
+        /** Ref ссылка на триггер */
+        triggerRef: ForwardedRef<ReferenceType | HTMLElement | null>;
+        /** Триггер поповера (подробнее читайте ниже) */
+        children?: ReactNode | ChildrenFunction;
+      }
+  )
+>;
 
 function PopoverPrivateComponent({
   className,
@@ -252,6 +265,35 @@ function PopoverPrivateComponent({
 
   const { getFloatingProps, getReferenceProps } = useInteractions([dismiss, hover, focus, click]);
 
+  const addOrRemoveTriggerRefEvents = useCallback(
+    (actions: Record<string, (e: Event) => void>, type: 'add' | 'remove') => {
+      if (typeof triggerRef === 'object' && triggerRef?.current) {
+        refs.setReference(triggerRef.current);
+        Object.entries(actions).map(([key, value]) => {
+          const eventKey = referenceActionToEvent(key);
+
+          if (eventKey && isBrowser()) {
+            type === 'add' && (triggerRef.current as HTMLElement).addEventListener(eventKey, value);
+            type === 'remove' && (triggerRef.current as HTMLElement).removeEventListener(eventKey, value);
+          }
+        });
+      }
+    },
+    [refs, triggerRef],
+  );
+
+  useEffect(() => {
+    if (children) {
+      return;
+    }
+
+    const actions = mapPopoverActionsToSynthetic(getReferenceProps());
+
+    addOrRemoveTriggerRefEvents(actions, 'add');
+
+    return () => addOrRemoveTriggerRefEvents(actions, 'remove');
+  }, [children, addOrRemoveTriggerRefEvents, getReferenceProps]);
+
   const portal = isOpen && (
     <FloatingPortal root={getPopoverRootElement()}>
       <div
@@ -289,13 +331,14 @@ function PopoverPrivateComponent({
 
   return (
     <FloatingNode id={nodeId}>
-      {getPopoverTriggerJSX({
-        validElementWrapperClassName: cn(triggerClassName),
-        getReferenceProps,
-        children,
-        setReference,
-        disableSpanWrapper,
-      })}
+      {children &&
+        getPopoverTriggerJSX({
+          validElementWrapperClassName: cn(triggerClassName),
+          getReferenceProps,
+          children,
+          setReference,
+          disableSpanWrapper,
+        })}
       {portal}
     </FloatingNode>
   );

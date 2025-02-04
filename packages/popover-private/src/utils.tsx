@@ -147,3 +147,30 @@ export const getTriggerProps = (trigger: Trigger): TriggerProps => {
 
 export const stopPropagationMouse = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();
 export const stopPropagationTouch = (e: TouchEvent<HTMLElement>) => e.stopPropagation();
+
+export function referenceActionToEvent(value: string): keyof HTMLElementEventMap {
+  if (value.slice(0, 2) === 'on') {
+    return value.replace('on', '').toLowerCase() as keyof HTMLElementEventMap;
+  }
+
+  return value.toLowerCase() as keyof HTMLElementEventMap;
+}
+
+function createSyntheticEvent(nativeEvent: Event) {
+  return {
+    ...nativeEvent,
+    nativeEvent,
+  };
+}
+
+export function mapPopoverActionsToSynthetic(actions: Record<string, unknown>) {
+  const syntheticActions: Record<string, (e: Event) => void> = {};
+
+  Object.entries(actions).forEach(([key, value]) => {
+    syntheticActions[key] = (e: Event) => {
+      (value as (e: Event) => void)(createSyntheticEvent(e));
+    };
+  });
+
+  return syntheticActions;
+}

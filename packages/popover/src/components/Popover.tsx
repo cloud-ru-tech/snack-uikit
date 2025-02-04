@@ -14,6 +14,7 @@ export type PopoverProps = WithSupportProps<
   } & Pick<
     PopoverPrivateProps,
     | 'trigger'
+    | 'triggerRef'
     | 'className'
     | 'placement'
     | 'open'
@@ -31,9 +32,10 @@ export function Popover({
   placement = 'top',
   disableMaxWidth = false,
   children,
+  triggerRef,
   ...otherProps
 }: PopoverProps) {
-  if (!children) {
+  if (!children && !triggerRef) {
     return null;
   }
 
@@ -48,6 +50,7 @@ export function Popover({
       arrowElementClassName={styles.popoverArrowElement}
       arrowContainerClassName={styles.popoverArrowContainer}
       trigger={trigger}
+      triggerRef={triggerRef}
       hasArrow
       {...otherProps}
     >

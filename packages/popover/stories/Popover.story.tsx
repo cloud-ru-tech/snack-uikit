@@ -1,4 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useRef } from 'react';
 
 import { ButtonFilled } from '@snack-uikit/button';
 import { Link } from '@snack-uikit/link';
@@ -16,27 +17,52 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = PopoverProps;
-const Template: StoryFn<StoryProps> = ({ ...args }) => (
-  <>
-    <div data-test-id='activity-removal' role='button' tabIndex={0} className={styles.item} />
-    <div className={styles.story}>
-      <Popover
-        {...args}
-        tip={
-          args.tip || (
-            <div>
-              do not press this button, please
-              <br /> <Link href='#' text='read why' />
-            </div>
-          )
-        }
-      >
-        <ButtonFilled label='Reference button' data-test-id='button-with-popover' />
-      </Popover>
-    </div>
-  </>
-);
+type StoryProps = PopoverProps & {
+  renderWithoutWrappingTarget: boolean;
+};
+
+const Template: StoryFn<StoryProps> = ({ renderWithoutWrappingTarget, ...args }) => {
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+
+  return (
+    <>
+      <div data-test-id='activity-removal' role='button' tabIndex={0} className={styles.item} />
+      <div className={styles.story}>
+        {renderWithoutWrappingTarget ? (
+          <>
+            <Popover
+              {...args}
+              tip={
+                args.tip || (
+                  <div>
+                    do not press this button, please
+                    <br /> <Link href='#' text='read why' />
+                  </div>
+                )
+              }
+              triggerRef={triggerRef}
+            />
+            <ButtonFilled ref={triggerRef} label='Reference button' data-test-id='button-with-popover' />
+          </>
+        ) : (
+          <Popover
+            {...args}
+            tip={
+              args.tip || (
+                <div>
+                  do not press this button, please
+                  <br /> <Link href='#' text='read why' />
+                </div>
+              )
+            }
+          >
+            <ButtonFilled label='Reference button' data-test-id='button-with-popover' />
+          </Popover>
+        )}
+      </div>
+    </>
+  );
+};
 
 export const popover: StoryObj<StoryProps> = {
   render: Template,
@@ -44,6 +70,7 @@ export const popover: StoryObj<StoryProps> = {
   args: {
     trigger: 'click',
     placement: 'top',
+    renderWithoutWrappingTarget: false,
   },
 
   argTypes: { tip: { type: 'string' }, outsideClick: { type: 'boolean' } },

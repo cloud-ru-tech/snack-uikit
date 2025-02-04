@@ -32,10 +32,11 @@ export function Tooltip({
   trigger = 'hoverAndFocusVisible',
   placement = 'top',
   children,
+  triggerRef,
   disableMaxWidth = false,
   ...otherProps
 }: TooltipProps) {
-  if (!children) {
+  if (!children && !triggerRef) {
     return null;
   }
 
@@ -48,6 +49,7 @@ export function Tooltip({
         </div>
       }
       trigger={trigger}
+      triggerRef={triggerRef}
       arrowContainerClassName={styles.tooltipArrowContainer}
       arrowElementClassName={styles.tooltipArrowElement}
       hasArrow

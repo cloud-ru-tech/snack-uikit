@@ -35,11 +35,12 @@ export function Dropdown({
   trigger = 'click',
   placement = 'bottom-start',
   children,
+  triggerRef,
   widthStrategy = 'gte',
   triggerClassName,
   ...otherProps
 }: DropdownProps) {
-  if (!children) {
+  if (!children && !triggerRef) {
     return null;
   }
 
@@ -48,6 +49,7 @@ export function Dropdown({
       placement={placement}
       popoverContent={<div className={styles.dropdownContainer}>{content}</div>}
       trigger={trigger}
+      triggerRef={triggerRef}
       hasArrow={false}
       widthStrategy={widthStrategy}
       triggerClassName={cn(styles.defaultTriggerClassName, triggerClassName)}
