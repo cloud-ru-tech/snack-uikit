@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.39.0 (2025-02-04)
+
+
+### Features
+
+* **PDS-161:** add type attribute to FieldText ([520fb32](https://github.com/cloud-ru-tech/snack-uikit/commit/520fb3214bc951ce4888745f633376f1a109c083))
+
+
+
+
+
 ## 0.38.3 (2025-02-04)
 
 ### Only dependencies have been changed
