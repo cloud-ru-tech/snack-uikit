@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.13 (2025-02-04)
+
+### Only dependencies have been changed
+* [@snack-uikit/chips@0.24.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/list@0.24.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+
+
+
+
+
 ## 0.10.12 (2025-01-23)
 
 ### Only dependencies have been changed

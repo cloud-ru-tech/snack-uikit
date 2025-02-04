@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.24.0 (2025-02-04)
+
+
+### Features
+
+* **CORESERV-5847:** add virtualize prop to List component ([2fc82a5](https://github.com/cloud-ru-tech/snack-uikit/commit/2fc82a5f04c4a3ee002bb55fdf421f63efc8b367))
+
+
+
+
+
 ## 0.23.1 (2025-01-23)
 
 ### Only dependencies have been changed
