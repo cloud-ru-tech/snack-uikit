@@ -69,7 +69,7 @@ test.page(
 
   await t.expect(buttonField.exists).ok('button field is not present');
   await t
-    .expect(buttonField.find(dataTestIdSelector('icon-chevron-down-xs')).exists)
+    .expect(buttonField.find(dataTestIdSelector('icon-chevron-down-s')).exists)
     .ok('button chevron is not present');
 
   await t.click(buttonField);
@@ -96,7 +96,7 @@ test.page(
 
   await t.expect(buttonField.exists).ok('button field is not present');
   await t
-    .expect(buttonField.find(dataTestIdSelector('icon-chevron-down-xs')).exists)
+    .expect(buttonField.find(dataTestIdSelector('icon-chevron-down-s')).exists)
     .ok('button chevron is not present');
 
   await t.click(buttonField);

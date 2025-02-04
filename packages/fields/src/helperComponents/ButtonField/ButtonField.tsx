@@ -41,7 +41,7 @@ export const ButtonField = forwardRef<HTMLButtonElement, ButtonFieldProps>(
     },
     ref,
   ) => {
-    const { ArrowIcon, arrowIconSize } = getArrowIcon({ size, open: arrowOpen });
+    const { ArrowIcon, arrowIconSize } = getArrowIcon({ open: arrowOpen, size: 'm' });
 
     return (
       <button
