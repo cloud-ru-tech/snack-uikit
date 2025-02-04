@@ -130,7 +130,6 @@ const cards = [
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| children* | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
 | content* | `ReactElement<NotificationPanelProps, typeof NotificationPanel>` | - |  |
 | contentClassName | `string` | - | CSS-класс для элемента содержащего контент |
 | className | `string` | - | CSS-класс |
@@ -140,6 +139,7 @@ const cards = [
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
 | offset | `number` | 0 | Отступ поповера от его триггер-элемента (в пикселях). |
+| children | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
 | closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
 | triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | triggerRef | `ForwardedRef<HTMLElement \| ReferenceType>` | - | Ref ссылка на триггер |
