@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.38.2 (2025-02-04)
+
+
+### Bug Fixes
+
+* **PDS-159:** chevron icon size for ButtonField ([9454e56](https://github.com/cloud-ru-tech/snack-uikit/commit/9454e56a904d9b2123277ed8e121edd2d1f370b3))
+
+
+
+
+
 ## 0.38.1 (2025-02-04)
 
 ### Only dependencies have been changed
