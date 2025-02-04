@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { QuestionSVG } from '@snack-uikit/icons';
+import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { Tooltip, TooltipProps } from '../Tooltip';
 import { SIZE, SIZES_MAP, TRIGGER, TRIGGER_MAP } from './constants';
@@ -15,8 +16,8 @@ export type QuestionTooltipProps = Omit<TooltipProps, 'children' | 'triggerClass
   size?: Size;
   /** CSS-класс контейнера подсказки */
   tooltipClassname?: string;
-  /** data-test-id для триггера */
-  triggerDataTestId?: string;
+  /** data-атрибуты для триггера */
+  triggerSupportProps?: WithSupportProps<Record<string, unknown>>;
 
   tabIndex?: number;
 };
@@ -26,10 +27,10 @@ export function QuestionTooltip({
   trigger = TRIGGER.Hover,
   tooltipClassname,
   className,
-  triggerDataTestId,
   open,
   onOpenChange,
   tabIndex = 0,
+  triggerSupportProps = {},
   ...rest
 }: QuestionTooltipProps) {
   const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
@@ -44,6 +45,7 @@ export function QuestionTooltip({
       {({ getReferenceProps, ref }) => (
         <span
           {...getReferenceProps()}
+          {...extractSupportProps(triggerSupportProps)}
           ref={ref}
           data-size={size}
           data-opened={isOpen}
@@ -52,7 +54,7 @@ export function QuestionTooltip({
           role='button'
           tabIndex={tabIndex}
         >
-          <QuestionSVG size={SIZES_MAP[size]} data-test-id={triggerDataTestId} />
+          <QuestionSVG size={SIZES_MAP[size]} />
         </span>
       )}
     </Tooltip>

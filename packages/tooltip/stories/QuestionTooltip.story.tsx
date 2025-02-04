@@ -16,10 +16,16 @@ const meta: Meta = {
 export default meta;
 
 type StoryProps = QuestionTooltipProps;
+
 const Template: StoryFn<StoryProps> = ({ ...args }) => (
   <div className={styles.story}>
     <QuestionTooltip
       {...args}
+      data-test-id={'tooltip-test'}
+      triggerSupportProps={{
+        'data-appearance': 'blue',
+        'data-test-id': 'trigger-test',
+      }}
       tip={
         args.tip || (
           <div>
