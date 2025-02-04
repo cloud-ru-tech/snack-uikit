@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.16.0 (2025-02-04)
+
+
+### BREAKING CHANGES
+
+
+* **PDS-1424:** replaced triggerTestId prop with triggerSupportProps in QuestionTooltip ([21cb4ad](https://github.com/cloud-ru-tech/snack-uikit/commit/21cb4ad5e92c2865a0ad5faa0fc927699521789e))
+
+
+
+
 ## 0.15.5 (2025-01-23)
 
 ### Only dependencies have been changed

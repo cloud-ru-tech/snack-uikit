@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.2 (2025-02-04)
+
+
+### Bug Fixes
+
+* **PDS-1424:** pass triggerSupportProps to QuestionTooltip ([c1c23f8](https://github.com/cloud-ru-tech/snack-uikit/commit/c1c23f84c4bf4aae64b41bd99a1d0121e27ee875))
+
+
+
+
+
 ## 0.10.1 (2025-01-23)
 
 ### Only dependencies have been changed
