@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2025-02-05)
+
+
+### Features
+
+* **PDS-1081:** add filter row props ([a818aba](https://github.com/cloud-ru-tech/snack-uikit/commit/a818abadd7cd4aea8f6cdcaac58b09ca19fa3d2c))
+
+
+
+
+
 ## 0.10.3 (2025-02-04)
 
 ### Only dependencies have been changed

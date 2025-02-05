@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.28.0 (2025-02-05)
+
+
+### BREAKING CHANGES
+
+
+* **PDS-1081:** change columnFilters type to ChipChoiceRowProps, add suppressSearch prop ([5fb3278](https://github.com/cloud-ru-tech/snack-uikit/commit/5fb327801a846d837346773ed7d4747e78832b19))
+
+
+
+
 ## 0.27.3 (2025-02-04)
 
 ### Only dependencies have been changed

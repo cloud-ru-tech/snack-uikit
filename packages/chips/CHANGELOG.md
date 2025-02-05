@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.25.0 (2025-02-05)
+
+
+### Features
+
+* **PDS-1081:** add chip-choice-time to chip choice row ([5533d1d](https://github.com/cloud-ru-tech/snack-uikit/commit/5533d1d8403ec3363734aa8cee7f12c514d7931d))
+
+
+### BREAKING CHANGES
+
+
+* **PDS-1081:** new chip choice row behavior (now chips can be pinned and dynamically added) ([c558fb0](https://github.com/cloud-ru-tech/snack-uikit/commit/c558fb05b3af0a71083e5715d97d19955e34d446))
+
+
+
+
 ## 0.24.3 (2025-02-04)
 
 ### Only dependencies have been changed

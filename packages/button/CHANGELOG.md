@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.19.7 (2025-02-05)
+
+
+### Bug Fixes
+
+* **PDS-1081:** update test id for counter ([7f7f009](https://github.com/cloud-ru-tech/snack-uikit/commit/7f7f0096b4b9985d80a59d8a53d57a767cc37ed6))
+
+
+
+
+
 ## 0.19.6 (2025-01-23)
 
 ### Only dependencies have been changed

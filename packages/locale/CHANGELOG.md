@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2025-02-05)
+
+
+### Features
+
+* **PDS-1081:** add translations for toolbar & chips ([b0bd0cf](https://github.com/cloud-ru-tech/snack-uikit/commit/b0bd0cf3e08c4b1607dba0e0d1e5ca00def6ec53))
+
+
+
+
+
 # 0.11.0 (2024-12-25)
 
 
