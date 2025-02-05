@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.1 (2025-02-05)
+
+
+### Bug Fixes
+
+* **PDS-1081:** allow to show checkbox without bulk actions ([db193d9](https://github.com/cloud-ru-tech/snack-uikit/commit/db193d9fa9f8d679c1855db0f0d975d9f5704551))
+
+
+
+
+
 # 0.11.0 (2025-02-05)
 
 
