@@ -17,7 +17,7 @@ export type BulkAction = WithSupportProps<{
 
 export type BulkActionsProps = {
   /** Список массовых действий */
-  actions: BulkAction[];
+  actions?: BulkAction[];
   /** Колбек смены значения чекбокса */
   onCheck?(): void;
   /** Значение чекбокса */

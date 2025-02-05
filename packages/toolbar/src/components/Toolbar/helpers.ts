@@ -16,11 +16,5 @@ export function extractBulkActionsProps({
 export function isBulkActionsProps<TState extends FiltersState>(
   props: Partial<ToolbarProps<TState>>,
 ): props is ToolbarBulkActionProps {
-  return (
-    'bulkActions' in props &&
-    Array.isArray(props.bulkActions) &&
-    props.bulkActions.length > 0 &&
-    'selectionMode' in props &&
-    props.selectionMode === 'multiple'
-  );
+  return 'selectionMode' in props && props.selectionMode === 'multiple';
 }

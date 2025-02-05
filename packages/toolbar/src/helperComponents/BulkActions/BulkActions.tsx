@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 import { BulkActionsProps } from './types';
 
 export function BulkActions({
-  actions,
+  actions = [],
   checked,
   onCheck,
   indeterminate,
@@ -56,7 +56,7 @@ export function BulkActions({
         </div>
       )}
 
-      {(checked || indeterminate) && (
+      {(checked || indeterminate) && actions.length > 0 && (
         <div className={styles.bulkActionsWrapper} data-test-id={TEST_IDS.bulkActions} ref={parentContainerRef}>
           <div className={styles.bulkActions}>
             {visibleItems.map(({ label, icon: Icon, onClick, disabled, tooltip, 'data-test-id': testId }) => (

@@ -44,10 +44,10 @@ const Template: StoryFn<StoryProps> = ({
   showMoreActions,
   outline,
   selectionMode,
-  bulkActions,
   filterRow,
   ...args
 }: StoryProps) => {
+  const bulkActions = showManyBulkActions ? args.bulkActions : args.bulkActions?.slice(0, 3);
   const [{ search, checked, indeterminate }, updateArgs] = useArgs<StoryProps>();
 
   const onSearchChange = (value: string) => {
@@ -84,11 +84,11 @@ const Template: StoryFn<StoryProps> = ({
         {...extractSupportProps(args)}
         outline={outline}
         selectionMode={selectionMode}
-        {...(showBulkActions
+        {...(selectionMode === 'multiple'
           ? {
               checked,
               onCheck: toggleChecked,
-              bulkActions: showManyBulkActions ? bulkActions : bulkActions?.slice(0, 3),
+              bulkActions: showBulkActions ? bulkActions : undefined,
               indeterminate,
             }
           : {})}
@@ -117,11 +117,11 @@ export const toolbar: StoryObj<StoryProps> = {
   args: {
     outline: false,
     selectionMode: 'multiple',
+    checked: false,
+    indeterminate: false,
     showBulkActions: true,
     showManyBulkActions: true,
     bulkActions: BULK_ACTIONS,
-    checked: false,
-    indeterminate: false,
     showSearch: true,
     search: {
       value: '',
@@ -140,6 +140,18 @@ export const toolbar: StoryObj<StoryProps> = {
   },
 
   argTypes: {
+    checked: {
+      if: {
+        arg: 'selectionMode',
+        eq: 'multiple',
+      },
+    },
+    indeterminate: {
+      if: {
+        arg: 'selectionMode',
+        eq: 'multiple',
+      },
+    },
     showBulkActions: {
       name: '[Story]: Show bulk actions',
       type: 'boolean',
@@ -173,18 +185,6 @@ export const toolbar: StoryObj<StoryProps> = {
     filterRow: {
       if: {
         arg: 'showFilters',
-        eq: true,
-      },
-    },
-    checked: {
-      if: {
-        arg: 'showBulkActions',
-        eq: true,
-      },
-    },
-    indeterminate: {
-      if: {
-        arg: 'showBulkActions',
         eq: true,
       },
     },
