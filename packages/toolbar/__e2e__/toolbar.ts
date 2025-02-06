@@ -64,7 +64,7 @@ function getSelectors() {
 function verifyElementRender(
   message: string,
   pageProps: {
-    showBulkActions?: boolean;
+    showCheckbox?: boolean;
     showOnRefresh?: boolean;
     showSearch?: boolean;
     showAfterActions?: boolean;
@@ -83,18 +83,12 @@ function verifyElementRender(
       filterRowOpened: false,
       showMoreActions: false,
       ...pageProps,
+      selectionMode: pageProps.showCheckbox ? 'multiple' : 'single',
     }),
   )(message, async t => {
     const { search, checkbox, moreActionsButton, after, refreshButton, filterButton, filterRow } = getSelectors();
-    const {
-      showBulkActions,
-      showOnRefresh,
-      showSearch,
-      showAfterActions,
-      showFilters,
-      filterRowOpened,
-      showMoreActions,
-    } = pageProps;
+    const { showCheckbox, showOnRefresh, showSearch, showAfterActions, showFilters, filterRowOpened, showMoreActions } =
+      pageProps;
 
     const checkItem = async (element: Selector, elementName: string, condition?: boolean) => {
       const not = condition ? 'not ' : '';
@@ -103,7 +97,7 @@ function verifyElementRender(
         [condition ? 'ok' : 'notOk'](`${elementName} should ${not}be rendered when ${not}applied`);
     };
 
-    await checkItem(checkbox, 'Checkbox', showBulkActions);
+    await checkItem(checkbox, 'Checkbox', showCheckbox);
     await checkItem(refreshButton, 'RefreshButton', showOnRefresh);
     await checkItem(search, 'Search', showSearch);
     await checkItem(after, 'After', showAfterActions);
@@ -114,7 +108,7 @@ function verifyElementRender(
 }
 
 verifyElementRender('Should render all items', {
-  showBulkActions: true,
+  showCheckbox: true,
   showOnRefresh: true,
   showSearch: true,
   showAfterActions: true,
@@ -123,7 +117,7 @@ verifyElementRender('Should render all items', {
   showMoreActions: true,
 });
 
-verifyElementRender('Should render checkbox only', { showBulkActions: true });
+verifyElementRender('Should render checkbox only', { showCheckbox: true });
 verifyElementRender('Should render refresh button only', { showOnRefresh: true });
 verifyElementRender('Should render search only', { showSearch: true });
 verifyElementRender('Should render after actions only', { showAfterActions: true });
@@ -133,13 +127,12 @@ verifyElementRender('Should render more actions only', { showMoreActions: true }
 
 test.page(
   getPage({
-    showBulkActions: true,
+    showCheckbox: true,
     checked: true,
     showOnRefresh: true,
     showAfterActions: true,
     showMoreActions: true,
     showFilters: true,
-    filterRowOpened: true,
   }),
 )(`Should control by keyboard`, async t => {
   const {
@@ -153,6 +146,7 @@ test.page(
     moreBulkActionsButton,
     deactivateAction,
     filterButton,
+    filterRow,
     filterRowAddButton,
     filterRowAddListSingleFilter,
   } = getSelectors();
@@ -173,10 +167,9 @@ test.page(
   await t.pressKey('tab').expect(searchInput.focused).notOk('Search should not be focused');
   await t.pressKey('tab').expect(moreActionsButton.focused).notOk('MoreActionsButton should not be focused');
   await t.pressKey('tab').expect(filterButton.focused).ok('FilterButton should be focused');
-  // TODO: fix
-  // await t.pressKey('enter').expect(filterRow.exists).ok('Filter row not rendered');
-  // await t.pressKey('enter').expect(filterRow.exists).notOk("Filter row rendered although shouldn't");
-  await t.pressKey('tab').expect(moreActionsButton.focused).ok('MoreActionsButton should be focused');
+  await t.pressKey('enter').expect(filterRow.exists).ok('Filter row not rendered');
+  await t.pressKey('enter').expect(filterRow.exists).notOk("Filter row rendered although shouldn't");
+  await t.pressKey('enter tab').expect(moreActionsButton.focused).ok('MoreActionsButton should be focused');
   await t.pressKey('down').expect(option.focused).ok('Option should be focused');
   await t.pressKey('up up').expect(moreActionsButton.focused).ok('MoreActionsButton should be focused');
   await t.pressKey('tab tab tab').expect(filterRowAddButton.focused).ok('FilterRowAddButton should be focused');
