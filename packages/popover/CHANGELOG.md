@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.6 (2025-02-06)
+
+
+### Bug Fixes
+
+* **PDS-564:** rendering without wrapping the target ([5fdc13a](https://github.com/cloud-ru-tech/snack-uikit/commit/5fdc13a1f3c982f4ed50c58cba32ca0d0a4df7a0))
+
+
+
+
+
 ## 0.8.5 (2025-01-23)
 
 ### Only dependencies have been changed
@@ -15,7 +26,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.8.4 (2025-01-20)
 
-**Note:** Version bump only for package @snack-uikit/popover
+### Only dependencies have been changed
+* [@snack-uikit/popover-private@0.14.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/popover-private/CHANGELOG.md)
 
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.4 (2025-02-06)
+
+
+### Bug Fixes
+
+* **PDS-564:** rendering without wrapping the target ([5fdc13a](https://github.com/cloud-ru-tech/snack-uikit/commit/5fdc13a1f3c982f4ed50c58cba32ca0d0a4df7a0))
+
+
+
+
+
 ## 0.4.3 (2025-01-23)
 
 ### Only dependencies have been changed

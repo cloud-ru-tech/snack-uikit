@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Accordion",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -39,8 +39,8 @@
     "@snack-uikit/button": "0.19.7",
     "@snack-uikit/icons": "0.24.2",
     "@snack-uikit/toggles": "0.13.5",
-    "@snack-uikit/tooltip": "0.16.0",
-    "@snack-uikit/truncate-string": "0.6.7",
+    "@snack-uikit/tooltip": "0.16.1",
+    "@snack-uikit/truncate-string": "0.6.8",
     "@snack-uikit/typography": "0.8.4",
     "@snack-uikit/utils": "3.7.0",
     "classnames": "2.5.1",
