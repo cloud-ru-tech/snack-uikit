@@ -14,7 +14,9 @@ import { useFilters } from './hooks';
 import styles from './styles.module.scss';
 import { CheckedToolbarProps, DefaultToolbarProps, FilterRow } from './types';
 
-export type ToolbarProps<TState extends FiltersState> = WithSupportProps<DefaultToolbarProps | CheckedToolbarProps> & {
+export type ToolbarProps<TState extends FiltersState = Record<string, unknown>> = WithSupportProps<
+  DefaultToolbarProps | CheckedToolbarProps
+> & {
   filterRow?: FilterRow<TState>;
 };
 

@@ -22,7 +22,7 @@ const meta: Meta = {
 
 export default meta;
 
-type StoryProps = ToolbarProps<Record<string, string>> & {
+type StoryProps = ToolbarProps & {
   showSearch: boolean;
   showOnRefresh: boolean;
   showBulkActions: boolean;

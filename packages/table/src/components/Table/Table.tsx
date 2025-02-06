@@ -54,7 +54,7 @@ import {
 } from './utils';
 
 /** Компонент таблицы */
-export function Table<TData extends object, TFilters extends FiltersState>({
+export function Table<TData extends object, TFilters extends FiltersState = Record<string, unknown>>({
   data,
   rowPinning = {
     top: [],
