@@ -153,6 +153,7 @@ export const List = forwardRef(
         size={size}
         marker={marker}
         firstItemId={firstItemId}
+        virtualized={props.virtualized}
       >
         <SelectionProvider {...selection}>
           <CollapseContext.Provider

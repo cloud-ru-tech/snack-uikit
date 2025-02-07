@@ -19,6 +19,7 @@ export type PublicListContextType = {
    * Рендер функция основного контента айтема
    */
   contentRender?(props: ContentRenderProps): ReactNode;
+  virtualized?: boolean;
 };
 
 export type PrivateListContextType = {
@@ -50,8 +51,9 @@ function extractListProps<T extends ListContextType>({
   focusFlattenItems,
   contentRender,
   firstItemId,
+  virtualized,
 }: T) {
-  return { size, marker, contentRender, flattenItems, focusFlattenItems, firstItemId };
+  return { size, marker, contentRender, flattenItems, focusFlattenItems, firstItemId, virtualized };
 }
 
 export function NewListContextProvider({ children, ...props }: ListContextType & Child) {

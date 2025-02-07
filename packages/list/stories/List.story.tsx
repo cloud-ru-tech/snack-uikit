@@ -16,6 +16,7 @@ import {
   EXPAND_OPTIONS,
   GROUP_OPTIONS,
   LONG_LIST_OPTIONS,
+  VIRTUALIZED_ITEMS,
   withDataTestId,
 } from './constants';
 import styles from './styles.module.scss';
@@ -86,7 +87,7 @@ const Template: StoryFn<StoryProps> = ({
 
   const groupItemsWithSwitch = useMemo(
     () =>
-      GROUP_OPTIONS.map(group => ({
+      [...GROUP_OPTIONS, ...(args.virtualized ? VIRTUALIZED_ITEMS : [])].map(group => ({
         ...group,
         truncate: { ...group.truncate, variant: truncateVariant },
         items: group.items.map(item => ({
@@ -97,7 +98,7 @@ const Template: StoryFn<StoryProps> = ({
           content: { ...item.content, truncate: { ...item.content.truncate, variant: truncateVariant } },
         })),
       })),
-    [showSwitch, truncateVariant],
+    [args.virtualized, showSwitch, truncateVariant],
   );
 
   const baseItemsWithSwitch = useMemo(
@@ -289,6 +290,8 @@ export const list = {
   render: Template,
 
   args: {
+    virtualized: false,
+    scroll: true,
     showPinTopItems: true,
     showPinBottomItems: true,
     showSearch: true,
@@ -301,7 +304,6 @@ export const list = {
     truncateVariant: 'end',
     marker: true,
     loading: false,
-    scroll: true,
     size: 's',
     showCollapsedList: false,
     showAsyncList: false,

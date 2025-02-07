@@ -208,6 +208,7 @@ export function Droplist({
       size={size}
       marker={marker}
       firstItemId={firstItemId}
+      virtualized={virtualized}
     >
       <SelectionProvider {...selection}>
         <CollapseContext.Provider

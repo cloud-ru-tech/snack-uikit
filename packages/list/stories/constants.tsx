@@ -78,6 +78,19 @@ export const GROUP_OPTIONS: (GroupItem | GroupSelectItem)[] = [
   { divider: true, items: BASE_OPTIONS, type: 'group' },
 ];
 
+export const VIRTUALIZED_ITEMS: (GroupItem | GroupSelectItem)[] = [
+  {
+    type: 'group',
+    label: 'Large group',
+    items: new Array(10000).fill(0).map((_, index) => ({
+      id: `large_items_${index}`,
+      content: { option: `Content ${index}` },
+      beforeContent: <PlaceholderSVG />,
+      switch: true,
+    })),
+  },
+];
+
 export const EXPAND_OPTIONS: ItemProps[] = [
   {
     content: { option: 'Content', description: 'description' },

@@ -28,7 +28,7 @@ export function NextListItem({
   untouchableScrollbars = false,
   ...option
 }: NextListItemProps) {
-  const { flattenItems, focusFlattenItems } = useNewListContext();
+  const { flattenItems, focusFlattenItems, virtualized } = useNewListContext();
   const { value, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
   const { openCollapseItems = [] } = useCollapseContext();
 
@@ -107,6 +107,7 @@ export function NextListItem({
           items={items}
           nested
           scroll={scroll}
+          virtualized={virtualized}
           tabIndex={0}
           ref={listRef}
           onFocus={e => {

@@ -1,11 +1,11 @@
 import { createRef, RefObject, useMemo } from 'react';
 
 import { ITEM_PREFIXES } from '../../constants';
+import { Separator } from '../../helperComponents';
 import { getFooterItemId } from '../../utils';
 import { useNewListContext, useSelectionContext } from '../Lists/contexts';
 import { AccordionItem } from './AccordionItem';
 import { BaseItem } from './BaseItem';
-import { GroupItem } from './GroupItem';
 import { GroupSelectItem } from './GroupSelectItem';
 import { NextListItem } from './NextListItem';
 import {
@@ -13,44 +13,79 @@ import {
   FlattenAccordionItem,
   FlattenBaseItem,
   FlattenGroupSelectListItem,
+  FlattenItem,
   FlattenNextListItem,
+  FocusFlattenItem,
   ItemId,
 } from './types';
 import { isAccordionItem, isGroupItem, isGroupSelectItem, isNextListItem } from './utils';
+
+type GetRenderItemsProps = {
+  focusCloseChildIds?: ItemId[];
+  flattenItems: Record<string, FlattenItem>;
+  focusFlattenItems: Record<string, FocusFlattenItem>;
+  isSelectionMultiple?: boolean;
+};
+
+function getRenderItems({
+  focusCloseChildIds,
+  focusFlattenItems,
+  flattenItems,
+  isSelectionMultiple,
+}: GetRenderItemsProps): (JSX.Element | null)[] {
+  if (!focusCloseChildIds) {
+    return [null];
+  }
+
+  return focusCloseChildIds.flatMap(id => {
+    const { itemRef, key, originalId, items } = focusFlattenItems[id];
+
+    const flattenItem = flattenItems[originalId];
+
+    if (
+      isGroupItem(flattenItem) ||
+      (!isSelectionMultiple && isGroupSelectItem<FlattenGroupSelectListItem>(flattenItem))
+    ) {
+      const innerItemsJSX = getRenderItems({
+        focusCloseChildIds: items,
+        focusFlattenItems,
+        flattenItems,
+        isSelectionMultiple,
+      });
+
+      return [
+        <Separator
+          label={flattenItem.label}
+          truncate={flattenItem.truncate}
+          divider={flattenItem.divider}
+          mode={flattenItem.mode}
+          key={key + '_separator'}
+        />,
+        ...innerItemsJSX,
+      ];
+    }
+    if (isGroupSelectItem<FlattenGroupSelectListItem>(flattenItem)) {
+      return <GroupSelectItem {...flattenItem} items={items} itemRef={itemRef} key={key} />;
+    }
+    if (isAccordionItem<FlattenAccordionItem>(flattenItem)) {
+      return <AccordionItem {...flattenItem} items={items} itemRef={itemRef} key={key} />;
+    }
+    if (isNextListItem<FlattenNextListItem>(flattenItem)) {
+      return <NextListItem {...flattenItem} focusId={id} items={items} itemRef={itemRef} key={key} />;
+    }
+
+    return <BaseItem {...flattenItem} itemRef={itemRef} key={key} />;
+  });
+}
 
 export function useRenderItems(focusCloseChildIds?: ItemId[]) {
   const { focusFlattenItems, flattenItems } = useNewListContext();
   const { isSelectionMultiple } = useSelectionContext();
 
-  return useMemo(() => {
-    if (!focusCloseChildIds) {
-      return [null];
-    }
-
-    return focusCloseChildIds.map(id => {
-      const { itemRef, key, originalId, items } = focusFlattenItems[id];
-
-      const flattenItem = flattenItems[originalId];
-
-      if (
-        isGroupItem(flattenItem) ||
-        (!isSelectionMultiple && isGroupSelectItem<FlattenGroupSelectListItem>(flattenItem))
-      ) {
-        return <GroupItem {...flattenItem} items={items} key={key} />;
-      }
-      if (isGroupSelectItem<FlattenGroupSelectListItem>(flattenItem)) {
-        return <GroupSelectItem {...flattenItem} items={items} itemRef={itemRef} key={key} />;
-      }
-      if (isAccordionItem<FlattenAccordionItem>(flattenItem)) {
-        return <AccordionItem {...flattenItem} items={items} itemRef={itemRef} key={key} />;
-      }
-      if (isNextListItem<FlattenNextListItem>(flattenItem)) {
-        return <NextListItem {...flattenItem} focusId={id} items={items} itemRef={itemRef} key={key} />;
-      }
-
-      return <BaseItem {...flattenItem} itemRef={itemRef} key={key} />;
-    });
-  }, [flattenItems, focusCloseChildIds, focusFlattenItems, isSelectionMultiple]);
+  return useMemo(
+    () => getRenderItems({ flattenItems, focusFlattenItems, focusCloseChildIds, isSelectionMultiple }),
+    [flattenItems, focusCloseChildIds, focusFlattenItems, isSelectionMultiple],
+  );
 }
 
 type UseCreateBaseItemsProps = {
