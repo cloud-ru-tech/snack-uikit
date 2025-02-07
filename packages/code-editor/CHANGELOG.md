@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2025-02-07)
+
+
+### Features
+
+* **PDS-1445:** support json schema for yaml, json languages ([a709fe5](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/a709fe5e061917c5017de1bd1b6f01c15f4b3002))
+
+
+
+
+
 ## 0.4.7 (2025-01-23)
 
 ### Only dependencies have been changed
