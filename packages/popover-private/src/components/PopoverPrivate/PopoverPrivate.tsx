@@ -295,7 +295,7 @@ function PopoverPrivateComponent({
   }, [children, addOrRemoveTriggerRefEvents, getReferenceProps]);
 
   const portal = isOpen && (
-    <FloatingPortal root={getPopoverRootElement()}>
+    <FloatingPortal root={getPopoverRootElement()} key='portal'>
       <div
         role='presentation'
         {...extractSupportProps(rest)}

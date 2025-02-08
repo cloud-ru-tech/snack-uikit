@@ -3,6 +3,7 @@ import cn from 'classnames';
 import {
   cloneElement,
   CSSProperties,
+  Fragment,
   HTMLProps,
   isValidElement,
   MouseEvent,
@@ -89,22 +90,23 @@ export const getPopoverTriggerJSX = ({
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         ref: setReference,
+        key: 'cloned-element',
       });
     }
 
     return (
-      <span className={validElementWrapperClassName} ref={setReference} {...getReferenceProps()}>
+      <span className={validElementWrapperClassName} ref={setReference} {...getReferenceProps()} key='wrapped-element'>
         {children}
       </span>
     );
   }
 
   if (typeof children === 'function') {
-    return children({ getReferenceProps, ref: setReference });
+    return <Fragment key='function-element'>{children({ getReferenceProps, ref: setReference })}</Fragment>;
   }
 
   return (
-    <span className={validElementWrapperClassName} ref={setReference} {...getReferenceProps()}>
+    <span className={validElementWrapperClassName} ref={setReference} {...getReferenceProps()} key='wrapped-element'>
       {children}
     </span>
   );
