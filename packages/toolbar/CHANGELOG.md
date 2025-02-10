@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.5 (2025-02-10)
+
+
+### Bug Fixes
+
+* **PDS-1081:** make type for filters in generic non required ([136ea97](https://github.com/cloud-ru-tech/snack-uikit/commit/136ea971801290030eb6ad68bfcb8c06b2b3e732))
+
+
+
+
+
 ## 0.11.4 (2025-02-10)
 
 ### Only dependencies have been changed
