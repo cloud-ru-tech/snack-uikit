@@ -49,7 +49,7 @@
     "@cloud-ru/ft-config-stylelint": "2.0.0",
     "@cloud-ru/ft-config-tsconfig": "1.1.1",
     "@cloud-ru/ft-config-vitest": "1.2.1",
-    "@cloud-ru/ft-conventional-changelog": "1.1.0",
+    "@cloud-ru/ft-conventional-changelog-old": "npm:@cloud-ru/ft-conventional-changelog@1.1.0",
     "@cloud-ru/ft-license-validator": "1.1.1",
     "@cloud-ru/ft-storybook-brand-addon": "2.0.5",
     "@cloud-ru/ft-storybook-deps-graph-addon": "2.0.3",
