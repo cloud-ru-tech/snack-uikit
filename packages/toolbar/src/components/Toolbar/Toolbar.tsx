@@ -20,7 +20,7 @@ export type ToolbarProps<TState extends FiltersState = Record<string, unknown>> 
   filterRow?: FilterRow<TState>;
 };
 
-export function Toolbar<TState extends FiltersState>({
+export function Toolbar<TState extends FiltersState = Record<string, unknown>>({
   className,
   after,
   outline,

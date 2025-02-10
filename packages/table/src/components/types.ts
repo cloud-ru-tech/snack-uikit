@@ -20,7 +20,10 @@ type BulkAction = Omit<NonNullable<ToolbarProps<Record<string, string>>['bulkAct
   onClick?(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void): void;
 };
 
-export type TableProps<TData extends object, TFilters extends FiltersState> = WithSupportProps<{
+export type TableProps<
+  TData extends object,
+  TFilters extends FiltersState = Record<string, unknown>,
+> = WithSupportProps<{
   /** Данные для отрисовки */
   data: TData[];
   /** Определение внешнего вида и функционала колонок */
@@ -175,7 +178,7 @@ export type TableProps<TData extends object, TFilters extends FiltersState> = Wi
   };
 }>;
 
-export type ServerTableProps<TData extends object, TFilters extends FiltersState> = Omit<
+export type ServerTableProps<TData extends object, TFilters extends FiltersState = Record<string, unknown>> = Omit<
   TableProps<TData, TFilters>,
   'pageSize' | 'pageCount' | 'pagination' | 'search' | 'data'
 > & {

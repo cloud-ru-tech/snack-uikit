@@ -10,7 +10,7 @@ import { ServerTableProps } from '../types';
 import { DEFAULT_PAGINATION_LIMIT } from './constants';
 import { onSearchDebounced } from './utils';
 
-export function ServerTable<TData extends object, TFilters extends FiltersState>({
+export function ServerTable<TData extends object, TFilters extends FiltersState = Record<string, unknown>>({
   items,
   total = DEFAULT_PAGINATION_LIMIT,
   limit = DEFAULT_PAGINATION_LIMIT,
