@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.25.0 (2025-02-10)
+
+
+### Features
+
+* **FF-4704:** add virtualization for next list and group item ([81c6630](https://github.com/cloud-ru-tech/snack-uikit/commit/81c6630ea89bb37745f2a8d9cb25123c5a85b731))
+
+
+
+
+
 ## 0.24.3 (2025-02-06)
 
 ### Only dependencies have been changed

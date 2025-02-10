@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.5 (2025-02-10)
+
+
+### Bug Fixes
+
+* **FF-4704:** add keys for popover children ([8ce87df](https://github.com/cloud-ru-tech/snack-uikit/commit/8ce87df55626e82e345f230db46246cb6e7bdfd2))
+
+
+
+
+
 ## 0.14.4 (2025-02-06)
 
 

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Popover Private",
-  "version": "0.14.4",
+  "version": "0.14.5",
   "sideEffects": [
     "*.css",
     "*.woff",
