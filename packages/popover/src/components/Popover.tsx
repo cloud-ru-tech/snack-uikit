@@ -15,6 +15,7 @@ export type PopoverProps = WithSupportProps<
     PopoverPrivateProps,
     | 'trigger'
     | 'triggerRef'
+    | 'triggerClassName'
     | 'className'
     | 'placement'
     | 'open'
