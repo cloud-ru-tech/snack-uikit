@@ -199,7 +199,7 @@ export function useSearch(items: ItemProps[], enableFuzzySearch: boolean = true)
         );
       }
 
-      const searcher = new FuzzySearch(flattenItems, COMMON_FIELDS_TO_SEARCH, {});
+      const searcher = new FuzzySearch(flattenItems, COMMON_FIELDS_TO_SEARCH, { sort: true });
       return searcher.search(search);
     },
     [enableFuzzySearch, flattenItems],

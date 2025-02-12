@@ -7,11 +7,16 @@ const isItemWithId = (item: ItemProps): item is ItemWithId => (item as ItemWithI
 const isGroupItem = (item: ItemProps): item is GroupItemProps => (item as GroupItemProps).type === 'group';
 
 export function filterItemsByFlattenIds(items: ItemProps[], ids: ItemId[]) {
-  const filteredItems: ItemProps[] = [];
+  const filteredItems: ItemProps[] = Array(ids.length);
+
   items.forEach(item => {
-    if (isItemWithId(item) && item.id && ids.includes(item.id)) {
-      filteredItems.push(item);
-      return;
+    if (isItemWithId(item) && item.id) {
+      const index = ids.indexOf(item.id);
+
+      if (index !== -1) {
+        filteredItems[index] = item;
+        return;
+      }
     }
     if (isGroupItem(item)) {
       const filteredSubItems = filterItemsByFlattenIds(item.items, ids);
@@ -19,5 +24,6 @@ export function filterItemsByFlattenIds(items: ItemProps[], ids: ItemId[]) {
       return;
     }
   });
-  return filteredItems;
+
+  return filteredItems.filter(Boolean);
 }
