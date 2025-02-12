@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.40.0 (2025-02-12)
+
+
+### Features
+
+* **PDS-1648:** enabled scored sort for FuzzySearch ([e45e33e](https://github.com/cloud-ru-tech/snack-uikit/commit/e45e33ea3c2516dc4ad3e42bbd52cfd253e20392))
+
+
+
+
+
 ## 0.39.3 (2025-02-10)
 
 ### Only dependencies have been changed
