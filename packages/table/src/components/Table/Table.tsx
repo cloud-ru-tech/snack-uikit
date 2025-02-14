@@ -74,6 +74,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   pageSize = DEFAULT_PAGE_SIZE,
   pageCount,
   loading = false,
+  infiniteLoading = false,
   outline = false,
   moreActions,
   exportSettings,
@@ -87,7 +88,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   toolbarAfter,
   suppressPagination = false,
   manualSorting = false,
-  manualPagination = false,
+  manualPagination: manualPaginationProp = false,
   manualFiltering = false,
   autoResetPageIndex = false,
   scrollRef,
@@ -118,6 +119,8 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     defaultPaginationState,
   );
   const enableSelection = Boolean(rowSelectionProp?.enable);
+
+  const manualPagination = infiniteLoading || manualPaginationProp;
 
   const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
     let cols: ColumnDefinition<TData>[] = columnDefinitions;
@@ -418,7 +421,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
           <Scroll size='s' className={styles.table} ref={scrollContainerRef}>
             <div className={styles.tableContent} style={columnSizes.vars}>
               <TableContext.Provider value={{ table }}>
-                {loading ? (
+                {(!infiniteLoading || !data.length) && loading ? (
                   <SkeletonContextProvider loading>
                     <HeaderRow />
                     {loadingTableRows.map(row => (
@@ -441,6 +444,14 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                       <BodyRow key={row.id} row={row} onRowClick={onRowClick} />
                     ))}
 
+                    {data.length > 0 && infiniteLoading && loading && (
+                      <SkeletonContextProvider loading>
+                        {loadingTableRows.slice(0, 3).map(row => (
+                          <BodyRow key={row.id} row={row} />
+                        ))}
+                      </SkeletonContextProvider>
+                    )}
+
                     <TableEmptyState
                       emptyStates={emptyStates}
                       dataError={dataError}
@@ -455,7 +466,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
           </Scroll>
         </div>
 
-        {!suppressPagination && (
+        {!infiniteLoading && !suppressPagination && (
           <TablePagination
             table={table}
             options={paginationProp?.options}

@@ -22,6 +22,7 @@ import {
 } from '../src';
 import { STORY_TEST_IDS, StoryStatusColumnViewMode } from './constants';
 import { generateRows, numberFormatter } from './helpers';
+import { useInfiniteLoading } from './hooks';
 import styles from './styles.module.scss';
 import { Filters, StubData } from './types';
 
@@ -207,6 +208,7 @@ const Template: StoryFn<StoryProps> = ({
   enableOnRowClick,
   showExport,
   showFilters,
+  infiniteLoading,
   ...args
 }: StoryProps) => {
   const data = useMemo(
@@ -218,6 +220,8 @@ const Template: StoryFn<StoryProps> = ({
   useEffect(() => {
     setFilteredData(data);
   }, [data]);
+
+  const { loading, scrollRef } = useInfiniteLoading({ rowsAmount, infiniteLoading, filteredData, setFilteredData });
 
   const onDelete = useCallback(
     (rowSelectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void) => {
@@ -310,15 +314,41 @@ const Template: StoryFn<StoryProps> = ({
   };
 
   const modifyPaginationLabel = pinSomeRows && args.keepPinnedRows;
-  const getNotPinnedRows = (totalRows: string | number) =>
-    Number(totalRows) - (modifyPaginationLabel && !args.copyPinnedRows ? PINNED_TOP_ROWS.length : 0);
-  const paginationOptionsRender = (value: string | number) =>
-    `${getNotPinnedRows(value)}${modifyPaginationLabel ? ` + ${PINNED_TOP_ROWS.length}` : ''}`;
+  const paginationOptionsRender = useMemo(() => {
+    const getNotPinnedRows = (totalRows: string | number) =>
+      Number(totalRows) - (modifyPaginationLabel && !args.copyPinnedRows ? PINNED_TOP_ROWS.length : 0);
+
+    return (value: string | number) =>
+      `${getNotPinnedRows(value)}${modifyPaginationLabel ? ` + ${PINNED_TOP_ROWS.length}` : ''}`;
+  }, [args.copyPinnedRows, modifyPaginationLabel]);
+
+  const props = useMemo(() => {
+    if (infiniteLoading) {
+      return {
+        ...args,
+        infiniteLoading,
+        pagination: undefined,
+        manualPagination: undefined,
+        suppressPagination: undefined,
+        pageCount: undefined,
+        autoResetPageIndex: undefined,
+      };
+    }
+
+    return {
+      ...args,
+      pagination: {
+        options: [5, 10],
+        optionsRender: paginationOptionsRender,
+      },
+    };
+  }, [args, infiniteLoading, paginationOptionsRender]);
 
   return (
     <div className={styles.wrapper}>
       <Table
-        {...args}
+        {...props}
+        loading={args.loading || loading}
         columnDefinitions={columns}
         data={filteredData}
         bulkActions={[
@@ -341,10 +371,6 @@ const Template: StoryFn<StoryProps> = ({
               }
             : undefined
         }
-        pagination={{
-          options: [5, 10],
-          optionsRender: paginationOptionsRender,
-        }}
         rowSelection={{
           multiRow: rowSelectionMode === 'multi',
           enable: disableSomeRows
@@ -356,6 +382,7 @@ const Template: StoryFn<StoryProps> = ({
         rowPinning={pinSomeRows ? { top: PINNED_TOP_ROWS } : undefined}
         exportSettings={showExport ? { fileName: 'test-export', exportToCSV, exportToXLSX } : undefined}
         columnFilters={showFilters ? args.columnFilters : undefined}
+        scrollRef={scrollRef}
       />
     </div>
   );
@@ -505,6 +532,39 @@ export const table: StoryObj<StoryProps> = {
       if: {
         arg: 'showFilters',
         eq: true,
+      },
+    },
+    pagination: {
+      control: {
+        disable: true,
+      },
+      if: {
+        arg: 'infiniteLoading',
+        neq: true,
+      },
+    },
+    manualPagination: {
+      if: {
+        arg: 'infiniteLoading',
+        neq: true,
+      },
+    },
+    suppressPagination: {
+      if: {
+        arg: 'infiniteLoading',
+        neq: true,
+      },
+    },
+    pageCount: {
+      if: {
+        arg: 'infiniteLoading',
+        neq: true,
+      },
+    },
+    autoResetPageIndex: {
+      if: {
+        arg: 'infiniteLoading',
+        neq: true,
       },
     },
     savedState: {

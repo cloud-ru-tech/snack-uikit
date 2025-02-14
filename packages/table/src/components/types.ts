@@ -20,10 +20,7 @@ type BulkAction = Omit<NonNullable<ToolbarProps<Record<string, string>>['bulkAct
   onClick?(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void): void;
 };
 
-export type TableProps<
-  TData extends object,
-  TFilters extends FiltersState = Record<string, unknown>,
-> = WithSupportProps<{
+type BaseTableProps<TData extends object, TFilters extends FiltersState = Record<string, unknown>> = WithSupportProps<{
   /** Данные для отрисовки */
   data: TData[];
   /** Определение внешнего вида и функционала колонок */
@@ -86,28 +83,6 @@ export type TableProps<
   /** Максимальное кол-во строк на страницу @default 10 */
   pageSize?: number;
 
-  /** Параметры отвечают за пагинацию в таблице <br>
-   * <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br>
-   * <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу <br>
-   * <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу @default 'Rows volume: ' <br>
-   * <strong>onChange</strong>: Колбэк на изменение пагинации
-   *  */
-  pagination?: {
-    state?: PaginationState;
-    options?: number[];
-    optionsLabel?: string;
-    onChange?(state: PaginationState): void;
-    optionsRender?(value: string | number, idx: number): string | number;
-  };
-
-  /** Автоматический сброс пагинации к первой странице при изменении данных или состояния
-   * (e.g фильтры, сортировки, и т.д)
-   * */
-  autoResetPageIndex?: boolean;
-
-  /** Кол-во страниц (используется для внешнего управления) */
-  pageCount?: number;
-
   /** Колбэк клика по строке */
   onRowClick?: RowClickHandler<TData>;
   /** CSS-класс */
@@ -150,12 +125,8 @@ export type TableProps<
   /** Настройки экспорта в тулбаре */
   exportSettings?: ExportButtonProps<TData>['settings'];
 
-  /** Отключение пагинации */
-  suppressPagination?: boolean;
-
   // Вынести это на пропсы
   manualSorting?: boolean;
-  manualPagination?: boolean;
   manualFiltering?: boolean;
 
   /** Дополнительная функция используется для получения уникального идентификатора для любой заданной строки */
@@ -178,8 +149,63 @@ export type TableProps<
   };
 }>;
 
+export type InfiniteTableProps<
+  TData extends object,
+  TFilters extends FiltersState = Record<string, unknown>,
+> = BaseTableProps<TData, TFilters> & {
+  pagination?: never;
+  autoResetPageIndex?: never;
+  pageCount?: never;
+
+  /** Режим работы "бесконечной" загрузки */
+  infiniteLoading?: boolean;
+
+  /** Отключение пагинации */
+  suppressPagination?: never;
+
+  manualPagination?: never;
+};
+
+export type ClientTableProps<
+  TData extends object,
+  TFilters extends FiltersState = Record<string, unknown>,
+> = BaseTableProps<TData, TFilters> & {
+  /** Параметры отвечают за пагинацию в таблице <br>
+   * <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br>
+   * <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу <br>
+   * <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу @default 'Rows volume: ' <br>
+   * <strong>onChange</strong>: Колбэк на изменение пагинации
+   *  */
+  pagination?: {
+    state?: PaginationState;
+    options?: number[];
+    optionsLabel?: string;
+    onChange?(state: PaginationState): void;
+    optionsRender?(value: string | number, idx: number): string | number;
+  };
+
+  /** Автоматический сброс пагинации к первой странице при изменении данных или состояния
+   * (e.g фильтры, сортировки, и т.д)
+   * */
+  autoResetPageIndex?: boolean;
+
+  /** Кол-во страниц (используется для внешнего управления) */
+  pageCount?: number;
+
+  /** Отключение пагинации */
+  suppressPagination?: boolean;
+
+  manualPagination?: boolean;
+
+  infiniteLoading?: never;
+};
+
+export type TableProps<TData extends object, TFilters extends FiltersState = Record<string, unknown>> =
+  | InfiniteTableProps<TData, TFilters>
+  | ClientTableProps<TData, TFilters>;
+
 export type ServerTableProps<TData extends object, TFilters extends FiltersState = Record<string, unknown>> = Omit<
-  TableProps<TData, TFilters>,
+  ClientTableProps<TData, TFilters>,
   'pageSize' | 'pageCount' | 'pagination' | 'search' | 'data'
 > & {
   /** Данные для отрисовки */

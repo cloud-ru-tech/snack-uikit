@@ -120,9 +120,6 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | search | `{ initialState?: string; state?: string; placeholder?: string; loading?: boolean; onChange?(value: string): void; }` | 'Search'<br> <strong>loading</strong>: Состояние загрузки в строке поиска <br> <strong>onChange</strong>: Колбэк на изменение данных в строке поиска | Параметры отвечают за глобальный поиск в таблице <br> <strong>initialState</strong>: Начальное состояние строки поиска <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>placeholder</strong>: Placeholder строки поиска |
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
 | pageSize | `number` | 10 | Максимальное кол-во строк на страницу |
-| pagination | `{ state?: PaginationState; options?: number[]; optionsLabel?: string; onChange?(state: PaginationState): void; optionsRender?(value: string \| number, idx: number): string \| number; }` | 'Rows volume: ' <br> <strong>onChange</strong>: Колбэк на изменение пагинации | Параметры отвечают за пагинацию в таблице <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу <br> <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу |
-| autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
-| pageCount | `number` | - | Кол-во страниц (используется для внешнего управления) |
 | onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
 | className | `string` | - | CSS-класс |
 | loading | `boolean` | - | Состояние загрузки |
@@ -140,15 +137,19 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | toolbarAfter | `ReactNode` | - | Дополнительный слот в `Toolbar` после строки поиска |
 | exportSettings | `{ fileName: string; filterData?: boolean; exportToCSV?(args: ExportProps<TData>): void; exportToXLSX?(args: ExportProps<TData>): void; }` | - | Настройки экспорта в тулбаре |
-| suppressPagination | `boolean` | - | Отключение пагинации |
 | manualSorting | `boolean` | - |  |
-| manualPagination | `boolean` | - |  |
 | manualFiltering | `boolean` | - |  |
 | getRowId | `(originalRow: TData, index: number, parent?: Row<TData>) => string` | - | Дополнительная функция используется для получения уникального идентификатора для любой заданной строки |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | rowPinning | `Pick<RowPinningState, "top">` | {     top: [],   } | Определение какие строки должны быть закреплены в таблице |
 | savedState | `{ id: string; resize?: boolean; }` | - | Конфиг для сохранения состояния в localStorage. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
+| pagination | `{ state?: PaginationState; options?: number[]; optionsLabel?: string; onChange?(state: PaginationState): void; optionsRender?(value: string \| number, idx: number): string \| number; }` | 'Rows volume: ' <br> <strong>onChange</strong>: Колбэк на изменение пагинации | Параметры отвечают за пагинацию в таблице <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу <br> <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу |
+| autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
+| pageCount | `number` | - | Кол-во страниц (используется для внешнего управления) |
+| infiniteLoading | `boolean` | - | Режим работы "бесконечной" загрузки |
+| suppressPagination | `boolean` | - | Отключение пагинации |
+| manualPagination | `boolean` | - |  |
 ## Table.getStatusColumnDef
 Вспомогательная функция для создания ячейки со статусом
 ### Props
@@ -176,6 +177,9 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | onChangePage* | `(offset: number, limit: number) => void` | - |  |
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
+| onRefresh | `() => void` | - | Колбек обновления данных |
+| moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
+| bulkActions | `BulkAction[]` | - | Список действия для массовых операций |
 | keepPinnedRows | `boolean` | false | Параметр отвечает за отображение закрепленных строк на всех страницах таблицы |
 | copyPinnedRows | `boolean` | false | Параметр отвечает за сохранение закрепленных строк в теле таблицы |
 | enableSelectPinned | `boolean` | - | Параметр отвечает за чекбокс выбора закрепленных строк |
@@ -183,11 +187,9 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | expanding | `{ getSubRows: (element: TData) => TData[]; expandingColumnDefinition: TreeColumnDefinitionProps<TData>; }` | - | Параметр отвечает за общие настройки раскрывающихся строк |
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
-| autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
 | onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
 | className | `string` | - | CSS-класс |
 | loading | `boolean` | - | Состояние загрузки |
-| onRefresh | `() => void` | - | Колбек обновления данных |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
 | columnFilters | `ChipChoiceRowProps<TFilters>` | - | Фильтры |
 | dataFiltered | `boolean` | - | Флаг, показывающий что данные были отфильтрованы при пустых данных |
@@ -197,19 +199,19 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
 | suppressSearch | `boolean` | - | Отключение поиска |
-| bulkActions | `BulkAction[]` | - | Список действия для массовых операций |
-| moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | toolbarAfter | `ReactNode` | - | Дополнительный слот в `Toolbar` после строки поиска |
 | exportSettings | `{ fileName: string; filterData?: boolean; exportToCSV?(args: ExportProps<TData>): void; exportToXLSX?(args: ExportProps<TData>): void; }` | - | Настройки экспорта в тулбаре |
-| suppressPagination | `boolean` | - | Отключение пагинации |
 | manualSorting | `boolean` | true |  |
-| manualPagination | `boolean` | true |  |
 | manualFiltering | `boolean` | true |  |
 | getRowId | `(originalRow: TData, index: number, parent?: Row<TData>) => string` | - | Дополнительная функция используется для получения уникального идентификатора для любой заданной строки |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | rowPinning | `Pick<RowPinningState, "top">` | - | Определение какие строки должны быть закреплены в таблице |
 | savedState | `{ id: string; resize?: boolean; }` | - | Конфиг для сохранения состояния в localStorage. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
+| autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
+| suppressPagination | `boolean` | - | Отключение пагинации |
+| manualPagination | `boolean` | true |  |
+| infiniteLoading | `never` | - |  |
 | items | `TData[]` | - | Данные для отрисовки |
 | total | `number` | 10 | Общее кол-во строк |
 | limit | `number` | 10 | Кол-во строк на страницу |
