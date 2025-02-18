@@ -1,8 +1,8 @@
 import cn from 'classnames';
-import { ReactNode } from 'react';
+import { ElementType, ReactNode } from 'react';
 
 import { CrossSVG } from '@snack-uikit/icons';
-import { Link, LinkProps } from '@snack-uikit/link';
+import { Link, PickLinkProps } from '@snack-uikit/link';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
@@ -12,7 +12,7 @@ import { Appearance, Size } from '../../types';
 import { getIcon } from '../../utils';
 import styles from './styles.module.scss';
 
-export type AlertProps = WithSupportProps<{
+export type AlertProps<LinkElement extends ElementType = 'a'> = WithSupportProps<{
   /** Отображать иконку */
   icon?: boolean;
   /** Заголовок */
@@ -28,7 +28,7 @@ export type AlertProps = WithSupportProps<{
   /** Описание */
   description: ReactNode;
   /** Cсылка */
-  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href' | 'appearance'>;
+  link?: PickLinkProps<LinkElement, 'text' | 'appearance' | 'as'>;
   /** Колбек закрытия */
   onClose?: () => void;
   /** Внешний вид */
@@ -49,7 +49,7 @@ export type AlertProps = WithSupportProps<{
 /**
  * Компонент для отображения уведомления.
  */
-export function Alert({
+export function Alert<LinkElement extends ElementType = 'a'>({
   icon = true,
   title,
   truncate,
@@ -62,7 +62,7 @@ export function Alert({
   outline,
   size = 'm',
   ...rest
-}: AlertProps) {
+}: AlertProps<LinkElement>) {
   return (
     <div
       className={cn(

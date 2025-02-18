@@ -1,8 +1,8 @@
 import cn from 'classnames';
-import { ReactNode } from 'react';
+import { ElementType, ReactNode } from 'react';
 
 import { CrossSVG } from '@snack-uikit/icons';
-import { Link, LinkProps } from '@snack-uikit/link';
+import { Link, PickLinkProps } from '@snack-uikit/link';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
@@ -13,7 +13,7 @@ import { getIcon } from '../../utils';
 import { APPEARANCE_TO_COLOR_MAP_INVERT } from './constants';
 import styles from './styles.module.scss';
 
-export type AlertTopProps = WithSupportProps<{
+export type AlertTopProps<LinkElement extends ElementType = 'a'> = WithSupportProps<{
   /** Отображать иконку */
   icon?: boolean;
   /** Заголовок */
@@ -29,7 +29,7 @@ export type AlertTopProps = WithSupportProps<{
   /** Описание */
   description: ReactNode;
   /** Cсылка */
-  link?: Pick<LinkProps, 'text' | 'target' | 'onClick' | 'href' | 'appearance'>;
+  link?: PickLinkProps<LinkElement, 'text' | 'appearance' | 'as'>;
   /** Кнопка дополнительного действия */
   action?: AlertButtonProps;
   /** Колбек закрытия */
@@ -43,7 +43,7 @@ export type AlertTopProps = WithSupportProps<{
 /**
  * Компонент для отображения уведомления вверху экрана.
  */
-export function AlertTop({
+export function AlertTop<LinkElement extends ElementType = 'a'>({
   icon = true,
   title,
   description,
@@ -54,7 +54,7 @@ export function AlertTop({
   action,
   className,
   ...rest
-}: AlertTopProps) {
+}: AlertTopProps<LinkElement>) {
   return (
     <div
       className={cn(styles.alertTop, className)}
@@ -71,7 +71,6 @@ export function AlertTop({
             {getIcon(appearance, 24)}
           </div>
         )}
-
         <div className={styles.contentLayout}>
           <div className={styles.textLayout}>
             {title && (

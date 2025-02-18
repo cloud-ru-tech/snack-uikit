@@ -1,12 +1,14 @@
+import { ElementType } from 'react';
+
 import { ButtonFilledProps, ButtonOutlineProps, ButtonSimpleProps } from '@snack-uikit/button';
-import { LinkProps } from '@snack-uikit/link';
+import { PickLinkProps } from '@snack-uikit/link';
 
 import { ALIGN, SIZE } from '../../constants';
 import { ModalBodyProps, ModalHeaderImage, ModalHeaderProps } from '../../helperComponents';
 import { Align } from '../../types';
 import { ModalCustomProps } from '../ModalCustom';
 
-type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
+type BaseModalProps<LinkElement extends ElementType = 'a'> = Omit<ModalCustomProps, 'children' | 'size'> & {
   /** Заголовок модального окна */
   title: string;
   /** Всплывающая подсказка для заголовка */
@@ -24,7 +26,7 @@ type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
   /** Небольшой текст под кнопками футера с возможностью передать дополнительно ссылку */
   disclaimer?: {
     text: string;
-    link?: Pick<LinkProps, 'text' | 'href' | 'target'>;
+    link?: PickLinkProps<LinkElement, 'text' | 'as'>;
   };
   /**
    *  Максимальное кол-во строк
@@ -38,7 +40,7 @@ type BaseModalProps = Omit<ModalCustomProps, 'children' | 'size'> & {
   };
 };
 
-export type ModalSProps = BaseModalProps & {
+export type ModalSProps<LinkElement extends ElementType> = BaseModalProps<LinkElement> & {
   /** Размер */
   size?: typeof SIZE.S;
   /**
@@ -50,14 +52,14 @@ export type ModalSProps = BaseModalProps & {
   picture?: ModalHeaderProps['picture'];
 };
 
-export type ModalMProps = BaseModalProps & {
+export type ModalMProps<LinkElement extends ElementType> = BaseModalProps<LinkElement> & {
   size?: typeof SIZE.M;
   /** <br> для size=`m` - align=`default | center` */
   align?: typeof ALIGN.Default | typeof ALIGN.Center;
   picture?: ModalHeaderImage;
 };
 
-export type ModalLProps = BaseModalProps & {
+export type ModalLProps<LinkElement extends ElementType> = BaseModalProps<LinkElement> & {
   size?: typeof SIZE.L;
   /** <br> для size=`l` - align=`default` */
   align?: typeof ALIGN.Default;

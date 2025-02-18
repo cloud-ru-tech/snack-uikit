@@ -12,14 +12,21 @@
 
 ```tsx
 import { Link } from '@snack-uikit/link';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 <Link
-  onSurface='accent'
   href='https://cloud.ru/'
   text='Link text'
-  external={true}
-  onColor='primary'
+  size='m'
+  appearance='neutral'
+  onClick={e => {
+    e.stopPropagation();
+  }}
 />;
+
+// Polymorphic components
+
+<Link as={ReactRouterLink} text='Link text' size='m' appearance='neutral' to='..' />;
 ```
 
 [//]: DOCUMENTATION_SECTION_START
@@ -30,16 +37,12 @@ import { Link } from '@snack-uikit/link';
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | text | `string` | - | Текст ссылки |
-| className | `string` | - | CSS-класс |
-| href | `string` | # | Ссылка |
-| target | `HTMLAttributeAnchorTarget` | _blank | HTML-атрибут target |
-| download | `string` | - | HTML-атрибут download |
-| onClick | `MouseEventHandler<HTMLAnchorElement>` | - | Колбек обработки клика |
 | size | enum Size: `"s"`, `"m"`, `"l"` | s | Размер |
 | appearance | enum Appearance: `"invert-neutral"`, `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Стилизует ссылку для размещения на цветном фоне |
 | textMode | enum TextMode: `"default"`, `"accent"`, `"on-accent"` | default | Тип поверхности, на которой размещена ссылка |
 | insideText | `boolean` | - | Находится ли ссылка внутри текста (и можно ли её переносить) |
 | truncateVariant | "end" \| "middle" | - | Вариант обрезания строки: <br> - `end` - с конца; <br> - `middle` - по середине |
+| as | `ComponentType \| ElementType` | 'a' | Полиморфный компонент.  Оформить переданный компонент или html элемент в стиль ссылки.  Список атрибутов, которые переданный компонент должен принять: <br/> - `className` <br/> - `data-size` <br/> - `data-text-mode` <br/> - `data-appearance` <br/> - `data-inside-text` |
 
 
 [//]: DOCUMENTATION_SECTION_END

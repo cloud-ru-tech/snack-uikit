@@ -88,7 +88,7 @@ const cards = [
 | appearance | enum Appearance: `"neutral"`, `"error"`, `"errorCritical"`, `"warning"`, `"success"` | neutral | Тип уведомления |
 | label | `string` | - | Лейбл перед заголовком |
 | unread | `boolean` | - | Управление состоянием прочитано/не прочитано |
-| link | `Omit<LinkProps, "data-test-id" \| "appearance" \| "size" \| "textMode">` | - | Ссылка |
+| link | `PickLinkProps<LinkElement, "text" \| "insideText" \| "truncateVariant">` | - | Ссылка |
 | onClick | `MouseEventHandler<HTMLDivElement>` | - | Колбэк клика по карточке |
 | onVisible | `(cardId: string) => void` | - | Колбэк при попадании карточки в область видимости на 80% |
 | primaryButton | `Omit<ButtonTonalProps, "data-test-id" \| "appearance" \| "size">` | - | Кнопка главного действия у карточки |
@@ -133,13 +133,13 @@ const cards = [
 | content* | `ReactElement<NotificationPanelProps, typeof NotificationPanel>` | - |  |
 | contentClassName | `string` | - | CSS-класс для элемента содержащего контент |
 | className | `string` | - | CSS-класс |
+| children | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
 | triggerClassName | `string` | - | CSS-класс триггера |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
 | offset | `number` | 0 | Отступ поповера от его триггер-элемента (в пикселях). |
-| children | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
 | closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
 | triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | triggerRef | `ForwardedRef<HTMLElement \| ReferenceType>` | - | Ref ссылка на триггер |

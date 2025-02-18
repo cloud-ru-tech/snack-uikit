@@ -10,7 +10,7 @@ const options = {
   ignoreBinPackage: false,
   skipMissing: false,
   ignorePatterns: ['stories', 'dist', '__tests__', '__e2e__'],
-  ignoreMatches: ['react', 'react-dom', '@snack-uikit/figma-tokens'],
+  ignoreMatches: ['react', 'react-dom', '@snack-uikit/figma-tokens', 'react-docgen-typescript'],
 };
 
 const uikitPackageRegexp = new RegExp(`${globConfig.name}\\/`);
@@ -19,6 +19,8 @@ const InternalPackages: Record<string, string> = {};
 const folders = getAllPackageFolders();
 
 for (const folder of folders) {
+  // require требует литерал строки, а передается вычисляемое значение
+  // eslint-disable-next-line import/no-dynamic-require, @typescript-eslint/no-var-requires
   const pkg = require(path.resolve(folder, 'package.json'));
   InternalPackages[pkg.name] = pkg.version;
 }
@@ -29,6 +31,8 @@ const UnusedDeps: string[] = [];
 const Missing: Record<string, string[]>[] = [];
 
 for (const folder of folders) {
+  // require требует литерал строки, а передается вычисляемое значение
+  // eslint-disable-next-line import/no-dynamic-require, @typescript-eslint/no-var-requires
   const pkg = require(path.resolve(folder, 'package.json'));
   const usedInternal = Object.keys(pkg.dependencies || {}).filter(x => uikitPackageRegexp.test(x));
   usedInternal.forEach(dep => {

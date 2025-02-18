@@ -1,3 +1,5 @@
+import { ElementType } from 'react';
+
 import { ButtonFilled, ButtonOutline, ButtonSimple } from '@snack-uikit/button';
 import { Link } from '@snack-uikit/link';
 import { TruncateString } from '@snack-uikit/truncate-string';
@@ -9,9 +11,12 @@ import { ModalCustom } from '../ModalCustom';
 import styles from './styles.module.scss';
 import { ModalLProps, ModalMProps, ModalSProps } from './types';
 
-export type ModalProps = ModalSProps | ModalMProps | ModalLProps;
+export type ModalProps<LinkElement extends ElementType = 'a'> =
+  | ModalSProps<LinkElement>
+  | ModalMProps<LinkElement>
+  | ModalLProps<LinkElement>;
 
-export function Modal({
+export function Modal<LinkElement extends ElementType = 'a'>({
   open,
   onClose,
   size = SIZE.S,
@@ -29,7 +34,7 @@ export function Modal({
   truncate,
   className,
   ...rest
-}: ModalProps) {
+}: ModalProps<LinkElement>) {
   const aligns = getAlignProps({ align, size });
   const buttonsSize = getButtonsSize({ align, size });
   const picture = getPicture({ size, picture: pictureProp });

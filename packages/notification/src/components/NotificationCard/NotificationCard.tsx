@@ -1,8 +1,8 @@
 import cn from 'classnames';
-import { MouseEventHandler, ReactElement, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { ElementType, MouseEventHandler, ReactElement, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 import { ButtonSimple, ButtonSimpleProps, ButtonTonal, ButtonTonalProps } from '@snack-uikit/button';
-import { Link, LinkProps } from '@snack-uikit/link';
+import { Link, LinkProps, PickLinkProps } from '@snack-uikit/link';
 import { BaseItemProps } from '@snack-uikit/list';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
@@ -19,7 +19,7 @@ type Action = {
   tagLabel?: string;
 } & Pick<BaseItemProps, 'content' | 'onClick' | 'disabled'>;
 
-export type NotificationCardProps = WithSupportProps<{
+export type NotificationCardProps<LinkElement extends ElementType = 'a'> = WithSupportProps<{
   /** Идентификатор уведомления */
   id: string;
   /** Тип уведомления */
@@ -33,7 +33,7 @@ export type NotificationCardProps = WithSupportProps<{
   /** Контент уведомления */
   content: ReactNode;
   /** Ссылка */
-  link?: Omit<LinkProps, 'size' | 'appearance' | 'textMode' | 'data-test-id'>;
+  link?: PickLinkProps<LinkElement, 'text' | 'insideText' | 'truncateVariant'>;
   /** Дата уведомления */
   date: string;
   /** Колбэк клика по карточке */
@@ -51,7 +51,7 @@ export type NotificationCardProps = WithSupportProps<{
 }>;
 
 /** Компонент карточки уведомления */
-export function NotificationCard({
+export function NotificationCard<LinkElement extends ElementType = 'a'>({
   id,
   appearance = APPEARANCE.Neutral,
   label,
@@ -67,7 +67,7 @@ export function NotificationCard({
   onVisible,
   className,
   ...rest
-}: NotificationCardProps) {
+}: NotificationCardProps<LinkElement>) {
   const { icon, linkOnColor, buttonAppearance } = useMemo<{
     icon: ReturnType<typeof getIcon>;
     linkOnColor: LinkProps['appearance'];

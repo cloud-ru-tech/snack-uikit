@@ -15,7 +15,7 @@ type Packages = {
 
 const getReadmePath = (packagePath: string) => resolve(packagePath, 'README.md');
 
-(function () {
+(async function () {
   const stagedList = getStagedFiles();
   const unstagedList = getChangedUnstagedFiles();
   const packagesList = getAllPackageFolders();
@@ -46,7 +46,7 @@ const getReadmePath = (packagePath: string) => resolve(packagePath, 'README.md')
   });
 
   if (needDocGeneration.length) {
-    docgen(needDocGeneration);
+    await docgen(needDocGeneration);
   }
 
   if (needDocStage.length) {
