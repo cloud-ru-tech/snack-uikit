@@ -3,62 +3,11 @@ import { fixture, Selector, test } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { TEST_IDS } from '../src/constants';
 import { STORY_TEST_IDS, StoryStatusColumnViewMode } from '../stories/constants';
+import { DATA_ATTRIBUTES, RowsSelectionValidator, selectors } from './utils';
 
 const ROWS_AMOUNT = 30;
 const SUB_ROWS_AMOUNT = 3;
 const SUB_ROWS_LEVEL = 3;
-
-const DATA_ATTRIBUTES = {
-  sortable: 'data-sortable',
-  rowId: 'data-row-id',
-  sortDirection: 'data-sort-direction',
-  selected: 'data-selected',
-  checked: 'data-checked',
-  disabled: 'data-disabled',
-  pinnedPosition: 'data-position',
-};
-
-const selectors = {
-  getRows: () => Selector(dataTestIdSelector(TEST_IDS.bodyRow)),
-  getRow: (index: number | 'all', disabled?: boolean) => {
-    let row = selectors.getRows();
-
-    if (disabled) {
-      row = row.withAttribute(DATA_ATTRIBUTES.disabled);
-    }
-
-    if (typeof index === 'number') {
-      row = row.nth(index);
-    }
-
-    return {
-      row,
-      tree: {
-        chevron: row.find(dataTestIdSelector(TEST_IDS.tree.chevron)),
-        node: row.find(dataTestIdSelector(TEST_IDS.tree.node)),
-        checkBox: row.find(dataTestIdSelector(TEST_IDS.tree.checkbox)),
-        radio: row.find(dataTestIdSelector(TEST_IDS.tree.radio)),
-      },
-      selectToggle: row.find(dataTestIdSelector(TEST_IDS.rowSelect)),
-      rowSelectedAttribute: row.getAttribute(DATA_ATTRIBUTES.selected),
-      toolbar: Selector(dataTestIdSelector(TEST_IDS.toolbar)),
-      toolbarSearch: Selector(dataTestIdSelector('toolbar__search')),
-      toolbarFilterButton: Selector(dataTestIdSelector('toolbar__filter-button')),
-      toolbarFilterRow: Selector(dataTestIdSelector('toolbar__filter-row')),
-      statusIndicator: row.find(dataTestIdSelector(TEST_IDS.statusIndicator)),
-      statusLabel: row.find(dataTestIdSelector(TEST_IDS.statusLabel)),
-      rowActionsButton: row.find(dataTestIdSelector(TEST_IDS.rowActions.droplistTrigger)),
-      rowActionsDropdown: Selector(dataTestIdSelector(TEST_IDS.rowActions.droplist)),
-      rowActionsOption: Selector(dataTestIdSelector(TEST_IDS.rowActions.option)),
-      pinnedCells: {
-        left: row.find(dataTestIdSelector(TEST_IDS.pinnedCells)).withAttribute(DATA_ATTRIBUTES.pinnedPosition, 'left'),
-        right: row
-          .find(dataTestIdSelector(TEST_IDS.pinnedCells))
-          .withAttribute(DATA_ATTRIBUTES.pinnedPosition, 'right'),
-      },
-    };
-  },
-};
 
 function getPage(props?: Record<string, unknown>) {
   return getTestcafeUrl({
@@ -222,6 +171,74 @@ test.page(
 
   await t.expect(first.rowSelectedAttribute).eql('true');
   await t.expect(second.rowSelectedAttribute).eql('true');
+});
+
+test.page(
+  getPage({
+    showTableTree: false,
+  }),
+)('Multi row bulk selection and deselection with shift key applied', async t => {
+  const validator = new RowsSelectionValidator(t, selectors);
+
+  // Select initial range
+  await t.click(validator.getSelector('First').selectToggle);
+  await t.click(validator.getSelector('Fifth').selectToggle, {
+    modifiers: {
+      shift: true,
+    },
+  });
+  await validator.validateRangeSelectionStatus(['First', 'Fifth'], 'true');
+
+  // Add more fields to selected range
+  await t.click(validator.getSelector('Seventh').selectToggle, {
+    modifiers: {
+      shift: true,
+    },
+  });
+  await validator.validateRangeSelectionStatus(['First', 'Seventh'], 'true');
+
+  // Decrease amount of selected fields
+  await t.click(validator.getSelector('Fourth').selectToggle, {
+    modifiers: {
+      shift: true,
+    },
+  });
+  await validator.validateRangeSelectionStatus(['First', 'Third'], 'true');
+  await validator.validateRangeSelectionStatus(['Fourth', 'Seventh'], 'false');
+
+  // Add more fields to selected range
+  await t.click(validator.getSelector('Ninth').selectToggle, {
+    modifiers: {
+      shift: true,
+    },
+  });
+  await validator.validateRangeSelectionStatus(['First', 'Ninth'], 'true');
+
+  // Select all fields
+  await validator.validateRowSelectionStatus('Tenth', 'false');
+  await t.click(Selector(dataTestIdSelector('toolbar__checkbox')));
+  await validator.validateRangeSelectionStatus(['First', 'Tenth'], 'true');
+
+  // Deselect single field (5)
+  await t.click(validator.getSelector('Fifth').selectToggle);
+  await validator.validateRowSelectionStatus('Fifth', 'false');
+  await validator.validateRowsConfigSelectionStatus(
+    [
+      ['First', 'Fourth'],
+      ['Sixth', 'Tenth'],
+    ],
+    'true',
+  );
+
+  // Deselect range while holding shift key
+  await t.click(validator.getSelector('Eighth').selectToggle);
+  await t.click(validator.getSelector('Tenth').selectToggle, {
+    modifiers: {
+      shift: true,
+    },
+  });
+  await validator.validateRowsConfigSelectionStatus([['First', 'Fourth'], 'Sixth', 'Seventh'], 'true');
+  await validator.validateRowsConfigSelectionStatus(['Fifth', ['Eighth', 'Tenth']], 'false');
 });
 
 test.page(
