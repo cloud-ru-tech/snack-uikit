@@ -144,13 +144,13 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const enableRowSelection = useCallback(
     (row: Row<TData>) => {
       const parent = row.getParentRow();
-      const isParentEnable = parent ? parent.getCanSelect() : true;
-      let isCurrentRowSelectionEnable = true;
+      const isParentSelected = parent ? parent.getCanSelect() : true;
+      let isCurrentRowSelected = true;
       if (rowSelectionProp?.enable !== undefined) {
-        isCurrentRowSelectionEnable =
+        isCurrentRowSelected =
           typeof rowSelectionProp.enable === 'boolean' ? rowSelectionProp.enable : rowSelectionProp.enable(row);
       }
-      return isParentEnable && isCurrentRowSelectionEnable;
+      return isParentSelected && isCurrentRowSelected;
     },
     [rowSelectionProp],
   );
@@ -182,6 +182,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
     getRowId,
     onRowSelectionChange,
+    enableGrouping: true,
     enableRowSelection,
     enableMultiRowSelection: rowSelectionProp?.multiRow,
     enableFilters: true,
@@ -231,7 +232,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     [bulkActionsProp, enableSelection, table],
   );
 
-  const handleOnCheck = useCallback(() => {
+  const handleOnToolbarCheck = useCallback(() => {
     if (!loading && !enableSelectPinned && table.getTopRows().length) {
       const centerRows = table.getCenterRows();
       const isSomeRowsSelected = table.getIsSomePageRowsSelected();
@@ -385,7 +386,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
               selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
               checked={table.getIsAllPageRowsSelected()}
               indeterminate={table.getIsSomePageRowsSelected()}
-              onCheck={enableSelection ? handleOnCheck : undefined}
+              onCheck={enableSelection ? handleOnToolbarCheck : undefined}
               outline={outline}
               after={
                 toolbarAfter || exportSettings ? (
