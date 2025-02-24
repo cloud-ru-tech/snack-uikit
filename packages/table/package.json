@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Table",
-  "version": "0.28.5",
+  "version": "0.28.6",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -46,7 +46,7 @@
     "@snack-uikit/scroll": "0.9.3",
     "@snack-uikit/skeleton": "0.6.2",
     "@snack-uikit/toggles": "0.13.5",
-    "@snack-uikit/toolbar": "0.11.5",
+    "@snack-uikit/toolbar": "0.11.6",
     "@snack-uikit/truncate-string": "0.6.9",
     "@snack-uikit/typography": "0.8.4",
     "@snack-uikit/utils": "3.7.0",

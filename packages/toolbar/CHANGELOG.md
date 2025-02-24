@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.6 (2025-02-24)
+
+
+### Bug Fixes
+
+* **FF-6288:** width of chips droplist ([113b338](https://github.com/cloud-ru-tech/snack-uikit/commit/113b338c81f6e8a6606bb11afd50a5ade5f8aa4a))
+
+
+
+
+
 ## 0.11.5 (2025-02-10)
 
 
