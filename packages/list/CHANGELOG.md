@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.26.0 (2025-02-25)
+
+
+### Features
+
+* **PDS-1183:** add prop barHideStrategy for Scroll ([718a6e5](https://github.com/cloud-ru-tech/snack-uikit/commit/718a6e56331994eaaed0bf22e2b8437f67081abe))
+
+
+
+
+
 # 0.25.0 (2025-02-10)
 
 
