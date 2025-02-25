@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.26 (2025-02-25)
+
+
+### Bug Fixes
+
+* **IAM-4744:** fix onExpand prop ([b04c259](https://github.com/cloud-ru-tech/snack-uikit/commit/b04c259c439205292b1482116d424db224f7d4be))
+
+
+
+
+
 ## 0.8.25 (2025-02-10)
 
 ### Only dependencies have been changed
