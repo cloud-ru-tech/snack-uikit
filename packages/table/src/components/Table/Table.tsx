@@ -21,9 +21,15 @@ import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider } from '@snack-uikit/skeleton';
 import { Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
 import { TruncateString } from '@snack-uikit/truncate-string';
-import { extractSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, useLayoutEffect } from '@snack-uikit/utils';
 
-import { DEFAULT_PAGE_SIZE, TEST_IDS } from '../../constants';
+import {
+  DEFAULT_FILTER_VISIBILITY,
+  DEFAULT_PAGE_SIZE,
+  DEFAULT_ROW_SELECTION,
+  DEFAULT_SORTING,
+  TEST_IDS,
+} from '../../constants';
 import { CellAutoResizeContext, useCellAutoResizeController } from '../../contexts';
 import {
   BodyRow,
@@ -41,10 +47,11 @@ import {
 } from '../../helperComponents';
 import { getTreeColumnDef } from '../../helperComponents/Cells/TreeCell';
 import { ColumnDefinition } from '../../types';
-import { fuzzyFilter } from '../../utils';
+import { customDateParser, fuzzyFilter } from '../../utils';
 import { TableProps } from '../types';
 import { useLoadingTable, useStateControl } from './hooks';
 import { usePageReset } from './hooks/usePageReset';
+import { useSaveTableSettings } from './hooks/useSaveTableSettings';
 import styles from './styles.module.scss';
 import {
   getColumnStyleVars,
@@ -101,10 +108,16 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   rowAutoHeight,
   ...rest
 }: TableProps<TData, TFilters>) {
-  const { state: globalFilter, onStateChange: onGlobalFilterChange } = useStateControl<string>(search, '');
-  const { state: rowSelection, onStateChange: onRowSelectionChange } = useStateControl<RowSelectionState>(
+  const { setDataToStorages, defaultFilter } = useSaveTableSettings({
+    options: savedState,
+    filterSettings: columnFilters?.filters,
+  });
+
+  const [globalFilter, onGlobalFilterChange] = useStateControl<string>(search, '');
+
+  const [rowSelection, onRowSelectionChange] = useStateControl<RowSelectionState>(
     rowSelectionProp,
-    {},
+    DEFAULT_ROW_SELECTION,
   );
 
   const defaultPaginationState = useMemo(
@@ -114,11 +127,59 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     }),
     [pageSize],
   );
-  const { state: sorting, onStateChange: onSortingChange } = useStateControl<SortingState>(sortingProp, []);
-  const { state: pagination, onStateChange: onPaginationChange } = useStateControl<PaginationState>(
-    paginationProp,
-    defaultPaginationState,
+
+  const [sorting, onSortingChange] = useStateControl<SortingState>(sortingProp, DEFAULT_SORTING);
+
+  const [pagination, onPaginationChange] = useStateControl<PaginationState>(paginationProp, defaultPaginationState);
+
+  const [filter, setFilter] = useStateControl<TFilters | undefined>(
+    {
+      state: columnFilters?.value,
+      initialState: columnFilters?.defaultValue as TFilters,
+      onChange: columnFilters?.onChange,
+    },
+    undefined,
   );
+
+  const [filterVisibility, setFilterVisibility] = useStateControl<string[]>(
+    {
+      state: columnFilters?.visibleFilters,
+      initialState: [],
+      onChange: columnFilters?.onVisibleFiltersChange,
+    },
+    DEFAULT_FILTER_VISIBILITY,
+  );
+
+  useEffect(() => {
+    setDataToStorages({ pagination, sorting, filter, search: globalFilter || '' });
+  }, [pagination, sorting, filter, setDataToStorages, globalFilter]);
+
+  useLayoutEffect(() => {
+    if (defaultFilter) {
+      defaultFilter.pagination && onPaginationChange(defaultFilter.pagination);
+      defaultFilter.search && onGlobalFilterChange(defaultFilter.search);
+      defaultFilter.sorting && onSortingChange(defaultFilter.sorting);
+      defaultFilter.filter && setFilter(customDateParser(defaultFilter.filter));
+      defaultFilter.filter && setFilterVisibility(Object.keys(defaultFilter.filter));
+    }
+    // Только для первого рендера, чтобы проинициализировать фильтр
+    // eslint-disable-next-line
+  }, [defaultFilter]);
+
+  const patchedFilter = useMemo(
+    () =>
+      columnFilters
+        ? {
+            ...columnFilters,
+            value: filter,
+            onChange: setFilter,
+            visibleFilters: filterVisibility,
+            onVisibleFiltersChange: setFilterVisibility,
+          }
+        : undefined,
+    [columnFilters, filter, setFilter, filterVisibility, setFilterVisibility],
+  );
+
   const enableSelection = Boolean(rowSelectionProp?.enable);
 
   const manualPagination = infiniteLoading || manualPaginationProp;
@@ -404,7 +465,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
               ) : undefined
             }
             moreActions={moreActions}
-            filterRow={columnFilters}
+            filterRow={patchedFilter}
             data-test-id={TEST_IDS.toolbar}
           />
         </div>

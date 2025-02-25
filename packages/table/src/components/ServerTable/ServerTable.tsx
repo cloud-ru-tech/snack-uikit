@@ -24,7 +24,7 @@ export function ServerTable<TData extends object, TFilters extends FiltersState 
   manualFiltering = true,
   ...rest
 }: ServerTableProps<TData, TFilters>) {
-  const { state: search, onStateChange: setSearch } = useStateControl<string>(searchProp, '');
+  const [search, setSearch] = useStateControl<string>(searchProp, '');
 
   const [tempSearch, setTempSearch] = useState(search || '');
 

@@ -71,6 +71,13 @@
 | value | `TValue` | - | Значение состояния |
 | defaultValue | `TValue` | - | Значение по умолчанию |
 | onChange | `(value: TValue) => void` | - | Колбек, вызываемый на смену состояния |
+## useDataPersist
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| options | `FilterStateOptions<TFilter>` | - |  |
+| parser | `(jsonFilter: string) => TFilter` | - |  |
+| serializer | `(filter: TFilter) => string` | - |  |
 ## ThemeProvider
 Провайдер, предназначенный для работы с темами
 ### Props

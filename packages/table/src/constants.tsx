@@ -39,3 +39,6 @@ export const SORT_FN = {
 } as const;
 
 export const DEFAULT_PAGE_SIZE = 10;
+export const DEFAULT_SORTING = [];
+export const DEFAULT_FILTER_VISIBILITY = [];
+export const DEFAULT_ROW_SELECTION = {};

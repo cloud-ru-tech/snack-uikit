@@ -148,6 +148,7 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
    *  */
   savedState?: {
     id: string;
+    filterQueryKey?: string;
     resize?: boolean;
   };
 }>;

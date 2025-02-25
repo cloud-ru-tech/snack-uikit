@@ -249,6 +249,7 @@ export const table: StoryObj<StoryProps> = {
     savedState: {
       id: 'snack-ui-table-storybook',
       resize: true,
+      filterQueryKey: 'filterKey',
     },
   },
 
