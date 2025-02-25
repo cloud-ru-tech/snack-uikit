@@ -325,37 +325,39 @@ test.page(
 )('MultiSelect: parent checkbox works correctly', async t => {
   const rows = selectors.getRow('all');
   const { tree } = selectors.getRow(0);
-  await t.wait(50);
 
-  await t.click(tree.chevron).wait(50);
-  await t.click(tree.checkBox).wait(50);
+  await t.click(tree.chevron);
+  await t.click(tree.checkBox);
+
   await t
     .expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count)
-    .eql(SUB_ROWS_AMOUNT + 1, 'Count of selected rows incorrect');
+    .eql(SUB_ROWS_AMOUNT + 1, 'All sub rows should be checked when parent checkbox is checked');
 
-  await t.click(tree.checkBox).wait(50);
-  await t.expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count).eql(0, 'Count of selected rows incorrect1');
+  await t.click(tree.checkBox);
+  await t
+    .expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count)
+    .eql(0, 'No rows should be checked when parent is unchecked');
 
   const firstSubRow = selectors.getRow(1);
-  await t.click(firstSubRow.tree.checkBox).wait(50);
-  await t.click(tree.checkBox).wait(50);
-  await t.expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count).eql(0, 'Count of selected rows incorrect2');
+  await t.click(firstSubRow.tree.checkBox);
+  await t.expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count).eql(1, 'First sub row should be checked');
+  await t
+    .expect(tree.checkBox.find('[data-indeterminate]').getAttribute('data-indeterminate'))
+    .eql('true', 'Parent should become indeterminate checked when some of sub rows is checked');
+
+  await t.click(firstSubRow.tree.checkBox);
+  await t
+    .expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count)
+    .eql(0, 'Parent checkbox has failed to become unchecked, once all children got unchecked');
 
   for (let i = 1; i <= SUB_ROWS_AMOUNT; i++) {
     const row = selectors.getRow(i);
-    await t.click(row.tree.checkBox).wait(50);
+    await t.click(row.tree.checkBox);
   }
-  await t
-    .expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count)
-    .eql(SUB_ROWS_AMOUNT + 1, 'Parent checkbox not select automatically, when selected all children');
 
-  for (let i = 1; i <= SUB_ROWS_AMOUNT; i++) {
-    const row = selectors.getRow(i);
-    await t.click(row.tree.checkBox).wait(50);
-  }
   await t
     .expect(rows.row.withAttribute(DATA_ATTRIBUTES.selected).count)
-    .eql(0, 'Parent checkbox not unselect automatically, when unselected all children');
+    .eql(SUB_ROWS_AMOUNT + 1, 'Parent checkbox should become checked, once all children got checked');
 });
 
 test.page(
@@ -368,21 +370,21 @@ test.page(
 )('SingleSelect: works correctly', async t => {
   const { tree } = selectors.getRow(0);
 
-  await t.click(tree.chevron).wait(50);
+  await t.click(tree.chevron);
 
   const firstSubRow = selectors.getRow(1);
   const secondSubRow = selectors.getRow(2);
 
-  await t.click(firstSubRow.tree.radio).wait(50);
+  await t.click(firstSubRow.tree.radio);
 
   await t.expect(firstSubRow.rowSelectedAttribute).ok('First sub row not selected by radio click');
 
-  await t.click(secondSubRow.tree.radio).wait(50);
+  await t.click(secondSubRow.tree.radio);
 
   await t.expect(secondSubRow.rowSelectedAttribute).ok('Second row not selected by radio click');
   await t.expect(firstSubRow.rowSelectedAttribute).notOk('First sub row should not be selected after click of first');
 
-  await t.click(secondSubRow.tree.radio).wait(50);
+  await t.click(secondSubRow.tree.radio);
 
   await t.expect(secondSubRow.rowSelectedAttribute).notOk('Second sub row should not be selected after second click');
 });

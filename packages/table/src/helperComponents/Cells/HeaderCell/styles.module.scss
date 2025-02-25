@@ -140,6 +140,15 @@
       }
     }
   }
+
+  &[data-row-auto-height] {
+    align-items: flex-end;
+  }
+
+  &:not([data-row-auto-height]) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 
 .tableHeaderCellMain {

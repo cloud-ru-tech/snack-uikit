@@ -1,4 +1,4 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table' as styles-tokens-table;
 
 .tableBodyCell {
   @include styles-tokens-table.composite-var(styles-tokens-table.$table-cells);
@@ -11,5 +11,10 @@
 
   &[data-no-padding] {
     padding: 0;
+  }
+
+  &:not([data-row-auto-height]) {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }

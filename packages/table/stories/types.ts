@@ -4,7 +4,7 @@ export type StubData = {
   col1: number;
   subRows?: StubData[];
   col2: number;
-  col3: number;
+  col3: number | string;
   col4: number;
   col5: number;
   col6: number;

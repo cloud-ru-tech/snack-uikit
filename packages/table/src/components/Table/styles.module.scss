@@ -14,20 +14,13 @@
   box-sizing: border-box;
   width: 100%;
   height: auto;
-  max-height: calc(
-    (var(--page-size, 10) * #{table.$size-table-line-height}) + #{table.$size-table-line-height} + #{table.$border-width-table} * 2
-  );
 
   background-color: table.$sys-neutral-background1-level;
   border-color: table.$sys-neutral-background1-level;
   border-style: solid;
-}
 
-.scrollWrapper {
   &[data-outline] {
-    .table {
-      border-color: table.$sys-neutral-decor-default;
-    }
+    border-color: table.$sys-neutral-decor-default;
   }
 }
 
@@ -59,7 +52,10 @@
 }
 
 .wrapper {
+  display: grid;
+  grid-template-rows: max-content minmax(auto, 100%) max-content;
   max-width: 100%;
+  max-height: 100%;
 }
 
 .scrollStub {

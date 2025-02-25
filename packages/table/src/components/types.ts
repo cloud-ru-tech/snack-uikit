@@ -80,6 +80,9 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
   /** Включить нечеткий поиск  */
   enableFuzzySearch?: boolean;
 
+  /* Включает автоматическую высоту строк */
+  rowAutoHeight?: boolean;
+
   /** Максимальное кол-во строк на страницу @default 10 */
   pageSize?: number;
 

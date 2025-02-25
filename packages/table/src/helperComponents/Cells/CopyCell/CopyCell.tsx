@@ -41,7 +41,7 @@ export function CopyCell({ value }: CopyCellProps) {
         data-test-id='button-copy-value'
         type='button'
         icon={isChecked ? <CheckSVG /> : <CopySVG />}
-        size='s'
+        size='xs'
         className={styles.copyButton}
       />
     </div>

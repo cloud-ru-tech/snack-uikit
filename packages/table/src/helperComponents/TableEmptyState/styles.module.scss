@@ -7,6 +7,6 @@
   justify-content: center;
 
   box-sizing: border-box;
-  height: calc((var(--page-size, 10) * styles-tokens-table.$size-table-line-height) + styles-tokens-table.$size-table-line-height);
+  height: styles-tokens-table.$size-table-information-min-height;
   padding: styles-tokens-table.$dimension-3m;
 }

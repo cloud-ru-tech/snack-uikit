@@ -16,7 +16,7 @@
   }
 
   &:hover {
-    margin-right: calc(0px - calc(styles-theme-variables.$dimension-4m + styles-theme-variables.$dimension-050m));
+    margin-right: calc(0px - calc(#{styles-theme-variables.$dimension-4m} + #{styles-theme-variables.$dimension-050m}));
 
     .copyButton {
       display: inline-flex;

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import cn from 'classnames';
 
 import styles from './styles.module.scss';
 
@@ -12,7 +12,7 @@ export type TreeLineProps = {
 export function TreeLine({ halfHeight, horizontal, visible, className }: TreeLineProps) {
   return (
     <div
-      className={classNames(styles.treeLine, className)}
+      className={cn(styles.treeLine, className)}
       data-horizontal={horizontal || undefined}
       data-half-height={halfHeight || undefined}
       data-visible={visible || undefined}

@@ -33,7 +33,7 @@ type TreeColumnDef = BaseTreeColumnDef & {
 
 type TreeColumnDefWithDescription<TData> = BaseTreeColumnDef & {
   /** Заголовок колонки */
-  renderDescription?: (cellValue: string, row: TData) => string;
+  renderDescription?(cellValue: string, row: TData): string;
   /** Рендер функция заголовка колонки */
   header?: ColumnDefinition<TData>['header'];
 };
@@ -62,16 +62,17 @@ export function getTreeColumnDef<TData>({
       skipOnExport: false,
     },
     enableSorting: false,
-    header: header,
-    cell: function Cell<TData>({ row, cell }: CellContext<TData, unknown>) {
+    header,
+    cell: function TreeCell<TData>({ row, cell }: CellContext<TData, unknown>) {
       const isExpanded = row.getIsExpanded();
       const isExpandable = row.getCanExpand();
       const isMultiSelect = row.getCanMultiSelect();
       const parent = row.getParentRow();
       const isRowsSelectionEnabled = row.getCanSelect();
-      const isAlSubRowsSelected = row.getIsAllSubRowsSelected();
+      const isAllSubRowsSelected = row.getIsAllSubRowsSelected();
       const isSomeSubRowSelected = row.getIsSomeSelected();
       const isRowSelected = row.getIsSelected();
+      const isLastChildRow = parent?.subRows.at(-1)?.id === row.id;
       const depth = row.depth;
       const { ref } = useCellResize(TREE_CELL_ID, cell);
 
@@ -89,56 +90,59 @@ export function getTreeColumnDef<TData>({
         });
       }, [row, depth]);
 
-      const lines = new Array(depth)
-        .fill('')
-        .map((_, index) => (
-          <TreeLine
-            key={index}
-            visible={linesVisibilityByIndex.at(index)}
-            className={index !== 0 ? styles.line : styles.firstLine}
-          />
-        ));
+      const lines = useMemo(
+        () =>
+          Array.from({ length: depth }, (_, index) => (
+            <TreeLine
+              key={index}
+              visible={linesVisibilityByIndex.at(index)}
+              className={index !== 0 ? styles.line : styles.firstLine}
+              halfHeight={index === depth - 1 && isLastChildRow}
+            />
+          )),
+        [depth, linesVisibilityByIndex, isLastChildRow],
+      );
 
       useEffect(() => {
-        if (!isMultiSelect || !isExpandable) {
+        if (!isMultiSelect || !isExpandable || !isRowsSelectionEnabled) {
           return;
         }
-        if (isAlSubRowsSelected && !isRowSelected) {
+
+        if (isAllSubRowsSelected && !isRowSelected) {
           row.toggleSelected(true, { selectChildren: false });
           return;
         }
-        if (!isAlSubRowsSelected && isRowSelected && !isSomeSubRowSelected) {
+
+        if (isRowSelected && !isAllSubRowsSelected && isSomeSubRowSelected) {
           row.toggleSelected(false, { selectChildren: false });
           return;
         }
-      }, [isAlSubRowsSelected, isSomeSubRowSelected, row, isRowSelected, isMultiSelect, isExpandable]);
+      }, [
+        isAllSubRowsSelected,
+        isSomeSubRowSelected,
+        row,
+        isRowSelected,
+        isMultiSelect,
+        isExpandable,
+        isRowsSelectionEnabled,
+      ]);
 
-      const recursiveToggleSubRows = useCallback(
-        (row: Row<TData>, value?: boolean, opts?: { selectChildren?: boolean }) => {
-          row.toggleSelected(value, opts);
-          if (row.subRows.length > 0) {
-            row.subRows.forEach(subRow => {
-              recursiveToggleSubRows(subRow, value, opts);
-            });
-          }
-        },
-        [],
-      );
-
-      const toggleClickHandler = useCallback(
-        (event: React.MouseEvent) => {
+      const toggleClickHandler: MouseEventHandler<HTMLElement> = useCallback(
+        event => {
           event.stopPropagation();
-          if (isMultiSelect && isSomeSubRowSelected && !isRowSelected) {
-            recursiveToggleSubRows(row, false, { selectChildren: true });
+
+          if (isMultiSelect) {
+            const shouldToggleOn = !isAllSubRowsSelected && !isRowSelected;
+            const selectChildren = isAllSubRowsSelected || isSomeSubRowSelected || shouldToggleOn;
+
+            row.toggleSelected(shouldToggleOn, { selectChildren });
+
             return;
           }
-          if (!isMultiSelect) {
-            row.toggleSelected(!isRowSelected, { selectChildren: false });
-            return;
-          }
-          row.toggleSelected();
+
+          row.toggleSelected(!isRowSelected, { selectChildren: false });
         },
-        [isRowSelected, row, isSomeSubRowSelected, isMultiSelect, recursiveToggleSubRows],
+        [isMultiSelect, row, isAllSubRowsSelected, isSomeSubRowSelected, isRowSelected],
       );
 
       const chevronClickHandler: MouseEventHandler<HTMLElement> = useCallback(
@@ -176,7 +180,12 @@ export function getTreeColumnDef<TData>({
                 data-expanded={isExpanded || undefined}
               />
             )}
-            <div className={styles.treeNodeContent}>
+            <div
+              className={styles.treeNodeContent}
+              data-disabled={!isRowsSelectionEnabled || undefined}
+              data-selected={isRowSelected || undefined}
+              data-multiselect={isMultiSelect || undefined}
+            >
               {showToggle && (
                 <div tabIndex={-1} className={styles.treeCheckboxWrap}>
                   {isMultiSelect ? (
@@ -185,7 +194,7 @@ export function getTreeColumnDef<TData>({
                       disabled={!isRowsSelectionEnabled}
                       checked={isRowSelected}
                       data-test-id={TEST_IDS.tree.checkbox}
-                      indeterminate={isSomeSubRowSelected && !isAlSubRowsSelected}
+                      indeterminate={isSomeSubRowSelected && !isAllSubRowsSelected}
                     />
                   ) : (
                     <Radio

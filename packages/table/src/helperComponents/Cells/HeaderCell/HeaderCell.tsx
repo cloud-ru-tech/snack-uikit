@@ -15,9 +15,10 @@ import styles from './styles.module.scss';
 type HeaderCellProps<TData> = Omit<CellProps, 'align' | 'children' | 'onClick' | 'style'> & {
   header: Header<TData, unknown>;
   pinPosition?: ColumnPinPosition;
+  rowAutoHeight?: boolean;
 };
 
-export function HeaderCell<TData>({ header, pinPosition, className }: HeaderCellProps<TData>) {
+export function HeaderCell<TData>({ header, pinPosition, className, rowAutoHeight }: HeaderCellProps<TData>) {
   const cellRef = useRef<HTMLDivElement>(null);
   const isSortable = header.column.getCanSort();
   const isResizable = header.column.getCanResize();
@@ -51,6 +52,7 @@ export function HeaderCell<TData>({ header, pinPosition, className }: HeaderCell
       data-header-id={header.id}
       data-resizing={isResizing || undefined}
       data-pin-position={pinPosition || undefined}
+      data-row-auto-height={rowAutoHeight || undefined}
       role='columnheader'
       className={cn(styles.tableHeaderCell, className, columnDef.headerClassName)}
       ref={cellRef}
@@ -58,7 +60,11 @@ export function HeaderCell<TData>({ header, pinPosition, className }: HeaderCell
       <div className={styles.tableHeaderCellMain}>
         {columnDef.header && (
           <div className={styles.tableHeaderCellName}>
-            <TruncateString text={flexRender(columnDef.header, header.getContext()) as string} />
+            {rowAutoHeight ? (
+              flexRender(columnDef.header, header.getContext())
+            ) : (
+              <TruncateString text={flexRender(columnDef.header, header.getContext()) as string} />
+            )}
           </div>
         )}
 

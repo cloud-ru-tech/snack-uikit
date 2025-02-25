@@ -2,23 +2,27 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table' as table;
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-tree' as tree;
 
-.treeCell {
-    display: flex;
-    align-items: center;
-    justify-content: start;
+.treeCellContainer {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
 
-    width: fit-content;
-    height: table.$size-markdown-table-cell-height;
+  @include table.composite-var(table.$sans-body-m);
+}
+
+.treeCell {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  width: fit-content;
+  height: 100%;
 }
 
 .cellUserToggleIcon {
-  cursor: pointer;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  svg {
-    color: tree.$sys-neutral-text-support;
-  }
 }
 
 .treeNodeContent {
@@ -26,12 +30,13 @@
 
   cursor: pointer;
 
-
   display: flex;
   align-items: center;
 
   box-sizing: border-box;
-  height: table.$size-markdown-table-cell-height;
+  height: 100%;
+
+  color: tree.$sys-neutral-text-support;
 
   &:focus-visible {
     @include element.outline-inside-var(element.$container-focused-s);
@@ -43,64 +48,40 @@
     cursor: default;
   }
 
-  &[aria-disabled='true'] {
+  &[data-disabled] {
     cursor: not-allowed;
-
-    &::before {
-      display: none;
-    }
-
-    .treeNodeTitle, .treeNodeIcon {
-      color: tree.$sys-neutral-text-disabled;
-    }
-  }
-
-  &[aria-selected='true']:not([data-multiselect]) {
-      opacity: tree.$opacity-a008;
-      background-color: tree.$sys-primary-accent-default;
-
-    &:hover {
-        opacity: tree.$opacity-a016;
-    }
+    color: tree.$sys-neutral-text-disabled;
   }
 }
 
 .userContent {
-  cursor: pointer;
   display: flex;
   align-items: center;
+}
+
+.line {
+  margin-left: calc(#{table.$dimension-4m} + #{table.$dimension-025m});
+}
+
+.firstLine {
+  margin-left: table.$dimension-2m
+}
+
+.cellExpandButton {
+  box-sizing: border-box;
+
   svg {
-    color: tree.$sys-neutral-text-support;
+    width: element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    transition: transform 0.2s ease;
+  }
+
+  &[data-expanded] {
+    svg {
+      transform: rotate(90deg);
+    }
   }
 }
-  .treeCellContainer {
-    position: relative;
-    overflow: hidden;
-
-    @include table.composite-var(table.$sans-body-m);
-  }
-  .line {
-    margin-left: calc(#{table.$dimension-4m} + #{table.$dimension-025m});
-  }
-  .firstLine {
-    margin-left: table.$dimension-2m
-  }
-  .cellExpandButton {
-    box-sizing: border-box;
-
-
-    svg {
-      width: element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
-      height: element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
-      transition: transform 0.2s ease;
-    }
-
-    &[data-expanded] {
-      svg {
-        transform: rotate(90deg);
-      }
-    }
-  }
 
 .treeCheckboxWrap {
   @include tree.composite-var(tree.$tree-item-toggle-wrap);

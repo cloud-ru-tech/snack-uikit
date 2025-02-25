@@ -119,6 +119,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
 | search | `{ initialState?: string; state?: string; placeholder?: string; loading?: boolean; onChange?(value: string): void; }` | 'Search'<br> <strong>loading</strong>: Состояние загрузки в строке поиска <br> <strong>onChange</strong>: Колбэк на изменение данных в строке поиска | Параметры отвечают за глобальный поиск в таблице <br> <strong>initialState</strong>: Начальное состояние строки поиска <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>placeholder</strong>: Placeholder строки поиска |
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
+| rowAutoHeight | `boolean` | - |  |
 | pageSize | `number` | 10 | Максимальное кол-во строк на страницу |
 | onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
 | className | `string` | - | CSS-класс |
@@ -187,6 +188,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | expanding | `{ getSubRows: (element: TData) => TData[]; expandingColumnDefinition: TreeColumnDefinitionProps<TData>; }` | - | Параметр отвечает за общие настройки раскрывающихся строк |
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
+| rowAutoHeight | `boolean` | - |  |
 | onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
 | className | `string` | - | CSS-класс |
 | loading | `boolean` | - | Состояние загрузки |

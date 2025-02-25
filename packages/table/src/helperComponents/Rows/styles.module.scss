@@ -18,11 +18,15 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 
   box-sizing: border-box;
 
-  border-color: transparent;
-
   background-color: $snack-ui-table-row-background;
+  border-color: transparent;
   border-style: solid none;
+  height: styles-theme-variables.$size-table-line-height;
 
+  &[data-auto-height] {
+    height: auto;
+    min-height: styles-theme-variables.$size-table-line-height;
+  }
 }
 
 .rowPinnedCells {
@@ -84,23 +88,15 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
     content: '';
 
     position: absolute;
+    /* stylelint-disable-next-line declaration-property-value-allowed-list */
+    z-index: 2;
     top: calc(-1 * #{styles-theme-variables.$border-width-table});
     left: 0;
 
-    /* stylelint-disable-next-line declaration-property-value-allowed-list */
-    z-index: 2;
-
     width: 100%;
-
     height: styles-tokens-table.$border-width-table-line;
 
     background-color: styles-tokens-table.$sys-neutral-decor-disabled;
-  }
-
-  &:hover, &:hover + & {
-    &::before {
-      height: 0;
-    }
   }
 
   &[data-disabled] {
@@ -114,6 +110,7 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 
   &[data-selected] {
     background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a008);
+
     .rowPinnedCells {
       background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a008);
       border-color: styles-tokens-table.$sys-primary-decor-activated;
@@ -134,14 +131,28 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
     cursor: pointer;
   }
 
-  &:not([data-disabled]):not([data-selected]) {
-    &:hover, &[data-actions-opened] {
-      background-color: color-with-opacity-local(styles-tokens-table.$sys-neutral-accent-default, styles-tokens-table.$opacity-a008);
-      border-color: styles-tokens-table.$sys-neutral-decor-hovered;
+  &:not([data-disabled]) {
+    &:hover {
+      &::before {
+        height: 0;
+      }
+    }
 
-      .rowPinnedCells {
-        background-color: color-with-opacity-local(styles-tokens-table.$sys-neutral-accent-default, styles-tokens-table.$opacity-a008);        
-        border-color: inherit;
+    &:not([data-selected]) {
+      &:hover, &[data-actions-opened] {
+        background-color: color-with-opacity-local(styles-tokens-table.$sys-neutral-accent-default, styles-tokens-table.$opacity-a008);
+        border-color: styles-tokens-table.$sys-neutral-decor-hovered;
+
+        .rowPinnedCells {
+          background-color: color-with-opacity-local(styles-tokens-table.$sys-neutral-accent-default, styles-tokens-table.$opacity-a008);
+          border-color: inherit;
+        }
+      }
+    }
+
+    &:hover + .bodyRow {
+      &::before {
+        height: 0;
       }
     }
   }

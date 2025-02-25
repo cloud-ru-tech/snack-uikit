@@ -2,14 +2,13 @@
 
 .wrapper {
   resize: both;
-  
+
   overflow: auto;
 
   min-width: 400px;
   max-width: 100%;
   height: 610px;
   min-height: 200px;
-  max-height: 750px;
   padding: 24px;
 
   background-color: styles-theme-variables.$sys-neutral-background;

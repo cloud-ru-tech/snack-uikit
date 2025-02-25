@@ -9,9 +9,10 @@ import styles from './styles.module.scss';
 
 type BodyCellProps<TData> = Omit<CellProps, 'style' | 'children'> & {
   cell: TableCell<TData, unknown>;
+  rowAutoHeight?: boolean;
 };
 
-export function BodyCell<TData>({ cell, className, ...props }: BodyCellProps<TData>) {
+export function BodyCell<TData>({ cell, className, rowAutoHeight, ...props }: BodyCellProps<TData>) {
   const columnDef: ColumnDefinition<TData> = cell.column.columnDef;
 
   const style = useCellSizes(cell);
@@ -21,6 +22,7 @@ export function BodyCell<TData>({ cell, className, ...props }: BodyCellProps<TDa
       {...props}
       style={style}
       className={cn(styles.tableBodyCell, className, columnDef.cellClassName)}
+      data-row-auto-height={rowAutoHeight || undefined}
       data-align={columnDef.align}
       data-no-padding={columnDef.noBodyCellPadding || undefined}
       data-column-id={cell.column.id}

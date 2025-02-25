@@ -10,7 +10,7 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding-right: styles-tokens-table.$space-table-cell-padding;
+  padding-right: styles-tokens-table.$space-table-cell-padding-horizontal;
 
   &[data-no-label] {
     padding-right: 0;
@@ -35,6 +35,7 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
 
   box-sizing: border-box;
   width: styles-tokens-table.$size-table-cell-status-indicator-horizontal;
+  height: calc(100% + #{styles-tokens-table.$border-width-table} * 2);
 
   background-color: inherit;
 
@@ -50,6 +51,7 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
 
     box-sizing: border-box;
     width: 100%;
+    height: 100%;
   }
 
   @each $appearance in $appearances {
@@ -65,15 +67,15 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
   
     &::after {
       content: '';
-  
+
       position: absolute;
       left:0;
-      
+
       width: 100%;
       height: auto;
-      
+
       background-color: styles-tokens-table.$sys-neutral-decor-default;
-  
+
       animation: loading ease-in-out 0.8s infinite alternate;
     }
   }
@@ -82,14 +84,14 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'yellow', 'green', 'blue', 
 @keyframes loading {
   0% {
     top: 0;
-    bottom: calc(100% - styles-tokens-table.$dimension-050m);
+    bottom: calc(100% - #{styles-tokens-table.$dimension-050m});
   }
   50% {
     top: 0;
     bottom: 0;
   }
   100% {
-    top: calc(100% - styles-tokens-table.$dimension-050m);
+    top: calc(100% - #{styles-tokens-table.$dimension-050m});
     bottom: 0;
   }
 }

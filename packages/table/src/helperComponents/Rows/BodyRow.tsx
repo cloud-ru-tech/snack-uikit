@@ -6,7 +6,7 @@ import { BodyCell } from '../Cells';
 import { RowContext } from '../contexts';
 import { useRowCells } from '../hooks';
 import { PinnedCells } from './PinnedCells';
-import { Row } from './Row';
+import { Row, RowProps } from './Row';
 import styles from './styles.module.scss';
 
 export type RowInfo<TData> = {
@@ -18,12 +18,12 @@ export type RowInfo<TData> = {
 
 export type RowClickHandler<TData> = (e: MouseEvent<HTMLDivElement>, row: RowInfo<TData>) => void;
 
-export type BodyRowProps<TData> = {
+export type BodyRowProps<TData> = Pick<RowProps, 'rowAutoHeight'> & {
   row: TableRow<TData>;
   onRowClick?: RowClickHandler<TData>;
 };
 
-export function BodyRow<TData>({ row, onRowClick }: BodyRowProps<TData>) {
+export function BodyRow<TData>({ row, onRowClick, rowAutoHeight }: BodyRowProps<TData>) {
   const { pinnedLeft, pinnedRight, unpinned } = useRowCells(row);
 
   const [dropListOpened, setDropListOpen] = useState(false);
@@ -56,23 +56,24 @@ export function BodyRow<TData>({ row, onRowClick }: BodyRowProps<TData>) {
         data-test-id={TEST_IDS.bodyRow}
         data-row-id={row.id}
         className={styles.bodyRow}
+        rowAutoHeight={rowAutoHeight}
       >
         {pinnedLeft && (
           <PinnedCells position={COLUMN_PIN_POSITION.Left}>
             {pinnedLeft.map(cell => (
-              <BodyCell key={cell.id} cell={cell} />
+              <BodyCell key={cell.id} cell={cell} rowAutoHeight={rowAutoHeight} />
             ))}
           </PinnedCells>
         )}
 
         {unpinned.map(cell => (
-          <BodyCell key={cell.id} cell={cell} />
+          <BodyCell key={cell.id} cell={cell} rowAutoHeight={rowAutoHeight} />
         ))}
 
         {pinnedRight && (
           <PinnedCells position={COLUMN_PIN_POSITION.Right}>
             {pinnedRight.map(cell => (
-              <BodyCell key={cell.id} cell={cell} />
+              <BodyCell key={cell.id} cell={cell} rowAutoHeight={rowAutoHeight} />
             ))}
           </PinnedCells>
         )}

@@ -1,22 +1,22 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table' as table;
 
 .treeLine {
   width: 1px;
-  height: styles-tokens-table.$size-markdown-table-cell-height;
+  height: 100%;
   opacity: 0;
-  &[data-visible] {
-      opacity: 1;
-      background-color: styles-tokens-table.$sys-neutral-decor-default;
 
+  &[data-visible] {
+    opacity: 1;
+    background-color: table.$sys-neutral-decor-default;
   }
 
   &[data-half-height] {
-      align-self: start;
-      height:calc(styles-tokens-table.$size-markdown-table-cell-height / 2);
+    align-self: start;
+    height: 50%;
   }
 
   &[data-horizontal] {
-    width: calc(styles-tokens-table.$size-markdown-table-cell-height / 2);
+    width: calc(#{table.$size-markdown-table-cell-height} / 2);
     height: 1px
   }
 }

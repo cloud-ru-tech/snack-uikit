@@ -98,6 +98,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   savedState,
   expanding,
   bulkActions: bulkActionsProp,
+  rowAutoHeight,
   ...rest
 }: TableProps<TData, TFilters>) {
   const { state: globalFilter, onStateChange: onGlobalFilterChange } = useStateControl<string>(search, '');
@@ -174,7 +175,13 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
       enableSorting: false,
       enableResizing: false,
       minSize: 40,
-      cell: (cell: CellContext<TData, unknown>) => <TruncateString text={String(cell.getValue())} maxLines={1} />,
+      cell: (cell: CellContext<TData, unknown>) => {
+        if (rowAutoHeight) {
+          return cell.getValue();
+        }
+
+        return <TruncateString text={String(cell.getValue())} maxLines={1} />;
+      },
     },
 
     manualSorting,
@@ -336,7 +343,6 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const tableFilteredRowsIds = tableFilteredRows.map(row => row.id);
   const topRows = table.getTopRows();
   const loadingTableRows = loadingTable.getRowModel().rows;
-  const tablePagination = table.getState().pagination;
 
   const filteredTopRows = table.getState().globalFilter
     ? topRows.filter(tr => tableFilteredRowsIds.includes(tr.id))
@@ -345,12 +351,6 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
   const { t } = useLocale('Table');
   const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
-
-  const cssPageSize = useMemo(() => {
-    const tempPageSize = (!suppressPagination ? tablePagination?.pageSize : pageSize) + filteredTopRows.length;
-
-    return !tableRows.length ? Math.min(Math.max(tempPageSize, 5), DEFAULT_PAGE_SIZE) : tempPageSize;
-  }, [filteredTopRows.length, pageSize, suppressPagination, tablePagination?.pageSize, tableRows.length]);
 
   usePageReset({
     manualPagination,
@@ -365,118 +365,111 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const showToolbar = !suppressToolbar;
 
   return (
-    <CellAutoResizeContext.Provider value={{ updateCellMap }}>
-      <div
-        style={{
-          '--page-size': cssPageSize,
-        }}
-        className={cn(styles.wrapper, className)}
-        {...extractSupportProps(rest)}
-      >
-        {showToolbar && (
-          <div className={styles.header}>
-            <Toolbar
-              search={
-                suppressSearch
-                  ? undefined
-                  : {
-                      value: globalFilter,
-                      onChange: onGlobalFilterChange,
-                      loading: search?.loading,
-                      placeholder: search?.placeholder || t('searchPlaceholder'),
-                    }
-              }
-              className={styles.toolbar}
-              onRefresh={onRefresh ? handleOnRefresh : undefined}
-              bulkActions={bulkActions}
-              selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
-              checked={table.getIsAllPageRowsSelected()}
-              indeterminate={table.getIsSomePageRowsSelected()}
-              onCheck={enableSelection ? handleOnToolbarCheck : undefined}
-              outline={outline}
-              after={
-                toolbarAfter || exportSettings ? (
-                  <>
-                    {toolbarAfter}
-                    {exportSettings && (
-                      <ExportButton
-                        settings={exportSettings}
-                        columnDefinitions={columnDefinitions}
-                        data={data}
-                        topRows={filteredTopRows}
-                        centerRows={centerRows}
-                      />
-                    )}
-                  </>
-                ) : undefined
-              }
-              moreActions={moreActions}
-              filterRow={columnFilters}
-              data-test-id={TEST_IDS.toolbar}
-            />
-          </div>
-        )}
-
-        <div className={styles.scrollWrapper} data-outline={outline || undefined}>
-          <Scroll size='s' className={styles.table} ref={scrollContainerRef}>
-            <div className={styles.tableContent} style={columnSizes.vars}>
-              <TableContext.Provider value={{ table }}>
-                {(!infiniteLoading || !data.length) && loading ? (
-                  <SkeletonContextProvider loading>
-                    <HeaderRow />
-                    {loadingTableRows.map(row => (
-                      <BodyRow key={row.id} row={row} />
-                    ))}
-                  </SkeletonContextProvider>
-                ) : (
-                  <>
-                    {centerRows.length || filteredTopRows.length ? <HeaderRow /> : null}
-
-                    {filteredTopRows.length ? (
-                      <div className={styles.topRowWrapper}>
-                        {filteredTopRows.map(row => (
-                          <BodyRow key={row.id} row={row} onRowClick={onRowClick} />
-                        ))}
-                      </div>
-                    ) : null}
-
-                    {centerRows.map(row => (
-                      <BodyRow key={row.id} row={row} onRowClick={onRowClick} />
-                    ))}
-
-                    {data.length > 0 && infiniteLoading && loading && (
-                      <SkeletonContextProvider loading>
-                        {loadingTableRows.slice(0, 3).map(row => (
-                          <BodyRow key={row.id} row={row} />
-                        ))}
-                      </SkeletonContextProvider>
-                    )}
-
-                    <TableEmptyState
-                      emptyStates={emptyStates}
-                      dataError={dataError}
-                      dataFiltered={dataFiltered || Boolean(table.getState().globalFilter)}
-                      tableRowsLength={tableRows.length + filteredTopRows.length}
+    <div className={cn(styles.wrapper, className)} {...extractSupportProps(rest)}>
+      {showToolbar && (
+        <div className={styles.header}>
+          <Toolbar
+            search={
+              suppressSearch
+                ? undefined
+                : {
+                    value: globalFilter,
+                    onChange: onGlobalFilterChange,
+                    loading: search?.loading,
+                    placeholder: search?.placeholder || t('searchPlaceholder'),
+                  }
+            }
+            className={styles.toolbar}
+            onRefresh={onRefresh ? handleOnRefresh : undefined}
+            bulkActions={bulkActions}
+            selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
+            checked={table.getIsAllPageRowsSelected()}
+            indeterminate={table.getIsSomePageRowsSelected()}
+            onCheck={enableSelection ? handleOnToolbarCheck : undefined}
+            outline={outline}
+            after={
+              toolbarAfter || exportSettings ? (
+                <>
+                  {toolbarAfter}
+                  {exportSettings && (
+                    <ExportButton
+                      settings={exportSettings}
+                      columnDefinitions={columnDefinitions}
+                      data={data}
+                      topRows={filteredTopRows}
+                      centerRows={centerRows}
                     />
-                  </>
-                )}
-              </TableContext.Provider>
-            </div>
-            <div className={styles.scrollStub} ref={scrollRef as RefObject<HTMLDivElement>} />
-          </Scroll>
+                  )}
+                </>
+              ) : undefined
+            }
+            moreActions={moreActions}
+            filterRow={columnFilters}
+            data-test-id={TEST_IDS.toolbar}
+          />
+        </div>
+      )}
+
+      <Scroll size='s' className={styles.table} ref={scrollContainerRef} data-outline={outline || undefined}>
+        <div className={styles.tableContent} style={columnSizes.vars}>
+          <CellAutoResizeContext.Provider value={{ updateCellMap }}>
+            <TableContext.Provider value={{ table }}>
+              {(!infiniteLoading || !data.length) && loading ? (
+                <SkeletonContextProvider loading>
+                  <HeaderRow rowAutoHeight={rowAutoHeight} />
+                  {loadingTableRows.map(row => (
+                    <BodyRow key={row.id} row={row} rowAutoHeight={rowAutoHeight} />
+                  ))}
+                </SkeletonContextProvider>
+              ) : (
+                <>
+                  {centerRows.length || filteredTopRows.length ? <HeaderRow /> : null}
+
+                  {filteredTopRows.length ? (
+                    <div className={styles.topRowWrapper}>
+                      {filteredTopRows.map(row => (
+                        <BodyRow key={row.id} row={row} onRowClick={onRowClick} rowAutoHeight={rowAutoHeight} />
+                      ))}
+                    </div>
+                  ) : null}
+
+                  {centerRows.map(row => (
+                    <BodyRow key={row.id} row={row} onRowClick={onRowClick} rowAutoHeight={rowAutoHeight} />
+                  ))}
+
+                  {data.length > 0 && infiniteLoading && loading && !dataError && (
+                    <SkeletonContextProvider loading>
+                      {loadingTableRows.slice(0, 3).map(row => (
+                        <BodyRow key={row.id} row={row} />
+                      ))}
+                    </SkeletonContextProvider>
+                  )}
+
+                  <TableEmptyState
+                    emptyStates={emptyStates}
+                    dataError={dataError}
+                    dataFiltered={dataFiltered || Boolean(table.getState().globalFilter)}
+                    tableRowsLength={tableRows.length + filteredTopRows.length}
+                  />
+                </>
+              )}
+            </TableContext.Provider>
+          </CellAutoResizeContext.Provider>
         </div>
 
-        {!infiniteLoading && !suppressPagination && (
-          <TablePagination
-            table={table}
-            options={paginationProp?.options}
-            optionsLabel={paginationProp?.optionsLabel}
-            pageCount={pageCount}
-            optionsRender={paginationProp?.optionsRender}
-          />
-        )}
-      </div>
-    </CellAutoResizeContext.Provider>
+        <div className={styles.scrollStub} ref={scrollRef as RefObject<HTMLDivElement>} />
+      </Scroll>
+
+      {!infiniteLoading && !suppressPagination && (
+        <TablePagination
+          table={table}
+          options={paginationProp?.options}
+          optionsLabel={paginationProp?.optionsLabel}
+          pageCount={pageCount}
+          optionsRender={paginationProp?.optionsRender}
+        />
+      )}
+    </div>
   );
 }
 
