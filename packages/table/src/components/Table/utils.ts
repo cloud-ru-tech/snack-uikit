@@ -7,10 +7,15 @@ export function getCurrentlyConfiguredHeaderWidth(id: string): number {
       '[data-test-id="table__header-cell-resize-handle-moving-part"]',
     );
 
-    if (cell && resizeHandler) {
+    if (cell) {
       const { width } = cell.getBoundingClientRect();
-      const offset = parseInt(resizeHandler.style.getPropertyValue('--offset'));
-      return width + offset;
+
+      if (resizeHandler) {
+        const offset = parseInt(resizeHandler.style.getPropertyValue('--offset'));
+        return width + offset;
+      }
+
+      return width;
     }
   }
 

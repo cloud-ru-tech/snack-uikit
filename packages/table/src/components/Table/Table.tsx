@@ -256,9 +256,11 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const columnSizeVarsRef = useRef<Record<string, string>>();
   const headers = table.getFlatHeaders();
 
-  const columnSizeVars = useMemo(() => {
+  const columnSizes = useMemo(() => {
     const originalColumnDefs = table._getColumnDefs();
-    const colSizes: Record<string, string> = {};
+    const vars: Record<string, string> = {};
+    const realSizes: Record<string, number> = {};
+    const resizedColumnIndex = headers.findIndex(({ column }) => column.getIsResizing());
 
     for (let i = 0; i < headers.length; i++) {
       const header = headers[i];
@@ -267,8 +269,8 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
       const originalColDef = originalColumnDefs.find(col => getColumnId(header) === col.id);
 
       if (header.id === 'snack_predefined_statusColumn' && !originalColDef?.header && !originalColDef?.enableSorting) {
-        colSizes[sizeKey] = 'var(--size-table-cell-status-indicator-horizontal)';
-        colSizes[flexKey] = '100%';
+        vars[sizeKey] = 'var(--size-table-cell-status-indicator-horizontal)';
+        vars[flexKey] = '100%';
       } else {
         const originalColumnDefSize = originalColDef?.size;
         let initSize = originalColumnDefSize ? `${originalColumnDefSize}px` : '100%';
@@ -289,12 +291,9 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
           const currentSize = header.getSize();
           const colDefSize = header.column.columnDef.size;
 
-          size = currentSize === colDefSize ? initSize : `${currentSize}px`;
-
-          if (prevSize === '100%' && currentSize !== colDefSize) {
-            const realSize = getCurrentlyConfiguredHeaderWidth(header.id);
-            table.setColumnSizing(old => ({ ...old, [header.id]: realSize }));
-
+          if (currentSize !== colDefSize || (i < resizedColumnIndex && prevSize === '100%')) {
+            const realSize = prevSize === '100%' ? getCurrentlyConfiguredHeaderWidth(header.id) : currentSize;
+            realSizes[header.id] = realSize;
             size = `${realSize}px`;
           }
         }
@@ -303,12 +302,12 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
           saveStateToLocalStorage({ id: savedState.id, columnId: header.id, size });
         }
 
-        colSizes[sizeKey] = size;
-        colSizes[flexKey] = size === '100%' ? 'unset' : '0';
+        vars[sizeKey] = size;
+        vars[flexKey] = size === '100%' ? 'unset' : '0';
       }
     }
 
-    return colSizes;
+    return { vars, realSizes };
     /*
       effect must be called only on columnSizingInfo.isResizingColumn changes
       to reduce unnecessary recalculations
@@ -321,8 +320,12 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   }, [table.getState().columnSizingInfo.isResizingColumn, headers, table.getTotalSize()]);
 
   useEffect(() => {
-    columnSizeVarsRef.current = columnSizeVars;
-  }, [columnSizeVars]);
+    if (Object.keys(columnSizes.realSizes).length) {
+      table.setColumnSizing(old => ({ ...old, ...columnSizes.realSizes }));
+    }
+
+    columnSizeVarsRef.current = columnSizes.vars;
+  }, [columnSizes, table]);
 
   const tableRows = table.getRowModel().rows;
   const tableCenterRows = table.getCenterRows();
@@ -413,7 +416,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
         <div className={styles.scrollWrapper} data-outline={outline || undefined}>
           <Scroll size='s' className={styles.table} ref={scrollContainerRef}>
-            <div className={styles.tableContent} style={columnSizeVars}>
+            <div className={styles.tableContent} style={columnSizes.vars}>
               <TableContext.Provider value={{ table }}>
                 {loading ? (
                   <SkeletonContextProvider loading>

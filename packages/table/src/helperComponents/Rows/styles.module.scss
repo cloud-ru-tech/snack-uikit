@@ -42,8 +42,8 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
     content: '';
 
     position: absolute;
-    top: calc(0px - styles-tokens-table.$border-width-table);
-    bottom: calc(0px - styles-tokens-table.$border-width-table);
+    top: calc(0px - #{styles-tokens-table.$border-width-table});
+    bottom: calc(0px - #{styles-tokens-table.$border-width-table});
 
     box-sizing: border-box;
     width: styles-tokens-table.$border-width-table;
