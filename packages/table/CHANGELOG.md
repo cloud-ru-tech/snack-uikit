@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.29.0 (2025-02-25)
+
+
+### Features
+
+* **PDS-569:** table bulk rows multiselect with shift key ([e5802e3](https://github.com/cloud-ru-tech/snack-uikit/commit/e5802e390c0beeb0d4cae20235f3e82fccb83b24))
+
+
+
+
+
 ## 0.28.7 (2025-02-25)
 
 ### Only dependencies have been changed
