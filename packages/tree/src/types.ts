@@ -62,7 +62,7 @@ export type TreeCommonProps = {
   /** Состояние для раскрытых элементов */
   expandedNodes?: TreeNodeId[];
   /** Колбэк при раскрытии/закрытии элементов */
-  onExpand?(expandedKeys: TreeNodeId[], nodeId: TreeNodeId): void;
+  onExpand?(expandedKeys: TreeNodeId[], node: TreeNodeProps): void;
   /** Состояние для выбранных элементов */
   selected?: TreeNodeId[] | TreeNodeId;
   /** Колбэк для асинхронной загрузки данных при раскрытии дерева */

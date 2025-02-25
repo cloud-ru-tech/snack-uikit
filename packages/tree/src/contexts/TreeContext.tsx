@@ -64,7 +64,7 @@ export function TreeContextProvider({ children, value }: TreeContextProviderProp
   const isSingleSelect = selectionMode === SELECTION_MODE.Single;
   const isSelectable = Boolean(selectionMode);
 
-  const [expandedNodes, onExpandHandler] = useUncontrolledProp<TreeNodeId[]>(
+  const [expandedNodes, onExpandHandler] = useUncontrolledProp<TreeNodeId[], NonNullable<TreeBaseProps['onExpand']>>(
     value.expandedNodes,
     value.expandedNodes || [],
     onExpandProp,

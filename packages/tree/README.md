@@ -45,7 +45,7 @@ const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
 | data* | `TreeNodeProps[]` | - | Данные для отрисовки |
 | onNodeClick | `OnNodeClick` | - | Обработчик клика по элементу дерева |
 | expandedNodes | `string[]` | - | Состояние для раскрытых элементов |
-| onExpand | `(expandedKeys: string[], nodeId: string) => void` | - | Колбэк при раскрытии/закрытии элементов |
+| onExpand | `(expandedKeys: string[], node: TreeNodeProps) => void` | - | Колбэк при раскрытии/закрытии элементов |
 | onDataLoad | `(node: TreeNodeProps) => Promise<unknown>` | - | Колбэк для асинхронной загрузки данных при раскрытии дерева |
 | parentActions | `(node: TreeNodeProps) => Item[]` | - | Дополнительные действия для элемента-родителя |
 | nodeActions | `(node: TreeNodeProps) => Item[]` | - | Дополнительные действия для элемента-потомка |
