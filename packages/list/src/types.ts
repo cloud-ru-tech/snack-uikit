@@ -18,6 +18,14 @@ export type ScrollProps = {
   scrollContainerRef?: RefObject<HTMLElement>;
   /** Отключает возможность взаимодействовать со скролбарами мышью. */
   untouchableScrollbars?: boolean;
+  /**
+   * Управление скрытием скролл баров:
+   * <br> - `Never` - показывать всегда
+   * <br> - `Leave` - скрывать когда курсор покидает компонент
+   * <br> - `Scroll` - показывать только когда происходит скроллинг
+   * <br> - `Move` - показывать при движении курсора над компонентом
+   */
+  barHideStrategy?: OriginalScrollProps['barHideStrategy'];
   /** Колбек на скролл прокручиваемого списка */
   onScroll?: OriginalScrollProps['onScroll'];
 };

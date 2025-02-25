@@ -45,6 +45,7 @@ export const ListPrivate = forwardRef(
       scrollToSelectedItem = false,
       virtualized = false,
       scrollContainerClassName,
+      barHideStrategy = 'never',
       ...props
     }: ListPrivateProps,
     ref: ForwardedRef<HTMLElement>,
@@ -187,7 +188,7 @@ export const ListPrivate = forwardRef(
               },
               scrollContainerClassName,
             )}
-            barHideStrategy='never'
+            barHideStrategy={barHideStrategy}
             size={size === 's' ? 's' : 'm'}
             ref={ref => {
               innerScrollRef.current = ref;

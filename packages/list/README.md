@@ -85,6 +85,7 @@
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
+| barHideStrategy | enum BarHideStrategy: `"scroll"`, `"move"`, `"never"`, `"leave"` | - | Управление скрытием скролл баров: <br> - `Never` - показывать всегда <br> - `Leave` - скрывать когда курсор покидает компонент <br> - `Scroll` - показывать только когда происходит скроллинг <br> - `Move` - показывать при движении курсора над компонентом |
 | onScroll | `(event?: Event) => void` | - | Колбек на скролл прокручиваемого списка |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
@@ -119,6 +120,7 @@
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
+| barHideStrategy | enum BarHideStrategy: `"scroll"`, `"move"`, `"never"`, `"leave"` | - | Управление скрытием скролл баров: <br> - `Never` - показывать всегда <br> - `Leave` - скрывать когда курсор покидает компонент <br> - `Scroll` - показывать только когда происходит скроллинг <br> - `Move` - показывать при движении курсора над компонентом |
 | onScroll | `(event?: Event) => void` | - | Колбек на скролл прокручиваемого списка |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |

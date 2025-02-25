@@ -311,6 +311,7 @@ export const list = {
     hasListInFocusChain: true,
     scrollToSelectedItem: false,
     defaultValue: '',
+    barHideStrategy: 'never',
   },
 
   argTypes: {
