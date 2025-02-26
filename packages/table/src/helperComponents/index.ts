@@ -7,3 +7,4 @@ export * from './hooks';
 export * from './types';
 export * from './TableEmptyState';
 export * from './TablePagination';
+export * from './ColumnsSettings';

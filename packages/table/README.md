@@ -115,6 +115,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | copyPinnedRows | `boolean` | - | Параметр отвечает за сохранение закрепленных строк в теле таблицы |
 | enableSelectPinned | `boolean` | - | Параметр отвечает за чекбокс выбора закрепленных строк |
 | sorting | `{ initialState?: SortingState; state?: SortingState; onChange?(state: SortingState): void; }` | - | Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>initialState</strong>: Начальное состояние сортировки <br> <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
+| columnsSettings | `{ enableDrag?: boolean; headerLabel?: string; }` | - | Параметры отвечают за настройки колонок <br> <strong>enableDrag</strong>: Включение сортировки порядка столбцов вручную перетаскиванием <br> <strong>headerLabel</strong>: Название меню настроек колонок. Наличие включает показ настроек <br> <strong>selectAllButtonLabels</strong>: Значения кнопки включения/отключения всех айтемов ([вкл, выкл]) <br> |
 | expanding | `{ getSubRows: (element: TData) => TData[]; expandingColumnDefinition: TreeColumnDefinitionProps<TData>; }` | - | Параметр отвечает за общие настройки раскрывающихся строк |
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
 | search | `{ initialState?: string; state?: string; placeholder?: string; loading?: boolean; onChange?(value: string): void; }` | 'Search'<br> <strong>loading</strong>: Состояние загрузки в строке поиска <br> <strong>onChange</strong>: Колбэк на изменение данных в строке поиска | Параметры отвечают за глобальный поиск в таблице <br> <strong>initialState</strong>: Начальное состояние строки поиска <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>placeholder</strong>: Placeholder строки поиска |
@@ -126,7 +127,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | loading | `boolean` | - | Состояние загрузки |
 | onRefresh | `() => void` | - | Колбек обновления данных |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
-| columnFilters | `ChipChoiceRowProps<TFilters>` | - | Фильтры |
+| columnFilters | `FilterRow<TFilters>` | - | Фильтры |
 | dataFiltered | `boolean` | - | Флаг, показывающий что данные были отфильтрованы при пустых данных |
 | dataError | `boolean` | - | Флаг, показывающий что произошла ошибка запроса при пустых данных |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
@@ -178,6 +179,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | onChangePage* | `(offset: number, limit: number) => void` | - |  |
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
+| className | `string` | - | CSS-класс |
 | onRefresh | `() => void` | - | Колбек обновления данных |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | bulkActions | `BulkAction[]` | - | Список действия для массовых операций |
@@ -185,15 +187,15 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | copyPinnedRows | `boolean` | false | Параметр отвечает за сохранение закрепленных строк в теле таблицы |
 | enableSelectPinned | `boolean` | - | Параметр отвечает за чекбокс выбора закрепленных строк |
 | sorting | `{ initialState?: SortingState; state?: SortingState; onChange?(state: SortingState): void; }` | - | Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>initialState</strong>: Начальное состояние сортировки <br> <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
+| columnsSettings | `{ enableDrag?: boolean; headerLabel?: string; }` | - | Параметры отвечают за настройки колонок <br> <strong>enableDrag</strong>: Включение сортировки порядка столбцов вручную перетаскиванием <br> <strong>headerLabel</strong>: Название меню настроек колонок. Наличие включает показ настроек <br> <strong>selectAllButtonLabels</strong>: Значения кнопки включения/отключения всех айтемов ([вкл, выкл]) <br> |
 | expanding | `{ getSubRows: (element: TData) => TData[]; expandingColumnDefinition: TreeColumnDefinitionProps<TData>; }` | - | Параметр отвечает за общие настройки раскрывающихся строк |
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
 | rowAutoHeight | `boolean` | - |  |
 | onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
-| className | `string` | - | CSS-класс |
 | loading | `boolean` | - | Состояние загрузки |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
-| columnFilters | `ChipChoiceRowProps<TFilters>` | - | Фильтры |
+| columnFilters | `FilterRow<TFilters>` | - | Фильтры |
 | dataFiltered | `boolean` | - | Флаг, показывающий что данные были отфильтрованы при пустых данных |
 | dataError | `boolean` | - | Флаг, показывающий что произошла ошибка запроса при пустых данных |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |

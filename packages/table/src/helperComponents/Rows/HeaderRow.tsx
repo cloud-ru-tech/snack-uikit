@@ -1,11 +1,19 @@
+import { horizontalListSortingStrategy, SortableContext } from '@dnd-kit/sortable';
+
 import { COLUMN_PIN_POSITION, TEST_IDS } from '../../constants';
+import { ColumnOrder } from '../../types';
 import { HeaderCell } from '../Cells';
 import { useHeaderGroups } from '../hooks';
 import { PinnedCells } from './PinnedCells';
 import { Row, RowProps } from './Row';
 import styles from './styles.module.scss';
 
-export function HeaderRow({ rowAutoHeight }: Pick<RowProps, 'rowAutoHeight'>) {
+type Props = Pick<RowProps, 'rowAutoHeight'> & {
+  columnOrder: ColumnOrder;
+  enableColumnsOrderSortByDrag?: boolean;
+};
+
+export function HeaderRow({ rowAutoHeight, columnOrder, enableColumnsOrderSortByDrag }: Props) {
   const { leftPinned, unpinned, rightPinned } = useHeaderGroups();
 
   return (
@@ -22,9 +30,18 @@ export function HeaderRow({ rowAutoHeight }: Pick<RowProps, 'rowAutoHeight'>) {
         </PinnedCells>
       )}
 
-      {unpinned.map(headerGroup =>
-        headerGroup.headers.map(header => <HeaderCell key={header.id} header={header} rowAutoHeight={rowAutoHeight} />),
-      )}
+      <SortableContext items={columnOrder} strategy={horizontalListSortingStrategy}>
+        {unpinned.map(headerGroup =>
+          headerGroup.headers.map(header => (
+            <HeaderCell
+              key={header.id}
+              header={header}
+              rowAutoHeight={rowAutoHeight}
+              isDraggable={enableColumnsOrderSortByDrag && columnOrder.length > 1}
+            />
+          )),
+        )}
+      </SortableContext>
 
       {rightPinned && (
         <PinnedCells position={COLUMN_PIN_POSITION.Right}>

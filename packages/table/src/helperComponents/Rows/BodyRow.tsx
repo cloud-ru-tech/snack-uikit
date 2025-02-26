@@ -1,7 +1,9 @@
+import { horizontalListSortingStrategy, SortableContext } from '@dnd-kit/sortable';
 import { Row as TableRow } from '@tanstack/react-table';
 import { MouseEvent, useState } from 'react';
 
 import { COLUMN_PIN_POSITION, TEST_IDS } from '../../constants';
+import { ColumnOrder } from '../../types';
 import { BodyCell } from '../Cells';
 import { RowContext } from '../contexts';
 import { useRowCells } from '../hooks';
@@ -21,10 +23,18 @@ export type RowClickHandler<TData> = (e: MouseEvent<HTMLDivElement>, row: RowInf
 export type BodyRowProps<TData> = Pick<RowProps, 'rowAutoHeight'> & {
   row: TableRow<TData>;
   onRowClick?: RowClickHandler<TData>;
+  columnOrder: ColumnOrder;
+  enableColumnsOrderSortByDrag?: boolean;
 };
 
-export function BodyRow<TData>({ row, onRowClick, rowAutoHeight }: BodyRowProps<TData>) {
-  const { pinnedLeft, pinnedRight, unpinned } = useRowCells(row);
+export function BodyRow<TData>({
+  row,
+  onRowClick,
+  rowAutoHeight,
+  columnOrder,
+  enableColumnsOrderSortByDrag,
+}: BodyRowProps<TData>) {
+  const { leftPinned, rightPinned, unpinned } = useRowCells(row);
 
   const [dropListOpened, setDropListOpen] = useState(false);
 
@@ -58,22 +68,34 @@ export function BodyRow<TData>({ row, onRowClick, rowAutoHeight }: BodyRowProps<
         className={styles.bodyRow}
         rowAutoHeight={rowAutoHeight}
       >
-        {pinnedLeft && (
+        {leftPinned && (
           <PinnedCells position={COLUMN_PIN_POSITION.Left}>
-            {pinnedLeft.map(cell => (
+            {leftPinned.map(cell => (
               <BodyCell key={cell.id} cell={cell} rowAutoHeight={rowAutoHeight} />
             ))}
           </PinnedCells>
         )}
 
         {unpinned.map(cell => (
-          <BodyCell key={cell.id} cell={cell} rowAutoHeight={rowAutoHeight} />
+          <SortableContext key={cell.id} items={columnOrder} strategy={horizontalListSortingStrategy}>
+            <BodyCell
+              key={cell.id}
+              cell={cell}
+              rowAutoHeight={rowAutoHeight}
+              isDraggable={enableColumnsOrderSortByDrag}
+            />
+          </SortableContext>
         ))}
 
-        {pinnedRight && (
+        {rightPinned && (
           <PinnedCells position={COLUMN_PIN_POSITION.Right}>
-            {pinnedRight.map(cell => (
-              <BodyCell key={cell.id} cell={cell} rowAutoHeight={rowAutoHeight} />
+            {rightPinned.map(cell => (
+              <BodyCell
+                key={cell.id}
+                cell={cell}
+                rowAutoHeight={rowAutoHeight}
+                isDraggable={enableColumnsOrderSortByDrag}
+              />
             ))}
           </PinnedCells>
         )}

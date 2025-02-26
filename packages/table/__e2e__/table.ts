@@ -50,10 +50,11 @@ test.page(getPage({ suppressToolbar: false, suppressSearch: false, showFilters: 
     await t.expect(toolbar.exists).ok('Toolbar should exist');
     await t.expect(toolbarSearch.exists).ok('ToolbarSearch should exist');
     await t.expect(toolbarFilterButton.exists).ok('ToolbarFilterButton should exist');
+    await t.expect(toolbarFilterRow.exists).ok('ToolbarFilterRow should exist');
 
     await t.click(toolbarFilterButton);
 
-    await t.expect(toolbarFilterRow.exists).ok('ToolbarFilterRow should exist');
+    await t.expect(toolbarFilterRow.exists).notOk('ToolbarFilterRow should be hidden');
   },
 );
 
@@ -77,10 +78,11 @@ test.page(getPage({ suppressToolbar: false, suppressSearch: true, showFilters: t
     await t.expect(toolbar.exists).ok('Toolbar should exist');
     await t.expect(toolbarSearch.exists).notOk('ToolbarSearch should not exist');
     await t.expect(toolbarFilterButton.exists).ok('ToolbarFilterButton should exist');
+    await t.expect(toolbarFilterRow.exists).ok('ToolbarFilterRow should exist');
 
     await t.click(toolbarFilterButton);
 
-    await t.expect(toolbarFilterRow.exists).ok('ToolbarFilterRow should exist');
+    await t.expect(toolbarFilterRow.exists).notOk('ToolbarFilterRow should not exist');
   },
 );
 

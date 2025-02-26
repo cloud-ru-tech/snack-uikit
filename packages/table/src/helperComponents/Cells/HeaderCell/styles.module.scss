@@ -98,6 +98,10 @@
     }
   }
 
+  &[data-draggable] {
+    cursor: grab;
+  }
+
   &[data-sortable] {
     cursor: pointer;
   }
@@ -151,6 +155,16 @@
   }
 }
 
+.tableHeaderCellDragWrapper {
+  width: 100%;
+
+  &[data-dragging] {
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
 .tableHeaderCellMain {
   overflow: auto;
   display: flex;
@@ -182,3 +196,4 @@
     height: styles-tokens-table.simple-var(styles-tokens-element.$icon-xs) !important; /* stylelint-disable-line declaration-no-important */
   }
 }
+

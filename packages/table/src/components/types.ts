@@ -8,8 +8,8 @@ import {
 } from '@tanstack/react-table';
 import { ReactNode, RefObject } from 'react';
 
-import { ChipChoiceRowProps, FiltersState } from '@snack-uikit/chips';
-import { ToolbarProps } from '@snack-uikit/toolbar';
+import { FiltersState } from '@snack-uikit/chips';
+import { FilterRow, ToolbarProps } from '@snack-uikit/toolbar';
 import { WithSupportProps } from '@snack-uikit/utils';
 
 import { EmptyStateProps, ExportButtonProps, RowClickHandler } from '../helperComponents';
@@ -40,6 +40,16 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
     initialState?: SortingState;
     state?: SortingState;
     onChange?(state: SortingState): void;
+  };
+
+  /** Параметры отвечают за настройки колонок <br>
+   *  <strong>enableDrag</strong>: Включение сортировки порядка столбцов вручную перетаскиванием <br>
+   *  <strong>headerLabel</strong>: Название меню настроек колонок. Наличие включает показ настроек <br>
+   *  <strong>selectAllButtonLabels</strong>: Значения кнопки включения/отключения всех айтемов ([вкл, выкл]) <br>
+   *  */
+  columnsSettings?: {
+    enableDrag?: boolean;
+    headerLabel?: string;
   };
 
   /** Параметр отвечает за общие настройки раскрывающихся строк*/
@@ -101,7 +111,7 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
   outline?: boolean;
 
   /** Фильтры */
-  columnFilters?: ChipChoiceRowProps<TFilters>;
+  columnFilters?: FilterRow<TFilters>;
 
   /** Флаг, показывающий что данные были отфильтрованы при пустых данных */
   dataFiltered?: boolean;

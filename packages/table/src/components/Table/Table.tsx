@@ -1,3 +1,5 @@
+import { closestCenter, DndContext } from '@dnd-kit/core';
+import { restrictToHorizontalAxis } from '@dnd-kit/modifiers';
 import {
   CellContext,
   ColumnPinningState,
@@ -13,7 +15,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import cn from 'classnames';
-import { RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
+import { RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { FiltersState } from '@snack-uikit/chips';
 import { useLocale } from '@snack-uikit/locale';
@@ -33,6 +35,7 @@ import {
 import { CellAutoResizeContext, useCellAutoResizeController } from '../../contexts';
 import {
   BodyRow,
+  ColumnsSettings,
   ExportButton,
   getColumnId,
   getRowActionsColumnDef,
@@ -49,7 +52,7 @@ import { getTreeColumnDef } from '../../helperComponents/Cells/TreeCell';
 import { ColumnDefinition } from '../../types';
 import { customDateParser, fuzzyFilter } from '../../utils';
 import { TableProps } from '../types';
-import { useLoadingTable, useStateControl } from './hooks';
+import { useColumnOrderByDrag, useLoadingTable, useStateControl } from './hooks';
 import { usePageReset } from './hooks/usePageReset';
 import { useSaveTableSettings } from './hooks/useSaveTableSettings';
 import styles from './styles.module.scss';
@@ -57,6 +60,9 @@ import {
   getColumnStyleVars,
   getCurrentlyConfiguredHeaderWidth,
   getInitColumnSizeFromLocalStorage,
+  isFilterableColumn,
+  prepareColumnsSettings,
+  prepareColumnsSettingsMap,
   saveStateToLocalStorage,
 } from './utils';
 
@@ -106,6 +112,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   expanding,
   bulkActions: bulkActionsProp,
   rowAutoHeight,
+  columnsSettings: columnsSettingsProp,
   ...rest
 }: TableProps<TData, TFilters>) {
   const { setDataToStorages, defaultFilter } = useSaveTableSettings({
@@ -150,6 +157,8 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     DEFAULT_FILTER_VISIBILITY,
   );
 
+  const [areColumnFiltersOpen, setAreColumnFiltersOpen] = useState<boolean>(true);
+
   useEffect(() => {
     setDataToStorages({ pagination, sorting, filter, search: globalFilter || '' });
   }, [pagination, sorting, filter, setDataToStorages, globalFilter]);
@@ -166,26 +175,42 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     // eslint-disable-next-line
   }, [defaultFilter]);
 
-  const patchedFilter = useMemo(
-    () =>
-      columnFilters
-        ? {
-            ...columnFilters,
-            value: filter,
-            onChange: setFilter,
-            visibleFilters: filterVisibility,
-            onVisibleFiltersChange: setFilterVisibility,
-          }
-        : undefined,
-    [columnFilters, filter, setFilter, filterVisibility, setFilterVisibility],
-  );
+  const patchedFilter = useMemo(() => {
+    if (!columnFilters) {
+      return undefined;
+    }
+
+    return {
+      ...columnFilters,
+      open: areColumnFiltersOpen,
+      onOpenChange: setAreColumnFiltersOpen,
+      value: filter,
+      onChange: setFilter,
+      visibleFilters: filterVisibility,
+      onVisibleFiltersChange: setFilterVisibility,
+    };
+  }, [columnFilters, areColumnFiltersOpen, filter, setFilter, filterVisibility, setFilterVisibility]);
 
   const enableSelection = Boolean(rowSelectionProp?.enable);
 
   const manualPagination = infiniteLoading || manualPaginationProp;
 
+  const [enabledColumns, setEnabledColumns] = useState<string[]>(() => prepareColumnsSettingsMap(columnDefinitions));
+
+  const filteredColumnDefinitions = useMemo(
+    () =>
+      columnDefinitions.filter(colDef => {
+        if (isFilterableColumn(colDef)) {
+          return enabledColumns.includes(colDef.id);
+        }
+
+        return true;
+      }),
+    [columnDefinitions, enabledColumns],
+  );
+
   const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
-    let cols: ColumnDefinition<TData>[] = columnDefinitions;
+    let cols: ColumnDefinition<TData>[] = filteredColumnDefinitions;
     if (enableSelection && !expanding) {
       cols = [getSelectionCellColumnDef(enableSelectPinned), ...cols];
     }
@@ -193,7 +218,26 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
       cols = [getTreeColumnDef(expanding.expandingColumnDefinition), ...cols];
     }
     return cols;
-  }, [columnDefinitions, enableSelection, enableSelectPinned, expanding]);
+  }, [filteredColumnDefinitions, enableSelection, enableSelectPinned, expanding]);
+
+  const { columnOrder, setColumnOrder, sensors, handleDragEnd } = useColumnOrderByDrag(tableColumns);
+
+  const filterableColumns = useMemo(() => columnDefinitions.filter(isFilterableColumn), [columnDefinitions]);
+  const areAllColumnsEnabled = filterableColumns.length === enabledColumns.length;
+
+  const { t } = useLocale('Table');
+
+  const columnsSettings = useMemo(
+    () =>
+      prepareColumnsSettings({
+        columnDefinitions,
+        columnOrder,
+        areAllColumnsEnabled,
+        columnsSettingsHeader: columnsSettingsProp?.headerLabel,
+        t,
+      }),
+    [areAllColumnsEnabled, columnDefinitions, columnOrder, columnsSettingsProp?.headerLabel, t],
+  );
 
   const columnPinning = useMemo(() => {
     const pinningState: Required<ColumnPinningState> = { left: [], right: [] };
@@ -225,6 +269,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     columns: tableColumns,
     state: {
       columnPinning,
+      columnOrder,
       globalFilter,
       rowSelection,
       sorting,
@@ -244,6 +289,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
         return <TruncateString text={String(cell.getValue())} maxLines={1} />;
       },
     },
+    onColumnOrderChange: setColumnOrder,
 
     manualSorting,
     manualPagination,
@@ -283,7 +329,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
   const { loadingTable } = useLoadingTable({
     pageSize: Math.min(Math.max(pageSize, 5), DEFAULT_PAGE_SIZE),
-    columnDefinitions: tableColumns,
+    columnDefinitions: filteredColumnDefinitions,
     columnPinning,
   });
 
@@ -410,7 +456,6 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     : topRows;
   const centerRows = copyPinnedRows ? tableRows : tableCenterRows;
 
-  const { t } = useLocale('Table');
   const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
 
   usePageReset({
@@ -424,6 +469,8 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const { updateCellMap } = useCellAutoResizeController(table);
 
   const showToolbar = !suppressToolbar;
+  const showColumnsSettings = Boolean(columnsSettingsProp?.headerLabel);
+  const enableColumnsOrderSortByDrag = Boolean(columnsSettingsProp?.enableDrag);
 
   return (
     <div className={cn(styles.wrapper, className)} {...extractSupportProps(rest)}>
@@ -449,7 +496,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
             onCheck={enableSelection ? handleOnToolbarCheck : undefined}
             outline={outline}
             after={
-              toolbarAfter || exportSettings ? (
+              toolbarAfter || exportSettings || showColumnsSettings ? (
                 <>
                   {toolbarAfter}
                   {exportSettings && (
@@ -459,6 +506,13 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                       data={data}
                       topRows={filteredTopRows}
                       centerRows={centerRows}
+                    />
+                  )}
+                  {showColumnsSettings && (
+                    <ColumnsSettings
+                      columnsSettings={columnsSettings}
+                      enabledColumns={enabledColumns}
+                      setEnabledColumns={setEnabledColumns}
                     />
                   )}
                 </>
@@ -474,47 +528,79 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
       <Scroll size='s' className={styles.table} ref={scrollContainerRef} data-outline={outline || undefined}>
         <div className={styles.tableContent} style={columnSizes.vars}>
           <CellAutoResizeContext.Provider value={{ updateCellMap }}>
-            <TableContext.Provider value={{ table }}>
-              {(!infiniteLoading || !data.length) && loading ? (
-                <SkeletonContextProvider loading>
-                  <HeaderRow rowAutoHeight={rowAutoHeight} />
-                  {loadingTableRows.map(row => (
-                    <BodyRow key={row.id} row={row} rowAutoHeight={rowAutoHeight} />
-                  ))}
-                </SkeletonContextProvider>
-              ) : (
-                <>
-                  {centerRows.length || filteredTopRows.length ? <HeaderRow /> : null}
+            <DndContext
+              collisionDetection={closestCenter}
+              modifiers={[restrictToHorizontalAxis]}
+              onDragEnd={handleDragEnd}
+              sensors={sensors}
+            >
+              <TableContext.Provider value={{ table }}>
+                {(!infiniteLoading || !data.length) && loading ? (
+                  <SkeletonContextProvider loading>
+                    <HeaderRow rowAutoHeight={rowAutoHeight} columnOrder={columnOrder} />
+                    {loadingTableRows.map(row => (
+                      <BodyRow key={row.id} row={row} rowAutoHeight={rowAutoHeight} columnOrder={columnOrder} />
+                    ))}
+                  </SkeletonContextProvider>
+                ) : (
+                  <>
+                    {centerRows.length || filteredTopRows.length ? (
+                      <HeaderRow
+                        rowAutoHeight={rowAutoHeight}
+                        columnOrder={columnOrder}
+                        enableColumnsOrderSortByDrag={enableColumnsOrderSortByDrag}
+                      />
+                    ) : null}
 
-                  {filteredTopRows.length ? (
-                    <div className={styles.topRowWrapper}>
-                      {filteredTopRows.map(row => (
-                        <BodyRow key={row.id} row={row} onRowClick={onRowClick} rowAutoHeight={rowAutoHeight} />
-                      ))}
-                    </div>
-                  ) : null}
+                    {filteredTopRows.length ? (
+                      <div className={styles.topRowWrapper}>
+                        {filteredTopRows.map(row => (
+                          <BodyRow
+                            key={row.id}
+                            row={row}
+                            onRowClick={onRowClick}
+                            rowAutoHeight={rowAutoHeight}
+                            columnOrder={columnOrder}
+                            enableColumnsOrderSortByDrag={enableColumnsOrderSortByDrag}
+                          />
+                        ))}
+                      </div>
+                    ) : null}
 
-                  {centerRows.map(row => (
-                    <BodyRow key={row.id} row={row} onRowClick={onRowClick} rowAutoHeight={rowAutoHeight} />
-                  ))}
+                    {centerRows.map(row => (
+                      <BodyRow
+                        key={row.id}
+                        row={row}
+                        onRowClick={onRowClick}
+                        rowAutoHeight={rowAutoHeight}
+                        columnOrder={columnOrder}
+                        enableColumnsOrderSortByDrag={enableColumnsOrderSortByDrag}
+                      />
+                    ))}
 
-                  {data.length > 0 && infiniteLoading && loading && !dataError && (
-                    <SkeletonContextProvider loading>
-                      {loadingTableRows.slice(0, 3).map(row => (
-                        <BodyRow key={row.id} row={row} />
-                      ))}
-                    </SkeletonContextProvider>
-                  )}
+                    {data.length > 0 && infiniteLoading && loading && !dataError && (
+                      <SkeletonContextProvider loading>
+                        {loadingTableRows.slice(0, 3).map(row => (
+                          <BodyRow
+                            key={row.id}
+                            row={row}
+                            columnOrder={columnOrder}
+                            enableColumnsOrderSortByDrag={enableColumnsOrderSortByDrag}
+                          />
+                        ))}
+                      </SkeletonContextProvider>
+                    )}
 
-                  <TableEmptyState
-                    emptyStates={emptyStates}
-                    dataError={dataError}
-                    dataFiltered={dataFiltered || Boolean(table.getState().globalFilter)}
-                    tableRowsLength={tableRows.length + filteredTopRows.length}
-                  />
-                </>
-              )}
-            </TableContext.Provider>
+                    <TableEmptyState
+                      emptyStates={emptyStates}
+                      dataError={dataError}
+                      dataFiltered={dataFiltered || Boolean(table.getState().globalFilter)}
+                      tableRowsLength={tableRows.length + filteredTopRows.length}
+                    />
+                  </>
+                )}
+              </TableContext.Provider>
+            </DndContext>
           </CellAutoResizeContext.Provider>
         </div>
 

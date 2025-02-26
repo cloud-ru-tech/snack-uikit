@@ -14,8 +14,7 @@ import { ToolbarProps } from '@snack-uikit/toolbar';
 import { ValueOf } from '@snack-uikit/utils';
 
 import { COLUMN_ALIGN, COLUMN_PIN_POSITION } from './constants';
-import { Except } from './helperComponents';
-import { EmptyStateProps } from './helperComponents/TableEmptyState';
+import { EmptyStateProps, Except } from './helperComponents';
 
 type ColumnAlign = ValueOf<typeof COLUMN_ALIGN>;
 
@@ -64,7 +63,26 @@ type PinnedColumnDefinition<TData> = BaseColumnDefinition<TData> & {
   size: number;
 };
 
-export type ColumnDefinition<TData> = NormalColumnDefinition<TData> | PinnedColumnDefinition<TData>;
+type FilterableProps = {
+  id: string;
+  /** Название колонки в настройках таблицы */
+  headerConfigLabel?: string;
+};
+
+type FilterableNormalColumnDefinition<TData> = NormalColumnDefinition<TData> & FilterableProps;
+
+type FilterablePinnedColumnDefinition<TData> = PinnedColumnDefinition<TData> & FilterableProps;
+
+export type FilterableColumnDefinition<TData> =
+  | FilterableNormalColumnDefinition<TData>
+  | FilterablePinnedColumnDefinition<TData>;
+
+export type ColumnDefinition<TData> =
+  | NormalColumnDefinition<TData>
+  | PinnedColumnDefinition<TData>
+  | FilterableColumnDefinition<TData>;
+
+export type ColumnOrder = string[];
 
 export type {
   RowActionsColumnDefProps,

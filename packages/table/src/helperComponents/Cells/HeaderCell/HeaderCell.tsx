@@ -1,10 +1,11 @@
+import { useSortable } from '@dnd-kit/sortable';
 import { flexRender, Header } from '@tanstack/react-table';
 import cn from 'classnames';
 import { MouseEvent, useRef } from 'react';
 
 import { TruncateString } from '@snack-uikit/truncate-string';
 
-import { TEST_IDS } from '../../../constants';
+import { DEFAULT_COLUMNS, TEST_IDS } from '../../../constants';
 import { ColumnDefinition, ColumnPinPosition } from '../../../types';
 import { useCellSizes } from '../../hooks';
 import { Cell, CellProps } from '../Cell';
@@ -16,9 +17,16 @@ type HeaderCellProps<TData> = Omit<CellProps, 'align' | 'children' | 'onClick' |
   header: Header<TData, unknown>;
   pinPosition?: ColumnPinPosition;
   rowAutoHeight?: boolean;
+  isDraggable?: boolean;
 };
 
-export function HeaderCell<TData>({ header, pinPosition, className, rowAutoHeight }: HeaderCellProps<TData>) {
+export function HeaderCell<TData>({
+  header,
+  pinPosition,
+  className,
+  rowAutoHeight,
+  isDraggable,
+}: HeaderCellProps<TData>) {
   const cellRef = useRef<HTMLDivElement>(null);
   const isSortable = header.column.getCanSort();
   const isResizable = header.column.getCanResize();
@@ -32,7 +40,11 @@ export function HeaderCell<TData>({ header, pinPosition, className, rowAutoHeigh
 
   const columnDef: ColumnDefinition<TData> = header.column.columnDef;
 
-  const style = useCellSizes(header);
+  const style = useCellSizes(header, { isDraggable });
+
+  const { attributes, listeners, setNodeRef, isDragging } = useSortable({
+    id: header.column.id,
+  });
 
   const sortingHandler = (e: MouseEvent<HTMLDivElement>) => {
     if (isSomeColumnResizing) return;
@@ -40,11 +52,16 @@ export function HeaderCell<TData>({ header, pinPosition, className, rowAutoHeigh
     return header.column.getToggleSortingHandler()?.(e);
   };
 
+  const isAvailableForDrag = !DEFAULT_COLUMNS.includes(header.column.id);
+  const dragAttributes = isAvailableForDrag ? attributes : {};
+  const listenersAttributes = isAvailableForDrag ? listeners : {};
+
   return (
     <Cell
       style={style}
       onClick={sortingHandler}
       data-sortable={isSortable || undefined}
+      data-draggable={isDraggable || undefined}
       data-no-padding={columnDef.noHeaderCellPadding || undefined}
       data-no-offset={columnDef.noHeaderCellBorderOffset || undefined}
       data-test-id={TEST_IDS.headerCell}
@@ -55,28 +72,38 @@ export function HeaderCell<TData>({ header, pinPosition, className, rowAutoHeigh
       data-row-auto-height={rowAutoHeight || undefined}
       role='columnheader'
       className={cn(styles.tableHeaderCell, className, columnDef.headerClassName)}
-      ref={cellRef}
+      ref={element => {
+        setNodeRef(element);
+        return cellRef;
+      }}
     >
-      <div className={styles.tableHeaderCellMain}>
-        {columnDef.header && (
-          <div className={styles.tableHeaderCellName}>
-            {rowAutoHeight ? (
-              flexRender(columnDef.header, header.getContext())
-            ) : (
-              <TruncateString text={flexRender(columnDef.header, header.getContext()) as string} />
-            )}
-          </div>
-        )}
+      <div
+        className={styles.tableHeaderCellDragWrapper}
+        data-dragging={isDragging || undefined}
+        {...dragAttributes}
+        {...listenersAttributes}
+      >
+        <div className={styles.tableHeaderCellMain}>
+          {columnDef.header && (
+            <div className={styles.tableHeaderCellName}>
+              {rowAutoHeight ? (
+                flexRender(columnDef.header, header.getContext())
+              ) : (
+                <TruncateString text={flexRender(columnDef.header, header.getContext()) as string} />
+              )}
+            </div>
+          )}
 
-        {Boolean(sortIcon) && (
-          <div
-            className={styles.tableHeaderIcon}
-            data-sort-direction={sortDirection}
-            data-test-id={TEST_IDS.headerSortIndicator}
-          >
-            {sortIcon}
-          </div>
-        )}
+          {Boolean(sortIcon) && (
+            <div
+              className={styles.tableHeaderIcon}
+              data-sort-direction={sortDirection}
+              data-test-id={TEST_IDS.headerSortIndicator}
+            >
+              {sortIcon}
+            </div>
+          )}
+        </div>
       </div>
 
       {Boolean(isResizable) && <ResizeHandle header={header} cellRef={cellRef} />}

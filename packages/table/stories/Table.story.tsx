@@ -1,9 +1,9 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { ChipChoiceRowProps } from '@snack-uikit/chips';
 import { TrashSVG } from '@snack-uikit/icons';
 import { toaster } from '@snack-uikit/toaster';
+import { FilterRow } from '@snack-uikit/toolbar';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -36,11 +36,14 @@ type StoryProps = Omit<TableProps<StubData, Filters>, 'rowSelection' | 'sort' | 
   rowSelectionMode?: 'single' | 'multi';
   enableOnRowClick: boolean;
   statusSortEnabled: boolean;
+  enableColumnsOrderSortByDrag: boolean;
+  showColumnsSettings: boolean;
+  columnsSettingsHeader: string;
 };
 
 const PINNED_TOP_ROWS = ['0', '2'];
 
-const columnFilters: ChipChoiceRowProps<Filters> = {
+const columnFilters: FilterRow<Filters> = {
   defaultValue: {
     single: 'op1',
     multiple: ['op1'],
@@ -96,6 +99,9 @@ const Template: StoryFn<StoryProps> = ({
   showFilters,
   infiniteLoading,
   rowAutoHeight,
+  enableColumnsOrderSortByDrag,
+  showColumnsSettings,
+  columnsSettingsHeader,
   ...args
 }: StoryProps) => {
   const data = useMemo(
@@ -151,9 +157,19 @@ const Template: StoryFn<StoryProps> = ({
   }, [args.copyPinnedRows, modifyPaginationLabel]);
 
   const props = useMemo(() => {
+    const columnsSettings: TableProps<typeof data>['columnsSettings'] = {};
+
+    if (enableColumnsOrderSortByDrag) {
+      columnsSettings.enableDrag = true;
+    }
+    if (showColumnsSettings) {
+      columnsSettings.headerLabel = columnsSettingsHeader || '';
+    }
+
     if (infiniteLoading) {
       return {
         ...args,
+        columnsSettings,
         infiniteLoading,
         pagination: undefined,
         manualPagination: undefined,
@@ -165,12 +181,20 @@ const Template: StoryFn<StoryProps> = ({
 
     return {
       ...args,
+      columnsSettings,
       pagination: {
         options: [5, 10, 100],
         optionsRender: paginationOptionsRender,
       },
     };
-  }, [args, infiniteLoading, paginationOptionsRender]);
+  }, [
+    args,
+    columnsSettingsHeader,
+    enableColumnsOrderSortByDrag,
+    infiniteLoading,
+    paginationOptionsRender,
+    showColumnsSettings,
+  ]);
 
   return (
     <div className={styles.wrapper}>
@@ -251,6 +275,9 @@ export const table: StoryObj<StoryProps> = {
       resize: true,
       filterQueryKey: 'filterKey',
     },
+    enableColumnsOrderSortByDrag: true,
+    showColumnsSettings: true,
+    columnsSettingsHeader: 'Display settings',
   },
 
   argTypes: {
@@ -401,6 +428,18 @@ export const table: StoryObj<StoryProps> = {
       controls: {
         type: 'object',
       },
+    },
+    enableColumnsOrderSortByDrag: {
+      name: '[Stories]: Enable columns order sort by drag',
+      controls: { type: 'boolean' },
+    },
+    showColumnsSettings: {
+      name: '[Stories]: Show columns settings',
+      controls: { type: 'boolean' },
+    },
+    columnsSettingsHeader: {
+      name: '[Stories]: Columns settings header',
+      if: { arg: 'showColumnsSettings', eq: true },
     },
   },
 
