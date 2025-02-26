@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.30.0 (2025-02-26)
+
+
+### Features
+
+* **PDS-1487:** freeze columns size on resize ([f5f5694](https://github.com/cloud-ru-tech/snack-uikit/commit/f5f56948a5e0ba42f071a66e2de225465f67e980))
+
+
+
+
+
 # 0.29.0 (2025-02-25)
 
 
