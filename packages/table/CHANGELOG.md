@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.31.0 (2025-02-27)
+
+
+### Features
+
+* **FF-6236:** infinite scroll in table ([09afb22](https://github.com/cloud-ru-tech/snack-uikit/commit/09afb2234211802c86722e36e17b9161f912b9e8))
+
+
+
+
+
 # 0.30.0 (2025-02-26)
 
 
