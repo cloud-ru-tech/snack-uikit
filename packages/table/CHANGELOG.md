@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.32.0 (2025-03-03)
+
+
+### Features
+
+* **PDS-483:** table rowAutoHeight prop, removed default truncate when auto-height enabled ([0da9a86](https://github.com/cloud-ru-tech/snack-uikit/commit/0da9a861737fc35ba873a1795419d49c6cae51d1))
+
+
+
+
+
 ## 0.31.1 (2025-03-03)
 
 ### Only dependencies have been changed
