@@ -48,7 +48,7 @@ export function TruncateStringMiddle({ text, className, hideTooltip, placement, 
 
   const textElement = (
     <>
-      <span ref={textElementRef} className={styles.fullText}>
+      <span ref={textElementRef} className={styles.fullText} data-test-id='full-text'>
         {text}
       </span>
       <span ref={truncatedTextElementRef} className={styles.truncatedText} data-test-id='truncated-text'>
