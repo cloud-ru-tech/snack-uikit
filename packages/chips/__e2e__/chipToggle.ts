@@ -25,7 +25,7 @@ function getComponent() {
   return {
     chip,
     input: chip.find(dataTestIdSelector(CHIP_TOGGLE_TEST_IDS.input)),
-    label: chip.find(dataTestIdSelector(CHIP_TOGGLE_TEST_IDS.label)),
+    label: chip.find(dataTestIdSelector(CHIP_TOGGLE_TEST_IDS.label)).find(dataTestIdSelector('full-text')),
     icon: chip.find(dataTestIdSelector(CHIP_TOGGLE_TEST_IDS.icon)).find('svg'),
     spinner: chip.find(dataTestIdSelector(CHIP_TOGGLE_TEST_IDS.spinner)).find('svg'),
   };

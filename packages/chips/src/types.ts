@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 
+import { TruncateStringProps } from '@snack-uikit/truncate-string';
 import { ValueOf } from '@snack-uikit/utils';
 
 import { BUTTON_SIZE, SIZE, VARIANT } from './constants';
@@ -23,4 +24,6 @@ export type BaseChipProps = {
   className?: string;
   /** HTML tab index */
   tabIndex?: number;
+  /** Вариант обрезания лейбла */
+  truncateVariant?: TruncateStringProps['variant'];
 };

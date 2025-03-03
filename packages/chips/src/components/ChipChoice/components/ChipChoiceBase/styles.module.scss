@@ -1,10 +1,17 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-chips-chipChoice';
 @use '../../styles.module';
 
-.label,
+.label {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  white-space: nowrap;
+}
+
 .value {
   display: inline-flex;
   align-items: center;
+  min-width: 0;
 }
 
 .choiceChip {

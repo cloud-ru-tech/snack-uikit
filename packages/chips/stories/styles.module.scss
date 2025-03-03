@@ -8,12 +8,15 @@
 }
 
 .wrapper {
+  resize: horizontal;
+
+  overflow: auto;
   display: flex;
   gap: 8px;
   align-items: center;
   justify-content: center;
 
-  width: max-content;
+  width: 300px;
   height: 160px;
   padding: 0 24px;
 

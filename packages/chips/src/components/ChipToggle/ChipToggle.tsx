@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { ChangeEvent, ChangeEventHandler } from 'react';
 
 import { Sun, SunProps } from '@snack-uikit/loaders';
+import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CHIP_TOGGLE_TEST_IDS, SIZE, VARIANT } from '../../constants';
@@ -30,6 +31,7 @@ export function ChipToggle({
   onChange,
   className,
   tabIndex = 0,
+  truncateVariant = 'middle',
   ...rest
 }: ChipToggleProps) {
   const variant = icon && size !== SIZE.Xs ? VARIANT.IconBefore : VARIANT.LabelOnly;
@@ -77,7 +79,7 @@ export function ChipToggle({
         )}
 
         <span className={cn(styles.labelLayout, styles.label)} data-test-id={CHIP_TOGGLE_TEST_IDS.label}>
-          {label}
+          <TruncateString text={label} variant={truncateVariant} />
         </span>
       </span>
     </label>

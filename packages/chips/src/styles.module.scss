@@ -10,7 +10,8 @@
 
   box-sizing: border-box;
   width: max-content;
-  min-width: max-content;
+  min-width: styles-tokens-element.$dimension-6m;
+  max-width: 100%;
   margin: 0;
   padding: 0;
 
@@ -32,6 +33,7 @@
   .labelLayout {
     display: inline-flex;
     align-items: center;
+    min-width: 0;
   }
 
   @each $size in $sizes {

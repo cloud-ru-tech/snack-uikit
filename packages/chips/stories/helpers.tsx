@@ -34,7 +34,13 @@ export const filtersMock: ChipChoiceRowProps<Filters>['filters'] = [
     type: 'multiple',
     id: 'multiple2',
     label: 'Virtual machines',
-    options: generateVMs(20),
+    options: [
+      ...generateVMs(19),
+      {
+        value: 'vm-19',
+        label: 'Vm with long long long long long long long long long long long long long long long label',
+      },
+    ],
     pinned: true,
     'data-test-id': STORY_TEST_IDS.Multiple2,
   },

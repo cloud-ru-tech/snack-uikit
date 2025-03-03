@@ -97,6 +97,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
+| truncateVariant | "end" \| "middle" | middle | Вариант обрезания лейбла |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 ## ChipToggle
 Чип с состоянием выбран/не выбран
@@ -111,6 +112,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
+| truncateVariant | "end" \| "middle" | middle | Вариант обрезания лейбла |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | s | Размер |
 ## ChipChoice.Custom
 ### Props
@@ -122,6 +124,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
+| truncateVariant | "end" \| "middle" | - | Вариант обрезания лейбла Вариант обрезания значения |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
@@ -146,6 +149,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
+| truncateVariant | "end" \| "middle" | - | Вариант обрезания лейбла Вариант обрезания значения |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
@@ -188,6 +192,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
+| truncateVariant | "end" \| "middle" | - | Вариант обрезания лейбла Вариант обрезания значения |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
@@ -229,6 +234,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
+| truncateVariant | "end" \| "middle" | - | Вариант обрезания лейбла Вариант обрезания значения |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
@@ -255,6 +261,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
+| truncateVariant | "end" \| "middle" | - | Вариант обрезания лейбла Вариант обрезания значения |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |
@@ -279,6 +286,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | icon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка |
 | className | `string` | - | CSS-класс |
 | tabIndex | `number` | - | HTML tab index |
+| truncateVariant | "end" \| "middle" | - | Вариант обрезания лейбла Вариант обрезания значения |
 | size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | - | Размер |
 | onClick | `MouseEventHandler<HTMLButtonElement \| HTMLDivElement>` | - | Колбек обработки клика |
 | disableFuzzySearch | `boolean` | false | Отключает Fuzzy Search. Иногда в дроплисте могут быть различные айдишники - нам важно искать их без Fuzzy Search |

@@ -13,6 +13,7 @@ $typography: (
 .toggleChipContent {
   @include styles.chip-defaults;
 
+  justify-content: center;
   color: styles-tokens-chips-chipToggle.$sys-neutral-text-support;
   background-color: styles-tokens-chips-chipToggle.$sys-neutral-background1-level;
   border-color: styles-tokens-chips-chipToggle.$sys-neutral-decor-default;
@@ -44,6 +45,7 @@ $typography: (
 
   position: relative;
 
+  min-width: 0;
   margin: 0;
   padding: 0;
 

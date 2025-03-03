@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { MouseEventHandler } from 'react';
 
 import { Sun, SunProps } from '@snack-uikit/loaders';
+import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CHIP_ASSIST_TEST_IDS, SIZE, VARIANT } from '../../constants';
@@ -27,6 +28,7 @@ export function ChipAssist({
   onClick,
   className,
   tabIndex,
+  truncateVariant = 'middle',
   ...rest
 }: ChipAssistProps) {
   const variant = icon && size !== SIZE.Xs ? VARIANT.IconBefore : VARIANT.LabelOnly;
@@ -65,7 +67,7 @@ export function ChipAssist({
       )}
 
       <span className={cn(styles.labelLayout, styles.label)} data-test-id={CHIP_ASSIST_TEST_IDS.label}>
-        {label}
+        <TruncateString text={label} variant={truncateVariant} />
       </span>
     </button>
   );

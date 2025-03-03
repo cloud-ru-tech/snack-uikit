@@ -14,6 +14,7 @@ $typography: (
   @include styles.chip-defaults;
   @include styles.chip-anatomy-styles(styles-tokens-chips-chipAssist.$chip-assist, $sizes, $typography);
 
+  justify-content: center;
   color: styles-tokens-chips-chipAssist.$sys-neutral-text-support;
   background-color: styles-tokens-chips-chipAssist.$sys-neutral-background1-level;
   border-color: styles-tokens-chips-chipAssist.$sys-neutral-decor-default;

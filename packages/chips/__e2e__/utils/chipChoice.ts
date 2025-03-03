@@ -45,7 +45,7 @@ export function getComponent() {
   return {
     chip,
     label: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.label)),
-    value: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.value)),
+    value: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.value)).find(dataTestIdSelector('full-text')),
     iconWrap: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.icon)),
     icon: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.icon)).find('svg'),
     spinner: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.spinner)).find('svg'),
