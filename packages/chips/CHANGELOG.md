@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.25.4 (2025-03-03)
+
+
+### Bug Fixes
+
+* **FF-6304:** widthStrategy prop using ([c19dc59](https://github.com/cloud-ru-tech/snack-uikit/commit/c19dc592bd2c27a6e790e51e80ba69e6a3b9db6b))
+
+
+
+
+
 ## 0.25.3 (2025-02-25)
 
 ### Only dependencies have been changed
