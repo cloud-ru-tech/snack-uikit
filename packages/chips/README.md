@@ -164,6 +164,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
+| virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
@@ -172,7 +173,6 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
-| virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
 | value | `ItemId` | - | Controlled состояние |
 | defaultValue | `ItemId` | - | Начальное состояние |
@@ -206,6 +206,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | footer | `ReactNode ;` | - | Кастомизируемый элемент в конце списка |
 | footerActiveElementsRefs | `RefObject<HTMLElement>[]` | - | Список ссылок на кастомные элементы, помещенные в специальную секцию внизу списка |
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
+| virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
@@ -214,7 +215,6 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
-| virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
 | value | `ItemId[]` | - | Controlled состояние |
 | defaultValue | `ItemId[]` | - | Начальное состояние |

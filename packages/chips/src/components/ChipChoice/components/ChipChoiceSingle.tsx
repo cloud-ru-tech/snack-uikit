@@ -40,6 +40,7 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
   onClearButtonClick,
   open: openProp,
   onOpenChange,
+  widthStrategy = 'gte',
   ...rest
 }: ChipChoiceSingleProps<T>) {
   const [value, setValue] = useValueControl<SelectionSingleValueType>({
@@ -152,7 +153,7 @@ export function ChipChoiceSingle<T extends ContentRenderProps = ContentRenderPro
       placement='bottom-start'
       className={dropDownClassName}
       closeDroplistOnItemClick={autoApply}
-      widthStrategy='gte'
+      widthStrategy={widthStrategy}
       open={open}
       onOpenChange={open => {
         if (!open) {

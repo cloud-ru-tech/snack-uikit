@@ -51,6 +51,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
   onCancel,
   open: openProp,
   onOpenChange,
+  widthStrategy = 'gte',
   ...rest
 }: ChipChoiceMultipleProps<T>) {
   const [value, setValue] = useValueControl<SelectionSingleValueType[]>({
@@ -164,7 +165,7 @@ export function ChipChoiceMultiple<T extends ContentRenderProps = ContentRenderP
       }}
       trigger='clickAndFocusVisible'
       placement='bottom-start'
-      widthStrategy='gte'
+      widthStrategy={widthStrategy}
       listRef={listRef}
       size={DROPLIST_SIZE_MAP[size]}
       data-test-id={CHIP_CHOICE_TEST_IDS.droplist}
