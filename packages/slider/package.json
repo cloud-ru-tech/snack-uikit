@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Slider",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,8 +36,8 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/tooltip": "0.16.2",
-    "@snack-uikit/utils": "3.7.0",
+    "@snack-uikit/tooltip": "0.16.3",
+    "@snack-uikit/utils": "3.8.0",
     "classnames": "2.5.1",
     "rc-slider": "10.5.0"
   }

@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.5.0",
+  "version": "0.5.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,8 +37,8 @@
   "scripts": {},
   "dependencies": {
     "@monaco-editor/react": "4.6.0",
-    "@snack-uikit/loaders": "0.9.1",
-    "@snack-uikit/utils": "3.7.0",
+    "@snack-uikit/loaders": "0.9.2",
+    "@snack-uikit/utils": "3.8.0",
     "chroma-js": "3.1.2",
     "classnames": "2.5.1",
     "monaco-yaml": "5.2.3"
