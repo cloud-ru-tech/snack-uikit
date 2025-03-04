@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.25.0 (2025-03-04)
+
+
+### Features
+
+* **PDS-1765:** add drag and functionSettings icons ([82d647c](https://github.com/cloud-ru-tech/snack-uikit/commit/82d647c3c8b68f1b1d25beaed9b3342dafe5a80c))
+
+
+
+
+
 ## 0.24.3 (2025-03-04)
 
 ### Only dependencies have been changed
