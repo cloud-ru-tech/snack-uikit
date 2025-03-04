@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.19 (2025-03-04)
+
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.25.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/input-private@4.5.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/input-private/CHANGELOG.md)
+* [@snack-uikit/segmented-control@0.4.13](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/segmented-control/CHANGELOG.md)
+
+
+
+
+
 ## 0.3.18 (2025-03-04)
 
 ### Only dependencies have been changed

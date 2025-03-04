@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Modal",
-  "version": "0.14.17",
+  "version": "0.14.18",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -38,11 +38,11 @@
   "dependencies": {
     "@snack-uikit/button": "0.19.8",
     "@snack-uikit/icon-predefined": "0.7.4",
-    "@snack-uikit/icons": "0.25.0",
-    "@snack-uikit/link": "0.15.11",
+    "@snack-uikit/icons": "0.25.1",
+    "@snack-uikit/link": "0.15.12",
     "@snack-uikit/scroll": "0.9.4",
-    "@snack-uikit/tooltip": "0.16.4",
-    "@snack-uikit/truncate-string": "0.6.11",
+    "@snack-uikit/tooltip": "0.16.5",
+    "@snack-uikit/truncate-string": "0.6.12",
     "@snack-uikit/typography": "0.8.5",
     "@snack-uikit/utils": "3.8.0",
     "classnames": "2.5.1",

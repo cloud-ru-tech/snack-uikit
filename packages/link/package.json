@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Link",
-  "version": "0.15.11",
+  "version": "0.15.12",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,7 +36,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/truncate-string": "0.6.11",
+    "@snack-uikit/truncate-string": "0.6.12",
     "@snack-uikit/utils": "3.8.0",
     "classnames": "2.5.1"
   }

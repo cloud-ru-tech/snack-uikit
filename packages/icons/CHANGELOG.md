@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.25.1 (2025-03-04)
+
+
+### Bug Fixes
+
+* **PDS-1765:** rename Drag icon to DragDrop ([833d950](https://github.com/cloud-ru-tech/snack-uikit/commit/833d950cf1b0fc203f3e0a5cf4186abf67b5c557))
+
+
+
+
+
 # 0.25.0 (2025-03-04)
 
 
