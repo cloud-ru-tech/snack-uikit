@@ -21,6 +21,7 @@ export type SeparatorProps = {
     indeterminate?: boolean;
     checked?: boolean;
     itemRef?: ForwardedRef<HTMLElement>;
+    label?: string;
   };
 };
 
@@ -34,7 +35,7 @@ export function Separator({ label, truncate, divider, mode = 'secondary', select
       return null;
     }
 
-    const { onClick, checked, itemRef } = selectButton;
+    const { onClick, checked, itemRef, label } = selectButton;
 
     return (
       <span className={styles.selectButton} data-size={size} data-weight={(divider && mode) || undefined}>
@@ -50,7 +51,7 @@ export function Separator({ label, truncate, divider, mode = 'secondary', select
             e.stopPropagation();
           }}
           ref={itemRef as RefObject<HTMLButtonElement>}
-          label={checked ? t('groupSelectButton.reset') : t('groupSelectButton.select')}
+          label={label ?? (checked ? t('groupSelectButton.reset') : t('groupSelectButton.select'))}
         />
       </span>
     );
