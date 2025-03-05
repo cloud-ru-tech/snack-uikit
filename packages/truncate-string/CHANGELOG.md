@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.13 (2025-03-05)
+
+
+### Bug Fixes
+
+* **PDS-1685:** add test-id for full text ([6227824](https://github.com/cloud-ru-tech/snack-uikit/commit/6227824731c74710ba413824b714d3ddc55e2524))
+
+
+
+
+
 ## 0.6.12 (2025-03-04)
 
 ### Only dependencies have been changed

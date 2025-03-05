@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.26.0 (2025-03-05)
+
+
+### Bug Fixes
+
+* **PDS-1672:** hide pinned filters divider if no elements is on the right ([8c19dda](https://github.com/cloud-ru-tech/snack-uikit/commit/8c19dda66eb679e2322f64434a6497bd6117ab3c))
+
+
+### Features
+
+* **PDS-1685:** add truncate to chips ([178b951](https://github.com/cloud-ru-tech/snack-uikit/commit/178b95175c4f0d73b41c343faadaf7dbc28da7b1))
+
+
+
+
+
 ## 0.25.7 (2025-03-04)
 
 ### Only dependencies have been changed

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "List",
-  "version": "0.26.3",
+  "version": "0.26.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -45,7 +45,7 @@
     "@snack-uikit/scroll": "0.9.4",
     "@snack-uikit/search-private": "0.4.12",
     "@snack-uikit/toggles": "0.13.8",
-    "@snack-uikit/truncate-string": "0.6.12",
+    "@snack-uikit/truncate-string": "0.6.13",
     "@snack-uikit/utils": "3.8.0",
     "@tanstack/react-virtual": "3.11.2",
     "classnames": "2.5.1",
