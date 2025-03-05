@@ -5,5 +5,5 @@ export { kindFlattenItems } from './components/Items';
 
 export * from './helperComponents/ItemContent';
 
-export * from './utils';
+export * from './helpers';
 export * from './constants';

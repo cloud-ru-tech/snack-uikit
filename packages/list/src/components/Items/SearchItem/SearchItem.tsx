@@ -1,10 +1,11 @@
 import cn from 'classnames';
-import { FocusEvent, KeyboardEvent, RefObject } from 'react';
+import { KeyboardEvent, RefObject } from 'react';
 
 import { SearchPrivate } from '@snack-uikit/search-private';
 
 import { ITEM_PREFIXES } from '../../../constants';
 import { SearchState } from '../../../types';
+import { stopPropagation } from '../../../utils';
 import { useNewListContext } from '../../Lists/contexts';
 import commonStyles from '../styles.module.scss';
 import styles from './styles.module.scss';
@@ -23,10 +24,6 @@ export function SearchItem({ search, itemRef }: SearchItemProps) {
     }
   };
 
-  const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
-    e.stopPropagation();
-  };
-
   if (!search) {
     return null;
   }
@@ -37,7 +34,7 @@ export function SearchItem({ search, itemRef }: SearchItemProps) {
         size={size}
         tabIndex={ITEM_PREFIXES.search === firstItemId ? 0 : -1}
         onKeyDown={handleKeyDown}
-        onFocus={handleFocus}
+        onFocus={stopPropagation}
         {...search}
         ref={itemRef as RefObject<HTMLInputElement>}
       />

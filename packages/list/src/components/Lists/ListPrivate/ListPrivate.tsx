@@ -7,6 +7,7 @@ import { Scroll } from '@snack-uikit/scroll';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { ListEmptyState, useEmptyState } from '../../../helperComponents';
+import { stopPropagation } from '../../../utils';
 import { PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from '../../Items';
 import { useNewListContext, useSelectionContext } from '../contexts';
 import commonStyles from '../styles.module.scss';
@@ -209,7 +210,7 @@ export const ListPrivate = forwardRef(
         {Number(pinBottom?.length) > 0 && <PinBottomGroupItem>{itemsPinBottomJSX}</PinBottomGroupItem>}
 
         {footer && (
-          <div className={styles.footer} onFocus={e => e.stopPropagation()}>
+          <div className={styles.footer} onFocus={stopPropagation}>
             {footer}
           </div>
         )}

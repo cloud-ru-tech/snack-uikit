@@ -1,5 +1,6 @@
-import { FocusEvent, forwardRef, KeyboardEvent, RefObject, useCallback } from 'react';
+import { FocusEvent, forwardRef, RefObject, useCallback } from 'react';
 
+import { stopPropagation } from '../../utils';
 import styles from './styles.module.scss';
 
 type HiddenTabButtonProps = {
@@ -20,16 +21,12 @@ export const HiddenTabButton = forwardRef<HTMLButtonElement, HiddenTabButtonProp
     [listRef],
   );
 
-  const handleKeyDown = useCallback((e: KeyboardEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-  }, []);
-
   return (
     <button
       type='button'
       aria-hidden
       ref={ref}
-      onKeyDown={handleKeyDown}
+      onKeyDown={stopPropagation}
       onFocus={handleFocus}
       className={styles.hiddenBtn}
       tabIndex={tabIndex}

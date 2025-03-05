@@ -2,7 +2,7 @@ import { createRef } from 'react';
 
 import { ITEM_PREFIXES } from '../../constants';
 import { ItemContentProps } from '../../helperComponents';
-import { getItemAutoId } from '../../utils';
+import { getItemAutoId } from '../../helpers';
 import {
   AccordionItem,
   AnyType,

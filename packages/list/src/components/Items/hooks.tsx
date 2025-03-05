@@ -2,7 +2,7 @@ import { createRef, RefObject, useMemo } from 'react';
 
 import { ITEM_PREFIXES } from '../../constants';
 import { Separator } from '../../helperComponents';
-import { getFooterItemId } from '../../utils';
+import { getFooterItemId } from '../../helpers';
 import { useNewListContext, useSelectionContext } from '../Lists/contexts';
 import { AccordionItem } from './AccordionItem';
 import { BaseItem } from './BaseItem';

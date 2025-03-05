@@ -6,6 +6,7 @@ import { useLocale } from '@snack-uikit/locale';
 import { TruncateString, TruncateStringProps } from '@snack-uikit/truncate-string';
 
 import { useNewListContext } from '../../components/Lists/contexts';
+import { stopPropagation } from '../../utils';
 import { SELECT_BUTTON_SIZE_MAP } from './constants';
 import styles from './styles.module.scss';
 
@@ -47,9 +48,7 @@ export function Separator({ label, truncate, divider, mode = 'secondary', select
             e.preventDefault();
             e.stopPropagation();
           }}
-          onFocus={e => {
-            e.stopPropagation();
-          }}
+          onFocus={stopPropagation}
           ref={itemRef as RefObject<HTMLButtonElement>}
           label={label ?? (checked ? t('groupSelectButton.reset') : t('groupSelectButton.select'))}
         />
