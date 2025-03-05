@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.27.0 (2025-03-05)
+
+
+### Features
+
+* **PDS-1767:** custom label for clear all button in List ([ca00030](https://github.com/cloud-ru-tech/snack-uikit/commit/ca000303e274e371e540e8b23598c4dea6ac49e0))
+
+
+
+
+
 ## 0.26.4 (2025-03-05)
 
 ### Only dependencies have been changed
