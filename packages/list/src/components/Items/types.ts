@@ -58,6 +58,10 @@ export type BaseItem = WithSupportProps<{
    * Флаг отображения состояния выбранного элемента через switch
    */
   switch?: boolean;
+  /**
+   * Флаг отображения иконки у чекбоксов
+   */
+  showSwitchIcon?: boolean;
 
   itemWrapRender?(item: ReactNode): ReactNode;
 
@@ -106,6 +110,7 @@ export type GroupItem = CommonGroupItem & {
 export type GroupSelectItem = CommonGroupItem & {
   items: Item[];
   type: 'group-select';
+  selectButtonLabel?: string;
 
   id?: ItemId;
   itemRef?: RefObject<HTMLElement>;

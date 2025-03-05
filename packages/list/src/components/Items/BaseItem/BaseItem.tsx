@@ -38,6 +38,7 @@ export function BaseItem({
   open,
   itemRef,
   switch: switchProp,
+  showSwitchIcon,
   onKeyDown,
   onFocus,
   indeterminate,
@@ -188,7 +189,12 @@ export function BaseItem({
         {afterContent}
 
         {switchProp && interactive && (
-          <Switch disabled={disabled} checked={isChecked} data-test-id='list__base-item-switch' />
+          <Switch
+            disabled={disabled}
+            checked={isChecked}
+            data-test-id='list__base-item-switch'
+            showIcon={showSwitchIcon}
+          />
         )}
 
         {!switchProp && expandIcon && <span className={styles.expandableIcon}>{expandIcon}</span>}

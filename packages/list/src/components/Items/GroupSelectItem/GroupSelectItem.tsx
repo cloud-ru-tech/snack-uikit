@@ -13,6 +13,7 @@ export function GroupSelectItem({
   id,
   itemRef,
   allChildIds,
+  selectButtonLabel,
 }: GroupSelectItemProps) {
   const { indeterminate, checked, handleOnSelect } = useGroupItemSelection({
     items,
@@ -35,6 +36,7 @@ export function GroupSelectItem({
           checked,
           itemRef,
           onClick: handleOnSelect,
+          label: selectButtonLabel,
         }}
       />
 

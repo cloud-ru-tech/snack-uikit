@@ -39,6 +39,7 @@ type StoryProps = ListProps & {
   showPinBottomItems?: boolean;
   showFooter?: boolean;
   showSwitch?: boolean;
+  showSwitchIcon?: boolean;
   truncateVariant?: TruncateStringProps['variant'];
   showGroups?: boolean;
   showEmptyList?: boolean;
@@ -57,6 +58,7 @@ const Template: StoryFn<StoryProps> = ({
   showEmptyList,
   showFooter,
   showSwitch,
+  showSwitchIcon,
   showGroups,
   showCollapsedList,
   showAsyncList,
@@ -93,12 +95,13 @@ const Template: StoryFn<StoryProps> = ({
         items: group.items.map(item => ({
           ...item,
           switch: showSwitch,
+          showSwitchIcon: showSwitchIcon,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           content: { ...item.content, truncate: { ...item.content.truncate, variant: truncateVariant } },
         })),
       })),
-    [args.virtualized, showSwitch, truncateVariant],
+    [args.virtualized, showSwitch, showSwitchIcon, truncateVariant],
   );
 
   const baseItemsWithSwitch = useMemo(
@@ -106,11 +109,12 @@ const Template: StoryFn<StoryProps> = ({
       (showEmptyList ? [] : BASE_OPTIONS).map(item => ({
         ...item,
         switch: showSwitch,
+        showSwitchIcon: showSwitchIcon,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         content: { ...item.content, truncate: { ...item.content.truncate, variant: truncateVariant } },
       })),
-    [showEmptyList, showSwitch, truncateVariant],
+    [showEmptyList, showSwitch, showSwitchIcon, truncateVariant],
   );
 
   const [items, setItems] = useState(LONG_LIST_OPTIONS);
@@ -298,6 +302,7 @@ export const list = {
     showEmptyList: false,
     showFooter: true,
     showSwitch: false,
+    showSwitchIcon: false,
     showGroups: true,
     showEmptyState: EmptyState.None,
     showEmptyStateActionButton: false,
@@ -321,6 +326,10 @@ export const list = {
     showEmptyList: { name: '[Stories]: Show empty list', control: { type: 'boolean' } },
     showFooter: { name: '[Stories]: Show footer', control: { type: 'boolean' } },
     showSwitch: { name: '[Stories]: Show switch in items', control: { type: 'boolean' } },
+    showSwitchIcon: {
+      name: '[Stories]: Show icon in switches',
+      control: { type: 'boolean', if: { arg: 'showSwitch', eq: true } },
+    },
     showGroups: { name: '[Stories]: Show group items', control: { type: 'boolean' } },
     showCollapsedList: { name: '[Stories]: Show collapsed list', control: { type: 'boolean' } },
     showAsyncList: { name: '[Stories]: Show async list', control: { type: 'boolean' } },
