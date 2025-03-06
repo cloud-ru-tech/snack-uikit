@@ -3,6 +3,7 @@ import { useLocale } from '@snack-uikit/locale';
 import { isBrowser } from '@snack-uikit/utils';
 
 import { ColumnDefinition, FilterableColumnDefinition } from '../../types';
+import { TableProps } from '../types';
 
 export function getCurrentlyConfiguredHeaderWidth(id: string): number {
   if (isBrowser()) {
@@ -114,14 +115,12 @@ type PrepareColumnsSettingsProps<TData extends object> = {
   columnDefinitions: ColumnDefinition<TData>[];
   columnOrder: string[];
   areAllColumnsEnabled: boolean;
-  columnsSettingsHeader?: string;
   t: ReturnType<typeof useLocale<'Table'>>['t'];
 };
 
 export function prepareColumnsSettings<TData extends object>({
   columnDefinitions,
   columnOrder,
-  columnsSettingsHeader,
   areAllColumnsEnabled,
   t,
 }: PrepareColumnsSettingsProps<TData>): [GroupSelectItemProps] {
@@ -175,9 +174,19 @@ export function prepareColumnsSettings<TData extends object>({
         },
       ],
       selectButtonLabel: areAllColumnsEnabled ? t('groupSelectButton.hide') : t('groupSelectButton.show'),
-      label: columnsSettingsHeader || 'Display settings',
+      label: t('settingsHeaderLabel'),
       mode: 'primary',
       type: 'group-select',
     },
   ];
+}
+
+export function getInitialColumnsOpenValue<TData extends object>(columnFilters: TableProps<TData>['columnFilters']) {
+  if (!columnFilters) {
+    return false;
+  }
+
+  return 'initialOpen' in columnFilters && typeof columnFilters.initialOpen === 'boolean'
+    ? columnFilters.initialOpen
+    : true;
 }

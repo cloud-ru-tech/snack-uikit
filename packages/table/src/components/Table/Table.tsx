@@ -60,6 +60,7 @@ import {
   getColumnStyleVars,
   getCurrentlyConfiguredHeaderWidth,
   getInitColumnSizeFromLocalStorage,
+  getInitialColumnsOpenValue,
   isFilterableColumn,
   prepareColumnsSettings,
   prepareColumnsSettingsMap,
@@ -157,7 +158,9 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     DEFAULT_FILTER_VISIBILITY,
   );
 
-  const [areColumnFiltersOpen, setAreColumnFiltersOpen] = useState<boolean>(true);
+  const [areColumnFiltersOpen, setAreColumnFiltersOpen] = useState<boolean>(() =>
+    getInitialColumnsOpenValue(columnFilters),
+  );
 
   useEffect(() => {
     setDataToStorages({ pagination, sorting, filter, search: globalFilter || '' });
@@ -181,9 +184,9 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     }
 
     return {
-      ...columnFilters,
       open: areColumnFiltersOpen,
       onOpenChange: setAreColumnFiltersOpen,
+      ...columnFilters,
       value: filter,
       onChange: setFilter,
       visibleFilters: filterVisibility,
@@ -233,10 +236,9 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
         columnDefinitions,
         columnOrder,
         areAllColumnsEnabled,
-        columnsSettingsHeader: columnsSettingsProp?.headerLabel,
         t,
       }),
-    [areAllColumnsEnabled, columnDefinitions, columnOrder, columnsSettingsProp?.headerLabel, t],
+    [areAllColumnsEnabled, columnDefinitions, columnOrder, t],
   );
 
   const columnPinning = useMemo(() => {
@@ -469,7 +471,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const { updateCellMap } = useCellAutoResizeController(table);
 
   const showToolbar = !suppressToolbar;
-  const showColumnsSettings = Boolean(columnsSettingsProp?.headerLabel);
+  const showColumnsSettings = Boolean(columnsSettingsProp?.enableSettingsMenu);
   const enableColumnsOrderSortByDrag = Boolean(columnsSettingsProp?.enableDrag);
 
   return (

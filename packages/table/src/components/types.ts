@@ -44,12 +44,11 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
 
   /** Параметры отвечают за настройки колонок <br>
    *  <strong>enableDrag</strong>: Включение сортировки порядка столбцов вручную перетаскиванием <br>
-   *  <strong>headerLabel</strong>: Название меню настроек колонок. Наличие включает показ настроек <br>
-   *  <strong>selectAllButtonLabels</strong>: Значения кнопки включения/отключения всех айтемов ([вкл, выкл]) <br>
+   *  <strong>enableSettingsMenu</strong>: Включение настроек показа колонок <br>
    *  */
   columnsSettings?: {
     enableDrag?: boolean;
-    headerLabel?: string;
+    enableSettingsMenu?: boolean;
   };
 
   /** Параметр отвечает за общие настройки раскрывающихся строк*/
@@ -111,7 +110,9 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
   outline?: boolean;
 
   /** Фильтры */
-  columnFilters?: FilterRow<TFilters>;
+  columnFilters?: FilterRow<TFilters> & {
+    initialOpen?: boolean;
+  };
 
   /** Флаг, показывающий что данные были отфильтрованы при пустых данных */
   dataFiltered?: boolean;

@@ -3,7 +3,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { TrashSVG } from '@snack-uikit/icons';
 import { toaster } from '@snack-uikit/toaster';
-import { FilterRow } from '@snack-uikit/toolbar';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -38,12 +37,12 @@ type StoryProps = Omit<TableProps<StubData, Filters>, 'rowSelection' | 'sort' | 
   statusSortEnabled: boolean;
   enableColumnsOrderSortByDrag: boolean;
   showColumnsSettings: boolean;
-  columnsSettingsHeader: string;
+  initialColumnFiltersOpen: boolean;
 };
 
 const PINNED_TOP_ROWS = ['0', '2'];
 
-const columnFilters: FilterRow<Filters> = {
+const columnFilters: TableProps<StubData, Filters>['columnFilters'] = {
   defaultValue: {
     single: 'op1',
     multiple: ['op1'],
@@ -101,7 +100,8 @@ const Template: StoryFn<StoryProps> = ({
   rowAutoHeight,
   enableColumnsOrderSortByDrag,
   showColumnsSettings,
-  columnsSettingsHeader,
+  columnFilters: columnFiltersProp,
+  initialColumnFiltersOpen,
   ...args
 }: StoryProps) => {
   const data = useMemo(
@@ -163,7 +163,7 @@ const Template: StoryFn<StoryProps> = ({
       columnsSettings.enableDrag = true;
     }
     if (showColumnsSettings) {
-      columnsSettings.headerLabel = columnsSettingsHeader || '';
+      columnsSettings.enableSettingsMenu = true;
     }
 
     if (infiniteLoading) {
@@ -187,14 +187,18 @@ const Template: StoryFn<StoryProps> = ({
         optionsRender: paginationOptionsRender,
       },
     };
-  }, [
-    args,
-    columnsSettingsHeader,
-    enableColumnsOrderSortByDrag,
-    infiniteLoading,
-    paginationOptionsRender,
-    showColumnsSettings,
-  ]);
+  }, [args, enableColumnsOrderSortByDrag, infiniteLoading, paginationOptionsRender, showColumnsSettings]);
+
+  const columnFilters = useMemo(() => {
+    if (!showFilters || !columnFiltersProp) {
+      return undefined;
+    }
+
+    return {
+      ...columnFiltersProp,
+      initialOpen: initialColumnFiltersOpen,
+    };
+  }, [columnFiltersProp, initialColumnFiltersOpen, showFilters]);
 
   return (
     <div className={styles.wrapper}>
@@ -234,7 +238,7 @@ const Template: StoryFn<StoryProps> = ({
         onRowClick={enableOnRowClick ? handleRowClick : undefined}
         rowPinning={pinSomeRows ? { top: PINNED_TOP_ROWS } : undefined}
         exportSettings={showExport ? { fileName: 'test-export', exportToCSV, exportToXLSX } : undefined}
-        columnFilters={showFilters ? args.columnFilters : undefined}
+        columnFilters={columnFilters}
         scrollRef={scrollRef}
       />
     </div>
@@ -249,6 +253,7 @@ export const table: StoryObj<StoryProps> = {
     suppressSearch: false,
     showFilters: true,
     columnFilters,
+    initialColumnFiltersOpen: true,
     rowsAmount: 35,
     expandRowsCount: 3,
     expandRowsLevel: 3,
@@ -277,12 +282,11 @@ export const table: StoryObj<StoryProps> = {
     },
     enableColumnsOrderSortByDrag: true,
     showColumnsSettings: true,
-    columnsSettingsHeader: 'Display settings',
   },
 
   argTypes: {
     expandRowsCount: {
-      name: '[Stories]: Amount of  subRows ',
+      name: '[Stories]: Amount of subRows ',
       control: {
         type: 'range',
         min: 0,
@@ -390,6 +394,14 @@ export const table: StoryObj<StoryProps> = {
         eq: true,
       },
     },
+    initialColumnFiltersOpen: {
+      name: '[Stories]: Initial show column filters state value',
+      controls: { type: 'boolean' },
+      if: {
+        arg: 'showFilters',
+        eq: true,
+      },
+    },
     pagination: {
       control: {
         disable: true,
@@ -436,10 +448,6 @@ export const table: StoryObj<StoryProps> = {
     showColumnsSettings: {
       name: '[Stories]: Show columns settings',
       controls: { type: 'boolean' },
-    },
-    columnsSettingsHeader: {
-      name: '[Stories]: Columns settings header',
-      if: { arg: 'showColumnsSettings', eq: true },
     },
   },
 
