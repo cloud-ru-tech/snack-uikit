@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.27.1 (2025-03-06)
+
+
+### Bug Fixes
+
+* **PDS-1483:** ability to provide label for toggle button for list ([bc76b1f](https://github.com/cloud-ru-tech/snack-uikit/commit/bc76b1f07a342c73809bc69816cd11423b1c6454))
+
+
+
+
+
 # 0.27.0 (2025-03-05)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.34.0 (2025-03-06)
+
+
+### Features
+
+* **PDS-1483:** table columns reorder by drag and columns settings ([80d43af](https://github.com/cloud-ru-tech/snack-uikit/commit/80d43af40c6acca38e2d788fcfa4fbd944818059))
+
+
+
+
+
 ## 0.33.4 (2025-03-05)
 
 ### Only dependencies have been changed
