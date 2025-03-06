@@ -14,6 +14,10 @@ export const en_GB = {
     },
     rowsOptionsLabel: 'Rows volume',
     export: 'Export to ',
+    groupSelectButton: {
+      hide: 'Hide all',
+      show: 'Show all',
+    },
   },
   List: {
     noData: {

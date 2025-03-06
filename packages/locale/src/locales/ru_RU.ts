@@ -16,6 +16,10 @@ export const ru_RU: typeof en_GB = {
     },
     rowsOptionsLabel: 'Кол-во строк',
     export: 'Экспортировать в ',
+    groupSelectButton: {
+      hide: 'Скрыть все',
+      show: 'Показать все',
+    },
   },
   Chips: {
     allLabel: 'Все',
