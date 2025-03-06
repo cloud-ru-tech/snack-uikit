@@ -18,6 +18,7 @@ export const en_GB = {
       hide: 'Hide all',
       show: 'Show all',
     },
+    settingsHeaderLabel: 'Display settings',
   },
   List: {
     noData: {

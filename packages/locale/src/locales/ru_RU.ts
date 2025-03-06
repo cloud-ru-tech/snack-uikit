@@ -20,6 +20,7 @@ export const ru_RU: typeof en_GB = {
       hide: 'Скрыть все',
       show: 'Показать все',
     },
+    settingsHeaderLabel: 'Настройки отображения',
   },
   Chips: {
     allLabel: 'Все',
