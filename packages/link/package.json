@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Link",
-  "version": "0.15.13",
+  "version": "0.16.0",
   "sideEffects": [
     "*.css",
     "*.woff",
