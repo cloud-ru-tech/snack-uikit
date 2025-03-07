@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.34.1 (2025-03-07)
+
+
+### Bug Fixes
+
+* **PDS-1483:** translation and initial column filters open state improvements for table ([d4ef555](https://github.com/cloud-ru-tech/snack-uikit/commit/d4ef5552a9a7883b01cdabcb96a22f1ee08d8d29))
+
+
+
+
+
 # 0.34.0 (2025-03-06)
 
 

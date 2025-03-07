@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.2 (2025-03-07)
+
+
+### Bug Fixes
+
+* **PDS-1483:** locale translation improvements for table ([78798db](https://github.com/cloud-ru-tech/snack-uikit/commit/78798dba545d9b6bf327b8f693fb0ca6348a8abc))
+
+
+
+
+
 ## 0.12.1 (2025-03-06)
 
 
