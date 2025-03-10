@@ -41,15 +41,39 @@
 [//]: DOCUMENTATION_SECTION_END
 
 ### Поддержка YAML
-Для обеспечения полноценной работы YAML Monaco Editor необходимо подключить `yaml.worker`. Это можно сделать следующими способами: с использованием [`window.MonacoEnvironment`](https://www.npmjs.com/package/monaco-yaml#usage) или с помощью плагина [`MonacoWebpackPlugin`](https://www.npmjs.com/package/monaco-yaml#using-monaco-webpack-loader-plugin) . Подробнее с `monaco-yaml` можно ознакомиться [тут]((https://www.npmjs.com/package/monaco-yaml))
+
+Для обеспечения полноценной работы YAML Monaco Editor необходимо подключить `yaml.worker`. Это можно сделать следующими способами: с использованием [`window.MonacoEnvironment`](https://www.npmjs.com/package/monaco-yaml#usage) или с помощью плагина [`MonacoWebpackPlugin`](https://www.npmjs.com/package/monaco-yaml#using-monaco-webpack-loader-plugin) . Подробнее с `monaco-yaml` можно ознакомиться [тут](<(https://www.npmjs.com/package/monaco-yaml)>)
 
 ### Как редактор загружает worker?
+
 Плагин создает новые точки входа каждого build-in воркера и для каждого дабавленного отдельно. Плагин создат глобальную переменную, используя которую редкатор будет загружать нужный воркер на основе текущего `language`.
 
 Чтобы управлять конфигурацией загрузчика Monaco Editor, добавьте
+
 ```typescript
 import * as monaco from 'monaco-editor';
 import { loader } from '@snack-uikit/code-editor';
 loader.config({ monaco });
 ```
+
 Это позволяет динамически настраивать пути и другие параметры при инициализации редактора.
+
+Для загрузки `monaco-editor` асинхронно можно воспользоваться следующим способом:
+
+```typescript
+// import * as monaco from 'monaco-editor'; // ~3Mb
+import { lazy, Suspense } from 'react';
+import { loader, CodeEditor } from '@snack-uikit/code-editor';
+
+const Editor = lazy(async () => {
+  const monaco = await import('monaco-editor').then(module => module.default);
+  loader.config({ monaco });
+  return { default: CodeEditor };
+});
+
+const MyComponent = () => {
+  return <Suspense fallback={<Loader height={height} />}>
+   <Editor />
+  </Suspense>
+}
+```

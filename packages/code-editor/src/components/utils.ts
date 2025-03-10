@@ -1,4 +1,3 @@
-import { loader } from '@monaco-editor/react';
 import chroma from 'chroma-js';
 import { SchemasSettings } from 'monaco-yaml';
 
@@ -53,16 +52,6 @@ export function isDark(color: string) {
   const [h, _, l] = rgb2hsl(color);
 
   return (h < 0.55 && l >= 0.5) || (h >= 0.55 && l >= 0.75);
-}
-
-export function initLoaderConfig() {
-  if (!window) {
-    return;
-  }
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  window['__snack-code-editor-loader-config__'] && loader.config(window['__snack-code-editor-loader-config__']);
 }
 
 export const getJsonSchema = (jsonSchema?: JsonSchema): SchemasSettings | undefined =>

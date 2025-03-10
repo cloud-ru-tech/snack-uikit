@@ -9,9 +9,7 @@ import { CODE_EDITOR_OPTIONS, DEFAULT_THEME_OPTIONS, DEFAULT_THEME_VALUES } from
 import { useApplyJsonSchema, useCalculatedThemeValues } from './hooks';
 import styles from './styles.module.scss';
 import { EditorBaseProps, EditorWithJsonSchemaProps } from './types';
-import { initLoaderConfig, isDark } from './utils';
-
-initLoaderConfig();
+import { isDark } from './utils';
 
 export type CodeEditorProps = WithSupportProps<{
   /**
