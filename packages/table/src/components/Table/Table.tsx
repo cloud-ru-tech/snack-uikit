@@ -1,4 +1,4 @@
-import { closestCenter, DndContext } from '@dnd-kit/core';
+import { closestCenter, DndContext, DndContextProps } from '@dnd-kit/core';
 import { restrictToHorizontalAxis } from '@dnd-kit/modifiers';
 import {
   CellContext,
@@ -199,18 +199,21 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const manualPagination = infiniteLoading || manualPaginationProp;
 
   const [enabledColumns, setEnabledColumns] = useState<string[]>(() => prepareColumnsSettingsMap(columnDefinitions));
+  const areColumnsSettingsEnabled = Boolean(columnsSettingsProp?.enableSettingsMenu);
 
-  const filteredColumnDefinitions = useMemo(
-    () =>
-      columnDefinitions.filter(colDef => {
-        if (isFilterableColumn(colDef)) {
-          return enabledColumns.includes(colDef.id);
-        }
+  const filteredColumnDefinitions = useMemo(() => {
+    if (!areColumnsSettingsEnabled) {
+      return columnDefinitions;
+    }
 
-        return true;
-      }),
-    [columnDefinitions, enabledColumns],
-  );
+    return columnDefinitions.filter(colDef => {
+      if (isFilterableColumn(colDef)) {
+        return enabledColumns.includes(colDef.id);
+      }
+
+      return true;
+    });
+  }, [columnDefinitions, enabledColumns, areColumnsSettingsEnabled]);
 
   const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
     let cols: ColumnDefinition<TData>[] = filteredColumnDefinitions;
@@ -223,13 +226,24 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     return cols;
   }, [filteredColumnDefinitions, enableSelection, enableSelectPinned, expanding]);
 
+  const enableColumnsOrderSortByDrag = Boolean(columnsSettingsProp?.enableDrag);
   const { columnOrder, setColumnOrder, sensors, handleDragEnd } = useColumnOrderByDrag(tableColumns);
+  const dndContextProps: DndContextProps = useMemo(() => {
+    if (!enableColumnsOrderSortByDrag) {
+      return {};
+    }
+
+    return {
+      collisionDetection: closestCenter,
+      modifiers: [restrictToHorizontalAxis],
+      onDragEnd: handleDragEnd,
+      sensors: sensors,
+    };
+  }, [enableColumnsOrderSortByDrag, handleDragEnd, sensors]);
 
   const filterableColumns = useMemo(() => columnDefinitions.filter(isFilterableColumn), [columnDefinitions]);
   const areAllColumnsEnabled = filterableColumns.length === enabledColumns.length;
-
   const { t } = useLocale('Table');
-
   const columnsSettings = useMemo(
     () =>
       prepareColumnsSettings({
@@ -271,7 +285,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     columns: tableColumns,
     state: {
       columnPinning,
-      columnOrder,
+      columnOrder: enableColumnsOrderSortByDrag ? columnOrder : undefined,
       globalFilter,
       rowSelection,
       sorting,
@@ -291,7 +305,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
         return <TruncateString text={String(cell.getValue())} maxLines={1} />;
       },
     },
-    onColumnOrderChange: setColumnOrder,
+    onColumnOrderChange: enableColumnsOrderSortByDrag ? setColumnOrder : undefined,
 
     manualSorting,
     manualPagination,
@@ -471,8 +485,6 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const { updateCellMap } = useCellAutoResizeController(table);
 
   const showToolbar = !suppressToolbar;
-  const showColumnsSettings = Boolean(columnsSettingsProp?.enableSettingsMenu);
-  const enableColumnsOrderSortByDrag = Boolean(columnsSettingsProp?.enableDrag);
 
   return (
     <div className={cn(styles.wrapper, className)} {...extractSupportProps(rest)}>
@@ -498,7 +510,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
             onCheck={enableSelection ? handleOnToolbarCheck : undefined}
             outline={outline}
             after={
-              toolbarAfter || exportSettings || showColumnsSettings ? (
+              toolbarAfter || exportSettings || areColumnsSettingsEnabled ? (
                 <>
                   {toolbarAfter}
                   {exportSettings && (
@@ -510,7 +522,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                       centerRows={centerRows}
                     />
                   )}
-                  {showColumnsSettings && (
+                  {areColumnsSettingsEnabled && (
                     <ColumnsSettings
                       columnsSettings={columnsSettings}
                       enabledColumns={enabledColumns}
@@ -530,12 +542,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
       <Scroll size='s' className={styles.table} ref={scrollContainerRef} data-outline={outline || undefined}>
         <div className={styles.tableContent} style={columnSizes.vars}>
           <CellAutoResizeContext.Provider value={{ updateCellMap }}>
-            <DndContext
-              collisionDetection={closestCenter}
-              modifiers={[restrictToHorizontalAxis]}
-              onDragEnd={handleDragEnd}
-              sensors={sensors}
-            >
+            <DndContext {...dndContextProps}>
               <TableContext.Provider value={{ table }}>
                 {(!infiniteLoading || !data.length) && loading ? (
                   <SkeletonContextProvider loading>

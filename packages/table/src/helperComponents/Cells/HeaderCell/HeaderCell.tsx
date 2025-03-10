@@ -1,7 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { flexRender, Header } from '@tanstack/react-table';
 import cn from 'classnames';
-import { MouseEvent, useRef } from 'react';
+import { MouseEvent, useMemo, useRef } from 'react';
 
 import { TruncateString } from '@snack-uikit/truncate-string';
 
@@ -52,9 +52,16 @@ export function HeaderCell<TData>({
     return header.column.getToggleSortingHandler()?.(e);
   };
 
-  const isAvailableForDrag = !DEFAULT_COLUMNS.includes(header.column.id);
-  const dragAttributes = isAvailableForDrag ? attributes : {};
-  const listenersAttributes = isAvailableForDrag ? listeners : {};
+  const draggableProps = useMemo(() => {
+    if (!isDraggable || DEFAULT_COLUMNS.includes(header.column.id)) {
+      return {};
+    }
+
+    return {
+      ...attributes,
+      ...listeners,
+    };
+  }, [attributes, header.column.id, isDraggable, listeners]);
 
   return (
     <Cell
@@ -73,15 +80,16 @@ export function HeaderCell<TData>({
       role='columnheader'
       className={cn(styles.tableHeaderCell, className, columnDef.headerClassName)}
       ref={element => {
-        setNodeRef(element);
+        if (isDraggable) {
+          setNodeRef(element);
+        }
         return cellRef;
       }}
     >
       <div
         className={styles.tableHeaderCellDragWrapper}
-        data-dragging={isDragging || undefined}
-        {...dragAttributes}
-        {...listenersAttributes}
+        data-dragging={(isDraggable && isDragging) || undefined}
+        {...draggableProps}
       >
         <div className={styles.tableHeaderCellMain}>
           {columnDef.header && (

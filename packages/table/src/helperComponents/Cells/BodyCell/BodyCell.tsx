@@ -26,7 +26,7 @@ export function BodyCell<TData>({ cell, className, rowAutoHeight, isDraggable, .
   return (
     <Cell
       {...props}
-      ref={setNodeRef}
+      ref={isDraggable ? setNodeRef : undefined}
       style={style}
       className={cn(styles.tableBodyCell, className, columnDef.cellClassName)}
       data-row-auto-height={rowAutoHeight || undefined}
