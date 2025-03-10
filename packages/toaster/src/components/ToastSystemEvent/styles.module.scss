@@ -33,7 +33,7 @@
 
 .buttonClose {
   @include styles-theme-variables.composite-var(
-    styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-button-button-close
+    styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-button-button-neutral
   );
 
   cursor: pointer;
@@ -159,7 +159,7 @@
   box-sizing: border-box;
   width: calc(
     styles-tokens-toaster-toasterSystemEvent.$size-toaster-toast-system-event-container -
-      (2 * styles-tokens-toaster-toasterSystemEvent.$space-toaster-system-event-padding)
+      (2 * styles-tokens-toaster-toasterSystemEvent.$space-toaster-toast-system-event-padding)
   );
   max-width: 100%;
 

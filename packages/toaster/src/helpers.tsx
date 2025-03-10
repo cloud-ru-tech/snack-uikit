@@ -9,6 +9,8 @@ import {
   ToasterContainerProps,
   ToastSystemEvent,
   ToastSystemEventProps,
+  ToastUpload,
+  ToastUploadProps,
   ToastUserAction,
   ToastUserActionProps,
 } from './components';
@@ -28,6 +30,7 @@ import {
   ToasterType,
   ToastOptions,
   UpdateToast,
+  UploadOptions,
   UserActionOptions,
 } from './types';
 
@@ -97,6 +100,8 @@ function getToastComponent<T extends keyof ToasterPropsMap>({
       return <ToastUserAction {...(toasterProps as ToastUserActionProps)} />;
     case TOASTER_TYPE.SystemEvent:
       return <ToastSystemEvent {...(toasterProps as ToastSystemEventProps)} />;
+    case TOASTER_TYPE.Upload:
+      return <ToastUpload {...(toasterProps as ToastUploadProps)} />;
     default:
       return undefined;
   }
@@ -150,6 +155,10 @@ export const updateToast: UpdateToast = (id, { type, toasterProps, toastOptions,
   });
 };
 
+/**
+ * Закрытие тостера
+ * @function
+ */
 export const dismissToast = (params?: Id) => toast.dismiss(params);
 export const isToastActive = toast.isActive;
 
@@ -331,7 +340,36 @@ const systemEvent = {
   },
 };
 
+const upload = {
+  startOrUpdate({ id, ...options }: UploadOptions) {
+    const toastId = id || TOASTER_TYPE.Upload;
+
+    if (toast.isActive(toastId)) {
+      return updateToast(toastId, {
+        type: TOASTER_TYPE.Upload,
+        toasterProps: { ...options },
+      });
+    }
+
+    return openToast({
+      type: TOASTER_TYPE.Upload,
+      toasterProps: {
+        ...options,
+      },
+      toastOptions: {
+        id: toastId,
+        onClose: options.onClose,
+      },
+    });
+  },
+
+  dismiss(id?: ToasterId) {
+    return toast.dismiss(id);
+  },
+};
+
 export const toaster: Toaster = {
   userAction,
   systemEvent,
+  upload,
 };

@@ -1,0 +1,5 @@
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+.successIcon {
+  color: styles-theme-variables.$sys-green-accent-default;
+}

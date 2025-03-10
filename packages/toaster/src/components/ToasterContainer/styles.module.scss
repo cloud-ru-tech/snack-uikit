@@ -61,7 +61,7 @@
 }
 
 .containerWithCloseAllButton {
-  margin-bottom: calc(styles-theme-variables.$size-toaster-button-close-column + styles-theme-variables.$space-toaster-system-event-gap);
+  margin-bottom: calc(styles-theme-variables.$size-toaster-button-close-column + styles-theme-variables.$space-toaster-toast-system-event-gap);
 }
 
 @media only screen and (max-width: 480px) {

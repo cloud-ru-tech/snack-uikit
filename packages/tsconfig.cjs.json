@@ -113,6 +113,9 @@
       "path": "./alert/tsconfig.cjs.json"
     },
     {
+      "path": "./progress-bar/tsconfig.cjs.json"
+    },
+    {
       "path": "./toaster/tsconfig.cjs.json"
     },
     {
@@ -165,9 +168,6 @@
     },
     {
       "path": "./markdown/tsconfig.cjs.json"
-    },
-    {
-      "path": "./progress-bar/tsconfig.cjs.json"
     },
     {
       "path": "./rating/tsconfig.cjs.json"

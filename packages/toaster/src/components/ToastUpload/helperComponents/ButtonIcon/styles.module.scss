@@ -1,0 +1,43 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+.buttonIcon {
+  @include styles-tokens-toaster-toasterSystemEvent.composite-var(styles-tokens-toaster-toasterSystemEvent.$toaster-system-event-toast-button-button-neutral);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  color: styles-theme-variables.$sys-invert-neutral-text-light;
+
+  background-color: transparent;
+  border: none;
+
+  svg {
+    width: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+    height: styles-tokens-element.$icon-s !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  &:hover  {
+    color: styles-theme-variables.$sys-invert-neutral-text-main;
+  }
+
+  &:active {
+    color: styles-theme-variables.$sys-invert-neutral-accent-pressed;
+  }
+
+  &:focus-visible {
+    @include styles-theme-variables.outline-var(styles-tokens-element.$container-focused-s);
+
+    color: styles-theme-variables.$sys-invert-neutral-text-main;
+    outline-color: styles-theme-variables.$sys-available-on-complementary;
+    outline-offset: styles-theme-variables.$spacing-state-focus-offset;
+  }
+}

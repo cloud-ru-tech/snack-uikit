@@ -1,0 +1,121 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUpload';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+.container {
+  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterUpload.$toaster-upload-toast-container);
+
+  cursor: default;
+
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: calc(
+    styles-tokens-toaster-toasterSystemEvent.$size-toaster-toast-system-event-container - styles-tokens-toaster-toasterUpload.$space-toaster-toast-system-event-container-padding
+  );
+  max-width: 100%;
+  max-height: 386px;
+
+  background-color: styles-theme-variables.$sys-invert-neutral-background;
+
+  &[data-collapsed] {
+    gap: 0;
+  }
+}
+
+.titleLine {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleLineBody {
+  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterUpload.$toaster-upload-title-line-body);
+
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-title-s);
+
+  flex-grow: 1;
+  color: styles-theme-variables.$sys-invert-neutral-text-main;
+}
+
+.generalProgress {
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterUpload.$toaster-upload-title-line-general-progress
+  );
+
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.statusLine {
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterUpload.$toaster-upload-status-line-container
+  );
+
+  display: flex;
+  align-items: center;
+}
+
+.statusWrap {
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterUpload.$toaster-upload-status-line-status-wrap
+  );
+
+  overflow: hidden;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.description {
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-m);
+
+  color: styles-theme-variables.$sys-invert-neutral-text-main;
+
+  &[data-status='loading'] {
+    color: styles-theme-variables.$sys-invert-neutral-text-light;
+  }
+
+  &[data-status='uploaded'] {
+    color: styles-theme-variables.$sys-invert-neutral-text-light;
+  }
+}
+
+.totalCounter {
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-m);
+
+  color: styles-theme-variables.$sys-invert-neutral-text-support;
+}
+
+.totalPercentage {
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-m);
+
+  color: styles-theme-variables.$sys-invert-neutral-text-support;
+}
+
+.list {
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: content-box;
+  max-height: 288px;
+  margin-top: 0;
+  // TODO: use tokens
+  padding-right: calc(#{styles-theme-variables.$space-toaster-toast-system-event-container-padding} - #{styles-theme-variables.$dimension-050m});
+
+  transition: all 0.1s;
+
+  [data-collapsed] & {
+    max-height: 0;
+  }
+}

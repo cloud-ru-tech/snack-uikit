@@ -113,6 +113,9 @@
       "path": "./alert/tsconfig.esm.json"
     },
     {
+      "path": "./progress-bar/tsconfig.esm.json"
+    },
+    {
       "path": "./toaster/tsconfig.esm.json"
     },
     {
@@ -165,9 +168,6 @@
     },
     {
       "path": "./markdown/tsconfig.esm.json"
-    },
-    {
-      "path": "./progress-bar/tsconfig.esm.json"
     },
     {
       "path": "./rating/tsconfig.esm.json"

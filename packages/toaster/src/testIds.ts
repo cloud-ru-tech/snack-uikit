@@ -21,3 +21,20 @@ export const TOAST_USER_ACTION_TEST_IDS = {
   loader: `${TOAST_USER_ACTION_TEST_ID}__loader`,
   link: `${TOAST_USER_ACTION_TEST_ID}__link`,
 };
+
+const TOAST_UPLOAD_TEST_ID = 'toast-upload';
+
+export const TOAST_UPLOAD_TEST_IDS = {
+  main: TOAST_UPLOAD_TEST_ID,
+  close: `${TOAST_UPLOAD_TEST_ID}__close`,
+  title: `${TOAST_UPLOAD_TEST_ID}__title`,
+  description: `${TOAST_UPLOAD_TEST_ID}__description`,
+  counter: `${TOAST_UPLOAD_TEST_ID}__counter`,
+  progress: `${TOAST_UPLOAD_TEST_ID}__progress`,
+  list: `${TOAST_UPLOAD_TEST_ID}__list`,
+  collapseButton: `${TOAST_UPLOAD_TEST_ID}__collapseButton`,
+  progressBar: `${TOAST_UPLOAD_TEST_ID}__progressBar`,
+  uploadItem: `${TOAST_UPLOAD_TEST_ID}__uploadItem`,
+  uploadItemLink: `${TOAST_UPLOAD_TEST_ID}__uploadItemLink`,
+  uploadItemCancel: `${TOAST_UPLOAD_TEST_ID}__uploadItemCancel`,
+};

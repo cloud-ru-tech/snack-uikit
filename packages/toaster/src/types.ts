@@ -2,7 +2,7 @@ import { Id, ToastOptions as RtToastOptions } from 'react-toastify';
 
 import { ValueOf } from '@snack-uikit/utils';
 
-import { ToasterContainerProps, ToastSystemEventProps, ToastUserActionProps } from './components';
+import { ToasterContainerProps, ToastSystemEventProps, ToastUploadProps, ToastUserActionProps } from './components';
 import { TOASTER_TYPE } from './constants';
 
 export type ToasterId = Id;
@@ -19,6 +19,7 @@ export type ToasterType = ValueOf<typeof TOASTER_TYPE>;
 export type ToasterPropsMap = {
   [TOASTER_TYPE.UserAction]: ToastUserActionProps;
   [TOASTER_TYPE.SystemEvent]: ToastSystemEventProps;
+  [TOASTER_TYPE.Upload]: ToastUploadProps & { loading?: boolean };
 };
 
 type OpenNotificationProps<T extends keyof ToasterPropsMap> = {
@@ -49,6 +50,7 @@ export type UpdateToast = <T extends keyof ToasterPropsMap>(
 
 export type UserActionOptions = Omit<ToastUserActionProps, 'appearance'> & Pick<ToastOptions, 'id' | 'onClose'>;
 export type SystemEventOptions = Omit<ToastSystemEventProps, 'appearance'> & Pick<ToastOptions, 'id' | 'onClose'>;
+export type UploadOptions = ToastUploadProps & Pick<ToastOptions, 'id' | 'onClose'>;
 
 export type Toaster = {
   userAction: {
@@ -77,6 +79,10 @@ export type Toaster = {
       error(id: ToasterId, options: SystemEventOptions): void;
       errorCritical(id: ToasterId, options: SystemEventOptions): void;
     };
+    dismiss(id?: ToasterId): void;
+  };
+  upload: {
+    startOrUpdate(options: UploadOptions): void;
     dismiss(id?: ToasterId): void;
   };
 };

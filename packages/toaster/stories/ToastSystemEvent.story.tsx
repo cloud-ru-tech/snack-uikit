@@ -49,7 +49,7 @@ function Template({ ...args }: StoryProps) {
 
         <ButtonFilled
           label={'Dismiss Toasters'}
-          data-test-id='toast-trigger'
+          data-test-id='toast-dismiss'
           onClick={() => toaster.systemEvent.dismiss()}
         />
       </div>

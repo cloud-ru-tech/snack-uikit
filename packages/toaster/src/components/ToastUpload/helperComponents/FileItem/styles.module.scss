@@ -1,0 +1,91 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUpload';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+
+.fileLine {
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterUpload.$toaster-upload-file-line-container
+  );
+
+  display: flex;
+  flex-direction: column;
+}
+
+.fileHeadLine {
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterUpload.$toaster-upload-file-line-headline
+  );
+
+  display: flex;
+  align-items: center;
+}
+
+.fileTitle {
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-s);
+
+  flex-grow: 1;
+  color: styles-theme-variables.$sys-invert-neutral-text-main;
+}
+
+
+.fileStatusLine {
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterUpload.$toaster-upload-status-line-container
+  );
+
+  display: flex;
+  align-items: center;
+}
+
+.fileStatusWrap {
+  @include styles-theme-variables.composite-var(
+    styles-tokens-toaster-toasterUpload.$toaster-upload-status-line-status-wrap
+  );
+
+  overflow: hidden;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.fileStatusDescription {
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-s);
+
+  color: styles-theme-variables.$sys-invert-neutral-text-main;
+
+  &[data-status='loading'] {
+    color: styles-theme-variables.$sys-invert-neutral-text-disabled;
+  }
+
+  &[data-status='uploaded'] {
+    color: styles-theme-variables.$sys-invert-neutral-text-disabled;
+  }
+}
+
+.fileSize {
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-s);
+
+  color: styles-theme-variables.$sys-invert-neutral-text-disabled;
+  text-wrap: nowrap;
+
+  &[data-status='loading'] {
+    color: styles-theme-variables.$sys-invert-neutral-text-main;
+  }
+
+  &[data-status='uploaded'] {
+    color: styles-theme-variables.$sys-invert-neutral-text-main;
+  }
+}
+
+.fileStatusPercentage {
+  @include styles-theme-variables.composite-var(styles-theme-variables.$sans-body-s);
+
+  color: styles-theme-variables.$sys-invert-neutral-text-disabled;
+
+  &[data-status='loading'] {
+    color: styles-theme-variables.$sys-invert-neutral-text-main;
+  }
+
+  &[data-status='uploaded'] {
+    color: styles-theme-variables.$sys-invert-neutral-text-main;
+  }
+}
