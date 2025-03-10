@@ -65,4 +65,13 @@ export const en_GB = {
     hideFilters: 'Hide filters',
     showFilters: 'Show filters',
   },
+  ToastUpload: {
+    title: {
+      loading: 'Loading...',
+      error: 'Error loading...',
+      pause: 'Paused loading',
+      errorUploaded: 'Error uploaded',
+      uploaded: 'Uploaded',
+    },
+  },
 };

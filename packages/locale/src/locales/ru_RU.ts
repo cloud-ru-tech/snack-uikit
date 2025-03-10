@@ -67,4 +67,13 @@ export const ru_RU: typeof en_GB = {
     hideFilters: 'Скрыть фильтры',
     showFilters: 'Показать фильтры',
   },
+  ToastUpload: {
+    title: {
+      loading: 'Загрузка...',
+      error: 'Ошибка загрузки...',
+      pause: 'Загрузка приостановлена',
+      errorUploaded: 'Ошибка при загрузке',
+      uploaded: 'Загружено',
+    },
+  },
 };
