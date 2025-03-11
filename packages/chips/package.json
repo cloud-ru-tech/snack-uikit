@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Chips",
-  "version": "0.26.2",
+  "version": "0.26.3",
   "sideEffects": [
     "*.css",
     "*.woff",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.26.3 (2025-03-11)
+
+
+### Bug Fixes
+
+* **FF-6340:** ChipChoiceRow clear filter button visibility ([a4090ef](https://github.com/cloud-ru-tech/snack-uikit/commit/a4090ef78fe53b15decb388ee0dfdc2f74892e44))
+
+
+
+
+
 ## 0.26.2 (2025-03-06)
 
 ### Only dependencies have been changed
