@@ -13,6 +13,7 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 import { CHIP_CHOICE_ROW_IDS } from '../../constants';
 import { ForwardedChipChoice } from './components';
 import { CHIP_CHOICE_ROW_SIZE, MAP_ROW_SIZE_TO_BUTTON_SIZE, MAP_ROW_SIZE_TO_CHOICE_SIZE } from './constants';
+import { areValuesEqual } from './helpers';
 import styles from './styles.module.scss';
 import { ChipChoiceProps, ChipChoiceRowSize, FilterValue, OmitBetter } from './types';
 
@@ -139,14 +140,16 @@ export function ChipChoiceRow<TState extends FiltersState>({
   );
 
   const hasAnyFilter = useMemo(
-    () => visibleFilters.length > 0 || pinnedFilters.some(filter => state[filter.id] !== defaultValue[filter.id]),
+    () =>
+      visibleFilters.length > 0 ||
+      pinnedFilters.some(filter => !areValuesEqual(state[filter.id], defaultValue[filter.id])),
     [defaultValue, pinnedFilters, state, visibleFilters.length],
   );
 
   const handleClearPinnedFilter = (filterId: string) => {
     const defaultFilterValue = defaultValue[filterId];
 
-    if (state[filterId] === defaultFilterValue) {
+    if (areValuesEqual(state[filterId], defaultFilterValue)) {
       return;
     }
 
