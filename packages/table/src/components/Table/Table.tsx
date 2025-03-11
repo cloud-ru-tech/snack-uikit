@@ -57,6 +57,7 @@ import { usePageReset } from './hooks/usePageReset';
 import { useSaveTableSettings } from './hooks/useSaveTableSettings';
 import styles from './styles.module.scss';
 import {
+  getColumnIdentifier,
   getColumnStyleVars,
   getCurrentlyConfiguredHeaderWidth,
   getInitColumnSizeFromLocalStorage,
@@ -208,7 +209,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
     return columnDefinitions.filter(colDef => {
       if (isFilterableColumn(colDef)) {
-        return enabledColumns.includes(colDef.id);
+        return enabledColumns.includes(getColumnIdentifier(colDef));
       }
 
       return true;

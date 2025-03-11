@@ -11,9 +11,10 @@ import { arrayMove } from '@dnd-kit/sortable';
 import { useCallback, useState } from 'react';
 
 import { ColumnDefinition } from '../../../types';
+import { getColumnIdentifier } from '../utils';
 
 function prepareInitialState<TData extends object>(tableColumns: ColumnDefinition<TData>[]) {
-  return tableColumns.filter(column => column.pinned !== 'left' && column.pinned !== 'right').map(c => c.id as string);
+  return tableColumns.filter(column => column.pinned !== 'left' && column.pinned !== 'right').map(getColumnIdentifier);
 }
 
 const draggingOptions: SensorOptions = {

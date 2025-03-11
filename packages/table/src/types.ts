@@ -63,11 +63,17 @@ type PinnedColumnDefinition<TData> = BaseColumnDefinition<TData> & {
   size: number;
 };
 
-type FilterableProps = {
-  id: string;
-  /** Название колонки в настройках таблицы */
-  headerConfigLabel?: string;
-};
+type FilterableProps =
+  | {
+      id: string;
+      /** Название колонки в настройках таблицы */
+      headerConfigLabel?: string;
+    }
+  | {
+      accessorKey: string;
+      /** Название колонки в настройках таблицы */
+      headerConfigLabel?: string;
+    };
 
 type FilterableNormalColumnDefinition<TData> = NormalColumnDefinition<TData> & FilterableProps;
 

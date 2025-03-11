@@ -72,13 +72,24 @@ export function saveStateToLocalStorage({ id, columnId, size }: SaveStateToLocal
 export function isFilterableColumn<TData extends object>(
   colDef: ColumnDefinition<TData>,
 ): colDef is FilterableColumnDefinition<TData> {
-  return 'id' in colDef && 'headerConfigLabel' in colDef;
+  return ('id' in colDef || 'accessorKey' in colDef) && 'headerConfigLabel' in colDef;
+}
+
+export function getColumnIdentifier<TData extends object>(colDef: ColumnDefinition<TData>): string {
+  if ('id' in colDef && colDef.id) {
+    return colDef.id;
+  }
+
+  // Either id or accessorKey is always present
+  // eslint-disable-next-line
+  // @ts-ignore
+  return colDef.accessorKey as unknown as string;
 }
 
 export function prepareColumnsSettingsMap<TData extends object>(
   columnDefinitions: ColumnDefinition<TData>[],
 ): string[] {
-  return columnDefinitions.filter(isFilterableColumn).map(colDef => colDef.id);
+  return columnDefinitions.filter(isFilterableColumn).map(getColumnIdentifier);
 }
 
 const sortColumnDefinitions = (columnOrder: string[]) =>
@@ -86,8 +97,8 @@ const sortColumnDefinitions = (columnOrder: string[]) =>
     colDefA: FilterableColumnDefinition<TData>,
     colDefB: FilterableColumnDefinition<TData>,
   ) {
-    const indexItemA = columnOrder.findIndex(columnIndex => columnIndex === colDefA.id);
-    const indexItemB = columnOrder.findIndex(columnIndex => columnIndex === colDefB.id);
+    const indexItemA = columnOrder.findIndex(columnIndex => columnIndex === getColumnIdentifier(colDefA));
+    const indexItemB = columnOrder.findIndex(columnIndex => columnIndex === getColumnIdentifier(colDefB));
 
     return indexItemA - indexItemB;
   };
@@ -96,7 +107,7 @@ function createColumnsSettingsOption<TData extends object>(
   columnDefinition: FilterableColumnDefinition<TData>,
 ): BaseItemProps {
   return {
-    id: columnDefinition.id,
+    id: getColumnIdentifier(columnDefinition),
     content: {
       option: columnDefinition.headerConfigLabel as string,
     },
