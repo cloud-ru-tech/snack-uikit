@@ -11,7 +11,7 @@ import styles from './styles.module.scss';
 type ButtonFieldListProps = Omit<ButtonFieldProps, 'arrowOpen' | 'hasArrow'> & NativeDroplistProps;
 
 export const ButtonFieldList = forwardRef<HTMLButtonElement, ButtonFieldListProps>(
-  ({ items, selection, open, onOpenChange, search, ...rest }, ref) => {
+  ({ items, selection, open, onOpenChange, search, scroll, ...rest }, ref) => {
     const [isOpen, setIsOpen] = useUncontrolledProp(open, false, onOpenChange);
     const placement = getPlacement(rest);
 
@@ -24,6 +24,7 @@ export const ButtonFieldList = forwardRef<HTMLButtonElement, ButtonFieldListProp
         onOpenChange={setIsOpen}
         closeDroplistOnItemClick={true}
         search={search}
+        scroll={scroll}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         triggerElemRef={ref}

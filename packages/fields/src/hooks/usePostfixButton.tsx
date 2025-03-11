@@ -56,9 +56,11 @@ export function usePostfixButton({
               onClick={() => {
                 setTimeout(() => buttonListRef.current?.focus(), 0);
               }}
+              search={button.search}
               items={button.items}
               selection={button.selection}
               open={button.open}
+              scroll={button.scroll}
               onOpenChange={button.onOpenChange}
             />
           );

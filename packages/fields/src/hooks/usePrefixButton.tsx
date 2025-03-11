@@ -60,6 +60,7 @@ export function usePrefixButton({
               items={button.items}
               selection={button.selection}
               open={button.open}
+              scroll={button.scroll}
               onOpenChange={button.onOpenChange}
             />
           );

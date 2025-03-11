@@ -13,7 +13,7 @@ export type ButtonVariant = ValueOf<typeof BUTTON_VARIANT>;
 
 export type AsyncValueRequest = Promise<{ success: boolean; value?: string }>;
 
-export type NativeDroplistProps = Pick<DroplistProps, 'items' | 'open' | 'onOpenChange' | 'search'> & {
+export type NativeDroplistProps = Pick<DroplistProps, 'items' | 'open' | 'onOpenChange' | 'search' | 'scroll'> & {
   selection?: Omit<SelectionSingleState, 'mode'>;
 };
 
