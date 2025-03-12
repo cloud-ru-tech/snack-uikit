@@ -1,3 +1,5 @@
+import { Dictionary } from '../types';
+
 export const en_GB = {
   Table: {
     searchPlaceholder: 'Search',
@@ -74,4 +76,4 @@ export const en_GB = {
       uploaded: 'Uploaded',
     },
   },
-};
+} satisfies Dictionary;

@@ -1,3 +1,1 @@
-export { type LocaleProviderProps, LocaleProvider } from './LocaleProvider';
-
-export { useLocale } from './hooks';
+export { LocaleProvider, useLocale, createLocaleContext, type LocaleProviderProps } from './LocaleProvider';

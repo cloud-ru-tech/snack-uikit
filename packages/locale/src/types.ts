@@ -1,15 +1,25 @@
 import { LOCALES } from './locales';
 import { PartialDeep, PathsToProps } from './typeUtils';
 
-export type KnownLocaleLang = keyof typeof LOCALES;
+export type LocaleLang = keyof typeof LOCALES;
 
-export type LocaleLang = KnownLocaleLang | string;
+export type TranslatedEntity = {
+  [key: string]: string | TranslatedEntity;
+};
 
-export type LocaleDictionary = typeof LOCALES.en_GB;
+export type Dictionary = Record<string, TranslatedEntity>;
 
-// TODO: temporary changed type to fix typings mismatch for "locale" prop in LocaleProvider
-// export type OverrideLocales = PartialDeep<Record<KnownLocaleLang, LocaleDictionary>> | Record<string, LocaleDictionary>;
-export type OverrideLocales = PartialDeep<Record<LocaleLang, LocaleDictionary>>;
+export type LocaleDictionary<D extends Dictionary> = (typeof LOCALES)['en-GB'] & D;
 
-export type DottedTranslationKey<C extends keyof LocaleDictionary | undefined = undefined> =
-  C extends keyof LocaleDictionary ? PathsToProps<LocaleDictionary[C], string> : PathsToProps<LocaleDictionary, string>;
+export type Locales<D extends Dictionary> = Record<LocaleLang, LocaleDictionary<D>>;
+
+export type OverrideLocales<D extends Dictionary> = PartialDeep<Record<LocaleLang, LocaleDictionary<D>>>;
+
+export type DottedTranslationKey<
+  D extends Dictionary,
+  C extends keyof LocaleDictionary<D> | undefined = undefined,
+> = C extends keyof LocaleDictionary<D>
+  ? PathsToProps<LocaleDictionary<D>[C], string>
+  : PathsToProps<LocaleDictionary<D>, string>;
+
+export type ExtendedDictionary<D> = Record<LocaleLang, D>;
