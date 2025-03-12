@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.34.3 (2025-03-12)
+
+
+### Bug Fixes
+
+* **PDS-1483:** invalid behavior with disabled columns sort by drag fixed ([4d4fc57](https://github.com/cloud-ru-tech/snack-uikit/commit/4d4fc5770f204378c37333a9d9fdf5f05520de48))
+* **PDS-1483:** invalid columns order without id fixed ([c35ce70](https://github.com/cloud-ru-tech/snack-uikit/commit/c35ce70c162fcac4bf87f376ef3ed44cb230470a))
+
+
+
+
+
 ## 0.34.2 (2025-03-11)
 
 ### Only dependencies have been changed
