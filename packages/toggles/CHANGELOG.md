@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.10 (2025-03-13)
+
+
+### Bug Fixes
+
+* **FF-00:** fix switch icons wrong position when placing into big container ([da12b11](https://github.com/cloud-ru-tech/snack-uikit/commit/da12b114ad6934c0678c9fe7d011f22ab206f7fa))
+
+
+
+
+
 ## 0.13.9 (2025-03-13)
 
 ### Only dependencies have been changed

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Breadcrumbs",
-  "version": "0.10.32",
+  "version": "0.10.33",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,7 +36,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/list": "0.27.2",
+    "@snack-uikit/list": "0.27.3",
     "@snack-uikit/typography": "0.8.5",
     "@snack-uikit/utils": "3.8.0",
     "classnames": "2.5.1",
