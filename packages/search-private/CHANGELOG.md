@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.13 (2025-03-13)
+
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.25.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/input-private@4.5.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/input-private/CHANGELOG.md)
+
+
+
+
+
 ## 0.4.12 (2025-03-04)
 
 ### Only dependencies have been changed

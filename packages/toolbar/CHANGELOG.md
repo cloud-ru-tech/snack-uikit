@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.12.7 (2025-03-13)
+
+### Only dependencies have been changed
+* [@snack-uikit/chips@0.26.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/icons@0.25.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/list@0.27.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/search-private@0.4.13](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/search-private/CHANGELOG.md)
+* [@snack-uikit/tag@0.12.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/toggles@0.13.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.16.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+
+
+
+
+
 ## 0.12.6 (2025-03-11)
 
 ### Only dependencies have been changed

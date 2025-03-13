@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.34 (2025-03-13)
+
+### Only dependencies have been changed
+* [@snack-uikit/card@0.16.27](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/card/CHANGELOG.md)
+* [@snack-uikit/icons@0.25.2](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.6.14](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 ## 0.3.33 (2025-03-06)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.25.2 (2025-03-13)
+
+
+### Bug Fixes
+
+* **PDS-1461:** make sprite render as early as possible ([860878a](https://github.com/cloud-ru-tech/snack-uikit/commit/860878a58dff633d7c10186ab03f128047093b74))
+
+
+
+
+
 ## 0.25.1 (2025-03-04)
 
 
