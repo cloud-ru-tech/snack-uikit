@@ -5,6 +5,8 @@ $switchAnimationDuration: 0.1s;
 
 .container {
   @include styles.container('switch');
+
+  position: relative;
 }
 
 .box {
