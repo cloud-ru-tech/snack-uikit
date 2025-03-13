@@ -12,7 +12,7 @@ const [value, setValue] = useState('tab1');
 
 <Tabs value={value} onChange={setValue}>
   <Tabs.TabBar>
-    <Tabs.Tab label='Tab 1' value='tab1' counter={12} />
+    <Tabs.Tab label='Tab 1' value='tab1' counter={{ label: 12 }} />
     <Tabs.Tab label='Tab 2' value='tab2' />
     <Tabs.Tab label='Tab Disabled' value='tab3' disabled />
   </Tabs.TabBar>
@@ -45,7 +45,7 @@ const [value, setValue] = useState('tab1');
 | value* | `string` | - | Value вкладки. |
 | disabled | `boolean` | - | Деактивирована ли вкладка. |
 | className | `string` | - | CSS-класс |
-| counter | `number` | - | Счетчик, отображающийся внутри кнопки переключения. |
+| counter | `{ label: number; appearance?: Appearance; color?: Color; }` | - | Счетчик, отображающийся внутри кнопки переключения. |
 | onClick | `(event: MouseEvent<HTMLButtonElement, MouseEvent>) => void` | - | Колбек клика по кнопке переключения. |
 ## Tabs.TabBar
 ### Props

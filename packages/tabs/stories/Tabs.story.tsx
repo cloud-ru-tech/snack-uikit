@@ -1,12 +1,13 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { ButtonFilled } from '@snack-uikit/button';
+import { Appearance, Color } from '@snack-uikit/counter/src/components/types';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Tabs, TabsProps } from '../src';
-import { MARKER_POSITION, ORIENTATION, TYPE } from '../src/constants';
+import { APPEARANCE, COLOR, MARKER_POSITION, ORIENTATION, TYPE } from '../src/constants';
 import { MarkerPosition, Orientation, Type } from '../src/types';
 import styles from './styles.module.scss';
 
@@ -14,6 +15,9 @@ type StoryType = Omit<TabsProps, 'value'> & {
   defaultValue?: string;
   disableDivider?: boolean;
   showAfter?: boolean;
+  counterLabel: number;
+  counterAppearance?: Appearance;
+  counterColor?: Color;
   type: Type;
   orientation: Orientation;
   markerPosition: MarkerPosition;
@@ -27,7 +31,11 @@ const meta: Meta = {
 export default meta;
 
 const tabsData = [
-  { value: 'tab1', label: 'Tab one', disabled: false, counter: 12 },
+  {
+    value: 'tab1',
+    label: 'Tab one',
+    disabled: false,
+  },
   { value: 'tab2', label: 'Second', disabled: false },
   { value: 'tab3', label: 'Disabled', disabled: true },
   { value: 'tab4', label: 'Very very long name of tab', disabled: false },
@@ -54,6 +62,9 @@ const Template: StoryFn<StoryType> = function ({
   disableDivider,
   showAfter,
   markerPosition,
+  counterLabel,
+  counterAppearance,
+  counterColor,
   ...args
 }) {
   return (
@@ -73,8 +84,14 @@ const Template: StoryFn<StoryType> = function ({
           markerPosition={markerPosition}
           {...args}
         >
-          {tabsData.map(props => (
-            <Tabs.Tab key={props.value} {...props} />
+          {tabsData.map((props, index) => (
+            <Tabs.Tab
+              counter={
+                index === 0 ? { label: counterLabel, appearance: counterAppearance, color: counterColor } : undefined
+              }
+              key={props.value}
+              {...props}
+            />
           ))}
         </Tabs.TabBar>
 
@@ -99,6 +116,9 @@ export const tabs: StoryObj<StoryType> = {
     defaultValue: tabIds[0],
     disableDivider: false,
     showAfter: false,
+    counterLabel: 1,
+    counterAppearance: APPEARANCE.Primary,
+    counterColor: COLOR.Accent,
   },
 
   argTypes: {
@@ -124,6 +144,29 @@ export const tabs: StoryObj<StoryType> = {
       defaultValue: MARKER_POSITION.After,
       control: {
         type: 'radio',
+      },
+    },
+    counterLabel: {
+      name: 'counter.label',
+      defaultValue: 1,
+      control: {
+        type: 'number',
+      },
+    },
+    counterAppearance: {
+      name: 'counter.appearance',
+      options: Object.values(APPEARANCE),
+      defaultValue: APPEARANCE.Primary,
+      control: {
+        type: 'select',
+      },
+    },
+    counterColor: {
+      name: 'counter.color',
+      options: Object.values(COLOR),
+      defaultValue: COLOR.Accent,
+      control: {
+        type: 'select',
       },
     },
     'data-test-id': {

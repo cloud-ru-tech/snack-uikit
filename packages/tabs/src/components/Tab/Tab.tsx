@@ -20,7 +20,14 @@ export type TabProps = WithSupportProps<{
   disabled?: boolean;
   className?: string;
   /** Счетчик, отображающийся внутри кнопки переключения. */
-  counter?: number;
+  counter?: {
+    /** Значение счетчика */
+    label: number;
+    /** Внешний вид */
+    appearance?: CounterProps['appearance'];
+    /** Семантический цвет */
+    color?: CounterProps['color'];
+  };
   /** Колбек клика по кнопке переключения. */
   onClick?(event: MouseEvent<HTMLButtonElement>): void;
 }>;
@@ -122,7 +129,15 @@ export function Tab({ label, value, disabled = false, className, onClick, counte
     >
       <Typography className={styles.container} tag='div' family='sans' {...typographyProps}>
         {label}
-        {counter && <Counter value={counter} data-test-id={`tabs__tab-counter-${value}`} {...counterProps} />}
+        {counter && (
+          <Counter
+            appearance={counter.appearance}
+            color={counter.color}
+            value={counter.label}
+            data-test-id={`tabs__tab-counter-${value}`}
+            {...counterProps}
+          />
+        )}
       </Typography>
     </button>
   );
