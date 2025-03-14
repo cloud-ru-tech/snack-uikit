@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2025-03-14)
+
+
+### BREAKING CHANGES
+
+
+* **DPS-16237:** adds appearance and color props to Tabs counter ([354250a](https://github.com/cloud-ru-tech/snack-uikit/commit/354250afcfae60dc09377fbf8b2ceb49c62f2cf7))
+
+
+
+
 ## 0.9.8 (2025-03-14)
 
 ### Only dependencies have been changed
