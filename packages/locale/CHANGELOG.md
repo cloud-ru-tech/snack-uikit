@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2025-03-14)
+
+
+### Features
+
+* **PDS-441:** locale toaster upload ([6096a72](https://github.com/cloud-ru-tech/snack-uikit/commit/6096a72076390137c76f53f547fbec85c746b57f))
+
+
+
+
+
 ## 0.12.2 (2025-03-07)
 
 

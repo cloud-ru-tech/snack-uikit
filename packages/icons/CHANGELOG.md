@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.26.0 (2025-03-14)
+
+
+### Features
+
+* **PDS-441:** alarm filled, check filled, cross filled, info filled, pause, play and stop icons ([68b04bb](https://github.com/cloud-ru-tech/snack-uikit/commit/68b04bb7297746b077597ced64315f2b1291b97f))
+
+
+
+
+
 ## 0.25.2 (2025-03-13)
 
 

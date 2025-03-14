@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Toolbar",
-  "version": "0.12.8",
+  "version": "0.12.9",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,13 +37,13 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.19.8",
-    "@snack-uikit/chips": "0.26.5",
-    "@snack-uikit/icons": "0.25.2",
-    "@snack-uikit/list": "0.27.3",
-    "@snack-uikit/search-private": "0.4.13",
-    "@snack-uikit/tag": "0.12.8",
-    "@snack-uikit/toggles": "0.13.10",
-    "@snack-uikit/tooltip": "0.16.6",
+    "@snack-uikit/chips": "0.26.6",
+    "@snack-uikit/icons": "0.26.0",
+    "@snack-uikit/list": "0.27.4",
+    "@snack-uikit/search-private": "0.4.14",
+    "@snack-uikit/tag": "0.12.9",
+    "@snack-uikit/toggles": "0.13.11",
+    "@snack-uikit/tooltip": "0.16.7",
     "@snack-uikit/utils": "3.8.0",
     "classnames": "2.5.1",
     "uncontrollable": "8.0.4"
