@@ -25,7 +25,7 @@ const STORY_MODE = {
 
 type StoryMode = ValueOf<typeof STORY_MODE>;
 
-type StoryProps = TagProps & { storyMode: StoryMode };
+type StoryProps = TagProps & { storyMode: StoryMode; showTooltip: boolean };
 
 const Template: StoryFn<StoryProps> = ({ storyMode: mode, ...args }) => {
   const sizes = Object.values(SIZE);
@@ -89,6 +89,10 @@ export const tag: StoryObj<StoryProps> = {
     label: 'Tag Label',
     href: 'https://cloud.ru',
     target: '_blank',
+    tooltip: {
+      tip: 'Tag tooltip',
+      placement: 'bottom',
+    },
   },
 
   argTypes: {
@@ -105,6 +109,10 @@ export const tag: StoryObj<StoryProps> = {
         type: 'radio',
       },
     },
+    showTooltip: {
+      name: '[Stories] show tooltip',
+      type: 'boolean',
+    },
     onDelete: {
       if: { arg: 'storyMode', eq: STORY_MODE.Removable },
     },
@@ -116,6 +124,9 @@ export const tag: StoryObj<StoryProps> = {
     },
     target: {
       if: { arg: 'storyMode', eq: STORY_MODE.Link },
+    },
+    tooltip: {
+      if: { arg: 'showTooltip', eq: true },
     },
   },
 

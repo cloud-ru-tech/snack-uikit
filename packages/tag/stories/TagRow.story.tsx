@@ -1,5 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -20,15 +20,27 @@ type StoryProps = TagRowProps & {
   removableMode: boolean;
   demoTagsAmount: number;
   fullWidthMode: boolean;
+  showTooltips: boolean;
 };
 
-const Template: StoryFn<StoryProps> = ({ removableMode, demoTagsAmount, fullWidthMode, ...args }: StoryProps) => {
-  const [tags, setTags] = useState<TagRowItemInner[]>(generateFakeTags(demoTagsAmount, 'x', 5));
+const Template: StoryFn<StoryProps> = ({
+  removableMode,
+  demoTagsAmount,
+  fullWidthMode,
+  showTooltips,
+  ...args
+}: StoryProps) => {
+  const generateParams = useMemo(
+    () => ({ amountToGenerate: demoTagsAmount, char: 'x', charLimit: 5, includeTooltip: showTooltips }),
+    [demoTagsAmount, showTooltips],
+  );
+
+  const [tags, setTags] = useState<TagRowItemInner[]>(generateFakeTags(generateParams));
   const removeTag = (item: TagRowItemInner['label']) => setTags(x => x.filter(({ label }) => label !== item));
 
   useEffect(() => {
-    setTags(generateFakeTags(demoTagsAmount, 'x', 5));
-  }, [demoTagsAmount]);
+    setTags(generateFakeTags(generateParams));
+  }, [generateParams]);
 
   return (
     <div className={styles.tagRowWrapper} data-full-width={fullWidthMode}>
@@ -73,6 +85,10 @@ export const tagRow: StoryObj<StoryProps> = {
       control: {
         type: 'boolean',
       },
+    },
+    showTooltips: {
+      name: '[Stories] show tooltips',
+      type: 'boolean',
     },
   },
 

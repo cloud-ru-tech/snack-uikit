@@ -1,6 +1,7 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, MouseEventHandler } from 'react';
 
-import { ValueOf } from '@snack-uikit/utils';
+import { TooltipProps } from '@snack-uikit/tooltip';
+import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
 import { APPEARANCE, SIZE } from './constants';
 
@@ -14,15 +15,20 @@ export type LinkProps = {
   target?: HTMLAnchorElement['target'];
 };
 
+export type TagTooltipProps = {
+  /** Тултип над тегом */
+  tooltip?: TooltipProps;
+};
+
 export type TagRowItem = {
   label: string;
   appearance?: Appearance;
-} & Partial<LinkProps>;
+} & Partial<LinkProps> &
+  TagTooltipProps;
 
-export type TagRowItemInner = {
-  label: string;
+export type TagRowItemInner = Omit<TagRowItem, 'appearance'> & {
   appearance: Appearance;
-} & Partial<LinkProps>;
+};
 
 export type CommonTagProps = {
   /** Текст */
@@ -36,3 +42,24 @@ export type CommonTagProps = {
   /** tabIndex кнопки удаления */
   tabIndex?: number;
 };
+
+export type TagBaseProps = WithSupportProps<{
+  /** Коллбэк на удаление */
+  onDelete?: MouseEventHandler<HTMLButtonElement>;
+}> &
+  CommonTagProps;
+
+export type TagLinkProps = WithSupportProps<CommonTagProps> & {
+  href: string;
+  onClick?(e: MouseEvent<HTMLAnchorElement>): void;
+  target?: HTMLAnchorElement['target'];
+};
+
+export type ManageRestrictTooltipProps = {
+  changeRestrictTooltipState(state: boolean): void;
+};
+
+type TagWithoutTooltipProps = TagBaseProps | TagLinkProps;
+export type TagWithTooltipProps = TagWithoutTooltipProps & TagTooltipProps;
+
+export type TagProps = TagWithoutTooltipProps | TagWithTooltipProps;

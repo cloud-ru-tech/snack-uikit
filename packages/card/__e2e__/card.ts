@@ -70,6 +70,8 @@ test.page(
     .expect(promoBadge.innerText)
     .eql(MOCK_DATA.promoBadge, `Card.Header promoBadge should be ${MOCK_DATA.promoBadge}`);
 
+  // Fix to remove hover from card in testcafe
+  await t.hover(Selector('body'), { offsetX: 0, offsetY: 0 });
   await t.expect(functionBadge.visible).notOk(`Card functionBadge shouldn't be rendered`);
 });
 

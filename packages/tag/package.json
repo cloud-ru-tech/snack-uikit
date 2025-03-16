@@ -39,6 +39,7 @@
     "@snack-uikit/dropdown": "0.4.7",
     "@snack-uikit/icons": "0.26.2",
     "@snack-uikit/scroll": "0.9.5",
+    "@snack-uikit/tooltip": "0.17.1",
     "@snack-uikit/utils": "3.8.1",
     "classnames": "2.5.1"
   }

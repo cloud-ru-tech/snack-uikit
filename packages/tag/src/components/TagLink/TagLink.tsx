@@ -1,17 +1,10 @@
 import cn from 'classnames';
-import { MouseEvent } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import { APPEARANCE, SIZE } from '../../constants';
-import { CommonTagProps } from '../../types';
+import { TagLinkProps } from '../../types';
 import styles from './styles.module.scss';
-
-export type TagLinkProps = WithSupportProps<CommonTagProps> & {
-  href: string;
-  onClick?(e: MouseEvent<HTMLAnchorElement>): void;
-  target?: HTMLAnchorElement['target'];
-};
 
 export function TagLink({
   label,
@@ -35,9 +28,7 @@ export function TagLink({
       target={target}
       onClick={onClick}
     >
-      <span title={label} className={styles.label}>
-        {label}
-      </span>
+      <span className={styles.label}>{label}</span>
     </a>
   );
 }

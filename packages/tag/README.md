@@ -20,6 +20,7 @@
 | tabIndex | `number` | - | tabIndex кнопки удаления |
 | onClick | `(e: MouseEvent<HTMLAnchorElement, MouseEvent>) => void` | - |  |
 | target | `string` | - |  |
+| tooltip | `TooltipProps` | - | Тултип над тегом |
 ## Tag
 ### Props
 | name | type | default value | description |
@@ -33,6 +34,7 @@
 | tabIndex | `number` | - | tabIndex кнопки удаления |
 | onClick | `(e: MouseEvent<HTMLAnchorElement, MouseEvent>) => void` | - |  |
 | target | `string` | - |  |
+| tooltip | `TooltipProps` | - | Тултип над тегом |
 ## TagRow
 ### Props
 | name | type | default value | description |

@@ -3,7 +3,19 @@ import { TagRowItemInner } from '../src/types';
 
 const APPEARANCES = Object.values(APPEARANCE);
 
-export const generateFakeTags = (amountToGenerate: number, char: string, charLimit: number): TagRowItemInner[] => {
+type GenerateParams = {
+  amountToGenerate: number;
+  char: string;
+  charLimit: number;
+  includeTooltip: boolean;
+};
+
+export const generateFakeTags = ({
+  amountToGenerate,
+  char,
+  charLimit,
+  includeTooltip,
+}: GenerateParams): TagRowItemInner[] => {
   let colorIndex = 0;
   let charsAmount = 1;
 
@@ -13,7 +25,15 @@ export const generateFakeTags = (amountToGenerate: number, char: string, charLim
     const index = tags.length + 1;
     const label = `tag${index}`.padEnd(charsAmount + `tag${index}`.length, char);
 
-    tags.push({ label, appearance: APPEARANCES[colorIndex] });
+    tags.push({
+      label,
+      appearance: APPEARANCES[colorIndex],
+      tooltip: includeTooltip
+        ? {
+            tip: `Tooltip for ${label}. You can set custom props.`,
+          }
+        : undefined,
+    });
 
     colorIndex++;
     charsAmount++;
