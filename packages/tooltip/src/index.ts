@@ -1,2 +1,2 @@
-export * from './components/Tooltip';
-export * from './components/QuestionTooltip';
+export * from './components';
+export * from './hooks';

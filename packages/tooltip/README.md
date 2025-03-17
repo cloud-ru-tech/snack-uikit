@@ -47,6 +47,17 @@
 | tooltipClassname | `string` | - | CSS-класс контейнера подсказки |
 | triggerSupportProps | `WithSupportProps<Record<string, unknown>>` | {} | data-атрибуты для триггера |
 | tabIndex | `number` | - |  |
+## WithTooltip
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| tooltip | `TooltipProps` | - | Настройки для тултипа |
+## useElementWithTooltip
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| Element* | `ComponentType<P>` | - | Элемент, который будет обернут тултипом |
+| tooltip | `TooltipProps` | - | Настройки для тултипа |
 
 
 [//]: DOCUMENTATION_SECTION_END
