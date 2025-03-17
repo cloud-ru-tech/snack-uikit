@@ -10,15 +10,15 @@ import { useEventHandler } from './useEventHandler';
  */
 export function useDebounce(callback: () => void, timeout = 0) {
   const timeStampRef = useRef<number>(0);
-  let timerId: NodeJS.Timeout | number = -1;
+  const timerIdRef = useRef<NodeJS.Timeout | number>(-1);
 
   return useEventHandler(() => {
     isBrowser() &&
       requestAnimationFrame(timestamp => {
         if (timestamp < timeStampRef.current) {
-          clearTimeout(timerId);
+          clearTimeout(timerIdRef.current);
         }
-        timerId = setTimeout(callback, timeout);
+        timerIdRef.current = setTimeout(callback, timeout);
         timeStampRef.current = timestamp + timeout;
       });
   });
