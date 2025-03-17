@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2025-03-17)
+
+
+### Features
+
+* **PDS-1785:** tooltip wrapper ([cb39188](https://github.com/cloud-ru-tech/snack-uikit/commit/cb391885fb4859fbec3d3490171a4e345b75dc0d))
+
+
+
+
+
 ## 0.16.8 (2025-03-17)
 
 ### Only dependencies have been changed
