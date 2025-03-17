@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.8.1 (2025-03-17)
+
+
+### Bug Fixes
+
+* **VMWDEV-2271:** fix timerId ([14fa135](https://github.com/cloud-ru-tech/snack-uikit/commit/14fa1351d12b76912b696aeaa6fcc7ce8d62d1b1))
+
+
+
+
+
 # 3.8.0 (2025-03-04)
 
 

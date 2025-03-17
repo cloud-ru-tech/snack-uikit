@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Utils",
-  "version": "3.8.0",
+  "version": "3.8.1",
   "sideEffects": [
     "*.css",
     "*.woff",

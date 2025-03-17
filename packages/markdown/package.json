@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Markdown",
-  "version": "0.3.45",
+  "version": "0.3.46",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -35,13 +35,13 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/code-editor": "0.5.1",
-    "@snack-uikit/divider": "3.2.4",
-    "@snack-uikit/fields": "0.41.3",
-    "@snack-uikit/link": "0.16.2",
-    "@snack-uikit/toggles": "0.13.11",
-    "@snack-uikit/typography": "0.8.5",
-    "@snack-uikit/utils": "3.8.0",
+    "@snack-uikit/code-editor": "0.5.2",
+    "@snack-uikit/divider": "3.2.5",
+    "@snack-uikit/fields": "0.41.4",
+    "@snack-uikit/link": "0.16.3",
+    "@snack-uikit/toggles": "0.13.12",
+    "@snack-uikit/typography": "0.8.6",
+    "@snack-uikit/utils": "3.8.1",
     "classnames": "2.5.1",
     "react-markdown": "7.1.1",
     "remark-gfm": "3.0.1"

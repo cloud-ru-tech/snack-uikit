@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Calendar",
-  "version": "0.11.32",
+  "version": "0.11.33",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,11 +36,11 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.8",
-    "@snack-uikit/divider": "3.2.4",
-    "@snack-uikit/icons": "0.26.0",
-    "@snack-uikit/list": "0.27.4",
-    "@snack-uikit/utils": "3.8.0",
+    "@snack-uikit/button": "0.19.9",
+    "@snack-uikit/divider": "3.2.5",
+    "@snack-uikit/icons": "0.26.1",
+    "@snack-uikit/list": "0.27.5",
+    "@snack-uikit/utils": "3.8.1",
     "classnames": "2.5.1",
     "uncontrollable": "8.0.4",
     "weekstart": "2.0.0"

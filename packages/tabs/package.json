@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tabs",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,12 +36,12 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.8",
-    "@snack-uikit/counter": "0.8.4",
-    "@snack-uikit/divider": "3.2.4",
-    "@snack-uikit/icons": "0.26.0",
-    "@snack-uikit/typography": "0.8.5",
-    "@snack-uikit/utils": "3.8.0",
+    "@snack-uikit/button": "0.19.9",
+    "@snack-uikit/counter": "0.8.5",
+    "@snack-uikit/divider": "3.2.5",
+    "@snack-uikit/icons": "0.26.1",
+    "@snack-uikit/typography": "0.8.6",
+    "@snack-uikit/utils": "3.8.1",
     "classnames": "2.5.1",
     "react-indiana-drag-scroll": "2.2.0",
     "uncontrollable": "8.0.4"
