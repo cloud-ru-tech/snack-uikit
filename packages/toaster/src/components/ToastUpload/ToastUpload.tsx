@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { MouseEvent } from 'react';
+import Draggable, { DraggableProps } from 'react-draggable';
 import { ToastContentProps as RtToastContentProps } from 'react-toastify';
 import { useUncontrolledProp } from 'uncontrollable';
 
@@ -73,6 +74,14 @@ export type ToastUploadProps = Partial<RtToastContentProps> &
      *  Отмена всей загрузки
      */
     cancelButton?: ButtonTextNeutralProps;
+    /**
+     *  Перемещение тостера
+     */
+    draggable?: boolean;
+    /**
+     *  Ограничения перемещения тостера
+     */
+    draggableBounds?: DraggableProps['bounds'];
   }>;
 
 export function ToastUpload({
@@ -89,6 +98,8 @@ export function ToastUpload({
   generalActions,
   cancelButton,
   progress,
+  draggable = false,
+  draggableBounds,
   ...rest
 }: ToastUploadProps) {
   const [isCollapsed, setIsCollapsed] = useUncontrolledProp(collapsed, false, onCollapsed);
@@ -111,72 +122,75 @@ export function ToastUpload({
   const isErrorUploaded = status === 'errorUploaded';
 
   return (
-    <div
-      className={cn(styles.container, className)}
-      {...extractSupportProps(rest)}
-      data-collapsed={isCollapsed || undefined}
-    >
-      <div className={styles.titleLine}>
-        <div className={styles.titleLineBody}>
-          <div className={styles.title} data-test-id={TOAST_UPLOAD_TEST_IDS.title}>
-            {showingTitle}
-          </div>
-
-          {cancelButton && <ButtonTextNeutral {...cancelButton} />}
-
-          <ButtonIcon onClick={handleCollapseClick} data-test-id={TOAST_UPLOAD_TEST_IDS.collapseButton}>
-            {!isCollapsed ? <ChevronUpSVG /> : <ChevronDownSVG />}
-          </ButtonIcon>
-
-          {closable && (
-            <ButtonIcon
-              className={styles.buttonAction}
-              onClick={handleCloseClick}
-              data-test-id={TOAST_UPLOAD_TEST_IDS.close}
-            >
-              <CrossSVG />
-            </ButtonIcon>
-          )}
-        </div>
-
-        <div className={styles.generalProgress}>
-          <div className={styles.statusLine}>
-            <div className={styles.statusWrap}>
-              <LoadingStatus status={status} actions={generalActions} />
-
-              <TruncateString
-                className={styles.description}
-                data-status={status}
-                text={description}
-                data-test-id={TOAST_UPLOAD_TEST_IDS.description}
-              />
+    <Draggable bounds={draggableBounds} disabled={!draggable}>
+      <div
+        className={cn(styles.container, className)}
+        {...extractSupportProps(rest)}
+        data-collapsed={isCollapsed || undefined}
+        data-draggable={draggable || undefined}
+      >
+        <div className={styles.titleLine}>
+          <div className={styles.titleLineBody}>
+            <div className={styles.title} data-test-id={TOAST_UPLOAD_TEST_IDS.title}>
+              {showingTitle}
             </div>
 
-            <span className={styles.totalCounter} data-test-id={TOAST_UPLOAD_TEST_IDS.counter}>
-              {`${progress.current}/${progress.total}`}
-            </span>
+            {cancelButton && <ButtonTextNeutral {...cancelButton} />}
 
-            <span className={styles.totalPercentage} data-test-id={TOAST_UPLOAD_TEST_IDS.progress}>
-              {formatPercent(isErrorUploaded ? 0 : progressPercent)}
-            </span>
+            <ButtonIcon onClick={handleCollapseClick} data-test-id={TOAST_UPLOAD_TEST_IDS.collapseButton}>
+              {!isCollapsed ? <ChevronUpSVG /> : <ChevronDownSVG />}
+            </ButtonIcon>
+
+            {closable && (
+              <ButtonIcon
+                className={styles.buttonAction}
+                onClick={handleCloseClick}
+                data-test-id={TOAST_UPLOAD_TEST_IDS.close}
+              >
+                <CrossSVG />
+              </ButtonIcon>
+            )}
           </div>
 
-          {isCollapsed && (
-            <ProgressBar
-              progress={isErrorUploaded ? 100 : progressPercent}
-              size='xs'
-              appearance={progressBarAppearanceByStatus[status]}
-              data-test-id={TOAST_UPLOAD_TEST_IDS.progressBar}
-            />
-          )}
-        </div>
-      </div>
+          <div className={styles.generalProgress}>
+            <div className={styles.statusLine}>
+              <div className={styles.statusWrap}>
+                <LoadingStatus status={status} actions={generalActions} />
 
-      <Scroll className={styles.list} size='s' data-test-id={TOAST_UPLOAD_TEST_IDS.list} barHideStrategy='never'>
-        {files.map(item => (
-          <FileItem key={item.id || item.title} item={item} />
-        ))}
-      </Scroll>
-    </div>
+                <TruncateString
+                  className={styles.description}
+                  data-status={status}
+                  text={description}
+                  data-test-id={TOAST_UPLOAD_TEST_IDS.description}
+                />
+              </div>
+
+              <span className={styles.totalCounter} data-test-id={TOAST_UPLOAD_TEST_IDS.counter}>
+                {`${progress.current}/${progress.total}`}
+              </span>
+
+              <span className={styles.totalPercentage} data-test-id={TOAST_UPLOAD_TEST_IDS.progress}>
+                {formatPercent(isErrorUploaded ? 0 : progressPercent)}
+              </span>
+            </div>
+
+            {isCollapsed && (
+              <ProgressBar
+                progress={isErrorUploaded ? 100 : progressPercent}
+                size='xs'
+                appearance={progressBarAppearanceByStatus[status]}
+                data-test-id={TOAST_UPLOAD_TEST_IDS.progressBar}
+              />
+            )}
+          </div>
+        </div>
+
+        <Scroll className={styles.list} size='s' data-test-id={TOAST_UPLOAD_TEST_IDS.list} barHideStrategy='never'>
+          {files.map(item => (
+            <FileItem key={item.id || item.title} item={item} />
+          ))}
+        </Scroll>
+      </div>
+    </Draggable>
   );
 }

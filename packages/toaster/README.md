@@ -102,6 +102,8 @@ toaster.upload.dismiss(uploadToastId);
 | collapsed | `boolean` | - | Тостер свернут/развернут |
 | onCollapsed | `(collapsed: boolean) => void` | - | Развернуть/свернуть тостер |
 | cancelButton | `ButtonTextNeutralProps` | - | Отмена всей загрузки |
+| draggable | `boolean` | - | Перемещение тостера |
+| draggableBounds | `string \| false \| DraggableBounds` | - | Ограничения перемещения тостера |
 
 
 [//]: DOCUMENTATION_SECTION_END

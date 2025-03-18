@@ -183,6 +183,30 @@ $theme-name: osThemeSnack;
     width: fit-content;
   }
 
+  .#{$theme-name}.Toastify__toast-container.osThemeSnack__toast-container__upload {
+    pointer-events: none;
+
+    // Необходимо, чтобы тостер с загрузкой был всегда выше остальных тостеров
+    /* stylelint-disable-next-line declaration-property-value-allowed-list */
+    z-index: 1;
+    top: styles-theme-variables.$space-toaster-toast-system-event-container-padding;
+    right: styles-theme-variables.$space-toaster-toast-system-event-container-padding;
+    bottom: styles-theme-variables.$space-toaster-toast-system-event-container-padding;
+    left: styles-theme-variables.$space-toaster-toast-system-event-container-padding;
+
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   .#{$theme-name}.Toastify__toast-container--bottom-right {
     right: 0;
     bottom: 0;

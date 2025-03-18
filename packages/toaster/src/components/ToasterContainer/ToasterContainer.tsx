@@ -67,6 +67,7 @@ export function ToasterContainer({
           [styles.containerWithCloseAllButton]: hasCloseAllButton,
           'osThemeSnack__toast-container__system-event': type === TOASTER_TYPE.SystemEvent,
           'osThemeSnack__toast-container__user-action': type === TOASTER_TYPE.UserAction,
+          'osThemeSnack__toast-container__upload': type === TOASTER_TYPE.Upload,
         })}
         toastClassName={styles.toaster}
         bodyClassName={styles.toaster}

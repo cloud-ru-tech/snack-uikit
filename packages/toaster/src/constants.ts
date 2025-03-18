@@ -21,10 +21,10 @@ export const TOASTER_CONTAINER_DEFAULT_PROPS: Record<ToasterType, ToasterContain
     type: TOASTER_TYPE.UserAction,
   },
   [TOASTER_TYPE.Upload]: {
-    limit: 5,
+    limit: 1,
     position: 'bottom-right',
-    displayCloseAllButton: true,
-    type: TOASTER_TYPE.SystemEvent,
+    displayCloseAllButton: false,
+    type: TOASTER_TYPE.Upload,
   },
 };
 

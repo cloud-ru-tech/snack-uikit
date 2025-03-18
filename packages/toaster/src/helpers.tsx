@@ -101,7 +101,9 @@ function getToastComponent<T extends keyof ToasterPropsMap>({
     case TOASTER_TYPE.SystemEvent:
       return <ToastSystemEvent {...(toasterProps as ToastSystemEventProps)} />;
     case TOASTER_TYPE.Upload:
-      return <ToastUpload {...(toasterProps as ToastUploadProps)} />;
+      return (
+        <ToastUpload draggable draggableBounds='.Toastify__toast-container' {...(toasterProps as ToastUploadProps)} />
+      );
     default:
       return undefined;
   }

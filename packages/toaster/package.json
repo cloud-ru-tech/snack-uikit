@@ -45,6 +45,7 @@
     "@snack-uikit/truncate-string": "0.6.18",
     "@snack-uikit/utils": "3.8.1",
     "classnames": "2.5.1",
+    "react-draggable": "4.4.6",
     "react-toastify": "10.0.5",
     "uncontrollable": "9.0.0"
   }

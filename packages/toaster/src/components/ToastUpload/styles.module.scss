@@ -3,8 +3,7 @@
 @use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
 .container {
-  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterUpload.$toaster-upload-toast-container);
-
+  pointer-events: all;
   cursor: default;
 
   position: relative;
@@ -25,6 +24,16 @@
   &[data-collapsed] {
     gap: 0;
   }
+
+  &[data-draggable] {
+    cursor: grab;
+  }
+
+  &[data-draggable]:active {
+    cursor: grabbing;
+  }
+
+  @include styles-theme-variables.composite-var(styles-tokens-toaster-toasterUpload.$toaster-upload-toast-container);
 }
 
 .titleLine {
