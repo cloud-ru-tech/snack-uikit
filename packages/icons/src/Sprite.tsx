@@ -20,7 +20,14 @@ function SpriteInner({ content }: { content: string }) {
   }, [div]);
 
   useLayoutEffect(() => {
-    div && (div.innerHTML = content);
+    if (div) {
+      if (div.parentNode !== document.body) {
+        div.style.display = 'none';
+        document.body.prepend(div);
+      }
+
+      div.innerHTML = content;
+    }
   }, [content, div]);
 
   return null;
