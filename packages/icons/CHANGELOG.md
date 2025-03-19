@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.26.2 (2025-03-19)
+
+
+### Bug Fixes
+
+* **FF-00:** add div for sprite on useEffect too ([790689b](https://github.com/cloud-ru-tech/snack-uikit/commit/790689b4514f99df0df9d7279ed2be15bc29004d))
+
+
+
+
+
 ## 0.26.1 (2025-03-17)
 
 ### Only dependencies have been changed

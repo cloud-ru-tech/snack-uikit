@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.21 (2025-03-19)
+
+### Only dependencies have been changed
+* [@snack-uikit/tooltip@0.17.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+
+
+
+
+
 ## 0.6.20 (2025-03-17)
 
 ### Only dependencies have been changed
