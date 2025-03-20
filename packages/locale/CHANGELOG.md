@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.14.0 (2025-03-20)
+
+
+### Features
+
+* **FF-6326:** locale support for dictionary extensions ([867a28c](https://github.com/cloud-ru-tech/snack-uikit/commit/867a28cf18a8b8c7ee34621daac204533b713d60))
+
+
+
+
+
 # 0.13.0 (2025-03-14)
 
 

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Toaster",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -39,7 +39,7 @@
     "@snack-uikit/icons": "0.26.2",
     "@snack-uikit/link": "0.16.5",
     "@snack-uikit/loaders": "0.9.3",
-    "@snack-uikit/locale": "0.13.0",
+    "@snack-uikit/locale": "0.14.0",
     "@snack-uikit/progress-bar": "0.1.5",
     "@snack-uikit/scroll": "0.9.5",
     "@snack-uikit/truncate-string": "0.6.18",
