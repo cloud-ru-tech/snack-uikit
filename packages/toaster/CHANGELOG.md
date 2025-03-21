@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2025-03-21)
+
+
+### Features
+
+* **PDS-1916:** draggable upload toaster ([135ed45](https://github.com/cloud-ru-tech/snack-uikit/commit/135ed454b813a031197edae5e4aebf4df590c096))
+
+
+
+
+
 ## 0.9.4 (2025-03-20)
 
 ### Only dependencies have been changed
