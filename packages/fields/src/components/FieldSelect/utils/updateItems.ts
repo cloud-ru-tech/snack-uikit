@@ -18,6 +18,13 @@ export function updateItems({
   selectedItem?: ItemWithId;
   currentItems?: ItemProps[];
 }) {
+  if (options.length < 1) {
+    return {
+      selectedItem: undefined,
+      items: [],
+    };
+  }
+
   const originalItems = transformOptionsToItems(options);
 
   if (value === undefined) {
@@ -59,6 +66,13 @@ export function updateMultipleItems({
   selectedItems?: ItemWithId[];
   currentItems?: ItemProps[];
 }) {
+  if (options.length < 1) {
+    return {
+      selectedItems: undefined,
+      items: [],
+    };
+  }
+
   const originalItems = transformOptionsToItems(options);
 
   if (!value || !value.length) {

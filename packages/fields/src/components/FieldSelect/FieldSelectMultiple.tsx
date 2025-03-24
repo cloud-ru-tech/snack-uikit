@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useRef, useState } from 'react';
+import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { BaseItemProps, Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
@@ -81,6 +81,12 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
 
   const prefixSettings = usePrefix({ prefix, disabled });
   const postfixSettings = usePostfix({ postfix, disabled });
+
+  useEffect(() => {
+    if (options.length < 1 && Boolean(value)) {
+      setValue(undefined);
+    }
+  }, [options.length, setValue, value]);
 
   useLayoutEffect(() => {
     setItems(({ selectedItems }) => updateMultipleItems({ options, value, selectedItems }));

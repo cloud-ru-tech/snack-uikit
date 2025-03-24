@@ -86,6 +86,12 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
   const prefixSettings = usePrefix({ prefix, disabled });
   const postfixSettings = usePostfix({ postfix, disabled });
 
+  useEffect(() => {
+    if (options.length < 1 && Boolean(value)) {
+      setValue(undefined);
+    }
+  }, [options.length, setValue, value]);
+
   useLayoutEffect(() => {
     setItems(({ selectedItem }) => updateItems({ options, value, selectedItem }));
   }, [options, value]);

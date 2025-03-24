@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Avatar } from '@snack-uikit/avatar';
 import { DaySVG } from '@snack-uikit/icons';
@@ -71,14 +71,25 @@ const MORE_OPTIONS: BaseOptionProps[] = [
 type StoryProps = FieldSelectProps & {
   localeName: string;
   showMoreOptions: boolean;
+  noOptionsMode: boolean;
 };
 
-const Template = ({ selection, showMoreOptions, value, size, ...args }: StoryProps) => {
+const Template = ({ selection, showMoreOptions, noOptionsMode, value, size, ...args }: StoryProps) => {
   const [singleValue, setSingleValue] = useState<SelectionSingleValueType>();
 
   const [multipleValue, setMultipleValue] = useState<SelectionSingleValueType[]>([]);
 
-  const options: OptionProps[] = showMoreOptions ? [...DEFAULT_OPTIONS, ...MORE_OPTIONS] : DEFAULT_OPTIONS;
+  const options: OptionProps[] = useMemo(() => {
+    if (noOptionsMode) {
+      return [];
+    }
+
+    if (showMoreOptions) {
+      return [...DEFAULT_OPTIONS, ...MORE_OPTIONS];
+    }
+
+    return DEFAULT_OPTIONS;
+  }, [noOptionsMode, showMoreOptions]);
 
   useLayoutEffect(() => {
     if (selection === 'single') {
@@ -148,6 +159,7 @@ export const fieldSelect: StoryObj<StoryProps> = {
     untouchableScrollbars: false,
     enableFuzzySearch: true,
     scrollToSelectedItem: false,
+    noOptionsMode: false,
   },
 
   argTypes: {
@@ -162,6 +174,10 @@ export const fieldSelect: StoryObj<StoryProps> = {
     },
     value: {
       type: 'string',
+    },
+    noOptionsMode: {
+      name: '[Stories] simulate no options mode',
+      type: 'boolean',
     },
   },
 
