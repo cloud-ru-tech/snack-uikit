@@ -8,13 +8,37 @@ import {
   useSensors,
 } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
-import { useCallback, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 
 import { ColumnDefinition } from '../../../types';
+import { TableProps } from '../../types';
 import { getColumnIdentifier } from '../utils';
 
-function prepareInitialState<TData extends object>(tableColumns: ColumnDefinition<TData>[]) {
-  return tableColumns.filter(column => column.pinned !== 'left' && column.pinned !== 'right').map(getColumnIdentifier);
+const validateColumnOrderLocalStorageValue = (value: unknown): value is string[] =>
+  Array.isArray(value) && value.every(setting => typeof setting === 'string');
+
+const getLocalStorageColumnOrderKey = (id: string) => `${id}_columnOrder`;
+
+function prepareInitialState<TData extends object>(
+  tableColumns: ColumnDefinition<TData>[],
+  savedState: TableProps<TData>['savedState'],
+) {
+  const columnOrder = tableColumns
+    .filter(column => column.pinned !== 'left' && column.pinned !== 'right')
+    .map(getColumnIdentifier);
+
+  if (savedState?.columnSettings) {
+    const persistState = JSON.parse(localStorage.getItem(getLocalStorageColumnOrderKey(savedState.id)) || 'null');
+    const persistValue: string[] | null = validateColumnOrderLocalStorageValue(persistState) ? persistState : null;
+
+    if (persistValue !== null) {
+      return [...persistValue, ...columnOrder.filter(column => !persistValue?.includes(column))];
+    }
+
+    localStorage.setItem(getLocalStorageColumnOrderKey(savedState.id), JSON.stringify(columnOrder));
+  }
+
+  return columnOrder;
 }
 
 const draggingOptions: SensorOptions = {
@@ -23,8 +47,30 @@ const draggingOptions: SensorOptions = {
   },
 };
 
-export function useColumnOrderByDrag<TData extends object>(tableColumns: ColumnDefinition<TData>[]) {
-  const [columnOrder, setColumnOrder] = useState<string[]>(() => prepareInitialState(tableColumns));
+export function useColumnOrderByDrag<TData extends object>(
+  tableColumns: ColumnDefinition<TData>[],
+  savedState: TableProps<TData>['savedState'],
+) {
+  const [columnOrder, setColumnOrderState] = useState<string[]>(() => prepareInitialState(tableColumns, savedState));
+
+  const setColumnOrder: Dispatch<SetStateAction<string[]>> = useCallback(
+    value => {
+      let newValue: string[];
+
+      if (value instanceof Function) {
+        newValue = value(columnOrder);
+      } else {
+        newValue = value;
+      }
+
+      if (savedState?.columnSettings) {
+        localStorage.setItem(getLocalStorageColumnOrderKey(savedState.id), JSON.stringify(newValue));
+      }
+
+      setColumnOrderState(newValue);
+    },
+    [columnOrder, savedState?.columnSettings, savedState?.id],
+  );
 
   const handleDragEnd = useCallback(
     ({ active, over }: DragEndEvent) => {
@@ -49,7 +95,7 @@ export function useColumnOrderByDrag<TData extends object>(tableColumns: ColumnD
         return arrayMove(columnOrder, oldIndex, newIndex);
       });
     },
-    [columnOrder],
+    [columnOrder, setColumnOrder],
   );
 
   const sensors = useSensors(

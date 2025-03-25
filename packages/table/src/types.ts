@@ -13,12 +13,14 @@ import { ReactNode } from 'react';
 import { ToolbarProps } from '@snack-uikit/toolbar';
 import { ValueOf } from '@snack-uikit/utils';
 
-import { COLUMN_ALIGN, COLUMN_PIN_POSITION } from './constants';
+import { COLUMN_ALIGN, COLUMN_PIN_POSITION, COLUMN_SETTINGS_MODE } from './constants';
 import { EmptyStateProps, Except } from './helperComponents';
 
 type ColumnAlign = ValueOf<typeof COLUMN_ALIGN>;
 
 type ColumnPinPosition = ValueOf<typeof COLUMN_PIN_POSITION>;
+
+type ColumnSettingsMode = ValueOf<typeof COLUMN_SETTINGS_MODE>;
 
 type BaseColumnDefinition<TData> = Except<
   ColumnDef<TData>,
@@ -63,17 +65,20 @@ type PinnedColumnDefinition<TData> = BaseColumnDefinition<TData> & {
   size: number;
 };
 
-type FilterableProps =
+type FilterableProps = {
+  columnSettings?: {
+    /** Название колонки в настройках таблицы */
+    label?: string;
+    mode?: ColumnSettingsMode;
+  };
+} & (
   | {
       id: string;
-      /** Название колонки в настройках таблицы */
-      headerConfigLabel?: string;
     }
   | {
       accessorKey: string;
-      /** Название колонки в настройках таблицы */
-      headerConfigLabel?: string;
-    };
+    }
+);
 
 type FilterableNormalColumnDefinition<TData> = NormalColumnDefinition<TData> & FilterableProps;
 

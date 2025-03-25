@@ -279,6 +279,7 @@ export const table: StoryObj<StoryProps> = {
       id: 'snack-ui-table-storybook',
       resize: true,
       filterQueryKey: 'filterKey',
+      columnSettings: true,
     },
     enableColumnsOrderSortByDrag: true,
     showColumnsSettings: true,

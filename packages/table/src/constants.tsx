@@ -8,6 +8,13 @@ export const COLUMN_ALIGN = {
   Right: 'right',
 } as const;
 
+export const COLUMN_SETTINGS_MODE = {
+  /* Скрыто в настройках, значение всегда True */
+  Hidden: 'hidden',
+  DefaultTrue: 'defaultTrue',
+  DefaultFalse: 'defaultFalse',
+} as const;
+
 export const TEST_IDS = {
   headerSortIndicator: 'table__header__sort-indicator',
   headerRow: 'table__header-row',

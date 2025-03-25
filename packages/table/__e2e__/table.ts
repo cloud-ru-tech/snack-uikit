@@ -390,3 +390,75 @@ test.page(
 
   await t.expect(secondSubRow.rowSelectedAttribute).notOk('Second sub row should not be selected after second click');
 });
+
+test.page(
+  getPage({
+    showTableTree: true,
+    expandRowsCount: SUB_ROWS_AMOUNT,
+    expandRowsLevel: 1,
+  }),
+)('Column settings: works correctly', async t => {
+  const { toolbarColumnSettingsButton, toolbarColumnSettingsDroplist } = selectors.getRow('all');
+
+  await t.click(toolbarColumnSettingsButton);
+
+  await t.expect(toolbarColumnSettingsDroplist.exists).ok('Droplist should exist');
+
+  // cloumn 1 with columnSettings.mode: 'hide'
+  await t
+    .expect(toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item_1')).exists)
+    .notOk('Droplist item Column #1 shouldn`t exist, because is expected to be hidden due to hide mode');
+  await t
+    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '1').exists)
+    .ok('Column #1 should be shown');
+
+  // cloumn 2 with columnSettings.mode: 'defaultFalse'
+  const secondColumn = toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item_2'));
+  await t.expect(secondColumn.exists).ok('Droplist item Column #2 should exist');
+  await t
+    .expect(secondColumn.find(dataTestIdSelector('list__base-item-switch-native-input')).hasAttribute('checked'))
+    .notOk('Droplist toggle Column #2 should be unchecked');
+  await t
+    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '2').exists)
+    .notOk('Column #2 should be hidden');
+
+  // cloumn 3 with columnSettings.mode: 'defaultTrue'
+  const thirdColumn = toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item_3'));
+  await t.expect(thirdColumn.exists).ok('Droplist item Column #3 should exist');
+  await t
+    .expect(thirdColumn.find(dataTestIdSelector('list__base-item-switch-native-input')).hasAttribute('checked'))
+    .ok('Droplist toggle Column #3 should be checked');
+  await t
+    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '3').exists)
+    .ok('Column #3 should be shown');
+
+  // click uncheck
+
+  const fifthColumn = toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item_5'));
+  await t.expect(fifthColumn.exists).ok('Droplist item Column #5 should exist');
+  await t.click(fifthColumn);
+  await t
+    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '5').exists)
+    .notOk('Column #5 should be hidden');
+
+  // click check
+
+  await t.click(fifthColumn);
+  await t
+    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '5').exists)
+    .ok('Column #5 should be shown');
+
+  // chack local storage
+  await t.click(fifthColumn);
+  await t.click(secondColumn);
+  await t.eval(() => location.reload());
+  await t.wait(100);
+  await t.click(toolbarColumnSettingsButton);
+
+  await t
+    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '5').exists)
+    .notOk('Column #5 should be hidden after reload');
+  await t
+    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '2').exists)
+    .ok('Column #2 should be shown after reload');
+});

@@ -39,6 +39,8 @@ export const selectors = {
       toolbar: Selector(dataTestIdSelector(TEST_IDS.toolbar)),
       toolbarSearch: Selector(dataTestIdSelector('toolbar__search')),
       toolbarFilterButton: Selector(dataTestIdSelector('toolbar__filter-button')),
+      toolbarColumnSettingsButton: Selector(dataTestIdSelector('table__column-settings')),
+      toolbarColumnSettingsDroplist: Selector(dataTestIdSelector('table__column-settings-droplist')),
       toolbarFilterRow: Selector(dataTestIdSelector('toolbar__filter-row')),
       statusIndicator: row.find(dataTestIdSelector(TEST_IDS.statusIndicator)),
       statusLabel: row.find(dataTestIdSelector(TEST_IDS.statusLabel)),

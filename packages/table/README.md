@@ -145,7 +145,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | rowPinning | `Pick<RowPinningState, "top">` | {     top: [],   } | Определение какие строки должны быть закреплены в таблице |
-| savedState | `{ id: string; filterQueryKey?: string; resize?: boolean; }` | - | Конфиг для сохранения состояния в localStorage. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
+| savedState | `{ id: string; filterQueryKey?: string; resize?: boolean; columnSettings?: boolean; }` | - | Конфиг для сохранения состояния в localStorage. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
 | pagination | `{ state?: PaginationState; options?: number[]; optionsLabel?: string; onChange?(state: PaginationState): void; optionsRender?(value: string \| number, idx: number): string \| number; }` | 'Rows volume: ' <br> <strong>onChange</strong>: Колбэк на изменение пагинации | Параметры отвечают за пагинацию в таблице <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу <br> <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу |
 | autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
 | pageCount | `number` | - | Кол-во страниц (используется для внешнего управления) |
@@ -211,7 +211,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | rowPinning | `Pick<RowPinningState, "top">` | - | Определение какие строки должны быть закреплены в таблице |
-| savedState | `{ id: string; filterQueryKey?: string; resize?: boolean; }` | - | Конфиг для сохранения состояния в localStorage. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
+| savedState | `{ id: string; filterQueryKey?: string; resize?: boolean; columnSettings?: boolean; }` | - | Конфиг для сохранения состояния в localStorage. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
 | autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
 | suppressPagination | `boolean` | - | Отключение пагинации |
 | manualPagination | `boolean` | true |  |

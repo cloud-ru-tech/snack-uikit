@@ -21,6 +21,7 @@ export function ColumnsSettings({ columnsSettings, enabledColumns, setEnabledCol
         mode: 'multiple',
       }}
       placement='bottom-end'
+      data-test-id='table__column-settings-droplist'
     >
       <ButtonFunction size='m' data-test-id='table__column-settings' icon={<FunctionSettingsSVG />} />
     </Droplist>

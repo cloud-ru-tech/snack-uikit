@@ -52,7 +52,7 @@ import { getTreeColumnDef } from '../../helperComponents/Cells/TreeCell';
 import { ColumnDefinition } from '../../types';
 import { customDateParser, fuzzyFilter } from '../../utils';
 import { TableProps } from '../types';
-import { useColumnOrderByDrag, useLoadingTable, useStateControl } from './hooks';
+import { useColumnOrderByDrag, useColumnSettings, useLoadingTable, useStateControl } from './hooks';
 import { usePageReset } from './hooks/usePageReset';
 import { useSaveTableSettings } from './hooks/useSaveTableSettings';
 import styles from './styles.module.scss';
@@ -64,7 +64,6 @@ import {
   getInitialColumnsOpenValue,
   isFilterableColumn,
   prepareColumnsSettings,
-  prepareColumnsSettingsMap,
   saveStateToLocalStorage,
 } from './utils';
 
@@ -199,7 +198,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
   const manualPagination = infiniteLoading || manualPaginationProp;
 
-  const [enabledColumns, setEnabledColumns] = useState<string[]>(() => prepareColumnsSettingsMap(columnDefinitions));
+  const [enabledColumns, setEnabledColumns] = useColumnSettings(columnDefinitions, savedState);
   const areColumnsSettingsEnabled = Boolean(columnsSettingsProp?.enableSettingsMenu);
 
   const filteredColumnDefinitions = useMemo(() => {
@@ -228,7 +227,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   }, [filteredColumnDefinitions, enableSelection, enableSelectPinned, expanding]);
 
   const enableColumnsOrderSortByDrag = Boolean(columnsSettingsProp?.enableDrag);
-  const { columnOrder, setColumnOrder, sensors, handleDragEnd } = useColumnOrderByDrag(tableColumns);
+  const { columnOrder, setColumnOrder, sensors, handleDragEnd } = useColumnOrderByDrag(tableColumns, savedState);
   const dndContextProps: DndContextProps = useMemo(() => {
     if (!enableColumnsOrderSortByDrag) {
       return {};

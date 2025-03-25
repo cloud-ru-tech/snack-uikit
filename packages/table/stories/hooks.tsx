@@ -40,7 +40,10 @@ export function useTableColumnDefinitions({
         accessorKey: 'col1',
         accessorFn: accessorFn('col1'),
         header: renderHeader,
-        headerConfigLabel: renderHeaderConfigLabel('1'),
+        columnSettings: {
+          label: renderHeaderConfigLabel('1'),
+          mode: 'hidden',
+        },
         size: 140,
         enableSorting: true,
         enableResizing: true,
@@ -52,7 +55,10 @@ export function useTableColumnDefinitions({
         accessorKey: 'col2',
         accessorFn: accessorFn('col2'),
         header: renderHeader,
-        headerConfigLabel: renderHeaderConfigLabel('2'),
+        columnSettings: {
+          label: renderHeaderConfigLabel('2'),
+          mode: 'defaultFalse',
+        },
         size: 200,
         minSize: 150,
         maxSize: 300,
@@ -64,7 +70,10 @@ export function useTableColumnDefinitions({
         id: '3',
         accessorKey: 'col3',
         header: renderHeader,
-        headerConfigLabel: renderHeaderConfigLabel('3'),
+        columnSettings: {
+          label: renderHeaderConfigLabel('3'),
+          mode: 'defaultTrue',
+        },
         accessorFn: rowAutoHeight ? undefined : accessorFn('col3'),
         cell: ctx => {
           if (ctx.row.index === 1 && rowAutoHeight) {
@@ -82,7 +91,6 @@ export function useTableColumnDefinitions({
         accessorKey: 'col4',
         accessorFn: accessorFn('col4'),
         header: renderHeader,
-        headerConfigLabel: renderHeaderConfigLabel('4'),
         enableSorting: true,
         enableResizing: true,
       },
@@ -90,7 +98,9 @@ export function useTableColumnDefinitions({
         id: '5',
         accessorKey: 'col5',
         header: renderHeader,
-        headerConfigLabel: renderHeaderConfigLabel('5'),
+        columnSettings: {
+          label: renderHeaderConfigLabel('5'),
+        },
         accessorFn: accessorFn('col5'),
         cell: ctx => <CopyCell value={ctx.getValue<string>()} />,
         enableSorting: true,
@@ -101,7 +111,9 @@ export function useTableColumnDefinitions({
         accessorKey: 'col6',
         cell: cell => numberFormatter.format(cell.getValue<number>()),
         header: renderHeader,
-        headerConfigLabel: 'Price',
+        columnSettings: {
+          label: 'Price',
+        },
         size: 150,
         headerAlign: 'right',
         align: 'right',
@@ -113,14 +125,18 @@ export function useTableColumnDefinitions({
         accessorKey: 'col7',
         cell: () => <TagRow items={tags} rowLimit={1} />,
         header: renderHeader,
-        headerConfigLabel: 'Tags',
+        columnSettings: {
+          label: 'Tags',
+        },
         size: 230,
       },
       {
         id: '8',
         accessorKey: 'date',
         header: renderHeader,
-        headerConfigLabel: renderHeaderConfigLabel('8'),
+        columnSettings: {
+          label: renderHeaderConfigLabel('8'),
+        },
         enableSorting: true,
         enableResizing: true,
         size: 146,

@@ -72,7 +72,11 @@ export function saveStateToLocalStorage({ id, columnId, size }: SaveStateToLocal
 export function isFilterableColumn<TData extends object>(
   colDef: ColumnDefinition<TData>,
 ): colDef is FilterableColumnDefinition<TData> {
-  return ('id' in colDef || 'accessorKey' in colDef) && 'headerConfigLabel' in colDef;
+  return (
+    ('id' in colDef || 'accessorKey' in colDef) &&
+    'columnSettings' in colDef &&
+    colDef.columnSettings?.mode !== 'hidden'
+  );
 }
 
 export function getColumnIdentifier<TData extends object>(colDef: ColumnDefinition<TData>): string {
@@ -86,12 +90,6 @@ export function getColumnIdentifier<TData extends object>(colDef: ColumnDefiniti
   return colDef.accessorKey as unknown as string;
 }
 
-export function prepareColumnsSettingsMap<TData extends object>(
-  columnDefinitions: ColumnDefinition<TData>[],
-): string[] {
-  return columnDefinitions.filter(isFilterableColumn).map(getColumnIdentifier);
-}
-
 const sortColumnDefinitions = (columnOrder: string[]) =>
   function sortColDefs<TData extends object>(
     colDefA: FilterableColumnDefinition<TData>,
@@ -103,13 +101,21 @@ const sortColumnDefinitions = (columnOrder: string[]) =>
     return indexItemA - indexItemB;
   };
 
+export function prepareColumnsSettingsMap<TData extends object>(
+  columnDefinitions: ColumnDefinition<TData>[],
+): string[] {
+  return columnDefinitions
+    .filter(el => isFilterableColumn(el) && el.columnSettings?.mode !== 'defaultFalse')
+    .map(getColumnIdentifier);
+}
+
 function createColumnsSettingsOption<TData extends object>(
   columnDefinition: FilterableColumnDefinition<TData>,
 ): BaseItemProps {
   return {
     id: getColumnIdentifier(columnDefinition),
     content: {
-      option: columnDefinition.headerConfigLabel as string,
+      option: columnDefinition.columnSettings?.label as string,
     },
     switch: true,
     showSwitchIcon: true,
