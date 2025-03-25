@@ -17,6 +17,8 @@ export type CollapseBlockSecondaryProps = WithSupportProps<{
   className?: string;
   /** Проп отвечающий будет ли контент удаляться из DOM дерева */
   removeContentFromDOM?: boolean;
+  /** Обработчик клика по хедеру CollapseBlock */
+  onClick?(id: string, expanded: boolean): void;
 }>;
 
 export type CollapseBlockPrimaryProps = CollapseBlockSecondaryProps & {

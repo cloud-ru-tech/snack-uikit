@@ -12,13 +12,17 @@ export type CollapseBlockHeaderContainerProps = {
   toggleExpanded(expanded: boolean): void;
   expanded: boolean;
   actions?: ReactNode;
+  id: string;
+  onClick?(id: string, expanded: boolean): void;
 };
 
 export function CollapseBlockHeaderContainer({
+  id,
   children,
   toggleExpanded,
   expanded,
   actions,
+  onClick,
 }: CollapseBlockHeaderContainerProps) {
   const functionLayoutRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +38,11 @@ export function CollapseBlockHeaderContainer({
     });
   }, [functionLayoutRef]);
 
-  const handleToggleExpanded = () => toggleExpanded(!expanded);
+  const handleToggleExpanded = () => {
+    const newState = !expanded;
+    toggleExpanded(newState);
+    onClick?.(id, newState);
+  };
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions

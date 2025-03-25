@@ -16,6 +16,7 @@ export function CollapseBlockPrimary({
   outline,
   shape = 'round',
   removeContentFromDOM,
+  onClick,
   ...rest
 }: CollapseBlockPrimaryProps) {
   const { isExpanded, isExpandedDebounced, handleToggleExpanded } = useExpanded(id);
@@ -29,7 +30,13 @@ export function CollapseBlockPrimary({
       )}
       shape={shape}
       header={
-        <CollapseBlockHeaderContainer expanded={isExpanded} toggleExpanded={handleToggleExpanded} actions={actions}>
+        <CollapseBlockHeaderContainer
+          id={id}
+          onClick={onClick}
+          expanded={isExpanded}
+          toggleExpanded={handleToggleExpanded}
+          actions={actions}
+        >
           {header}
         </CollapseBlockHeaderContainer>
       }

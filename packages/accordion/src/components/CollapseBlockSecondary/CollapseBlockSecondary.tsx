@@ -14,6 +14,7 @@ export function CollapseBlockSecondary({
   actions,
   className,
   removeContentFromDOM,
+  onClick,
   ...rest
 }: CollapseBlockSecondaryProps) {
   const { isExpanded, isExpandedDebounced, handleToggleExpanded } = useExpanded(id);
@@ -22,7 +23,13 @@ export function CollapseBlockSecondary({
     <CollapseBlockPrivate
       className={cn(styles.container, className)}
       header={
-        <CollapseBlockHeaderContainer expanded={isExpanded} toggleExpanded={handleToggleExpanded} actions={actions}>
+        <CollapseBlockHeaderContainer
+          id={id}
+          onClick={onClick}
+          expanded={isExpanded}
+          toggleExpanded={handleToggleExpanded}
+          actions={actions}
+        >
           {header}
         </CollapseBlockHeaderContainer>
       }
