@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2025-03-25)
+
+
+### Features
+
+* **PDS-1983:** add accordion CollapseBlock onClick ([fff6b98](https://github.com/cloud-ru-tech/snack-uikit/commit/fff6b9859b07ad4deb8dcb07fd99b7ab7c1bd37e))
+
+
+
+
+
 ## 0.10.15 (2025-03-19)
 
 ### Only dependencies have been changed
