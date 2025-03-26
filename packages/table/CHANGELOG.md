@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.35.0 (2025-03-26)
+
+
+### Bug Fixes
+
+* **PDS-1971:** newValue renaming ([37b4eb9](https://github.com/cloud-ru-tech/snack-uikit/commit/37b4eb9b11bb13db122edf3d8e2fea9b4b8e8b25))
+* **PDS-1971:** useColumnSettings return compose as object ([61b3799](https://github.com/cloud-ru-tech/snack-uikit/commit/61b3799acd59e31546e6da44641d5a01738d55e5))
+
+
+### Features
+
+* **PDS-1971:** add columnSettings to savedState and mode of initvalue ([72863cf](https://github.com/cloud-ru-tech/snack-uikit/commit/72863cfdc7a2ae81b709755792615067b425efa2))
+
+
+
+
+
 ## 0.34.9 (2025-03-19)
 
 ### Only dependencies have been changed
