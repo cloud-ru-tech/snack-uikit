@@ -198,7 +198,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
   const manualPagination = infiniteLoading || manualPaginationProp;
 
-  const [enabledColumns, setEnabledColumns] = useColumnSettings(columnDefinitions, savedState);
+  const { enabledColumns, setEnabledColumns } = useColumnSettings(columnDefinitions, savedState);
   const areColumnsSettingsEnabled = Boolean(columnsSettingsProp?.enableSettingsMenu);
 
   const filteredColumnDefinitions = useMemo(() => {

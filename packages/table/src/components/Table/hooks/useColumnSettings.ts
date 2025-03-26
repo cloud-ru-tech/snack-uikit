@@ -10,7 +10,7 @@ const validateSettingsLocalStorageValue = (value: unknown): value is string[] =>
 export function useColumnSettings<TData extends object, TFilter extends Record<string, unknown>>(
   columnDefinitions: ColumnDefinition<TData>[],
   savedState: TableProps<TFilter>['savedState'],
-): [string[], (value: string[]) => void] {
+) {
   const localStorageKey = `${savedState?.id}_columnSettings`;
 
   const [enabledColumns, setEnabledColumns] = useState<string[]>(() => {
@@ -40,14 +40,14 @@ export function useColumnSettings<TData extends object, TFilter extends Record<s
       .map(getColumnIdentifier);
   });
 
-  return [
+  return {
     enabledColumns,
-    (value: string[]) => {
+    setEnabledColumns: (value: string[]) => {
       if (savedState?.columnSettings) {
         localStorage.setItem(localStorageKey, JSON.stringify(value));
       }
 
       setEnabledColumns(value);
     },
-  ];
+  };
 }

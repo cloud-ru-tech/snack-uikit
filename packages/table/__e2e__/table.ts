@@ -448,7 +448,7 @@ test.page(
     .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '5').exists)
     .ok('Column #5 should be shown');
 
-  // chack local storage
+  // check local storage
   await t.click(fifthColumn);
   await t.click(secondColumn);
   await t.eval(() => location.reload());
