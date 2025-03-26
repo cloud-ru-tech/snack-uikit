@@ -55,19 +55,19 @@ export function useColumnOrderByDrag<TData extends object>(
 
   const setColumnOrder: Dispatch<SetStateAction<string[]>> = useCallback(
     value => {
-      let newValue: string[];
+      let updatedOrder: string[];
 
       if (value instanceof Function) {
-        newValue = value(columnOrder);
+        updatedOrder = value(columnOrder);
       } else {
-        newValue = value;
+        updatedOrder = value;
       }
 
       if (savedState?.columnSettings) {
-        localStorage.setItem(getLocalStorageColumnOrderKey(savedState.id), JSON.stringify(newValue));
+        localStorage.setItem(getLocalStorageColumnOrderKey(savedState.id), JSON.stringify(updatedOrder));
       }
 
-      setColumnOrderState(newValue);
+      setColumnOrderState(updatedOrder);
     },
     [columnOrder, savedState?.columnSettings, savedState?.id],
   );
