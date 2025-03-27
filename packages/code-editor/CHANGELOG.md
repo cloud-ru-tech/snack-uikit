@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2025-03-27)
+
+
+### BREAKING CHANGES
+
+
+* **FF-6299:** Remove module level initial function. ([5b2280a](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/5b2280af6fd2a14f990598e717d117818bf10353))
+
+
+
+
 ## 0.5.2 (2025-03-17)
 
 ### Only dependencies have been changed

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.50 (2025-03-27)
+
+### Only dependencies have been changed
+* [@snack-uikit/code-editor@0.6.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/code-editor/CHANGELOG.md)
+
+
+
+
+
 ## 0.3.49 (2025-03-25)
 
 ### Only dependencies have been changed
