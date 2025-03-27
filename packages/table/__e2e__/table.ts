@@ -3,7 +3,7 @@ import { fixture, Selector, test } from 'testcafe';
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
 import { TEST_IDS } from '../src/constants';
 import { STORY_TEST_IDS, StoryStatusColumnViewMode } from '../stories/constants';
-import { DATA_ATTRIBUTES, RowsSelectionValidator, selectors } from './utils';
+import { COLUMNS_SETTINGS_OPTIONS, DATA_ATTRIBUTES, RowsSelectionValidator, selectors } from './utils';
 
 const ROWS_AMOUNT = 30;
 const SUB_ROWS_AMOUNT = 3;
@@ -397,68 +397,72 @@ test.page(
     expandRowsCount: SUB_ROWS_AMOUNT,
     expandRowsLevel: 1,
   }),
-)('Column settings: works correctly', async t => {
-  const { toolbarColumnSettingsButton, toolbarColumnSettingsDroplist } = selectors.getRow('all');
+)('Column settings: correct amount of items, their initial state and behavior on click', async t => {
+  const { toolbarColumnSettingsButton, toolbarColumnSettingsDroplist, tableHeaderCells } = selectors.getRow('all');
 
   await t.click(toolbarColumnSettingsButton);
-
   await t.expect(toolbarColumnSettingsDroplist.exists).ok('Droplist should exist');
 
-  // cloumn 1 with columnSettings.mode: 'hide'
+  const settingsOptions = toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item-option'));
+
+  // Validate amount of columns and settings items
+  await t.expect(tableHeaderCells.count).eql(9, 'Only 9 out of 11 columns should be visible'); // Columns #2 and #5 are set to defaultFalse, therefore hidden
+  await t
+    .expect(toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item-option')).count)
+    .eql(6, 'Only 6 out of 9 configurable columns should be visible'); // Columns #1 and #4 is hidden from columns settings, while checkbox, status and actions columns are not configurable: 11 - (2 hidden + 3 default) = 6
+
+  // Validate correct columns order in settings
+  for (let i = 0; i < COLUMNS_SETTINGS_OPTIONS.length; i++) {
+    await t.expect(settingsOptions.nth(i).textContent).eql(COLUMNS_SETTINGS_OPTIONS[i]);
+  }
+
+  // column 1 with columnSettings.mode: 'hide'
   await t
     .expect(toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item_1')).exists)
     .notOk('Droplist item Column #1 shouldn`t exist, because is expected to be hidden due to hide mode');
-  await t
-    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '1').exists)
-    .ok('Column #1 should be shown');
+  await t.expect(selectors.getColumnHeaderSelectorByDataId('1').exists).ok('Column #1 should be shown');
 
-  // cloumn 2 with columnSettings.mode: 'defaultFalse'
+  // column 2 with columnSettings.mode: 'defaultFalse'
   const secondColumn = toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item_2'));
   await t.expect(secondColumn.exists).ok('Droplist item Column #2 should exist');
   await t
     .expect(secondColumn.find(dataTestIdSelector('list__base-item-switch-native-input')).hasAttribute('checked'))
     .notOk('Droplist toggle Column #2 should be unchecked');
-  await t
-    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '2').exists)
-    .notOk('Column #2 should be hidden');
+  await t.expect(selectors.getColumnHeaderSelectorByDataId('2').exists).notOk('Column #2 should be hidden');
 
-  // cloumn 3 with columnSettings.mode: 'defaultTrue'
+  // column 3 with columnSettings.mode: 'defaultTrue'
   const thirdColumn = toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item_3'));
   await t.expect(thirdColumn.exists).ok('Droplist item Column #3 should exist');
   await t
     .expect(thirdColumn.find(dataTestIdSelector('list__base-item-switch-native-input')).hasAttribute('checked'))
     .ok('Droplist toggle Column #3 should be checked');
-  await t
-    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '3').exists)
-    .ok('Column #3 should be shown');
-
-  // click uncheck
+  await t.expect(selectors.getColumnHeaderSelectorByDataId('3').exists).ok('Column #3 should be shown');
 
   const fifthColumn = toolbarColumnSettingsDroplist.find(dataTestIdSelector('list__base-item_5'));
-  await t.expect(fifthColumn.exists).ok('Droplist item Column #5 should exist');
-  await t.click(fifthColumn);
   await t
-    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '5').exists)
-    .notOk('Column #5 should be hidden');
-
-  // click check
+    .expect(fifthColumn.find(dataTestIdSelector('list__base-item-switch-native-input')).hasAttribute('checked'))
+    .notOk('Droplist toggle Column #3 should be unchecked due to defaultFalse mode');
+  await t.expect(fifthColumn.exists).ok('Column #5 should exist but disabled due to defaultFalse mode');
+  await t
+    .expect(selectors.getColumnHeaderSelectorByDataId('5').exists)
+    .notOk('Column #5 should be hidden due to defaultFalse mode');
+  await t.click(fifthColumn);
+  await t.expect(selectors.getColumnHeaderSelectorByDataId('5').exists).ok('Column #5 should be visible');
 
   await t.click(fifthColumn);
-  await t
-    .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '5').exists)
-    .ok('Column #5 should be shown');
+  await t.expect(selectors.getColumnHeaderSelectorByDataId('5').exists).notOk('Column #5 should be hidden');
 
   // check local storage
   await t.click(fifthColumn);
-  await t.click(secondColumn);
+  await t.wait(1000);
   await t.eval(() => location.reload());
-  await t.wait(100);
+  await t.wait(1000);
   await t.click(toolbarColumnSettingsButton);
 
   await t
     .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '5').exists)
-    .notOk('Column #5 should be hidden after reload');
+    .ok('Column #5 should be visible after reload');
   await t
     .expect(Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', '2').exists)
-    .ok('Column #2 should be shown after reload');
+    .notOk('Column #2 should be shown after reload');
 });

@@ -1,7 +1,7 @@
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 
-import { COLUMN_PIN_POSITION, TEST_IDS } from '../../../constants';
+import { COLUMN_PIN_POSITION, DefaultColumns, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';
 import { MIN_STATUS_CELL_SIZE, STATUS_APPEARANCE } from './constants';
 import styles from './styles.module.scss';
@@ -89,7 +89,7 @@ export function getStatusColumnDef<TData>({
   const hasDescription = Boolean(renderDescription);
 
   return {
-    id: 'snack_predefined_statusColumn',
+    id: DefaultColumns.Status,
     pinned: COLUMN_PIN_POSITION.Left,
     noBodyCellPadding: true,
     noHeaderCellPadding: !hasDescription,

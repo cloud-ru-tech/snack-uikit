@@ -1,4 +1,6 @@
 import {
+  closestCenter,
+  DndContextProps,
   DragEndEvent,
   KeyboardSensor,
   MouseSensor,
@@ -7,39 +9,13 @@ import {
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
+import { restrictToHorizontalAxis } from '@dnd-kit/modifiers';
 import { arrayMove } from '@dnd-kit/sortable';
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react';
 
-import { ColumnDefinition } from '../../../types';
-import { TableProps } from '../../types';
-import { getColumnIdentifier } from '../utils';
-
-const validateColumnOrderLocalStorageValue = (value: unknown): value is string[] =>
-  Array.isArray(value) && value.every(setting => typeof setting === 'string');
-
-const getLocalStorageColumnOrderKey = (id: string) => `${id}_columnOrder`;
-
-function prepareInitialState<TData extends object>(
-  tableColumns: ColumnDefinition<TData>[],
-  savedState: TableProps<TData>['savedState'],
-) {
-  const columnOrder = tableColumns
-    .filter(column => column.pinned !== 'left' && column.pinned !== 'right')
-    .map(getColumnIdentifier);
-
-  if (savedState?.columnSettings) {
-    const persistState = JSON.parse(localStorage.getItem(getLocalStorageColumnOrderKey(savedState.id)) || 'null');
-    const persistValue: string[] | null = validateColumnOrderLocalStorageValue(persistState) ? persistState : null;
-
-    if (persistValue !== null) {
-      return [...persistValue, ...columnOrder.filter(column => !persistValue?.includes(column))];
-    }
-
-    localStorage.setItem(getLocalStorageColumnOrderKey(savedState.id), JSON.stringify(columnOrder));
-  }
-
-  return columnOrder;
-}
+import { ColumnDefinition } from '../../../../types';
+import { TableProps } from '../../../types';
+import { getLocalStorageColumnOrderKey, prepareInitialState } from './utils/prepareInitialState';
 
 const draggingOptions: SensorOptions = {
   activationConstraint: {
@@ -47,10 +23,17 @@ const draggingOptions: SensorOptions = {
   },
 };
 
-export function useColumnOrderByDrag<TData extends object>(
-  tableColumns: ColumnDefinition<TData>[],
-  savedState: TableProps<TData>['savedState'],
-) {
+type useColumnOrderByDragProps<TData extends object> = {
+  tableColumns: ColumnDefinition<TData>[];
+  savedState: TableProps<TData>['savedState'];
+  columnSettings: TableProps<TData>['columnsSettings'];
+};
+
+export function useColumnOrderByDrag<TData extends object>({
+  tableColumns,
+  savedState,
+  columnSettings,
+}: useColumnOrderByDragProps<TData>) {
   const [columnOrder, setColumnOrderState] = useState<string[]>(() => prepareInitialState(tableColumns, savedState));
 
   const setColumnOrder: Dispatch<SetStateAction<string[]>> = useCallback(
@@ -69,7 +52,7 @@ export function useColumnOrderByDrag<TData extends object>(
 
       setColumnOrderState(updatedOrder);
     },
-    [columnOrder, savedState?.columnSettings, savedState?.id],
+    [columnOrder, savedState],
   );
 
   const handleDragEnd = useCallback(
@@ -104,11 +87,25 @@ export function useColumnOrderByDrag<TData extends object>(
     useSensor(KeyboardSensor, {}),
   );
 
+  const enableColumnsOrderSortByDrag = Boolean(columnSettings?.enableDrag);
+  const dndContextProps: DndContextProps = useMemo(() => {
+    if (!enableColumnsOrderSortByDrag) {
+      return {};
+    }
+
+    return {
+      collisionDetection: closestCenter,
+      modifiers: [restrictToHorizontalAxis],
+      onDragEnd: handleDragEnd,
+      sensors,
+    };
+  }, [enableColumnsOrderSortByDrag, handleDragEnd, sensors]);
+
   return {
     columnOrder,
     setColumnOrder,
 
-    handleDragEnd,
-    sensors,
+    dndContextProps,
+    enableColumnsOrderSortByDrag,
   };
 }

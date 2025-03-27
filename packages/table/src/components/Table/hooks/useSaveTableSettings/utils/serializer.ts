@@ -21,8 +21,8 @@ type FilterValue = string | null | number | boolean | Date;
 const mapDateToString = (filter: FilterValue): string | null | number | boolean =>
   filter instanceof Date ? filter.toISOString() : filter;
 
-const mapFilter = <TFilter extends FiltersState = Record<string, unknown>>(
-  value?: TFilter,
+const mapFilter = <TFilters extends FiltersState = Record<string, unknown>>(
+  value?: TFilters,
 ): RequestPayloadParams['filter'] => {
   if (!value) {
     return undefined;

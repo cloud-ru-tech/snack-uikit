@@ -1,5 +1,4 @@
-import { closestCenter, DndContext, DndContextProps } from '@dnd-kit/core';
-import { restrictToHorizontalAxis } from '@dnd-kit/modifiers';
+import { DndContext } from '@dnd-kit/core';
 import {
   CellContext,
   ColumnPinningState,
@@ -15,7 +14,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import cn from 'classnames';
-import { RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
 
 import { FiltersState } from '@snack-uikit/chips';
 import { useLocale } from '@snack-uikit/locale';
@@ -25,13 +24,7 @@ import { Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, useLayoutEffect } from '@snack-uikit/utils';
 
-import {
-  DEFAULT_FILTER_VISIBILITY,
-  DEFAULT_PAGE_SIZE,
-  DEFAULT_ROW_SELECTION,
-  DEFAULT_SORTING,
-  TEST_IDS,
-} from '../../constants';
+import { DEFAULT_PAGE_SIZE, DEFAULT_ROW_SELECTION, DEFAULT_SORTING, DefaultColumns, TEST_IDS } from '../../constants';
 import { CellAutoResizeContext, useCellAutoResizeController } from '../../contexts';
 import {
   BodyRow,
@@ -39,7 +32,6 @@ import {
   ExportButton,
   getColumnId,
   getRowActionsColumnDef,
-  getSelectionCellColumnDef,
   getStatusColumnDef,
   HeaderRow,
   STATUS_APPEARANCE,
@@ -48,22 +40,25 @@ import {
   TablePagination,
   useEmptyState,
 } from '../../helperComponents';
-import { getTreeColumnDef } from '../../helperComponents/Cells/TreeCell';
 import { ColumnDefinition } from '../../types';
 import { customDateParser, fuzzyFilter } from '../../utils';
 import { TableProps } from '../types';
-import { useColumnOrderByDrag, useColumnSettings, useLoadingTable, useStateControl } from './hooks';
-import { usePageReset } from './hooks/usePageReset';
-import { useSaveTableSettings } from './hooks/useSaveTableSettings';
+import {
+  useColumnOrderByDrag,
+  useColumnSettings,
+  useFilters,
+  useLoadingTable,
+  usePageReset,
+  useSaveTableSettings,
+  useStateControl,
+} from './hooks';
 import styles from './styles.module.scss';
 import {
-  getColumnIdentifier,
   getColumnStyleVars,
   getCurrentlyConfiguredHeaderWidth,
   getInitColumnSizeFromLocalStorage,
-  getInitialColumnsOpenValue,
-  isFilterableColumn,
-  prepareColumnsSettings,
+  getPinnedGroups,
+  getTableColumnsDefinitions,
   saveStateToLocalStorage,
 } from './utils';
 
@@ -140,27 +135,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
   const [pagination, onPaginationChange] = useStateControl<PaginationState>(paginationProp, defaultPaginationState);
 
-  const [filter, setFilter] = useStateControl<TFilters | undefined>(
-    {
-      state: columnFilters?.value,
-      initialState: columnFilters?.defaultValue as TFilters,
-      onChange: columnFilters?.onChange,
-    },
-    undefined,
-  );
-
-  const [filterVisibility, setFilterVisibility] = useStateControl<string[]>(
-    {
-      state: columnFilters?.visibleFilters,
-      initialState: [],
-      onChange: columnFilters?.onVisibleFiltersChange,
-    },
-    DEFAULT_FILTER_VISIBILITY,
-  );
-
-  const [areColumnFiltersOpen, setAreColumnFiltersOpen] = useState<boolean>(() =>
-    getInitialColumnsOpenValue(columnFilters),
-  );
+  const { filter, patchedFilter, setFilter, setFilterVisibility } = useFilters({ columnFilters });
 
   useEffect(() => {
     setDataToStorages({ pagination, sorting, filter, search: globalFilter || '' });
@@ -178,93 +153,61 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     // eslint-disable-next-line
   }, [defaultFilter]);
 
-  const patchedFilter = useMemo(() => {
-    if (!columnFilters) {
-      return undefined;
-    }
-
-    return {
-      open: areColumnFiltersOpen,
-      onOpenChange: setAreColumnFiltersOpen,
-      ...columnFilters,
-      value: filter,
-      onChange: setFilter,
-      visibleFilters: filterVisibility,
-      onVisibleFiltersChange: setFilterVisibility,
-    };
-  }, [columnFilters, areColumnFiltersOpen, filter, setFilter, filterVisibility, setFilterVisibility]);
-
   const enableSelection = Boolean(rowSelectionProp?.enable);
+  const allTableColumns = useMemo(
+    () =>
+      getTableColumnsDefinitions({
+        columnDefinitions,
+        enableSelection,
+        enableSelectPinned,
+        expanding,
+      }),
+    [columnDefinitions, enableSelection, enableSelectPinned, expanding],
+  );
+  const pinnedGroups = useMemo(() => getPinnedGroups(allTableColumns), [allTableColumns]);
 
+  const {
+    enabledColumns,
+    setEnabledColumns,
+    getColumnsSettings,
+    enabledTableColumns,
+    enabledColumnsDefinitions,
+    areColumnsSettingsEnabled,
+  } = useColumnSettings({
+    columnDefinitions,
+    pinnedGroups,
+    savedState,
+    columnsSettings: columnsSettingsProp,
+    rowSelection: rowSelectionProp,
+    enableSelectPinned,
+    expanding,
+  });
+
+  const { columnOrder, setColumnOrder, dndContextProps, enableColumnsOrderSortByDrag } = useColumnOrderByDrag<TData>({
+    tableColumns: allTableColumns,
+    savedState,
+    columnSettings: columnsSettingsProp,
+  });
+
+  const { t } = useLocale('Table');
   const manualPagination = infiniteLoading || manualPaginationProp;
+  const columnsSettings = useMemo(() => getColumnsSettings(columnOrder), [columnOrder, getColumnsSettings]);
 
-  const { enabledColumns, setEnabledColumns } = useColumnSettings(columnDefinitions, savedState);
-  const areColumnsSettingsEnabled = Boolean(columnsSettingsProp?.enableSettingsMenu);
-
-  const filteredColumnDefinitions = useMemo(() => {
-    if (!areColumnsSettingsEnabled) {
-      return columnDefinitions;
-    }
-
-    return columnDefinitions.filter(colDef => {
-      if (isFilterableColumn(colDef)) {
-        return enabledColumns.includes(getColumnIdentifier(colDef));
-      }
-
-      return true;
-    });
-  }, [columnDefinitions, enabledColumns, areColumnsSettingsEnabled]);
-
-  const tableColumns: ColumnDefinition<TData>[] = useMemo(() => {
-    let cols: ColumnDefinition<TData>[] = filteredColumnDefinitions;
-    if (enableSelection && !expanding) {
-      cols = [getSelectionCellColumnDef(enableSelectPinned), ...cols];
-    }
-    if (expanding) {
-      cols = [getTreeColumnDef(expanding.expandingColumnDefinition), ...cols];
-    }
-    return cols;
-  }, [filteredColumnDefinitions, enableSelection, enableSelectPinned, expanding]);
-
-  const enableColumnsOrderSortByDrag = Boolean(columnsSettingsProp?.enableDrag);
-  const { columnOrder, setColumnOrder, sensors, handleDragEnd } = useColumnOrderByDrag(tableColumns, savedState);
-  const dndContextProps: DndContextProps = useMemo(() => {
-    if (!enableColumnsOrderSortByDrag) {
-      return {};
-    }
+  const columnPinning: Required<ColumnPinningState> = useMemo(() => {
+    const getColDefIdsFromGroup = (columnDefinitions: ColumnDefinition<TData>[]) =>
+      columnDefinitions.reduce((accArr: string[], colDef) => {
+        const id = getColumnId(colDef);
+        if (id) {
+          accArr.push(id);
+        }
+        return accArr;
+      }, []);
 
     return {
-      collisionDetection: closestCenter,
-      modifiers: [restrictToHorizontalAxis],
-      onDragEnd: handleDragEnd,
-      sensors: sensors,
+      left: getColDefIdsFromGroup(pinnedGroups.left),
+      right: getColDefIdsFromGroup(pinnedGroups.right),
     };
-  }, [enableColumnsOrderSortByDrag, handleDragEnd, sensors]);
-
-  const filterableColumns = useMemo(() => columnDefinitions.filter(isFilterableColumn), [columnDefinitions]);
-  const areAllColumnsEnabled = filterableColumns.length === enabledColumns.length;
-  const { t } = useLocale('Table');
-  const columnsSettings = useMemo(
-    () =>
-      prepareColumnsSettings({
-        columnDefinitions,
-        columnOrder,
-        areAllColumnsEnabled,
-        t,
-      }),
-    [areAllColumnsEnabled, columnDefinitions, columnOrder, t],
-  );
-
-  const columnPinning = useMemo(() => {
-    const pinningState: Required<ColumnPinningState> = { left: [], right: [] };
-    for (const col of tableColumns) {
-      const id = getColumnId(col);
-      if (col.pinned && id) {
-        pinningState[col.pinned]?.push(id);
-      }
-    }
-    return pinningState;
-  }, [tableColumns]);
+  }, [pinnedGroups]);
 
   const enableRowSelection = useCallback(
     (row: Row<TData>) => {
@@ -282,7 +225,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
   const table = useReactTable<TData>({
     data,
-    columns: tableColumns,
+    columns: enabledTableColumns,
     state: {
       columnPinning,
       columnOrder: enableColumnsOrderSortByDrag ? columnOrder : undefined,
@@ -346,7 +289,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
   const { loadingTable } = useLoadingTable({
     pageSize: Math.min(Math.max(pageSize, 5), DEFAULT_PAGE_SIZE),
-    columnDefinitions: filteredColumnDefinitions,
+    columnDefinitions: enabledColumnsDefinitions,
     columnPinning,
   });
 
@@ -402,7 +345,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
       const originalColDef = originalColumnDefs.find(col => getColumnId(header) === col.id);
 
-      if (header.id === 'snack_predefined_statusColumn' && !originalColDef?.header && !originalColDef?.enableSorting) {
+      if (header.id === DefaultColumns.Status && !originalColDef?.header && !originalColDef?.enableSorting) {
         vars[sizeKey] = 'var(--size-table-cell-status-indicator-horizontal)';
         vars[flexKey] = '100%';
       } else {

@@ -15,17 +15,17 @@ type TableSettings<TFilter extends FiltersState = Record<string, unknown>> = {
   filterSettings?: ChipChoiceRowProps<TFilter>['filters'];
 };
 
-export const useSaveTableSettings = <TFilter extends FiltersState = Record<string, unknown>>({
+export const useSaveTableSettings = <TFilters extends FiltersState = Record<string, unknown>>({
   options,
   filterSettings,
-}: TableSettings<TFilter>) => {
-  const validate = useCallback<ValidationFn<TFilter>>(
-    (data: unknown): data is Settings<TFilter> => {
-      const isPaginationValid = validatePaging((data as Settings<TFilter>)?.pagination);
-      const isSortingValid = validateSorting((data as Settings<TFilter>)?.sorting);
-      const isSearchValid = typeof (data as Settings<TFilter>)?.search === 'string';
+}: TableSettings<TFilters>) => {
+  const validate = useCallback<ValidationFn<TFilters>>(
+    (data: unknown): data is Settings<TFilters> => {
+      const isPaginationValid = validatePaging((data as Settings<TFilters>)?.pagination);
+      const isSortingValid = validateSorting((data as Settings<TFilters>)?.sorting);
+      const isSearchValid = typeof (data as Settings<TFilters>)?.search === 'string';
       const isFilterValid = Boolean(
-        filterSettings && validateFilter((data as Settings<TFilter>).filter, filterSettings),
+        filterSettings && validateFilter((data as Settings<TFilters>).filter, filterSettings),
       );
       return isPaginationValid && isSortingValid && isSearchValid && isFilterValid;
     },
@@ -34,12 +34,12 @@ export const useSaveTableSettings = <TFilter extends FiltersState = Record<strin
   const filterQueryKey = options?.filterQueryKey;
   const filterLocalStorageKey = options?.id ? `${options?.id}_filter` : '';
 
-  const filterStateOptions = useMemo<FilterStateOptions<Settings<TFilter>> | undefined>(
+  const filterStateOptions = useMemo<FilterStateOptions<Settings<TFilters>> | undefined>(
     () => (filterQueryKey ? { filterQueryKey, filterLocalStorageKey, validateData: validate } : undefined),
     [filterQueryKey, validate, filterLocalStorageKey],
   );
 
-  const { getDefaultFilter, setDataToStorages } = useDataPersist<Settings<TFilter>>({
+  const { getDefaultFilter, setDataToStorages } = useDataPersist<Settings<TFilters>>({
     options: filterStateOptions,
     serializer,
     parser,

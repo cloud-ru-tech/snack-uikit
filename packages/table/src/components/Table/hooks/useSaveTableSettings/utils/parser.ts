@@ -20,16 +20,16 @@ const mapSort = (value: RequestPayloadParams['sort'] = []): SortingState =>
     desc: column.direction === 'd',
   }));
 
-const mapFilter = <TFilter extends FiltersState = Record<string, unknown>>(
+const mapFilter = <TFilters extends FiltersState = Record<string, unknown>>(
   value?: RequestPayloadParams['filter'],
-): TFilter | undefined => {
+): TFilters | undefined => {
   if (!value) {
     return undefined;
   }
-  return Object.fromEntries(value.map(filter => [filter.field, filter.value])) as TFilter;
+  return Object.fromEntries(value.map(filter => [filter.field, filter.value])) as TFilters;
 };
 
-export const parser = <TFilter extends FiltersState = Record<string, unknown>>(value: string): Settings<TFilter> => {
+export const parser = <TFilters extends FiltersState = Record<string, unknown>>(value: string): Settings<TFilters> => {
   const parsedValue = parseQueryParamsString(value);
   return {
     pagination: mapPagination(parsedValue?.pagination),

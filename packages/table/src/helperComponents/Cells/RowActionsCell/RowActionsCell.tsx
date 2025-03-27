@@ -5,7 +5,7 @@ import { ButtonFunction } from '@snack-uikit/button';
 import { MoreSVG } from '@snack-uikit/icons';
 import { Droplist, DroplistProps, isBaseItemProps, ItemProps } from '@snack-uikit/list';
 
-import { COLUMN_PIN_POSITION, TEST_IDS } from '../../../constants';
+import { COLUMN_PIN_POSITION, DefaultColumns, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';
 import { useRowContext } from '../../contexts';
 import styles from './styles.module.scss';
@@ -78,7 +78,7 @@ export function getRowActionsColumnDef<TData>({
   pinned,
 }: RowActionsColumnDefProps<TData>): ColumnDefinition<TData> {
   return {
-    id: 'rowActions',
+    id: DefaultColumns.RowActions,
     pinned: pinned ? COLUMN_PIN_POSITION.Right : (undefined as never),
     size: 40,
     meta: {

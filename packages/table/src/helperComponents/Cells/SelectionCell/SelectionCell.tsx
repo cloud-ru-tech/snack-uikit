@@ -3,7 +3,7 @@ import { MouseEvent } from 'react';
 
 import { Checkbox, Radio } from '@snack-uikit/toggles';
 
-import { COLUMN_PIN_POSITION, TEST_IDS } from '../../../constants';
+import { COLUMN_PIN_POSITION, DefaultColumns, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';
 import styles from './styles.module.scss';
 
@@ -42,7 +42,7 @@ export function getSelectionCellColumnDef<TData>(enableSelectPinned: boolean): C
   let previousClickedRowId = '';
 
   return {
-    id: 'selectionCell',
+    id: DefaultColumns.Selection,
     pinned: COLUMN_PIN_POSITION.Left,
     noBodyCellPadding: true,
     size: 40,

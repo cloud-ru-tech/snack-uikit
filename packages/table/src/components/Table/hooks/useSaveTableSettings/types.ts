@@ -1,7 +1,7 @@
 import { PaginationState, SortingState } from '@tanstack/react-table';
 
-export type Settings<TFilter> = {
-  filter?: TFilter;
+export type Settings<TFilters> = {
+  filter?: TFilters;
   pagination: PaginationState;
   search: string;
   sorting: SortingState;

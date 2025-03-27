@@ -100,6 +100,7 @@ export function useTableColumnDefinitions({
         header: renderHeader,
         columnSettings: {
           label: renderHeaderConfigLabel('5'),
+          mode: 'defaultFalse',
         },
         accessorFn: accessorFn('col5'),
         cell: ctx => <CopyCell value={ctx.getValue<string>()} />,

@@ -53,7 +53,7 @@ export function HeaderCell<TData>({
   };
 
   const draggableProps = useMemo(() => {
-    if (!isDraggable || DEFAULT_COLUMNS.includes(header.column.id)) {
+    if (!isDraggable || (DEFAULT_COLUMNS as string[]).includes(header.column.id)) {
       return {};
     }
 

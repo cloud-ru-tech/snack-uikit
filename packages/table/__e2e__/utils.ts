@@ -53,7 +53,11 @@ export const selectors = {
           .find(dataTestIdSelector(TEST_IDS.pinnedCells))
           .withAttribute(DATA_ATTRIBUTES.pinnedPosition, 'right'),
       },
+      tableHeaderCells: Selector(dataTestIdSelector('table__header-cell')),
     };
+  },
+  getColumnHeaderSelectorByDataId(id: string) {
+    return Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', id);
   },
 };
 
@@ -132,3 +136,5 @@ export class RowsSelectionValidator {
     });
   }
 }
+
+export const COLUMNS_SETTINGS_OPTIONS = ['Column №2', 'Column №3', 'Column №5', 'Price', 'Tags', 'Column №8'];
