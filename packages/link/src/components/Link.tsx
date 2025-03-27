@@ -4,7 +4,7 @@ import { ElementType } from 'react';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { APPEARANCE, SIZE, TARGET, TEXT_MODE } from './constants';
+import { APPEARANCE, PURPOSE, SIZE, TARGET, TEXT_MODE } from './constants';
 import styles from './styles.module.scss';
 import { LinkProps } from './types';
 
@@ -14,6 +14,7 @@ export function Link<T extends ElementType = 'a'>({
   className,
   textMode = TEXT_MODE.Default,
   size = SIZE.S,
+  purpose = PURPOSE.Body,
   appearance = APPEARANCE.Primary,
   insideText = false,
   truncateVariant,
@@ -42,6 +43,7 @@ export function Link<T extends ElementType = 'a'>({
       className={cn(styles.link, className)}
       {...fallbackProps}
       data-size={size}
+      data-purpose={purpose}
       data-text-mode={textMode}
       data-appearance={appearance}
       data-inside-text={insideText || undefined}

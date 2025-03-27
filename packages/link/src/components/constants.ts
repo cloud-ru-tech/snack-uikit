@@ -17,6 +17,14 @@ export const SIZE = {
   L: 'l',
 } as const;
 
+export const PURPOSE = {
+  Display: 'display',
+  Headline: 'headline',
+  Title: 'title',
+  Label: 'label',
+  Body: 'body',
+} as const;
+
 export const TARGET = {
   Self: '_self',
   Blank: '_blank',

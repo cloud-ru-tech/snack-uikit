@@ -2,6 +2,7 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
 $sizes: 's', 'm', 'l';
+$purposes: 'display', 'headline', 'title', 'label', 'body';
 $text-modes: 'default', 'accent', 'on-accent';
 $appearances: 'invert-neutral','neutral', 'primary', 'red', 'orange', 'blue', 'violet', 'pink', 'yellow', 'green';
 $icon-sizes: (
@@ -86,19 +87,25 @@ $icon-sizes: (
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @each $text-mode in $text-modes {
-        &[data-text-mode='#{$text-mode}'] {
-          @if $text-mode == 'default' {
-            @include styles-tokens-link.composite-var(styles-tokens-link.$theme-variables, 'sans', 'body', $size);
-          }
+      @each $purpose in $purposes {
+        &[data-purpose='#{$purpose}'] {
+          @each $text-mode in $text-modes {
+            &[data-text-mode='#{$text-mode}'] {
+              @if $text-mode == 'default' {
+                @include styles-tokens-link.composite-var(styles-tokens-link.$theme-variables, 'sans', $purpose, $size);
+              }
 
  @else {
-            @include styles-tokens-link.composite-var(styles-tokens-link.$theme-variables, 'link', 'body', $size);
+                @include styles-tokens-link.composite-var(styles-tokens-link.$theme-variables, 'link', $purpose, $size);
+              }
+            }
           }
         }
       }
 
       @include styles-tokens-link.composite-var(styles-tokens-link.$link, 'container', $size);
+
+      height: auto;
 
       svg {
         width: styles-tokens-link.simple-var($icon-sizes, $size) !important; /* stylelint-disable-line declaration-no-important */

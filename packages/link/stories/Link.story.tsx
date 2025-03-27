@@ -6,7 +6,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Link, LinkProps } from '../src';
-import { APPEARANCE, SIZE, TARGET, TEXT_MODE } from '../src/components/constants';
+import { APPEARANCE, PURPOSE, SIZE, TARGET, TEXT_MODE } from '../src/components/constants';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -17,8 +17,9 @@ export default meta;
 
 const DEFAULT_TEXT = 'Link text';
 const DEFAULT_SIZE = SIZE.S;
-const DEFAULT_SURFACE = TEXT_MODE.Default;
-const DEFAULT_COLOR = APPEARANCE.Primary;
+const DEFAULT_PURPOSE = PURPOSE.Body;
+const DEFAULT_TEXT_MODE = TEXT_MODE.Default;
+const DEFAULT_APPEARANCE = APPEARANCE.Primary;
 
 type StoryProps = LinkProps;
 
@@ -77,21 +78,21 @@ const Template: StoryFn<StoryProps> = ({ insideText, ...args }) => (
         header='Appearance'
         options={colors.map(color => ({
           header: color,
-          props: { appearance: color, text: DEFAULT_TEXT, textMode: DEFAULT_SURFACE, size: DEFAULT_SIZE },
+          props: { appearance: color, text: DEFAULT_TEXT, textMode: DEFAULT_TEXT_MODE, size: DEFAULT_SIZE },
         }))}
       />
       <Table
         header='Text Mode'
         options={surfaces.map(surface => ({
           header: surface,
-          props: { appearance: DEFAULT_COLOR, text: DEFAULT_TEXT, textMode: surface },
+          props: { appearance: DEFAULT_APPEARANCE, text: DEFAULT_TEXT, textMode: surface },
         }))}
       />
       <Table
         header='Size'
         options={sizes.map(size => ({
           header: size,
-          props: { appearance: DEFAULT_COLOR, text: DEFAULT_TEXT, size: size, textMode: DEFAULT_SURFACE },
+          props: { appearance: DEFAULT_APPEARANCE, text: DEFAULT_TEXT, size: size, textMode: DEFAULT_TEXT_MODE },
         }))}
       />
     </div>
@@ -102,12 +103,13 @@ export const link: StoryObj<StoryProps> = {
   render: Template,
 
   args: {
-    textMode: TEXT_MODE.Default,
+    textMode: DEFAULT_TEXT_MODE,
     href: '#',
     text: DEFAULT_TEXT,
-    size: SIZE.S,
+    size: DEFAULT_SIZE,
+    purpose: DEFAULT_PURPOSE,
     target: '_blank',
-    appearance: APPEARANCE.Primary,
+    appearance: DEFAULT_APPEARANCE,
     insideText: false,
     truncateVariant: 'end',
   },

@@ -38,6 +38,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 |------|------|---------------|-------------|
 | text | `string` | - | Текст ссылки |
 | size | enum Size: `"s"`, `"m"`, `"l"` | s | Размер |
+| purpose | enum Purpose: `"display"`, `"headline"`, `"title"`, `"label"`, `"body"` | body | Роль |
 | appearance | enum Appearance: `"invert-neutral"`, `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Стилизует ссылку для размещения на цветном фоне |
 | textMode | enum TextMode: `"default"`, `"accent"`, `"on-accent"` | default | Тип поверхности, на которой размещена ссылка |
 | insideText | `boolean` | - | Находится ли ссылка внутри текста (и можно ли её переносить) |

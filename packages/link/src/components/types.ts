@@ -3,11 +3,13 @@ import { ComponentPropsWithoutRef, ElementType } from 'react';
 import { TruncateStringProps } from '@snack-uikit/truncate-string';
 import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
-import { APPEARANCE, SIZE, TEXT_MODE } from './constants';
+import { APPEARANCE, PURPOSE, SIZE, TEXT_MODE } from './constants';
 
 export type Appearance = ValueOf<typeof APPEARANCE>;
 
 export type Size = ValueOf<typeof SIZE>;
+
+export type Purpose = ValueOf<typeof PURPOSE>;
 
 export type TextMode = ValueOf<typeof TEXT_MODE>;
 
@@ -18,6 +20,10 @@ export type BaseProps = WithSupportProps<{
    * @default 's'
    */
   size?: Size;
+  /** Роль
+   * @default 'body'
+   */
+  purpose?: Purpose;
   /** Стилизует ссылку для размещения на цветном фоне
    * @default 'primary'
    */
