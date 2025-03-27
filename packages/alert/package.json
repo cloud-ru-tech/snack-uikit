@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Alert",
-  "version": "0.16.5",
+  "version": "0.16.6",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,7 +37,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.26.2",
-    "@snack-uikit/link": "0.16.5",
+    "@snack-uikit/link": "0.17.0",
     "@snack-uikit/loaders": "0.9.3",
     "@snack-uikit/truncate-string": "0.6.18",
     "@snack-uikit/utils": "3.8.1",

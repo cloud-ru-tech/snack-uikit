@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2025-03-27)
+
+
+### Features
+
+* **PDS-1393:** add purpose prop for typography ([2c951d8](https://github.com/cloud-ru-tech/snack-uikit/commit/2c951d87a3228b0431111ca8957ffde8a0daa737))
+
+
+
+
+
 ## 0.16.5 (2025-03-19)
 
 ### Only dependencies have been changed
