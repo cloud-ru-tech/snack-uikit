@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ReactElement, useCallback, useMemo } from 'react';
+import { ReactElement, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { PaginationSlider } from '@snack-uikit/pagination';
@@ -23,6 +23,8 @@ export type CarouselProps = WithSupportProps<{
   transition?: number;
   /** Переключение страниц свайпом @default true */
   swipe?: boolean;
+  /** Автоматическое переключение слайдов в секундах */
+  autoSwipe?: number;
   /** Минимальная длина в px для активации свайпа @default 48 */
   swipeActivateLength?: number;
   /** Использовать стрелки для переключения страниц @default true */
@@ -53,8 +55,11 @@ export function Carousel({
   state,
   infiniteScroll = false,
   swipeActivateLength = 48,
+  autoSwipe,
   ...rest
 }: CarouselProps) {
+  const timerRef = useRef<NodeJS.Timeout>();
+
   const scrollBy = useMemo(() => scrollByProp ?? Math.trunc(showItems), [showItems, scrollByProp]);
 
   const [page, setPage] = useUncontrolledProp<number>(state?.page, state?.page ?? 0, newPage => {
@@ -88,6 +93,16 @@ export function Carousel({
     },
     [onLeftArrowClick, onRightArrowClick],
   );
+
+  useEffect(() => {
+    if (!autoSwipe || !infiniteScroll) {
+      return;
+    }
+
+    timerRef.current = setTimeout(() => onRightArrowClick(), autoSwipe * 1000);
+
+    return () => clearTimeout(timerRef.current);
+  }, [autoSwipe, infiniteScroll, onRightArrowClick]);
 
   return (
     <div className={cn(styles.carousel, className)} {...extractSupportProps(rest)}>

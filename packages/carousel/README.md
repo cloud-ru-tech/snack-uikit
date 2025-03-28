@@ -18,6 +18,7 @@
 | scrollBy | `number` | Math.trunc(show) | Сдвиг айтемов при смене 1 страницы |
 | transition | `number` | 0.4 | Время переключения 1 страницы (в s) |
 | swipe | `boolean` | true | Переключение страниц свайпом |
+| autoSwipe | `number` | - | Автоматическое переключение слайдов в секундах |
 | swipeActivateLength | `number` | 48 | Минимальная длина в px для активации свайпа |
 | arrows | `boolean` | true | Использовать стрелки для переключения страниц |
 | pagination | `boolean` | true | Использовать пагинацию для переключения страниц |
