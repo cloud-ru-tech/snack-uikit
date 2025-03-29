@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2025-03-29)
+
+
+### Features
+
+* **PDS-1119:** carousel autoswipe ([ff064ac](https://github.com/cloud-ru-tech/snack-uikit/commit/ff064acc23974c47acf2e1c3a52638fd482fecdb))
+
+
+
+
+
 ## 0.4.18 (2025-03-19)
 
 ### Only dependencies have been changed
