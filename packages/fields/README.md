@@ -343,17 +343,23 @@ FieldStepper в основном предназначен для работы с
 | onChange | `OnChangeHandler<any>` | - | Controlled обработчик измения состояния |
 | value | `ItemId \| ItemId[]` | - | Controlled состояние |
 | defaultValue | `ItemId \| ItemId[]` | - | Начальное состояние |
-| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
-| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
-| open | `boolean` | - |  |
-| onOpenChange | `(open: boolean) => void` | - |  |
-| onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
-| prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
-| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | - |  |
 | pinTop | `OptionProps[]` | - |  |
 | pinBottom | `OptionProps[]` | - |  |
+| searchable | `boolean` | - |  |
+| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
+| onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
+| showClearButton | `boolean` | true | Отображение кнопки очистки поля |
+| prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
 | footer | `ReactNode` | - |  |
+| widthStrategy | enum PopoverWidthStrategy: `"auto"`, `"gte"`, `"eq"` | - |  |
 | search | `SearchState` | - |  |
+| autocomplete | `boolean` | - |  |
+| addOptionByEnter | `boolean` | - |  |
+| open | `boolean` | - |  |
+| enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
+| resetSearchOnOptionSelection | `boolean` | true | Поведение строки поиска при выборе опции из списка, false необходимо при асинхронной подгрузке значений с бэка, в случае если надо поиск оставить как значение при отсутствии данных |
+| onOpenChange | `(open: boolean) => void` | - |  |
+| selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
@@ -362,16 +368,10 @@ FieldStepper в основном предназначен для работы с
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
-| searchable | `boolean` | - |  |
-| autocomplete | `boolean` | - |  |
-| addOptionByEnter | `boolean` | - |  |
-| enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
-| selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | selection | "single" \| "multiple" | - |  |
 | ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 | removeByBackspace | `boolean` | - |  |
-| resetSearchOnOptionSelection | `boolean` | - | Поведение строки поиска при выборе опции из списка |
 ## FieldSlider
 ### Props
 | name | type | default value | description |

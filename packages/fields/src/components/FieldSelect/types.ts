@@ -129,7 +129,9 @@ type FiledSelectCommonProps = WithSupportProps<{
   /** Включить нечеткий поиск  */
   enableFuzzySearch?: boolean;
 
-  /** Поведение строки поиска при выборе опции из списка */
+  /** Поведение строки поиска при выборе опции из списка, false необходимо при асинхронной подгрузке значений с бэка, в случае если надо поиск оставить как значение при отсутствии данных
+   * @default true
+   */
   resetSearchOnOptionSelection?: boolean;
 
   onOpenChange?(open: boolean): void;
@@ -151,7 +153,7 @@ type FiledSelectCommonProps = WithSupportProps<{
 export type FieldSelectSingleProps = FieldSelectPrivateProps &
   Omit<SelectionSingleState, 'mode'> &
   WrapperProps &
-  Omit<FiledSelectCommonProps, 'resetSearchOnOptionSelection'>;
+  FiledSelectCommonProps;
 
 export type FieldSelectMultipleProps = FieldSelectPrivateProps & {
   removeByBackspace?: boolean;

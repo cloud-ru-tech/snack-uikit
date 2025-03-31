@@ -59,6 +59,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     onOpenChange,
     selectedOptionFormatter = defaultSelectedOptionFormatter,
     enableFuzzySearch = true,
+    resetSearchOnOptionSelection = true,
     onCopyButtonClick,
     ...rest
   } = props;
@@ -78,6 +79,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
   const { inputValue, setInputValue, prevInputValue, updateInputValue } = useSearchInput({
     ...search,
     defaultValue: selectedOptionFormatter(selectedItem),
+    resetSearchOnOptionSelection,
     selectedOptionFormatter,
   });
 
