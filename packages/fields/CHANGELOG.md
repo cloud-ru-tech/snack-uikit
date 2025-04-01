@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.41.8 (2025-04-01)
+
+
+### Bug Fixes
+
+* **LK-5116:** add resetSearchOnOptionSelection for field select single ([d6260eb](https://github.com/cloud-ru-tech/snack-uikit/commit/d6260eb04b8707a35d66b16558c822e8e196edf8))
+
+
+
+
+
 ## 0.41.7 (2025-03-25)
 
 
