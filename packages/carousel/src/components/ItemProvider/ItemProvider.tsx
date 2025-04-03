@@ -110,6 +110,10 @@ export function ItemProvider({
 
   const handleSlideClick: MouseEventHandler = useCallback(
     e => {
+      if (showItems === 1) {
+        return;
+      }
+
       const slideRect = e.currentTarget.getBoundingClientRect();
       const containerRect = containerRef.current?.getBoundingClientRect();
       const containerViewport = containerRect?.right ?? 0;
@@ -120,7 +124,7 @@ export function ItemProvider({
         slideCallback(slidePositionDelta);
       }
     },
-    [slideCallback],
+    [showItems, slideCallback],
   );
 
   const itemWidth = useMemo(() => {
