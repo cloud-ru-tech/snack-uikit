@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.1 (2025-04-04)
+
+
+### Bug Fixes
+
+* **FF-6220:** carousel swipe behavior fixed when only single item is present per slide ([f9ac546](https://github.com/cloud-ru-tech/snack-uikit/commit/f9ac5467746f259c594aab56e9c74057b474dfd0))
+
+
+
+
+
 # 0.5.0 (2025-03-29)
 
 
