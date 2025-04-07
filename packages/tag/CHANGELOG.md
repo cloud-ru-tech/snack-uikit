@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2025-04-07)
+
+
+### Features
+
+* **PDS-1785:** tag with tooltip ([aafae6a](https://github.com/cloud-ru-tech/snack-uikit/commit/aafae6ae8f3840f4d574e661fb8d11532a1823f3))
+
+
+
+
+
 ## 0.12.11 (2025-03-19)
 
 ### Only dependencies have been changed
