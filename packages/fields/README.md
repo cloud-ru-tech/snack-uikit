@@ -14,6 +14,24 @@
 
 Поля для форм
 
+## Snack API для работы с внутренним стейтом
+
+Иногда требуется достучаться до внутреннего состояния поля извне (например, в e2e-тестах).
+
+При текущей реализации селекторов получить значение какого-либо HTML-инпута не получится.
+
+В связи с чем было добавлено специальное апи, позволяющее получить и установить значение для компонента FieldSelect:
+
+```tsx
+
+<FieldSelect data-test-id='select' ... />
+...
+const select = document.querySelector('[data-test-id="select"]');
+const value = select.__snackApi.getSelectValue();
+select.__snackApi.setSelectValue(newValue);
+```
+
+
 ## Example
 
 ```tsx
@@ -278,6 +296,8 @@ FieldStepper в основном предназначен для работы с
 | hint | `string` | - | Подсказка внизу |
 | validationState | enum ValidationState: `"error"`, `"default"`, `"warning"`, `"success"` | default | Состояние валидации |
 | showHintIcon | `boolean` | - | Отображать иконку подсказки |
+| ref | `LegacyRef<HTMLDivElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
+| key | `Key` | - |  |
 ## FieldSecure
 ### Props
 | name | type | default value | description |

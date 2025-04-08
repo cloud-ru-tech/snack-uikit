@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useRef, useState } from 'react';
+import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { BaseItemProps, Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
@@ -175,11 +175,29 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
 
   const fieldValidationState = getValidationState({ validationState, error: rest.error });
 
+  const decoratorRef = useRef<HTMLDivElement>(null);
+
+  const valueRef = useRef(value);
+
+  valueRef.current = value;
+
+  useEffect(() => {
+    if (decoratorRef.current) {
+      decoratorRef.current.__snackApi ??= {};
+      decoratorRef.current.__snackApi.setSelectValue = (value: string[]) => {
+        setValue(value);
+      };
+      decoratorRef.current.__snackApi.getSelectValue = () => valueRef.current;
+    }
+  }, [setValue]);
+
   return (
     <FieldDecorator
       {...extractSupportProps(rest)}
       {...extractFieldDecoratorProps(props)}
       validationState={fieldValidationState}
+      data-snack-api='field-select'
+      ref={decoratorRef}
     >
       <Droplist
         {...extractListProps(props)}

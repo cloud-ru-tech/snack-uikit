@@ -193,11 +193,29 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
   const fieldValidationState = getValidationState({ validationState, error: rest.error });
 
+  const decoratorRef = useRef<HTMLDivElement>(null);
+
+  const valueRef = useRef(value);
+
+  valueRef.current = value;
+
+  useEffect(() => {
+    if (decoratorRef.current) {
+      decoratorRef.current.__snackApi ??= {};
+      decoratorRef.current.__snackApi.setSelectValue ??= (value: string) => {
+        setValue(value);
+      };
+      decoratorRef.current.__snackApi.getSelectValue ??= () => valueRef.current;
+    }
+  }, [setValue]);
+
   return (
     <FieldDecorator
       {...extractSupportProps(rest)}
       {...extractFieldDecoratorProps(props)}
       validationState={fieldValidationState}
+      data-snack-api='field-select'
+      ref={decoratorRef}
     >
       <Droplist
         {...extractListProps(props)}
