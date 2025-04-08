@@ -320,6 +320,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     enableMultiRowSelection: rowSelectionProp?.multiRow,
     enableFilters: true,
     getSubRows: expanding?.getSubRows,
+    filterFromLeafRows: Boolean(expanding),
     enableSubRowSelection: true,
     getFilteredRowModel: getFilteredRowModel(),
     getExpandedRowModel: getExpandedRowModel(),

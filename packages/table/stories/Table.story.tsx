@@ -105,8 +105,8 @@ const Template: StoryFn<StoryProps> = ({
   ...args
 }: StoryProps) => {
   const data = useMemo(
-    () => generateRows(rowsAmount, { count: expandRowsCount, level: expandRowsLevel }),
-    [rowsAmount, expandRowsLevel, expandRowsCount],
+    () => generateRows(rowsAmount, { count: expandRowsCount, level: showTableTree ? expandRowsLevel : 0 }),
+    [rowsAmount, expandRowsLevel, expandRowsCount, showTableTree],
   );
   const [filteredData, setFilteredData] = useState(data);
 
