@@ -2,7 +2,12 @@ import { RefObject, useCallback, useMemo } from 'react';
 
 import { MODES, NO_SECONDS_MODE, SlotKey, SLOTS, TIME_MODES } from '../../constants';
 import { Mode, NoSecondsMode, TimeMode } from '../../types';
-import { getNextSlotKeyHandler, getPrevSlotKeyHandler, getSlotKeyFromIndexHandler } from '../../utils/dateFields';
+import {
+  getNextSlotKeyHandler,
+  getPrevSlotKeyHandler,
+  getSlotKeyFromIndexHandler,
+  parseDate as parseDateInner,
+} from '../../utils/dateFields';
 
 export function useDateFieldHelpersForMode({
   inputRef,
@@ -130,6 +135,23 @@ export function useDateFieldHelpersForMode({
   const getPrevSlotKey = useMemo(() => getPrevSlotKeyHandler(mode), [mode]);
   const getSlotKeyFromIndex = useMemo(() => getSlotKeyFromIndexHandler(mode), [mode]);
 
+  const parseDate = useCallback(
+    (value: string) => {
+      const newDate = parseDateInner(value);
+
+      if (newDate && (mode === TIME_MODES.FullTime || mode === TIME_MODES.NoSeconds)) {
+        return {
+          hours: newDate.getHours(),
+          minutes: newDate.getMinutes(),
+          seconds: newDate.getSeconds(),
+        };
+      }
+
+      return newDate;
+    },
+    [mode],
+  );
+
   return {
     isAllSelected,
     isValidInput,
@@ -141,5 +163,6 @@ export function useDateFieldHelpersForMode({
     getNextSlotKey,
     getPrevSlotKey,
     getSlotKeyFromIndex,
+    parseDate,
   };
 }

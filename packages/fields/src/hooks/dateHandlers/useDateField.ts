@@ -15,7 +15,6 @@ import {
   SLOTS_PLACEHOLDER,
 } from '../../constants';
 import { Mode, TimeMode } from '../../types';
-import { parseDate } from '../../utils/dateFields';
 import { useDateFieldHelpersForMode } from './useDateFieldHelpersForMode';
 
 type BaseProps = {
@@ -62,6 +61,7 @@ export function useDateField({
     isAllSelected,
     tryToCompleteInput,
     isValidInput,
+    parseDate,
   } = useDateFieldHelpersForMode({ inputRef, mode: dateTimeMode });
 
   const focusSlotKey = useMemo(() => slotOrder[0], [slotOrder]);
@@ -111,6 +111,8 @@ export function useDateField({
   }, [setInputFocus]);
 
   const handleChange: (value: string, e?: ChangeEvent<HTMLInputElement> | undefined) => void = () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     onChange && isLikeDate() && onChange(parseDate(inputRef.current?.value || ''));
   };
 
@@ -228,8 +230,10 @@ export function useDateField({
               }
             }
           }
-          const newDate = parseDate(isLikeDate() ? inputRef.current.value : '');
-          onChange?.(newDate);
+
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          onChange?.(parseDate(isLikeDate() ? inputRef.current.value : ''));
         }
       }
     },
@@ -241,6 +245,7 @@ export function useDateField({
       tryToCompleteInput,
       getSlot,
       slotsInfo,
+      parseDate,
       isLikeDate,
       onChange,
       isAllSelected,
