@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.35.2 (2025-04-10)
+
+
+### Bug Fixes
+
+* **FF-6387:** add deep search for tree ([d1e9b97](https://github.com/cloud-ru-tech/snack-uikit/commit/d1e9b970205565a64245073dfe624f60fc9d5628))
+
+
+
+
+
 ## 0.35.1 (2025-04-07)
 
 ### Only dependencies have been changed
