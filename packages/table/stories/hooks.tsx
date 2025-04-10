@@ -118,7 +118,7 @@ export function useTableColumnDefinitions({
         headerAlign: 'right',
         align: 'right',
         enableSorting: true,
-        enableResizing: false,
+        enableResizing: true,
       },
       {
         id: '7',
@@ -140,6 +140,7 @@ export function useTableColumnDefinitions({
         enableSorting: true,
         enableResizing: true,
         size: 146,
+        headerAlign: 'right',
         align: 'right',
         pinned: 'right',
         sortingFn: (a, b) => a.original.date - b.original.date,

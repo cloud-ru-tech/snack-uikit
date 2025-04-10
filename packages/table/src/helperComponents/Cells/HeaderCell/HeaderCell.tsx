@@ -72,7 +72,6 @@ export function HeaderCell<TData>({
       data-no-padding={columnDef.noHeaderCellPadding || undefined}
       data-no-offset={columnDef.noHeaderCellBorderOffset || undefined}
       data-test-id={TEST_IDS.headerCell}
-      data-align={columnDef.headerAlign || undefined}
       data-header-id={header.id}
       data-resizing={isResizing || undefined}
       data-pin-position={pinPosition || undefined}
@@ -91,7 +90,7 @@ export function HeaderCell<TData>({
         data-dragging={(isDraggable && isDragging) || undefined}
         {...draggableProps}
       >
-        <div className={styles.tableHeaderCellMain}>
+        <div className={styles.tableHeaderCellMain} data-align={columnDef.headerAlign || undefined}>
           {columnDef.header && (
             <div className={styles.tableHeaderCellName}>
               {rowAutoHeight ? (
