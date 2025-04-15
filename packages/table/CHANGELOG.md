@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.35.3 (2025-04-15)
+
+
+### Bug Fixes
+
+* **PDS-1889:** fixed header align in table ([2b7e448](https://github.com/cloud-ru-tech/snack-uikit/commit/2b7e448df3254396b7cb04e78feba24a4cee9629))
+
+
+
+
+
 ## 0.35.2 (2025-04-10)
 
 
