@@ -28,6 +28,8 @@ export type CardProps = WithSupportProps<{
   disabled?: boolean;
   /** Управление состоянием выбран/не выбран */
   checked?: boolean;
+  /** Имя инпута в dom-дереве */
+  name?: string;
   /** Управление состоянием наличия обводки */
   outline?: boolean;
   /** Отображение галочки для режима массового выделения карточек */
@@ -74,6 +76,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       className,
       href,
       onKeyDown: onKeyDownProp,
+      name,
       ...rest
     },
     ref,
@@ -148,6 +151,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
           </div>
 
           {checked && multipleSelection && <Check className={styles.check} />}
+          {name && <input name={name} type='checkbox' checked={checked} style={{ display: 'none' }} />}
         </div>
       </CardContext.Provider>
     );

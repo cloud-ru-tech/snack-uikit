@@ -30,6 +30,7 @@ import { Card, SearchPrivate } from "@snack-uikit/card";
 |------|------|---------------|-------------|
 | disabled | `boolean` | - | Управление состоянием интерактивности |
 | checked | `boolean` | - | Управление состоянием выбран/не выбран |
+| name | `string` | - | Имя инпута в dom-дереве |
 | outline | `boolean` | - | Управление состоянием наличия обводки |
 | multipleSelection | `boolean` | - | Отображение галочки для режима массового выделения карточек |
 | onClick | `(e: MouseEvent<HTMLDivElement \| HTMLAnchorElement, MouseEvent>) => void` | - | Колбек на клик по карточке |
