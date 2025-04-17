@@ -22,6 +22,7 @@ SegmentedControl
 | size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер компонента. |
 | outline | `boolean` | - | Обводка |
 | width | enum Width: `"auto"`, `"full"` | auto | Управление шириной компонента. |
+| name | `string` | - | Имя поля |
 
 
 [//]: DOCUMENTATION_SECTION_END

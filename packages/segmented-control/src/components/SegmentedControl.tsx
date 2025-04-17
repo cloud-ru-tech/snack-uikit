@@ -43,6 +43,10 @@ export type SegmentedControlProps<Value extends IdType = IdType> = WithSupportPr
    * Управление шириной компонента.
    */
   width?: Width;
+  /**
+   * Имя поля
+   */
+  name?: string;
 }>;
 
 /**
@@ -57,6 +61,7 @@ export function SegmentedControl<Value extends IdType>({
   value,
   outline,
   width = WIDTH.Auto,
+  name,
   ...other
 }: SegmentedControlProps<Value>) {
   const [selected, setSelected] = useUncontrolledProp(value, defaultValue, onChange);
@@ -129,6 +134,7 @@ export function SegmentedControl<Value extends IdType>({
       {...extractDataTestProps(other)}
       {...extractSupportProps(other)}
     >
+      {name && <input type='hidden' value={selected} name={name} />}
       <div data-size={size} style={selectionPosition} className={styles.selection} aria-hidden={true} />
       {itemsJSX}
     </div>
