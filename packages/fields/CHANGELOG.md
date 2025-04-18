@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.41.10 (2025-04-18)
+
+
+### Bug Fixes
+
+* **PDS-2159:** field select multiple - empty options fix ([cf30686](https://github.com/cloud-ru-tech/snack-uikit/commit/cf3068682fd6ef7684b024ff015b2b540a154158))
+
+
+
+
+
 ## 0.41.9 (2025-04-07)
 
 ### Only dependencies have been changed
