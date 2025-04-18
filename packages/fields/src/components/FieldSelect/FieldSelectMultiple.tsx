@@ -83,7 +83,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
   const postfixSettings = usePostfix({ postfix, disabled });
 
   useEffect(() => {
-    if (options.length < 1 && Boolean(value)) {
+    if (options.length === 0 && value && value.length > 0) {
       setValue(undefined);
     }
   }, [options.length, setValue, value]);
