@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.1 (2025-04-21)
+
+
+### Bug Fixes
+
+* **PDS-2163:** Code-editor reset blue border ([bbdfc42](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/bbdfc427f6c1b78c7526dd29dcd15f24be96a661))
+
+
+
+
+
 # 0.6.0 (2025-03-27)
 
 
