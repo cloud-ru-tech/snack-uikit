@@ -87,6 +87,7 @@ export function CodeEditor({
               },
             ],
             colors: {
+              focusBorder: '#00000000',
               'editor.background': '#00000000',
               'editor.foreground': themeValues.sys.neutral.textMain,
               'editor.selectionBackground': themeValues.sys.primary.decorHovered,
