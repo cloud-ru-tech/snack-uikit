@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.35.4 (2025-04-22)
+
+
+### Bug Fixes
+
+* **PDS-1971:** table fixes - column order, settings label, refactoring ([a1c34a3](https://github.com/cloud-ru-tech/snack-uikit/commit/a1c34a3783a0a0bf95253529d958ad69421819ce))
+
+
+
+
+
 ## 0.35.3 (2025-04-15)
 
 
