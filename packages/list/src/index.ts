@@ -7,3 +7,5 @@ export * from './helperComponents/ItemContent';
 
 export * from './helpers';
 export * from './constants';
+
+export { setNonce } from '@snack-uikit/scroll';

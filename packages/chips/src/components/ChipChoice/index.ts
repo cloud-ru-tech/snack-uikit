@@ -12,6 +12,8 @@ import {
   CustomContentRenderProps,
 } from './components';
 
+export { setNonce } from '@snack-uikit/list';
+
 export type { FilterOption, ChipChoiceMultipleProps, ChipChoiceSingleProps, ContentRenderProps } from './types';
 export type {
   ChipChoiceCustomProps,

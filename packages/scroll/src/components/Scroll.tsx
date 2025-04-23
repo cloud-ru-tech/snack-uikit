@@ -1,6 +1,7 @@
 import 'overlayscrollbars/styles/overlayscrollbars.css';
 
 import cn from 'classnames';
+import { OverlayScrollbars } from 'overlayscrollbars';
 import { OverlayScrollbarsComponent, OverlayScrollbarsComponentRef } from 'overlayscrollbars-react';
 import { forwardRef, PropsWithChildren, useCallback, useImperativeHandle, useRef, useState } from 'react';
 
@@ -61,6 +62,12 @@ type PositionsRef = {
   scrolledToRight: boolean;
   scrolledToBottom: boolean;
 };
+
+/**
+ * Установить nonce атрибут для инлайн стилей.
+ * @function setNonce
+ */
+export const setNonce = OverlayScrollbars.nonce;
 
 export const Scroll = forwardRef<HTMLElement, ScrollProps>(function Scroll(
   {
