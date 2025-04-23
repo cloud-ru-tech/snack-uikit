@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Button Combo",
-  "version": "0.1.20",
+  "version": "0.2.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -38,7 +38,7 @@
   "dependencies": {
     "@snack-uikit/button": "0.19.9",
     "@snack-uikit/icons": "0.26.2",
-    "@snack-uikit/list": "0.27.7",
+    "@snack-uikit/list": "0.28.0",
     "@snack-uikit/utils": "3.8.1",
     "classnames": "2.5.1"
   }

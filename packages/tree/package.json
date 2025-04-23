@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tree",
-  "version": "0.8.39",
+  "version": "0.9.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -38,7 +38,7 @@
   "dependencies": {
     "@snack-uikit/button": "0.19.9",
     "@snack-uikit/icons": "0.26.2",
-    "@snack-uikit/list": "0.27.7",
+    "@snack-uikit/list": "0.28.0",
     "@snack-uikit/toggles": "0.13.13",
     "@snack-uikit/truncate-string": "0.6.18",
     "@snack-uikit/typography": "0.8.6",

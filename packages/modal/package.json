@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Modal",
-  "version": "0.15.6",
+  "version": "0.16.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -40,7 +40,7 @@
     "@snack-uikit/icon-predefined": "0.7.5",
     "@snack-uikit/icons": "0.26.2",
     "@snack-uikit/link": "0.17.0",
-    "@snack-uikit/scroll": "0.9.5",
+    "@snack-uikit/scroll": "0.10.0",
     "@snack-uikit/tooltip": "0.17.1",
     "@snack-uikit/truncate-string": "0.6.18",
     "@snack-uikit/typography": "0.8.6",
