@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.16.1 (2025-04-24)
+
+
+### Bug Fixes
+
+* **FF-5152:** color for modal title ([effe98b](https://github.com/cloud-ru-tech/snack-uikit/commit/effe98b3e5e55d521abc4b67c8eb1ca4ccb249db))
+
+
+
+
+
 # 0.16.0 (2025-04-23)
 
 
