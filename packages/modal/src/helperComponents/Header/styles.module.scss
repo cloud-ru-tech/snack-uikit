@@ -49,6 +49,7 @@ $aligns: 'default', 'center';
 
 .title {
   display: grid;
+  color: styles-tokens-modal.$sys-neutral-text-main;
 }
 
 .subtitle {
