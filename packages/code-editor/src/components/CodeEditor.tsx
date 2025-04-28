@@ -133,8 +133,8 @@ export function CodeEditor({
   return (
     <div className={className} {...extractSupportProps(props)} ref={setWrapperElement}>
       <Editor
-        {...props}
         {...jsonSchemaProps}
+        {...props}
         theme={theme ?? (dark ? 'snackDark' : 'snack')}
         className={cn({ [styles.editor]: hasBackground })}
         loading={loading ?? <Spinner />}
