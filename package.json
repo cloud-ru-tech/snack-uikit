@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.26.0",
-    "@cloud-ru/eslint-config": "2.1.0",
+    "@cloud-ru/eslint-config": "2.1.1",
     "@cloud-ru/eslint-plugin-ssr-safe-react": "0.3.0",
     "@cloud-ru/ft-config-babel": "1.1.2",
     "@cloud-ru/ft-config-commit-message": "1.1.1",
@@ -48,7 +48,7 @@
     "@cloud-ru/ft-config-prettier": "1.1.2",
     "@cloud-ru/ft-config-stylelint": "2.0.0",
     "@cloud-ru/ft-config-tsconfig": "1.1.1",
-    "@cloud-ru/ft-config-vitest": "1.2.1",
+    "@cloud-ru/ft-config-vitest": "1.2.2",
     "@cloud-ru/ft-conventional-changelog-old": "npm:@cloud-ru/ft-conventional-changelog@1.1.0",
     "@cloud-ru/ft-license-validator": "1.1.1",
     "@cloud-ru/ft-storybook-brand-addon": "2.0.5",
