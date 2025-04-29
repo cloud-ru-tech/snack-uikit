@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.2 (2025-04-29)
+
+
+### Bug Fixes
+
+* **PDS-2207:** Fix incorrect overwriting of the incoming path value ([4311430](https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/commits/43114301fac79ab3a5fc7e5278167c0bba4a5fe0))
+
+
+
+
+
 ## 0.6.1 (2025-04-21)
 
 
