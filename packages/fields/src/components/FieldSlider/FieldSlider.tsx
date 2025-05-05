@@ -143,7 +143,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
     );
 
     const onTextFieldChange = (textFieldValue: string) => {
-      const numValue = parseInt(textFieldValue);
+      const numValue = parseFloat(textFieldValue);
 
       if (textFieldValue && Number.isNaN(numValue)) {
         return;
@@ -160,7 +160,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
 
       const allowedValues = Object.keys(marks).map(key => ({
         key,
-        value: parseInt(String(getMarkValue(key))),
+        value: parseFloat(String(getMarkValue(key))),
       }));
       const suitableEntry = allowedValues.find(entry => entry.value === textFieldNumValue);
 
@@ -169,8 +169,8 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
         return;
       }
 
-      const actualMin = parseInt(String(getMarkValue(min)));
-      const actualMax = parseInt(String(getMarkValue(max)));
+      const actualMin = parseFloat(String(getMarkValue(min)));
+      const actualMax = parseFloat(String(getMarkValue(max)));
 
       if (textFieldNumValue < actualMin) {
         handleChange(min);
@@ -230,8 +230,8 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
         return;
       }
 
-      const parsedValue = parseInt(textFieldInputValue);
-      const actualMinByMark = parseInt(String(getMarkValue(min)));
+      const parsedValue = parseFloat(textFieldInputValue);
+      const actualMinByMark = parseFloat(String(getMarkValue(min)));
       const actualMin = Number.isNaN(actualMinByMark) ? min : actualMinByMark;
 
       const textFieldNumValue = textFieldInputValue ? parsedValue : actualMin;
