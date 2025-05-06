@@ -88,12 +88,6 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
   const prefixSettings = usePrefix({ prefix, disabled });
   const postfixSettings = usePostfix({ postfix, disabled });
 
-  useEffect(() => {
-    if (options.length < 1 && Boolean(value)) {
-      setValue(undefined);
-    }
-  }, [options.length, setValue, value]);
-
   useLayoutEffect(() => {
     setItems(({ selectedItem }) => updateItems({ options, value, selectedItem }));
   }, [options, value]);
@@ -128,7 +122,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
   const { postfixButtons, inputKeyDownNavigationHandler, buttonsRefs } = useButtons({
     readonly,
     size,
-    showClearButton: showClearButton && !disabled && !readonly && value !== undefined,
+    showClearButton: showClearButton && !disabled && !readonly && value !== undefined && selectedItem !== undefined,
     showCopyButton,
     inputRef: localRef,
     onClear,
