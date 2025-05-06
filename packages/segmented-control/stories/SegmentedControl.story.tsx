@@ -1,5 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { PlaceholderSVG } from '@snack-uikit/icons';
 import { Tooltip } from '@snack-uikit/tooltip';
@@ -84,6 +84,10 @@ export const segmentedControl: StoryObj<StoryProps> = {
       name: '[Story]: story type',
       options: Object.values(StoryType),
       control: { type: 'radio' },
+      if: {
+        arg: 'size',
+        neq: 'xs',
+      },
     },
     defaultValue: { type: 'string' },
   },

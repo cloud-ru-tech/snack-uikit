@@ -1,9 +1,10 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-segmentedControl';
-@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element";
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element';
 
-$sizes: 's', 'm', 'l';
+$sizes: 'xs', 's', 'm', 'l';
 $layouts: 'label-only', 'icon-before', 'icon-only';
 $typographies: (
+  'xs': styles-tokens-segmentedControl.$sans-label-m,
   's': styles-tokens-segmentedControl.$sans-label-m,
   'm': styles-tokens-segmentedControl.$sans-label-m,
   'l': styles-tokens-segmentedControl.$sans-label-l,
@@ -29,7 +30,8 @@ $typographies: (
     color: styles-tokens-segmentedControl.$sys-neutral-text-main;
   }
 
-  &[data-disabled], &[data-disabled]:hover {
+  &[data-disabled],
+  &[data-disabled]:hover {
     cursor: not-allowed;
     color: styles-tokens-segmentedControl.$sys-neutral-text-disabled;
   }
@@ -37,7 +39,8 @@ $typographies: (
   &[data-active] {
     color: styles-tokens-segmentedControl.$sys-neutral-text-main;
 
-    &[data-disabled], &[data-disabled]:hover {
+    &[data-disabled],
+    &[data-disabled]:hover {
       color: styles-tokens-segmentedControl.$sys-neutral-text-disabled;
     }
   }
@@ -45,14 +48,21 @@ $typographies: (
   &:focus-visible {
     @include styles-tokens-segmentedControl.outline-inside-var(styles-tokens-element.$container-focused-s);
 
-    outline-color: styles-tokens-segmentedControl.simple-var(styles-tokens-segmentedControl.$sys-available-complementary);
+    outline-color: styles-tokens-segmentedControl.simple-var(
+      styles-tokens-segmentedControl.$sys-available-complementary
+    );
   }
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
       @each $layout in $layouts {
         &[data-layout='#{$layout}'] {
-          @include styles-tokens-segmentedControl.composite-var(styles-tokens-segmentedControl.$segmented-control, 'segment', $size, $layout);
+          @include styles-tokens-segmentedControl.composite-var(
+            styles-tokens-segmentedControl.$segmented-control,
+            'segment',
+            $size,
+            $layout
+          );
         }
       }
     }

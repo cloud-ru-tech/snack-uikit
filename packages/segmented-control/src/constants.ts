@@ -1,4 +1,5 @@
 export const SIZE = {
+  XS: 'xs',
   S: 's',
   M: 'm',
   L: 'l',

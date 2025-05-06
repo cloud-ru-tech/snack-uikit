@@ -19,7 +19,7 @@ SegmentedControl
 | defaultValue | `IdType` | - | ID выбранного по умолчанию сегмента. (в uncontrolled режиме) |
 | onChange | `(value: Value) => void` | - | Колбек смены выбранного сегмента. |
 | className | `string` | - | CSS-класс контейнера. |
-| size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер компонента. |
+| size | enum Size: `"xs"`, `"s"`, `"m"`, `"l"` | m | Размер компонента. |
 | outline | `boolean` | - | Обводка |
 | width | enum Width: `"auto"`, `"full"` | auto | Управление шириной компонента. |
 | name | `string` | - | Имя поля |

@@ -1,6 +1,10 @@
 import { ReactNode } from 'react';
 
-export const getLayout = (icon?: ReactNode, label?: string) => {
+export const getLayout = (icon?: ReactNode, label?: string, size?: string) => {
+  if (size === 'xs') {
+    return 'label-only';
+  }
+
   if (icon && label) {
     return 'icon-before';
   }

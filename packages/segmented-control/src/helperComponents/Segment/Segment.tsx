@@ -49,7 +49,7 @@ export function Segment({
       data-test-id={`section-${value}`}
       data-active={selected || undefined}
       data-disabled={disabled || undefined}
-      data-layout={getLayout(icon, label)}
+      data-layout={getLayout(icon, label, size)}
       className={cn(styles.segment)}
       onClick={onClick}
       data-size={size}
@@ -59,7 +59,7 @@ export function Segment({
       role='radio'
       type='button'
     >
-      {icon && <div className={styles.icon}>{icon}</div>}
+      {size !== 'xs' && icon && <div className={styles.icon}>{icon}</div>}
       {label && <TruncateString className={styles.label} data-size={size} text={label} />}
     </button>
   );

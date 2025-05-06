@@ -1,6 +1,6 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-segmentedControl';
 
-$sizes: 's', 'm', 'l';
+$sizes: 'xs', 's', 'm', 'l';
 
 .container {
   @include styles-tokens-segmentedControl.composite-var(styles-tokens-segmentedControl.$segmented-control-container);
@@ -40,7 +40,11 @@ $sizes: 's', 'm', 'l';
 
   @each $size in $sizes {
     &[data-size='#{$size}']::before {
-      @include styles-tokens-segmentedControl.composite-var(styles-tokens-segmentedControl.$segmented-control, 'background', $size);
+      @include styles-tokens-segmentedControl.composite-var(
+        styles-tokens-segmentedControl.$segmented-control,
+        'background',
+        $size
+      );
     }
   }
 }
@@ -67,11 +71,18 @@ $sizes: 's', 'm', 'l';
 
   background-color: styles-tokens-segmentedControl.$sys-neutral-background2-level;
 
-  transition: left 0.15s ease-in-out, width 0.15s ease-in-out;
+  transition:
+    left 0.15s ease-in-out,
+    width 0.15s ease-in-out;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
-      @include styles-tokens-segmentedControl.composite-var(styles-tokens-segmentedControl.$segmented-control, 'segment', $size, 'icon-only');
+      @include styles-tokens-segmentedControl.composite-var(
+        styles-tokens-segmentedControl.$segmented-control,
+        'segment',
+        $size,
+        'icon-only'
+      );
     }
   }
 }
