@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.42.1 (2025-05-06)
+
+
+### Bug Fixes
+
+* **PDS-2180:** added float support for slider field ([2c2986b](https://github.com/cloud-ru-tech/snack-uikit/commit/2c2986b1ac81034feb1cd38a7d9ea98188354007))
+
+
+
+
+
 # 0.42.0 (2025-04-23)
 
 
