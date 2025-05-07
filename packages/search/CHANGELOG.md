@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.1 (2025-05-07)
+
+
+### Bug Fixes
+
+* **FF-6490:** pass tabIndex prop to Search ([a07cc91](https://github.com/cloud-ru-tech/snack-uikit/commit/a07cc915032dcb2b68e9151c49f083a7823af598))
+
+
+
+
+
 # 0.11.0 (2025-04-23)
 
 
