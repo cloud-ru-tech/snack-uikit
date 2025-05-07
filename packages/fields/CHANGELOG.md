@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.42.2 (2025-05-07)
+
+
+### Bug Fixes
+
+* **PDS-2167:** field select behavior fixed when options are changed ([29c2cfe](https://github.com/cloud-ru-tech/snack-uikit/commit/29c2cfe43ecaceaaf0dba7b63b1c23b264df1aed))
+
+
+
+
+
 ## 0.42.1 (2025-05-06)
 
 
