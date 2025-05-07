@@ -1,15 +1,20 @@
 import path from 'path';
 
-import { StorybookConfig } from '@storybook/react-webpack5';
+import { StorybookConfig } from '@storybook/react-vite';
+import vitePluginReact from '@vitejs/plugin-react';
 import dotenv from 'dotenv';
 import { globSync } from 'glob';
-import MonacoWebpackPlugin from 'monaco-editor-webpack-plugin';
-import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
-import { Configuration as WebpackConfig, RuleSetRule } from 'webpack';
+import { defineConfig } from 'vite';
+import monacoEditorPlugin from 'vite-plugin-monaco-editor';
+import svgr from 'vite-plugin-svgr';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 import { getDependenciesLinks } from './utils/getDependenciesLinks';
 
+dotenv.config();
+
 const DEPENDENCIES_LINKS = getDependenciesLinks();
+
 const STORIES = globSync(`packages/${process.env.STORYBOOK_PACKAGE_NAME || '*'}/stories/**/*.story.{ts,tsx}`)
   .map(x => path.resolve(__dirname, `../${x}`))
   .sort((a, b) => a.localeCompare(b));
@@ -21,8 +26,8 @@ const TOKENS = path.resolve(__dirname, './stories/Tokens.story.tsx');
 const ICONS = path.resolve(__dirname, './stories/Icons.story.tsx');
 const isTestServer = Boolean(process.env.TEST_SERVER);
 
-dotenv.config();
-
+// eslint-disable-next-line no-console
+console.log(process.env.CUSTOM_STORYBOOK_ADDONS?.split(' '), 'proccess env addons')
 const mainConfig: StorybookConfig = {
   stories: [WELCOME, GETTING_STARTED, CONTRIBUTION_GUIDE, ICONS, TOKENS, ...STORIES],
   addons: [
@@ -35,7 +40,7 @@ const mainConfig: StorybookConfig = {
             localIdentName: '[local]--[hash:base64:5]',
           },
         },
-      },
+      }
     },
     '@cloud-ru/ft-storybook-readme-addon',
     '@storybook/addon-designs',
@@ -62,7 +67,6 @@ const mainConfig: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-a11y',
     '@cloud-ru/ft-storybook-deps-graph-addon',
-    '@storybook/addon-webpack5-compiler-babel',
     ...(process.env.CUSTOM_STORYBOOK_ADDONS?.split(' ') ?? []),
   ],
   staticDirs: [
@@ -70,14 +74,13 @@ const mainConfig: StorybookConfig = {
     { from: '../storybook/assets', to: '/storybook/assets' },
     { from: '../storybook/assets', to: '/assets' },
   ],
-  framework: '@storybook/react-webpack5',
+  framework: '@storybook/react-vite',
   core: {
     disableTelemetry: true,
   },
   typescript: {
     check: true,
     reactDocgen: 'react-docgen-typescript',
-    checkOptions: {},
   },
   babel: (base: StorybookConfig['babel']) => ({
     ...base,
@@ -86,79 +89,47 @@ const mainConfig: StorybookConfig = {
   env: config => ({
     ...config,
     DEPENDENCIES_LINKS: DEPENDENCIES_LINKS as unknown as string,
-    DEPS_URL: (process.env.DEPS_URL || '') as unknown as string,
-    CUSTOM_STORYBOOK_ADDONS: (process.env.CUSTOM_STORYBOOK_ADDONS || '') as unknown as string,
+    DEPS_URL: process.env.DEPS_URL || ('' as string),
+    CUSTOM_STORYBOOK_ADDONS: (process.env.CUSTOM_STORYBOOK_ADDONS || '') as string,
   }),
-  webpackFinal: async (config: WebpackConfig) => {
-    isTestServer && (config.watch = false);
-    isTestServer &&
-      (config.watchOptions = {
-        ignored: /.*/,
-      });
-    isTestServer && (config.mode = 'production');
-    isTestServer && (config.devtool = false);
-
-    if (config.resolve) {
-      config.resolve.fallback = {
-        ...(config.resolve?.fallback || {}),
-        stream: require.resolve('stream-browserify'),
-      };
-
-      if (!config.resolve.plugins) {
-        config.resolve.plugins = [];
-      }
-
-      config.resolve.plugins.push(
-        new TsconfigPathsPlugin({
-          configFile: './tsconfig.json',
-          logLevel: 'INFO',
-          extensions: ['.ts', '.tsx', '.json', '.svg', '.png'],
-        }),
-      );
-    }
-
-    if (!config.plugins) {
-      config.plugins = [];
-    }
-
-    config.plugins.push(
-      new MonacoWebpackPlugin({
-        globalAPI: false,
-        filename: 'monaco-editor/[name].worker.js',
-        customLanguages: [
-          {
-            label: 'yaml',
-            entry: 'monaco-yaml',
-            worker: {
-              id: 'monaco-yaml/yamlWorker',
-              entry: 'monaco-yaml/yaml.worker',
+  viteFinal: async viteConfig =>
+    defineConfig({
+      ...viteConfig,
+      plugins: [
+        ...(viteConfig.plugins || []),
+        tsconfigPaths(),
+        vitePluginReact(),
+        svgr(),
+        {
+          name: "markdown-loader",
+          transform(code, id) {
+            if (id.slice(-3) === ".md") {
+              return `export default ${JSON.stringify(code)};`;
+            }
+          }
+        },
+        monacoEditorPlugin({
+          globalAPI: false,
+          publicPath: 'monaco-editor/[name].worker.js',
+          customWorkers: [
+            {
+              label: 'yaml',
+              entry: 'monaco-yaml',
             },
-          },
-        ],
-      }),
-    );
-
-    const SVG_SPRITE_EXPRESSION = /\.symbol.svg$/;
-
-    const fileLoaderRule = config.module?.rules?.find(rule => {
-      if (typeof rule !== 'object') {
-        return false;
-      }
-
-      return rule?.test?.toString().includes('svg');
-    }) as RuleSetRule;
-
-    if (fileLoaderRule) {
-      fileLoaderRule.exclude = SVG_SPRITE_EXPRESSION;
-    }
-
-    config.module?.rules?.push({
-      test: SVG_SPRITE_EXPRESSION,
-      use: 'svg-inline-loader',
-    });
-
-    return config;
-  },
+          ],
+        }),
+      ],
+      define: {
+        'process.env': {
+          ...viteConfig.define?.['process.env'],
+          DEPENDENCIES_LINKS: DEPENDENCIES_LINKS || '',
+          DEPS_URL: process.env.DEPS_URL || '',
+          CUSTOM_STORYBOOK_ADDONS: process.env.CUSTOM_STORYBOOK_ADDONS || '',
+          TEST_SERVER: isTestServer || 'false',
+        },
+      },
+    }),
 };
+
 // eslint-disable-next-line import/no-default-export
 export default mainConfig;

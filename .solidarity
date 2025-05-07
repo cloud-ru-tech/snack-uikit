@@ -18,6 +18,15 @@
         "version": "--version",
         "error": "You have node@{{installedVersion}}, and need node@{{wantedVersion}}. Go to https://nodejs.org/ to update`"
       }
+    ],
+    "PNPM": [
+      {
+        "rule": "cli",
+        "binary": "pnpm",
+        "semver": "10.10.0",
+        "version": "--version",
+        "error": "You have pnpm@{{installedVersion}}, and need pnpm@{{wantedVersion}}. Fix with `npm install -g pnpm@{{wantedVersion}}``"
+      }
     ]
   }
 }

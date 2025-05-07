@@ -9,3 +9,5 @@ export declare global {
     __snackApi?: Record<string, unknown>;
   }
 }
+
+declare module "*.md";

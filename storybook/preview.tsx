@@ -1,4 +1,4 @@
-import './styles.module.scss';
+import './global.scss';
 
 import { GlobalTypes, Parameters } from '@storybook/csf';
 import { Preview } from '@storybook/react';

@@ -4,8 +4,6 @@ Snack Uikit - [библиотека компонентов](https://cloud-ru-tec
 
 ![Cloud](storybook/assets/CloudRuFullLogo.svg)   
 
-![TeamSnack](storybook/assets/TeamSnack.jpg)
-
 # Design
 
 [Figma](https://www.figma.com/files/1101513230643708615/team/1194627249980298820/DS-(FF))

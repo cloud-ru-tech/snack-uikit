@@ -1,5 +1,6 @@
 import { FieldDecoratorProps } from './FieldDecorator';
 
+
 export function extractFieldDecoratorProps<T extends Partial<FieldDecoratorProps>>({
   error,
   required,
@@ -15,7 +16,7 @@ export function extractFieldDecoratorProps<T extends Partial<FieldDecoratorProps
   size,
   validationState,
   className,
-}: T) {
+}: T): Partial<FieldDecoratorProps> {
   return {
     error,
     required,

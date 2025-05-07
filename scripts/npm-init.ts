@@ -79,7 +79,7 @@ inquirer
   ])
   .then(answers => {
     logDebug('Removing bootstrapped files...');
-    shell.exec('npm run clean:modules', { silent: true });
+    shell.exec('pnpm clean:modules', { silent: true });
 
     logDebug('Generating files...');
 
@@ -101,7 +101,11 @@ inquirer
     logDebug('Finished generating files!');
     logInfo('Bootstrapping new package...This will take a few moments...');
 
-    const bootstrapResult = shell.exec('npm run deps:all && npm run build:packages', { silent: true });
+    logDebug('Bootstrapping new package...This will take a few moments...');
+
+
+    const bootstrapResult = shell.exec('pnpm deps:all && pnpm build:packages', { silent: true });
+
     if (bootstrapResult.code !== 0) {
       logError(bootstrapResult.stdout);
       logError(bootstrapResult.stderr);

@@ -2,6 +2,8 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
+import { removeTempDeps } from './remove-temp-deps'
+
 type Theme = {
   key: string;
   name: string;
@@ -39,9 +41,9 @@ export const themes: Theme[] = [${values.body.join('\n')}];
 // @ts-ignore
 import('../snack.config.ts')
   .then(config => {
-    const packages = config.themes.map((theme: Theme) => `${theme.packageName}@${theme.version || 'latest'}`);
-    execSync(`npm i ${packages.join(' ')} --no-save`);
-
+      const packages = config.themes.map((theme: Theme) => `${theme.packageName}@${theme.version || 'latest'}`);
+      execSync(`pnpm add -D ${packages.join(' ')}`);
+      removeTempDeps(packages)
     const values = config.themes.reduce(
       (acc: TemplateValues, theme: Theme) => {
         acc.imports.push(`import ${theme.key} from "${theme.packageName}/build/css/brand.module.css";`);
@@ -52,13 +54,10 @@ import('../snack.config.ts')
       },
       { imports: [], body: [] } as TemplateValues,
     );
-
     writeThemesFile(values);
-
     process.exit(0);
   })
   .catch(() => {
     writeThemesFile({ imports: [], body: [] });
-
     process.exit(0);
   });

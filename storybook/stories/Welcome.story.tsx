@@ -64,7 +64,6 @@ const Template: StoryFn = () => {
 
       <Card
         header='Figma Tokens'
-        image='https://amzn.github.io/style-dictionary/assets/logo.png'
         href='https://github.com/cloud-ru-tech/figma-tokens'
       />
 

@@ -2,7 +2,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useDarkMode } from 'storybook-dark-mode';
 
 import Readme from '../../README.md';
-import CloudRuFullLogoDark from '../assets/CloudRuFullLogoDark.svg';
 import { Markdown } from './components';
 
 const PATTERN_TO_REPLACE = new RegExp(/!\[Cloud]\((?<imagePath>.+?)\)/);
@@ -17,7 +16,7 @@ const meta: Meta<typeof Markdown> = {
       const isDark = useDarkMode();
 
       const readme =
-        currentImagePath && isDark ? Readme.replace(currentImagePath, String(CloudRuFullLogoDark)) : Readme;
+        currentImagePath && isDark ? Readme.replace(currentImagePath, 'storybook/assets/CloudRuFullLogoDark.svg') : Readme;
 
       return <Story args={{ md: readme, darkMode: isDark }} />;
     },

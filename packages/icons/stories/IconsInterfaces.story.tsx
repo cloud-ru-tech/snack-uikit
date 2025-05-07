@@ -5,7 +5,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Sprite } from '../src';
 import * as Icons from '../src/components';
-import CustomSpriteSVG from './sprites/customSprite.symbol.svg';
+import CustomSpriteSVG from './sprites/customSprite.symbol.svg?raw';
 import classnames from './styles.module.scss';
 
 type StoryProps = {
@@ -20,7 +20,7 @@ export default meta;
 
 const Template: StoryFn<StoryProps> = ({ size, applySprite }) => (
   <div className={classnames.wrapper}>
-    {applySprite && <Sprite content={CustomSpriteSVG as unknown as string} />}
+    {applySprite && <Sprite content={CustomSpriteSVG} />}
 
     {(Object.keys(Icons) as Array<keyof typeof Icons>).map(name => {
       const Icon = Icons[name];
