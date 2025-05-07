@@ -146,10 +146,10 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
   const handleSelectionChange = useCallback(
     (newValue?: SelectionSingleValueType) => {
+      setOpen(false);
+
       if (newValue !== undefined) {
         localRef.current?.focus();
-
-        setOpen(false);
         setValue(newValue);
       }
     },
