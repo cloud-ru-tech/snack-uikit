@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.42.3 (2025-05-07)
+
+
+### Bug Fixes
+
+* **PDS-2184:** FieldSelectSingle selected item behavior fixed onClick ([6ecd75a](https://github.com/cloud-ru-tech/snack-uikit/commit/6ecd75a9c84ae105d6a28c60aa1e42f8f1fe2c60))
+
+
+
+
+
 ## 0.42.2 (2025-05-07)
 
 
