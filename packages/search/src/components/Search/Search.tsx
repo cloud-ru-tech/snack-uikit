@@ -7,7 +7,7 @@ import { SIZE } from '../../constants';
 import { SearchAutocomplete, SearchAutocompleteProps } from '../SearchAutocomplete';
 import { SearchFieldText } from '../SearchFieldText';
 
-export type SearchProps = Omit<SearchPrivateProps, 'onKeyDown' | 'tabIndex'> & {
+export type SearchProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
   /** Внешний бордер */
   outline?: boolean;
 } & (
@@ -27,7 +27,8 @@ export type SearchProps = Omit<SearchPrivateProps, 'onKeyDown' | 'tabIndex'> & {
   );
 
 export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search({ size = SIZE.S, ...props }, ref) {
-  const { value, onChange, onBlur, onFocus, outline, loading, placeholder, onSubmit, className, ...rest } = props;
+  const { value, onChange, onBlur, onFocus, outline, loading, placeholder, onSubmit, className, tabIndex, ...rest } =
+    props;
   const supportProps = extractSupportProps(rest);
 
   if (props.autocomplete) {
@@ -45,6 +46,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
         placeholder={placeholder}
         className={className}
         ref={ref}
+        tabIndex={tabIndex}
         {...supportProps}
       />
     );
@@ -63,6 +65,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
       placeholder={placeholder}
       className={className}
       ref={ref}
+      tabIndex={tabIndex}
       {...supportProps}
     />
   );

@@ -38,6 +38,7 @@ import { Search, SearchPrivate } from "@snack-uikit/search";
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | className | `string` | - | CSS-класс |
+| tabIndex | `number` | - |  |
 | size | enum Size: `"s"`, `"m"`, `"l"` | s | Размер |
 | loading | `boolean` | - | Состояние загрузки |
 | onSubmit | `(value: string) => void` | - | Колбек на подтверждение поиска по строке |
