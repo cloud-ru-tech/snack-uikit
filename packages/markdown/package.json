@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Markdown",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -35,9 +35,9 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/code-editor": "0.6.2",
+    "@snack-uikit/code-editor": "0.6.3",
     "@snack-uikit/divider": "3.2.5",
-    "@snack-uikit/fields": "0.42.3",
+    "@snack-uikit/fields": "0.42.4",
     "@snack-uikit/link": "0.17.0",
     "@snack-uikit/toggles": "0.13.13",
     "@snack-uikit/typography": "0.8.6",

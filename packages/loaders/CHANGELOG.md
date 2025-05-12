@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.4 (2025-05-12)
+
+
+### Bug Fixes
+
+* **FF-6240:** loader rotation center ([8c3dfb2](https://github.com/cloud-ru-tech/snack-uikit/commit/8c3dfb2d0d12567903ed114083cabc7db8a7bc74))
+
+
+
+
+
 ## 0.9.3 (2025-03-17)
 
 ### Only dependencies have been changed

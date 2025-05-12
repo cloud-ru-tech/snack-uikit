@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.5.1",
+  "version": "0.5.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,7 +37,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.26.2",
-    "@snack-uikit/pagination": "0.10.9",
+    "@snack-uikit/pagination": "0.10.10",
     "@snack-uikit/utils": "3.8.1",
     "classnames": "2.5.1",
     "lodash.debounce": "4.0.8",

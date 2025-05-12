@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Button",
-  "version": "0.19.9",
+  "version": "0.19.10",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,7 +37,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/counter": "0.8.5",
-    "@snack-uikit/loaders": "0.9.3",
+    "@snack-uikit/loaders": "0.9.4",
     "@snack-uikit/utils": "3.8.1",
     "classnames": "2.5.1"
   }

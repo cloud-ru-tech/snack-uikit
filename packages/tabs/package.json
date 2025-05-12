@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tabs",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,7 +36,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.9",
+    "@snack-uikit/button": "0.19.10",
     "@snack-uikit/counter": "0.8.5",
     "@snack-uikit/divider": "3.2.5",
     "@snack-uikit/icons": "0.26.2",
