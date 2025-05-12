@@ -11,7 +11,20 @@ export type SearchTextFieldProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
 };
 
 export const SearchFieldText = forwardRef<HTMLInputElement, SearchTextFieldProps>(function SearchFieldText(
-  { value, onChange, onBlur, onFocus, size = SIZE.S, outline, loading, placeholder, onSubmit, className, ...rest },
+  {
+    value,
+    onChange,
+    onBlur,
+    onFocus,
+    size = SIZE.S,
+    outline,
+    loading,
+    placeholder,
+    onSubmit,
+    className,
+    tabIndex,
+    ...rest
+  },
   ref,
 ) {
   return (
@@ -27,6 +40,7 @@ export const SearchFieldText = forwardRef<HTMLInputElement, SearchTextFieldProps
         placeholder={placeholder}
         loading={loading}
         data-test-id={PRIVATE_SEARCH_TEST_IDS.field}
+        tabIndex={tabIndex}
       />
     </SearchDecorator>
   );

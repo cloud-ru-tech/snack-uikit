@@ -41,6 +41,7 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
     onSubmit,
     onFocus,
     className,
+    tabIndex,
     ...rest
   },
   ref,
@@ -143,6 +144,7 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
               onFocus={onFocus}
               size={size}
               data-test-id={PRIVATE_SEARCH_TEST_IDS.field}
+              tabIndex={tabIndex}
             />
           </SearchDecorator>
         )}
