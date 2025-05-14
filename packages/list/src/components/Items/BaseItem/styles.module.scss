@@ -24,8 +24,8 @@ $sizes: 's', 'm', 'l';
   align-items: center;
   justify-content: center;
 
-  min-width: styles-tokens-element.$icon-s;
-  min-height: styles-tokens-element.$icon-s;
+  width: styles-tokens-element.$icon-s;
+  height: styles-tokens-element.$icon-s;
 
   color: styles-tokens-dropList.$sys-neutral-text-light;
 
