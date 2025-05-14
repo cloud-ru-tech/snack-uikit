@@ -124,6 +124,7 @@ export const ListPrivate = forwardRef(
             emptyStates={emptyStates}
             hasNoItems={hasNoItems}
             dataFiltered={dataFiltered ?? Boolean(search?.value)}
+            size={size}
           />
         </div>
       ),
@@ -136,6 +137,7 @@ export const ListPrivate = forwardRef(
         loading,
         loadingJSX,
         search?.value,
+        size,
         virtualItems,
         virtualized,
         virtualizer,

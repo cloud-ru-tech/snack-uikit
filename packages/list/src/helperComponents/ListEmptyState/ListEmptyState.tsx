@@ -1,8 +1,9 @@
 import { InfoBlock, InfoBlockProps } from '@snack-uikit/info-block';
 
+import { ListPrivateProps } from '../../components/Lists/types';
 import styles from './styles.module.scss';
 
-export type EmptyStateProps = Pick<InfoBlockProps, 'description' | 'icon' | 'data-test-id' | 'footer'>;
+export type EmptyStateProps = Pick<InfoBlockProps, 'description' | 'icon' | 'data-test-id' | 'footer' | 'className'>;
 
 export type ListEmptyState = {
   emptyStates: {
@@ -14,9 +15,10 @@ export type ListEmptyState = {
   dataError?: boolean;
   dataFiltered?: boolean;
   hasNoItems: boolean;
+  size: ListPrivateProps['size'];
 };
 
-export function ListEmptyState({ dataError, dataFiltered, hasNoItems, emptyStates, loading }: ListEmptyState) {
+export function ListEmptyState({ dataError, dataFiltered, hasNoItems, emptyStates, loading, size }: ListEmptyState) {
   if (loading) {
     return null;
   }
@@ -24,7 +26,7 @@ export function ListEmptyState({ dataError, dataFiltered, hasNoItems, emptyState
   if (dataError) {
     return (
       <div className={styles.listEmptyStateWrapper}>
-        <InfoBlock {...emptyStates.errorDataState} size='m' align='vertical' />
+        <InfoBlock {...emptyStates.errorDataState} size={size} align='vertical' />
       </div>
     );
   }
@@ -32,7 +34,7 @@ export function ListEmptyState({ dataError, dataFiltered, hasNoItems, emptyState
   if (dataFiltered && hasNoItems) {
     return (
       <div className={styles.listEmptyStateWrapper}>
-        <InfoBlock {...emptyStates.noResultsState} size='m' align='vertical' data-test-id='list__no-results' />
+        <InfoBlock {...emptyStates.noResultsState} size={size} align='vertical' data-test-id='list__no-results' />
       </div>
     );
   }
@@ -40,7 +42,7 @@ export function ListEmptyState({ dataError, dataFiltered, hasNoItems, emptyState
   if (!dataFiltered && hasNoItems) {
     return (
       <div className={styles.listEmptyStateWrapper}>
-        <InfoBlock {...emptyStates.noDataState} size='m' align='vertical' data-test-id='list__no-data' />
+        <InfoBlock {...emptyStates.noDataState} size={size} align='vertical' data-test-id='list__no-data' />
       </div>
     );
   }
