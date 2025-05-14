@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.29.1 (2025-05-14)
+
+
+### Reverts
+
+* Revert "fix(FF-6490): list item before content min-size" ([500f0ee](https://github.com/cloud-ru-tech/snack-uikit/commit/500f0ee4815d01f352f1b1738a1bef5cf0155bfa))
+
+
+
+
+
 # 0.29.0 (2025-05-14)
 
 

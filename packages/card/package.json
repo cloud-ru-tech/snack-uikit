@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Card",
-  "version": "0.18.2",
+  "version": "0.18.3",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -39,7 +39,7 @@
     "@snack-uikit/button": "0.19.10",
     "@snack-uikit/icon-predefined": "0.7.5",
     "@snack-uikit/icons": "0.26.2",
-    "@snack-uikit/list": "0.29.0",
+    "@snack-uikit/list": "0.29.1",
     "@snack-uikit/promo-tag": "0.7.3",
     "@snack-uikit/tag": "0.14.0",
     "@snack-uikit/truncate-string": "0.6.18",
