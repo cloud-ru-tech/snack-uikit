@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.29.0 (2025-05-14)
+
+
+### Bug Fixes
+
+* **FF-6490:** list item before content min-size ([56732b0](https://github.com/cloud-ru-tech/snack-uikit/commit/56732b047edabe2617a614378dbc9413a0b60f9d))
+
+
+### Features
+
+* **FF-6490:** pass List size prop to emptyStates ([07f5425](https://github.com/cloud-ru-tech/snack-uikit/commit/07f5425db9fcaf250a910a2cf8b1e572746933ab))
+
+
+
+
+
 ## 0.28.1 (2025-05-12)
 
 ### Only dependencies have been changed
