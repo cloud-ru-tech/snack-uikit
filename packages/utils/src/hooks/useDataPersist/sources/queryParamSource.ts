@@ -13,7 +13,7 @@ export class QueryParamSource<TFilter> extends BaseSource<TFilter> {
     if (isBrowser()) {
       const url = new URL(window.location.href);
       url.searchParams.set(this.filterKey, value);
-      history.pushState({}, '', url);
+      history.replaceState({}, '', url);
     }
   }
 }
