@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Popover Private",
-  "version": "0.14.7",
+  "version": "0.14.8",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,7 +37,7 @@
   "scripts": {},
   "dependencies": {
     "@floating-ui/react": "0.26.24",
-    "@snack-uikit/utils": "3.8.1",
+    "@snack-uikit/utils": "3.8.2",
     "classnames": "2.5.1",
     "react-is": "18.2.0",
     "uncontrollable": "8.0.4"

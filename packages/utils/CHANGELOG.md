@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.8.2 (2025-05-16)
+
+
+### Bug Fixes
+
+* **FF-6587:** change queryParams instead of push new ([987d99a](https://github.com/cloud-ru-tech/snack-uikit/commit/987d99a439bfb147d015a73c7416ae76b6e568ea))
+
+
+
+
+
 ## 3.8.1 (2025-03-17)
 
 

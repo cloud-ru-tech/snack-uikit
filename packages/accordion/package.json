@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Accordion",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,13 +36,13 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.10",
-    "@snack-uikit/icons": "0.26.2",
-    "@snack-uikit/toggles": "0.13.13",
-    "@snack-uikit/tooltip": "0.17.1",
-    "@snack-uikit/truncate-string": "0.6.18",
-    "@snack-uikit/typography": "0.8.6",
-    "@snack-uikit/utils": "3.8.1",
+    "@snack-uikit/button": "0.19.11",
+    "@snack-uikit/icons": "0.26.3",
+    "@snack-uikit/toggles": "0.13.14",
+    "@snack-uikit/tooltip": "0.17.2",
+    "@snack-uikit/truncate-string": "0.6.19",
+    "@snack-uikit/typography": "0.8.7",
+    "@snack-uikit/utils": "3.8.2",
     "classnames": "2.5.1",
     "lodash.debounce": "4.0.8"
   },
