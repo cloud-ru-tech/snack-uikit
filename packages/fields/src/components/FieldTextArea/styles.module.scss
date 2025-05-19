@@ -8,7 +8,7 @@ $padding-right: (
 );
 $scroll-bar-heights: (
   's': styles-tokens-fields.$dimension-050m,
-  'm': calc(styles-tokens-fields.$dimension-025m + styles-tokens-fields.$dimension-050m),
+  'm': calc(#{styles-tokens-fields.$dimension-025m} + #{styles-tokens-fields.$dimension-050m}),
   'l': styles-tokens-fields.$dimension-1m,
 );
 $padding-right: (
@@ -18,13 +18,18 @@ $padding-right: (
 );
 $scroll-bar-heights: (
   's': styles-tokens-fields.$dimension-050m,
-  'm': calc(styles-tokens-fields.$dimension-025m + styles-tokens-fields.$dimension-050m),
+  'm': calc(#{styles-tokens-fields.$dimension-025m} + #{styles-tokens-fields.$dimension-050m}),
   'l': styles-tokens-fields.$dimension-1m,
 );
 
 .container {
   --max-rows: 1000;
   --min-rows: 3;
+
+  &[data-actions] {
+    display: flex;
+    flex-direction: column;
+  }
 
   .scrollContainer {
     min-height: calc(var(--min-rows) * var(--row-height) + var(--horizontal-scroll-bar-height));
@@ -53,4 +58,3 @@ $scroll-bar-heights: (
     }
   }
 }
-

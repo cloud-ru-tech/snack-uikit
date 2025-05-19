@@ -509,6 +509,7 @@ FieldStepper в основном предназначен для работы с
 | onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | allowMoreThanMaxLength | `boolean` | true | Можно ли вводить больше разрешённого кол-ва символов |
+| footer | `ReactNode` | - | Нода под футер |
 | value | `string` | - | HTML-аттрибут value |
 | id | `string` | - | HTML-аттрибут id |
 | name | `string` | - | HTML-аттрибут name |

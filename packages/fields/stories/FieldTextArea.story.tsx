@@ -1,5 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useMemo, useState } from 'react';
+
+import { ButtonFunction } from '@snack-uikit/button';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
@@ -8,13 +11,25 @@ import { FieldTextArea, FieldTextAreaProps } from '../src';
 import { COMMON_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
+type StoryProps = FieldTextAreaProps & {
+  showActionsFooter: boolean;
+};
+
 const meta: Meta = {
   title: 'Components/Fields/Field Text Area',
   component: FieldTextArea,
 };
 export default meta;
 
-const Template = ({ size, ...args }: FieldTextAreaProps) => {
+function createStubAction(demoItemName: string) {
+  return (e: MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    window.alert(`${demoItemName} clicked!`);
+  };
+}
+
+const Template = ({ size, showActionsFooter, ...args }: StoryProps) => {
   const [value, setValue] = useState(args.value);
 
   useEffect(() => {
@@ -32,14 +47,32 @@ const Template = ({ size, ...args }: FieldTextAreaProps) => {
     }
   }, [args.resizable]);
 
+  const footer: FieldTextAreaProps['footer'] = useMemo(() => {
+    if (!showActionsFooter) {
+      return null;
+    }
+
+    return (
+      <div className={styles.footer}>
+        <div className={styles.actionsWrapper} data-position='left'>
+          <ButtonFunction icon={<PlaceholderSVG />} onClick={createStubAction('left')} />
+        </div>
+        <div className={styles.actionsWrapper} data-position='right'>
+          <ButtonFunction icon={<PlaceholderSVG />} onClick={createStubAction('right 1')} />
+          <ButtonFunction icon={<PlaceholderSVG />} onClick={createStubAction('right 2')} />
+        </div>
+      </div>
+    );
+  }, [showActionsFooter]);
+
   return (
     <div className={styles.wrapper} data-size={size}>
-      <FieldTextArea {...args} size={size} value={value} onChange={setValue} />
+      <FieldTextArea {...args} size={size} value={value} onChange={setValue} footer={footer} />
     </div>
   );
 };
 
-export const fieldTextArea: StoryObj<FieldTextAreaProps> = {
+export const fieldTextArea: StoryObj<StoryProps> = {
   render: Template,
 
   args: {
@@ -62,12 +95,17 @@ export const fieldTextArea: StoryObj<FieldTextAreaProps> = {
     validationState: 'default',
     showClearButton: true,
     allowMoreThanMaxLength: true,
+    showActionsFooter: false,
   },
 
   argTypes: {
     validationState: COMMON_ARG_TYPES.validationState,
     labelTooltip: COMMON_ARG_TYPES.labelTooltip,
     showCopyButton: COMMON_ARG_TYPES.showCopyButton,
+    showActionsFooter: {
+      name: '[Story]: Control actions slots visibility',
+      control: { type: 'boolean' },
+    },
   },
 
   parameters: {

@@ -1,5 +1,5 @@
 import mergeRefs from 'merge-refs';
-import { ChangeEvent, forwardRef, useMemo, useRef } from 'react';
+import { ChangeEvent, forwardRef, ReactNode, useMemo, useRef } from 'react';
 
 import { SIZE, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import { Scroll } from '@snack-uikit/scroll';
@@ -50,6 +50,8 @@ type FieldTextAreaOwnProps = {
   showClearButton?: boolean;
   /** Можно ли вводить больше разрешённого кол-ва символов */
   allowMoreThanMaxLength?: boolean;
+  /** Нода под футер */
+  footer?: ReactNode;
 };
 
 export type FieldTextAreaProps = WithSupportProps<FieldTextAreaOwnProps & InputProps & WrapperProps>;
@@ -85,6 +87,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       size = SIZE.S,
       validationState = VALIDATION_STATE.Default,
       onCopyButtonClick,
+      footer,
       ...rest
     },
     ref,
@@ -156,6 +159,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
           disabled={disabled}
           readonly={readonly}
           data-resizable={isResizable || undefined}
+          data-actions={Boolean(footer) || undefined}
           variant={CONTAINER_VARIANT.MultiLine}
           style={{ '--max-rows': maxRows, '--min-rows': minRows }}
           inputRef={localRef}
@@ -188,6 +192,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
               data-test-id='field-textarea__input'
             />
           </Scroll>
+          {footer}
         </FieldContainerPrivate>
       </FieldDecorator>
     );

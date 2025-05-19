@@ -32,3 +32,23 @@
 
   background-color: styles-theme-variables.$sys-neutral-background2-level;
 }
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.actionsWrapper {
+  display: flex;
+  gap: styles-theme-variables.$dimension-050m;
+
+  &[data-position='left'] {
+    flex-direction: row;
+  }
+
+  &[data-position='right'] {
+    flex-direction: row-reverse;
+  }
+}
