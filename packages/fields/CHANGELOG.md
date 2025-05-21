@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.43.0 (2025-05-21)
+
+
+### Bug Fixes
+
+* **FF-6410:** fix value type for field-time ([706bfc8](https://github.com/cloud-ru-tech/snack-uikit/commit/706bfc80ebe3e1bbd00deb85729b92c12c632ad0))
+
+
+### Features
+
+* **FF-6410:** add external api for manipulating select value ([f704299](https://github.com/cloud-ru-tech/snack-uikit/commit/f7042991bb2c70b48a316d781b1361daa9df7961))
+
+
+
+
+
 ## 0.42.7 (2025-05-16)
 
 ### Only dependencies have been changed

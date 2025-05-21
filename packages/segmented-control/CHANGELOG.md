@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2025-05-21)
+
+
+### Features
+
+* **FF-6410:** add name for segment control ([b6e5488](https://github.com/cloud-ru-tech/snack-uikit/commit/b6e548889cdae95e87c3bd0e615c1c97f0489b12))
+
+
+
+
+
 ## 0.4.20 (2025-05-16)
 
 ### Only dependencies have been changed

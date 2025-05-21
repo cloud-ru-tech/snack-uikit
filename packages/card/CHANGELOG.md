@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.19.0 (2025-05-21)
+
+
+### Features
+
+* **FF-6410:** add input into card ([44dbaee](https://github.com/cloud-ru-tech/snack-uikit/commit/44dbaee4feceba9110ebf0518486948e6db3fd86))
+
+
+
+
+
 ## 0.18.4 (2025-05-16)
 
 ### Only dependencies have been changed
