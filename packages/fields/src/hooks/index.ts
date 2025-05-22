@@ -2,7 +2,6 @@ export * from './dateHandlers';
 export * from './useCopyButton';
 export * from './useHideButton';
 export * from './usePostfix';
-export * from './usePostfixButton';
+export * from './addonButton';
 export * from './usePrefix';
-export * from './usePrefixButton';
 export * from './useValueControl';

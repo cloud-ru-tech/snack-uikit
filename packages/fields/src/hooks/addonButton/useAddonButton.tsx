@@ -2,45 +2,51 @@ import { ReactElement, useMemo, useRef } from 'react';
 
 import { ButtonProps, InactiveItem, Size } from '@snack-uikit/input-private';
 
-import { ButtonField, ButtonFieldList, ButtonFieldProps } from '../helperComponents';
-import { Button } from '../types';
+import { ButtonField, ButtonFieldList, ButtonFieldProps } from '../../helperComponents';
+import { Button, ButtonVariant } from '../../types';
 
-export function usePostfixButton({
-  button,
-  size,
-  postfixIcon,
-  disabled,
-  readonly,
-  onFocus,
-  onBlur,
-}: {
+export type UseAddonProps = {
   button?: Button;
   size: Size;
-  postfixIcon?: ReactElement;
+  icon?: ReactElement;
   disabled?: boolean;
   readonly?: boolean;
-} & Pick<ButtonFieldProps, 'onFocus' | 'onBlur'>): ButtonProps {
+  variant: ButtonVariant;
+  type: 'prefix' | 'postfix';
+} & Pick<ButtonFieldProps, 'onFocus' | 'onBlur'>;
+
+export function useAddonButton({
+  variant,
+  button,
+  icon,
+  size,
+  disabled,
+  readonly,
+  type,
+  onFocus,
+  onBlur,
+}: UseAddonProps): ButtonProps {
   const buttonListRef = useRef<HTMLButtonElement>(null);
 
-  const postfixIconProps: InactiveItem = useMemo(
+  const addonIconProps: InactiveItem = useMemo(
     () => ({
-      id: 'postfixIcon',
+      id: `${type}Icon`,
       active: false,
-      show: Boolean(postfixIcon && !button),
-      render: () => <>{postfixIcon}</>,
+      show: Boolean(icon && !button),
+      render: () => <>{icon}</>,
     }),
-    [button, postfixIcon],
+    [button, icon, type],
   );
 
-  const postfixButtonProps: InactiveItem = useMemo(
+  const addonButtonProps: InactiveItem = useMemo(
     () => ({
-      id: 'postfixButton',
+      id: `${type}Button`,
       active: false,
-      show: Boolean(button && button.variant === 'after'),
+      show: Boolean(button && button.variant === variant),
       render: renderProps => {
         const buttonProps: ButtonFieldProps = {
           ...renderProps,
-          variant: 'after',
+          variant,
           size,
           content: button?.content,
           disabled: disabled || readonly,
@@ -66,11 +72,12 @@ export function usePostfixButton({
           );
         }
 
-        return <ButtonField {...buttonProps} />;
+        const buttonField = <ButtonField {...buttonProps} hasArrow={button?.hasArrow} arrowOpen={button?.arrowOpen} />;
+        return button?.wrapper ? button.wrapper(buttonField) : buttonField;
       },
     }),
-    [button, size, disabled, readonly, onFocus, onBlur],
+    [type, button, variant, size, disabled, readonly, onFocus, onBlur],
   );
 
-  return button ? postfixButtonProps : postfixIconProps;
+  return button ? addonButtonProps : addonIconProps;
 }
