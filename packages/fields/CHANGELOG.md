@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.44.0 (2025-05-23)
+
+
+### Features
+
+* **PDS-2225:** actions at the bottom of textarea input ([9a050ec](https://github.com/cloud-ru-tech/snack-uikit/commit/9a050ec1c60c3df39789a13b652a37373ed80027))
+
+
+
+
+
 # 0.43.0 (2025-05-21)
 
 

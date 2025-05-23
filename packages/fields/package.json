@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Fields",
-  "version": "0.43.0",
+  "version": "0.44.0",
   "sideEffects": [
     "*.css",
     "*.woff",
