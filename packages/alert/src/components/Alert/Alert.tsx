@@ -121,6 +121,7 @@ export function Alert<LinkElement extends ElementType = 'a'>({
             onClick={onClose}
             appearance={APPEARANCE_TO_COLOR_MAP[appearance]}
             icon={<CrossSVG />}
+            size={size}
             variant='simple'
             dataTestId='alert__close-button'
           />
