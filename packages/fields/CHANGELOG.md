@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.46.0 (2025-05-26)
+
+
+### Features
+
+* **PDS-2223:** add spellcheck prop to FieldTextArea and FieldText ([60e8c86](https://github.com/cloud-ru-tech/snack-uikit/commit/60e8c8693ad4c69efdac887938180af99000af9e))
+
+
+
+
+
 # 0.45.0 (2025-05-26)
 
 
