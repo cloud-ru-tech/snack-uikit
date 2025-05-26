@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.45.0 (2025-05-26)
+
+
+### Features
+
+* **PDS-2223:** add onKeyDown props to FieldTextArea ([818f74d](https://github.com/cloud-ru-tech/snack-uikit/commit/818f74d498068e5cd9ed13bc9d2f9bfcc1943d2f))
+
+
+
+
+
 # 0.44.0 (2025-05-23)
 
 
