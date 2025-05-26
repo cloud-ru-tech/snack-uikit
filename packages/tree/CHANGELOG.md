@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.6 (2025-05-26)
+
+
+### Bug Fixes
+
+* **PDS-1668:** fix reset parent tree item ([242af8f](https://github.com/cloud-ru-tech/snack-uikit/commit/242af8f2eff3f1a891721d0e5aaf4b0ead816486))
+
+
+
+
+
 ## 0.9.5 (2025-05-26)
 
 ### Only dependencies have been changed
