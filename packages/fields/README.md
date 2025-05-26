@@ -519,6 +519,7 @@ FieldStepper в основном предназначен для работы с
 | onBlur | `FocusEventHandler<HTMLTextAreaElement>` | - | Колбек потери фокуса |
 | placeholder | `string` | - | Плейсхолдер |
 | maxLength | `number` | - | Максимальное кол-во символов |
+| onKeyDown | `KeyboardEventHandler<HTMLTextAreaElement>` | - | Колбек нажатия клавиши клавиатуры |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |

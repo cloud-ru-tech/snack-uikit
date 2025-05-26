@@ -1,5 +1,5 @@
 import mergeRefs from 'merge-refs';
-import { ChangeEvent, forwardRef, ReactNode, useMemo, useRef } from 'react';
+import { ChangeEvent, forwardRef, KeyboardEventHandler, ReactNode, useMemo, useRef } from 'react';
 
 import { SIZE, useButtonNavigation, useClearButton } from '@snack-uikit/input-private';
 import { Scroll } from '@snack-uikit/scroll';
@@ -13,7 +13,10 @@ import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
 
 type InputProps = Pick<Partial<TextAreaProps>, 'value'> &
-  Pick<TextAreaProps, 'id' | 'name' | 'placeholder' | 'maxLength' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur'>;
+  Pick<
+    TextAreaProps,
+    'id' | 'name' | 'placeholder' | 'maxLength' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'onKeyDown'
+  >;
 
 type WrapperProps = Pick<
   FieldDecoratorProps,
@@ -76,6 +79,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       onChange: onChangeProp,
       onFocus,
       onBlur,
+      onKeyDown,
       className,
       label,
       labelTooltip,
@@ -133,6 +137,11 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       submitKeys: ['Enter', 'Space', 'Tab'],
     });
 
+    const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = event => {
+      onInputKeyDown(event);
+      onKeyDown?.(event);
+    };
+
     return (
       <FieldDecorator
         className={className}
@@ -186,7 +195,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
               ref={mergeRefs(ref, localRef)}
               onFocus={onFocus}
               onBlur={onBlur}
-              onKeyDown={onInputKeyDown}
+              onKeyDown={handleKeyDown}
               tabIndex={inputTabIndex}
               maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
               data-test-id='field-textarea__input'
