@@ -1,7 +1,7 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown' as stm;
 
 .wrapper {
-  @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-quote);
+  @include stm.composite-var(stm.$markdown-syntax-quote);
 
   .blockquote > p {
     padding-top: 0;
@@ -9,12 +9,12 @@
 }
 
 .blockquote {
-  @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-quote-container);
+  @include stm.composite-var(stm.$markdown-quote-container);
 
   box-sizing: border-box;
   margin: 0;
 
-  background-color: styles-tokens-markdown.$sys-neutral-background;
-  border-left-color: styles-tokens-markdown.$sys-neutral-decor-default;
+  background-color: stm.$sys-neutral-background;
+  border-left-color: stm.$sys-neutral-decor-default;
   border-left-style: solid;
 }

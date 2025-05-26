@@ -1,9 +1,9 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown' as stm;
 
 .markdown {
   overflow: auto;
   height: 100%;
-  color: styles-tokens-markdown.$sys-neutral-text-main;
+  color: stm.$sys-neutral-text-main;
 
   >:first-child {
     padding-top: 0;
@@ -16,33 +16,33 @@
   }
 
   h1 {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-headline-l);
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-headings-level1);
+    @include stm.composite-var(stm.$sans-headline-l);
+    @include stm.composite-var(stm.$markdown-syntax-headings-level1);
   }
 
   h2 {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-headline-m);
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-headings-level2);
+    @include stm.composite-var(stm.$sans-headline-m);
+    @include stm.composite-var(stm.$markdown-syntax-headings-level2);
   }
 
   h3 {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-headline-s);
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-headings-level3);
+    @include stm.composite-var(stm.$sans-headline-s);
+    @include stm.composite-var(stm.$markdown-syntax-headings-level3);
   }
 
   h4 {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-title-l);
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-headings-level4);
+    @include stm.composite-var(stm.$sans-title-l);
+    @include stm.composite-var(stm.$markdown-syntax-headings-level4);
   }
 
   h5 {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-title-m);
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-headings-level5);
+    @include stm.composite-var(stm.$sans-title-m);
+    @include stm.composite-var(stm.$markdown-syntax-headings-level5);
   }
 
   h6 {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-title-s);
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-headings-level6);
+    @include stm.composite-var(stm.$sans-title-s);
+    @include stm.composite-var(stm.$markdown-syntax-headings-level6);
   }
 
   h1,
@@ -55,25 +55,25 @@
   }
 
   p {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-body-m);
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-paragraphs);
+    @include stm.composite-var(stm.$sans-body-m);
+    @include stm.composite-var(stm.$markdown-syntax-paragraphs);
 
     margin: 0;
   }
 
   li {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-body-m);
+    @include stm.composite-var(stm.$sans-body-m);
   }
 
   strong {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-label-l);
+    @include stm.composite-var(stm.$sans-label-l);
   }
 
   ul,
   ol {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-list);
+    @include stm.composite-var(stm.$markdown-syntax-list);
 
-    padding-inline-start: calc(styles-tokens-markdown.$dimension-3m - styles-tokens-markdown.$dimension-050m);
+    padding-inline-start: calc(#{stm.$dimension-3m} - #{stm.$dimension-050m});
 
     p {
       padding-top: 0;

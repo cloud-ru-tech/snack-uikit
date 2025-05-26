@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
+import { Components } from 'react-markdown';
 
 import { FieldDecorator, FieldTextArea, VALIDATION_STATE } from '@snack-uikit/fields';
 import { Switch } from '@snack-uikit/toggles';
@@ -30,6 +31,10 @@ export type MarkdownEditorProps = WithSupportProps<{
   required?: boolean;
   /** Может ли ли пользователь изменять размеры поля (если св-во не включено, поле автоматически меняет свой размер) */
   resizable?: boolean;
+  /** Действие при клике на кнопку копирования кода*/
+  onCodeCopyClick?(): void;
+  /** Переопределение компонентов по умолчанию и добавление новых в CodeEditor*/
+  components?: Components;
 }>;
 
 export function MarkdownEditor({
@@ -42,30 +47,34 @@ export function MarkdownEditor({
   placeholder,
   required,
   resizable,
+  onCodeCopyClick,
+  components,
   ...rest
 }: MarkdownEditorProps) {
-  const [viewMode, setViewMode] = useState<boolean>(false);
+  const [isViewMode, setIsViewMode] = useState<boolean>(false);
 
   useEffect(() => {
-    setViewMode(defaultMode === MODE.View);
+    setIsViewMode(defaultMode === MODE.View);
   }, [defaultMode]);
 
   return (
     <div className={cn(styles.editor, className)} {...extractSupportProps(rest)}>
       <div className={styles.control}>
         <div className={styles.switchWrapper}>
-          <Switch checked={viewMode} onChange={setViewMode} />
+          <Switch checked={isViewMode} onChange={setIsViewMode} />
           <Typography.SansBodyM>Предпросмотр</Typography.SansBodyM>
         </div>
 
         <Typography.SansBodyS className={styles.tip}>Поддерживается Markdown</Typography.SansBodyS>
       </div>
 
-      {viewMode ? (
+      {isViewMode ? (
         <FieldDecorator label={label} required={required} error={error} size='m'>
           <Markdown
             value={value}
+            onCopyClick={onCodeCopyClick}
             className={styles.viewWrapper}
+            components={components}
             data-validation={error ? VALIDATION_STATE.Error : VALIDATION_STATE.Default}
           />
         </FieldDecorator>

@@ -76,4 +76,7 @@ export const en_GB = {
       uploaded: 'Uploaded',
     },
   },
+  CodeEditor: {
+    copyButtonToolTip: 'Copy',
+  },
 } satisfies Dictionary;

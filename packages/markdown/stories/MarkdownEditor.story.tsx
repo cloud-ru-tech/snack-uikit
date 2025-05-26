@@ -1,6 +1,8 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
+import { toaster } from '@snack-uikit/toaster';
+
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
@@ -20,7 +22,12 @@ const Template: StoryFn<MarkdownEditorProps> = ({ value, ...args }) => {
 
   return (
     <div className={styles.wrapper}>
-      <MarkdownEditor {...args} value={innerValue} onChange={setInnerValue} />
+      <MarkdownEditor
+        {...args}
+        value={innerValue}
+        onChange={setInnerValue}
+        onCodeCopyClick={() => toaster.userAction.success({ label: 'Скопировано' })}
+      />
     </div>
   );
 };

@@ -1,5 +1,5 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown' as stm;
 
 .wrapper {
-  @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-divider);
+  @include stm.composite-var(stm.$markdown-syntax-divider);
 }

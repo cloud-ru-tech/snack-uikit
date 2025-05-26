@@ -15,6 +15,8 @@
 | jsonSchema* | `JsonSchema` | - | Схема для валидации |
 | themeName | `string` | - | Название текущей темы. Значение не важно, важно что смена значения запускает пересчет стилей. |
 | hasBackground | `boolean` | true | Включение/отключение псевдобекграунда |
+| hasHeader | `boolean` | - | Включение/отключение шапки |
+| onCopyClick | `() => void` | - | Клик по кнопке копирования |
 | defaultValue | `string` | - | Default value of the current model |
 | defaultLanguage | `string` | - | Default language of the current model |
 | defaultPath | `string` | - | Default path of the current model Will be passed as the third argument to `.createModel` method `monaco.editor.createModel(..., ..., monaco.Uri.parse(defaultPath))` |

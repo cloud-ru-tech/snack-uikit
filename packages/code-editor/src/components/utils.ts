@@ -56,3 +56,13 @@ export function isDark(color: string) {
 
 export const getJsonSchema = (jsonSchema?: JsonSchema): SchemasSettings | undefined =>
   jsonSchema && { ...jsonSchema, uri: jsonSchema?.uri || DEFAULT_SCHEMA_URI, fileMatch: [jsonSchema.fileMatch] };
+
+export function uppercaseFirstLetter(value: string) {
+  const trimmedValue = value.trim();
+
+  if (trimmedValue.length === 0) {
+    return value;
+  }
+
+  return trimmedValue[0].toUpperCase() + trimmedValue.slice(1);
+}

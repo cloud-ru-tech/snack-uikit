@@ -1,5 +1,7 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 
+import { toaster } from '@snack-uikit/toaster';
+
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
@@ -15,7 +17,7 @@ export default meta;
 
 const Template: StoryFn<MarkdownProps> = ({ ...args }) => (
   <div className={styles.wrapper}>
-    <Markdown {...args} />
+    <Markdown {...args} onCopyClick={() => toaster.userAction.success({ label: 'Скопировано' })} />
   </div>
 );
 

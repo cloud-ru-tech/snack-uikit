@@ -4,18 +4,26 @@ import { CodeEditor } from '@snack-uikit/code-editor';
 
 import styles from './styles.module.scss';
 
-type CodeProps = { inline?: boolean; className?: string; children: ReactNode & ReactNode[] };
+type CodeProps = {
+  inline?: boolean;
+  className?: string;
+  children: ReactNode & ReactNode[];
+  onClick?(): void;
+};
 
-export function Code({ inline, className, children }: CodeProps) {
+export function Code({ inline, className, children, onClick }: CodeProps) {
   const language = /language-(\w+)/.exec(className || '')?.[1];
+  const value = String(children).replace(/\n$/, '');
 
   if (!inline) {
     return (
       <CodeEditor
-        className={styles.wrapper}
+        onCopyClick={onClick}
         height={200}
+        className={styles.wrapper}
         language={language}
-        value={String(children).replace(/\n$/, '')}
+        hasHeader
+        value={value}
         options={{
           readOnly: true,
           minimap: {

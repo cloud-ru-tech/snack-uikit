@@ -1,27 +1,27 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown' as stm;
 
 .wrapper {
-  @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-table);
+  @include stm.composite-var(stm.$markdown-syntax-table);
 
   border-spacing: 0;
   width: 100%;
 
   th, td {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-table-cell-container);
+    @include stm.composite-var(stm.$markdown-table-cell-container);
 
     overflow: hidden;
     text-align: left;
     text-overflow: ellipsis;
-    border-bottom: 1px solid styles-tokens-markdown.$sys-neutral-decor-default;
+    border-bottom: 1px solid stm.$sys-neutral-decor-default;
   }
 
   th {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-label-l);
+    @include stm.composite-var(stm.$sans-label-l);
 
-    background-color: styles-tokens-markdown.$sys-neutral-background;
+    background-color: stm.$sys-neutral-background;
   }
 
   td {
-    @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$sans-body-m);
+    @include stm.composite-var(stm.$sans-body-m);
   }
 }

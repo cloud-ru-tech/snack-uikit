@@ -35,6 +35,8 @@ const handleChange = (newValue: string) => {
 |------|------|---------------|-------------|
 | value | `string` | - | Текст c разметкой |
 | className | `string` | - | CSS-класс |
+| components | `Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>` | {} | Переопределение компонентов по умолчанию и добавление новых в CodeEditor |
+| onCopyClick | `() => void` | - | Действие при клике на кнопку копирования кода |
 ## MarkdownEditor
 ### Props
 | name | type | default value | description |
@@ -48,6 +50,8 @@ const handleChange = (newValue: string) => {
 | placeholder | `string` | - | Плейсхолдер для textarea |
 | required | `boolean` | - | Является ли поле обязательным |
 | resizable | `boolean` | - | Может ли ли пользователь изменять размеры поля (если св-во не включено, поле автоматически меняет свой размер) |
+| onCodeCopyClick | `() => void` | - | Действие при клике на кнопку копирования кода |
+| components | `Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>` | - | Переопределение компонентов по умолчанию и добавление новых в CodeEditor |
 
 
 [//]: DOCUMENTATION_SECTION_END

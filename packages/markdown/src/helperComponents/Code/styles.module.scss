@@ -1,17 +1,17 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown';
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-markdown' as stm;
 
 .wrapper {
-  @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-syntax-code-editor);
+  @include stm.composite-var(stm.$markdown-syntax-code-editor);
 
-  display: flex;
-  max-height: 200px;
+  box-sizing: border-box;
+  max-height: 241px;
 }
 
 .code {
-  @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$markdown-inline-code-container);
-  @include styles-tokens-markdown.composite-var(styles-tokens-markdown.$mono-body-s);
+  @include stm.composite-var(stm.$markdown-inline-code-container);
+  @include stm.composite-var(stm.$mono-body-s);
 
-  color: styles-tokens-markdown.$sys-neutral-text-support;
+  color: stm.$sys-neutral-text-support;
   text-shadow: none;
-  background-color: styles-tokens-markdown.$sys-neutral-background;
+  background-color: stm.$sys-neutral-background;
 }

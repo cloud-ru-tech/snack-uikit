@@ -3,13 +3,15 @@ import cn from 'classnames';
 import { useCallback, useMemo, useState } from 'react';
 
 import { Spinner } from '@snack-uikit/loaders';
+import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, isBrowser, WithSupportProps } from '@snack-uikit/utils';
 
 import { CODE_EDITOR_OPTIONS, DEFAULT_THEME_OPTIONS, DEFAULT_THEME_VALUES } from './constants';
+import { CopyButton } from './CopyButton';
 import { useApplyJsonSchema, useCalculatedThemeValues } from './hooks';
 import styles from './styles.module.scss';
 import { EditorBaseProps, EditorWithJsonSchemaProps } from './types';
-import { isDark } from './utils';
+import { isDark, uppercaseFirstLetter } from './utils';
 
 export type CodeEditorProps = WithSupportProps<{
   /**
@@ -20,6 +22,14 @@ export type CodeEditorProps = WithSupportProps<{
    * Включение/отключение псевдобекграунда
    */
   hasBackground?: boolean;
+  /**
+   * Включение/отключение шапки
+   */
+  hasHeader?: boolean;
+  /**
+   * Клик по кнопке копирования
+   */
+  onCopyClick?(): void;
 }> &
   (EditorBaseProps | EditorWithJsonSchemaProps);
 
@@ -32,6 +42,8 @@ export function CodeEditor({
   hasBackground = true,
   onMount,
   language,
+  onCopyClick,
+  hasHeader,
   ...props
 }: CodeEditorProps) {
   const monaco = useMonaco();
@@ -132,6 +144,12 @@ export function CodeEditor({
 
   return (
     <div className={className} {...extractSupportProps(props)} ref={setWrapperElement}>
+      {hasHeader && (
+        <div className={styles.headline}>
+          {language && <Typography.SansLabelS>{uppercaseFirstLetter(language)}</Typography.SansLabelS>}
+          <CopyButton valueToCopy={props.value || ''} size={'s'} onClick={onCopyClick} />
+        </div>
+      )}
       <Editor
         {...jsonSchemaProps}
         {...props}

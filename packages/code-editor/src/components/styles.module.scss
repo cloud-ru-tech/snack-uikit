@@ -1,4 +1,7 @@
-@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables' as var;
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-codeEditor' as stc;
+
+
 
 .editor {
   background-color: inherit;
@@ -13,7 +16,18 @@
 
     width: 100%;
 
-    opacity: styles-theme-variables.$opacity-a004;
-    background-color: styles-theme-variables.$sys-neutral-accent-default;
+    opacity: var.$opacity-a004;
+    background-color: var.$sys-neutral-accent-default;
   }
+}
+
+.headline {
+  @include stc.composite-var(stc.$code-editor-headline);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: stc.$sys-neutral-background;
+  border-color: stc.$sys-neutral-decor-default;
 }

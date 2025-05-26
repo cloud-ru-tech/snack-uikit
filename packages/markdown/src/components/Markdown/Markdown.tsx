@@ -1,4 +1,4 @@
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
@@ -11,9 +11,13 @@ export type MarkdownProps = WithSupportProps<{
   value?: string;
   /** CSS-класс */
   className?: string;
+  /** Переопределение компонентов по умолчанию и добавление новых в CodeEditor */
+  components?: Components;
+  /** Действие при клике на кнопку копирования кода */
+  onCopyClick?(): void;
 }>;
 
-export function Markdown({ value, className, ...rest }: MarkdownProps) {
+export function Markdown({ value, className, onCopyClick, components = {}, ...rest }: MarkdownProps) {
   return (
     <div className={className} {...extractSupportProps(rest)}>
       {value && (
@@ -22,11 +26,12 @@ export function Markdown({ value, className, ...rest }: MarkdownProps) {
           remarkPlugins={[remarkGfm]}
           skipHtml
           components={{
-            code: Code,
+            code: props => <Code {...props} onClick={onCopyClick} />,
             table: Table,
             hr: Divider,
             blockquote: Blockquote,
             a: Link,
+            ...components,
           }}
         >
           {value}

@@ -36,12 +36,20 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
+    "@cloud-ru/ft-copy-to-clipboard": "0.1.0",
     "@monaco-editor/react": "4.6.0",
+    "@snack-uikit/button": "0.19.11",
+    "@snack-uikit/icons": "0.26.3",
     "@snack-uikit/loaders": "0.9.5",
+    "@snack-uikit/tooltip": "0.17.2",
+    "@snack-uikit/typography": "0.8.7",
     "@snack-uikit/utils": "3.8.2",
     "chroma-js": "3.1.2",
     "classnames": "2.5.1",
     "monaco-yaml": "5.2.3"
+  },
+  "peerDependencies": {
+    "@snack-uikit/locale": "*"
   },
   "devDependencies": {
     "@types/chroma-js": "2.4.4"
