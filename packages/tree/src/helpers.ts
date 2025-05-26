@@ -85,17 +85,17 @@ export function lookupTreeForSelectedNodes({
     while (parent) {
       if (parent.nested?.length) {
         const parentNestedSelection = checkNestedNodesSelection(parent.nested, updatedSelectedNodes);
+        const parentId = parent.id;
 
         if (isSelected) {
-          if (parentNestedSelection.allSelected || parentNestedSelection.someSelected) {
-            const parentIdIndex = updatedSelectedNodes.findIndex(id => id === parent?.id);
-
+          if (!parentNestedSelection.allSelected) {
+            const parentIdIndex = updatedSelectedNodes.indexOf(parentId);
             if (parentIdIndex > -1) {
               updatedSelectedNodes.splice(parentIdIndex, 1);
             }
           }
-        } else if (!isSelected && parentNestedSelection.allSelected) {
-          updatedSelectedNodes.push(parent.id);
+        } else if (parentNestedSelection.allSelected) {
+          updatedSelectedNodes.push(parentId);
         }
       }
 
