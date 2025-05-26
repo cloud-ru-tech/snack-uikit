@@ -482,6 +482,7 @@ FieldStepper в основном предназначен для работы с
 | placeholder | `string` | - | Значение плейсхолдера |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
+| spellCheck | `boolean` | true | Значение атрибута spellcheck (проверка орфографии) |
 | onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки начала нажатия клавиши клавиатуры |
 | onPaste | `ClipboardEventHandler<HTMLInputElement>` | - | Колбек обработки вставки значения |
 | className | `string` | - | CSS-класс |
@@ -519,6 +520,7 @@ FieldStepper в основном предназначен для работы с
 | onBlur | `FocusEventHandler<HTMLTextAreaElement>` | - | Колбек потери фокуса |
 | placeholder | `string` | - | Плейсхолдер |
 | maxLength | `number` | - | Максимальное кол-во символов |
+| spellCheck | `boolean` | true | Включение проверки орфографии |
 | onKeyDown | `KeyboardEventHandler<HTMLTextAreaElement>` | - | Колбек нажатия клавиши клавиатуры |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |

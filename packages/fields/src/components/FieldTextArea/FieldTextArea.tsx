@@ -15,7 +15,16 @@ import styles from './styles.module.scss';
 type InputProps = Pick<Partial<TextAreaProps>, 'value'> &
   Pick<
     TextAreaProps,
-    'id' | 'name' | 'placeholder' | 'maxLength' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'onKeyDown'
+    | 'id'
+    | 'name'
+    | 'placeholder'
+    | 'maxLength'
+    | 'disabled'
+    | 'readonly'
+    | 'onFocus'
+    | 'onBlur'
+    | 'onKeyDown'
+    | 'spellCheck'
   >;
 
 type WrapperProps = Pick<
@@ -92,6 +101,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       validationState = VALIDATION_STATE.Default,
       onCopyButtonClick,
       footer,
+      spellCheck,
       ...rest
     },
     ref,
@@ -197,6 +207,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
               onBlur={onBlur}
               onKeyDown={handleKeyDown}
               tabIndex={inputTabIndex}
+              spellCheck={spellCheck}
               maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
               data-test-id='field-textarea__input'
             />

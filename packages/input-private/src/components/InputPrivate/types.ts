@@ -57,6 +57,11 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
      * @default 0
      */
     tabIndex?: number;
+    /**
+     * Значение атрибута spellcheck (проверка орфографии)
+     * @default true
+     */
+    spellCheck?: boolean;
     /** Колбек обработки получения фокуса */
     onFocus?: FocusEventHandler<HTMLInputElement>;
     /** Колбек обработки потери фокуса */

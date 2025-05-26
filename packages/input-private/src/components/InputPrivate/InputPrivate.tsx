@@ -31,6 +31,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
       tabIndex = 0,
       onClick,
       onMouseDown,
+      spellCheck,
       ...rest
     },
     ref,
@@ -77,6 +78,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
         min={min}
         max={max}
         step={step}
+        spellCheck={spellCheck}
         title=''
         {...extractSupportProps(rest)}
       />

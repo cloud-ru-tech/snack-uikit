@@ -35,6 +35,7 @@ type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
     | 'autoComplete'
     | 'onPaste'
     | 'onKeyDown'
+    | 'spellCheck'
   >;
 
 type WrapperProps = Pick<
@@ -115,6 +116,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       onPaste,
       onKeyDown,
       type = 'text',
+      spellCheck,
       ...rest
     },
     ref,
@@ -259,6 +261,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
             id={id}
             name={name}
             autoComplete={autoComplete}
+            spellCheck={spellCheck}
             data-test-id='field-text__input'
           />
         </FieldContainerPrivate>

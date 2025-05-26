@@ -46,6 +46,8 @@ export type TextAreaProps = RefAttributes<HTMLTextAreaElement> &
     tabIndex?: number;
     /** Минимальное кол-во строк, до которого размер поля может быть увеличен @default 3*/
     minRows?: number;
+    /** Включение проверки орфографии @default true*/
+    spellCheck?: boolean;
   }>;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -66,6 +68,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       onKeyDown,
       tabIndex,
       minRows = 3,
+      spellCheck,
       ...rest
     },
     ref,
@@ -97,6 +100,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
         minRows={minRows}
+        spellCheck={spellCheck}
         {...extractSupportProps(rest)}
       />
     );
