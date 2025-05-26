@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.16.9 (2025-05-26)
+
+
+### Bug Fixes
+
+* **FF-6495:** fix alert close button size ([3603b71](https://github.com/cloud-ru-tech/snack-uikit/commit/3603b719cbd5ac6c6b45ff73e8903a75317f28c3))
+
+
+
+
+
 ## 0.16.8 (2025-05-16)
 
 ### Only dependencies have been changed
