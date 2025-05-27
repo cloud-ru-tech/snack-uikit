@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.47.0 (2025-05-27)
+
+
+### Features
+
+* **PDS-2255:** extend button prefix props ([ee14165](https://github.com/cloud-ru-tech/snack-uikit/commit/ee14165a43d23faf09106434072df85faeaae3c1))
+
+
+
+
+
 # 0.46.0 (2025-05-26)
 
 
