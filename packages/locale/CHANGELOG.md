@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2025-05-28)
+
+
+### Features
+
+* **PDS-2227:** add copy button for code editor ([6891964](https://github.com/cloud-ru-tech/snack-uikit/commit/6891964be3dffecab54a3a226f250f6d303da7e9))
+
+
+
+
+
 # 0.14.0 (2025-03-20)
 
 
