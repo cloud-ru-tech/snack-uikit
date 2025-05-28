@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.1 (2025-05-28)
+
+
+### Bug Fixes
+
+* **FF-6495:** upd package.json ([54563a9](https://github.com/cloud-ru-tech/snack-uikit/commit/54563a98ffed882768074bafde7d93df544113ce))
+
+
+
+
+
 # 0.7.0 (2025-05-28)
 
 ### Features
