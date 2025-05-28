@@ -16,10 +16,10 @@
     "import": "./dist/esm/index.js",
     "require": "./dist/cjs/index.js"
   },
-  "homepage": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit/-/tree/master/packages/code-editor",
+  "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/code-editor",
   "repository": {
     "type": "git",
-    "url": "https://git.sbercloud.tech/sbercloud-ui/tokens-design-system/snack-uikit.git",
+    "url": "https://github.com/cloud-ru-tech/snack-uikit.git",
     "directory": "packages/code-editor"
   },
   "author": "Nikita Ershov <niershov@cloud.ru>",
