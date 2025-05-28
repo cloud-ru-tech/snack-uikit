@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2025-05-28)
+
+
+### Features
+
+* **PDS-1990:** added xs size for segmented control ([0f8fb0d](https://github.com/cloud-ru-tech/snack-uikit/commit/0f8fb0de09568eb983c685118068870a03ad3f92))
+
+
+
+
+
 # 0.5.0 (2025-05-21)
 
 
