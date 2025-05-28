@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.2 (2025-05-28)
+
+
+### Bug Fixes
+
+* **PDS-2227:** remove tooltip from code copy button ([adee4e2](https://github.com/cloud-ru-tech/snack-uikit/commit/adee4e273a99c484456481530636cc49894c13bc))
+
+
+
+
+
 ## 0.7.1 (2025-05-28)
 
 
