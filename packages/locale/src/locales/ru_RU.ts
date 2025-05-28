@@ -76,7 +76,4 @@ export const ru_RU: typeof en_GB = {
       uploaded: 'Загружено',
     },
   },
-  CodeEditor: {
-    copyButtonToolTip: 'Копировать',
-  },
 };
