@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2025-05-29)
+
+
+### Features
+
+* **HYCL-000:** possibility to pass id in tag row to avoid collisions ([815cbe1](https://github.com/cloud-ru-tech/snack-uikit/commit/815cbe11a8d91fe69b44b55cd6c37403c2577a26))
+
+
+
+
+
 ## 0.14.1 (2025-05-16)
 
 ### Only dependencies have been changed
