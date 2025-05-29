@@ -21,6 +21,8 @@ export type TagTooltipProps = {
 };
 
 export type TagRowItem = {
+  /** Уникальный идентификатор, используется в качестве key. По умолчанию key: label. */
+  id?: string;
   label: string;
   appearance?: Appearance;
 } & Partial<LinkProps> &

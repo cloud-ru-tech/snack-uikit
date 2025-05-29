@@ -19,7 +19,7 @@ type OnDeleteHandler = () => void;
 function renderTag(size: Size, handleRemoveItem?: (item: TagRowItemInner) => OnDeleteHandler, setRef?: SetTagRef) {
   return function TagRowItem(item: TagRowItemInner, index: number) {
     return (
-      <div key={item.label} ref={setRef?.(item, index)} className={styles.tagWrapper}>
+      <div key={item.id ?? item.label} ref={setRef?.(item, index)} className={styles.tagWrapper}>
         <Tag size={size} onDelete={handleRemoveItem?.(item)} {...item} />
       </div>
     );
