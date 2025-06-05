@@ -124,17 +124,16 @@ $variants: 'single-line-container', 'single-line-container-button-before', 'sing
 }
 
 .prefix {
-  display: inline-flex;
-  flex-shrink: 0;
-  gap: styles-tokens-fields.$space-fields-postfix-gap;
-  align-items: center;
-
   color: styles-tokens-fields.$sys-neutral-text-disabled;
 }
 
-.postfix {
-  display: inline-flex;
-  flex-shrink: 0;
-  gap: styles-tokens-fields.$space-fields-postfix-gap;
-  align-items: center;
+@each $size in $sizes {
+  [data-size='#{$size}'] {
+     .prefix, .postfix {
+      display: inline-flex;
+      flex-shrink: 0;
+      gap: styles-tokens-fields.simple-var(styles-tokens-fields.$fields, 'single-line-container', $size, 'gap');
+      align-items: center;
+    }
+  }
 }
