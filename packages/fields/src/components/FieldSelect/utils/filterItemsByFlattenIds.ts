@@ -20,7 +20,10 @@ export function filterItemsByFlattenIds(items: ItemProps[], ids: ItemId[]) {
     }
     if (isGroupItem(item)) {
       const filteredSubItems = filterItemsByFlattenIds(item.items, ids);
-      filteredItems.push({ ...item, items: filteredSubItems });
+
+      if (filteredSubItems.length) {
+        filteredItems.push({ ...item, items: filteredSubItems });
+      }
       return;
     }
   });
