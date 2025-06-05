@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.47.4 (2025-06-05)
+
+
+### Bug Fixes
+
+* **PDS-2368:** gap for prefix in l size ([102562d](https://github.com/cloud-ru-tech/snack-uikit/commit/102562de801cdedad2f694854f7f7f57b42223d5))
+
+
+
+
+
 ## 0.47.3 (2025-06-05)
 
 
