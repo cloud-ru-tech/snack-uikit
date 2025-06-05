@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.47.3 (2025-06-05)
+
+
+### Bug Fixes
+
+* **PDS-2417:** hide empty groups on search result ([e6bd5d1](https://github.com/cloud-ru-tech/snack-uikit/commit/e6bd5d139b2e3f5c8ee0bd197a67ba7c5cb09a43))
+
+
+
+
+
 ## 0.47.2 (2025-05-29)
 
 ### Only dependencies have been changed
