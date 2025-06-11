@@ -179,6 +179,24 @@ test.page(
   getPage({
     showTableTree: false,
   }),
+)('Multi row rowSelection.onChange callback', async t => {
+  const first = selectors.getRow(0);
+  const second = selectors.getRow(1);
+
+  await t.click(first.selectToggle);
+  await t.expect(selectors.getSelectedState().innerText).eql('{"0":true}');
+
+  await t.click(second.selectToggle);
+  await t.expect(selectors.getSelectedState().innerText).eql('{"0":true,"1":true}');
+
+  await t.click(first.selectToggle);
+  await t.expect(selectors.getSelectedState().innerText).eql('{"1":true}');
+});
+
+test.page(
+  getPage({
+    showTableTree: false,
+  }),
 )('Multi row bulk selection and deselection with shift key applied', async t => {
   const validator = new RowsSelectionValidator(t, selectors);
 
@@ -261,6 +279,25 @@ test.page(
 
   await t.expect(second.rowSelectedAttribute).eql('true');
   await t.expect(first.rowSelectedAttribute).eql(null);
+});
+
+test.page(
+  getPage({
+    showTableTree: false,
+    rowSelectionMode: 'single',
+  }),
+)('Single row rowSelection.onChange callback', async t => {
+  const first = selectors.getRow(0);
+  const second = selectors.getRow(1);
+
+  await t.click(first.selectToggle);
+  await t.expect(selectors.getSelectedState().innerText).eql('{"0":true}');
+
+  await t.click(second.selectToggle);
+  await t.expect(selectors.getSelectedState().innerText).eql('{"1":true}');
+
+  await t.click(first.selectToggle);
+  await t.expect(selectors.getSelectedState().innerText).eql('{"0":true}');
 });
 
 test.page(getPage({ disableSomeRows: true, showTableTree: false }))(

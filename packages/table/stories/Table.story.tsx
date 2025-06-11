@@ -200,6 +200,12 @@ const Template: StoryFn<StoryProps> = ({
     };
   }, [columnFiltersProp, initialColumnFiltersOpen, showFilters]);
 
+  const [selectedState, setSelectedState] = useState<RowSelectionState>({});
+
+  useEffect(() => {
+    setSelectedState({});
+  }, [rowSelectionMode]);
+
   return (
     <div className={styles.wrapper}>
       <Table
@@ -233,6 +239,7 @@ const Template: StoryFn<StoryProps> = ({
           enable: disableSomeRows
             ? row => !['Not', 'Loading'].includes(row.original.status)
             : Boolean(rowSelectionMode) || undefined,
+          onChange: setSelectedState,
         }}
         onRefresh={onRefresh}
         onRowClick={enableOnRowClick ? handleRowClick : undefined}
@@ -241,6 +248,9 @@ const Template: StoryFn<StoryProps> = ({
         columnFilters={columnFilters}
         scrollRef={scrollRef}
       />
+      <div data-test-id={STORY_TEST_IDS.selected} style={{ opacity: 0, height: 1 }}>
+        {JSON.stringify(selectedState)}
+      </div>
     </div>
   );
 };

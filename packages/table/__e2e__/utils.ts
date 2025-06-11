@@ -2,6 +2,7 @@ import { Selector } from 'testcafe';
 
 import { dataTestIdSelector } from '../../../testcafe/utils';
 import { TEST_IDS } from '../src/constants';
+import { STORY_TEST_IDS } from '../stories/constants';
 
 export const DATA_ATTRIBUTES = {
   sortable: 'data-sortable',
@@ -58,6 +59,9 @@ export const selectors = {
   },
   getColumnHeaderSelectorByDataId(id: string) {
     return Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', id);
+  },
+  getSelectedState() {
+    return Selector(dataTestIdSelector(STORY_TEST_IDS.selected));
   },
 };
 

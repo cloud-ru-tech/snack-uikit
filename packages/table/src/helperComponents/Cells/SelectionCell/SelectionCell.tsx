@@ -72,7 +72,16 @@ export function getSelectionCellColumnDef<TData>(enableSelectPinned: boolean): C
             rows.map(r => r.id).includes(previousClickedRowId) ? previousClickedRowId : '',
           );
           const isSelected = !rowsById[row.id]?.getIsSelected() || false;
-          rowsToToggle.forEach(row => row.toggleSelected(isSelected));
+
+          const newSelected = rowsToToggle.reduce<Record<string, boolean>>((acc, row) => {
+            acc[row.index] = isSelected;
+            return acc;
+          }, {});
+
+          table.setRowSelection(oldState => ({
+            ...oldState,
+            ...newSelected,
+          }));
         } else {
           row.toggleSelected(!checked);
         }
