@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.7.0 (2025-06-16)
+
+
+### Features
+
+* **GIGAID-164:** extend input attrs ([bbcd86e](https://github.com/cloud-ru-tech/snack-uikit/commit/bbcd86ebe729ceb341cc573beb81c1bd8764c847))
+
+
+
+
+
 # 4.6.0 (2025-05-26)
 
 ### Features
