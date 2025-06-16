@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.48.1 (2025-06-16)
+
+### Only dependencies have been changed
+* [@snack-uikit/calendar@0.12.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-uikit/color-picker@0.3.32](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/color-picker/CHANGELOG.md)
+* [@snack-uikit/icons@0.26.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/input-private@4.7.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/input-private/CHANGELOG.md)
+* [@snack-uikit/list@0.29.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/slider@0.3.19](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/slider/CHANGELOG.md)
+* [@snack-uikit/tag@0.15.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.17.3](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.6.20](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 # 0.48.0 (2025-06-16)
 
 

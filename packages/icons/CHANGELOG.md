@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.26.4 (2025-06-16)
+
+**Note:** Version bump only for package @snack-uikit/icons
+
+
+
+
+
 ## 0.26.3 (2025-05-16)
 
 ### Only dependencies have been changed
