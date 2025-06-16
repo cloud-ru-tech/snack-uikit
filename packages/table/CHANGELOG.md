@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.36.9 (2025-06-16)
+
+
+### Bug Fixes
+
+* **FF-0000:** rowSelection.onChange callback ([e5f537d](https://github.com/cloud-ru-tech/snack-uikit/commit/e5f537d8dcc26cda4bde8afd59b4ef334006f4af))
+
+
+
+
+
 ## 0.36.8 (2025-06-16)
 
 ### Only dependencies have been changed
