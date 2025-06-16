@@ -9,9 +9,10 @@ import {
 
 import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
-import { TYPE } from './constants';
+import { INPUT_MODE, TYPE } from './constants';
 
 export type Type = ValueOf<typeof TYPE>;
+export type InputMode = ValueOf<typeof INPUT_MODE>;
 
 export type InputPrivateProps = RefAttributes<HTMLInputElement> &
   WithSupportProps<{
@@ -34,6 +35,8 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
     readonly?: boolean;
     /** Тип инпута */
     type?: Type;
+    /** Режим работы экранной клавиатуры */
+    inputMode?: InputMode;
     /**
      * Является ли поле деактивированным
      * @default false
@@ -62,6 +65,8 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
      * @default true
      */
     spellCheck?: boolean;
+    /** Регулярное выражение валидного инпута */
+    pattern?: string;
     /** Колбек обработки получения фокуса */
     onFocus?: FocusEventHandler<HTMLInputElement>;
     /** Колбек обработки потери фокуса */

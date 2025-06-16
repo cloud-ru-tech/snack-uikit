@@ -482,7 +482,9 @@ FieldStepper в основном предназначен для работы с
 | placeholder | `string` | - | Значение плейсхолдера |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
+| inputMode | enum InputMode: `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
 | spellCheck | `boolean` | true | Значение атрибута spellcheck (проверка орфографии) |
+| pattern | `string` | - | Регулярное выражение валидного инпута |
 | onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки начала нажатия клавиши клавиатуры |
 | onPaste | `ClipboardEventHandler<HTMLInputElement>` | - | Колбек обработки вставки значения |
 | className | `string` | - | CSS-класс |

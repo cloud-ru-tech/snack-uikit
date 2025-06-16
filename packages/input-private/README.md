@@ -43,6 +43,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | id | `string` | - | Значение html-атрибута id |
 | className | `string` | - | CSS-класс |
 | type | enum Type: `"number"`, `"text"`, `"password"`, `"tel"`, `"email"`, `"url"` | text | Тип инпута |
+| inputMode | enum InputMode: `"text"`, `"tel"`, `"email"`, `"url"`, `"decimal"`, `"numeric"`, `"search"` | text | Режим работы экранной клавиатуры |
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
@@ -58,6 +59,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | onClick | `MouseEventHandler<HTMLInputElement>` | - | Колбек обработки клика |
 | onMouseDown | `MouseEventHandler<HTMLInputElement>` | - | Колбек обработки нажатия кнопки мыши |
 | spellCheck | `boolean` | true | Значение атрибута spellcheck (проверка орфографии) |
+| pattern | `string` | - | Регулярное выражение валидного инпута |
 | key | `Key` | - |  |
 | ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 ## useButtonNavigation

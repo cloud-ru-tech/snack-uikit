@@ -3,7 +3,7 @@ import { ChangeEventHandler, forwardRef } from 'react';
 
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { TYPE } from './constants';
+import { INPUT_MODE, TYPE } from './constants';
 import styles from './styles.module.scss';
 import { InputPrivateProps } from './types';
 
@@ -17,6 +17,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
       id,
       className,
       type = TYPE.Text,
+      inputMode = INPUT_MODE.Text,
       disabled = false,
       readonly = false,
       autoComplete: autoCompleteProp = false,
@@ -32,6 +33,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
       onClick,
       onMouseDown,
       spellCheck,
+      pattern,
       ...rest
     },
     ref,
@@ -66,6 +68,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
         onChange={onChangeHandler}
         placeholder={placeholder}
         type={type}
+        inputMode={inputMode}
         disabled={disabled}
         readOnly={readonly}
         onFocus={onFocus}
@@ -80,6 +83,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
         step={step}
         spellCheck={spellCheck}
         title=''
+        pattern={pattern}
         {...extractSupportProps(rest)}
       />
     );

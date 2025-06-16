@@ -36,6 +36,8 @@ type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
     | 'onPaste'
     | 'onKeyDown'
     | 'spellCheck'
+    | 'inputMode'
+    | 'pattern'
   >;
 
 type WrapperProps = Pick<
@@ -116,6 +118,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       onPaste,
       onKeyDown,
       type = 'text',
+      inputMode,
       spellCheck,
       ...rest
     },
@@ -257,6 +260,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
             disabled={disabled}
             readonly={readonly}
             type={type}
+            inputMode={inputMode}
             maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
             id={id}
             name={name}
