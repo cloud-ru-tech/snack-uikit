@@ -45,7 +45,7 @@ export function useFilters<TData extends object, TFilters extends Record<string,
       onOpenChange: setAreColumnFiltersOpen,
       ...columnFilters,
       value: filter,
-      onChange: setFilter,
+      onChange: setFilter as (filter: TFilters) => void,
       visibleFilters: filterVisibility,
       onVisibleFiltersChange: setFilterVisibility,
     };

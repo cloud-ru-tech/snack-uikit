@@ -257,13 +257,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     onGlobalFilterChange,
 
     getRowId,
-    onRowSelectionChange: updater => {
-      if (typeof updater === 'function') {
-        onRowSelectionChange(updater(rowSelection));
-      } else {
-        onRowSelectionChange(updater);
-      }
-    },
+    onRowSelectionChange,
     enableGrouping: true,
     enableRowSelection,
     enableMultiRowSelection: rowSelectionProp?.multiRow,
