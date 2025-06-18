@@ -51,6 +51,8 @@ type StoryProps = ListProps & {
   defaultValue?: string;
 };
 
+const getRandomIndex = () => Math.floor(Math.random() * 10000);
+
 const Template: StoryFn<StoryProps> = ({
   showPinTopItems,
   showPinBottomItems,
@@ -78,7 +80,7 @@ const Template: StoryFn<StoryProps> = ({
   }, [defaultValueProp, selectionMode]);
 
   const [value, setValue] = useState<string | string[] | undefined>(defaultValue);
-
+  const [itemToShow, setItemToShow] = useState<number>(() => (args.virtualized ? getRandomIndex() : 0));
   const [collapse, setCollapseValue] = useState<Array<string | number>>();
 
   useEffect(() => {
@@ -235,7 +237,7 @@ const Template: StoryFn<StoryProps> = ({
   }
 
   return (
-    <>
+    <div className={styles.outerWrapper}>
       <div className={styles.wrapper}>
         <div className={styles.listContainer}>
           Customizable List
@@ -285,8 +287,19 @@ const Template: StoryFn<StoryProps> = ({
         </div>
       </div>
 
-      <>{JSON.stringify(value)}</>
-    </>
+      {args.virtualized && (
+        <ButtonFilled
+          label={`Scroll to random large group item (${itemToShow})`}
+          appearance='primary'
+          onClick={() => {
+            setValue(`large_items_${itemToShow}`);
+            setItemToShow(getRandomIndex());
+          }}
+        />
+      )}
+
+      <div>{JSON.stringify(value)}</div>
+    </div>
   );
 };
 

@@ -4,6 +4,12 @@
   margin: 0 auto;
 }
 
+.outerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .wrapper {
   resize: both;
 

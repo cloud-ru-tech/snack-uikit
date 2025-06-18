@@ -1,6 +1,7 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import cn from 'classnames';
-import { ForwardedRef, forwardRef, RefObject, useEffect, useMemo, useRef } from 'react';
+import mergeRefs from 'merge-refs';
+import { ForwardedRef, forwardRef, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { Spinner } from '@snack-uikit/loaders';
 import { Scroll } from '@snack-uikit/scroll';
@@ -8,12 +9,18 @@ import { extractSupportProps } from '@snack-uikit/utils';
 
 import { ListEmptyState, useEmptyState } from '../../../helperComponents';
 import { stopPropagation } from '../../../utils';
-import { PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from '../../Items';
+import { ItemId, PinBottomGroupItem, PinTopGroupItem, SearchItem, useRenderItems } from '../../Items';
 import { useNewListContext, useSelectionContext } from '../contexts';
 import commonStyles from '../styles.module.scss';
 import { ListPrivateProps } from '../types';
 import { ALL_SIZES } from './constants';
 import styles from './styles.module.scss';
+
+type ScrollState = {
+  virtualizer: ItemId | null;
+  browser: ItemId | null;
+  measured: boolean;
+};
 
 export const ListPrivate = forwardRef(
   (
@@ -59,20 +66,109 @@ export const ListPrivate = forwardRef(
     const itemsPinTopJSX = useRenderItems(pinTop);
     const itemsPinBottomJSX = useRenderItems(pinBottom);
 
+    const [scrollState, setScrollState] = useState<ScrollState>({ virtualizer: null, browser: null, measured: false });
+
     const emptyStates = useEmptyState({ noDataState, noResultsState, errorDataState });
     const hasNoItems = items.length === 0;
+
+    const { selectedItemIndex, selectedItem } = useMemo(() => {
+      const result = {
+        selectedItemIndex: -1,
+        selectedItem: undefined,
+      };
+
+      if (!scrollToSelectedItem || !value) {
+        return result;
+      }
+
+      const selectedItem = isSelectionSingle ? flattenItems[value] : flattenItems[value[0]];
+      if (!selectedItem?.id) {
+        return result;
+      }
+
+      const allFocusFlattenItems = Object.values(focusFlattenItems);
+      const index = allFocusFlattenItems.findIndex(item => item.originalId === selectedItem.id);
+      if (index < 0) {
+        return result;
+      }
+
+      return {
+        selectedItemIndex: index,
+        selectedItem: allFocusFlattenItems[index],
+      };
+    }, [flattenItems, focusFlattenItems, isSelectionSingle, scrollToSelectedItem, value]);
 
     const virtualizer = useVirtualizer({
       count: itemsJSX.length,
       getScrollElement: () => (scroll ? innerScrollRef.current : null),
       estimateSize: () => ALL_SIZES[size],
       enabled: virtualized,
+      overscan: 5, // Amount of elements in DOM before/after visible ones
     });
     const virtualItems = virtualizer.getVirtualItems();
 
     useEffect(() => {
-      virtualizer.measure();
-    }, [virtualizer]);
+      if (scrollState.measured) {
+        return;
+      }
+
+      virtualizer.measure(); // TODO: перезамерять размер
+
+      setScrollState(prevState => ({
+        ...prevState,
+        measured: true,
+      }));
+    }, [scrollState.measured, virtualizer]);
+
+    const isScrollToItemEnabled = scroll && scrollToSelectedItem && virtualized;
+
+    useEffect(() => {
+      if (isScrollToItemEnabled) {
+        if (!scrollState.measured) {
+          return; // Not measured yet
+        }
+        if (selectedItemIndex < 0 || !selectedItem) {
+          return; // Cannot scroll to non-existing item
+        }
+        if (scrollState.virtualizer === selectedItem.originalId) {
+          return; // No need to re-scroll to the same item during re-renders
+        }
+        if (selectedItem?.itemRef && innerScrollRef.current?.contains(selectedItem?.itemRef.current)) {
+          return; // No need to scroll to manually clicked item currently present in DOM
+        }
+
+        virtualizer.scrollToIndex(selectedItemIndex, { align: 'center' });
+
+        setScrollState(prevState => ({
+          ...prevState,
+          virtualizer: selectedItem.originalId,
+        }));
+      }
+    }, [isScrollToItemEnabled, scrollState, selectedItem, selectedItemIndex, virtualizer]);
+
+    const isTargetPresentInDom = Boolean(selectedItem?.itemRef?.current);
+
+    useEffect(() => {
+      if (!selectedItem) {
+        return;
+      }
+      if (scrollState.virtualizer === null) {
+        return; // Not scrolled by virtualizer yet, no need for additional scroll
+      }
+      if (!isTargetPresentInDom) {
+        return; // Target element is not present in DOM yet, additional scroll does not work without it
+      }
+      if (scrollState.virtualizer === scrollState.browser) {
+        return; // Virtualizer scroll has not been executed => no need for additional scroll
+      }
+
+      selectedItem.itemRef?.current?.scrollIntoView({ block: 'center' });
+
+      setScrollState(prevState => ({
+        ...prevState,
+        browser: selectedItem.originalId,
+      }));
+    }, [scrollState, selectedItem, isTargetPresentInDom, selectedItemIndex]);
 
     const loadingJSX = useMemo(
       () =>
@@ -93,25 +189,23 @@ export const ListPrivate = forwardRef(
 
     const content = useMemo(
       () => (
-        <div className={styles.content}>
+        <>
           {virtualized ? (
             <div className={styles.virtualizedContainer} style={{ height: virtualizer.getTotalSize() }} tabIndex={-1}>
-              <div
-                className={styles.virtualizedPositionBox}
-                style={{ transform: `translateY(${virtualItems[0]?.start ?? 0}px)` }}
-                tabIndex={-1}
-              >
-                {virtualItems.map(virtualRow => (
-                  <div
-                    key={virtualRow.key}
-                    data-index={virtualRow.index}
-                    ref={virtualizer.measureElement}
-                    tabIndex={-1}
-                  >
-                    {itemsJSX[virtualRow.index]}
-                  </div>
-                ))}
-              </div>
+              {virtualItems.map(virtualRow => (
+                <div
+                  key={virtualRow.key}
+                  data-index={virtualRow.index}
+                  ref={virtualizer.measureElement}
+                  tabIndex={-1}
+                  className={styles.virtualizedPositionBox}
+                  style={{
+                    transform: `translateY(${virtualRow.start}px)`,
+                  }}
+                >
+                  {itemsJSX[virtualRow.index]}
+                </div>
+              ))}
             </div>
           ) : (
             itemsJSX
@@ -126,7 +220,7 @@ export const ListPrivate = forwardRef(
             dataFiltered={dataFiltered ?? Boolean(search?.value)}
             size={size}
           />
-        </div>
+        </>
       ),
       [
         dataError,
@@ -144,22 +238,13 @@ export const ListPrivate = forwardRef(
       ],
     );
 
-    const onScrollInitialized = () => {
-      if (scrollToSelectedItem) {
-        if (!value) {
-          return;
-        }
-
-        const selectedItem = isSelectionSingle ? flattenItems[value] : flattenItems[value[0]];
-
-        if (!selectedItem?.id) {
-          return;
-        }
-
-        const itemToScrollTo = Object.values(focusFlattenItems).find(item => item.originalId === selectedItem.id);
-        itemToScrollTo?.itemRef?.current?.scrollIntoView({ block: 'center' });
+    const onScrollInitialized = useCallback(() => {
+      if (!selectedItem) {
+        return;
       }
-    };
+
+      selectedItem?.itemRef?.current?.scrollIntoView({ block: 'center' });
+    }, [selectedItem]);
 
     const listJSX = (
       <ul
@@ -193,10 +278,7 @@ export const ListPrivate = forwardRef(
             )}
             barHideStrategy={barHideStrategy}
             size={size === 's' ? 's' : 'm'}
-            ref={ref => {
-              innerScrollRef.current = ref;
-              if (scrollContainerRef) (scrollContainerRef as React.MutableRefObject<HTMLElement | null>).current = ref;
-            }}
+            ref={mergeRefs(innerScrollRef, scrollContainerRef)}
             untouchableScrollbars={untouchableScrollbars}
             onScroll={onScroll}
             onInitialized={onScrollInitialized}
