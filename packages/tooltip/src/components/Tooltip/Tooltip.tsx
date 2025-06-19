@@ -16,6 +16,7 @@ export type TooltipProps = WithSupportProps<
     PopoverPrivateProps,
     | 'className'
     | 'triggerClassName'
+    | 'offset'
     | 'open'
     | 'onOpenChange'
     | 'hoverDelayOpen'
