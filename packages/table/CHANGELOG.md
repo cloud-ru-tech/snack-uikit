@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.36.10 (2025-06-19)
+
+
+### Bug Fixes
+
+* **FF-0000:** table state control ([4059c7b](https://github.com/cloud-ru-tech/snack-uikit/commit/4059c7bb77e37cf1bb761583db960f93e0e24abb))
+
+
+
+
+
 ## 0.36.9 (2025-06-16)
 
 
