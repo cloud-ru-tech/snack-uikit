@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.4 (2025-06-19)
+
+
+### Bug Fixes
+
+* **ONB-3885:** tooltip offset prop ([a10e5ba](https://github.com/cloud-ru-tech/snack-uikit/commit/a10e5baca354718d84ed836ed41e8bfe1edf4815))
+
+
+
+
+
 ## 0.17.3 (2025-06-16)
 
 ### Only dependencies have been changed
