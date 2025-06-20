@@ -2,7 +2,9 @@ import { Meta, StoryFn } from '@storybook/react';
 import debounce from 'lodash.debounce';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import { ButtonFunction } from '@snack-uikit/button';
 import { Card } from '@snack-uikit/card';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 import { BaseItemProps } from '@snack-uikit/list';
 import { Scroll } from '@snack-uikit/scroll';
 import { toaster } from '@snack-uikit/toaster';
@@ -22,7 +24,11 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template: StoryFn<SearchProps> = ({ autocomplete, ...args }: SearchProps) => {
+type StoryProps = SearchProps & {
+  showPostfix: boolean;
+};
+
+const Template: StoryFn<StoryProps> = ({ autocomplete, showPostfix, ...args }: StoryProps) => {
   const [value, setValue] = useState<string>(args.value || '');
   const [loading, setLoading] = useState<boolean>(false);
   const [options, setOptions] = useState<BaseItemProps[]>([]);
@@ -67,6 +73,14 @@ const Template: StoryFn<SearchProps> = ({ autocomplete, ...args }: SearchProps) 
     setOptions(generateOptions(args.value));
   }, [args.value]);
 
+  const postfix = useMemo(() => {
+    if (!showPostfix) {
+      return undefined;
+    }
+
+    return <ButtonFunction icon={<PlaceholderSVG />} />;
+  }, [showPostfix]);
+
   if (autocomplete) {
     return (
       <div className={styles.wrapper} data-outline={args.outline || undefined}>
@@ -78,6 +92,7 @@ const Template: StoryFn<SearchProps> = ({ autocomplete, ...args }: SearchProps) 
           options={options}
           onSubmit={onSubmit}
           autocomplete
+          postfix={postfix}
         />
       </div>
     );
@@ -93,6 +108,7 @@ const Template: StoryFn<SearchProps> = ({ autocomplete, ...args }: SearchProps) 
         autocomplete={undefined}
         options={undefined}
         onSubmit={onSubmit}
+        postfix={postfix}
       />
       {options.length > 0 && (
         <div className={styles.scrollWrapper}>
@@ -130,6 +146,7 @@ export const search = {
     placeholder: 'Placeholder',
     autocomplete: true,
     outline: true,
+    showPostfix: true,
     'data-test-id': '',
   },
 
@@ -141,6 +158,9 @@ export const search = {
         arg: 'autocomplete',
         eq: true,
       },
+    },
+    showPostfix: {
+      name: '[Stories]: Show postfix slot',
     },
   },
 

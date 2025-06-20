@@ -1,14 +1,12 @@
 import { forwardRef } from 'react';
 
-import { SearchPrivate, SearchPrivateProps } from '@snack-uikit/search-private';
+import { SearchPrivate } from '@snack-uikit/search-private';
 
 import { PRIVATE_SEARCH_TEST_IDS, SIZE } from '../../constants';
+import { SearchBaseProps } from '../../types';
 import { SearchDecorator } from '../SearchDecorator';
 
-export type SearchTextFieldProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
-  /** Внешний бордер */
-  outline?: boolean;
-};
+export type SearchTextFieldProps = SearchBaseProps;
 
 export const SearchFieldText = forwardRef<HTMLInputElement, SearchTextFieldProps>(function SearchFieldText(
   {

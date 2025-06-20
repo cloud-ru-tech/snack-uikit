@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { SIZE } from '../../constants';
-import { SearchProps } from '../Search';
+import { SearchBaseProps } from '../../types';
 import styles from './styles.module.scss';
 
 export type SearchDecoratorProps = WithSupportProps<
@@ -12,7 +12,7 @@ export type SearchDecoratorProps = WithSupportProps<
     children: ReactNode;
     focused?: boolean;
     className?: string;
-  } & Pick<SearchProps, 'outline' | 'size'>
+  } & Pick<SearchBaseProps, 'outline' | 'size' | 'postfix'>
 >;
 
 export function SearchDecorator({
@@ -21,6 +21,7 @@ export function SearchDecorator({
   size = SIZE.S,
   focused,
   className,
+  postfix,
   ...rest
 }: SearchDecoratorProps) {
   return (
@@ -32,6 +33,7 @@ export function SearchDecorator({
       {...extractSupportProps(rest)}
     >
       {children}
+      {postfix}
     </div>
   );
 }

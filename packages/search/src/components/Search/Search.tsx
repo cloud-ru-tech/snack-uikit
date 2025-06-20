@@ -1,16 +1,14 @@
 import { forwardRef } from 'react';
 
-import { SearchPrivateProps } from '@snack-uikit/search-private';
 import { extractSupportProps } from '@snack-uikit/utils';
 
 import { SIZE } from '../../constants';
+import { SearchBaseProps } from '../../types';
 import { SearchAutocomplete, SearchAutocompleteProps } from '../SearchAutocomplete';
 import { SearchFieldText } from '../SearchFieldText';
 
-export type SearchProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
-  /** Внешний бордер */
-  outline?: boolean;
-} & (
+export type SearchProps = SearchBaseProps &
+  (
     | (Pick<SearchAutocompleteProps, 'options'> & {
         /**
          * Работа в режиме Autocomplete в значении true
@@ -21,14 +19,27 @@ export type SearchProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
       })
     | {
         autocomplete?: false;
-        /** В режиме FieldText options отсутсвуют */
+        /** В режиме FieldText options отсутствуют */
         options?: never;
       }
   );
 
-export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search({ size = SIZE.S, ...props }, ref) {
-  const { value, onChange, onBlur, onFocus, outline, loading, placeholder, onSubmit, className, tabIndex, ...rest } =
-    props;
+export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(props, ref) {
+  const {
+    value,
+    onChange,
+    onBlur,
+    onFocus,
+    outline,
+    loading,
+    placeholder,
+    onSubmit,
+    className,
+    tabIndex,
+    postfix,
+    size = SIZE.S,
+    ...rest
+  } = props;
   const supportProps = extractSupportProps(rest);
 
   if (props.autocomplete) {
@@ -47,6 +58,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
         className={className}
         ref={ref}
         tabIndex={tabIndex}
+        postfix={postfix}
         {...supportProps}
       />
     );
@@ -66,6 +78,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
       className={className}
       ref={ref}
       tabIndex={tabIndex}
+      postfix={postfix}
       {...supportProps}
     />
   );

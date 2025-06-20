@@ -12,21 +12,20 @@ import {
 } from 'react';
 
 import { BaseItemProps, Droplist } from '@snack-uikit/list';
-import { SearchPrivate, SearchPrivateProps } from '@snack-uikit/search-private';
+import { SearchPrivate } from '@snack-uikit/search-private';
 
 import { PRIVATE_SEARCH_TEST_IDS, SIZE, TEST_IDS } from '../../constants';
+import { SearchBaseProps } from '../../types';
 import { SearchDecorator } from '../SearchDecorator';
 import styles from './styles.module.scss';
 
-export type SearchAutocompleteProps = Omit<SearchPrivateProps, 'onKeyDown'> & {
+export type SearchAutocompleteProps = SearchBaseProps & {
   /**
    * Элементы выпадающие в Droplist в режиме Autocomplete.
    *
    * На нажатие 'Space', 'Enter' или клике по элементу будет вызываться onSubmit.
    */
   options: BaseItemProps[];
-  /** Внешний бордер */
-  outline?: boolean;
 };
 
 export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocompleteProps>(function SearchAutocomplete(
@@ -42,6 +41,7 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
     onFocus,
     className,
     tabIndex,
+    postfix,
     ...rest
   },
   ref,
@@ -132,6 +132,7 @@ export const SearchAutocomplete = forwardRef<HTMLInputElement, SearchAutocomplet
             outline={outline || undefined}
             focused={(isOpen && Boolean(localRef.current?.value)) || undefined}
             data-test-id={TEST_IDS.decorator}
+            postfix={postfix}
           >
             <SearchPrivate
               loading={loading}
