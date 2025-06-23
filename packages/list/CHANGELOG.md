@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.30.0 (2025-06-23)
+
+
+### Features
+
+* **PDS-2461:** list virtualization scroll to initial value ([9ff5a87](https://github.com/cloud-ru-tech/snack-uikit/commit/9ff5a8781367fd3ea0bdc879fb4f5484228459be))
+
+
+
+
+
 ## 0.29.6 (2025-06-19)
 
 ### Only dependencies have been changed
