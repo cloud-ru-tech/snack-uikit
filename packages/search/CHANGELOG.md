@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2025-06-23)
+
+
+### Features
+
+* **FF-6848:** added postfix to search ([98ecfc4](https://github.com/cloud-ru-tech/snack-uikit/commit/98ecfc49ca2f731f4a30654eb127d7d1a8f31e3c))
+
+
+
+
+
 ## 0.11.11 (2025-06-23)
 
 ### Only dependencies have been changed
