@@ -1,36 +1,16 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 
-import { isBrowser, useLayoutEffect } from '@snack-uikit/utils';
+type SpriteProps = {
+  content: string;
+  'data-test-id'?: string;
+};
 
-function SpriteInner({ content }: { content: string }) {
-  const [div] = useState(isBrowser() ? document.createElement('div') : undefined);
-
-  if (isBrowser() && div && div.parentNode !== document.body) {
-    div.style.display = 'none';
-    div.innerHTML = content;
-    document.body.prepend(div);
-  }
-
-  useLayoutEffect(() => {
-    if (div) {
-      return () => {
-        document.body.removeChild(div);
-      };
-    }
-  }, [div]);
-
-  useLayoutEffect(() => {
-    if (div) {
-      if (div.parentNode !== document.body) {
-        div.style.display = 'none';
-        document.body.prepend(div);
-      }
-
-      div.innerHTML = content;
-    }
-  }, [content, div]);
-
-  return null;
-}
-
-export const Sprite = memo(SpriteInner);
+export const Sprite = memo(function Sprite(props: SpriteProps) {
+  return (
+    <div
+      data-test-id={props['data-test-id']}
+      style={{ display: 'none' }}
+      dangerouslySetInnerHTML={{ __html: props.content }}
+    />
+  );
+});
