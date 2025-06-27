@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.27.0 (2025-06-27)
+
+
+### Features
+
+* **FF-6683:** add data-test-id prop ([b228869](https://github.com/cloud-ru-tech/snack-uikit/commit/b2288696c849582c9f298045bcc6fc0785df41aa))
+
+
+
+
+
 ## 0.26.4 (2025-06-16)
 
 **Note:** Version bump only for package @snack-uikit/icons
