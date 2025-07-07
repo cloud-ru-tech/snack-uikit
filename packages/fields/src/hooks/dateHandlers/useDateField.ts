@@ -170,7 +170,7 @@ export function useDateField({
 
         if (slotKey) {
           const value = getSlot(slotKey);
-          const { max } = slotsInfo[slotKey];
+          const { max, min } = slotsInfo[slotKey];
 
           const numberValue = Number(value) || 0;
 
@@ -198,34 +198,39 @@ export function useDateField({
           }
 
           if (/^\d+$/.test(e.key)) {
+            const digit = Number(e.key);
             const slotValue = parseInt(numberValue.toString() + e.key, 10) || 0;
 
             const valueLength = slotValue.toString().length;
             const maxLength = max.toString().length;
+            const isTheLastInput = value.match(/^0+$/) && maxLength === 2 && digit === 0;
 
             if (valueLength < maxLength) {
-              slotValue && updateSlot(slotKey, slotValue);
+              if (slotValue || slotValue >= min) {
+                updateSlot(slotKey, slotValue);
+                if (isTheLastInput) checkInputAndGoNext(slotKey);
+              }
 
               if (slotValue * 10 > max) {
                 checkInputAndGoNext(slotKey);
               }
             } else if (valueLength > maxLength) {
-              if (Number(e.key) * 10 > max) {
+              if (digit * 10 > max) {
                 updateSlot(slotKey, e.key);
                 checkInputAndGoNext(slotKey);
-              } else {
-                Number(e.key) && updateSlot(slotKey, e.key);
+              } else if (digit || digit >= min) {
+                updateSlot(slotKey, e.key);
               }
             } else {
               if (slotValue <= max) {
                 updateSlot(slotKey, slotValue);
                 checkInputAndGoNext(slotKey);
               } else {
-                if (Number(e.key) * 10 > max) {
+                if (digit * 10 > max) {
                   updateSlot(slotKey, e.key);
                   checkInputAndGoNext(slotKey);
-                } else {
-                  Number(e.key) && updateSlot(slotKey, e.key);
+                } else if (digit || digit >= min) {
+                  updateSlot(slotKey, e.key);
                 }
               }
             }
