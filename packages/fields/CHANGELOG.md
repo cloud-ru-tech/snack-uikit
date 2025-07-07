@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.48.7 (2025-07-07)
+
+
+### Bug Fixes
+
+* **PDS-2451:** unable input 0 into field time ([9a29bbf](https://github.com/cloud-ru-tech/snack-uikit/commit/9a29bbf94f5ecebf111b4f2909047248d40dc390))
+
+
+
+
+
 ## 0.48.6 (2025-07-07)
 
 ### Only dependencies have been changed
