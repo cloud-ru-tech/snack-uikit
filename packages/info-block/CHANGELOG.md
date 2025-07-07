@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.27 (2025-07-07)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/icon-predefined@0.7.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icon-predefined/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.18.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/typography@0.8.8](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@3.9.0](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.6.26 (2025-06-27)
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2025-07-07)
+
+
+### Features
+
+* **PDS-2556:** add closeOnPopstate prop ([7f56996](https://github.com/cloud-ru-tech/snack-uikit/commit/7f5699646fd3c3eee2c00bd0c0d4dc94ccc019f8))
+
+
+
+
+
 ## 0.14.8 (2025-05-16)
 
 ### Only dependencies have been changed

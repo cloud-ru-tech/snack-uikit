@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Typography",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -41,7 +41,7 @@
     "compile": "npm run build:typography-components && npm run build:constants && npm run build:index"
   },
   "dependencies": {
-    "@snack-uikit/utils": "3.8.2",
+    "@snack-uikit/utils": "3.9.0",
     "classnames": "2.5.1"
   }
 }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.9.0 (2025-07-07)
+
+
+### Features
+
+* **PDS-2556:** add usePopstateSubscription hook ([4668d08](https://github.com/cloud-ru-tech/snack-uikit/commit/4668d08baef399421ea274437bf1e4218be259ff))
+
+
+
+
+
 ## 3.8.2 (2025-05-16)
 
 

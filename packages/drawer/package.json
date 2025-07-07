@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Drawer",
-  "version": "0.11.5",
+  "version": "0.12.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,13 +36,13 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.11",
-    "@snack-uikit/icons": "0.27.0",
-    "@snack-uikit/scroll": "0.10.1",
-    "@snack-uikit/tooltip": "0.17.5",
-    "@snack-uikit/truncate-string": "0.6.22",
-    "@snack-uikit/typography": "0.8.7",
-    "@snack-uikit/utils": "3.8.2",
+    "@snack-uikit/button": "0.19.12",
+    "@snack-uikit/icons": "0.27.1",
+    "@snack-uikit/scroll": "0.10.2",
+    "@snack-uikit/tooltip": "0.18.0",
+    "@snack-uikit/truncate-string": "0.6.23",
+    "@snack-uikit/typography": "0.8.8",
+    "@snack-uikit/utils": "3.9.0",
     "classnames": "2.5.1",
     "rc-drawer": "6.4.1"
   }
