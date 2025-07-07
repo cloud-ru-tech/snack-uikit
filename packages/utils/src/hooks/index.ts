@@ -6,3 +6,4 @@ export * from './useSwipeable';
 export * from './useThemeConfig';
 export * from './useValueControl';
 export * from './useDataPersist';
+export * from './usePopstateSubscription';
