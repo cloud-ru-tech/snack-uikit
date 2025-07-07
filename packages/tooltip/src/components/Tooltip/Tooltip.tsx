@@ -24,6 +24,7 @@ export type TooltipProps = WithSupportProps<
     | 'triggerRef'
     | 'disableSpanWrapper'
     | 'fallbackPlacements'
+    | 'closeOnPopstate'
   > &
     Partial<Pick<PopoverPrivateProps, 'trigger' | 'placement' | 'children'>>
 >;

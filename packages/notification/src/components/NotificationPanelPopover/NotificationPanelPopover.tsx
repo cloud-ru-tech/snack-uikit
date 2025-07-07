@@ -25,6 +25,7 @@ export type NotificationPanelPopoverProps = WithSupportProps<
     | 'closeOnEscapeKey'
     | 'triggerClickByKeys'
     | 'triggerRef'
+    | 'closeOnPopstate'
   > &
     Partial<Pick<PopoverPrivateProps, 'trigger' | 'placement'>>
 >;

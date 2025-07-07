@@ -92,7 +92,10 @@ export type DroplistProps = {
    * Рендер функция принимает аргументы `onKeyDown` - хендлер ввода, для поддержки управления с клавиатуры
    */
   children: ReactNode | ((params: { onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void }) => ReactNode);
-} & Pick<DropdownProps, 'trigger' | 'placement' | 'widthStrategy' | 'open' | 'onOpenChange' | 'triggerClassName'> &
+} & Pick<
+  DropdownProps,
+  'trigger' | 'placement' | 'widthStrategy' | 'open' | 'onOpenChange' | 'triggerClassName' | 'closeOnPopstate'
+> &
   Omit<ListProps, 'tabIndex' | 'onKeyDown' | 'hasListInFocusChain' | 'keyboardNavigationRef'>;
 
 export type ListPrivateProps = Omit<ListProps, 'pinTop' | 'pinBottom' | 'items' | 'hasListInFocusChain'> & {

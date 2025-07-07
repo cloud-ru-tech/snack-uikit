@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { ReactNode } from 'react';
 import RCModal from 'react-modal';
 
-import { isBrowser, WithSupportProps } from '@snack-uikit/utils';
+import { isBrowser, usePopstateSubscription, WithSupportProps } from '@snack-uikit/utils';
 
 import { MODE, SIZE } from '../../constants';
 import {
@@ -41,6 +41,8 @@ export type ModalCustomProps = WithSupportProps<{
   className?: string;
   /** Контент */
   children: ReactNode;
+  /** Закрывать при переходе по истории браузера */
+  closeOnPopstate?: boolean;
 }>;
 
 export function ModalCustom({
@@ -50,6 +52,7 @@ export function ModalCustom({
   mode = MODE.Regular,
   children,
   className,
+  closeOnPopstate,
   ...rest
 }: ModalCustomProps) {
   const handleCloseButtonClick = () => {
@@ -61,6 +64,8 @@ export function ModalCustom({
       onClose();
     }
   };
+
+  usePopstateSubscription(() => open && onClose(), Boolean(closeOnPopstate));
 
   if (!open) {
     return null;

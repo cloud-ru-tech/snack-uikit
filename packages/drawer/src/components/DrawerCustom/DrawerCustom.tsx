@@ -4,7 +4,7 @@ import cn from 'classnames';
 import RcDrawer, { DrawerProps as RcDrawerProps } from 'rc-drawer';
 import { PropsWithChildren, ReactElement } from 'react';
 
-import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, usePopstateSubscription, WithSupportProps } from '@snack-uikit/utils';
 
 import { MODE, POSITION, SIZE, SIZE_AS_VALUES } from '../../constants';
 import {
@@ -42,6 +42,8 @@ export type DrawerCustomProps = WithSupportProps<
     container?: string | HTMLElement;
     /** Вложенный Drawer */
     nestedDrawer?: ReactElement<DrawerCustomProps>;
+    /** Закрывать дровер при перемещении по истории браузера */
+    closeOnPopstate?: boolean;
   }>
 >;
 
@@ -57,10 +59,13 @@ export function DrawerCustom({
   container,
   children,
   nestedDrawer,
+  closeOnPopstate,
   ...rest
 }: DrawerCustomProps) {
   const isRegular = mode === MODE.Regular;
   const isPredefinedSize = typeof size === 'string' && SIZE_AS_VALUES.includes(size);
+
+  usePopstateSubscription(() => open && onClose(), Boolean(closeOnPopstate));
 
   return (
     <RcDrawer

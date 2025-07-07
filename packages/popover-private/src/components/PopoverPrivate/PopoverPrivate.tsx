@@ -24,7 +24,7 @@ import cn from 'classnames';
 import { ForwardedRef, ReactNode, useCallback, useEffect, useRef } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
-import { extractSupportProps, isBrowser, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, isBrowser, usePopstateSubscription, WithSupportProps } from '@snack-uikit/utils';
 
 import {
   DEFAULT_FALLBACK_PLACEMENTS,
@@ -137,6 +137,10 @@ export type PopoverPrivateProps = WithSupportProps<
      * Пригодится для элементов с `position: absolute`
      */
     disableSpanWrapper?: boolean;
+    /**
+     * Закрывать ли поповер при пекреходе по истории браузера
+     */
+    closeOnPopstate?: boolean;
   } & (
     | {
         /** Ref ссылка на триггер */
@@ -176,11 +180,14 @@ function PopoverPrivateComponent({
   arrowContainerClassName,
   arrowElementClassName,
   disableSpanWrapper = false,
+  closeOnPopstate,
   ...rest
 }: PopoverPrivateProps) {
   const arrowRef = useRef<HTMLDivElement | null>(null);
 
   const [isOpen, setIsOpen] = useUncontrolledProp(openProp, false, onOpenChange);
+
+  usePopstateSubscription(() => isOpen && setIsOpen(false), Boolean(closeOnPopstate));
 
   const nodeId = useFloatingNodeId();
 

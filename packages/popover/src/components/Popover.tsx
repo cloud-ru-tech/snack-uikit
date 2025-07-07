@@ -24,6 +24,7 @@ export type PopoverProps = WithSupportProps<
     | 'hoverDelayOpen'
     | 'hoverDelayClose'
     | 'outsideClick'
+    | 'closeOnPopstate'
   >
 >;
 
