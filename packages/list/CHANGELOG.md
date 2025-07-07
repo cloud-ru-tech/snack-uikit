@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.31.1 (2025-07-07)
+
+
+### Bug Fixes
+
+* **PDS-2556:** prop closeOnPopstate for dropdown ([139dc62](https://github.com/cloud-ru-tech/snack-uikit/commit/139dc62e1e03212a748977f197e1e5dca8736789))
+
+
+
+
+
 # 0.31.0 (2025-07-07)
 
 

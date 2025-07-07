@@ -347,7 +347,7 @@ importers:
         specifier: 0.19.12
         version: link:../button
       '@snack-uikit/card':
-        specifier: 0.19.8
+        specifier: 0.19.9
         version: link:../card
       '@snack-uikit/icon-predefined':
         specifier: 0.7.7
@@ -383,7 +383,7 @@ importers:
   packages/breadcrumbs:
     dependencies:
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/typography':
         specifier: 0.8.8
@@ -422,7 +422,7 @@ importers:
         specifier: 0.27.1
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/utils':
         specifier: 3.9.0
@@ -443,7 +443,7 @@ importers:
         specifier: 0.27.1
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
@@ -473,7 +473,7 @@ importers:
         specifier: 0.27.1
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/promo-tag':
         specifier: 0.7.5
@@ -527,7 +527,7 @@ importers:
         specifier: 0.19.12
         version: link:../button
       '@snack-uikit/calendar':
-        specifier: 0.12.11
+        specifier: 0.12.12
         version: link:../calendar
       '@snack-uikit/divider':
         specifier: 3.2.7
@@ -539,7 +539,7 @@ importers:
         specifier: 0.27.1
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/loaders':
         specifier: 0.9.6
@@ -715,7 +715,7 @@ importers:
         specifier: 0.19.12
         version: link:../button
       '@snack-uikit/calendar':
-        specifier: 0.12.11
+        specifier: 0.12.12
         version: link:../calendar
       '@snack-uikit/color-picker':
         specifier: 0.3.35
@@ -733,7 +733,7 @@ importers:
         specifier: 4.7.3
         version: link:../input-private
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
@@ -952,7 +952,7 @@ importers:
         specifier: 3.2.7
         version: link:../divider
       '@snack-uikit/fields':
-        specifier: 0.48.5
+        specifier: 0.48.6
         version: link:../fields
       '@snack-uikit/link':
         specifier: 0.17.5
@@ -1022,7 +1022,7 @@ importers:
         specifier: 0.19.12
         version: link:../button
       '@snack-uikit/chips':
-        specifier: 0.27.11
+        specifier: 0.27.12
         version: link:../chips
       '@snack-uikit/icons':
         specifier: 0.27.1
@@ -1034,7 +1034,7 @@ importers:
         specifier: 0.17.5
         version: link:../link
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/popover-private':
         specifier: 0.15.0
@@ -1161,7 +1161,7 @@ importers:
   packages/search:
     dependencies:
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/search-private':
         specifier: 0.4.23
@@ -1297,7 +1297,7 @@ importers:
         specifier: 0.19.12
         version: link:../button
       '@snack-uikit/chips':
-        specifier: 0.27.11
+        specifier: 0.27.12
         version: link:../chips
       '@snack-uikit/icon-predefined':
         specifier: 0.7.7
@@ -1309,7 +1309,7 @@ importers:
         specifier: 0.6.27
         version: link:../info-block
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
@@ -1327,7 +1327,7 @@ importers:
         specifier: 0.13.17
         version: link:../toggles
       '@snack-uikit/toolbar':
-        specifier: 0.13.12
+        specifier: 0.13.13
         version: link:../toolbar
       '@snack-uikit/truncate-string':
         specifier: 0.6.23
@@ -1483,13 +1483,13 @@ importers:
         specifier: 0.19.12
         version: link:../button
       '@snack-uikit/chips':
-        specifier: 0.27.11
+        specifier: 0.27.12
         version: link:../chips
       '@snack-uikit/icons':
         specifier: 0.27.1
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
@@ -1543,7 +1543,7 @@ importers:
         specifier: 0.27.1
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.31.0
+        specifier: 0.31.1
         version: link:../list
       '@snack-uikit/toggles':
         specifier: 0.13.17

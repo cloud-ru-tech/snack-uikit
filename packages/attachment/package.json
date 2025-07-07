@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Attachment",
-  "version": "0.4.13",
+  "version": "0.4.14",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,7 +37,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.19.12",
-    "@snack-uikit/card": "0.19.8",
+    "@snack-uikit/card": "0.19.9",
     "@snack-uikit/icon-predefined": "0.7.7",
     "@snack-uikit/icons": "0.27.1",
     "@snack-uikit/loaders": "0.9.6",
