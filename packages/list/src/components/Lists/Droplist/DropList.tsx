@@ -45,6 +45,7 @@ export function Droplist({
   listRef: listRefProp,
   untouchableScrollbars = false,
   virtualized = false,
+  closeOnPopstate,
   ...props
 }: DroplistProps) {
   const hasSearch = useMemo(() => Boolean(search), [search]);
@@ -267,6 +268,7 @@ export function Droplist({
                 triggerRef={!triggerElemRefProp ? triggerElemRef : (isValid && triggerElemRefProp) || undefined}
                 open={open}
                 onOpenChange={handleOpenChange}
+                closeOnPopstate={closeOnPopstate}
               >
                 {triggerElem}
               </Dropdown>
