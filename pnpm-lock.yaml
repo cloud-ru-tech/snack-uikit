@@ -804,10 +804,6 @@ importers:
         version: 2.5.1
 
   packages/icons:
-    dependencies:
-      '@snack-uikit/utils':
-        specifier: 3.9.0
-        version: link:../utils
     devDependencies:
       '@svgr/cli':
         specifier: 8.1.0
