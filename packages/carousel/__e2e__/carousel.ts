@@ -18,6 +18,7 @@ const getPage = (props: Record<string, unknown> & { showImage?: boolean; customS
       arrows: true,
       pagination: true,
       infiniteScroll: false,
+      controlsVisibility: 'always',
       ...props,
     },
   });
@@ -97,4 +98,24 @@ test.page(
 
   await t.expect(arrowNext.exists).ok();
   await t.expect(arrowPrev.exists).ok();
+});
+
+test.page(
+  getPage({
+    controlsVisibility: 'hover',
+    infiniteScroll: true,
+  }),
+)('Should arrows be hidden', async t => {
+  const { arrowNext, arrowPrev } = getSelectors();
+
+  await t.expect(arrowNext.exists).ok();
+  await t.expect(arrowPrev.exists).ok();
+
+  // Проверяем, что стрелки невидимы (opacity: 0)
+  await t.expect(await arrowNext.getStyleProperty('opacity')).eql('0');
+  await t.expect(await arrowPrev.getStyleProperty('opacity')).eql('0');
+
+  // Проверяем, что стрелки неактивны (pointer-events: none)
+  await t.expect(await arrowNext.getStyleProperty('pointer-events')).eql('none');
+  await t.expect(await arrowPrev.getStyleProperty('pointer-events')).eql('none');
 });

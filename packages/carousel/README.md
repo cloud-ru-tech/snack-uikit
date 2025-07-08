@@ -25,6 +25,7 @@
 | gap | `string` | var(--dimension-2m) | Расстояние между айтемами |
 | state | `{ page: number; onChange(page: number): void; }` | - | Управление состоянием извне |
 | infiniteScroll | `boolean` | - | Цикличная прокрутка |
+| controlsVisibility | "hover" \| "always" | hover | Управление видимостью стрелок: 'hover' — по ховеру, 'always' — всегда |
 
 
 [//]: DOCUMENTATION_SECTION_END

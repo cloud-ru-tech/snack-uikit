@@ -62,6 +62,7 @@ export const carousel: StoryObj<StoryProps> = {
     autoSwipe: 5,
     itemsCount: 12,
     page: 1,
+    controlsVisibility: 'hover',
   },
 
   argTypes: {

@@ -40,6 +40,8 @@ export type CarouselProps = WithSupportProps<{
   };
   /** Цикличная прокрутка @default false*/
   infiniteScroll?: boolean;
+  /** Управление видимостью стрелок: 'hover' — по ховеру, 'always' — всегда @default 'hover' */
+  controlsVisibility?: 'hover' | 'always';
 }>;
 
 export function Carousel({
@@ -56,6 +58,7 @@ export function Carousel({
   infiniteScroll = false,
   swipeActivateLength = 48,
   autoSwipe,
+  controlsVisibility = 'hover',
   ...rest
 }: CarouselProps) {
   const timerRef = useRef<NodeJS.Timeout>();
@@ -105,7 +108,11 @@ export function Carousel({
   }, [autoSwipe, infiniteScroll, onRightArrowClick]);
 
   return (
-    <div className={cn(styles.carousel, className)} {...extractSupportProps(rest)}>
+    <div
+      className={cn(styles.carousel, className)}
+      data-controls-visibility={controlsVisibility}
+      {...extractSupportProps(rest)}
+    >
       <div className={styles.carouselBase}>
         <ItemProvider
           showItems={showItems}
@@ -122,10 +129,20 @@ export function Carousel({
         {arrows && (
           <>
             {(infiniteScroll || page > 0) && (
-              <Control onClick={onLeftArrowClick} variant='prev' data-test-id={TEST_IDS.arrowPrev} />
+              <Control
+                onClick={onLeftArrowClick}
+                variant='prev'
+                data-test-id={TEST_IDS.arrowPrev}
+                className={styles.control}
+              />
             )}
             {(infiniteScroll || page + 1 < total) && (
-              <Control onClick={onRightArrowClick} variant='next' data-test-id={TEST_IDS.arrowNext} />
+              <Control
+                onClick={onRightArrowClick}
+                variant='next'
+                data-test-id={TEST_IDS.arrowNext}
+                className={styles.control}
+              />
             )}
           </>
         )}

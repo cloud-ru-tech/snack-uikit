@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { forwardRef } from 'react';
 
 import { ChevronLeftSVG } from '@snack-uikit/icons';
@@ -8,13 +9,14 @@ import styles from './styles.module.scss';
 type ControlProps = WithSupportProps<{
   onClick?(): void;
   variant: 'prev' | 'next';
+  className?: string;
 }>;
 
 export const Control = forwardRef<HTMLButtonElement, ControlProps>(
-  ({ onClick, variant, ...rest }: ControlProps, ref) => (
+  ({ onClick, variant, className, ...rest }: ControlProps, ref) => (
     <button
       ref={ref}
-      className={styles.control}
+      className={cn(styles.control, className)}
       onClick={onClick}
       type='button'
       data-variant={variant}
