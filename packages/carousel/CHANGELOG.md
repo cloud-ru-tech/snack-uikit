@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2025-07-08)
+
+
+### Features
+
+* **FF-6899:** add controlsVisibility prop ([780bf9f](https://github.com/cloud-ru-tech/snack-uikit/commit/780bf9fab6bc0c4a3487c52d68e4f13f063ecd76))
+
+
+
+
+
 ## 0.5.6 (2025-07-07)
 
 ### Only dependencies have been changed
