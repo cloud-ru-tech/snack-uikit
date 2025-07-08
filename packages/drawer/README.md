@@ -23,6 +23,7 @@
 | push | `boolean \| PushConfig` | - | Смещение при открытии "вложенного" компонента |
 | container | `string \| HTMLElement` | - | Контейнер в котором будет рендерится Drawer. По-умолчанию - body |
 | nestedDrawer | `ReactElement<DrawerCustomProps, string \| JSXElementConstructor<any>>` | - | Вложенный Drawer |
+| closeOnPopstate | `boolean` | - | Закрывать дровер при перемещении по истории браузера |
 ## DrawerCustom.Header
 ### Props
 | name | type | default value | description |
@@ -58,6 +59,7 @@
 | className | `string` | - | CSS-класс для элемента с контентом |
 | rootClassName | `string` | - | CSS-класс для корневого элемента |
 | container | `string \| HTMLElement` | - | Контейнер в котором будет рендерится Drawer. По-умолчанию - body |
+| closeOnPopstate | `boolean` | - | Закрывать дровер при перемещении по истории браузера |
 | image | `{ src: string; alt: string; }` | - | Изображение |
 | titleTooltip | `ReactNode` | - | Тултип для заголовка |
 | subtitle | `string` | - | Подзаголовок |

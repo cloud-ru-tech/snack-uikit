@@ -26,6 +26,7 @@
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
 | outsideClick | `boolean \| OutsideClickHandler` | - | Закрывать ли при клике вне поповера |
+| closeOnPopstate | `boolean` | - | Закрывать ли поповер при пекреходе по истории браузера |
 
 
 [//]: DOCUMENTATION_SECTION_END
