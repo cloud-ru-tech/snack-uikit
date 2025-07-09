@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.31.2 (2025-07-09)
+
+
+### Bug Fixes
+
+* **PDS-2584:** fix scroll size ([f4a253e](https://github.com/cloud-ru-tech/snack-uikit/commit/f4a253e7f6d62094167219c4006e05e2b255cb50))
+
+
+
+
+
 ## 0.31.1 (2025-07-07)
 
 

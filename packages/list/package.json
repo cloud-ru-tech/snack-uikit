@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "List",
-  "version": "0.31.1",
+  "version": "0.31.2",
   "sideEffects": [
     "*.css",
     "*.woff",
