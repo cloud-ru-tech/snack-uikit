@@ -277,7 +277,7 @@ export const ListPrivate = forwardRef(
               scrollContainerClassName,
             )}
             barHideStrategy={barHideStrategy}
-            size={size === 's' ? 's' : 'm'}
+            size={ 's' }
             ref={mergeRefs(innerScrollRef, scrollContainerRef)}
             untouchableScrollbars={untouchableScrollbars}
             onScroll={onScroll}
