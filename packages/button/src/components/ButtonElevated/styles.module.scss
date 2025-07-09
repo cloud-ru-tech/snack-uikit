@@ -64,6 +64,9 @@ $typography: ();
 .button {
   @include styles.button-anatomy-styles(styles-tokens-button-buttonElevated.$button-elevated, $sizes, $variants, $typography, false);
   @include styles.loading-label-only(styles-tokens-button-buttonElevated.$button-elevated);
-  @include button-colors-styles;
   @include button-outline-colors-styles;
+
+  &.button {
+    @include button-colors-styles;
+  }
 }
