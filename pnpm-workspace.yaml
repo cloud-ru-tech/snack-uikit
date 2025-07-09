@@ -1,3 +1,7 @@
+shamefullyHoist: true
+sideEffectsCache: false
+linkWorkspacePackages: true
+saveWorkspaceProtocol: false
 packages:
   - "packages/*"
 onlyBuiltDependencies:

@@ -103,8 +103,7 @@ inquirer
 
     logDebug('Bootstrapping new package...This will take a few moments...');
 
-
-    const bootstrapResult = shell.exec('pnpm deps:all && pnpm build:packages', { silent: true });
+    const bootstrapResult = shell.exec('rm -rf ./node_modules && pnpm deps:all && pnpm build:packages');
 
     if (bootstrapResult.code !== 0) {
       logError(bootstrapResult.stdout);
