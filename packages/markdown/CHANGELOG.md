@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.17 (2025-07-10)
+
+### Only dependencies have been changed
+* [@snack-uikit/code-editor@0.7.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/code-editor/CHANGELOG.md)
+* [@snack-uikit/fields@0.48.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/fields/CHANGELOG.md)
+* [@snack-uikit/link@0.17.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/link/CHANGELOG.md)
+* [@snack-uikit/toggles@0.13.18](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toggles/CHANGELOG.md)
+
+
+
+
+
 ## 0.5.16 (2025-07-10)
 
 ### Only dependencies have been changed

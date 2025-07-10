@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tabs",
-  "version": "0.10.8",
+  "version": "0.10.9",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -39,7 +39,7 @@
     "@snack-uikit/button": "0.19.13",
     "@snack-uikit/counter": "0.8.7",
     "@snack-uikit/divider": "3.2.7",
-    "@snack-uikit/icons": "0.27.1",
+    "@snack-uikit/icons": "0.27.2",
     "@snack-uikit/typography": "0.8.8",
     "@snack-uikit/utils": "3.9.0",
     "classnames": "2.5.1",

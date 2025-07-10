@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.27.2 (2025-07-10)
+
+
+### Dependencies
+
+* **FF-0000:** remove unused dep utils ([f8af55d](https://github.com/cloud-ru-tech/snack-uikit/commit/f8af55ddf12f0d4c5b569de3ae88d4f901d408f5))
+
+
+
+
+
 ## 0.27.1 (2025-07-07)
 
 ### Only dependencies have been changed
