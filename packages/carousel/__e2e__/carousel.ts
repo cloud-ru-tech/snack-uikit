@@ -106,16 +106,19 @@ test.page(
     infiniteScroll: true,
   }),
 )('Should arrows be hidden', async t => {
-  const { arrowNext, arrowPrev } = getSelectors();
+  const { arrowNext, arrowPrev, hiddenPageCounter } = getSelectors();
+
+  await t.click(hiddenPageCounter); // to snatch focus and hover from carousel
+  await t.wait(250); // waiting for arrows disappearing animation
 
   await t.expect(arrowNext.exists).ok();
   await t.expect(arrowPrev.exists).ok();
 
   // Проверяем, что стрелки невидимы (opacity: 0)
-  await t.expect(await arrowNext.getStyleProperty('opacity')).eql('0');
-  await t.expect(await arrowPrev.getStyleProperty('opacity')).eql('0');
+  await t.expect(await arrowNext.getStyleProperty('opacity')).eql('0', 'arrowNext is not hidden');
+  await t.expect(await arrowPrev.getStyleProperty('opacity')).eql('0', 'arrowPrev is not hidden');
 
   // Проверяем, что стрелки неактивны (pointer-events: none)
-  await t.expect(await arrowNext.getStyleProperty('pointer-events')).eql('none');
-  await t.expect(await arrowPrev.getStyleProperty('pointer-events')).eql('none');
+  await t.expect(await arrowNext.getStyleProperty('pointer-events')).eql('none', 'arrowNext catches mouse events');
+  await t.expect(await arrowPrev.getStyleProperty('pointer-events')).eql('none', 'arrowPrev catches mouse events');
 });
