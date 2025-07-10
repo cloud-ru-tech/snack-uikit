@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.19.13 (2025-07-10)
+
+
+### Bug Fixes
+
+* **PDS-2595:** increase styles priority ([13375d0](https://github.com/cloud-ru-tech/snack-uikit/commit/13375d0cbb322c0780688a501cf882496ef3fea3))
+
+
+
+
+
 ## 0.19.12 (2025-07-07)
 
 ### Only dependencies have been changed
