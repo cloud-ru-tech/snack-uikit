@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { ReactNode } from 'react';
 import RCModal from 'react-modal';
 
-import { isBrowser, usePopstateSubscription, WithSupportProps } from '@snack-uikit/utils';
+import { isBrowser, useModalOpenState, WithSupportProps } from '@snack-uikit/utils';
 
 import { MODE, SIZE } from '../../constants';
 import {
@@ -65,7 +65,12 @@ export function ModalCustom({
     }
   };
 
-  usePopstateSubscription(() => open && onClose(), Boolean(closeOnPopstate));
+  const hasCloseButton = mode !== MODE.Forced;
+
+  useModalOpenState(open, onClose, {
+    closeOnPopstate,
+    onCloseRequest: () => hasCloseButton,
+  });
 
   if (!open) {
     return null;
@@ -86,7 +91,7 @@ export function ModalCustom({
       )}
       className={cn(styles.modal, className)}
     >
-      {mode !== MODE.Forced && (
+      {hasCloseButton && (
         <div className={styles.headerElements}>
           <ButtonClose onClick={handleCloseButtonClick} />
         </div>

@@ -4,7 +4,7 @@ import cn from 'classnames';
 import RcDrawer, { DrawerProps as RcDrawerProps } from 'rc-drawer';
 import { PropsWithChildren, ReactElement } from 'react';
 
-import { extractSupportProps, usePopstateSubscription, WithSupportProps } from '@snack-uikit/utils';
+import { extractSupportProps, useModalOpenState, WithSupportProps } from '@snack-uikit/utils';
 
 import { MODE, POSITION, SIZE, SIZE_AS_VALUES } from '../../constants';
 import {
@@ -65,7 +65,7 @@ export function DrawerCustom({
   const isRegular = mode === MODE.Regular;
   const isPredefinedSize = typeof size === 'string' && SIZE_AS_VALUES.includes(size);
 
-  usePopstateSubscription(() => open && onClose(), Boolean(closeOnPopstate));
+  useModalOpenState(open, onClose, { closeOnPopstate });
 
   return (
     <RcDrawer

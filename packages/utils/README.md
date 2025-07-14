@@ -78,6 +78,11 @@
 | options | `FilterStateOptions<TFilter>` | - |  |
 | parser | `(jsonFilter: string) => TFilter` | - |  |
 | serializer | `(filter: TFilter) => string` | - |  |
+## useModalOpenState
+Хук для управления состоянием модалки
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
 ## ThemeProvider
 Провайдер, предназначенный для работы с темами
 ### Props

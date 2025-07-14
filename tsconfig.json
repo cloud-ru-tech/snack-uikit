@@ -12,7 +12,7 @@
     },
     "target": "ES2018",
     "lib": ["es2017", "dom", "dom.iterable", "esnext"],
-    "types": ["node", "vitest/globals"],
+    "types": ["node", "vitest/globals", "@types/dom-close-watcher"],
     "jsx": "react-jsx",
     "strict": true,
     "isolatedModules": true,

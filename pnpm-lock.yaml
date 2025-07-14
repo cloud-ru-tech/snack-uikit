@@ -114,6 +114,9 @@ importers:
       '@storybook/theming':
         specifier: 8.6.14
         version: 8.6.14(storybook@8.6.14(prettier@3.5.3))
+      '@types/dom-close-watcher':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/express':
         specifier: 4.17.21
         version: 4.17.21
@@ -4059,6 +4062,9 @@ packages:
 
   '@types/doctrine@0.0.9':
     resolution: {integrity: sha512-eOIHzCUSH7SMfonMG1LsC2f8vxBFtho6NGBznK41R84YzPuvSBzrhEps33IsQiOW9+VL6NQ9DbjQJznk/S4uRA==}
+
+  '@types/dom-close-watcher@1.0.0':
+    resolution: {integrity: sha512-7pL0By56sVVGMSJ3HdSY+u08Id0ljStCaf1VnGFxwfpuNdA0HMz0sl2J24eSi9M6ptl9ySkVK35jF75Fn8trUg==}
 
   '@types/eslint-scope@3.7.7':
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
@@ -15123,6 +15129,8 @@ snapshots:
       '@types/ms': 2.1.0
 
   '@types/doctrine@0.0.9': {}
+
+  '@types/dom-close-watcher@1.0.0': {}
 
   '@types/eslint-scope@3.7.7':
     dependencies:
