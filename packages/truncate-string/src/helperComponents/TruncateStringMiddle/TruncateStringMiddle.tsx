@@ -10,12 +10,14 @@ import styles from './styles.module.scss';
 
 export type TruncateStringMiddleProps = WithSupportProps<{
   className?: string;
+  /** Стиль для тултипа */
+  tooltipClassName?: string;
   hideTooltip?: boolean;
   placement?: TooltipProps['placement'];
   text: string;
 }>;
 
-export function TruncateStringMiddle({ text, className, hideTooltip, placement, ...rest }: TruncateStringMiddleProps) {
+export function TruncateStringMiddle({ text, className, tooltipClassName, hideTooltip, placement, ...rest }: TruncateStringMiddleProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [truncatedString, setTruncatedString] = useState(text);
   const textElementRef = useRef<HTMLElement>(null);
@@ -60,7 +62,13 @@ export function TruncateStringMiddle({ text, className, hideTooltip, placement, 
   return (
     <span className={cn(styles.wrapper, className)} {...extractSupportProps(rest)}>
       {showTooltip && !hideTooltip ? (
-        <Tooltip tip={text} placement={placement} hoverDelayOpen={500} triggerClassName={styles.textContainer}>
+        <Tooltip
+          tip={text}
+          placement={placement}
+          hoverDelayOpen={500}
+          triggerClassName={styles.textContainer}
+          className={tooltipClassName}
+        >
           {textElement}
         </Tooltip>
       ) : (

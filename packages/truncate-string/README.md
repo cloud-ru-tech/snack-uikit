@@ -26,6 +26,7 @@
 | text* | `string` | - | Текст, который будет обрезаться |
 | variant | "middle" \| "end" | end | Вариант обрезания строки: <br> - `End` - с конца <br> - `Middle` - по середине |
 | className | `string` | - | CSS-класс |
+| tooltipClassName | `string` | - | Стиль для тултипа |
 | hideTooltip | `boolean` | - | Скрывать ли тултип с полным текстом |
 | maxLines | `number` | - | Максимальное кол-во строк, до которого может сворачиваться текст. |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Положение тултипа относительно обрезанного текста. |

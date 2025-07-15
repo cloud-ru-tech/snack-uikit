@@ -10,6 +10,8 @@ import styles from './styles.module.scss';
 
 export type TruncateStringEndProps = WithSupportProps<{
   className?: string;
+  /** Стиль для тултипа */
+  tooltipClassName?: string;
   /** Скрывать ли тултип с полным текстом */
   hideTooltip?: boolean;
   /** Максимальное кол-во строк, до которого может сворачиваться текст. */
@@ -23,6 +25,7 @@ export type TruncateStringEndProps = WithSupportProps<{
 export function TruncateStringEnd({
   text,
   className,
+  tooltipClassName,
   hideTooltip,
   maxLines = 1,
   placement,
@@ -73,7 +76,13 @@ export function TruncateStringEnd({
 
   if (showTooltip && !hideTooltip) {
     return (
-      <Tooltip tip={text} placement={placement} hoverDelayOpen={500} triggerClassName={styles.tooltipTrigger}>
+      <Tooltip
+        tip={text}
+        placement={placement}
+        hoverDelayOpen={500}
+        className={tooltipClassName}
+        triggerClassName={styles.tooltipTrigger}
+      >
         {textElement}
       </Tooltip>
     );
