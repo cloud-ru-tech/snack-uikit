@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tag",
-  "version": "0.15.5",
+  "version": "0.15.6",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,11 +36,11 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/dropdown": "0.5.0",
+    "@snack-uikit/dropdown": "0.5.1",
     "@snack-uikit/icons": "0.27.2",
-    "@snack-uikit/scroll": "0.10.2",
-    "@snack-uikit/tooltip": "0.18.1",
-    "@snack-uikit/utils": "3.9.0",
+    "@snack-uikit/scroll": "0.10.3",
+    "@snack-uikit/tooltip": "0.18.2",
+    "@snack-uikit/utils": "3.10.0",
     "classnames": "2.5.1"
   }
 }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.10.0 (2025-07-15)
+
+
+### Features
+
+* **PDS-2594:** add CloseWatcher using in modals and drawers ([7699e55](https://github.com/cloud-ru-tech/snack-uikit/commit/7699e55dc172f6082369b6fb83815c12d28b3f7a))
+
+
+
+
+
 # 3.9.0 (2025-07-07)
 
 
