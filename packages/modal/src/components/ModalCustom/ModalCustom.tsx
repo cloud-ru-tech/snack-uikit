@@ -67,9 +67,8 @@ export function ModalCustom({
 
   const hasCloseButton = mode !== MODE.Forced;
 
-  useModalOpenState(open, onClose, {
+  useModalOpenState(open, () => hasCloseButton && onClose(), {
     closeOnPopstate,
-    onCloseRequest: () => hasCloseButton,
   });
 
   if (!open) {
