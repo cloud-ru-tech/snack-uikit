@@ -1247,6 +1247,9 @@ importers:
       '@snack-uikit/loaders':
         specifier: 0.9.8
         version: link:../loaders
+      '@snack-uikit/truncate-string':
+        specifier: 0.6.25
+        version: link:../truncate-string
       '@snack-uikit/utils':
         specifier: 3.10.1
         version: link:../utils

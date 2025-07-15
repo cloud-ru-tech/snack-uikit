@@ -9,6 +9,7 @@ import { StatusIndicator } from '../StatusIndicator';
 import { LOADER_SIZE_MAP, SIZE, STATUS_INDICATOR_SIZE_MAP } from './constants';
 import styles from './styles.module.scss';
 import { Size } from './types';
+import { TruncateString } from '@snack-uikit/truncate-string';
 
 export type StatusProps = WithSupportProps<{
   /** Текст */
@@ -45,7 +46,13 @@ export function Status({
       ) : (
         <StatusIndicator appearance={appearance} size={STATUS_INDICATOR_SIZE_MAP[size]} />
       )}
-      <span className={styles.label}>{label}</span>
+      <TruncateString
+        text={label}
+        maxLines={1}
+        className={styles.label}
+        data-test-id='status__title'
+        data-size={size}
+      />
     </div>
   );
 }

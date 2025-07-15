@@ -37,6 +37,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/loaders": "0.9.8",
+    "@snack-uikit/truncate-string": "0.6.25",
     "@snack-uikit/utils": "3.10.1",
     "classnames": "2.5.1"
   }

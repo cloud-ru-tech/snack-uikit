@@ -10,12 +10,13 @@ $appearances: 'primary', 'neutral', 'red', 'orange', 'blue', 'violet', 'pink', '
 .container {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
 
   &[data-has-background] {
     @each $appearance in $appearances {
       &[data-appearance='#{$appearance}'] {
         background-color: styles-tokens-status.simple-var(styles-tokens-status.$theme-variables, 'sys', $appearance, 'decor-default');
-  
+
         .label {
           color: styles-tokens-status.simple-var(styles-tokens-status.$theme-variables, 'sys', $appearance, 'text-support')
         }
