@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.10.1 (2025-07-16)
+
+
+### Bug Fixes
+
+* **PDS-2594:** close watcher ([c7678e0](https://github.com/cloud-ru-tech/snack-uikit/commit/c7678e0f4167e0d6e3a4286cca7460d0fe25dec5))
+
+
+
+
+
 # 3.10.0 (2025-07-15)
 
 

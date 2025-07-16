@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Notification",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,19 +36,19 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.14",
-    "@snack-uikit/chips": "0.27.16",
+    "@snack-uikit/button": "0.19.15",
+    "@snack-uikit/chips": "0.27.17",
     "@snack-uikit/icons": "0.27.2",
-    "@snack-uikit/info-block": "0.6.30",
-    "@snack-uikit/link": "0.17.7",
-    "@snack-uikit/list": "0.31.5",
-    "@snack-uikit/popover-private": "0.15.1",
-    "@snack-uikit/scroll": "0.10.3",
-    "@snack-uikit/skeleton": "0.6.7",
-    "@snack-uikit/tag": "0.15.6",
-    "@snack-uikit/truncate-string": "0.6.25",
-    "@snack-uikit/typography": "0.8.9",
-    "@snack-uikit/utils": "3.10.0",
+    "@snack-uikit/info-block": "0.6.31",
+    "@snack-uikit/link": "0.17.8",
+    "@snack-uikit/list": "0.31.6",
+    "@snack-uikit/popover-private": "0.15.2",
+    "@snack-uikit/scroll": "0.10.4",
+    "@snack-uikit/skeleton": "0.6.8",
+    "@snack-uikit/tag": "0.15.7",
+    "@snack-uikit/truncate-string": "0.6.26",
+    "@snack-uikit/typography": "0.8.10",
+    "@snack-uikit/utils": "3.10.1",
     "classnames": "2.5.1"
   }
 }
