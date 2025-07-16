@@ -18,10 +18,12 @@ export type SearchItemProps = {
 export function SearchItem({ search, itemRef }: SearchItemProps) {
   const { size = 's', firstItemId } = useNewListContext();
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
       e.preventDefault();
     }
+
+    search?.onKeyDown?.(e);
   };
 
   if (!search) {

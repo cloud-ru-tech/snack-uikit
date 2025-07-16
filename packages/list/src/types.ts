@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import { ChangeEvent, KeyboardEvent, RefObject } from 'react';
 
 import { ScrollProps as OriginalScrollProps } from '@snack-uikit/scroll';
 
@@ -6,7 +6,8 @@ export type SearchState = {
   placeholder?: string;
   loading?: boolean;
   value?: string;
-  onChange(value: string): void;
+  onChange(value: string, e?: ChangeEvent<HTMLInputElement>): void;
+  onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
 };
 
 export type ScrollProps = {
