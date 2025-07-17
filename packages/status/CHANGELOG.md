@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2025-07-17)
+
+
+### Features
+
+* **MC-00:** truncate status label ([06989bf](https://github.com/cloud-ru-tech/snack-uikit/commit/06989bf5fd33b73b543fb3a0b8b55603c0ecbe96))
+
+
+
+
+
 ## 0.8.8 (2025-07-16)
 
 ### Only dependencies have been changed

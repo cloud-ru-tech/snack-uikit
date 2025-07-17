@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2025-07-17)
+
+
+### Features
+
+* **MC-00:** add tooltipClassName to truncate string ([98feeed](https://github.com/cloud-ru-tech/snack-uikit/commit/98feeed23a89ba6fba32673671ed1a4a3c02b1bf))
+
+
+
+
+
 ## 0.6.26 (2025-07-16)
 
 ### Only dependencies have been changed

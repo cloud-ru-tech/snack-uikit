@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Truncate String",
-  "version": "0.6.26",
+  "version": "0.7.0",
   "sideEffects": [
     "*.css",
     "*.woff",
