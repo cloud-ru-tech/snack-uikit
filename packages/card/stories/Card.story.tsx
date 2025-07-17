@@ -267,6 +267,9 @@ export const card = {
     promoBadge: {
       type: 'string',
     },
+    badgeAlwaysVisible: {
+      type: 'boolean',
+    },
   },
 
   parameters: {

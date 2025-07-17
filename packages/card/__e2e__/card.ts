@@ -48,6 +48,7 @@ test.page(
     metadata: MOCK_DATA.metadata,
     description: MOCK_DATA.description,
     promoBadge: MOCK_DATA.promoBadge,
+    badgeAlwaysVisible: false,
   }),
 )(`Should rendered correctly`, async t => {
   const { card, title, metadata, description, promoBadge, functionBadge } = getSelectors();
@@ -80,9 +81,12 @@ test.page(
     title: MOCK_DATA.title,
     metadata: MOCK_DATA.metadata,
     description: MOCK_DATA.description,
+    badgeAlwaysVisible: false,
   }),
 )(`Should show/hide/hover Card.FunctionBadge`, async t => {
   const { card, functionBadge } = getSelectors();
+
+  await t.hover(Selector('body'), { offsetX: 0, offsetY: 0 });
 
   await t.expect(functionBadge.visible).notOk(`Card.FunctionBadge shouldn't be rendered`);
 
@@ -93,6 +97,19 @@ test.page(
 
   await t.pressKey('tab');
   await t.expect(functionBadge.focused).ok(`Card.FunctionBadge should be focused`);
+});
+
+test.page(
+  getPage({
+    title: MOCK_DATA.title,
+    metadata: MOCK_DATA.metadata,
+    description: MOCK_DATA.description,
+    badgeAlwaysVisible: true,
+  }),
+)(`Should show with prop badgeAlwaysVisible Card.FunctionBadge`, async t => {
+  const { functionBadge } = getSelectors();
+
+  await t.expect(functionBadge.visible).ok(`Card.FunctionBadge shouldn be rendered`);
 });
 
 test.page(

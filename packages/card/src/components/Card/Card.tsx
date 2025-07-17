@@ -54,6 +54,8 @@ export type CardProps = WithSupportProps<{
   className?: string;
   /** Ссылка карточки */
   href?: string;
+  /** Всегда показывать FunctionBadge */
+  badgeAlwaysVisible?: boolean;
   /** Колбек нажатия клавиши клавиатуры */
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
 }>;
@@ -77,6 +79,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       href,
       onKeyDown: onKeyDownProp,
       name,
+      badgeAlwaysVisible,
       ...rest
     },
     ref,
@@ -130,7 +133,9 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
             )}
 
             {!disabled && functionBadge && (
-              <FunctionBadgeWrapper className={styles.functionBadgeWrapper}>{functionBadge}</FunctionBadgeWrapper>
+              <FunctionBadgeWrapper alwaysVisible={badgeAlwaysVisible} className={styles.functionBadgeWrapper}>
+                {functionBadge}
+              </FunctionBadgeWrapper>
             )}
 
             <div className={styles.contentWrapper}>
