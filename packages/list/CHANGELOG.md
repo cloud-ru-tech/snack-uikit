@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.32.0 (2025-07-17)
+
+
+### Features
+
+* **PDS-2615:** add search prop handlers ([f47a528](https://github.com/cloud-ru-tech/snack-uikit/commit/f47a52835b18b7169b3d932a84dea2df8638335e))
+
+
+
+
+
 ## 0.31.7 (2025-07-17)
 
 ### Only dependencies have been changed
