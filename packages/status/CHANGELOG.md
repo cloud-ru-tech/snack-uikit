@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2025-07-18)
+
+
+### Features
+
+* **VMWDEV-2607:** add prop for always show badge ([4076c9b](https://github.com/cloud-ru-tech/snack-uikit/commit/4076c9bb0c5f7c376cb138fee236751c58a02e6a))
+
+
+
+
+
 # 0.9.0 (2025-07-17)
 
 
