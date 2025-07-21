@@ -61,6 +61,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     enableFuzzySearch = true,
     resetSearchOnOptionSelection = true,
     onCopyButtonClick,
+    autoFocus,
     ...rest
   } = props;
   const localRef = useRef<HTMLInputElement>(null);
@@ -267,6 +268,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
               className={cn({
                 [styles.readonlyCursor]: !searchable,
               })}
+              autoFocus={autoFocus}
             />
 
             <div className={styles.postfix}>

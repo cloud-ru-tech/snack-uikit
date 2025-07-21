@@ -85,6 +85,7 @@ export const fieldTextArea: StoryObj<StoryProps> = {
     readonly: false,
     showCopyButton: true,
     disabled: false,
+    autoFocus: false,
     resizable: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',

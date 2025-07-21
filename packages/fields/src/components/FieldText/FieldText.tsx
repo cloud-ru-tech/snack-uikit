@@ -33,6 +33,7 @@ type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
     | 'onFocus'
     | 'onBlur'
     | 'autoComplete'
+    | 'autoFocus'
     | 'onPaste'
     | 'onKeyDown'
     | 'spellCheck'
@@ -111,6 +112,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       validationState = VALIDATION_STATE.Default,
       error,
       autoComplete,
+      autoFocus,
       prefixIcon,
       prefix,
       postfix,
@@ -265,6 +267,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
             id={id}
             name={name}
             autoComplete={autoComplete}
+            autoFocus={autoFocus}
             spellCheck={spellCheck}
             data-test-id='field-text__input'
           />

@@ -44,6 +44,7 @@ export const fieldStepper: StoryObj<StoryProps> = {
     step: 1,
     readonly: false,
     disabled: false,
+    autoFocus: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',
     required: false,

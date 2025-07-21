@@ -28,7 +28,7 @@ import styles from './styles.module.scss';
 
 type InputProps = Pick<
   InputPrivateProps,
-  'id' | 'name' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'min' | 'max'
+  'id' | 'name' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'min' | 'max' | 'autoFocus'
 >;
 
 type WrapperProps = Pick<
@@ -111,6 +111,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
       error,
       prefix,
       postfix,
+      autoFocus,
       ...rest
     },
     ref,
@@ -292,6 +293,7 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
                   name={name}
                   min={min}
                   max={max}
+                  autoFocus={autoFocus}
                   data-test-id='field-stepper__input'
                 />
               </div>

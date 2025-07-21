@@ -47,6 +47,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
+| autoFocus | `boolean` | - | Включен ли авто-фокус для поля |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | min | `number` | - | Минимальное значение поля |
 | max | `number` | - | Максимальное значение поля |

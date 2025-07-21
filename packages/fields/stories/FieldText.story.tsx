@@ -104,6 +104,7 @@ export const fieldText: StoryObj<StoryProps> = {
     readonly: false,
     showCopyButton: true,
     disabled: false,
+    autoFocus: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',
     required: false,

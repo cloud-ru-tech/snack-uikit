@@ -149,6 +149,7 @@ export const fieldSelect: StoryObj<StoryProps> = {
     validationState: 'default',
     value: undefined,
     disabled: false,
+    autoFocus: false,
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     prefixIcon: 'none',

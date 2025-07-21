@@ -25,6 +25,7 @@ type InputProps = Pick<Partial<TextAreaProps>, 'value'> &
     | 'onBlur'
     | 'onKeyDown'
     | 'spellCheck'
+    | 'autoFocus'
   >;
 
 type WrapperProps = Pick<
@@ -102,6 +103,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       onCopyButtonClick,
       footer,
       spellCheck,
+      autoFocus,
       ...rest
     },
     ref,
@@ -208,6 +210,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
               onKeyDown={handleKeyDown}
               tabIndex={inputTabIndex}
               spellCheck={spellCheck}
+              autoFocus={autoFocus}
               maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
               data-test-id='field-textarea__input'
             />

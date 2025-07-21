@@ -47,6 +47,11 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
      * @default false
      */
     autoComplete?: boolean | string;
+    /**
+     * Включен ли авто-фокус для поля
+     * @default false
+     */
+    autoFocus?: boolean;
     /** Максимальная длина вводимого значения */
     maxLength?: number;
     /** Минимальное значение поля */

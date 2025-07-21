@@ -53,6 +53,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     resetSearchOnOptionSelection = true,
     onOpenChange,
     selectedOptionFormatter = defaultSelectedOptionFormatter,
+    autoFocus,
     ...rest
   } = props;
   const localRef = useRef<HTMLInputElement>(null);
@@ -275,12 +276,13 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
                     onChange={searchable ? setInputValue : undefined}
                     value={searchable ? inputValue : ''}
                     readonly={!searchable || readonly}
-                    data-test-id='field-select__input'
                     onKeyDown={handleOnKeyDown(onKeyDown)}
                     onBlur={handleBlur}
                     className={cn({
                       [styles.readonlyCursor]: !searchable,
                     })}
+                    autoFocus={autoFocus}
+                    data-test-id='field-select__input'
                   />
                 </div>
               </div>

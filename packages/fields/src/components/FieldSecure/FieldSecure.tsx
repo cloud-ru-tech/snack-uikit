@@ -22,7 +22,16 @@ import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
   Pick<
     InputPrivateProps,
-    'id' | 'name' | 'placeholder' | 'maxLength' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'autoComplete'
+    | 'id'
+    | 'name'
+    | 'placeholder'
+    | 'maxLength'
+    | 'disabled'
+    | 'readonly'
+    | 'onFocus'
+    | 'onBlur'
+    | 'autoComplete'
+    | 'autoFocus'
   >;
 
 type WrapperProps = Pick<
@@ -90,6 +99,7 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
       error,
       asyncValueGetter,
       autoComplete,
+      autoFocus,
       onCopyButtonClick,
       ...rest
     },
@@ -234,8 +244,9 @@ export const FieldSecure = forwardRef<HTMLInputElement, FieldSecureProps>(
               maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
               id={id}
               name={name}
-              data-test-id='field-secure__input'
               autoComplete={autoComplete}
+              autoFocus={autoFocus}
+              data-test-id='field-secure__input'
             />
           </WithSkeleton>
         </FieldContainerPrivate>

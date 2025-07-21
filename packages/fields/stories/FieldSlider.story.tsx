@@ -96,6 +96,7 @@ export const fieldSlider: StoryObj<StoryProps> = {
     storyMarks: 'linear',
     readonly: false,
     disabled: false,
+    autoFocus: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',
     required: false,

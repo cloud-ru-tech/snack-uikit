@@ -34,6 +34,8 @@ export type TextAreaProps = RefAttributes<HTMLTextAreaElement> &
     disabled?: boolean;
     /** Включен ли автокомплит */
     autoComplete?: boolean;
+    /** Включен ли авто-фокус */
+    autoFocus?: boolean;
     /** Максимальное кол-во символов */
     maxLength?: number;
     /** Колбек получения фокуса */
@@ -62,6 +64,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       disabled = false,
       readonly = false,
       autoComplete = false,
+      autoFocus = false,
       maxLength,
       onFocus,
       onBlur,
@@ -89,6 +92,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         ref={ref}
         className={cn(className, styles.textarea)}
         autoComplete={autoComplete ? 'on' : 'off'}
+        autoFocus={autoFocus}
         placeholder={placeholder}
         disabled={disabled}
         readOnly={readonly}

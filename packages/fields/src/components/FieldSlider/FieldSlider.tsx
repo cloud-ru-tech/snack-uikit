@@ -24,7 +24,10 @@ import { generateAllowedValues, getClosestMark, getTextFieldValue, isMarkObject 
 import styles from './styles.module.scss';
 import { TextInputFormatter } from './types';
 
-type SliderProps = Pick<InputPrivateProps, 'id' | 'name' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur'> &
+type SliderProps = Pick<
+  InputPrivateProps,
+  'id' | 'name' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'autoFocus'
+> &
   Pick<SliderComponentProps, 'range' | 'value' | 'onChange' | 'tipFormatter'> &
   Required<Pick<SliderComponentProps, 'min' | 'max' | 'step' | 'marks'>>;
 
@@ -106,6 +109,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
       postfixIcon,
       prefix,
       postfix,
+      autoFocus,
       ...rest
     },
     ref,
@@ -312,6 +316,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
             id={id}
             name={name}
             data-test-id='field-slider__input'
+            autoFocus={autoFocus}
           />
         </FieldContainerPrivate>
         <div className={styles.sliderWrapper}>

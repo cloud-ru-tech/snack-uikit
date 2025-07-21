@@ -25,7 +25,7 @@ import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import styles from './styles.module.scss';
 
-type InputProps = Pick<InputPrivateProps, 'id' | 'name' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur'>;
+type InputProps = Pick<InputPrivateProps, 'id' | 'name' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'autoFocus'>;
 
 type WrapperProps = Pick<
   FieldDecoratorProps,
@@ -105,6 +105,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
       error,
       mode,
       onCopyButtonClick,
+      autoFocus,
       ...rest
     },
     ref,
@@ -365,6 +366,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
               type='text'
               id={id}
               name={name}
+              autoFocus={autoFocus}
               data-test-id='field-date__input'
             />
           </FieldContainerPrivate>

@@ -16,7 +16,7 @@ import styles from './styles.module.scss';
 
 type InputProps = Pick<
   InputPrivateProps,
-  'id' | 'name' | 'value' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'placeholder'
+  'id' | 'name' | 'value' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'placeholder' | 'autoFocus'
 >;
 
 type WrapperProps = Pick<
@@ -85,6 +85,7 @@ export const FieldColor = forwardRef<HTMLInputElement, FieldColorProps>(
       onFocus,
       onBlur,
       onCopyButtonClick,
+      autoFocus,
       ...rest
     },
     ref,
@@ -212,6 +213,7 @@ export const FieldColor = forwardRef<HTMLInputElement, FieldColorProps>(
               type='text'
               id={id}
               name={name}
+              autoFocus={autoFocus}
               data-test-id='field-color__input'
             />
           </FieldContainerPrivate>

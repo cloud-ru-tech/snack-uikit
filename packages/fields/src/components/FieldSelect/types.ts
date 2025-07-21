@@ -48,7 +48,7 @@ export type NestListOptionProps = Pick<NextListItemProps, 'type' | 'onSublistOpe
 
 export type InputProps = Pick<
   InputPrivateProps,
-  'id' | 'name' | 'placeholder' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'onKeyDown'
+  'id' | 'name' | 'placeholder' | 'disabled' | 'readonly' | 'onFocus' | 'onBlur' | 'onKeyDown' | 'autoFocus'
 >;
 
 export type WrapperProps = Pick<

@@ -41,6 +41,7 @@ export const fieldColor: StoryObj<StoryProps> = {
     readonly: false,
     showCopyButton: true,
     disabled: false,
+    autoFocus: false,
     label: 'Label text',
     labelTooltip: 'Tooltip description',
     placeholder: '#f5f5f5',

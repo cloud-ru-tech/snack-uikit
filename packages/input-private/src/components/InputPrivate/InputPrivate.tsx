@@ -21,6 +21,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
       disabled = false,
       readonly = false,
       autoComplete: autoCompleteProp = false,
+      autoFocus = false,
       maxLength,
       min,
       max,
@@ -84,6 +85,7 @@ export const InputPrivate = forwardRef<HTMLInputElement, InputPrivateProps>(
         spellCheck={spellCheck}
         title=''
         pattern={pattern}
+        autoFocus={autoFocus}
         {...extractSupportProps(rest)}
       />
     );
