@@ -15,4 +15,5 @@ export const INPUT_MODE = {
   Search: 'search',
   Email: 'email',
   Url: 'url',
+  None: 'none',
 } as const;

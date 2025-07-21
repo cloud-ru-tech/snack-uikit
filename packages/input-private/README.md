@@ -43,7 +43,7 @@ export type InputPrivateProps = RefAttributes<HTMLInputElement> &
 | id | `string` | - | Значение html-атрибута id |
 | className | `string` | - | CSS-класс |
 | type | enum Type: `"number"`, `"text"`, `"password"`, `"tel"`, `"email"`, `"url"` | text | Тип инпута |
-| inputMode | enum InputMode: `"text"`, `"tel"`, `"email"`, `"url"`, `"decimal"`, `"numeric"`, `"search"` | text | Режим работы экранной клавиатуры |
+| inputMode | enum InputMode: `"text"`, `"tel"`, `"email"`, `"url"`, `"decimal"`, `"numeric"`, `"search"`, `"none"` | text | Режим работы экранной клавиатуры |
 | disabled | `boolean` | - | Является ли поле деактивированным |
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
