@@ -342,6 +342,7 @@ export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
               readonly={readonly}
               tabIndex={inputTabIndex}
               type='text'
+              inputMode='numeric'
               id={id}
               name={name}
               autoFocus={autoFocus}

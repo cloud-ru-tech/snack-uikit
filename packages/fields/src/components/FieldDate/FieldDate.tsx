@@ -364,6 +364,7 @@ export const FieldDate = forwardRef<HTMLInputElement, FieldDateProps>(
               readonly={readonly}
               tabIndex={inputTabIndex}
               type='text'
+              inputMode='numeric'
               id={id}
               name={name}
               autoFocus={autoFocus}

@@ -313,6 +313,7 @@ export const FieldSlider = forwardRef<HTMLInputElement, FieldSliderProps>(
             disabled={disabled}
             readonly={range ? true : readonly}
             type='text'
+            inputMode='numeric'
             id={id}
             name={name}
             data-test-id='field-slider__input'
