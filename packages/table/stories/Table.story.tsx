@@ -30,7 +30,7 @@ type StoryProps = Omit<TableProps<StubData, Filters>, 'rowSelection' | 'sort' | 
   showExport: boolean;
   showFilters: boolean;
   statusColumnViewMode?: StoryStatusColumnViewMode;
-  showTableTree: boolean;
+  showTableTree?: 'default' | 'custom-render';
   showActionsColumn?: boolean;
   rowSelectionMode?: 'single' | 'multi';
   enableOnRowClick: boolean;
@@ -230,6 +230,8 @@ const Template: StoryFn<StoryProps> = ({
                   showToggle: Boolean(rowSelectionMode),
                   accessorKey: 'tree',
                   header: 'Tree column',
+                  cell:
+                    showTableTree === 'custom-render' ? ({ cell }) => `custom-${cell.getValue<string>()}` : undefined,
                 },
               }
             : undefined
@@ -271,7 +273,7 @@ export const table: StoryObj<StoryProps> = {
     statusColumnViewMode: StoryStatusColumnViewMode.Full,
     statusSortEnabled: true,
     showActionsColumn: true,
-    showTableTree: false,
+    showTableTree: undefined,
     data: [],
     rowSelection: {
       enable: true,
@@ -343,8 +345,9 @@ export const table: StoryObj<StoryProps> = {
     showTableTree: {
       name: '[Stories]: Show tree column',
       control: {
-        type: 'boolean',
+        type: 'select',
       },
+      options: [undefined, 'default', 'custom-render'],
     },
 
     statusSortEnabled: {

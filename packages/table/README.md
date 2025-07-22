@@ -179,6 +179,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | onChangePage* | `(offset: number, limit: number) => void` | - |  |
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
+| loading | `boolean` | - | Состояние загрузки |
 | className | `string` | - | CSS-класс |
 | onRefresh | `() => void` | - | Колбек обновления данных |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
@@ -193,7 +194,6 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | enableFuzzySearch | `boolean` | - | Включить нечеткий поиск |
 | rowAutoHeight | `boolean` | - |  |
 | onRowClick | `RowClickHandler<TData>` | - | Колбэк клика по строке |
-| loading | `boolean` | - | Состояние загрузки |
 | outline | `boolean` | - | Внешний бордер для тулбара и таблицы |
 | columnFilters | `Omit<ChipChoiceRowProps<TFilters>, "size" \| "data-test-id"> & { open?: boolean; onOpenChange?(isOpen: boolean): void; } & { initialOpen?: boolean; }` | - | Фильтры |
 | dataFiltered | `boolean` | - | Флаг, показывающий что данные были отфильтрованы при пустых данных |

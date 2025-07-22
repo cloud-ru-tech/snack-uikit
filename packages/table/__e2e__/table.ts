@@ -98,36 +98,24 @@ test.page(getPage({ suppressToolbar: true, suppressSearch: false, showFilters: t
   },
 );
 
-test.page(
-  getPage({
-    showTableTree: false,
-    statusColumnViewMode: StoryStatusColumnViewMode.Small,
-  }),
-)('Render rows with Status indicator and without label', async t => {
-  const { statusIndicator, statusLabel } = selectors.getRow(0);
+test.page(getPage({ statusColumnViewMode: StoryStatusColumnViewMode.Small }))(
+  'Render rows with Status indicator and without label',
+  async t => {
+    const { statusIndicator, statusLabel } = selectors.getRow(0);
 
-  await t.expect(statusIndicator.exists).ok('No status indicator found');
-  await t.expect(statusLabel.exists).notOk("Status label shouldn't exist");
-});
+    await t.expect(statusIndicator.exists).ok('No status indicator found');
+    await t.expect(statusLabel.exists).notOk("Status label shouldn't exist");
+  },
+);
 
-test.page(
-  getPage({
-    showTableTree: false,
-    statusColumnViewMode: '!undefined',
-  }),
-)('Render rows without Status', async t => {
+test.page(getPage({ statusColumnViewMode: '!undefined' }))('Render rows without Status', async t => {
   const { statusIndicator, statusLabel } = selectors.getRow(0);
 
   await t.expect(statusIndicator.exists).notOk("Status indicator shouldn't exist");
   await t.expect(statusLabel.exists).notOk("Status label shouldn't exist");
 });
 
-test.page(
-  getPage({
-    showTableTree: false,
-    statusColumnViewMode: '!undefined',
-  }),
-)('Click on column header sorts data', async t => {
+test.page(getPage({ statusColumnViewMode: '!undefined' }))('Click on column header sorts data', async t => {
   const { row } = selectors.getRow(0);
   const firstRowIdBeforeSort = await row.getAttribute(DATA_ATTRIBUTES.rowId);
 
@@ -158,11 +146,7 @@ test.page(
   await t.expect(sortIndicator.exists).notOk("Sort indicator shouldn't exist");
 });
 
-test.page(
-  getPage({
-    showTableTree: false,
-  }),
-)('Multi row selection', async t => {
+test.page(getPage())('Multi row selection', async t => {
   const first = selectors.getRow(0);
   const second = selectors.getRow(1);
 
@@ -175,11 +159,7 @@ test.page(
   await t.expect(second.rowSelectedAttribute).eql('true');
 });
 
-test.page(
-  getPage({
-    showTableTree: false,
-  }),
-)('Multi row rowSelection.onChange callback', async t => {
+test.page(getPage())('Multi row rowSelection.onChange callback', async t => {
   const first = selectors.getRow(0);
   const second = selectors.getRow(1);
 
@@ -193,11 +173,7 @@ test.page(
   await t.expect(selectors.getSelectedState().innerText).eql('{"1":true}');
 });
 
-test.page(
-  getPage({
-    showTableTree: false,
-  }),
-)('Multi row bulk selection and deselection with shift key applied', async t => {
+test.page(getPage())('Multi row bulk selection and deselection with shift key applied', async t => {
   const validator = new RowsSelectionValidator(t, selectors);
 
   // Select initial range
@@ -263,7 +239,6 @@ test.page(
 
 test.page(
   getPage({
-    showTableTree: false,
     rowSelectionMode: 'single',
   }),
 )('Single row selection', async t => {
@@ -281,12 +256,7 @@ test.page(
   await t.expect(first.rowSelectedAttribute).eql(null);
 });
 
-test.page(
-  getPage({
-    showTableTree: false,
-    rowSelectionMode: 'single',
-  }),
-)('Single row rowSelection.onChange callback', async t => {
+test.page(getPage({ rowSelectionMode: 'single' }))('Single row rowSelection.onChange callback', async t => {
   const first = selectors.getRow(0);
   const second = selectors.getRow(1);
 
@@ -300,7 +270,7 @@ test.page(
   await t.expect(selectors.getSelectedState().innerText).eql('{"0":true}');
 });
 
-test.page(getPage({ disableSomeRows: true, showTableTree: false }))(
+test.page(getPage({ disableSomeRows: true }))(
   'Disabled rows cannot be selected and have no RowActions button',
   async t => {
     const { row, selectToggle, rowSelectedAttribute, rowActionsButton } = selectors.getRow(0, true);
@@ -313,7 +283,7 @@ test.page(getPage({ disableSomeRows: true, showTableTree: false }))(
   },
 );
 
-test.page(getPage({ showTableTree: false }))('Row actions exists and opens dropdown on click', async t => {
+test.page(getPage())('Row actions exists and opens dropdown on click', async t => {
   const { rowActionsButton, rowActionsDropdown, rowActionsOption } = selectors.getRow(0);
 
   await t.expect(rowActionsButton.exists).ok('No RowAction button found');
@@ -333,7 +303,7 @@ test.page(getPage({ showTableTree: false }))('Row actions exists and opens dropd
   await t.expect(rowActionsDropdown.exists).notOk('Dropdown should be closed after click');
 });
 
-test.page(getPage({ showTableTree: true, expandRowsCount: SUB_ROWS_AMOUNT, expandRowsLevel: SUB_ROWS_LEVEL }))(
+test.page(getPage({ showTableTree: 'default', expandRowsCount: SUB_ROWS_AMOUNT, expandRowsLevel: SUB_ROWS_LEVEL }))(
   'Row toggles on chevron click',
   async t => {
     const { tree } = selectors.getRow(0);
@@ -355,9 +325,15 @@ test.page(getPage({ showTableTree: true, expandRowsCount: SUB_ROWS_AMOUNT, expan
   },
 );
 
+test.page(getPage({ showTableTree: 'custom-render' }))('Tree cell with custom render', async t => {
+  const { tree } = selectors.getRow(0);
+
+  await t.expect(tree.node.innerText).contains('custom');
+});
+
 test.page(
   getPage({
-    showTableTree: true,
+    showTableTree: 'default',
     expandRowsCount: SUB_ROWS_AMOUNT,
     expandRowsLevel: SUB_ROWS_LEVEL,
   }),
@@ -401,7 +377,7 @@ test.page(
 
 test.page(
   getPage({
-    showTableTree: true,
+    showTableTree: 'default',
     expandRowsCount: SUB_ROWS_AMOUNT,
     expandRowsLevel: 1,
     rowSelectionMode: 'single',
@@ -430,7 +406,7 @@ test.page(
 
 test.page(
   getPage({
-    showTableTree: true,
+    showTableTree: 'default',
     expandRowsCount: SUB_ROWS_AMOUNT,
     expandRowsLevel: 1,
   }),

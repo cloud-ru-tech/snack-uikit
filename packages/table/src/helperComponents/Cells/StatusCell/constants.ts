@@ -1,4 +1,4 @@
-export const STATUS_APPEARANCE: Record<string, string> = {
+export const STATUS_APPEARANCE = {
   Primary: 'primary',
   Neutral: 'neutral',
   Red: 'red',

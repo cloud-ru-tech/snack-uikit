@@ -20,7 +20,7 @@ export function getTableColumnsDefinitions<TData extends object>({
     cols = [getSelectionCellColumnDef(enableSelectPinned), ...cols];
   }
   if (expanding) {
-    cols = [getTreeColumnDef(expanding.expandingColumnDefinition), ...cols];
+    cols = [getTreeColumnDef({ ...expanding.expandingColumnDefinition, enableSelection }), ...cols];
   }
   return cols;
 }
