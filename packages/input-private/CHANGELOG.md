@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.8.0 (2025-07-23)
+
+
+### Features
+
+* **FF-6921:** add autoFocus property ([3848949](https://github.com/cloud-ru-tech/snack-uikit/commit/38489491ce38c6ed40f2f726b680a7b9b30953f4))
+* **FF-6921:** add inputMode=none ([a39e25f](https://github.com/cloud-ru-tech/snack-uikit/commit/a39e25faede98ef2bed8e80ca775a4a36f331156))
+
+
+
+
+
 ## 4.7.6 (2025-07-16)
 
 ### Only dependencies have been changed
