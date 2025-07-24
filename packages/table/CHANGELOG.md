@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.36.24 (2025-07-24)
+
+
+### Bug Fixes
+
+* **FF-6453:** cell render for TreeCell, fix click on tree cell when selection is disabled ([d26c1ba](https://github.com/cloud-ru-tech/snack-uikit/commit/d26c1ba66819c80fd545539fc63e2a46477a0c0f))
+
+
+
+
+
 ## 0.36.23 (2025-07-23)
 
 ### Only dependencies have been changed
