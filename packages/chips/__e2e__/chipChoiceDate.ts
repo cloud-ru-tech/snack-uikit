@@ -37,6 +37,20 @@ test.page(getPage({ useDefaultValue: true, mode: 'month' }))(
   },
 );
 
+test.page(getPage({ useDefaultValue: true, mode: 'year' }))(
+  '[mode="year"] should render with value as year',
+  async t => {
+    const { chip, value } = getComponent();
+
+    await t.expect(chip.exists).ok();
+    await t.expect(value.exists).ok();
+
+    await t
+      .expect(value.innerText)
+      .eql(new Date('2023-10-15').toLocaleDateString('ru-RU', { year: 'numeric', month: undefined, day: undefined }));
+  },
+);
+
 test.page(getPage({ useDefaultValue: true, mode: 'date-time', showSeconds: false }))(
   '[mode="date-time", showSeconds=false] should render with value as day.month.year, hh:mm',
   async t => {

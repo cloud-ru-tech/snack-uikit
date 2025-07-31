@@ -248,7 +248,7 @@ import { PlaceholderSVG } from '@snack-uikit/icons';
 | defaultValue | `Date` | - | Значение компонента по-умолчанию |
 | onChange | `(value: Date) => void` | - | Колбек смены значения |
 | valueRender | `(value?: Date) => ReactNode` | - | Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение |
-| mode | "date" \| "month" \| "date-time" | - |  |
+| mode | "date" \| "month" \| "date-time" \| "year" | - |  |
 | buildCalendarCellProps | `BuildCellPropsFunction` | - | Колбек свойств для управления ячейками календаря |
 | showSeconds | `boolean` | - |  |
 ## ChipChoice.DateRange

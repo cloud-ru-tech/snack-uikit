@@ -32,7 +32,7 @@ export type ChipChoiceDateProps = ChipChoiceCommonProps & {
 } & (
     | ChipChoiceDateWithSeconds
     | {
-        mode?: 'date' | 'month';
+        mode?: 'date' | 'month' | 'year';
       }
   );
 
@@ -90,7 +90,7 @@ export function ChipChoiceDate({
 
     return date.toLocaleDateString(DEFAULT_LOCALE, {
       year: 'numeric',
-      month: 'numeric',
+      month: mode === 'date' || mode === 'month' ? 'numeric' : undefined,
       day: mode === 'date' ? 'numeric' : undefined,
     });
   }, [mode, selectedValue, showSeconds, t, valueRender]);
