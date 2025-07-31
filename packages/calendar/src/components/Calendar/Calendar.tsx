@@ -73,6 +73,17 @@ type MonthCalendarProps = CommonCalendarProps & {
   onChangeValue?(value: Date): void;
 };
 
+type YearCalendarProps = CommonCalendarProps & {
+  /** <br> - `year` - режим выбора года */
+  mode: typeof CALENDAR_MODE.Year;
+  /** <br> - в режиме year тип `Date` */
+  value?: Date;
+  /** <br> - в режиме year тип `Date` */
+  defaultValue?: Date;
+  /** <br> - в режиме year принимает тип `Date` */
+  onChangeValue?(value: Date): void;
+};
+
 type DateTimeCalendarProps = CommonCalendarProps & {
   /** <br> - `date-time` - режим выбора даты и времени */
   mode: typeof CALENDAR_MODE.DateTime;
@@ -98,7 +109,7 @@ type RangeCalendarProps = CommonCalendarProps & {
 };
 
 export type CalendarProps = WithSupportProps<
-  DateCalendarProps | RangeCalendarProps | MonthCalendarProps | DateTimeCalendarProps
+  DateCalendarProps | RangeCalendarProps | MonthCalendarProps | DateTimeCalendarProps | YearCalendarProps
 >;
 
 export function Calendar(props: CalendarProps) {
@@ -106,7 +117,12 @@ export function Calendar(props: CalendarProps) {
 
   const changeValueHandler = useCallback(
     (value: Range) => {
-      if (mode === CALENDAR_MODE.Date || mode === CALENDAR_MODE.Month || mode === CALENDAR_MODE.DateTime) {
+      if (
+        mode === CALENDAR_MODE.Date ||
+        mode === CALENDAR_MODE.Month ||
+        mode === CALENDAR_MODE.Year ||
+        mode === CALENDAR_MODE.DateTime
+      ) {
         const [date] = value;
         onChangeValue?.(date);
         return;

@@ -31,7 +31,7 @@ import { Calendar } from '@snack-uikit/calendar';
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| mode* | "date" \| "date-time" \| "range" \| "month" | - | Режим работы календаря: <br> - `date` - режим выбора даты <br> - `range` - режим выбора периода <br> - `month` - режим выбора месяца <br> - `date-time` - режим выбора даты и времени |
+| mode* | "date" \| "date-time" \| "range" \| "month" \| "year" | - | Режим работы календаря: <br> - `date` - режим выбора даты <br> - `range` - режим выбора периода <br> - `month` - режим выбора месяца <br> - `date-time` - режим выбора даты и времени <br> - `year` - режим выбора года |
 | size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер |
 | today | `number \| Date` | - | Дата сегодняшнего дня |
 | showHolidays | `boolean` | - | Раскрашивает субботу и воскресенье |
@@ -43,9 +43,9 @@ import { Calendar } from '@snack-uikit/calendar';
 | locale | `Intl.Locale` | Проставляется в соответствие с языком в настройках браузера | Локаль, в соответствие с которой выставляется язык названий и первый день недели |
 | onFocusLeave | `(direction: FocusDirection) => void` | - | Колбек потери фокуса. Вызывается со значением `next`, когда фокус покидает компонент, передвигаясь вперед, по клавише `tab`. Со значением `prev` - по клавише стрелки вверх или `shift + tab`. |
 | navigationStartRef | `RefObject<{ focus(): void; }>` | - | Ссылка на управление первым элементом навигации |
-| value | `Date \| Range` | - | Выбранное значение.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` |
-| defaultValue | `Date \| Range` | - | Значение по-умолчанию для uncontrolled.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` |
-| onChangeValue | `((value: Date) => void) \| ((value: Range) => void) \| ((value: Date) => void) \| ((value: Date) => void)` | - | Колбек выбора значения.<br> - в режиме date принимает тип `Date` <br> - в режиме range принимает тип `Range` <br> - в режиме month принимает тип `Date` <br> - в режиме date-time принимает тип `Date` |
+| value | `Date \| Range` | - | Выбранное значение.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` <br> - в режиме year тип `Date` |
+| defaultValue | `Date \| Range` | - | Значение по-умолчанию для uncontrolled.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` <br> - в режиме year тип `Date` |
+| onChangeValue | `((value: Date) => void) \| ((value: Range) => void) \| ((value: Date) => void) \| ((value: Date) => void) \| ((value: Date) => void)` | - | Колбек выбора значения.<br> - в режиме date принимает тип `Date` <br> - в режиме range принимает тип `Range` <br> - в режиме month принимает тип `Date` <br> - в режиме date-time принимает тип `Date` <br> - в режиме year принимает тип `Date` |
 | showSeconds | `boolean` | - | Показывать ли секунды (только в режиме date-time) |
 ## TimePicker
 ### Props

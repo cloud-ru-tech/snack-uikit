@@ -9,6 +9,7 @@ export const CALENDAR_MODE = {
   DateTime: 'date-time',
   Range: 'range',
   Month: 'month',
+  Year: 'year',
 } as const;
 
 export const IN_RANGE_POSITION = {

@@ -10,7 +10,7 @@ export const buildDecadeGrid = (date: Date): BaseGrid => {
   for (let i = 0; i < rows; i++) {
     const row: BaseGridItem[] = [];
     for (let j = 0; j < columns; j++) {
-      row.push({ date: new Date(year + shift++, 1, 1), address: [i, j] });
+      row.push({ date: new Date(year + shift++, 0, 1), address: [i, j] });
     }
     result.push(row);
   }

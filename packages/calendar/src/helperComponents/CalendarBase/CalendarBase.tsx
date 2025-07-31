@@ -38,16 +38,24 @@ export type CalendarBaseProps = WithSupportProps<{
   navigationStartRef?: RefObject<{ focus(): void }>;
 }>;
 
-const DATE_WRAPPER_SIZE_MAP = {
+const DATE_WRAPPER_SIZE_MAP: Record<Size, string> = {
   [SIZE.S]: styles.dateWrapperSizeS,
   [SIZE.M]: styles.dateWrapperSizeM,
   [SIZE.L]: styles.dateWrapperSizeL,
 };
 
-const CALENDAR_SIZE_MAP = {
+const CALENDAR_SIZE_MAP: Record<Size, string> = {
   [SIZE.S]: styles.calendarSizeS,
   [SIZE.M]: styles.calendarSizeM,
   [SIZE.L]: styles.calendarSizeL,
+};
+
+const CALENDAR_DEFAULT_MODE_MAP: Record<CalendarMode, ViewMode> = {
+  [CALENDAR_MODE.Date]: VIEW_MODE.Month,
+  [CALENDAR_MODE.DateTime]: VIEW_MODE.Month,
+  [CALENDAR_MODE.Range]: VIEW_MODE.Month,
+  [CALENDAR_MODE.Month]: VIEW_MODE.Year,
+  [CALENDAR_MODE.Year]: VIEW_MODE.Decade,
 };
 
 export function CalendarBase({
@@ -70,7 +78,7 @@ export function CalendarBase({
   navigationStartRef,
   ...rest
 }: CalendarBaseProps) {
-  const [viewMode, setViewMode] = useState<ViewMode>(mode === CALENDAR_MODE.Month ? VIEW_MODE.Year : VIEW_MODE.Month);
+  const [viewMode, setViewMode] = useState<ViewMode>(CALENDAR_DEFAULT_MODE_MAP[mode]);
   const [viewShift, setViewShift] = useState<number>(0);
   const [value, setValueState] = useUncontrolledProp<Range | undefined>(valueProp, defaultValue, onChangeValue);
   const today = typeof todayProp === 'number' ? new Date(todayProp) : todayProp;
