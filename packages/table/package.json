@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Table",
-  "version": "0.36.24",
+  "version": "0.36.25",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -42,7 +42,7 @@
     "@dnd-kit/sortable": "10.0.0",
     "@dnd-kit/utilities": "3.2.2",
     "@snack-uikit/button": "0.19.15",
-    "@snack-uikit/chips": "0.27.20",
+    "@snack-uikit/chips": "0.28.0",
     "@snack-uikit/icon-predefined": "0.7.9",
     "@snack-uikit/icons": "0.27.2",
     "@snack-uikit/info-block": "0.6.31",
@@ -51,7 +51,7 @@
     "@snack-uikit/scroll": "0.10.4",
     "@snack-uikit/skeleton": "0.6.8",
     "@snack-uikit/toggles": "0.13.20",
-    "@snack-uikit/toolbar": "0.13.21",
+    "@snack-uikit/toolbar": "0.13.22",
     "@snack-uikit/truncate-string": "0.7.0",
     "@snack-uikit/typography": "0.8.10",
     "@snack-uikit/utils": "3.10.1",

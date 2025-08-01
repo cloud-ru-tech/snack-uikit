@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.28.0 (2025-08-01)
+
+
+### Features
+
+* **PDS-2637:** add calendar mode year in ChipChoiceDate ([93f35d3](https://github.com/cloud-ru-tech/snack-uikit/commit/93f35d36b0c153139409293692153e60d681b4c2))
+
+
+
+
+
 ## 0.27.20 (2025-07-23)
 
 ### Only dependencies have been changed

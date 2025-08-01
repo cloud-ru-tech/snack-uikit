@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2025-08-01)
+
+
+### Features
+
+* **PDS-2637:** add mode year in calendar ([33c9ee5](https://github.com/cloud-ru-tech/snack-uikit/commit/33c9ee59414265c89939d35fa64bc3303c85b91b))
+
+
+
+
+
 ## 0.12.20 (2025-07-23)
 
 ### Only dependencies have been changed

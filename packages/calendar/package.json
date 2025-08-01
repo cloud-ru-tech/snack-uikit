@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Calendar",
-  "version": "0.12.20",
+  "version": "0.13.0",
   "sideEffects": [
     "*.css",
     "*.woff",
