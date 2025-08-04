@@ -1,7 +1,8 @@
-import { ElementType } from 'react';
+import { ElementType, useMemo } from 'react';
 
 import { ButtonFilled, ButtonOutline, ButtonSimple } from '@snack-uikit/button';
 import { Link } from '@snack-uikit/link';
+import { Spinner } from '@snack-uikit/loaders';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 
@@ -33,11 +34,38 @@ export function Modal<LinkElement extends ElementType = 'a'>({
   disclaimer,
   truncate,
   className,
+  loading,
+  loadingState,
   ...rest
 }: ModalProps<LinkElement>) {
   const aligns = getAlignProps({ align, size });
   const buttonsSize = getButtonsSize({ align, size });
   const picture = getPicture({ size, picture: pictureProp });
+
+  const body = useMemo(() => {
+    if (loading) {
+      if (loadingState) {
+        return <ModalCustom.Body content={loadingState} align={aligns.body} />;
+      }
+
+      return (
+        <ModalCustom.Body
+          content={
+            <div className={styles.loaderWrapper}>
+              <Spinner size='m' data-test-id={TEST_IDS.loadingSpinner} />
+            </div>
+          }
+          align={aligns.body}
+        />
+      );
+    }
+
+    if (content) {
+      return <ModalCustom.Body content={content} align={aligns.body} />;
+    }
+
+    return null;
+  }, [aligns.body, content, loading, loadingState]);
 
   return (
     <ModalCustom open={open} onClose={onClose} size={size} mode={mode} className={className} {...rest}>
@@ -49,52 +77,54 @@ export function Modal<LinkElement extends ElementType = 'a'>({
         align={aligns.header}
       />
 
-      {Boolean(content) && <ModalCustom.Body content={content} align={aligns.body} />}
+      {body}
 
-      <ModalCustom.Footer
-        actions={
-          <>
-            <ButtonFilled
-              appearance='primary'
-              {...approveButton}
-              size={buttonsSize}
-              className={styles.footerButton}
-              data-test-id={TEST_IDS.approveButton}
-            />
-
-            {cancelButton && (
-              <ButtonOutline
-                appearance='neutral'
-                {...cancelButton}
-                size={buttonsSize}
-                className={styles.footerButton}
-                data-test-id={TEST_IDS.cancelButton}
-              />
-            )}
-
-            {additionalButton && (
-              <ButtonSimple
-                appearance='neutral'
-                {...additionalButton}
-                size={buttonsSize}
-                className={styles.footerButton}
-                data-test-id={TEST_IDS.additionalButton}
-              />
-            )}
-          </>
-        }
-        disclaimer={
-          disclaimer && (
+      {!loading && (
+        <ModalCustom.Footer
+          actions={
             <>
-              <Typography.SansBodyS data-test-id={TEST_IDS.disclaimerText}>{disclaimer.text}</Typography.SansBodyS>
+              <ButtonFilled
+                appearance='primary'
+                {...approveButton}
+                size={buttonsSize}
+                className={styles.footerButton}
+                data-test-id={TEST_IDS.approveButton}
+              />
 
-              {disclaimer.link && <Link {...disclaimer.link} size='s' data-test-id={TEST_IDS.disclaimerLink} />}
+              {cancelButton && (
+                <ButtonOutline
+                  appearance='neutral'
+                  {...cancelButton}
+                  size={buttonsSize}
+                  className={styles.footerButton}
+                  data-test-id={TEST_IDS.cancelButton}
+                />
+              )}
+
+              {additionalButton && (
+                <ButtonSimple
+                  appearance='neutral'
+                  {...additionalButton}
+                  size={buttonsSize}
+                  className={styles.footerButton}
+                  data-test-id={TEST_IDS.additionalButton}
+                />
+              )}
             </>
-          )
-        }
-        align={aligns.footer}
-        className={styles.modalFooter}
-      />
+          }
+          disclaimer={
+            disclaimer && (
+              <>
+                <Typography.SansBodyS data-test-id={TEST_IDS.disclaimerText}>{disclaimer.text}</Typography.SansBodyS>
+
+                {disclaimer.link && <Link {...disclaimer.link} size='s' data-test-id={TEST_IDS.disclaimerLink} />}
+              </>
+            )
+          }
+          align={aligns.footer}
+          className={styles.modalFooter}
+        />
+      )}
     </ModalCustom>
   );
 }

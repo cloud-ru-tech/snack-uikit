@@ -7,6 +7,7 @@ const TEST_IDS = {
   ...componentsTestIDs,
   buttonControlled: 'modal-controlled',
   main: 'modal-test',
+  customLoaderState: 'modal__custom-loader',
 };
 
 const MOCK_DATA = {
@@ -168,3 +169,49 @@ test.page(getPage())(
       .notOk();
   },
 );
+
+test.page(
+  getPage({
+    loading: true,
+    title: MOCK_DATA.title,
+    subtitle: MOCK_DATA.subtitle,
+    content: MOCK_DATA.content,
+    disclaimer: MOCK_DATA.disclaimer,
+  }),
+)('Should display only header and loader spinner in loading state', async t => {
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.loadingSpinner)).exists).ok();
+
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.title)).textContent).eql(MOCK_DATA.title);
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.subtitle)).textContent).eql(MOCK_DATA.subtitle);
+
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.content)).textContent).notEql(MOCK_DATA.content);
+
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.disclaimerText)).exists).notOk();
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.disclaimerLink)).exists).notOk();
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.cancelButton)).exists).notOk();
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.additionalButton)).exists).notOk();
+});
+
+test.page(
+  getPage({
+    loading: true,
+    customLoadingState: true,
+    title: MOCK_DATA.title,
+    subtitle: MOCK_DATA.subtitle,
+    content: MOCK_DATA.content,
+    disclaimer: MOCK_DATA.disclaimer,
+  }),
+)('Should display only header and custom loader state in loading state', async t => {
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.customLoaderState)).exists).ok();
+
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.title)).textContent).eql(MOCK_DATA.title);
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.subtitle)).textContent).eql(MOCK_DATA.subtitle);
+
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.content)).textContent).notEql(MOCK_DATA.content);
+
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.loadingSpinner)).exists).notOk();
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.disclaimerText)).exists).notOk();
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.disclaimerLink)).exists).notOk();
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.cancelButton)).exists).notOk();
+  await t.expect(Selector(dataTestIdSelector(TEST_IDS.additionalButton)).exists).notOk();
+});

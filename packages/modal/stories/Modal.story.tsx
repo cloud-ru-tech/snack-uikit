@@ -20,9 +20,20 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = ExtendedStoryProps<ModalProps>;
+type StoryProps = ExtendedStoryProps<ModalProps> & {
+  customLoadingState?: boolean;
+};
 
-const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...args }: StoryProps) => {
+const SampleComponent = <div data-test-id='modal__custom-loader'>Custom Loading...</div>;
+
+const Template: StoryFn<StoryProps> = ({
+  showIcon,
+  showImage,
+  align,
+  alignM,
+  customLoadingState,
+  ...args
+}: StoryProps) => {
   const [isOpen, setOpen] = useState<string>();
 
   useEffect(() => {
@@ -40,6 +51,8 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
   const closeModal = () => setOpen(undefined);
 
   const alignProp = args.size === SIZE.M ? alignM : align;
+
+  const loadingState = customLoadingState ? SampleComponent : undefined;
 
   return (
     <>
@@ -73,6 +86,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
         approveButton={{ ...args.approveButton, onClick: closeModal }}
         cancelButton={!args.cancelButton ? undefined : { ...args.cancelButton, onClick: closeModal }}
         additionalButton={!args.additionalButton ? undefined : { ...args.additionalButton, onClick: closeModal }}
+        loadingState={loadingState}
       />
 
       <Modal
@@ -83,6 +97,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
         approveButton={{ ...DEFAULT_ARGS.approveButton, onClick: closeModal }}
         cancelButton={{ ...DEFAULT_ARGS.cancelButton, onClick: closeModal }}
         additionalButton={{ ...DEFAULT_ARGS.additionalButton, onClick: closeModal }}
+        loadingState={loadingState}
       />
 
       <Modal
@@ -93,6 +108,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
         approveButton={{ ...DEFAULT_ARGS.approveButton, onClick: closeModal }}
         cancelButton={{ ...DEFAULT_ARGS.cancelButton, onClick: closeModal }}
         additionalButton={{ ...DEFAULT_ARGS.additionalButton, onClick: closeModal }}
+        loadingState={loadingState}
       />
 
       <Modal
@@ -104,6 +120,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
         approveButton={{ ...DEFAULT_ARGS.approveButton, onClick: closeModal }}
         cancelButton={{ ...DEFAULT_ARGS.cancelButton, onClick: closeModal }}
         additionalButton={{ ...DEFAULT_ARGS.additionalButton, onClick: closeModal }}
+        loadingState={loadingState}
       />
 
       <Modal
@@ -115,6 +132,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
         approveButton={{ ...DEFAULT_ARGS.approveButton, onClick: closeModal }}
         cancelButton={{ ...DEFAULT_ARGS.cancelButton, onClick: closeModal }}
         additionalButton={{ ...DEFAULT_ARGS.additionalButton, onClick: closeModal }}
+        loadingState={loadingState}
       />
 
       <Modal
@@ -125,6 +143,7 @@ const Template: StoryFn<StoryProps> = ({ showIcon, showImage, align, alignM, ...
         onClose={closeModal}
         approveButton={{ label: 'Удалить', appearance: 'destructive', onClick: closeModal }}
         additionalButton={{ label: 'Отмена', onClick: closeModal }}
+        loadingState={loadingState}
       />
     </>
   );
@@ -167,6 +186,15 @@ export const modal: StoryObj<StoryProps> = {
         eq: 's',
       },
     },
+    customLoadingState: {
+      if: {
+        arg: 'loading',
+        eq: true,
+      },
+      name: '[Stories] Custom loading state',
+      type: 'boolean',
+    },
+    loadingState: { table: { disable: true } },
   },
 
   parameters: {

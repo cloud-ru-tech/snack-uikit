@@ -1,7 +1,18 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
+
 .modalFooter {
   &[data-align='vertical'] {
     .footerButton {
       width: 100%;
     }
   }
+}
+
+.loaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: styles-tokens-modal.$space-modal-body-top-bottom;
+  padding-bottom: styles-tokens-modal.$space-modal-footer-bottom;
 }

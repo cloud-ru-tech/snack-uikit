@@ -989,6 +989,9 @@ importers:
       '@snack-uikit/link':
         specifier: 0.17.9
         version: link:../link
+      '@snack-uikit/loaders':
+        specifier: 0.9.8
+        version: link:../loaders
       '@snack-uikit/scroll':
         specifier: 0.10.4
         version: link:../scroll

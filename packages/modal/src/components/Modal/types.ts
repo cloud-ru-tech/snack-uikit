@@ -1,4 +1,4 @@
-import { ElementType } from 'react';
+import { ElementType, ReactNode } from 'react';
 
 import { ButtonFilledProps, ButtonOutlineProps, ButtonSimpleProps } from '@snack-uikit/button';
 import { PickLinkProps } from '@snack-uikit/link';
@@ -38,6 +38,10 @@ type BaseModalProps<LinkElement extends ElementType = 'a'> = Omit<ModalCustomPro
     title?: number;
     subtitle?: number;
   };
+  /** Управление состоянием загрузки */
+  loading?: boolean;
+  /** Содержимое состояния загрузки вместо спиннера по умолчанию */
+  loadingState?: ReactNode;
 };
 
 export type ModalSProps<LinkElement extends ElementType> = BaseModalProps<LinkElement> & {

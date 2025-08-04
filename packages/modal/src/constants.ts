@@ -38,4 +38,5 @@ export const TEST_IDS = {
   disclaimer: 'modal__disclaimer',
   disclaimerText: 'modal__disclaimer-text',
   disclaimerLink: 'modal__disclaimer-link',
+  loadingSpinner: 'modal__loading-spinner',
 };

@@ -27,6 +27,7 @@ export const PICTURE_ARGS: Record<'image' | 'icon' | 'none', ModalProps['picture
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 export const DEFAULT_ARGS: ExtendedStoryProps<Omit<ModalProps, 'onClose' | 'size'>> & { size?: any } = {
   open: false,
+  loading: false,
   title: 'Headline',
   titleTooltip: 'tooltip',
   subtitle: 'Subheading',
@@ -51,7 +52,7 @@ export const DEFAULT_ARGS: ExtendedStoryProps<Omit<ModalProps, 'onClose' | 'size
   icon: Icons.PlaceholderSVG,
 };
 
-export const ARG_TYPES: Partial<ArgTypes<ExtendedStoryProps<ModalProps | ModalCustomProps>>> = {
+export const ARG_TYPES: Partial<ArgTypes<ExtendedStoryProps<ModalProps, 'loadingState' | ModalCustomProps>>> = {
   titleTooltip: {
     type: 'string',
   },
