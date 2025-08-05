@@ -52,7 +52,7 @@ export const DEFAULT_ARGS: ExtendedStoryProps<Omit<ModalProps, 'onClose' | 'size
   icon: Icons.PlaceholderSVG,
 };
 
-export const ARG_TYPES: Partial<ArgTypes<ExtendedStoryProps<ModalProps, 'loadingState' | ModalCustomProps>>> = {
+export const ARG_TYPES: Partial<ArgTypes<ExtendedStoryProps<ModalProps | ModalCustomProps>>> = {
   titleTooltip: {
     type: 'string',
   },
