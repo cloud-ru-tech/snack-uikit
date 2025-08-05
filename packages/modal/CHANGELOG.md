@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.19.0 (2025-08-05)
+
+
+### Features
+
+* **PDS-1558:** loading and custom loading state for modal ([271cc27](https://github.com/cloud-ru-tech/snack-uikit/commit/271cc275b10bdbca2a3e27dd59ff86dea91b8865))
+
+
+
+
+
 ## 0.18.2 (2025-07-17)
 
 ### Only dependencies have been changed
