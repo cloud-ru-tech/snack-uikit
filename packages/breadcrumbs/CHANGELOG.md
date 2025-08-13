@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.21 (2025-08-13)
+
+
+### Bug Fixes
+
+* **FF-0000:** render with outdated props from debounce ([ba0a749](https://github.com/cloud-ru-tech/snack-uikit/commit/ba0a74980b209c1f3f74c2453875ae1c02771030))
+
+
+
+
+
 ## 0.11.20 (2025-07-23)
 
 ### Only dependencies have been changed
