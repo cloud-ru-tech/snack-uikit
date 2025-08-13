@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
-import { RefObject, useCallback, useEffect, useState } from 'react';
+import { RefObject, useEffect, useMemo, useState } from 'react';
 
 import { BreadcrumbsConfig, CurrentConfigState } from './types';
 import { getMaxPossibleWidth } from './utils';
@@ -50,23 +50,8 @@ const selectConfig = (containerWidth: number, configs: BreadcrumbsConfig[]): Cur
  *  Для того чтоб отобразить breadcrumbs, нужно подобрать конфиг, максимальный по ширине, влезающий в контейнер, но с минимальным весом (наименьшим количеством сокращений).
  */
 export function useBreadcrumbsLayout(containerRef: RefObject<HTMLElement>): BreadcrumbsLayout {
-  const [currentConfig, setCurrentConfig] = useState<CurrentConfigState | undefined>(undefined);
   const [configs, setConfigs] = useState<BreadcrumbsConfig[]>([]);
-
-  const selectConfigForWidth = useCallback((width: number) => selectConfig(width, configs), [configs]);
-
-  /**
-   * Подбор подходящего конфига триггерится изменением ширины контейнера и изменением набора конфигов
-   */
-  useEffect(() => {
-    const visibleContainer = containerRef.current?.parentElement;
-
-    if (!visibleContainer) {
-      return;
-    }
-
-    setCurrentConfig(selectConfig(getMaxPossibleWidth(visibleContainer), configs));
-  }, [configs, containerRef]);
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
     const visibleContainer = containerRef.current?.parentElement;
@@ -74,27 +59,21 @@ export function useBreadcrumbsLayout(containerRef: RefObject<HTMLElement>): Brea
     if (!visibleContainer) {
       return;
     }
+
+    setWidth(getMaxPossibleWidth(visibleContainer));
 
     const reselectConfig = debounce(() => {
-      const width = getMaxPossibleWidth(visibleContainer);
-
-      setCurrentConfig(prevConfig => {
-        if (prevConfig?.containerWidth === width) {
-          return prevConfig;
-        }
-
-        const newConf = selectConfigForWidth(width);
-        return newConf || (prevConfig ? { ...prevConfig, containerWidth: width } : prevConfig);
-      });
+      setWidth(getMaxPossibleWidth(visibleContainer));
     }, 100);
 
     const visibleContainerObserver = new ResizeObserver(reselectConfig);
-
     visibleContainerObserver.observe(visibleContainer);
     visibleContainerObserver.observe(document.body);
 
     return () => visibleContainerObserver.disconnect();
-  }, [containerRef, selectConfigForWidth]);
+  }, [containerRef]);
+
+  const currentConfig = useMemo(() => selectConfig(width, configs), [width, configs]);
 
   return { setConfigs, currentConfig };
 }
