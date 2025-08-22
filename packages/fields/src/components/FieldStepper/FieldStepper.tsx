@@ -16,7 +16,7 @@ import { ButtonFunction } from '@snack-uikit/button';
 import { MinusSVG, PlusSVG } from '@snack-uikit/icons';
 import { InputPrivate, InputPrivateProps, SIZE } from '@snack-uikit/input-private';
 import { useLocale } from '@snack-uikit/locale';
-import { Tooltip } from '@snack-uikit/tooltip';
+import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { CONTAINER_VARIANT, VALIDATION_STATE } from '../../constants';
@@ -59,6 +59,10 @@ type FieldStepperOwnProps = {
   prefix?: ReactNode;
   /** Произвольный постфикс для поля */
   postfix?: ReactNode;
+  /** Тултип над кнопкой увеличения значения */
+  plusButtonTooltip?: TooltipProps;
+  /** Тултип над кнопкой уменьшения значения */
+  minusButtonTooltip?: TooltipProps;
 };
 
 export type FieldStepperProps = WithSupportProps<FieldStepperOwnProps & InputProps & WrapperProps>;
@@ -91,6 +95,8 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
       value: valueProp,
       min = Number.NEGATIVE_INFINITY,
       max = Number.POSITIVE_INFINITY,
+      plusButtonTooltip,
+      minusButtonTooltip,
       step = 1,
       disabled = false,
       readonly = false,
@@ -240,28 +246,42 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
             variant={CONTAINER_VARIANT.SingleLine}
             inputRef={inputRef}
             prefix={
-              <ButtonFunction
-                tabIndex={-1}
-                size='xs'
-                className={styles.button}
-                icon={<MinusSVG />}
-                onClick={handleMinusButtonClick}
-                onKeyDown={handleMinusButtonKeyDown}
-                disabled={isMinusButtonDisabled}
-                data-test-id='field-stepper__minus-button'
-              />
+              <Tooltip
+                {...minusButtonTooltip}
+                open={minusButtonTooltip ? minusButtonTooltip?.open : false}
+                tip={minusButtonTooltip?.tip}
+                data-test-id='field-stepper__minus-button-tooltip'
+              >
+                <ButtonFunction
+                  tabIndex={-1}
+                  size='xs'
+                  className={styles.button}
+                  icon={<MinusSVG />}
+                  onClick={handleMinusButtonClick}
+                  onKeyDown={handleMinusButtonKeyDown}
+                  disabled={isMinusButtonDisabled}
+                  data-test-id='field-stepper__minus-button'
+                />
+              </Tooltip>
             }
             postfix={
-              <ButtonFunction
-                tabIndex={-1}
-                size='xs'
-                className={styles.button}
-                icon={<PlusSVG />}
-                onClick={handlePlusButtonClick}
-                onKeyDown={handlePlusButtonKeyDown}
-                disabled={isPlusButtonDisabled}
-                data-test-id='field-stepper__plus-button'
-              />
+              <Tooltip
+                {...plusButtonTooltip}
+                open={plusButtonTooltip ? plusButtonTooltip?.open : false}
+                tip={plusButtonTooltip?.tip}
+                data-test-id='field-stepper__plus-button-tooltip'
+              >
+                <ButtonFunction
+                  tabIndex={-1}
+                  size='xs'
+                  className={styles.button}
+                  icon={<PlusSVG />}
+                  onClick={handlePlusButtonClick}
+                  onKeyDown={handlePlusButtonKeyDown}
+                  disabled={isPlusButtonDisabled}
+                  data-test-id='field-stepper__plus-button'
+                />
+              </Tooltip>
             }
           >
             <div className={styles.wrap}>

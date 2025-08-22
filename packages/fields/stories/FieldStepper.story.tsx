@@ -20,7 +20,7 @@ type StoryProps = FieldStepperProps & {
 };
 
 const Template = ({ size, ...args }: StoryProps) => {
-  const [value, setValue] = useState(args.value);
+  const [value = 0, setValue] = useState(args.value);
 
   useEffect(() => {
     setValue(args.value);
@@ -28,7 +28,22 @@ const Template = ({ size, ...args }: StoryProps) => {
 
   return (
     <div className={styles.wrapper} data-size={size}>
-      <FieldStepper {...args} size={size} value={value} onChange={setValue} />
+      <FieldStepper
+        {...args}
+        plusButtonTooltip={{
+          ...args.plusButtonTooltip,
+          tip: args.plusButtonTooltip?.tip,
+          open: typeof args.max === 'number' && value >= args.max ? undefined : false,
+        }}
+        minusButtonTooltip={{
+          ...args.minusButtonTooltip,
+          tip: args.minusButtonTooltip?.tip,
+          open: typeof args.min === 'number' && value <= args.min ? undefined : false,
+        }}
+        size={size}
+        value={value}
+        onChange={setValue}
+      />
     </div>
   );
 };
@@ -55,6 +70,13 @@ export const fieldStepper: StoryObj<StoryProps> = {
     postfix: '',
     validationState: 'default',
     allowMoreThanLimits: true,
+    plusButtonTooltip: {
+      tip: 'Maximum value reached',
+    },
+    minusButtonTooltip: {
+      tip: 'Minimum value reached',
+      placement: 'bottom',
+    },
   },
 
   argTypes: {

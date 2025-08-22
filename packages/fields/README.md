@@ -442,6 +442,8 @@ FieldStepper в основном предназначен для работы с
 | allowMoreThanLimits | `boolean` | true | Можно ли вводить c клавиатуры числа, выходящие за пределы min/max |
 | prefix | `ReactNode` | - | Произвольный префикс для поля |
 | postfix | `ReactNode` | - | Произвольный постфикс для поля |
+| plusButtonTooltip | `TooltipProps` | - | Тултип над кнопкой увеличения значения |
+| minusButtonTooltip | `TooltipProps` | - | Тултип над кнопкой уменьшения значения |
 | id | `string` | - | Значение html-атрибута id |
 | name | `string` | - | Значение html-атрибута name |
 | disabled | `boolean` | - | Является ли поле деактивированным |
@@ -489,7 +491,7 @@ FieldStepper в основном предназначен для работы с
 | autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
-| inputMode | enum InputMode: `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
+| inputMode | enum InputMode: `"none"`, `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
 | spellCheck | `boolean` | true | Значение атрибута spellcheck (проверка орфографии) |
 | pattern | `string` | - | Регулярное выражение валидного инпута |
 | onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки начала нажатия клавиши клавиатуры |
