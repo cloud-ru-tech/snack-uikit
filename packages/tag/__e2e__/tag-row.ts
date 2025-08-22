@@ -94,17 +94,17 @@ test.page(getPage({ rowLimit: 3, demoTagsAmount: 50 }))(
   async t => {
     await t.expect(getComponent().exists).ok();
     await t.expect(getVisibleTagsWrapper().exists).ok();
-    await t.expect(getAmountOfVisibleTags()).eql(17);
+    await t.expect(getAmountOfVisibleTags()).eql(16);
 
     await t.expect(getMoreTagsButton().exists).ok();
 
     await t.expect(getTagCloudWrapper().exists).notOk();
-    await t.expect(getMoreTagsButton().textContent).eql('More: 33');
+    await t.expect(getMoreTagsButton().textContent).eql('More: 34');
 
     await t.hover(getMoreTagsButton());
 
     await t.expect(getTagCloudWrapper().exists).ok();
-    await t.expect(getAmountOfCloudTags()).eql(33);
+    await t.expect(getAmountOfCloudTags()).eql(34);
   },
 );
 

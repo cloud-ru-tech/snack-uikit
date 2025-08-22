@@ -18,5 +18,5 @@ export const DEFAULT_BRAND_MAP = {
 };
 
 export const DEFAULT_BRAND_COLORS_MAP = {
-  [Brand.Default]: '#794ed3',
+  [Brand.Default]: '#06b877',
 };
