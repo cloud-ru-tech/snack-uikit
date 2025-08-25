@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { BaseSource } from './sources/baseSource';
+import { BaseSource } from './sources';
 
 export type StateProps<T> = {
   source?: BaseSource<T>;
@@ -8,16 +8,16 @@ export type StateProps<T> = {
 
 export const useSource = <T>({ source }: StateProps<T>) => {
   const setData = useCallback(
-    (filter: T) => {
+    (data: T) => {
       if (!source) {
         return;
       }
-      source.setFilter(filter);
+      source.setData(data);
     },
     [source],
   );
 
-  const getData = useCallback(() => source?.getFilter(), [source]);
+  const getData = useCallback(() => source?.getData(), [source]);
 
   return { getData, setData };
 };

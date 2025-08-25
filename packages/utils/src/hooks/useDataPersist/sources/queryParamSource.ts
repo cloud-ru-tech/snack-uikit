@@ -1,7 +1,7 @@
 import { isBrowser } from '../../../utils';
 import { BaseSource } from './baseSource';
 
-export class QueryParamSource<TFilter> extends BaseSource<TFilter> {
+export class QueryParamSource<TData> extends BaseSource<TData> {
   getFromSource(): string {
     if (isBrowser()) {
       return new URL(window.location.href).searchParams.get(this.filterKey) || '';

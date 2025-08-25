@@ -75,9 +75,9 @@
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| options | `FilterStateOptions<TFilter>` | - |  |
-| parser | `(jsonFilter: string) => TFilter` | - |  |
-| serializer | `(filter: TFilter) => string` | - |  |
+| options | `DataPersistOptions<TData>` | - |  |
+| parser | `(jsonData: string) => TData` | - |  |
+| serializer | `(data: TData) => string` | - |  |
 ## useModalOpenState
 `hook` 
 
