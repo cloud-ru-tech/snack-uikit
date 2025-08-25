@@ -10,9 +10,16 @@ export type TrackProps = {
   lineStyle?: TrackLineProps['style'];
   dotVariant?: TrackDotProps['variant'];
   dotAppearance?: TrackDotProps['appearance'];
+  showLines?: boolean;
 };
 
-export function Track({ role, lineStyle, dotVariant = TrackDot.variants.Default, dotAppearance }: TrackProps) {
+export function Track({
+  role,
+  lineStyle,
+  dotVariant = TrackDot.variants.Default,
+  dotAppearance,
+  showLines = true,
+}: TrackProps) {
   switch (role) {
     case ROLE.Start:
       return (
@@ -23,7 +30,7 @@ export function Track({ role, lineStyle, dotVariant = TrackDot.variants.Default,
           data-test-id={'timeline-track'}
         >
           <TrackDot variant={dotVariant} appearance={dotAppearance} />
-          <TrackLine style={lineStyle} />
+          {showLines && <TrackLine style={lineStyle} />}
         </div>
       );
 
@@ -35,11 +42,13 @@ export function Track({ role, lineStyle, dotVariant = TrackDot.variants.Default,
           data-dot-variant={dotVariant}
           data-test-id={'timeline-track'}
         >
-          <div className={styles.trackLinePre}>
-            <TrackLine style={TrackLine.styles.Default} />
-          </div>
+          {showLines && (
+            <div className={styles.trackLinePre}>
+              <TrackLine style={TrackLine.styles.Default} />
+            </div>
+          )}
           <TrackDot variant={dotVariant} appearance={dotAppearance} />
-          <TrackLine style={lineStyle} />
+          {showLines && <TrackLine style={lineStyle} />}
         </div>
       );
 
@@ -51,9 +60,11 @@ export function Track({ role, lineStyle, dotVariant = TrackDot.variants.Default,
           data-dot-variant={dotVariant}
           data-test-id={'timeline-track'}
         >
-          <div className={styles.trackLinePre}>
-            <TrackLine style={TrackLine.styles.Default} />
-          </div>
+          {showLines && (
+            <div className={styles.trackLinePre}>
+              <TrackLine style={TrackLine.styles.Default} />
+            </div>
+          )}
           <TrackDot variant={dotVariant} appearance={dotAppearance} />
         </div>
       );

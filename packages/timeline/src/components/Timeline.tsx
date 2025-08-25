@@ -38,6 +38,7 @@ export function Timeline({
             contentPosition={getContentPosition(contentPosition, index, itemContentPosition, alternate)}
             role={getRole(index, items.length)}
             alternateMode={alternate}
+            showLines={items.length > 1}
             {...itemProps}
           />
         ))}

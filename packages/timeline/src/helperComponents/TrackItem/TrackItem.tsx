@@ -14,6 +14,7 @@ export type TrackItemProps = {
   lineStyle?: TrackProps['lineStyle'];
   dotVariant?: TrackProps['dotVariant'];
   dotAppearance?: TrackProps['dotAppearance'];
+  showLines?: boolean;
   alternateMode?: boolean;
 };
 
@@ -26,6 +27,7 @@ export function TrackItem({
   dotVariant,
   dotAppearance,
   alternateMode,
+  showLines,
 }: TrackItemProps) {
   const showOppositeBlock = Boolean(opposite || alternateMode);
 
@@ -38,7 +40,13 @@ export function TrackItem({
               {opposite || null}
             </div>
           )}
-          <Track role={role} lineStyle={lineStyle} dotVariant={dotVariant} dotAppearance={dotAppearance} />
+          <Track
+            role={role}
+            lineStyle={lineStyle}
+            dotVariant={dotVariant}
+            dotAppearance={dotAppearance}
+            showLines={showLines}
+          />
           <div className={styles.content}>{content}</div>
         </div>
       );
@@ -47,7 +55,13 @@ export function TrackItem({
       return (
         <div className={styles.trackItem} data-test-id={'timeline-track-item'}>
           <div className={styles.content}>{content}</div>
-          <Track role={role} lineStyle={lineStyle} dotVariant={dotVariant} dotAppearance={dotAppearance} />
+          <Track
+            role={role}
+            lineStyle={lineStyle}
+            dotVariant={dotVariant}
+            dotAppearance={dotAppearance}
+            showLines={showLines}
+          />
           {showOppositeBlock && (
             <div className={styles.opposite} data-test-id={'timeline-track-item-opposite'}>
               {opposite || null}

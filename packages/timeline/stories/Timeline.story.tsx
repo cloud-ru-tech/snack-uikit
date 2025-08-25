@@ -15,6 +15,7 @@ export default meta;
 
 type StoryProps = TimelineProps & {
   showOpposite: boolean;
+  itemsCount: number;
 };
 
 const Opposite = () => <span>Opposite</span>;
@@ -48,18 +49,23 @@ const Template: StoryFn<StoryProps> = ({
   contentPosition,
   fullWidth,
   alternate,
+  itemsCount,
   ...args
-}: StoryProps) => (
-  <div className={styles.wrapper}>
-    <Timeline
-      {...args}
-      contentPosition={contentPosition}
-      items={showOpposite ? itemsWithOpposite : items}
-      fullWidth={fullWidth}
-      alternate={alternate}
-    />
-  </div>
-);
+}: StoryProps) => {
+  const calculatedItems = (showOpposite ? itemsWithOpposite : items).slice(0, itemsCount);
+
+  return (
+    <div className={styles.wrapper}>
+      <Timeline
+        {...args}
+        contentPosition={contentPosition}
+        items={calculatedItems}
+        fullWidth={fullWidth}
+        alternate={alternate}
+      />
+    </div>
+  );
+};
 
 export const timeline: StoryObj<StoryProps> = {
   render: Template,
@@ -68,6 +74,7 @@ export const timeline: StoryObj<StoryProps> = {
     alternate: false,
     fullWidth: false,
     showOpposite: false,
+    itemsCount: items.length,
     contentPosition: 'right',
   },
 
@@ -75,6 +82,16 @@ export const timeline: StoryObj<StoryProps> = {
     showOpposite: {
       name: '[Story]: Show opposite content',
       type: 'boolean',
+    },
+    itemsCount: {
+      name: '[Story]: Amount of items',
+      defaultValue: items.length,
+      control: {
+        type: 'range',
+        min: 1,
+        max: items.length,
+        step: 1,
+      },
     },
   },
 
