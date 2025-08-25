@@ -36,6 +36,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
+    "@cloud-ru/ft-request-payload-transform": "0.2.0",
     "@snack-uikit/button": "0.19.15",
     "@snack-uikit/chips": "0.28.0",
     "@snack-uikit/icons": "0.27.2",

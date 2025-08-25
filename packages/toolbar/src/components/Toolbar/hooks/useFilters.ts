@@ -4,9 +4,9 @@ import { useUncontrolledProp } from 'uncontrollable';
 
 import { FiltersState, hasFilterBeenApplied } from '@snack-uikit/chips';
 
-import { FilterButtonProps } from '../../helperComponents';
-import styles from './styles.module.scss';
-import { FilterRow } from './types';
+import { FilterButtonProps } from '../../../helperComponents';
+import styles from '../styles.module.scss';
+import { FilterRow } from '../types';
 
 type UseFiltersProps<TState extends FiltersState> = {
   filterRow?: FilterRow<TState>;

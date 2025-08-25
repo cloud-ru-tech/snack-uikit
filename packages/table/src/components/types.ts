@@ -153,7 +153,7 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
   /** Определение какие строки должны быть закреплены в таблице */
   rowPinning?: Pick<RowPinningState, 'top'>;
 
-  /** Конфиг для сохранения состояния в localStorage. <br>
+  /** Конфиг для сохранения состояния в localStorage и queryParams. <br>
    *  Поле id должно быть уникальным для разных таблиц в рамках приложения. <br>
    *  Для корректной работы необходимо наличие id в конфиге columnDefinitions
    *  */

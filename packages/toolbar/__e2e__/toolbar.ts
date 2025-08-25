@@ -48,7 +48,10 @@ function getSelectors() {
     filterButtonCounter: Selector(dataTestIdSelector(`${TEST_IDS.filterButton}__counter`)),
     filterRowAddButton: Selector(dataTestIdSelector('chip-choice-row__add-button')),
     filterRowPinnedSingleFilter: Selector(dataTestIdSelector(STORY_TEST_IDS.pinnedSingleFilter)),
+    filterRowPinnedMultiFilter: Selector(dataTestIdSelector(STORY_TEST_IDS.pinnedMultiFilter)),
     filterRowSingleFilter: Selector(dataTestIdSelector(STORY_TEST_IDS.singleFilter)),
+    filterRowValue: (selector: Selector) =>
+      selector.find(dataTestIdSelector('chip-choice__value')).find(dataTestIdSelector('full-text')),
     filterRowAddListSingleFilter: Selector(
       dataTestIdSelector(`chip-choice-row__add-button-option-${STORY_TEST_IDS.singleFilter}`),
     ),
@@ -350,3 +353,69 @@ test.page(getPage({ showFilters: true }))('Should keep added chips after togglin
   await t.expect(filterRowSingleFilter.exists).ok('Single filter chip should exist');
   await t.expect(filterRowDateFilter.exists).ok('Date filter chip should exist');
 });
+
+test.page(getPage({ enablePersist: true, showSearch: true, showFilters: true }))(
+  'Should persist and restore filter and search state',
+  async t => {
+    const {
+      search,
+      filterButton,
+      filterButtonCounter,
+      filterRow,
+      singleFilterItem,
+      filterRowPinnedSingleFilter,
+      filterRowPinnedMultiFilter,
+      filterRowAddButton,
+      filterRowAddListSingleFilter,
+      singleFilterApplyButton,
+      filterRowSingleFilter,
+      filterRowValue,
+    } = getSelectors();
+
+    const searchText = 'test search value';
+    const localStorageKey = 'toolbar_filters_story_filter';
+
+    const searchInput = search.find('input');
+
+    // Очищаем localStorage перед началом теста
+    await t.eval(() => localStorage.removeItem(localStorageKey), { dependencies: { localStorageKey } });
+
+    await t.click(filterButton).expect(filterRow.exists).ok('Filter row should be visible');
+
+    await t.typeText(searchInput, searchText, { replace: true });
+
+    // Выбираем айтемы в существующих фильтрах
+    await t.click(filterRowPinnedSingleFilter).click(singleFilterItem('2'));
+    await t.click(filterRowPinnedMultiFilter).click(singleFilterItem('3')).click(filterRowPinnedMultiFilter);
+
+    // Добавляем фильтр новый single-фильтр
+    await t
+      .click(filterRowAddButton)
+      .click(filterRowAddListSingleFilter)
+      .click(singleFilterItem('1'))
+      .click(singleFilterApplyButton);
+
+    // Проверяем, что данные сохранились в localStorage
+    const localStorageData = await t.eval(() => localStorage.getItem(localStorageKey), {
+      dependencies: { localStorageKey },
+    });
+    await t.expect(localStorageData).notEql(null, 'Data should be saved to localStorage');
+
+    // Перезагружаем страницу и открываем фильтр
+    await t.navigateTo(getPage({ enablePersist: true, showSearch: true, showFilters: true }));
+    await t.click(filterButton).expect(filterRow.exists).ok('Filter row should be visible');
+
+    // Проверяем счетчик на кнопке фильтра
+    await t.expect(filterButtonCounter.textContent).eql('3', 'Filter counter should show 2 active filters');
+
+    // Проверяем, что состояние восстановлено
+    const restoredSearchValue = await searchInput.value;
+    await t.expect(restoredSearchValue).eql(searchText, 'Search value should be restored');
+
+    await t.expect(filterRowValue(filterRowPinnedSingleFilter).textContent).contains('2');
+    await t.expect(filterRowValue(filterRowPinnedMultiFilter).textContent).contains('3');
+
+    await t.expect(filterRowSingleFilter.exists).ok('Single filter should be restored');
+    await t.expect(filterRowValue(filterRowSingleFilter).textContent).contains('1');
+  },
+);

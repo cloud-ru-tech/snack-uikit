@@ -80,6 +80,15 @@ const columnFilters: TableProps<StubData, Filters>['columnFilters'] = {
       type: 'date-range',
       label: 'Date Range',
     },
+    {
+      id: 'boolean',
+      type: 'multiple',
+      label: 'Boolean',
+      options: [
+        { value: String(true), label: 'Да' },
+        { value: String(false), label: 'Нет' },
+      ],
+    },
   ],
 };
 

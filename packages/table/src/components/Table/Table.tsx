@@ -20,9 +20,9 @@ import { FiltersState } from '@snack-uikit/chips';
 import { useLocale } from '@snack-uikit/locale';
 import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider } from '@snack-uikit/skeleton';
-import { Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
+import { type PersistedFilterState, Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
 import { TruncateString } from '@snack-uikit/truncate-string';
-import { extractSupportProps, useLayoutEffect } from '@snack-uikit/utils';
+import { extractSupportProps } from '@snack-uikit/utils';
 
 import { DEFAULT_PAGE_SIZE, DEFAULT_ROW_SELECTION, DEFAULT_SORTING, DefaultColumns, TEST_IDS } from '../../constants';
 import { CellAutoResizeContext, useCellAutoResizeController } from '../../contexts';
@@ -41,7 +41,7 @@ import {
   useEmptyState,
 } from '../../helperComponents';
 import { ColumnDefinition } from '../../types';
-import { customDateParser, fuzzyFilter } from '../../utils';
+import { fuzzyFilter } from '../../utils';
 import { TableProps } from '../types';
 import {
   useColumnOrderByDrag,
@@ -49,7 +49,6 @@ import {
   useFilters,
   useLoadingTable,
   usePageReset,
-  useSaveTableSettings,
   useStateControl,
 } from './hooks';
 import styles from './styles.module.scss';
@@ -61,6 +60,13 @@ import {
   getTableColumnsDefinitions,
   saveStateToLocalStorage,
 } from './utils';
+import {
+  mapPaginationToRequestPayload,
+  mapPaginationToTableState,
+  mapSortToRequestPayload,
+  mapSortToTableState,
+} from './utils/saveTableState/mappers';
+import { validateFilter, validatePaging, validateSorting } from './utils/saveTableState/validators';
 
 /** Компонент таблицы */
 export function Table<TData extends object, TFilters extends FiltersState = Record<string, unknown>>({
@@ -111,11 +117,6 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   columnsSettings: columnsSettingsProp,
   ...rest
 }: TableProps<TData, TFilters>) {
-  const { setDataToStorages, defaultFilter } = useSaveTableSettings({
-    options: savedState,
-    filterSettings: columnFilters?.filters,
-  });
-
   const [globalFilter, onGlobalFilterChange] = useStateControl<string>(search, '');
 
   const [rowSelection, onRowSelectionChange] = useStateControl<RowSelectionState>(
@@ -137,21 +138,21 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
   const { filter, patchedFilter, setFilter, setFilterVisibility } = useFilters({ columnFilters });
 
-  useEffect(() => {
-    setDataToStorages({ pagination, sorting, filter, search: globalFilter || '' });
-  }, [pagination, sorting, filter, setDataToStorages, globalFilter]);
+  const validatePersistedState = useMemo(
+    () =>
+      (data: unknown): data is PersistedFilterState<TFilters> => {
+        const dataAsSettings = data as PersistedFilterState<TFilters>;
+        const isPaginationValid = validatePaging(dataAsSettings?.pagination);
+        const isSortingValid = validateSorting(dataAsSettings?.sorting);
+        const isSearchValid = !dataAsSettings?.search || typeof dataAsSettings?.search === 'string';
+        const isFilterValid = Boolean(
+          columnFilters?.filters && validateFilter(dataAsSettings.filter, columnFilters.filters),
+        );
 
-  useLayoutEffect(() => {
-    if (defaultFilter) {
-      defaultFilter.pagination && onPaginationChange(defaultFilter.pagination);
-      defaultFilter.search && onGlobalFilterChange(defaultFilter.search);
-      defaultFilter.sorting && onSortingChange(defaultFilter.sorting);
-      defaultFilter.filter && setFilter(customDateParser(defaultFilter.filter));
-      defaultFilter.filter && setFilterVisibility(Object.keys(defaultFilter.filter));
-    }
-    // Только для первого рендера, чтобы проинициализировать фильтр
-    // eslint-disable-next-line
-  }, [defaultFilter]);
+        return isPaginationValid && isSortingValid && isSearchValid && isFilterValid;
+      },
+    [columnFilters?.filters],
+  );
 
   const enableSelection = Boolean(rowSelectionProp?.enable);
   const allTableColumns = useMemo(
@@ -447,6 +448,30 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
             }
             className={styles.toolbar}
             onRefresh={onRefresh ? handleOnRefresh : undefined}
+            persist={
+              savedState?.id && savedState?.filterQueryKey
+                ? {
+                    id: savedState.id,
+                    filterQueryKey: savedState.filterQueryKey,
+                    validateData: validatePersistedState,
+                    state: {
+                      pagination: mapPaginationToRequestPayload(pagination),
+                      sorting: mapSortToRequestPayload(sorting),
+                      filter,
+                      search: globalFilter || '',
+                    },
+                    onLoad: state => {
+                      state.pagination && onPaginationChange(mapPaginationToTableState(state.pagination));
+                      state.search && onGlobalFilterChange(state.search);
+                      state.sorting && onSortingChange(mapSortToTableState(state.sorting));
+                      if (state.filter) {
+                        setFilter(state.filter as TFilters);
+                        setFilterVisibility(Object.keys(state.filter));
+                      }
+                    },
+                  }
+                : undefined
+            }
             bulkActions={bulkActions}
             selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
             checked={table.getIsAllPageRowsSelected()}

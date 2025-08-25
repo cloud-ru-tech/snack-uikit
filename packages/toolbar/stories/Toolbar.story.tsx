@@ -1,6 +1,6 @@
 import { useArgs } from '@storybook/preview-api';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';
 import { PlaceholderSVG } from '@snack-uikit/icons';
@@ -31,6 +31,7 @@ type StoryProps = ToolbarProps & {
   showManyBulkActions: boolean;
   showAfterActions: boolean;
   showMoreActions: boolean;
+  enablePersist: boolean;
 };
 
 const Template: StoryFn<StoryProps> = ({
@@ -45,14 +46,15 @@ const Template: StoryFn<StoryProps> = ({
   outline,
   selectionMode,
   filterRow,
+  enablePersist,
   ...args
 }: StoryProps) => {
   const bulkActions = showManyBulkActions ? args.bulkActions : args.bulkActions?.slice(0, 3);
-  const [{ search, checked, indeterminate }, updateArgs] = useArgs<StoryProps>();
+  const [{ checked, indeterminate }, updateArgs] = useArgs<StoryProps>();
 
-  const onSearchChange = (value: string) => {
-    updateArgs({ search: { ...search, value, onChange() {} } });
-  };
+  const [filtersValue, setFiltersValue] = useState<Record<string, unknown>>({});
+  const [visibleFilters, setVisibleFilters] = useState<string[]>([]);
+  const [searchValue, setSearchValue] = useState<string>('');
 
   const toggleChecked = () => {
     updateArgs({ checked: !checked });
@@ -93,11 +95,10 @@ const Template: StoryFn<StoryProps> = ({
             }
           : {})}
         search={
-          showSearch && search
+          showSearch
             ? {
-                ...search,
-                value: search.value,
-                onChange: onSearchChange,
+                value: searchValue,
+                onChange: setSearchValue,
                 onSubmit,
               }
             : undefined
@@ -105,7 +106,32 @@ const Template: StoryFn<StoryProps> = ({
         onRefresh={showOnRefresh ? onRefresh : undefined}
         after={showAfterActions ? afterActions : undefined}
         moreActions={showMoreActions ? OPTIONS : undefined}
-        filterRow={showFilters && filterRow ? { ...filterRow, open: filterRowOpened } : undefined}
+        filterRow={
+          showFilters && filterRow
+            ? {
+                ...filterRow,
+                open: filterRowOpened,
+                value: filtersValue,
+                onChange: setFiltersValue,
+                visibleFilters,
+                onVisibleFiltersChange: setVisibleFilters,
+              }
+            : undefined
+        }
+        persist={
+          enablePersist
+            ? {
+                id: 'toolbar_filters_story',
+                filterQueryKey: 'filters',
+                onLoad: ({ filter, search: searchValue }) => {
+                  const filterValue = filter || {};
+                  setFiltersValue(filterValue);
+                  setVisibleFilters(Object.keys(filterValue));
+                  setSearchValue(searchValue || '');
+                },
+              }
+            : undefined
+        }
       />
     </div>
   );
@@ -197,10 +223,7 @@ export const toolbar: StoryObj<StoryProps> = {
       type: 'boolean',
     },
     search: {
-      if: {
-        arg: 'showSearch',
-        eq: true,
-      },
+      table: { disable: true },
     },
     showAfterActions: {
       name: '[Story]: Show custom ReactNode "after" (on the right side)',
@@ -208,6 +231,10 @@ export const toolbar: StoryObj<StoryProps> = {
     },
     showMoreActions: {
       name: '[Story]: Show moreActions',
+      type: 'boolean',
+    },
+    enablePersist: {
+      name: '[Story]: Enable filters persist',
       type: 'boolean',
     },
 

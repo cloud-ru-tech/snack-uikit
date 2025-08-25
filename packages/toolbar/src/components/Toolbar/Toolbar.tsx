@@ -10,14 +10,18 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 import { TEST_IDS } from '../../constants';
 import { BulkActions, FilterButton, MoreActions, Separator } from '../../helperComponents';
 import { extractBulkActionsProps, isBulkActionsProps } from './helpers';
-import { useFilters } from './hooks';
+import { useFilters, usePersistState } from './hooks';
 import styles from './styles.module.scss';
-import { CheckedToolbarProps, DefaultToolbarProps, FilterRow } from './types';
+import { CheckedToolbarProps, DefaultToolbarProps, FilterRow, ToolbarPersistConfig } from './types';
 
 export type ToolbarProps<TState extends FiltersState = Record<string, unknown>> = WithSupportProps<
   DefaultToolbarProps | CheckedToolbarProps
 > & {
   filterRow?: FilterRow<TState>;
+  /** Конфиг для сохранения состояния в localStorage и queryParams. <br>
+   *  Поле id должно быть уникальным для каждого инстанса компонента. <br>
+   *  */
+  persist?: ToolbarPersistConfig<TState>;
 };
 
 export function Toolbar<TState extends FiltersState = Record<string, unknown>>({
@@ -28,6 +32,7 @@ export function Toolbar<TState extends FiltersState = Record<string, unknown>>({
   onRefresh,
   search,
   filterRow: filterRowProps,
+  persist,
   ...rest
 }: ToolbarProps<TState>) {
   const needsBulkActions = isBulkActionsProps(rest);
@@ -35,6 +40,8 @@ export function Toolbar<TState extends FiltersState = Record<string, unknown>>({
   const resizingContainerRef = useRef<HTMLDivElement>(null);
 
   const { filterButton, filterRow } = useFilters<TState>({ filterRow: filterRowProps });
+
+  usePersistState({ persist, filter: filterRow?.value, search: search?.value });
 
   return (
     <div className={styles.containerWrapper} {...extractSupportProps(rest)}>

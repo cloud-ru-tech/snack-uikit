@@ -1,2 +1,2 @@
 export * from './Toolbar';
-export type { FilterRow } from './Toolbar/types';
+export type { FilterRow, PersistedFilterState, ToolbarPersistConfig } from './Toolbar/types';

@@ -11,6 +11,7 @@ export const TEST_ID_TOASTER = {
 
 export const STORY_TEST_IDS = {
   pinnedSingleFilter: 'pinned-single-filter',
+  pinnedMultiFilter: 'pinned-multi-filter',
   singleFilter: 'single-filter',
   dateFilter: 'date-filter',
 };

@@ -16,4 +16,5 @@ export type Filters = {
   multiple: string[];
   date: Date;
   dateRange: [Date, Date];
+  boolean: boolean;
 };

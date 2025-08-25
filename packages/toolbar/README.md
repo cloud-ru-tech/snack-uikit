@@ -25,6 +25,7 @@ Toolbar
 | after | `ReactNode` | - | Дополнительный слот в конце тулбара |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
 | filterRow | `FilterRow<TState>` | - |  |
+| persist | `ToolbarPersistConfig<TState>` | - | Конфиг для сохранения состояния в localStorage и queryParams. <br> Поле id должно быть уникальным для каждого инстанса компонента. <br> |
 
 
 [//]: DOCUMENTATION_SECTION_END
