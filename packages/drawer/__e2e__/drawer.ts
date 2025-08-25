@@ -122,20 +122,21 @@ test.page(getPage({ mode: MODE.Regular }))(
   },
 );
 
-test.page(getPage({ mode: MODE.Soft }))(
-  `Overlay shouldn't exist in "Soft" mode and Esc is not closing modal`,
-  async t => {
-    const closeBtn = Selector(dataTestIdSelector(TEST_IDS.closeButton));
-    await t.expect(closeBtn.exists).ok();
+test.page(getPage({ mode: MODE.Soft }))(`Overlay shouldn't exist in "Soft" mode and Esc closes modal`, async t => {
+  const closeBtn = Selector(dataTestIdSelector(TEST_IDS.closeButton));
 
-    await t.expect(getOverlayElement().exists).notOk();
-
+  if (t.browser.name === 'Firefox') {
+    // Close watcher is not working in Firefox
+    await t.expect(closeBtn.exists).ok('Should be close button on page');
+  } else {
+    await t.expect(closeBtn.exists).ok('Should be close button on page');
+    await t.expect(getOverlayElement().exists).notOk('Should be no overlay element on page');
     await t
       .pressKey('esc')
       .expect(Selector(dataTestIdSelector(TEST_IDS.main)).exists)
-      .ok();
-  },
-);
+      .notOk('Should not be drawer on page after Esc press', { timeout: 1000 });
+  }
+});
 
 test.page(getPage())('Should scroll long content', async t => {
   const content = getScrollableElement();

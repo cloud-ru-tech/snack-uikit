@@ -59,11 +59,12 @@ const globalTypes: GlobalTypes = {
     name: 'Brand Map with Colors',
     description: 'Map of color for brands list',
     defaultValue: {
-      ...DEFAULT_BRAND_COLORS_MAP,
+      [Brand.Default]: DEFAULT_BRAND_COLORS_MAP[Brand.Default],
       ...additionalThemes.reduce((res: Record<string, string>, theme) => {
         res[theme.key] = theme.color;
         return res;
       }, {}),
+      [Brand.Nachos]: DEFAULT_BRAND_COLORS_MAP[Brand.Nachos],
     },
   },
   [Brand.Default]: {
@@ -79,6 +80,11 @@ const globalTypes: GlobalTypes = {
     };
     return res;
   }, {}),
+  [Brand.Nachos]: {
+    name: 'Brand Nachos',
+    description: '',
+    defaultValue: DEFAULT_BRAND_MAP[Brand.Nachos],
+  },
 };
 
 const decorators: Preview['decorators'] = [
