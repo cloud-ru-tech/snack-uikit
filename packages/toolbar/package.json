@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Toolbar",
-  "version": "0.13.22",
+  "version": "0.13.23",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -41,7 +41,7 @@
     "@snack-uikit/icons": "0.27.2",
     "@snack-uikit/list": "0.32.1",
     "@snack-uikit/search-private": "0.4.27",
-    "@snack-uikit/tag": "0.15.7",
+    "@snack-uikit/tag": "0.15.8",
     "@snack-uikit/toggles": "0.13.20",
     "@snack-uikit/tooltip": "0.18.3",
     "@snack-uikit/utils": "3.10.1",

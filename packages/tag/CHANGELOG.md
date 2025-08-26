@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.15.8 (2025-08-26)
+
+**Note:** Version bump only for package @snack-uikit/tag
+
+
+
+
+
 ## 0.15.7 (2025-07-16)
 
 ### Only dependencies have been changed
