@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2025-08-26)
+
+
+### Features
+
+* **PDS-2735:** add hiding trackline when item only one ([eef631a](https://github.com/cloud-ru-tech/snack-uikit/commit/eef631afe073fce0867e59bdfa696ca7f9a754c1))
+
+
+
+
+
 ## 0.5.9 (2025-07-16)
 
 ### Only dependencies have been changed
