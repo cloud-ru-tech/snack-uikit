@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { ButtonFunction } from '@snack-uikit/button';
@@ -173,10 +173,9 @@ export function ChipChoiceRow<TState extends FiltersState>({
             id: filter.id,
             content: { option: filter.label ?? filter.id },
             onClick: () => {
-              setAddListValue(function (prevValue?: string[]) {
-                return [...(prevValue ?? []), filter.id];
-              });
+              setAddListValue((prevValue?: string[]) => [...(prevValue ?? []), filter.id]);
               setAddListOpen(false);
+              handleChipOpen(filter.id)(true);
             },
             'data-test-id': `${CHIP_CHOICE_ROW_IDS.addButtonOption}-${filter['data-test-id'] ?? index}`,
           });
@@ -185,26 +184,10 @@ export function ChipChoiceRow<TState extends FiltersState>({
         },
         [] as DroplistProps['items'],
       ),
-    [addListValue, nonPinnedFilters, setAddListValue],
+    [addListValue, handleChipOpen, nonPinnedFilters, setAddListValue],
   );
 
   const canAddChips = addSelectorOptions.length > 0;
-
-  const addListPrevValue = useRef(addListValue);
-
-  useEffect(() => {
-    const prevValue = addListPrevValue.current;
-
-    if (addListValue.length > prevValue.length) {
-      const newItem = addListValue.find(item => !prevValue.includes(item));
-
-      if (newItem) {
-        handleChipOpen(newItem)(true);
-      }
-    }
-
-    addListPrevValue.current = addListValue;
-  }, [addListValue, handleChipOpen]);
 
   const showClearButton = showClearButtonProp && hasAnyFilter;
   const showPinnedFiltersDivider = showAddButton || showClearButton || visibleFilters.length > 0;
