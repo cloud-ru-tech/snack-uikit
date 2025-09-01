@@ -295,25 +295,25 @@ importers:
   packages/accordion:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/toggles':
-        specifier: 0.13.20
+        specifier: 0.13.21
         version: link:../toggles
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -332,16 +332,16 @@ importers:
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/link':
-        specifier: 0.17.9
+        specifier: 0.17.10
         version: link:../link
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -350,25 +350,25 @@ importers:
   packages/attachment:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/card':
-        specifier: 0.20.2
+        specifier: 0.20.3
         version: link:../card
       '@snack-uikit/icon-predefined':
-        specifier: 0.7.9
+        specifier: 0.7.10
         version: link:../icon-predefined
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -377,10 +377,10 @@ importers:
   packages/avatar:
     dependencies:
       '@snack-uikit/status':
-        specifier: 0.10.0
+        specifier: 0.10.1
         version: link:../status
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -389,13 +389,13 @@ importers:
   packages/breadcrumbs:
     dependencies:
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -407,13 +407,13 @@ importers:
   packages/button:
     dependencies:
       '@snack-uikit/counter':
-        specifier: 0.8.9
+        specifier: 0.8.10
         version: link:../counter
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -422,16 +422,16 @@ importers:
   packages/button-combo:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -440,22 +440,22 @@ importers:
   packages/calendar:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/divider':
-        specifier: 3.2.9
+        specifier: 3.2.10
         version: link:../divider
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -470,31 +470,31 @@ importers:
   packages/card:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icon-predefined':
-        specifier: 0.7.9
+        specifier: 0.7.10
         version: link:../icon-predefined
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/promo-tag':
-        specifier: 0.7.7
+        specifier: 0.7.8
         version: link:../promo-tag
       '@snack-uikit/tag':
-        specifier: 0.15.8
+        specifier: 0.15.9
         version: link:../tag
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -509,10 +509,10 @@ importers:
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/pagination':
-        specifier: 0.10.18
+        specifier: 0.10.19
         version: link:../pagination
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -530,37 +530,37 @@ importers:
   packages/chips:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/calendar':
-        specifier: 0.13.0
+        specifier: 0.13.1
         version: link:../calendar
       '@snack-uikit/divider':
-        specifier: 3.2.9
+        specifier: 3.2.10
         version: link:../divider
       '@snack-uikit/dropdown':
-        specifier: 0.5.2
+        specifier: 0.5.3
         version: link:../dropdown
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -588,19 +588,19 @@ importers:
         specifier: 4.6.0
         version: 4.6.0(monaco-editor@0.52.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       chroma-js:
         specifier: 3.1.2
@@ -619,22 +619,22 @@ importers:
   packages/color-picker:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/input-private':
-        specifier: 4.8.0
+        specifier: 4.8.1
         version: link:../input-private
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/segmented-control':
-        specifier: 0.6.8
+        specifier: 0.6.9
         version: link:../segmented-control
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -646,7 +646,7 @@ importers:
   packages/counter:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -655,7 +655,7 @@ importers:
   packages/divider:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -664,25 +664,25 @@ importers:
   packages/drawer:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/scroll':
-        specifier: 0.10.4
+        specifier: 0.10.5
         version: link:../scroll
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -694,7 +694,7 @@ importers:
   packages/drop-zone:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -706,10 +706,10 @@ importers:
   packages/dropdown:
     dependencies:
       '@snack-uikit/popover-private':
-        specifier: 0.15.2
+        specifier: 0.15.3
         version: link:../popover-private
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -718,52 +718,52 @@ importers:
   packages/fields:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/calendar':
-        specifier: 0.13.0
+        specifier: 0.13.1
         version: link:../calendar
       '@snack-uikit/color-picker':
-        specifier: 0.3.41
+        specifier: 0.3.42
         version: link:../color-picker
       '@snack-uikit/divider':
-        specifier: 3.2.9
+        specifier: 3.2.10
         version: link:../divider
       '@snack-uikit/dropdown':
-        specifier: 0.5.2
+        specifier: 0.5.3
         version: link:../dropdown
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/input-private':
-        specifier: 4.8.0
+        specifier: 4.8.1
         version: link:../input-private
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/scroll':
-        specifier: 0.10.4
+        specifier: 0.10.5
         version: link:../scroll
       '@snack-uikit/skeleton':
-        specifier: 0.6.8
+        specifier: 0.6.9
         version: link:../skeleton
       '@snack-uikit/slider':
-        specifier: 0.3.25
+        specifier: 0.3.26
         version: link:../slider
       '@snack-uikit/tag':
-        specifier: 0.15.8
+        specifier: 0.15.9
         version: link:../tag
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -794,7 +794,7 @@ importers:
   packages/hot-spot:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -803,7 +803,7 @@ importers:
   packages/icon-predefined:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -836,19 +836,19 @@ importers:
   packages/info-block:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icon-predefined':
-        specifier: 0.7.9
+        specifier: 0.7.10
         version: link:../icon-predefined
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -860,7 +860,7 @@ importers:
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -869,10 +869,10 @@ importers:
   packages/link:
     dependencies:
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -881,40 +881,40 @@ importers:
   packages/list:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/divider':
-        specifier: 3.2.9
+        specifier: 3.2.10
         version: link:../divider
       '@snack-uikit/dropdown':
-        specifier: 0.5.2
+        specifier: 0.5.3
         version: link:../dropdown
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/info-block':
-        specifier: 0.6.31
+        specifier: 0.6.32
         version: link:../info-block
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/scroll':
-        specifier: 0.10.4
+        specifier: 0.10.5
         version: link:../scroll
       '@snack-uikit/search-private':
-        specifier: 0.4.27
+        specifier: 0.4.28
         version: link:../search-private
       '@snack-uikit/toggles':
-        specifier: 0.13.20
+        specifier: 0.13.21
         version: link:../toggles
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       '@tanstack/react-virtual':
         specifier: 3.11.2
@@ -929,7 +929,7 @@ importers:
   packages/loaders:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -948,25 +948,25 @@ importers:
   packages/markdown:
     dependencies:
       '@snack-uikit/code-editor':
-        specifier: 0.7.9
+        specifier: 0.7.10
         version: link:../code-editor
       '@snack-uikit/divider':
-        specifier: 3.2.9
+        specifier: 3.2.10
         version: link:../divider
       '@snack-uikit/fields':
-        specifier: 0.49.2
+        specifier: 0.49.3
         version: link:../fields
       '@snack-uikit/link':
-        specifier: 0.17.9
+        specifier: 0.17.10
         version: link:../link
       '@snack-uikit/toggles':
-        specifier: 0.13.20
+        specifier: 0.13.21
         version: link:../toggles
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -981,34 +981,34 @@ importers:
   packages/modal:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icon-predefined':
-        specifier: 0.7.9
+        specifier: 0.7.10
         version: link:../icon-predefined
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/link':
-        specifier: 0.17.9
+        specifier: 0.17.10
         version: link:../link
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/scroll':
-        specifier: 0.10.4
+        specifier: 0.10.5
         version: link:../scroll
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1024,43 +1024,43 @@ importers:
   packages/notification:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/chips':
-        specifier: 0.28.0
+        specifier: 0.28.1
         version: link:../chips
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/info-block':
-        specifier: 0.6.31
+        specifier: 0.6.32
         version: link:../info-block
       '@snack-uikit/link':
-        specifier: 0.17.9
+        specifier: 0.17.10
         version: link:../link
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/popover-private':
-        specifier: 0.15.2
+        specifier: 0.15.3
         version: link:../popover-private
       '@snack-uikit/scroll':
-        specifier: 0.10.4
+        specifier: 0.10.5
         version: link:../scroll
       '@snack-uikit/skeleton':
-        specifier: 0.6.8
+        specifier: 0.6.9
         version: link:../skeleton
       '@snack-uikit/tag':
-        specifier: 0.15.8
+        specifier: 0.15.9
         version: link:../tag
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1069,22 +1069,22 @@ importers:
   packages/pagination:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
 
   packages/popover:
     dependencies:
       '@snack-uikit/popover-private':
-        specifier: 0.15.2
+        specifier: 0.15.3
         version: link:../popover-private
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
 
   packages/popover-private:
@@ -1093,7 +1093,7 @@ importers:
         specifier: 0.26.24
         version: 0.26.24(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1112,7 +1112,7 @@ importers:
   packages/progress-bar:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       '@tanem/react-nprogress':
         specifier: 5.0.35
@@ -1124,10 +1124,10 @@ importers:
   packages/promo-tag:
     dependencies:
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1139,7 +1139,7 @@ importers:
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1151,7 +1151,7 @@ importers:
   packages/scroll:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1166,13 +1166,13 @@ importers:
   packages/search:
     dependencies:
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/search-private':
-        specifier: 0.4.27
+        specifier: 0.4.28
         version: link:../search-private
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1191,16 +1191,16 @@ importers:
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/input-private':
-        specifier: 4.8.0
+        specifier: 4.8.1
         version: link:../input-private
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1212,10 +1212,10 @@ importers:
   packages/segmented-control:
     dependencies:
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1227,7 +1227,7 @@ importers:
   packages/skeleton:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1236,10 +1236,10 @@ importers:
   packages/slider:
     dependencies:
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1251,13 +1251,13 @@ importers:
   packages/status:
     dependencies:
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1269,16 +1269,16 @@ importers:
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1302,49 +1302,49 @@ importers:
         specifier: 3.2.2
         version: 3.2.2(react@18.2.0)
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/chips':
-        specifier: 0.28.0
+        specifier: 0.28.1
         version: link:../chips
       '@snack-uikit/icon-predefined':
-        specifier: 0.7.9
+        specifier: 0.7.10
         version: link:../icon-predefined
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/info-block':
-        specifier: 0.6.31
+        specifier: 0.6.32
         version: link:../info-block
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/pagination':
-        specifier: 0.10.18
+        specifier: 0.10.19
         version: link:../pagination
       '@snack-uikit/scroll':
-        specifier: 0.10.4
+        specifier: 0.10.5
         version: link:../scroll
       '@snack-uikit/skeleton':
-        specifier: 0.6.8
+        specifier: 0.6.9
         version: link:../skeleton
       '@snack-uikit/toggles':
-        specifier: 0.13.20
+        specifier: 0.13.21
         version: link:../toggles
       '@snack-uikit/toolbar':
-        specifier: 0.13.23
+        specifier: 0.14.0
         version: link:../toolbar
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       '@tanstack/match-sorter-utils':
         specifier: 8.11.8
@@ -1371,22 +1371,22 @@ importers:
   packages/tabs:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/counter':
-        specifier: 0.8.9
+        specifier: 0.8.10
         version: link:../counter
       '@snack-uikit/divider':
-        specifier: 3.2.9
+        specifier: 3.2.10
         version: link:../divider
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1401,19 +1401,19 @@ importers:
   packages/tag:
     dependencies:
       '@snack-uikit/dropdown':
-        specifier: 0.5.2
+        specifier: 0.5.3
         version: link:../dropdown
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/scroll':
-        specifier: 0.10.4
+        specifier: 0.10.5
         version: link:../scroll
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1422,7 +1422,7 @@ importers:
   packages/timeline:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1434,25 +1434,25 @@ importers:
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/link':
-        specifier: 0.17.9
+        specifier: 0.17.10
         version: link:../link
       '@snack-uikit/loaders':
-        specifier: 0.9.8
+        specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/locale':
         specifier: 0.15.1
         version: link:../locale
       '@snack-uikit/progress-bar':
-        specifier: 0.1.9
+        specifier: 0.1.10
         version: link:../progress-bar
       '@snack-uikit/scroll':
-        specifier: 0.10.4
+        specifier: 0.10.5
         version: link:../scroll
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1473,7 +1473,7 @@ importers:
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1491,34 +1491,34 @@ importers:
         specifier: 0.2.0
         version: 0.2.0
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/chips':
-        specifier: 0.28.0
+        specifier: 0.28.1
         version: link:../chips
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/search-private':
-        specifier: 0.4.27
+        specifier: 0.4.28
         version: link:../search-private
       '@snack-uikit/tag':
-        specifier: 0.15.8
+        specifier: 0.15.9
         version: link:../tag
       '@snack-uikit/toggles':
-        specifier: 0.13.20
+        specifier: 0.13.21
         version: link:../toggles
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1533,10 +1533,10 @@ importers:
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/popover-private':
-        specifier: 0.15.2
+        specifier: 0.15.3
         version: link:../popover-private
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1548,25 +1548,25 @@ importers:
   packages/tree:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.15
+        specifier: 0.19.16
         version: link:../button
       '@snack-uikit/icons':
         specifier: 0.27.2
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.32.1
+        specifier: 0.32.2
         version: link:../list
       '@snack-uikit/toggles':
-        specifier: 0.13.20
+        specifier: 0.13.21
         version: link:../toggles
       '@snack-uikit/truncate-string':
-        specifier: 0.7.0
+        specifier: 0.7.1
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.10
+        specifier: 0.8.11
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1581,10 +1581,10 @@ importers:
   packages/truncate-string:
     dependencies:
       '@snack-uikit/tooltip':
-        specifier: 0.18.3
+        specifier: 0.18.4
         version: link:../tooltip
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -1600,7 +1600,7 @@ importers:
   packages/typography:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 3.10.1
+        specifier: 4.0.0
         version: link:../utils
       classnames:
         specifier: 2.5.1
@@ -13052,7 +13052,7 @@ snapshots:
       eslint: 9.17.0
       eslint-config-prettier: 9.1.0(eslint@9.17.0)
       eslint-import-resolver-typescript: 3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint@9.17.0))(eslint@9.17.0)
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint-import-resolver-typescript@3.7.0)(eslint@9.17.0)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint@9.17.0))(eslint@9.17.0))(eslint@9.17.0)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.17.0)
       eslint-plugin-no-only-tests: 3.3.0
       eslint-plugin-prettier: 5.2.1(@types/eslint@9.6.1)(eslint-config-prettier@9.1.0(eslint@9.17.0))(eslint@9.17.0)(prettier@3.5.3)
@@ -17811,7 +17811,7 @@ snapshots:
       is-glob: 4.0.3
       stable-hash: 0.0.4
     optionalDependencies:
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint-import-resolver-typescript@3.7.0)(eslint@9.17.0)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint@9.17.0))(eslint@9.17.0))(eslint@9.17.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -17826,7 +17826,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint-import-resolver-typescript@3.7.0)(eslint@9.17.0):
+  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0)(typescript@5.5.2))(eslint@9.17.0))(eslint@9.17.0))(eslint@9.17.0):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.9

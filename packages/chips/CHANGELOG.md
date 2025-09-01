@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.28.1 (2025-09-01)
+
+
+### Bug Fixes
+
+* **FF-6982:** open new chip only after manual add ([c73c42e](https://github.com/cloud-ru-tech/snack-uikit/commit/c73c42efd6a61cd3429fbc55a8b5fc022c4ef538))
+
+
+
+
+
 # 0.28.0 (2025-08-01)
 
 

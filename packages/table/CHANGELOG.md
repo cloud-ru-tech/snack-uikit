@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.37.0 (2025-09-01)
+
+
+### Features
+
+* **FF-6982:** move persist state functionality from Table to Toolbar ([8fac4f5](https://github.com/cloud-ru-tech/snack-uikit/commit/8fac4f5d5201ce3110be2cc4426548e882b1fe3a))
+
+
+
+
+
 ## 0.36.26 (2025-08-26)
 
 ### Only dependencies have been changed

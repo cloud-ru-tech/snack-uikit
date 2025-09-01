@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.0.0 (2025-09-01)
+
+
+### BREAKING CHANGES
+
+
+* **FF-6982:** rename type, props and returned getter name ([859a025](https://github.com/cloud-ru-tech/snack-uikit/commit/859a025bc670b7882d3286c123d243fc5df0a587))
+
+
+
+
 ## 3.10.1 (2025-07-16)
 
 
