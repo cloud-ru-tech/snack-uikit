@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.50.0 (2025-09-02)
+
+
+### Features
+
+* **UIIAAS-1033:** added tooltips in FieldStepper counter buttons ([3f6d19f](https://github.com/cloud-ru-tech/snack-uikit/commit/3f6d19fddbe76cc9483fed77ae77bafbe610f4bf))
+
+
+
+
+
 ## 0.49.3 (2025-09-01)
 
 ### Only dependencies have been changed
