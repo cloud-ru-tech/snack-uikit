@@ -23,26 +23,40 @@ export const mapSortToTableState = (value: RequestPayloadParams['sort'] = []): S
     desc: column.direction === 'd',
   }));
 
-export const mapPaginationToRequestPayload = (value: PaginationState): RequestPayloadParams['pagination'] => ({
-  limit: value.pageSize,
-  offset: value.pageSize > 1 ? value.pageSize * value.pageIndex : 0,
-});
+export const mapPaginationToRequestPayload = (
+  value?: PaginationState | RequestPayloadParams['pagination'],
+): RequestPayloadParams['pagination'] => {
+  if (!value) return undefined;
 
-export const mapSortToRequestPayload = (value: SortingState): RequestPayloadParams['sort'] =>
+  if ('limit' in value || 'offset' in value) {
+    return value;
+  }
+
+  return {
+    limit: value.pageSize,
+    offset: value.pageIndex > 1 ? value.pageSize * value.pageIndex : 0,
+  };
+};
+
+export const mapSortToRequestPayload = (value?: SortingState): RequestPayloadParams['sort'] =>
   value?.map(column => ({
     field: column.id,
     direction: (column.desc ? 'd' : 'a') as SortDirection,
-  })) || [];
+  }));
 
 /** Вспомогательная функция для преобразования состояния таблицы к формату RequestPayloadParams */
-export const formatTableStateToRequestPayload = <T extends FiltersState>(
-  state: Omit<PersistedFilterState<T>, 'pagination' | 'sorting'> & {
-    pagination: PaginationState;
-    sorting: SortingState;
-  },
-) =>
+export const formatTableStateToRequestPayload = <T extends FiltersState>({
+  pagination,
+  sorting,
+  search,
+  filter,
+}: Omit<PersistedFilterState<T>, 'pagination' | 'sorting'> & {
+  pagination?: PaginationState | RequestPayloadParams['pagination'];
+  sorting?: SortingState;
+}) =>
   formatFilterStateToRequestPayload({
-    ...state,
-    pagination: mapPaginationToRequestPayload(state.pagination),
-    sorting: mapSortToRequestPayload(state.sorting),
+    filter,
+    search,
+    pagination: mapPaginationToRequestPayload(pagination),
+    sorting: mapSortToRequestPayload(sorting),
   });
