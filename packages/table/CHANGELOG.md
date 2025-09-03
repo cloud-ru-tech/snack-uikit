@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.37.2 (2025-09-03)
+
+
+### Bug Fixes
+
+* **FF-6982:** conditions in helpers for table state transform ([446f89c](https://github.com/cloud-ru-tech/snack-uikit/commit/446f89c2ea785a99507e36b398cbfe5326162c3f))
+
+
+
+
+
 ## 0.37.1 (2025-09-03)
 
 
