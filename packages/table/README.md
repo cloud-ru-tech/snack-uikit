@@ -104,6 +104,13 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | value | `string \| number` | - |  |
+## formatTableStateToRequestPayload
+Вспомогательная функция для преобразования состояния таблицы к формату RequestPayloadParams
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| sorting* | `SortingState` | - |  |
+| pagination* | `PaginationState` | - |  |
 ## Table
 Компонент таблицы
 ### Props
@@ -179,6 +186,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | onChangePage* | `(offset: number, limit: number) => void` | - |  |
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - | Определение внешнего вида и функционала колонок |
+| sorting | `{ initialState?: SortingState; state?: SortingState; onChange?(state: SortingState): void; }` | - | Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>initialState</strong>: Начальное состояние сортировки <br> <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
 | loading | `boolean` | - | Состояние загрузки |
 | className | `string` | - | CSS-класс |
 | onRefresh | `() => void` | - | Колбек обновления данных |
@@ -187,7 +195,6 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | keepPinnedRows | `boolean` | false | Параметр отвечает за отображение закрепленных строк на всех страницах таблицы |
 | copyPinnedRows | `boolean` | false | Параметр отвечает за сохранение закрепленных строк в теле таблицы |
 | enableSelectPinned | `boolean` | - | Параметр отвечает за чекбокс выбора закрепленных строк |
-| sorting | `{ initialState?: SortingState; state?: SortingState; onChange?(state: SortingState): void; }` | - | Параметры отвечают за возможность сортировки, их стоит использовать если нужно отслеживать состояние <br> <strong>initialState</strong>: Начальное состояние сортировки <br> <strong>state</strong>: Состояние сортировки, жестко устанавливаемое снаружи <br> <strong>onChange</strong>: Колбэк на изменение сортировки |
 | columnsSettings | `{ enableDrag?: boolean; enableSettingsMenu?: boolean; }` | - | Параметры отвечают за настройки колонок <br> <strong>enableDrag</strong>: Включение сортировки порядка столбцов вручную перетаскиванием <br> <strong>enableSettingsMenu</strong>: Включение настроек показа колонок <br> |
 | expanding | `{ getSubRows: (element: TData) => TData[]; expandingColumnDefinition: TreeColumnDefinitionProps<TData>; }` | - | Параметр отвечает за общие настройки раскрывающихся строк |
 | rowSelection | `{ initialState?: RowSelectionState; state?: RowSelectionState; enable?: boolean \| ((row: Row<TData>) => boolean); multiRow?: boolean; onChange?(state: RowSelectionState): void; }` | - | Параметры отвечают за возможность выбора строк <br> <strong>initialState</strong>: Начальное состояние выбора строк <br> <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br> <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br> <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br> <strong>onChange</strong>: Колбэк на выбор строк |

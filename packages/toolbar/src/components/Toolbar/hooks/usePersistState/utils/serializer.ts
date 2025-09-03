@@ -40,10 +40,14 @@ const mapFilterToPayload = (value?: FiltersState): RequestPayloadParams['filter'
     );
 };
 
-export const defaultSerializer = <T extends FiltersState>(value: PersistedFilterState<T>) =>
+/** Вспомогательная функция для преобразования состояния тулбара к формату RequestPayloadParams */
+export const formatFilterStateToRequestPayload = <T extends FiltersState>(value?: PersistedFilterState<T> | null) =>
   createRequestPayload({
     pagination: value?.pagination,
     search: value?.search ?? '',
     sort: value?.sorting,
     filter: mapFilterToPayload(value?.filter),
-  }).toString();
+  });
+
+export const defaultSerializer = <T extends FiltersState>(value: PersistedFilterState<T>) =>
+  formatFilterStateToRequestPayload(value).toString();

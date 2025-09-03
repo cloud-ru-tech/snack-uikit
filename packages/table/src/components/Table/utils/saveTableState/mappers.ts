@@ -1,6 +1,8 @@
 import { PaginationState, SortingState } from '@tanstack/react-table';
 
 import { RequestPayloadParams, SortDirection } from '@cloud-ru/ft-request-payload-transform';
+import { FiltersState } from '@snack-uikit/chips';
+import { formatFilterStateToRequestPayload, PersistedFilterState } from '@snack-uikit/toolbar';
 
 import { DEFAULT_PAGE_SIZE } from '../../../../constants';
 
@@ -23,7 +25,7 @@ export const mapSortToTableState = (value: RequestPayloadParams['sort'] = []): S
 
 export const mapPaginationToRequestPayload = (value: PaginationState): RequestPayloadParams['pagination'] => ({
   limit: value.pageSize,
-  offset: value.pageSize * value.pageIndex,
+  offset: value.pageSize > 1 ? value.pageSize * value.pageIndex : 0,
 });
 
 export const mapSortToRequestPayload = (value: SortingState): RequestPayloadParams['sort'] =>
@@ -31,3 +33,16 @@ export const mapSortToRequestPayload = (value: SortingState): RequestPayloadPara
     field: column.id,
     direction: (column.desc ? 'd' : 'a') as SortDirection,
   })) || [];
+
+/** Вспомогательная функция для преобразования состояния таблицы к формату RequestPayloadParams */
+export const formatTableStateToRequestPayload = <T extends FiltersState>(
+  state: Omit<PersistedFilterState<T>, 'pagination' | 'sorting'> & {
+    pagination: PaginationState;
+    sorting: SortingState;
+  },
+) =>
+  formatFilterStateToRequestPayload({
+    ...state,
+    pagination: mapPaginationToRequestPayload(state.pagination),
+    sorting: mapSortToRequestPayload(state.sorting),
+  });

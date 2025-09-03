@@ -12,8 +12,7 @@ import { FiltersState } from '@snack-uikit/chips';
 import { FilterRow, ToolbarProps } from '@snack-uikit/toolbar';
 import { WithSupportProps } from '@snack-uikit/utils';
 
-import { EmptyStateProps, ExportButtonProps, RowClickHandler } from '../helperComponents';
-import { TreeColumnDefinitionProps } from '../helperComponents/Cells/TreeCell';
+import { EmptyStateProps, ExportButtonProps, RowClickHandler, TreeColumnDefinitionProps } from '../helperComponents';
 import { ColumnDefinition } from '../types';
 
 type BulkAction = Omit<NonNullable<ToolbarProps<Record<string, string>>['bulkActions']>[number], 'onClick'> & {
