@@ -1335,7 +1335,7 @@ importers:
         specifier: 0.13.21
         version: link:../toggles
       '@snack-uikit/toolbar':
-        specifier: 0.14.0
+        specifier: 0.14.1
         version: link:../toolbar
       '@snack-uikit/truncate-string':
         specifier: 0.7.1

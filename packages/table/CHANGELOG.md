@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.37.1 (2025-09-03)
+
+
+### Bug Fixes
+
+* **FF-6982:** add helpers for formatting state to request payload ([86a9845](https://github.com/cloud-ru-tech/snack-uikit/commit/86a9845a1c92bc3bf13d0d875803a935ebe690c8))
+
+
+
+
+
 # 0.37.0 (2025-09-01)
 
 
