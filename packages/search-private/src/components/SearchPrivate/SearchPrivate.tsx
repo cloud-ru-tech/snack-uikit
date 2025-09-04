@@ -113,6 +113,7 @@ export const SearchPrivate = forwardRef<HTMLInputElement, SearchPrivateProps>(fu
       </span>
 
       <InputPrivate
+        inputMode='search'
         value={value}
         onChange={onValueChange}
         onKeyDown={handleKeyDown}
