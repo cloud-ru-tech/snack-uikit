@@ -532,6 +532,7 @@ FieldStepper в основном предназначен для работы с
 | placeholder | `string` | - | Плейсхолдер |
 | autoFocus | `boolean` | - | Включен ли авто-фокус |
 | maxLength | `number` | - | Максимальное кол-во символов |
+| inputMode | enum InputMode: `"none"`, `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
 | spellCheck | `boolean` | true | Включение проверки орфографии |
 | onKeyDown | `KeyboardEventHandler<HTMLTextAreaElement>` | - | Колбек нажатия клавиши клавиатуры |
 | className | `string` | - | CSS-класс |

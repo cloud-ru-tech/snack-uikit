@@ -11,6 +11,7 @@ import {
 } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
+import { InputPrivateProps } from '@snack-uikit/input-private';
 import { extractSupportProps, useLayoutEffect, WithSupportProps } from '@snack-uikit/utils';
 
 import styles from './styles.module.scss';
@@ -50,6 +51,8 @@ export type TextAreaProps = RefAttributes<HTMLTextAreaElement> &
     minRows?: number;
     /** Включение проверки орфографии @default true*/
     spellCheck?: boolean;
+    /** Режим работы экранной клавиатуры */
+    inputMode?: InputPrivateProps['inputMode'];
   }>;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -72,6 +75,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       tabIndex,
       minRows = 3,
       spellCheck,
+      inputMode,
       ...rest
     },
     ref,
@@ -105,6 +109,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         tabIndex={tabIndex}
         minRows={minRows}
         spellCheck={spellCheck}
+        inputMode={inputMode}
         {...extractSupportProps(rest)}
       />
     );

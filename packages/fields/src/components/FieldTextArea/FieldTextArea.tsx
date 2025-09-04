@@ -26,6 +26,7 @@ type InputProps = Pick<Partial<TextAreaProps>, 'value'> &
     | 'onKeyDown'
     | 'spellCheck'
     | 'autoFocus'
+    | 'inputMode'
   >;
 
 type WrapperProps = Pick<
@@ -104,6 +105,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       footer,
       spellCheck,
       autoFocus,
+      inputMode,
       ...rest
     },
     ref,
@@ -212,6 +214,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
               spellCheck={spellCheck}
               autoFocus={autoFocus}
               maxLength={allowMoreThanMaxLength ? undefined : maxLength || undefined}
+              inputMode={inputMode}
               data-test-id='field-textarea__input'
             />
           </Scroll>
