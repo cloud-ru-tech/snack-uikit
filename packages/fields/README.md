@@ -481,6 +481,7 @@ FieldStepper в основном предназначен для работы с
 | type | "text" \| "tel" \| "email" | text |  |
 | onChange | `(value: string, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
 | value | `string` | - | Значение input |
+| inputMode | enum InputMode: `"none"`, `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
 | id | `string` | - | Значение html-атрибута id |
 | name | `string` | - | Значение html-атрибута name |
 | disabled | `boolean` | - | Является ли поле деактивированным |
@@ -491,7 +492,6 @@ FieldStepper в основном предназначен для работы с
 | autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
-| inputMode | enum InputMode: `"none"`, `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
 | spellCheck | `boolean` | true | Значение атрибута spellcheck (проверка орфографии) |
 | pattern | `string` | - | Регулярное выражение валидного инпута |
 | onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки начала нажатия клавиши клавиатуры |

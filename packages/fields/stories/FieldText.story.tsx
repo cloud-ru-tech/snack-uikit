@@ -125,6 +125,7 @@ export const fieldText: StoryObj<StoryProps> = {
     showClearButton: true,
     showButtonSearch: false,
     allowMoreThanMaxLength: false,
+    inputMode: 'text',
   },
 
   argTypes: {

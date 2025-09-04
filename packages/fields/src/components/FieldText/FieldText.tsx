@@ -22,6 +22,7 @@ import { FieldDecorator, FieldDecoratorProps } from '../FieldDecorator';
 import { getContainerVariant } from './helpers';
 
 type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
+  Pick<Required<InputPrivateProps>, 'inputMode'> &
   Pick<
     InputPrivateProps,
     | 'id'
@@ -37,7 +38,6 @@ type InputProps = Pick<Partial<InputPrivateProps>, 'value' | 'onChange'> &
     | 'onPaste'
     | 'onKeyDown'
     | 'spellCheck'
-    | 'inputMode'
     | 'pattern'
   >;
 
