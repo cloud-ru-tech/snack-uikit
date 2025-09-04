@@ -13,7 +13,7 @@ import { FilterRow, ToolbarProps } from '@snack-uikit/toolbar';
 import { WithSupportProps } from '@snack-uikit/utils';
 
 import { EmptyStateProps, ExportButtonProps, RowClickHandler, TreeColumnDefinitionProps } from '../helperComponents';
-import { ColumnDefinition } from '../types';
+import { ColumnDefinition, ExpandedState } from '../types';
 
 type BulkAction = Omit<NonNullable<ToolbarProps<Record<string, string>>['bulkActions']>[number], 'onClick'> & {
   onClick?(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void): void;
@@ -50,11 +50,17 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
     enableSettingsMenu?: boolean;
   };
 
-  /** Параметр отвечает за общие настройки раскрывающихся строк*/
+  /** Параметр отвечает за общие настройки раскрывающихся строк <br>
+   * <strong>getSubRows</strong>: Метод отвечает за получение дочерних строк <br>
+   * <strong>expandingColumnDefinition</strong>: Описание колонок для дочерних строк <br>
+   * <strong>state</strong>: Состояние открытых строк <br>
+   * <strong>onExpandedChange</strong>: Колбэк на раскрытие строк <br>
+   * */
   expanding?: {
-    /** Метод отвечает за получение дочерних строк*/
     getSubRows: (element: TData) => TData[] | undefined;
     expandingColumnDefinition: TreeColumnDefinitionProps<TData>;
+    state?: ExpandedState;
+    onChange?(state: ExpandedState): void;
   };
   /** Параметры отвечают за возможность выбора строк <br>
    * <strong>initialState</strong>: Начальное состояние выбора строк <br>

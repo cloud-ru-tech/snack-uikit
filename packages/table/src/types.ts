@@ -2,6 +2,7 @@ import {
   CellContext,
   ColumnDef,
   ColumnMeta,
+  ExpandedState,
   HeaderContext,
   PaginationState,
   RowSelectionOptions,
@@ -103,6 +104,7 @@ export type {
   ActionsGenerator,
   CopyCellProps,
   MapStatusToAppearanceFnType,
+  TreeColumnDefinitionProps,
 } from './helperComponents';
 
 export type {
@@ -115,4 +117,5 @@ export type {
   ToolbarProps,
   HeaderContext,
   CellContext,
+  ExpandedState,
 };

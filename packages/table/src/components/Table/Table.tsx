@@ -2,6 +2,7 @@ import { DndContext } from '@dnd-kit/core';
 import {
   CellContext,
   ColumnPinningState,
+  ExpandedState,
   getCoreRowModel,
   getExpandedRowModel,
   getFilteredRowModel,
@@ -24,7 +25,14 @@ import { type PersistedFilterState, Toolbar, ToolbarProps } from '@snack-uikit/t
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps } from '@snack-uikit/utils';
 
-import { DEFAULT_PAGE_SIZE, DEFAULT_ROW_SELECTION, DEFAULT_SORTING, DefaultColumns, TEST_IDS } from '../../constants';
+import {
+  DEFAULT_EXPANDED,
+  DEFAULT_PAGE_SIZE,
+  DEFAULT_ROW_SELECTION,
+  DEFAULT_SORTING,
+  DefaultColumns,
+  TEST_IDS,
+} from '../../constants';
 import { CellAutoResizeContext, useCellAutoResizeController } from '../../contexts';
 import {
   BodyRow,
@@ -134,6 +142,8 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
 
   const [sorting, onSortingChange] = useStateControl<SortingState>(sortingProp, DEFAULT_SORTING);
 
+  const [expanded, onExpandedChange] = useStateControl<ExpandedState>(expanding, DEFAULT_EXPANDED);
+
   const [pagination, onPaginationChange] = useStateControl<PaginationState>(paginationProp, defaultPaginationState);
 
   const { filter, patchedFilter, setFilter, setFilterVisibility } = useFilters({ columnFilters });
@@ -235,6 +245,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
       sorting,
       pagination,
       rowPinning: expanding ? { top: [] } : rowPinning,
+      expanded,
     },
     pageCount,
     defaultColumn: {
@@ -266,6 +277,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     getSubRows: expanding?.getSubRows,
     filterFromLeafRows: Boolean(expanding),
     enableSubRowSelection: true,
+    onExpandedChange,
     getFilteredRowModel: getFilteredRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
     enableColumnResizing: true,
