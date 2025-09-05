@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.37.3 (2025-09-05)
+
+
+### Bug Fixes
+
+* **FF-7176:** add expanded state and onChange in Table ([9a154bf](https://github.com/cloud-ru-tech/snack-uikit/commit/9a154bf6a10b70b79885920c434e429e7e114911))
+
+
+
+
+
 ## 0.37.2 (2025-09-03)
 
 
