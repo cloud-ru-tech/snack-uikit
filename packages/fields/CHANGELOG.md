@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.51.0 (2025-09-05)
+
+
+### Features
+
+* **FF-7117:** add inputMode prop to FieldTextArea ([b7e7310](https://github.com/cloud-ru-tech/snack-uikit/commit/b7e7310efd53a7fee15db29654f105bba8036bc6))
+
+
+### BREAKING CHANGES
+
+
+* **FF-7117:** make inputMode required for FieldText ([c864075](https://github.com/cloud-ru-tech/snack-uikit/commit/c86407524d77fbedd9912654d3658fddf71af10f))
+
+
+
+
 # 0.50.0 (2025-09-02)
 
 

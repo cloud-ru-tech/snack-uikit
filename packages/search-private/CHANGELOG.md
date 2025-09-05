@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.29 (2025-09-05)
+
+
+### Bug Fixes
+
+* **FF-7117:** add input-mode=search for input ([6b4eb7b](https://github.com/cloud-ru-tech/snack-uikit/commit/6b4eb7bd85b21b4fcb7c7372f79f1ea89b6cda6b))
+
+
+
+
+
 ## 0.4.28 (2025-09-01)
 
 ### Only dependencies have been changed
