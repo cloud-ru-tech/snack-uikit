@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Fields",
-  "version": "0.51.0",
+  "version": "0.51.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,13 +37,13 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.19.16",
-    "@snack-uikit/calendar": "0.13.2",
-    "@snack-uikit/color-picker": "0.3.42",
+    "@snack-uikit/calendar": "0.13.3",
+    "@snack-uikit/color-picker": "0.3.43",
     "@snack-uikit/divider": "3.2.10",
     "@snack-uikit/dropdown": "0.5.3",
     "@snack-uikit/icons": "0.27.2",
-    "@snack-uikit/input-private": "4.8.1",
-    "@snack-uikit/list": "0.32.3",
+    "@snack-uikit/input-private": "4.8.2",
+    "@snack-uikit/list": "0.32.4",
     "@snack-uikit/scroll": "0.10.5",
     "@snack-uikit/skeleton": "0.6.9",
     "@snack-uikit/slider": "0.3.26",

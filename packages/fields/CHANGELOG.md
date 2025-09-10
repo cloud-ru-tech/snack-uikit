@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.51.1 (2025-09-10)
+
+
+### Bug Fixes
+
+* **FF-7214:** key as separated prop ([5ce8a32](https://github.com/cloud-ru-tech/snack-uikit/commit/5ce8a32c77552135a91a20b2805e665ce550406f))
+
+
+
+
+
 # 0.51.0 (2025-09-05)
 
 
