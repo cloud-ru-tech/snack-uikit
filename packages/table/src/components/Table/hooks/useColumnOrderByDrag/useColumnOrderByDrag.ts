@@ -13,6 +13,8 @@ import { restrictToHorizontalAxis } from '@dnd-kit/modifiers';
 import { arrayMove } from '@dnd-kit/sortable';
 import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react';
 
+import { isBrowser } from '@snack-uikit/utils';
+
 import { ColumnDefinition } from '../../../../types';
 import { TableProps } from '../../../types';
 import { getLocalStorageColumnOrderKey, prepareInitialState } from './utils/prepareInitialState';
@@ -46,7 +48,7 @@ export function useColumnOrderByDrag<TData extends object>({
         updatedOrder = value;
       }
 
-      if (savedState?.columnSettings) {
+      if (savedState?.columnSettings && isBrowser()) {
         localStorage.setItem(getLocalStorageColumnOrderKey(savedState.id), JSON.stringify(updatedOrder));
       }
 

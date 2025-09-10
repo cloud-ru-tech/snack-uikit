@@ -1,3 +1,5 @@
+import { isBrowser } from '@snack-uikit/utils';
+
 const RESIZED_KEY = 'RESIZED_COLUMN_KEY';
 
 type SavedState = {
@@ -13,13 +15,15 @@ export function getInitColumnSizeFromLocalStorage({
   id,
   columnId,
 }: GetSavedStateFromLocalStorageProps): string | undefined {
-  const savedStateFromStorage: SavedState | null = JSON.parse(localStorage.getItem(id || '') || 'null');
+  if (isBrowser()) {
+    const savedStateFromStorage: SavedState | null = JSON.parse(localStorage.getItem(id || '') || 'null');
 
-  if (!savedStateFromStorage) {
-    return;
+    if (!savedStateFromStorage) {
+      return;
+    }
+
+    return savedStateFromStorage.resizeState?.[`${RESIZED_KEY}-${columnId}`];
   }
-
-  return savedStateFromStorage.resizeState?.[`${RESIZED_KEY}-${columnId}`];
 }
 
 type SaveStateToLocalStorageProps = {
@@ -29,10 +33,12 @@ type SaveStateToLocalStorageProps = {
 };
 
 export function saveStateToLocalStorage({ id, columnId, size }: SaveStateToLocalStorageProps) {
-  const savedStateFromStorage: SavedState | null = JSON.parse(localStorage.getItem(id) || 'null');
+  if (isBrowser()) {
+    const savedStateFromStorage: SavedState | null = JSON.parse(localStorage.getItem(id) || 'null');
 
-  const newResizeState: Record<string, string> = savedStateFromStorage?.resizeState || {};
-  newResizeState[`${RESIZED_KEY}-${columnId}`] = size;
+    const newResizeState: Record<string, string> = savedStateFromStorage?.resizeState || {};
+    newResizeState[`${RESIZED_KEY}-${columnId}`] = size;
 
-  localStorage.setItem(id, JSON.stringify({ ...(savedStateFromStorage || {}), resizeState: newResizeState }));
+    localStorage.setItem(id, JSON.stringify({ ...(savedStateFromStorage || {}), resizeState: newResizeState }));
+  }
 }

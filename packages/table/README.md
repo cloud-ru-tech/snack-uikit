@@ -109,6 +109,8 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| search | `string` | - |  |
+| filter | `FiltersState` | - |  |
 | pagination | `PaginationState \| PaginationParams` | - |  |
 | sorting | `SortingState` | - |  |
 ## Table

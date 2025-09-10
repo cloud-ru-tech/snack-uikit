@@ -1,6 +1,7 @@
 import cn from 'classnames';
 
 import { Spinner } from '@snack-uikit/loaders';
+import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { APPEARANCE } from '../../constants';
@@ -9,7 +10,6 @@ import { StatusIndicator } from '../StatusIndicator';
 import { LOADER_SIZE_MAP, SIZE, STATUS_INDICATOR_SIZE_MAP } from './constants';
 import styles from './styles.module.scss';
 import { Size } from './types';
-import { TruncateString } from '@snack-uikit/truncate-string';
 
 export type StatusProps = WithSupportProps<{
   /** Текст */

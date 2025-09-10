@@ -1,3 +1,5 @@
+import { isBrowser } from '@snack-uikit/utils';
+
 import { ColumnDefinition } from '../../../../../types';
 import { TableProps } from '../../../../types';
 import { getColumnIdentifier, isEveryArrayItemString } from '../../../utils';
@@ -12,7 +14,7 @@ export function prepareInitialState<TData extends object>(
     .filter(column => column.pinned !== 'left' && column.pinned !== 'right')
     .map(getColumnIdentifier);
 
-  if (savedState?.columnSettings) {
+  if (savedState?.columnSettings && isBrowser()) {
     const persistState = JSON.parse(localStorage.getItem(getLocalStorageColumnOrderKey(savedState.id)) || 'null');
     const persistValue: string[] | null = isEveryArrayItemString(persistState) ? persistState : null;
 

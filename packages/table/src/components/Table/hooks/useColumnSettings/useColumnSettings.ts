@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
 import { useLocale } from '@snack-uikit/locale';
+import { isBrowser } from '@snack-uikit/utils';
 
 import { TableProps } from '../../../types';
 import { getColumnIdentifier, getTableColumnsDefinitions, PinnedGroupsState } from '../../utils';
@@ -41,7 +42,7 @@ export function useColumnSettings<TData extends object, TFilters extends Record<
 
   const setEnabledColumnsOuter = useCallback(
     (value: string[]) => {
-      if (savedState?.columnSettings) {
+      if (savedState?.columnSettings && isBrowser()) {
         localStorage.setItem(localStorageKey, JSON.stringify(value));
       }
 

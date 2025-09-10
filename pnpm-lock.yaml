@@ -19,8 +19,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1(@types/eslint@9.6.1)(@typescript-eslint/utils@8.18.1(eslint@9.17.0)(typescript@5.5.2))(prettier@3.5.3)(typescript@5.5.2)(vitest@3.1.2(@types/debug@4.1.12)(@types/node@22.7.9)(jsdom@26.1.0)(less@4.3.0)(sass@1.80.4)(stylus@0.62.0)(terser@5.42.0)(yaml@2.8.0))
       '@cloud-ru/eslint-plugin-ssr-safe-react':
-        specifier: 0.3.0
-        version: 0.3.0(eslint@9.17.0)
+        specifier: 0.4.0
+        version: 0.4.0(eslint@9.17.0)
       '@cloud-ru/ft-config-babel':
         specifier: 1.1.2
         version: 1.1.2
@@ -2298,8 +2298,8 @@ packages:
   '@cloud-ru/eslint-config@2.1.1':
     resolution: {integrity: sha512-fqfG6YHvNIVAkkOvyjTo+Zm+Suj7fbcUtIKfkZHroElsPr6fxpMB+rjafZUgT3ew1CEwR2x/ueDjwgkGbJr3Cw==}
 
-  '@cloud-ru/eslint-plugin-ssr-safe-react@0.3.0':
-    resolution: {integrity: sha512-33KDw3MS7uzvRErnAD/G58gLCzTMG65goDk6UfmZR7i7qRdOb6kHx2epykMJ0qEw9FHlwXHzozyvptuvE5PBzg==}
+  '@cloud-ru/eslint-plugin-ssr-safe-react@0.4.0':
+    resolution: {integrity: sha512-usldiCKrgBB7rkx5bFS+kNPaPdK9t5aCzMt7VjbOgohVOR2+rlMZcZFnTeg+z+jcj49ljui+tadE0H4TSLfhnQ==}
     peerDependencies:
       eslint: '>= 9.0.0'
 
@@ -13072,7 +13072,7 @@ snapshots:
       - typescript
       - vitest
 
-  '@cloud-ru/eslint-plugin-ssr-safe-react@0.3.0(eslint@9.17.0)':
+  '@cloud-ru/eslint-plugin-ssr-safe-react@0.4.0(eslint@9.17.0)':
     dependencies:
       eslint: 9.17.0
 
