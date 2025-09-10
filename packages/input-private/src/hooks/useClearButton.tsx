@@ -27,12 +27,12 @@ export function useClearButton({ clearButtonRef, showClearButton, size, onClear 
       active: true,
       ref: clearButtonRef,
       show: showClearButton,
-      render: props => {
+      render: ({ key, ...props }) => {
         const handleClear: MouseEventHandler<HTMLButtonElement> = event => {
           props.onClick(event);
           clearEventHandler(event);
         };
-        return <ButtonClearValue {...props} size={BUTTON_SIZE_MAP[size]} onClick={handleClear} />;
+        return <ButtonClearValue key={key} {...props} size={BUTTON_SIZE_MAP[size]} onClick={handleClear} />;
       },
     }),
     [clearButtonRef, clearEventHandler, showClearButton, size],

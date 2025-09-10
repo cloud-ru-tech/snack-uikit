@@ -30,13 +30,14 @@ export function useHideButton({
       active: true,
       ref: hideButtonRef,
       show: showHideButton,
-      render: props => {
+      render: ({ key, ...props }) => {
         const handleClick: MouseEventHandler<HTMLButtonElement> = event => {
           props.onClick(event);
           toggleHiddenEventHandler(event);
         };
         return (
           <ButtonHideValue
+            key={key}
             {...props}
             size={BUTTON_SIZE_MAP[size]}
             onClick={handleClick}

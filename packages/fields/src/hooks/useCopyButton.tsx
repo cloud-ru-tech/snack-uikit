@@ -34,8 +34,9 @@ export function useCopyButton({
       active: true,
       ref: copyButtonRef,
       show: showCopyButton,
-      render: props => (
+      render: ({ key, ...props }) => (
         <ButtonCopyValue
+          key={key}
           {...props}
           size={BUTTON_SIZE_MAP[size]}
           valueToCopy={(prefix ?? '') + valueToCopy + (postfix ?? '')}

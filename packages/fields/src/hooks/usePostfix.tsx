@@ -10,8 +10,14 @@ export function usePostfix({ postfix, disabled }: { postfix?: ReactNode; disable
       id: 'postfix',
       active: false,
       show: Boolean(postfix),
-      render: props => (
-        <div {...props} className={styles.postfix} data-test-id='field-postfix' data-disabled={disabled || undefined}>
+      render: ({ key, ...props }) => (
+        <div
+          key={key}
+          {...props}
+          className={styles.postfix}
+          data-test-id='field-postfix'
+          data-disabled={disabled || undefined}
+        >
           {postfix}
         </div>
       ),

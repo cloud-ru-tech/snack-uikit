@@ -10,8 +10,14 @@ export function usePrefix({ prefix, disabled }: { prefix?: ReactNode; disabled?:
       id: 'prefix',
       active: false,
       show: Boolean(prefix),
-      render: props => (
-        <div {...props} data-test-id='field-prefix' className={styles.prefix} data-disabled={disabled || undefined}>
+      render: ({ key, ...props }) => (
+        <div
+          key={key}
+          {...props}
+          data-test-id='field-prefix'
+          className={styles.prefix}
+          data-disabled={disabled || undefined}
+        >
           {prefix}
         </div>
       ),
