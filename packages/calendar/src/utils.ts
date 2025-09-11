@@ -1,6 +1,7 @@
 import { getWeekStartByLocale } from 'weekstart';
 
 import { LocaleLang } from '@snack-uikit/locale';
+import { isBrowser } from '@snack-uikit/utils';
 
 import { IN_RANGE_POSITION, VIEW_MODE } from './constants';
 import { InRangePosition, Range, ViewMode } from './types';
@@ -86,8 +87,10 @@ export const getEndOfTheDay = (date: Date) =>
 
 export const getTestIdBuilder = (testId?: string) => (prefix: string) => (testId ? `${prefix}-${testId}` : undefined);
 
+const getNavigatorLocale = () => (isBrowser() ? (navigator?.language ?? 'ru-RU') : 'ru-RU');
+
 export const getLocale = ({ localeProp, ctxLang }: { localeProp?: Intl.Locale; ctxLang?: LocaleLang } = {}) =>
-  localeProp || new Intl.Locale(ctxLang ? ctxLang.replace('_', '-') : (navigator?.language ?? 'ru-RU'));
+  localeProp || new Intl.Locale(ctxLang ? ctxLang.replace('_', '-') : getNavigatorLocale());
 
 export const getStartOfWeek = (locale: Intl.Locale) => getWeekStartByLocale(locale.language);
 
