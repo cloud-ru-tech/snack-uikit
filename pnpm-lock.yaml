@@ -377,7 +377,7 @@ importers:
   packages/avatar:
     dependencies:
       '@snack-uikit/status':
-        specifier: 0.10.1
+        specifier: 0.10.2
         version: link:../status
       '@snack-uikit/utils':
         specifier: 4.0.0

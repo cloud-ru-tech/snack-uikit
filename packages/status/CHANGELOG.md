@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.2 (2025-09-11)
+
+
+### Dependencies
+
+* **FF-7214:** up eslint ssr plugin ([2fbc38b](https://github.com/cloud-ru-tech/snack-uikit/commit/2fbc38b0dc78d953f638c8ddd5b20620c826178d))
+
+
+
+
+
 ## 0.10.1 (2025-09-01)
 
 ### Only dependencies have been changed
