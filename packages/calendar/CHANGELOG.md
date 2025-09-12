@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.4 (2025-09-12)
+
+
+### Bug Fixes
+
+* **FF-7214:** getLocale method ([93c3c03](https://github.com/cloud-ru-tech/snack-uikit/commit/93c3c03e803c9bc9ea0585d28f00544e2366f02b))
+
+
+
+
+
 ## 0.13.3 (2025-09-10)
 
 ### Only dependencies have been changed
