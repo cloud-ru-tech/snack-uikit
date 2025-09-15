@@ -125,7 +125,7 @@ export const ExpandableTreeNode = forwardRef<HTMLDivElement, ExpandableTreeNodeP
                 <TreeLine
                   visible={showLines}
                   data-test-id={TEST_IDS.line}
-                  height={`calc(100% - ${lastItemHeight}px)`}
+                  height={`calc(100% - ${lastItemHeight / 2}px)`}
                   className={styles.treeLine}
                 />
 

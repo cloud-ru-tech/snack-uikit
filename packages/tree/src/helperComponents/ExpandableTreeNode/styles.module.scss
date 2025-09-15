@@ -43,5 +43,6 @@
 }
 
 .treeLine {
+  box-sizing: border-box;
   padding-bottom: calc(#{tree.$size-tree-item-line-height} / 2);
 }
