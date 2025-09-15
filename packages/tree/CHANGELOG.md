@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.25 (2025-09-15)
+
+
+### Bug Fixes
+
+* **PDS-2808:** tree line height ([a2b460c](https://github.com/cloud-ru-tech/snack-uikit/commit/a2b460c8376879fb8daedac65411dc55d26eb691))
+
+
+
+
+
 ## 0.9.24 (2025-09-10)
 
 ### Only dependencies have been changed
