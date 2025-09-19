@@ -41,8 +41,10 @@ $duration: 300ms;
   overflow: hidden;
 
   box-sizing: border-box;
-  width: 100%;
+  width: calc(100% + 8px);
   min-height: 0;
+  margin: -4px;
+  padding: 4px;
 
   visibility: hidden;
 
