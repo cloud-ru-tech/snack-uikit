@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.13 (2025-09-19)
+
+
+### Bug Fixes
+
+* **PDS-2813:** add padding for accordion content ([1c7ff35](https://github.com/cloud-ru-tech/snack-uikit/commit/1c7ff35b0b01900c3e204b8216b9755d1566a56d))
+
+
+
+
+
 ## 0.11.12 (2025-09-01)
 
 ### Only dependencies have been changed
