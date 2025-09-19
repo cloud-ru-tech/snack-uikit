@@ -9,7 +9,7 @@
       "registry": "https://registry.npmjs.org/"
     },
     "version": {
-      "changelogPreset": "@cloud-ru/ft-conventional-changelog-old",
+      "changelogPreset": "@cloud-ru/ft-conventional-changelog",
       "ignoreChanges": [
         "**/*.md",
         "**/*.MD",

@@ -39,8 +39,8 @@
     "create-sprite": "ts-node scripts/createSprite.ts",
     "validate:icons": "ts-node scripts/validateIcons.ts",
     "create-export-index-file": "ts-node scripts/createExportIndexFile.ts",
-    "build:icons": "cross-var rimraf src/components/$npm_config_directory && cross-var svgr -d src/components/$npm_config_directory svgs-fixed/$npm_config_directory --config-file templates/.svgrrc.js",
-    "fix:icons": "cross-var rimraf svgs-fixed/$npm_config_directory && ts-node scripts/fixIcons.ts",
+    "build:icons": "cross-env rimraf src/components/$npm_config_directory && cross-env svgr -d src/components/$npm_config_directory svgs-fixed/$npm_config_directory --config-file templates/.svgrrc.js",
+    "fix:icons": "cross-env rimraf svgs-fixed/$npm_config_directory && ts-node scripts/fixIcons.ts",
     "build:interface-icons": "npm run fix:icons --directory=interface-icons && npm run build:icons --directory=interface-icons",
     "compile": "npm run validate:icons && npm run build:interface-icons && npm run create-export-index-file && npm run create-sprite"
   },
@@ -49,7 +49,7 @@
     "@svgr/plugin-jsx": "8.1.0",
     "@types/svg-sprite": "0.0.38",
     "fast-xml-parser": "4.2.5",
-    "oslllo-svg-fixer": "3.0.0",
+    "oslllo-svg-fixer": "5.0.0",
     "svg-sprite": "2.0.2",
     "svgo": "3.1.0"
   }

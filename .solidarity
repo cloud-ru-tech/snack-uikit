@@ -23,7 +23,7 @@
       {
         "rule": "cli",
         "binary": "pnpm",
-        "semver": "10.10.0",
+        "semver": "^10.10.0",
         "version": "--version",
         "error": "You have pnpm@{{installedVersion}}, and need pnpm@{{wantedVersion}}. Fix with `npm install -g pnpm@{{wantedVersion}}``"
       }
