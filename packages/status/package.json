@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Status",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,7 +37,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/loaders": "0.9.9",
-    "@snack-uikit/truncate-string": "0.7.1",
+    "@snack-uikit/truncate-string": "0.7.2",
     "@snack-uikit/utils": "4.0.0",
     "classnames": "2.5.1"
   }

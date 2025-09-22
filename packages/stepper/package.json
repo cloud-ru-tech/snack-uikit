@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Stepper",
-  "version": "0.8.33",
+  "version": "0.8.34",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,9 +36,9 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/icons": "0.27.2",
+    "@snack-uikit/icons": "0.27.3",
     "@snack-uikit/loaders": "0.9.9",
-    "@snack-uikit/truncate-string": "0.7.1",
+    "@snack-uikit/truncate-string": "0.7.2",
     "@snack-uikit/typography": "0.8.11",
     "@snack-uikit/utils": "4.0.0",
     "classnames": "2.5.1"
