@@ -1288,8 +1288,8 @@ importers:
   packages/table:
     dependencies:
       '@cloud-ru/ft-request-payload-transform':
-        specifier: 0.2.0
-        version: 0.2.0
+        specifier: 0.2.1
+        version: 0.2.1
       '@dnd-kit/core':
         specifier: 6.3.1
         version: 6.3.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1489,8 +1489,8 @@ importers:
   packages/toolbar:
     dependencies:
       '@cloud-ru/ft-request-payload-transform':
-        specifier: 0.2.0
-        version: 0.2.0
+        specifier: 0.2.1
+        version: 0.2.1
       '@snack-uikit/button':
         specifier: 0.19.16
         version: link:../button
@@ -2434,8 +2434,8 @@ packages:
     resolution: {integrity: sha512-pSJiAhYzQgDp/PuN+dVnoLVTwPu8Anh1JehkbCqQUR6K6u9KwduMGIuqg7OgNWlmPaR8OAeDCKybft+IyuOoaw==}
     hasBin: true
 
-  '@cloud-ru/ft-request-payload-transform@0.2.0':
-    resolution: {integrity: sha512-d6DscHbzO8K0iHoCd7lG/qvsqA/pLfAx6fOVsh+dAJr8xZDRWLOXTnQ4SEMgFYdVpQHe49t3SR2NjkDFq5UvVA==}
+  '@cloud-ru/ft-request-payload-transform@0.2.1':
+    resolution: {integrity: sha512-m/6A1IXR7TX+082DWJ3ohYBn5lFcx5o6ghOJ12gjd/8bbPjCSx7bSzfPbrS00rG9625dSmGQB+nS+2W1SCyB8w==}
 
   '@cloud-ru/ft-storybook-brand-addon@2.0.7':
     resolution: {integrity: sha512-BYCJEmfGxuEgZeCZ26zqrI0NPGUn04cmeVSx5Z7LfkLkJ2AKqzfYz+nLUiNXybhYQGTnozCqEfHYqzvF1X179Q==}
@@ -12703,7 +12703,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@cloud-ru/ft-request-payload-transform@0.2.0': {}
+  '@cloud-ru/ft-request-payload-transform@0.2.1': {}
 
   '@cloud-ru/ft-storybook-brand-addon@2.0.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(storybook@8.6.14(prettier@3.5.3))':
     dependencies:
