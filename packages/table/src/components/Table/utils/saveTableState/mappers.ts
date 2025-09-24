@@ -34,7 +34,7 @@ export const mapPaginationToRequestPayload = (
 
   return {
     limit: value.pageSize,
-    offset: value.pageIndex > 1 ? value.pageSize * value.pageIndex : 0,
+    offset: value.pageSize * value.pageIndex,
   };
 };
 
