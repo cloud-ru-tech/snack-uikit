@@ -752,7 +752,7 @@ importers:
         specifier: 0.6.9
         version: link:../skeleton
       '@snack-uikit/slider':
-        specifier: 0.3.27
+        specifier: 0.3.28
         version: link:../slider
       '@snack-uikit/tag':
         specifier: 0.15.10
@@ -955,7 +955,7 @@ importers:
         specifier: 3.2.10
         version: link:../divider
       '@snack-uikit/fields':
-        specifier: 0.51.3
+        specifier: 0.51.4
         version: link:../fields
       '@snack-uikit/link':
         specifier: 0.17.11
