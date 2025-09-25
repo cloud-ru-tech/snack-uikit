@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.14.7 (2025-09-25)</small>
+
+* fix(FF-7134): update ft-request-payload-transform ([4f95098](https://github.com/cloud-ru-tech/snack-uikit/commit/4f95098))
+
+
+
+
+
 ## <small>0.14.6 (2025-09-24)</small>
 
 * fix(FF-7134): update ft-request-payload-transform to be able to use encode prop in formatTableStateT ([e76b8b3](https://github.com/cloud-ru-tech/snack-uikit/commit/e76b8b3))

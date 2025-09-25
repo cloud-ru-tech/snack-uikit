@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.11 (2025-09-25)</small>
+
+* fix(FF-7134): update ft-request-payload-transform ([4f95098](https://github.com/cloud-ru-tech/snack-uikit/commit/4f95098))
+
+
+
+
+
 ## <small>0.37.10 (2025-09-25)</small>
 
 * fix(FF-7134): table requestPayload offset calculation ([d36ad78](https://github.com/cloud-ru-tech/snack-uikit/commit/d36ad78))
