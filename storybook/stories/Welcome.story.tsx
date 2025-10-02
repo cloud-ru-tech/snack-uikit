@@ -36,7 +36,7 @@ const Template: StoryFn = () => {
         <div className={styles.imagesWrapper} style={{ '--image-height': '32px' }}>
           <img alt='Chrome' src='storybook/assets/GoogleChromeLogo.svg' />
           <img alt='Firefox' src='storybook/assets/FirefoxLogo.svg' />
-          <img alt='Chromium' src='storybook/assets/ChromiumLogo.svg' />
+          <img alt='Edge' src='storybook/assets/EdgeLogo.svg' />
           <img alt='Safari' src='storybook/assets/SafariBrowserLogo.svg' />
         </div>
 
@@ -59,13 +59,10 @@ const Template: StoryFn = () => {
       <Card
         header='Figma'
         image='https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg'
-        href='https://www.figma.com/files/1101513230643708615/team/1194627249980298820/DS-(FF)'
+        href='https://www.figma.com/@TeamSnack'
       />
 
-      <Card
-        header='Figma Tokens'
-        href='https://github.com/cloud-ru-tech/figma-tokens'
-      />
+      <Card header='Figma Tokens' href='https://github.com/cloud-ru-tech/figma-tokens' />
 
       <Card header='GitHub' image={<GithubLogo />} href='https://github.com/cloud-ru-tech/snack-uikit' />
     </div>

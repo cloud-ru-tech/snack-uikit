@@ -1,32 +1,35 @@
-# Snack Uikit [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+# Snack UIKit [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-Snack Uikit - [библиотека компонентов](https://cloud-ru-tech.github.io/snack-uikit) компании [Cloud.ru](https://cloud.ru/) и сообщества [TeamSnack](https://t.me/+tN0DDzHaDVc3M2Iy), в которой каждый компонент это отдельный npm-пакет, со своей версионностью и зависимостями.
+### [Библиотека React-компонентов](https://cloud-ru-tech.github.io/snack-uikit) от компании [Cloud.ru](https://cloud.ru/) и сообщества [TeamSnack](https://t.me/+tN0DDzHaDVc3M2Iy).
+- [Домашняя страница Snack UIKit](https://snack-uikit.com)
+- [Проект на GitHub](https://cloud-ru-tech.github.io/snack-uikit)
+- [Проект в Figma](https://www.figma.com/@TeamSnack)
+- [Телеграм-канал сообщества TeamSnack](https://t.me/+tN0DDzHaDVc3M2Iy)
+- [Contribution Guide](CONTRIBUTING.md)
 
-![Cloud](storybook/assets/CloudRuFullLogo.svg)   
+## Почему Snack UIKit
 
-# Design
+- **Контрибьюторы**: Snack UIKit - это стандартный инструмент разработки интерфейсов в компании [cloud.ru](https://cloud.ru). С его помощью решаются самые широкие задачи: seo-ориентированный портал, админки любой сложности и внутренние инструменты. ![Cloud](storybook/assets/CloudRuFullLogo.svg)
 
-[Figma](https://www.figma.com/files/1101513230643708615/team/1194627249980298820/DS-(FF))
+- **Кастомизация**: Библиотека компонентов имеет интеграцию с figma и стилизуется набором токенов, которые могут быть переопределены. Вы можете настроить тему под свои нужды.
 
-# Browser support
+- **Dark/Light**: Поддержка темной и светлой модификации "из коробки".
 
-![Chrome](storybook/assets/GoogleChromeLogo.svg)
-![Firefox](storybook/assets/FirefoxLogo.svg)
-![Chromium](storybook/assets/ChromiumLogo.svg)
-![Safari](storybook/assets/SafariBrowserLogo.svg)
+- **Модульная публикация**: Компоненты поставляются в формате отдельных npm-пакетов. Вы можете обновлять только то, что необходимо в данный момент, не беспокоясь за остальные части вашего проекта.
 
-# Automation testing
+- **E2E тестирование**: Компоненты проходят автоматические тесты в chrome и firefox ![Chrome](storybook/assets/GoogleChromeLogo.svg) ![Firefox](storybook/assets/FirefoxLogo.svg)
 
-![Chrome](storybook/assets/GoogleChromeLogo.svg)
-![Firefox](storybook/assets/FirefoxLogo.svg)
+- **Совместимость со всеми браузерами**: ![Chrome](storybook/assets/GoogleChromeLogo.svg) ![Firefox](storybook/assets/FirefoxLogo.svg) ![Edge](storybook/assets/EdgeLogo.svg) ![Safari](storybook/assets/SafariBrowserLogo.svg)
 
-# Installation
-```text
-npm i --save @snack-uikit/button
-```
+## Начать использовать Snack UIKit
+### Создание приложения
+Вы можете использовать [шаблон приложения](https://github.com/cloud-ru-tech/snack-uikit-template), в котором уже подключен Snack UIKit и настроена сборка.
 
-# Usage
+### Управление стилями
+Стилизация приложения на Snack UIKit основана на использовании классов `light` и `dark` из файла `@snack-uikit/figma-tokens/build/css/brand.module.css`. Классы содержат css-переменные со стилями для светлой и темной модификаций интерфейса соответственно.
+> Не используйте эти css-переменные напрямую. Как использовать токены темы читайте в [описании пакета темы](https://github.com/cloud-ru-tech/figma-tokens?tab=readme-ov-file#как-использовать-токены-в-приложении).
 
+Для того чтоб подключить стили Snack UIKit в приложение, вам нужно:
 * Импортировать хук `useThemeConfig`
 * В хук передать мапу с ключами тем и соответсвующими стилевыми файлами
 * Из хука получить класс для темы, который нужно задать обёртке на верхнем уровне приложения.
@@ -77,12 +80,9 @@ function App() {
 }
 ```
 
-# Team
+## Команда
 
 `Development Team` - Трифонов Михаил, Ахременко Григорий, Белов Алексей, Ершов Никита, Козлова Анна, Хлупин Сергей, Белявский Илья
 
 `Design Team` - Малокостов Игорь, Алексеев Алексей
 
-# Contribution
-
-[Contribution Guide](CONTRIBUTING.md)
