@@ -1441,7 +1441,7 @@ importers:
         specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/locale':
-        specifier: 0.15.1
+        specifier: 0.15.2
         version: link:../locale
       '@snack-uikit/progress-bar':
         specifier: 0.1.10
@@ -9046,6 +9046,7 @@ packages:
   phin@3.7.1:
     resolution: {integrity: sha512-GEazpTWwTZaEQ9RhL7Nyz0WwqilbqgLahDM3D0hxWwmVDI52nXEybHqiN6/elwpkJBhcuj+WbBu+QfT0uhPGfQ==}
     engines: {node: '>= 8'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   picocolors@0.2.1:
     resolution: {integrity: sha512-cMlDqaLEqfSaW8Z7N5Jw+lyIW869EzT73/F5lhtY9cLGoVxSXznfgfXMO0Z5K0o0Q2TkTXq+0KFsdnSe3jDViA==}
