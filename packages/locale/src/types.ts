@@ -23,3 +23,5 @@ export type DottedTranslationKey<
   : PathsToProps<LocaleDictionary<D>, string>;
 
 export type ExtendedDictionary<D> = Record<LocaleLang, D>;
+
+export type InterpolationObject = Record<string, string | number>;

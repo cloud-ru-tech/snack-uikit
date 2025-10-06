@@ -6,12 +6,14 @@ import {
   Dictionary,
   DottedTranslationKey,
   ExtendedDictionary,
+  InterpolationObject,
   LocaleDictionary,
   LocaleLang,
   Locales,
   OverrideLocales,
   TranslatedEntity,
 } from '../../types';
+import { interpolateTranslation } from '../../utils/interpolateTranslation';
 
 export const DEFAULT_LANG = 'en-GB';
 
@@ -43,6 +45,7 @@ type LocaleComponentName<D extends Dictionary> = keyof LocaleDictionary<D>;
 
 type GetLocaleText<D extends Dictionary, T extends keyof LocaleDictionary<D> | undefined = undefined> = (
   key: DottedTranslationKey<D, T>,
+  interpolation?: InterpolationObject,
 ) => string;
 
 export function createLocaleContext<D extends Dictionary>({
@@ -103,7 +106,7 @@ export function createLocaleContext<D extends Dictionary>({
     }, [componentName, localesByLang]);
 
     const getLocaleText: GetLocaleText<D, C> = useCallback(
-      key => {
+      (key, interpolation) => {
         let translation = '';
 
         const complexKey = key.split('.');
@@ -128,7 +131,7 @@ export function createLocaleContext<D extends Dictionary>({
           return key;
         }
 
-        return translation;
+        return interpolateTranslation(translation, interpolation);
       },
       [lang, locales],
     );
