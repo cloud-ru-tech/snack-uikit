@@ -59,6 +59,13 @@ test.page(visit({ value: 4, step: 2, min: 0, max: 6 }))('Should increase/decreas
   await t.click(plusButton).click(plusButton).click(plusButton).click(plusButton).expect(input.value).eql('6');
 });
 
+test.page(visit({ value: 0.2, step: 0.1 }))('Should handle float precision correctly (0.1 + 0.2 = 0.3)', async t => {
+  const plusButton = Selector(dataTestIdSelector(PLUS_BUTTON_TEST_ID));
+
+  // 0.2 + 0.1 = 0.3 (common JS precision issue check, should not be 0.30000000000000004)
+  await t.click(plusButton).expect(input.value).eql('0.3');
+});
+
 test.page(visit({ value: 6, disabled: true }))('Should not click buttons in disabled state', async t => {
   const minusButton = Selector(dataTestIdSelector(MINUS_BUTTON_TEST_ID));
   const plusButton = Selector(dataTestIdSelector(PLUS_BUTTON_TEST_ID));

@@ -213,7 +213,6 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| autoFocus* | `unknown` | - |  |
 | open | `boolean` | - | Открыт color-picker |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
 | showCopyButton | `boolean` | - | Отображение кнопки копирования |
@@ -232,6 +231,7 @@ FieldStepper в основном предназначен для работы с
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | placeholder | `string` | - | Значение плейсхолдера |
+| autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | label | `string` | - | Лейбл |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
 | required | `boolean` | - | Является ли поле обязательным |
@@ -248,7 +248,6 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| autoFocus* | `unknown` | - |  |
 | mode* | "date" \| "date-time" | - |  |
 | open | `boolean` | - | Открыт date-picker |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
@@ -264,6 +263,7 @@ FieldStepper в основном предназначен для работы с
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
@@ -304,7 +304,6 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| autoFocus* | `unknown` | - |  |
 | hidden | `boolean` | - | Замаскированно ли значение поля |
 | onHiddenChange | `(value: boolean) => void` | - | Колбек смены маскирования |
 | showCopyButton | `boolean` | - | Отображение кнопки копирования |
@@ -321,6 +320,7 @@ FieldStepper в основном предназначен для работы с
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | placeholder | `string` | - | Значение плейсхолдера |
+| autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
 | className | `string` | - | CSS-класс |
@@ -341,7 +341,6 @@ FieldStepper в основном предназначен для работы с
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | options* | `OptionProps[]` | - |  |
-| autoFocus* | `unknown` | - |  |
 | id | `string` | - | Значение html-атрибута id |
 | name | `string` | - | Значение html-атрибута name |
 | disabled | `boolean` | false | Является ли поле деактивированным |
@@ -349,6 +348,7 @@ FieldStepper в основном предназначен для работы с
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | placeholder | `string` | - | Значение плейсхолдера |
+| autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | onKeyDown | `KeyboardEventHandler<HTMLInputElement>` | - | Колбек обработки начала нажатия клавиши клавиатуры |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
@@ -400,7 +400,6 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| autoFocus* | `unknown` | - |  |
 | postfixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-постфикс для поля |
 | showScaleBar | `boolean` | true | Отображение линейки |
 | textInputFormatter | `TextInputFormatter` | - | Функция для форматирования значений в текстовом поле |
@@ -413,6 +412,7 @@ FieldStepper в основном предназначен для работы с
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | onChange | `(value: number \| number[]) => void` | - |  |
 | value | `number \| number[]` | - |  |
 | range | `boolean` | - |  |
@@ -436,7 +436,6 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| autoFocus* | `unknown` | - |  |
 | value | `number` | - | Значение поля |
 | onChange | `(value: number, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
 | step | `number` | 1 | Шаг поля |
@@ -451,6 +450,7 @@ FieldStepper в основном предназначен для работы с
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | min | `number` | Number.NEGATIVE_INFINITY | Минимальное значение поля |
 | max | `number` | Number.POSITIVE_INFINITY | Максимальное значение поля |
 | className | `string` | - | CSS-класс |
@@ -470,7 +470,6 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| autoFocus* | `unknown` | - |  |
 | showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
 | onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
@@ -482,7 +481,7 @@ FieldStepper в основном предназначен для работы с
 | type | "text" \| "tel" \| "email" | text |  |
 | onChange | `(value: string, e?: ChangeEvent<HTMLInputElement>) => void` | - | Колбек смены значения |
 | value | `string` | - | Значение input |
-| inputMode | enum InputMode: `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
+| inputMode | enum InputMode: `"none"`, `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
 | id | `string` | - | Значение html-атрибута id |
 | name | `string` | - | Значение html-атрибута name |
 | disabled | `boolean` | - | Является ли поле деактивированным |
@@ -490,6 +489,7 @@ FieldStepper в основном предназначен для работы с
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
 | placeholder | `string` | - | Значение плейсхолдера |
+| autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | maxLength | `number` | - | Максимальная длина вводимого значения |
 | autoComplete | `string \| boolean` | false | Включен ли автокомплит для поля |
 | spellCheck | `boolean` | true | Значение атрибута spellcheck (проверка орфографии) |
@@ -532,7 +532,7 @@ FieldStepper в основном предназначен для работы с
 | placeholder | `string` | - | Плейсхолдер |
 | autoFocus | `boolean` | - | Включен ли авто-фокус |
 | maxLength | `number` | - | Максимальное кол-во символов |
-| inputMode | enum InputMode: `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
+| inputMode | enum InputMode: `"none"`, `"text"`, `"search"`, `"tel"`, `"email"`, `"decimal"`, `"numeric"`, `"url"` | - | Режим работы экранной клавиатуры |
 | spellCheck | `boolean` | true | Включение проверки орфографии |
 | onKeyDown | `KeyboardEventHandler<HTMLTextAreaElement>` | - | Колбек нажатия клавиши клавиатуры |
 | className | `string` | - | CSS-класс |
@@ -552,7 +552,6 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| autoFocus* | `unknown` | - |  |
 | open | `boolean` | - | Открыт time-picker |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
 | value | `TimeValue` | - | Значение поля |
@@ -567,6 +566,7 @@ FieldStepper в основном предназначен для работы с
 | readonly | `boolean` | - | Является ли поле доступным только для чтения |
 | onFocus | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки получения фокуса |
 | onBlur | `FocusEventHandler<HTMLInputElement>` | - | Колбек обработки потери фокуса |
+| autoFocus | `boolean` | false | Включен ли авто-фокус для поля |
 | className | `string` | - | CSS-класс |
 | label | `string` | - | Лейбл |
 | labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |

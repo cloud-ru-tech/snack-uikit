@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import Decimal from 'decimal.js';
 import mergeRefs from 'merge-refs';
 import {
   ChangeEvent,
@@ -193,13 +194,15 @@ export const FieldStepper = forwardRef<HTMLInputElement, FieldStepperProps>(
     const handleMinusButtonClick = (e: MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      setValue(Math.min(Math.max(min, value - step), max));
+      const newValue = new Decimal(value).minus(step).toNumber();
+      setValue(Math.min(Math.max(min, newValue), max));
     };
 
     const handlePlusButtonClick = (e: MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      setValue(Math.max(Math.min(max, value + step), min));
+      const newValue = new Decimal(value).plus(step).toNumber();
+      setValue(Math.max(Math.min(max, newValue), min));
     };
 
     const handleMinusButtonKeyDown: KeyboardEventHandler<HTMLInputElement> = () => {
