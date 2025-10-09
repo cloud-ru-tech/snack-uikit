@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.11.16 (2025-10-09)</small>
+
+* fix(FF-7377): remove locale from deps ([cdfe340](https://github.com/cloud-ru-tech/snack-uikit/commit/cdfe340))
+
+
+
+
+
 ## <small>0.11.15 (2025-10-06)</small>
 
 ### Only dependencies have been changed
