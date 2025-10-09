@@ -1444,7 +1444,7 @@ importers:
         specifier: 0.9.9
         version: link:../loaders
       '@snack-uikit/locale':
-        specifier: 0.15.2
+        specifier: '*'
         version: link:../locale
       '@snack-uikit/progress-bar':
         specifier: 0.1.10

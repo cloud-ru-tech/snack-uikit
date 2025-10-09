@@ -39,7 +39,6 @@
     "@snack-uikit/icons": "0.27.3",
     "@snack-uikit/link": "0.17.11",
     "@snack-uikit/loaders": "0.9.9",
-    "@snack-uikit/locale": "0.15.2",
     "@snack-uikit/progress-bar": "0.1.10",
     "@snack-uikit/scroll": "0.10.5",
     "@snack-uikit/truncate-string": "0.7.2",
@@ -48,5 +47,8 @@
     "react-draggable": "4.4.6",
     "react-toastify": "10.0.5",
     "uncontrollable": "9.0.0"
+  },
+  "peerDependencies": {
+    "@snack-uikit/locale": "*"
   }
 }
