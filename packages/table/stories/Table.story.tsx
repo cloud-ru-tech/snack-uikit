@@ -8,6 +8,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { exportToCSV, exportToXLSX, RowClickHandler, RowSelectionState, Table, TableProps } from '../src';
+import { TABLE_ROW_COLOR } from '../src/constants';
 import { STORY_TEST_IDS, StoryStatusColumnViewMode } from './constants';
 import { generateRows } from './helpers';
 import { useInfiniteLoading, useTableColumnDefinitions } from './hooks';
@@ -38,6 +39,7 @@ type StoryProps = Omit<TableProps<StubData, Filters>, 'rowSelection' | 'sort' | 
   enableColumnsOrderSortByDrag: boolean;
   showColumnsSettings: boolean;
   initialColumnFiltersOpen: boolean;
+  showRowBackgroundColor: boolean;
 };
 
 const PINNED_TOP_ROWS = ['0', '2'];
@@ -111,6 +113,7 @@ const Template: StoryFn<StoryProps> = ({
   showColumnsSettings,
   columnFilters: columnFiltersProp,
   initialColumnFiltersOpen,
+  showRowBackgroundColor,
   ...args
 }: StoryProps) => {
   const data = useMemo(
@@ -258,6 +261,30 @@ const Template: StoryFn<StoryProps> = ({
         exportSettings={showExport ? { fileName: 'test-export', exportToCSV, exportToXLSX } : undefined}
         columnFilters={columnFilters}
         scrollRef={scrollRef}
+        getRowBackgroundColor={
+          showRowBackgroundColor
+            ? data => {
+                switch (data.status) {
+                  case 'Blue':
+                    return TABLE_ROW_COLOR.Blue;
+                  case 'Yellow':
+                    return TABLE_ROW_COLOR.Yellow;
+                  case 'Pink':
+                    return TABLE_ROW_COLOR.Pink;
+                  case 'Orange':
+                    return TABLE_ROW_COLOR.Orange;
+                  case 'Violet':
+                    return TABLE_ROW_COLOR.Violet;
+                  case 'Red':
+                    return TABLE_ROW_COLOR.Red;
+                  case 'Green':
+                    return TABLE_ROW_COLOR.Green;
+                  default:
+                    return undefined;
+                }
+              }
+            : undefined
+        }
       />
       <div data-test-id={STORY_TEST_IDS.selected} style={{ opacity: 0, height: 1 }}>
         {JSON.stringify(selectedState)}
@@ -304,6 +331,7 @@ export const table: StoryObj<StoryProps> = {
     },
     enableColumnsOrderSortByDrag: true,
     showColumnsSettings: true,
+    showRowBackgroundColor: false,
   },
 
   argTypes: {
@@ -470,6 +498,10 @@ export const table: StoryObj<StoryProps> = {
     },
     showColumnsSettings: {
       name: '[Stories]: Show columns settings',
+      controls: { type: 'boolean' },
+    },
+    showRowBackgroundColor: {
+      name: '[Stories]: Show row background color example',
       controls: { type: 'boolean' },
     },
   },

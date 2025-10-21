@@ -1,6 +1,8 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-table';
 @use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
 
+$appearances: 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink';
+
 $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 
 @function color-with-opacity-local($color, $opacity) {
@@ -53,7 +55,6 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
     width: styles-tokens-table.$border-width-table;
   }
 
-
   &[data-position='left'] {
     left: 0;
 
@@ -83,7 +84,6 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
 }
 
 .bodyRow {
-
   & ~ &:before {
     content: '';
 
@@ -99,6 +99,16 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
     background-color: styles-tokens-table.$sys-neutral-decor-disabled;
   }
 
+  @each $appearance in $appearances {
+    &[data-row-bg-appearance='#{$appearance}'] {
+      --snack-ui-table-row-background: #{styles-tokens-table.color-on-background-with-opacity(
+          styles-tokens-table.simple-var(styles-tokens-table.$theme-variables, 'sys', $appearance, 'accent-default'),
+          styles-tokens-table.$sys-neutral-background1-level,
+          styles-tokens-table.$opacity-a008
+        )};
+    }
+  }
+
   &[data-disabled] {
     cursor: not-allowed;
     background-color: styles-tokens-table.$sys-neutral-background;
@@ -109,19 +119,32 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
   }
 
   &[data-selected] {
-    background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a008);
+    background-color: color-with-opacity-local(
+      styles-tokens-table.$sys-primary-accent-default,
+      styles-tokens-table.$opacity-a008
+    );
 
     .rowPinnedCells {
-      background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a008);
+      background-color: color-with-opacity-local(
+        styles-tokens-table.$sys-primary-accent-default,
+        styles-tokens-table.$opacity-a008
+      );
       border-color: styles-tokens-table.$sys-primary-decor-activated;
     }
 
-    &:hover, &[data-actions-opened] {
-      background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a016);
+    &:hover,
+    &[data-actions-opened] {
+      background-color: color-with-opacity-local(
+        styles-tokens-table.$sys-primary-accent-default,
+        styles-tokens-table.$opacity-a016
+      );
       border-color: styles-tokens-table.$sys-primary-decor-hovered;
 
       .rowPinnedCells {
-        background-color: color-with-opacity-local(styles-tokens-table.$sys-primary-accent-default, styles-tokens-table.$opacity-a016);
+        background-color: color-with-opacity-local(
+          styles-tokens-table.$sys-primary-accent-default,
+          styles-tokens-table.$opacity-a016
+        );
         border-color: styles-tokens-table.$sys-primary-decor-activated;
       }
     }
@@ -139,12 +162,19 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
     }
 
     &:not([data-selected]) {
-      &:hover, &[data-actions-opened] {
-        background-color: color-with-opacity-local(styles-tokens-table.$sys-neutral-accent-default, styles-tokens-table.$opacity-a008);
+      &:hover,
+      &[data-actions-opened] {
+        background-color: color-with-opacity-local(
+          styles-tokens-table.$sys-neutral-accent-default,
+          styles-tokens-table.$opacity-a008
+        );
         border-color: styles-tokens-table.$sys-neutral-decor-hovered;
 
         .rowPinnedCells {
-          background-color: color-with-opacity-local(styles-tokens-table.$sys-neutral-accent-default, styles-tokens-table.$opacity-a008);
+          background-color: color-with-opacity-local(
+            styles-tokens-table.$sys-neutral-accent-default,
+            styles-tokens-table.$opacity-a008
+          );
           border-color: inherit;
         }
       }

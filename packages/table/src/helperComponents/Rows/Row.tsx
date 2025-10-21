@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { MouseEvent, ReactNode } from 'react';
+import { CSSProperties, MouseEvent, ReactNode } from 'react';
 
 import { DataAttributes } from '../types';
 import styles from './styles.module.scss';
@@ -9,9 +9,10 @@ export type RowProps = {
   onClick?(e: MouseEvent<HTMLDivElement>): void;
   className?: string;
   rowAutoHeight?: boolean;
+  style?: CSSProperties;
 } & DataAttributes;
 
-export function Row({ onClick, children, className, rowAutoHeight, ...attributes }: RowProps) {
+export function Row({ onClick, children, className, rowAutoHeight, style, ...attributes }: RowProps) {
   return (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus
     <div
@@ -19,6 +20,7 @@ export function Row({ onClick, children, className, rowAutoHeight, ...attributes
       className={cn(styles.tableRow, className)}
       data-auto-height={rowAutoHeight || undefined}
       role='row'
+      style={style}
       {...attributes}
     >
       {children}

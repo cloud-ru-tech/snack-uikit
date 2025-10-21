@@ -155,6 +155,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | rowPinning | `Pick<RowPinningState, "top">` | {     top: [],   } | Определение какие строки должны быть закреплены в таблице |
 | savedState | `{ id: string; filterQueryKey?: string; resize?: boolean; columnSettings?: boolean; }` | - | Конфиг для сохранения состояния в localStorage и queryParams. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
+| getRowBackgroundColor | `(data: TData) => TableRowColor` | - | Функция для определения цвета фона строки на основе данных строки @param data - данные строки таблицы @returns цвет фона строки или undefined, если цвет не должен применяться |
 | pagination | `{ state?: PaginationState; options?: number[]; optionsLabel?: string; onChange?(state: PaginationState): void; optionsRender?(value: string \| number, idx: number): string \| number; }` | 'Rows volume: ' <br> <strong>onChange</strong>: Колбэк на изменение пагинации | Параметры отвечают за пагинацию в таблице <br> <strong>state</strong>: Состояние строки поиска, жестко устанавливаемое снаружи <br> <strong>options</strong>: Варианты в выпадающем селекторе для установки кол-ва строк на страницу <br> <strong>optionsLabel</strong>: Текст для селектора кол-ва строк на страницу |
 | autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
 | pageCount | `number` | - | Кол-во страниц (используется для внешнего управления) |
@@ -221,6 +222,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | rowPinning | `Pick<RowPinningState, "top">` | - | Определение какие строки должны быть закреплены в таблице |
 | savedState | `{ id: string; filterQueryKey?: string; resize?: boolean; columnSettings?: boolean; }` | - | Конфиг для сохранения состояния в localStorage и queryParams. <br> Поле id должно быть уникальным для разных таблиц в рамках приложения. <br> Для корректной работы необходимо наличие id в конфиге columnDefinitions |
+| getRowBackgroundColor | `(data: TData) => TableRowColor` | - | Функция для определения цвета фона строки на основе данных строки @param data - данные строки таблицы @returns цвет фона строки или undefined, если цвет не должен применяться |
 | autoResetPageIndex | `boolean` | - | Автоматический сброс пагинации к первой странице при изменении данных или состояния (e.g фильтры, сортировки, и т.д) |
 | suppressPagination | `boolean` | - | Отключение пагинации |
 | manualPagination | `boolean` | true |  |

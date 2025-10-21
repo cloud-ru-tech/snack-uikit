@@ -5,7 +5,7 @@ import { MouseEvent, useState } from 'react';
 import { COLUMN_PIN_POSITION, TEST_IDS } from '../../constants';
 import { ColumnOrder } from '../../types';
 import { BodyCell } from '../Cells';
-import { RowContext } from '../contexts';
+import { RowContext, useTableContext } from '../contexts';
 import { useRowCells } from '../hooks';
 import { PinnedCells } from './PinnedCells';
 import { Row, RowProps } from './Row';
@@ -40,6 +40,8 @@ export function BodyRow<TData>({
 
   const disabled = !row.getCanSelect();
 
+  const { getRowBackgroundColor } = useTableContext();
+
   const handleRowClick = (e: MouseEvent<HTMLDivElement>) => {
     if (disabled) return;
 
@@ -51,20 +53,22 @@ export function BodyRow<TData>({
     });
   };
 
+  const isSelected =
+    row.getIsSelected() || (row.getIsSomeSelected() && !row.getCanMultiSelect() && !row.getIsExpanded());
+
+  const rowBackgroundColor = getRowBackgroundColor?.(row.original);
+
   return (
     <RowContext.Provider value={{ dropListOpened, setDropListOpen }}>
       <Row
         onClick={handleRowClick}
         data-clickable={Boolean(onRowClick) || undefined}
         data-disabled={disabled || undefined}
-        data-selected={
-          row.getIsSelected() ||
-          (row.getIsSomeSelected() && !row.getCanMultiSelect() && !row.getIsExpanded()) ||
-          undefined
-        }
+        data-selected={isSelected || undefined}
         data-actions-opened={dropListOpened || undefined}
         data-test-id={TEST_IDS.bodyRow}
         data-row-id={row.id}
+        data-row-bg-appearance={rowBackgroundColor && !disabled && !isSelected ? rowBackgroundColor : undefined}
         className={styles.bodyRow}
         rowAutoHeight={rowAutoHeight}
       >

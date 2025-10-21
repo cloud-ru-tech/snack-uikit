@@ -1,6 +1,10 @@
 import { Table } from '@tanstack/react-table';
 import { createContext, Dispatch, SetStateAction, useContext } from 'react';
 
+import { ValueOf } from '@snack-uikit/utils';
+
+import { TABLE_ROW_COLOR } from '../constants';
+
 type RowContext = {
   dropListOpened: boolean;
   setDropListOpen: Dispatch<SetStateAction<boolean>>;
@@ -15,6 +19,7 @@ export const useRowContext = () => useContext(RowContext);
 
 type TableContext<TData> = {
   table: Table<TData>;
+  getRowBackgroundColor?: (data: TData) => ValueOf<typeof TABLE_ROW_COLOR> | undefined;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

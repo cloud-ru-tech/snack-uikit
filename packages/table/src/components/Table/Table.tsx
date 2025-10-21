@@ -123,6 +123,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   bulkActions: bulkActionsProp,
   rowAutoHeight,
   columnsSettings: columnsSettingsProp,
+  getRowBackgroundColor,
   ...rest
 }: TableProps<TData, TFilters>) {
   const [globalFilter, onGlobalFilterChange] = useStateControl<string>(search, '');
@@ -524,7 +525,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
         <div className={styles.tableContent} style={columnSizes.vars}>
           <CellAutoResizeContext.Provider value={{ updateCellMap }}>
             <DndContext {...dndContextProps}>
-              <TableContext.Provider value={{ table }}>
+              <TableContext.Provider value={{ table, getRowBackgroundColor }}>
                 {(!infiniteLoading || !data.length) && loading ? (
                   <SkeletonContextProvider loading>
                     <HeaderRow rowAutoHeight={rowAutoHeight} columnOrder={columnOrder} />

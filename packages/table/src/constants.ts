@@ -57,3 +57,14 @@ export enum DefaultColumns {
   RowActions = 'rowActions',
 }
 export const DEFAULT_COLUMNS = [DefaultColumns.Status, DefaultColumns.Selection, DefaultColumns.RowActions];
+
+export const TABLE_ROW_COLOR = {
+  Red: 'red',
+  Orange: 'orange',
+  Yellow: 'yellow',
+  Green: 'green',
+  Blue: 'blue',
+  Violet: 'violet',
+  Pink: 'pink',
+  Neutral: 'neutral',
+} as const;

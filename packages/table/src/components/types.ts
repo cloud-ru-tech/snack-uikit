@@ -10,10 +10,13 @@ import { ReactNode, RefObject } from 'react';
 
 import { FiltersState } from '@snack-uikit/chips';
 import { FilterRow, ToolbarProps } from '@snack-uikit/toolbar';
-import { WithSupportProps } from '@snack-uikit/utils';
+import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
+import { TABLE_ROW_COLOR } from '../constants';
 import { EmptyStateProps, ExportButtonProps, RowClickHandler, TreeColumnDefinitionProps } from '../helperComponents';
 import { ColumnDefinition, ExpandedState } from '../types';
+
+export type TableRowColor = ValueOf<typeof TABLE_ROW_COLOR>;
 
 type BulkAction = Omit<NonNullable<ToolbarProps<Record<string, string>>['bulkActions']>[number], 'onClick'> & {
   onClick?(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void): void;
@@ -168,6 +171,13 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
     resize?: boolean;
     columnSettings?: boolean;
   };
+
+  /**
+   * Функция для определения цвета фона строки на основе данных строки
+   * @param data - данные строки таблицы
+   * @returns цвет фона строки или undefined, если цвет не должен применяться
+   */
+  getRowBackgroundColor?: (data: TData) => TableRowColor | undefined;
 }>;
 
 export type InfiniteTableProps<
