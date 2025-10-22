@@ -1215,6 +1215,9 @@ importers:
 
   packages/segmented-control:
     dependencies:
+      '@snack-uikit/counter':
+        specifier: 0.8.10
+        version: link:../counter
       '@snack-uikit/truncate-string':
         specifier: 0.7.2
         version: link:../truncate-string

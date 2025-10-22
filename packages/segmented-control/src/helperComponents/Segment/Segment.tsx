@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { useEffect, useRef } from 'react';
 
+import { Counter } from '@snack-uikit/counter';
 import { TruncateString } from '@snack-uikit/truncate-string';
 
 import { Segment as SegmentType, Size } from '../../types';
@@ -24,6 +25,7 @@ export function Segment({
   onClick,
   disabled,
   icon,
+  counter,
   focusable,
   onGetFocusable,
   onSelectionUpdated,
@@ -61,6 +63,7 @@ export function Segment({
     >
       {size !== 'xs' && icon && <div className={styles.icon}>{icon}</div>}
       {label && <TruncateString className={styles.label} data-size={size} text={label} />}
+      {counter && <Counter {...counter} size='s' />}
     </button>
   );
 

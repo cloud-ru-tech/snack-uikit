@@ -21,19 +21,32 @@ enum StoryType {
   Labels = 'labels',
   Icons = 'icons',
   LabelsAndIcons = 'labels and icons',
+  LabelsAndCounters = 'labels and counters',
+  LabelsAndCountersAndIcons = 'labels and counters and icons',
 }
 
 type StoryProps = SegmentedControlProps & {
   storyType: StoryType;
 };
 const Template: StoryFn<StoryProps> = ({ ...args }: StoryProps) => {
-  const items = useMemo(
+  const items: Segment[] = useMemo(
     () =>
-      args.items.map(item => {
-        if (args.storyType === StoryType.Labels) return { ...item, icon: undefined };
-        if (args.storyType === StoryType.Icons) return { ...item, label: undefined };
-        return item;
-      }),
+      args.items
+        .map(item => {
+          switch (args.storyType) {
+            case StoryType.Labels:
+              return { ...item, icon: undefined, counter: undefined };
+            case StoryType.Icons:
+              return { ...item, label: undefined, counter: undefined };
+            case StoryType.LabelsAndIcons:
+              return { ...item, counter: undefined };
+            case StoryType.LabelsAndCounters:
+              return { ...item, icon: undefined };
+            default:
+              return item;
+          }
+        })
+        .filter(item => item.label || item.icon || item.counter),
     [args.items, args.storyType],
   );
   const [selected, setSelected] = useState(args.defaultValue);
@@ -55,7 +68,7 @@ export const segmentedControl: StoryObj<StoryProps> = {
     items: [
       { label: 'Chip', value: '1', icon: <PlaceholderSVG /> },
       { label: 'Gadget Hackwrench', value: '2', icon: <PlaceholderSVG /> },
-      { label: 'Dale', value: '3', icon: <PlaceholderSVG /> },
+      { label: 'Dale', value: '3', counter: { value: 9, appearance: 'neutral' } },
       {
         label: 'Zipper',
         value: '4',
@@ -67,12 +80,23 @@ export const segmentedControl: StoryObj<StoryProps> = {
           </Tooltip>
         ),
       },
-      { label: 'Monterey Jack', value: '5', icon: <PlaceholderSVG /> },
-    ] satisfies Segment[],
+      { label: 'Monterey Jack', value: '5', counter: { value: 10 } },
+      {
+        label: 'Peter Parker',
+        value: '6',
+        counter: { value: 1994, appearance: 'red' },
+        disabled: true,
+        renderWrapSegment: segment => (
+          <Tooltip tip='Spider-Man' placement='bottom'>
+            {segment}
+          </Tooltip>
+        ),
+      },
+    ],
     defaultValue: '1',
     size: 'm',
     outline: false,
-    storyType: StoryType.LabelsAndIcons,
+    storyType: StoryType.LabelsAndCountersAndIcons,
     width: 'auto',
   },
 
