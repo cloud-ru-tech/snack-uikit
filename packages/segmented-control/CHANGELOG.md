@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.6.11 (2025-10-22)</small>
+
+* feat(PDS-3093): counter added in segment ([d5c9867](https://github.com/cloud-ru-tech/snack-uikit/commit/d5c9867))
+
+
+
+
+
 ## <small>0.6.10 (2025-09-22)</small>
 
 ### Only dependencies have been changed

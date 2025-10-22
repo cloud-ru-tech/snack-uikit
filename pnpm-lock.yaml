@@ -632,7 +632,7 @@ importers:
         specifier: '*'
         version: link:../locale
       '@snack-uikit/segmented-control':
-        specifier: 0.6.10
+        specifier: 0.6.11
         version: link:../segmented-control
       '@snack-uikit/utils':
         specifier: 4.0.0
@@ -725,7 +725,7 @@ importers:
         specifier: 0.13.5
         version: link:../calendar
       '@snack-uikit/color-picker':
-        specifier: 0.3.44
+        specifier: 0.3.45
         version: link:../color-picker
       '@snack-uikit/divider':
         specifier: 3.2.10
@@ -958,7 +958,7 @@ importers:
         specifier: 3.2.10
         version: link:../divider
       '@snack-uikit/fields':
-        specifier: 0.51.5
+        specifier: 0.51.6
         version: link:../fields
       '@snack-uikit/link':
         specifier: 0.17.11

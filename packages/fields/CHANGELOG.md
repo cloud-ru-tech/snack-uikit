@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.51.6 (2025-10-22)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/color-picker@0.3.45](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/color-picker/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.51.5 (2025-10-09)</small>
 
 * fix(PDS-811): fix field stepper step ([4033ad6](https://github.com/cloud-ru-tech/snack-uikit/commit/4033ad6))
