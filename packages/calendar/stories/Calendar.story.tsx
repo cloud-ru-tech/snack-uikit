@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { Scroll } from '@snack-uikit/scroll';
 
@@ -10,7 +10,7 @@ import componentReadme from '../README.md';
 import { Calendar, CalendarProps } from '../src';
 import { CALENDAR_MODE, SIZE } from '../src/constants';
 import { Range } from '../src/types';
-import { getBuildCellProps } from './helper';
+import { getBuildCellProps, getCustomListOfPeriodOptions } from './helpers';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -35,6 +35,9 @@ type StoryProps = CalendarProps & {
   rangeDefaultValueStart: string;
   rangeDefaultValueEnd: string;
   dateToday: string;
+  showPeriodPresets: boolean;
+  showPresetsTitle: boolean;
+  showCustomPresetsItems: boolean;
 };
 
 type DateValue = Date | Range | undefined;
@@ -77,6 +80,7 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
     args.onChangeValue?.(value);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const today = args.dateToday ? new Date(args.dateToday) : undefined;
 
   const props = {
@@ -88,13 +92,38 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
     onChangeValue,
   };
 
+  const presetsOptions = useMemo(() => {
+    if (!args.showPeriodPresets) {
+      return undefined;
+    }
+
+    const commonOptions = {
+      enabled: true,
+      title: args.showPresetsTitle,
+    };
+
+    if (args.showCustomPresetsItems) {
+      return {
+        ...commonOptions,
+        items: getCustomListOfPeriodOptions(today),
+      };
+    }
+
+    return commonOptions;
+  }, [args.showCustomPresetsItems, args.showPeriodPresets, args.showPresetsTitle, today]);
+
   return (
     <>
       <div key={args.mode} className={cn(styles.story, SCROLL_SIZE[args.size || SIZE.M])}>
         <Scroll>
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
-          <Calendar {...props} buildCellProps={getBuildCellProps(modeBuildCellProps)} key={args.mode} />
+          <Calendar
+            {...props}
+            buildCellProps={getBuildCellProps(modeBuildCellProps)}
+            key={args.mode}
+            presets={presetsOptions}
+          />
         </Scroll>
       </div>
       <div className={styles.valueHolder} data-test-id='calendar-value-holder'>
@@ -118,6 +147,9 @@ export const calendar = {
     showHolidays: false,
     fitToContainer: true,
     modeBuildCellProps: 'none',
+    showPeriodPresets: false,
+    showPresetsTitle: true,
+    showCustomPresetsItems: false,
   },
 
   argTypes: {
@@ -181,6 +213,19 @@ export const calendar = {
       name: 'defaultValue end',
       control: { type: 'date' },
       if: { arg: 'mode', eq: CALENDAR_MODE.Range },
+    },
+    showPeriodPresets: {
+      if: { arg: 'mode', eq: CALENDAR_MODE.Range },
+    },
+    hidePeriodPresetsTitle: {
+      if: { arg: 'showPeriodPresets', eq: true },
+    },
+    customPeriodPresets: { table: { disable: true } },
+    onPresetClick: { table: { disable: true } },
+    showCustomPresetsItems: {
+      if: { arg: 'showPeriodPresets', eq: true },
+      name: '[Story]: Show custom list items',
+      control: { type: 'boolean' },
     },
   },
 

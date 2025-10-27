@@ -91,3 +91,8 @@ $sizes: 's', 'm', 'l';
     }
   }
 }
+
+.divider {
+  flex-shrink: 0;
+  height: auto;
+}

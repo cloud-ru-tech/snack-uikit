@@ -335,3 +335,8 @@ test.page(getPage({ dateValue: 1683176705000 + MILLISECONDS_TIMEZONE_OFFSET /* 4
     await t.expect(getDateValueFromHolder()).eql(String(1683176705000 + MILLISECONDS_TIMEZONE_OFFSET));
   },
 );
+
+test.page(getPage({ showPeriodPresets: true }))('Presets should not be available', async t => {
+  await t.expect(Selector(dataTestIdSelector(TEST_ID)).visible).ok();
+  await t.expect(Selector(dataTestIdSelector(`presets-${TEST_ID}`)).visible).notOk();
+});

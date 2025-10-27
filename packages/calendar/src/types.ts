@@ -51,3 +51,27 @@ export type DateAndTime = TimeValue & {
   month?: number;
   day?: number;
 };
+
+export type PresetItem = {
+  /** Лейбл пресета */
+  label: string;
+  /** ID периода */
+  id: string;
+  /** Период */
+  range: Range;
+};
+
+export type PresetsOptions = {
+  /**
+   * Включение отображения секции с пресетами
+   * @default false
+   */
+  enabled?: boolean;
+  /**
+   * Отображение заголовка у секции с пресетами
+   * @default true
+   */
+  title?: boolean;
+  /** Кастомные пресеты быстрого выбора периода относительно текущего момента */
+  items?: PresetItem[];
+};

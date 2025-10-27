@@ -4,7 +4,7 @@ import { WithSupportProps } from '@snack-uikit/utils';
 
 import { CALENDAR_MODE } from '../../constants';
 import { CalendarBase } from '../../helperComponents/CalendarBase';
-import { BuildCellPropsFunction, FocusDirection, Range, Size } from '../../types';
+import { BuildCellPropsFunction, FocusDirection, PresetsOptions, Range, Size } from '../../types';
 import { getNormalizedValue } from './utils';
 
 type CommonCalendarProps = {
@@ -49,6 +49,8 @@ type CommonCalendarProps = {
   onFocusLeave?(direction: FocusDirection): void;
   /** Ссылка на управление первым элементом навигации */
   navigationStartRef?: RefObject<{ focus(): void }>;
+  /** Настройки секции с пресетами быстрого выбора периода. Доступны только при mode === 'range' и отсутствии buildCellProps (временно PDS-3139) */
+  presets?: PresetsOptions;
 };
 
 type DateCalendarProps = CommonCalendarProps & {
@@ -113,7 +115,7 @@ export type CalendarProps = WithSupportProps<
 >;
 
 export function Calendar(props: CalendarProps) {
-  const { className, onChangeValue, buildCellProps, mode, ...rest } = props;
+  const { onChangeValue, mode, ...rest } = props;
 
   const changeValueHandler = useCallback(
     (value: Range) => {
@@ -136,11 +138,9 @@ export function Calendar(props: CalendarProps) {
     <CalendarBase
       {...rest}
       mode={mode}
-      className={className}
       value={getNormalizedValue(props.value)}
       defaultValue={getNormalizedValue(props.defaultValue)}
       onChangeValue={changeValueHandler}
-      buildCellProps={buildCellProps}
     />
   );
 }

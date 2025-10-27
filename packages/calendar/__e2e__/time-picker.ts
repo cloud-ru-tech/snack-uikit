@@ -156,3 +156,8 @@ test.page(getPage({ valueHours: 5, valueMinutes: 5, valueSeconds: 5 }))(
     await t.expect(getTimeValueFromHolder()).eql('12:00:00');
   },
 );
+
+test.page(getPage({ showPeriodPresets: true }))('Presets should not be available', async t => {
+  await t.expect(Selector(dataTestIdSelector(TEST_ID)).visible).ok();
+  await t.expect(Selector(dataTestIdSelector(`presets-${TEST_ID}`)).visible).notOk();
+});

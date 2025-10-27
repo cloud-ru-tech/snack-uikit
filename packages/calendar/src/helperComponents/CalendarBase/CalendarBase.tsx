@@ -2,19 +2,30 @@ import cn from 'classnames';
 import { CSSProperties, RefObject, useCallback, useMemo, useRef, useState } from 'react';
 import { useUncontrolledProp } from 'uncontrollable';
 
+import { Divider } from '@snack-uikit/divider';
 import { ListProps } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { AUTOFOCUS, CALENDAR_MODE, SIZE, VIEW_MODE } from '../../constants';
 import { useDateAndTime } from '../../hooks';
-import { BuildCellPropsFunction, CalendarMode, FocusDirection, Range, Size, ViewMode } from '../../types';
+import {
+  BuildCellPropsFunction,
+  CalendarMode,
+  FocusDirection,
+  PresetsOptions,
+  Range,
+  Size,
+  ViewMode,
+} from '../../types';
 import { getEndOfTheDay, getLocale, getTestIdBuilder, sortDates } from '../../utils';
 import { CalendarBody } from '../CalendarBody';
 import { CalendarContext } from '../CalendarContext';
 import { CalendarNavigation } from '../CalendarNavigation';
 import { ColumnLabels } from '../ColumnLabels';
 import { Footer } from '../Footer';
+import { PeriodPresetsList } from '../PeriodPresetsList';
+import { getDefaultPresets } from '../PeriodPresetsList/utils';
 import { TimePickerBase } from '../TimePickerBase';
 import { useRange, useViewDate } from './hooks';
 import styles from './styles.module.scss';
@@ -36,6 +47,7 @@ export type CalendarBaseProps = WithSupportProps<{
   autofocus?: boolean;
   locale?: Intl.Locale;
   navigationStartRef?: RefObject<{ focus(): void }>;
+  presets?: PresetsOptions;
 }>;
 
 const DATE_WRAPPER_SIZE_MAP: Record<Size, string> = {
@@ -76,12 +88,15 @@ export function CalendarBase({
   buildCellProps,
   'data-test-id': testId,
   navigationStartRef,
+  presets,
   ...rest
 }: CalendarBaseProps) {
+  const { t } = useLocale('Calendar');
+
   const [viewMode, setViewMode] = useState<ViewMode>(CALENDAR_DEFAULT_MODE_MAP[mode]);
   const [viewShift, setViewShift] = useState<number>(0);
   const [value, setValueState] = useUncontrolledProp<Range | undefined>(valueProp, defaultValue, onChangeValue);
-  const today = typeof todayProp === 'number' ? new Date(todayProp) : todayProp;
+  const today = useMemo(() => (typeof todayProp === 'number' ? new Date(todayProp) : todayProp), [todayProp]);
   const [referenceDate] = useState(value?.[0] || today || new Date());
   const viewDate = useViewDate(referenceDate, viewMode, viewShift);
   const [focus, setFocus] = useState<string | undefined>(autofocus ? AUTOFOCUS : undefined);
@@ -121,6 +136,23 @@ export function CalendarBase({
   const locale = useMemo(() => getLocale({ localeProp, ctxLang }), [ctxLang, localeProp]);
 
   const firstNotDisableCell = useRef<[number, number]>([0, 0]);
+
+  const presetsItems = useMemo(() => {
+    if (presets?.items && presets.items.length > 0) {
+      return presets.items;
+    }
+
+    return getDefaultPresets(t, today);
+  }, [presets?.items, t, today]);
+
+  const arePeriodPresetsDisplayed = mode === 'range' && presets?.enabled && !buildCellProps; // TODO PDS-3139
+
+  const onPresetClick = useCallback(
+    (selectedPeriod: Range) => {
+      setValue(selectedPeriod);
+    },
+    [setValue],
+  );
 
   return (
     <div
@@ -176,6 +208,17 @@ export function CalendarBase({
           data-size={size}
           data-show-footer={(mode === CALENDAR_MODE.DateTime && viewMode === 'month') || undefined}
         >
+          {arePeriodPresetsDisplayed && (
+            <>
+              <PeriodPresetsList
+                items={presetsItems}
+                onChange={onPresetClick}
+                showTitle={presets?.title}
+                data-test-id={getTestId('presets')}
+              />
+              <Divider className={styles.divider} orientation='vertical' />
+            </>
+          )}
           <div
             {...extractSupportProps(rest)}
             className={cn(styles.calendar, CALENDAR_SIZE_MAP[size])}

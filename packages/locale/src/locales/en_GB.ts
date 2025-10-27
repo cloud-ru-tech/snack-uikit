@@ -62,6 +62,16 @@ export const en_GB = {
   Calendar: {
     current: 'Current',
     time: 'Time',
+    presets: 'Presets',
+    defaultPresets: {
+      lastWeek: 'Last 7 days',
+      lastTwoWeeks: 'Last 14 days',
+      lastMonth: 'Last 30 days',
+      lastQuarter: 'Last 90 days',
+      lastThird: 'Last 120 days',
+      lastYear: 'Last 1 year',
+      lastTwoYears: 'Last 2 years',
+    },
   },
   Toolbar: {
     hideFilters: 'Hide filters',

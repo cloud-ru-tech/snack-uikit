@@ -1,13 +1,25 @@
 import { fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { focusItem, getCalendarTextSnapshot } from './utils';
+import {
+  focusItem,
+  getCalendarTextSnapshot,
+  getCustomOptions,
+  getDefaultOptions,
+  getPresetsItemsLabels,
+} from './utils';
 
 const TEST_ID = 'test-id';
 const ITEM = `item-${TEST_ID}`;
 const PERIOD_LEVEL = `period-level-${TEST_ID}`;
+const PRESETS = `presets-${TEST_ID}`;
+const PRESETS_TITLE = `presets-header-${TEST_ID}`;
 
 const mainElementSelector = Selector(dataTestIdSelector(TEST_ID));
+const presetsSelector = Selector(dataTestIdSelector(PRESETS));
+
+const DEFAULT_OPTIONS_LABELS = getDefaultOptions();
+const CUSTOM_OPTIONS_LABELS = getCustomOptions();
 
 const getPage = (props: object = {}) =>
   getTestcafeUrl({
@@ -145,6 +157,91 @@ test.page(getPage())('Should select range by keyboard', async t => {
     header: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
     items:
       '_30_,_1_,_2_,_3_,_4_,_5_,_6_,_7_,_8_,_9_,_10_,_11_,_12_,_13_,_14_,_!15_,_[16],17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4,5,6,7,8,9,10',
+    periodLevelName: 'May 2023',
+  });
+});
+
+test.page(getPage())('Presets section should not be available by default', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+  await t.expect(presetsSelector.visible).notOk();
+});
+
+test.page(
+  getPage({
+    showPeriodPresets: true,
+  }),
+)(
+  'If presets feature is enabled, presets title should be present by default and only fallback presets list options should be available',
+  async t => {
+    await t.expect(mainElementSelector.visible).ok();
+    await t.expect(Selector(dataTestIdSelector(PRESETS_TITLE)).visible).ok();
+
+    const availableItemsLabels = await getPresetsItemsLabels();
+    await t.expect(availableItemsLabels.join(',')).eql(DEFAULT_OPTIONS_LABELS.join(','));
+  },
+);
+
+test.page(
+  getPage({
+    showPeriodPresets: true,
+    showCustomPresetsItems: true,
+  }),
+)('If provided, custom options should be displayed instead of fallback options', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
+  const availableItemsLabels = await getPresetsItemsLabels();
+  await t.expect(availableItemsLabels.join(',')).eql(CUSTOM_OPTIONS_LABELS.join(','));
+});
+
+test.page(
+  getPage({
+    showPeriodPresets: true,
+    showCustomPresetsItems: true,
+    showPresetsTitle: false,
+  }),
+)(
+  'Presets title should not be visible if is disabled in options, but presets items should still be available',
+  async t => {
+    await t.expect(mainElementSelector.visible).ok();
+    await t.expect(Selector(dataTestIdSelector(PRESETS_TITLE)).visible).notOk();
+
+    const availableItemsLabels = await getPresetsItemsLabels();
+    await t.expect(availableItemsLabels.join(',')).eql(CUSTOM_OPTIONS_LABELS.join(','));
+  },
+);
+
+test.page(
+  getPage({
+    showPeriodPresets: true,
+    showCustomPresetsItems: true,
+  }),
+)('Clicking a preset option should specify appropriate period for calendar', async t => {
+  await t.expect(mainElementSelector.visible).ok();
+
+  const availableItemsLabels = await getPresetsItemsLabels();
+  await t.expect(availableItemsLabels.join(',')).eql(CUSTOM_OPTIONS_LABELS.join(','));
+
+  await t.click(Selector(dataTestIdSelector('list__base-item-option')).withText('Next 7 days'));
+  await t.expect(await getCalendarTextSnapshot()).eql({
+    header: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
+    items:
+      '30,1,2,3,4,5,6,7,8,9,10,11,12,13,14,[!15]_,_16_,_17_,_18_,_19_,_20_,_21_,_[22],23,24,25,26,27,28,29,30,31,1,2,3,4,5,6,7,8,9,10',
+    periodLevelName: 'May 2023',
+  });
+
+  await t.click(Selector(dataTestIdSelector('list__base-item-option')).withText('Previous 7 days'));
+  await t.expect(await getCalendarTextSnapshot()).eql({
+    header: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
+    items:
+      '30,1,2,3,4,5,6,7,[8]_,_9_,_10_,_11_,_12_,_13_,_14_,_[!15],16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4,5,6,7,8,9,10',
+    periodLevelName: 'May 2023',
+  });
+
+  await t.click(Selector(dataTestIdSelector('list__base-item-option')).withText('Next weekend'));
+  await t.expect(await getCalendarTextSnapshot()).eql({
+    header: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
+    items:
+      '30,1,2,3,4,5,6,7,8,9,10,11,12,13,14,!15,16,17,18,19,[20]_,_[21],22,23,24,25,26,27,28,29,30,31,1,2,3,4,5,6,7,8,9,10',
     periodLevelName: 'May 2023',
   });
 });

@@ -62,6 +62,16 @@ export const ru_RU: typeof en_GB = {
   Calendar: {
     current: 'Сейчас',
     time: 'Время',
+    presets: 'Пресеты',
+    defaultPresets: {
+      lastWeek: 'Последние 7 дней',
+      lastTwoWeeks: 'Последние 14 дней',
+      lastMonth: 'Последние 30 дней',
+      lastQuarter: 'Последние 90 дней',
+      lastThird: 'Последние 120 дней',
+      lastYear: 'Последний 1 год',
+      lastTwoYears: 'Последние 2 года',
+    },
   },
   Toolbar: {
     hideFilters: 'Скрыть фильтры',

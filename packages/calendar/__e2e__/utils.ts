@@ -67,3 +67,31 @@ export const getTimeValueFromHolder = ClientFunction(() => {
   const holder = document.querySelector<HTMLElement>('[data-test-id="timepicker-value-holder"]');
   return holder?.innerText || '';
 });
+
+export const getPresetsItemsLabels = ClientFunction(() => {
+  const dataTestIdSelector = (testId: string) => `*[data-test-id="${testId}"]`;
+
+  const elements = document.querySelectorAll<HTMLElement>(dataTestIdSelector('list__base-item-option'));
+
+  const itemsLabels: string[] = [];
+
+  for (const element of elements) {
+    itemsLabels.push(element.innerText);
+  }
+
+  return itemsLabels;
+});
+
+const DEFAULT_OPTIONS_LABELS = ['7 days', '14 days', '30 days', '90 days', '120 days', '1 year', '2 years'];
+
+export function getDefaultOptions() {
+  return DEFAULT_OPTIONS_LABELS.map(period => `Last ${period}`);
+}
+
+export function getCustomOptions() {
+  return [
+    ...DEFAULT_OPTIONS_LABELS.slice(0, 2).map(period => `Next ${period}`),
+    ...DEFAULT_OPTIONS_LABELS.slice(0, 2).map(period => `Previous ${period}`),
+    'Next weekend',
+  ];
+}

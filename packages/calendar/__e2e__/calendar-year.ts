@@ -28,3 +28,8 @@ test.page(getPage())('Should select year by click in year mode', async t => {
     periodLevelName: '2020-2029',
   });
 });
+
+test.page(getPage({ showPeriodPresets: true }))('Presets should not be available', async t => {
+  await t.expect(Selector(dataTestIdSelector(TEST_ID)).visible).ok();
+  await t.expect(Selector(dataTestIdSelector(`presets-${TEST_ID}`)).visible).notOk();
+});

@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useMemo, useState } from 'react';
 
-import { getBuildCellProps } from '../../calendar/stories/helper';
+import { getBuildCellProps } from '../../calendar/stories/helpers';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
