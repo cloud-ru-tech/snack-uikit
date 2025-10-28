@@ -28,6 +28,14 @@ export function generateCards(amount: number) {
       id: String(i),
       unread: Boolean(randomIntFromInterval(0, 1)),
       appearance: notificationAppearances[randomIntFromInterval(0, notificationAppearances.length - 1)],
+      primaryButton: {
+        label: 'Primary button',
+        onClick: handleActionClick,
+      },
+      secondaryButton: {
+        label: 'Secondary button',
+        onClick: handleActionClick,
+      },
     });
   }
 

@@ -1,6 +1,6 @@
 export const TEST_IDS = {
   title: 'notification-panel__title',
-  chip: 'notification-panel__chip',
+  segments: 'notification-panel__segments',
   settings: {
     droplist: 'notification-panel__settings__droplist',
     droplistTrigger: 'notification-panel__settings__droplist-trigger',

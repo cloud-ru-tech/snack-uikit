@@ -55,7 +55,8 @@
     width: 100%;
     height: calc(100% + styles-tokens-notification-notificationCard.$border-width-notification-panel-card);
 
-    opacity: styles-tokens-notification-notificationCard.$opacity-a004;
+    opacity: 0;
+    background-color: styles-tokens-notification-notificationCard.$sys-neutral-accent-default;
   }
 
   &:focus-visible {
@@ -67,7 +68,7 @@
 
   &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
     &::before {
-      background-color: styles-tokens-notification-notificationCard.$sys-neutral-accent-default;
+      opacity: styles-tokens-notification-notificationCard.$opacity-a004;
     }
 
     .notificationCardFunction {
@@ -83,7 +84,6 @@
   &[data-unread] {
     &::before {
       opacity: styles-tokens-notification-notificationCard.$opacity-a008;
-      background-color: styles-tokens-notification-notificationCard.$sys-neutral-accent-default;
     }
 
     &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
@@ -94,6 +94,10 @@
   }
 
   &[data-appearance='neutral'] {
+    &::before {
+      background-color: styles-tokens-notification-notificationCard.$sys-neutral-accent-default;
+    }
+
     .notificationCardTitleIcon {
       color: styles-tokens-notification-notificationCard.$sys-neutral-accent-default;
     }
@@ -101,30 +105,36 @@
 
   &[data-appearance='error'],
   &[data-appearance='errorCritical'] {
+    &::before {
+      background-color: styles-tokens-notification-notificationCard.$sys-red-accent-default;
+    }
+
     .notificationCardTitleIcon {
       color: styles-tokens-notification-notificationCard.$sys-red-accent-default;
     }
   }
 
   &[data-appearance='errorCritical'] {
-    &[data-unread], &[data-droplist-open], &:hover, &:focus-visible, &:focus-within:not(:focus) {
-      &::before {
-        background-color: styles-tokens-notification-notificationCard.$sys-red-accent-default;
-      }
-    }
-
     .notificationCardTitleText {
       color: styles-tokens-notification-notificationCard.$sys-red-accent-default;
     }
   }
 
   &[data-appearance='warning'] {
+    &::before {
+      background-color: styles-tokens-notification-notificationCard.$sys-yellow-accent-default;
+    }
+
     .notificationCardTitleIcon {
       color: styles-tokens-notification-notificationCard.$sys-yellow-accent-default;
     }
   }
 
   &[data-appearance='success'] {
+    &::before {
+      background-color: styles-tokens-notification-notificationCard.$sys-green-accent-default;
+    }
+
     .notificationCardTitleIcon {
       color: styles-tokens-notification-notificationCard.$sys-green-accent-default;
     }

@@ -9,27 +9,11 @@
   display: flex;
   flex-direction: column;
 
+  background-color: styles-tokens-notification-notificationPanel.$sys-neutral-background2-level;
   border-bottom-color: styles-tokens-notification-notificationPanel.$sys-neutral-decor-default;
   border-bottom-style: solid;
-
-  &::before {
-    pointer-events: none;
-    content: '';
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    box-sizing: border-box;
-    width: 100%;
-    height: calc(100% + styles-tokens-notification-notificationPanel.$border-width-notification-panel-container);
-
-    opacity: styles-tokens-notification-notificationPanel.$opacity-a004;
-    background-color: styles-tokens-notification-notificationPanel.$sys-neutral-accent-default;
-    border-radius: inherit;
-  }
 }
-.notificationPanelChips {
+.notificationPanelSegments {
   @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-header-chips);
 
   display: flex;
@@ -81,7 +65,7 @@
 
   color: styles-tokens-notification-notificationPanel.$sys-neutral-text-light;
 
-  background: none;
+  background-color: styles-tokens-notification-notificationPanel.$sys-neutral-background2-level;
   border-color: styles-tokens-notification-notificationPanel.$sys-neutral-decor-default;
   border-top-style: solid;
   border-right: none;
@@ -115,10 +99,18 @@
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+
+  background-color: styles-tokens-notification-notificationPanel.$sys-neutral-background2-level;
 }
 
 .scrollStub {
   height: calc(styles-tokens-notification-notificationPanel.$dimension-025m / 2);
   margin-top: calc(styles-tokens-notification-notificationPanel.$dimension-025m / -2);
   background: transparent;
+}
+
+.notificationPanelHeaderActions {
+  display: flex;
+  column-gap: styles-tokens-notification-notificationPanel.$dimension-1m;
+  align-items: center;
 }

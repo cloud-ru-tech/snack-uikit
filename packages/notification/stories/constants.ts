@@ -35,6 +35,9 @@ export const NOTIFICATION_PANEL_PROPS_MOCK = {
   title: 'Notifications',
   readAllButton: {
     label: 'Mark all as read',
+    tooltip: {
+      tip: 'Your tip could be here',
+    },
   },
   footerButton: {
     label: 'All events',

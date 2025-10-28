@@ -2,9 +2,10 @@ import cn from 'classnames';
 import { MouseEventHandler, ReactNode, RefObject, useMemo } from 'react';
 
 import { ButtonFunction, ButtonFunctionProps } from '@snack-uikit/button';
-import { ChipToggle, ChipToggleProps } from '@snack-uikit/chips';
 import { Scroll } from '@snack-uikit/scroll';
+import { SegmentedControl, SegmentedControlProps } from '@snack-uikit/segmented-control';
 import { SkeletonContextProvider, WithSkeleton } from '@snack-uikit/skeleton';
+import { TooltipProps } from '@snack-uikit/tooltip';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
@@ -18,6 +19,7 @@ import {
 } from './components';
 import { NotificationPanelDivider, NotificationPanelDividerProps } from './components/NotificationPanelDivider';
 import { TEST_IDS } from './constants';
+import { WithTooltip } from './helperComponents';
 import styles from './styles.module.scss';
 
 export type { NotificationPanelBlankProps };
@@ -27,11 +29,11 @@ export type NotificationPanelProps = WithSupportProps<{
   title: string;
   /** Кнопка настроек и выпадающий список */
   settings?: NotificationPanelSettingsProps;
-  /** Чипы для фильтрации */
-  chips?: Omit<ChipToggleProps, 'size' | 'data-test-id'>[];
+  /** Сегменты для фильтрации */
+  segments?: Omit<SegmentedControlProps, 'size' | 'data-test-id'>;
   /** Кнопка в "шапке" панели */
   readAllButton?: Omit<ButtonFunctionProps, 'data-test-id'> & {
-    onClick: ButtonFunctionProps['onClick'];
+    tooltip?: TooltipProps;
   };
   /** Кнопка внизу панели */
   footerButton?: {
@@ -55,7 +57,7 @@ export type NotificationPanelProps = WithSupportProps<{
 export function NotificationPanel({
   title,
   settings,
-  chips,
+  segments,
   readAllButton,
   footerButton,
   content,
@@ -76,29 +78,36 @@ export function NotificationPanel({
             <TruncateString text={title} data-test-id={TEST_IDS.title} />
           </Typography.SansHeadlineS>
 
-          {settings && <NotificationPanelSettings {...settings} />}
+          <div className={styles.notificationPanelHeaderActions}>
+            {readAllButton && (
+              <WithTooltip tooltip={readAllButton.tooltip}>
+                <ButtonFunction
+                  {...readAllButton}
+                  onClick={readAllButton.onClick}
+                  size='xs'
+                  disabled={readAllButton.disabled || loading}
+                  data-test-id={TEST_IDS.readAll}
+                />
+              </WithTooltip>
+            )}
+
+            {settings && <NotificationPanelSettings {...settings} />}
+          </div>
         </div>
 
         <div className={styles.notificationPanelHeaderFunctions}>
-          <div className={styles.notificationPanelChips}>
-            {chips?.map(chip => (
-              <ChipToggle
-                {...chip}
-                key={chip.label}
-                data-test-id={`${TEST_IDS.chip}-${chip.label}`}
-                size='xs'
-                disabled={chip.disabled || loading}
+          {segments && (
+            <div className={styles.notificationPanelChips}>
+              <SegmentedControl
+                {...segments}
+                size='s'
+                items={segments.items.map(item => ({
+                  ...item,
+                  disabled: item.disabled || loading,
+                }))}
+                data-test-id={TEST_IDS.segments}
               />
-            ))}
-          </div>
-
-          {readAllButton && (
-            <ButtonFunction
-              {...readAllButton}
-              size='xs'
-              disabled={readAllButton.disabled || loading}
-              data-test-id={TEST_IDS.readAll}
-            />
+            </div>
           )}
         </div>
       </div>

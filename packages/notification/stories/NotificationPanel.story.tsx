@@ -1,8 +1,8 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 
-import { ChipToggleProps } from '@snack-uikit/chips';
 import { PlaceholderSVG } from '@snack-uikit/icons';
+import { SegmentedControlProps } from '@snack-uikit/segmented-control';
 import { ValueOf } from '@snack-uikit/utils';
 
 import componentChangelog from '../CHANGELOG.md';
@@ -19,39 +19,38 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = Omit<NotificationPanelProps, 'chips' | 'readAllButton' | 'footerButton'> & {
+type StoryProps = Omit<NotificationPanelProps, 'segments' | 'footerButton'> & {
   amount: number;
-  chips: Omit<ChipToggleProps, 'onChange'>[];
-  readAllButton: Omit<NotificationPanelProps['readAllButton'], 'onClick'>;
+  segments: Omit<SegmentedControlProps, 'onChange'>;
   footerButton?: {
     label: string;
   };
   showDivider: boolean;
 };
 
-const CHIP_FILTER = {
-  All: 'all',
-  Unread: 'unread',
+const SEGMENT_FILTER = {
+  All: 'All',
+  Unread: 'Unread',
 } as const;
 
-type ChipFilter = ValueOf<typeof CHIP_FILTER>;
+type SegmentFilter = ValueOf<typeof SEGMENT_FILTER>;
 
 const Template: StoryFn<StoryProps> = ({
   amount,
   readAllButton,
-  chips,
+  segments,
   footerButton,
   loading,
   showDivider,
   ...args
 }: StoryProps) => {
-  const [chipFilter, setChipFilter] = useState<ChipFilter>(CHIP_FILTER.All);
+  const [segmentFilter, setSegmentFilter] = useState<SegmentFilter>(SEGMENT_FILTER.All);
   const [allRead, setAllRead] = useState(false);
 
   const notifications = useMemo(() => generateCards(amount), [amount]);
 
   const cards = useMemo(() => {
-    if (chipFilter === CHIP_FILTER.Unread) {
+    if (segmentFilter === SEGMENT_FILTER.Unread) {
       return notifications.filter(card => card.unread);
     }
 
@@ -60,7 +59,7 @@ const Template: StoryFn<StoryProps> = ({
     }
 
     return notifications.sort((a, b) => Number(b.unread ?? 0) - Number(a.unread ?? 0));
-  }, [allRead, chipFilter, notifications]);
+  }, [allRead, segmentFilter, notifications]);
 
   const filteredCards = useMemo(
     () => ({
@@ -89,13 +88,15 @@ const Template: StoryFn<StoryProps> = ({
             onClick: toggleAllRead,
           }
         }
-        chips={chips?.map(chip => ({
-          ...chip,
-          checked: chip.label === chipFilter,
-          onChange() {
-            setChipFilter(chip.label as ChipFilter);
-          },
-        }))}
+        segments={
+          segments && {
+            ...segments,
+            value: segmentFilter,
+            onChange: (value: string | number) => {
+              setSegmentFilter(String(value) as SegmentFilter);
+            },
+          }
+        }
         loading={loading}
         content={
           <>
@@ -112,7 +113,7 @@ const Template: StoryFn<StoryProps> = ({
 
             {!showBlank && (
               <>
-                {showDivider && chipFilter === 'all' ? (
+                {showDivider && segmentFilter === SEGMENT_FILTER.All ? (
                   <>
                     {renderCards(filteredCards.notRead)}
 
@@ -145,16 +146,21 @@ export const notificationPanel: StoryObj<StoryProps> = {
 
   args: {
     ...NOTIFICATION_PANEL_PROPS_MOCK,
-    chips: [
-      {
-        label: CHIP_FILTER.All,
-        checked: true,
-      },
-      {
-        label: CHIP_FILTER.Unread,
-        checked: false,
-      },
-    ],
+    segments: {
+      items: [
+        {
+          value: SEGMENT_FILTER.All,
+          label: SEGMENT_FILTER.All,
+          counter: { value: NOTIFICATION_PANEL_PROPS_MOCK.amount },
+        },
+        {
+          value: SEGMENT_FILTER.Unread,
+          label: SEGMENT_FILTER.Unread,
+          counter: { value: NOTIFICATION_PANEL_PROPS_MOCK.amount },
+        },
+      ],
+      value: SEGMENT_FILTER.All,
+    },
     settings: {
       button: {
         onClick() {},

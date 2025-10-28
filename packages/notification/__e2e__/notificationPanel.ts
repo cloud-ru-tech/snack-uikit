@@ -54,9 +54,9 @@ test.page(getPage(PROPS_MOCK))('Renders correctly with proper amount of card, sc
 });
 
 test.page(getPage({ ...PROPS_MOCK, amount: 0, loading: true }))(
-  'Renders opened with skeletons, disabled chips and readAllButton, but settings button is still working and opens droplist',
+  'Renders opened with skeletons, disabled readAllButton, but settings button is still working and opens droplist',
   async t => {
-    const { panel, skeleton, chips, settings } = SELECTORS.getPanel();
+    const { panel, skeleton, segments, settings } = SELECTORS.getPanel();
     const { card } = SELECTORS.getCard();
 
     await t.expect(panel.exists).ok('NotificationPanel not exists');
@@ -65,8 +65,7 @@ test.page(getPage({ ...PROPS_MOCK, amount: 0, loading: true }))(
 
     await t.expect(skeleton.count).eql(PROPS_MOCK.skeletonsAmount);
 
-    await t.expect(chips.exists).ok('No chips rendered');
-    await t.expect(chips.getAttribute('data-disabled')).eql('true', 'Chips is not disabled');
+    await t.expect(segments.exists).ok('No segments rendered');
 
     await t.expect(settings.droplistTrigger.exists).ok('Settings button not exists');
 
@@ -90,16 +89,16 @@ test.page(
     footerButton: '!undefined',
     readAllButton: '!undefined',
     settings: '!undefined',
-    chips: '!undefined',
+    segments: '!undefined',
   }),
 )('Renders only with title and blank instead of cards', async t => {
-  const { panel, chips, settings, footerButton, readAllButton, blank } = SELECTORS.getPanel();
+  const { panel, segments, settings, footerButton, readAllButton, blank } = SELECTORS.getPanel();
   const { card } = SELECTORS.getCard();
 
   await t.expect(panel.exists).ok('NotificationPanel is not opened');
 
   await t.expect(card.exists).notOk('Should be without cards');
-  await t.expect(chips.exists).notOk('chips should not exist');
+  await t.expect(segments.exists).notOk('Segments should not exist');
   await t.expect(footerButton.exists).notOk('footerButton should not exits');
   await t.expect(readAllButton.exists).notOk('readAllButton should not exits');
   await t.expect(settings.droplistTrigger.exists).notOk('Settings button not exists');

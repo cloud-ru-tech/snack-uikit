@@ -38,7 +38,7 @@ export const SELECTORS = {
         droplistAction: Selector(dataTestIdSelector(PANEL_TEST_IDS.settings.droplistAction)),
       },
       blank: Selector(dataTestIdSelector(STORY_TEST_IDS.blank)),
-      chips: panel.find(`[data-test-id*="${PANEL_TEST_IDS.chip}"]`),
+      segments: panel.find(`[data-test-id*="${PANEL_TEST_IDS.segments}"]`),
       readAllButton: panel.find(dataTestIdSelector(PANEL_TEST_IDS.readAll)),
       footerButton: panel.find(dataTestIdSelector(PANEL_TEST_IDS.footerButton)),
       skeleton: panel.find(dataTestIdSelector(PANEL_TEST_IDS.skeleton)),

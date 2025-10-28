@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { ElementType, MouseEventHandler, ReactElement, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 import { ButtonSimple, ButtonSimpleProps, ButtonTonal, ButtonTonalProps } from '@snack-uikit/button';
-import { Link, LinkProps, PickLinkProps } from '@snack-uikit/link';
+import { Link, PickLinkProps } from '@snack-uikit/link';
 import { BaseItemProps } from '@snack-uikit/list';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
@@ -68,18 +68,7 @@ export function NotificationCard<LinkElement extends ElementType = 'a'>({
   className,
   ...rest
 }: NotificationCardProps<LinkElement>) {
-  const { icon, linkOnColor, buttonAppearance } = useMemo<{
-    icon: ReturnType<typeof getIcon>;
-    linkOnColor: LinkProps['appearance'];
-    buttonAppearance: ButtonTonalProps['appearance'];
-  }>(
-    () => ({
-      icon: getIcon(appearance),
-      linkOnColor: appearance === APPEARANCE.ErrorCritical ? 'red' : undefined,
-      buttonAppearance: appearance === APPEARANCE.ErrorCritical ? 'destructive' : 'primary',
-    }),
-    [appearance],
-  );
+  const icon = useMemo(() => getIcon(appearance), [appearance]);
 
   const [isDroplistOpen, setDroplistOpen] = useState(false);
 
@@ -159,21 +148,11 @@ export function NotificationCard<LinkElement extends ElementType = 'a'>({
       {(primaryButton || secondaryButton) && (
         <div className={styles.notificationCardButtons}>
           {secondaryButton && (
-            <ButtonSimple
-              {...secondaryButton}
-              appearance={buttonAppearance}
-              size='s'
-              data-test-id={TEST_IDS.primaryButton}
-            />
+            <ButtonSimple {...secondaryButton} appearance='neutral' size='s' data-test-id={TEST_IDS.primaryButton} />
           )}
 
           {primaryButton && (
-            <ButtonTonal
-              {...primaryButton}
-              appearance={buttonAppearance}
-              size='s'
-              data-test-id={TEST_IDS.secondaryButton}
-            />
+            <ButtonTonal {...primaryButton} appearance='neutral' size='s' data-test-id={TEST_IDS.secondaryButton} />
           )}
         </div>
       )}
@@ -184,8 +163,8 @@ export function NotificationCard<LinkElement extends ElementType = 'a'>({
             <Link
               {...link}
               onClick={handleLinkClick}
-              appearance={linkOnColor}
-              textMode='default'
+              appearance='primary'
+              textMode='accent'
               size='s'
               data-test-id={TEST_IDS.link}
             />
