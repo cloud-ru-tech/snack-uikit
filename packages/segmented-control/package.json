@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Segmented Control",
-  "version": "0.6.11",
+  "version": "0.6.12",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,7 +37,7 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/counter": "0.8.10",
-    "@snack-uikit/truncate-string": "0.7.2",
+    "@snack-uikit/truncate-string": "0.7.3",
     "@snack-uikit/utils": "4.0.0",
     "classnames": "2.5.1",
     "uncontrollable": "8.0.4"

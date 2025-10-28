@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Notification",
-  "version": "0.13.16",
+  "version": "0.13.17",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,16 +37,16 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/button": "0.19.16",
-    "@snack-uikit/chips": "0.28.5",
+    "@snack-uikit/chips": "0.28.6",
     "@snack-uikit/icons": "0.27.3",
     "@snack-uikit/info-block": "0.6.33",
-    "@snack-uikit/link": "0.17.11",
-    "@snack-uikit/list": "0.32.5",
+    "@snack-uikit/link": "0.17.12",
+    "@snack-uikit/list": "0.32.6",
     "@snack-uikit/popover-private": "0.15.3",
     "@snack-uikit/scroll": "0.10.5",
     "@snack-uikit/skeleton": "0.6.9",
     "@snack-uikit/tag": "0.15.10",
-    "@snack-uikit/truncate-string": "0.7.2",
+    "@snack-uikit/truncate-string": "0.7.3",
     "@snack-uikit/typography": "0.8.11",
     "@snack-uikit/utils": "4.0.0",
     "classnames": "2.5.1"
