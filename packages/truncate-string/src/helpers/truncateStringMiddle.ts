@@ -34,7 +34,7 @@ export const truncateStringMiddle = ({
       const rightHalf = text.slice(text.length - half + rightHalfDelta, text.length);
       result = `${leftHalf}${DELIMITER}${rightHalf}`;
 
-      truncatedElement.innerHTML = result;
+      truncatedElement.innerText = result;
 
       if (truncatedElement.scrollWidth <= element.offsetWidth - 1) {
         break;
