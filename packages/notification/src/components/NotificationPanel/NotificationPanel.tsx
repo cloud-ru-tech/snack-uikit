@@ -95,19 +95,17 @@ export function NotificationPanel({
           </div>
         </div>
 
-        <div className={styles.notificationPanelHeaderFunctions}>
+        <div>
           {segments && (
-            <div className={styles.notificationPanelChips}>
-              <SegmentedControl
-                {...segments}
-                size='s'
-                items={segments.items.map(item => ({
-                  ...item,
-                  disabled: item.disabled || loading,
-                }))}
-                data-test-id={TEST_IDS.segments}
-              />
-            </div>
+            <SegmentedControl
+              {...segments}
+              size='s'
+              items={segments.items.map(item => ({
+                ...item,
+                disabled: item.disabled || loading,
+              }))}
+              data-test-id={TEST_IDS.segments}
+            />
           )}
         </div>
       </div>

@@ -43,7 +43,7 @@
     "@snack-uikit/list": "0.32.6",
     "@snack-uikit/popover-private": "0.15.3",
     "@snack-uikit/scroll": "0.10.5",
-    "@snack-uikit/segmented-control": "0.6.11",
+    "@snack-uikit/segmented-control": "0.6.12",
     "@snack-uikit/skeleton": "0.6.9",
     "@snack-uikit/tag": "0.15.10",
     "@snack-uikit/tooltip": "0.18.5",

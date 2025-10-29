@@ -1049,8 +1049,8 @@ importers:
         specifier: 0.10.5
         version: link:../scroll
       '@snack-uikit/segmented-control':
-        specifier: 0.6.11
-        version: 0.6.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 0.6.12
+        version: link:../segmented-control
       '@snack-uikit/skeleton':
         specifier: 0.6.9
         version: link:../skeleton
@@ -3887,7 +3887,7 @@ packages:
   '@snack-uikit/popover-private@0.15.3':
     resolution: {integrity: sha512-KMsWDMqNWfxJWJgENF3t6Q79EOgclKM4P/YrbSOdVyTBSniUo3bwo5AM/2V0B/CQYdK0aH32Nz1I5ExKVzQZpg==}
 
-  '@snack-uikit/segmented-control@0.6.11':
+  '@snack-uikit/segmented-control@0.6.12':
     resolution: {integrity: sha512-r8WSY005+UNCXbGRxFeJ9RdDASWG6XPG4/I8EoUJMAcHsrOi+7/SUR6qtJa8JZwTZ+ooX1qWeVrkBK31TWYvgw==}
 
   '@snack-uikit/tooltip@0.18.5':
@@ -14226,7 +14226,7 @@ snapshots:
       - react
       - react-dom
 
-  '@snack-uikit/segmented-control@0.6.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@snack-uikit/segmented-control@0.6.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@snack-uikit/counter': 0.8.10(react@18.2.0)
       '@snack-uikit/truncate-string': 0.7.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)

@@ -20,13 +20,6 @@
   align-items: center;
 }
 
-.notificationPanelHeaderFunctions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
 .notificationPanelHeadline {
   @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-header-headline);
 
