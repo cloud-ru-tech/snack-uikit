@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.15.3 (2025-11-06)</small>
+
+* feat(PDS-1292): presets for calendar range mode ([45929bd](https://github.com/cloud-ru-tech/snack-uikit/commit/45929bd))
+
+
+
+
+
 ## <small>0.15.2 (2025-10-06)</small>
 
 * feat(PDS-2843): add interpolation to useLocale ([dfd0a2e](https://github.com/cloud-ru-tech/snack-uikit/commit/dfd0a2e))
