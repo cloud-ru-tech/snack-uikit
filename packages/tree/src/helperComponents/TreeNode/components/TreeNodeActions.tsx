@@ -12,8 +12,8 @@ import { stopPropagationClick, stopPropagationFocus } from '../utils';
 type TreeNodeActionsProps = {
   isDroplistOpen: boolean;
   setDroplistOpen: Dispatch<SetStateAction<boolean>>;
-  getNodeActions(node: TreeNodeProps): ItemProps[];
-  node: TreeNodeProps;
+  getNodeActions(node: Omit<TreeNodeProps, 'href'>): ItemProps[];
+  node: Omit<TreeNodeProps, 'href'>;
   isDroplistTriggerFocused: boolean;
   focusNode(): void;
   onBlurActions(): void;

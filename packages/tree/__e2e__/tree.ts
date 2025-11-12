@@ -1,7 +1,7 @@
-import { fixture, Selector, test } from 'testcafe';
+import { ClientFunction, fixture, Selector, test } from 'testcafe';
 
 import { dataTestIdSelector, getTestcafeUrl } from '../../../testcafe/utils';
-import { TEST_IDS } from '../src/constants';
+import { LINK_TEST_HREF, TEST_IDS } from '../src/constants';
 
 const TREE_TEST_ID = 'tree-test';
 
@@ -50,8 +50,22 @@ const selectors = {
       expandableContent: node.find(dataTestIdSelector(TEST_IDS.expandableContent)),
       nodeActionsButton: node.find(dataTestIdSelector(TEST_IDS.droplistTrigger)),
       nodeActionsOption: Selector(dataTestIdSelector(TEST_IDS.droplistAction)),
+      link: node.find(dataTestIdSelector(TEST_IDS.link)),
     };
   },
+};
+
+const getTreeNodeById = (id: string) => {
+  const node = Selector(`[data-node-id="${id}"]`);
+  const container = node.parent();
+
+  return {
+    node,
+    item: node.find(dataTestIdSelector(TEST_IDS.item)),
+    chevron: node.find(dataTestIdSelector(TEST_IDS.chevron)),
+    expandableContent: container.find(dataTestIdSelector(TEST_IDS.expandableContent)),
+    link: node.find(dataTestIdSelector(TEST_IDS.link)),
+  };
 };
 
 function getPage(props?: Record<string, unknown>) {
@@ -352,4 +366,79 @@ test.page(getPage({ selectionMode: '!undefined' }))('selectionMode=undefined is 
   await t.click(firstElement.item);
 
   await t.expect(firstElement.selectedAttribute).eql(null);
+});
+
+test.page(getPage())('Link is displayed and works correctly', async t => {
+  const getCurrentUrl = ClientFunction(() => window.location.pathname + window.location.search + window.location.hash);
+  const link = Selector(dataTestIdSelector(TEST_IDS.link)).withAttribute('href', LINK_TEST_HREF);
+  const linkNode = Selector(dataTestIdSelector(TEST_IDS.node)).withAttribute('data-node-id', 'link');
+  const linkNodeItem = linkNode.find(dataTestIdSelector(TEST_IDS.item));
+
+  await t.expect(link.exists).ok('Link not found');
+  await t.expect(link.getAttribute('href')).eql(LINK_TEST_HREF);
+
+  // Ensure the link is reachable via keyboard navigation
+  await t.click(Selector('body'), { offsetX: 0, offsetY: 0 });
+  await t.pressKey('tab');
+
+  for (let i = 0; i < 10; i += 1) {
+    if (await linkNodeItem.focused) {
+      break;
+    }
+
+    await t.pressKey('down');
+  }
+
+  await t.expect(linkNodeItem.focused).ok('Link node should receive focus via keyboard navigation');
+  // Pressing Enter while the tree-item is focused should navigate to the href
+  await t.pressKey('enter');
+  await t.expect(getCurrentUrl()).eql(LINK_TEST_HREF, 'Keyboard navigation to link href failed');
+
+  // Navigate back to the tree and ensure the link works when activated with a mouse click
+  await t.navigateTo(getPage());
+  await t.expect(link.exists).ok('Link not found after navigation back to the tree');
+  await t.click(link);
+  await t.expect(getCurrentUrl()).eql(LINK_TEST_HREF, 'Mouse navigation to link href failed');
+});
+
+test.page(getPage())('Parent link with nested items expands, collapses, and navigates correctly', async t => {
+  const getCurrentUrl = ClientFunction(() => window.location.pathname + window.location.search + window.location.hash);
+  const treeItemSelector = dataTestIdSelector(TEST_IDS.item);
+  const focusTreeNodeItem = ClientFunction((id: string, selector: string) => {
+    const element = document.querySelector(`[data-node-id="${id}"] ${selector}`) as HTMLElement | null;
+
+    element?.focus();
+  });
+
+  const getParentNode = () => ({
+    ...getTreeNodeById('nestedLink'),
+    nestedChildNode: Selector('[data-node-id="nested-link-1"]'),
+  });
+
+  const parent = getParentNode();
+
+  await t.expect(parent.node.exists).ok('Parent node not found');
+  await t.expect(parent.expandableContent.exists).notOk('Parent node should be collapsed by default');
+
+  await t.click(parent.chevron);
+  await t.expect(parent.expandableContent.exists).ok('Parent node should be expanded after chevron click');
+  await t.expect(parent.nestedChildNode.exists).ok('Nested child should be visible after expansion');
+
+  await t.click(parent.chevron);
+  await t.expect(parent.expandableContent.exists).notOk('Parent node should collapse after second chevron click');
+
+  await t.expect(parent.link.exists).ok('Parent link should exist');
+  await t.click(parent.link);
+  await t.expect(getCurrentUrl()).eql(LINK_TEST_HREF, 'Clicking parent node link should navigate to href');
+
+  await t.navigateTo(getPage());
+
+  const parentAfterNavigation = getParentNode();
+
+  await t.expect(parentAfterNavigation.item.exists).ok('Parent node should exist after navigation');
+  await focusTreeNodeItem('nestedLink', treeItemSelector);
+  await t.expect(parentAfterNavigation.item.focused).ok('Parent node item should receive focus', { timeout: 2000 });
+
+  await t.pressKey('enter');
+  await t.expect(getCurrentUrl()).eql(LINK_TEST_HREF, 'Pressing Enter on parent node link should navigate to href');
 });

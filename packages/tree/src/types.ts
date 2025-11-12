@@ -19,6 +19,8 @@ export type BaseTreeNode = WithSupportProps<{
   /** Обработчик клика по элементу */
   onClick?: MouseEventHandler;
   className?: string;
+  /** Ссылка на элемент */
+  href?: string;
 }>;
 
 export type ChildTreeNode = BaseTreeNode & {

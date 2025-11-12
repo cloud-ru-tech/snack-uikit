@@ -22,7 +22,7 @@ import { useTreeContext } from '../../contexts/TreeContext';
 import { checkNestedNodesSelection } from '../../helpers';
 import { ParentNode, TreeNodeProps } from '../../types';
 import { TreeLine } from '../TreeLine';
-import { TreeNodeActions } from './components';
+import { TreeNodeActions, TreeNodeHref } from './components';
 import styles from './styles.module.scss';
 import { stopPropagationClick } from './utils';
 
@@ -53,6 +53,7 @@ export const TreeNode = forwardRef<HTMLDivElement, TreeNodeComponentProps>(
       isLoading,
       parentNode,
       tabIndexAvailable,
+      href,
       ...rest
     },
     ref,
@@ -80,6 +81,8 @@ export const TreeNode = forwardRef<HTMLDivElement, TreeNodeComponentProps>(
     const [isDroplistTriggerFocused, setFocusDroplistTrigger] = useState(false);
 
     const contentRef = useRef<HTMLDivElement | null>(null);
+
+    const anchorRef = useRef<HTMLAnchorElement | null>(null);
 
     const isExpandable = Array.isArray(nested);
     const isExpanded = isExpandable ? expandedNodes?.includes(id) : undefined;
@@ -119,9 +122,22 @@ export const TreeNode = forwardRef<HTMLDivElement, TreeNodeComponentProps>(
           disabled,
           nested,
           onClick,
+          href,
         },
         e,
       );
+    };
+
+    const handleAnchorClick = (e: React.MouseEvent<Element>) => {
+      e.stopPropagation();
+      if (e?.metaKey || e?.ctrlKey || e?.button === 1) {
+        return;
+      }
+
+      if (onClick) {
+        e.preventDefault();
+        handleClick(e);
+      }
     };
 
     const handleSelect = () => {
@@ -209,6 +225,11 @@ export const TreeNode = forwardRef<HTMLDivElement, TreeNodeComponentProps>(
         case 'Enter': {
           e.preventDefault();
           handleSelect();
+
+          if (href && anchorRef.current) {
+            anchorRef.current.click();
+          }
+
           return;
         }
         default:
@@ -296,8 +317,10 @@ export const TreeNode = forwardRef<HTMLDivElement, TreeNodeComponentProps>(
           )}
 
           <Typography.SansBodyM tag='div' className={styles.treeNodeTitle}>
-            {typeof title === 'string' && <TruncateString text={title} data-test-id={TEST_IDS.title} />}
-            {typeof title !== 'string' && title({ id, disabled, nested } as TreeNodeProps)}
+            <TreeNodeHref href={href} onClick={handleAnchorClick} ref={anchorRef}>
+              {typeof title === 'string' && <TruncateString text={title} data-test-id={TEST_IDS.title} />}
+              {typeof title !== 'string' && title({ id, disabled, nested } as TreeNodeProps)}
+            </TreeNodeHref>
           </Typography.SansBodyM>
 
           {getNodeActions && (

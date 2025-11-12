@@ -7,7 +7,7 @@ import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { Tree, TreeNodeProps, TreeProps } from '../src';
-import { SELECTION_MODE } from '../src/constants';
+import { LINK_TEST_HREF, SELECTION_MODE } from '../src/constants';
 import { TreeNodeId } from '../src/types';
 import { getNested, getNodeActions } from './helpers';
 import picture from './ImageProdContentLittle.jpg';
@@ -74,6 +74,29 @@ const TREE_DATA: TreeNodeProps[] = [
     title: 'folder disabled',
     disabled: true,
     nested: [],
+  },
+  {
+    id: 'link',
+    title: 'link to url',
+    href: LINK_TEST_HREF,
+  },
+  {
+    id: 'nestedLink',
+    title: 'nested link to url',
+    nested: [
+      {
+        id: 'nested-link-1',
+        title: 'link to url',
+        href: LINK_TEST_HREF,
+      },
+    ],
+    href: LINK_TEST_HREF,
+  },
+  {
+    id: 'linkOnClick',
+    title: 'link with onClick prevent redirect',
+    onClick: () => console.warn('onClick'),
+    href: '/test',
   },
   {
     id: 'justItem',

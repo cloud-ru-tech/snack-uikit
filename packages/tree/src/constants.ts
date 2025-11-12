@@ -20,4 +20,7 @@ export const TEST_IDS = {
   droplistAction: 'tree__node__droplist-action',
   expandable: 'tree__node__expandable',
   expandableContent: 'tree__node__expandable-content',
+  link: 'tree__node__link',
 };
+
+export const LINK_TEST_HREF = '/snack/?path=/story/welcome--welcome';
