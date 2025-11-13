@@ -20,6 +20,8 @@ export type TruncateStringEndProps = WithSupportProps<{
   placement?: TooltipProps['placement'];
   /** Текст, который будет обрезаться */
   text: string;
+  /** Условие отображения тултипа */
+  trigger?: TooltipProps['trigger'];
 }>;
 
 export function TruncateStringEnd({
@@ -29,6 +31,7 @@ export function TruncateStringEnd({
   hideTooltip,
   maxLines = 1,
   placement,
+  trigger,
   ...rest
 }: TruncateStringEndProps) {
   const textElementRef = useRef<HTMLElement | null>(null);
@@ -82,6 +85,7 @@ export function TruncateStringEnd({
         hoverDelayOpen={500}
         className={tooltipClassName}
         triggerClassName={styles.tooltipTrigger}
+        trigger={trigger}
       >
         {textElement}
       </Tooltip>

@@ -15,9 +15,18 @@ export type TruncateStringMiddleProps = WithSupportProps<{
   hideTooltip?: boolean;
   placement?: TooltipProps['placement'];
   text: string;
+  trigger?: TooltipProps['trigger'];
 }>;
 
-export function TruncateStringMiddle({ text, className, tooltipClassName, hideTooltip, placement, ...rest }: TruncateStringMiddleProps) {
+export function TruncateStringMiddle({
+  text,
+  className,
+  tooltipClassName,
+  hideTooltip,
+  placement,
+  trigger,
+  ...rest
+}: TruncateStringMiddleProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [truncatedString, setTruncatedString] = useState(text);
   const textElementRef = useRef<HTMLElement>(null);
@@ -68,6 +77,7 @@ export function TruncateStringMiddle({ text, className, tooltipClassName, hideTo
           hoverDelayOpen={500}
           triggerClassName={styles.textContainer}
           className={tooltipClassName}
+          trigger={trigger}
         >
           {textElement}
         </Tooltip>

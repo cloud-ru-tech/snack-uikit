@@ -30,6 +30,7 @@
 | hideTooltip | `boolean` | - | Скрывать ли тултип с полным текстом |
 | maxLines | `number` | - | Максимальное кол-во строк, до которого может сворачиваться текст. |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | - | Положение тултипа относительно обрезанного текста. |
+| trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | - | Условие отображения тултипа |
 
 
 [//]: DOCUMENTATION_SECTION_END

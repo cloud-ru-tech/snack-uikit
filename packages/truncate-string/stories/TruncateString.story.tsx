@@ -29,6 +29,7 @@ export const truncateString: StoryObj<TruncateStringProps> = {
     text: 'какой-то длинный текст который обрезается на самом интересном',
     hideTooltip: false,
     variant: 'end',
+    trigger: 'hover',
   },
 
   argTypes: {
