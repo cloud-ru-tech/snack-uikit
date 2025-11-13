@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.9.29 (2025-11-13)</small>
+
+* feat(PDS-2935): add href param to TreeNode ([c508075](https://github.com/cloud-ru-tech/snack-uikit/commit/c508075))
+
+
+
+
+
 ## <small>0.9.28 (2025-10-28)</small>
 
 ### Only dependencies have been changed
