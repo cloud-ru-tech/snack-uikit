@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.13.8 (2025-11-14)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/list@0.32.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.13.7 (2025-11-06)</small>
 
 * feat(PDS-1292): presets for calendar range mode ([45929bd](https://github.com/cloud-ru-tech/snack-uikit/commit/45929bd))

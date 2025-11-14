@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.7.4 (2025-11-14)</small>
+
+* feat(PDS-3151): add truncate string trigger ([7913be5](https://github.com/cloud-ru-tech/snack-uikit/commit/7913be5))
+
+
+
+
+
 ## <small>0.7.3 (2025-10-28)</small>
 
 * fix(LK-5919): fixed xss vulnerability ([fda0b6d](https://github.com/cloud-ru-tech/snack-uikit/commit/fda0b6d))

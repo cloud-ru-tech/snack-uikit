@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Toaster",
-  "version": "0.11.17",
+  "version": "0.11.18",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,11 +37,11 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.27.3",
-    "@snack-uikit/link": "0.17.12",
+    "@snack-uikit/link": "0.17.13",
     "@snack-uikit/loaders": "0.9.9",
     "@snack-uikit/progress-bar": "0.1.10",
     "@snack-uikit/scroll": "0.10.5",
-    "@snack-uikit/truncate-string": "0.7.3",
+    "@snack-uikit/truncate-string": "0.7.4",
     "@snack-uikit/utils": "4.0.0",
     "classnames": "2.5.1",
     "react-draggable": "4.4.6",
