@@ -6,6 +6,7 @@ import { ChevronRightSVG, FileSVG, FolderOpenSVG, FolderSVG } from '@snack-uikit
 import { Checkbox, Radio } from '@snack-uikit/toggles';
 import { TruncateString } from '@snack-uikit/truncate-string';
 
+import { RowAppearance } from '../../../components';
 import { COLUMN_PIN_POSITION, TEST_IDS } from '../../../constants';
 import { useCellResize } from '../../../contexts';
 import { ColumnDefinition } from '../../../types';
@@ -42,6 +43,7 @@ export type TreeColumnDefinitionProps<TData> = TreeColumnDef | TreeColumnDefWith
 
 type TreeColDefProps<TData> = TreeColumnDefinitionProps<TData> & {
   enableSelection?: boolean;
+  rowSelectionAppearance?: RowAppearance;
 };
 
 /** Вспомогательная функция для создания ячейки со статусом */
@@ -54,6 +56,7 @@ export function getTreeColumnDef<TData>({
   accessorKey,
   cell: renderCell,
   enableSelection,
+  rowSelectionAppearance,
 }: TreeColDefProps<TData>): ColumnDefinition<TData> {
   const cell: ColumnDefinition<TData>['cell'] = function TreeCell(ctx) {
     const { row, cell } = ctx;
@@ -68,6 +71,8 @@ export function getTreeColumnDef<TData>({
     const isLastChildRow = parent?.subRows.at(-1)?.id === row.id;
     const depth = row.depth;
     const { ref } = useCellResize(TREE_CELL_ID, cell);
+
+    const isToggleHidden = !isRowsSelectionEnabled && rowSelectionAppearance === RowAppearance.HideToggler;
 
     const linesVisibilityByIndex = useMemo(() => {
       const parents: (Row<TData> | undefined)[] = [];
@@ -181,7 +186,7 @@ export function getTreeColumnDef<TData>({
             data-selected={isRowSelected || undefined}
             data-multiselect={isMultiSelect || undefined}
           >
-            {showToggle && (
+            {showToggle && !isToggleHidden && (
               <div tabIndex={-1} className={styles.treeCheckboxWrap}>
                 {isMultiSelect ? (
                   <Checkbox

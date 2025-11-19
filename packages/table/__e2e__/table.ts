@@ -270,7 +270,7 @@ test.page(getPage({ rowSelectionMode: 'single' }))('Single row rowSelection.onCh
   await t.expect(selectors.getSelectedState().innerText).eql('{"0":true}');
 });
 
-test.page(getPage({ disableSomeRows: true }))(
+test.page(getPage({ disableSomeRows: true, disabledRowAppearance: 'disabled' }))(
   'Disabled rows cannot be selected and have no RowActions button',
   async t => {
     const { row, selectToggle, rowSelectedAttribute, rowActionsButton } = selectors.getRow(0, true);

@@ -22,6 +22,11 @@ type BulkAction = Omit<NonNullable<ToolbarProps<Record<string, string>>['bulkAct
   onClick?(selectionState: RowSelectionState, resetRowSelection: (defaultState?: boolean) => void): void;
 };
 
+export enum RowAppearance {
+  Disabled = 'disabled',
+  HideToggler = 'hide-toggler',
+}
+
 type BaseTableProps<TData extends object, TFilters extends FiltersState = Record<string, unknown>> = WithSupportProps<{
   /** Данные для отрисовки */
   data: TData[];
@@ -69,6 +74,7 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
    * <strong>initialState</strong>: Начальное состояние выбора строк <br>
    * <strong>state</strong>: Состояние выбора строк, жестко устанавливаемое снаружи <br>
    * <strong>enable</strong>: Колбэк определяющий можно ли выбрать строку <br>
+   * <strong>appearance</strong>: Режим отображения недоступной для выбора строки. Опции: RowAppearance.Disabled (по дефолту) - серый фон, чекбокс/радиобаттон скрыт, RowAppearance.HideToggler - обычный фон, чекбокс/радиобаттон скрыт <br>
    * <strong>multiRow</strong>: Мульти-выбор строк (включен по-умолчанию, когда включается выбор) <br>
    * <strong>onChange</strong>: Колбэк на выбор строк
    *  */
@@ -78,6 +84,7 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
     enable?: RowSelectionOptions<TData>['enableRowSelection'];
     multiRow?: boolean;
     onChange?(state: RowSelectionState): void;
+    appearance?: RowAppearance;
   };
   /** Параметры отвечают за глобальный поиск в таблице <br>
    * <strong>initialState</strong>: Начальное состояние строки поиска <br>

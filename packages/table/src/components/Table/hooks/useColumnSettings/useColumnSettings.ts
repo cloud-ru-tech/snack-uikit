@@ -74,8 +74,9 @@ export function useColumnSettings<TData extends object, TFilters extends Record<
         enableSelection,
         enableSelectPinned,
         expanding,
+        rowSelectionAppearance: rowSelection?.appearance,
       }),
-    [enableSelectPinned, enableSelection, enabledColumnsDefinitions, expanding],
+    [enableSelectPinned, enableSelection, enabledColumnsDefinitions, expanding, rowSelection?.appearance],
   );
 
   const areAllColumnsEnabled = enabledColumns.length === configurableColumns.length;

@@ -7,7 +7,15 @@ import { toaster } from '@snack-uikit/toaster';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { exportToCSV, exportToXLSX, RowClickHandler, RowSelectionState, Table, TableProps } from '../src';
+import {
+  exportToCSV,
+  exportToXLSX,
+  RowAppearance,
+  RowClickHandler,
+  RowSelectionState,
+  Table,
+  TableProps,
+} from '../src';
 import { TABLE_ROW_COLOR } from '../src/constants';
 import { STORY_TEST_IDS, StoryStatusColumnViewMode } from './constants';
 import { generateRows } from './helpers';
@@ -27,6 +35,7 @@ type StoryProps = Omit<TableProps<StubData, Filters>, 'rowSelection' | 'sort' | 
   expandRowsCount: number;
   expandRowsLevel: number;
   disableSomeRows: boolean;
+  disabledRowAppearance: RowAppearance;
   pinSomeRows: boolean;
   showExport: boolean;
   showFilters: boolean;
@@ -114,6 +123,7 @@ const Template: StoryFn<StoryProps> = ({
   columnFilters: columnFiltersProp,
   initialColumnFiltersOpen,
   showRowBackgroundColor,
+  disabledRowAppearance,
   ...args
 }: StoryProps) => {
   const data = useMemo(
@@ -254,6 +264,7 @@ const Template: StoryFn<StoryProps> = ({
             ? row => !['Not', 'Loading'].includes(row.original.status)
             : Boolean(rowSelectionMode) || undefined,
           onChange: setSelectedState,
+          appearance: disabledRowAppearance,
         }}
         onRefresh={onRefresh}
         onRowClick={enableOnRowClick ? handleRowClick : undefined}
@@ -317,6 +328,7 @@ export const table: StoryObj<StoryProps> = {
     },
     rowSelectionMode: 'multi',
     disableSomeRows: false,
+    disabledRowAppearance: RowAppearance.Disabled,
     onRowClick: () => {},
     enableOnRowClick: false,
     enableFuzzySearch: false,
@@ -370,6 +382,15 @@ export const table: StoryObj<StoryProps> = {
         type: 'boolean',
       },
       if: { arg: 'rowSelectionMode', truthy: true },
+    },
+
+    disabledRowAppearance: {
+      name: '[Stories]: Change disabled rows appearance',
+      options: [RowAppearance.Disabled, RowAppearance.HideToggler],
+      control: {
+        type: 'select',
+      },
+      if: { arg: 'disableSomeRows', truthy: true },
     },
 
     statusColumnViewMode: {

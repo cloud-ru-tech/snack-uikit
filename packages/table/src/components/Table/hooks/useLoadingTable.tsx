@@ -5,7 +5,7 @@ import { SkeletonText } from '@snack-uikit/skeleton';
 
 import { getSelectionCellColumnDef, getTreeColumnDef } from '../../../helperComponents';
 import { ColumnDefinition } from '../../../types';
-import { TableProps } from '../../types';
+import { RowAppearance, TableProps } from '../../types';
 import styles from '../styles.module.scss';
 
 type UseLoadingTableProps<TData extends object> = {
@@ -15,6 +15,7 @@ type UseLoadingTableProps<TData extends object> = {
   enableSelection?: boolean;
   enableSelectPinned?: boolean;
   expanding?: TableProps<TData>['expanding'];
+  rowSelectionAppearance?: RowAppearance;
 };
 
 function CellSkeleton() {
@@ -28,6 +29,7 @@ export function useLoadingTable<TData extends object>({
   enableSelection,
   enableSelectPinned,
   expanding,
+  rowSelectionAppearance,
 }: UseLoadingTableProps<TData>) {
   const data = useMemo(() => Array.from({ length: pageSize }).map(() => ({}) as TData), [pageSize]);
   const columns = useMemo(() => {
@@ -49,7 +51,11 @@ export function useLoadingTable<TData extends object>({
 
     // for tree column
     if (expanding) {
-      const treeColumnDef = getTreeColumnDef({ ...expanding.expandingColumnDefinition, enableSelection });
+      const treeColumnDef = getTreeColumnDef({
+        ...expanding.expandingColumnDefinition,
+        enableSelection,
+        rowSelectionAppearance,
+      });
       const loadingTreeColumn = {
         ...treeColumnDef,
         cell: () => <CellSkeleton />,
@@ -59,7 +65,7 @@ export function useLoadingTable<TData extends object>({
     }
 
     return cols;
-  }, [columnDefinitions, enableSelection, enableSelectPinned, expanding]);
+  }, [columnDefinitions, enableSelection, enableSelectPinned, expanding, rowSelectionAppearance]);
 
   const loadingTable = useReactTable<TData>({
     data,

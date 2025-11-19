@@ -173,8 +173,9 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
         enableSelection,
         enableSelectPinned,
         expanding,
+        rowSelectionAppearance: rowSelectionProp?.appearance,
       }),
-    [columnDefinitions, enableSelection, enableSelectPinned, expanding],
+    [columnDefinitions, enableSelection, enableSelectPinned, expanding, rowSelectionProp?.appearance],
   );
   const pinnedGroups = useMemo(() => getPinnedGroups(allTableColumns), [allTableColumns]);
 
@@ -308,6 +309,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     enableSelection,
     enableSelectPinned,
     expanding,
+    rowSelectionAppearance: rowSelectionProp?.appearance,
   });
 
   const handleOnRefresh = useCallback(() => {
@@ -533,7 +535,13 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                   <SkeletonContextProvider loading>
                     <HeaderRow rowAutoHeight={rowAutoHeight} columnOrder={columnOrder} />
                     {loadingTableRows.map(row => (
-                      <BodyRow key={row.id} row={row} rowAutoHeight={rowAutoHeight} columnOrder={columnOrder} />
+                      <BodyRow
+                        key={row.id}
+                        row={row}
+                        rowAutoHeight={rowAutoHeight}
+                        columnOrder={columnOrder}
+                        disabledRowAppearance={rowSelectionProp?.appearance}
+                      />
                     ))}
                   </SkeletonContextProvider>
                 ) : (
@@ -556,6 +564,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                             rowAutoHeight={rowAutoHeight}
                             columnOrder={columnOrder}
                             enableColumnsOrderSortByDrag={enableColumnsOrderSortByDrag}
+                            disabledRowAppearance={rowSelectionProp?.appearance}
                           />
                         ))}
                       </div>
@@ -569,6 +578,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                         rowAutoHeight={rowAutoHeight}
                         columnOrder={columnOrder}
                         enableColumnsOrderSortByDrag={enableColumnsOrderSortByDrag}
+                        disabledRowAppearance={rowSelectionProp?.appearance}
                       />
                     ))}
 
@@ -580,6 +590,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                             row={row}
                             columnOrder={columnOrder}
                             enableColumnsOrderSortByDrag={enableColumnsOrderSortByDrag}
+                            disabledRowAppearance={rowSelectionProp?.appearance}
                           />
                         ))}
                       </SkeletonContextProvider>

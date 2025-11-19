@@ -109,7 +109,7 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
     }
   }
 
-  &[data-disabled] {
+  &[data-row-appearance='disabled'] {
     cursor: not-allowed;
     background-color: styles-tokens-table.$sys-neutral-background;
 

@@ -2,6 +2,7 @@ import { horizontalListSortingStrategy, SortableContext } from '@dnd-kit/sortabl
 import { Row as TableRow } from '@tanstack/react-table';
 import { MouseEvent, useState } from 'react';
 
+import { RowAppearance } from '../../components';
 import { COLUMN_PIN_POSITION, TEST_IDS } from '../../constants';
 import { ColumnOrder } from '../../types';
 import { BodyCell } from '../Cells';
@@ -25,6 +26,7 @@ export type BodyRowProps<TData> = Pick<RowProps, 'rowAutoHeight'> & {
   onRowClick?: RowClickHandler<TData>;
   columnOrder: ColumnOrder;
   enableColumnsOrderSortByDrag?: boolean;
+  disabledRowAppearance?: RowAppearance;
 };
 
 export function BodyRow<TData>({
@@ -33,6 +35,7 @@ export function BodyRow<TData>({
   rowAutoHeight,
   columnOrder,
   enableColumnsOrderSortByDrag,
+  disabledRowAppearance = RowAppearance.Disabled,
 }: BodyRowProps<TData>) {
   const { leftPinned, rightPinned, unpinned } = useRowCells(row);
 
@@ -64,6 +67,7 @@ export function BodyRow<TData>({
         onClick={handleRowClick}
         data-clickable={Boolean(onRowClick) || undefined}
         data-disabled={disabled || undefined}
+        data-row-appearance={disabled ? disabledRowAppearance : undefined}
         data-selected={isSelected || undefined}
         data-actions-opened={dropListOpened || undefined}
         data-test-id={TEST_IDS.bodyRow}

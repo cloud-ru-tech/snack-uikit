@@ -102,8 +102,8 @@ const cards = [
 |------|------|---------------|-------------|
 | title* | `string` | - | Заголовок панели |
 | settings | `NotificationPanelSettingsProps` | - | Кнопка настроек и выпадающий список |
-| segments | `Omit<SegmentedControlProps, "size" \| "data-test-id">` | - | Сегменты для фильтрации |
-| readAllButton | `Omit<ButtonFunctionProps, 'data-test-id'> & { tooltip?: TooltipProps; }` | - | Кнопка в "шапке" панели |
+| segments | `Omit<SegmentedControlProps, "data-test-id" \| "size">` | - | Сегменты для фильтрации |
+| readAllButton | `Omit<ButtonFunctionProps, "data-test-id"> & { tooltip?: TooltipProps; }` | - | Кнопка в "шапке" панели |
 | footerButton | `{ label: string; onClick: MouseEventHandler<HTMLButtonElement>; }` | - | Кнопка внизу панели |
 | className | `string` | - | CSS-класс |
 | loading | `boolean` | - | Состояние загрузки |
@@ -135,15 +135,15 @@ const cards = [
 | className | `string` | - | CSS-класс |
 | children | `ReactNode \| ChildrenFunction` | - | Триггер поповера (подробнее читайте ниже) |
 | triggerClassName | `string` | - | CSS-класс триггера |
+| offset | `number` | 0 | Отступ поповера от его триггер-элемента (в пикселях). |
 | open | `boolean` | - | Управляет состоянием показан/не показан. |
 | onOpenChange | `(isOpen: boolean) => void` | - | Колбек отображения компонента. Срабатывает при изменении состояния open. |
 | hoverDelayOpen | `number` | - | Задержка открытия по ховеру |
 | hoverDelayClose | `number` | - | Задержка закрытия по ховеру |
-| offset | `number` | 0 | Отступ поповера от его триггер-элемента (в пикселях). |
-| closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
-| triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | triggerRef | `ForwardedRef<HTMLElement \| ReferenceType>` | - | Ref ссылка на триггер |
 | closeOnPopstate | `boolean` | - | Закрывать ли поповер при пекреходе по истории браузера |
+| closeOnEscapeKey | `boolean` | true | Закрывать ли по нажатию на кнопку `Esc` |
+| triggerClickByKeys | `boolean` | true | Вызывается ли попоповер по нажатию клавиш Enter/Space (при trigger = `click`) |
 | trigger | enum Trigger: `"click"`, `"hover"`, `"focusVisible"`, `"focus"`, `"hoverAndFocusVisible"`, `"hoverAndFocus"`, `"clickAndFocusVisible"` | click | Условие отображения поповера: <br> - `click` - открывать по клику <br> - `hover` - открывать по ховеру <br> - `focusVisible` - открывать по focus-visible <br> - `focus` - открывать по фокусу <br> - `hoverAndFocusVisible` - открывать по ховеру и focus-visible <br> - `hoverAndFocus` - открывать по ховеру и фокусу <br> - `clickAndFocusVisible` - открывать по клику и focus-visible |
 | placement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | bottom-end | Положение поповера относительно своего триггера (children). |
 
