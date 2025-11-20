@@ -305,6 +305,9 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     pageSize: Math.min(Math.max(pageSize, 5), DEFAULT_PAGE_SIZE),
     columnDefinitions: enabledColumnsDefinitions,
     columnPinning,
+    enableSelection,
+    enableSelectPinned,
+    expanding,
   });
 
   const handleOnRefresh = useCallback(() => {
