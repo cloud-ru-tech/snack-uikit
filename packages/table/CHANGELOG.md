@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.16 (2025-11-21)</small>
+
+* fix(IAM-5889): fix table loading state ([27646e0](https://github.com/cloud-ru-tech/snack-uikit/commit/27646e0))
+* feat(IAM-5889): extend table empty state props ([03463ff](https://github.com/cloud-ru-tech/snack-uikit/commit/03463ff))
+
+
+
+
+
 ## <small>0.37.15 (2025-11-14)</small>
 
 ### Only dependencies have been changed
