@@ -5,7 +5,7 @@
       {
         "rule": "cli",
         "binary": "npm",
-        "semver": "^10.8.2",
+        "semver": "^11.6.2",
         "version": "--version",
         "error": "You have npm@{{installedVersion}}, and need npm@{{wantedVersion}}. Fix with `npm install -g npm@{{wantedVersion}}`"
       }
@@ -14,7 +14,7 @@
       {
         "rule": "cli",
         "binary": "node",
-        "semver": "^22.8.0",
+        "semver": "^24.11.1",
         "version": "--version",
         "error": "You have node@{{installedVersion}}, and need node@{{wantedVersion}}. Go to https://nodejs.org/ to update`"
       }
@@ -23,7 +23,7 @@
       {
         "rule": "cli",
         "binary": "pnpm",
-        "semver": "^10.10.0",
+        "semver": "^10.22.0",
         "version": "--version",
         "error": "You have pnpm@{{installedVersion}}, and need pnpm@{{wantedVersion}}. Fix with `npm install -g pnpm@{{wantedVersion}}``"
       }
