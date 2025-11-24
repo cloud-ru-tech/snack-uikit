@@ -24,7 +24,7 @@ export default [
     ],
   },
   {
-    files: ['packages/**/__e2e__/**/*.ts', 'packages/**/scripts/**/*.ts'],
+    files: ['packages/**/__e2e__/**/*.ts', 'packages/**/scripts/**/*.ts', 'playwright/**/*.ts'],
     rules: {
       '@cloud-ru/ssr-safe-react/domApi': 'off',
     },

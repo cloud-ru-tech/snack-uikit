@@ -1,78 +1,90 @@
-import { Selector, test } from 'testcafe';
+import type { Locator } from '@playwright/test';
 
-import { dataTestIdSelector } from '../../../../testcafe/utils';
+import { expect, test } from '../../../../playwright/fixtures';
 
-export type VisitCallback = (props?: Record<string, unknown>) => string;
+export type StoryCallback = (props?: Record<string, unknown>) => {
+  name: string;
+  story: string;
+  group?: string;
+  props?: Record<string, unknown>;
+};
 
-type GetComponent = () => { chip: Selector; label: Selector; value?: Selector; icon: Selector; spinner: Selector };
+type GetComponent = (getByTestId: (testId: string) => Locator) => {
+  chip: Locator;
+  label: Locator;
+  value?: Locator;
+  icon: Locator;
+  spinner: Locator;
+};
 
 const LABEL_TEXT = 'Test text';
 const ICON_NAME = 'PlaceholderSVG';
 const CLICK_COUNTER_TEST_ID = 'click__counter';
 
-export const validateNoIconForSizeXs = (visit: VisitCallback, getComponent: GetComponent, checkValue = false) => {
-  test.page(visit({ label: LABEL_TEXT, size: 'xs', icon: ICON_NAME }))(
-    'should have no icon when prop size === "xs"',
-    async t => {
-      const { label, value, icon } = getComponent();
+export const validateNoIconForSizeXs = (getStory: StoryCallback, getComponent: GetComponent, checkValue = false) => {
+  test('should have no icon when prop size === "xs"', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ label: LABEL_TEXT, size: 'xs', icon: ICON_NAME }));
+    const { label, value, icon } = getComponent(getByTestId);
 
-      if (checkValue && value) {
-        await t.expect(value.exists).ok();
-      } else {
-        await t.expect(label.exists).ok();
-      }
-      await t.expect(icon.exists).notOk();
-    },
-  );
+    if (checkValue && value) {
+      await expect(value).toBeVisible();
+    } else {
+      await expect(label).toBeVisible();
+    }
+    await expect(icon).not.toBeVisible();
+  });
 };
 
-export const runCommonTests = (visit: VisitCallback, getComponent: GetComponent) => {
-  test.page(visit({ label: LABEL_TEXT, icon: ICON_NAME }))('should render with icon', async t => {
-    const { label, icon } = getComponent();
+export const runCommonTests = (getStory: StoryCallback, getComponent: GetComponent) => {
+  test('should render with icon', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ label: LABEL_TEXT, icon: ICON_NAME }));
+    const { label, icon } = getComponent(getByTestId);
 
-    await t.expect(label.exists).ok();
-    await t.expect(icon.exists).ok();
+    await expect(label).toBeVisible();
+    await expect(icon).toBeVisible();
   });
 
-  test.page(visit({ label: LABEL_TEXT, loading: true, icon: ICON_NAME }))(
-    'icon should change to spinner when loading',
-    async t => {
-      const { label, icon, spinner } = getComponent();
+  test('icon should change to spinner when loading', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ label: LABEL_TEXT, loading: true, icon: ICON_NAME }));
+    const { label, icon, spinner } = getComponent(getByTestId);
 
-      await t.expect(label.exists).ok();
-      await t.expect(spinner.exists).ok();
-      await t.expect(icon.exists).notOk();
-    },
-  );
-
-  test.page(visit({ label: LABEL_TEXT, loading: true }))('label should hide when loading', async t => {
-    const { label, spinner } = getComponent();
-
-    await t.expect(label.getStyleProperty('opacity')).eql('0');
-    await t.expect(spinner.exists).ok();
+    await expect(label).toBeVisible();
+    await expect(spinner).toBeVisible();
+    await expect(icon).not.toBeVisible();
   });
 
-  validateNoIconForSizeXs(visit, getComponent);
+  test('label should hide when loading', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ label: LABEL_TEXT, loading: true }));
+    const { label, spinner } = getComponent(getByTestId);
+
+    await expect(label).toHaveCSS('opacity', '0');
+    await expect(spinner).toBeVisible();
+  });
+
+  validateNoIconForSizeXs(getStory, getComponent);
 };
 
-export const validateClicks = (visit: VisitCallback, getComponent: GetComponent) => {
-  const count = Selector(dataTestIdSelector(CLICK_COUNTER_TEST_ID));
+export const validateClicks = (getStory: StoryCallback, getComponent: GetComponent) => {
+  test('click is working', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory());
+    const { chip } = getComponent(getByTestId);
+    const count = getByTestId(CLICK_COUNTER_TEST_ID);
 
-  test.page(visit())(`click is working`, async t => {
-    const { chip } = getComponent();
-
-    await t.click(chip);
-    await t.expect(count.innerText).eql('1');
+    await chip.click();
+    await expect(count).toHaveText('1');
   });
 
-  test.page(visit({ disabled: true }))('should be disabled and click is ignored', async t => {
-    const { chip } = getComponent();
+  test('should be disabled and click is ignored', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ disabled: true }));
+    const { chip } = getComponent(getByTestId);
+    const count = getByTestId(CLICK_COUNTER_TEST_ID);
 
-    const hasDisabledAttribute = (await chip.hasAttribute('disabled')) || (await chip.hasAttribute('data-disabled'));
-    await t.expect(hasDisabledAttribute).ok();
-    await t.expect(chip.getStyleProperty('cursor')).eql('not-allowed');
+    const hasDisabledAttribute =
+      (await chip.getAttribute('disabled')) !== null || (await chip.getAttribute('data-disabled')) !== null;
+    expect(hasDisabledAttribute).toBe(true);
+    await expect(chip).toHaveCSS('cursor', 'not-allowed');
 
-    await t.click(chip);
-    await t.expect(count.innerText).eql('0');
+    await chip.click({ force: true });
+    await expect(count).toHaveText('0');
   });
 };

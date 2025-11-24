@@ -1,6 +1,6 @@
-import { Selector } from 'testcafe';
+import { expect, type Page } from '@playwright/test';
 
-import { dataTestIdSelector } from '../../../testcafe/utils';
+import { dataTestIdSelector } from '../../../playwright/utils';
 import { TEST_IDS } from '../src/constants';
 import { STORY_TEST_IDS } from '../stories/constants';
 
@@ -15,13 +15,13 @@ export const DATA_ATTRIBUTES = {
 };
 
 export const selectors = {
-  getRows: () => Selector(dataTestIdSelector(TEST_IDS.bodyRow)),
-  getRow(index: number | 'all', disabled?: boolean) {
-    let row = this.getRows();
+  getRows: (page: Page) => page.locator(dataTestIdSelector(TEST_IDS.bodyRow)),
+  getRow(page: Page, index: number | 'all', disabled?: boolean) {
+    const rowSelector = disabled
+      ? `${dataTestIdSelector(TEST_IDS.bodyRow)}[${DATA_ATTRIBUTES.disabled}="true"]`
+      : dataTestIdSelector(TEST_IDS.bodyRow);
 
-    if (disabled) {
-      row = row.withAttribute(DATA_ATTRIBUTES.disabled);
-    }
+    let row = page.locator(rowSelector);
 
     if (typeof index === 'number') {
       row = row.nth(index);
@@ -30,38 +30,39 @@ export const selectors = {
     return {
       row,
       tree: {
-        chevron: row.find(dataTestIdSelector(TEST_IDS.tree.chevron)),
-        node: row.find(dataTestIdSelector(TEST_IDS.tree.node)),
-        checkBox: row.find(dataTestIdSelector(TEST_IDS.tree.checkbox)),
-        radio: row.find(dataTestIdSelector(TEST_IDS.tree.radio)),
+        chevron: row.locator(dataTestIdSelector(TEST_IDS.tree.chevron)),
+        node: row.locator(dataTestIdSelector(TEST_IDS.tree.node)),
+        checkBox: row.locator(dataTestIdSelector(TEST_IDS.tree.checkbox)),
+        radio: row.locator(dataTestIdSelector(TEST_IDS.tree.radio)),
       },
-      selectToggle: row.find(dataTestIdSelector(TEST_IDS.rowSelect)),
-      rowSelectedAttribute: row.getAttribute(DATA_ATTRIBUTES.selected),
-      toolbar: Selector(dataTestIdSelector(TEST_IDS.toolbar)),
-      toolbarSearch: Selector(dataTestIdSelector('toolbar__search')),
-      toolbarFilterButton: Selector(dataTestIdSelector('toolbar__filter-button')),
-      toolbarColumnSettingsButton: Selector(dataTestIdSelector('table__column-settings')),
-      toolbarColumnSettingsDroplist: Selector(dataTestIdSelector('table__column-settings-droplist')),
-      toolbarFilterRow: Selector(dataTestIdSelector('toolbar__filter-row')),
-      statusIndicator: row.find(dataTestIdSelector(TEST_IDS.statusIndicator)),
-      statusLabel: row.find(dataTestIdSelector(TEST_IDS.statusLabel)),
-      rowActionsButton: row.find(dataTestIdSelector(TEST_IDS.rowActions.droplistTrigger)),
-      rowActionsDropdown: Selector(dataTestIdSelector(TEST_IDS.rowActions.droplist)),
-      rowActionsOption: Selector(dataTestIdSelector(TEST_IDS.rowActions.option)),
+      selectToggle: row.locator(dataTestIdSelector(TEST_IDS.rowSelect)).first(),
+      get rowSelectedAttribute() {
+        return row.getAttribute(DATA_ATTRIBUTES.selected);
+      },
+      toolbar: page.locator(dataTestIdSelector(TEST_IDS.toolbar)),
+      toolbarSearch: page.locator(dataTestIdSelector('toolbar__search')),
+      toolbarFilterButton: page.locator(dataTestIdSelector('toolbar__filter-button')),
+      toolbarColumnSettingsButton: page.locator(dataTestIdSelector('table__column-settings')),
+      toolbarColumnSettingsDroplist: page.locator(dataTestIdSelector('table__column-settings-droplist')),
+      toolbarFilterRow: page.locator(dataTestIdSelector('toolbar__filter-row')),
+      statusIndicator: row.locator(dataTestIdSelector(TEST_IDS.statusIndicator)),
+      statusLabel: row.locator(dataTestIdSelector(TEST_IDS.statusLabel)),
+      rowActionsButton: row.locator(dataTestIdSelector(TEST_IDS.rowActions.droplistTrigger)),
+      rowActionsDropdown: page.locator(dataTestIdSelector(TEST_IDS.rowActions.droplist)),
+      rowActionsOption: page.locator(dataTestIdSelector(TEST_IDS.rowActions.option)),
       pinnedCells: {
-        left: row.find(dataTestIdSelector(TEST_IDS.pinnedCells)).withAttribute(DATA_ATTRIBUTES.pinnedPosition, 'left'),
-        right: row
-          .find(dataTestIdSelector(TEST_IDS.pinnedCells))
-          .withAttribute(DATA_ATTRIBUTES.pinnedPosition, 'right'),
+        left: row.locator(`${dataTestIdSelector(TEST_IDS.pinnedCells)}[${DATA_ATTRIBUTES.pinnedPosition}="left"]`),
+        right: row.locator(`${dataTestIdSelector(TEST_IDS.pinnedCells)}[${DATA_ATTRIBUTES.pinnedPosition}="right"]`),
       },
-      tableHeaderCells: Selector(dataTestIdSelector('table__header-cell')),
+      tableHeaderCells: page.locator(dataTestIdSelector('table__header-cell')),
     };
   },
-  getColumnHeaderSelectorByDataId(id: string) {
-    return Selector(dataTestIdSelector(TEST_IDS.headerCell)).withAttribute('data-header-id', id);
+  getColumnHeaderSelectorByDataId(page: Page, id: string) {
+    const headerSelector = `${dataTestIdSelector(TEST_IDS.headerCell)}[data-header-id="${id}"]`;
+    return page.locator(headerSelector);
   },
-  getSelectedState() {
-    return Selector(dataTestIdSelector(STORY_TEST_IDS.selected));
+  getSelectedState(page: Page) {
+    return page.locator(dataTestIdSelector(STORY_TEST_IDS.selected));
   },
 };
 
@@ -81,11 +82,11 @@ export class RowsSelectionValidator {
     Tenth: 9,
   };
 
-  private t: TestController;
+  private page: Page;
   private selectors: Selectors;
 
-  constructor(t: TestController, selectors: Selectors) {
-    this.t = t;
+  constructor(page: Page, selectors: Selectors) {
+    this.page = page;
     this.selectors = selectors;
   }
 
@@ -93,20 +94,20 @@ export class RowsSelectionValidator {
     return this.rowsMap[selector];
   }
 
-  public getSelector(selector: keyof typeof this.rowsMap) {
+  public getRow(selector: keyof typeof this.rowsMap) {
     const rowIndex = this.getSelectorIndex(selector);
-    return this.selectors.getRow(rowIndex);
-  }
-
-  private getBooleanAssertionFunction(comparedValue: 'true' | 'false') {
-    return comparedValue === 'true' ? 'eql' : 'notEql';
+    return this.selectors.getRow(this.page, rowIndex);
   }
 
   public async validateRowSelectionStatus(selector: keyof typeof this.rowsMap, comparedValue: 'true' | 'false') {
-    const rowSelector = this.getSelector(selector);
-    const assertion = this.getBooleanAssertionFunction(comparedValue);
+    const rowSelector = this.getRow(selector);
+    const selectedAttr = await rowSelector.rowSelectedAttribute;
 
-    await this.t.expect(rowSelector.rowSelectedAttribute)[assertion](comparedValue);
+    if (comparedValue === 'true') {
+      expect(selectedAttr).toEqual('true');
+    } else {
+      expect(selectedAttr).not.toEqual('true');
+    }
   }
 
   public async validateRangeSelectionStatus<T extends keyof typeof this.rowsMap>(
@@ -120,10 +121,14 @@ export class RowsSelectionValidator {
       throw new Error('Invalid range: start cannot equal or be greater than end');
     }
 
-    const assertion = this.getBooleanAssertionFunction(comparedValue);
-
     for (let i = startIndex; i <= endIndex; i++) {
-      await this.t.expect(this.selectors.getRow(i).rowSelectedAttribute)[assertion](comparedValue);
+      const row = this.selectors.getRow(this.page, i);
+      const selectedAttr = await row.rowSelectedAttribute;
+      if (comparedValue === 'true') {
+        expect(selectedAttr).toEqual('true');
+      } else {
+        expect(selectedAttr).not.toEqual('true');
+      }
     }
   }
 
@@ -131,13 +136,13 @@ export class RowsSelectionValidator {
     config: Array<[T, T] | T>,
     comparedValue: 'true' | 'false',
   ) {
-    config.forEach(item => {
+    for (const item of config) {
       if (Array.isArray(item)) {
-        this.validateRangeSelectionStatus(item, comparedValue);
+        await this.validateRangeSelectionStatus(item, comparedValue);
       } else {
-        this.validateRowSelectionStatus(item, comparedValue);
+        await this.validateRowSelectionStatus(item, comparedValue);
       }
-    });
+    }
   }
 }
 

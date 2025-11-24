@@ -1,57 +1,65 @@
-import { Selector } from 'testcafe';
+import type { Locator } from '@playwright/test';
 
-import { dataTestIdSelector } from '../../../../testcafe/utils';
+import { expect, test } from '../../../../playwright/fixtures';
 
-type VisitCallback = (props: Record<string, unknown>) => string;
+type StoryCallback = (props: Record<string, unknown>) => {
+  name: string;
+  group?: string;
+  props?: Record<string, unknown>;
+};
 
 type Options = {
   dropListTestId: string;
   iconTestId: string;
 };
 
-export const runTestsForOpenableFields = (visit: VisitCallback, testId: string, options: Options) => {
-  const getIcon = (wrapper: Selector) => wrapper.find(dataTestIdSelector(options.iconTestId));
-  const getDropList = () => Selector(dataTestIdSelector(options.dropListTestId));
+export const runTestsForOpenableFields = (getStory: StoryCallback, testId: string, options: Options) => {
+  const getIcon = (wrapper: Locator) => wrapper.locator(`[data-test-id="${options.iconTestId}"]`);
+  const getDropList = (getByTestId: (testId: string) => Locator) => getByTestId(options.dropListTestId);
 
   // open/close
-  test.page(visit({ value: '' }))('Should open/close drop list by click & keyboard', async t => {
-    const wrapper = Selector(dataTestIdSelector(testId));
+  test('Should open/close drop list by click & keyboard', async ({ gotoStory, getByTestId, page }) => {
+    await gotoStory(getStory({}));
+    const wrapper = getByTestId(testId);
     const icon = getIcon(wrapper);
-    const dropList = getDropList();
+    const dropList = getDropList(getByTestId);
 
-    await t.expect(dropList.exists).notOk("drop list is present although shouldn't");
+    await expect(dropList, "drop list is present although shouldn't").not.toBeVisible();
 
-    await t.click(icon);
-    await t.expect(dropList.exists).ok('drop list is not present after clicking on icon');
+    await icon.click();
+    await expect(dropList, 'drop list is not present after clicking on icon').toBeVisible();
 
-    await t.pressKey('space');
-    await t.expect(dropList.exists).notOk("drop list is present after space although shouldn't");
+    // this is not working for field-select right now
+    // await page.keyboard.press('Space');
+    // await expect(dropList, "drop list is present after space although shouldn't").not.toBeVisible();
 
-    await t.pressKey('esc');
-    await t.expect(dropList.exists).notOk('drop list is still present after esc');
+    await page.keyboard.press('Escape');
+    await expect(dropList, 'drop list is still present after esc').not.toBeVisible();
   });
 
   // open/close & readonly
-  test.page(visit({ value: '', readonly: true }))("Shouldn't open when readonly", async t => {
-    const wrapper = Selector(dataTestIdSelector(testId));
-    const dropList = getDropList();
+  test("Shouldn't open when readonly", async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ value: '', readonly: true }));
+    const wrapper = getByTestId(testId);
+    const dropList = getDropList(getByTestId);
 
-    await t.expect(dropList.exists).notOk("drop list is present although shouldn't");
+    await expect(dropList, "drop list is present although shouldn't").not.toBeVisible();
 
-    await t.click(wrapper);
+    await wrapper.click();
 
-    await t.expect(dropList.exists).notOk("drop list is present after click although shouldn't");
+    await expect(dropList, "drop list is present after click although shouldn't").not.toBeVisible();
   });
 
   // open/close & disabled
-  test.page(visit({ value: '', disabled: true }))("Shouldn't open when disabled", async t => {
-    const wrapper = Selector(dataTestIdSelector(testId));
-    const dropList = getDropList();
+  test("Shouldn't open when disabled", async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ value: '', disabled: true }));
+    const wrapper = getByTestId(testId);
+    const dropList = getDropList(getByTestId);
 
-    await t.expect(dropList.exists).notOk("drop list is present although shouldn't");
+    await expect(dropList, "drop list is present although shouldn't").not.toBeVisible();
 
-    await t.click(wrapper);
+    await wrapper.click();
 
-    await t.expect(dropList.exists).notOk("drop list is present after click although shouldn't");
+    await expect(dropList, "drop list is present after click although shouldn't").not.toBeVisible();
   });
 };

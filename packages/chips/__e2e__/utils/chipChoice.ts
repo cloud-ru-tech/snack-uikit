@@ -1,6 +1,6 @@
-import { Selector, test } from 'testcafe';
+import type { Locator } from '@playwright/test';
 
-import { dataTestIdSelector, getTestcafeUrl } from '../../../../testcafe/utils';
+import { expect, test } from '../../../../playwright/fixtures';
 import { CHIP_CHOICE_TEST_IDS } from '../../src/constants';
 import { validateClicks, validateNoIconForSizeXs } from './commonTests';
 
@@ -18,143 +18,154 @@ export const VALUES_LABELS = [
 
 export const ICON_NAME = 'PlaceholderSVG';
 
-export const createChipGetPage =
+export const createChipGetStory =
   (chip: ChipType) =>
-  (props: Record<string, unknown> & { icon?: string } = {}) =>
-    getTestcafeUrl({
-      name: 'chipchoice',
-      story: `chip-choice-${chip}`,
-      group: 'chips',
-      props: {
-        'data-test-id': BASE_TEST_ID,
-        ...props,
-        useBaseOptions: true,
-        showClickCounter: true,
-        searchable: false,
-      },
-    });
+  (props: Record<string, unknown> & { icon?: string } = {}) => ({
+    name: 'chipchoice',
+    story: `chip-choice-${chip}`,
+    group: 'chips',
+    props: {
+      'data-test-id': BASE_TEST_ID,
+      ...props,
+      useBaseOptions: true,
+      showClickCounter: true,
+      searchable: false,
+    },
+  });
 
-export function getComponent() {
-  const chip = Selector(dataTestIdSelector(BASE_TEST_ID));
-  const droplist = Selector(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.droplist));
-  const getOption = (value: string | number) => droplist.find(dataTestIdSelector(`list__base-item_${value}`));
+export function getComponent(getByTestId: (testId: string) => Locator) {
+  const chip = getByTestId(BASE_TEST_ID);
+  const droplist = getByTestId(CHIP_CHOICE_TEST_IDS.droplist);
+  const getOption = (value: string | number) => getByTestId(`list__base-item_${value}`);
 
   const getOptionCheckbox = (value: string | number) =>
-    getOption(value).find(dataTestIdSelector(`checkbox-${BASE_TEST_ID}__option`));
+    getOption(value).locator(`[data-test-id="list__base-item-checkbox"]`);
 
   return {
     chip,
-    label: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.label)),
-    value: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.value)).find(dataTestIdSelector('full-text')),
-    iconWrap: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.icon)),
-    icon: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.icon)).find('svg'),
-    spinner: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.spinner)).find('svg'),
-    clearButton: chip.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.clearButton)),
-    footer: droplist.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.footer)),
-    cancelButton: droplist.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.cancelButton)),
-    approveButton: droplist.find(dataTestIdSelector(CHIP_CHOICE_TEST_IDS.approveButton)),
+    label: getByTestId(CHIP_CHOICE_TEST_IDS.label),
+    value: getByTestId(CHIP_CHOICE_TEST_IDS.value).locator(`[data-test-id="full-text"]`),
+    iconWrap: getByTestId(CHIP_CHOICE_TEST_IDS.icon),
+    icon: getByTestId(CHIP_CHOICE_TEST_IDS.icon).locator('svg'),
+    spinner: getByTestId(CHIP_CHOICE_TEST_IDS.spinner).locator('svg'),
+    clearButton: getByTestId(CHIP_CHOICE_TEST_IDS.clearButton),
+    footer: getByTestId(CHIP_CHOICE_TEST_IDS.footer),
+    cancelButton: getByTestId(CHIP_CHOICE_TEST_IDS.cancelButton),
+    approveButton: getByTestId(CHIP_CHOICE_TEST_IDS.approveButton),
     droplist,
     getOption,
     getOptionCheckbox,
   };
 }
 
-export function chipChoiceCommonTests(getPage: ReturnType<typeof createChipGetPage>, chipType: ChipType) {
-  test.page(getPage({ showClearButton: false, useDefaultValue: true }))(
-    'should render with defaultValue, but without clear button',
-    async t => {
-      const { value, clearButton } = getComponent();
+export function chipChoiceCommonTests(getStory: ReturnType<typeof createChipGetStory>, chipType: ChipType) {
+  test('should render with defaultValue, but without clear button', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ showClearButton: false, useDefaultValue: true }));
+    const { value, clearButton } = getComponent(getByTestId);
 
-      await t.expect(value.exists).ok();
-      await t.expect(value.textContent).notEql('All');
-      await t.expect(clearButton.exists).notOk();
-    },
-  );
+    await expect(value).toBeVisible();
+    await expect(await value.textContent()).not.toEqual('All');
+    await expect(clearButton).not.toBeVisible();
+  });
 
   if (chipType !== 'multi') {
-    test.page(getPage({ useDefaultValue: false }))('should render without "defaultValue"', async t => {
-      const { chip, value, label } = getComponent();
+    test('should render without "defaultValue"', async ({ gotoStory, getByTestId }) => {
+      await gotoStory(getStory({ useDefaultValue: false }));
+      const { chip, value, label } = getComponent(getByTestId);
 
-      await t.expect(chip.exists).ok();
-      await t.expect(label.exists).ok();
-      await t.expect(value.exists).ok();
+      await expect(chip).toBeVisible();
+      await expect(label).toBeVisible();
+      await expect(value).toBeVisible();
 
-      await t.expect(value.innerText).eql('All');
+      await expect(value).toHaveText('All');
     });
   }
 
-  test.page(getPage({ autoApply: true }))('should not render footer', async t => {
-    const { footer } = getComponent();
+  test('should not render footer', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ autoApply: true }));
+    const { footer } = getComponent(getByTestId);
 
-    await t.expect(footer.exists).notOk('footer should not be exists with autoApply flag');
+    await expect(footer).not.toBeVisible();
   });
 
-  test.page(getPage({ icon: ICON_NAME }))('should render with icon', async t => {
-    const { value, icon } = getComponent();
+  test('should render with icon', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ icon: ICON_NAME }));
+    const { value, icon } = getComponent(getByTestId);
 
-    await t.expect(value.exists).ok();
-    await t.expect(icon.exists).ok();
+    await expect(value).toBeVisible();
+    await expect(icon).toBeVisible();
   });
 
-  test.page(getPage({ loading: true, icon: ICON_NAME }))('value should change to spinner when loading', async t => {
-    const { value, icon, spinner } = getComponent();
+  test('value should change to spinner when loading', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ loading: true, icon: ICON_NAME }));
+    const { value, icon, spinner } = getComponent(getByTestId);
 
-    await t.expect(value.exists).notOk();
-    await t.expect(spinner.exists).ok();
-    await t.expect(icon.exists).ok();
+    await expect(value).not.toBeVisible();
+    await expect(spinner).toBeVisible();
+    await expect(icon).toBeVisible();
   });
 
-  test.page(getPage({ label: LABEL_TEXT, loading: true }))(
-    `should render with label "${LABEL_TEXT} and change value to spinner"`,
-    async t => {
-      const { chip, label, value, spinner } = getComponent();
+  test(`should render with label "${LABEL_TEXT} and change value to spinner"`, async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ label: LABEL_TEXT, loading: true }));
+    const { chip, label, value, spinner } = getComponent(getByTestId);
 
-      await t.expect(chip.exists).ok();
-      await t.expect(label.innerText).eql(LABEL_TEXT);
-      await t.expect(spinner.exists).ok();
-      await t.expect(value.exists).notOk();
-    },
-  );
+    await expect(chip).toBeVisible();
+    await expect(label).toHaveText(LABEL_TEXT);
+    await expect(spinner).toBeVisible();
+    await expect(value).not.toBeVisible();
+  });
 
-  test.page(getPage({ useDefaultValue: true }))('Keyboard handling is working properly', async t => {
-    if (t.browser.name === 'Firefox') {
+  test('Keyboard handling is working properly', async ({ page, gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ useDefaultValue: true }));
+    const browserName = page.context().browser()?.browserType().name();
+    if (browserName === 'firefox') {
       console.info('Keyboard test has a lot of bugs in Firefox, so it is skipped');
       return;
     }
 
-    const { chip, droplist, clearButton } = getComponent();
-    await t.expect(chip.visible).ok('Chip should be rendered');
+    const { chip, droplist, clearButton } = getComponent(getByTestId);
+    await expect(chip).toBeVisible();
 
-    await t.pressKey('Tab');
-    await t.expect(chip.focused).ok('Chip should be focused after first "Tab" key press');
+    await page.keyboard.press('Tab');
+    const isChipFocused1 = await chip.evaluate(el => document.activeElement === el);
+    expect(isChipFocused1).toBe(true);
 
-    await t.pressKey('Down');
-    await t.expect(droplist.exists).ok('Droplist should be opened after "Down" key press');
+    await page.keyboard.press('ArrowDown');
+    await expect(droplist).toBeVisible();
 
     if (chipType === 'time') {
-      await t.pressKey(new Array(21).fill('Up').join(' '));
-      await t.expect(chip.focused).ok('Chip should be focused after "Up" key press');
-      await t.expect(droplist.exists).notOk('Droplist should be closed after "Up" key press');
+      for (let i = 0; i < 21; i++) {
+        await page.keyboard.press('ArrowUp');
+      }
+      const isChipFocused2 = await chip.evaluate(el => document.activeElement === el);
+      expect(isChipFocused2).toBe(true);
+      await expect(droplist).not.toBeVisible();
     } else {
-      await t.pressKey('Up');
-      await t.expect(chip.focused).ok('Chip should be focused after "Up" key press');
-      await t.pressKey('Up');
-      await t.expect(droplist.exists).notOk('Droplist should be closed after "Up" key press');
+      await page.keyboard.press('ArrowUp');
+      const isChipFocused3 = await chip.evaluate(el => document.activeElement === el);
+      expect(isChipFocused3).toBe(true);
+      await page.keyboard.press('ArrowUp');
+      await expect(droplist).not.toBeVisible();
     }
 
-    await t.pressKey('Right');
-    await t.expect(chip.focused).notOk('Chip should loose focus after "Right" key press');
-    await t.expect(clearButton.focused).ok('Clear button should be focused');
+    await page.keyboard.press('ArrowRight');
+    const isChipFocused4 = await chip.evaluate(el => document.activeElement === el);
+    expect(isChipFocused4).toBe(false);
+    const isClearButtonFocused1 = await clearButton.evaluate(el => document.activeElement === el);
+    expect(isClearButtonFocused1).toBe(true);
 
-    await t.pressKey('Left');
-    await t.expect(chip.focused).ok('Focus should return to chip after "Left" key press');
-    await t.expect(clearButton.focused).notOk('Clear button should not be focused');
+    await page.keyboard.press('ArrowLeft');
+    const isChipFocused5 = await chip.evaluate(el => document.activeElement === el);
+    expect(isChipFocused5).toBe(true);
+    const isClearButtonFocused2 = await clearButton.evaluate(el => document.activeElement === el);
+    expect(isClearButtonFocused2).toBe(false);
 
-    await t.pressKey('Tab');
-    await t.expect(chip.focused).notOk('Chip should loose focus after pressing "Tab"');
+    await page.keyboard.press('Tab');
+    const isChipFocused6 = await chip.evaluate(el => document.activeElement === el);
+    expect(isChipFocused6).toBe(false);
   });
 
-  validateNoIconForSizeXs(getPage, getComponent, true);
+  validateNoIconForSizeXs(getStory, getComponent, true);
 
-  validateClicks(getPage, getComponent);
+  validateClicks(getStory, getComponent);
 }

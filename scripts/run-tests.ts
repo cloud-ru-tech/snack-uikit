@@ -1,22 +1,28 @@
+import fs from 'fs';
 import path from 'path';
 
 import { exec, exit } from 'shelljs';
 
 import { getChangedPackages } from './utils/getChangedPackages';
-import { shouldRunAllTests } from './utils/shouldRunAllTests';
+import { isMainBranch } from './utils/isMainBranch';
 
 const { BROWSER } = process.env;
 
 let changedPaths = '';
 
-if (!shouldRunAllTests()) {
+if (!isMainBranch()) {
   const paths = getChangedPackages();
 
-  if (paths.length > 0) {
-    paths.push(path.join(__dirname, '../testcafe'));
-  }
+  const filteredPaths = paths.filter(item => {
+    const testsDir = path.join(item, '__e2e__');
+    return fs.existsSync(testsDir) && fs.statSync(testsDir).isDirectory();
+  });
 
-  changedPaths = paths.map(item => `${item}/__e2e__/*.ts`).join(' ');
+  if (filteredPaths.length > 0) {
+    changedPaths = filteredPaths.map(item => `${item}/__e2e__/`).join(' ');
+  } else {
+    process.exit(0);
+  }
 }
 
-exec(`testcafe ${BROWSER ? `${BROWSER}:headless` : 'chrome'} --config-file testcafe.config.js ${changedPaths}`, exit);
+exec(`playwright test --project=${BROWSER || 'chrome'} ${changedPaths}`, exit);

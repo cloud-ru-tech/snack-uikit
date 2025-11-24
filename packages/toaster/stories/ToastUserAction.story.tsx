@@ -36,7 +36,7 @@ function Template({ ...args }: ToastUserActionProps) {
 
         <ButtonFilled
           label={'Dismiss Toasters'}
-          data-test-id='toast-trigger'
+          data-test-id='dismiss-toast'
           onClick={() => toaster.userAction.dismiss()}
         />
       </div>

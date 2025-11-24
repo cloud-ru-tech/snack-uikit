@@ -38,5 +38,11 @@ reports
 /reports/jest-report.xml
 /public
 
+playwright-report/
+test-results/
+
 snack.config.ts
 themes.config.ts
+# AI EDITOR CONFIG START
+.history
+# AI EDITOR CONFIG END

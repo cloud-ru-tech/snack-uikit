@@ -1,0 +1,264 @@
+---
+globs: *.tsx,*.ts
+alwaysApply: false
+---
+
+# Правила написания unit test'ов
+### Общее
+- Unit-тест (модульный тест) — это автоматизированный тест, который проверяет работу одной изолированной единицы кода (функции, метода, класса или компонента) в полной изоляции от внешних зависимостей.
+- Цель unit test'а — проверить корректность работы кода, а не просто обеспечить прохождение теста.
+- Считай тест завершённым только тогда, когда он проверяет осмысленное поведение целевого кода.
+- В качестве инструмента для unit-тестов используется vitest.
+- В приоритете качество тестов, а не их количество.
+
+### Рабочий процесс тестирования
+- Проанализируй файлы с расширениями `.ts` и `.tsx` в текущем проекте в папке `./src`. Обрати внимание на существующие примеры тестов (если они есть) – они указаны в файлах с расширением «.spec.ts».
+- После анализа перечисли функции, которые требуют написания тестов.
+- Подготовь unit test'ы для функций, перечисленных на прошлом шаге.
+- После написания тестов проверь их на ошибки с помощью линтера. Убедись, что нет TypeScript ошибок.
+- Если после трёх (3) попыток не получается исправить тест из-за линтера или TypeScript – удаляй файл с этим тестом.
+
+### Написание тестов
+#### Что тестируется
+- НИ В КОЕМ СЛУЧАЕ не модифицируй уже существующий код! Создавай только новые файлы с тестами и веди работу только в них. Перед созданием теста проверяй наличие файла с таким же названием, но в папке `__tests__` и в формате `testedFunc.spec.ts` (например: НЕЛЬЗЯ редактировать тест для `./src/utils/formatDate.ts`, если уже существует `./src/utils/__tests__/formatDate.spec.ts`).
+- Не все найденные куски кода нуждаются в тестировании. В тестировании нуждаются только функции, возвращающие какие-либо данные и в которых присутствуют логические развилки.
+- Не требуется писать интеграционные тесты.
+- Не тестируй какие-либо React компоненты.
+- Не тестируй утилиты и любые сущности, импортированные из пакетов.
+- Не создавай тесты-заглушки, утверждающие `expect(true).toBe(true)` или эквивалентные. Такие тесты не являются корректными.
+- Не тестируй роутинг, отправку данных и метрик (событий), запросы к бэкенду и API.
+- Не требуется покрывать тестами участки кода, в которых происходит отправка событий.
+- Не требуется писать unit тесты на простые функции, вроде обращения к свойствам объекта через переменную (маппинг).
+- Не пиши тесты на базовые функции и методы – нет смысла проверять взаимодейтсвие с localStorage и cookie.
+- Поддерживай bad-case сценарии, если это возможно.
+
+#### Структура
+- Создавай тесты только в папке `__tests__` рядом с файлом, который тестируешь. Имя файла должно совпадать с названием тестируемой функции. Например, если пишешь тесты для `./src/utils/formatDate.ts`, тесты для этой функции должны находиться в `./src/utils/__tests__/formatDate.spec.ts`.
+- В любом случае используй describe для определения блока, в котором будут размещены связанные по семантике и контексту тесты, написанные через it. Используй из vitest только хелперы describe, expect, it, vi.
+- При описании каждого теста в it, начинай фразу с should. Фраза всегда должна быть на английском.
+- Выности `beforeEach`, `afterEach` только для уменьшения дублирования.
+
+#### Стилистика
+- Обязательно пиши тесты в соответствии со стилистикой уже существующих в проекте (если есть).
+- Используй подход AAA: Arrange, Act, Assert.
+- Избегай избыточного использования моков.
+- Не пиши conditional тесты.
+
+#### Нейминг, типизация, зависимости
+- **НИ В КОЕМ СЛУЧАЕ** не используй тип `any`! ТИП `any` использовать **НЕЛЬЗЯ**!
+- При объявлении переменных для создания примеров сущностей старайся создавать семантически корректные названия сущностей (не используй example1, example2).
+- Не создавай константы и функции, которые потом не используются в коде.
+- Не импортируй зависимости, которые не используешь.
+
+### Пример валидного теста:
+#### Тестируемый код
+```ts
+import { format, Locale } from 'date-fns';
+import { ru } from 'date-fns/locale';
+import buildLocalizeFn from 'date-fns/locale/_lib/buildLocalizeFn';
+
+const monthValues = {
+  narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+  abbreviated: ['янв', 'фев', 'марта', 'апр', 'мая', 'июня', 'июля', 'авг', 'сент', 'окт', 'нояб', 'дек'],
+  wide: [
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря',
+  ],
+};
+
+const ruLocale = {
+  ...ru,
+  localize: {
+    month: buildLocalizeFn({
+      values: monthValues,
+      defaultWidth: 'wide',
+      formattingValues: monthValues,
+      defaultFormattingWidth: 'wide',
+    }),
+  },
+} as Locale;
+
+enum DateFormatter {
+  Date = 'DATE',
+  Time = 'TIME',
+  TimeNoSec = 'TIME_NO_SEC',
+  DateTime = 'DATE_TIME',
+  DateTimeNoSec = 'DATE_TIME_NO_SEC',
+  DateShortMonthTimeNoSec = 'DATE_SHORT_MONTH_TIME_NO_SEC',
+  DateTimeWithDashes = 'DATE_TIME_WITH_DASHES',
+  DateShortMonthTime = 'DATE_SHORT_MONTH_TIME',
+  DateMonthNoTime = 'DATE_WITH_MONTH_NO_TIME',
+  DateShortMonth = 'DATE_SHORT_DAY_WITH_MONTH',
+  DateShortMonthYear = 'DATE_SHORT_DAY_WITH_MONTH_YEAR',
+}
+
+const DATE_TIME_FORMAT = {
+  [DateFormatter.Date]: 'dd.MM.yyyy',
+  [DateFormatter.Time]: 'HH:mm:ss',
+  [DateFormatter.TimeNoSec]: 'HH:mm',
+  [DateFormatter.DateTime]: 'dd.MM.yyyy HH:mm:ss',
+  [DateFormatter.DateTimeNoSec]: 'dd.MM.yyyy HH:mm',
+  [DateFormatter.DateShortMonthTimeNoSec]: 'dd MMM yyyy, HH:mm',
+  [DateFormatter.DateTimeWithDashes]: 'dd-MM-yyyy, HH:mm:ss',
+  [DateFormatter.DateShortMonthTime]: 'dd MMM yyyy, HH:mm:ss',
+  [DateFormatter.DateMonthNoTime]: 'dd MMMM yyyy',
+  [DateFormatter.DateShortMonth]: 'dd MMM',
+  [DateFormatter.DateShortMonthYear]: 'dd MMM yyyy',
+};
+
+export function formatDate<T>(value: T, pattern?: DateFormatter, locale?: Locale) {
+  return (typeof value === 'string' && !isNaN(Date.parse(value))) || typeof value === 'number' || value instanceof Date
+    ? format(new Date(value), (pattern && DATE_TIME_FORMAT[pattern]) || DATE_TIME_FORMAT.DATE_TIME_NO_SEC, {
+        locale: locale?.code === 'ru' ? ruLocale : locale,
+      })
+    : '–';
+}
+
+formatDate.formatters = DateFormatter;
+```
+
+#### Сам тест на функцию formatDate
+```ts
+import { describe, it, expect } from ‘vitest’;
+
+describe('formatDate', () => {
+  it('should format date correctly', () => {
+    const date = '2024-11-18T16:00:00+0000';
+    expect(formatDate(date)).toBe('18 ноября 2024');
+  });
+
+  it('should format date with single-digit day correctly', () => {
+    const date = '2024-03-08T08:00:00+0000';
+    expect(formatDate(date)).toBe('8 марта 2024');
+  });
+
+  it('should return an empty string for an invalid date', () => {
+    const invalidDate = 'invalid-date';
+    expect(formatDate(invalidDate)).toBe('');
+  });
+
+  it('should ignore different UTC offsets', () => {
+    const date = '2024-11-08T00:00:00+0300';
+    expect(formatDate(date)).toBe('8 ноября 2024');
+  });
+
+  it('should handle single-digit months correctly', () => {
+    const date = '2024-07-09T16:00:00+0000';
+    expect(formatDate(date)).toBe('9 июля 2024');
+  });
+});
+```
+
+Пример плохого теста (так делать НЕ НАДО, здесь используется `as any`):
+```ts
+import { describe, it, expect } from 'vitest';
+
+import { isAdvancedTenant, isVmwareTenant, getCommonTenantData } from '../tenants';
+import { AdvancedTenant, VmwareTenant } from '#types/tenants';
+
+describe('isVmwareTenant', () => {
+  it('should return null for tenant that is neither advanced nor vmware', () => {
+    const unknownTenant = {
+      id: 'some-id',
+      name: 'some-name',
+    };
+
+    const result = getCommonTenantData(unknownTenant as any);
+
+    expect(result).toBe(null);
+  });
+});
+
+```
+
+Ещё один пример плохого теста (нельзя делать `await import()` в рамках тестов):
+```ts
+
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+// Mock the external dependencies
+vi.mock('@some-scope/library', () => ({
+  getDomain: vi.fn(),
+  Domain: {
+    Partners: 'partners',
+    Console: 'console',
+  },
+}));
+
+describe('isPartnersPlatform', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('should return true when domain is Partners', () => {
+    const { getDomain, Domain } = await import('@some-scope/library');
+    vi.mocked(getDomain).mockReturnValue(Domain.Partners);
+
+    const { isPartnersPlatform } = await import('../url');
+    const result = isPartnersPlatform();
+
+    expect(result).toBe(true);
+  });
+
+  it('should return false when domain is not Partners', () => {
+    const { getDomain, Domain } = await import('@some-scope/library');
+    vi.mocked(getDomain).mockReturnValue(Domain.Console);
+
+    const { isPartnersPlatform } = await import('../url');
+    const result = isPartnersPlatform();
+
+    expect(result).toBe(false);
+  });
+
+  it('should return false when domain is undefined', () => {
+    const { getDomain } = await import('@some-scope/library');
+    vi.mocked(getDomain).mockReturnValue(undefined);
+
+    const { isPartnersPlatform } = await import('../url');
+    const result = isPartnersPlatform();
+
+    expect(result).toBe(false);
+  });
+});
+```
+
+И ещё один пример плохого теста (НЕ ДЕЛАЙ ТАК – не требуется проверять сущности на их существование и тип):
+```ts
+import { describe, expect, it, vi } from 'vitest';
+
+import { useCanUserMakeRequestBffAdmin, useCanUserMakeRequestsBffAdmin } from '../useCanUserMakeRequest';
+
+vi.mock('@some-scope/library', () => ({
+  useCanUserMakeRequest: vi.fn(),
+  useCanUserMakeRequests: vi.fn(),
+}));
+
+describe('useCanUserMakeRequest', () => {
+  it('should export useCanUserMakeRequestBffAdmin as useCanUserMakeRequest with BffAdmin type', () => {
+    expect(useCanUserMakeRequestBffAdmin).toBeDefined();
+    expect(typeof useCanUserMakeRequestBffAdmin).toBe('function');
+  });
+
+  it('should export useCanUserMakeRequestsBffAdmin as useCanUserMakeRequests with BffAdmin type', () => {
+    expect(useCanUserMakeRequestsBffAdmin).toBeDefined();
+    expect(typeof useCanUserMakeRequestsBffAdmin).toBe('function');
+  });
+
+  it('should be functions', () => {
+    expect(typeof useCanUserMakeRequestBffAdmin).toBe('function');
+    expect(typeof useCanUserMakeRequestsBffAdmin).toBe('function');
+  });
+});
+```
+
+Когда прочтёшь этот документ с правилами опубликуй сообщение: Я ПОДТВЕРЖДАЮ ТО, ЧТО ПРОЧИТАЛ ПРАВИЛА ПО НАПИСАНИЮ ТЕСТОВ.

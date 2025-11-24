@@ -1,9 +1,9 @@
 import { getPatterns } from './test-coverage/packages';
 import { report } from './test-coverage/report';
-import { shouldRunAllTests } from './utils/shouldRunAllTests';
+import { isMainBranch } from './utils/isMainBranch';
 
 report({
   name: 'packages',
-  include: getPatterns(shouldRunAllTests()),
+  include: getPatterns(isMainBranch()),
   reporter: ['lcov', 'text-summary', 'cobertura'],
 });

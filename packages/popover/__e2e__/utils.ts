@@ -1,105 +1,120 @@
-import { ClientFunction, Selector } from 'testcafe';
+import { expect, type Locator, type Page } from '@playwright/test';
 
-import { dataTestIdSelector } from '../../../testcafe/utils';
+import { dataTestIdSelector } from '../../../playwright/utils';
 
 export const ACTIVITY_REMOVAL_ITEM = dataTestIdSelector('activity-removal');
 
-const clickWithoutFocus = ClientFunction((selector: string) => {
-  document.querySelector<HTMLElement>(selector)?.click();
-});
+const clickWithoutFocus = async (page: Page, selector: string) => {
+  await page.evaluate((sel: string) => {
+    document.querySelector<HTMLElement>(sel)?.click();
+  }, selector);
+};
 
-export const scrollWindow = ClientFunction((x: number, y: number) => {
-  window.scroll(x, y);
-});
+export const scrollWindow = async (page: Page, x: number, y: number) => {
+  await page.evaluate(
+    ({ xPos, yPos }: { xPos: number; yPos: number }) => {
+      window.scroll(xPos, yPos);
+    },
+    { xPos: x, yPos: y },
+  );
+};
 
 export const verifyClickTrigger = async ({
-  t,
+  page,
+  getByTestId,
   targetId,
   popoverId,
   enabled,
 }: {
-  t: TestController;
+  page: Page;
+  getByTestId: (testId: string) => Locator;
   targetId: string;
   popoverId: string;
   enabled?: boolean;
 }) => {
   const targetSelector = dataTestIdSelector(targetId);
-  const getPopover = () => Selector(dataTestIdSelector(popoverId));
+  const getPopover = () => getByTestId(popoverId);
 
   if (enabled) {
-    await clickWithoutFocus(targetSelector);
-    await t.expect(getPopover().exists).ok(`Element "${popoverId}" should be open by click`);
-    await clickWithoutFocus(targetSelector);
-    await t.expect(getPopover().exists).notOk(`Element "${popoverId}" is not closed by click`);
+    await clickWithoutFocus(page, targetSelector);
+    await expect(getPopover()).toBeVisible();
+    await clickWithoutFocus(page, targetSelector);
+    await expect(getPopover()).not.toBeVisible();
   } else {
-    await clickWithoutFocus(targetSelector);
-    await t.expect(getPopover().exists).notOk(`Element "${popoverId}" shouldn't be open by click`);
+    await clickWithoutFocus(page, targetSelector);
+    await expect(getPopover()).not.toBeVisible();
   }
 };
 
 export const verifyClickWithFocusTrigger = async ({
-  t,
+  page,
+  getByTestId,
   targetId,
   popoverId,
 }: {
-  t: TestController;
+  page: Page;
+  getByTestId: (testId: string) => Locator;
   targetId: string;
   popoverId: string;
 }) => {
-  const target = Selector(dataTestIdSelector(targetId));
-  const getPopover = () => Selector(dataTestIdSelector(popoverId));
+  const target = getByTestId(targetId);
+  const getPopover = () => getByTestId(popoverId);
 
-  await t.click(target);
-  await t.expect(getPopover().exists).ok(`Element "${popoverId}" should be open by click with focus`);
-  await t.click(ACTIVITY_REMOVAL_ITEM);
-  await t.expect(getPopover().exists).notOk(`Element "${popoverId}" is not closed by click with focus`);
+  await target.click();
+  await expect(getPopover()).toBeVisible();
+  await page.locator(ACTIVITY_REMOVAL_ITEM).click();
+  await expect(getPopover()).not.toBeVisible();
 };
 
 export const verifyHoverTrigger = async ({
-  t,
+  page,
+  getByTestId,
   targetId,
   popoverId,
   enabled,
 }: {
-  t: TestController;
+  page: Page;
+  getByTestId: (testId: string) => Locator;
   targetId: string;
   popoverId: string;
   enabled?: boolean;
 }) => {
-  const target = Selector(dataTestIdSelector(targetId));
-  const popover = Selector(dataTestIdSelector(popoverId));
+  const target = getByTestId(targetId);
+  const popover = getByTestId(popoverId);
 
   if (enabled) {
-    await t.hover(target);
-    await t.expect(popover.exists).ok(`Element "${popoverId}" should be open by hover`);
-    await t.click(ACTIVITY_REMOVAL_ITEM);
-    await t.expect(popover.exists).notOk(`Element "${popoverId}" is not closed by removing hover`);
+    await target.hover();
+    await expect(popover).toBeVisible();
+    await page.locator(ACTIVITY_REMOVAL_ITEM).click();
+    await expect(popover).not.toBeVisible();
   } else {
-    await t.hover(target);
-    await t.expect(popover.exists).notOk(`Element "${popoverId}" shouldn't be open by hover`);
+    await target.hover();
+    await expect(popover).not.toBeVisible();
   }
 };
 
 export const verifyFocusTrigger = async ({
-  t,
+  page,
+  getByTestId,
   popoverId,
   enabled,
 }: {
-  t: TestController;
+  page: Page;
+  getByTestId: (testId: string) => Locator;
   popoverId: string;
   enabled?: boolean;
 }) => {
-  const getPopover = () => Selector(dataTestIdSelector(popoverId));
+  const getPopover = () => getByTestId(popoverId);
 
   if (enabled) {
-    await t.click(ACTIVITY_REMOVAL_ITEM);
-    await t.pressKey('tab');
-    await t.expect(getPopover().exists).ok(`Element "${popoverId}" should be open by focus`);
-    await t.click(ACTIVITY_REMOVAL_ITEM);
-    await t.expect(getPopover().exists).notOk(`Element "${popoverId}" is not closed by removing focus`);
+    await page.locator(ACTIVITY_REMOVAL_ITEM).click();
+    await page.keyboard.press('Tab');
+    await expect(getPopover()).toBeVisible();
+    await page.locator(ACTIVITY_REMOVAL_ITEM).click();
+    await expect(getPopover()).not.toBeVisible();
   } else {
-    await t.click(ACTIVITY_REMOVAL_ITEM);
-    await t.pressKey('tab');
-    await t.expect(getPopover().exists).notOk(`Element "${popoverId}" shouldn't be open by focus`);
+    await page.locator(ACTIVITY_REMOVAL_ITEM).click();
+    await page.keyboard.press('Tab');
+    await expect(getPopover()).not.toBeVisible();
   }
 };

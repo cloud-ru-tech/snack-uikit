@@ -1,0 +1,16 @@
+# AI EDITOR CONFIG START
+**/.env
+**/*.key
+**/*.pem
+**/id_rsa
+**/credentials.json
+**/secrets.json
+
+helm
+nginx
+manifestos
+**/*.yml
+**/*.yaml
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+# AI EDITOR CONFIG END

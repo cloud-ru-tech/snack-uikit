@@ -89,11 +89,11 @@ const globalTypes: GlobalTypes = {
 
 const decorators: Preview['decorators'] = [
   Story => (
-    <>
+    <div id='story-root'>
       <Sprite content={SpriteSVG as unknown as string} />
 
       <LocaleProvider lang='en-GB'>{Story()}</LocaleProvider>
-    </>
+    </div>
   ),
   withBrand,
 ];
