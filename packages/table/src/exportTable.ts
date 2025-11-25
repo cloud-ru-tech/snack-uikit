@@ -52,7 +52,13 @@ function getXlsxFormatTable<TData extends object>({
         return;
       }
 
-      result.push(lineRecord[key]);
+      const value = lineRecord[key];
+
+      if (Array.isArray(value)) {
+        result.push(value.join(', '));
+      } else {
+        result.push(value ?? '');
+      }
     });
     return result;
   });
@@ -67,7 +73,19 @@ export function exportToCSV<TData extends object>({
     const xlsxData = getXlsxFormatTable({ data, columnDefinitions });
     const headers = getFilteredColumnsHeaders(columnDefinitions);
     const table = [headers, ...xlsxData];
-    const csv = table.map(line => line.map(el => (el === undefined ? `""` : `"${el}"`)).join(',')).join('\n');
+
+    const csv = table
+      .map(line =>
+        line
+          .map(el => {
+            if (Array.isArray(el)) {
+              return `"${el.join(', ')}"`;
+            }
+            return el === undefined ? `""` : `"${el}"`;
+          })
+          .join(','),
+      )
+      .join('\n');
 
     const utf8Prefix = new Uint8Array([0xef, 0xbb, 0xbf]);
     const blob = new Blob([utf8Prefix, csv], { type: 'text/csv' });
