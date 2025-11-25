@@ -261,6 +261,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - |  |
 | data* | `TData[]` | - |  |
 | fileName | `string` | Table |  |
+| autoFitColumns | `boolean` | - |  |
 ## exportToXLSX
 ### Props
 | name | type | default value | description |
@@ -268,6 +269,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | columnDefinitions* | `ColumnDefinition<TData>[]` | - |  |
 | data* | `TData[]` | - |  |
 | fileName | `string` | Table |  |
+| autoFitColumns | `boolean` | - |  |
 
 
 [//]: DOCUMENTATION_SECTION_END

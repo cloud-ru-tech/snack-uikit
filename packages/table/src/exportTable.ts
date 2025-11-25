@@ -2,12 +2,14 @@ import { utils as xlsxUtils, writeFileXLSX } from 'xlsx';
 
 import { isBrowser } from '@snack-uikit/utils';
 
+import { EXPORT_MAX_COLUMN_WIDTH } from './constants';
 import { ColumnDefinition } from './types';
 
-type ExportTableData<TData> = {
+export type ExportTableData<TData> = {
   data: TData[];
   columnDefinitions: ColumnDefinition<TData>[];
   fileName?: string;
+  autoFitColumns?: boolean;
 };
 
 type ColumnKey<TData> = keyof ColumnDefinition<TData>;
@@ -104,15 +106,45 @@ export function exportToCSV<TData extends object>({
   return '';
 }
 
+const getColumnsWidth = (worksheetData: (string | undefined)[][]) => {
+  const headers = worksheetData[0];
+
+  return headers.map((header, idx) => {
+    let maxColumnWidth = header?.length || 0;
+
+    for (const row of worksheetData) {
+      const cellLength = row[idx]?.length || 0;
+      if (cellLength > maxColumnWidth) {
+        maxColumnWidth = cellLength;
+      }
+
+      if (maxColumnWidth >= EXPORT_MAX_COLUMN_WIDTH) {
+        maxColumnWidth = EXPORT_MAX_COLUMN_WIDTH;
+        break;
+      }
+    }
+
+    return { wch: maxColumnWidth + 4 };
+  });
+};
+
 export function exportToXLSX<TData extends object>({
   columnDefinitions,
   fileName = 'Table',
+  autoFitColumns = false,
   data,
 }: ExportTableData<TData>) {
   const xlsxData = getXlsxFormatTable({ data, columnDefinitions });
   const headers = getFilteredColumnsHeaders(columnDefinitions);
   const workbook = xlsxUtils.book_new();
-  const worksheet = xlsxUtils.aoa_to_sheet([headers, ...xlsxData]);
+
+  const worksheetData = [headers, ...xlsxData];
+  const worksheet = xlsxUtils.aoa_to_sheet(worksheetData);
+
+  if (autoFitColumns) {
+    worksheet['!cols'] = getColumnsWidth(worksheetData);
+  }
+
   xlsxUtils.book_append_sheet(workbook, worksheet);
   writeFileXLSX(workbook, `${fileName}.xlsx`);
 
