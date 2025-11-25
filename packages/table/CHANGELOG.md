@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.17 (2025-11-25)</small>
+
+* fix(HCE-284): fix array handling in Excel and CSV export table ([db438a0](https://github.com/cloud-ru-tech/snack-uikit/commit/db438a0))
+
+
+
+
+
 ## <small>0.37.16 (2025-11-21)</small>
 
 * fix(IAM-5889): fix table loading state ([27646e0](https://github.com/cloud-ru-tech/snack-uikit/commit/27646e0))
