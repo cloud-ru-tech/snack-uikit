@@ -64,7 +64,7 @@ export function getSelectionCellColumnDef<TData>(enableSelectPinned: boolean): C
 
         globalThis.getSelection()?.removeAllRanges();
 
-        if (e.shiftKey) {
+        if (e.shiftKey && isMulti) {
           const { rows, rowsById } = table.getRowModel();
           const rowsToToggle = getRowsToToggle(
             rows,
