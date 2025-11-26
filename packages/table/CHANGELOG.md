@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.19 (2025-11-26)</small>
+
+* fix(PDS-3189): fix selection with shift key for single row selection mode ([2cdfb64](https://github.com/cloud-ru-tech/snack-uikit/commit/2cdfb64))
+* feat(PDS-3156): implement disabled rows appearance variants ([75ed605](https://github.com/cloud-ru-tech/snack-uikit/commit/75ed605))
+
+
+
+
+
 ## <small>0.37.18 (2025-11-26)</small>
 
 * fix(HCE-284): export table, set column width to maximum content length ([cc1f55b](https://github.com/cloud-ru-tech/snack-uikit/commit/cc1f55b))
