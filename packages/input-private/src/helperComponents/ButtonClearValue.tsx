@@ -10,11 +10,12 @@ type ButtonClearValueProps = {
   size: ButtonSize;
   onClick: MouseEventHandler<HTMLButtonElement>;
   onKeyDown?: KeyboardEventHandler<HTMLButtonElement>;
+  onMouseDown?: MouseEventHandler<HTMLButtonElement>;
   tabIndex?: number;
 };
 
 export const ButtonClearValue = forwardRef<HTMLButtonElement, ButtonClearValueProps>(
-  ({ size, onClick, tabIndex = -1, onKeyDown }, ref) => {
+  ({ size, onClick, tabIndex = -1, onKeyDown, onMouseDown }, ref) => {
     const handleClick: MouseEventHandler<HTMLButtonElement> = event => {
       event.stopPropagation();
       onClick(event);
@@ -29,6 +30,7 @@ export const ButtonClearValue = forwardRef<HTMLButtonElement, ButtonClearValuePr
         type='button'
         ref={ref}
         onKeyDown={onKeyDown}
+        onMouseDown={onMouseDown}
         tabIndex={tabIndex}
       >
         {size === BUTTON_SIZE.S && <CrossSVG size={16} />}

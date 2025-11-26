@@ -473,6 +473,7 @@ FieldStepper в основном предназначен для работы с
 | showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
 | onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
+| onClearButtonClick | `() => void` | - | Колбек клика по кнопке очистки поля |
 | allowMoreThanMaxLength | `boolean` | - | Можно ли вводить больше разрешённого кол-ва символов |
 | prefixIcon | `ReactElement<any, string \| JSXElementConstructor<any>>` | - | Иконка-префикс для поля |
 | prefix | `ReactNode` | - | Произвольный префикс для поля |

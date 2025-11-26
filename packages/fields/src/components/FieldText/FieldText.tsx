@@ -1,7 +1,9 @@
 import mergeRefs from 'merge-refs';
 import {
+  FocusEventHandler,
   forwardRef,
   KeyboardEventHandler,
+  MouseEventHandler,
   ReactElement,
   ReactNode,
   useCallback,
@@ -66,6 +68,8 @@ type FieldTextOwnProps = {
    * @default true
    */
   showClearButton?: boolean;
+  /** Колбек клика по кнопке очистки поля */
+  onClearButtonClick?(): void;
   /** Можно ли вводить больше разрешённого кол-ва символов */
   allowMoreThanMaxLength?: boolean;
   /** Иконка-префикс для поля */
@@ -100,6 +104,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       onFocus,
       onBlur,
       onCopyButtonClick,
+      onClearButtonClick,
       className,
       label,
       labelTooltip,
@@ -158,15 +163,31 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
 
     const containerVariant = getContainerVariant({ button });
 
-    const onClear = () => {
-      onChange('');
+    const [isFieldFocused, setIsFieldFocused] = useState(false);
+    const focusedRef = useRef(false);
 
-      if (required) {
+    const onClear: MouseEventHandler<HTMLButtonElement> = e => {
+      e.preventDefault();
+      onChange('');
+      onClearButtonClick?.();
+
+      if (focusedRef.current) {
         localRef.current?.focus();
       }
     };
 
-    const clearButtonSettings = useClearButton({ clearButtonRef, showClearButton, size, onClear });
+    const handleClearClickDown = () => {
+      focusedRef.current = isFieldFocused;
+    };
+
+    const clearButtonSettings = useClearButton({
+      clearButtonRef,
+      showClearButton,
+      onClear,
+      onDown: handleClearClickDown,
+      size,
+    });
+
     const copyButtonSettings = useCopyButton({
       copyButtonRef,
       showCopyButton,
@@ -218,6 +239,24 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       onKeyDown?.(event);
     };
 
+    const handleBlur: FocusEventHandler<HTMLInputElement> = event => {
+      const nextTarget = event.relatedTarget as HTMLElement | null;
+
+      // если фокус ушёл на кнопку очистки — игнорируем внешний onBlur
+      if (nextTarget && nextTarget === clearButtonRef.current) {
+        setIsFieldFocused(false);
+        return;
+      }
+
+      onBlur?.(event);
+      setIsFieldFocused(false);
+    };
+
+    const handleFocus: FocusEventHandler<HTMLInputElement> = event => {
+      onFocus?.(event);
+      setIsFieldFocused(true);
+    };
+
     return (
       <FieldDecorator
         className={className}
@@ -253,8 +292,8 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
             data-size={size}
             value={value}
             onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             tabIndex={inputTabIndex}
             onKeyDown={handleKeyDown}
             onPaste={onPaste}

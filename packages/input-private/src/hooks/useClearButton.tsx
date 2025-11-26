@@ -11,6 +11,7 @@ type UseClearButtonProps = {
   clearButtonRef: RefObject<HTMLButtonElement>;
   showClearButton: boolean;
   onClear: MouseEventHandler<HTMLButtonElement>;
+  onDown?: MouseEventHandler<HTMLButtonElement>;
   size: Size;
 };
 
@@ -18,8 +19,15 @@ type UseClearButtonProps = {
  * Позволяет использовать кнопку сброса значения
  * @function hook
  */
-export function useClearButton({ clearButtonRef, showClearButton, size, onClear }: UseClearButtonProps): ButtonProps {
+export function useClearButton({
+  clearButtonRef,
+  showClearButton,
+  size,
+  onClear,
+  onDown,
+}: UseClearButtonProps): ButtonProps {
   const clearEventHandler = useEventHandler(onClear);
+  const onDownEventHandler = useEventHandler(onDown ?? (() => {}));
 
   return useMemo(
     () => ({
@@ -32,9 +40,18 @@ export function useClearButton({ clearButtonRef, showClearButton, size, onClear 
           props.onClick(event);
           clearEventHandler(event);
         };
-        return <ButtonClearValue key={key} {...props} size={BUTTON_SIZE_MAP[size]} onClick={handleClear} />;
+
+        return (
+          <ButtonClearValue
+            key={key}
+            {...props}
+            onMouseDown={onDownEventHandler}
+            size={BUTTON_SIZE_MAP[size]}
+            onClick={handleClear}
+          />
+        );
       },
     }),
-    [clearButtonRef, clearEventHandler, showClearButton, size],
+    [clearButtonRef, clearEventHandler, onDownEventHandler, showClearButton, size],
   );
 }
