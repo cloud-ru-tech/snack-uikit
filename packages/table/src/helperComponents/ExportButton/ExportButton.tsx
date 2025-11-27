@@ -6,6 +6,7 @@ import { DownloadSVG } from '@snack-uikit/icons';
 import { Droplist } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 
+import { TEST_IDS } from '../../constants';
 import { ColumnDefinition } from '../../types';
 
 type ExportProps<TData> = { fileName: string; columnDefinitions: ColumnDefinition<TData>[]; data: TData[] };
@@ -70,6 +71,7 @@ export function ExportButton<TData extends object>({
             setIsOpen(false);
           },
           hidden: !settings.exportToCSV,
+          'data-test-id': TEST_IDS.exportCsvAction,
         },
         {
           content: { option: t('export') + 'XLSX' },
@@ -78,10 +80,11 @@ export function ExportButton<TData extends object>({
             setIsOpen(false);
           },
           hidden: !settings.exportToXLSX,
+          'data-test-id': TEST_IDS.exportXlsxAction,
         },
       ]}
     >
-      <ButtonFunction size='m' icon={<DownloadSVG />} />
+      <ButtonFunction size='m' data-test-id={TEST_IDS.exportIcon} icon={<DownloadSVG />} />
     </Droplist>
   );
 }

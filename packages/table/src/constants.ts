@@ -38,6 +38,9 @@ export const TEST_IDS = {
   statusIndicator: 'table__status-indicator',
   statusLabel: 'table__status-label',
   toolbar: 'table__toolbar',
+  exportIcon: 'table__export-icon',
+  exportCsvAction: 'table__export-csv__action',
+  exportXlsxAction: 'table__export-xlsx__action',
 };
 
 export const SORT_FN = {
