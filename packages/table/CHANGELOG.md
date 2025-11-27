@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.20 (2025-11-27)</small>
+
+* fix(HCE-284): add data-test-id to export table ([2093390](https://github.com/cloud-ru-tech/snack-uikit/commit/2093390))
+
+
+
+
+
 ## <small>0.37.19 (2025-11-26)</small>
 
 * fix(PDS-3189): fix selection with shift key for single row selection mode ([2cdfb64](https://github.com/cloud-ru-tech/snack-uikit/commit/2cdfb64))
