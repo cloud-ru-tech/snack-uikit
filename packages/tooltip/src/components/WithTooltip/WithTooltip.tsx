@@ -1,11 +1,10 @@
-import { PropsWithChildren } from 'react';
-
 import { Tooltip, TooltipProps } from '../Tooltip';
 
-type WithTooltipProps = PropsWithChildren<{
+type WithTooltipProps = {
   /** Настройки для тултипа */
-  tooltip?: TooltipProps;
-}>;
+  tooltip?: Omit<TooltipProps, 'children'>;
+  children: TooltipProps['children'];
+};
 
 export function WithTooltip({ tooltip, children }: WithTooltipProps) {
   if (!tooltip) {

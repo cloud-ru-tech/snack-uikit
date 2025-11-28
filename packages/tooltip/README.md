@@ -55,7 +55,7 @@
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| tooltip | `TooltipProps` | - | Настройки для тултипа |
+| tooltip | `Omit<TooltipProps, "children">` | - | Настройки для тултипа |
 ## useElementWithTooltip
 ### Props
 | name | type | default value | description |
