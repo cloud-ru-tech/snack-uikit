@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.6.7 (2025-11-28)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.27.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/pagination@0.10.21](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/pagination/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.6.6 (2025-09-22)</small>
 
 ### Only dependencies have been changed

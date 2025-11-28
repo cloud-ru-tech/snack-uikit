@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.27.4 (2025-11-28)</small>
+
+* feat(PDS-3144): add new icons: ScalableLeft, ScalableRight ([6d4d888](https://github.com/cloud-ru-tech/snack-uikit/commit/6d4d888))
+
+
+
+
+
 ## <small>0.27.3 (2025-09-22)</small>
 
 * chore(FF-7260): deps update to fix vulnerabilities ([2b006a8](https://github.com/cloud-ru-tech/snack-uikit/commit/2b006a8))

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.13.21 (2025-11-28)</small>
+
+* feat(PDS-3156): implement disabled rows appearance variants ([75ed605](https://github.com/cloud-ru-tech/snack-uikit/commit/75ed605))
+
+
+
+
+
 ## <small>0.13.20 (2025-11-14)</small>
 
 ### Only dependencies have been changed

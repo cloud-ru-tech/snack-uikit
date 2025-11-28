@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.3.29 (2025-11-28)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/tooltip@0.18.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.3.28 (2025-09-24)</small>
 
 * fix(FF-7256): increase touch target zone for slider handler ([6c67301](https://github.com/cloud-ru-tech/snack-uikit/commit/6c67301))

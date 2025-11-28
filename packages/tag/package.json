@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tag",
-  "version": "0.15.10",
+  "version": "0.15.11",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,9 +37,9 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/dropdown": "0.5.3",
-    "@snack-uikit/icons": "0.27.3",
+    "@snack-uikit/icons": "0.27.4",
     "@snack-uikit/scroll": "0.10.5",
-    "@snack-uikit/tooltip": "0.18.5",
+    "@snack-uikit/tooltip": "0.18.6",
     "@snack-uikit/utils": "4.0.0",
     "classnames": "2.5.1"
   }

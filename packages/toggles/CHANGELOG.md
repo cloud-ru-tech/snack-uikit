@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.13.23 (2025-11-28)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.27.4](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.13.22 (2025-09-22)</small>
 
 ### Only dependencies have been changed
