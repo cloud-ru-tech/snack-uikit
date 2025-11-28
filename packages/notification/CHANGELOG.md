@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.13.22 (2025-11-28)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/info-block@0.6.35](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/info-block/CHANGELOG.md)
+* [@snack-uikit/link@0.17.15](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/link/CHANGELOG.md)
+* [@snack-uikit/list@0.32.9](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/segmented-control@0.6.15](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/segmented-control/CHANGELOG.md)
+* [@snack-uikit/tag@0.15.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.18.7](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.7.6](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.13.21 (2025-11-28)</small>
 
 * feat(PDS-3156): implement disabled rows appearance variants ([75ed605](https://github.com/cloud-ru-tech/snack-uikit/commit/75ed605))

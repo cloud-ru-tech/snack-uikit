@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.18.7 (2025-11-28)</small>
+
+* fix(PDS-3214): proper children type for WithTooltip HOC ([278b59a](https://github.com/cloud-ru-tech/snack-uikit/commit/278b59a))
+
+
+
+
+
 ## <small>0.18.6 (2025-11-28)</small>
 
 ### Only dependencies have been changed

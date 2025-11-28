@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "List",
-  "version": "0.32.8",
+  "version": "0.32.9",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -40,12 +40,12 @@
     "@snack-uikit/divider": "3.2.10",
     "@snack-uikit/dropdown": "0.5.3",
     "@snack-uikit/icons": "0.27.4",
-    "@snack-uikit/info-block": "0.6.34",
+    "@snack-uikit/info-block": "0.6.35",
     "@snack-uikit/loaders": "0.9.9",
     "@snack-uikit/scroll": "0.10.5",
     "@snack-uikit/search-private": "0.4.32",
     "@snack-uikit/toggles": "0.13.23",
-    "@snack-uikit/truncate-string": "0.7.5",
+    "@snack-uikit/truncate-string": "0.7.6",
     "@snack-uikit/utils": "4.0.0",
     "@tanstack/react-virtual": "3.11.2",
     "classnames": "2.5.1",
