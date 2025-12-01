@@ -74,7 +74,7 @@ export function TablePagination<TData>({
           placement='top-end'
           options={options}
           label={optionsLabel}
-          widthStrategy='auto'
+          widthStrategy='eq'
           size='xs'
         />
       )}
