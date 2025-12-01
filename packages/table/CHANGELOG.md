@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.23 (2025-12-01)</small>
+
+* fix(PDS-3244): width of rows amount droplist ([acae23d](https://github.com/cloud-ru-tech/snack-uikit/commit/acae23d))
+
+
+
+
+
 ## <small>0.37.22 (2025-11-28)</small>
 
 ### Only dependencies have been changed
