@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.24 (2025-12-01)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/chips@0.28.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/list@0.32.10](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/toolbar@0.14.13](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/toolbar/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.37.23 (2025-12-01)</small>
 
 * fix(PDS-3244): width of rows amount droplist ([acae23d](https://github.com/cloud-ru-tech/snack-uikit/commit/acae23d))

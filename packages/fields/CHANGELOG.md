@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.51.12 (2025-12-01)</small>
+
+* feat(PDS-3204): added onClearButtonClick in FieldText ([2a0526b](https://github.com/cloud-ru-tech/snack-uikit/commit/2a0526b))
+
+
+
+
+
 ## <small>0.51.11 (2025-11-28)</small>
 
 ### Only dependencies have been changed
