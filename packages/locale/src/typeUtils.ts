@@ -2,7 +2,6 @@ type Primitive = null | undefined | string | number | boolean | symbol | bigint;
 
 type BuiltIns = Primitive | void | Date | RegExp;
 
-/* eslint-disable no-use-before-define */
 export type PartialDeep<T> = T extends
   | BuiltIns
   | ((...arguments_: unknown[]) => unknown)

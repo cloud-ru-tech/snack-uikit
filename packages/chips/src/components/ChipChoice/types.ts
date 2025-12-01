@@ -23,15 +23,10 @@ export type AnyType = any;
 export type ContentRenderProps = Omit<ItemContentProps, 'option' | 'disabled'>;
 
 export type FilterOption<T extends ContentRenderProps = ContentRenderProps> =
-  // eslint-disable-next-line no-use-before-define
   | BaseOption<T>
-  // eslint-disable-next-line no-use-before-define
   | AccordionOption<T>
-  // eslint-disable-next-line no-use-before-define
   | GroupOption<T>
-  // eslint-disable-next-line no-use-before-define
   | GroupSelectOption<T>
-  // eslint-disable-next-line no-use-before-define
   | NestListOption<T>;
 
 export type BaseOption<T extends ContentRenderProps = ContentRenderProps> = Omit<BaseItemProps, 'content' | 'id'> & {

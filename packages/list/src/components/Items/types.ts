@@ -70,7 +70,6 @@ export type BaseItem = WithSupportProps<{
 
 type BaseItemWithoutNonGroup = Omit<BaseItem, 'switch' | 'inactive'>;
 
-// eslint-disable-next-line no-use-before-define
 export type Item = BaseItem | AccordionItem | NextListItem | GroupItem | GroupSelectItem;
 
 export type AccordionItem = BaseItemWithoutNonGroup & {

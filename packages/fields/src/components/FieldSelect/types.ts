@@ -19,17 +19,8 @@ import { FieldDecoratorProps } from '../FieldDecorator';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyType = any;
 
-export type OptionProps =
-  // eslint-disable-next-line no-use-before-define
-  | BaseOptionProps
-  // eslint-disable-next-line no-use-before-define
-  | AccordionOptionProps
-  // eslint-disable-next-line no-use-before-define
-  | GroupOptionProps
-  // eslint-disable-next-line no-use-before-define
-  | NestListOptionProps;
+export type OptionProps = BaseOptionProps | AccordionOptionProps | GroupOptionProps | NestListOptionProps;
 
-// eslint-disable-next-line no-use-before-define
 export type OptionWithoutGroup = BaseOptionProps | AccordionOptionProps | NestListOptionProps;
 
 export type BaseOptionProps = Pick<BaseItemProps, 'beforeContent' | 'afterContent' | 'disabled'> &

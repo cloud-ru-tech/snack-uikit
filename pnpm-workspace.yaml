@@ -5,4 +5,6 @@ saveWorkspaceProtocol: false
 packages:
   - "packages/*"
 onlyBuiltDependencies:
-  - '@cloud-ru/ft-config-husky'
+  - "@cloud-ru/ft-config-husky"
+ignoredBuiltDependencies:
+  - "unrs-resolver"
