@@ -3,8 +3,7 @@ import { FunctionSettingsSVG } from '@snack-uikit/icons';
 import { Droplist, GroupSelectItemProps } from '@snack-uikit/list';
 
 import styles from './styles.module.scss';
-
-type ColumnsSettingsProps = {
+export type ColumnsSettingsProps = {
   enabledColumns: string[];
   setEnabledColumns(enabledColumns: string[]): void;
   columnsSettings: [GroupSelectItemProps];
