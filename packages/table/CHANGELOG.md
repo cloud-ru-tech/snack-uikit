@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.26 (2025-12-03)</small>
+
+* feat(FF-7560): add neutral appearance support to table rows ([9188588](https://github.com/cloud-ru-tech/snack-uikit/commit/9188588))
+
+
+
+
+
 ## <small>0.37.25 (2025-12-02)</small>
 
 * feat(FF-7560): export column settings hooks, utilities and types ([46a2c5c](https://github.com/cloud-ru-tech/snack-uikit/commit/46a2c5c))
