@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.15.4 (2025-12-06)</small>
+
+* chore(FF-7187): update typescript to 5.9.3 & some eslint deps ([b84df17](https://github.com/cloud-ru-tech/snack-uikit/commit/b84df17))
+
+
+
+
+
 ## <small>0.15.3 (2025-11-06)</small>
 
 * feat(PDS-1292): presets for calendar range mode ([45929bd](https://github.com/cloud-ru-tech/snack-uikit/commit/45929bd))

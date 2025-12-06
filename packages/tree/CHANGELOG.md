@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.9.34 (2025-12-06)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/list@0.32.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/list/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.9.33 (2025-12-01)</small>
 
 ### Only dependencies have been changed
