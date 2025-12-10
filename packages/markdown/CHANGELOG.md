@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.5.41 (2025-12-10)</small>
+
+* feat(MKP-2791): add props from FieldTextArea to MarkdownEditor ([0eb10e4](https://github.com/cloud-ru-tech/snack-uikit/commit/0eb10e4))
+
+
+
+
+
 ## <small>0.5.40 (2025-12-06)</small>
 
 ### Only dependencies have been changed
