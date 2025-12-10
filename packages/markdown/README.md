@@ -52,6 +52,12 @@ const handleChange = (newValue: string) => {
 | resizable | `boolean` | - | Может ли ли пользователь изменять размеры поля (если св-во не включено, поле автоматически меняет свой размер) |
 | onCodeCopyClick | `() => void` | - | Действие при клике на кнопку копирования кода |
 | components | `Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>` | - | Переопределение компонентов по умолчанию и добавление новых в CodeEditor |
+| caption | `string` | - | Подпись справа от лейбла |
+| footer | `ReactNode` | - | Нода под футер |
+| spellCheck | `boolean` | true | Включение проверки орфографии |
+| labelTooltip | `ReactNode` | - | Всплывающая подсказка лейбла |
+| hint | `string` | - | Подсказка внизу |
+| labelTooltipPlacement | enum Placement: `"left"`, `"left-start"`, `"left-end"`, `"right"`, `"right-start"`, `"right-end"`, `"top"`, `"top-start"`, `"top-end"`, `"bottom"`, `"bottom-start"`, `"bottom-end"` | top | Расположение подсказки лейбла |
 
 
 [//]: DOCUMENTATION_SECTION_END
