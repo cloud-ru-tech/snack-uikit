@@ -5,26 +5,87 @@
 
 [Changelog](./CHANGELOG.md)
 
-## Example
+## Description
 
-```typescript jsx
-import { Markdown } from "@snack-uikit/markdown";
+- Пакет `@snack-uikit/markdown` предоставляет компоненты для работы с Markdown-разметкой: отображение отформатированного текста и редактирование с предпросмотром.
+- Компоненты поддерживают стандартный синтаксис Markdown (заголовки, списки, таблицы, код, ссылки и др.) через библиотеку `react-markdown` с плагином `remark-gfm` для расширенной поддержки GitHub Flavored Markdown.
+- Оба компонента позволяют переопределять стандартные компоненты рендеринга через проп `components` для кастомизации внешнего вида элементов разметки.
+- Поддерживается копирование кода из блоков с кодом через встроенные кнопки копирования.
 
-<Markdown value="# Title 1" />
+## Markdown
+
+### Description
+
+- `Markdown` — компонент для отображения текста с Markdown-разметкой в виде отформатированного HTML.
+- Используется для **статического отображения** уже готового контента с разметкой (например, документации, описаний, комментариев).
+- Поддерживает **стандартные элементы Markdown**: заголовки, списки, таблицы, блоки кода, цитаты, разделители и ссылки.
+- Позволяет **копировать код** из блоков кода через встроенную кнопку копирования с кастомным обработчиком (`onCopyClick`).
+- Поддерживает **переопределение компонентов рендеринга** через проп `components` для кастомизации отдельных элементов (например, стилизация таблиц, ссылок, блоков кода).
+- Figma: [`Markdown`](https://www.figma.com/design/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-5.0.0?node-id=1444-818).
+
+### Example
+
+```tsx
+import { Markdown } from '@snack-uikit/markdown';
+import { toaster } from '@snack-uikit/toaster';
+
+function Example() {
+  const markdownText = `
+# Заголовок 1
+
+## Заголовок 2
+
+- Элемент списка 1
+- Элемент списка 2
+
+\`\`\`javascript
+const code = 'example';
+\`\`\`
+  `;
+
+  return (
+    <Markdown
+      value={markdownText}
+      onCopyClick={() => toaster.userAction.success({ label: 'Скопировано' })}
+    />
+  );
+}
 ```
 
-```typescript jsx
-import { MarkdownEditor } from "@snack-uikit/markdown";
+## MarkdownEditor
 
-const handleChange = (newValue: string) => {
-    // update value somewhere else
+### Description
+
+- `MarkdownEditor` — компонент для редактирования текста с Markdown-разметкой с возможностью переключения между режимом редактирования и предпросмотром.
+- Используется для **интерактивного ввода и редактирования** контента с разметкой (например, в формах, редакторах описаний, комментариев).
+- Поддерживает **два режима работы**: режим редактирования (`defaultMode="edit"`) с текстовым полем и режим предпросмотра (`defaultMode="view"`) с отображением отформатированного результата.
+- Позволяет **переключаться между режимами** через переключатель "Предпросмотр" в верхней части компонента.
+- Интегрирован с компонентами полей (`FieldTextArea`, `FieldDecorator`) и поддерживает все стандартные возможности полей: лейбл, плейсхолдер, ошибки, подсказки, обязательность, изменение размера.
+- Использует компонент `Markdown` для отображения предпросмотра, поэтому поддерживает те же возможности кастомизации и копирования кода.
+- Figma: [`MarkdownEditor`](https://www.figma.com/design/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-5.0.0?node-id=1444-818).
+
+### Example
+
+```tsx
+import { MarkdownEditor } from '@snack-uikit/markdown';
+import { toaster } from '@snack-uikit/toaster';
+import { useState } from 'react';
+
+function Example() {
+  const [value, setValue] = useState('# Заголовок\n\nТекст с **жирным** выделением.');
+
+  return (
+    <MarkdownEditor
+      value={value}
+      onChange={setValue}
+      label="Описание"
+      placeholder="Введите текст с Markdown-разметкой"
+      required
+      hint="Поддерживается Markdown-разметка"
+      onCodeCopyClick={() => toaster.userAction.success({ label: 'Скопировано' })}
+    />
+  );
 }
-
-<MarkdownEditor 
-  value={value} 
-  onChange={handleChange} 
-  placeholder="Fill using markdown" 
-/>
 ```
 
 [//]: DOCUMENTATION_SECTION_START

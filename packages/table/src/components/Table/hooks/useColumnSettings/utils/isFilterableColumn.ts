@@ -1,5 +1,8 @@
 import { ColumnDefinition, FilterableColumnDefinition } from '../../../../../types';
-
+/**
+ * Проверка на то, должна ли колонка отображаться в таблице
+ * @function isFilterableColumn
+ */
 export function isFilterableColumn<TData extends object>(
   colDef: ColumnDefinition<TData>,
 ): colDef is FilterableColumnDefinition<TData> {

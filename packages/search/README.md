@@ -5,25 +5,53 @@
 
 [Changelog](./CHANGELOG.md)
 
+## Description
+
+- Пакет `@snack-uikit/search` предоставляет компонент `Search` для реализации поисковых полей в интерфейсе.
+- Компонент поддерживает два режима работы: **Autocomplete** (с выпадающим списком подсказок) и **FieldText** (простое текстовое поле без подсказок).
+- В режиме Autocomplete (`autocomplete={true}`) компонент отображает выпадающий список с опциями (`options`), которые можно выбрать кликом или нажатием клавиш Space/Enter, при этом вызывается колбек `onSubmit`.
+- В режиме FieldText (`autocomplete={false}` или `undefined`) компонент работает как обычное текстовое поле с возможностью подтверждения поиска по Enter.
+- Поддерживает состояния загрузки (`loading`), различные размеры (`size: 's' | 'm' | 'l'`), внешний бордер (`outline`) и произвольный постфикс (`postfix`) для дополнительных элементов управления.
+- Компонент управляется через пропы `value` и `onChange`, поддерживает обработчики фокуса (`onFocus`, `onBlur`) и подтверждения поиска (`onSubmit`).
+- Figma: [`Search`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A143287&mode=design).
+
 ## TODO
 
 - Fix keypress handler for autocomplete mod when focusing on dropdown list items
 
 ## Example
 
-```typescript jsx
-import { Search, SearchPrivate } from "@snack-uikit/search";
+```tsx
+import { useState } from 'react';
+import { Search } from '@snack-uikit/search';
 
-<Search
-  value={value}
-  onChange={handleSearchChange}
-  loading={loading}
-  options={options}
-  onSubmit={onSubmit}
-  size='s'
-  autocomplete
-/>
+function Example() {
+  const [value, setValue] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [options, setOptions] = useState([]);
 
+  const handleSearchChange = (newValue: string) => {
+    setValue(newValue);
+    // Логика поиска и обновления options
+  };
+
+  const handleSubmit = (searchValue: string) => {
+    // Логика подтверждения поиска
+  };
+
+  return (
+    <Search
+      value={value}
+      onChange={handleSearchChange}
+      loading={loading}
+      options={options}
+      onSubmit={handleSubmit}
+      size="s"
+      autocomplete
+      placeholder="Поиск..."
+    />
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START

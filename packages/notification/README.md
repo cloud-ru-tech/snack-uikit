@@ -5,72 +5,169 @@
 
 [Changelog](./CHANGELOG.md)
 
-## TODO:
-  - remove custom hook for droplist keyboard handles
+## Description
 
-## Example
+- Пакет `@snack-uikit/notification` предоставляет компоненты для отображения уведомлений: карточки отдельных уведомлений и панель для их группировки и управления.
+- Компоненты поддерживают различные типы уведомлений через проп `appearance` (neutral, error, errorCritical, warning, success), состояния прочитано/не прочитано, фильтрацию, действия и интеграцию с системой прокрутки.
+- Карточки уведомлений могут содержать заголовок, контент, ссылки, кнопки действий и дополнительные действия через выпадающий список, а также отслеживать видимость для автоматической пометки как прочитанных.
+- Панель уведомлений предоставляет контейнер с заголовком, фильтрацией по сегментам, кнопкой "Отметить все как прочитанные", настройками и поддержкой состояния загрузки со скелетонами.
 
-```typescript jsx
+## NotificationCard
+
+### Description
+
+- `NotificationCard` — компонент карточки отдельного уведомления, отображающий информацию о событии или сообщении.
+- Поддерживает **разные типы статусов** через проп `appearance` (neutral, error, errorCritical, warning, success) с соответствующей иконкой и цветовой схемой.
+- Позволяет задать **лейбл категории**, **заголовок** (с обрезкой до двух строк) и **произвольный контент** уведомления.
+- Отображает **дату уведомления** и **текстовую ссылку** для перехода к детальной информации.
+- Поддерживает **состояние прочитано/не прочитано** (`unread`) с визуальным индикатором и автоматическим отслеживанием видимости через `onVisible` при попадании карточки в область видимости на 80%.
+- Может содержать **кнопки действий** (`primaryButton`, `secondaryButton`) и **дополнительные действия** через выпадающий список (`actions`), который появляется при наведении на карточку.
+- Поддерживает **обработчик клика** по всей карточке для перехода к деталям уведомления.
+- Figma: [`NotificationCard`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A209668&mode=design).
+
+### Example
+
+```tsx
+import { NotificationCard } from '@snack-uikit/notification';
+
+function NotificationCardExample() {
+  return (
+    <NotificationCard
+      id="notification-1"
+      appearance="errorCritical"
+      label="Category・Subcategory"
+      title="Title truncate two line"
+      content="Demo content."
+      date="DD.MM.YYYY HH:MM"
+      unread
+      link={{
+        text: 'Link to detailed information',
+        href: '#',
+      }}
+      primaryButton={{
+        label: 'Primary Button',
+        onClick: () => console.log('Primary action'),
+      }}
+      secondaryButton={{
+        label: 'Secondary Button',
+        onClick: () => console.log('Secondary action'),
+      }}
+      actions={[
+        {
+          content: { option: 'action 1' },
+          onClick: () => console.log('Action 1'),
+        },
+        {
+          content: { option: 'action 2' },
+          onClick: () => console.log('Action 2'),
+        },
+      ]}
+      onVisible={(cardId) => console.log(`Card ${cardId} is visible`)}
+      onClick={() => console.log('Card clicked')}
+    />
+  );
+}
+```
+
+## NotificationPanel
+
+### Description
+
+- `NotificationPanel` — компонент панели для группировки и управления уведомлениями, предоставляющий контейнер с инструментами фильтрации и управления.
+- Содержит **заголовок панели** и **сегментированный контроль** для фильтрации уведомлений (например, "Все" и "Непрочитанные").
+- Поддерживает **кнопку "Отметить все как прочитанные"** (`readAllButton`) с возможностью добавления тултипа.
+- Включает **кнопку настроек** (`settings`) с выпадающим списком для дополнительных действий.
+- Отображает **произвольный контент** (`content`), обычно список `NotificationCard` или компонент `NotificationPanel.Blank` для пустого состояния.
+- Поддерживает **состояние загрузки** (`loading`) с отображением скелетонов карточек уведомлений (количество настраивается через `skeletonsAmount`).
+- Предоставляет **кнопку в футере** (`footerButton`) для дополнительных действий, например, перехода ко всем событиям.
+- Включает **встроенную прокрутку** с поддержкой ссылок на контейнер (`scrollContainerRef`) и конец списка (`scrollEndRef`) для реализации бесконечной прокрутки или подгрузки данных.
+- Содержит вспомогательные компоненты: `NotificationPanel.Blank` для пустого состояния и `NotificationPanel.Divider` для разделения групп уведомлений.
+- Figma: [`NotificationPanel`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A209587&mode=design).
+
+### Example
+
+```tsx
 import { NotificationCard, NotificationPanel } from '@snack-uikit/notification';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
-const cards = [
-  {
-    id: 'cardId',
-    label: ['Category', 'Subcategory'].join('・'),
-    appearance: 'errorCritical',
-    title: 'Title truncate two line',
-    content: `Demo content.`,
-    link: {
-      text: 'Link to detailed information',
-      href: '#',
-    },
-    date: 'DD.MM.YYYY HH:MM',
-    actions: [
-      {
-        option: 'action 1',
-        onClick: handleActionClick,
-      },
-      {
-        option: 'action 2',
-        onClick: handleActionClick,
-      },
-    ],
-  }
-];
-
-// ...
-
-<NotificationPanel
-  title='Notifications'
-  triggerElement={<ButtonTonal label='open' />}
-  readAllButton={{
-    label: 'Mark all as read',
-    onClick() {},
-  }}
-  chips={[
+function NotificationPanelExample() {
+  const cards = [
     {
-      label: 'all',
-      checked: true,
-      onChange() { /* */ },
+      id: 'card-1',
+      label: 'Category・Subcategory',
+      appearance: 'errorCritical',
+      title: 'Title truncate two line',
+      content: 'Demo content.',
+      link: {
+        text: 'Link to detailed information',
+        href: '#',
+      },
+      date: 'DD.MM.YYYY HH:MM',
+      unread: true,
     },
-    {
-      label: 'unread',
-      checked: false,
-      onChange() { /* */ },
-    },
-  ]}
-  content={
-    !cards.length ? (
-      <NotificationPanel.Blank
-        icon={PlaceholderSVG}
-        title='No notifications'
-        description={'Here you will see new event notifications\nwhen something happens'}
-      />
-    ) : (
-      cards.map(card => <NotificationCard {...card} key={card.id} />)
-    )
-  }
-/>
+  ];
+
+  return (
+    <NotificationPanel
+      title="Notifications"
+      readAllButton={{
+        label: 'Mark all as read',
+        onClick: () => console.log('Mark all as read'),
+        tooltip: {
+          tip: 'Your tip could be here',
+        },
+      }}
+      segments={{
+        items: [
+          {
+            value: 'All',
+            label: 'All',
+            counter: { value: 10 },
+          },
+          {
+            value: 'Unread',
+            label: 'Unread',
+            counter: { value: 5 },
+          },
+        ],
+        value: 'All',
+        onChange: (value) => console.log('Filter changed:', value),
+      }}
+      settings={{
+        button: {
+          onClick: () => console.log('Settings clicked'),
+        },
+        actions: [
+          {
+            content: { option: 'setting 1' },
+            onClick: () => console.log('Setting 1'),
+          },
+          {
+            content: { option: 'setting 2' },
+            onClick: () => console.log('Setting 2'),
+          },
+        ],
+      }}
+      footerButton={{
+        label: 'All events',
+        onClick: () => console.log('View all events'),
+      }}
+      content={
+        !cards.length ? (
+          <NotificationPanel.Blank
+            icon={{
+              icon: PlaceholderSVG,
+            }}
+            title="No notifications"
+            description="Here you will see new event notifications\nwhen something happens"
+          />
+        ) : (
+          cards.map(card => <NotificationCard {...card} key={card.id} />)
+        )
+      }
+    />
+  );
+}
 ```
 
 

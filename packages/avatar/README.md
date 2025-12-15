@@ -5,24 +5,39 @@
 
 [Changelog](./CHANGELOG.md)
 
+## Description
+
+- **Avatar** – компонент для отображения пользовательского или корпоративного аватара:
+  - показывает либо изображение пользователя, либо инициалы, автоматически вычисляемые по имени;
+  - поддерживает разные размеры и формы (круг/квадрат), а также цветовые схемы для бэкграунда;
+  - опционально отображает индикатор статуса (онлайн/офлайн и т. п.), размер которого подстраивается под размер аватара;
+  - при ошибке загрузки изображения автоматически переключается на отображение инициалов;
+  - позволяет управлять количеством отображаемых символов (одна или две буквы, с учётом размера аватара).
+- **Figma**: [Avatar](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A21136&mode=design)
+
 ## Example
 
-```typescript jsx
-import { Avatar } from "@snack-uikit/avatar";
+```tsx
+import { Avatar } from '@snack-uikit/avatar';
 
+// Базовый аватар с инициалами
+<Avatar name='John Smith' />;
+
+// Аватар с изображением
 <Avatar
-  name="Name Surname"
-  src="path-to-avatar/image.jpg"
+  name='John Smith'
+  src='path-to-avatar/image.jpg'
   size='xl'
-/>
+/>;
 
-<Avatar 
-  name="Name Surname"
+// Аватар с индикатором статуса и двумя символами
+<Avatar
+  name='John Smith'
   appearance='pink'
-  indicator='violet'
+  indicator='green'
   shape='square'
-  showTwoSymbols={true}
-/>
+  showTwoSymbols
+/>;
 ```
 
 [//]: DOCUMENTATION_SECTION_START

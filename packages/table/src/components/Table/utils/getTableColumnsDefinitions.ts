@@ -10,6 +10,10 @@ type GetTableColumnsDefinitionsProps<TData extends object> = {
   rowSelectionAppearance?: RowAppearance;
 };
 
+/**
+ * Получение фактического списка columnDefinitions с учётом всевозможных настроек
+ * @function getTableColumnsDefinitions
+ */
 export function getTableColumnsDefinitions<TData extends object>({
   columnDefinitions,
   enableSelection,

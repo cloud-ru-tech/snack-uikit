@@ -5,19 +5,61 @@
 
 [Changelog](./CHANGELOG.md)
 
-## SkeletonContextProvider
+## Description
 
-Для централизованного управления состоянием загрузки можно использовать `SkeletonContextProvider`. Находящиеся внутри этого контекста компоненты Skeleton и SkeletonText не требуют активации через проп `loading` а берут его из контекста.
+- Пакет `@snack-uikit/skeleton` предоставляет компоненты для отображения индикаторов загрузки (скелетонов) во время асинхронных операций.
+- `Skeleton` — базовый компонент для создания блочных скелетонов произвольной формы с настраиваемыми размерами (ширина, высота) и радиусом скругления.
+- `SkeletonText` — специализированный компонент для имитации текстового контента: отображает несколько строк скелетона с учётом типографики (размер шрифта, межстрочный интервал), что позволяет точно соответствовать реальному тексту по высоте и визуальному стилю.
+- `WithSkeleton` — компонент-обёртка для группировки блоков скелетона: принимает JSX-ноду скелетона в проп `skeleton` и контент в `children`, автоматически переключаясь между ними в зависимости от состояния загрузки.
+- `SkeletonContextProvider` — контекст-провайдер для централизованного управления состоянием загрузки: находящиеся внутри этого контекста компоненты `Skeleton` и `SkeletonText` автоматически получают значение `loading` из контекста и не требуют явной передачи этого пропа.
+- Все компоненты поддерживают работу как с явным пропом `loading`, так и с контекстом: если проп не передан, значение берётся из `SkeletonContextProvider`.
 
-## WithSkeleton
-Для группировки блоков скелетона используется компонент `WithSkeleton`. В проп `skeleton` он принимает ноду скелетона, а в `children` то, что он заменяет. Компонент также забирает пропсу `loading` из контекста.
+## Example
 
-```typescript jsx
-<SkeletonContextProvider loading={isLoading}>
-  <WithSkeleton skeleton={<CardSkeleton />}>
-    <Card />
-  </WithSkeleton>
-</SkeletonContextProvider>
+```tsx
+import { Skeleton, SkeletonText, SkeletonContextProvider, WithSkeleton } from '@snack-uikit/skeleton';
+
+function Example() {
+  const isLoading = true;
+
+  return (
+    <>
+      {/* Базовое использование Skeleton */}
+      <Skeleton loading={isLoading} width={200} height={100} borderRadius={8}>
+        <div>Контент после загрузки</div>
+      </Skeleton>
+
+      {/* Использование SkeletonText с типографикой */}
+      <SkeletonText loading={isLoading} lines={3} typography="body-m" width="100%">
+        <p>Текст, который появится после загрузки</p>
+      </SkeletonText>
+
+      {/* Централизованное управление через контекст */}
+      <SkeletonContextProvider loading={isLoading}>
+        <Skeleton width={100} height={100} borderRadius={50}>
+          <Avatar />
+        </Skeleton>
+        <SkeletonText lines={2}>
+          <Title />
+        </SkeletonText>
+      </SkeletonContextProvider>
+
+      {/* Группировка блоков с WithSkeleton */}
+      <SkeletonContextProvider loading={isLoading}>
+        <WithSkeleton
+          skeleton={
+            <div>
+              <Skeleton width={100} height={100} borderRadius={50} />
+              <SkeletonText lines={3} />
+            </div>
+          }
+        >
+          <Card />
+        </WithSkeleton>
+      </SkeletonContextProvider>
+    </>
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START

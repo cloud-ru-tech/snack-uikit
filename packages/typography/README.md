@@ -5,30 +5,52 @@
 
 [Changelog](./CHANGELOG.md)
 
+## Description
+
+- Пакет `@snack-uikit/typography` предоставляет компонент `Typography` для единообразного отображения текстового контента с поддержкой различных шрифтов, размеров и ролей.
+- Компонент позволяет задавать типографику через комбинацию трёх обязательных пропсов: `family` (шрифт), `purpose` (роль текста) и `size` (размер), что обеспечивает гибкость и консистентность оформления текста во всём приложении.
+- Поддерживает пять типов шрифтов: `sans` (основной), `light` (лёгкий), `link` (для ссылок), `mono` (моноширинный) и `crossed-out` (зачёркнутый).
+- Предоставляет пять ролей текста: `display` (крупные заголовки), `headline` (заголовки), `title` (подзаголовки), `label` (метки) и `body` (основной текст).
+- Поддерживает три размера: `s` (малый), `m` (средний) и `l` (большой).
+- Позволяет выбирать HTML-тег для рендеринга (`span`, `h1`-`h6`, `div`, `label`, `p`), что обеспечивает правильную семантику и доступность.
+- Автоматически генерирует предустановленные варианты компонента вида `Typography.{Family}{Purpose}{Size}` (например, `Typography.SansDisplayS`), которые можно использовать без указания пропсов `family`, `purpose` и `size`.
+- Figma: [`Typography`](https://www.figma.com/file/evs7EwrZF4NikYiHp4Fydr/On-boarding-Typography?node-id=35-1948&t=bBnwJl7MOre5YUHS-0).
+
 ## Example
 
-```typescript jsx
-import { Typography } from "@snack-uikit/typography";
+```tsx
+import { Typography } from '@snack-uikit/typography';
 
-<Typography 
-  family='sans'
-  purpose='display'
-  size='s'
-  tag='h1'
-  className='some-element'
->
-  Some text
-</Typography>
+function Example() {
+  return (
+    <Typography 
+      family='sans'
+      purpose='display'
+      size='s'
+      tag='h1'
+      className='some-element'
+    >
+      Some text
+    </Typography>
+  );
+}
 ```
 
-Также чтобы не указывать пропсы family, purpose и size, воспользуйтесь нужным предустановленным вариантом, например:
-```typescript jsx
-<Typography.SansDisplayS tag='h1' className='some-element'>
-  Some text
-</Typography.SansDisplayS>
+Также чтобы не указывать пропсы `family`, `purpose` и `size`, воспользуйтесь нужным предустановленным вариантом:
+
+```tsx
+import { Typography } from '@snack-uikit/typography';
+
+function Example() {
+  return (
+    <Typography.SansDisplayS tag='h1' className='some-element'>
+      Some text
+    </Typography.SansDisplayS>
+  );
+}
 ```
 
-Все компоненты вида ```<Typography.{Family}{Purpose}{Size} /> ``` генерируются автоматически при выполнении команды `npm run build:packages`.
+Все компоненты вида `<Typography.{Family}{Purpose}{Size} />` генерируются автоматически при выполнении команды `npm run build:packages`.
 
 ## Как добавить новый компонент такого вида?
 1. Добавить новое свойство в один или несколько объектов FAMILY, PURPOSE, SIZE в файле `constants.ts`, который лежит в  `typography/src/components/constants.ts`

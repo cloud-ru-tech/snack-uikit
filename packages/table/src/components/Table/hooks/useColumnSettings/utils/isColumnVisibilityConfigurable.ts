@@ -1,5 +1,9 @@
 import { ColumnDefinition } from '../../../../../types';
 
+/**
+ * Проверка на то, должна ли колонка отображаться в настройках колонок
+ * @function isColumnVisibilityConfigurable
+ */
 export function isColumnVisibilityConfigurable<TData extends object>(colDef: ColumnDefinition<TData>): boolean {
   if ('columnSettings' in colDef && colDef.columnSettings !== undefined) {
     const { mode } = colDef.columnSettings;

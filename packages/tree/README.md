@@ -5,34 +5,86 @@
 
 [Changelog](./CHANGELOG.md)
 
+## Description
+
+- Пакет `@snack-uikit/tree` предоставляет компонент `Tree` для отображения иерархических данных в виде дерева с возможностью навигации, раскрытия/сворачивания узлов и выбора элементов.
+- Компонент поддерживает **три режима выбора**: одиночный (`selectionMode='single'`), множественный (`selectionMode='multi'`) и без выбора (`selectionMode` не указан).
+- Позволяет **раскрывать и сворачивать узлы** с вложенными элементами, управляя состоянием раскрытия через пропы `expandedNodes` и `onExpand`.
+- Поддерживает **асинхронную загрузку данных** при раскрытии узла через колбэк `onDataLoad`, что позволяет динамически подгружать дочерние элементы.
+- Позволяет задавать **кастомные иконки** для узлов: отдельные иконки для открытого и закрытого состояния родительских элементов (`expandedIcon`, `collapsedIcon`) и иконки для дочерних элементов (`icon`).
+- Поддерживает **отображение ссылок** через проп `href`, позволяя узлам дерева быть навигационными элементами.
+- Может отображать **дополнительные действия** для узлов через пропы `nodeActions` и `parentActions`, которые показываются в виде выпадающего меню при наведении.
+- Позволяет **отключать отдельные узлы** через проп `disabled`, делая их недоступными для взаимодействия.
+- Поддерживает **кастомный контент** в заголовках узлов: можно передать как строку, так и React-компонент через проп `title`.
+- Управляет видимостью **линий вложенности** (`showLines`) и **иконок** (`showIcons`) для настройки внешнего вида дерева.
+- Обеспечивает **полную поддержку клавиатурной навигации**: стрелки вверх/вниз для перемещения между узлами, стрелки влево/вправо для сворачивания/раскрытия, Enter/Space для выбора, Tab для фокуса.
+- В режиме множественного выбора поддерживает **каскадный выбор**: при выборе родительского узла автоматически выбираются все дочерние, а при частичном выборе дочерних родительский узел переходит в состояние неопределённости (indeterminate).
+- Figma: [`Tree`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A34043&mode=design).
+
 ## Example
 
-#### selectionMode = 'single'
+```tsx
+import { Tree, TreeNodeProps, TreeNodeId } from '@snack-uikit/tree';
+import { useState } from 'react';
 
-```typescript jsx
-import { Tree } from '@snack-uikit/tree';
+const data: TreeNodeProps[] = [
+  {
+    id: '1',
+    title: 'Документы',
+    nested: [
+      { id: '1.1', title: 'Документ 1', nested: [] },
+      { id: '1.2', title: 'Документ 2', nested: [] },
+    ],
+  },
+  {
+    id: '2',
+    title: 'Изображения',
+    nested: [
+      { id: '2.1', title: 'Фото 1', nested: [] },
+      { id: '2.2', title: 'Фото 2', nested: [] },
+    ],
+  },
+];
 
-// ...
+// Пример с одиночным выбором
+function TreeSingleSelectExample() {
+  const [selectedNode, setSelected] = useState<TreeNodeId>();
 
-const [selectedNode, setSelected] = useState<TreeNodeId>();
+  return (
+    <Tree
+      data={data}
+      selectionMode="single"
+      selected={selectedNode}
+      onSelect={setSelected}
+    />
+  );
+}
 
-// ...
+// Пример с множественным выбором
+function TreeMultiSelectExample() {
+  const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
 
-<Tree data={data} selectionMode='single' selected={selectedNode} onSelect={setSelected} />
-```
+  return (
+    <Tree
+      data={data}
+      selectionMode="multi"
+      selected={selectedNodes}
+      onSelect={setSelected}
+    />
+  );
+}
 
-#### selectionMode = 'multi'
+// Пример с асинхронной загрузкой данных
+function TreeAsyncLoadExample() {
+  const onDataLoad = async (node: TreeNodeProps) => {
+    // Имитация загрузки данных с сервера
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Возвращаем новые дочерние элементы
+    return true;
+  };
 
-```typescript jsx
-import { Tree } from '@snack-uikit/tree';
-
-// ...
-
-const [selectedNodes, setSelected] = useState<TreeNodeId[]>([]);
-
-// ...
-
-<Tree data={data} selectionMode='multi' selected={selectedNodes} onSelect={setSelected} />
+  return <Tree data={data} onDataLoad={onDataLoad} />;
+}
 ```
 
 

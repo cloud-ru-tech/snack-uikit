@@ -1,31 +1,49 @@
-# TabBar
+# Tabs
 
 ## Installation
 `npm i @snack-uikit/tabs`
 
 [Changelog](./CHANGELOG.md)
 
+## Description
+
+- Пакет `@snack-uikit/tabs` предоставляет компонент `Tabs` для организации контента в виде вкладок с переключением между различными секциями.
+- Компонент `Tabs` является составным (compound component) и состоит из трёх основных частей: `Tabs.TabBar` (панель с кнопками переключения), `Tabs.Tab` (отдельная вкладка) и `Tabs.TabContent` (контент, отображаемый при выборе соответствующей вкладки).
+- Поддерживает два типа визуального оформления: `Primary` (для верхнеуровневых элементов страницы, замещающих заголовок) и `Secondary` (для панелей табов на том же уровне, что и остальной контент).
+- Работает в контролируемом и неконтролируемом режимах через пропы `value`/`onChange` или `defaultValue`.
+- Поддерживает горизонтальную и вертикальную ориентацию, позиционирование маркера активной вкладки (до или после панели), а также автоматическую прокрутку при большом количестве вкладок с помощью кнопок навигации.
+- Позволяет добавлять счётчики на вкладки, отключать отдельные вкладки, размещать кастомный контент справа от панели табов через слот `after`.
+- Обеспечивает доступность через ARIA-атрибуты и поддержку навигации с клавиатуры (стрелки, Enter, Space).
+- Figma: [`Tabs`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A19393&mode=design).
+
 ## Example
 
-```typescript jsx
-const [value, setValue] = useState('tab1');
+```tsx
+import { Tabs } from '@snack-uikit/tabs';
+import { useState } from 'react';
 
-<Tabs value={value} onChange={setValue}>
-  <Tabs.TabBar>
-    <Tabs.Tab label='Tab 1' value='tab1' counter={{ label: 12 }} />
-    <Tabs.Tab label='Tab 2' value='tab2' />
-    <Tabs.Tab label='Tab Disabled' value='tab3' disabled />
-  </Tabs.TabBar>
-  <Tabs.TabContent className={styles.tab} value='tab1'>
-    Content of tab1
-  </Tabs.TabContent>
-  <Tabs.TabContent className={styles.tab} value='tab2'>
-    Content of tab2
-  </Tabs.TabContent>
-  <Tabs.TabContent className={styles.tab} value='tab3'>
-    Content of tab3
-  </Tabs.TabContent>
-</Tabs>
+function Example() {
+  const [value, setValue] = useState('tab1');
+
+  return (
+    <Tabs value={value} onChange={setValue}>
+      <Tabs.TabBar>
+        <Tabs.Tab label='Tab 1' value='tab1' counter={{ label: 12 }} />
+        <Tabs.Tab label='Tab 2' value='tab2' />
+        <Tabs.Tab label='Tab Disabled' value='tab3' disabled />
+      </Tabs.TabBar>
+      <Tabs.TabContent value='tab1'>
+        Content of tab1
+      </Tabs.TabContent>
+      <Tabs.TabContent value='tab2'>
+        Content of tab2
+      </Tabs.TabContent>
+      <Tabs.TabContent value='tab3'>
+        Content of tab3
+      </Tabs.TabContent>
+    </Tabs>
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START

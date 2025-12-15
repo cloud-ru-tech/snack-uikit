@@ -30,6 +30,10 @@ type PrepareColumnsSettingsProps<TData extends object> = {
   t: ReturnType<typeof useLocale<'Table'>>['t'];
 };
 
+/**
+ * Отвечает за создание списка колонок в настройках с учётом порядка и всех групп
+ * @function prepareColumnsSettings
+ */
 export function prepareColumnsSettings<TData extends object>({
   pinnedGroups,
   columnOrder,

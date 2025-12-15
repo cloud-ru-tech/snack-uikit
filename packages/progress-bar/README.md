@@ -6,22 +6,69 @@
 
 [Changelog](./CHANGELOG.md)
 
-## Example
+## Description
 
-```typescript jsx
-import { ProgressBar, ProgressBarPage } from "@snack-uikit/progress-bar";
+- Пакет `@snack-uikit/progress-bar` предоставляет компоненты для визуализации прогресса выполнения операций: статический индикатор прогресса (`ProgressBar`) и автоматический индикатор загрузки страницы (`ProgressBarPage`).
+- Компоненты помогают пользователю понимать состояние длительных операций и время ожидания, поддерживают различные визуальные варианты оформления и размеры.
+- `ProgressBar` используется для отображения известного процента выполнения операции, а `ProgressBarPage` — для автоматической индикации загрузки страницы или перехода между страницами с плавной анимацией прогресса.
 
-<ProgressBar
-  progress={20}
-  size='xs'
-/>
+## ProgressBar
 
-<ProgressBarPage
-  inProgress={true}
-  animationDuration={100}
-  incrementDuration={500}
-  minimum={0.2}
-/>
+### Description
+
+- `ProgressBar` — компонент для отображения статического индикатора прогресса с заданным процентом выполнения от 0 до 100.
+- Поддерживает **два размера** (`xs`, `s`) для адаптации под разные контексты использования.
+- Позволяет выбрать **внешний вид** через проп `appearance` (neutral, primary, red, orange, yellow, green, blue, violet, pink) для визуального соответствия статусу операции или цветовой схеме интерфейса.
+- Автоматически ограничивает значение прогресса диапазоном от 0 до 100, обеспечивая корректное отображение даже при некорректных входных данных.
+- Figma: [`Progress Bar`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=2%3A2&mode=design).
+
+### Example
+
+```tsx
+import { ProgressBar } from '@snack-uikit/progress-bar';
+
+function Example() {
+  return (
+    <ProgressBar
+      progress={75}
+      size="s"
+      appearance="primary"
+    />
+  );
+}
+```
+
+## ProgressBarPage
+
+### Description
+
+- `ProgressBarPage` — компонент для автоматической индикации загрузки страницы или перехода между страницами, отображаемый в верхней части экрана.
+- Использует библиотеку `@tanem/react-nprogress` для **автоматического управления прогрессом** с плавной анимацией и постепенным увеличением значения.
+- Поддерживает **настройку скорости анимации** (`animationDuration`) и **интервала между обновлениями прогресса** (`incrementDuration`) для тонкой настройки поведения.
+- Позволяет задать **минимальное значение прогресса** (`minimum` от 0 до 1), чтобы индикатор не начинался с нуля и сразу показывал видимый прогресс.
+- Автоматически скрывается после завершения загрузки (`isFinished`), не требуя ручного управления видимостью.
+- Figma: [`Progress Bar Page`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=2%3A2&mode=design).
+
+### Example
+
+```tsx
+import { ProgressBarPage } from '@snack-uikit/progress-bar';
+
+function Example() {
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  return (
+    <>
+      <ProgressBarPage
+        inProgress={isLoading}
+        animationDuration={200}
+        incrementDuration={800}
+        minimum={0.08}
+      />
+      {/* Остальной контент страницы */}
+    </>
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START

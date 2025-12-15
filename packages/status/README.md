@@ -5,22 +5,79 @@
 
 [Changelog](./CHANGELOG.md)
 
-## Example
+## Description
 
-```typescript jsx
-import { Status, StatusIndicator } from '@snack-uikit/status';
+- Пакет `@snack-uikit/status` предоставляет два компонента-индикатора статуса: полноценный текстовый статус `Status` и компактный точечный индикатор `StatusIndicator`.
+- Оба компонента используют единую палитру состояний (`appearance`) и поддерживают несколько размеров, что позволяет согласованно маркировать состояния сущностей в разных частях интерфейса.
+- Компоненты подходят для встраивания в строки таблиц, списки, карточки и другие плотные интерфейсные области, где важно компактно подсветить состояние.
 
-<Status 
-  label="Text after status"
-  appearance='pink'
-  size='xs'
-  hasBackground={true}
-/>
+## Status
 
-<StatusIndicator
-  appearance='violet'
-  size='l'
-/>
+### Description
+
+- `Status` — текстовый индикатор состояния с цветной меткой и подписью, подходящий для отображения статуса сущности (задачи, документа, пользователя и т.п.).
+- Поддерживает размеры `xs` и `s`, а также разные варианты внешнего вида через `appearance` (primary, neutral, red, orange, yellow, green, blue, violet, pink), что позволяет единообразно кодировать типы состояний.
+- Может отображаться как с фоном, так и без него (`hasBackground`), чтобы адаптироваться под разные контексты и плотность интерфейса.
+- Имеет состояние загрузки (`loading`): вместо индикатора статуса показывается спиннер, а сам статус временно переводится в нейтральный вид.
+- Длинный текст в `label` аккуратно усечён до одной строки, чтобы статус оставался компактным и не ломал сетку.
+- Figma: [`Status`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A21940&mode=design).
+
+### Example
+
+```tsx
+import { Status } from '@snack-uikit/status';
+
+export function StatusExample() {
+  return (
+    <>
+      <Status
+        label='В работе'
+        appearance='primary'
+        size='s'
+      />
+
+      <Status
+        label='Черновик'
+        appearance='neutral'
+        size='xs'
+        hasBackground
+      />
+
+      <Status
+        label='Загружается'
+        appearance='blue'
+        size='s'
+        loading
+      />
+    </>
+  );
+}
+```
+
+## StatusIndicator
+
+### Description
+
+- `StatusIndicator` — компактный точечный индикатор состояния без текста, который может использоваться как самостоятельный маркер или в составе других компонентов.
+- Поддерживает размеры `xxs`, `xs`, `s`, `m`, `l`, что позволяет подобрать масштаб под разные элементы интерфейса (текстовые строки, иконки, заголовки).
+- Использует те же варианты `appearance`, что и `Status`, обеспечивая визуальное единство маркировки состояний по всему продукту.
+- Подходит для случаев, когда подпись к статусу уже присутствует отдельно (например, в заголовке или колонке таблицы), и нужен только визуальный маркер.
+- Figma: [`StatusIndicator`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A21940&mode=design).
+
+### Example
+
+```tsx
+import { StatusIndicator } from '@snack-uikit/status';
+
+export function StatusIndicatorExample() {
+  return (
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <StatusIndicator size='xs' appearance='green' />
+      <StatusIndicator size='m' appearance='orange' />
+      <StatusIndicator size='l' appearance='red' />
+    </div>
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START

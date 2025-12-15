@@ -5,21 +5,52 @@
 
 [Changelog](./CHANGELOG.md)
 
+## Description
+
+- Пакет `@snack-uikit/card` предоставляет компонент `Card` для отображения структурированной информации в виде карточек с поддержкой интерактивности, выбора и различных вариантов оформления.
+- Компонент поддерживает три размера (`s`, `m`, `l`), состояния выбора (`checked`), интерактивности (`disabled`), обводки (`outline`) и может работать как ссылка через проп `href`.
+- Карточка собирается из основных частей: заголовка (`Card.Header`), изображения (`Card.Image`), произвольного контента (`children`), футера (`Card.Footer`) и функционального бейджа (`Card.FunctionBadge`).
+- Заголовок (`Card.Header`) отображает заголовок, описание и метаинформацию с поддержкой усечения текста и эмблемы (иконка или картинка).
+- Изображение (`Card.Image`) поддерживает три режима отображения: маленькое (`little`), среднее (`middle`) и фоновое (`background`) с опциональным эффектом затемнения.
+- Футер (`Card.Footer`) имеет три варианта: промо-футер (`Card.Footer.Promo`) с кнопкой и блоком значений, футер с действиями (`Card.Footer.Action`) с основной и вторичной кнопками, и призыв к действию (`Card.Footer.CallToAction`) с текстом и иконкой.
+- Функциональный бейдж (`Card.FunctionBadge`) отображает выпадающее меню с опциями и появляется при наведении на карточку или может быть всегда видимым через проп `badgeAlwaysVisible`.
+- Компонент поддерживает режим массового выделения (`multipleSelection`) с отображением галочки при выборе, промо-бейдж для акций и полную поддержку клавиатурной навигации.
+- Figma: [`Card`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A214604&mode=design).
+
 ## Example
 
-```typescript jsx
-import { Card, SearchPrivate } from "@snack-uikit/card";
+```tsx
+import { useState } from 'react';
+import { Card } from '@snack-uikit/card';
+import { KebabSVG, PlaceholderSVG } from '@snack-uikit/icons';
 
-  <Card
-    checked={checked}
-    onClick={handleClick}
-    image={<Card.Image {...cardImageProps}/>}
-    header={<Card.Header {...cardHeaderProps} />}
-    footer={<Card.Footer {...cardFooterProps}/>}
-    functionBadge={<Card.FunctionBadge {...cardFunctionBadgeProps} />}
-  >
-    <ContentElement />
-  </Card>
+function Example() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Card
+      size="m"
+      checked={checked}
+      onClick={() => setChecked(!checked)}
+      multipleSelection
+      image={<Card.Image mode="little" src="/image.jpg" alt="Product image" />}
+      header={
+        <Card.Header
+          title="Название карточки"
+          description="Описание карточки с подробной информацией"
+          metadata="Метаинформация"
+          emblem={{ icon: PlaceholderSVG }}
+          truncate={{ title: 1, description: 2, metadata: 1 }}
+        />
+      }
+      footer={<Card.Footer.Promo button={{ label: 'Действие', onClick: () => {} }} />}
+      functionBadge={<Card.FunctionBadge icon={<KebabSVG />} options={[]} />}
+      promoBadge="Акция"
+    >
+      Дополнительный контент карточки
+    </Card>
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START

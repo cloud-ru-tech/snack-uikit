@@ -6,45 +6,91 @@
 
 [Changelog](./CHANGELOG.md)
 
-## Example
+## Description
+
+- Пакет `@snack-uikit/alert` содержит компоненты для отображения системных уведомлений: встроенных в контент страницы и закреплённых в верхней части экрана.
+- Алерты помогают ненавязчиво сообщать пользователю об ошибках, предупреждениях, результатах действий или справочной информации и поддерживают единый визуальный стиль (appearance, иконки, ссылки, кнопки действий).
+- Компоненты адаптируются под разные сценарии за счёт управляемых пропов (заголовок, описание, ссылка, кнопки действий, размеры, иконка), работают с произвольным контентом в описании и умеют корректно обрезать длинные заголовки.
+
+## Alert
+
+### Description
+
+- `Alert` — блоковое уведомление внутри контента страницы или секции интерфейса.
+- Компонент поддерживает **разные типы статусов** через проп `appearance` (neutral, primary, error, warning, success, info) с соответствующей иконкой и цветовой схемой.
+- Позволяет задать **заголовок и описание** с управляемым количеством строк заголовка (`truncate`), чтобы аккуратно отображать длинные тексты.
+- Поддерживает **текстовую ссылку** (`link`), оформленную в нужном цвете под выбранный статус.
+- Может отображать **кнопку закрытия** (`onClose`) с иконкой, если нужно дать пользователю возможность скрыть уведомление.
+- Показывает **кнопки действий в футере** (`actions.primary` и `actions.secondary`) для выполнения связанных с уведомлением операций.
+- Figma: [`Alert`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A183757&mode=design).
+
+### Example
 
 ```tsx
-import { Alert, AlertTop } from '@snack-uikit/alert';
-import { InfoFilledSVG } from '@snack-uikit/icons';
+import { Alert } from '@snack-uikit/alert';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
-// Alert component displays a notification with an optional icon, title, description, and link.
-// It can be used to provide information, warnings, errors, or success messages.
+export function AlertExample() {
+  return (
+    <Alert
+      appearance="error"
+      title="Не удалось сохранить изменения"
+      description="Попробуйте ещё раз через несколько секунд. Если проблема повторится, обратитесь в поддержку."
+      icon
+      link={{
+        text: 'Подробнее в документации',
+        href: '#',
+      }}
+      onClose={() => console.log('Alert closed')}
+      actions={{
+        primary: { text: 'Повторить', onClick: () => console.log('Retry'), icon: <PlaceholderSVG />, loading: false },
+        secondary: { text: 'Отмена', onClick: () => console.log('Cancel'), loading: false },
+      }}
+      data-test-id="alert"
+    />
+  );
+}
+```
 
-<Alert
-  appearance='neutral'
-  link={{
-    text: 'Link text',
-    href: 'https://cloud.ru/',
-  }}
-  title='Title'
-  description='Title description'
-  onClose={() => console.log('alert')}
-/>;
+## AlertTop
 
-// AlertTop component is similar to Alert but is positioned at the top of the screen.
-// It can have an additional button with customizable text, icon, and click handler.
+### Description
 
-<AlertTop
-  appearance='neutral'
-  link={{
-    text: 'Link text',
-    href: 'https://cloud.ru/',
-  }}
-  closeable
-  title='Title'
-  description='Title description'
-  action={{
-    text: 'Button Text',
-    icon: <PlaceholderSVG />,
-    onClick: () => {},
-  }}
-  onClose={() => console.log('alert top')}
-/>;
+- `AlertTop` — закреплённое уведомление в верхней части экрана для важных системных сообщений, которые должны быть хорошо заметны, но при этом не перекрывать весь интерфейс.
+- Компонент **растягивается по ширине контейнера/экрана** и визуально отделяется от контента.
+- Поддерживает **иконку статуса** и цветовую схему, контрастную по отношению к фону.
+- Отображает **заголовок и описание** с усечением длинного заголовка.
+- Позволяет добавить **кнопку действия** (`action`) и **кнопку закрытия** (`onClose`), управляя их видимостью снаружи.
+- Содержит **ссылку** (`link`), отображаемую в режиме `on-accent`, чтобы текст был читаем на цветном фоне.
+- Figma: [`AlertTop`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A182904&mode=design).
+
+### Example
+
+```tsx
+import { AlertTop } from '@snack-uikit/alert';
+import { PlaceholderSVG } from '@snack-uikit/icons';
+
+export function AlertTopExample() {
+  return (
+    <AlertTop
+      appearance="success"
+      title="Настройки сохранены"
+      description="Новые параметры будут применены при следующем входе в систему."
+      icon
+      link={{
+        text: 'Изменить ещё раз',
+        href: '#',
+      }}
+      action={{
+        text: 'Отменить',
+        icon: <PlaceholderSVG />,
+        onClick: () => console.log('Revert changes'),
+      }}
+      onClose={() => console.log('AlertTop closed')}
+      data-test-id="alert-top"
+    />
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START

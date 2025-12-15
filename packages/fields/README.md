@@ -12,7 +12,353 @@
 
 [Changelog](./CHANGELOG.md)
 
-Поля для форм
+## Description
+
+- Пакет `@snack-uikit/fields` предоставляет набор унифицированных полей для форм: текстовое и многострочное поле, селект, поля для даты и времени, числовые поля со степпером и слайдером, поле выбора цвета и обёртку-декоратор для произвольного контрола.
+- Компоненты оформлены в едином визуальном стиле Snack UI Kit и поддерживают общие возможности: размеры (`size`), состояния `disabled`/`readonly`, подписи (`label`, `caption`, `hint`), отображение статуса валидации (`validationState`) и кнопку копирования значения (там, где это релевантно).
+- Поля работают в контролируемом режиме, дружелюбны к e2e‑тестам (для `FieldSelect` дополнительно доступен Snack API для чтения/установки значения) и подходят для построения сложных форм с произвольной валидацией.
+
+## FieldText
+
+### Description
+
+- `FieldText` — однострочное текстовое поле для ввода коротких значений (логин, заголовок, ID и т.п.) с поддержкой ограничений по длине и базовой валидацией.
+- Поддерживает иконку‑префикс, произвольный префикс/постфикс и встроенную кнопку (`button`) с выпадающим списком действий и поиском по ним — удобно для быстрых операций над введённым значением.
+- Может показывать кнопку очистки и кнопку копирования, работать в режимах `readonly`/`disabled`, а также управляться извне через контролируемые `value`/`onChange`.
+- Figma: [`FieldText`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-2.0.0?type=design&node-id=41%3A38747&mode=design&t=8dDi5X6Lfgs6Cxji-1).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { FieldText } from '@snack-uikit/fields';
+
+export function FieldTextExample() {
+  const [value, setValue] = useState('');
+
+  return (
+    <FieldText
+      id='field-text'
+      label='Label text'
+      placeholder='Placeholder'
+      value={value}
+      onChange={setValue}
+      showCopyButton
+      hint='Hint text'
+      validationState='default'
+      size='s'
+    />
+  );
+}
+```
+
+## FieldTextArea
+
+### Description
+
+- `FieldTextArea` — многострочное поле ввода для длинных текстов (комментарии, описания, адреса) с авто‑изменением высоты или ручным ресайзом.
+- Поддерживает управление минимальным и максимальным количеством строк, ограничение по длине, кнопку очистки и копирования, а также слот `footer` для размещения вспомогательных действий (кнопок, тулбаров).
+- Подходит для сценариев, где важно сохранить общий паттерн полей формы и при этом дать пользователю достаточно места для ввода.
+- Figma: [`FieldTextArea`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=402%3A202402&mode=design).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { FieldTextArea } from '@snack-uikit/fields';
+
+export function FieldTextAreaExample() {
+  const [value, setValue] = useState('');
+
+  return (
+    <FieldTextArea
+      id='field-textarea'
+      label='Comment'
+      placeholder='Введите комментарий'
+      value={value}
+      onChange={setValue}
+      minRows={3}
+      maxRows={8}
+      resizable={false}
+      showCopyButton
+      hint='Подсказка по вводу'
+      size='s'
+    />
+  );
+}
+```
+
+## FieldSelect
+
+### Description
+
+- `FieldSelect` — поле выбора значения из списка с поддержкой одиночного (`selection="single"`) и множественного (`selection="multiple"`) выбора.
+- Позволяет отображать группы, иконки, теги и произвольный контент в опциях, а также использовать поиск (включая нечеткий), виртуализацию большого списка и готовые состояния «нет данных», «нет результатов», «ошибка».
+- Компонент работает в контролируемом режиме, поддерживает кнопку очистки, кнопку копирования для `readonly`‑режима и единый набор полевых атрибутов (`label`, `hint`, `validationState`, размеры и т.д.).
+- Figma: [`FieldSelect`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-2.0.0?type=design&node-id=41%3A38747&mode=design&t=8dDi5X6Lfgs6Cxji-1).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { FieldSelect } from '@snack-uikit/fields';
+
+const OPTIONS = [
+  { value: 'op1', option: 'Option 1' },
+  { value: 'op2', option: 'Option 2' },
+];
+
+export function FieldSelectExample() {
+  const [value, setValue] = useState<string | undefined>();
+
+  return (
+    <FieldSelect
+      id='field-select'
+      label='Select option'
+      placeholder='Выберите значение'
+      selection='single'
+      options={OPTIONS}
+      value={value}
+      onChange={setValue}
+      searchable
+      showCopyButton
+      size='s'
+    />
+  );
+}
+```
+
+## FieldSecure
+
+### Description
+
+- `FieldSecure` — поле для ввода чувствительных данных (пароли, токены, ключи), в котором значение может быть замаскировано и раскрыто по требованию.
+- Поддерживает кнопку копирования, ограничение по длине, асинхронную подгрузку значения по требованию (`asyncValueGetter`) и стандартные для полей состояния (`validationState`, `disabled`, `readonly`).
+- Подходит для сценариев, где важно не показывать секреты постоянно, но при этом дать пользователю возможность временно посмотреть или загрузить значение.
+- Figma: [`FieldSecure`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-2.0.0?type=design&node-id=41%3A38747&mode=design&t=8dDi5X6Lfgs6Cxji-1).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { FieldSecure } from '@snack-uikit/fields';
+
+export function FieldSecureExample() {
+  const [value, setValue] = useState('');
+  const [hidden, setHidden] = useState(true);
+
+  return (
+    <FieldSecure
+      id='field-secure'
+      label='Password'
+      placeholder='Введите пароль'
+      value={value}
+      onChange={setValue}
+      hidden={hidden}
+      onHiddenChange={setHidden}
+      showCopyButton
+      size='s'
+    />
+  );
+}
+```
+
+## FieldDate
+
+### Description
+
+- `FieldDate` — поле ввода даты или даты‑времени с выпадающим календарём и поддержкой различных режимов (`mode="date"` или `mode="date-time"`).
+- Позволяет кастомизировать доступность и оформление дней через `buildCellProps`, подсвечивать невалидные даты и управлять подсказками/ошибками в зависимости от выбранного значения.
+- Удобно для выбора дат в формах фильтрации, создания/редактирования сущностей и любых сценариев, где требуется компактный date‑picker, встроенный в поле.
+- Figma: [`FieldDate`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=402%3A202402&mode=design).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { FieldDate } from '@snack-uikit/fields';
+
+export function FieldDateExample() {
+  const [value, setValue] = useState<Date | undefined>();
+
+  return (
+    <FieldDate
+      id='field-date'
+      label='Дата'
+      mode='date'
+      value={value}
+      onChange={setValue}
+      showCopyButton
+      showClearButton
+      hint='Выберите подходящую дату'
+      size='s'
+    />
+  );
+}
+```
+
+## FieldTime
+
+### Description
+
+- `FieldTime` — поле для ввода времени с выпадающим time‑picker’ом и возможностью управлять показом секунд.
+- Поддерживает копирование значения, очистку, контроль состояний `disabled`/`readonly`, а также стандартные полевые подписи и размеры.
+- Используется там, где нужно задать время отдельно от даты или в дополнение к полю `FieldDate`.
+- Figma: [`FieldTime`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=402%3A202402&mode=design).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { FieldTime } from '@snack-uikit/fields';
+
+export function FieldTimeExample() {
+  const [value, setValue] = useState<FieldTime['props']['value']>();
+
+  return (
+    <FieldTime
+      id='field-time'
+      label='Время'
+      value={value}
+      onChange={setValue}
+      showSeconds
+      showCopyButton
+      showClearButton
+      size='s'
+    />
+  );
+}
+```
+
+## FieldSlider
+
+### Description
+
+- `FieldSlider` — числовое поле с линейкой и ползунком, позволяющее выбирать значение или диапазон значений внутри заданных границ.
+- Поддерживает линейные и нелинейные метки (`marks`), работу в режимах одиночного и диапазонного значения (`range`), форматирование отображаемого значения и настройку шагов.
+- Подходит для выбора диапазонов и настроек (например, объём ресурса или проценты), при этом остаётся единым полем формы со всеми стандартными атрибутами (`label`, `hint`, `validationState`).
+- Figma: [`FieldSlider`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-2.0.0?type=design&node-id=41%3A38747&mode=design&t=8dDi5X6Lfgs6Cxji-1).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { FieldSlider } from '@snack-uikit/fields';
+
+export function FieldSliderExample() {
+  const [value, setValue] = useState(10);
+
+  return (
+    <FieldSlider
+      id='field-slider'
+      label='Диапазон'
+      value={value}
+      onChange={setValue}
+      min={10}
+      max={50}
+      step={1}
+      showScaleBar
+      size='s'
+    />
+  );
+}
+```
+
+## FieldStepper
+
+### Description
+
+- `FieldStepper` — числовое поле со стрелками увеличения/уменьшения значения, удобно для небольших целых чисел (количество, шаги, приоритеты).
+- Компонент поддерживает задание минимального/максимального значения, шага, отображение подсказок над кнопками и режим, разрешающий выходить за пределы мин/макс при вводе с клавиатуры (`allowMoreThanLimits`).
+- Позволяет использовать префикс/постфикс и стандартные текстовые подписи, сохраняя привычный для поля UX.
+- Figma: [`FieldStepper`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-2.0.0?type=design&node-id=41%3A38747&mode=design&t=8dDi5X6Lfgs6Cxji-1).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { FieldStepper } from '@snack-uikit/fields';
+
+export function FieldStepperExample() {
+  const [value, setValue] = useState(1);
+
+  return (
+    <FieldStepper
+      id='field-stepper'
+      label='Количество'
+      value={value}
+      onChange={setValue}
+      min={0}
+      max={10}
+      step={1}
+      size='s'
+    />
+  );
+}
+```
+
+## FieldColor
+
+### Description
+
+- `FieldColor` — поле выбора цвета с интегрированным color‑picker’ом, в котором значение отображается и редактируется в текстовом виде.
+- Поддерживает выбор цвета с альфаканалом (`withAlpha`), авто‑применение изменений или применение по кнопке, а также кнопку копирования, очистку и стандартные полевые подписи.
+- Используется для настройки цветовых параметров (брендинг, темы, маркеры) в тех же формах, где применяются остальные поля пакета.
+- Figma: [`FieldColor`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-2.0.0?type=design&node-id=41%3A38747&mode=design&t=8dDi5X6Lfgs6Cxji-1).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { FieldColor } from '@snack-uikit/fields';
+
+export function FieldColorExample() {
+  const [value, setValue] = useState('#794ed3');
+
+  return (
+    <FieldColor
+      id='field-color'
+      label='Цвет'
+      placeholder='#f5f5f5'
+      value={value}
+      onChange={setValue}
+      withAlpha
+      showCopyButton
+      showClearButton
+      size='s'
+    />
+  );
+}
+```
+
+## FieldDecorator
+
+### Description
+
+- `FieldDecorator` — обёртка‑декоратор для произвольного контрола, которая добавляет к нему общий для всех полей визуальный каркас: label, caption, hint, индикацию ошибки и состояния `disabled`/`readonly`.
+- Позволяет показывать счётчик длины (`length`), размещать всплывающую подсказку у лейбла и управлять размером компонента, не навязывая конкретный тип поля ввода.
+- Удобен, когда в форме используется нестандартный или составной контрол, который всё равно должен выглядеть и вести себя как поле ввода из дизайн‑системы.
+- Figma: [`FieldDecorator`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-2.0.0?type=design&node-id=41%3A38747&mode=design&t=8dDi5X6Lfgs6Cxji-1).
+
+### Example
+
+```tsx
+import { FieldDecorator } from '@snack-uikit/fields';
+
+export function FieldDecoratorExample() {
+  return (
+    <FieldDecorator
+      label='Custom control'
+      caption='Дополнительная подпись'
+      hint='Подсказка по полю'
+      size='s'
+    >
+      {/* Любой пользовательский контент, который должен выглядеть как поле формы */}
+      <div>Custom content</div>
+    </FieldDecorator>
+  );
+}
+```
 
 ## Snack API для работы с внутренним стейтом
 

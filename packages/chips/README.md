@@ -6,81 +6,293 @@
 
 [Changelog](./CHANGELOG.md)
 
-## TODO
+## Description
 
-- `droplist` и выбор значений в `FilterChip`
+- Пакет `@snack-uikit/chips` предоставляет набор компонентов для создания интерактивных чипов: простые кнопки-чипы (`ChipAssist`), переключатели с состоянием (`ChipToggle`), чипы с выпадающими списками для выбора значений (`ChipChoice` с различными вариантами) и контейнер для группировки фильтров (`ChipChoiceRow`).
+- Компоненты поддерживают различные размеры, состояния загрузки и отключения, работу с иконками и длинными текстами с автоматическим обрезанием.
+- Чипы используются для фильтрации, выбора значений, переключения состояний и навигации в интерфейсе.
 
-## Example
+## ChipAssist
 
-```typescript jsx
-import { ChipAssist, ChipChoice, ChipToggle } from '@snack-uikit/chips';
+### Description
+
+- `ChipAssist` — простой чип-кнопка с лейблом, предназначенный для выполнения действий или навигации.
+- Поддерживает опциональную иконку, состояния загрузки и отключения, а также различные размеры.
+- При клике вызывает переданный обработчик `onClick`.
+- Figma: [`ChipAssist`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A146809&mode=design).
+
+### Example
+
+```tsx
+import { ChipAssist } from '@snack-uikit/chips';
 import { PlaceholderSVG } from '@snack-uikit/icons';
 
-<ChipAssist
-  label='Label'
-  icon={<PlaceholderSVG />}
-  size='s'
-  disabled={false}
-  loading={false}
-  onClick={doSomething}
-  className='className'
-  tabIndex={1}
-/>
+function Example() {
+  return (
+    <ChipAssist
+      label='Label'
+      icon={<PlaceholderSVG />}
+      size='s'
+      disabled={false}
+      loading={false}
+      onClick={() => console.log('Clicked')}
+    />
+  );
+}
+```
 
-<ChipToggle
-  label='Label'
-  icon={<PlaceholderSVG />}
-  size='s'
-  selected={false}
-  disabled={false}
-  loading={false}
-  onChange={handleChange}
-  className='className'
-  tabIndex={1}
-/>
+## ChipToggle
 
-<ChipChoice.Single
-  label='Label'
-  value='value'
-  icon={<PlaceholderSVG />}
-  size='s'
-  disabled={false}
-  loading={false}
-  options={[]}
-  onClick={doSomething}
-/>
+### Description
 
-<ChipChoice.Multi
-  label='Label'
-  value={['value1', 'value2']}
-  onChangeValue={onChange}
-  size='m'
-  options={[]}
-  valueFormatter={formatter}
-/>
+- `ChipToggle` — чип-переключатель с состоянием выбран/не выбран, работающий как чекбокс.
+- Поддерживает контролируемое состояние через проп `checked` и обработчик `onChange`.
+- Может отображать иконку, состояние загрузки и работать в отключённом режиме.
+- Figma: [`ChipToggle`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A152239&mode=design).
 
-<ChipChoice.Date
-  label='Label'
-  value={new Date()}
-  onChangeValue={onChange}
-  size='m'
-  valueFormatter={formatter}
-/>
+### Example
 
-<ChipChoice.DateRange
-  label='Label'
-  value={[new Date(), new Date()]}
-  onChangeValue={onChange}
-  size='m'
-  valueFormatter={formatter}
-/>
+```tsx
+import { useState } from 'react';
+import { ChipToggle } from '@snack-uikit/chips';
+import { PlaceholderSVG } from '@snack-uikit/icons';
 
-<ChipChoice.Custom
-  label='Label'
-  value='value'
-  valueToRender='Selected'
-  size='m'
-/>
+function Example() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <ChipToggle
+      label='Label'
+      icon={<PlaceholderSVG />}
+      size='s'
+      checked={checked}
+      onChange={setChecked}
+    />
+  );
+}
+```
+
+## ChipChoice
+
+### Description
+
+- `ChipChoice` — семейство чипов с выпадающими списками для выбора значений различных типов: одиночный выбор из списка (`Single`), множественный выбор (`Multiple`), выбор даты (`Date`), выбор диапазона дат (`DateRange`), выбор времени (`Time`) и кастомный вариант с произвольным контентом (`Custom`).
+- Все варианты поддерживают лейбл, иконку, состояние загрузки, кнопку очистки значения и настройку позиционирования выпадающего меню.
+- Компоненты работают в контролируемом и неконтролируемом режимах, поддерживают виртуализацию для больших списков и кастомизацию отображения значений.
+
+## ChipChoice.Single
+
+### Description
+
+- `ChipChoice.Single` — чип для одиночного выбора значения из списка опций.
+- Отображает выбранное значение в чипе и открывает выпадающий список с опциями при клике.
+- Поддерживает поиск по опциям, виртуализацию для больших списков, кастомное отображение элементов списка и автоматическое применение выбранного значения.
+- Figma: [`ChipChoice.Single`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A148671&mode=design).
+
+### Example
+
+```tsx
+import { ChipChoice } from '@snack-uikit/chips';
+
+function Example() {
+  const options = [
+    { label: 'Option 1', value: 'option1' },
+    { label: 'Option 2', value: 'option2' },
+  ];
+
+  return (
+    <ChipChoice.Single
+      label='Label'
+      value='option1'
+      options={options}
+      onChange={(value) => console.log(value)}
+    />
+  );
+}
+```
+
+## ChipChoice.Multiple
+
+### Description
+
+- `ChipChoice.Multiple` — чип для множественного выбора значений из списка опций.
+- Позволяет выбрать несколько элементов одновременно, отображая выбранные значения в чипе.
+- Поддерживает поиск, виртуализацию, кастомное отображение элементов и автоматическое применение выбранных значений.
+- Figma: [`ChipChoice.Multiple`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A147240&mode=design).
+
+### Example
+
+```tsx
+import { ChipChoice } from '@snack-uikit/chips';
+
+function Example() {
+  const options = [
+    { label: 'Option 1', value: 'option1' },
+    { label: 'Option 2', value: 'option2' },
+  ];
+
+  return (
+    <ChipChoice.Multiple
+      label='Label'
+      value={['option1', 'option2']}
+      options={options}
+      onChange={(value) => console.log(value)}
+    />
+  );
+}
+```
+
+## ChipChoice.Date
+
+### Description
+
+- `ChipChoice.Date` — чип для выбора даты с встроенным календарём.
+- Поддерживает различные режимы выбора: дата (`date`), месяц (`month`), год (`year`) и дата со временем (`date-time`).
+- Позволяет настроить отображение выбранной даты через `valueRender` и управлять доступностью ячеек календаря через `buildCalendarCellProps`.
+- Figma: [`ChipChoice.Date`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A150102&mode=design).
+
+### Example
+
+```tsx
+import { ChipChoice } from '@snack-uikit/chips';
+
+function Example() {
+  return (
+    <ChipChoice.Date
+      label='Label'
+      value={new Date()}
+      onChange={(value) => console.log(value)}
+      mode='date'
+    />
+  );
+}
+```
+
+## ChipChoice.DateRange
+
+### Description
+
+- `ChipChoice.DateRange` — чип для выбора диапазона дат с календарём.
+- Позволяет выбрать начальную и конечную дату диапазона, отображая выбранный период в чипе.
+- Поддерживает кастомное форматирование диапазона через `valueRender` и управление доступностью ячеек календаря.
+- Figma: [`ChipChoice.DateRange`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A151169&mode=design).
+
+### Example
+
+```tsx
+import { ChipChoice } from '@snack-uikit/chips';
+
+function Example() {
+  return (
+    <ChipChoice.DateRange
+      label='Label'
+      value={[new Date('2022-10-15'), new Date('2023-10-15')]}
+      onChange={(value) => console.log(value)}
+    />
+  );
+}
+```
+
+## ChipChoice.Time
+
+### Description
+
+- `ChipChoice.Time` — чип для выбора времени (часы, минуты, секунды).
+- Отображает выбранное время в чипе и открывает интерфейс выбора времени при клике.
+- Поддерживает отображение секунд через проп `showSeconds` и кастомное форматирование времени через `valueRender`.
+- Figma: [`ChipChoice.Time`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A150102&mode=design).
+
+### Example
+
+```tsx
+import { ChipChoice } from '@snack-uikit/chips';
+
+function Example() {
+  return (
+    <ChipChoice.Time
+      label='Label'
+      value={{ hours: 20, minutes: 15, seconds: 30 }}
+      onChange={(value) => console.log(value)}
+      showSeconds
+    />
+  );
+}
+```
+
+## ChipChoice.Custom
+
+### Description
+
+- `ChipChoice.Custom` — чип с произвольным контентом в выпадающем меню.
+- Позволяет полностью кастомизировать содержимое выпадающего списка через проп `content`, который может быть React-элементом или функцией, получающей методы управления дроплистом.
+- Подходит для создания сложных интерфейсов выбора, не укладывающихся в стандартные варианты `ChipChoice`.
+- Figma: [`ChipChoice.Custom`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A148671&mode=design).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { ChipChoice } from '@snack-uikit/chips';
+
+function Example() {
+  const [value, setValue] = useState<string>();
+
+  return (
+    <ChipChoice.Custom
+      label='Label'
+      value={value}
+      onChange={setValue}
+      valueRender={() => value}
+      content={({ closeDroplist }) => (
+        <button onClick={() => { setValue('custom'); closeDroplist(); }}>
+          Select custom value
+        </button>
+      )}
+    />
+  );
+}
+```
+
+## ChipChoiceRow
+
+### Description
+
+- `ChipChoiceRow` — контейнер для группировки нескольких чипов-фильтров в одну строку.
+- Управляет состоянием всех фильтров, отображает кнопку очистки всех фильтров и кнопку добавления новых фильтров.
+- Поддерживает управление видимостью фильтров через `visibleFilters` и `onVisibleFiltersChange`, позволяя скрывать и показывать отдельные чипы.
+- Работает с любыми вариантами `ChipChoice` и другими чипами, переданными в массиве `filters`.
+- Figma: [`ChipChoiceRow`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A152236&mode=design).
+
+### Example
+
+```tsx
+import { useState } from 'react';
+import { ChipChoiceRow, ChipChoice } from '@snack-uikit/chips';
+
+function Example() {
+  const [filters, setFilters] = useState({});
+
+  const filterConfig = [
+    {
+      id: 'status',
+      label: 'Status',
+      component: ChipChoice.Single,
+      options: [
+        { label: 'Active', value: 'active' },
+        { label: 'Inactive', value: 'inactive' },
+      ],
+    },
+  ];
+
+  return (
+    <ChipChoiceRow
+      filters={filterConfig}
+      value={filters}
+      onChange={setFilters}
+      size='s'
+    />
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START

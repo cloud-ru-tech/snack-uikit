@@ -5,24 +5,95 @@
 
 [Changelog](./CHANGELOG.md)
 
-## Example
+## Description
+
+- Пакет `@snack-uikit/calendar` предоставляет компоненты для выбора даты, диапазона дат и времени: календарь (`Calendar`) и отдельный пикер времени (`TimePicker`).
+- Компоненты покрывают основные сценарии работы с датой и временем: выбор одной даты, периода, месяца, года или даты с временем, а также точную установку времени по часам, минутам и опционально секундам.
+- Оба компонента поддерживают локализацию (язык и формат дат), управление фокусом с клавиатуры и подстройку под размер контейнера через `fitToContainer`, что упрощает их встраивание в сложные интерфейсы.
+- Для режима диапазона в календаре доступны пресеты быстрого выбора периода (например, «Сегодня», «Неделя», «Месяц»), которые можно настраивать через проп `presets`.
+
+## Calendar
+
+### Description
+
+- `Calendar` — основной компонент для выбора дат и периодов: он может работать в режимах `date`, `range`, `month`, `year` и `date-time` (дата и время).
+- Компонент поддерживает как контролируемый (`value` + `onChangeValue`), так и неконтролируемый (`defaultValue`) режимы и умеет подстраиваться под разные размеры через проп `size` (`s`, `m`, `l`).
+- С помощью колбека `buildCellProps` можно управлять доступностью и подсветкой отдельных ячеек (например, отключить прошлые даты или выделить праздничные дни), а опция `showHolidays` автоматически раскрашивает выходные.
+- Проп `presets` позволяет добавить панель с пресетами для быстрого выбора периода в режиме `range`, в том числе с собственным списком вариантов.
+- Локаль (`locale`) задаёт язык подписей и первый день недели, при отсутствии явно переданного значения используется язык браузера пользователя.
+- Figma: [`Calendar`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A27244&mode=design).
+
+### Example
 
 ```tsx
 import { Calendar } from '@snack-uikit/calendar';
 
-<Calendar
-  mode='date'
-  onChangeValue={(selectedDate: Date) => {
-    // do something
-  }}
-/>
+function CalendarExample() {
+  return (
+    <>
+      {/* Выбор одной даты */}
+      <Calendar
+        mode='date'
+        onChangeValue={(selectedDate: Date) => {
+          console.log('Selected date:', selectedDate);
+        }}
+      />
 
-<Calendar
-  mode='range'
-  onChangeValue={(selectedRange: [Date, Date]) => {
-    // do something
-  }}
-/>
+      {/* Выбор периода c пресетами */}
+      <Calendar
+        mode='range'
+        presets={{
+          enabled: true,
+          title: true,
+        }}
+        onChangeValue={(selectedRange) => {
+          console.log('Selected range:', selectedRange);
+        }}
+      />
+
+      {/* Выбор даты и времени с отображением секунд */}
+      <Calendar
+        mode='date-time'
+        showSeconds
+        onChangeValue={(selectedDateTime: Date) => {
+          console.log('Selected date and time:', selectedDateTime);
+        }}
+      />
+    </>
+  );
+}
+```
+
+## TimePicker
+
+### Description
+
+- `TimePicker` — компонент для точного выбора времени (часы, минуты и при необходимости секунды) без выбора календарной даты.
+- Поддерживает контролируемый и неконтролируемый режимы через пропы `value`, `defaultValue` и `onChangeValue`, а результирующее значение представлено объектом `TimeValue` (`{ hours, minutes, seconds }`).
+- Проп `today` позволяет подсветить «текущее» время (например, рабочее время или время на момент открытия) на основании переданной даты.
+- Компонент адаптируется под размеры (`size` — `s`, `m`, `l`) и может растягиваться по контейнеру через `fitToContainer`, а также поддерживает управление фокусом (`onFocusLeave`, `navigationStartRef`) для сложных форм и диалогов.
+- Figma: [`TimePicker`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A27244&mode=design).
+
+### Example
+
+```tsx
+import { TimePicker } from '@snack-uikit/calendar';
+
+function TimePickerExample() {
+  return (
+    <TimePicker
+      showSeconds
+      onChangeValue={value => {
+        if (!value) {
+          return;
+        }
+
+        const { hours, minutes, seconds } = value;
+        console.log(`Selected time: ${hours}:${minutes}:${seconds}`);
+      }}
+    />
+  );
+}
 ```
 
 [//]: DOCUMENTATION_SECTION_START

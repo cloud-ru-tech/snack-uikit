@@ -6,7 +6,16 @@
 
 [Changelog](./CHANGELOG.md)
 
-## Example
+## Description
+
+- Компонент `Link` предоставляет стилизованную ссылку с гибкими настройками внешнего вида и поведения.
+- Поддерживает **разные размеры** (`size: 's' | 'm' | 'l'`) и **роли текста** (`purpose: 'display' | 'headline' | 'title' | 'label' | 'body'`) для адаптации под различные контексты использования.
+- Позволяет выбрать **внешний вид** (`appearance`) из широкой палитры цветов (neutral, primary, red, orange, yellow, green, blue, violet, pink, invert-neutral) для размещения на разных фонах.
+- Поддерживает **режимы отображения текста** (`textMode: 'default' | 'accent' | 'on-accent'`) для корректной читаемости на цветных поверхностях.
+- Может использоваться **внутри текста** (`insideText={true}`) с поддержкой переносов или как отдельный элемент с обрезанием длинного текста (`truncateVariant: 'end' | 'middle'`).
+- Является **полиморфным компонентом** (`as`), позволяя оформить любой React-компонент или HTML-элемент в стиль ссылки (например, для интеграции с роутерами вроде `react-router-dom`).
+- Автоматически добавляет атрибут `rel="noopener noreferrer"` при открытии ссылки в новой вкладке (`target="_blank"`) для безопасности.
+- Figma: [`Link`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=2%3A9&mode=design).
 
 ## Example
 

@@ -6,6 +6,10 @@ export type PinnedGroupsState<TData extends object> = {
   unpinned: ColumnDefinition<TData>[];
 };
 
+/**
+ * Отвечает за распределение columnDefinitions по возможным pinned группам. Возвращает PinnedGroupsState
+ * @function getPinnedGroups
+ */
 export function getPinnedGroups<TData extends object>(columnDefinitions: ColumnDefinition<TData>[]) {
   return columnDefinitions.reduce(
     (accPinnedState: PinnedGroupsState<TData>, colDef: ColumnDefinition<TData>) => {
