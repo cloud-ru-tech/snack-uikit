@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.14.15 (2025-12-17)</small>
+
+* fix(FF-7656): date parse issue ([edddd6c](https://github.com/cloud-ru-tech/snack-uikit/commit/edddd6c))
+* fix(FF-7798): update saved filter format ([2c8d6cc](https://github.com/cloud-ru-tech/snack-uikit/commit/2c8d6cc))
+
+
+
+
+
 ## <small>0.14.14 (2025-12-06)</small>
 
 ### Only dependencies have been changed

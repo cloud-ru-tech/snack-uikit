@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.28 (2025-12-17)</small>
+
+* fix(FF-7798): add optional id prop to status column ([c90de66](https://github.com/cloud-ru-tech/snack-uikit/commit/c90de66))
+* fix(FF-7798): update saved filter format ([2c8d6cc](https://github.com/cloud-ru-tech/snack-uikit/commit/2c8d6cc))
+* fix(PDS-3325): table height and scroll without toolbar ([2b3f607](https://github.com/cloud-ru-tech/snack-uikit/commit/2b3f607))
+
+
+
+
+
 ## <small>0.37.27 (2025-12-06)</small>
 
 ### Only dependencies have been changed
