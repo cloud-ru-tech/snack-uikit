@@ -54,7 +54,7 @@ export type FilterRow<TState extends FiltersState> = Omit<ChipChoiceRowProps<TSt
 
 export type PersistedFilterState<T extends FiltersState> = {
   pagination?: RequestPayloadParams['pagination'];
-  sorting?: RequestPayloadParams['sort'];
+  ordering?: RequestPayloadParams['ordering'];
   search?: string;
   filter?: T;
 };

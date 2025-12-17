@@ -5,9 +5,9 @@ export const validatePaging = (value: unknown): value is RequestPayloadParams['p
   typeof (value as RequestPayloadParams['pagination'])?.limit === 'number' &&
   typeof (value as RequestPayloadParams['pagination'])?.offset === 'number';
 
-export const validateSorting = (value: unknown): value is RequestPayloadParams['sort'] =>
+export const validateSorting = (value: unknown): value is RequestPayloadParams['ordering'] =>
   !value ||
-  (value as NonNullable<RequestPayloadParams['sort']>).every(
+  (value as NonNullable<RequestPayloadParams['ordering']>).every(
     column => typeof column?.field === 'string' && typeof column?.direction === 'string',
   );
 

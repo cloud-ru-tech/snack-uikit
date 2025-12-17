@@ -39,7 +39,7 @@ export const defaultParser = <T extends FiltersState>(value: string): PersistedF
 
   return {
     pagination: parsed?.pagination,
-    sorting: parsed?.sort,
+    ordering: parsed?.ordering,
     search: parsed?.search?.toString() || '',
     filter: mapFilterFromPayload<T>(parsed?.filter) ?? ({} as T),
   };

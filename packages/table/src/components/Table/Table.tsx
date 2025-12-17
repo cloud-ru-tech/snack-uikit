@@ -154,7 +154,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
       (data: unknown): data is PersistedFilterState<TFilters> => {
         const dataAsSettings = data as PersistedFilterState<TFilters>;
         const isPaginationValid = validatePaging(dataAsSettings?.pagination);
-        const isSortingValid = validateSorting(dataAsSettings?.sorting);
+        const isSortingValid = validateSorting(dataAsSettings?.ordering);
         const isSearchValid = !dataAsSettings?.search || typeof dataAsSettings?.search === 'string';
         const isFilterValid = Boolean(
           columnFilters?.filters && validateFilter(dataAsSettings.filter, columnFilters.filters),
@@ -474,14 +474,14 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                     validateData: validatePersistedState,
                     state: {
                       pagination: mapPaginationToRequestPayload(pagination),
-                      sorting: mapSortToRequestPayload(sorting),
+                      ordering: mapSortToRequestPayload(sorting),
                       filter,
                       search: globalFilter || '',
                     },
                     onLoad: state => {
                       state.pagination && onPaginationChange(mapPaginationToTableState(state.pagination));
                       state.search && onGlobalFilterChange(state.search);
-                      state.sorting && onSortingChange(mapSortToTableState(state.sorting));
+                      state.ordering && onSortingChange(mapSortToTableState(state.ordering));
                       if (state.filter) {
                         setFilter(state.filter as TFilters);
                         setFilterVisibility(Object.keys(state.filter));

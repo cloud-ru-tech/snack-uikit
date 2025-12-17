@@ -45,7 +45,7 @@ export const formatFilterStateToRequestPayload = <T extends FiltersState>(value?
   createRequestPayload({
     pagination: value?.pagination,
     search: value?.search ?? '',
-    sort: value?.sorting,
+    ordering: value?.ordering,
     filter: mapFilterToPayload(value?.filter),
   });
 

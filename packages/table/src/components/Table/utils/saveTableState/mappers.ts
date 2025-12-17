@@ -17,10 +17,10 @@ export const mapPaginationToTableState = (value?: RequestPayloadParams['paginati
   };
 };
 
-export const mapSortToTableState = (value: RequestPayloadParams['sort'] = []): SortingState =>
+export const mapSortToTableState = (value: RequestPayloadParams['ordering'] = []): SortingState =>
   value.map(column => ({
     id: column.field,
-    desc: column.direction === 'd',
+    desc: column.direction === '-',
   }));
 
 export const mapPaginationToRequestPayload = (
@@ -38,10 +38,10 @@ export const mapPaginationToRequestPayload = (
   };
 };
 
-export const mapSortToRequestPayload = (value?: SortingState): RequestPayloadParams['sort'] =>
+export const mapSortToRequestPayload = (value?: SortingState): RequestPayloadParams['ordering'] =>
   value?.map(column => ({
     field: column.id,
-    direction: (column.desc ? 'd' : 'a') as SortDirection,
+    direction: (column.desc ? '-' : '+') as SortDirection,
   }));
 
 /** Вспомогательная функция для преобразования состояния таблицы к формату RequestPayloadParams */
@@ -58,5 +58,5 @@ export const formatTableStateToRequestPayload = <T extends FiltersState>({
     filter,
     search,
     pagination: mapPaginationToRequestPayload(pagination),
-    sorting: mapSortToRequestPayload(sorting),
+    ordering: mapSortToRequestPayload(sorting),
   });
