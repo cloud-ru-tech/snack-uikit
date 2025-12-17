@@ -15,7 +15,7 @@ Toolbar
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | pagination | `PaginationParams` | - |  |
-| sorting | `FieldSort[]` | - |  |
+| ordering | `FieldSort[]` | - |  |
 | search | `string` | - |  |
 | filter | `FiltersState` | - |  |
 ## Toolbar

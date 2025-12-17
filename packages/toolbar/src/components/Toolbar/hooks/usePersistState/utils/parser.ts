@@ -2,7 +2,7 @@ import { parseQueryParamsString, RequestPayloadParams } from '@cloud-ru/ft-reque
 import { FiltersState } from '@snack-uikit/chips';
 
 import { PersistedFilterState } from '../../../types';
-import { isDateString } from './utils';
+import { isDateString } from './isDateString';
 
 const parseValue = (value: unknown) => {
   if (isDateString(value)) {

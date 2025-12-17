@@ -2,7 +2,7 @@ import { createRequestPayload, RequestPayloadParams } from '@cloud-ru/ft-request
 import { FiltersState } from '@snack-uikit/chips';
 
 import { PersistedFilterState } from '../../../types';
-import { isDateString } from './utils';
+import { isDateString } from './isDateString';
 
 type FilterValue = string | null | number | boolean | Date;
 
