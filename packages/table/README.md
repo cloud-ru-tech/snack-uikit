@@ -358,6 +358,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | mapStatusToAppearance* | `MapStatusToAppearanceFnType` | - | Маппинг значений статуса на цвета |
 | accessorKey* | `string` | - | Имя ключа соответствующее полю в data |
+| id | `string` | - | Идентификатор колонки |
 | enableSorting | `boolean` | true | Включение/выключение сортировки |
 | renderDescription | `(cellValue: string, row: TData) => string` | - | Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса |
 | size | `number` | - | Размер ячейки |
@@ -436,6 +437,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 |------|------|---------------|-------------|
 | mapStatusToAppearance* | `MapStatusToAppearanceFnType` | - | Маппинг значений статуса на цвета |
 | accessorKey* | `string` | - | Имя ключа соответствующее полю в data |
+| id | `string` | - | Идентификатор колонки |
 | enableSorting | `boolean` | true | Включение/выключение сортировки |
 | renderDescription | `(cellValue: string, row: TData) => string` | - | Функция для отрисовки текста, если не передана, то будет отрисован только индикатор статуса |
 | size | `number` | - | Размер ячейки |

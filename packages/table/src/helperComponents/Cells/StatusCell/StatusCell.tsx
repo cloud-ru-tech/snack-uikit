@@ -19,6 +19,8 @@ type StatusCellProps = {
 export type MapStatusToAppearanceFnType = (value: string | number) => StatusAppearance;
 
 type BaseStatusColumnDef = {
+  /** Идентификатор колонки */
+  id?: string;
   /** Имя ключа соответствующее полю в data */
   accessorKey: string;
   /** Маппинг значений статуса на цвета */
@@ -76,6 +78,7 @@ function StatusCell({ appearance, label }: StatusCellProps) {
 
 /** Вспомогательная функция для создания ячейки со статусом */
 export function getStatusColumnDef<TData>({
+  id,
   header,
   accessorKey,
   mapStatusToAppearance,
@@ -89,7 +92,7 @@ export function getStatusColumnDef<TData>({
   const hasDescription = Boolean(renderDescription);
 
   return {
-    id: DefaultColumns.Status,
+    id: id ?? DefaultColumns.Status,
     pinned: COLUMN_PIN_POSITION.Left,
     noBodyCellPadding: true,
     noHeaderCellPadding: !hasDescription,
