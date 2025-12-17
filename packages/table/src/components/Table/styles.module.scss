@@ -53,9 +53,13 @@
 
 .wrapper {
   display: grid;
-  grid-template-rows: max-content minmax(auto, 100%) max-content;
+  grid-template-rows: minmax(auto, 100%) max-content;
   max-width: 100%;
   max-height: 100%;
+
+  &[data-with-toolbar] {
+    grid-template-rows: max-content minmax(auto, 100%) max-content;
+  }
 }
 
 .scrollStub {

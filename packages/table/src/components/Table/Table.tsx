@@ -448,9 +448,14 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const { updateCellMap } = useCellAutoResizeController(table);
 
   const showToolbar = !suppressToolbar;
+  const showPagination = !infiniteLoading && !suppressPagination;
 
   return (
-    <div className={cn(styles.wrapper, className)} {...extractSupportProps(rest)}>
+    <div
+      className={cn(styles.wrapper, className)}
+      data-with-toolbar={showToolbar || undefined}
+      {...extractSupportProps(rest)}
+    >
       {showToolbar && (
         <div className={styles.header}>
           <Toolbar
@@ -612,7 +617,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
         <div className={styles.scrollStub} ref={scrollRef as RefObject<HTMLDivElement>} />
       </Scroll>
 
-      {!infiniteLoading && !suppressPagination && (
+      {showPagination && (
         <TablePagination
           table={table}
           options={paginationProp?.options}
