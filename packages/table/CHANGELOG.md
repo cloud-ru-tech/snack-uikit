@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.29 (2025-12-18)</small>
+
+* docs(FF-7788): readme update ([e3142b8](https://github.com/cloud-ru-tech/snack-uikit/commit/e3142b8))
+
+
+
+
+
 ## <small>0.37.28 (2025-12-17)</small>
 
 * fix(FF-7798): add optional id prop to status column ([c90de66](https://github.com/cloud-ru-tech/snack-uikit/commit/c90de66))
