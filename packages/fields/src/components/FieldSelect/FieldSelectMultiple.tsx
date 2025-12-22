@@ -252,6 +252,8 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
                       key={option.id}
                       appearance={option.appearance ?? 'neutral'}
                       onDelete={!option.disabled && !disabled && !readonly ? handleItemDelete(option) : undefined}
+                      className={styles.tag}
+                      data-disabled={disabled || undefined}
                     />
                   ))}
 

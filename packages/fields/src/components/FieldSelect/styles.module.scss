@@ -40,6 +40,18 @@ $base-min-width: 4px;
       }
     }
   }
+
+  &[data-disabled] {
+    .tag {
+      &[data-disabled] {
+        background-color: styles-tokens-fields.simple-var(styles-tokens-fields.$sys-neutral-decor-default);
+
+        * {
+          background-color: inherit;
+        }
+      }
+    }
+  }
 }
 
 .container {
