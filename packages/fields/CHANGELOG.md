@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.51.14 (2025-12-23)</small>
+
+* fix(PDS-3335): FieldSelect disabled tag background-color ([7b207c0](https://github.com/cloud-ru-tech/snack-uikit/commit/7b207c0))
+* docs(FF-7788): readme update ([e3142b8](https://github.com/cloud-ru-tech/snack-uikit/commit/e3142b8))
+
+
+
+
+
 ## <small>0.51.13 (2025-12-06)</small>
 
 * chore(FF-7187): update typescript to 5.9.3 & some eslint deps ([b84df17](https://github.com/cloud-ru-tech/snack-uikit/commit/b84df17))
