@@ -52,6 +52,9 @@ importers:
       '@cloud-ru/ft-conventional-changelog':
         specifier: 1.1.2
         version: 1.1.2
+      '@cloud-ru/ft-deps-validator':
+        specifier: 1.1.1
+        version: 1.1.1
       '@cloud-ru/ft-license-validator':
         specifier: 1.2.0
         version: 1.2.0
@@ -2435,6 +2438,10 @@ packages:
 
   '@cloud-ru/ft-copy-to-clipboard@0.1.0':
     resolution: {integrity: sha512-RzTCYuandisqxPijMdS3JnSN6O22g54YzhT4k6IRKGSDGrI/8zY7JN+dWR4TTx/0kqPEU27t1HAhC4GDnAybgQ==}
+
+  '@cloud-ru/ft-deps-validator@1.1.1':
+    resolution: {integrity: sha512-yLYx3bW3ykgHIaSqBIJeOt6nc83okyVyLNnky/aKdLhLdYN/gCMd72KAj1bhN2UvIpV7hwylEOf2vtC45Ij5aQ==}
+    hasBin: true
 
   '@cloud-ru/ft-license-validator@1.2.0':
     resolution: {integrity: sha512-pSJiAhYzQgDp/PuN+dVnoLVTwPu8Anh1JehkbCqQUR6K6u9KwduMGIuqg7OgNWlmPaR8OAeDCKybft+IyuOoaw==}
@@ -5476,6 +5483,10 @@ packages:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
     engines: {node: '>=12'}
 
+  cliui@9.0.1:
+    resolution: {integrity: sha512-k7ndgKhwoQveBL+/1tqGJYNz097I7WOvwbmmU2AR5+magtbjPWQTS1C5vzGkBC8Ym8UWRzfKUzUUqFLypY4Q+w==}
+    engines: {node: '>=20'}
+
   clone-buffer@1.0.0:
     resolution: {integrity: sha512-KLLTJWrvwIP+OPfMn0x2PheDEP20RPUcGXj/ERegTgdmPEZylALQldygiqrPPu8P45uNuPs7ckmReLY6v/iA5g==}
     engines: {node: '>= 0.10'}
@@ -6872,6 +6883,10 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    hasBin: true
+
+  glob@10.5.0:
+    resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
     hasBin: true
 
   glob@11.0.0:
@@ -11583,6 +11598,10 @@ packages:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
 
+  yargs-parser@22.0.0:
+    resolution: {integrity: sha512-rwu/ClNdSMpkSrUb+d6BRsSkLUq1fmfsY6TOpYzTwvwkg1/NRG85KBy3kq++A8LKQwX6lsu+aWad+2khvuXrqw==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=23}
+
   yargs@15.4.1:
     resolution: {integrity: sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==}
     engines: {node: '>=8'}
@@ -11594,6 +11613,10 @@ packages:
   yargs@17.7.2:
     resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
     engines: {node: '>=12'}
+
+  yargs@18.0.0:
+    resolution: {integrity: sha512-4UEqdc2RYGHZc7Doyqkrqiln3p9X2DZVxaGbwhn2pi7MrRagKaOcIKe8L3OxYcbhXLgLFUS3zAYuQjKBQgmuNg==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=23}
 
   yn@3.1.1:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
@@ -12850,6 +12873,15 @@ snapshots:
   '@cloud-ru/ft-copy-to-clipboard@0.1.0':
     dependencies:
       copy-to-clipboard: 3.3.3
+
+  '@cloud-ru/ft-deps-validator@1.1.1':
+    dependencies:
+      colors: 1.4.0
+      depcheck: 1.4.7
+      glob: 10.5.0
+      yargs: 18.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@cloud-ru/ft-license-validator@1.2.0':
     dependencies:
@@ -16237,6 +16269,12 @@ snapshots:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
 
+  cliui@9.0.1:
+    dependencies:
+      string-width: 7.2.0
+      strip-ansi: 7.1.0
+      wrap-ansi: 9.0.0
+
   clone-buffer@1.0.0: {}
 
   clone-deep@4.0.1:
@@ -17811,6 +17849,15 @@ snapshots:
       path-scurry: 1.11.1
 
   glob@10.4.5:
+    dependencies:
+      foreground-child: 3.3.1
+      jackspeak: 3.4.3
+      minimatch: 9.0.5
+      minipass: 7.1.2
+      package-json-from-dist: 1.0.1
+      path-scurry: 1.11.1
+
+  glob@10.5.0:
     dependencies:
       foreground-child: 3.3.1
       jackspeak: 3.4.3
@@ -23819,6 +23866,8 @@ snapshots:
 
   yargs-parser@21.1.1: {}
 
+  yargs-parser@22.0.0: {}
+
   yargs@15.4.1:
     dependencies:
       cliui: 6.0.0
@@ -23852,6 +23901,15 @@ snapshots:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 21.1.1
+
+  yargs@18.0.0:
+    dependencies:
+      cliui: 9.0.1
+      escalade: 3.2.0
+      get-caller-file: 2.0.5
+      string-width: 7.2.0
+      y18n: 5.0.8
+      yargs-parser: 22.0.0
 
   yn@3.1.1: {}
 
