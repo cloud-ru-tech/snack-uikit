@@ -126,6 +126,19 @@ function Example() {
 | ordering | `FieldSort[]` | - |  |
 | search | `string` | - |  |
 | filter | `FiltersState` | - |  |
+## isDateString
+Утилита для проверки значения на соответствие дате.
+Поддерживает:
+- ISO форматы: '2021-01-01T00:00:00Z', '2021-01-01T15:55:42.000Z'
+- Форматы с точками: '12.03.2025', '12.03.2025 12:00'
+- Частичные даты: '2026', '2026-01'
+- Timestamps: '1768492519666', '-62167219200000'
+- Временные зоны: '+03:00', '-05:00'
+С полным списком поддерживаемых значений можно ознакомиться
+в файле с unit тестами packages/toolbar/__tests__/isDateString.spec.ts
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
 ## Toolbar
 ### Props
 | name | type | default value | description |

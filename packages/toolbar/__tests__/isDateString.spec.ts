@@ -1,11 +1,23 @@
+import { describe, expect, it } from 'vitest';
+
 import { isDateString } from '../src/components/Toolbar/hooks/usePersistState/utils/isDateString';
 
 describe('isDateString', () => {
-  it.each([
+  [
+    // Parts
+    '2026',
+    '2026-01',
     '2021-01-01',
+    // ISO
     '2021-01-01T00:00:00Z',
+    '2021-01-01T15:55:42.000Z',
     '2021-01-01T00:00:00+00:00',
     '2021-01-01T00:00:00-00:00',
+    '2026-01-15T15:55:42.627+03:00',
+    '1970-01-01T00:00:00.000Z',
+    '2099-12-31T23:59:59.999Z',
+    '2026-01-15T12:00:00.500000000',
+    // Other date formats
     '12.03.2025',
     '12.03.2025 12:00',
     '12.03.2025 12:00:00',
@@ -13,11 +25,56 @@ describe('isDateString', () => {
     '12.03.2025 12:00:00.000Z',
     '12.03.2025 12:00:00.000+00:00',
     '12.03.2025 12:00:00.000-00:00',
-  ])('should return true if the value is a date string', value => {
-    expect(isDateString(value)).toBe(true);
+    // Timestamps
+    '1768492519666',
+    '946684800000',
+    '-62167219200000',
+    '86400000',
+    '31536000000',
+  ].forEach(value => {
+    it(`should return true for ${value}`, () => {
+      expect(isDateString(value)).toBe(true);
+    });
   });
 
-  it.each(['test-12.12', 'test-1', '192.168.0.1'])('should return false if the value is NOT a date string', value => {
-    expect(isDateString(value)).toBe(false);
+  [
+    '0',
+    '1',
+    '2',
+    '01-15',
+    '15:55',
+    '',
+    '  ',
+    'test',
+    'test-12.12',
+    'test-1',
+    '192.168.0.1',
+    '123abc',
+    '321abc',
+    '2026_01_15',
+    '15-01-2026',
+    '2026-13-45',
+    '2026-01-32',
+    '2026-00-15',
+    '2026-01-00',
+    'T15:55:42',
+    'Z2026-01-15',
+    '2026-01-15T25:00:00',
+    '2026-01-15T15:60:00',
+    '2026-01-15T15:55:60',
+    '2026-01-15test',
+    '2026-01-15!',
+    '2026-01-15@15:55:42',
+    '2026-01-15++03:00',
+    '2026-01-15--05:00',
+    '2026-01-15+03:00+03:00',
+    '2026-01-15T15:55:42.627Z+03:00',
+    'Infinity',
+    '-Infinity',
+    'NaN',
+  ].forEach(value => {
+    it(`should return false for ${value}`, () => {
+      expect(isDateString(value)).toBe(false);
+    });
   });
 });
