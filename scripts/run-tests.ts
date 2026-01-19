@@ -14,12 +14,12 @@ if (!isMainBranch()) {
   const paths = getChangedPackages();
 
   const filteredPaths = paths.filter(item => {
-    const testsDir = path.join(item, '__e2e__');
+    const testsDir = path.join(item, '__test__');
     return fs.existsSync(testsDir) && fs.statSync(testsDir).isDirectory();
   });
 
   if (filteredPaths.length > 0) {
-    changedPaths = filteredPaths.map(item => `${item}/__e2e__/`).join(' ');
+    changedPaths = filteredPaths.map(item => `${item}/__test__/`).join(' ');
   } else {
     process.exit(0);
   }

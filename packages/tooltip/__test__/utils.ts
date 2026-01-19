@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '../../../playwright/fixtures';
 
 const focus = async (getByTestId: (testId: string) => Locator, testId: string) => {
   const element = getByTestId(testId);
@@ -8,8 +8,8 @@ const focus = async (getByTestId: (testId: string) => Locator, testId: string) =
 const clickWithoutFocus = async (page: Page, getByTestId: (testId: string) => Locator, testId: string) => {
   const element = getByTestId(testId);
   await page.evaluate(
-    (el: HTMLElement) => {
-      el.click();
+    element => {
+      (element as HTMLElement).click();
     },
     await element.elementHandle(),
   );

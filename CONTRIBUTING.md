@@ -115,10 +115,10 @@ packages
     stories
     |__ Some.tsx
     
-    __e2e__ (testcafe)
+    __test__ (playwright)
     |__some.ts
 
-    __test__ (vitest) (опицонально)
+    __unit__ (vitest) (опицонально)
     |__ some.spec.ts (.spec -  обязательная часть)
     
     package.json

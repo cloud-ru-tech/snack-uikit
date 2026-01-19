@@ -24,13 +24,13 @@ export default [
     ],
   },
   {
-    files: ['packages/**/__e2e__/**/*.ts', 'packages/**/scripts/**/*.ts', 'playwright/**/*.ts'],
+    files: ['packages/**/__test__/**/*.ts', 'packages/**/scripts/**/*.ts', 'playwright/**/*.ts'],
     rules: {
       '@cloud-ru/ssr-safe-react/domApi': 'off',
     },
   },
   {
-    files: ['packages/**/__tests__/**/*.ts'],
+    files: ['packages/**/__unit__/**/*.ts'],
     rules: {
       'vitest/consistent-test-it': ['error', { fn: 'it' }],
       '@cloud-ru/ssr-safe-react/domApi': 'off',

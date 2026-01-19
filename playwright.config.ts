@@ -12,7 +12,7 @@ config();
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
   testDir: './packages',
-  testMatch: ['**/__e2e__/**/*.spec.ts'],
+  testMatch: ['**/__test__/**/*.spec.ts'],
   ...getEnvironmentDependentConfigPart({ outputDir: PLAYWRIGHT_ROOT_DIR }),
   outputDir: resolve(PLAYWRIGHT_ROOT_DIR, 'test-results'),
   testIgnore: ['**/node_modules/**'],
