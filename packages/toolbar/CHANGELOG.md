@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.14.16 (2026-01-19)</small>
+
+* fix(FF-7903): improved and exported date detection parsing utility from toolbar package ([1c71cba](https://github.com/cloud-ru-tech/snack-uikit/commit/1c71cba))
+* docs(FF-7788): readme update ([e3142b8](https://github.com/cloud-ru-tech/snack-uikit/commit/e3142b8))
+
+
+
+
+
 ## <small>0.14.15 (2025-12-17)</small>
 
 * fix(FF-7656): date parse issue ([edddd6c](https://github.com/cloud-ru-tech/snack-uikit/commit/edddd6c))
