@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Promo Tag",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,8 +36,8 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/typography": "0.8.11",
-    "@snack-uikit/utils": "4.0.0",
+    "@snack-uikit/typography": "0.8.12",
+    "@snack-uikit/utils": "4.0.1",
     "classnames": "2.5.1"
   }
 }

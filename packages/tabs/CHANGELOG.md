@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.10.15 (2026-01-19)</small>
+
+* chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))
+* chore(FF-6693): tune test configs ([d194f4d](https://github.com/cloud-ru-tech/snack-uikit/commit/d194f4d))
+* docs(FF-7788): readme update ([e3142b8](https://github.com/cloud-ru-tech/snack-uikit/commit/e3142b8))
+
+
+
+
+
 ## <small>0.10.14 (2025-11-28)</small>
 
 ### Only dependencies have been changed
@@ -204,7 +214,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.9.1 (2025-01-20)
 
-**Note:** Version bump only for package @snack-uikit/tabs
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.17](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/counter@0.8.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/counter/CHANGELOG.md)
+* [@snack-uikit/divider@3.2.11](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/divider/CHANGELOG.md)
+* [@snack-uikit/icons@0.27.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/typography@0.8.12](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@4.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 # 0.9.0 (2024-12-17)
 

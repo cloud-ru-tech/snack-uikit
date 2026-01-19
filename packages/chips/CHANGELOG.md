@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.28.13 (2026-01-19)</small>
+
+* chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))
+* chore(FF-6693): tune test configs ([d194f4d](https://github.com/cloud-ru-tech/snack-uikit/commit/d194f4d))
+* docs(FF-7788): readme update ([e3142b8](https://github.com/cloud-ru-tech/snack-uikit/commit/e3142b8))
+
+
+
+
+
 ## <small>0.28.12 (2025-12-06)</small>
 
 * chore(FF-7187): update typescript to 5.9.3 & some eslint deps ([b84df17](https://github.com/cloud-ru-tech/snack-uikit/commit/b84df17))

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "dropdown",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,8 +36,8 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/popover-private": "0.15.3",
-    "@snack-uikit/utils": "4.0.0",
+    "@snack-uikit/popover-private": "0.15.4",
+    "@snack-uikit/utils": "4.0.1",
     "classnames": "2.5.1"
   }
 }

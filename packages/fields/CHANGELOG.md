@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.51.15 (2026-01-19)</small>
+
+* chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))
+* chore(FF-6693): tune test configs ([d194f4d](https://github.com/cloud-ru-tech/snack-uikit/commit/d194f4d))
+
+
+
+
+
 ## <small>0.51.14 (2025-12-23)</small>
 
 * fix(PDS-3335): FieldSelect disabled tag background-color ([7b207c0](https://github.com/cloud-ru-tech/snack-uikit/commit/7b207c0))

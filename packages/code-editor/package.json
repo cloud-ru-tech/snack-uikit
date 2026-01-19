@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.7.12",
+  "version": "0.7.13",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -38,11 +38,11 @@
   "dependencies": {
     "@cloud-ru/ft-copy-to-clipboard": "0.1.0",
     "@monaco-editor/react": "4.6.0",
-    "@snack-uikit/button": "0.19.16",
-    "@snack-uikit/icons": "0.27.4",
-    "@snack-uikit/loaders": "0.9.9",
-    "@snack-uikit/typography": "0.8.11",
-    "@snack-uikit/utils": "4.0.0",
+    "@snack-uikit/button": "0.19.17",
+    "@snack-uikit/icons": "0.27.5",
+    "@snack-uikit/loaders": "0.9.10",
+    "@snack-uikit/typography": "0.8.12",
+    "@snack-uikit/utils": "4.0.1",
     "chroma-js": "3.1.2",
     "classnames": "2.5.1",
     "monaco-yaml": "5.2.3"

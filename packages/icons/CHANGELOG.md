@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.27.5 (2026-01-19)</small>
+
+* chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))
+* chore(FF-6693): tune test configs ([d194f4d](https://github.com/cloud-ru-tech/snack-uikit/commit/d194f4d))
+
+
+
+
+
 ## <small>0.27.4 (2025-11-28)</small>
 
 * feat(PDS-3144): add new icons: ScalableLeft, ScalableRight ([6d4d888](https://github.com/cloud-ru-tech/snack-uikit/commit/6d4d888))

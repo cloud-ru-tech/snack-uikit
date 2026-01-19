@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.13.24 (2026-01-19)</small>
+
+* chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))
+* chore(FF-6693): tune test configs ([d194f4d](https://github.com/cloud-ru-tech/snack-uikit/commit/d194f4d))
+* docs(FF-7788): readme update ([e3142b8](https://github.com/cloud-ru-tech/snack-uikit/commit/e3142b8))
+
+
+
+
+
 ## <small>0.13.23 (2025-11-28)</small>
 
 ### Only dependencies have been changed
@@ -151,7 +161,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.13.4 (2025-01-20)
 
-**Note:** Version bump only for package @snack-uikit/toggles
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.27.5](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/utils@4.0.1](https://github.com/cloud-ru-tech/snack-uikit/blob/master/packages/utils/CHANGELOG.md)
 
 ## 0.13.3 (2024-12-26)
 
