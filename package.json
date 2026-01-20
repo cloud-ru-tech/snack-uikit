@@ -54,7 +54,7 @@
     "@cloud-ru/ft-license-validator": "1.2.0",
     "@cloud-ru/ft-storybook-brand-addon": "2.0.7",
     "@cloud-ru/ft-storybook-deps-graph-addon": "2.0.4",
-    "@cloud-ru/ft-storybook-readme-addon": "2.0.4",
+    "@cloud-ru/ft-storybook-readme-addon": "2.0.5",
     "@geometricpanda/storybook-addon-badges": "2.0.5",
     "@playwright/test": "1.47.2",
     "@snack-uikit/figma-tokens": "18.0.1",
