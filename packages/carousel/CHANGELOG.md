@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.6.9 (2026-01-21)</small>
+
+* fix(SITE-10515): carousel item provider hide x overflow ([42ad236](https://github.com/cloud-ru-tech/snack-uikit/commit/42ad236))
+
+
+
+
+
 ## <small>0.6.8 (2026-01-19)</small>
 
 * chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))
