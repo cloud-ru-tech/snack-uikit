@@ -5,7 +5,7 @@
 
   @include styles-tokens-carousel.composite-var(styles-tokens-carousel.$carousel-content-layout);
 
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100%;
   margin: calc(0px - styles-tokens-carousel.$space-carousel-content-layout-padding);
 
