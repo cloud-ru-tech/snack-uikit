@@ -1,0 +1,77 @@
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables' as stv;
+
+$halfDuration: calc(var(--snack-notification-stack-animation-duration) / 2);
+
+.container {
+  position: relative;
+  height: 0;
+}
+
+.animationContainer {
+  position: absolute;
+  top: 0;
+  bottom: calc(-1 * stv.$space-notification-panel-card-stack-stack3-level-horizontal-padding);
+
+  overflow: hidden;
+
+  width: 100%;
+
+  transition: bottom $halfDuration calc($halfDuration / 1.7) ease-out;
+
+  [data-open] & {
+    bottom: -416px;
+    transition: bottom $halfDuration ease-out;
+  }
+}
+
+.card {
+  position: absolute;
+
+  overflow: hidden;
+
+  height: 200px;
+
+  background-color: stv.$sys-neutral-background2-level;
+  border: stv.$border-width-notification-panel-card solid stv.$sys-neutral-decor-default;
+  border-radius: stv.$radius-notification-panel-card;
+
+  transition:
+    left $halfDuration $halfDuration ease,
+    right $halfDuration $halfDuration ease,
+    opacity $halfDuration $halfDuration ease;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    opacity: stv.$opacity-a008;
+    background-color: stv.$sys-neutral-accent-default;
+  }
+
+  [data-open] & {
+    right: 0;
+    left: 0;
+    opacity: 0;
+    transition:
+      left $halfDuration ease,
+      right $halfDuration ease,
+      opacity $halfDuration ease;
+  }
+
+  &[data-level="2"] {
+    right: stv.$space-notification-panel-card-stack-stack2-level-horizontal-padding;
+    bottom: 50%;
+    left: stv.$space-notification-panel-card-stack-stack2-level-horizontal-padding;
+  }
+
+  &[data-level="3"] {
+    right: stv.$space-notification-panel-card-stack-stack3-level-horizontal-padding;
+    bottom: 0;
+    left: stv.$space-notification-panel-card-stack-stack3-level-horizontal-padding;
+  }
+}

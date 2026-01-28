@@ -26,6 +26,8 @@ type StoryProps = Omit<NotificationPanelProps, 'segments' | 'footerButton'> & {
     label: string;
   };
   showDivider: boolean;
+  stackLength: number;
+  stackTitle: string;
 };
 
 const SEGMENT_FILTER = {
@@ -42,6 +44,7 @@ const Template: StoryFn<StoryProps> = ({
   footerButton,
   loading,
   showDivider,
+  stackLength,
   ...args
 }: StoryProps) => {
   const [segmentFilter, setSegmentFilter] = useState<SegmentFilter>(SEGMENT_FILTER.All);
@@ -100,6 +103,11 @@ const Template: StoryFn<StoryProps> = ({
         loading={loading}
         content={
           <>
+            {stackLength > 0 && (
+              <NotificationPanel.Stack title={args.stackTitle} actions={args.settings?.actions}>
+                {renderCards(filteredCards.read.slice(-stackLength))}
+              </NotificationPanel.Stack>
+            )}
             {showBlank && (
               <NotificationPanel.Blank
                 icon={{
@@ -177,6 +185,8 @@ export const notificationPanel: StoryObj<StoryProps> = {
       ],
     },
     showDivider: false,
+    stackLength: 0,
+    stackTitle: 'Card stack title',
   },
 
   argTypes: {
@@ -191,6 +201,19 @@ export const notificationPanel: StoryObj<StoryProps> = {
     },
     showDivider: {
       name: '[Stories]: Show divider after unread cards',
+    },
+    stackLength: {
+      name: '[Stories]: Card stack size',
+      control: {
+        type: 'range',
+        min: 0,
+        max: 5,
+        step: 1,
+      },
+    },
+    stackTitle: {
+      name: 'Card stack title',
+      if: { arg: 'stackLength', truthy: true },
     },
   },
 

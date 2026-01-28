@@ -50,6 +50,7 @@
     "@snack-uikit/truncate-string": "0.7.7",
     "@snack-uikit/typography": "0.8.12",
     "@snack-uikit/utils": "4.0.1",
-    "classnames": "2.5.1"
+    "classnames": "2.5.1",
+    "uncontrollable": "9.0.0"
   }
 }

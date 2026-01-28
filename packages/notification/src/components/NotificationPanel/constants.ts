@@ -9,4 +9,10 @@ export const TEST_IDS = {
   readAll: 'notification-panel__readAll',
   footerButton: 'notification-panel__footerButton',
   skeleton: 'notification-panel__skeleton',
+  cardStack: {
+    headline: 'notification-panel__card-stack__headline',
+    wrapper: 'notification-panel__card-stack__wrapper',
+    title: 'notification-panel__card-stack__title',
+    openButton: 'notification-panel__card-stack__open-button',
+  },
 };

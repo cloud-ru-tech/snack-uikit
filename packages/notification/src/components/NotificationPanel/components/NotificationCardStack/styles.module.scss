@@ -1,0 +1,89 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationCard' as tokens;
+
+$duration: var(--snack-notification-stack-animation-duration);
+
+.container {
+  @include tokens.composite-var(tokens.$notification-card-stack-container);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  @include tokens.composite-var(tokens.$notification-card-stack-header-container);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(tokens.$sys-neutral-text-main);
+}
+
+.title {
+  @include tokens.composite-var(tokens.$sans-title-s);
+
+  overflow: hidden;
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.right {
+  @include tokens.composite-var(tokens.$notification-card-stack-header-right);
+
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.first {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.stack {
+  position: relative;
+  overflow: visible;
+  height: auto;
+  transition: overflow $duration allow-discrete step-end;
+
+  &:not([data-open]) {
+    overflow: hidden;
+    transition:
+      height $duration allow-discrete step-end;
+
+    &[data-tail-size] {
+      height: 8px;
+    }
+
+    &[data-tail-size="1"] {
+      height: 4px;
+    }
+  }
+}
+
+.animationContainer {
+  translate: 0 -100%;
+  scale: 0.98;
+
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$space-notification-panel-container-body-stack-cards;
+
+  margin-top: tokens.$space-notification-panel-container-body-stack-cards;
+
+  opacity: 0;
+
+  transition:
+    scale $duration,
+    translate $duration,
+    opacity $duration;
+
+  [data-open] & {
+    translate: 0 0;
+    scale: 1;
+    opacity: 1;
+  }
+}

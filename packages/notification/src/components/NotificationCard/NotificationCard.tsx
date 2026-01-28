@@ -1,23 +1,18 @@
 import cn from 'classnames';
-import { ElementType, MouseEventHandler, ReactElement, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { ElementType, MouseEventHandler, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 import { ButtonSimple, ButtonSimpleProps, ButtonTonal, ButtonTonalProps } from '@snack-uikit/button';
+import { KebabSVG } from '@snack-uikit/icons';
 import { Link, PickLinkProps } from '@snack-uikit/link';
-import { BaseItemProps } from '@snack-uikit/list';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
-import { NotificationCardFunction } from './components';
+import { type Action, ActionsButton } from '../../helperComponents/ActionsButton';
 import { APPEARANCE, TEST_IDS } from './constants';
-import { getIcon } from './helpers';
+import { getIcon, stopPropagationClick } from './helpers';
 import styles from './styles.module.scss';
 import { Appearance } from './types';
-
-type Action = {
-  icon?: ReactElement;
-  tagLabel?: string;
-} & Pick<BaseItemProps, 'content' | 'onClick' | 'disabled'>;
 
 export type NotificationCardProps<LinkElement extends ElementType = 'a'> = WithSupportProps<{
   /** Идентификатор уведомления */
@@ -122,7 +117,14 @@ export function NotificationCard<LinkElement extends ElementType = 'a'>({
       className={cn(styles.notificationCard, className)}
     >
       {actions?.length && (
-        <NotificationCardFunction actions={actions} open={isDroplistOpen} setDroplistOpen={setDroplistOpen} />
+        <ActionsButton
+          className={styles.notificationCardFunction}
+          actions={actions}
+          open={isDroplistOpen}
+          setDroplistOpen={setDroplistOpen}
+          size='s'
+          icon={<KebabSVG />}
+        />
       )}
 
       {label && (
@@ -146,7 +148,8 @@ export function NotificationCard<LinkElement extends ElementType = 'a'>({
       )}
 
       {(primaryButton || secondaryButton) && (
-        <div className={styles.notificationCardButtons}>
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        <div className={styles.notificationCardButtons} onClick={stopPropagationClick}>
           {secondaryButton && (
             <ButtonSimple {...secondaryButton} appearance='neutral' size='s' data-test-id={TEST_IDS.primaryButton} />
           )}

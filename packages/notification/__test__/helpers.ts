@@ -43,4 +43,16 @@ export const SELECTORS = {
       skeleton: panel.locator(`[data-test-id="${PANEL_TEST_IDS.skeleton}"]`),
     };
   },
+  getCardStack: (getByTestId: (testId: string) => Locator) => {
+    const wrapper = getByTestId(PANEL_TEST_IDS.cardStack.wrapper);
+    const headline = wrapper.locator(`[data-test-id="${PANEL_TEST_IDS.cardStack.headline}"]`);
+
+    return {
+      wrapper,
+      title: wrapper.locator(`[data-test-id="${PANEL_TEST_IDS.cardStack.title}"]`),
+      openButton: wrapper.locator(`[data-test-id="${PANEL_TEST_IDS.cardStack.openButton}"]`),
+      actionsTrigger: headline.locator(`[data-test-id="${CARD_TEST_IDS.actions.droplistTrigger}"]`),
+      stackContainer: wrapper.locator('[data-tail-size]'),
+    };
+  },
 };

@@ -12,6 +12,8 @@ import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
 import { NotificationCardSkeleton } from '../NotificationCard/components';
 import {
+  NotificationCardStack,
+  NotificationCardStackProps,
   NotificationPanelBlank,
   NotificationPanelBlankProps,
   NotificationPanelSettings,
@@ -110,17 +112,19 @@ export function NotificationPanel({
         </div>
       </div>
 
-      <Scroll size='m' className={styles.notificationPanelBody} ref={scrollContainerRef}>
-        {content}
-        {loading && (
-          <SkeletonContextProvider loading={loading || false}>
-            {skeletons.map(skeleton => (
-              <WithSkeleton key={skeleton} skeleton={<NotificationCardSkeleton />} />
-            ))}
-          </SkeletonContextProvider>
-        )}
+      <Scroll size='m' ref={scrollContainerRef}>
+        <div className={styles.notificationPanelBody}>
+          {content}
+          {loading && (
+            <SkeletonContextProvider loading={loading || false}>
+              {skeletons.map(skeleton => (
+                <WithSkeleton key={skeleton} skeleton={<NotificationCardSkeleton />} />
+              ))}
+            </SkeletonContextProvider>
+          )}
 
-        <div className={styles.scrollStub} ref={scrollEndRef} />
+          <div className={styles.scrollStub} ref={scrollEndRef} />
+        </div>
       </Scroll>
 
       {footerButton && (
@@ -142,4 +146,6 @@ export namespace NotificationPanel {
   export type BlankProps = NotificationPanelBlankProps;
   export const Divider: typeof NotificationPanelDivider = NotificationPanelDivider;
   export type DividerProps = NotificationPanelDividerProps;
+  export const Stack: typeof NotificationCardStack = NotificationCardStack;
+  export type StackProps = NotificationCardStackProps;
 }

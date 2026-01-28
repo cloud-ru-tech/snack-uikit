@@ -34,14 +34,14 @@
 }
 
 .notificationPanelBody {
-  flex: 1 1 auto;
-  min-height: 0;
-}
+  @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-body-container);
 
-.notificationPanelCard {
-  &:last-of-type {
-    border-bottom: none;
-  }
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: styles-tokens-element.$space-notification-panel-container-body-gap; 
+
+  min-height: 0;
 }
 
 .notificationPanelFooterButton {

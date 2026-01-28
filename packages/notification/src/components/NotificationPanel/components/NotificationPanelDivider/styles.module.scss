@@ -1,15 +1,23 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel';
+@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables' as stv;
 
-.notificationPanelDivider {
-  @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-readed-divider);
-
+.container {
   display: flex;
+  gap: stv.$space-notification-panel-divider-gap;
   align-items: center;
   justify-content: center;
+}
 
-  color: styles-tokens-notification-notificationPanel.$sys-neutral-text-light;
+.text {
+  flex-grow: 0;
+  flex-shrink: 0;
+  color: stv.$sys-neutral-text-light;
+}
 
-  background-color: styles-tokens-notification-notificationPanel.$sys-neutral-background2-level;
-  border-bottom-color: styles-tokens-notification-notificationPanel.$sys-neutral-decor-default;
+.line {
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  background-color: stv.$sys-neutral-background2-level;
+  border-bottom-color: stv.$sys-neutral-decor-default;
   border-bottom-style: solid;
 }

@@ -40,8 +40,8 @@
   box-sizing: border-box;
   max-width: 100%;
 
-  border-bottom-color: styles-tokens-notification-notificationCard.$sys-neutral-decor-default;
-  border-bottom-style: solid;
+  border-color: styles-tokens-notification-notificationCard.$sys-neutral-decor-default;
+  border-style: solid;
 
   &::before {
     pointer-events: none;
@@ -62,7 +62,7 @@
   &:focus-visible {
     @include styles-tokens-notification-notificationCard.outline-var(styles-tokens-element.$container-focused-s);
 
-    border-bottom-color: transparent;
+    border-color: transparent;
     outline-color: styles-tokens-notification-notificationCard.$sys-available-complementary;
   }
 

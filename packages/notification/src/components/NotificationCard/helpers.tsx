@@ -1,3 +1,5 @@
+import { MouseEvent } from 'react';
+
 import { AlarmFilledSVG, CheckFilledSVG, CrossFilledSVG, InfoFilledSVG } from '@snack-uikit/icons';
 
 import { APPEARANCE } from './constants';
@@ -17,4 +19,8 @@ export function getIcon(appearance: Appearance) {
     default:
       return null;
   }
+}
+
+export function stopPropagationClick(e: MouseEvent<HTMLElement>) {
+  e.stopPropagation();
 }

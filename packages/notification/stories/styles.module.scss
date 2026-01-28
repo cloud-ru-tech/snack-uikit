@@ -65,3 +65,10 @@ $border-width: 0.5px;
 .card {
   width: 464px;
 }
+
+.backdrop {
+  padding: 24px;
+  background-color: styles-theme-variables.$sys-neutral-background1-level;
+  border: 1px solid styles-theme-variables.$sys-neutral-decor-disabled;
+  border-radius: styles-theme-variables.$dimension-050m;
+}

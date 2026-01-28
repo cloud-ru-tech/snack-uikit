@@ -14,8 +14,10 @@ export type NotificationPanelDividerProps = WithSupportProps<{
 /** Разделитель для группировки или разделения карточек в списке */
 export function NotificationPanelDivider({ text, className, ...rest }: NotificationPanelDividerProps) {
   return (
-    <Typography.LightLabelS className={cn(styles.notificationPanelDivider, className)} {...extractSupportProps(rest)}>
-      {text}
-    </Typography.LightLabelS>
+    <div className={cn(styles.container, className)} {...extractSupportProps(rest)}>
+      <div className={styles.line}></div>
+      <Typography.LightLabelS className={styles.text}>{text}</Typography.LightLabelS>
+      <div className={styles.line}></div>
+    </div>
   );
 }
