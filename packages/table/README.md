@@ -96,6 +96,10 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
     enable: true, // false выключает выбор всех строк (состояние disabled)
     // или можно передать функцию для вычисления
     // enable: row => !['Pending', 'Loading'].includes(row.original.status),
+
+
+    // appearance: RowAppearance.Disabled, // по умолчанию: серый фон, скрыты actions
+    // appearance: RowAppearance.HideToggler, // обычный фон, видны actions, скрыт только чекбокс
     onChange: handleRowSelection,
   }}
 />

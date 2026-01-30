@@ -46,7 +46,7 @@ export function BodyRow<TData>({
   const { getRowBackgroundColor } = useTableContext();
 
   const handleRowClick = (e: MouseEvent<HTMLDivElement>) => {
-    if (disabled) return;
+    if (disabled && disabledRowAppearance === RowAppearance.Disabled) return;
 
     onRowClick?.(e, {
       id: row.id,
@@ -62,7 +62,7 @@ export function BodyRow<TData>({
   const rowBackgroundColor = getRowBackgroundColor?.(row.original);
 
   return (
-    <RowContext.Provider value={{ dropListOpened, setDropListOpen }}>
+    <RowContext.Provider value={{ dropListOpened, setDropListOpen, disabledRowAppearance }}>
       <Row
         onClick={handleRowClick}
         data-clickable={Boolean(onRowClick) || undefined}

@@ -3,16 +3,19 @@ import { createContext, Dispatch, SetStateAction, useContext } from 'react';
 
 import { ValueOf } from '@snack-uikit/utils';
 
+import { RowAppearance } from '../components/types';
 import { TABLE_ROW_COLOR } from '../constants';
 
 type RowContext = {
   dropListOpened: boolean;
   setDropListOpen: Dispatch<SetStateAction<boolean>>;
+  disabledRowAppearance: RowAppearance;
 };
 
 export const RowContext = createContext<RowContext>({
   dropListOpened: false,
   setDropListOpen() {},
+  disabledRowAppearance: RowAppearance.Disabled,
 });
 
 export const useRowContext = () => useContext(RowContext);

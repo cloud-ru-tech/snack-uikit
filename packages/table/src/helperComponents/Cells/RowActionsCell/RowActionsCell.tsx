@@ -5,6 +5,7 @@ import { ButtonFunction } from '@snack-uikit/button';
 import { MoreSVG } from '@snack-uikit/icons';
 import { Droplist, DroplistProps, isBaseItemProps, ItemProps } from '@snack-uikit/list';
 
+import { RowAppearance } from '../../../components/types';
 import { COLUMN_PIN_POSITION, DefaultColumns, TEST_IDS } from '../../../constants';
 import { ColumnDefinition } from '../../../types';
 import { useRowContext } from '../../contexts';
@@ -16,7 +17,7 @@ type RowActionsCellProps<TData> = {
 };
 
 function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
-  const { dropListOpened, setDropListOpen } = useRowContext();
+  const { dropListOpened, setDropListOpen, disabledRowAppearance } = useRowContext();
 
   const patchItem = useCallback((item: ItemProps, cb: MouseEventHandler): ItemProps => {
     if (isBaseItemProps(item)) {
@@ -32,7 +33,8 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
     return { ...item, items: item.items.map(i => patchItem(i, cb)) };
   }, []);
 
-  const disabled = !row.getCanSelect();
+  const canSelect = row.getCanSelect();
+  const shouldShowActions = canSelect || disabledRowAppearance !== RowAppearance.Disabled;
 
   const stopPropagationClick = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
@@ -46,7 +48,7 @@ function RowActionsCell<TData>({ row, actions }: RowActionsCellProps<TData>) {
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div onClick={stopPropagationClick} className={styles.rowActionsCellWrap} data-open={dropListOpened || undefined}>
-      {!disabled && Boolean(actions.length) && (
+      {shouldShowActions && Boolean(actions.length) && (
         <Droplist
           trigger='click'
           open={dropListOpened}
