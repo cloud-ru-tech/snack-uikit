@@ -98,6 +98,9 @@ function Example() {
 | className | `string` | - | CSS-класс |
 | components | `Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>` | {} | Переопределение компонентов по умолчанию и добавление новых в CodeEditor |
 | onCopyClick | `() => void` | - | Действие при клике на кнопку копирования кода |
+| skipHtml | `boolean` | true | Игнор HTML в Markdown |
+| remarkPlugins | `PluggableList` | [] | Список remark плагинов для использования. @see {@link https://github.com/remarkjs/remark/blob/main/doc/plugins.md#list-of-plugins Список remark плагинов} |
+| rehypePlugins | `PluggableList` | - | Список rehype плагинов для использования. @see {@link https://github.com/rehypejs/rehype/blob/main/doc/plugins.md#list-of-plugins Список rehype плагинов} |
 ## MarkdownEditor
 ### Props
 | name | type | default value | description |
