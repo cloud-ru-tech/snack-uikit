@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.5.44 (2026-02-04)</small>
+
+* feat(PDS-3492): added opportunity inject plugins to Markdown ([01bf82d](https://github.com/cloud-ru-tech/snack-uikit/commit/01bf82d))
+
+
+
+
+
 ## <small>0.5.43 (2026-01-19)</small>
 
 * chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))
