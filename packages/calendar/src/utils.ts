@@ -85,6 +85,15 @@ export const getInRangePosition = (date: Date, viewMode: ViewMode, range?: Range
 export const getEndOfTheDay = (date: Date) =>
   new Date(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).valueOf() - 1);
 
+export const getStartOfTheMonth = (date: Date) => new Date(new Date(date.getFullYear(), date.getMonth(), 1).valueOf());
+
+export const getEndOfTheMonth = (date: Date) =>
+  new Date(new Date(date.getFullYear(), date.getMonth() + 1, 1).valueOf() - 1);
+
+export const getStartOfTheYear = (date: Date) => new Date(new Date(date.getFullYear(), 0, 1).valueOf());
+
+export const getEndOfTheYear = (date: Date) => new Date(new Date(date.getFullYear() + 1, 0, 1).valueOf() - 1);
+
 export const getTestIdBuilder = (testId?: string) => (prefix: string) => (testId ? `${prefix}-${testId}` : undefined);
 
 const getNavigatorLocale = () => (isBrowser() ? (navigator?.language ?? 'ru-RU') : 'ru-RU');

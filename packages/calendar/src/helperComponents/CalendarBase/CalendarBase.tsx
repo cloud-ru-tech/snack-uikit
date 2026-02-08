@@ -18,7 +18,16 @@ import {
   Size,
   ViewMode,
 } from '../../types';
-import { getEndOfTheDay, getLocale, getTestIdBuilder, sortDates } from '../../utils';
+import {
+  getEndOfTheDay,
+  getEndOfTheMonth,
+  getEndOfTheYear,
+  getLocale,
+  getStartOfTheMonth,
+  getStartOfTheYear,
+  getTestIdBuilder,
+  sortDates,
+} from '../../utils';
 import { CalendarBody } from '../CalendarBody';
 import { CalendarContext } from '../CalendarContext';
 import { CalendarNavigation } from '../CalendarNavigation';
@@ -65,8 +74,10 @@ const CALENDAR_SIZE_MAP: Record<Size, string> = {
 const CALENDAR_DEFAULT_MODE_MAP: Record<CalendarMode, ViewMode> = {
   [CALENDAR_MODE.Date]: VIEW_MODE.Month,
   [CALENDAR_MODE.DateTime]: VIEW_MODE.Month,
-  [CALENDAR_MODE.Range]: VIEW_MODE.Month,
+  [CALENDAR_MODE.DateRange]: VIEW_MODE.Month,
+  [CALENDAR_MODE.MonthRange]: VIEW_MODE.Year,
   [CALENDAR_MODE.Month]: VIEW_MODE.Year,
+  [CALENDAR_MODE.YearRange]: VIEW_MODE.Decade,
   [CALENDAR_MODE.Year]: VIEW_MODE.Decade,
 };
 
@@ -113,16 +124,27 @@ export function CalendarBase({
 
   const applyButtonRef = useRef<HTMLButtonElement>(null);
   const currentButtonRef = useRef<HTMLButtonElement>(null);
-  const hoursKeyboardNavigationRef: ListProps['keyboardNavigationRef'] = useRef({ focusItem: () => {} });
-  const minutesKeyboardNavigationRef: ListProps['keyboardNavigationRef'] = useRef({ focusItem: () => {} });
-  const secondsKeyboardNavigationRef: ListProps['keyboardNavigationRef'] = useRef({ focusItem: () => {} });
+  const hoursKeyboardNavigationRef: ListProps['keyboardNavigationRef'] = useRef({ focusItem: () => { } });
+  const minutesKeyboardNavigationRef: ListProps['keyboardNavigationRef'] = useRef({ focusItem: () => { } });
+  const secondsKeyboardNavigationRef: ListProps['keyboardNavigationRef'] = useRef({ focusItem: () => { } });
 
   const setValue = useCallback(
     (dates: Range) => {
       const [first, last] = sortDates(dates);
+
+      if (mode === CALENDAR_MODE.MonthRange) {
+        setValueState([getStartOfTheMonth(first), getEndOfTheMonth(last)]);
+        return;
+      }
+
+      if (mode === CALENDAR_MODE.YearRange) {
+        setValueState([getStartOfTheYear(first), getEndOfTheYear(last)]);
+        return;
+      }
+
       setValueState([first, getEndOfTheDay(last)]);
     },
-    [setValueState],
+    [mode, setValueState],
   );
 
   const { preselectedRange, continuePreselect, completePreselect, restartPreselect, startPreselect } = useRange({
@@ -145,7 +167,7 @@ export function CalendarBase({
     return getDefaultPresets(t, today);
   }, [presets?.items, t, today]);
 
-  const arePeriodPresetsDisplayed = mode === 'range' && presets?.enabled && !buildCellProps; // TODO PDS-3139
+  const arePeriodPresetsDisplayed = mode === CALENDAR_MODE.DateRange && presets?.enabled && !buildCellProps; // TODO PDS-3139
 
   const onPresetClick = useCallback(
     (selectedPeriod: Range) => {

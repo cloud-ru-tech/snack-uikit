@@ -17,6 +17,8 @@ export function DecadeView() {
     restartPreselect,
     mode,
     setValue,
+    startPreselect,
+    completePreselect,
   } = useContext(CalendarContext);
 
   const grid = useGrid({
@@ -26,6 +28,11 @@ export function DecadeView() {
     getItemLabel: getYearLabel,
 
     onSelect(date: Date) {
+      if (mode === CALENDAR_MODE.YearRange) {
+        preselectedRange ? completePreselect(date) : startPreselect(date);
+        return;
+      }
+
       if (mode === CALENDAR_MODE.Year) {
         setValue([date, date]);
         return;

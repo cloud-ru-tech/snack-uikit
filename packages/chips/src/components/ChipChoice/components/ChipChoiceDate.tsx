@@ -26,7 +26,7 @@ export type ChipChoiceDateProps = ChipChoiceCommonProps & {
   onChange?(value: Date): void;
   /** Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение */
   valueRender?(value?: Date): ReactNode;
-  mode?: Exclude<CalendarProps['mode'], 'range'>;
+  mode?: Exclude<CalendarProps['mode'], 'date-range' | 'month-range' | 'year-range'>;
   /** Колбек свойств для управления ячейками календаря */
   buildCalendarCellProps?: CalendarProps['buildCellProps'];
 } & (

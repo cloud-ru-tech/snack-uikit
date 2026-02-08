@@ -16,7 +16,7 @@ const PRESETS_TITLE = `presets-header-${TEST_ID}`;
 const DEFAULT_OPTIONS_LABELS = getDefaultOptions();
 const CUSTOM_OPTIONS_LABELS = getCustomOptions();
 
-test.describe('[calendar] mode=range', () => {
+test.describe('[calendar] mode=date-range', () => {
   test('Should highlight selected range', async ({ page, gotoStory, getByTestId }) => {
     await gotoStory({
       name: 'calendar',
@@ -24,7 +24,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         rangeValueStart: 1681894800000, // 19 апреля 23
         rangeValueEnd: 1682672400000, // 28 апреля 23
       },
@@ -46,7 +46,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         rangeValueStart: 1681894800000, // 19 апреля 23
         rangeValueEnd: 1751101200000, // 28 июня 25
       },
@@ -68,7 +68,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         rangeValueStart: 1681894800000, // 19 апреля 23
         rangeValueEnd: 1751101200000, // 28 июня 25
       },
@@ -88,7 +88,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         rangeValueStart: 1681894800000, // 19 апреля 23
         rangeValueEnd: 1751101200000, // 28 июня 25
       },
@@ -108,7 +108,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         localeName: 'ru-RU',
       },
     });
@@ -129,7 +129,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         localeName: 'ru-RU',
       },
     });
@@ -149,7 +149,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         localeName: 'ru-RU',
       },
     });
@@ -170,7 +170,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
       },
     });
     await expect(getByTestId(TEST_ID)).toBeVisible();
@@ -202,7 +202,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
       },
     });
     await expect(getByTestId(TEST_ID)).toBeVisible();
@@ -220,7 +220,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         showPeriodPresets: true,
       },
     });
@@ -242,7 +242,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         showPeriodPresets: true,
         showCustomPresetsItems: true,
       },
@@ -264,7 +264,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         showPeriodPresets: true,
         showCustomPresetsItems: true,
         showPresetsTitle: false,
@@ -288,7 +288,7 @@ test.describe('[calendar] mode=range', () => {
       props: {
         'data-test-id': TEST_ID,
         dateToday: 1684141200000, // 15 Мая 2023, 12-00
-        mode: 'range',
+        mode: 'date-range',
         showPeriodPresets: true,
         showCustomPresetsItems: true,
       },

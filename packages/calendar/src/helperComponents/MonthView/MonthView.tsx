@@ -62,7 +62,7 @@ export function MonthView() {
         return;
       }
 
-      if (mode === CALENDAR_MODE.Range) {
+      if (mode === CALENDAR_MODE.DateRange) {
         preselectedRange ? completePreselect(date) : startPreselect(date);
         return;
       }

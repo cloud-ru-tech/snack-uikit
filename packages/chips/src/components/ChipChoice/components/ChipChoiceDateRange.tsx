@@ -74,7 +74,7 @@ export function ChipChoiceDateRange({
     <Dropdown
       content={
         <Calendar
-          mode='range'
+          mode='date-range'
           size={CALENDAR_SIZE_MAP[size]}
           value={selectedValue}
           onChangeValue={value => {

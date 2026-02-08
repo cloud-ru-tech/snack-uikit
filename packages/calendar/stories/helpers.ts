@@ -1,4 +1,8 @@
-import { BuildCellPropsFunction, Range } from '../src/types';
+import { CALENDAR_MODE } from '../src/constants';
+import { BuildCellPropsFunction, CalendarMode, Range } from '../src/types';
+
+export const isRangeMode = (mode: CalendarMode): boolean =>
+  mode === CALENDAR_MODE.DateRange || mode === CALENDAR_MODE.MonthRange || mode === CALENDAR_MODE.YearRange;
 
 const disablePast: BuildCellPropsFunction = (date, viewMode) => {
   let isDisabled = false;

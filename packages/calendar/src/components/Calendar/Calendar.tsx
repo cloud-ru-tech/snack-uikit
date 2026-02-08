@@ -49,7 +49,7 @@ type CommonCalendarProps = {
   onFocusLeave?(direction: FocusDirection): void;
   /** Ссылка на управление первым элементом навигации */
   navigationStartRef?: RefObject<{ focus(): void }>;
-  /** Настройки секции с пресетами быстрого выбора периода. Доступны только при mode === 'range' и отсутствии buildCellProps (временно PDS-3139) */
+  /** Настройки секции с пресетами быстрого выбора периода. Доступны только при mode === 'date-range' и отсутствии buildCellProps (временно PDS-3139) */
   presets?: PresetsOptions;
 };
 
@@ -100,18 +100,46 @@ type DateTimeCalendarProps = CommonCalendarProps & {
 };
 
 type RangeCalendarProps = CommonCalendarProps & {
-  /** <br> - `range` - режим выбора периода */
-  mode: typeof CALENDAR_MODE.Range;
-  /** <br> - в режиме range тип `Range` (`[Date, Date]`) */
+  /** <br> - `date-range` - режим выбора периода */
+  mode: typeof CALENDAR_MODE.DateRange;
+  /** <br> - в режиме date-range тип `Range` (`[Date, Date]`) */
   value?: Range;
-  /** <br> - в режиме range тип `Range` (`[Date, Date]`) */
+  /** <br> - в режиме date-range тип `Range` (`[Date, Date]`) */
   defaultValue?: Range;
-  /** <br> - в режиме range принимает тип `Range` */
+  /** <br> - в режиме date-range принимает тип `Range` */
+  onChangeValue?(value: Range): void;
+};
+
+type MonthRangeCalendarProps = CommonCalendarProps & {
+  /** <br> - `month-range` - режим выбора периода из месяцев */
+  mode: typeof CALENDAR_MODE.MonthRange;
+  /** <br> - в режиме month-range тип `Range` (`[Date, Date]`) */
+  value?: Range;
+  /** <br> - в режиме month-range тип `Range` (`[Date, Date]`) */
+  defaultValue?: Range;
+  /** <br> - в режиме month-range принимает тип `Range` */
+  onChangeValue?(value: Range): void;
+};
+
+type YearRangeCalendarProps = CommonCalendarProps & {
+  /** <br> - `year-range` - режим выбора периода из лет */
+  mode: typeof CALENDAR_MODE.YearRange;
+  /** <br> - в режиме year-range тип `Range` (`[Date, Date]`) */
+  value?: Range;
+  /** <br> - в режиме year-range тип `Range` (`[Date, Date]`) */
+  defaultValue?: Range;
+  /** <br> - в режиме year-range принимает тип `Range` */
   onChangeValue?(value: Range): void;
 };
 
 export type CalendarProps = WithSupportProps<
-  DateCalendarProps | RangeCalendarProps | MonthCalendarProps | DateTimeCalendarProps | YearCalendarProps
+  | DateCalendarProps
+  | RangeCalendarProps
+  | MonthRangeCalendarProps
+  | YearRangeCalendarProps
+  | MonthCalendarProps
+  | DateTimeCalendarProps
+  | YearCalendarProps
 >;
 
 export function Calendar(props: CalendarProps) {

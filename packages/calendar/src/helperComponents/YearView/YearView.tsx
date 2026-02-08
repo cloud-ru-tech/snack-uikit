@@ -19,6 +19,8 @@ export function YearView() {
     locale,
     setValue,
     mode,
+    startPreselect,
+    completePreselect,
   } = useContext(CalendarContext);
 
   const grid = useGrid({
@@ -30,6 +32,11 @@ export function YearView() {
     onSelect(date: Date) {
       if (mode === CALENDAR_MODE.Month) {
         setValue([date, date]);
+        return;
+      }
+
+      if (mode === CALENDAR_MODE.MonthRange) {
+        preselectedRange ? completePreselect(date) : startPreselect(date);
         return;
       }
 

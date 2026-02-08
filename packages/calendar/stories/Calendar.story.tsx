@@ -10,7 +10,7 @@ import componentReadme from '../README.md';
 import { Calendar, CalendarProps } from '../src';
 import { CALENDAR_MODE, SIZE } from '../src/constants';
 import { Range } from '../src/types';
-import { getBuildCellProps, getCustomListOfPeriodOptions } from './helpers';
+import { getBuildCellProps, getCustomListOfPeriodOptions, isRangeMode } from './helpers';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -49,7 +49,7 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
     if (args.dateValue) {
       value = new Date(args.dateValue);
     }
-  } else if (args.mode === CALENDAR_MODE.Range) {
+  } else if (isRangeMode(args.mode)) {
     if (args.rangeValueStart && args.rangeValueEnd) {
       value = [new Date(args.rangeValueStart), new Date(args.rangeValueEnd)];
     }
@@ -60,7 +60,7 @@ const Template: StoryFn<StoryProps> = ({ localeName, modeBuildCellProps, ...args
     if (args.dateDefaultValue) {
       defaultValue = new Date(args.dateDefaultValue);
     }
-  } else if (args.mode === CALENDAR_MODE.Range) {
+  } else if (isRangeMode(args.mode)) {
     if (args.rangeDefaultValueStart && args.rangeDefaultValueEnd) {
       defaultValue = [new Date(args.rangeDefaultValueStart), new Date(args.rangeDefaultValueEnd)];
     }
@@ -187,35 +187,35 @@ export const calendar = {
     dateValue: {
       name: 'value',
       control: { type: 'date' },
-      if: { arg: 'mode', neq: CALENDAR_MODE.Range },
+      if: { arg: 'mode', neq: CALENDAR_MODE.DateRange },
     },
     dateDefaultValue: {
       name: 'defaultValue',
       control: { type: 'date' },
-      if: { arg: 'mode', neq: CALENDAR_MODE.Range },
+      if: { arg: 'mode', neq: CALENDAR_MODE.DateRange },
     },
     rangeValueStart: {
       name: 'value start',
       control: { type: 'date' },
-      if: { arg: 'mode', eq: CALENDAR_MODE.Range },
+      if: { arg: 'mode', eq: CALENDAR_MODE.DateRange },
     },
     rangeValueEnd: {
       name: 'value end',
       control: { type: 'date' },
-      if: { arg: 'mode', eq: CALENDAR_MODE.Range },
+      if: { arg: 'mode', eq: CALENDAR_MODE.DateRange },
     },
     rangeDefaultValueStart: {
       name: 'defaultValue start',
       control: { type: 'date' },
-      if: { arg: 'mode', eq: CALENDAR_MODE.Range },
+      if: { arg: 'mode', eq: CALENDAR_MODE.DateRange },
     },
     rangeDefaultValueEnd: {
       name: 'defaultValue end',
       control: { type: 'date' },
-      if: { arg: 'mode', eq: CALENDAR_MODE.Range },
+      if: { arg: 'mode', eq: CALENDAR_MODE.DateRange },
     },
     showPeriodPresets: {
-      if: { arg: 'mode', eq: CALENDAR_MODE.Range },
+      if: { arg: 'mode', eq: CALENDAR_MODE.DateRange },
     },
     hidePeriodPresetsTitle: {
       if: { arg: 'showPeriodPresets', eq: true },

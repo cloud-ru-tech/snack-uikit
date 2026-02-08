@@ -16,10 +16,10 @@
 
 ### Description
 
-- `Calendar` — основной компонент для выбора дат и периодов: он может работать в режимах `date`, `range`, `month`, `year` и `date-time` (дата и время).
+- `Calendar` — основной компонент для выбора дат и периодов: он может работать в режимах `date`, `date-range`, `month`, `month-range`, `year-range`, `year` и `date-time` (дата и время).
 - Компонент поддерживает как контролируемый (`value` + `onChangeValue`), так и неконтролируемый (`defaultValue`) режимы и умеет подстраиваться под разные размеры через проп `size` (`s`, `m`, `l`).
 - С помощью колбека `buildCellProps` можно управлять доступностью и подсветкой отдельных ячеек (например, отключить прошлые даты или выделить праздничные дни), а опция `showHolidays` автоматически раскрашивает выходные.
-- Проп `presets` позволяет добавить панель с пресетами для быстрого выбора периода в режиме `range`, в том числе с собственным списком вариантов.
+- Проп `presets` позволяет добавить панель с пресетами для быстрого выбора периода в режиме `date-range`, в том числе с собственным списком вариантов.
 - Локаль (`locale`) задаёт язык подписей и первый день недели, при отсутствии явно переданного значения используется язык браузера пользователя.
 - Figma: [`Calendar`](https://www.figma.com/file/jtGxAPvFJOMir7V0eQFukN/Snack-UI-Kit-1.1.0?node-id=41%3A27244&mode=design).
 
@@ -41,7 +41,7 @@ function CalendarExample() {
 
       {/* Выбор периода c пресетами */}
       <Calendar
-        mode='range'
+        mode='date-range'
         presets={{
           enabled: true,
           title: true,
@@ -102,7 +102,7 @@ function TimePickerExample() {
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| mode* | "date" \| "date-time" \| "range" \| "month" \| "year" | - | Режим работы календаря: <br> - `date` - режим выбора даты <br> - `range` - режим выбора периода <br> - `month` - режим выбора месяца <br> - `date-time` - режим выбора даты и времени <br> - `year` - режим выбора года |
+| mode* | "date" \| "date-time" \| "date-range" \| "month" \| "month-range" \| "year" \| "year-range" | - | Режим работы календаря: <br> - `date` - режим выбора даты <br> - `date-range` - режим выбора периода <br> - `month-range` - режим выбора периода из месяцев <br> - `year-range` - режим выбора периода из лет <br> - `month` - режим выбора месяца <br> - `date-time` - режим выбора даты и времени <br> - `year` - режим выбора года |
 | size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер |
 | today | `number \| Date` | - | Дата сегодняшнего дня |
 | showHolidays | `boolean` | - | Раскрашивает субботу и воскресенье |
@@ -114,10 +114,10 @@ function TimePickerExample() {
 | locale | `Intl.Locale` | Проставляется в соответствие с языком в настройках браузера | Локаль, в соответствие с которой выставляется язык названий и первый день недели |
 | onFocusLeave | `(direction: FocusDirection) => void` | - | Колбек потери фокуса. Вызывается со значением `next`, когда фокус покидает компонент, передвигаясь вперед, по клавише `tab`. Со значением `prev` - по клавише стрелки вверх или `shift + tab`. |
 | navigationStartRef | `RefObject<{ focus(): void; }>` | - | Ссылка на управление первым элементом навигации |
-| presets | `PresetsOptions` | - | Настройки секции с пресетами быстрого выбора периода. Доступны только при mode === 'range' и отсутствии buildCellProps (временно PDS-3139) |
-| value | `Date \| Range` | - | Выбранное значение.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` <br> - в режиме year тип `Date` |
-| defaultValue | `Date \| Range` | - | Значение по-умолчанию для uncontrolled.<br> - в режиме date тип `Date` <br> - в режиме range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` <br> - в режиме year тип `Date` |
-| onChangeValue | `((value: Date) => void) \| ((value: Range) => void) \| ((value: Date) => void) \| ((value: Date) => void) \| ((value: Date) => void)` | - | Колбек выбора значения.<br> - в режиме date принимает тип `Date` <br> - в режиме range принимает тип `Range` <br> - в режиме month принимает тип `Date` <br> - в режиме date-time принимает тип `Date` <br> - в режиме year принимает тип `Date` |
+| presets | `PresetsOptions` | - | Настройки секции с пресетами быстрого выбора периода. Доступны только при mode === 'date-range' и отсутствии buildCellProps (временно PDS-3139) |
+| value | `Date \| Range` | - | Выбранное значение.<br> - в режиме date тип `Date` <br> - в режиме date-range тип `Range` (`[Date, Date]`) <br> - в режиме month-range тип `Range` (`[Date, Date]`) <br> - в режиме year-range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` <br> - в режиме year тип `Date` |
+| defaultValue | `Date \| Range` | - | Значение по-умолчанию для uncontrolled.<br> - в режиме date тип `Date` <br> - в режиме date-range тип `Range` (`[Date, Date]`) <br> - в режиме month-range тип `Range` (`[Date, Date]`) <br> - в режиме year-range тип `Range` (`[Date, Date]`) <br> - в режиме month тип `Date` <br> - в режиме date-time тип `Date` <br> - в режиме year тип `Date` |
+| onChangeValue | `((value: Date) => void) \| ((value: Range) => void) \| ((value: Range) => void) \| ((value: Range) => void) \| ((value: Date) => void) \| ((value: Date) => void) \| ((value: Date) => void)` | - | Колбек выбора значения.<br> - в режиме date принимает тип `Date` <br> - в режиме date-range принимает тип `Range` <br> - в режиме month-range принимает тип `Range` <br> - в режиме year-range принимает тип `Range` <br> - в режиме month принимает тип `Date` <br> - в режиме date-time принимает тип `Date` <br> - в режиме year принимает тип `Date` |
 | showSeconds | `boolean` | - | Показывать ли секунды (только в режиме date-time) |
 ## TimePicker
 ### Props

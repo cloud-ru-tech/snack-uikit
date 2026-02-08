@@ -72,10 +72,11 @@ export function useGrid({
           ? new Date(dateAndTime?.year ?? 0, dateAndTime?.month ?? 0, dateAndTime?.day ?? 0)
           : undefined;
 
-        const inRangePosition =
-          mode === CALENDAR_MODE.Range
-            ? getInRangePosition(date, viewMode, preselectedRange || value)
-            : IN_RANGE_POSITION.Out;
+        const isRangeMode =
+          mode === CALENDAR_MODE.DateRange || mode === CALENDAR_MODE.MonthRange || mode === CALENDAR_MODE.YearRange;
+        const inRangePosition = isRangeMode
+          ? getInRangePosition(date, viewMode, preselectedRange || value)
+          : IN_RANGE_POSITION.Out;
 
         const isSelectedValue =
           value && !preselectedRange && !dateTimeSelectedValue
