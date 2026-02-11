@@ -27,6 +27,11 @@ export enum RowAppearance {
   HideToggler = 'hide-toggler',
 }
 
+export enum ToolbarCheckBoxMode {
+  PageRows = 'pageRows',
+  AllRows = 'allRows',
+}
+
 type BaseTableProps<TData extends object, TFilters extends FiltersState = Record<string, unknown>> = WithSupportProps<{
   /** Данные для отрисовки */
   data: TData[];
@@ -202,6 +207,8 @@ export type InfiniteTableProps<
   suppressPagination?: never;
 
   manualPagination?: never;
+
+  toolbarCheckBoxMode?: never;
 };
 
 export type ClientTableProps<
@@ -236,6 +243,11 @@ export type ClientTableProps<
   manualPagination?: boolean;
 
   infiniteLoading?: never;
+
+  /**
+   * Определение как должен работать чекбокс в тулбаре (по всем страницам или по текущей)
+   */
+  toolbarCheckBoxMode?: ToolbarCheckBoxMode;
 };
 
 export type TableProps<TData extends object, TFilters extends FiltersState = Record<string, unknown>> =
@@ -244,7 +256,7 @@ export type TableProps<TData extends object, TFilters extends FiltersState = Rec
 
 export type ServerTableProps<TData extends object, TFilters extends FiltersState = Record<string, unknown>> = Omit<
   ClientTableProps<TData, TFilters>,
-  'pageSize' | 'pageCount' | 'pagination' | 'search' | 'data'
+  'pageSize' | 'pageCount' | 'pagination' | 'search' | 'data' | 'toolbarCheckBoxMode'
 > & {
   /** Данные для отрисовки */
   items?: TData[];

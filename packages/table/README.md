@@ -169,6 +169,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | filter | `FiltersState` | - |  |
+| ordering | `FieldSort[]` | - |  |
 | search | `string` | - |  |
 | pagination | `PaginationState \| PaginationParams` | - |  |
 | sorting | `SortingState` | - |  |
@@ -221,6 +222,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | infiniteLoading | `boolean` | - | Режим работы "бесконечной" загрузки |
 | suppressPagination | `boolean` | - | Отключение пагинации |
 | manualPagination | `boolean` | - |  |
+| toolbarCheckBoxMode | enum ToolbarCheckBoxMode: `"pageRows"`, `"allRows"` | - | Определение как должен работать чекбокс в тулбаре (по всем страницам или по текущей) |
 ## Table.getStatusColumnDef
 Вспомогательная функция для создания ячейки со статусом
 ### Props

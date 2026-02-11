@@ -64,6 +64,9 @@ export const selectors = {
   getSelectedState(page: Page) {
     return page.locator(dataTestIdSelector(STORY_TEST_IDS.selected));
   },
+  getToolbarCheckboxState(page: Page) {
+    return page.locator(dataTestIdSelector('toolbar__checkbox'));
+  },
 };
 
 type Selectors = typeof selectors;

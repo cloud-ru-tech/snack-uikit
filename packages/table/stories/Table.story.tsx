@@ -15,6 +15,7 @@ import {
   RowSelectionState,
   Table,
   TableProps,
+  ToolbarCheckBoxMode,
 } from '../src';
 import { TABLE_ROW_COLOR } from '../src/constants';
 import { STORY_TEST_IDS, StoryStatusColumnViewMode } from './constants';
@@ -49,6 +50,7 @@ type StoryProps = Omit<TableProps<StubData, Filters>, 'rowSelection' | 'sort' | 
   showColumnsSettings: boolean;
   initialColumnFiltersOpen: boolean;
   showRowBackgroundColor: boolean;
+  toolbarCheckBoxMode: ToolbarCheckBoxMode;
 };
 
 const PINNED_TOP_ROWS = ['0', '2'];
@@ -124,6 +126,7 @@ const Template: StoryFn<StoryProps> = ({
   initialColumnFiltersOpen,
   showRowBackgroundColor,
   disabledRowAppearance,
+  toolbarCheckBoxMode,
   ...args
 }: StoryProps) => {
   const data = useMemo(
@@ -198,18 +201,28 @@ const Template: StoryFn<StoryProps> = ({
         suppressPagination: undefined,
         pageCount: undefined,
         autoResetPageIndex: undefined,
+        toolbarCheckBoxMode: undefined,
       };
     }
 
     return {
       ...args,
       columnsSettings,
+      toolbarCheckBoxMode,
+      infiniteLoading: undefined,
       pagination: {
         options: [5, 10, 100],
         optionsRender: paginationOptionsRender,
       },
     };
-  }, [args, enableColumnsOrderSortByDrag, infiniteLoading, paginationOptionsRender, showColumnsSettings]);
+  }, [
+    toolbarCheckBoxMode,
+    args,
+    enableColumnsOrderSortByDrag,
+    infiniteLoading,
+    paginationOptionsRender,
+    showColumnsSettings,
+  ]);
 
   const columnFilters = useMemo(() => {
     if (!showFilters || !columnFiltersProp) {
@@ -344,6 +357,7 @@ export const table: StoryObj<StoryProps> = {
     enableColumnsOrderSortByDrag: true,
     showColumnsSettings: true,
     showRowBackgroundColor: false,
+    toolbarCheckBoxMode: ToolbarCheckBoxMode.PageRows,
   },
 
   argTypes: {

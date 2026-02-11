@@ -50,7 +50,7 @@ import {
 } from '../../helperComponents';
 import { ColumnDefinition } from '../../types';
 import { fuzzyFilter } from '../../utils';
-import { TableProps } from '../types';
+import { TableProps, ToolbarCheckBoxMode } from '../types';
 import {
   useColumnOrderByDrag,
   useColumnSettings,
@@ -124,6 +124,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   rowAutoHeight,
   columnsSettings: columnsSettingsProp,
   getRowBackgroundColor,
+  toolbarCheckBoxMode,
   ...rest
 }: TableProps<TData, TFilters>) {
   const [globalFilter, onGlobalFilterChange] = useStateControl<string>(search, '');
@@ -328,10 +329,12 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     [bulkActionsProp, enableSelection, table],
   );
 
+  const isAllRowsMode = toolbarCheckBoxMode === ToolbarCheckBoxMode.AllRows;
+
   const handleOnToolbarCheck = useCallback(() => {
     if (!loading && !enableSelectPinned && table.getTopRows().length) {
       const centerRows = table.getCenterRows();
-      const isSomeRowsSelected = table.getIsSomePageRowsSelected();
+      const isSomeRowsSelected = isAllRowsMode ? table.getIsSomeRowsSelected() : table.getIsSomePageRowsSelected();
       const isAllCenterRowsSelected = centerRows.every(row => row.getIsSelected());
 
       if (isAllCenterRowsSelected) {
@@ -344,10 +347,10 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
     }
 
     if (!loading && rowSelectionProp?.multiRow) {
-      table.toggleAllPageRowsSelected();
+      isAllRowsMode ? table.toggleAllRowsSelected() : table.toggleAllPageRowsSelected();
       return;
     }
-  }, [loading, rowSelectionProp?.multiRow, table, enableSelectPinned]);
+  }, [isAllRowsMode, loading, rowSelectionProp?.multiRow, table, enableSelectPinned]);
 
   const columnSizeVarsRef = useRef<Record<string, string>>();
   const headers = table.getFlatHeaders();
@@ -450,6 +453,10 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const showToolbar = !suppressToolbar;
   const showPagination = !infiniteLoading && !suppressPagination;
 
+  const { checked, indeterminate } = isAllRowsMode
+    ? { checked: table.getIsAllRowsSelected(), indeterminate: table.getIsSomeRowsSelected() }
+    : { checked: table.getIsAllPageRowsSelected(), indeterminate: table.getIsSomePageRowsSelected() };
+
   return (
     <div
       className={cn(styles.wrapper, className)}
@@ -497,8 +504,8 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
             }
             bulkActions={bulkActions}
             selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
-            checked={table.getIsAllPageRowsSelected()}
-            indeterminate={table.getIsSomePageRowsSelected()}
+            checked={checked}
+            indeterminate={indeterminate}
             onCheck={enableSelection ? handleOnToolbarCheck : undefined}
             outline={outline}
             after={
