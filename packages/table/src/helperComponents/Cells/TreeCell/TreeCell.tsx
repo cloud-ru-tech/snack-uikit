@@ -25,6 +25,8 @@ type BaseTreeColumnDef = {
   icon?: ReactNode;
   /** Иконка дочернего элемента */
   showToggle?: boolean;
+  /** Минимальный размер ячейки */
+  minSize?: number;
 };
 
 type TreeColumnDef = BaseTreeColumnDef & {
@@ -57,6 +59,7 @@ export function getTreeColumnDef<TData>({
   cell: renderCell,
   enableSelection,
   rowSelectionAppearance,
+  minSize,
 }: TreeColDefProps<TData>): ColumnDefinition<TData> {
   const cell: ColumnDefinition<TData>['cell'] = function TreeCell(ctx) {
     const { row, cell } = ctx;
@@ -228,6 +231,7 @@ export function getTreeColumnDef<TData>({
     noBodyCellPadding: true,
     noHeaderCellPadding: false,
     enableResizing: true,
+    minSize,
     size: 150,
     maxSize: Number.MAX_SAFE_INTEGER,
     meta: {
