@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.33 (2026-02-13)</small>
+
+* feat(EVODP-8477): Added table toolbar checkbox selection options. ([e57fcea](https://github.com/cloud-ru-tech/snack-uikit/commit/e57fcea))
+
+
+
+
+
 ## <small>0.37.32 (2026-02-03)</small>
 
 * feat(PDS-3472): add HideToggler appearance mode for disabled rows ([802be3d](https://github.com/cloud-ru-tech/snack-uikit/commit/802be3d))
