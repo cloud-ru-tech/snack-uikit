@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.3.32 (2026-02-18)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/tooltip@0.18.9]($PUBLIC_PROJECT_URL/blob/master/packages/tooltip/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.3.31 (2026-01-19)</small>
 
 * docs(FF-7788): readme update ([e3142b8](https://github.com/cloud-ru-tech/snack-uikit/commit/e3142b8))

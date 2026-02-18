@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.5.45 (2026-02-18)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/code-editor@0.7.14]($PUBLIC_PROJECT_URL/blob/master/packages/code-editor/CHANGELOG.md)
+* [@snack-uikit/fields@0.51.16]($PUBLIC_PROJECT_URL/blob/master/packages/fields/CHANGELOG.md)
+* [@snack-uikit/link@0.17.17]($PUBLIC_PROJECT_URL/blob/master/packages/link/CHANGELOG.md)
+* [@snack-uikit/toggles@0.13.25]($PUBLIC_PROJECT_URL/blob/master/packages/toggles/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.5.44 (2026-02-04)</small>
 
 * feat(PDS-3492): added opportunity inject plugins to Markdown ([01bf82d](https://github.com/cloud-ru-tech/snack-uikit/commit/01bf82d))

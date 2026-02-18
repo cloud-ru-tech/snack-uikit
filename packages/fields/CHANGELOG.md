@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.51.16 (2026-02-18)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/calendar@0.13.14]($PUBLIC_PROJECT_URL/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-uikit/color-picker@0.3.52]($PUBLIC_PROJECT_URL/blob/master/packages/color-picker/CHANGELOG.md)
+* [@snack-uikit/icons@0.27.6]($PUBLIC_PROJECT_URL/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/input-private@4.8.7]($PUBLIC_PROJECT_URL/blob/master/packages/input-private/CHANGELOG.md)
+* [@snack-uikit/list@0.32.13]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/slider@0.3.32]($PUBLIC_PROJECT_URL/blob/master/packages/slider/CHANGELOG.md)
+* [@snack-uikit/tag@0.15.14]($PUBLIC_PROJECT_URL/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.18.9]($PUBLIC_PROJECT_URL/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.7.8]($PUBLIC_PROJECT_URL/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.51.15 (2026-01-19)</small>
 
 * chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))

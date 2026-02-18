@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Alert",
-  "version": "0.16.24",
+  "version": "0.16.25",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,10 +36,10 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/icons": "0.27.5",
-    "@snack-uikit/link": "0.17.16",
+    "@snack-uikit/icons": "0.27.6",
+    "@snack-uikit/link": "0.17.17",
     "@snack-uikit/loaders": "0.9.10",
-    "@snack-uikit/truncate-string": "0.7.7",
+    "@snack-uikit/truncate-string": "0.7.8",
     "@snack-uikit/utils": "4.0.1",
     "classnames": "2.5.1"
   }

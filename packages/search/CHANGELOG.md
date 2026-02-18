@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.12.23 (2026-02-18)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/list@0.32.13]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/search-private@0.4.35]($PUBLIC_PROJECT_URL/blob/master/packages/search-private/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.12.22 (2026-01-19)</small>
 
 * chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))

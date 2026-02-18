@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.13.14 (2026-02-18)</small>
+
+* feat(PDS-2680)!: added mode "month-range" and "year-range" for calendar & rename "range" in "date-ra ([6fbf360](https://github.com/cloud-ru-tech/snack-uikit/commit/6fbf360))
+
+
+
+
+
 ## <small>0.13.13 (2026-01-19)</small>
 
 * chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))

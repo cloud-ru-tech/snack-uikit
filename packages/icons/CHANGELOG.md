@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.27.6 (2026-02-18)</small>
+
+* deps(FF-8054): up fast-xml-parser ([9c06589](https://github.com/cloud-ru-tech/snack-uikit/commit/9c06589))
+
+
+
+
+
 ## <small>0.27.5 (2026-01-19)</small>
 
 * chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))

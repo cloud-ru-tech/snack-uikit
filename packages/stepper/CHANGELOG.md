@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.8.40 (2026-02-18)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.27.6]($PUBLIC_PROJECT_URL/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.7.8]($PUBLIC_PROJECT_URL/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.8.39 (2026-01-19)</small>
 
 * chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))

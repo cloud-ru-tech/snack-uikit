@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.37.35 (2026-02-18)</small>
+
+### Only dependencies have been changed
+* [@snack-uikit/chips@0.28.14]($PUBLIC_PROJECT_URL/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/icons@0.27.6]($PUBLIC_PROJECT_URL/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/info-block@0.6.37]($PUBLIC_PROJECT_URL/blob/master/packages/info-block/CHANGELOG.md)
+* [@snack-uikit/list@0.32.13]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/pagination@0.10.23]($PUBLIC_PROJECT_URL/blob/master/packages/pagination/CHANGELOG.md)
+* [@snack-uikit/toggles@0.13.25]($PUBLIC_PROJECT_URL/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/toolbar@0.14.18]($PUBLIC_PROJECT_URL/blob/master/packages/toolbar/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.7.8]($PUBLIC_PROJECT_URL/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.37.34 (2026-02-16)</small>
 
 * feat(LK-7075): added expanding column minsize param ([a216a36](https://github.com/cloud-ru-tech/snack-uikit/commit/a216a36))
