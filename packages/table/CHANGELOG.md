@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.38.0 (2026-02-20)
+
+
+### Bug Fixes
+
+* **FF-8050:** restore pagination from saved state ([e360318](https://github.com/cloud-ru-tech/snack-uikit/commit/e360318bdcea29cf4f623c0c1ac0f50d6fef0d05))
+
+
+### Features
+
+* **FF-8050:** expose serializer and parser for table saved state ([e42d1b8](https://github.com/cloud-ru-tech/snack-uikit/commit/e42d1b8bd2e1234ed89429fdbeacc497c70f5aa4))
+
+
+
+
+
 ## 0.37.36 (2026-02-20)
 
 
