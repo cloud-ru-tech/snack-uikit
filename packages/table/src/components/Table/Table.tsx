@@ -157,9 +157,8 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
         const isPaginationValid = validatePaging(dataAsSettings?.pagination);
         const isSortingValid = validateSorting(dataAsSettings?.ordering);
         const isSearchValid = !dataAsSettings?.search || typeof dataAsSettings?.search === 'string';
-        const isFilterValid = Boolean(
-          columnFilters?.filters && validateFilter(dataAsSettings.filter, columnFilters.filters),
-        );
+        const isFilterValid =
+          !columnFilters?.filters || Boolean(validateFilter(dataAsSettings.filter, columnFilters.filters));
 
         return isPaginationValid && isSortingValid && isSearchValid && isFilterValid;
       },

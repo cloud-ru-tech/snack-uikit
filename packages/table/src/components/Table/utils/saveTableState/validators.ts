@@ -1,9 +1,17 @@
 import { RequestPayloadParams } from '@cloud-ru/ft-request-payload-transform';
 import { ChipChoiceRowProps } from '@snack-uikit/chips';
 
-export const validatePaging = (value: unknown): value is RequestPayloadParams['pagination'] =>
-  typeof (value as RequestPayloadParams['pagination'])?.limit === 'number' &&
-  typeof (value as RequestPayloadParams['pagination'])?.offset === 'number';
+export const validatePaging = (value: unknown): value is RequestPayloadParams['pagination'] => {
+  if (!value) {
+    return true;
+  }
+
+  if (typeof value !== 'object') {
+    return false;
+  }
+
+  return 'limit' in value && typeof value.limit === 'number' && 'offset' in value && typeof value.offset === 'number';
+};
 
 export const validateSorting = (value: unknown): value is RequestPayloadParams['ordering'] =>
   !value ||
