@@ -154,7 +154,7 @@ $snack-ui-table-row-background: var(--snack-ui-table-row-background);
     cursor: pointer;
   }
 
-  &:not([data-disabled]) {
+  &:not([data-row-appearance='disabled']) {
     &:hover {
       &::before {
         height: 0;

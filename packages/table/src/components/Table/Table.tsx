@@ -50,7 +50,7 @@ import {
 } from '../../helperComponents';
 import { ColumnDefinition } from '../../types';
 import { fuzzyFilter } from '../../utils';
-import { TableProps, ToolbarCheckBoxMode } from '../types';
+import { RowAppearance, TableProps, ToolbarCheckBoxMode } from '../types';
 import {
   useColumnOrderByDrag,
   useColumnSettings,
@@ -232,9 +232,11 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
         isCurrentRowSelected =
           typeof rowSelectionProp.enable === 'boolean' ? rowSelectionProp.enable : rowSelectionProp.enable(row);
       }
-      return isParentSelected && isCurrentRowSelected;
+      return (
+        isParentSelected && isCurrentRowSelected && ((row.getIsPinned() && enableSelectPinned) || !row.getIsPinned())
+      );
     },
-    [rowSelectionProp],
+    [rowSelectionProp, enableSelectPinned],
   );
 
   const table = useReactTable<TData>({
@@ -332,25 +334,11 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const isAllRowsMode = toolbarCheckBoxMode === ToolbarCheckBoxMode.AllRows;
 
   const handleOnToolbarCheck = useCallback(() => {
-    if (!loading && !enableSelectPinned && table.getTopRows().length) {
-      const centerRows = table.getCenterRows();
-      const isSomeRowsSelected = isAllRowsMode ? table.getIsSomeRowsSelected() : table.getIsSomePageRowsSelected();
-      const isAllCenterRowsSelected = centerRows.every(row => row.getIsSelected());
-
-      if (isAllCenterRowsSelected) {
-        table.resetRowSelection();
-        return;
-      }
-
-      centerRows.forEach(row => row.toggleSelected(isSomeRowsSelected ? true : undefined));
-      return;
-    }
-
     if (!loading && rowSelectionProp?.multiRow) {
       isAllRowsMode ? table.toggleAllRowsSelected() : table.toggleAllPageRowsSelected();
       return;
     }
-  }, [isAllRowsMode, loading, rowSelectionProp?.multiRow, table, enableSelectPinned]);
+  }, [isAllRowsMode, loading, rowSelectionProp?.multiRow, table]);
 
   const columnSizeVarsRef = useRef<Record<string, string>>();
   const headers = table.getFlatHeaders();
@@ -576,7 +564,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                             rowAutoHeight={rowAutoHeight}
                             columnOrder={columnOrder}
                             enableColumnsOrderSortByDrag={enableColumnsOrderSortByDrag}
-                            disabledRowAppearance={rowSelectionProp?.appearance}
+                            disabledRowAppearance={RowAppearance.HideToggler}
                           />
                         ))}
                       </div>
