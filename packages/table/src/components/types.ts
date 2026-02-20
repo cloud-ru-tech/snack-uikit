@@ -9,7 +9,7 @@ import {
 import { ReactNode, RefObject } from 'react';
 
 import { FiltersState } from '@snack-uikit/chips';
-import { FilterRow, ToolbarProps } from '@snack-uikit/toolbar';
+import { FilterRow, ToolbarPersistConfig, ToolbarProps } from '@snack-uikit/toolbar';
 import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
 import { TABLE_ROW_COLOR } from '../constants';
@@ -177,7 +177,7 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
    *  Поле id должно быть уникальным для разных таблиц в рамках приложения. <br>
    *  Для корректной работы необходимо наличие id в конфиге columnDefinitions
    *  */
-  savedState?: {
+  savedState?: Pick<ToolbarPersistConfig<TFilters>, 'serializer' | 'parser'> & {
     id: string;
     filterQueryKey?: string;
     resize?: boolean;

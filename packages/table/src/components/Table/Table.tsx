@@ -477,6 +477,8 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                       filter,
                       search: globalFilter || '',
                     },
+                    serializer: savedState.serializer,
+                    parser: savedState.parser,
                     onLoad: state => {
                       state.pagination && onPaginationChange(mapPaginationToTableState(state.pagination));
                       state.search && onGlobalFilterChange(state.search);
