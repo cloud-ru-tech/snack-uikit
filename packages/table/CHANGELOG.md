@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.37.36 (2026-02-20)
+
+
+### Bug Fixes
+
+* **PDS-3571:** fix table row selection from toolbar with pinned rows ([bfa48f1](https://github.com/cloud-ru-tech/snack-uikit/commit/bfa48f1cfd8db63b3f06eb8647a7dd19b5887ef9))
+
+
+
+
+
 ## <small>0.37.35 (2026-02-18)</small>
 
 ### Only dependencies have been changed
