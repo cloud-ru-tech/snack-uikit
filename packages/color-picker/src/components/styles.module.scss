@@ -49,34 +49,3 @@ $sizes: 's', 'm';
     }
   }
 }
-
-$theme-name: osThemeSnack;
-$scrollbar-slider-active-zone: 12px;
-
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-:global {
-  .#{$theme-name} .react-colorful {
-    @include styles-tokens-scroll.composite-var(styles-tokens-colorPicker.$color-picker-color-palette);
-
-    width: 100%;
-    min-height: 200px;
-
-    .react-colorful__saturation {
-      border-bottom-width: 8px;
-      border-radius: 0;
-    }
-
-    .react-colorful__pointer {
-      @include styles-tokens-scroll.composite-var(styles-tokens-colorPicker.$color-picker-color-slider);
-
-      /* stylelint-disable-next-line color-no-hex */
-      border-color: #fff;
-      box-shadow: styles-tokens-scroll.$box-shadow-elevation-level3;
-    }
-
-    .react-colorful__hue,
-    .react-colorful__alpha {
-      @include styles-tokens-scroll.composite-var(styles-tokens-colorPicker.$color-picker-slider-track);
-    }
-  }
-}

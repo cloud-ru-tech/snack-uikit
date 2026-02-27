@@ -14,6 +14,7 @@ import { CheckSVG } from '@snack-uikit/icons';
 import { useLocale } from '@snack-uikit/locale';
 import { SegmentedControl } from '@snack-uikit/segmented-control';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
+import './global.scss'
 
 import { COLOR_MODE, COLOR_MODE_LABEL, ColorMode, DEFAULT_COLOR_MODE_CONFIG } from '../constants';
 import { FieldPrivate } from '../helperComponents';

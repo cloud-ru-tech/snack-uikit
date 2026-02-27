@@ -1,5 +1,5 @@
 import './style.css';
-
+import './toastify.scss'
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
 import {

@@ -4,7 +4,7 @@ import { cloneElement, ReactElement, ReactNode } from 'react';
 
 import { Tooltip } from '@snack-uikit/tooltip';
 import { DATA_SWIPE_DIRECTIONS_ATTRIBUTE } from '@snack-uikit/utils';
-
+import './slider.scss'
 import styles from './styles.module.scss';
 
 export type SliderProps = Omit<
