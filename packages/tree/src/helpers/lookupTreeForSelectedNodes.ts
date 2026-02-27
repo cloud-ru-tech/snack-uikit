@@ -1,53 +1,6 @@
-import { ParentNode, TreeNodeId, TreeNodeProps } from './types';
-
-function findAllChildNodeIds(nodes: TreeNodeProps[]): TreeNodeId[] {
-  const stack = [...nodes];
-  const ids: TreeNodeId[] = [];
-
-  let node: TreeNodeProps | undefined;
-
-  while ((node = stack.pop())) {
-    if (!node.disabled) {
-      ids.push(node.id);
-
-      if (node.nested?.length) {
-        stack.push(...node.nested);
-      }
-    }
-  }
-
-  return ids;
-}
-
-export function checkNestedNodesSelection(nodes: TreeNodeProps[], selectedKeys: TreeNodeId[]) {
-  const allIds = findAllChildNodeIds(nodes);
-
-  const selected = allIds.filter(id => selectedKeys.includes(id));
-  const someSelected = selected.length > 0;
-  const allSelected = someSelected && allIds.length === selected.length;
-
-  return {
-    someSelected: !allSelected && someSelected,
-    allSelected,
-  };
-}
-
-export function findAllExpandedChildNodeIds(nodes: TreeNodeProps[], expandedNodes: TreeNodeId[]) {
-  const stack = [...nodes];
-  const ids: TreeNodeId[] = [];
-
-  let node: TreeNodeProps | undefined;
-
-  while ((node = stack.shift())) {
-    ids.push(node.id);
-
-    if (node.nested?.length && expandedNodes.includes(node.id)) {
-      stack.unshift(...node.nested);
-    }
-  }
-
-  return ids;
-}
+import { ParentNode, TreeNodeId, TreeNodeProps } from '../types';
+import { checkNestedNodesSelection } from './checkNestedNodesSelection';
+import { findAllChildNodeIds } from './findAllChildNodeIds';
 
 export function lookupTreeForSelectedNodes({
   node,

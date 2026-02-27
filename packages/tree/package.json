@@ -44,6 +44,7 @@
     "@snack-uikit/typography": "0.8.12",
     "@snack-uikit/utils": "4.0.1",
     "classnames": "2.5.1",
+    "queue-fifo": "0.2.6",
     "react-transition-state": "2.1.1",
     "uncontrollable": "8.0.4"
   }

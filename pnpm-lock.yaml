@@ -1587,6 +1587,9 @@ importers:
       classnames:
         specifier: 2.5.1
         version: 2.5.1
+      queue-fifo:
+        specifier: 0.2.6
+        version: 0.2.6
       react-transition-state:
         specifier: 2.1.1
         version: 2.1.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -5864,6 +5867,9 @@ packages:
   dateformat@3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}
 
+  dbly-linked-list@0.3.4:
+    resolution: {integrity: sha512-327vOlwspi9i1T3Kc9yZhRUR8qDdgMQ4HmXsFDDCQ/HTc3sNe7gnF5b0UrsnaOJ0rvmG7yBZpK0NoOux9rKYKw==}
+
   debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
 
@@ -7805,6 +7811,10 @@ packages:
   lodash.isarray@3.0.4:
     resolution: {integrity: sha512-JwObCrNJuT0Nnbuecmqr5DgtuBppuCvGD9lxjFpAzwnVtdGoDQ1zig+5W8k5/6Gcn0gZ3936HDAlGd28i7sOGQ==}
 
+  lodash.isequal@4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+
   lodash.ismatch@4.4.0:
     resolution: {integrity: sha512-fPMfXjGQEV9Xsq/8MTSgUf255gawYRbjwMyDbcvDhXgV7enSZA0hynz6vMPnpAb5iONEzBHBPsT+0zes5Z301g==}
 
@@ -9322,6 +9332,9 @@ packages:
   qs@6.15.0:
     resolution: {integrity: sha512-mAZTtNCeetKMH+pSjrb76NAM8V9a05I9aBZOHztWy/UqcJdQYNsf59vrRKWnojAT9Y+GbIvoTBC++CPHqpDBhQ==}
     engines: {node: '>=0.6'}
+
+  queue-fifo@0.2.6:
+    resolution: {integrity: sha512-rwlnZHAaTmWEGKC7ziasK8u4QnZW/uN6kSiG+tHNf/1GA+R32FArZi18s3SYUpKcA0Y6jJoUDn5GT3Anoc2mWw==}
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -16069,6 +16082,10 @@ snapshots:
 
   dateformat@3.0.3: {}
 
+  dbly-linked-list@0.3.4:
+    dependencies:
+      lodash.isequal: 4.5.0
+
   debounce@1.2.1: {}
 
   debug@3.2.7:
@@ -18463,6 +18480,8 @@ snapshots:
 
   lodash.isarray@3.0.4: {}
 
+  lodash.isequal@4.5.0: {}
+
   lodash.ismatch@4.4.0: {}
 
   lodash.kebabcase@4.1.1: {}
@@ -20458,6 +20477,10 @@ snapshots:
   qs@6.15.0:
     dependencies:
       side-channel: 1.1.0
+
+  queue-fifo@0.2.6:
+    dependencies:
+      dbly-linked-list: 0.3.4
 
   queue-microtask@1.2.3: {}
 

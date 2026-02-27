@@ -114,3 +114,7 @@ export type TreeMultiSelect = Omit<TreeCommonProps, 'selected'> & {
 };
 
 export type TreeBaseProps = TreeView | TreeMultiSelect | TreeSingleSelect;
+
+export type ExtendedTreeNodeProps = TreeNodeProps & {
+  getTitle?(): void;
+};

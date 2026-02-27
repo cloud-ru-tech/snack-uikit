@@ -3,6 +3,7 @@ import {
   FocusEvent,
   forwardRef,
   KeyboardEventHandler,
+  MouseEvent,
   MouseEventHandler,
   useEffect,
   useMemo,
@@ -128,7 +129,7 @@ export const TreeNode = forwardRef<HTMLDivElement, TreeNodeComponentProps>(
       );
     };
 
-    const handleAnchorClick = (e: React.MouseEvent<Element>) => {
+    const handleAnchorClick = (e: MouseEvent<Element>) => {
       e.stopPropagation();
       if (e?.metaKey || e?.ctrlKey || e?.button === 1) {
         return;
