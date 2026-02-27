@@ -927,6 +927,29 @@ FieldStepper в основном предназначен для работы с
 | error | `string` | - |  |
 | ref | `LegacyRef<HTMLInputElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
+## withCharacterCount
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| __@metadata@877* | `DecoratorMetadataObject` | - |  |
+| __@hasInstance@875* | `(value: any) => boolean` | - | Determines whether the given value inherits from this function if this function was used as a constructor function.  A constructor function can control which objects are recognized as its instances by 'instanceof' by overriding this method. |
+| name* | `string` | - | Returns the name of the function. Function names are read-only and can not be changed. |
+| caller* | `Function` | - |  |
+| arguments* | `any` | - |  |
+| length* | `number` | - |  |
+| prototype* | `any` | - |  |
+| bind* | `(this: Function, thisArg: any, ...argArray: any[]) => any` | - | For a given function, creates a bound function that has the same body as the original function. The this object of the bound function is associated with the specified object, and has the specified initial parameters. @param thisArg An object to which the this keyword can refer inside the new function. @param argArray A list of arguments to be passed to the new function. |
+| call* | `(this: Function, thisArg: any, ...argArray: any[]) => any` | - | Calls a method of an object, substituting another object for the current object. @param thisArg The object to be used as the current object. @param argArray A list of arguments to be passed to the method. |
+| apply* | `(this: Function, thisArg: any, argArray?: any) => any` | - | Calls the function, substituting the specified object for the this value of the function, and the specified array for the arguments of the function. @param thisArg The object to be used as the this object. @param argArray A set of arguments to be passed to the function. |
+| propTypes | `WeakValidationMap<TProps>` | - | Used to declare the types of the props accepted by the component. These types will be checked during rendering and in development only.  We recommend using TypeScript instead of checking prop types at runtime. @see {@link https://react.dev/reference/react/Component#static-proptypes React Docs} @see {@link https://react.dev/reference/react/Component#static-proptypes React Docs} |
+| contextType | `Context<any>` | - |  |
+| contextTypes | `ValidationMap<any>` | - | @deprecated use {@link ComponentClass.contextType } instead  Lets you specify which legacy context is consumed by this component. @see {@link https://legacy.reactjs.org/docs/legacy-context.html Legacy React Docs} @deprecated Lets you specify which legacy context is consumed by this component. @see {@link https://legacy.reactjs.org/docs/legacy-context.html Legacy React Docs} |
+| childContextTypes | `ValidationMap<any>` | - | @deprecated @see {@link https://legacy.reactjs.org/docs/legacy-context.html#how-to-use-context Legacy React Docs} |
+| defaultProps | `Partial<TProps>` | - | Used to define default values for the props accepted by the component. @see {@link https://react.dev/reference/react/Component#static-defaultprops React Docs} @see {@link https://react.dev/reference/react/Component#static-defaultprops React Docs} @example ```tsx type Props = { name?: string }  const MyComponent: FC<Props> = (props) => {   return <div>{props.name}</div> }  MyComponent.defaultProps = {   name: 'John Doe' } ``` |
+| displayName | `string` | - | Used in debugging messages. You might want to set it explicitly if you want to display a different name for debugging purposes. @see {@link https://legacy.reactjs.org/docs/react-component.html#displayname Legacy React Docs} @see {@link https://legacy.reactjs.org/docs/react-component.html#displayname Legacy React Docs} @example ```tsx  const MyComponent: FC = () => {   return <div>Hello!</div> }  MyComponent.displayName = 'MyAwesomeComponent' ``` |
+| getDerivedStateFromProps | `GetDerivedStateFromProps<TProps, any>` | - |  |
+| getDerivedStateFromError | `GetDerivedStateFromError<TProps, any>` | - |  |
+| toString | `() => string` | function toString() { [native code] } | Returns a string representation of a function. |
 
 
 [//]: DOCUMENTATION_SECTION_END
