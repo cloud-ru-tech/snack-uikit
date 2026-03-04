@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.7 (2026-03-04)
+
+
+### Bug Fixes
+
+* **DOCDEV-2969:** fixed next js build issues ([74aea84](https://github.com/cloud-ru-tech/snack-uikit/commit/74aea845b55c456b370b6e2d7ea9953e909d410c))
+
+
+
+
+
 ## <small>0.10.6 (2026-01-19)</small>
 
 * chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))

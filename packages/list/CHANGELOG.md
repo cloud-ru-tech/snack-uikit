@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.32.14 (2026-03-04)
+
+
+### Bug Fixes
+
+* **CSS-789:** list typings improvements ([7dd237a](https://github.com/cloud-ru-tech/snack-uikit/commit/7dd237a791e55f02d2abdd16d9d5cdd55e16d714))
+
+
+
+
+
 ## <small>0.32.13 (2026-02-18)</small>
 
 ### Only dependencies have been changed

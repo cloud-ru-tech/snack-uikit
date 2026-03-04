@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.33 (2026-03-04)
+
+
+### Bug Fixes
+
+* **DOCDEV-2969:** fixed next js build issues ([74aea84](https://github.com/cloud-ru-tech/snack-uikit/commit/74aea845b55c456b370b6e2d7ea9953e909d410c))
+
+
+
+
+
 ## <small>0.3.32 (2026-02-18)</small>
 
 ### Only dependencies have been changed

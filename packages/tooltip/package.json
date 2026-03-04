@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tooltip",
-  "version": "0.18.9",
+  "version": "0.18.10",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,7 +36,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/icons": "0.27.6",
+    "@snack-uikit/icons": "0.27.7",
     "@snack-uikit/popover-private": "0.15.4",
     "@snack-uikit/utils": "4.0.1",
     "classnames": "2.5.1",

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.13.15 (2026-03-04)
+
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.27.7]($PUBLIC_PROJECT_URL/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/list@0.32.14]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.13.14 (2026-02-18)</small>
 
 * feat(PDS-2680)!: added mode "month-range" and "year-range" for calendar & rename "range" in "date-ra ([6fbf360](https://github.com/cloud-ru-tech/snack-uikit/commit/6fbf360))

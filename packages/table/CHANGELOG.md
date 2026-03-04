@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.38.1 (2026-03-04)
+
+### Only dependencies have been changed
+* [@snack-uikit/chips@0.28.15]($PUBLIC_PROJECT_URL/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/icons@0.27.7]($PUBLIC_PROJECT_URL/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/info-block@0.6.38]($PUBLIC_PROJECT_URL/blob/master/packages/info-block/CHANGELOG.md)
+* [@snack-uikit/list@0.32.14]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/pagination@0.10.24]($PUBLIC_PROJECT_URL/blob/master/packages/pagination/CHANGELOG.md)
+* [@snack-uikit/scroll@0.10.7]($PUBLIC_PROJECT_URL/blob/master/packages/scroll/CHANGELOG.md)
+* [@snack-uikit/toggles@0.13.26]($PUBLIC_PROJECT_URL/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/toolbar@0.14.19]($PUBLIC_PROJECT_URL/blob/master/packages/toolbar/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.7.9]($PUBLIC_PROJECT_URL/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 # 0.38.0 (2026-02-20)
 
 

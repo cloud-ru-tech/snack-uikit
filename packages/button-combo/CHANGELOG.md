@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.33 (2026-03-04)
+
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.27.7]($PUBLIC_PROJECT_URL/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/list@0.32.14]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.2.32 (2026-02-18)</small>
 
 ### Only dependencies have been changed

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.27.7 (2026-03-04)
+
+
+### Dependencies
+
+* **CSS-789:** up fast-xml-parser ([d251a28](https://github.com/cloud-ru-tech/snack-uikit/commit/d251a284d23b9d12e96277396a1dd2e12c217bdc))
+
+
+
+
+
 ## <small>0.27.6 (2026-02-18)</small>
 
 * deps(FF-8054): up fast-xml-parser ([9c06589](https://github.com/cloud-ru-tech/snack-uikit/commit/9c06589))
