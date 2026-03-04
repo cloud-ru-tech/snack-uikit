@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.52.0 (2026-03-04)
+
+
+### Features
+
+* **FF-8094:** add withCharacterCount hoc ([a5e5d8b](https://github.com/cloud-ru-tech/snack-uikit/commit/a5e5d8be1a1a552ca6abbaa9cefc2c7f00badb95))
+
+
+
+
+
 ## 0.51.17 (2026-03-04)
 
 ### Only dependencies have been changed

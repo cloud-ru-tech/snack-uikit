@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.10.0 (2026-03-04)
+
+
+### Features
+
+* **FF-8094:** add some tree processing utils ([9d24f5f](https://github.com/cloud-ru-tech/snack-uikit/commit/9d24f5f3826895f18e94c20b5cedbcbe75598964))
+
+
+
+
+
 ## 0.9.37 (2026-03-04)
 
 ### Only dependencies have been changed
