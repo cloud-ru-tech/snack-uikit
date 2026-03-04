@@ -1,7 +1,7 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { ForwardedRef, forwardRef, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ForwardedRef, forwardRef, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { Spinner } from '@snack-uikit/loaders';
 import { Scroll } from '@snack-uikit/scroll';
@@ -277,7 +277,7 @@ export const ListPrivate = forwardRef(
               scrollContainerClassName,
             )}
             barHideStrategy={barHideStrategy}
-            size={ 's' }
+            size={'s'}
             ref={mergeRefs(innerScrollRef, scrollContainerRef)}
             untouchableScrollbars={untouchableScrollbars}
             onScroll={onScroll}
@@ -285,7 +285,7 @@ export const ListPrivate = forwardRef(
           >
             {content}
 
-            <div className={styles.scrollStub} ref={scrollRef as RefObject<HTMLDivElement>} />
+            <div className={styles.scrollStub} ref={scrollRef as Ref<HTMLDivElement>} />
           </Scroll>
         ) : (
           <>{content}</>

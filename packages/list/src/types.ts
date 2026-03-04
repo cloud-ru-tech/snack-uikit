@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEvent, RefObject } from 'react';
+import { ChangeEvent, KeyboardEvent, Ref } from 'react';
 
 import { ScrollProps as OriginalScrollProps } from '@snack-uikit/scroll';
 
@@ -14,9 +14,9 @@ export type ScrollProps = {
   /** Включить ли скролл для основной части списка */
   scroll?: boolean;
   /** Ссылка на элемент, обозначающий самый конец прокручиваемого списка */
-  scrollRef?: RefObject<HTMLElement>;
+  scrollRef?: Ref<HTMLElement>;
   /** Ссылка на контейнер, который скроллится */
-  scrollContainerRef?: RefObject<HTMLElement>;
+  scrollContainerRef?: Ref<HTMLElement>;
   /** Отключает возможность взаимодействовать со скролбарами мышью. */
   untouchableScrollbars?: boolean;
   /**

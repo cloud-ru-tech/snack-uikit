@@ -197,8 +197,8 @@ function Example() {
 | marker | `boolean` | true | Отображать ли маркер у выбранного жлемента списка |
 | contentRender | `(props: ContentRenderProps) => ReactNode` | - | Рендер функция основного контента айтема |
 | scroll | `boolean` | - | Включить ли скролл для основной части списка |
-| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
-| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| scrollRef | `Ref<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `Ref<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | barHideStrategy | enum BarHideStrategy: `"scroll"`, `"move"`, `"never"`, `"leave"` | - | Управление скрытием скролл баров: <br> - `Never` - показывать всегда <br> - `Leave` - скрывать когда курсор покидает компонент <br> - `Scroll` - показывать только когда происходит скроллинг <br> - `Move` - показывать при движении курсора над компонентом |
 | onScroll | `(event?: Event) => void` | - | Колбек на скролл прокручиваемого списка |
@@ -232,8 +232,8 @@ function Example() {
 | marker | `boolean` | true | Отображать ли маркер у выбранного жлемента списка |
 | contentRender | `(props: ContentRenderProps) => ReactNode` | - | Рендер функция основного контента айтема |
 | scroll | `boolean` | - | Включить ли скролл для основной части списка |
-| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
-| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| scrollRef | `Ref<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `Ref<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | barHideStrategy | enum BarHideStrategy: `"scroll"`, `"move"`, `"never"`, `"leave"` | - | Управление скрытием скролл баров: <br> - `Never` - показывать всегда <br> - `Leave` - скрывать когда курсор покидает компонент <br> - `Scroll` - показывать только когда происходит скроллинг <br> - `Move` - показывать при движении курсора над компонентом |
 | onScroll | `(event?: Event) => void` | - | Колбек на скролл прокручиваемого списка |
