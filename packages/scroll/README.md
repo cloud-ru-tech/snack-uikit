@@ -51,16 +51,6 @@ function Example() {
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| className | `string` | - | CSS-класс |
-| size | enum Size: `"s"`, `"m"` | m | Размер скролбаров |
-| clickScrolling | `boolean` | true | Скролить ли по клику в скроллбар. |
-| autoscrollTo | enum AutoscrollTo: `"bottom"`, `"right"` | - | Включает автоскрол при маунте и изменении размера контента: <br> - `bottom` - автоскрол вниз, <br> - `right` - автоскрол вправо, |
-| barHideStrategy | enum BarHideStrategy: `"never"`, `"leave"`, `"scroll"`, `"move"` | leave | Управление скрытием скролл баров: <br> - `Never` - показывать всегда <br> - `Leave` - скрывать когда курсор покидает компонент <br> - `Scroll` - показывать только когда происходит скроллинг <br> - `Move` - показывать при движении курсора над компонентом |
-| onScroll | `(event?: Event) => void` | - | Колбек события скрола. |
-| resize | enum Resize: `"none"`, `"horizontal"`, `"vertical"`, `"both"` | none | Настройка возможности регулировать Scroll-контейнер: <br> - `None` - нельзя изменять размер <br> - `Horizontal` - можно изменять размер только по горизонтали <br> - `Vertical` - можно изменять размер только по вертикали <br> - `Both` - можно изменять размер в обеих координатах |
-| untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
-| paddingAbsolute | `boolean` | - | Должны ли паддинги быть абсолютными |
-| onInitialized | `() => void` | - | Коллбэк вызывающийся на инициализацию скролла |
 | ref | `LegacyRef<HTMLElement>` | - | Allows getting a ref to the component instance. Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). @see {@link https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom React Docs} |
 | key | `Key` | - |  |
 
