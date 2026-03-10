@@ -61,6 +61,7 @@ export const en_GB = {
   },
   Calendar: {
     current: 'Current',
+    apply: 'Apply',
     time: 'Time',
     presets: 'Presets',
     defaultPresets: {

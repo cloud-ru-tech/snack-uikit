@@ -10,6 +10,7 @@ import {
   FocusDirection,
   Range,
   Size,
+  TimePickerFooterMode,
   TimeValue,
   ViewMode,
 } from '../../types';
@@ -35,6 +36,8 @@ export type CalendarContextType = {
   viewShift: number;
   focus?: string;
   locale: Intl.Locale;
+  /** Режим футера time-picker */
+  footerMode?: TimePickerFooterMode;
   onFocusLeave?(direction: FocusDirection): void;
   buildCellProps?: BuildCellPropsFunction;
   setFocus(address: string | undefined): void;

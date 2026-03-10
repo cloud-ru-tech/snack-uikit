@@ -6,6 +6,7 @@ import { useLocale } from '@snack-uikit/locale';
 
 import { AUTOFOCUS, HOURS, MINUTES, SECONDS } from '../../constants';
 import { CalendarContext } from '../CalendarContext';
+import { useFooterKeyboardNavigation } from '../Footer/hooks';
 import { TimeList } from '../TimeList';
 import styles from './styles.module.scss';
 
@@ -18,8 +19,6 @@ export function TimePickerBase({ showDivider = true }: { showDivider?: boolean }
     showSeconds,
     dateAndTime,
     onTimeChange,
-    applyButtonRef,
-    currentButtonRef,
     hoursKeyboardNavigationRef,
     minutesKeyboardNavigationRef,
     secondsKeyboardNavigationRef,
@@ -28,6 +27,18 @@ export function TimePickerBase({ showDivider = true }: { showDivider?: boolean }
     navigationStartRef,
     onFocusLeave,
   } = useContext(CalendarContext);
+
+  const navigation = useFooterKeyboardNavigation();
+
+  const handleTabForwardToFooter = useCallback(
+    (event: Parameters<KeyboardEventHandler>[0]) => {
+      if (navigation.focusFooterForward() === 'handled') {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    },
+    [navigation],
+  );
 
   const hours = dateAndTime?.hours;
   const minutes = dateAndTime?.minutes;
@@ -92,24 +103,27 @@ export function TimePickerBase({ showDivider = true }: { showDivider?: boolean }
     () => event => {
       switch (event.key) {
         case 'Tab':
-          event.stopPropagation();
-          event.preventDefault();
-
           if (event.shiftKey) {
+            event.stopPropagation();
+            event.preventDefault();
             hoursKeyboardNavigationRef.current?.focusItem(getDefaultItemId(hours ?? 0));
-          } else {
-            if (showSeconds) {
-              secondsKeyboardNavigationRef.current?.focusItem(getDefaultItemId(seconds ?? 0));
-            } else {
-              currentButtonRef.current?.focus();
-            }
+            return;
           }
-          break;
+
+          if (showSeconds) {
+            event.stopPropagation();
+            event.preventDefault();
+            secondsKeyboardNavigationRef.current?.focusItem(getDefaultItemId(seconds ?? 0));
+            return;
+          }
+
+          handleTabForwardToFooter(event);
+          return;
         case 'Enter':
           if (showSeconds) {
             secondsKeyboardNavigationRef.current?.focusItem(getDefaultItemId(seconds ?? 0));
           } else {
-            applyButtonRef.current?.focus();
+            navigation.focusFooterOnEnter();
           }
           break;
         default:
@@ -117,8 +131,8 @@ export function TimePickerBase({ showDivider = true }: { showDivider?: boolean }
       }
     },
     [
-      applyButtonRef,
-      currentButtonRef,
+      navigation,
+      handleTabForwardToFooter,
       hours,
       hoursKeyboardNavigationRef,
       seconds,
@@ -131,23 +145,22 @@ export function TimePickerBase({ showDivider = true }: { showDivider?: boolean }
     () => event => {
       switch (event.key) {
         case 'Tab':
-          event.stopPropagation();
-          event.preventDefault();
-
           if (event.shiftKey) {
+            event.stopPropagation();
+            event.preventDefault();
             minutesKeyboardNavigationRef.current?.focusItem(getDefaultItemId(minutes ?? 0));
           } else {
-            currentButtonRef.current?.focus();
+            handleTabForwardToFooter(event);
           }
           break;
         case 'Enter':
-          applyButtonRef.current?.focus();
+          navigation.focusFooterOnEnter();
           break;
         default:
           break;
       }
     },
-    [applyButtonRef, currentButtonRef, minutes, minutesKeyboardNavigationRef],
+    [navigation, handleTabForwardToFooter, minutes, minutesKeyboardNavigationRef],
   );
 
   return (

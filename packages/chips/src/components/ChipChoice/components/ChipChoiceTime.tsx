@@ -35,7 +35,7 @@ const getStringTimeValue = (
 type TimeValue = TimePickerProps['value'];
 
 export type ChipChoiceTimeProps = Omit<ChipChoiceCommonProps, 'widthStrategy'> &
-  Pick<TimePickerProps, 'value' | 'defaultValue' | 'showSeconds'> & {
+  Pick<TimePickerProps, 'value' | 'defaultValue' | 'showSeconds' | 'footerMode'> & {
     /** Колбек смены значения */
     onChange?(value: TimeValue): void;
     /** Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение */
@@ -50,6 +50,7 @@ export function ChipChoiceTime({
   valueRender,
   dropDownClassName,
   showSeconds = true,
+  footerMode,
   placement,
   onClearButtonClick,
   open: openProp,
@@ -102,6 +103,7 @@ export function ChipChoiceTime({
           navigationStartRef={navigationStartRef}
           onFocusLeave={closeDroplist}
           showSeconds={showSeconds}
+          footerMode={footerMode}
         />
       }
       placement={placement}

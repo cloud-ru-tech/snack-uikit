@@ -61,7 +61,7 @@ type FieldTimeOwnProps = {
    * @default true
    */
   showClearButton?: boolean;
-};
+} & Pick<TimePickerProps, 'footerMode'>;
 
 export type FieldTimeProps = WithSupportProps<FieldTimeOwnProps & InputProps & WrapperProps>;
 
@@ -114,6 +114,7 @@ export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
       error,
       onCopyButtonClick,
       autoFocus,
+      footerMode,
       ...rest
     },
     ref,
@@ -313,6 +314,7 @@ export const FieldTime = forwardRef<HTMLInputElement, FieldTimeProps>(
               data-test-id='field-time__timepicker'
               fitToContainer={false}
               showSeconds={showSeconds}
+              footerMode={footerMode}
             />
           }
         >

@@ -20,7 +20,6 @@ $sizes: 's', 'm', 'l';
 
 .currentWrapper {
   display: flex;
-  justify-content: space-between;
 
   @each $size in $sizes {
     &[data-size='#{$size}'] {
@@ -28,4 +27,8 @@ $sizes: 's', 'm', 'l';
       @include styles-tokens-calendar.composite-var(styles-tokens-calendar.$calendar, "footer-elements", $size);
     }
   }
+}
+
+.applyButton {
+  margin-left: auto;
 }

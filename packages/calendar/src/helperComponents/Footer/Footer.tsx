@@ -1,14 +1,15 @@
-import { KeyboardEventHandler, useContext } from 'react';
+import { useContext } from 'react';
 
 import { ButtonFilled, ButtonFunction } from '@snack-uikit/button';
 import { Divider } from '@snack-uikit/divider';
-import { CheckSVG } from '@snack-uikit/icons';
 import { getDefaultItemId } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 
 import { CALENDAR_MODE } from '../../constants';
 import { getMonthShift } from '../../utils';
 import { CalendarContext } from '../CalendarContext';
+import { useFooterKeyboardNavigation, useFooterParams } from './hooks';
+import { isFooterWithCurrentButton } from './navigation';
 import styles from './styles.module.scss';
 
 export function Footer() {
@@ -19,8 +20,6 @@ export function Footer() {
     today,
     setValue,
     dateAndTime,
-    isTimeFilled,
-    isDateAndTimeFilled,
     onDateAndTimeChange,
     applyButtonRef,
     currentButtonRef,
@@ -31,40 +30,16 @@ export function Footer() {
     getTestId,
     referenceDate,
     setViewShift,
-    onFocusLeave,
   } = useContext(CalendarContext);
+
+  const { isApplyButtonDisabled } = useFooterParams();
+  const navigation = useFooterKeyboardNavigation();
 
   const { t } = useLocale('Calendar');
 
   if (![CALENDAR_MODE.DateTime, 'time'].includes(mode) || viewMode !== 'month') {
     return null;
   }
-
-  const isApplyButtonDisabled = mode === 'time' ? !isTimeFilled() : !isDateAndTimeFilled();
-
-  const handleCurrentKeyDown: KeyboardEventHandler = event => {
-    if (event.key === 'Tab') {
-      if (event.shiftKey) {
-        event.preventDefault();
-
-        if (showSeconds) {
-          secondsKeyboardNavigationRef.current?.focusItem(getDefaultItemId(dateAndTime?.seconds ?? 0));
-        } else {
-          minutesKeyboardNavigationRef.current?.focusItem(getDefaultItemId(dateAndTime?.minutes ?? 0));
-        }
-      } else {
-        if (isApplyButtonDisabled) {
-          onFocusLeave?.('next');
-        }
-      }
-    }
-  };
-
-  const handleApplyKeyDown: KeyboardEventHandler = event => {
-    if (event.key === 'Tab' && !event.shiftKey) {
-      onFocusLeave?.('next');
-    }
-  };
 
   const handleCurrentClick = () => {
     const todayDate = today || new Date();
@@ -100,27 +75,32 @@ export function Footer() {
     setValue([newDate, newDate]);
   };
 
+  const buttonSize = size === 's' ? 'xs' : 's';
+
   return (
     <div className={styles.footer} data-size={size}>
       <Divider className={styles.divider} />
 
       <div className={styles.currentWrapper} data-size={size}>
-        <ButtonFunction
-          label={t('current')}
-          size={size === 's' ? 'xs' : 's'}
-          onClick={handleCurrentClick}
-          ref={currentButtonRef}
-          onKeyDown={handleCurrentKeyDown}
-          data-test-id={getTestId('current-button')}
-        />
+        {isFooterWithCurrentButton(navigation) && (
+          <ButtonFunction
+            label={t('current')}
+            size={buttonSize}
+            onClick={handleCurrentClick}
+            ref={currentButtonRef}
+            onKeyDown={event => navigation.handleCurrentKeyDown(event)}
+            data-test-id={getTestId('current-button')}
+          />
+        )}
 
         <ButtonFilled
-          icon={<CheckSVG />}
-          size={size === 's' ? 'xs' : 's'}
+          className={styles.applyButton}
+          label={t('apply')}
+          size={buttonSize}
           disabled={isApplyButtonDisabled}
           onClick={handleApplySelection}
           ref={applyButtonRef}
-          onKeyDown={handleApplyKeyDown}
+          onKeyDown={event => navigation.handleApplyKeyDown(event)}
           data-test-id={getTestId('apply-button')}
         />
       </div>

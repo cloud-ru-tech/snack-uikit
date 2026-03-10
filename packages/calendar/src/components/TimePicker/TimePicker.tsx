@@ -11,7 +11,7 @@ import { CalendarContext } from '../../helperComponents/CalendarContext';
 import { Footer } from '../../helperComponents/Footer';
 import { TimePickerBase } from '../../helperComponents/TimePickerBase';
 import { useDateAndTime } from '../../hooks';
-import { FocusDirection, Range, Size, TimeValue } from '../../types';
+import { FocusDirection, Range, Size, TimePickerFooterMode, TimeValue } from '../../types';
 import { getLocale, getTestIdBuilder } from '../../utils';
 import styles from './styles.module.scss';
 
@@ -29,6 +29,11 @@ export type TimePickerProps = WithSupportProps<{
   onChangeValue?(value?: TimeValue): void;
   /** Показывать ли секунды */
   showSeconds?: boolean;
+  /**
+   * Режим футера: кнопка выбора текущего времени («Текущее») и подтверждения выбранного («Применить»), либо только подтверждение («Применить»).
+   * @default current-time-and-apply
+   */
+  footerMode?: TimePickerFooterMode;
 
   /**
    * Размер
@@ -61,6 +66,7 @@ export function TimePicker({
   navigationStartRef,
   showSeconds = true,
   today: todayProp,
+  footerMode = 'current-time-and-apply',
 }: TimePickerProps) {
   const [value, setValueState] = useUncontrolledProp<TimeValue | undefined>(valueProp, defaultValue, onChangeValue);
   const setValueEventHandler = useEventHandler(setValueState);
@@ -127,6 +133,7 @@ export function TimePicker({
           onFocusLeave,
           navigationStartRef,
           showSeconds,
+          footerMode,
           dateAndTime,
           onTimeChange,
           onDateAndTimeChange,

@@ -61,6 +61,7 @@ export const ru_RU: typeof en_GB = {
   },
   Calendar: {
     current: 'Сейчас',
+    apply: 'Готово',
     time: 'Время',
     presets: 'Пресеты',
     defaultPresets: {

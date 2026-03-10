@@ -510,6 +510,7 @@ function Example() {
 | value | `TimeValue` | - | Выбранное значение. |
 | defaultValue | `TimeValue` | - | Значение по-умолчанию для uncontrolled. |
 | showSeconds | `boolean` | - | Показывать ли секунды |
+| footerMode | enum TimePickerFooterMode: `"current-time-and-apply"`, `"apply-only"` | current-time-and-apply | Режим футера: кнопка выбора текущего времени («Текущее») и подтверждения выбранного («Применить»), либо только подтверждение («Применить»). |
 | onChange | `(value: TimeValue) => void` | - | Колбек смены значения |
 | valueRender | `(value?: TimeValue) => ReactNode` | - | Колбек формирующий строковое представление выбранного значения. Принимает выбранное значение |
 ## isAccordionOption

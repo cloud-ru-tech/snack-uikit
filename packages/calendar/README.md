@@ -128,6 +128,7 @@ function TimePickerExample() {
 | defaultValue | `TimeValue` | - | Значение по-умолчанию для uncontrolled. |
 | onChangeValue | `(value?: TimeValue) => void` | - | Колбек выбора значения |
 | showSeconds | `boolean` | true | Показывать ли секунды |
+| footerMode | enum TimePickerFooterMode: `"current-time-and-apply"`, `"apply-only"` | current-time-and-apply | Режим футера: кнопка выбора текущего времени («Текущее») и подтверждения выбранного («Применить»), либо только подтверждение («Применить»). |
 | size | enum Size: `"s"`, `"m"`, `"l"` | m | Размер |
 | className | `string` | - | CSS-класс контейнера |
 | fitToContainer | `boolean` | true | Отключает предустановленный размер, заставляя компонент подстраиваться к размеру контейнра: (width: 100%, height: 100%). |

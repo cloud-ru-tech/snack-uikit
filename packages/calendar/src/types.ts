@@ -46,6 +46,13 @@ export type TimeValue = {
   seconds?: number;
 };
 
+/**
+ * Режим футера time-picker:
+ * - `current-time-and-apply` — кнопка выбора текущего времени («Текущее») и подтверждения выбранного («Применить»);
+ * - `apply-only` — только кнопка подтверждения выбранного времени («Применить»).
+ */
+export type TimePickerFooterMode = 'current-time-and-apply' | 'apply-only';
+
 export type DateAndTime = TimeValue & {
   year?: number;
   month?: number;
