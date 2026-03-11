@@ -7,7 +7,7 @@ type WithTooltipProps = {
 };
 
 export function WithTooltip({ tooltip, children }: WithTooltipProps) {
-  if (!tooltip) {
+  if (!tooltip?.tip) {
     return <>{children}</>;
   }
 
