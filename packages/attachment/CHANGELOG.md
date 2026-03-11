@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.38 (2026-03-11)
+
+### Only dependencies have been changed
+* [@snack-uikit/card@0.20.16]($PUBLIC_PROJECT_URL/blob/master/packages/card/CHANGELOG.md)
+
+
+
+
+
 ## 0.4.37 (2026-03-04)
 
 ### Only dependencies have been changed

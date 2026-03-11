@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Slider",
-  "version": "0.3.33",
+  "version": "0.3.34",
   "sideEffects": [
     "*.css",
     "*.woff",

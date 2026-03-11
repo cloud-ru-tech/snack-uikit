@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.15.16 (2026-03-11)
+
+### Only dependencies have been changed
+* [@snack-uikit/scroll@0.10.8]($PUBLIC_PROJECT_URL/blob/master/packages/scroll/CHANGELOG.md)
+
+
+
+
+
 ## 0.15.15 (2026-03-04)
 
 ### Only dependencies have been changed

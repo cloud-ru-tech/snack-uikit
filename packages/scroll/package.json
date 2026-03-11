@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Scroll",
-  "version": "0.10.7",
+  "version": "0.10.8",
   "sideEffects": [
     "*.css",
     "*.woff",

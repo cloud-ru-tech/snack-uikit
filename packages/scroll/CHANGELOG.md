@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.10.8 (2026-03-11)
+
+
+### Bug Fixes
+
+* **DOCDEV-2969:** fixed scroll styles ([5077b6f](https://github.com/cloud-ru-tech/snack-uikit/commit/5077b6fe5a509cdb46b9d2b0a0d033ba1b6312d2))
+
+
+
+
+
 ## 0.10.7 (2026-03-04)
 
 
