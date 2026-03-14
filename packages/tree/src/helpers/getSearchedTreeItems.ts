@@ -17,6 +17,12 @@ type SearchParams = {
   }>;
 };
 
+/**
+ * Фильтрует дерево по поисковой строке с сохранением иерархии подходящих узлов.
+ *
+ * @param params Параметры поиска по дереву.
+ * @returns Новое дерево, содержащее только совпавшие узлы и их путь в иерархии.
+ */
 export const getSearchedTreeItems = ({ tree, searchOptions }: SearchParams) => {
   if (!searchOptions?.query) return tree;
 

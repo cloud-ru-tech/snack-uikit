@@ -10,6 +10,14 @@ type SearchByIdParams<I, T> = {
   };
 };
 
+/**
+ * Ищет узлы дерева по одному id или по массиву id.
+ *
+ * @param params Параметры поиска.
+ * @param params.tree Дерево для поиска.
+ * @param params.searchOptions Опции поиска (id и includeNested).
+ * @returns Для одиночного id возвращает узел или null, для массива id — список узлов.
+ */
 export const getSearchedTreeNodeById = <I extends string | string[], T extends ExtendedTreeNodeProps>({
   tree,
   searchOptions: { id, includeNested = true },

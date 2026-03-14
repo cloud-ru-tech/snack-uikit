@@ -12,9 +12,25 @@
   ],
   "description": "",
   "types": "./dist/esm/index.d.ts",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/esm/index.d.ts"
+      ],
+      "hooks": [
+        "./dist/esm/hooks/index.d.ts"
+      ]
+    }
+  },
   "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js"
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./hooks": {
+      "import": "./dist/esm/hooks/index.js",
+      "require": "./dist/cjs/hooks/index.js"
+    }
   },
   "homepage": "https://github.com/cloud-ru-tech/snack-uikit/tree/master/packages/tree",
   "repository": {
@@ -36,6 +52,7 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
+    "@siberiacancode/reactuse": "0.3.14",
     "@snack-uikit/button": "0.19.17",
     "@snack-uikit/icons": "0.27.7",
     "@snack-uikit/list": "0.32.17",
@@ -43,6 +60,7 @@
     "@snack-uikit/truncate-string": "0.7.11",
     "@snack-uikit/typography": "0.8.12",
     "@snack-uikit/utils": "4.0.1",
+    "cancelable-promise": "4.3.1",
     "classnames": "2.5.1",
     "queue-fifo": "0.2.6",
     "react-transition-state": "2.1.1",

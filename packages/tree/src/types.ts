@@ -118,3 +118,18 @@ export type TreeBaseProps = TreeView | TreeMultiSelect | TreeSingleSelect;
 export type ExtendedTreeNodeProps = TreeNodeProps & {
   getTitle?(): void;
 };
+
+export type PreloadNodeHandler<TTreeNode extends TreeNodeProps> = (
+  node: TreeNodeProps,
+) => Promise<{ preloadedChildren: TTreeNode[]; updatedTree: TTreeNode[] }>;
+
+export type SearchableTreeDataLoadResult<TTreeNode extends TreeNodeProps, TRecordValue> = {
+  preloadedChildren: TTreeNode[];
+  updatedTree: TTreeNode[];
+  newTreeItemsRecord: Record<string, TRecordValue>;
+};
+
+export type SelectHandler = (props: { selectedKeys: string[]; node: TreeNodeProps; isSelected: boolean }) => {
+  added: string[];
+  removed: string[];
+};

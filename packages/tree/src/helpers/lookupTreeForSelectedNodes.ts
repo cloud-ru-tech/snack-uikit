@@ -2,6 +2,13 @@ import { ParentNode, TreeNodeId, TreeNodeProps } from '../types';
 import { checkNestedNodesSelection } from './checkNestedNodesSelection';
 import { findAllChildNodeIds } from './findAllChildNodeIds';
 
+/**
+ * Пересчитывает выбранные узлы для режима мультивыбора в дереве.
+ * Учитывает потомков текущего узла и корректирует состояние предков.
+ *
+ * @param params Параметры пересчета выделения.
+ * @returns Обновленный список выбранных id.
+ */
 export function lookupTreeForSelectedNodes({
   node,
   selectedNodes,

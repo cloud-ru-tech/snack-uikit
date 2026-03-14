@@ -1,6 +1,13 @@
 import { TreeNodeId, TreeNodeProps } from '../types';
 import { findAllChildNodeIds } from './findAllChildNodeIds';
 
+/**
+ * Проверяет состояние выбора дочерних узлов:
+ * выбраны ли все, выбраны ли некоторые.
+ *
+ * @param nodes Дочерние узлы для проверки.
+ * @param selectedKeys Текущий список выбранных id.
+ */
 export function checkNestedNodesSelection(nodes: TreeNodeProps[], selectedKeys: TreeNodeId[]) {
   const allIds = findAllChildNodeIds(nodes);
 
