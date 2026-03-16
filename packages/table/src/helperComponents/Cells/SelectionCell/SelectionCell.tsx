@@ -74,7 +74,7 @@ export function getSelectionCellColumnDef<TData>(enableSelectPinned: boolean): C
           const isSelected = !rowsById[row.id]?.getIsSelected() || false;
 
           const newSelected = rowsToToggle.reduce<Record<string, boolean>>((acc, row) => {
-            acc[row.index] = isSelected;
+            acc[row.id] = isSelected;
             return acc;
           }, {});
 
