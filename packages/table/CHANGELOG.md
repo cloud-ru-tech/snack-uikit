@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.38.3 (2026-03-16)
+
+
+### Bug Fixes
+
+* **PDS-3626:** fix shift selection for custom row id ([342326d](https://github.com/cloud-ru-tech/snack-uikit/commit/342326d9bff0c4e97cd973ee82cc0da07796f8c8))
+
+
+
+
+
 ## 0.38.2 (2026-03-11)
 
 ### Only dependencies have been changed
