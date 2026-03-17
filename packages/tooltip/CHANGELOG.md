@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.18.11 (2026-03-17)
+
+
+### Bug Fixes
+
+* **IAM-6151:** correct condition for display tooltip ([b8ec38a](https://github.com/cloud-ru-tech/snack-uikit/commit/b8ec38ada44d0b291c0c324ff398e85d56b15ef6))
+
+
+
+
+
 ## 0.18.10 (2026-03-04)
 
 ### Only dependencies have been changed
