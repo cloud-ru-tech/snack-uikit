@@ -382,8 +382,8 @@ function Example() {
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
-| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
-| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| scrollRef | `Ref<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `Ref<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |
@@ -425,8 +425,8 @@ function Example() {
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
 | selection | `SelectionSingleState \| SelectionMultipleState` | - |  |
-| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
-| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| scrollRef | `Ref<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `Ref<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | dataFiltered | `boolean` | - |  |
 | dataError | `boolean` | - |  |
 | noDataState | `EmptyStateProps` | - | Экран при отстутствии данных |

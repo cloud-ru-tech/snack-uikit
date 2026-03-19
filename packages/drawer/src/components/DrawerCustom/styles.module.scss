@@ -9,28 +9,28 @@ $drawer-background-color: (
 
 .drawerRoot {
   z-index: initial !important; /* stylelint-disable-line declaration-no-important */
-}
 
-div[data-content-wrapper='true'] {
-  will-change: transform;
+  & [data-content-wrapper='true'] {
+    will-change: transform;
 
-  z-index: initial;
+    z-index: initial;
 
-  overflow: unset;
+    overflow: unset;
 
-  max-width: calc(100% - styles-tokens-drawer.$space-drawer-outside-gap);
-  height: 100%;
+    max-width: calc(100% - styles-tokens-drawer.$space-drawer-outside-gap);
+    height: 100%;
 
-  @each $size in $sizes {
-    &[data-size='#{$size}'] {
-      @include styles-tokens-drawer.composite-var(styles-tokens-drawer.$drawer, 'window', $size);
+    @each $size in $sizes {
+      &[data-size='#{$size}'] {
+        @include styles-tokens-drawer.composite-var(styles-tokens-drawer.$drawer, 'window', $size);
+      }
     }
-  }
 
-  @each $mode in $modes {
-    &[data-mode='#{$mode}'] {
-      .drawer {
-        background-color: styles-tokens-drawer.simple-var($drawer-background-color, $mode);
+    @each $mode in $modes {
+      &[data-mode='#{$mode}'] {
+        .drawer {
+          background-color: styles-tokens-drawer.simple-var($drawer-background-color, $mode);
+        }
       }
     }
   }

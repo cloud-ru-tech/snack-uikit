@@ -52,10 +52,10 @@ export default [
       'scripts/scss-extension-transformer.ts',
       'storybook/main.js',
       'eslint.config.mjs',
-      'vitest.config.ts'
+      'vitest.config.ts',
     ],
     rules: {
       'import/no-default-export': 'off',
     },
-  },
+  }
 ];
