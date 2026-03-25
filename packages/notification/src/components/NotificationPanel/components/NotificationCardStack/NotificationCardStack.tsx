@@ -33,6 +33,10 @@ export type NotificationCardStackProps = {
    * Список действий в выпадающем меню
    */
   actions?: Action[];
+  /**
+   * Состояние непрочитанных карточек
+   */
+  unread?: boolean;
 };
 
 const ANIMATION_DURATION = 0.3;
@@ -43,6 +47,7 @@ export function NotificationCardStack({
   onOpenChanged,
   title,
   actions,
+  unread,
 }: NotificationCardStackProps) {
   const [actionsOpen, setActionsOpen] = useState(false);
   const { open, toggleOpen, isVisible } = useAnimatedOpening({
@@ -61,7 +66,13 @@ export function NotificationCardStack({
     return <>{first}</>;
   }
 
-  const firstCardElement = open ? first : cloneCard(first, { onClick: toggleOpen });
+  const firstCardElement = open
+    ? first
+    : cloneCard(first, componentProps => ({
+        ...componentProps,
+        onClick: toggleOpen,
+        unread: unread || componentProps.unread,
+      }));
 
   return (
     <div

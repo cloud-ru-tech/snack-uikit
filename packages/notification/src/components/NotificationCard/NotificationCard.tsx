@@ -4,6 +4,7 @@ import { ElementType, MouseEventHandler, ReactNode, useEffect, useMemo, useRef, 
 import { ButtonSimple, ButtonSimpleProps, ButtonTonal, ButtonTonalProps } from '@snack-uikit/button';
 import { KebabSVG } from '@snack-uikit/icons';
 import { Link, PickLinkProps } from '@snack-uikit/link';
+import { StatusIndicator } from '@snack-uikit/status';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { Typography } from '@snack-uikit/typography';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
@@ -180,6 +181,8 @@ export function NotificationCard<LinkElement extends ElementType = 'a'>({
           )}
         </div>
       )}
+
+      {unread && <StatusIndicator className={styles.statusIndicator} size='xs' appearance='primary' />}
     </div>
   );
 }

@@ -31,7 +31,9 @@ For replacement, use Property: ◆ProdContent. Replace this element with your lo
 };
 
 export const NOTIFICATION_PANEL_PROPS_MOCK = {
-  amount: 10,
+  amount: 20,
+  groupSize: 2,
+  stackSize: 3,
   title: 'Notifications',
   readAllButton: {
     label: 'Mark all as read',

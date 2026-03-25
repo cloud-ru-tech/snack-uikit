@@ -27,6 +27,8 @@ test.describe('NotificationPanel', () => {
       props: {
         'data-test-id': STORY_TEST_IDS.panel,
         ...PROPS_MOCK,
+        groupSize: 0,
+        stackSize: 0,
       },
     });
     const { panel, panelTitle, footerButton, readAllButton } = SELECTORS.getPanel(getByTestId);

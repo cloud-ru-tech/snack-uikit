@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 import { toaster } from '@snack-uikit/toaster';
 
@@ -37,6 +37,35 @@ export function generateCards(amount: number) {
         onClick: handleActionClick,
       },
     });
+  }
+
+  return res;
+}
+
+type bunchParams<T> = {
+  bunchSize: number;
+  renderBunch: (chunk: T[], groupIndex: number) => ReactNode | ReactNode[];
+  items: T | T[];
+};
+
+/**
+ * Рендерит список элементов группами по bunchSize
+ * @param bunchSize - размер группы
+ * @param renderBunch - функция для рендера группы элементов
+ * @param items - список элементов
+ * @returns список групп элементов
+ */
+export function bunch<T>({ bunchSize, renderBunch, items }: bunchParams<T>) {
+  const childrenArray = Array.isArray(items) ? items : [items];
+
+  if (bunchSize <= 0) {
+    return childrenArray;
+  }
+
+  const res: ReactNode[] = [];
+  for (let i = 0; i < childrenArray.length; i += bunchSize) {
+    const groupIndex = i / bunchSize;
+    res.push(renderBunch(childrenArray.slice(i, i + bunchSize), groupIndex));
   }
 
   return res;

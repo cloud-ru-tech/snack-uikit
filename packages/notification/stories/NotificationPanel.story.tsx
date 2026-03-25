@@ -1,5 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { PlaceholderSVG } from '@snack-uikit/icons';
 import { SegmentedControlProps } from '@snack-uikit/segmented-control';
@@ -10,7 +10,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { NotificationCard, NotificationCardProps, NotificationPanel, NotificationPanelProps } from '../src';
 import { NOTIFICATION_PANEL_PROPS_MOCK, STORY_TEST_IDS } from './constants';
-import { generateCards, handleActionClick } from './helpers';
+import { bunch, generateCards, handleActionClick } from './helpers';
 import styles from './styles.module.scss';
 
 const meta: Meta = {
@@ -21,18 +21,20 @@ export default meta;
 
 type StoryProps = Omit<NotificationPanelProps, 'segments' | 'footerButton'> & {
   amount: number;
+  groupSize: number;
+  stackSize: number;
   segments: Omit<SegmentedControlProps, 'onChange'>;
   footerButton?: {
     label: string;
   };
   showDivider: boolean;
-  stackLength: number;
   stackTitle: string;
 };
 
 const SEGMENT_FILTER = {
   All: 'All',
-  Unread: 'Unread',
+  Service: 'Service',
+  System: 'System',
 } as const;
 
 type SegmentFilter = ValueOf<typeof SEGMENT_FILTER>;
@@ -44,42 +46,82 @@ const Template: StoryFn<StoryProps> = ({
   footerButton,
   loading,
   showDivider,
-  stackLength,
+  groupSize,
+  stackSize,
   ...args
 }: StoryProps) => {
   const [segmentFilter, setSegmentFilter] = useState<SegmentFilter>(SEGMENT_FILTER.All);
   const [allRead, setAllRead] = useState(false);
+  const [chipToggleChecked, setChipToggleChecked] = useState(false);
 
-  const notifications = useMemo(() => generateCards(amount), [amount]);
-
-  const cards = useMemo(() => {
-    if (segmentFilter === SEGMENT_FILTER.Unread) {
-      return notifications.filter(card => card.unread);
-    }
-
-    if (allRead) {
-      return notifications.map(card => ({ ...card, unread: false }));
-    }
-
-    return notifications.sort((a, b) => Number(b.unread ?? 0) - Number(a.unread ?? 0));
-  }, [allRead, segmentFilter, notifications]);
-
-  const filteredCards = useMemo(
-    () => ({
-      notRead: cards.filter(card => card.unread),
-      read: cards.filter(card => !card.unread),
-    }),
-    [cards],
+  const notifications = useMemo(
+    () => generateCards(amount).map(card => ({ ...card, unread: allRead ? false : card.unread })),
+    [amount, allRead],
   );
 
-  const showBlank = !cards.length && !loading;
+  const showBlank = !notifications.length && !loading;
 
   const toggleAllRead = () => {
     setAllRead(prev => !prev);
   };
 
-  const renderCards = (cardsList: NotificationCardProps[]) =>
-    cardsList.map(card => <NotificationCard {...card} data-test-id={STORY_TEST_IDS.card} key={card.id} />);
+  const renderListOfCards = useCallback(
+    (cards: NotificationCardProps[]) =>
+      bunch({
+        bunchSize: groupSize,
+        renderBunch: (bunch, groupIndex) => (
+          <NotificationPanel.Group key={groupIndex} title={`0${groupIndex + 1}.03.2026`}>
+            {bunch}
+          </NotificationPanel.Group>
+        ),
+        items: bunch({
+          bunchSize: stackSize,
+          renderBunch: (chunk, groupIndex) => (
+            <NotificationPanel.Stack key={groupIndex} title={args.stackTitle} actions={args.settings?.actions}>
+              {chunk}
+            </NotificationPanel.Stack>
+          ),
+          items: cards.map((card: NotificationCardProps) => (
+            <NotificationCard {...card} data-test-id={STORY_TEST_IDS.card} key={card.id} />
+          )),
+        }),
+      }),
+    [args.settings?.actions, args.stackTitle, groupSize, stackSize],
+  );
+
+  const content = useMemo(() => {
+    if (loading) {
+      return null;
+    }
+
+    if (showBlank) {
+      return (
+        <NotificationPanel.Blank
+          icon={{
+            icon: PlaceholderSVG,
+          }}
+          title='No notifications'
+          description={'Here you will see new event notifications\nwhen something happens'}
+          data-test-id={STORY_TEST_IDS.blank}
+        />
+      );
+    }
+
+    if (showDivider) {
+      const readCards = notifications.filter(card => !card.unread);
+      const unreadCards = notifications.filter(card => card.unread);
+
+      return (
+        <>
+          {renderListOfCards(unreadCards)}
+          {Boolean(unreadCards.length && readCards.length) && <NotificationPanel.Divider text='Read' />}
+          {renderListOfCards(readCards)}
+        </>
+      );
+    }
+
+    return renderListOfCards(notifications);
+  }, [notifications, renderListOfCards, showDivider, loading, showBlank]);
 
   return (
     <div className={styles.pageWrapper} data-resizable={true}>
@@ -100,44 +142,13 @@ const Template: StoryFn<StoryProps> = ({
             },
           }
         }
+        chipToggle={{
+          label: 'Unread',
+          checked: chipToggleChecked,
+          onChange: setChipToggleChecked,
+        }}
         loading={loading}
-        content={
-          <>
-            {stackLength > 0 && (
-              <NotificationPanel.Stack title={args.stackTitle} actions={args.settings?.actions}>
-                {renderCards(filteredCards.read.slice(-stackLength))}
-              </NotificationPanel.Stack>
-            )}
-            {showBlank && (
-              <NotificationPanel.Blank
-                icon={{
-                  icon: PlaceholderSVG,
-                }}
-                title='No notifications'
-                description={'Here you will see new event notifications\nwhen something happens'}
-                data-test-id={STORY_TEST_IDS.blank}
-              />
-            )}
-
-            {!showBlank && (
-              <>
-                {showDivider && segmentFilter === SEGMENT_FILTER.All ? (
-                  <>
-                    {renderCards(filteredCards.notRead)}
-
-                    {Boolean(filteredCards.notRead.length && filteredCards.read.length) && (
-                      <NotificationPanel.Divider text='Readed' />
-                    )}
-
-                    {renderCards(filteredCards.read)}
-                  </>
-                ) : (
-                  renderCards(cards)
-                )}
-              </>
-            )}
-          </>
-        }
+        content={content}
         footerButton={
           footerButton && {
             ...footerButton,
@@ -162,8 +173,13 @@ export const notificationPanel: StoryObj<StoryProps> = {
           counter: { value: NOTIFICATION_PANEL_PROPS_MOCK.amount },
         },
         {
-          value: SEGMENT_FILTER.Unread,
-          label: SEGMENT_FILTER.Unread,
+          value: SEGMENT_FILTER.Service,
+          label: SEGMENT_FILTER.Service,
+          counter: { value: NOTIFICATION_PANEL_PROPS_MOCK.amount },
+        },
+        {
+          value: SEGMENT_FILTER.System,
+          label: SEGMENT_FILTER.System,
           counter: { value: NOTIFICATION_PANEL_PROPS_MOCK.amount },
         },
       ],
@@ -185,7 +201,6 @@ export const notificationPanel: StoryObj<StoryProps> = {
       ],
     },
     showDivider: false,
-    stackLength: 0,
     stackTitle: 'Card stack title',
   },
 
@@ -199,10 +214,16 @@ export const notificationPanel: StoryObj<StoryProps> = {
         step: 1,
       },
     },
-    showDivider: {
-      name: '[Stories]: Show divider after unread cards',
+    groupSize: {
+      name: '[Stories]: Card groups size',
+      control: {
+        type: 'range',
+        min: 0,
+        max: 10,
+        step: 1,
+      },
     },
-    stackLength: {
+    stackSize: {
       name: '[Stories]: Card stack size',
       control: {
         type: 'range',
@@ -211,9 +232,12 @@ export const notificationPanel: StoryObj<StoryProps> = {
         step: 1,
       },
     },
+    showDivider: {
+      name: '[Stories]: Show divider after unread cards',
+    },
     stackTitle: {
       name: 'Card stack title',
-      if: { arg: 'stackLength', truthy: true },
+      if: { arg: 'stackSize', truthy: true },
     },
   },
 

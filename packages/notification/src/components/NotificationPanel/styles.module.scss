@@ -107,3 +107,10 @@
   column-gap: styles-tokens-notification-notificationPanel.$dimension-1m;
   align-items: center;
 }
+
+.actionsRow {
+  display: flex;
+  column-gap: styles-tokens-notification-notificationPanel.$dimension-1m;
+  align-items: center;
+  justify-content: space-between;
+}

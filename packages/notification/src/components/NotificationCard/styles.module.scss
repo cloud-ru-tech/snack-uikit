@@ -29,6 +29,12 @@
   box-sizing: border-box;
 }
 
+.statusIndicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
 .notificationCard {
   @include styles-tokens-notification-notificationCard.composite-var(styles-tokens-notification-notificationCard.$notification-card-container);
 

@@ -2,4 +2,6 @@
 
 .notificationPanelBlank {
   @include styles-tokens-notification-notificationPanel.composite-var(styles-tokens-notification-notificationPanel.$notification-panel-body-info-container);
+
+  justify-content: center;
 }

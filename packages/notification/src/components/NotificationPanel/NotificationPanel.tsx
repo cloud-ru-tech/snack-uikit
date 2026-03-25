@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { MouseEventHandler, ReactNode, RefObject, useMemo } from 'react';
 
 import { ButtonFunction, ButtonFunctionProps } from '@snack-uikit/button';
+import { ChipToggle } from '@snack-uikit/chips';
 import { Scroll } from '@snack-uikit/scroll';
 import { SegmentedControl, SegmentedControlProps } from '@snack-uikit/segmented-control';
 import { SkeletonContextProvider, WithSkeleton } from '@snack-uikit/skeleton';
@@ -16,6 +17,8 @@ import {
   NotificationCardStackProps,
   NotificationPanelBlank,
   NotificationPanelBlankProps,
+  NotificationPanelGroup,
+  NotificationPanelGroupProps,
   NotificationPanelSettings,
   NotificationPanelSettingsProps,
 } from './components';
@@ -33,6 +36,13 @@ export type NotificationPanelProps = WithSupportProps<{
   settings?: NotificationPanelSettingsProps;
   /** Сегменты для фильтрации */
   segments?: Omit<SegmentedControlProps, 'size' | 'data-test-id'>;
+  /** Переключатель для фильтрации */
+  chipToggle?: {
+    label: string;
+    checked: boolean;
+    defaultChecked?: boolean;
+    onChange(checked: boolean): void;
+  };
   /** Кнопка в "шапке" панели */
   readAllButton?: Omit<ButtonFunctionProps, 'data-test-id'> & {
     tooltip?: TooltipProps;
@@ -68,6 +78,7 @@ export function NotificationPanel({
   scrollEndRef,
   scrollContainerRef,
   className,
+  chipToggle,
   ...rest
 }: NotificationPanelProps) {
   const skeletons = useMemo(() => Array.from({ length: skeletonsAmount }, (_, i) => i), [skeletonsAmount]);
@@ -97,16 +108,25 @@ export function NotificationPanel({
           </div>
         </div>
 
-        <div>
+        <div className={styles.actionsRow}>
           {segments && (
             <SegmentedControl
               {...segments}
-              size='s'
+              size='xs'
               items={segments.items.map(item => ({
                 ...item,
                 disabled: item.disabled || loading,
               }))}
               data-test-id={TEST_IDS.segments}
+            />
+          )}
+          {chipToggle && (
+            <ChipToggle
+              size='xs'
+              disabled={loading}
+              label={chipToggle.label}
+              onChange={chipToggle.onChange}
+              checked={chipToggle.checked}
             />
           )}
         </div>
@@ -148,4 +168,6 @@ export namespace NotificationPanel {
   export type DividerProps = NotificationPanelDividerProps;
   export const Stack: typeof NotificationCardStack = NotificationCardStack;
   export type StackProps = NotificationCardStackProps;
+  export const Group: typeof NotificationPanelGroup = NotificationPanelGroup;
+  export type GroupProps = NotificationPanelGroupProps;
 }

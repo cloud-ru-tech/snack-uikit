@@ -261,6 +261,7 @@ function NotificationPanelStackExample() {
 | title* | `string` | - | Заголовок панели |
 | settings | `NotificationPanelSettingsProps` | - | Кнопка настроек и выпадающий список |
 | segments | `Omit<SegmentedControlProps, "data-test-id" \| "size">` | - | Сегменты для фильтрации |
+| chipToggle | `{ label: string; checked: boolean; defaultChecked?: boolean; onChange(checked: boolean): void; }` | - | Переключатель для фильтрации |
 | readAllButton | `Omit<ButtonFunctionProps, "data-test-id"> & { tooltip?: TooltipProps; }` | - | Кнопка в "шапке" панели |
 | footerButton | `{ label: string; onClick: MouseEventHandler<HTMLButtonElement>; }` | - | Кнопка внизу панели |
 | className | `string` | - | CSS-класс |
@@ -292,6 +293,14 @@ function NotificationPanelStackExample() {
 | defaultOpen | `boolean` | false | Состояние открыт/закрыт по умолчанию |
 | onOpenChanged | `(open: boolean) => void` | - | Колбек смены состояния открыт/закрыт |
 | actions | `Action[]` | - | Список действий в выпадающем меню |
+| unread | `boolean` | - | Состояние непрочитанных карточек |
+## NotificationPanel.Group
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| children* | `ReactNode` | - | Содержимое группы |
+| title* | `string` | - | Заголовок группы |
+| className | `string` | - | CSS-класс |
 ## NotificationPanelPopover
 Компонент-обёртка для NotificationPanel для использования как выпадающий элемент
 ### Props

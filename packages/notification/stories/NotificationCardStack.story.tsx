@@ -33,7 +33,6 @@ const Template: StoryFn<StoryProps> = ({
   actions,
   appearance,
   label,
-  unread,
   content,
   date,
   link,
@@ -53,7 +52,6 @@ const Template: StoryFn<StoryProps> = ({
           id='first-card'
           appearance={appearance}
           label={label}
-          unread={unread}
           content={content}
           date={date}
           link={link}

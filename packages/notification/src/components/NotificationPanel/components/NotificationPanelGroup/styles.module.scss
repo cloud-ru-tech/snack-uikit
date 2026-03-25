@@ -1,0 +1,43 @@
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-notification-notificationPanel' as panel;
+@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-element' as element;
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: element.$space-notification-panel-container-body-gap;
+}
+
+.title {
+  pointer-events: none;
+
+  position: sticky;
+  z-index: 1; /* stylelint-disable-line declaration-property-value-allowed-list */
+  top: 4px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  @include element.composite-var(panel.$notification-panel-date-container);
+
+  pointer-events: initial;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: panel.$sys-neutral-text-disabled;
+
+  background-color: panel.$sys-neutral-background1-level;
+  border-color: panel.$sys-neutral-decor-default;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: element.$space-notification-panel-container-body-gap;
+}

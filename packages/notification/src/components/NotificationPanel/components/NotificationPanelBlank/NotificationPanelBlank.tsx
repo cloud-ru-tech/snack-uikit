@@ -9,14 +9,12 @@ export type NotificationPanelBlankProps = Omit<InfoBlockProps, 'footer' | 'align
 /** Компонента для "заглушки" вместо карточек в панели */
 export function NotificationPanelBlank({ icon, className, ...props }: NotificationPanelBlankProps) {
   return (
-    <>
-      <InfoBlock
-        {...props}
-        icon={icon ? { ...icon, appearance: icon.appearance ?? 'neutral' } : undefined}
-        size='l'
-        align='vertical'
-        className={cn(styles.notificationPanelBlank, className)}
-      />
-    </>
+    <InfoBlock
+      {...props}
+      icon={icon ? { ...icon, appearance: icon.appearance ?? 'neutral' } : undefined}
+      size='l'
+      align='vertical'
+      className={cn(styles.notificationPanelBlank, className)}
+    />
   );
 }
