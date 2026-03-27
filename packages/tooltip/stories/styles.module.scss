@@ -16,3 +16,43 @@
 .item {
   height: 10px;
 }
+
+/** Элементы только для e2e: не занимают место в визуальном макете Storybook. */
+.storyRoot {
+  position: relative;
+}
+
+.e2eHelpers {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.visuallyHidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.activityRemovalHidden {
+  pointer-events: auto;
+
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+
+  width: 48px;
+  height: 48px;
+
+  opacity: 0;
+}

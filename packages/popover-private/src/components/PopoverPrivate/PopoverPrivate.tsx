@@ -187,7 +187,24 @@ function PopoverPrivateComponent({
 
   const [isOpen, setIsOpen] = useUncontrolledProp(openProp, false, onOpenChange);
 
-  usePopstateSubscription(() => isOpen && setIsOpen(false), Boolean(closeOnPopstate));
+  const openRef = useRef(isOpen);
+
+  useEffect(() => {
+    openRef.current = isOpen;
+  }, [isOpen]);
+
+  const setOpenFromFloating = useCallback(
+    (nextOpen: boolean, ...args: unknown[]) => {
+      if (nextOpen === openRef.current) {
+        return;
+      }
+      openRef.current = nextOpen;
+      (setIsOpen as (value: boolean, ...rest: unknown[]) => void)(nextOpen, ...args);
+    },
+    [setIsOpen],
+  );
+
+  usePopstateSubscription(() => isOpen && setOpenFromFloating(false), Boolean(closeOnPopstate));
 
   const nodeId = useFloatingNodeId();
 
@@ -198,7 +215,7 @@ function PopoverPrivateComponent({
     nodeId,
     placement: placementProp,
     open: isOpen,
-    onOpenChange: setIsOpen,
+    onOpenChange: setOpenFromFloating,
     whileElementsMounted: autoUpdate,
     middleware: [
       shift(),

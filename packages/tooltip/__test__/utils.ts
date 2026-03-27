@@ -5,7 +5,7 @@ const focus = async (getByTestId: (testId: string) => Locator, testId: string) =
   await element.focus();
 };
 
-const clickWithoutFocus = async (page: Page, getByTestId: (testId: string) => Locator, testId: string) => {
+export const clickWithoutFocus = async (page: Page, getByTestId: (testId: string) => Locator, testId: string) => {
   const element = getByTestId(testId);
   await page.evaluate(
     element => {

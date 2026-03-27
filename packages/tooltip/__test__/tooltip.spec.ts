@@ -1,6 +1,7 @@
 import { expect, Locator, Page, test } from '../../../playwright/fixtures';
 import { TRIGGER } from '../../popover-private/src/constants';
 import {
+  clickWithoutFocus,
   scrollWindow,
   verifyClickTrigger,
   verifyClickWithFocusTrigger,
@@ -10,6 +11,7 @@ import {
 
 const TOOLTIP_TEST_ID = 'tooltip';
 const BUTTON_TEST_ID = 'button-with-tooltip';
+const ON_OPEN_CHANGE_CALL_COUNT_TEST_ID = 'on-open-change-call-count';
 
 const verifyTooltipBehavior = async (
   page: Page,
@@ -129,6 +131,52 @@ test.describe('Tooltip', () => {
     await expect(getByTestId(BUTTON_TEST_ID)).toBeVisible();
 
     await verifyTooltipBehavior(page, getByTestId, { hover: true, focus: true, strongFocus: true });
+  });
+
+  test('onOpenChange fires once per open and close when trigger is hover', async ({ page, gotoStory, getByTestId }) => {
+    await gotoStory({
+      name: 'tooltip',
+      props: {
+        'data-test-id': TOOLTIP_TEST_ID,
+        trigger: TRIGGER.Hover,
+      },
+    });
+
+    const callCount = getByTestId(ON_OPEN_CHANGE_CALL_COUNT_TEST_ID);
+    const tooltip = getByTestId(TOOLTIP_TEST_ID);
+    const button = getByTestId(BUTTON_TEST_ID);
+
+    await page.locator('body').click({ position: { x: 0, y: 0 } });
+    await expect(callCount).toHaveText('0');
+
+    await button.hover();
+    await expect(tooltip).toBeVisible();
+    await expect(callCount).toHaveText('1');
+
+    await getByTestId('activity-removal').click();
+    await expect(tooltip).not.toBeVisible();
+    await expect(callCount).toHaveText('2');
+  });
+
+  test('onOpenChange fires once per open and close when trigger is click', async ({ page, gotoStory, getByTestId }) => {
+    await gotoStory({
+      name: 'tooltip',
+      props: {
+        'data-test-id': TOOLTIP_TEST_ID,
+        trigger: TRIGGER.Click,
+      },
+    });
+
+    const callCount = getByTestId(ON_OPEN_CHANGE_CALL_COUNT_TEST_ID);
+    const tooltip = getByTestId(TOOLTIP_TEST_ID);
+
+    await clickWithoutFocus(page, getByTestId, BUTTON_TEST_ID);
+    await expect(tooltip).toBeVisible();
+    await expect(callCount).toHaveText('1');
+
+    await clickWithoutFocus(page, getByTestId, BUTTON_TEST_ID);
+    await expect(tooltip).not.toBeVisible();
+    await expect(callCount).toHaveText('2');
   });
 
   test('Should not disappear on scroll', async ({ page, gotoStory, getByTestId }) => {

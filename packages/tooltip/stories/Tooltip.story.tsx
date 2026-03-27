@@ -1,4 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 import { ButtonFilled } from '@snack-uikit/button';
 import { Link } from '@snack-uikit/link';
@@ -17,28 +18,44 @@ const meta: Meta = {
 export default meta;
 
 type StoryProps = TooltipProps;
-const Template: StoryFn<StoryProps> = ({ ...args }) => (
-  <>
-    <div className={styles.story}>
-      <Tooltip
-        {...args}
-        tip={
-          args.tip || (
-            <div>
-              do not press this button, please do not press this button, please do not press this button, please do not
-              press this button, please do not press this button, please
-              <br />
-              <Link href='#' text='read why' textMode='accent' appearance='invert-neutral' />
-            </div>
-          )
-        }
-      >
-        <ButtonFilled label='Reference button' data-test-id='button-with-tooltip' />
-      </Tooltip>
+
+const Template: StoryFn<StoryProps> = ({ ...args }) => {
+  const [callCount, setCallCount] = useState(0);
+
+  return (
+    <div className={styles.storyRoot}>
+      <div className={styles.story}>
+        <Tooltip
+          {...args}
+          tip={
+            args.tip || (
+              <div>
+                do not press this button, please do not press this button, please do not press this button, please do
+                not press this button, please do not press this button, please
+                <br />
+                <Link href='#' text='read why' textMode='accent' appearance='invert-neutral' />
+              </div>
+            )
+          }
+          onOpenChange={() => setCallCount(c => c + 1)}
+        >
+          <ButtonFilled label='Reference button' data-test-id='button-with-tooltip' />
+        </Tooltip>
+      </div>
+      <div className={styles.e2eHelpers} aria-hidden>
+        <span data-test-id='on-open-change-call-count' className={styles.visuallyHidden}>
+          {callCount}
+        </span>
+        <div
+          data-test-id='activity-removal'
+          role='button'
+          tabIndex={0}
+          className={`${styles.item} ${styles.activityRemovalHidden}`}
+        />
+      </div>
     </div>
-    <div data-test-id='activity-removal' role='button' tabIndex={0} className={styles.item} />
-  </>
-);
+  );
+};
 
 export const tooltip: StoryObj<StoryProps> = {
   render: Template,
@@ -47,6 +64,7 @@ export const tooltip: StoryObj<StoryProps> = {
     trigger: 'hover',
     placement: 'top',
     disableMaxWidth: false,
+    'data-test-id': 'tooltip',
   },
 
   argTypes: { tip: { type: 'string' } },
