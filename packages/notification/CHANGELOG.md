@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.14.0 (2026-03-27)
+
+
+### Features
+
+* **FF-8128:** add notification groups ([91c27de](https://github.com/cloud-ru-tech/snack-uikit/commit/91c27deb8fe245c7bcc7287437c7e26aa72d7118))
+
+
+
+
+
 ## 0.13.30 (2026-03-17)
 
 ### Only dependencies have been changed

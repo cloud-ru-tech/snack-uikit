@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.29.0 (2026-03-27)
+
+
+### Features
+
+* **PROFCOMM-2703:** updated @cloud-ru/ft-config-stylelint to latest & rules ignore for turbopack ([cdcb198](https://github.com/cloud-ru-tech/snack-uikit/commit/cdcb198c68de1394a5473260122aeadd3534a0df))
+
+
+
+
+
 ## 0.28.17 (2026-03-17)
 
 ### Only dependencies have been changed

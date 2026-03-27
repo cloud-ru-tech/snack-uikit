@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.15.5 (2026-03-27)
+
+
+### Bug Fixes
+
+* **FF-8103:** dedupe onOpenChange from Floating UI in PopoverPrivate ([ac02052](https://github.com/cloud-ru-tech/snack-uikit/commit/ac020527ab6f3ee2e171af5a6c5e9d2c2a1506f6))
+
+
+
+
+
 ## <small>0.15.4 (2026-01-19)</small>
 
 * docs(FF-7788): readme update ([e3142b8](https://github.com/cloud-ru-tech/snack-uikit/commit/e3142b8))
