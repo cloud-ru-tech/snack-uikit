@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.11.0 (2026-03-27)
+
+
+### Features
+
+* **IAM-6342:** reexport tree utils ([20548ec](https://github.com/cloud-ru-tech/snack-uikit/commit/20548ec3cdde2380bd67cb215b69aaf80513f11c))
+
+
+
+
+
 ## 0.10.3 (2026-03-27)
 
 ### Only dependencies have been changed
