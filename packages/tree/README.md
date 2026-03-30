@@ -189,6 +189,35 @@ function TreeAsyncLoadExample() {
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+## useSearchableTree
+Хук для работы с деревом, поддерживающим поиск и асинхронную подгрузку узлов.
+
+Возможности:
+- хранение актуального дерева и записи элементов (`treeItemsRecord`);
+- управление раскрытыми узлами;
+- дебаунс-поиск с отменой предыдущего запроса;
+- дозагрузка дочерних узлов после поиска или раскрытия.
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| mapNodeToRecordItem* | `(node: TTreeNode) => TRecordValue` | - | Сопоставление узла с элементом записи `treeItemsRecord` (по `node.id`). |
+| onSearch* | `(params: SearchParams, signal?: AbortSignal) => Promise<SearchResult<TTreeNode>>` | - | Поиск по дереву. |
+| onPreloadNodes* | `(nodes: string[], signal?: AbortSignal) => Promise<Record<string, TTreeNode[]>>` | - | Пакетная подгрузка детей по id родителей. |
+| onPreloadNode* | `(node: TreeNodeProps) => Promise<TTreeNode[]>` | - | Подгрузка дочерних узлов для одного узла. |
+| initTree* | `TTreeNode[]` | - | Начальное дерево узлов. |
+## useTreeMultiSelection
+Хук мультивыбора для дерева.
+
+Выполняет пересчет выбранных id после клика по узлу, поддерживает
+controlled/uncontrolled режим (`selected` + `onChangeSelected`) и при необходимости
+подгружает детей узла перед вычислением итогового выбора.
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| onSelect* | `SelectHandler` | - | Логика мультивыбора: по клику возвращает, какие id добавить и снять. |
+| onDataLoad* | `PreloadNodeHandler<TTreeNode>` | - | Подгрузка дочерних узлов, если у узла есть `nested`, но массив пуст (ленивая загрузка перед выбором). |
+| selected | `string[]` | - | Controlled: текущие выбранные id; без пропа — внутреннее состояние хука. |
+| onChangeSelected | `(newSelected: string[]) => void` | - | Вызывается при изменении набора выбранных id (controlled-сценарий). |
 
 
 [//]: DOCUMENTATION_SECTION_END
