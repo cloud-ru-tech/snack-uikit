@@ -21,7 +21,13 @@ import { FiltersState } from '@snack-uikit/chips';
 import { useLocale } from '@snack-uikit/locale';
 import { Scroll } from '@snack-uikit/scroll';
 import { SkeletonContextProvider } from '@snack-uikit/skeleton';
-import { type PersistedFilterState, Toolbar, ToolbarProps } from '@snack-uikit/toolbar';
+import {
+  type PersistedFilterState,
+  Toolbar,
+  type ToolbarPersistConfig,
+  ToolbarProps,
+  usePersistState,
+} from '@snack-uikit/toolbar';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps } from '@snack-uikit/utils';
 
@@ -440,6 +446,56 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const showToolbar = !suppressToolbar;
   const showPagination = !infiniteLoading && !suppressPagination;
 
+  const tableToolbarPersistConfig = useMemo((): ToolbarPersistConfig<TFilters> | undefined => {
+    if (!savedState?.id || !savedState?.filterQueryKey) {
+      return undefined;
+    }
+
+    return {
+      id: savedState.id,
+      filterQueryKey: savedState.filterQueryKey,
+      validateData: validatePersistedState,
+      state: {
+        pagination: mapPaginationToRequestPayload(pagination),
+        ordering: mapSortToRequestPayload(sorting),
+        filter,
+        search: globalFilter || '',
+      },
+      serializer: savedState.serializer,
+      parser: savedState.parser,
+      onLoad: state => {
+        state.pagination && onPaginationChange(mapPaginationToTableState(state.pagination));
+        state.search && onGlobalFilterChange(state.search);
+        state.ordering && onSortingChange(mapSortToTableState(state.ordering));
+        if (state.filter) {
+          setFilter(state.filter as TFilters);
+          setFilterVisibility(Object.keys(state.filter));
+        }
+      },
+    };
+  }, [
+    filter,
+    globalFilter,
+    onGlobalFilterChange,
+    onPaginationChange,
+    onSortingChange,
+    pagination,
+    savedState?.filterQueryKey,
+    savedState?.id,
+    savedState?.parser,
+    savedState?.serializer,
+    setFilter,
+    setFilterVisibility,
+    sorting,
+    validatePersistedState,
+  ]);
+
+  usePersistState<TFilters>({
+    persist: suppressToolbar ? tableToolbarPersistConfig : undefined,
+    filter,
+    search: suppressSearch ? undefined : globalFilter,
+  });
+
   const { checked, indeterminate } = isAllRowsMode
     ? { checked: table.getIsAllRowsSelected(), indeterminate: table.getIsSomeRowsSelected() }
     : { checked: table.getIsAllPageRowsSelected(), indeterminate: table.getIsSomePageRowsSelected() };
@@ -465,32 +521,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
             }
             className={styles.toolbar}
             onRefresh={onRefresh ? handleOnRefresh : undefined}
-            persist={
-              savedState?.id && savedState?.filterQueryKey
-                ? {
-                    id: savedState.id,
-                    filterQueryKey: savedState.filterQueryKey,
-                    validateData: validatePersistedState,
-                    state: {
-                      pagination: mapPaginationToRequestPayload(pagination),
-                      ordering: mapSortToRequestPayload(sorting),
-                      filter,
-                      search: globalFilter || '',
-                    },
-                    serializer: savedState.serializer,
-                    parser: savedState.parser,
-                    onLoad: state => {
-                      state.pagination && onPaginationChange(mapPaginationToTableState(state.pagination));
-                      state.search && onGlobalFilterChange(state.search);
-                      state.ordering && onSortingChange(mapSortToTableState(state.ordering));
-                      if (state.filter) {
-                        setFilter(state.filter as TFilters);
-                        setFilterVisibility(Object.keys(state.filter));
-                      }
-                    },
-                  }
-                : undefined
-            }
+            persist={showToolbar ? tableToolbarPersistConfig : undefined}
             bulkActions={bulkActions}
             selectionMode={rowSelectionProp?.multiRow ? 'multiple' : 'single'}
             checked={checked}

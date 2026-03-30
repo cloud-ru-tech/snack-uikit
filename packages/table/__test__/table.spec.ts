@@ -121,6 +121,39 @@ test.describe('Table', () => {
     await expect(toolbarFilterRow).not.toBeVisible();
   });
 
+  test('Restores saved pagination from localStorage when suppressToolbar is true', async ({ page, gotoStory }) => {
+    const localStorageKey = 'snack-ui-table-storybook_filter';
+    const persistedState = JSON.stringify({
+      pagination: { limit: 10, offset: 20 },
+      search: '',
+    });
+
+    await page.addInitScript(
+      ({ key, value }: { key: string; value: string }) => {
+        localStorage.setItem(key, value);
+      },
+      { key: localStorageKey, value: persistedState },
+    );
+
+    await gotoStory({
+      name: 'table',
+      props: {
+        'data-test-id': STORY_TEST_IDS.table,
+        rowsAmount: 35,
+        suppressToolbar: true,
+        showFilters: false,
+        suppressSearch: true,
+        savedState: {
+          id: 'snack-ui-table-storybook',
+          filterQueryKey: 'filterKey',
+        },
+      },
+    });
+
+    const pageThreeButton = page.locator('[data-test-id="page-number-button-3"]');
+    await expect(pageThreeButton).toHaveAttribute('data-activated', 'true');
+  });
+
   test('Render rows with Status indicator and without label', async ({ page, gotoStory }) => {
     await gotoStory({
       name: 'table',
