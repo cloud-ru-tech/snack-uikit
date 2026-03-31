@@ -13,6 +13,35 @@ export type Purpose = ValueOf<typeof PURPOSE>;
 
 export type TextMode = ValueOf<typeof TEXT_MODE>;
 
+type TruncateEndProps = {
+  /**
+   * Вариант обрезания строки:
+   *
+   * - `end` — с конца;
+   * - `middle` — посередине
+   */
+  truncateVariant?: Extract<TruncateStringProps['variant'], 'end'>;
+  /**
+   * Максимальное кол-во строк, до которого может сворачиваться текст ссылки.
+   * @remarks Применяется только при `truncateVariant === 'end'`.
+   * @default 1
+   */
+  truncateMaxLines?: number;
+};
+
+type TruncateMiddleProps = {
+  /**
+   * Вариант обрезания строки:
+   *
+   * - `end` — с конца;
+   * - `middle` — посередине
+   */
+  truncateVariant?: Extract<TruncateStringProps['variant'], 'middle'>;
+  truncateMaxLines?: never;
+};
+
+type TruncateProps = TruncateEndProps | TruncateMiddleProps;
+
 export type BaseProps = WithSupportProps<{
   /** Текст ссылки */
   text?: string;
@@ -34,36 +63,34 @@ export type BaseProps = WithSupportProps<{
   textMode?: TextMode;
   /** Находится ли ссылка внутри текста (и можно ли её переносить) */
   insideText?: boolean;
-  /**
-   * Вариант обрезания строки:
-   * <br> - `end` - с конца;
-   * <br> - `middle` - по середине
-   * */
-  truncateVariant?: TruncateStringProps['variant'];
 }>;
 
-export type LinkProps<T extends ElementType = 'a'> = BaseProps & {
-  /**
-   *
-   * Полиморфный компонент.
-   *
-   * Оформить переданный компонент или html элемент в стиль ссылки.
-   *
-   * Список атрибутов, которые переданный компонент должен принять:
-   * <br/> - `className`
-   * <br/> - `data-size`
-   * <br/> - `data-text-mode`
-   * <br/> - `data-appearance`
-   * <br/> - `data-inside-text`
-   *
-   * @type ComponentType | ElementType
-   * @default 'a'
-   *
-   * */
-  as?: T;
-} & Omit<ComponentPropsWithoutRef<ElementType extends T ? 'a' : T>, keyof BaseProps>;
+export type LinkProps<T extends ElementType = 'a'> = BaseProps &
+  TruncateProps & {
+    /**
+     *
+     * Полиморфный компонент.
+     *
+     * Оформить переданный компонент или html элемент в стиль ссылки.
+     *
+     * Список атрибутов, которые переданный компонент должен принять:
+     * - `className`
+     * - `data-size`
+     * - `data-text-mode`
+     * - `data-appearance`
+     * - `data-inside-text`
+     *
+     * @type ComponentType | ElementType
+     * @default 'a'
+     *
+     */
+    as?: T;
+  } & Omit<ComponentPropsWithoutRef<ElementType extends T ? 'a' : T>, keyof BaseProps>;
 
-export type PickLinkProps<T extends ElementType, SelectedKeys extends keyof LinkProps<T>> = Pick<
+/** Сохраняет дискриминацию union при выборе полей (в отличие от `Pick` по union). */
+type DistributivePick<T, K extends keyof T> = T extends unknown ? Pick<T, K> : never;
+
+export type PickLinkProps<T extends ElementType, SelectedKeys extends keyof LinkProps<T>> = DistributivePick<
   LinkProps<T>,
   SelectedKeys
 > &

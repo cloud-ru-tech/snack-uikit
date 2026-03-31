@@ -51,8 +51,9 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 | appearance | enum Appearance: `"invert-neutral"`, `"neutral"`, `"primary"`, `"red"`, `"orange"`, `"yellow"`, `"green"`, `"blue"`, `"violet"`, `"pink"` | primary | Стилизует ссылку для размещения на цветном фоне |
 | textMode | enum TextMode: `"default"`, `"accent"`, `"on-accent"` | default | Тип поверхности, на которой размещена ссылка |
 | insideText | `boolean` | - | Находится ли ссылка внутри текста (и можно ли её переносить) |
-| truncateVariant | "end" \| "middle" | - | Вариант обрезания строки: <br> - `end` - с конца; <br> - `middle` - по середине |
-| as | `ComponentType \| ElementType` | 'a' | Полиморфный компонент.  Оформить переданный компонент или html элемент в стиль ссылки.  Список атрибутов, которые переданный компонент должен принять: <br/> - `className` <br/> - `data-size` <br/> - `data-text-mode` <br/> - `data-appearance` <br/> - `data-inside-text` |
+| truncateVariant | "end" \| "middle" | - | Вариант обрезания строки:  - `end` — с конца; - `middle` — посередине |
+| truncateMaxLines | `number` | 1 | Максимальное кол-во строк, до которого может сворачиваться текст ссылки. @remarks Применяется только при `truncateVariant === 'end'`. |
+| as | `ComponentType \| ElementType` | 'a' | Полиморфный компонент.  Оформить переданный компонент или html элемент в стиль ссылки.  Список атрибутов, которые переданный компонент должен принять: - `className` - `data-size` - `data-text-mode` - `data-appearance` - `data-inside-text` |
 
 
 [//]: DOCUMENTATION_SECTION_END

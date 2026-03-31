@@ -18,6 +18,7 @@ export function Link<T extends ElementType = 'a'>({
   appearance = APPEARANCE.Primary,
   insideText = false,
   truncateVariant,
+  truncateMaxLines = 1,
   as,
   ...rest
 }: LinkProps<T>) {
@@ -48,7 +49,7 @@ export function Link<T extends ElementType = 'a'>({
       data-appearance={appearance}
       data-inside-text={insideText || undefined}
     >
-      {insideText ? text : <TruncateString text={text} maxLines={1} variant={truncateVariant} />}
+      {insideText ? text : <TruncateString text={text} maxLines={truncateMaxLines} variant={truncateVariant} />}
     </Component>
   );
 }

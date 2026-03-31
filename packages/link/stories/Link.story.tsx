@@ -112,6 +112,7 @@ export const link: StoryObj<StoryProps> = {
     appearance: DEFAULT_APPEARANCE,
     insideText: false,
     truncateVariant: 'end',
+    truncateMaxLines: 1,
   },
 
   argTypes: {
@@ -124,6 +125,9 @@ export const link: StoryObj<StoryProps> = {
     },
     download: {
       type: 'string',
+    },
+    truncateMaxLines: {
+      if: { arg: 'truncateVariant', eq: 'end' },
     },
   },
 
