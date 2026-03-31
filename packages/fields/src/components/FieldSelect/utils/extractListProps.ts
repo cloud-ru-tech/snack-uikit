@@ -13,6 +13,9 @@ export function extractListProps({
   widthStrategy,
   scrollToSelectedItem,
   virtualized,
+  scrollRef,
+  scrollContainerRef,
+  onScroll,
 }: Partial<FieldSelectProps>): Partial<DroplistProps> {
   return {
     dataError,
@@ -24,6 +27,9 @@ export function extractListProps({
     footer,
     widthStrategy,
     scrollToSelectedItem,
+    scrollRef,
+    scrollContainerRef,
+    onScroll,
     trigger: 'clickAndFocusVisible',
     placement: 'bottom',
     'data-test-id': 'field-select__list',
