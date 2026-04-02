@@ -952,7 +952,7 @@ importers:
         specifier: 3.2.11
         version: link:../divider
       '@snack-uikit/fields':
-        specifier: 0.53.0
+        specifier: 0.53.1
         version: link:../fields
       '@snack-uikit/link':
         specifier: 0.17.20
@@ -1345,7 +1345,7 @@ importers:
         specifier: 0.13.26
         version: link:../toggles
       '@snack-uikit/toolbar':
-        specifier: 0.14.22
+        specifier: 0.14.23
         version: link:../toolbar
       '@snack-uikit/truncate-string':
         specifier: 0.7.11

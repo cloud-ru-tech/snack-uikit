@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.53.1 (2026-04-02)
+
+
+### Bug Fixes
+
+* **EVOVPC-2593:** select scroll props ([73772d2](https://github.com/cloud-ru-tech/snack-uikit/commit/73772d2c9d03ea4043bdefe1ef480df3d71ab026))
+
+
+
+
+
 # 0.53.0 (2026-03-27)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.38.6 (2026-04-02)
+
+
+### Bug Fixes
+
+* **PDS-3636:** fix persist state ([78c0aad](https://github.com/cloud-ru-tech/snack-uikit/commit/78c0aadffbb178df952848a40e4dc10b0096f7ee))
+
+
+
+
+
 ## 0.38.5 (2026-03-27)
 
 ### Only dependencies have been changed
