@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.12.0 (2026-04-02)
+
+
+### Features
+
+* **IAM-6334:** add hooks for lazy search and select ([4e38e6f](https://github.com/cloud-ru-tech/snack-uikit/commit/4e38e6f7e16bd1ddded88fbfeb602351b1c374bd))
+* **IAM-6334:** resolve docgen entry sources from package.json exports ([e874dc3](https://github.com/cloud-ru-tech/snack-uikit/commit/e874dc3dece358ef0dfd0cd8a5a9772b932c745e))
+
+
+
+
+
 # 0.11.0 (2026-03-27)
 
 
