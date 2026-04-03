@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.18.0 (2026-04-03)
+
+
+### Features
+
+* **PDS-3679:** added truncateMaxLines prop in Link ([ff25bd3](https://github.com/cloud-ru-tech/snack-uikit/commit/ff25bd3703e9d911a93bc657368ded03fa24ecaf))
+
+
+
+
+
 ## 0.17.20 (2026-03-27)
 
 ### Only dependencies have been changed
