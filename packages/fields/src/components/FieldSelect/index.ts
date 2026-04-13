@@ -1,6 +1,8 @@
 export { FieldSelect } from './FieldSelect';
 
 export type {
+  FieldSelectMultipleAddCustomOptionTrigger,
+  FieldSelectSingleAddCustomOptionTrigger,
   FieldSelectSingleProps,
   FieldSelectMultipleProps,
   FieldSelectProps,

@@ -20,10 +20,16 @@ import { usePostfix, usePrefix, useValueControl } from '../../hooks';
 import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
-import { useButtons, useHandleOnKeyDown, useSearch, useSearchInput } from './hooks';
+import { useButtons, useFieldSelectSingleCustomOption, useHandleOnKeyDown, useSearch, useSearchInput } from './hooks';
 import styles from './styles.module.scss';
 import { FieldSelectSingleProps, ItemWithId, SelectedOptionFormatter } from './types';
-import { checkisSearchUnavailable, extractListProps, getArrowIcon, updateItems } from './utils';
+import {
+  checkisSearchUnavailable,
+  extractListProps,
+  getArrowIcon,
+  shouldHandleCustomOptionTrigger,
+  updateItems,
+} from './utils';
 
 const defaultSelectedOptionFormatter: SelectedOptionFormatter = item =>
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -54,6 +60,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     prefix,
     postfix,
     addOptionByEnter = false,
+    addCustomOptionTriggers: addCustomOptionTriggersProp,
     untouchableScrollbars = false,
     open: openProp,
     onOpenChange,
@@ -131,14 +138,6 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     valueToCopy: selectedOptionFormatter(selectedItem),
   });
 
-  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-    if (!open && !buttonsRefs.filter(Boolean).includes(e.relatedTarget)) {
-      updateInputValue(selectedItem);
-
-      rest?.onBlur?.(e);
-    }
-  };
-
   const commonHandleOnKeyDown = useHandleOnKeyDown({
     inputKeyDownNavigationHandler,
     onInputKeyDownProp,
@@ -157,6 +156,28 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     [setOpen, setValue],
   );
 
+  const { resolvedAddCustomOptionTriggers, tryCommitCustomOptionFromInput } = useFieldSelectSingleCustomOption({
+    addCustomOptionTriggers: addCustomOptionTriggersProp,
+    addOptionByEnter,
+    inputValue,
+    handleSelectionChange,
+  });
+
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+    if (!open && !buttonsRefs.filter(Boolean).includes(e.relatedTarget)) {
+      const commitOnBlur =
+        shouldHandleCustomOptionTrigger('blur', resolvedAddCustomOptionTriggers) && inputValue !== '';
+
+      if (commitOnBlur) {
+        tryCommitCustomOptionFromInput('blur');
+      } else {
+        updateInputValue(selectedItem);
+      }
+
+      rest?.onBlur?.(e);
+    }
+  };
+
   const handleOnKeyDown = (onKeyDown?: KeyboardEventHandler<HTMLElement>) => (e: KeyboardEvent<HTMLInputElement>) => {
     if (!open && prevInputValue.current !== inputValue) {
       setOpen(true);
@@ -165,10 +186,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     if (e.code === 'Enter') {
       e.stopPropagation();
       e.preventDefault();
-    }
-
-    if (addOptionByEnter && e.code === 'Enter' && inputValue !== '') {
-      handleSelectionChange(inputValue);
+      tryCommitCustomOptionFromInput('enter');
     }
 
     commonHandleOnKeyDown(onKeyDown)(e);
@@ -178,7 +196,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     if (isBrowser() && !readonly && !disabled && !buttonsRefs.includes(document.activeElement)) {
       setOpen(open);
 
-      if (!open) {
+      if (!open && !shouldHandleCustomOptionTrigger('blur', resolvedAddCustomOptionTriggers)) {
         updateInputValue(selectedItem);
       }
     }

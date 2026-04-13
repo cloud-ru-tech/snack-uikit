@@ -11,11 +11,10 @@ import {
   SelectionSingleValueType,
 } from '@snack-uikit/list';
 
-import { useCopyButton, useValueControl } from '../../hooks';
-import { extractChildIds } from './legacy';
-import { ItemWithId, SearchState, SelectedOptionFormatter } from './types';
-import { getValueByPath, isBaseOptionProps } from './utils';
-import { filterItemsByFlattenIds } from './utils/filterItemsByFlattenIds';
+import { useCopyButton, useValueControl } from '../../../hooks';
+import { extractChildIds } from '../legacy';
+import { ItemWithId, SearchState, SelectedOptionFormatter } from '../types';
+import { filterItemsByFlattenIds, getValueByPath, isBaseOptionProps } from '../utils';
 
 type UseHandleOnKeyDownProps = {
   inputKeyDownNavigationHandler: KeyboardEventHandler<HTMLInputElement>;

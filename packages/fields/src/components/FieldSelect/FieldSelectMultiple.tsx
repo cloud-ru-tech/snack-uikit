@@ -1,6 +1,15 @@
 import cn from 'classnames';
 import mergeRefs from 'merge-refs';
-import { FocusEvent, forwardRef, KeyboardEvent, KeyboardEventHandler, useEffect, useRef, useState } from 'react';
+import {
+  FocusEvent,
+  forwardRef,
+  KeyboardEvent,
+  KeyboardEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { InputPrivate } from '@snack-uikit/input-private';
 import { BaseItemProps, Droplist, ItemProps, SelectionSingleValueType } from '@snack-uikit/list';
@@ -12,10 +21,24 @@ import { usePostfix, usePrefix, useValueControl } from '../../hooks';
 import { getValidationState } from '../../utils/getValidationState';
 import { FieldDecorator } from '../FieldDecorator';
 import { extractFieldDecoratorProps } from '../FieldDecorator/utils';
-import { useButtons, useHandleDeleteItem, useHandleOnKeyDown, useSearch, useSearchInput } from './hooks';
+import {
+  useButtons,
+  useFieldSelectMultipleCustomOption,
+  useHandleDeleteItem,
+  useHandleOnKeyDown,
+  useSearch,
+  useSearchInput,
+} from './hooks';
 import styles from './styles.module.scss';
 import { FieldSelectMultipleProps, ItemWithId, SelectedOptionFormatter } from './types';
-import { checkisSearchUnavailable, extractListProps, getArrowIcon, updateMultipleItems } from './utils';
+import {
+  checkisSearchUnavailable,
+  extractListProps,
+  getArrowIcon,
+  getCustomOptionTriggerByCode,
+  shouldHandleCustomOptionTrigger,
+  updateMultipleItems,
+} from './utils';
 
 const BASE_MIN_WIDTH = 4;
 
@@ -47,6 +70,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     postfix,
     removeByBackspace = false,
     addOptionByEnter = false,
+    addCustomOptionTriggers,
     untouchableScrollbars = false,
     open: openProp,
     enableFuzzySearch = true,
@@ -78,6 +102,15 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     defaultValue: '',
     selectedOptionFormatter,
     resetSearchOnOptionSelection,
+  });
+
+  const { resolvedAddCustomOptionTriggers, tryCommitCustomOptionFromInput } = useFieldSelectMultipleCustomOption({
+    addCustomOptionTriggers,
+    addOptionByEnter,
+    inputValue,
+    value,
+    setValue,
+    updateInputValue,
   });
 
   const prefixSettings = usePrefix({ prefix, disabled });
@@ -114,6 +147,15 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
   });
 
   const handleItemDelete = useHandleDeleteItem(setValue);
+  const handleTagDelete = useCallback(
+    (option: BaseItemProps) => () => {
+      const deleteItemHandler = handleItemDelete(option);
+      deleteItemHandler();
+      localRef.current?.focus();
+    },
+    [handleItemDelete],
+  );
+
   const handleOnKeyDown = (onKeyDown?: KeyboardEventHandler<HTMLElement>) => (e: KeyboardEvent<HTMLInputElement>) => {
     if (removeByBackspace && e.code === 'Backspace' && inputValue === '') {
       if (selectedItems?.length && !selectedItems.slice(-1)[0].disabled) {
@@ -124,12 +166,14 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
     if (e.code === 'Enter') {
       e.stopPropagation();
       e.preventDefault();
-    }
+      tryCommitCustomOptionFromInput('enter');
+    } else {
+      const customOptionTrigger = getCustomOptionTriggerByCode(e.code);
 
-    if (addOptionByEnter && e.code === 'Enter' && inputValue !== '') {
-      if (!(value ?? []).includes(inputValue)) {
-        setValue((value: SelectionSingleValueType[]) => (value ?? []).concat(inputValue));
-        updateInputValue();
+      if (shouldHandleCustomOptionTrigger(customOptionTrigger, resolvedAddCustomOptionTriggers)) {
+        e.stopPropagation();
+        e.preventDefault();
+        tryCommitCustomOptionFromInput(customOptionTrigger);
       }
     }
 
@@ -160,6 +204,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     if (!open && !buttonsRefs.filter(Boolean).includes(e.relatedTarget)) {
+      tryCommitCustomOptionFromInput('blur');
       updateInputValue();
 
       rest?.onBlur?.(e);
@@ -251,7 +296,7 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
                       label={selectedOptionFormatter(option)}
                       key={option.id}
                       appearance={option.appearance ?? 'neutral'}
-                      onDelete={!option.disabled && !disabled && !readonly ? handleItemDelete(option) : undefined}
+                      onDelete={!option.disabled && !disabled && !readonly ? handleTagDelete(option) : undefined}
                       className={styles.tag}
                       data-disabled={disabled || undefined}
                     />

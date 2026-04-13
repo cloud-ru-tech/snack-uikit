@@ -10,7 +10,14 @@ import { useLayoutEffect } from '@snack-uikit/utils';
 import componentChangelog from '../CHANGELOG.md';
 import componentPackage from '../package.json';
 import componentReadme from '../README.md';
-import { BaseOptionProps, FieldSelect, FieldSelectProps, OptionProps } from '../src/components';
+import {
+  BaseOptionProps,
+  FieldSelect,
+  FieldSelectAddCustomOptionTrigger,
+  FieldSelectProps,
+  FieldSelectSingleAddCustomOptionTrigger,
+  OptionProps,
+} from '../src/components';
 import { COMMON_ARG_TYPES, PREFIX_POSTFIX_ARG_TYPES } from './constants';
 import styles from './styles.module.scss';
 
@@ -72,9 +79,20 @@ type StoryProps = FieldSelectProps & {
   localeName: string;
   showMoreOptions: boolean;
   noOptionsMode: boolean;
+  singleAddCustomOptionTriggers?: FieldSelectSingleAddCustomOptionTrigger[];
+  multipleAddCustomOptionTriggers?: FieldSelectAddCustomOptionTrigger[];
 };
 
-const Template = ({ selection, showMoreOptions, noOptionsMode, value, size, ...args }: StoryProps) => {
+const Template = ({
+  selection,
+  showMoreOptions,
+  noOptionsMode,
+  value,
+  size,
+  singleAddCustomOptionTriggers,
+  multipleAddCustomOptionTriggers,
+  ...args
+}: StoryProps) => {
   const [singleValue, setSingleValue] = useState<SelectionSingleValueType>();
 
   const [multipleValue, setMultipleValue] = useState<SelectionSingleValueType[]>([]);
@@ -106,6 +124,7 @@ const Template = ({ selection, showMoreOptions, noOptionsMode, value, size, ...a
       {selection === 'single' && (
         <FieldSelect
           {...args}
+          addCustomOptionTriggers={singleAddCustomOptionTriggers ? singleAddCustomOptionTriggers : undefined}
           defaultValue={undefined}
           value={singleValue}
           onChange={setSingleValue}
@@ -118,6 +137,7 @@ const Template = ({ selection, showMoreOptions, noOptionsMode, value, size, ...a
       {selection === 'multiple' && (
         <FieldSelect
           {...args}
+          addCustomOptionTriggers={multipleAddCustomOptionTriggers ? multipleAddCustomOptionTriggers : undefined}
           defaultValue={undefined}
           value={multipleValue}
           onChange={setMultipleValue}
@@ -161,6 +181,9 @@ export const fieldSelect: StoryObj<StoryProps> = {
     enableFuzzySearch: true,
     scrollToSelectedItem: false,
     noOptionsMode: false,
+    addOptionByEnter: false,
+    singleAddCustomOptionTriggers: undefined,
+    multipleAddCustomOptionTriggers: undefined,
   },
 
   argTypes: {
@@ -178,6 +201,25 @@ export const fieldSelect: StoryObj<StoryProps> = {
     },
     noOptionsMode: {
       name: '[Stories] simulate no options mode',
+      type: 'boolean',
+    },
+    singleAddCustomOptionTriggers: {
+      name: 'addCustomOptionTriggers',
+      description: 'Триггеры фиксации произвольного значения из поиска для режима single.',
+      options: ['enter', 'blur'],
+      control: 'multi-select',
+      if: { arg: 'selection', eq: 'single' },
+    },
+    multipleAddCustomOptionTriggers: {
+      name: 'addCustomOptionTriggers',
+      description: 'Триггеры фиксации произвольного значения из поиска для режима multiple.',
+      options: ['enter', 'blur', 'space', 'comma'],
+      control: 'multi-select',
+      if: { arg: 'selection', eq: 'multiple' },
+    },
+    addOptionByEnter: {
+      name: 'addOptionByEnter (deprecated)',
+      description: 'Используйте addCustomOptionTriggers. Сохраняется для обратной совместимости.',
       type: 'boolean',
     },
   },

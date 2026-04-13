@@ -70,6 +70,13 @@ export type SearchState = {
   onChange?(value: string): void;
 };
 
+/** События, по которым произвольное значение из строки поиска фиксируется в значении поля */
+export type FieldSelectMultipleAddCustomOptionTrigger = 'enter' | 'blur' | 'space' | 'comma';
+export type FieldSelectSingleAddCustomOptionTrigger = Extract<
+  FieldSelectMultipleAddCustomOptionTrigger,
+  'enter' | 'blur'
+>;
+
 export type FieldSelectPrivateProps = InputProps &
   WrapperProps & {
     options: OptionProps[];
@@ -113,6 +120,9 @@ type FiledSelectCommonProps = WithSupportProps<{
 
   autocomplete?: boolean;
 
+  /**
+   * @deprecated Используйте `addCustomOptionTriggers`
+   */
   addOptionByEnter?: boolean;
 
   open?: boolean;
@@ -147,12 +157,24 @@ type FiledSelectCommonProps = WithSupportProps<{
 export type FieldSelectSingleProps = FieldSelectPrivateProps &
   Omit<SelectionSingleState, 'mode'> &
   WrapperProps &
-  FiledSelectCommonProps;
+  FiledSelectCommonProps & {
+    /**
+     * Триггеры фиксации произвольного значения из строки поиска в режиме `single`.
+     * Если передан, имеет приоритет над устаревшим `addOptionByEnter`.
+     */
+    addCustomOptionTriggers?: FieldSelectSingleAddCustomOptionTrigger[];
+  };
 
 export type FieldSelectMultipleProps = FieldSelectPrivateProps & {
   removeByBackspace?: boolean;
 } & Omit<SelectionMultipleState, 'mode'> &
-  Omit<FiledSelectCommonProps, 'showCopyButton' | 'onCopyButtonClick'>;
+  Omit<FiledSelectCommonProps, 'showCopyButton' | 'onCopyButtonClick'> & {
+    /**
+     * Триггеры фиксации произвольного значения из строки поиска в режиме `multiple`.
+     * Если передан, имеет приоритет над устаревшим `addOptionByEnter`.
+     */
+    addCustomOptionTriggers?: FieldSelectMultipleAddCustomOptionTrigger[];
+  };
 
 export type FieldSelectProps =
   | (FieldSelectSingleProps & { selection?: 'single' })
