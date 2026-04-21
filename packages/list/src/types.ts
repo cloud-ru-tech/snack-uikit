@@ -1,14 +1,12 @@
-import { ChangeEvent, KeyboardEvent, Ref } from 'react';
+import { Ref } from 'react';
 
 import { ScrollProps as OriginalScrollProps } from '@snack-uikit/scroll';
+import { SearchPrivateProps } from '@snack-uikit/search-private';
 
-export type SearchState = {
-  placeholder?: string;
-  loading?: boolean;
-  value?: string;
-  onChange(value: string, e?: ChangeEvent<HTMLInputElement>): void;
-  onKeyDown?(e: KeyboardEvent<HTMLElement>): void;
-};
+export type SearchState = Pick<
+  SearchPrivateProps,
+  'value' | 'onChange' | 'onKeyDown' | 'onBlur' | 'placeholder' | 'loading'
+>;
 
 export type ScrollProps = {
   /** Включить ли скролл для основной части списка */
