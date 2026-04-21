@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.33.0 (2026-04-21)
+
+
+### Features
+
+* **IAM-6423:** align SearchState with SearchPrivateProps ([0f93c95](https://github.com/cloud-ru-tech/snack-uikit/commit/0f93c95b2a25e8be10aecb537fe11739e7268b23))
+
+
+
+
+
 ## 0.32.17 (2026-03-27)
 
 ### Only dependencies have been changed

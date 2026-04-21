@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tree",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -55,7 +55,7 @@
     "@siberiacancode/reactuse": "0.3.14",
     "@snack-uikit/button": "0.19.17",
     "@snack-uikit/icons": "0.27.7",
-    "@snack-uikit/list": "0.32.17",
+    "@snack-uikit/list": "0.33.0",
     "@snack-uikit/toggles": "0.13.26",
     "@snack-uikit/truncate-string": "0.7.11",
     "@snack-uikit/typography": "0.8.12",

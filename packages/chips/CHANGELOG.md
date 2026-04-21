@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.29.1 (2026-04-21)
+
+### Only dependencies have been changed
+* [@snack-uikit/calendar@0.13.19]($PUBLIC_PROJECT_URL/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-uikit/list@0.33.0]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+
+
+
+
+
 # 0.29.0 (2026-03-27)
 
 

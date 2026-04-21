@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.55.0 (2026-04-21)
+
+
+### Features
+
+* **IAM-6423:** re-export custom option hooks ([067fd9b](https://github.com/cloud-ru-tech/snack-uikit/commit/067fd9b98a0be675d3d9fe8fe3d1b1f13a6813db))
+
+
+
+
+
 # 0.54.0 (2026-04-21)
 
 
