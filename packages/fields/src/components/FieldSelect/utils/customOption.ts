@@ -2,6 +2,13 @@ import { KeyboardEvent } from 'react';
 
 import { FieldSelectMultipleAddCustomOptionTrigger } from '../types';
 
+/**
+ * Сопоставляет код клавиши с поддерживаемым триггером добавления кастомной опции.
+ *
+ * @param code Код клавиши.
+ * @returns Найденный триггер (`enter`/`space`/`comma`) или `undefined`, если код не поддерживается.
+ * @function getCustomOptionTriggerByCode
+ */
 export const getCustomOptionTriggerByCode = (
   code: KeyboardEvent<HTMLInputElement>['code'],
 ): FieldSelectMultipleAddCustomOptionTrigger | undefined => {

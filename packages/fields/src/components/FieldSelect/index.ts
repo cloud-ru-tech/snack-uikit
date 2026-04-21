@@ -13,3 +13,6 @@ export type {
   GroupOptionProps,
   SelectedOptionFormatter,
 } from './types';
+
+export * from './hooks/customOption';
+export * from './utils/customOption';

@@ -60,7 +60,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
     prefix,
     postfix,
     addOptionByEnter = false,
-    addCustomOptionTriggers: addCustomOptionTriggersProp,
+    addCustomOptionTriggers,
     untouchableScrollbars = false,
     open: openProp,
     onOpenChange,
@@ -157,7 +157,7 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
   );
 
   const { resolvedAddCustomOptionTriggers, tryCommitCustomOptionFromInput } = useFieldSelectSingleCustomOption({
-    addCustomOptionTriggers: addCustomOptionTriggersProp,
+    addCustomOptionTriggers,
     addOptionByEnter,
     inputValue,
     handleSelectionChange,

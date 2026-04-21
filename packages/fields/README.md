@@ -751,6 +751,28 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+## useFieldSelectMultipleCustomOption
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| updateInputValue* | `() => void` | - |  |
+| setValue* | `Handler` | - |  |
+| value* | `ItemId[]` | - |  |
+| inputValue* | `string` | - |  |
+| addOptionByEnter* | `boolean` | - |  |
+| addCustomOptionTriggers | `FieldSelectMultipleAddCustomOptionTrigger[]` | - |  |
+## useFieldSelectSingleCustomOption
+### Props
+| name | type | default value | description |
+|------|------|---------------|-------------|
+| handleSelectionChange* | `(value: ItemId) => void` | - |  |
+| inputValue* | `string` | - |  |
+| addOptionByEnter* | `boolean` | - |  |
+| addCustomOptionTriggers | `FieldSelectMultipleAddCustomOptionTrigger[]` | - |  |
+## getCustomOptionTriggerByCode
+`getCustomOptionTriggerByCode` 
+
+Сопоставляет код клавиши с поддерживаемым триггером добавления кастомной опции.
 ## FieldSlider
 ### Props
 | name | type | default value | description |
