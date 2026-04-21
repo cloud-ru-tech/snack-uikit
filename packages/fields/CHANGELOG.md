@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.54.0 (2026-04-21)
+
+
+### Features
+
+* **IAM-6423:** support triggers for custom field option ([1865a13](https://github.com/cloud-ru-tech/snack-uikit/commit/1865a13f6e270de961295a96ad7c8d80c7cb147d))
+
+
+
+
+
 ## 0.53.1 (2026-04-02)
 
 
