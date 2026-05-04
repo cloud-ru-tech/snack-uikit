@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.39.0 (2026-05-04)
+
+
+### Features
+
+* **PDS-3785:** added suppress header prop ([8095bb6](https://github.com/cloud-ru-tech/snack-uikit/commit/8095bb69d95ae0cb8a6c4a5edb2ae59bb2c1a038))
+
+
+
+
+
 ## 0.38.7 (2026-04-21)
 
 ### Only dependencies have been changed
