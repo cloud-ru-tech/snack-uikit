@@ -323,6 +323,7 @@ export const table: StoryObj<StoryProps> = {
     suppressPagination: false,
     suppressToolbar: false,
     suppressSearch: false,
+    suppressHeader: false,
     showFilters: true,
     columnFilters,
     initialColumnFiltersOpen: true,

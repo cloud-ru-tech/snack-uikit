@@ -148,6 +148,8 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
 
   /** Отключение тулбара */
   suppressToolbar?: boolean;
+  /** Отключение хедера таблицы */
+  suppressHeader?: boolean;
   /** Отключение поиска */
   suppressSearch?: boolean;
   /** Список действия для массовых операций */

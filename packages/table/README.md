@@ -203,6 +203,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
+| suppressHeader | `boolean` | - | Отключение хедера таблицы |
 | suppressSearch | `boolean` | - | Отключение поиска |
 | bulkActions | `BulkAction[]` | - | Список действия для массовых операций |
 | moreActions | `Action[]` | - | Элементы выпадающего списка кнопки с действиями |
@@ -275,6 +276,7 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | noResultsState | `EmptyStateProps` | - | Экран при отстутствии результатов поиска или фильтров |
 | errorDataState | `EmptyStateProps` | - | Экран при ошибке запроса |
 | suppressToolbar | `boolean` | - | Отключение тулбара |
+| suppressHeader | `boolean` | - | Отключение хедера таблицы |
 | suppressSearch | `boolean` | - | Отключение поиска |
 | toolbarAfter | `ReactNode` | - | Дополнительный слот в `Toolbar` после строки поиска |
 | exportSettings | `{ fileName: string; filterData?: boolean; exportToCSV?(args: ExportProps<TData>): void; exportToXLSX?(args: ExportProps<TData>): void; }` | - | Настройки экспорта в тулбаре |

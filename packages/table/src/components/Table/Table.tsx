@@ -113,6 +113,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   noResultsState,
   errorDataState,
   suppressToolbar = false,
+  suppressHeader = false,
   suppressSearch = false,
   toolbarAfter,
   suppressPagination = false,
@@ -444,6 +445,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   const { updateCellMap } = useCellAutoResizeController(table);
 
   const showToolbar = !suppressToolbar;
+  const showHeader = !suppressHeader;
   const showPagination = !infiniteLoading && !suppressPagination;
 
   const tableToolbarPersistConfig = useMemo((): ToolbarPersistConfig<TFilters> | undefined => {
@@ -565,7 +567,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
               <TableContext.Provider value={{ table, getRowBackgroundColor }}>
                 {(!infiniteLoading || !data.length) && loading ? (
                   <SkeletonContextProvider loading>
-                    <HeaderRow rowAutoHeight={rowAutoHeight} columnOrder={columnOrder} />
+                    {showHeader ? <HeaderRow rowAutoHeight={rowAutoHeight} columnOrder={columnOrder} /> : null}
                     {loadingTableRows.map(row => (
                       <BodyRow
                         key={row.id}
@@ -578,7 +580,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
                   </SkeletonContextProvider>
                 ) : (
                   <>
-                    {centerRows.length || filteredTopRows.length ? (
+                    {showHeader && (centerRows.length || filteredTopRows.length) ? (
                       <HeaderRow
                         rowAutoHeight={rowAutoHeight}
                         columnOrder={columnOrder}
