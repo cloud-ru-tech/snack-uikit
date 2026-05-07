@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.55.1 (2026-05-07)
+
+
+### Bug Fixes
+
+* **UIIAAS-1866:** reset FieldSelectSingle search on clear ([027c156](https://github.com/cloud-ru-tech/snack-uikit/commit/027c15609e65a814291662dcfefaf997a09d36ca))
+
+
+
+
+
 # 0.55.0 (2026-04-21)
 
 
