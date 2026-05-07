@@ -119,11 +119,12 @@ export const FieldSelectSingle = forwardRef<HTMLInputElement, FieldSelectSingleP
 
   const onClear = useCallback(() => {
     setValue(undefined);
+    setInputValue('');
     localRef.current?.focus();
     if (required) {
       setOpen(true);
     }
-  }, [required, setOpen, setValue]);
+  }, [required, setInputValue, setOpen, setValue]);
 
   const { ArrowIcon, arrowIconSize } = getArrowIcon({ size, open });
 

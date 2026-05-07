@@ -732,8 +732,8 @@ FieldStepper в основном предназначен для работы с
 | selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
-| scrollRef | `Ref<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
-| scrollContainerRef | `Ref<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | onScroll | `(event?: Event) => void` | - | Колбек на скролл прокручиваемого списка |
 | dataFiltered | `boolean` | - |  |
