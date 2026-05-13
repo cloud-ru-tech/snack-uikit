@@ -53,7 +53,7 @@ type FieldTextAreaOwnProps = {
   resizable?: boolean;
   /** Колбек смены значения */
   onChange?(value: string, e?: ChangeEvent<HTMLTextAreaElement>): void;
-  /** Отображение кнопки Копировать для поля (актуально только для `readonly = true`) */
+  /** Отображение кнопки Копировать для поля */
   showCopyButton?: boolean;
   /** Колбек клика по кнопке Копировать для поля */
   onCopyButtonClick?(): void;
@@ -83,7 +83,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       disabled = false,
       resizable = false,
       readonly = false,
-      showCopyButton: showCopyButtonProp = true,
+      showCopyButton: showCopyButtonProp = readonly,
       showClearButton: showClearButtonProp = true,
       allowMoreThanMaxLength = true,
       showHintIcon,
@@ -120,7 +120,7 @@ export const FieldTextArea = forwardRef<HTMLTextAreaElement, FieldTextAreaProps>
       defaultValue: '',
       onChange: onChangeProp,
     });
-    const showCopyButton = showCopyButtonProp && Boolean(value) && !disabled && readonly;
+    const showCopyButton = showCopyButtonProp && Boolean(value) && !disabled;
     const showClearButton = showClearButtonProp && Boolean(value) && !disabled && !readonly;
 
     const fieldValidationState = getValidationState({ validationState, error });

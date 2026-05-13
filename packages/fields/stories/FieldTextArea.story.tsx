@@ -83,7 +83,7 @@ export const fieldTextArea: StoryObj<StoryProps> = {
     minRows: 3,
     maxRows: 1000,
     readonly: false,
-    showCopyButton: true,
+    showCopyButton: undefined,
     disabled: false,
     autoFocus: false,
     resizable: false,
@@ -102,7 +102,6 @@ export const fieldTextArea: StoryObj<StoryProps> = {
   argTypes: {
     validationState: COMMON_ARG_TYPES.validationState,
     labelTooltip: COMMON_ARG_TYPES.labelTooltip,
-    showCopyButton: COMMON_ARG_TYPES.showCopyButton,
     showActionsFooter: {
       name: '[Story]: Control actions slots visibility',
       control: { type: 'boolean' },

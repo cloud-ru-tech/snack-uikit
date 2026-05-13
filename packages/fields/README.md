@@ -732,8 +732,8 @@ FieldStepper в основном предназначен для работы с
 | selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
-| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
-| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| scrollRef | `Ref<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `Ref<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | onScroll | `(event?: Event) => void` | - | Колбек на скролл прокручиваемого списка |
 | dataFiltered | `boolean` | - |  |
@@ -895,7 +895,7 @@ FieldStepper в основном предназначен для работы с
 | maxRows | `number` | 1000 | Максимальное кол-во строк, до которого размер поля может быть увеличен |
 | resizable | `boolean` | - | Может ли ли пользователь изменять размеры поля (если св-во не включено, поле автоматически меняет свой размер) |
 | onChange | `(value: string, e?: ChangeEvent<HTMLTextAreaElement>) => void` | - | Колбек смены значения |
-| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля (актуально только для `readonly = true`) |
+| showCopyButton | `boolean` | - | Отображение кнопки Копировать для поля |
 | onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showClearButton | `boolean` | true | Отображение кнопки очистки поля |
 | allowMoreThanMaxLength | `boolean` | true | Можно ли вводить больше разрешённого кол-ва символов |
