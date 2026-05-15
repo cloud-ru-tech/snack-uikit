@@ -134,12 +134,13 @@
   ],
   "pnpm": {
     "overrides": {
-      "axios": "1.12.2",
+      "axios": "1.15.2",
       "ejs": "3.1.10",
       "json5": "2.2.3",
       "react": "18.2.0",
       "react-dom": "18.2.0",
-      "tmp": "0.2.2"
+      "tmp": "0.2.2",
+      "@babel/plugin-transform-modules-systemjs": "7.29.4"
     }
   }
 }

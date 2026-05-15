@@ -27,11 +27,11 @@ export const useDataPersist = <TData>({ options, parser, serializer }: DataPersi
   );
 
   const { getData: getLocalStorageData, setData: setLocalStorageData } = useSource<TData>({
-    source: querySource,
+    source: localStorageSource,
   });
 
   const { getData: getQueryParamsData, setData: setQueryParamsData } = useSource<TData>({
-    source: localStorageSource,
+    source: querySource,
   });
 
   const setDataToStorages = useCallback(
