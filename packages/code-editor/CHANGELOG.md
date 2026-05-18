@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.16 (2026-05-18)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.18]($PUBLIC_PROJECT_URL/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/loaders@0.9.11]($PUBLIC_PROJECT_URL/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-uikit/typography@0.8.13]($PUBLIC_PROJECT_URL/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@4.0.2]($PUBLIC_PROJECT_URL/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.7.15 (2026-03-04)
 
 ### Only dependencies have been changed

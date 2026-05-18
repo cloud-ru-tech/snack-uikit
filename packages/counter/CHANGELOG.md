@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.12 (2026-05-18)
+
+### Only dependencies have been changed
+* [@snack-uikit/utils@4.0.2]($PUBLIC_PROJECT_URL/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## <small>0.8.11 (2026-01-19)</small>
 
 * chore(FF-6693): migrate tests from TestCafe to Playwright ([f32aff8](https://github.com/cloud-ru-tech/snack-uikit/commit/f32aff8))

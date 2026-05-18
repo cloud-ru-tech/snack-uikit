@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Stepper",
-  "version": "0.8.43",
+  "version": "0.8.44",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -37,10 +37,10 @@
   "scripts": {},
   "dependencies": {
     "@snack-uikit/icons": "0.27.7",
-    "@snack-uikit/loaders": "0.9.10",
-    "@snack-uikit/truncate-string": "0.7.11",
-    "@snack-uikit/typography": "0.8.12",
-    "@snack-uikit/utils": "4.0.1",
+    "@snack-uikit/loaders": "0.9.11",
+    "@snack-uikit/truncate-string": "0.7.12",
+    "@snack-uikit/typography": "0.8.13",
+    "@snack-uikit/utils": "4.0.2",
     "classnames": "2.5.1"
   }
 }

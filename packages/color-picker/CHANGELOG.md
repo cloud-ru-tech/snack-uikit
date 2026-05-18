@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.56 (2026-05-18)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.18]($PUBLIC_PROJECT_URL/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/input-private@4.8.9]($PUBLIC_PROJECT_URL/blob/master/packages/input-private/CHANGELOG.md)
+* [@snack-uikit/segmented-control@0.6.21]($PUBLIC_PROJECT_URL/blob/master/packages/segmented-control/CHANGELOG.md)
+* [@snack-uikit/utils@4.0.2]($PUBLIC_PROJECT_URL/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.3.55 (2026-03-27)
 
 ### Only dependencies have been changed

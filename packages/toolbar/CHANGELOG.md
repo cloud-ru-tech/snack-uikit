@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.25 (2026-05-18)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.18]($PUBLIC_PROJECT_URL/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/chips@0.29.2]($PUBLIC_PROJECT_URL/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/list@0.33.1]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/search-private@0.4.37]($PUBLIC_PROJECT_URL/blob/master/packages/search-private/CHANGELOG.md)
+* [@snack-uikit/tag@0.15.19]($PUBLIC_PROJECT_URL/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/toggles@0.13.27]($PUBLIC_PROJECT_URL/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.18.13]($PUBLIC_PROJECT_URL/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/utils@4.0.2]($PUBLIC_PROJECT_URL/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.14.24 (2026-04-21)
 
 ### Only dependencies have been changed

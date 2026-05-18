@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.0.2 (2026-05-18)
+
+
+### Bug Fixes
+
+* **PDS-3818:** swap places for useDataPersist so that URL > localStorage ([4018a25](https://github.com/cloud-ru-tech/snack-uikit/commit/4018a2536565b8fb85da1f26b22234806812ef56))
+
+
+
+
+
 ## <small>4.0.1 (2026-01-19)</small>
 
 * chore(FF-6693): tune test configs ([d194f4d](https://github.com/cloud-ru-tech/snack-uikit/commit/d194f4d))

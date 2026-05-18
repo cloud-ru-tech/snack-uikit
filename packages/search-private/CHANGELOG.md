@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.37 (2026-05-18)
+
+### Only dependencies have been changed
+* [@snack-uikit/input-private@4.8.9]($PUBLIC_PROJECT_URL/blob/master/packages/input-private/CHANGELOG.md)
+* [@snack-uikit/loaders@0.9.11]($PUBLIC_PROJECT_URL/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-uikit/utils@4.0.2]($PUBLIC_PROJECT_URL/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.4.36 (2026-03-04)
 
 ### Only dependencies have been changed

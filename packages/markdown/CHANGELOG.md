@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.56 (2026-05-18)
+
+### Only dependencies have been changed
+* [@snack-uikit/code-editor@0.7.16]($PUBLIC_PROJECT_URL/blob/master/packages/code-editor/CHANGELOG.md)
+* [@snack-uikit/divider@3.2.12]($PUBLIC_PROJECT_URL/blob/master/packages/divider/CHANGELOG.md)
+* [@snack-uikit/fields@0.55.2]($PUBLIC_PROJECT_URL/blob/master/packages/fields/CHANGELOG.md)
+* [@snack-uikit/link@0.18.1]($PUBLIC_PROJECT_URL/blob/master/packages/link/CHANGELOG.md)
+* [@snack-uikit/toggles@0.13.27]($PUBLIC_PROJECT_URL/blob/master/packages/toggles/CHANGELOG.md)
+* [@snack-uikit/typography@0.8.13]($PUBLIC_PROJECT_URL/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@4.0.2]($PUBLIC_PROJECT_URL/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.5.55 (2026-05-07)
 
 ### Only dependencies have been changed

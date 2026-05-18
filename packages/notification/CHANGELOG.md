@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.14.3 (2026-05-18)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.18]($PUBLIC_PROJECT_URL/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/chips@0.29.2]($PUBLIC_PROJECT_URL/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/info-block@0.6.41]($PUBLIC_PROJECT_URL/blob/master/packages/info-block/CHANGELOG.md)
+* [@snack-uikit/link@0.18.1]($PUBLIC_PROJECT_URL/blob/master/packages/link/CHANGELOG.md)
+* [@snack-uikit/list@0.33.1]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/popover-private@0.15.6]($PUBLIC_PROJECT_URL/blob/master/packages/popover-private/CHANGELOG.md)
+* [@snack-uikit/scroll@0.11.0]($PUBLIC_PROJECT_URL/blob/master/packages/scroll/CHANGELOG.md)
+* [@snack-uikit/segmented-control@0.6.21]($PUBLIC_PROJECT_URL/blob/master/packages/segmented-control/CHANGELOG.md)
+* [@snack-uikit/skeleton@0.6.11]($PUBLIC_PROJECT_URL/blob/master/packages/skeleton/CHANGELOG.md)
+* [@snack-uikit/status@0.10.13]($PUBLIC_PROJECT_URL/blob/master/packages/status/CHANGELOG.md)
+* [@snack-uikit/tag@0.15.19]($PUBLIC_PROJECT_URL/blob/master/packages/tag/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.18.13]($PUBLIC_PROJECT_URL/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.7.12]($PUBLIC_PROJECT_URL/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-uikit/typography@0.8.13]($PUBLIC_PROJECT_URL/blob/master/packages/typography/CHANGELOG.md)
+* [@snack-uikit/utils@4.0.2]($PUBLIC_PROJECT_URL/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.14.2 (2026-04-21)
 
 ### Only dependencies have been changed

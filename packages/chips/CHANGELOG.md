@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.29.2 (2026-05-18)
+
+### Only dependencies have been changed
+* [@snack-uikit/button@0.19.18]($PUBLIC_PROJECT_URL/blob/master/packages/button/CHANGELOG.md)
+* [@snack-uikit/calendar@0.13.20]($PUBLIC_PROJECT_URL/blob/master/packages/calendar/CHANGELOG.md)
+* [@snack-uikit/divider@3.2.12]($PUBLIC_PROJECT_URL/blob/master/packages/divider/CHANGELOG.md)
+* [@snack-uikit/dropdown@0.5.6]($PUBLIC_PROJECT_URL/blob/master/packages/dropdown/CHANGELOG.md)
+* [@snack-uikit/list@0.33.1]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/loaders@0.9.11]($PUBLIC_PROJECT_URL/blob/master/packages/loaders/CHANGELOG.md)
+* [@snack-uikit/tooltip@0.18.13]($PUBLIC_PROJECT_URL/blob/master/packages/tooltip/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.7.12]($PUBLIC_PROJECT_URL/blob/master/packages/truncate-string/CHANGELOG.md)
+* [@snack-uikit/utils@4.0.2]($PUBLIC_PROJECT_URL/blob/master/packages/utils/CHANGELOG.md)
+
+
+
+
+
 ## 0.29.1 (2026-04-21)
 
 ### Only dependencies have been changed
