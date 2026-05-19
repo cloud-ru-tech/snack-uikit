@@ -1,10 +1,10 @@
 import cn from 'classnames';
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode, useEffect, useState } from 'react';
 import RCModal from 'react-modal';
 
 import { isBrowser, useModalOpenState, WithSupportProps } from '@snack-uikit/utils';
 
-import { MODE, SIZE } from '../../constants';
+import { ANIMATION_STATE, MODE, SIZE } from '../../constants';
 import {
   ButtonClose,
   ModalBody,
@@ -15,7 +15,7 @@ import {
   ModalHeaderProps,
   OverlayElement,
 } from '../../helperComponents';
-import { Mode, Size } from '../../types';
+import { AnimationState, Mode, Size } from '../../types';
 import styles from './styles.module.scss';
 import { getDataTestAttributes } from './utils';
 
@@ -43,6 +43,16 @@ export type ModalCustomProps = WithSupportProps<{
   children: ReactNode;
   /** Закрывать при переходе по истории браузера */
   closeOnPopstate?: boolean;
+  /**
+   * Длительность анимации открытия/закрытия в миллисекундах.
+   * Если не передан — анимации нет.
+   */
+  animationDuration?: number;
+  /**
+   * Разница в процентах между появлением модального окна и оверлей
+   * можно ставить от 0 до 1
+   */
+  animationDurationPercent?: number;
 }>;
 
 export function ModalCustom({
@@ -53,8 +63,30 @@ export function ModalCustom({
   children,
   className,
   closeOnPopstate,
+  animationDuration,
+  animationDurationPercent = 0.4,
   ...rest
 }: ModalCustomProps) {
+  const animDuration = animationDuration ?? 0;
+  const isAnimated = animDuration > 0;
+
+  const [shouldRender, setShouldRender] = useState(open);
+  const [animationState, setAnimationState] = useState<AnimationState>(ANIMATION_STATE.Entering);
+
+  useEffect(() => {
+    if (!isAnimated) return;
+
+    if (open) {
+      setShouldRender(true);
+      setAnimationState(ANIMATION_STATE.Entering);
+    } else {
+      setAnimationState(ANIMATION_STATE.Exiting);
+      const closeTotalDuration = animDuration + Math.round(animDuration * animationDurationPercent);
+      const timer = setTimeout(() => setShouldRender(false), closeTotalDuration);
+      return () => clearTimeout(timer);
+    }
+  }, [open, isAnimated, animDuration, animationDurationPercent]);
+
   const handleCloseButtonClick = () => {
     onClose();
   };
@@ -71,9 +103,19 @@ export function ModalCustom({
     closeOnPopstate,
   });
 
-  if (!open) {
+  const isRendered = isAnimated ? shouldRender : open;
+
+  if (!isRendered) {
     return null;
   }
+
+  const animDelay = Math.round(animDuration * animationDurationPercent);
+  const contentStyle: CSSProperties | undefined = isAnimated
+    ? ({
+        '--_modal-anim-duration': `${animDuration}ms`,
+        '--_modal-anim-delay': `${animDelay}ms`,
+      } as CSSProperties)
+    : undefined;
 
   return (
     <RCModal
@@ -86,9 +128,19 @@ export function ModalCustom({
           blur={([MODE.Forced, MODE.Aggressive] as Mode[]).includes(mode)}
           content={content}
           onClose={handleClose}
+          animationDuration={isAnimated ? animDuration : undefined}
+          animationState={isAnimated ? animationState : undefined}
         />
       )}
-      className={cn(styles.modal, className)}
+      className={cn(
+        styles.modal,
+        className,
+        isAnimated && {
+          [styles.entering]: animationState === ANIMATION_STATE.Entering,
+          [styles.exiting]: animationState === ANIMATION_STATE.Exiting,
+        },
+      )}
+      style={contentStyle ? { content: contentStyle } : undefined}
     >
       {hasCloseButton && (
         <div className={styles.headerElements}>

@@ -2,6 +2,34 @@
 
 $sizes: 's', 'm', 'l';
 
+@keyframes modal-blur-rise {
+  from {
+    transform: translate(-50%, calc(-50% + 3px)) scale(0.97);
+    opacity: 0;
+    filter: blur(4px);
+  }
+
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes modal-blur-fall {
+  from {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  to {
+    transform: translate(-50%, calc(-50% + 3px)) scale(0.97);
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+
 .modal {
   position: fixed;
   top: 50%;
@@ -26,6 +54,15 @@ $sizes: 's', 'm', 'l';
       @include styles-tokens-modal.composite-var(styles-tokens-modal.$modal, 'window', $size);
     }
   }
+
+}
+
+.entering {
+  animation: modal-blur-rise var(--_modal-anim-duration, 400ms) cubic-bezier(0.4, 0, 0.2, 1) var(--_modal-anim-delay, 0ms) both;
+}
+
+.exiting {
+  animation: modal-blur-fall var(--_modal-anim-duration, 400ms) cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 .headerElements {

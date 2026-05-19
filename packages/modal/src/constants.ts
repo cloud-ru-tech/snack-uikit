@@ -21,6 +21,11 @@ export const CONTENT_ALIGN = {
   Center: 'center',
 } as const;
 
+export const ANIMATION_STATE = {
+  Entering: 'entering',
+  Exiting: 'exiting',
+} as const;
+
 export const TEST_IDS = {
   overlay: 'modal__overlay',
   closeButton: 'modal__close-button',

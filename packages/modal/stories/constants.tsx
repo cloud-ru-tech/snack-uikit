@@ -53,6 +53,12 @@ export const DEFAULT_ARGS: ExtendedStoryProps<Omit<ModalProps, 'onClose' | 'size
 };
 
 export const ARG_TYPES: Partial<ArgTypes<ExtendedStoryProps<ModalProps | ModalCustomProps>>> = {
+  animationDuration: {
+    type: 'number',
+  },
+  animationDurationPercent: {
+    type: 'number',
+  },
   titleTooltip: {
     type: 'string',
   },

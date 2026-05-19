@@ -147,6 +147,8 @@ function Example() {
 | size | enum Size: `"s"`, `"m"`, `"l"` | s | Размер модального окна |
 | className | `string` | - | CSS-класс |
 | closeOnPopstate | `boolean` | - | Закрывать при переходе по истории браузера |
+| animationDuration | `number` | - | Длительность анимации открытия/закрытия в миллисекундах. Если не передан — анимации нет. |
+| animationDurationPercent | `number` | 0.4 | Разница в процентах между появлением модального окна и оверлей можно ставить от 0 до 1 |
 ## ModalCustom.Header
 ### Props
 | name | type | default value | description |
@@ -183,6 +185,8 @@ function Example() {
 | mode | enum Mode: `"regular"`, `"aggressive"`, `"forced"` | regular | Режим отображения модального окна: <br> - __`Regular`__ -  есть кнопка закрытия, клик на оверлей и нажатие кнопки `Esc` закрывают модалку <br> - __`Aggressive`__ - есть кнопка закрытия, но выключен клик на оверлей и не работает закрытие по клавише `Esc` <br> - __`Forced`__ - закрыть модальное окно можно только по нажатию на кнопку действия в нижней части |
 | className | `string` | - | CSS-класс |
 | closeOnPopstate | `boolean` | - | Закрывать при переходе по истории браузера |
+| animationDuration | `number` | - | Длительность анимации открытия/закрытия в миллисекундах. Если не передан — анимации нет. |
+| animationDurationPercent | `number` | - | Разница в процентах между появлением модального окна и оверлей можно ставить от 0 до 1 |
 | titleTooltip | `ReactNode` | - | Всплывающая подсказка для заголовка |
 | subtitle | `string` | - | Подзаголовок |
 | content | `ReactNode` | - | Содержимое модального окна |

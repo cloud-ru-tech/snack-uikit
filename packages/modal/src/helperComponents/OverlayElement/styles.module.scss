@@ -1,5 +1,15 @@
 @use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-modal';
 
+@keyframes backdrop-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes backdrop-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -14,4 +24,12 @@
   &[data-blur] {
     backdrop-filter: blur(styles-tokens-modal.simple-var(styles-tokens-modal.$background-blur-background-blur));
   }
+}
+
+.overlayEntering {
+  animation: backdrop-fade-in var(--_modal-anim-duration, 250ms) ease-out both;
+}
+
+.overlayExiting {
+  animation: backdrop-fade-out var(--_modal-anim-duration, 250ms) ease-out var(--_modal-anim-exit-delay, 0ms) both;
 }
