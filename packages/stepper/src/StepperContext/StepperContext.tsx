@@ -9,6 +9,9 @@ export const StepperContext = createContext<StepperApi>({
   stepCount: 0,
   isCompleted: false,
   currentStepIndex: 0,
+  goToStep() {
+    /* stub */
+  },
   goNext() {
     /* stub */
   },

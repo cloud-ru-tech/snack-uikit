@@ -32,6 +32,8 @@ export type StepperProps = WithSupportProps<{
   onChangeCurrentStep?: (newValue: number, prevValue: number) => void;
   /** Колбек изменения завершенности */
   onCompleteChange?: (isCompleted: boolean) => void;
+  /** Позволяет свободно переключаться между разными шагами без валидации */
+  allowFreeNavigation?: boolean;
 }>;
 
 const DEFAULT_VALIDATOR = async () => true;
@@ -44,6 +46,7 @@ export function Stepper({
   onCompleteChange,
   defaultCurrentStepIndex = 0,
   validator: validatorProp = DEFAULT_VALIDATOR,
+  allowFreeNavigation = false,
   ...props
 }: StepperProps) {
   const isCompletedByDefault = defaultCurrentStepIndex === steps.length - 1;
@@ -103,6 +106,33 @@ export function Stepper({
     [currentStepIndex, isCompleted, setCurrentStepIndex, steps.length, stepsValidator?.value, validatorProp],
   );
 
+  const moveToStep = useCallback(
+    (stepIndex: number) => {
+      if (isCompleted) {
+        setIsCompleted(false);
+      }
+
+      setCurrentStepIndex(stepIndex);
+      setCurrentStepState(STEP_STATE.Current);
+    },
+    [isCompleted, setCurrentStepIndex],
+  );
+
+  const goToStep = useCallback(
+    (newStepIndex: number) => {
+      if (newStepIndex < 0 || newStepIndex >= steps.length) {
+        return;
+      }
+
+      if (newStepIndex === currentStepIndex) {
+        return;
+      }
+
+      moveToStep(newStepIndex);
+    },
+    [currentStepIndex, steps, moveToStep],
+  );
+
   const goPrev = useCallback(
     (index: number = currentStepIndex - 1) => {
       if (currentStepIndex === 0 || index < 0 || index > currentStepIndex) {
@@ -113,36 +143,50 @@ export function Stepper({
         return;
       }
 
-      if (isCompleted) {
-        setIsCompleted(false);
+      moveToStep(index);
+    },
+    [currentStepIndex, isCompleted, moveToStep],
+  );
+
+  const getStepOnClick = useCallback(
+    (stepIndex: number) => {
+      if (allowFreeNavigation) {
+        return () => goToStep(stepIndex);
       }
 
-      setCurrentStepIndex(index);
-      setCurrentStepState(STEP_STATE.Current);
+      if (stepIndex < currentStepIndex || (stepIndex === currentStepIndex && isCompleted)) {
+        return () => goPrev(stepIndex);
+      }
+
+      if (stepIndex === currentStepIndex + 1) {
+        return () => goNext();
+      }
+
+      return undefined;
     },
-    [currentStepIndex, isCompleted, setCurrentStepIndex],
+    [allowFreeNavigation, currentStepIndex, goNext, goPrev, goToStep, isCompleted],
   );
 
   const stepsView: StepViewData[] = useMemo(
     () =>
       steps.map((step, index) => {
         const number = index + 1;
+        let state: StepState = STEP_STATE.Waiting;
 
         if (index < currentStepIndex) {
-          return { ...step, number, state: STEP_STATE.Completed, onClick: () => goPrev(index) };
+          state = STEP_STATE.Completed;
+        } else if (index === currentStepIndex) {
+          state = currentStepState;
         }
 
-        if (index === currentStepIndex) {
-          return { ...step, number, state: currentStepState, onClick: isCompleted ? () => goPrev(index) : undefined };
-        }
-
-        if (index - 1 === currentStepIndex) {
-          return { ...step, number, state: STEP_STATE.Waiting, onClick: () => goNext() };
-        }
-
-        return { ...step, number, state: STEP_STATE.Waiting };
+        return {
+          ...step,
+          number,
+          state,
+          onClick: getStepOnClick(index),
+        };
       }),
-    [steps, currentStepIndex, goPrev, currentStepState, isCompleted, goNext],
+    [steps, currentStepIndex, currentStepState, getStepOnClick],
   );
 
   const resetValidation = useCallback(() => {
@@ -177,6 +221,7 @@ export function Stepper({
     stepCount: steps.length,
     stepper,
     setValidator,
+    goToStep: allowFreeNavigation ? goToStep : undefined,
   };
 
   return <StepperContext.Provider value={stepperApi}>{children(stepperApi)}</StepperContext.Provider>;

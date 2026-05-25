@@ -23,6 +23,7 @@ export type StepperApi = {
   stepper: JSX.Element;
   goNext(stepIndex?: number): void;
   goPrev(stepIndex?: number): void;
+  goToStep?(stepIndex?: number): void;
   resetValidation(): void;
   setValidator(validator: StepsValidator): void;
   isCompleted: boolean;

@@ -69,6 +69,7 @@ function Example() {
 | className | `string` | - | CSS-класс |
 | onChangeCurrentStep | `(newValue: number, prevValue: number) => void` | - | Колбек смены текущего степа |
 | onCompleteChange | `(isCompleted: boolean) => void` | - | Колбек изменения завершенности |
+| allowFreeNavigation | `boolean` | - | Позволяет свободно переключаться между разными шагами без валидации |
 
 
 [//]: DOCUMENTATION_SECTION_END

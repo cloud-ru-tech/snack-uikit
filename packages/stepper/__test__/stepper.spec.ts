@@ -192,4 +192,61 @@ test.describe('Stepper', () => {
     const textView2 = await getTextView(page);
     expect(textView2).toEqual('(V)==((2))--(3)--(4)--(5)');
   });
+
+  test('Should navigate to any step by click when free navigation is enabled', async ({
+    page,
+    gotoStory,
+    getByTestId,
+  }) => {
+    await gotoStory({
+      name: 'stepper',
+      props: {
+        'data-test-id': TEST_ID,
+        validationTimeout: 0,
+        defaultCurrentStepIndex: 1,
+        isValid: false,
+        allowFreeNavigation: true,
+      },
+    });
+
+    const mainElementSelector = getByTestId(TEST_ID);
+    await expect(mainElementSelector).toBeVisible();
+
+    const textView1 = await getTextView(page);
+    expect(textView1).toEqual('(V)==((2))--(3)--(4)--(5)');
+
+    await getByTestId(STEP_TEST_ID).nth(4).click();
+    const textView2 = await getTextView(page);
+    expect(textView2).toEqual('(V)==(V)==(V)==(V)==((5))');
+  });
+
+  test('Should reset completed state after free navigation to previous step', async ({
+    page,
+    gotoStory,
+    getByTestId,
+  }) => {
+    await gotoStory({
+      name: 'stepper',
+      props: {
+        'data-test-id': TEST_ID,
+        validationTimeout: 0,
+        defaultCurrentStepIndex: 4,
+        allowFreeNavigation: true,
+      },
+    });
+
+    const mainElementSelector = getByTestId(TEST_ID);
+    await expect(mainElementSelector).toBeVisible();
+
+    const isCompletedBefore = await getByTestId(IS_COMPLETED).textContent();
+    expect(isCompletedBefore).toEqual('isCompleted: yes');
+
+    await getByTestId(STEP_TEST_ID).nth(1).click();
+
+    const textView = await getTextView(page);
+    expect(textView).toEqual('(V)==((2))--(3)--(4)--(5)');
+
+    const isCompletedAfter = await getByTestId(IS_COMPLETED).textContent();
+    expect(isCompletedAfter).toEqual('isCompleted: no');
+  });
 });
