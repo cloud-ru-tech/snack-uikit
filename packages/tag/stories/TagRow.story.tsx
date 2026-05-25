@@ -6,7 +6,7 @@ import componentPackage from '../package.json';
 import componentReadme from '../README.md';
 import { TagRow, TagRowProps } from '../src';
 import { SIZE } from '../src/constants';
-import { TagRowItemInner } from '../src/types';
+import { TagRowItem } from '../src/types';
 import styles from './styles.module.scss';
 import { generateFakeTags } from './utils';
 
@@ -16,7 +16,8 @@ const meta: Meta = {
 };
 export default meta;
 
-type StoryProps = TagRowProps & {
+type StoryProps = Omit<TagRowProps, 'items'> & {
+  items?: TagRowItem[];
   removableMode: boolean;
   demoTagsAmount: number;
   fullWidthMode: boolean;
@@ -24,6 +25,7 @@ type StoryProps = TagRowProps & {
 };
 
 const Template: StoryFn<StoryProps> = ({
+  items,
   removableMode,
   demoTagsAmount,
   fullWidthMode,
@@ -35,12 +37,17 @@ const Template: StoryFn<StoryProps> = ({
     [demoTagsAmount, showTooltips],
   );
 
-  const [tags, setTags] = useState<TagRowItemInner[]>(generateFakeTags(generateParams));
-  const removeTag = (item: TagRowItemInner['label']) => setTags(x => x.filter(({ label }) => label !== item));
+  const controlledItems = useMemo(
+    () => (Array.isArray(items) ? items : generateFakeTags(generateParams)),
+    [generateParams, items],
+  );
+
+  const [tags, setTags] = useState<TagRowItem[]>(controlledItems);
+  const removeTag = (item: TagRowItem['label']) => setTags(x => x.filter(({ label }) => label !== item));
 
   useEffect(() => {
-    setTags(generateFakeTags(generateParams));
-  }, [generateParams]);
+    setTags(controlledItems);
+  }, [controlledItems]);
 
   return (
     <div className={styles.tagRowWrapper} data-full-width={fullWidthMode}>
@@ -78,6 +85,11 @@ export const tagRow: StoryObj<StoryProps> = {
       name: '[Story]: Amount of demo tags',
       control: {
         type: 'number',
+      },
+    },
+    items: {
+      control: {
+        type: 'object',
       },
     },
     fullWidthMode: {
