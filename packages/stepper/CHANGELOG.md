@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2026-05-25)
+
+
+### Features
+
+* **PDS-3775:** add free navigation to stepper ([8b3ba42](https://github.com/cloud-ru-tech/snack-uikit/commit/8b3ba42d948edb29c7c84a2e50c7e6c29c55d029))
+
+
+
+
+
 ## 0.8.44 (2026-05-18)
 
 ### Only dependencies have been changed
