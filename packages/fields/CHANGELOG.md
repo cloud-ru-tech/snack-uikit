@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.56.0 (2026-05-26)
+
+
+### Features
+
+* **PDS-3805:** visible copy-button on not-readonly field-text-area ([c11c83a](https://github.com/cloud-ru-tech/snack-uikit/commit/c11c83aa11fdc410db03386edf965995fce7e408))
+
+
+
+
+
 ## 0.55.2 (2026-05-18)
 
 ### Only dependencies have been changed
