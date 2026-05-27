@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.56.1 (2026-05-27)
+
+
+### Bug Fixes
+
+* **MKP-3566:** remove unnecessary var() function ([8bd32d9](https://github.com/cloud-ru-tech/snack-uikit/commit/8bd32d932af85f87cf7cd9077fc7120a85fdc39c))
+
+
+
+
+
 # 0.56.0 (2026-05-26)
 
 

@@ -952,7 +952,7 @@ importers:
         specifier: 3.2.12
         version: link:../divider
       '@snack-uikit/fields':
-        specifier: 0.56.0
+        specifier: 0.56.1
         version: link:../fields
       '@snack-uikit/link':
         specifier: 0.18.1
