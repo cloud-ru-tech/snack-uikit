@@ -10,7 +10,6 @@ overrides:
   json5: 2.2.3
   react: 18.2.0
   react-dom: 18.2.0
-  tmp: 0.2.2
   '@babel/plugin-transform-modules-systemjs': 7.29.4
 
 importers:
@@ -9731,10 +9730,6 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  rimraf@5.0.10:
-    resolution: {integrity: sha512-l0OE8wL34P4nJH/H2ffoaniAokM2qSmrtXHmlpvYr5AVVX8msAyW0l8NVJFDxlSK4u3Uh/f41cQheDVdnYijwQ==}
-    hasBin: true
-
   rimraf@6.0.1:
     resolution: {integrity: sha512-9dkvaxAsk/xNXSJzMgFqqMCuFgt2+KsOFek3TMLfo8NCPfWpBmqwyNn5Y+NX56QUYfCtsyhF3ayiboEoUmJk/A==}
     engines: {node: 20 || >=22}
@@ -10449,9 +10444,9 @@ packages:
     resolution: {integrity: sha512-I4FZcVFcqCRuT0ph6dCDpPuO4Xgzvh+spkcTr1gK7peIvxWauoloVO0vuy1FQnijT63ss6AsHB6+OIM4aXHbPg==}
     hasBin: true
 
-  tmp@0.2.2:
-    resolution: {integrity: sha512-ETcvHhaIc9J2MDEAH6N67j9bvBvu/3Gb764qaGhwtFvjtvhegqoqSpofgeyq1Sc24mW5pdyUDs9HP5j3ehkxRw==}
-    engines: {node: '>=14'}
+  tmp@0.2.6:
+    resolution: {integrity: sha512-5sJPdPjfI5Kx+qbrDesxkglRBxW//g7hCsqspEjwkewGvBMGIKMOTKzLt1hFVJzyadba3lDUN20O9qhvbQUSTA==}
+    engines: {node: '>=14.14'}
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -13467,7 +13462,7 @@ snapshots:
       minimatch: 9.0.3
       nx: 20.8.4
       semver: 7.7.4
-      tmp: 0.2.2
+      tmp: 0.2.6
       tslib: 2.8.1
       yargs-parser: 21.1.1
 
@@ -19698,7 +19693,7 @@ snapshots:
       semver: 7.7.4
       string-width: 4.2.3
       tar-stream: 2.2.0
-      tmp: 0.2.2
+      tmp: 0.2.6
       tsconfig-paths: 4.2.0
       tslib: 2.8.1
       yaml: 2.8.0
@@ -20984,10 +20979,6 @@ snapshots:
     dependencies:
       glob: 9.3.5
 
-  rimraf@5.0.10:
-    dependencies:
-      glob: 10.5.0
-
   rimraf@6.0.1:
     dependencies:
       glob: 11.0.0
@@ -21867,9 +21858,7 @@ snapshots:
     dependencies:
       tldts-core: 7.0.27
 
-  tmp@0.2.2:
-    dependencies:
-      rimraf: 5.0.10
+  tmp@0.2.6: {}
 
   to-regex-range@5.0.1:
     dependencies:

@@ -73,7 +73,7 @@ $base-min-width: 4px;
       &[data-variant='#{$containerVariant}'] {
         .displayValue {
           $button-width: styles-tokens-element.simple-var($icons-sizes, $size);
-          $postfix-width: calc(var(#{styles-tokens-element.$space-fields-postfix-gap}) + $button-width * 2);
+          $postfix-width: calc(#{styles-tokens-element.$space-fields-postfix-gap} + #{$button-width} * 2);
           $margin-right: calc(
             #{styles-tokens-element.simple-var(styles-tokens-fields.$fields, $containerVariant, $size, 'padding-right')} + #{styles-tokens-element.simple-var(styles-tokens-fields.$fields, $containerVariant, $size, 'gap')} + #{$postfix-width}
           );
