@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.15.20 (2026-05-28)
+
+
+### Bug Fixes
+
+* **FF-8536:** fix first long tag is now visible ([263f6b9](https://github.com/cloud-ru-tech/snack-uikit/commit/263f6b9dbfcb001ec2a79e82a11bdd9c0f080b50))
+
+
+
+
+
 ## 0.15.19 (2026-05-18)
 
 ### Only dependencies have been changed

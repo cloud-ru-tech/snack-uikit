@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.56.2 (2026-05-28)
+
+### Only dependencies have been changed
+* [@snack-uikit/tag@0.15.20]($PUBLIC_PROJECT_URL/blob/master/packages/tag/CHANGELOG.md)
+
+
+
+
+
 ## 0.56.1 (2026-05-27)
 
 

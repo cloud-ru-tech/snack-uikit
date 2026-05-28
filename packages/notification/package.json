@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Notification",
-  "version": "0.14.3",
+  "version": "0.14.4",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -47,7 +47,7 @@
     "@snack-uikit/segmented-control": "0.6.21",
     "@snack-uikit/skeleton": "0.6.11",
     "@snack-uikit/status": "0.10.13",
-    "@snack-uikit/tag": "0.15.19",
+    "@snack-uikit/tag": "0.15.20",
     "@snack-uikit/tooltip": "0.18.13",
     "@snack-uikit/truncate-string": "0.7.12",
     "@snack-uikit/typography": "0.8.13",
