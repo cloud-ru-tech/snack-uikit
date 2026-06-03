@@ -81,7 +81,9 @@ export const getPopoverTriggerJSX = ({
   disableSpanWrapper,
 }: GetPopoverContentProps): ReactNode => {
   if (isValidElement(children)) {
-    if (isForwardRef(children) || isValidElementType(children) || disableSpanWrapper) {
+    const triggerType = children.type;
+
+    if (isForwardRef(triggerType) || isValidElementType(triggerType) || disableSpanWrapper) {
       return cloneElement(children, {
         ...getReferenceProps({
           ...(children.props as HTMLProps<HTMLElement>),

@@ -64,8 +64,10 @@ export function getWrappedIcon({ icon, iconClassName, loading, wrappedCounter }:
   }
 
   if (icon) {
+    const resolvedIconClassName = cn(iconClassName, { [styles.iconWithCounter]: Boolean(wrappedCounter) });
+
     return (
-      <span data-test-id={'icon'} className={cn(iconClassName, { [styles.iconWithCounter]: Boolean(wrappedCounter) })}>
+      <span data-test-id={'icon'} className={resolvedIconClassName}>
         {icon}
         {wrappedCounter}
       </span>

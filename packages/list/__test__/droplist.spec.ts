@@ -1,10 +1,30 @@
-import { expect, test } from '../../../playwright/fixtures';
+import { expect, type Locator, type Page, test } from '../../../playwright/fixtures';
 
 const DROPLIST_TRIGGER_TEST_ID = 'droplist-button-trigger';
 const TEST_ID = 'new-droplist';
 const NEXT_LIST_ITEMS = ['0-0', '0-1', '1-0', '1-1', '2-0', '2-1', '3-0', '3-1', '4-0', '4-1', '5-0', '5-1'].map(
   id => 'first-nested-' + id,
 );
+
+async function waitForDroplistOpen(getByTestId: (testId: string) => Locator) {
+  await expect(getByTestId(TEST_ID)).toBeVisible();
+  await expect(getByTestId(TEST_ID).locator('[role="menuitem"]').first()).toBeVisible();
+}
+
+async function openDroplistAndFocusList(page: Page, getByTestId: (testId: string) => Locator) {
+  await getByTestId(DROPLIST_TRIGGER_TEST_ID).click();
+  await waitForDroplistOpen(getByTestId);
+  await getByTestId(DROPLIST_TRIGGER_TEST_ID).focus();
+  await page.keyboard.press('ArrowDown');
+  await expect(getByTestId('list__base-item_first')).toBeFocused();
+}
+
+async function verifyCheckboxIndeterminate(getBaseItemCheckbox: (id: string) => Locator, id: string) {
+  await expect(getBaseItemCheckbox(id).locator('[data-indeterminate]').first()).toHaveAttribute(
+    'data-indeterminate',
+    'true',
+  );
+}
 
 const getStory = (props: object = {}) => ({
   group: 'list',
@@ -127,7 +147,7 @@ test.describe('DropList', () => {
 
     async function verifyItemPartiallySelected({ id }: { id: string }) {
       await expect(getBaseItem(id)).toHaveAttribute('data-checked', 'true');
-      await expect(getBaseItemCheckbox(id).locator('[data-indeterminate="true"]').first()).toBeVisible();
+      await verifyCheckboxIndeterminate(getBaseItemCheckbox, id);
     }
 
     async function verifyItemNotSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {
@@ -183,7 +203,7 @@ test.describe('DropList', () => {
 
     async function verifyItemPartiallySelected({ id }: { id: string }) {
       await expect(getBaseItem(id)).toHaveAttribute('data-checked', 'true');
-      await expect(getBaseItemCheckbox(id).locator('[data-indeterminate="true"]').first()).toBeVisible();
+      await verifyCheckboxIndeterminate(getBaseItemCheckbox, id);
     }
 
     async function verifyItemNotSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {
@@ -269,11 +289,7 @@ test.describe('DropList', () => {
       }
     }
 
-    await expect(getByTestId(DROPLIST_TRIGGER_TEST_ID)).toBeVisible();
-
-    // select item first-nested-0-0
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
+    await openDroplistAndFocusList(page, getByTestId);
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Enter');
@@ -344,7 +360,7 @@ test.describe('DropList', () => {
 
     async function verifyItemPartiallySelected({ id }: { id: string }) {
       await expect(getBaseItem(id)).toHaveAttribute('data-checked', 'true');
-      await expect(getBaseItemCheckbox(id).locator('[data-indeterminate="true"]').first()).toBeVisible();
+      await verifyCheckboxIndeterminate(getBaseItemCheckbox, id);
     }
 
     async function verifyItemNotSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {
@@ -359,8 +375,7 @@ test.describe('DropList', () => {
     await expect(getByTestId(DROPLIST_TRIGGER_TEST_ID)).toBeVisible();
     // next list item - click inner items
     // select item first-nested-0-0
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
+    await openDroplistAndFocusList(page, getByTestId);
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Enter');
@@ -422,7 +437,7 @@ test.describe('DropList', () => {
 
     async function verifyItemPartiallySelected({ id }: { id: string }) {
       await expect(getBaseItem(id)).toHaveAttribute('data-checked', 'true');
-      await expect(getBaseItemCheckbox(id).locator('[data-indeterminate="true"]').first()).toBeVisible();
+      await verifyCheckboxIndeterminate(getBaseItemCheckbox, id);
     }
 
     async function verifyItemNotSelected({ id, hasSwitch = false }: { id: string; hasSwitch?: boolean }) {
@@ -434,21 +449,41 @@ test.describe('DropList', () => {
       }
     }
 
-    await expect(getByTestId(DROPLIST_TRIGGER_TEST_ID)).toBeVisible();
+    async function focusListItem(id: string, direction: 'ArrowDown' | 'ArrowUp' = 'ArrowDown') {
+      for (let step = 0; step < 30; step++) {
+        const isFocused = await getBaseItem(id).evaluate(node => node === document.activeElement);
+
+        if (isFocused) {
+          return;
+        }
+
+        await page.keyboard.press(direction);
+      }
+
+      await expect(getBaseItem(id)).toBeFocused();
+    }
+
+    async function pressKeyWhenFocused(key: string, id: string) {
+      await expect(getBaseItem(id)).toBeFocused();
+      await page.keyboard.press(key);
+    }
+
+    await openDroplistAndFocusList(page, getByTestId);
+
     // accordion item - select by inner items
-    // select item 2
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    // select item 3-0-0
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
+    await focusListItem('3');
+    await pressKeyWhenFocused('ArrowRight', '3');
+    await expect(getBaseItem('3-0')).toBeVisible();
+
+    await focusListItem('3-0');
+    await pressKeyWhenFocused('ArrowRight', '3-0');
+    await expect(getBaseItem('3-0-0')).toBeVisible();
+
+    await focusListItem('3-0-0');
+    await pressKeyWhenFocused('Enter', '3-0-0');
+
+    await focusListItem('2', 'ArrowUp');
+    await pressKeyWhenFocused('Enter', '2');
 
     await verifyItemPartiallySelected({ id: '3' });
     await verifyItemPartiallySelected({ id: '3-0' });
@@ -456,17 +491,17 @@ test.describe('DropList', () => {
     await verifyItemSelected({ id: '2', hasSwitch: true });
 
     // select item 3-0-1
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
+    await focusListItem('3-0-1');
+    await pressKeyWhenFocused('Enter', '3-0-1');
 
     await verifyItemPartiallySelected({ id: '3' });
     await verifyItemSelected({ id: '3-0' });
     await verifyItemSelected({ id: '3-0-1' });
 
     // deselect items 3-0-0 & 3-0-1
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('Enter');
+    await pressKeyWhenFocused('Enter', '3-0-1');
+    await focusListItem('3-0-0', 'ArrowUp');
+    await pressKeyWhenFocused('Enter', '3-0-0');
 
     await verifyItemNotSelected({ id: '3' });
     await verifyItemNotSelected({ id: '3-0' });
@@ -474,17 +509,10 @@ test.describe('DropList', () => {
     await verifyItemNotSelected({ id: '3-0-1' });
 
     // accordion list item - select by parent items
-    // open collapse section 3-1
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowRight');
-    // select item 3
-    // TODO: not working with space
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('Enter');
+    await focusListItem('3-1');
+    await pressKeyWhenFocused('ArrowRight', '3-1');
+    await focusListItem('3', 'ArrowUp');
+    await pressKeyWhenFocused('Enter', '3');
 
     await verifyItemSelected({ id: '3' });
     await verifyItemSelected({ id: '3-0' });
@@ -495,9 +523,8 @@ test.describe('DropList', () => {
     await verifyItemSelected({ id: '3-1-1' });
 
     // deselect item 3-0
-    // TODO: not working with space
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
+    await focusListItem('3-0');
+    await pressKeyWhenFocused('Enter', '3-0');
 
     await verifyItemPartiallySelected({ id: '3' });
     await verifyItemNotSelected({ id: '3-0' });
