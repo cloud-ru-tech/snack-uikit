@@ -21,3 +21,14 @@ export const CI_WORKERS = PW_CI_WORKERS;
 export const TEST_ID_ATTRIBUTE = 'data-test-id';
 
 export const DEPLOY_NAMESPACE = 'ui-uikit-snack';
+
+/** Browser timezone for Playwright projects and date/time e2e tests. */
+export const TEST_TIMEZONE = 'Europe/Moscow';
+
+/** getTimezoneOffset()-compatible offset for {@link TEST_TIMEZONE} (UTC+3, no DST). */
+export const TEST_TIMEZONE_OFFSET_MS = -180 * 60 * 1000;
+
+/** Formats a date the same way as Playwright browser tests ({@link TEST_TIMEZONE}). */
+export function formatDateInTestTimezone(date: Date, options: Intl.DateTimeFormatOptions): string {
+  return new Intl.DateTimeFormat('ru-RU', { ...options, timeZone: TEST_TIMEZONE }).format(date);
+}

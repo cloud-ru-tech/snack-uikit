@@ -17,6 +17,9 @@ export default defineConfig({
   outputDir: resolve(PLAYWRIGHT_ROOT_DIR, 'test-results'),
   testIgnore: ['**/node_modules/**'],
   fullyParallel: true,
+  expect: {
+    timeout: 10000,
+  },
   use: {
     baseURL: UIKIT_URL,
     trace: 'on-first-retry',

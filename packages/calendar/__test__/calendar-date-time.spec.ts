@@ -1,3 +1,4 @@
+import { TEST_TIMEZONE_OFFSET_MS } from '../../../playwright/constants/common';
 import { expect, test } from '../../../playwright/fixtures';
 import { getCalendarTextSnapshot, getDateValueFromHolder } from './utils';
 
@@ -9,7 +10,7 @@ const MINUTES_ITEM = `minutes-${TEST_ID}`;
 const SECONDS_ITEM = `seconds-${TEST_ID}`;
 const APPLY_BUTTON = `apply-button-${TEST_ID}`;
 const CURRENT_BUTTON = `current-button-${TEST_ID}`;
-const MILLISECONDS_TIMEZONE_OFFSET = new Date().getTimezoneOffset() * 60 * 1000;
+const MILLISECONDS_TIMEZONE_OFFSET = TEST_TIMEZONE_OFFSET_MS;
 
 test.describe('[calendar] mode=date-time', () => {
   test('Should select date and then time by click', async ({ page, gotoStory, getByTestId }) => {

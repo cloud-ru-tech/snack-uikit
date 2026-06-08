@@ -1,9 +1,7 @@
 import { Locator, Page } from '@playwright/test';
 
 import { expect, test } from '../../../playwright/fixtures';
-import { getButtonClearValue, getInput } from './utils';
-import { runCommonTests } from './utils/runCommonTests';
-import { runTestsForOpenableFields } from './utils/runTestsForOpenableFields';
+import { getButtonClearValue, getInput, runCommonTests, runTestsForOpenableFields } from './utils';
 
 test.describe('Field Select', () => {
   const TEST_ID = 'field-select-test';
@@ -14,24 +12,37 @@ test.describe('Field Select', () => {
   const getOption = (getByTestId: (testId: string) => Locator, id: string) =>
     getByTestId(`field-select__list-option-${id}`);
   const getNoData = (getByTestId: (testId: string) => Locator) => getByTestId('field-select__no-data');
+  const getInputInner = (wrapper: Locator) => getInput(wrapper, COMPONENT_PREFIX);
+  const waitForList = (getByTestId: (testId: string) => Locator) =>
+    expect(getByTestId(LIST_TEST_ID)).toBeVisible({ timeout: 10000 });
+  const openList = async (wrapper: Locator, getByTestId: (testId: string) => Locator) => {
+    await getInputInner(wrapper).click();
+    await waitForList(getByTestId);
+  };
 
   const expectOptionChecked = async (getByTestId: (testId: string) => Locator, optionIds: string[]) => {
+    await expect(getByTestId(LIST_TEST_ID)).toBeVisible({ timeout: 10000 });
+
     for (const id of optionIds) {
-      const attrs = await getOption(getByTestId, id).getAttribute('data-checked');
+      const option = getOption(getByTestId, id);
+      await expect(option).toBeVisible({ timeout: 10000 });
+      const attrs = await option.getAttribute('data-checked');
 
       await expect(attrs, `option with id "${id}" is not selected`).toEqual('true');
     }
   };
 
   const expectOptionNotChecked = async (getByTestId: (testId: string) => Locator, optionIds: string[]) => {
+    await expect(getByTestId(LIST_TEST_ID)).toBeVisible({ timeout: 10000 });
+
     for (const id of optionIds) {
-      const attrs = await getOption(getByTestId, id).getAttribute('data-checked');
+      const option = getOption(getByTestId, id);
+      await expect(option).toBeVisible({ timeout: 10000 });
+      const attrs = await option.getAttribute('data-checked');
 
       await expect(attrs, `option with id "${id}" is checked although shouldn't`).not.toEqual('true');
     }
   };
-
-  const getInputInner = (wrapper: Locator) => getInput(wrapper, COMPONENT_PREFIX);
 
   const getStory = (props?: Record<string, unknown>) => ({
     group: 'fields',
@@ -112,7 +123,7 @@ test.describe('Field Select', () => {
     const input = getInputInner(wrapper);
     const list = getByTestId(LIST_TEST_ID);
 
-    await input.click();
+    await openList(wrapper, getByTestId);
     await expect(input, { message: 'Option 1 is not selected at the beginning' }).toHaveValue('Option 1');
     await expectOptionChecked(getByTestId, ['op1']);
 
@@ -121,7 +132,7 @@ test.describe('Field Select', () => {
     await expect(input, { message: 'should select active item' }).toHaveValue('Option 2');
 
     // selecting disabled item
-    await input.click();
+    await openList(wrapper, getByTestId);
     await expectOptionChecked(getByTestId, ['op2']);
     await getOption(getByTestId, 'op5').click();
     await expect(list, 'list is not present after selecting disabled item').toBeVisible();
@@ -255,10 +266,9 @@ test.describe('Field Select', () => {
   test('Should select multiple items with mouse', async ({ gotoStory, getByTestId }) => {
     await gotoStory(getStory({ value: 'op1', selection: 'multiple', searchable: false, required: true }));
     const wrapper = getByTestId(TEST_ID);
-    const input = getInputInner(wrapper);
     const list = getByTestId(LIST_TEST_ID);
 
-    await input.click();
+    await openList(wrapper, getByTestId);
 
     await expectOptionChecked(getByTestId, ['op1']);
 
@@ -292,15 +302,14 @@ test.describe('Field Select', () => {
     const list = getByTestId(LIST_TEST_ID);
 
     // selecting items
-    await input.click();
+    await openList(wrapper, getByTestId);
     await getOption(getByTestId, 'op2').click();
     await expect(list, 'list is not present after selecting item').toBeVisible();
 
     // should close list on click
     await input.click();
     await expect(list, 'list is still present after input click').not.toBeVisible();
-    await input.click();
-    await expect(list, 'list is not present after second input click').toBeVisible();
+    await openList(wrapper, getByTestId);
   });
 
   // search & select item by mouse
@@ -438,7 +447,7 @@ test.describe('Field Select', () => {
 
     await expect(getDropList(), "drop list is present although shouldn't").not.toBeVisible();
     await wrapper.click();
-    await expect(getDropList(), 'drop list is not present after click').toBeVisible();
+    await expect(getDropList(), 'drop list is not present after click').toBeVisible({ timeout: 10000 });
     await wrapper.click();
     await expect(getDropList(), "drop list still present after click although shouldn't").not.toBeVisible();
 

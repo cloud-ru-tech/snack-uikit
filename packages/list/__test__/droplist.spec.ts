@@ -11,9 +11,36 @@ async function waitForDroplistOpen(getByTestId: (testId: string) => Locator) {
   await expect(getByTestId(TEST_ID).locator('[role="menuitem"]').first()).toBeVisible();
 }
 
-async function openDroplistAndFocusList(page: Page, getByTestId: (testId: string) => Locator) {
+async function openDroplist(getByTestId: (testId: string) => Locator) {
   await getByTestId(DROPLIST_TRIGGER_TEST_ID).click();
   await waitForDroplistOpen(getByTestId);
+}
+
+async function hoverToNestedItem(
+  page: Page,
+  getByTestId: (testId: string) => Locator,
+  parentId: string,
+  nestedId: string,
+) {
+  const getBaseItem = (id: string) => getByTestId(`list__base-item_${id}`);
+  const parentItem = getBaseItem(parentId);
+
+  await expect(parentItem).toBeVisible({ timeout: 10000 });
+  await parentItem.hover();
+
+  try {
+    await expect(getBaseItem(nestedId)).toBeVisible({ timeout: 3000 });
+  } catch {
+    await parentItem.focus();
+    await page.keyboard.press('ArrowRight');
+    await expect(getBaseItem(nestedId)).toBeVisible({ timeout: 10000 });
+  }
+
+  await getBaseItem(nestedId).hover();
+}
+
+async function openDroplistAndFocusList(page: Page, getByTestId: (testId: string) => Locator) {
+  await openDroplist(getByTestId);
   await getByTestId(DROPLIST_TRIGGER_TEST_ID).focus();
   await page.keyboard.press('ArrowDown');
   await expect(getByTestId('list__base-item_first')).toBeFocused();
@@ -44,7 +71,7 @@ test.describe('DropList', () => {
     await expect(getByTestId(TEST_ID)).toBeVisible();
   });
 
-  test('Should not have marker on parent nodes & switch nodes', async ({ gotoStory, getByTestId }) => {
+  test('Should not have marker on parent nodes & switch nodes', async ({ page, gotoStory, getByTestId }) => {
     await gotoStory(getStory({ selectionMode: 'single', marker: true }));
 
     const getBaseItem = (id: string) => getByTestId(`list__base-item_${id}`);
@@ -58,9 +85,8 @@ test.describe('DropList', () => {
       await expect(getBaseItemMarker(id)).not.toBeVisible();
     }
 
-    await getByTestId(DROPLIST_TRIGGER_TEST_ID).click();
-    await getBaseItem('first').hover();
-    await getBaseItem('first-nested').hover();
+    await openDroplist(getByTestId);
+    await hoverToNestedItem(page, getByTestId, 'first', 'first-nested');
 
     await verifyMarkerNotPresent('first');
     await verifyMarkerNotPresent('first-nested');
@@ -75,7 +101,7 @@ test.describe('DropList', () => {
     await verifyMarkerPresent('3-0-0');
   });
 
-  test('Should select items in single mode', async ({ gotoStory, getByTestId }) => {
+  test('Should select items in single mode', async ({ page, gotoStory, getByTestId }) => {
     await gotoStory(getStory({ selectionMode: 'single' }));
 
     const getBaseItem = (id: string) => getByTestId(`list__base-item_${id}`);
@@ -97,9 +123,8 @@ test.describe('DropList', () => {
       }
     }
 
-    await getByTestId(DROPLIST_TRIGGER_TEST_ID).click();
-    await getBaseItem('first').hover();
-    await getBaseItem('first-nested').hover();
+    await openDroplist(getByTestId);
+    await hoverToNestedItem(page, getByTestId, 'first', 'first-nested');
     await getBaseItem('first-nested-0-0').click();
 
     await verifyItemSelected({ id: 'first' });
@@ -114,8 +139,7 @@ test.describe('DropList', () => {
     await verifyItemSelected({ id: '3-0' });
     await verifyItemSelected({ id: '3-0-0' });
 
-    await getBaseItem('first').hover();
-    await getBaseItem('first-nested').hover();
+    await hoverToNestedItem(page, getByTestId, 'first', 'first-nested');
 
     await verifyItemNotSelected({ id: 'first' });
     await verifyItemNotSelected({ id: 'first-nested' });
@@ -129,7 +153,7 @@ test.describe('DropList', () => {
     await verifyItemNotSelected({ id: '3-0-0' });
   });
 
-  test('Should select next list items in multiple mode', async ({ gotoStory, getByTestId }) => {
+  test('Should select next list items in multiple mode', async ({ page, gotoStory, getByTestId }) => {
     await gotoStory(getStory({ selectionMode: 'multiple' }));
 
     const getBaseItem = (id: string) => getByTestId(`list__base-item_${id}`);
@@ -159,11 +183,10 @@ test.describe('DropList', () => {
       }
     }
 
-    await getByTestId(DROPLIST_TRIGGER_TEST_ID).click();
+    await openDroplist(getByTestId);
 
     // next list item - click inner items
-    await getBaseItemCheckbox('first').hover();
-    await getBaseItem('first-nested').hover();
+    await hoverToNestedItem(page, getByTestId, 'first', 'first-nested');
     await getBaseItem('first-nested-0-0').click();
 
     await verifyItemPartiallySelected({ id: 'first' });

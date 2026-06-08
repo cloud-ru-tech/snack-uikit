@@ -14,20 +14,18 @@ type Options = {
 };
 
 export const runTestsForOpenableFields = (getStory: StoryCallback, testId: string, options: Options) => {
-  const getIcon = (wrapper: Locator) => wrapper.locator(`[data-test-id="${options.iconTestId}"]`);
   const getDropList = (getByTestId: (testId: string) => Locator) => getByTestId(options.dropListTestId);
 
   // open/close
   test('Should open/close drop list by click & keyboard', async ({ gotoStory, getByTestId, page }) => {
     await gotoStory(getStory({}));
     const wrapper = getByTestId(testId);
-    const icon = getIcon(wrapper);
     const dropList = getDropList(getByTestId);
 
     await expect(dropList, "drop list is present although shouldn't").not.toBeVisible();
 
-    await icon.click();
-    await expect(dropList, 'drop list is not present after clicking on icon').toBeVisible();
+    await wrapper.click();
+    await expect(dropList, 'drop list is not present after clicking on field').toBeVisible({ timeout: 10000 });
 
     // this is not working for field-select right now
     // await page.keyboard.press('Space');

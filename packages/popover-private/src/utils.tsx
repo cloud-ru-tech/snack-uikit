@@ -11,7 +11,7 @@ import {
   ReactNode,
   TouchEvent,
 } from 'react';
-import { isForwardRef, isValidElementType } from 'react-is';
+import { ForwardRef } from 'react-is';
 
 import { isBrowser } from '@snack-uikit/utils';
 
@@ -82,8 +82,12 @@ export const getPopoverTriggerJSX = ({
 }: GetPopoverContentProps): ReactNode => {
   if (isValidElement(children)) {
     const triggerType = children.type;
+    const isForwardRefType =
+      typeof triggerType === 'object' &&
+      triggerType !== null &&
+      (triggerType as { $$typeof?: symbol }).$$typeof === ForwardRef;
 
-    if (isForwardRef(triggerType) || isValidElementType(triggerType) || disableSpanWrapper) {
+    if (typeof triggerType === 'string' || isForwardRefType || disableSpanWrapper) {
       return cloneElement(children, {
         ...getReferenceProps({
           ...(children.props as HTMLProps<HTMLElement>),

@@ -1,3 +1,4 @@
+import { formatDateInTestTimezone } from '../../../playwright/constants/common';
 import { expect, test } from '../../../playwright/fixtures';
 import { chipChoiceCommonTests, createChipGetStory, getComponent } from './utils/chipChoice';
 
@@ -54,7 +55,7 @@ test.describe('ChipChoice.Date', () => {
     await expect(value).toBeVisible();
 
     await expect(value).toHaveText(
-      new Date('2023-10-15').toLocaleDateString('ru-RU', {
+      formatDateInTestTimezone(new Date('2023-10-15'), {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',

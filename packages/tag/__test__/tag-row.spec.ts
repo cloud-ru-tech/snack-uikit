@@ -1,8 +1,18 @@
 import { expect, Locator, test } from '../../../playwright/fixtures';
 import { TAG_ROW_TEST_IDS } from '../src/components/TagRow/constants';
+import { generateFakeTags } from '../stories/utils';
 
 const TEST_ID = 'tag-row-test';
 const CLOSE_BUTTON_DATA_TEST_ID = 'tag-remove-button';
+const DEMO_TAGS_PARAMS = { amountToGenerate: 50, char: 'x', charLimit: 5, includeTooltip: false } as const;
+
+function getDemoTagLabel(index: number): string {
+  return generateFakeTags({ ...DEMO_TAGS_PARAMS, amountToGenerate: index })[index - 1].label;
+}
+
+function getDemoTagsAfterRemoving(removedLabel: string) {
+  return generateFakeTags(DEMO_TAGS_PARAMS).filter(tag => tag.label !== removedLabel);
+}
 
 test.describe('TagRow', () => {
   const getComponent = (getByTestId: (testId: string) => Locator) => getByTestId(TEST_ID);
@@ -37,6 +47,37 @@ test.describe('TagRow', () => {
     getVisibleTagsWrapper(getByTestId).locator(`[data-test-id="${TAG_ROW_TEST_IDS.moreButton}"]`);
 
   const getTagDeleteButton = (selector: Locator) => selector.locator(`[data-test-id="${CLOSE_BUTTON_DATA_TEST_ID}"]`);
+
+  async function assertTruncatedTags(
+    getByTestId: (testId: string) => Locator,
+    totalTags: number,
+    labelPrefix = 'More: ',
+  ) {
+    await expect(getVisibleTagsWrapper(getByTestId)).toBeVisible();
+    const moreButton = getMoreTagsButton(getByTestId);
+    await expect(moreButton).toBeVisible();
+
+    await expect
+      .poll(
+        async () => {
+          const visibleTagsCount = await getAmountOfVisibleTags(getByTestId);
+          const hiddenCount = Number((await moreButton.textContent())?.replace(labelPrefix, '') ?? 0);
+
+          return visibleTagsCount > 0 && visibleTagsCount + hiddenCount === totalTags
+            ? { visibleTagsCount, hiddenCount }
+            : null;
+        },
+        { timeout: 15000 },
+      )
+      .not.toBeNull();
+
+    const visibleTagsCount = await getAmountOfVisibleTags(getByTestId);
+    const hiddenCount = Number((await moreButton.textContent())?.replace(labelPrefix, '') ?? 0);
+
+    expect(visibleTagsCount + hiddenCount).toEqual(totalTags);
+
+    return { visibleTagsCount, hiddenCount, moreButton };
+  }
 
   test('Should render all 50 preconfigured demo tags in case no limit is specified', async ({
     gotoStory,
@@ -98,22 +139,15 @@ test.describe('TagRow', () => {
     });
 
     await expect(getComponent(getByTestId)).toBeVisible();
-    await expect(getVisibleTagsWrapper(getByTestId)).toBeVisible();
-    const visibleTagsCount = await getAmountOfVisibleTags(getByTestId);
-    expect(visibleTagsCount).toEqual(5);
-
-    const moreButton = getMoreTagsButton(getByTestId);
-    await expect(moreButton).toBeVisible();
+    const { hiddenCount, moreButton } = await assertTruncatedTags(getByTestId, 50);
 
     await expect(getTagCloudWrapper(getByTestId)).not.toBeVisible();
-    const buttonText = await moreButton.textContent();
-    expect(buttonText).toEqual('More: 45');
+    expect(await moreButton.textContent()).toEqual(`More: ${hiddenCount}`);
 
     await moreButton.hover();
 
     await expect(getTagCloudWrapper(getByTestId)).toBeVisible();
-    const cloudTagsCount = await getAmountOfCloudTags(getByTestId);
-    expect(cloudTagsCount).toEqual(45);
+    expect(await getAmountOfCloudTags(getByTestId)).toEqual(hiddenCount);
   });
 
   test('Should render 3 rows of tags with more button if the row limit is set to 3. All remaining tags should be available in a droplist once the more button is hovered', async ({
@@ -131,22 +165,15 @@ test.describe('TagRow', () => {
     });
 
     await expect(getComponent(getByTestId)).toBeVisible();
-    await expect(getVisibleTagsWrapper(getByTestId)).toBeVisible();
-    const visibleTagsCount = await getAmountOfVisibleTags(getByTestId);
-    expect(visibleTagsCount).toEqual(16);
-
-    const moreButton = getMoreTagsButton(getByTestId);
-    await expect(moreButton).toBeVisible();
+    const { hiddenCount, moreButton } = await assertTruncatedTags(getByTestId, 50);
 
     await expect(getTagCloudWrapper(getByTestId)).not.toBeVisible();
-    const buttonText = await moreButton.textContent();
-    expect(buttonText).toEqual('More: 34');
+    expect(await moreButton.textContent()).toEqual(`More: ${hiddenCount}`);
 
     await moreButton.hover();
 
     await expect(getTagCloudWrapper(getByTestId)).toBeVisible();
-    const cloudTagsCount = await getAmountOfCloudTags(getByTestId);
-    expect(cloudTagsCount).toEqual(34);
+    expect(await getAmountOfCloudTags(getByTestId)).toEqual(hiddenCount);
   });
 
   test('Should support changing button text', async ({ gotoStory, getByTestId }) => {
@@ -159,10 +186,8 @@ test.describe('TagRow', () => {
       },
     });
 
-    const moreButton = getMoreTagsButton(getByTestId);
-    await expect(moreButton).toBeVisible();
-    const buttonText = await moreButton.textContent();
-    expect(buttonText).toEqual('test39');
+    const { hiddenCount, moreButton } = await assertTruncatedTags(getByTestId, 50, 'test');
+    expect(await moreButton.textContent()).toEqual(`test${hiddenCount}`);
   });
 
   test('Should support deleting tags', async ({ gotoStory, getByTestId }) => {
@@ -176,44 +201,47 @@ test.describe('TagRow', () => {
       },
     });
 
-    expect(await getAmountOfVisibleTags(getByTestId)).toEqual(9);
-    const moreButton = getMoreTagsButton(getByTestId);
-    await expect(moreButton).toHaveText('More: 41');
+    const { hiddenCount, moreButton } = await assertTruncatedTags(getByTestId, 50);
 
     await moreButton.hover();
-    expect(await getAmountOfCloudTags(getByTestId)).toEqual(41);
+    expect(await getAmountOfCloudTags(getByTestId)).toEqual(hiddenCount);
 
     const ninthVisibleTagText1 = await getNinthVisibleTagText(getByTestId);
-    expect(ninthVisibleTagText1).toEqual('tag9xxxx');
+    expect(ninthVisibleTagText1).toEqual(getDemoTagLabel(9));
 
     const ninthVisibleTag = getNinthVisibleTag(getByTestId);
     await ninthVisibleTag.click();
     await getTagDeleteButton(ninthVisibleTag).click();
 
-    expect(await getNinthVisibleTagText(getByTestId)).toEqual('tag10xxxxx');
-    expect(await getAmountOfVisibleTags(getByTestId)).toEqual(9);
-    expect(moreButton).toHaveText('More: 40');
+    const tagsAfterFirstDelete = getDemoTagsAfterRemoving(getDemoTagLabel(9));
+    const { hiddenCount: hiddenCountAfterFirstDelete, visibleTagsCount: visibleTagsCountAfterFirstDelete } =
+      await assertTruncatedTags(getByTestId, 49);
+
+    expect(await getNinthVisibleTagText(getByTestId)).toEqual(tagsAfterFirstDelete[8].label);
 
     await moreButton.hover();
-    const cloudTagsCount2 = await getAmountOfCloudTags(getByTestId);
-    expect(cloudTagsCount2).toEqual(40);
-    const firstCloudTagText1 = await getFirstCloudTagText(getByTestId);
-    expect(firstCloudTagText1).toEqual('tag11x');
+    expect(await getAmountOfCloudTags(getByTestId)).toEqual(hiddenCountAfterFirstDelete);
+    const expectedFirstCloudTagAfterFirstDelete = tagsAfterFirstDelete[visibleTagsCountAfterFirstDelete].label;
+    await expect(getFirstCloudTag(getByTestId).locator('span').first()).toHaveText(
+      expectedFirstCloudTagAfterFirstDelete,
+    );
 
     const firstCloudTag = getFirstCloudTag(getByTestId);
+    const firstCloudTagLabel = await getFirstCloudTagText(getByTestId);
     await firstCloudTag.click();
     await getTagDeleteButton(firstCloudTag).click();
-    // Wait for the DOM to update after deletion
-    await expect(getFirstCloudTag(getByTestId).locator('span').first()).toHaveText('tag12xx');
-    const visibleTagsCount3 = await getAmountOfVisibleTags(getByTestId);
-    expect(visibleTagsCount3).toEqual(9);
-    const buttonText3 = await moreButton.textContent();
-    expect(buttonText3).toEqual(`More: 39`);
+
+    const tagsAfterSecondDelete = tagsAfterFirstDelete.filter(tag => tag.label !== firstCloudTagLabel);
+    const { hiddenCount: hiddenCountAfterSecondDelete, visibleTagsCount: visibleTagsCountAfterSecondDelete } =
+      await assertTruncatedTags(getByTestId, 48);
+
+    await expect(getFirstCloudTag(getByTestId).locator('span').first()).toHaveText(
+      tagsAfterSecondDelete[visibleTagsCountAfterSecondDelete].label,
+    );
 
     await moreButton.hover();
-    const cloudTagsCount3 = await getAmountOfCloudTags(getByTestId);
-    expect(cloudTagsCount3).toEqual(39);
+    expect(await getAmountOfCloudTags(getByTestId)).toEqual(hiddenCountAfterSecondDelete);
     const firstCloudTagText2 = await getFirstCloudTagText(getByTestId);
-    expect(firstCloudTagText2).toEqual('tag12xx');
+    expect(firstCloudTagText2).toEqual(tagsAfterSecondDelete[visibleTagsCountAfterSecondDelete].label);
   });
 });

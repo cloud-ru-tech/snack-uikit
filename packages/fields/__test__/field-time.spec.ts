@@ -23,6 +23,9 @@ test.describe('Field Time', () => {
   const getSelectedSeconds = (page: Page) =>
     page.locator('[data-test-id="seconds-' + TIMEPICKER_TEST_ID + '"][data-checked]');
 
+  const waitForTimepicker = (getByTestId: (testId: string) => Locator) =>
+    expect(getByTestId(TIMEPICKER_TEST_ID)).toBeVisible({ timeout: 10000 });
+
   const getStory = (props?: Record<string, unknown>) => ({
     group: 'fields',
     name: 'field-time',
@@ -81,6 +84,7 @@ test.describe('Field Time', () => {
     await expect(input).toHaveValue('04:05:06');
 
     await input.click();
+    await waitForTimepicker(getByTestId);
 
     await expect(getSelectedHour(page)).toHaveText('04');
     await expect(getSelectedMinute(page)).toHaveText('05');
@@ -104,6 +108,7 @@ test.describe('Field Time', () => {
     await expect(input).toHaveValue('04:05:06');
 
     await wrapper.click();
+    await waitForTimepicker(getByTestId);
 
     await expect(getSelectedHour(page)).toHaveText('04');
     await expect(getSelectedMinute(page)).toHaveText('05');
@@ -140,7 +145,7 @@ test.describe('Field Time', () => {
 
     await expect(getTimepicker(), 'timepicker is present before first click').not.toBeVisible();
     await wrapper.click();
-    await expect(getTimepicker(), 'timepicker is not present after click').toBeVisible();
+    await waitForTimepicker(getByTestId);
     await wrapper.click();
     await expect(getTimepicker(), 'timepicker was hidden by second click').toBeVisible();
   });

@@ -139,7 +139,8 @@
       "json5": "2.2.3",
       "react": "18.2.0",
       "react-dom": "18.2.0",
-      "@babel/plugin-transform-modules-systemjs": "7.29.4"
+      "@babel/plugin-transform-modules-systemjs": "7.29.4",
+      "piscina": "4.9.3"
     }
   }
 }

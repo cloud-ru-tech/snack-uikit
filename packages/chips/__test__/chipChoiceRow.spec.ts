@@ -129,9 +129,10 @@ test.describe('ChipChoiceRow', () => {
     await addButtonOption(STORY_TEST_IDS.Custom).click();
     await addButton.click();
     await addButtonOption(STORY_TEST_IDS.MultipleManyOption).click();
-    await addButton.hover();
+    // disabled buttons do not receive pointer events — hover the trigger wrapper instead
+    await addButton.locator('..').hover();
 
-    await expect(addButtonTooltip).toBeVisible();
+    await expect(addButtonTooltip).toBeVisible({ timeout: 10000 });
   });
 
   test('Should change state after interaction with chips', async ({ gotoStory, getByTestId, page }) => {
