@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.57.0 (2026-06-10)
+
+
+### Features
+
+* **PDS-3606:** add configurable current time button ([defe609](https://github.com/cloud-ru-tech/snack-uikit/commit/defe609ec1948fe040e1680349508b32c2059057))
+
+
+
+
+
 ## 0.56.2 (2026-05-28)
 
 ### Only dependencies have been changed
