@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.20.0 (2026-06-16)
+
+
+### Features
+
+* **SITE-10721:** add animation for modal ([13f4370](https://github.com/cloud-ru-tech/snack-uikit/commit/13f4370740d84c4d246c9adc512ecc7ec76e1486))
+
+
+
+
+
 ## 0.19.14 (2026-05-18)
 
 ### Only dependencies have been changed
