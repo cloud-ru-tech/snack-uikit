@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Avatar",
-  "version": "0.8.26",
+  "version": "0.8.27",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -35,7 +35,7 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@snack-uikit/status": "0.10.13",
+    "@snack-uikit/status": "0.10.14",
     "@snack-uikit/utils": "4.0.2",
     "classnames": "2.5.1"
   }

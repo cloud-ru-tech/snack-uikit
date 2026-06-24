@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.7.16",
+  "version": "0.7.17",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -38,7 +38,7 @@
   "dependencies": {
     "@cloud-ru/ft-copy-to-clipboard": "0.1.0",
     "@monaco-editor/react": "4.6.0",
-    "@snack-uikit/button": "0.19.18",
+    "@snack-uikit/button": "0.19.19",
     "@snack-uikit/icons": "0.27.7",
     "@snack-uikit/loaders": "0.9.11",
     "@snack-uikit/typography": "0.8.13",

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.33.2 (2026-06-24)
+
+
+### Bug Fixes
+
+* **SITE-11384:** fix for next 16 ([18978d3](https://github.com/cloud-ru-tech/snack-uikit/commit/18978d37116292e153cecfad19bafb608d5b86f5))
+* **SITE-11384:** update tests ([211cfe4](https://github.com/cloud-ru-tech/snack-uikit/commit/211cfe4b5257079b77dbbefd19b26cb7688fdab4))
+
+
+
+
+
 ## 0.33.1 (2026-05-18)
 
 ### Only dependencies have been changed
