@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.58 (2026-07-03)
+
+### Only dependencies have been changed
+* [@snack-uikit/segmented-control@0.6.23]($PUBLIC_PROJECT_URL/blob/master/packages/segmented-control/CHANGELOG.md)
+
+
+
+
+
 ## 0.3.57 (2026-06-24)
 
 ### Only dependencies have been changed

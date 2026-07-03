@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.33.3 (2026-07-03)
+
+### Only dependencies have been changed
+* [@snack-uikit/dropdown@0.5.8]($PUBLIC_PROJECT_URL/blob/master/packages/dropdown/CHANGELOG.md)
+* [@snack-uikit/info-block@0.6.43]($PUBLIC_PROJECT_URL/blob/master/packages/info-block/CHANGELOG.md)
+* [@snack-uikit/truncate-string@0.7.14]($PUBLIC_PROJECT_URL/blob/master/packages/truncate-string/CHANGELOG.md)
+
+
+
+
+
 ## 0.33.2 (2026-06-24)
 
 

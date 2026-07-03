@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.15.8 (2026-07-03)
+
+
+### Bug Fixes
+
+* **MKP-3699:** fix truncating ([fc4baba](https://github.com/cloud-ru-tech/snack-uikit/commit/fc4baba18c1abc237846c72234df54918746f919))
+
+
+
+
+
 ## 0.15.7 (2026-06-24)
 
 
