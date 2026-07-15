@@ -349,7 +349,7 @@ importers:
         specifier: 0.19.19
         version: link:../button
       '@snack-uikit/card':
-        specifier: 0.20.23
+        specifier: 0.21.0
         version: link:../card
       '@snack-uikit/icon-predefined':
         specifier: 0.7.12

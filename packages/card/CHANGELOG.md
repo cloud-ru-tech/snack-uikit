@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.21.0 (2026-07-15)
+
+
+### Features
+
+* **FF-8766:** add color prop on promoBage card ([978b93f](https://github.com/cloud-ru-tech/snack-uikit/commit/978b93fb5d7e660fc6de9dc3a8e3fb62eda1608e))
+
+
+
+
+
 ## 0.20.23 (2026-07-03)
 
 ### Only dependencies have been changed
