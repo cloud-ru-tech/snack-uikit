@@ -39,7 +39,7 @@ export type CardProps = WithSupportProps<{
   /** Размер */
   size?: Size;
   /** PromoBadge */
-  promoBadge?: Pick<PromoTagProps, 'text' | 'appearance'> | string;
+  promoBadge?: Pick<PromoTagProps, 'text' | 'appearance' | 'color'> | string;
   /** Вложенный контент  */
   children?: ReactNode;
   /** Вложенный Header */
