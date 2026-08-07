@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.59 (2026-08-07)
+
+### Only dependencies have been changed
+* [@snack-uikit/icons@0.27.8]($PUBLIC_PROJECT_URL/blob/master/packages/icons/CHANGELOG.md)
+* [@snack-uikit/input-private@4.8.10]($PUBLIC_PROJECT_URL/blob/master/packages/input-private/CHANGELOG.md)
+* [@snack-uikit/segmented-control@0.6.24]($PUBLIC_PROJECT_URL/blob/master/packages/segmented-control/CHANGELOG.md)
+
+
+
+
+
 ## 0.3.58 (2026-07-03)
 
 ### Only dependencies have been changed

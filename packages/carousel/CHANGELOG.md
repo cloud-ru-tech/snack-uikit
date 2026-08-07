@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.14 (2026-08-07)
+
+
+### Bug Fixes
+
+* **PDS-3768:** carousel cards overflow from siblings pages fixed ([a46e4f3](https://github.com/cloud-ru-tech/snack-uikit/commit/a46e4f389f798b2a3b758eb45d3f04e8decc06a8))
+* **PDS-3768:** replaced deprecated lodash specific packages with a global latest lodash to resolve vulnerabilities ([260f60d](https://github.com/cloud-ru-tech/snack-uikit/commit/260f60ddb5e644d44787116e5034d8d8d723a8ac))
+
+
+
+
+
 ## 0.6.13 (2026-06-24)
 
 ### Only dependencies have been changed

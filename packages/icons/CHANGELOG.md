@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.27.8 (2026-08-07)
+
+
+### Dependencies
+
+* **PDS-3768:** updated deps to resolve vulnerabilities ([5b2bfae](https://github.com/cloud-ru-tech/snack-uikit/commit/5b2bfae7c1d423964e96dce7ced4efbd6f015e19))
+
+
+
+
+
 ## 0.27.7 (2026-03-04)
 
 

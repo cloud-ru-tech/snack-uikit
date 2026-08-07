@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.42 (2026-08-07)
+
+
+### Bug Fixes
+
+* **PDS-3768:** replaced deprecated lodash specific packages with a global latest lodash to resolve vulnerabilities ([260f60d](https://github.com/cloud-ru-tech/snack-uikit/commit/260f60ddb5e644d44787116e5034d8d8d723a8ac))
+
+
+
+
+
 ## 0.11.41 (2026-07-03)
 
 ### Only dependencies have been changed

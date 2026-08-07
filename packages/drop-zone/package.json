@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Drop Zone",
-  "version": "0.9.12",
+  "version": "0.9.13",
   "sideEffects": [
     "*.css",
     "*.woff",
