@@ -92,7 +92,7 @@
     "depcheck": "1.4.7",
     "dotenv": "16.4.5",
     "express": "5.1.0",
-    "glob": "11.0.0",
+    "glob": "11.1.0",
     "inquirer": "12.9.6",
     "js-file-download": "0.4.12",
     "jsdom": "25.0.1",
@@ -102,7 +102,7 @@
     "monaco-editor": "0.52.2",
     "monaco-yaml": "5.2.3",
     "nyc": "17.1.0",
-    "postcss": "8.5.6",
+    "postcss": "8.5.26",
     "postcss-discard-comments": "7.0.4",
     "react": "18.2.0",
     "react-docgen": "7.1.0",
@@ -127,7 +127,7 @@
     "vite-plugin-monaco-editor": "1.1.0",
     "vite-plugin-svgr": "4.3.0",
     "vite-tsconfig-paths": "5.1.4",
-    "yaml": "2.8.0"
+    "yaml": "2.9.0"
   },
   "workspaces": [
     "packages/*"
@@ -136,11 +136,14 @@
     "overrides": {
       "axios": "1.16.0",
       "ejs": "3.1.10",
+      "js-yaml@4": "4.3.1",
       "json5": "2.2.3",
       "react": "18.2.0",
       "react-dom": "18.2.0",
       "@babel/plugin-transform-modules-systemjs": "7.29.7",
-      "piscina": "4.9.3"
+      "piscina": "4.9.3",
+      "postcss": "8.5.26",
+      "prismjs": "1.30.0"
     }
   }
 }
