@@ -1,4 +1,4 @@
-import debounce from 'lodash.debounce';
+import { debounce } from 'lodash';
 import { useCallback, useMemo, useState } from 'react';
 
 import { useToggleGroup } from '@snack-uikit/toggles';

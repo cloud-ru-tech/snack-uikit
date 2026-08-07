@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import debounce from 'lodash.debounce';
+import { debounce } from 'lodash';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { ButtonFunction } from '@snack-uikit/button';

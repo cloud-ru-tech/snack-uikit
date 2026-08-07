@@ -36,9 +36,9 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "lodash.merge": "4.6.2"
+    "lodash": "4.18.1"
   },
   "devDependencies": {
-    "@types/lodash.merge": "4.6.9"
+    "@types/lodash": "4.17.25"
   }
 }

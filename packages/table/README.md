@@ -169,7 +169,6 @@ const columnDefinitions: ColumnDefinition<TableData>[] = [
 | name | type | default value | description |
 |------|------|---------------|-------------|
 | filter | `FiltersState` | - |  |
-| ordering | `FieldSort[]` | - |  |
 | search | `string` | - |  |
 | pagination | `PaginationState \| PaginationParams` | - |  |
 | sorting | `SortingState` | - |  |

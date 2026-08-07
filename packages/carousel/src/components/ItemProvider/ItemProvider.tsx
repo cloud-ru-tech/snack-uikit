@@ -1,4 +1,4 @@
-import debounce from 'lodash.debounce';
+import { debounce } from 'lodash';
 import mergeRefs from 'merge-refs';
 import { MouseEventHandler, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 

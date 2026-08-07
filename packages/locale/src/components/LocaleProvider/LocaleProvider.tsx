@@ -1,4 +1,4 @@
-import merge from 'lodash.merge';
+import { merge } from 'lodash';
 import { createContext, ReactNode, useCallback, useContext, useMemo } from 'react';
 
 import { LOCALES } from '../../locales';

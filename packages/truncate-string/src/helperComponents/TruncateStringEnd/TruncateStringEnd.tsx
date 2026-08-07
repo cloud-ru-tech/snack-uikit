@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import throttle from 'lodash.throttle';
+import { throttle } from 'lodash';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';

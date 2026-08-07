@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import trottle from 'lodash.throttle';
+import { throttle } from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 
 import { Tooltip, TooltipProps } from '@snack-uikit/tooltip';
@@ -33,7 +33,7 @@ export function TruncateStringMiddle({
   const truncatedTextElementRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const setTruncate = trottle(() => {
+    const setTruncate = throttle(() => {
       setTruncatedString(
         truncateStringMiddle({
           element: textElementRef.current,

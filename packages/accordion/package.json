@@ -44,9 +44,9 @@
     "@snack-uikit/typography": "0.8.13",
     "@snack-uikit/utils": "4.0.2",
     "classnames": "2.5.1",
-    "lodash.debounce": "4.0.8"
+    "lodash": "4.18.1"
   },
   "devDependencies": {
-    "@types/lodash.debounce": "4.0.8"
+    "@types/lodash": "4.17.25"
   }
 }
