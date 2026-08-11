@@ -5,6 +5,7 @@ import {
   forwardRef,
   KeyboardEvent,
   KeyboardEventHandler,
+  MouseEvent,
   useCallback,
   useEffect,
   useRef,
@@ -148,7 +149,8 @@ export const FieldSelectMultiple = forwardRef<HTMLInputElement, FieldSelectMulti
 
   const handleItemDelete = useHandleDeleteItem(setValue);
   const handleTagDelete = useCallback(
-    (option: BaseItemProps) => () => {
+    (option: BaseItemProps) => (e: MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
       const deleteItemHandler = handleItemDelete(option);
       deleteItemHandler();
       localRef.current?.focus();

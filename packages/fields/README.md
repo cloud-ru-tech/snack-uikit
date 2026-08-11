@@ -732,8 +732,8 @@ FieldStepper в основном предназначен для работы с
 | selectedOptionFormatter | `SelectedOptionFormatter` | - |  |
 | scrollToSelectedItem | `boolean` | - | Флаг, отвещающий за прокручивание до выбранного элемента |
 | virtualized | `boolean` | - | Включить виртуализацию на компоненты списка. Рекомендуется если у вас от 1к элементов списка |
-| scrollRef | `Ref<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
-| scrollContainerRef | `Ref<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
+| scrollRef | `RefObject<HTMLElement>` | - | Ссылка на элемент, обозначающий самый конец прокручиваемого списка |
+| scrollContainerRef | `RefObject<HTMLElement>` | - | Ссылка на контейнер, который скроллится |
 | untouchableScrollbars | `boolean` | - | Отключает возможность взаимодействовать со скролбарами мышью. |
 | onScroll | `(event?: Event) => void` | - | Колбек на скролл прокручиваемого списка |
 | dataFiltered | `boolean` | - |  |
@@ -930,6 +930,7 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
+| footerMode* | `unknown` | - |  |
 | open | `boolean` | - | Открыт time-picker |
 | onOpenChange | `(value: boolean) => void` | - | Колбек открытия пикера |
 | value | `TimeValue` | - | Значение поля |
@@ -938,7 +939,6 @@ FieldStepper в основном предназначен для работы с
 | onCopyButtonClick | `() => void` | - | Колбек клика по кнопке Копировать для поля |
 | showSeconds | `boolean` | true | Показывать ли секунды |
 | showClearButton | `boolean` | true | Отображение кнопки Очистки поля |
-| footerMode | enum TimePickerFooterMode: `"current-time-and-apply"`, `"apply-only"` | current-time-and-apply | Режим футера: кнопка выбора текущего времени («Текущее») и подтверждения выбранного («Применить»), либо только подтверждение («Применить»). |
 | id | `string` | - | Значение html-атрибута id |
 | name | `string` | - | Значение html-атрибута name |
 | disabled | `boolean` | - | Является ли поле деактивированным |
@@ -963,8 +963,8 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| __@metadata@2033* | `DecoratorMetadataObject` | - |  |
-| __@hasInstance@2031* | `(value: any) => boolean` | - | Determines whether the given value inherits from this function if this function was used as a constructor function.  A constructor function can control which objects are recognized as its instances by 'instanceof' by overriding this method. |
+| __@metadata@1004* | `DecoratorMetadataObject` | - |  |
+| __@hasInstance@1002* | `(value: any) => boolean` | - | Determines whether the given value inherits from this function if this function was used as a constructor function.  A constructor function can control which objects are recognized as its instances by 'instanceof' by overriding this method. |
 | name* | `string` | - | Returns the name of the function. Function names are read-only and can not be changed. |
 | caller* | `Function` | - |  |
 | arguments* | `any` | - |  |

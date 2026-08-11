@@ -8,3 +8,10 @@ onlyBuiltDependencies:
   - "@cloud-ru/ft-config-husky"
 ignoredBuiltDependencies:
   - "unrs-resolver"
+# image-size тянется как optionalDependency less (через typescript-plugin-css-modules).
+# Все версии уязвимы (GHSA-w3rx-r6r6-pgpr, GHSA-5p2g-fcmc-qvqq), фикса нет.
+# less требует её лениво — только для less-функций image-size()/image-width()/image-height(),
+# которые в проекте не используются (.less-файлов нет).
+ignoredOptionalDependencies:
+  - image-size
+
