@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.57.4 (2026-08-13)
+
+
+### Bug Fixes
+
+* **LK-8204:** fix FieldSelect dropdown toggle on option deletion ([3551e5c](https://github.com/cloud-ru-tech/snack-uikit/commit/3551e5c23784215fe8927b7ec9ff40b3cbd999de))
+
+
+
+
+
 ## 0.57.3 (2026-08-07)
 
 ### Only dependencies have been changed
