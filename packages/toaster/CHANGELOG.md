@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.11.32 (2026-09-01)
+
+
+### Bug Fixes
+
+* **PDS-4415:** tooltip under toaster ([b1a3a24](https://github.com/cloud-ru-tech/snack-uikit/commit/b1a3a24af5a37a14de83fc50dbbfb2fba6b4d2da))
+
+
+
+
+
 ## 0.11.31 (2026-08-07)
 
 ### Only dependencies have been changed
