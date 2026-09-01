@@ -26,6 +26,10 @@
   color: styles-theme-variables.$sys-invert-neutral-text-main;
 }
 
+.tooltip {
+  /* stylelint-disable-next-line declaration-property-value-allowed-list */
+  z-index: 1;
+}
 
 .fileStatusLine {
   @include styles-theme-variables.composite-var(

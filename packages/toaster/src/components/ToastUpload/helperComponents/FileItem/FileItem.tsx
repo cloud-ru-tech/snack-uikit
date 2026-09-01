@@ -35,7 +35,7 @@ export function FileItem({ item: initItem }: FileItemProps) {
   return (
     <div className={styles.fileLine} data-test-id={TOAST_UPLOAD_TEST_IDS.uploadItem}>
       <div className={styles.fileHeadLine}>
-        <TruncateString text={item.title} className={styles.fileTitle} maxLines={1} />
+        <TruncateString text={item.title} className={styles.fileTitle} maxLines={1} tooltipClassName={styles.tooltip} />
 
         {showLink && (
           <Link
@@ -67,7 +67,12 @@ export function FileItem({ item: initItem }: FileItemProps) {
         <div className={styles.fileStatusWrap}>
           <LoadingStatus status={item.status} actions={item.actions} isFileItem />
 
-          <TruncateString className={styles.fileStatusDescription} data-status={item.status} text={item.statusLabel} />
+          <TruncateString
+            className={styles.fileStatusDescription}
+            data-status={item.status}
+            text={item.statusLabel}
+            tooltipClassName={styles.tooltip}
+          />
         </div>
 
         <span className={styles.fileSize} data-status={item.status}>
