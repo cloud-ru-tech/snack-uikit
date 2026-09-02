@@ -9,6 +9,7 @@ import {
 import { ReactNode, RefObject } from 'react';
 
 import { FiltersState } from '@snack-uikit/chips';
+import type { ScrollProps } from '@snack-uikit/scroll';
 import { FilterRow, ToolbarPersistConfig, ToolbarProps } from '@snack-uikit/toolbar';
 import { ValueOf, WithSupportProps } from '@snack-uikit/utils';
 
@@ -192,6 +193,7 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
    * @returns цвет фона строки или undefined, если цвет не должен применяться
    */
   getRowBackgroundColor?: (data: TData) => TableRowColor | undefined;
+  scrollProps?: ScrollProps;
 }>;
 
 export type InfiniteTableProps<

@@ -132,6 +132,7 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
   columnsSettings: columnsSettingsProp,
   getRowBackgroundColor,
   toolbarCheckBoxMode,
+  scrollProps = {},
   ...rest
 }: TableProps<TData, TFilters>) {
   const [globalFilter, onGlobalFilterChange] = useStateControl<string>(search, '');
@@ -560,7 +561,13 @@ export function Table<TData extends object, TFilters extends FiltersState = Reco
         </div>
       )}
 
-      <Scroll size='s' className={styles.table} ref={scrollContainerRef} data-outline={outline || undefined}>
+      <Scroll
+        size='s'
+        className={styles.table}
+        ref={scrollContainerRef}
+        data-outline={outline || undefined}
+        {...scrollProps}
+      >
         <div className={styles.tableContent} style={columnSizes.vars}>
           <CellAutoResizeContext.Provider value={{ updateCellMap }}>
             <DndContext {...dndContextProps}>
