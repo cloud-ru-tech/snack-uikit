@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.40.0 (2026-09-04)
+
+
+### Features
+
+* **DOCDEV-4540:** added scrollProps into Table ([f144953](https://github.com/cloud-ru-tech/snack-uikit/commit/f144953d69f348a39d2d5795613b973293e5ce44))
+
+
+
+
+
 ## 0.39.6 (2026-08-07)
 
 
