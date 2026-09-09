@@ -17,7 +17,8 @@ type AccordionItemProps = Omit<FlattenAccordionItem, 'type>'> & CommonFlattenPro
 
 export function AccordionItem({ id, disabled, allChildIds, items, ...option }: AccordionItemProps) {
   const { level = 0 } = useCollapseLevelContext();
-  const { openCollapseItems = [], toggleOpenCollapseItem } = useCollapseContext();
+  const { openCollapseItems = [], toggleOpenCollapseItem, toggleOn = 'item' } = useCollapseContext();
+  const isIconTrigger = toggleOn === 'expandIcon';
 
   const { value, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
 
@@ -46,7 +47,7 @@ export function AccordionItem({ id, disabled, allChildIds, items, ...option }: A
   const itemsJSX = useRenderItems(items);
 
   const handleItemClick = (e: MouseEvent<HTMLElement>) => {
-    toggleOpenCollapseItem?.(id ?? '');
+    if (!isIconTrigger) toggleOpenCollapseItem?.(id ?? '');
     option.onClick?.(e);
   };
 
@@ -58,6 +59,7 @@ export function AccordionItem({ id, disabled, allChildIds, items, ...option }: A
           id={id}
           disabled={disabled}
           expandIcon={isOpen ? <ChevronUpSVG /> : <ChevronDownSVG />}
+          onExpandIconClick={isIconTrigger ? () => toggleOpenCollapseItem?.(id ?? '') : undefined}
           onClick={handleItemClick}
           isParentNode
           onOpenNestedList={handleKeyDown}

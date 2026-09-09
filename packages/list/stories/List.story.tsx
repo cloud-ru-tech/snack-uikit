@@ -44,6 +44,7 @@ type StoryProps = ListProps & {
   showGroups?: boolean;
   showEmptyList?: boolean;
   showCollapsedList?: boolean;
+  collapseToggleOn?: 'item' | 'expandIcon';
   showAsyncList?: boolean;
   showEmptyState?: EmptyState;
   showEmptyStateActionButton?: boolean;
@@ -63,6 +64,7 @@ const Template: StoryFn<StoryProps> = ({
   showSwitchIcon,
   showGroups,
   showCollapsedList,
+  collapseToggleOn,
   showAsyncList,
   showEmptyState = EmptyState.None,
   showEmptyStateActionButton,
@@ -227,6 +229,7 @@ const Template: StoryFn<StoryProps> = ({
             size={args.size}
             data-test-id={args['data-test-id']}
             scroll
+            collapse={{ toggleOn: collapseToggleOn }}
             {...(selectionMode !== 'none'
               ? { selection: { value, onChange: setValue, mode: selectionMode } }
               : { selection: undefined })}
@@ -265,6 +268,7 @@ const Template: StoryFn<StoryProps> = ({
             collapse={{
               value: collapse,
               onChange: setCollapseValue,
+              toggleOn: collapseToggleOn,
             }}
             dataError={showEmptyState === EmptyState.DataError || args.dataError}
             dataFiltered={args.dataFiltered ?? showEmptyState === EmptyState.NotFound}
@@ -324,6 +328,7 @@ export const list = {
     loading: false,
     size: 's',
     showCollapsedList: false,
+    collapseToggleOn: 'item',
     showAsyncList: false,
     selectionMode: 'single',
     hasListInFocusChain: true,
@@ -345,6 +350,11 @@ export const list = {
     },
     showGroups: { name: '[Stories]: Show group items', control: { type: 'boolean' } },
     showCollapsedList: { name: '[Stories]: Show collapsed list', control: { type: 'boolean' } },
+    collapseToggleOn: {
+      name: '[Stories]: collapse.toggleOn',
+      options: ['item', 'expandIcon'],
+      control: { type: 'select' },
+    },
     showAsyncList: { name: '[Stories]: Show async list', control: { type: 'boolean' } },
     showEmptyState: {
       name: '[Stories]: Empty state',

@@ -24,6 +24,7 @@ type AllBaseItemProps = FlattenBaseItem & {
   onSelect?(): void;
   isParentNode?: boolean;
   onOpenNestedList?(e?: KeyboardEvent<HTMLElement>): void;
+  onExpandIconClick?(e: MouseEvent<HTMLElement>): void;
 };
 
 export function BaseItem({
@@ -45,6 +46,7 @@ export function BaseItem({
   checked: checkedProp,
   onSelect,
   onOpenNestedList,
+  onExpandIconClick,
   isParentNode,
   className,
   inactive,
@@ -58,7 +60,7 @@ export function BaseItem({
   const { closeDroplist, closeDroplistOnItemClick } = useOpenListContext();
   const { value, onChange, mode, isSelectionSingle, isSelectionMultiple } = useSelectionContext();
 
-  const isChecked = isSelectionSingle ? (checkedProp ?? value === id) : (checkedProp ?? value?.includes(id ?? ''));
+  const isChecked = isSelectionSingle ? checkedProp ?? value === id : checkedProp ?? value?.includes(id ?? '');
 
   const handleChange = () => {
     onChange?.(id);
@@ -182,7 +184,7 @@ export function BaseItem({
 
         {beforeContent && <div className={styles.beforeContent}>{beforeContent}</div>}
         {content && isContentItem(content) ? (
-          (contentRender?.({ id, content, disabled }) ?? <ItemContent disabled={disabled} {...content} />)
+          contentRender?.({ id, content, disabled }) ?? <ItemContent disabled={disabled} {...content} />
         ) : (
           <div className={styles.content}> {content} </div>
         )}
@@ -197,7 +199,23 @@ export function BaseItem({
           />
         )}
 
-        {!switchProp && expandIcon && <span className={styles.expandableIcon}>{expandIcon}</span>}
+        {!switchProp && expandIcon && (
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+          <span
+            className={styles.expandableIcon}
+            data-test-id='list__base-item-expand-icon'
+            onClick={
+              onExpandIconClick &&
+              (e => {
+                e.preventDefault();
+                e.stopPropagation();
+                onExpandIconClick(e);
+              })
+            }
+          >
+            {expandIcon}
+          </span>
+        )}
       </li>
     </div>
   );

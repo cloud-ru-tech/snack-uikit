@@ -216,6 +216,7 @@ export function Droplist({
           value={{
             openCollapseItems,
             toggleOpenCollapseItem,
+            toggleOn: collapse.toggleOn,
           }}
         >
           <FocusListContext.Provider
