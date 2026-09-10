@@ -1,5 +1,4 @@
-import { debounce } from 'lodash';
-import { DragEventHandler, useCallback, useEffect, useMemo, useState } from 'react';
+import { DragEventHandler, useCallback, useRef, useState } from 'react';
 
 type useDragResult = {
   events: Record<'onDragLeave' | 'onDragOver' | 'onDrop', DragEventHandler<HTMLElement>>;
@@ -9,41 +8,65 @@ type useDragResult = {
 export function useDrag(disabled: boolean): useDragResult {
   const [isOver, setIsOver] = useState(false);
 
-  const debouncedSetIsOver = useMemo(() => debounce(setIsOver, 5), []);
+  const dragCounter = useRef(0);
+
+  const handleDragEnter = useCallback<DragEventHandler<HTMLElement>>(
+    e => {
+      if (disabled) return;
+
+      e.preventDefault();
+
+      dragCounter.current += 1;
+
+      if (dragCounter.current === 1) {
+        setIsOver(true);
+      }
+    },
+    [disabled],
+  );
 
   const handleDragLeave = useCallback<DragEventHandler<HTMLElement>>(
     e => {
-      if (!disabled) {
-        e.preventDefault();
-        debouncedSetIsOver(false);
+      if (disabled) return;
+      e.preventDefault();
+
+      dragCounter.current -= 1;
+
+      if (dragCounter.current === 0) {
+        setIsOver(false);
       }
     },
-    [debouncedSetIsOver, disabled],
+    [disabled],
   );
 
   const handleDragOver = useCallback<DragEventHandler<HTMLElement>>(
     e => {
-      if (!disabled) {
-        e.preventDefault();
-        debouncedSetIsOver(true);
-      }
+      if (disabled) return;
+
+      e.preventDefault();
     },
-    [debouncedSetIsOver, disabled],
+    [disabled],
   );
 
   const handleDrop = useCallback<DragEventHandler<HTMLElement>>(
     e => {
-      if (!disabled) {
-        e.preventDefault();
-        debouncedSetIsOver(false);
-      }
+      if (disabled) return;
+
+      e.preventDefault();
+
+      dragCounter.current = 0;
+
+      setIsOver(false);
     },
-    [debouncedSetIsOver, disabled],
+    [disabled],
   );
 
-  useEffect(() => () => debouncedSetIsOver.cancel(), [debouncedSetIsOver]);
-
-  const events = { onDragLeave: handleDragLeave, onDragOver: handleDragOver, onDrop: handleDrop };
+  const events = {
+    onDragEnter: handleDragEnter,
+    onDragLeave: handleDragLeave,
+    onDragOver: handleDragOver,
+    onDrop: handleDrop,
+  };
 
   return { events, isOver };
 }

@@ -22,6 +22,7 @@ test.describe('Hidden Drop Zone', () => {
     await lastName.fill('Фамилия');
 
     await expect(form).toBeVisible();
+    await form.dispatchEvent('dragenter');
     await form.dispatchEvent('dragover');
     await dropZone.dispatchEvent('dragleave');
 
