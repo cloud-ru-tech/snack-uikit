@@ -38,6 +38,7 @@
   "dependencies": {
     "@snack-uikit/icons": "workspace:^",
     "@snack-uikit/link": "workspace:^",
+    "@snack-uikit/list": "workspace:^",
     "@snack-uikit/loaders": "workspace:^",
     "@snack-uikit/progress-bar": "workspace:^",
     "@snack-uikit/scroll": "workspace:^",

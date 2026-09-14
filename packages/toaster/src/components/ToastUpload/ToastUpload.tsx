@@ -1,13 +1,13 @@
 import cn from 'classnames';
-import { MouseEvent } from 'react';
+import { MouseEvent, useMemo } from 'react';
 import Draggable, { DraggableProps } from 'react-draggable';
 import { ToastContentProps as RtToastContentProps } from 'react-toastify';
 import { useUncontrolledProp } from 'uncontrollable';
 
 import { ChevronDownSVG, ChevronUpSVG, CrossSVG } from '@snack-uikit/icons';
+import { List } from '@snack-uikit/list';
 import { useLocale } from '@snack-uikit/locale';
 import { ProgressBar } from '@snack-uikit/progress-bar';
-import { Scroll } from '@snack-uikit/scroll';
 import { TruncateString } from '@snack-uikit/truncate-string';
 import { extractSupportProps, WithSupportProps } from '@snack-uikit/utils';
 
@@ -121,6 +121,16 @@ export function ToastUpload({
   const progressPercent = Math.round((progress.current / progress.total) * 100);
   const isErrorUploaded = status === 'errorUploaded';
 
+  const listItems = useMemo(
+    () =>
+      files.map(item => ({
+        id: item.id || item.title,
+        content: <FileItem item={item} />,
+        inactive: true,
+      })),
+    [files],
+  );
+
   return (
     <Draggable bounds={draggableBounds} disabled={!draggable}>
       <div
@@ -185,11 +195,14 @@ export function ToastUpload({
           </div>
         </div>
 
-        <Scroll className={styles.list} size='s' data-test-id={TOAST_UPLOAD_TEST_IDS.list} barHideStrategy='never'>
-          {files.map(item => (
-            <FileItem key={item.id || item.title} item={item} />
-          ))}
-        </Scroll>
+        <List
+          items={listItems}
+          className={styles.list}
+          scrollContainerClassName={styles.listScroll}
+          data-test-id={TOAST_UPLOAD_TEST_IDS.list}
+          scroll
+          virtualized
+        />
       </div>
     </Draggable>
   );

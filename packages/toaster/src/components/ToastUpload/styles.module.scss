@@ -1,6 +1,6 @@
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent';
-@use '@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUpload';
-@use '@snack-uikit/figma-tokens/build/scss/styles-theme-variables';
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterSystemEvent";
+@use "@snack-uikit/figma-tokens/build/scss/components/styles-tokens-toaster-toasterUpload";
+@use "@snack-uikit/figma-tokens/build/scss/styles-theme-variables";
 
 .container {
   pointer-events: all;
@@ -112,19 +112,16 @@
 }
 
 .list {
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-
-  box-sizing: content-box;
-  max-height: 288px;
-  margin-top: 0;
-  // TODO: use tokens
-  padding-right: calc(#{styles-theme-variables.$space-toaster-toast-system-event-container-padding} - #{styles-theme-variables.$dimension-050m});
-
+  overflow: hidden;
+  height: 100%;
+  margin: 0 calc(-1 * styles-theme-variables.$space-drop-list-item-s-container-horizontal-padding);
   transition: all 0.1s;
 
   [data-collapsed] & {
     max-height: 0;
   }
+}
+
+.listScroll {
+  max-height: 288px;
 }
