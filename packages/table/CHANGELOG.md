@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.40.1 (2026-09-15)
+
+### Only dependencies have been changed
+* [@snack-uikit/chips@0.30.4]($PUBLIC_PROJECT_URL/blob/master/packages/chips/CHANGELOG.md)
+* [@snack-uikit/list@0.34.0]($PUBLIC_PROJECT_URL/blob/master/packages/list/CHANGELOG.md)
+* [@snack-uikit/toolbar@0.14.31]($PUBLIC_PROJECT_URL/blob/master/packages/toolbar/CHANGELOG.md)
+
+
+
+
+
 # 0.40.0 (2026-09-04)
 
 

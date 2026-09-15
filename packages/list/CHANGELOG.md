@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.34.0 (2026-09-15)
+
+
+### Features
+
+* **DOCDEV-3699:** added expand options into List component ([17e55d8](https://github.com/cloud-ru-tech/snack-uikit/commit/17e55d8e3b3544329b84aa2c6c2567d93cde508b))
+
+
+
+
+
 ## 0.33.4 (2026-08-07)
 
 ### Only dependencies have been changed
