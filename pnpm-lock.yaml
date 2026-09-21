@@ -4,6 +4,39 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@cloud-ru/ft-request-payload-transform':
+      specifier: ^0.3.0
+      version: 0.3.0
+    '@types/fuzzy-search':
+      specifier: 2.1.5
+      version: 2.1.5
+    '@types/lodash':
+      specifier: 4.17.25
+      version: 4.17.25
+    '@types/merge-refs':
+      specifier: 1.0.0
+      version: 1.0.0
+    classnames:
+      specifier: ^2.5.1
+      version: 2.5.1
+    copy-to-clipboard:
+      specifier: ^3.3.3
+      version: 3.3.3
+    fuzzy-search:
+      specifier: ^3.2.1
+      version: 3.2.1
+    lodash:
+      specifier: ^4.18.1
+      version: 4.18.1
+    merge-refs:
+      specifier: ^1.3.0
+      version: 1.3.0
+    uncontrollable:
+      specifier: ^8.0.4
+      version: 8.0.4
+
 overrides:
   axios: 1.18.0
   ejs: 3.1.10
@@ -15,6 +48,8 @@ overrides:
   piscina: 4.9.3
   postcss: 8.5.26
   prismjs: 1.30.0
+  '@types/react': 18.2.79
+  '@types/react-dom': 18.2.25
 
 importers:
 
@@ -135,7 +170,7 @@ importers:
         specifier: 2.0.6
         version: 2.0.6
       '@types/lodash':
-        specifier: 4.17.25
+        specifier: 'catalog:'
         version: 4.17.25
       '@types/node':
         specifier: 22.7.9
@@ -198,7 +233,7 @@ importers:
         specifier: 8.2.4
         version: 8.2.4(@types/node@22.7.9)(encoding@0.1.13)
       lodash:
-        specifier: 4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
       minimist:
         specifier: 1.2.8
@@ -294,321 +329,321 @@ importers:
   packages/accordion:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/toggles':
-        specifier: 0.13.28
+        specifier: workspace:^
         version: link:../toggles
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       lodash:
-        specifier: 4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
     devDependencies:
       '@types/lodash':
-        specifier: 4.17.25
+        specifier: 'catalog:'
         version: 4.17.25
 
   packages/alert:
     dependencies:
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/link':
-        specifier: 0.18.4
+        specifier: workspace:^
         version: link:../link
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/attachment:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/card':
-        specifier: 0.21.2
+        specifier: workspace:^
         version: link:../card
       '@snack-uikit/icon-predefined':
-        specifier: 0.7.12
+        specifier: workspace:^
         version: link:../icon-predefined
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/avatar:
     dependencies:
       '@snack-uikit/status':
-        specifier: 0.10.16
+        specifier: workspace:^
         version: link:../status
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/breadcrumbs:
     dependencies:
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       lodash:
-        specifier: 4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
 
   packages/button:
     dependencies:
       '@snack-uikit/counter':
-        specifier: 0.8.12
+        specifier: workspace:^
         version: link:../counter
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/button-combo:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/calendar:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/divider':
-        specifier: 3.2.12
+        specifier: workspace:^
         version: link:../divider
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
       weekstart:
-        specifier: 2.0.0
+        specifier: ^2.0.0
         version: 2.0.0
 
   packages/card:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icon-predefined':
-        specifier: 0.7.12
+        specifier: workspace:^
         version: link:../icon-predefined
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/promo-tag':
-        specifier: 0.7.10
+        specifier: workspace:^
         version: link:../promo-tag
       '@snack-uikit/tag':
-        specifier: 0.15.23
+        specifier: workspace:^
         version: link:../tag
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       merge-refs:
-        specifier: 1.3.0
+        specifier: 'catalog:'
         version: 1.3.0(@types/react@18.2.79)
 
   packages/carousel:
     dependencies:
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/pagination':
-        specifier: 0.10.27
+        specifier: workspace:^
         version: link:../pagination
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       lodash:
-        specifier: 4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
       merge-refs:
-        specifier: 1.3.0
+        specifier: 'catalog:'
         version: 1.3.0(@types/react@18.2.79)
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
 
   packages/chips:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/calendar':
-        specifier: 0.14.4
+        specifier: workspace:^
         version: link:../calendar
       '@snack-uikit/divider':
-        specifier: 3.2.12
+        specifier: workspace:^
         version: link:../divider
       '@snack-uikit/dropdown':
-        specifier: 0.5.8
+        specifier: workspace:^
         version: link:../dropdown
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       fuzzy-search:
-        specifier: 3.2.1
+        specifier: 'catalog:'
         version: 3.2.1
       merge-refs:
-        specifier: 1.3.0
+        specifier: 'catalog:'
         version: 1.3.0(@types/react@18.2.79)
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
     devDependencies:
       '@types/fuzzy-search':
-        specifier: 2.1.5
+        specifier: 'catalog:'
         version: 2.1.5
 
   packages/code-editor:
     dependencies:
       '@cloud-ru/ft-copy-to-clipboard':
-        specifier: 0.1.0
+        specifier: ^0.1.0
         version: 0.1.0
       '@monaco-editor/react':
-        specifier: 4.6.0
+        specifier: ^4.6.0
         version: 4.6.0(monaco-editor@0.52.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       chroma-js:
-        specifier: 3.1.2
+        specifier: ^3.1.2
         version: 3.1.2
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       monaco-yaml:
-        specifier: 5.2.3
+        specifier: ^5.2.3
         version: 5.2.3(monaco-editor@0.52.2)
     devDependencies:
       '@types/chroma-js':
@@ -618,197 +653,197 @@ importers:
   packages/color-picker:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/input-private':
-        specifier: 4.8.10
+        specifier: workspace:^
         version: link:../input-private
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/segmented-control':
-        specifier: 0.6.24
+        specifier: workspace:^
         version: link:../segmented-control
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       react-colorful:
-        specifier: 5.6.1
+        specifier: ^5.6.1
         version: 5.6.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
   packages/counter:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/divider:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/drawer:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/scroll':
-        specifier: 0.11.0
+        specifier: workspace:^
         version: link:../scroll
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       rc-drawer:
-        specifier: 6.4.1
+        specifier: ^6.4.1
         version: 6.4.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
   packages/drop-zone:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       lodash:
-        specifier: 4.18.1
+        specifier: ^4.18.1
         version: 4.18.1
 
   packages/dropdown:
     dependencies:
       '@snack-uikit/popover-private':
-        specifier: 0.15.8
+        specifier: workspace:^
         version: link:../popover-private
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/fields:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/calendar':
-        specifier: 0.14.4
+        specifier: workspace:^
         version: link:../calendar
       '@snack-uikit/color-picker':
-        specifier: 0.3.59
+        specifier: workspace:^
         version: link:../color-picker
       '@snack-uikit/divider':
-        specifier: 3.2.12
+        specifier: workspace:^
         version: link:../divider
       '@snack-uikit/dropdown':
-        specifier: 0.5.8
+        specifier: workspace:^
         version: link:../dropdown
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/input-private':
-        specifier: 4.8.10
+        specifier: workspace:^
         version: link:../input-private
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/scroll':
-        specifier: 0.11.0
+        specifier: workspace:^
         version: link:../scroll
       '@snack-uikit/skeleton':
-        specifier: 0.6.11
+        specifier: workspace:^
         version: link:../skeleton
       '@snack-uikit/slider':
-        specifier: 0.3.40
+        specifier: workspace:^
         version: link:../slider
       '@snack-uikit/tag':
-        specifier: 0.15.23
+        specifier: workspace:^
         version: link:../tag
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       copy-to-clipboard:
-        specifier: 3.3.3
+        specifier: 'catalog:'
         version: 3.3.3
       decimal.js:
-        specifier: 10.6.0
+        specifier: ^10.6.0
         version: 10.6.0
       fuzzy-search:
-        specifier: 3.2.1
+        specifier: 'catalog:'
         version: 3.2.1
       merge-refs:
-        specifier: 1.3.0
+        specifier: 'catalog:'
         version: 1.3.0(@types/react@18.2.79)
       react-textarea-autosize:
-        specifier: 8.5.3
+        specifier: ^8.5.3
         version: 8.5.3(@types/react@18.2.79)(react@18.2.0)
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
     devDependencies:
       '@types/fuzzy-search':
-        specifier: 2.1.5
+        specifier: 'catalog:'
         version: 2.1.5
       '@types/merge-refs':
-        specifier: 1.0.0
+        specifier: 'catalog:'
         version: 1.0.0
 
   packages/hot-spot:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/icon-predefined:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/icons:
@@ -838,185 +873,185 @@ importers:
   packages/info-block:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icon-predefined':
-        specifier: 0.7.12
+        specifier: workspace:^
         version: link:../icon-predefined
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/input-private:
     dependencies:
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/link:
     dependencies:
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/list:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/divider':
-        specifier: 3.2.12
+        specifier: workspace:^
         version: link:../divider
       '@snack-uikit/dropdown':
-        specifier: 0.5.8
+        specifier: workspace:^
         version: link:../dropdown
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/info-block':
-        specifier: 0.6.44
+        specifier: workspace:^
         version: link:../info-block
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/scroll':
-        specifier: 0.11.0
+        specifier: workspace:^
         version: link:../scroll
       '@snack-uikit/search-private':
-        specifier: 0.4.38
+        specifier: workspace:^
         version: link:../search-private
       '@snack-uikit/toggles':
-        specifier: 0.13.28
+        specifier: workspace:^
         version: link:../toggles
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       '@tanstack/react-virtual':
-        specifier: 3.11.2
+        specifier: ^3.11.2
         version: 3.11.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       merge-refs:
-        specifier: 1.3.0
+        specifier: 'catalog:'
         version: 1.3.0(@types/react@18.2.79)
 
   packages/loaders:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/locale:
     dependencies:
       lodash:
-        specifier: 4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
     devDependencies:
       '@types/lodash':
-        specifier: 4.17.25
+        specifier: 'catalog:'
         version: 4.17.25
 
   packages/markdown:
     dependencies:
       '@snack-uikit/code-editor':
-        specifier: 0.7.18
+        specifier: workspace:^
         version: link:../code-editor
       '@snack-uikit/divider':
-        specifier: 3.2.12
+        specifier: workspace:^
         version: link:../divider
       '@snack-uikit/fields':
-        specifier: 0.57.5
+        specifier: workspace:^
         version: link:../fields
       '@snack-uikit/link':
-        specifier: 0.18.4
+        specifier: workspace:^
         version: link:../link
       '@snack-uikit/toggles':
-        specifier: 0.13.28
+        specifier: workspace:^
         version: link:../toggles
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       react-markdown:
-        specifier: 7.1.1
+        specifier: ^7.1.1
         version: 7.1.1(@types/react@18.2.79)(react@18.2.0)
       remark-gfm:
-        specifier: 3.0.1
+        specifier: ^3.0.1
         version: 3.0.1
 
   packages/modal:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icon-predefined':
-        specifier: 0.7.12
+        specifier: workspace:^
         version: link:../icon-predefined
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/link':
-        specifier: 0.18.4
+        specifier: workspace:^
         version: link:../link
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/scroll':
-        specifier: 0.11.0
+        specifier: workspace:^
         version: link:../scroll
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       react-modal:
-        specifier: 3.16.1
+        specifier: ^3.16.1
         version: 3.16.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       '@types/react-modal':
@@ -1026,97 +1061,97 @@ importers:
   packages/notification:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/chips':
-        specifier: 0.30.4
+        specifier: workspace:^
         version: link:../chips
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/info-block':
-        specifier: 0.6.44
+        specifier: workspace:^
         version: link:../info-block
       '@snack-uikit/link':
-        specifier: 0.18.4
+        specifier: workspace:^
         version: link:../link
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/popover-private':
-        specifier: 0.15.8
+        specifier: workspace:^
         version: link:../popover-private
       '@snack-uikit/scroll':
-        specifier: 0.11.0
+        specifier: workspace:^
         version: link:../scroll
       '@snack-uikit/segmented-control':
-        specifier: 0.6.24
+        specifier: workspace:^
         version: link:../segmented-control
       '@snack-uikit/skeleton':
-        specifier: 0.6.11
+        specifier: workspace:^
         version: link:../skeleton
       '@snack-uikit/status':
-        specifier: 0.10.16
+        specifier: workspace:^
         version: link:../status
       '@snack-uikit/tag':
-        specifier: 0.15.23
+        specifier: workspace:^
         version: link:../tag
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       uncontrollable:
-        specifier: 9.0.0
-        version: 9.0.0(react@18.2.0)
+        specifier: 'catalog:'
+        version: 8.0.4(react@18.2.0)
 
   packages/pagination:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
 
   packages/popover:
     dependencies:
       '@snack-uikit/popover-private':
-        specifier: 0.15.8
+        specifier: workspace:^
         version: link:../popover-private
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
 
   packages/popover-private:
     dependencies:
       '@floating-ui/react':
-        specifier: 0.26.24
-        version: 0.26.24(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^0.26.24
+        version: 0.26.25(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       react-is:
-        specifier: 18.2.0
+        specifier: ^18.2.0
         version: 18.2.0
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
     devDependencies:
       '@types/react-is':
@@ -1126,257 +1161,257 @@ importers:
   packages/progress-bar:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       '@tanem/react-nprogress':
-        specifier: 5.0.35
+        specifier: ^5.0.35
         version: 5.0.35(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/promo-tag:
     dependencies:
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/rating:
     dependencies:
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
 
   packages/scroll:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       overlayscrollbars:
-        specifier: 2.11.1
+        specifier: ^2.11.1
         version: 2.11.1
       overlayscrollbars-react:
-        specifier: 0.5.6
+        specifier: ^0.5.6
         version: 0.5.6(overlayscrollbars@2.11.1)(react@18.2.0)
 
   packages/search:
     dependencies:
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/search-private':
-        specifier: 0.4.38
+        specifier: workspace:^
         version: link:../search-private
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       merge-refs:
-        specifier: 1.3.0
+        specifier: 'catalog:'
         version: 1.3.0(@types/react@18.2.79)
     devDependencies:
       '@types/merge-refs':
-        specifier: 1.0.0
+        specifier: 'catalog:'
         version: 1.0.0
 
   packages/search-private:
     dependencies:
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/input-private':
-        specifier: 4.8.10
+        specifier: workspace:^
         version: link:../input-private
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       merge-refs:
-        specifier: 1.3.0
+        specifier: 'catalog:'
         version: 1.3.0(@types/react@18.2.79)
 
   packages/segmented-control:
     dependencies:
       '@snack-uikit/counter':
-        specifier: 0.8.12
+        specifier: workspace:^
         version: link:../counter
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
 
   packages/skeleton:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/slider:
     dependencies:
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       rc-slider:
-        specifier: 10.5.0
+        specifier: ^10.5.0
         version: 10.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
   packages/status:
     dependencies:
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/stepper:
     dependencies:
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/table:
     dependencies:
       '@cloud-ru/ft-request-payload-transform':
-        specifier: 0.3.0
+        specifier: 'catalog:'
         version: 0.3.0
       '@dnd-kit/core':
-        specifier: 6.3.1
+        specifier: ^6.3.1
         version: 6.3.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@dnd-kit/modifiers':
-        specifier: 9.0.0
+        specifier: ^9.0.0
         version: 9.0.0(@dnd-kit/core@6.3.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       '@dnd-kit/sortable':
-        specifier: 10.0.0
+        specifier: ^10.0.0
         version: 10.0.0(@dnd-kit/core@6.3.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       '@dnd-kit/utilities':
-        specifier: 3.2.2
+        specifier: ^3.2.2
         version: 3.2.2(react@18.2.0)
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/chips':
-        specifier: 0.30.4
+        specifier: workspace:^
         version: link:../chips
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/info-block':
-        specifier: 0.6.44
+        specifier: workspace:^
         version: link:../info-block
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/pagination':
-        specifier: 0.10.27
+        specifier: workspace:^
         version: link:../pagination
       '@snack-uikit/scroll':
-        specifier: 0.11.0
+        specifier: workspace:^
         version: link:../scroll
       '@snack-uikit/skeleton':
-        specifier: 0.6.11
+        specifier: workspace:^
         version: link:../skeleton
       '@snack-uikit/toggles':
-        specifier: 0.13.28
+        specifier: workspace:^
         version: link:../toggles
       '@snack-uikit/toolbar':
-        specifier: 0.14.31
+        specifier: workspace:^
         version: link:../toolbar
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       '@tanstack/match-sorter-utils':
-        specifier: 8.11.8
+        specifier: ^8.11.8
         version: 8.11.8
       '@tanstack/react-table':
-        specifier: 8.12.0
+        specifier: ^8.12.0
         version: 8.12.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       copy-to-clipboard:
-        specifier: 3.3.3
+        specifier: 'catalog:'
         version: 3.3.3
       lodash:
-        specifier: 4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
       xlsx:
         specifier: https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz
@@ -1385,257 +1420,257 @@ importers:
   packages/tabs:
     dependencies:
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/counter':
-        specifier: 0.8.12
+        specifier: workspace:^
         version: link:../counter
       '@snack-uikit/divider':
-        specifier: 3.2.12
+        specifier: workspace:^
         version: link:../divider
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       react-indiana-drag-scroll:
-        specifier: 2.2.0
+        specifier: ^2.2.0
         version: 2.2.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
 
   packages/tag:
     dependencies:
       '@snack-uikit/dropdown':
-        specifier: 0.5.8
+        specifier: workspace:^
         version: link:../dropdown
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/scroll':
-        specifier: 0.11.0
+        specifier: workspace:^
         version: link:../scroll
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/timeline:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/toaster:
     dependencies:
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/link':
-        specifier: 0.18.4
+        specifier: workspace:^
         version: link:../link
       '@snack-uikit/loaders':
-        specifier: 0.9.11
+        specifier: workspace:^
         version: link:../loaders
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/progress-bar':
-        specifier: 0.1.12
+        specifier: workspace:^
         version: link:../progress-bar
       '@snack-uikit/scroll':
-        specifier: 0.11.0
+        specifier: workspace:^
         version: link:../scroll
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       react-draggable:
-        specifier: 4.4.6
+        specifier: ^4.4.6
         version: 4.4.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-toastify:
-        specifier: 10.0.5
+        specifier: ^10.0.5
         version: 10.0.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       uncontrollable:
-        specifier: 9.0.0
-        version: 9.0.0(react@18.2.0)
+        specifier: 'catalog:'
+        version: 8.0.4(react@18.2.0)
 
   packages/toggles:
     dependencies:
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       merge-refs:
-        specifier: 1.3.0
+        specifier: 'catalog:'
         version: 1.3.0(@types/react@18.2.79)
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
 
   packages/toolbar:
     dependencies:
       '@cloud-ru/ft-request-payload-transform':
-        specifier: 0.3.0
+        specifier: 'catalog:'
         version: 0.3.0
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/chips':
-        specifier: 0.30.4
+        specifier: workspace:^
         version: link:../chips
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/locale':
         specifier: '*'
         version: link:../locale
       '@snack-uikit/search-private':
-        specifier: 0.4.38
+        specifier: workspace:^
         version: link:../search-private
       '@snack-uikit/tag':
-        specifier: 0.15.23
+        specifier: workspace:^
         version: link:../tag
       '@snack-uikit/toggles':
-        specifier: 0.13.28
+        specifier: workspace:^
         version: link:../toggles
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
 
   packages/tooltip:
     dependencies:
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/popover-private':
-        specifier: 0.15.8
+        specifier: workspace:^
         version: link:../popover-private
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
 
   packages/tree:
     dependencies:
       '@siberiacancode/reactuse':
-        specifier: 0.3.14
+        specifier: ^0.3.14
         version: 0.3.14(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@snack-uikit/button':
-        specifier: 0.19.19
+        specifier: workspace:^
         version: link:../button
       '@snack-uikit/icons':
-        specifier: 0.27.8
+        specifier: workspace:^
         version: link:../icons
       '@snack-uikit/list':
-        specifier: 0.34.0
+        specifier: workspace:^
         version: link:../list
       '@snack-uikit/toggles':
-        specifier: 0.13.28
+        specifier: workspace:^
         version: link:../toggles
       '@snack-uikit/truncate-string':
-        specifier: 0.7.15
+        specifier: workspace:^
         version: link:../truncate-string
       '@snack-uikit/typography':
-        specifier: 0.8.13
+        specifier: workspace:^
         version: link:../typography
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       cancelable-promise:
-        specifier: 4.3.1
+        specifier: ^4.3.1
         version: 4.3.1
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       queue-fifo:
-        specifier: 0.2.6
+        specifier: ^0.2.6
         version: 0.2.6
       react-transition-state:
-        specifier: 2.1.1
+        specifier: ^2.1.1
         version: 2.1.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
 
   packages/truncate-string:
     dependencies:
       '@snack-uikit/tooltip':
-        specifier: 0.18.16
+        specifier: workspace:^
         version: link:../tooltip
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
       lodash:
-        specifier: 4.18.1
+        specifier: 'catalog:'
         version: 4.18.1
     devDependencies:
       '@types/lodash':
-        specifier: 4.17.25
+        specifier: 'catalog:'
         version: 4.17.25
 
   packages/typography:
     dependencies:
       '@snack-uikit/utils':
-        specifier: 4.0.2
+        specifier: workspace:^
         version: link:../utils
       classnames:
-        specifier: 2.5.1
+        specifier: 'catalog:'
         version: 2.5.1
 
   packages/utils:
     dependencies:
       react-swipeable:
-        specifier: 7.0.2
+        specifier: ^7.0.2
         version: 7.0.2(react@18.2.0)
       uncontrollable:
-        specifier: 8.0.4
+        specifier: 'catalog:'
         version: 8.0.4(react@18.2.0)
 
 packages:
@@ -3196,12 +3231,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0
 
-  '@floating-ui/react@0.26.24':
-    resolution: {integrity: sha512-2ly0pCkZIGEQUq5H8bBK0XJmc1xIK/RM3tvVzY3GBER7IOD1UgmC2Y2tjj4AuS+TC+vTE1KJv2053290jua0Sw==}
-    peerDependencies:
-      react: 18.2.0
-      react-dom: 18.2.0
-
   '@floating-ui/react@0.26.25':
     resolution: {integrity: sha512-hZOmgN0NTOzOuZxI1oIrDu3Gcl8WViIkvPMpB4xdd4QD6xAMtwgwr3VPoiyH/bLtRcS1cDnhxLSD1NsMJmwh/A==}
     peerDependencies:
@@ -3619,7 +3648,7 @@ packages:
   '@mdx-js/react@3.1.1':
     resolution: {integrity: sha512-f++rKLQgUVYDAtECQ6fn/is15GkEH9+nZPM3MS0RcxVqoTfawHvDlSCH7JbMhAM6uJ32v3eXLvLmLvjGu7PTQw==}
     peerDependencies:
-      '@types/react': '>=16'
+      '@types/react': 18.2.79
       react: 18.2.0
 
   '@monaco-editor/loader@1.7.0':
@@ -3673,42 +3702,49 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@napi-rs/nice-linux-arm64-musl@1.1.1':
     resolution: {integrity: sha512-+2Rzdb3nTIYZ0YJF43qf2twhqOCkiSrHx2Pg6DJaCPYhhaxbLcdlV8hCRMHghQ+EtZQWGNcS2xF4KxBhSGeutg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@napi-rs/nice-linux-ppc64-gnu@1.1.1':
     resolution: {integrity: sha512-4FS8oc0GeHpwvv4tKciKkw3Y4jKsL7FRhaOeiPei0X9T4Jd619wHNe4xCLmN2EMgZoeGg+Q7GY7BsvwKpL22Tg==}
     engines: {node: '>= 10'}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@napi-rs/nice-linux-riscv64-gnu@1.1.1':
     resolution: {integrity: sha512-HU0nw9uD4FO/oGCCk409tCi5IzIZpH2agE6nN4fqpwVlCn5BOq0MS1dXGjXaG17JaAvrlpV5ZeyZwSon10XOXw==}
     engines: {node: '>= 10'}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@napi-rs/nice-linux-s390x-gnu@1.1.1':
     resolution: {integrity: sha512-2YqKJWWl24EwrX0DzCQgPLKQBxYDdBxOHot1KWEq7aY2uYeX+Uvtv4I8xFVVygJDgf6/92h9N3Y43WPx8+PAgQ==}
     engines: {node: '>= 10'}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@napi-rs/nice-linux-x64-gnu@1.1.1':
     resolution: {integrity: sha512-/gaNz3R92t+dcrfCw/96pDopcmec7oCcAQ3l/M+Zxr82KT4DljD37CpgrnXV+pJC263JkW572pdbP3hP+KjcIg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@napi-rs/nice-linux-x64-musl@1.1.1':
     resolution: {integrity: sha512-xScCGnyj/oppsNPMnevsBe3pvNaoK7FGvMjT35riz9YdhB2WtTG47ZlbxtOLpjeO9SqqQ2J2igCmz6IJOD5JYw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@napi-rs/nice-openharmony-arm64@1.1.1':
     resolution: {integrity: sha512-6uJPRVwVCLDeoOaNyeiW0gp2kFIM4r7PL2MczdZQHkFi9gVlgm+Vn+V6nTWRcu856mJ2WjYJiumEajfSm7arPQ==}
@@ -3851,24 +3887,28 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@nx/nx-linux-arm64-musl@20.8.4':
     resolution: {integrity: sha512-AlZZFolS/S0FahRKG7rJ0Z9CgmIkyzHgGaoy3qNEMDEjFhR3jt2ZZSLp90W7zjgrxojOo90ajNMrg2UmtcQRDA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@nx/nx-linux-x64-gnu@20.8.4':
     resolution: {integrity: sha512-MSu+xVNdR95tuuO+eL/a/ZeMlhfrZ627On5xaCZXnJ+lFxNg/S4nlKZQk0Eq5hYALCd/GKgFGasRdlRdOtvGPg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@nx/nx-linux-x64-musl@20.8.4':
     resolution: {integrity: sha512-KxpQpyLCgIIHWZ4iRSUN9ohCwn1ZSDASbuFCdG3mohryzCy8WrPkuPcb+68J3wuQhmA5w//Xpp/dL0hHoit9zQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@nx/nx-win32-arm64-msvc@20.8.4':
     resolution: {integrity: sha512-ffLBrxM9ibk+eWSY995kiFFRTSRb9HkD5T1s/uZyxV6jfxYPaZDBAWAETDneyBXps7WtaOMu+kVZlXQ3X+TfIA==}
@@ -3966,36 +4006,42 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-arm-musl@2.5.6':
     resolution: {integrity: sha512-Ve3gUCG57nuUUSyjBq/MAM0CzArtuIOxsBdQ+ftz6ho8n7s1i9E1Nmk/xmP323r2YL0SONs1EuwqBp2u1k5fxg==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-linux-arm64-glibc@2.5.6':
     resolution: {integrity: sha512-f2g/DT3NhGPdBmMWYoxixqYr3v/UXcmLOYy16Bx0TM20Tchduwr4EaCbmxh1321TABqPGDpS8D/ggOTaljijOA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-arm64-musl@2.5.6':
     resolution: {integrity: sha512-qb6naMDGlbCwdhLj6hgoVKJl2odL34z2sqkC7Z6kzir8b5W65WYDpLB6R06KabvZdgoHI/zxke4b3zR0wAbDTA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-linux-x64-glibc@2.5.6':
     resolution: {integrity: sha512-kbT5wvNQlx7NaGjzPFu8nVIW1rWqV780O7ZtkjuWaPUgpv2NMFpjYERVi0UYj1msZNyCzGlaCWEtzc+exjMGbQ==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-x64-musl@2.5.6':
     resolution: {integrity: sha512-1JRFeC+h7RdXwldHzTsmdtYR/Ku8SylLgTU/reMuqdVD7CtLwf0VR1FqeprZ0eHQkO0vqsbvFLXUmYm/uNKJBg==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-win32-arm64@2.5.6':
     resolution: {integrity: sha512-3ukyebjc6eGlw9yRt678DxVF7rjXatWiHvTXqphZLvo7aC5NdEgFufVwjFfY51ijYEWpXbqF5jtrK275z52D4Q==}
@@ -4074,24 +4120,28 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@resvg/resvg-js-linux-arm64-musl@2.6.2':
     resolution: {integrity: sha512-3h3dLPWNgSsD4lQBJPb4f+kvdOSJHa5PjTYVsWHxLUzH4IFTJUAnmuWpw4KqyQ3NA5QCyhw4TWgxk3jRkQxEKg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@resvg/resvg-js-linux-x64-gnu@2.6.2':
     resolution: {integrity: sha512-IVUe+ckIerA7xMZ50duAZzwf1U7khQe2E0QpUxu5MBJNao5RqC0zwV/Zm965vw6D3gGFUl7j4m+oJjubBVoftw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@resvg/resvg-js-linux-x64-musl@2.6.2':
     resolution: {integrity: sha512-UOf83vqTzoYQO9SZ0fPl2ZIFtNIz/Rr/y+7X8XRX1ZnBYsQ/tTb+cj9TE+KHOdmlTFBxhYzVkP2lRByCzqi4jQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@resvg/resvg-js-win32-arm64-msvc@2.6.2':
     resolution: {integrity: sha512-7C/RSgCa+7vqZ7qAbItfiaAWhyRSoD4l4BQAbVDqRRsRgY+S+hgS3in0Rxr7IorKUpGE69X48q6/nOAuTJQxeQ==}
@@ -4161,66 +4211,79 @@ packages:
     resolution: {integrity: sha512-RzeBwv0B3qtVBWtcuABtSuCzToo2IEAIQrcyB/b2zMvBWVbjo8bZDjACUpnaafaxhTw2W+imQbP2BD1usasK4g==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.60.0':
     resolution: {integrity: sha512-Sf7zusNI2CIU1HLzuu9Tc5YGAHEZs5Lu7N1ssJG4Tkw6e0MEsN7NdjUDDfGNHy2IU+ENyWT+L2obgWiguWibWQ==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.60.0':
     resolution: {integrity: sha512-DX2x7CMcrJzsE91q7/O02IJQ5/aLkVtYFryqCjduJhUfGKG6yJV8hxaw8pZa93lLEpPTP/ohdN4wFz7yp/ry9A==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.60.0':
     resolution: {integrity: sha512-09EL+yFVbJZlhcQfShpswwRZ0Rg+z/CsSELFCnPt3iK+iqwGsI4zht3secj5vLEs957QvFFXnzAT0FFPIxSrkQ==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-loong64-gnu@4.60.0':
     resolution: {integrity: sha512-i9IcCMPr3EXm8EQg5jnja0Zyc1iFxJjZWlb4wr7U2Wx/GrddOuEafxRdMPRYVaXjgbhvqalp6np07hN1w9kAKw==}
     cpu: [loong64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-loong64-musl@4.60.0':
     resolution: {integrity: sha512-DGzdJK9kyJ+B78MCkWeGnpXJ91tK/iKA6HwHxF4TAlPIY7GXEvMe8hBFRgdrR9Ly4qebR/7gfUs9y2IoaVEyog==}
     cpu: [loong64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-ppc64-gnu@4.60.0':
     resolution: {integrity: sha512-RwpnLsqC8qbS8z1H1AxBA1H6qknR4YpPR9w2XX0vo2Sz10miu57PkNcnHVaZkbqyw/kUWfKMI73jhmfi9BRMUQ==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-ppc64-musl@4.60.0':
     resolution: {integrity: sha512-Z8pPf54Ly3aqtdWC3G4rFigZgNvd+qJlOE52fmko3KST9SoGfAdSRCwyoyG05q1HrrAblLbk1/PSIV+80/pxLg==}
     cpu: [ppc64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-riscv64-gnu@4.60.0':
     resolution: {integrity: sha512-3a3qQustp3COCGvnP4SvrMHnPQ9d1vzCakQVRTliaz8cIp/wULGjiGpbcqrkv0WrHTEp8bQD/B3HBjzujVWLOA==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-musl@4.60.0':
     resolution: {integrity: sha512-pjZDsVH/1VsghMJ2/kAaxt6dL0psT6ZexQVrijczOf+PeP2BUqTHYejk3l6TlPRydggINOeNRhvpLa0AYpCWSQ==}
     cpu: [riscv64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-s390x-gnu@4.60.0':
     resolution: {integrity: sha512-3ObQs0BhvPgiUVZrN7gqCSvmFuMWvWvsjG5ayJ3Lraqv+2KhOsp+pUbigqbeWqueGIsnn+09HBw27rJ+gYK4VQ==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.60.0':
     resolution: {integrity: sha512-EtylprDtQPdS5rXvAayrNDYoJhIz1/vzN2fEubo3yLE7tfAw+948dO0g4M0vkTVFhKojnF+n6C8bDNe+gDRdTg==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.60.0':
     resolution: {integrity: sha512-k09oiRCi/bHU9UVFqD17r3eJR9bn03TyKraCrlz5ULFJGdJGi7VOmm9jl44vOJvRJ6P7WuBi/s2A97LxxHGIdw==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-openbsd-x64@4.60.0':
     resolution: {integrity: sha512-1o/0/pIhozoSaDJoDcec+IVLbnRtQmHwPV730+AOD29lHEEo4F5BEUB24H0OBdhbBBDwIOSuf7vgg0Ywxdfiiw==}
@@ -4271,7 +4334,7 @@ packages:
     resolution: {integrity: sha512-BKWI7sJJXxXtu+obQiFTkOS7WL6j5E94BZWqRNxSAcx+tu5rXEKF0sWKFcYZRr+LF7DgsIfC47LXymrvM6jZKQ==}
     engines: {node: '>=14'}
     peerDependencies:
-      '@types/react': ^18 || ^19
+      '@types/react': 18.2.79
       react: 18.2.0
       react-dom: 18.2.0
     peerDependenciesMeta:
@@ -4738,8 +4801,8 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       '@testing-library/dom': ^10.0.0
-      '@types/react': ^18.0.0 || ^19.0.0
-      '@types/react-dom': ^18.0.0 || ^19.0.0
+      '@types/react': 18.2.79
+      '@types/react-dom': 18.2.25
       react: 18.2.0
       react-dom: 18.2.0
     peerDependenciesMeta:
@@ -5133,41 +5196,49 @@ packages:
     resolution: {integrity: sha512-34gw7PjDGB9JgePJEmhEqBhWvCiiWCuXsL9hYphDF7crW7UgI05gyBAi6MF58uGcMOiOqSJ2ybEeCvHcq0BCmQ==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@unrs/resolver-binding-linux-arm64-musl@1.11.1':
     resolution: {integrity: sha512-RyMIx6Uf53hhOtJDIamSbTskA99sPHS96wxVE/bJtePJJtpdKGXO1wY90oRdXuYOGOTuqjT8ACccMc4K6QmT3w==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@unrs/resolver-binding-linux-ppc64-gnu@1.11.1':
     resolution: {integrity: sha512-D8Vae74A4/a+mZH0FbOkFJL9DSK2R6TFPC9M+jCWYia/q2einCubX10pecpDiTmkJVUH+y8K3BZClycD8nCShA==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@unrs/resolver-binding-linux-riscv64-gnu@1.11.1':
     resolution: {integrity: sha512-frxL4OrzOWVVsOc96+V3aqTIQl1O2TjgExV4EKgRY09AJ9leZpEg8Ak9phadbuX0BA4k8U5qtvMSQQGGmaJqcQ==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@unrs/resolver-binding-linux-riscv64-musl@1.11.1':
     resolution: {integrity: sha512-mJ5vuDaIZ+l/acv01sHoXfpnyrNKOk/3aDoEdLO/Xtn9HuZlDD6jKxHlkN8ZhWyLJsRBxfv9GYM2utQ1SChKew==}
     cpu: [riscv64]
     os: [linux]
+    libc: [musl]
 
   '@unrs/resolver-binding-linux-s390x-gnu@1.11.1':
     resolution: {integrity: sha512-kELo8ebBVtb9sA7rMe1Cph4QHreByhaZ2QEADd9NzIQsYNQpt9UkM9iqr2lhGr5afh885d/cB5QeTXSbZHTYPg==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@unrs/resolver-binding-linux-x64-gnu@1.11.1':
     resolution: {integrity: sha512-C3ZAHugKgovV5YvAMsxhq0gtXuwESUKc5MhEtjBpLoHPLYM+iuwSj3lflFwK3DPm68660rZ7G8BMcwSro7hD5w==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@unrs/resolver-binding-linux-x64-musl@1.11.1':
     resolution: {integrity: sha512-rV0YSoyhK2nZ4vEswT/QwqzqQXw5I6CjoaYMOX0TqBlWhojUf8P94mvI7nuJTeaCkkds3QE4+zS8Ko+GdXuZtA==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@unrs/resolver-binding-wasm32-wasi@1.11.1':
     resolution: {integrity: sha512-5u4RkfxJm+Ng7IWgkzi3qrFOvLvQYnPBmjmZQ8+szTK/b31fQCnleNl1GgEt7nIsZRIf5PLhPwT0WM+q45x/UQ==}
@@ -8579,7 +8650,7 @@ packages:
   merge-refs@1.3.0:
     resolution: {integrity: sha512-nqXPXbso+1dcKDpPCXvwZyJILz+vSLqGGOnDrYHQYE+B8n9JTCekVLC65AfCpR4ggVyA/45Y0iR9LDyS2iI+zA==}
     peerDependencies:
-      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      '@types/react': 18.2.79
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -9874,13 +9945,13 @@ packages:
   react-markdown@10.1.0:
     resolution: {integrity: sha512-qKxVopLT/TyA6BX3Ue5NwabOsAzm0Q7kAPwq6L+wWDwisYs7R8vZ0nRXqq6rkueboxpkjvLGU9fWifiX/ZZFxQ==}
     peerDependencies:
-      '@types/react': '>=18'
+      '@types/react': 18.2.79
       react: 18.2.0
 
   react-markdown@7.1.1:
     resolution: {integrity: sha512-bXS7indkcPlCLB6wRFFzX8Xdghr62TBxUF2587o+CUkaZlNaoILb2qNt+5pYmTZuCOC+OeEcdJ+06mu5whtCVQ==}
     peerDependencies:
-      '@types/react': '>=16'
+      '@types/react': 18.2.79
       react: 18.2.0
 
   react-modal@3.16.1:
@@ -11128,11 +11199,6 @@ packages:
 
   uncontrollable@8.0.4:
     resolution: {integrity: sha512-ulRWYWHvscPFc0QQXvyJjY6LIXU56f0h8pQFvhxiKk5V1fcI8gp9Ht9leVAhrVjzqMw0BgjspBINx9r6oyJUvQ==}
-    peerDependencies:
-      react: 18.2.0
-
-  uncontrollable@9.0.0:
-    resolution: {integrity: sha512-wPScOFmvRkHdvebf7qNPn9Wog9B1TL8Dqcx0Vecz6HYTKFKMfGKP6MJHTjiKL8kwd8KTW3YfIUke7pmRDtkcRQ==}
     peerDependencies:
       react: 18.2.0
 
@@ -13694,14 +13760,6 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@floating-ui/react@0.26.24(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@floating-ui/react-dom': 2.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@floating-ui/utils': 0.2.11
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      tabbable: 6.4.0
-
   '@floating-ui/react@0.26.25(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@floating-ui/react-dom': 2.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -14659,7 +14717,7 @@ snapshots:
 
   '@rc-component/portal@1.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
       classnames: 2.5.1
       rc-util: 5.44.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -15336,7 +15394,7 @@ snapshots:
 
   '@tanem/react-nprogress@5.0.35(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -15364,7 +15422,7 @@ snapshots:
   '@testing-library/dom@10.4.0':
     dependencies:
       '@babel/code-frame': 7.29.0
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
       '@types/aria-query': 5.0.4
       aria-query: 5.3.0
       chalk: 4.1.2
@@ -21272,7 +21330,7 @@ snapshots:
 
   polished@4.3.1:
     dependencies:
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
 
   possible-typed-array-names@1.1.0: {}
 
@@ -21499,7 +21557,7 @@ snapshots:
 
   rc-drawer@6.4.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
       '@rc-component/portal': 1.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames: 2.5.1
       rc-motion: 2.9.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -21509,7 +21567,7 @@ snapshots:
 
   rc-motion@2.9.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
       classnames: 2.5.1
       rc-util: 5.44.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -21517,7 +21575,7 @@ snapshots:
 
   rc-slider@10.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
       classnames: 2.5.1
       rc-util: 5.44.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -21525,7 +21583,7 @@ snapshots:
 
   rc-util@5.44.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-is: 18.2.0
@@ -21651,7 +21709,7 @@ snapshots:
 
   react-syntax-highlighter@16.1.0(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
       highlight.js: 10.7.3
       highlightjs-vue: 1.0.0
       lowlight: 1.20.0
@@ -21661,7 +21719,7 @@ snapshots:
 
   react-textarea-autosize@8.5.3(@types/react@18.2.79)(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.29.2
+      '@babel/runtime': 7.29.7
       react: 18.2.0
       use-composed-ref: 1.4.0(@types/react@18.2.79)(react@18.2.0)
       use-latest: 1.3.0(@types/react@18.2.79)(react@18.2.0)
@@ -23128,10 +23186,6 @@ snapshots:
       which-boxed-primitive: 1.1.1
 
   uncontrollable@8.0.4(react@18.2.0):
-    dependencies:
-      react: 18.2.0
-
-  uncontrollable@9.0.0(react@18.2.0):
     dependencies:
       react: 18.2.0
 

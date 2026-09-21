@@ -36,8 +36,8 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/icons": "0.27.8",
-    "@snack-uikit/utils": "4.0.2",
-    "classnames": "2.5.1"
+    "@snack-uikit/icons": "workspace:^",
+    "@snack-uikit/utils": "workspace:^",
+    "classnames": "catalog:"
   }
 }

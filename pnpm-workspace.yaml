@@ -1,7 +1,28 @@
 shamefullyHoist: true
 sideEffectsCache: false
 linkWorkspacePackages: true
-saveWorkspaceProtocol: false
+saveWorkspaceProtocol: rolling
+# Общие внешние зависимости — единственное место, где задаётся их версия.
+# Consumer-facing (едет потребителю) — каретой, чисто-dev — пином.
+catalog:
+  '@cloud-ru/ft-request-payload-transform': ^0.3.0
+  classnames: ^2.5.1
+  copy-to-clipboard: ^3.3.3
+  fuzzy-search: ^3.2.1
+  lodash: ^4.18.1
+  merge-refs: ^1.3.0
+  # Был объявлен в двух мажорах (8.0.4 в 14 пакетах, 9.0.0 в 2); сведён к 8.
+  uncontrollable: ^8.0.4
+
+  '@types/fuzzy-search': 2.1.5
+  '@types/lodash': 4.17.25
+  '@types/merge-refs': 1.0.0
+  # React приколочен здесь и раздаётся через pnpm.overrides в корневом package.json.
+  '@types/react': 18.2.79
+  '@types/react-dom': 18.2.25
+  react: 18.2.0
+  react-dom: 18.2.0
+
 packages:
   - "packages/*"
 onlyBuiltDependencies:
