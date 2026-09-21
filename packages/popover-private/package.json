@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Popover Private",
-  "version": "0.15.8",
+  "version": "1.0.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,11 +36,11 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@floating-ui/react": "0.26.24",
-    "@snack-uikit/utils": "4.0.2",
-    "classnames": "2.5.1",
-    "react-is": "18.2.0",
-    "uncontrollable": "8.0.4"
+    "@floating-ui/react": "^0.26.24",
+    "@snack-uikit/utils": "workspace:^",
+    "classnames": "catalog:",
+    "react-is": "^18.2.0",
+    "uncontrollable": "catalog:"
   },
   "devDependencies": {
     "@types/react-is": "18.2.0"

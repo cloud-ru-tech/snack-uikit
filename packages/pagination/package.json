@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Pagination",
-  "version": "0.10.27",
+  "version": "1.0.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,8 +36,8 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.19",
-    "@snack-uikit/icons": "0.27.8",
-    "@snack-uikit/utils": "4.0.2"
+    "@snack-uikit/button": "workspace:^",
+    "@snack-uikit/icons": "workspace:^",
+    "@snack-uikit/utils": "workspace:^"
   }
 }

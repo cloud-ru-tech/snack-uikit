@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Chips",
-  "version": "0.30.4",
+  "version": "1.0.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,23 +36,23 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.19",
-    "@snack-uikit/calendar": "0.14.4",
-    "@snack-uikit/divider": "3.2.12",
-    "@snack-uikit/dropdown": "0.5.8",
-    "@snack-uikit/icons": "0.27.8",
-    "@snack-uikit/list": "0.34.0",
-    "@snack-uikit/loaders": "0.9.11",
-    "@snack-uikit/tooltip": "0.18.16",
-    "@snack-uikit/truncate-string": "0.7.15",
-    "@snack-uikit/utils": "4.0.2",
-    "classnames": "2.5.1",
-    "fuzzy-search": "3.2.1",
-    "merge-refs": "1.3.0",
-    "uncontrollable": "8.0.4"
+    "@snack-uikit/button": "workspace:^",
+    "@snack-uikit/calendar": "workspace:^",
+    "@snack-uikit/divider": "workspace:^",
+    "@snack-uikit/dropdown": "workspace:^",
+    "@snack-uikit/icons": "workspace:^",
+    "@snack-uikit/list": "workspace:^",
+    "@snack-uikit/loaders": "workspace:^",
+    "@snack-uikit/tooltip": "workspace:^",
+    "@snack-uikit/truncate-string": "workspace:^",
+    "@snack-uikit/utils": "workspace:^",
+    "classnames": "catalog:",
+    "fuzzy-search": "catalog:",
+    "merge-refs": "catalog:",
+    "uncontrollable": "catalog:"
   },
   "devDependencies": {
-    "@types/fuzzy-search": "2.1.5"
+    "@types/fuzzy-search": "catalog:"
   },
   "peerDependencies": {
     "@snack-uikit/locale": "*"

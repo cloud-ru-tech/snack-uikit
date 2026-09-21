@@ -104,7 +104,7 @@ export function AlertTopExample() {
 | icon | `boolean` | true | Отображать иконку |
 | title | `string` | - | Заголовок |
 | truncate | `{ title?: number; }` | '{ <br>title: 1 }' | Максимальное кол-во строк <br> - `title` - в заголовке |
-| link | `PickLinkProps<LinkElement, "text" \| "appearance" \| "as">` | - | Cсылка |
+| link | `(Pick<{ 'data-test-id'?: string; } & AriaAttributes & { text?: string; size?: Size; purpose?: Purpose; appearance?: Appearance; textMode?: TextMode; insideText?: boolean; } & TruncateEndProps & { ...; } & Omit<...>, "text" \| ... 1 more ... \| "as"> & Omit<...>) \| (Pick<...> & Omit<...>)` | - | Cсылка |
 | onClose | `() => void` | - | Колбек закрытия |
 | appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"`, `"info"` | neutral | Внешний вид |
 | outline | `boolean` | - | Внешний бордер |
@@ -120,7 +120,7 @@ export function AlertTopExample() {
 | icon | `boolean` | true | Отображать иконку |
 | title | `string` | - | Заголовок |
 | truncate | `{ title?: number; }` | '{ <br>title: 1 }' | Максимальное кол-во строк <br> - `title` - в заголовке |
-| link | `PickLinkProps<LinkElement, "text" \| "appearance" \| "as">` | - | Cсылка |
+| link | `(Pick<{ 'data-test-id'?: string; } & AriaAttributes & { text?: string; size?: Size; purpose?: Purpose; appearance?: Appearance; textMode?: TextMode; insideText?: boolean; } & TruncateEndProps & { ...; } & Omit<...>, "text" \| ... 1 more ... \| "as"> & Omit<...>) \| (Pick<...> & Omit<...>)` | - | Cсылка |
 | action | `AlertButtonProps` | - | Кнопка дополнительного действия |
 | onClose | `() => void` | - | Колбек закрытия |
 | appearance | enum Appearance: `"neutral"`, `"primary"`, `"error"`, `"warning"`, `"success"`, `"info"` | neutral | Внешний вид |

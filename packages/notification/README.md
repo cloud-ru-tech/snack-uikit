@@ -246,7 +246,7 @@ function NotificationPanelStackExample() {
 | appearance | enum Appearance: `"neutral"`, `"error"`, `"errorCritical"`, `"warning"`, `"success"` | neutral | Тип уведомления |
 | label | `string` | - | Лейбл перед заголовком |
 | unread | `boolean` | - | Управление состоянием прочитано/не прочитано |
-| link | `PickLinkProps<LinkElement, "text" \| "insideText" \| "truncateVariant">` | - | Ссылка |
+| link | `(Pick<{ 'data-test-id'?: string; } & AriaAttributes & { text?: string; size?: Size; purpose?: Purpose; appearance?: Appearance; textMode?: TextMode; insideText?: boolean; } & TruncateEndProps & { ...; } & Omit<...>, "text" \| ... 1 more ... \| "truncateVariant"> & Omit<...>) \| (Pick<...> & Omit<...>)` | - | Ссылка |
 | onClick | `MouseEventHandler<HTMLDivElement>` | - | Колбэк клика по карточке |
 | onVisible | `(cardId: string) => void` | - | Колбэк при попадании карточки в область видимости на 80% |
 | primaryButton | `Omit<ButtonTonalProps, "data-test-id" \| "appearance" \| "size">` | - | Кнопка главного действия у карточки |

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Drawer",
-  "version": "0.14.4",
+  "version": "1.0.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,14 +36,14 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.19",
-    "@snack-uikit/icons": "0.27.8",
-    "@snack-uikit/scroll": "0.11.0",
-    "@snack-uikit/tooltip": "0.18.16",
-    "@snack-uikit/truncate-string": "0.7.15",
-    "@snack-uikit/typography": "0.8.13",
-    "@snack-uikit/utils": "4.0.2",
-    "classnames": "2.5.1",
-    "rc-drawer": "6.4.1"
+    "@snack-uikit/button": "workspace:^",
+    "@snack-uikit/icons": "workspace:^",
+    "@snack-uikit/scroll": "workspace:^",
+    "@snack-uikit/tooltip": "workspace:^",
+    "@snack-uikit/truncate-string": "workspace:^",
+    "@snack-uikit/typography": "workspace:^",
+    "@snack-uikit/utils": "workspace:^",
+    "classnames": "catalog:",
+    "rc-drawer": "^6.4.1"
   }
 }

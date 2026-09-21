@@ -4,7 +4,7 @@
     "access": "public"
   },
   "title": "Tabs",
-  "version": "0.10.20",
+  "version": "1.0.0",
   "sideEffects": [
     "*.css",
     "*.woff",
@@ -36,14 +36,14 @@
   "license": "Apache-2.0",
   "scripts": {},
   "dependencies": {
-    "@snack-uikit/button": "0.19.19",
-    "@snack-uikit/counter": "0.8.12",
-    "@snack-uikit/divider": "3.2.12",
-    "@snack-uikit/icons": "0.27.8",
-    "@snack-uikit/typography": "0.8.13",
-    "@snack-uikit/utils": "4.0.2",
-    "classnames": "2.5.1",
-    "react-indiana-drag-scroll": "2.2.0",
-    "uncontrollable": "8.0.4"
+    "@snack-uikit/button": "workspace:^",
+    "@snack-uikit/counter": "workspace:^",
+    "@snack-uikit/divider": "workspace:^",
+    "@snack-uikit/icons": "workspace:^",
+    "@snack-uikit/typography": "workspace:^",
+    "@snack-uikit/utils": "workspace:^",
+    "classnames": "catalog:",
+    "react-indiana-drag-scroll": "^2.2.0",
+    "uncontrollable": "catalog:"
   }
 }
