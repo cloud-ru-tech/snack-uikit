@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.1 (2026-09-21)
+
+
+### Bug Fixes
+
+* **FF-8693:** adopt workspace and catalog protocols and raise 0.x packages to 1.0.0 ([579989e](https://github.com/cloud-ru-tech/snack-uikit/commit/579989ec78845b4161627bc688c9b1b57abc9dac))
+
+
+
+
+
 ## 0.20.3 (2026-08-07)
 
 ### Only dependencies have been changed

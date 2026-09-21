@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.0.0 (2026-09-21)
+
+
+### BREAKING CHANGES
+
+
+* **FF-8693:** adopt workspace and catalog protocols for package deps ([8806a05](https://github.com/cloud-ru-tech/snack-uikit/commit/8806a051912d862da64b767c86d2fec04c20121c))
+
+
+
+
 ## 4.0.2 (2026-05-18)
 
 
