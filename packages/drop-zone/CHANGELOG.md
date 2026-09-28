@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.2 (2026-09-28)
+
+
+### Bug Fixes
+
+* **PDS-4481:** drag and drop many files ([f123558](https://github.com/cloud-ru-tech/snack-uikit/commit/f12355846e9cab1f9de98ca08ba2457a6fa98329))
+
+
+
+
+
 ## 1.0.1 (2026-09-21)
 
 
