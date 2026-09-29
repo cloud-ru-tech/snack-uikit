@@ -56,7 +56,6 @@ export function useDateField({
     getSlotKeyFromIndex,
     setFocus,
     updateSlot,
-    getSlot,
     isLikeDate,
     isAllSelected,
     tryToCompleteInput,
@@ -66,9 +65,13 @@ export function useDateField({
 
   const focusSlotKey = useMemo(() => slotOrder[0], [slotOrder]);
   const focusSlotRef = useRef<FocusSlot>(focusSlotKey);
+  /** Цифры, введённые в текущий слот с момента его выбора */
+  const slotInputRef = useRef<{ slotKey: SlotKey; digits: string }>();
 
   const setInputFocus = useCallback(
     (focusSlot?: FocusSlot) => {
+      slotInputRef.current = undefined;
+
       if (!inputRef.current || readonly) {
         return;
       }
@@ -169,10 +172,7 @@ export function useDateField({
         const slotKey = getSlotKeyFromIndex(clickIndex);
 
         if (slotKey) {
-          const value = getSlot(slotKey);
           const { max, min } = slotsInfo[slotKey];
-
-          const numberValue = Number(value) || 0;
 
           if (e.key === 'ArrowRight') {
             if (isAllSelected() || slotKey === slotOrder[slotOrder.length - 1]) {
@@ -197,43 +197,32 @@ export function useDateField({
             }
           }
 
-          if (/^\d+$/.test(e.key)) {
-            const digit = Number(e.key);
-            const slotValue = parseInt(numberValue.toString() + e.key, 10) || 0;
-
-            const valueLength = slotValue.toString().length;
+          if (/^\d$/.test(e.key)) {
             const maxLength = max.toString().length;
-            const isTheLastInput = value.match(/^0+$/) && maxLength === 2 && digit === 0;
+            const prevDigits = slotInputRef.current?.slotKey === slotKey ? slotInputRef.current.digits : '';
+            let digits = prevDigits + e.key;
 
-            if (valueLength < maxLength) {
-              if (slotValue || slotValue >= min) {
-                updateSlot(slotKey, slotValue);
-                if (isTheLastInput) checkInputAndGoNext(slotKey);
-              }
-
-              if (slotValue * 10 > max) {
-                checkInputAndGoNext(slotKey);
-              }
-            } else if (valueLength > maxLength) {
-              if (digit * 10 > max) {
-                updateSlot(slotKey, e.key);
-                checkInputAndGoNext(slotKey);
-              } else if (digit || digit >= min) {
-                updateSlot(slotKey, e.key);
-              }
-            } else {
-              if (slotValue <= max) {
-                updateSlot(slotKey, slotValue);
-                checkInputAndGoNext(slotKey);
-              } else {
-                if (digit * 10 > max) {
-                  updateSlot(slotKey, e.key);
-                  checkInputAndGoNext(slotKey);
-                } else if (digit || digit >= min) {
-                  updateSlot(slotKey, e.key);
-                }
-              }
+            // при выходе за границы слота начинаем ввод заново с текущей цифры
+            if (Number(digits) > max || (digits.length === maxLength && Number(digits) < min)) {
+              digits = e.key;
             }
+
+            const slotValue = Number(digits);
+            const isSlotCompleted = digits.length === maxLength || slotValue * 10 > max;
+
+            if (isSlotCompleted) {
+              slotInputRef.current = undefined;
+              updateSlot(slotKey, slotValue);
+              checkInputAndGoNext(slotKey);
+            } else {
+              slotInputRef.current = { slotKey, digits };
+              updateSlot(
+                slotKey,
+                slotValue < min ? digits + (slotsPlaceholder[slotKey] ?? '').slice(digits.length) : slotValue,
+              );
+            }
+          } else {
+            slotInputRef.current = undefined;
           }
 
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -248,7 +237,6 @@ export function useDateField({
       getSlotKeyFromIndex,
       setIsOpen,
       tryToCompleteInput,
-      getSlot,
       slotsInfo,
       parseDate,
       isLikeDate,
@@ -271,6 +259,7 @@ export function useDateField({
       inputRef.current.value = '';
     }
     focusSlotRef.current = focusSlotKey;
+    slotInputRef.current = undefined;
   }, [inputRef, mask, readonly, focusSlotKey]);
 
   return {

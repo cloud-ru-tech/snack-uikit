@@ -65,6 +65,15 @@ test.describe('Field Time', () => {
     await expect(input).toHaveValue('05:55:05');
   });
 
+  test('Should allow values with leading zeros', async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory());
+    const wrapper = getByTestId(TEST_ID);
+    const input = getInputInner(wrapper);
+
+    await input.pressSequentially('010203');
+    await expect(input).toHaveValue('01:02:03');
+  });
+
   test('Should format value correctly, showSeconds=false', async ({ gotoStory, getByTestId }) => {
     await gotoStory(getStory({ showSeconds: false }));
     const wrapper = getByTestId(TEST_ID);

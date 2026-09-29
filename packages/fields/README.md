@@ -963,8 +963,8 @@ FieldStepper в основном предназначен для работы с
 ### Props
 | name | type | default value | description |
 |------|------|---------------|-------------|
-| __@metadata@6615* | `DecoratorMetadataObject` | - |  |
-| __@hasInstance@6613* | `(value: any) => boolean` | - | Determines whether the given value inherits from this function if this function was used as a constructor function.  A constructor function can control which objects are recognized as its instances by 'instanceof' by overriding this method. |
+| __@metadata@1231* | `DecoratorMetadataObject` | - |  |
+| __@hasInstance@1229* | `(value: any) => boolean` | - | Determines whether the given value inherits from this function if this function was used as a constructor function.  A constructor function can control which objects are recognized as its instances by 'instanceof' by overriding this method. |
 | name* | `string` | - | Returns the name of the function. Function names are read-only and can not be changed. |
 | caller* | `Function` | - |  |
 | arguments* | `any` | - |  |

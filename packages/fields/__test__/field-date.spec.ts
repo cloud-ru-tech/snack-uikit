@@ -74,6 +74,16 @@ test.describe('Field Date', () => {
     await expect(input).toHaveValue('19.12.1987');
   });
 
+  test("[mode='date'] Should allow values with leading zeros", async ({ gotoStory, getByTestId }) => {
+    await gotoStory(getStory({ mode: 'date', dateValue: '' }));
+    const wrapper = getByTestId(TEST_ID);
+    const input = getInputInner(wrapper);
+
+    await input.click();
+    await input.pressSequentially('01082026');
+    await expect(input).toHaveValue('01.08.2026');
+  });
+
   // select data
   test.describe('calendar selection', () => {
     test.describe.configure({ mode: 'serial' });
