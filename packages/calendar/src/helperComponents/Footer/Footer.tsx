@@ -64,7 +64,7 @@ export function Footer() {
     const {
       year = todayDate.getFullYear(),
       month = todayDate.getMonth(),
-      day = todayDate.getMonth(),
+      day = todayDate.getDate(),
       hours,
       minutes,
       seconds,
