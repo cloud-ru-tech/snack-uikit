@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.2 (2026-09-29)
+
+
+### Bug Fixes
+
+* **FF-9222:** allow leading zeros in date/time field input ([9499820](https://github.com/cloud-ru-tech/snack-uikit/commit/9499820c3a1a0c7130e4ac471aed436062a090e3))
+
+
+
+
+
 ## 1.0.1 (2026-09-21)
 
 

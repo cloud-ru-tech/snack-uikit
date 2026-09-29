@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.2 (2026-09-29)
+
+
+### Bug Fixes
+
+* **FF-9222:** use current day as fallback on calendar apply ([f713419](https://github.com/cloud-ru-tech/snack-uikit/commit/f7134195e91262040f137d32a5bacebd16deb8b8))
+
+
+
+
+
 ## 1.0.1 (2026-09-21)
 
 
