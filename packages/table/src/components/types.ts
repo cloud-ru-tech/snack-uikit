@@ -178,7 +178,8 @@ type BaseTableProps<TData extends object, TFilters extends FiltersState = Record
 
   /** Конфиг для сохранения состояния в localStorage и queryParams. <br>
    *  Поле id должно быть уникальным для разных таблиц в рамках приложения. <br>
-   *  Для корректной работы необходимо наличие id в конфиге columnDefinitions
+   *  Для корректной работы необходимо наличие id в конфиге columnDefinitions <br>
+   *  Значение filterQueryKey записывается в URL с однократным кодированием
    *  */
   savedState?: Pick<ToolbarPersistConfig<TFilters>, 'serializer' | 'parser'> & {
     id: string;

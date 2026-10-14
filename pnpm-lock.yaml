@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@cloud-ru/ft-request-payload-transform':
-      specifier: ^0.3.0
-      version: 0.3.0
+      specifier: ^0.5.0
+      version: 0.5.0
     '@types/fuzzy-search':
       specifier: 2.1.5
       version: 2.1.5
@@ -1340,7 +1340,7 @@ importers:
     dependencies:
       '@cloud-ru/ft-request-payload-transform':
         specifier: 'catalog:'
-        version: 0.3.0
+        version: 0.5.0
       '@dnd-kit/core':
         specifier: ^6.3.1
         version: 6.3.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1538,7 +1538,7 @@ importers:
     dependencies:
       '@cloud-ru/ft-request-payload-transform':
         specifier: 'catalog:'
-        version: 0.3.0
+        version: 0.5.0
       '@snack-uikit/button':
         specifier: workspace:^
         version: link:../button
@@ -2843,8 +2843,8 @@ packages:
     resolution: {integrity: sha512-pSJiAhYzQgDp/PuN+dVnoLVTwPu8Anh1JehkbCqQUR6K6u9KwduMGIuqg7OgNWlmPaR8OAeDCKybft+IyuOoaw==}
     hasBin: true
 
-  '@cloud-ru/ft-request-payload-transform@0.3.0':
-    resolution: {integrity: sha512-isS3zY0nWPsztaAlPmxaBRATp3NaDHOrbI1Doj+Z4oXiTf3diVxIBnknGP/jIstDqsn9u1diN5TdLROdc/ra/g==}
+  '@cloud-ru/ft-request-payload-transform@0.5.0':
+    resolution: {integrity: sha512-zvWmvluzEgqCvB2nlbPAHYd12dW6mLqoSNmEypEOg6QSaMyzuf3d5TwO3RZcUNRLdTP8mc0ydCAhh8EKQjkdCA==}
 
   '@cloud-ru/ft-storybook-brand-addon@2.0.7':
     resolution: {integrity: sha512-BYCJEmfGxuEgZeCZ26zqrI0NPGUn04cmeVSx5Z7LfkLkJ2AKqzfYz+nLUiNXybhYQGTnozCqEfHYqzvF1X179Q==}
@@ -13449,7 +13449,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@cloud-ru/ft-request-payload-transform@0.3.0': {}
+  '@cloud-ru/ft-request-payload-transform@0.5.0': {}
 
   '@cloud-ru/ft-storybook-brand-addon@2.0.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(storybook@8.6.17(prettier@3.8.1))':
     dependencies:

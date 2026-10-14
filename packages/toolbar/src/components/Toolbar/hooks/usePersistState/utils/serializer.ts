@@ -50,4 +50,4 @@ export const formatFilterStateToRequestPayload = <T extends FiltersState>(value?
   });
 
 export const defaultSerializer = <T extends FiltersState>(value: PersistedFilterState<T>) =>
-  formatFilterStateToRequestPayload(value).toString();
+  formatFilterStateToRequestPayload(value).toString({ encode: false });

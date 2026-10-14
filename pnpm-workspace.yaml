@@ -5,7 +5,7 @@ saveWorkspaceProtocol: rolling
 # Общие внешние зависимости — единственное место, где задаётся их версия.
 # Consumer-facing (едет потребителю) — каретой, чисто-dev — пином.
 catalog:
-  '@cloud-ru/ft-request-payload-transform': ^0.3.0
+  '@cloud-ru/ft-request-payload-transform': ^0.5.0
   classnames: ^2.5.1
   copy-to-clipboard: ^3.3.3
   fuzzy-search: ^3.2.1
@@ -24,15 +24,14 @@ catalog:
   react-dom: 18.2.0
 
 packages:
-  - "packages/*"
+  - 'packages/*'
 onlyBuiltDependencies:
-  - "@cloud-ru/ft-config-husky"
+  - '@cloud-ru/ft-config-husky'
 ignoredBuiltDependencies:
-  - "unrs-resolver"
+  - 'unrs-resolver'
 # image-size тянется как optionalDependency less (через typescript-plugin-css-modules).
 # Все версии уязвимы (GHSA-w3rx-r6r6-pgpr, GHSA-5p2g-fcmc-qvqq), фикса нет.
 # less требует её лениво — только для less-функций image-size()/image-width()/image-height(),
 # которые в проекте не используются (.less-файлов нет).
 ignoredOptionalDependencies:
   - image-size
-
