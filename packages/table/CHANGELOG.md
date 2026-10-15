@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2026-10-15)
+
+
+### BREAKING CHANGES
+
+
+* **CORESERV-12174:** remove double url-encoding of toolbar persisted state ([a7d0a40](https://github.com/cloud-ru-tech/snack-uikit/commit/a7d0a404e1123e855d7396a3cb208e9974935033))
+
+
+
+
 ## 1.0.2 (2026-09-29)
 
 **Note:** Version bump only for package @snack-uikit/table
