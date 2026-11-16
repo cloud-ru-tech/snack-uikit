@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.2 (2026-11-16)
+
+
+### Bug Fixes
+
+* **PDS-4496:** add virtualization to toast upload ([e21298d](https://github.com/cloud-ru-tech/snack-uikit/commit/e21298d8a70291763203d3e864c16b62d27aa112))
+
+
+
+
+
 ## 1.0.1 (2026-09-21)
 
 
